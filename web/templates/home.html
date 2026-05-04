@@ -23,20 +23,33 @@
   <div class="hero-art" aria-hidden="true">
     <svg viewBox="0 0 420 420" width="100%" height="100%">
       <defs>
-        <radialGradient id="globe" cx="50%" cy="45%" r="55%">
+        <radialGradient id="globe" cx="50%" cy="42%" r="60%">
           <stop offset="0%" stop-color="#fff8e9"/>
-          <stop offset="60%" stop-color="#f3ead2"/>
-          <stop offset="100%" stop-color="#e3d4ad"/>
+          <stop offset="62%" stop-color="#f1e6c8"/>
+          <stop offset="100%" stop-color="#dcc897"/>
         </radialGradient>
+        <linearGradient id="ring" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#e8d8a6"/>
+          <stop offset="100%" stop-color="#c9a961"/>
+        </linearGradient>
       </defs>
-      <circle cx="210" cy="210" r="160" fill="url(#globe)"/>
-      {% for i in range(14) %}
-      <ellipse cx="210" cy="210" rx="{{ 30 + i*10 }}" ry="160"
-               fill="none" stroke="#c9a961" stroke-width="0.4" opacity="0.45"
-               transform="rotate({{ i*12 }} 210 210)"/>
+      <circle cx="210" cy="210" r="162" fill="url(#globe)"/>
+      <circle cx="210" cy="210" r="132" fill="none" stroke="#f8f1dd" stroke-width="18" opacity="0.55"/>
+      {% for i in range(10) %}
+      <ellipse cx="210" cy="210" rx="{{ 72 + i*11 }}" ry="{{ 144 - i*4 }}"
+               fill="none" stroke="url(#ring)" stroke-width="{{ 0.8 if i < 4 else 0.55 }}" opacity="{{ 0.34 if i < 4 else 0.2 }}"
+               transform="rotate({{ 18 + i*13 }} 210 210)"/>
       {% endfor %}
-      {% for p in [(120,140),(180,90),(260,120),(310,200),(280,290),(170,310),(110,250),(220,180),(250,240),(150,200)] %}
-      <circle cx="{{ p[0] }}" cy="{{ p[1] }}" r="2.5" fill="#c9a961"/>
+      {% for ring in [(102,24),(118,36),(136,48)] %}
+      <ellipse cx="210" cy="210" rx="{{ ring[0] }}" ry="{{ ring[1] }}"
+               fill="none" stroke="#fefbf2" stroke-width="1.2" opacity="0.8"/>
+      {% endfor %}
+      {% for p in [(114,146,3.2),(158,108,2.3),(210,86,2.5),(268,120,3.1),(316,184,2.4),(298,260,3.0),(236,310,2.2),(170,304,2.8),(116,246,2.0),(146,196,2.6),(242,194,2.1)] %}
+      <circle cx="{{ p[0] }}" cy="{{ p[1] }}" r="{{ p[2] }}" fill="#c9a961"/>
+      {% endfor %}
+      {% for line in [(114,146,158,108),(158,108,210,86),(210,86,268,120),(268,120,316,184),(316,184,298,260),(298,260,236,310),(236,310,170,304),(170,304,116,246),(116,246,146,196),(146,196,242,194)] %}
+      <line x1="{{ line[0] }}" y1="{{ line[1] }}" x2="{{ line[2] }}" y2="{{ line[3] }}"
+            stroke="#dac17c" stroke-width="0.9" opacity="0.4"/>
       {% endfor %}
     </svg>
   </div>
@@ -58,7 +71,7 @@
     {% if spotlight %}
     <div class="card spotlight">
       <span class="pill pill-cv">CARDIOVASCULAR HEALTH</span>
-      <button class="x" aria-label="dismiss">×</button>
+      <button class="x" type="button" aria-label="Dismiss spotlight">×</button>
       <h3>{{ spotlight.f_name }} and<br/>{{ spotlight.o_name }}</h3>
       <div class="badges">
         <span class="badge tier-{{ spotlight.tier }}">{{ TIER_LABEL[spotlight.tier] }}</span>
@@ -75,7 +88,7 @@
       <h4>Key Finding</h4>
       <p class="body-sm">{{ spotlight.summary }}</p>
       <a class="btn-primary" href="/edge/{{ spotlight.id }}">View Full Evidence →</a>
-      <button class="btn-secondary">＋ Add to My Library</button>
+      <button class="btn-secondary" type="button">＋ Add to My Library</button>
     </div>
     {% endif %}
   </aside>
@@ -100,7 +113,7 @@
     {% for f in featured %}
     <article class="feat-card tier-bg-{{ f.tier }}">
       <span class="pill tier-{{ f.tier }}">{{ TIER_LABEL[f.tier] | upper }}</span>
-      <button class="heart" aria-label="save">♡</button>
+      <button class="heart" type="button" aria-label="Save relationship">♡</button>
       <h3>{{ f.f_name }} and {{ f.o_name }}</h3>
       <p>{{ f.summary }}</p>
       <div class="feat-meta">

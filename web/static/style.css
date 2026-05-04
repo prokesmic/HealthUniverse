@@ -60,6 +60,22 @@ small { font-size: 12px; }
 .body-sm { font-size: 14px; }
 .small { font-size: 12px; }
 .link { color: var(--primary); font-weight: 500; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(201, 169, 97, .88);
+  outline-offset: 3px;
+}
 
 /* ---------- top nav ---------- */
 .topnav {
@@ -82,9 +98,14 @@ small { font-size: 12px; }
   padding: 10px 14px; min-width: 360px; color: var(--muted);
 }
 .topnav-search input { flex: 1; border: 0; background: transparent; outline: none; font: inherit; color: var(--ink); }
-.topnav-search kbd {
-  font: 600 11px 'Inter'; padding: 2px 6px; border: 1px solid var(--line);
-  border-radius: 6px; background: #fff;
+.topnav-search button.search-submit {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: var(--primary);
+  color: var(--primary-ink);
+  font-weight: 600;
+  cursor: pointer;
 }
 .topnav-actions { display: flex; align-items: center; gap: 8px; }
 .topnav-actions button {
@@ -270,6 +291,7 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   position: absolute; top: 14px; right: 14px;
   background: #fff; border: 1px solid var(--line); border-radius: 50%;
   width: 32px; height: 32px; cursor: pointer; color: var(--muted);
+  z-index: 2;
 }
 .feat-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: auto; }
 .feat-card .card-link {
@@ -318,6 +340,19 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 .list-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 18px; }
 
 .footer { padding: 24px 36px; color: var(--muted); font-size: 12px; text-align: center; }
+
+/* ---------- search ---------- */
+.topnav-search:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(201, 169, 97, .14);
+}
+
+button:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.topnav-search button.search-submit:hover {
+  filter: brightness(.98);
+}
 
 /* ---------- responsive ---------- */
 @media (max-width: 1280px) {
