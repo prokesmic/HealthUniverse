@@ -180,3 +180,6 @@ When handing this off:
 > Do not modify anything in the "Avoid" list.
 > Cost discipline: never call Claude outside `seed.py` /
 > `claude_client.py`'s `operation='adjudicate'` path.
+
+<!-- deploy-verify: 2026-05-04 -->
+
