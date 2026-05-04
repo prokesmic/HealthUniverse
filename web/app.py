@@ -13,11 +13,16 @@ ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 from db import connect  # noqa: E402
 from profile import COOKIE, Profile, decode, encode, relevance_score  # noqa: E402
+from web.illustrations import edge_svg  # noqa: E402
 
 app = FastAPI(title="Health Universe")
 WEB_DIR = Path(__file__).parent
 templates = Jinja2Templates(directory=str(WEB_DIR / "templates"))
 app.mount("/static", StaticFiles(directory=str(WEB_DIR / "static")), name="static")
+
+# Make `edge_svg(...)` callable from any Jinja template.
+# (Functions in env.globals are hashable, unlike dict-valued globals.)
+templates.env.globals["edge_svg"] = edge_svg
 
 
 # ---- tier display helpers ----------------------------------------------------
@@ -104,6 +109,36 @@ def _featured(conn, limit: int = 3) -> list[dict]:
     return [dict(r) for r in rows]
 
 
+def _new_discoveries(conn, days: int = 14, limit: int = 20) -> list[dict]:
+    """Edges that promoted into A/B in the last `days`, OR new edges
+    created in the last `days` at tier C or better. Newest first."""
+    rows = conn.execute("""
+        SELECT DISTINCT e.id, e.tier, e.direction, e.summary, e.updated_at,
+               f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+               o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind,
+               (SELECT MAX(changed_at) FROM edge_history h
+                WHERE h.edge_id = e.id AND h.field='tier'
+                  AND h.new_value IN ('A','B')
+                  AND (h.old_value IS NULL OR h.old_value NOT IN ('A','B'))
+               ) AS promoted_at,
+               (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies
+        FROM edge e
+        JOIN entity f ON f.id = e.factor_id
+        JOIN entity o ON o.id = e.outcome_id
+        WHERE (
+            -- promoted to A/B recently
+            EXISTS (SELECT 1 FROM edge_history h WHERE h.edge_id=e.id
+                    AND h.field='tier' AND h.new_value IN ('A','B')
+                    AND (h.old_value IS NULL OR h.old_value NOT IN ('A','B'))
+                    AND h.changed_at >= datetime('now', ?))
+            -- OR newly created at C or better
+            OR (e.tier IN ('A','B','C') AND e.created_at >= datetime('now', ?))
+        )
+        ORDER BY COALESCE(promoted_at, e.created_at) DESC
+        LIMIT ?""", (f"-{days} days", f"-{days} days", limit)).fetchall()
+    return [dict(r) for r in rows]
+
+
 def _evidence_strength_buckets(conn) -> list[dict]:
     rows = conn.execute(
         "SELECT tier, COUNT(*) c FROM edge GROUP BY tier").fetchall()
@@ -130,6 +165,7 @@ def home(request: Request):
         cats = [{**c, "count": _category_count(conn, c)} for c in CATEGORIES]
         featured = _featured(conn, limit=12)
         buckets = _evidence_strength_buckets(conn)
+        discoveries = _new_discoveries(conn, days=14, limit=8)
     if any([p.conditions, p.goals, p.stack]):
         featured.sort(key=lambda e: -relevance_score(e, p))
     featured = featured[:3]
@@ -137,7 +173,16 @@ def home(request: Request):
     return render(request, "home.html", {
         "stats": stats, "categories": cats,
         "featured": featured, "buckets": buckets, "spotlight": spotlight,
-        "profile": p,
+        "profile": p, "discoveries": discoveries,
+    })
+
+
+@app.get("/discoveries", response_class=HTMLResponse)
+def discoveries(request: Request, days: int = 30):
+    with connect() as conn:
+        rows = _new_discoveries(conn, days=days, limit=200)
+    return render(request, "discoveries.html", {
+        "title": "Discoveries", "rows": rows, "days": days,
     })
 
 

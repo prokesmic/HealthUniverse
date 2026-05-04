@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 
 from db import connect
 
-load_dotenv()
+load_dotenv(Path(__file__).parent / ".env", override=True)
 
 NTFY_BASE  = os.getenv("NTFY_URL", "https://ntfy.sh")
 NTFY_TOPIC = os.getenv("NTFY_TOPIC", "healthuniverse-tDr8FqPh3xLmQ2")

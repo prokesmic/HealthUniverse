@@ -14,9 +14,10 @@ import json
 import os
 from dataclasses import asdict, dataclass, field
 
+from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(Path(__file__).parent / ".env", override=True)
 
 COOKIE = "hu_profile"
 SECRET = (os.getenv("PROFILE_SECRET") or "dev-not-secret").encode()

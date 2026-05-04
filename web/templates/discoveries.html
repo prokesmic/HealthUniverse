@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Discoveries — Health Universe{% endblock %}
+{% block content %}
+<section class="list-page">
+  <a class="back" href="/">← Back</a>
+  <h1>Discoveries</h1>
+  <p class="muted">{{ rows|length }} discovery{{ rows|length != 1 and "ies" or "" }} in the last {{ days }} days · tier promotions and newly-confident relationships.</p>
+
+  <div class="discovery-grid">
+    {% for r in rows %}
+    <a class="disc-card tier-bg-{{ r.tier }}" href="/edge/{{ r.id }}">
+      <div class="disc-art">{{ edge_svg(factor_slug=r.f_slug, outcome_slug=r.o_slug, tier=r.tier, factor_kind=r.f_kind, outcome_kind=r.o_kind) | safe }}</div>
+      <div class="disc-body">
+        <div class="row-between">
+          <span class="pill tier-{{ r.tier }}">{{ TIER_LABEL[r.tier] | upper }}</span>
+          <span class="muted small">{{ (r.promoted_at or r.updated_at)[:10] }}</span>
+        </div>
+        <h3>{{ r.f_name }} <span class="arrow">→</span> {{ r.o_name }}</h3>
+        <p>{{ r.summary }}</p>
+        <div class="feat-meta">
+          <span class="badge dir-{{ r.direction }}">{{ DIRECTION_LABEL[r.direction] }}</span>
+          <span class="muted small">{{ r.n_studies }} studies</span>
+        </div>
+      </div>
+    </a>
+    {% else %}
+    <div class="empty">No new discoveries yet — they'll appear here when the daily Gemma loop promotes an edge into tier A or B, or creates a new high-confidence one.</div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

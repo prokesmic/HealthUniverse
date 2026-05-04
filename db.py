@@ -9,7 +9,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(Path(__file__).parent / ".env", override=True)
 
 _PROJECT_ROOT = Path(__file__).parent.resolve()
 _default_db = _PROJECT_ROOT / "data" / "healthuniverse.db"

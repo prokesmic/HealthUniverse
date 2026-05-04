@@ -105,49 +105,44 @@ launchd/                .plist files (Phase 2 & 4)
 
 ---
 
-## Tasks open for parallel work (good for Codex)
+## Tasks open for parallel work
 
-The owner is building phases 2 (Gemma daily ingestion), 4 (profiles + digest),
-and 5 (polish). Codex should pick from the list below — these are scoped to
-NOT collide with that work.
+### MAIN TASK: produce ~250 deep-research payloads to seed the graph to ~500 edges
 
-### Independent / safe to work on now
+**See [`CODEX_BRIEF_500.md`](./CODEX_BRIEF_500.md) at the repo root.** This
+is the priority. Output is JSON files in `data/seed_payloads/`, validated
+by `seed_from_payloads.py`. You do NOT call our Anthropic API.
 
-- [ ] **Test suite.** Add `pytest` + a `tests/` folder. Cover: `db.py`
-      round-trips, `claude_client.cost_of` math, `seed._validate` accepts
-      good payloads & rejects bad ones, FastAPI routes return 200 with empty
-      DB and with a fixture-loaded DB. Use a temp SQLite per test.
-- [ ] **Expand `topics.py`.** Add another ~80–120 high-leverage seed pairs
-      across mental health, women's health, men's health, paediatrics,
-      pregnancy, peri/menopause, immunity. Keep the existing priority scale
-      (1=highest). Don't change the tuple shape.
-- [ ] **Better hero illustration.** The current globe in `home.html` is a
-      placeholder. Replace with a more refined inline SVG (still inline, no
-      raster files), keeping the cream/gold palette and the orbital-rings
-      vibe. See the design reference described in README.md.
-- [ ] **Accessibility pass.** Ensure all interactive elements have visible
-      focus rings, sufficient contrast, ARIA labels on icon-only buttons,
-      semantic landmarks (`<main>`, `<nav>`, `<aside>`).
-- [ ] **Search endpoint.** `GET /search?q=...` over `entity.name`,
-      `entity.aliases`, `edge.summary`. Server-rendered results page using
-      the same card style. No JS framework — a plain `<form>` is fine.
-- [ ] **PNG share-card export.** `GET /edge/{id}.png` renders the edge card
-      as a 1200×630 OpenGraph image. Use `Pillow` server-side; do not pull
-      in Playwright/headless Chrome. Write to `data/cache/og/{id}.png` so
-      Vercel can serve it on subsequent hits (cache is fine to be cold).
+### Other safe tasks (after the main one)
+
+- [ ] **Test suite.** Add `pytest` + `tests/` covering `db.py` round-trips,
+      `claude_client.cost_of` math, `seed._validate`, FastAPI routes 200ing
+      with empty + fixture-loaded DB. Temp SQLite per test.
 - [ ] **Sitemap + robots.txt.** Generate `/sitemap.xml` from edges and
       categories. `/robots.txt` allows everything.
-- [ ] **Add OpenGraph + Twitter meta tags** to `base.html` and a per-edge
-      override in `edge.html` once the PNG share-card task is done.
-- [ ] **README.md.** Currently missing. One-pager with screenshot, the
-      LLM-budget rule, quick start, and a link to this AGENTS.md.
+- [ ] **README.md.** Currently missing. Screenshot, LLM-budget rule, quick
+      start, link back to this AGENTS.md.
+- [ ] **Accessibility pass.** Visible focus rings, sufficient contrast,
+      ARIA labels on icon-only buttons, semantic landmarks.
+
+### Already done — do NOT re-implement
+
+- `/search` route (in `web/app.py`)
+- `/edge/{id}.png` share card (in `web/share.py`)
+- OpenGraph + Twitter meta tags (`{% block og %}` in `base.html`/`edge.html`)
+- Procedural SVG illustrations per edge (`web/illustrations.py`)
+- `/discoveries` route + hero strip on home
+- Daily Gemma ingestion (`ingest/*`)
+- Profiles + digest (`profile.py`, `digest.py`)
+- Myth cards (`/myths`)
 
 ### Avoid (owner is touching these)
 
 - `ollama_client.py`, `ingest/*`, `digest.py`, `profile.py`, `launchd/*`
-- The `_featured`/`_evidence_strength_buckets` queries in `web/app.py`
-- The cost-cap logic in `claude_client.py`
-- Schema migrations (talk first)
+- `seed.py`, `adjudicate.py`, `claude_client.py` (cost cap & paid path)
+- `web/illustrations.py`, `web/share.py`
+- Schema migrations (open an issue first)
+- Color tokens / typography in `web/static/style.css` (visual identity)
 
 ---
 

@@ -10,12 +10,13 @@ import os
 import re
 from dataclasses import dataclass
 
+from pathlib import Path
 from anthropic import Anthropic
 from dotenv import load_dotenv
 
 from db import connect, record_cost, total_spent_usd
 
-load_dotenv()
+load_dotenv(Path(__file__).parent / ".env", override=True)
 
 MODEL = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-4-6")
 COST_CAP_USD = float(os.getenv("COST_CAP_USD", "50.00"))

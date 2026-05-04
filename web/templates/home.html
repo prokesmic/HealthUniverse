@@ -91,6 +91,25 @@
   {% endfor %}
 </section>
 
+{% if discoveries %}
+<section class="discoveries-strip">
+  <div class="row-between">
+    <h2>{{ discoveries|length }} new discover{{ discoveries|length == 1 and "y" or "ies" }} this fortnight</h2>
+    <a class="link" href="/discoveries">View all →</a>
+  </div>
+  <div class="strip-track">
+    {% for d in discoveries %}
+    <a class="strip-card tier-bg-{{ d.tier }}" href="/edge/{{ d.id }}">
+      <div class="strip-art">{{ edge_svg(factor_slug=d.f_slug, outcome_slug=d.o_slug, tier=d.tier, factor_kind=d.f_kind, outcome_kind=d.o_kind, w=320, h=140) | safe }}</div>
+      <span class="pill tier-{{ d.tier }}">{{ TIER_LABEL[d.tier] | upper }}</span>
+      <h3>{{ d.f_name }} <span class="arrow">→</span> {{ d.o_name }}</h3>
+      <span class="badge dir-{{ d.direction }}">{{ DIRECTION_LABEL[d.direction] }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 <section class="featured">
   <div class="row-between">
     <h2>Featured Evidence</h2>
@@ -99,6 +118,7 @@
   <div class="featured-grid">
     {% for f in featured %}
     <article class="feat-card tier-bg-{{ f.tier }}">
+      <div class="feat-art">{{ edge_svg(factor_slug=f.f_slug, outcome_slug=f.o_slug, tier=f.tier, factor_kind=f.f_kind, outcome_kind="condition", w=380, h=140) | safe }}</div>
       <span class="pill tier-{{ f.tier }}">{{ TIER_LABEL[f.tier] | upper }}</span>
       <button class="heart" aria-label="save">♡</button>
       <h3>{{ f.f_name }} and {{ f.o_name }}</h3>
