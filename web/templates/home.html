@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-text">
+    <h1>The living map of<br/>nutrition, lifestyle, supplements,<br/>and disease risk<span class="dot">.</span></h1>
+    <p class="lede">Continuously updated evidence for cardiovascular health, metabolic
+      health, oncology, sleep, and longevity.</p>
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-icon">📖</span>
+        <div><b>{{ "{:,}".format(stats.edges) }}</b><small>Evidence summaries</small></div>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">👥</span>
+        <div><b>{{ "{:,}".format(stats.studies) }}</b><small>Studies tracked</small></div>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">🕒</span>
+        <div><b>Updated</b><small>{{ stats.updated[:10] if stats.updated != "—" else "—" }}</small></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <svg viewBox="0 0 420 420" width="100%" height="100%">
+      <defs>
+        <radialGradient id="globe" cx="50%" cy="45%" r="55%">
+          <stop offset="0%" stop-color="#fff8e9"/>
+          <stop offset="60%" stop-color="#f3ead2"/>
+          <stop offset="100%" stop-color="#e3d4ad"/>
+        </radialGradient>
+      </defs>
+      <circle cx="210" cy="210" r="160" fill="url(#globe)"/>
+      {% for i in range(14) %}
+      <ellipse cx="210" cy="210" rx="{{ 30 + i*10 }}" ry="160"
+               fill="none" stroke="#c9a961" stroke-width="0.4" opacity="0.45"
+               transform="rotate({{ i*12 }} 210 210)"/>
+      {% endfor %}
+      {% for p in [(120,140),(180,90),(260,120),(310,200),(280,290),(170,310),(110,250),(220,180),(250,240),(150,200)] %}
+      <circle cx="{{ p[0] }}" cy="{{ p[1] }}" r="2.5" fill="#c9a961"/>
+      {% endfor %}
+    </svg>
+  </div>
+  <aside class="hero-side">
+    <div class="card confidence">
+      <div class="row-between">
+        <span class="muted">Overall Evidence Confidence ⓘ</span>
+      </div>
+      <div class="confidence-bar">
+        {% for i in range(10) %}<span class="seg seg-{{ i }}"></span>{% endfor %}
+        <div class="confidence-tick" style="left:46%"></div>
+      </div>
+      <div class="row-between">
+        <b class="confidence-label">Moderate to Strong</b>
+        <a class="link" href="#">What this means →</a>
+      </div>
+    </div>
+
+    {% if spotlight %}
+    <div class="card spotlight">
+      <span class="pill pill-cv">CARDIOVASCULAR HEALTH</span>
+      <button class="x" aria-label="dismiss">×</button>
+      <h3>{{ spotlight.f_name }} and<br/>{{ spotlight.o_name }}</h3>
+      <div class="badges">
+        <span class="badge tier-{{ spotlight.tier }}">{{ TIER_LABEL[spotlight.tier] }}</span>
+        <span class="badge dir-{{ spotlight.direction }}">{{ DIRECTION_LABEL[spotlight.direction] }}</span>
+        <span class="muted small">Confidence
+          {% for i in range(5) %}<span class="dotmark {% if i < TIER_DOTS[spotlight.tier] %}on{% endif %}"></span>{% endfor %}
+        </span>
+      </div>
+      <dl class="meta-grid">
+        <div><dt>Study Type</dt><dd>{{ spotlight.top_study or "—" }}</dd></div>
+        <div><dt>Studies</dt><dd>{{ spotlight.n_studies }}</dd></div>
+        <div><dt>Updated</dt><dd>{{ spotlight.updated_at[:10] }}</dd></div>
+      </dl>
+      <h4>Key Finding</h4>
+      <p class="body-sm">{{ spotlight.summary }}</p>
+      <a class="btn-primary" href="/edge/{{ spotlight.id }}">View Full Evidence →</a>
+      <button class="btn-secondary">＋ Add to My Library</button>
+    </div>
+    {% endif %}
+  </aside>
+</section>
+
+<section class="categories">
+  {% for c in categories %}
+  <a class="cat" href="/category/{{ c.slug }}">
+    <span class="cat-icon icon-{{ c.icon }}" aria-hidden="true"></span>
+    <b>{{ c.label }}</b>
+    <small>{{ "{:,}".format(c.count) }}</small>
+  </a>
+  {% endfor %}
+</section>
+
+<section class="featured">
+  <div class="row-between">
+    <h2>Featured Evidence</h2>
+    <a class="link" href="/tier/A">View all</a>
+  </div>
+  <div class="featured-grid">
+    {% for f in featured %}
+    <article class="feat-card tier-bg-{{ f.tier }}">
+      <span class="pill tier-{{ f.tier }}">{{ TIER_LABEL[f.tier] | upper }}</span>
+      <button class="heart" aria-label="save">♡</button>
+      <h3>{{ f.f_name }} and {{ f.o_name }}</h3>
+      <p>{{ f.summary }}</p>
+      <div class="feat-meta">
+        <span class="badge dir-{{ f.direction }}">{{ DIRECTION_LABEL[f.direction] }}</span>
+        <span class="badge ghost">{{ f.top_study or "—" }}</span>
+        <span class="muted small">Updated {{ f.updated_at[:10] }}</span>
+      </div>
+      <a class="card-link" href="/edge/{{ f.id }}" aria-label="Open"></a>
+    </article>
+    {% endfor %}
+    {% if not featured %}
+    <div class="empty">
+      No edges yet. Run the seed researcher:
+      <code>python seed.py --next --limit 10</code>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="strength">
+  <h2>Browse by Evidence Strength <small class="muted">ⓘ</small></h2>
+  <div class="strength-grid">
+    {% for b in buckets %}
+    <a class="bucket bucket-{{ b.tier }}" href="/tier/{{ b.tier }}">
+      <h3>{{ b.label }}</h3>
+      <div class="dots">
+        {% for i in range(5) %}<span class="dotmark {% if i < TIER_DOTS[b.tier] %}on{% endif %}"></span>{% endfor %}
+      </div>
+      <p>{{ b.blurb }}</p>
+      <div class="wave"></div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

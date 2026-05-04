@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}{{ e.f_name }} and {{ e.o_name }} — Health Universe{% endblock %}
+{% block content %}
+<section class="edge-page">
+  <a class="back" href="/">← Back</a>
+  <div class="edge-head">
+    <div>
+      <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
+      <h1>{{ e.f_name }} <span class="arrow">→</span> {{ e.o_name }}</h1>
+      <div class="badges">
+        <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+        {% if e.effect_size %}<span class="badge ghost">Effect: {{ e.effect_size }}</span>{% endif %}
+        {% if e.population %}<span class="badge ghost">{{ e.population }}</span>{% endif %}
+      </div>
+    </div>
+    <div class="confidence-card">
+      <span class="muted small">Confidence</span>
+      <div class="dots big">
+        {% for i in range(5) %}<span class="dotmark {% if i < TIER_DOTS[e.tier] %}on{% endif %}"></span>{% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="edge-grid">
+    <div>
+      <h3>Summary</h3>
+      <p>{{ e.summary }}</p>
+      {% if e.effect_quant %}<p><b>Effect:</b> {{ e.effect_quant }}</p>{% endif %}
+      <h3>Mechanism</h3>
+      <p>{{ e.mechanism or "—" }}</p>
+      {% if e.caveats %}<h3>Caveats</h3><p>{{ e.caveats }}</p>{% endif %}
+
+      <h3>Evidence ({{ evidence|length }})</h3>
+      <table class="evidence-table">
+        <thead><tr><th>Citation</th><th>Year</th><th>Type</th><th>n</th><th>Quality</th><th>Direction</th></tr></thead>
+        <tbody>
+        {% for ev in evidence %}
+          <tr>
+            <td>{{ ev.citation }}<br/><small class="muted">{{ ev.notes }}</small></td>
+            <td>{{ ev.year or "—" }}</td>
+            <td>{{ ev.study_type or "—" }}</td>
+            <td>{{ ev.n_participants or "—" }}</td>
+            <td>{{ ev.quality or "—" }}</td>
+            <td>{{ ev.direction or "—" }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <aside>
+      <div class="card">
+        <h4>History</h4>
+        <ul class="history">
+        {% for h in history %}
+          <li><b>{{ h.changed_at[:10] }}</b> · {{ h.actor }} · {{ h.reason or h.field }}</li>
+        {% endfor %}
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Last reviewed</h4>
+        <p>{{ e.last_reviewed[:10] }}</p>
+        <p class="muted small">Source: {{ e.seed_source }}</p>
+      </div>
+    </aside>
+  </div>
+</section>
+{% endblock %}

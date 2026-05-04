@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python",
+      "config": {
+        "includeFiles": "{web/**,data/**,schema.sql,db.py}"
+      }
+    },
+    { "src": "web/static/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/web/static/$1" },
+    { "src": "/(.*)", "dest": "/api/index.py" }
+  ]
+}

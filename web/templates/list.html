@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} — Health Universe{% endblock %}
+{% block content %}
+<section class="list-page">
+  <a class="back" href="/">← Back</a>
+  <h1>{{ title }}</h1>
+  <p class="muted">{{ edges|length }} relationship{{ edges|length != 1 and "s" or "" }}</p>
+
+  <div class="list-grid">
+    {% for e in edges %}
+    <a class="feat-card tier-bg-{{ e.tier }}" href="/edge/{{ e.id }}">
+      <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
+      <h3>{{ e.f_name }} and {{ e.o_name }}</h3>
+      <p>{{ e.summary }}</p>
+      <div class="feat-meta">
+        <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+        <span class="muted small">Updated {{ e.updated_at[:10] }}</span>
+      </div>
+    </a>
+    {% else %}
+    <div class="empty">No relationships in this category yet.</div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
