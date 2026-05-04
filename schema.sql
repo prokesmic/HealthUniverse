@@ -4,7 +4,6 @@
 -- (conditions, biomarkers, processes). Edges are factor->outcome claims
 -- with confidence tier, populated and re-scored over time.
 
-PRAGMA journal_mode = WAL;
 PRAGMA foreign_keys = ON;
 
 CREATE TABLE IF NOT EXISTS entity (

@@ -23,14 +23,23 @@ def init_db() -> None:
         conn.executescript(SCHEMA_PATH.read_text())
 
 
+READ_ONLY = bool(os.getenv("VERCEL") or os.getenv("HU_READ_ONLY"))
+
+
 @contextmanager
 def connect():
-    conn = sqlite3.connect(DB_PATH)
+    if READ_ONLY:
+        uri = f"file:{DB_PATH}?mode=ro&immutable=1"
+        conn = sqlite3.connect(uri, uri=True)
+    else:
+        conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    conn.execute("PRAGMA foreign_keys = ON")
+    if not READ_ONLY:
+        conn.execute("PRAGMA foreign_keys = ON")
     try:
         yield conn
-        conn.commit()
+        if not READ_ONLY:
+            conn.commit()
     finally:
         conn.close()
 
