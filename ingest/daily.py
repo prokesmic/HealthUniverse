@@ -287,7 +287,7 @@ def run(*, days_back: int = 2, per_entity: int = 6, dry_run: bool = False) -> di
                     title=p.get("title",""), journal=p.get("journal",""),
                     year=p.get("year",""), abstract=p.get("abstract","")[:6000],
                 ),
-                temperature=0.1, num_predict=1200,
+                temperature=0.1, num_predict=3000,
             )
         except OllamaUnavailable as e:
             print(f"[ingest] STOP: {e}"); return summary
