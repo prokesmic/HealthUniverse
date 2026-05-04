@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}What changed — Health Universe{% endblock %}
+{% block content %}
+<section class="list-page">
+  <a class="back" href="/">← Back</a>
+  <h1>What changed</h1>
+  <p class="muted">Last {{ days }} days · {{ rows|length }} update{{ rows|length != 1 and "s" or "" }}</p>
+
+  <ul class="changes">
+    {% for r in rows %}
+    <li>
+      <a class="change-row" href="/edge/{{ r.edge_id }}">
+        <span class="when">{{ r.changed_at[:10] }}</span>
+        <span class="what">
+          <b>{{ r.f_name }}</b> → <b>{{ r.o_name }}</b>
+          <small class="muted">· {{ r.actor }}</small>
+        </span>
+        <span class="delta">
+          {% if r.field == 'tier' %}
+            {% if r.old_value %}<span class="pill tier-{{ r.old_value }}">{{ TIER_LABEL.get(r.old_value, r.old_value) }}</span> →{% else %}new edge →{% endif %}
+            <span class="pill tier-{{ r.new_value }}">{{ TIER_LABEL.get(r.new_value, r.new_value) }}</span>
+          {% else %}
+            {{ r.field }}: {{ r.reason or '—' }}
+          {% endif %}
+        </span>
+      </a>
+    </li>
+    {% else %}
+    <li class="empty">No changes yet. After the daily ingest runs, tier promotions and new edges will land here.</li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}

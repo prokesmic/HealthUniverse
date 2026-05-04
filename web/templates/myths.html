@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} — Health Universe{% endblock %}
+{% block content %}
+<section class="list-page">
+  <a class="back" href="/">← Back</a>
+  <h1>Myths and contested claims</h1>
+  <p class="muted">Things people once believed (or still argue about) that the evidence has refuted, weakened, or split. Kept visible so you can see <em>why</em> the picture changed.</p>
+
+  <div class="list-grid">
+    {% for r in rows %}
+    <a class="feat-card tier-bg-{{ r.tier }}" href="/edge/{{ r.id }}">
+      <span class="pill tier-{{ r.tier }}">{{ r.tier == 'X' and 'CONTESTED' or 'DEPRECATED' }}</span>
+      <h3>{{ r.f_name }} and {{ r.o_name }}</h3>
+      <p>{{ r.summary or "—" }}</p>
+      {% if r.reason %}<p class="muted small"><b>Why it changed:</b> {{ r.reason }}</p>{% endif %}
+    </a>
+    {% else %}
+    <div class="empty">No myth cards yet. They'll show up after the daily ingest demotes any tier-A/B claim.</div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

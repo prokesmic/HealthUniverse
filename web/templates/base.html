@@ -4,6 +4,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{% block title %}Health Universe{% endblock %}</title>
+{% block og %}
+<meta property="og:site_name" content="Health Universe">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Health Universe">
+<meta property="og:description" content="A living map of nutrition, lifestyle, supplements, and disease risk.">
+{% endblock %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -28,7 +34,9 @@
   <nav class="topnav-links">
     <a class="active" href="/">Explore</a>
     <a href="/tier/A">Evidence</a>
-    <a href="#">Topics</a>
+    <a href="/changes">What changed</a>
+    <a href="/myths">Myths</a>
+    <a href="/me">My stack</a>
     <a href="#">Guidelines</a>
     <a href="#">About</a>
   </nav>

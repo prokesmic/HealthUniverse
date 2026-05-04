@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} — Health Universe{% endblock %}
+{% block content %}
+<section class="list-page">
+  <a class="back" href="/">← Back</a>
+  <h1>Search</h1>
+  <form class="search-form" method="get" action="/search">
+    <input name="q" value="{{ q }}" placeholder="Search foods, conditions, mechanisms…" autofocus>
+    <button class="btn-primary" type="submit">Search</button>
+  </form>
+
+  {% if q %}
+    {% if entities %}
+    <h2>Topics</h2>
+    <div class="chip-grid">
+      {% for e in entities %}
+      <a class="chip" href="/category/{{ e.kind }}">{{ e.name }} <small class="muted">({{ e.kind }})</small></a>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <h2>Evidence</h2>
+    <div class="list-grid">
+      {% for e in edges %}
+      <a class="feat-card tier-bg-{{ e.tier }}" href="/edge/{{ e.id }}">
+        <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
+        <h3>{{ e.f_name }} and {{ e.o_name }}</h3>
+        <p>{{ e.summary }}</p>
+        <div class="feat-meta">
+          <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+          <span class="muted small">Updated {{ e.updated_at[:10] }}</span>
+        </div>
+      </a>
+      {% else %}
+      <div class="empty">No matches.</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

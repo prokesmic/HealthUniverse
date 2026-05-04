@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}My Stack — Health Universe{% endblock %}
+{% block content %}
+<section class="me-page">
+  <a class="back" href="/">← Back</a>
+  <h1>My stack</h1>
+  <p class="muted">Stored only in a cookie on your device. Nothing leaves your browser.</p>
+
+  <div class="me-grid">
+    <form method="post" action="/me" class="card me-form">
+      <div class="row-2">
+        <label>Age <input type="number" name="age" min="1" max="120" value="{{ profile.age or '' }}"></label>
+        <label>Sex
+          <select name="sex">
+            <option value="">—</option>
+            {% for s in ['female','male','other'] %}
+            <option value="{{s}}" {% if profile.sex==s %}selected{% endif %}>{{s}}</option>
+            {% endfor %}
+          </select>
+        </label>
+      </div>
+
+      <fieldset>
+        <legend>Conditions you want to manage or avoid</legend>
+        <div class="chip-grid">
+        {% for o in outcomes %}
+          <label class="chip"><input type="checkbox" name="conditions" value="{{o.slug}}"
+            {% if o.slug in profile.conditions %}checked{% endif %}>{{o.name}}</label>
+        {% endfor %}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Current stack (foods, supplements, activities)</legend>
+        <div class="chip-grid">
+        {% for f in factors %}
+          <label class="chip"><input type="checkbox" name="stack" value="{{f.slug}}"
+            {% if f.slug in profile.stack %}checked{% endif %}>{{f.name}}</label>
+        {% endfor %}
+        </div>
+      </fieldset>
+
+      <div class="row-between">
+        <button class="btn-primary" type="submit">Save</button>
+        <button class="btn-secondary" type="submit" formaction="/me/clear">Clear</button>
+      </div>
+    </form>
+
+    <aside>
+      <h2>Relevant for you</h2>
+      <p class="muted">Re-ranked by your stack and conditions.</p>
+      <div class="list-grid one">
+        {% for e in relevant %}
+        <a class="feat-card tier-bg-{{ e.tier }}" href="/edge/{{ e.id }}">
+          <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
+          <h3>{{ e.f_name }} and {{ e.o_name }}</h3>
+          <p>{{ e.summary }}</p>
+          <div class="feat-meta">
+            <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+            <span class="muted small">Updated {{ e.updated_at[:10] }}</span>
+          </div>
+        </a>
+        {% else %}
+        <div class="empty">Save a profile and we'll rank what's relevant for you.</div>
+        {% endfor %}
+      </div>
+    </aside>
+  </div>
+</section>
+{% endblock %}

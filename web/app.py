@@ -4,14 +4,15 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, Form, Request
+from fastapi.responses import HTMLResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 from db import connect  # noqa: E402
+from profile import COOKIE, Profile, decode, encode, relevance_score  # noqa: E402
 
 app = FastAPI(title="Health Universe")
 WEB_DIR = Path(__file__).parent
@@ -123,16 +124,102 @@ def _evidence_strength_buckets(conn) -> list[dict]:
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
+    p = decode(request.cookies.get(COOKIE))
     with connect() as conn:
         stats = _stats(conn)
         cats = [{**c, "count": _category_count(conn, c)} for c in CATEGORIES]
-        featured = _featured(conn, limit=3)
+        featured = _featured(conn, limit=12)
         buckets = _evidence_strength_buckets(conn)
-        spotlight = featured[0] if featured else None
+    if any([p.conditions, p.goals, p.stack]):
+        featured.sort(key=lambda e: -relevance_score(e, p))
+    featured = featured[:3]
+    spotlight = featured[0] if featured else None
     return render(request, "home.html", {
         "stats": stats, "categories": cats,
         "featured": featured, "buckets": buckets, "spotlight": spotlight,
+        "profile": p,
     })
+
+
+# ---- profile ("/me") --------------------------------------------------------
+
+@app.get("/me", response_class=HTMLResponse)
+def me(request: Request):
+    p = decode(request.cookies.get(COOKIE))
+    with connect() as conn:
+        all_factors = conn.execute(
+            "SELECT slug, name, kind FROM entity WHERE kind IN "
+            "('food','supplement','nutrient','activity','behavior') ORDER BY name"
+        ).fetchall()
+        all_outcomes = conn.execute(
+            "SELECT slug, name FROM entity WHERE kind='condition' ORDER BY name"
+        ).fetchall()
+        # Stack analysis: find harmful-for-stack-item edges and
+        # protective-for-condition edges to surface
+        relevant: list[dict] = []
+        if p.stack or p.conditions:
+            placeholders_f = ",".join("?" * max(len(p.stack), 1))
+            placeholders_c = ",".join("?" * max(len(p.conditions), 1))
+            rows = conn.execute(f"""
+                SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
+                       f.slug AS f_slug, f.name AS f_name,
+                       o.slug AS o_slug, o.name AS o_name
+                FROM edge e
+                JOIN entity f ON f.id = e.factor_id
+                JOIN entity o ON o.id = e.outcome_id
+                WHERE (f.slug IN ({placeholders_f or "''"}))
+                   OR (o.slug IN ({placeholders_c or "''"}))""",
+                (*p.stack, *p.conditions)).fetchall()
+            relevant = sorted([dict(r) for r in rows],
+                              key=lambda e: -relevance_score(e, p))[:30]
+    return render(request, "me.html", {
+        "profile": p,
+        "factors": [dict(r) for r in all_factors],
+        "outcomes": [dict(r) for r in all_outcomes],
+        "relevant": relevant,
+    })
+
+
+@app.post("/me")
+async def me_save(request: Request,
+                  age: str = Form(""), sex: str = Form(""),
+                  conditions: list[str] = Form(default=[]),
+                  goals: list[str] = Form(default=[]),
+                  stack: list[str] = Form(default=[])):
+    p = Profile(
+        age=int(age) if age.isdigit() else None,
+        sex=sex or None,
+        conditions=[c for c in conditions if c],
+        goals=[g for g in goals if g],
+        stack=[s for s in stack if s],
+    )
+    resp = RedirectResponse("/me", status_code=303)
+    resp.set_cookie(COOKIE, encode(p), max_age=60*60*24*365,
+                    httponly=False, samesite="lax")
+    return resp
+
+
+@app.post("/me/clear")
+def me_clear():
+    resp = RedirectResponse("/me", status_code=303)
+    resp.delete_cookie(COOKIE)
+    return resp
+
+
+@app.get("/edge/{edge_id}.png")
+def edge_png(edge_id: int):
+    from web.share import render_edge_png
+    with connect() as conn:
+        e = conn.execute("""
+            SELECT e.*, f.name AS f_name, o.name AS o_name
+            FROM edge e JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id WHERE e.id=?""",
+            (edge_id,)).fetchone()
+    if not e:
+        return Response("Not found", status_code=404)
+    png = render_edge_png(dict(e))
+    return Response(png, media_type="image/png",
+                    headers={"Cache-Control": "public, max-age=86400"})
 
 
 @app.get("/edge/{edge_id}", response_class=HTMLResponse)
@@ -174,6 +261,76 @@ def by_tier(request: Request, tier: str):
     return render(request, "list.html", {
         "title": TIER_LABEL.get(tier, tier),
         "edges": [dict(r) for r in rows],
+    })
+
+
+@app.get("/search", response_class=HTMLResponse)
+def search(request: Request, q: str = ""):
+    q = q.strip()
+    edges: list[dict] = []
+    entities: list[dict] = []
+    if q:
+        like = f"%{q}%"
+        with connect() as conn:
+            edges = [dict(r) for r in conn.execute("""
+                SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
+                       f.name AS f_name, o.name AS o_name
+                FROM edge e
+                JOIN entity f ON f.id = e.factor_id
+                JOIN entity o ON o.id = e.outcome_id
+                WHERE f.name LIKE ? OR o.name LIKE ?
+                   OR e.summary LIKE ? OR e.mechanism LIKE ?
+                ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2
+                              WHEN 'C' THEN 3 WHEN 'X' THEN 4 ELSE 5 END
+                LIMIT 50""", (like, like, like, like)).fetchall()]
+            entities = [dict(r) for r in conn.execute(
+                "SELECT slug, name, kind FROM entity WHERE name LIKE ? "
+                "ORDER BY name LIMIT 20", (like,)).fetchall()]
+    return render(request, "search.html", {
+        "title": f"Search: {q}" if q else "Search",
+        "q": q, "edges": edges, "entities": entities,
+    })
+
+
+@app.get("/myths", response_class=HTMLResponse)
+def myths(request: Request):
+    """Deprecated edges — past beliefs the evidence has overturned."""
+    with connect() as conn:
+        rows = conn.execute("""
+            SELECT e.id, e.tier, e.direction, e.summary, e.caveats, e.updated_at,
+                   f.name AS f_name, o.name AS o_name,
+                   (SELECT reason FROM edge_history h WHERE h.edge_id=e.id
+                    AND h.field='tier' ORDER BY h.changed_at DESC LIMIT 1) AS reason
+            FROM edge e
+            JOIN entity f ON f.id = e.factor_id
+            JOIN entity o ON o.id = e.outcome_id
+            WHERE e.tier IN ('deprecated','X')
+            ORDER BY e.updated_at DESC""").fetchall()
+    return render(request, "myths.html", {
+        "title": "Myths and contested claims",
+        "rows": [dict(r) for r in rows],
+    })
+
+
+@app.get("/changes", response_class=HTMLResponse)
+def changes(request: Request, days: int = 14):
+    """What changed recently — tier promotions/demotions, new edges."""
+    with connect() as conn:
+        rows = conn.execute("""
+            SELECT h.changed_at, h.field, h.old_value, h.new_value, h.reason, h.actor,
+                   e.id AS edge_id, e.tier, e.direction,
+                   f.name AS f_name, o.name AS o_name
+            FROM edge_history h
+            JOIN edge e ON e.id = h.edge_id
+            JOIN entity f ON f.id = e.factor_id
+            JOIN entity o ON o.id = e.outcome_id
+            WHERE h.changed_at >= datetime('now', ?)
+            ORDER BY h.changed_at DESC LIMIT 200""",
+            (f"-{int(days)} days",)).fetchall()
+    return render(request, "changes.html", {
+        "title": "What changed",
+        "rows": [dict(r) for r in rows],
+        "days": days,
     })
 
 

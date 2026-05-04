@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 {% block title %}{{ e.f_name }} and {{ e.o_name }} — Health Universe{% endblock %}
+{% block og %}
+<meta property="og:site_name" content="Health Universe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ e.f_name }} and {{ e.o_name }}">
+<meta property="og:description" content="{{ e.summary }}">
+<meta property="og:image" content="https://health-universe.vercel.app/edge/{{ e.id }}.png">
+<meta name="twitter:card" content="summary_large_image">
+{% endblock %}
 {% block content %}
 <section class="edge-page">
   <a class="back" href="/">← Back</a>
@@ -23,6 +31,15 @@
 
   <div class="edge-grid">
     <div>
+      <details class="why-tier">
+        <summary>Why this tier? <small class="muted">audit trail</small></summary>
+        <p class="muted small">Tier was last set on {{ e.last_reviewed[:10] }} by <b>{{ e.seed_source }}</b>.
+          {% if history %}{{ history|length }} historical change{{ history|length != 1 and "s" or "" }} below.{% endif %}
+        </p>
+      </details>
+      <div class="share-row">
+        <a class="btn-secondary inline" href="/edge/{{ e.id }}.png" target="_blank">⤓ Share card (PNG)</a>
+      </div>
       <h3>Summary</h3>
       <p>{{ e.summary }}</p>
       {% if e.effect_quant %}<p><b>Effect:</b> {{ e.effect_quant }}</p>{% endif %}
