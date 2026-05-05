@@ -444,6 +444,87 @@ def sitemap():
 
 # ---- public JSON API --------------------------------------------------------
 
+@app.get("/compare", response_class=HTMLResponse)
+def compare_page(request: Request,
+                 outcome: str = "", factors: str = "",
+                 factor: str = "", outcomes: str = ""):
+    """Decision-aid: compare multiple factors for one outcome,
+    or multiple outcomes for one factor."""
+    axis = anchor_entity = None
+    candidates: list[dict] = []
+    missing: list[str] = []
+
+    with connect() as conn:
+        all_factors = [dict(r) for r in conn.execute(
+            "SELECT slug, name FROM entity WHERE kind IN "
+            "('food','nutrient','supplement','drug','activity','behavior','environmental') "
+            "ORDER BY name").fetchall()]
+        all_outcomes = [dict(r) for r in conn.execute(
+            "SELECT slug, name FROM entity WHERE kind IN "
+            "('condition','process','biomarker') ORDER BY name").fetchall()]
+
+        if outcome and factors:
+            slugs = [s.strip() for s in factors.split(",") if s.strip()]
+            anchor_entity = conn.execute(
+                "SELECT slug, name, kind FROM entity WHERE slug=?", (outcome,)).fetchone()
+            if anchor_entity:
+                axis = "factor"
+                placeholders = ",".join("?" * len(slugs))
+                rows = conn.execute(f"""
+                    SELECT e.*, f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                           o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
+                    FROM edge e
+                    JOIN entity f ON f.id = e.factor_id
+                    JOIN entity o ON o.id = e.outcome_id
+                    WHERE o.slug = ? AND f.slug IN ({placeholders})""",
+                    (outcome, *slugs)).fetchall()
+                candidates = [_edge_compare_obj(conn, r) for r in rows]
+                missing = sorted(set(slugs) - {c["factor"]["slug"] for c in candidates})
+        elif factor and outcomes:
+            slugs = [s.strip() for s in outcomes.split(",") if s.strip()]
+            anchor_entity = conn.execute(
+                "SELECT slug, name, kind FROM entity WHERE slug=?", (factor,)).fetchone()
+            if anchor_entity:
+                axis = "outcome"
+                placeholders = ",".join("?" * len(slugs))
+                rows = conn.execute(f"""
+                    SELECT e.*, f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                           o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
+                    FROM edge e
+                    JOIN entity f ON f.id = e.factor_id
+                    JOIN entity o ON o.id = e.outcome_id
+                    WHERE f.slug = ? AND o.slug IN ({placeholders})""",
+                    (factor, *slugs)).fetchall()
+                candidates = [_edge_compare_obj(conn, r) for r in rows]
+                missing = sorted(set(slugs) - {c["outcome"]["slug"] for c in candidates})
+
+    # Rank for "best supported" — lower index = stronger
+    def _rank(c):
+        tier_score = {"A": 4, "B": 3, "C": 2, "X": 1, "D": 0}.get(c["tier"], 0)
+        return -(tier_score * 10 + min(c["n_studies"], 10))
+    ranked = sorted(candidates, key=_rank)
+
+    best = ranked[0] if ranked else None
+    most_uncertain = next((c for c in candidates if c["tier"] == "X"), None)
+    potential_downside = next((c for c in candidates if c["direction"] in ("harmful", "u_shaped")), None)
+
+    return render(request, "compare.html", {
+        "title": "Compare evidence",
+        "axis": axis,
+        "anchor": dict(anchor_entity) if anchor_entity else None,
+        "candidates": candidates,
+        "ranked": ranked,
+        "missing": missing,
+        "best": best,
+        "most_uncertain": most_uncertain,
+        "potential_downside": potential_downside,
+        "all_factors": all_factors,
+        "all_outcomes": all_outcomes,
+        "outcome": outcome, "factors": factors,
+        "factor": factor, "outcomes": outcomes,
+    })
+
+
 @app.get("/explore", response_class=HTMLResponse)
 def explore(request: Request, focus: str = ""):
     """Interactive graph explorer. Pick a 'focus' entity slug to see its

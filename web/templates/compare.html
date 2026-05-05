@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block title %}Compare evidence — Health Universe{% endblock %}
+{% block content %}
+<section class="compare-page">
+  <a class="back" href="/">← Back to Health Universe</a>
+
+  <header class="compare-head">
+    <p class="compare-eyebrow">Decision aid · evidence side-by-side</p>
+    <h1 class="compare-title">Compare</h1>
+    <p class="compare-lede">Pick a goal and a few options. We rank by tier, study volume, and effect size — and surface the most uncertain card and any potential downside so you don't read confirmation in isolation.</p>
+  </header>
+
+  {% if not anchor %}
+  <div class="compare-suggestions">
+    <h2 class="compare-sub">Try one</h2>
+    <div class="compare-tries">
+      <a href="/compare?outcome=sleep_quality&factors=magnesium,melatonin,aerobic_exercise,meditation">For sleep quality: magnesium · melatonin · exercise · meditation</a>
+      <a href="/compare?outcome=cvd&factors=mediterranean_diet,fish_fatty,omega3,olive_oil">For CVD: mediterranean · fish · omega-3 · olive oil</a>
+      <a href="/compare?outcome=alzheimers&factors=aerobic_exercise,fish_fatty,social_isolation,sleep_short">For Alzheimer's: exercise · fish · isolation · short sleep</a>
+      <a href="/compare?factor=alcohol&outcomes=cvd,breast_cancer,colorectal_cancer,dementia,sleep_quality">Alcohol across multiple outcomes</a>
+      <a href="/compare?outcome=t2d&factors=ultra_processed,whole_grains,nuts,intermittent_fasting,resistance_training">For T2D: top movers</a>
+    </div>
+    <h2 class="compare-sub">Or build your own</h2>
+    <form method="get" action="/compare" class="compare-build">
+      <div class="compare-build-row">
+        <label>Outcome
+          <select name="outcome">
+            <option value="">— pick one —</option>
+            {% for o in all_outcomes %}<option value="{{o.slug}}">{{o.name}}</option>{% endfor %}
+          </select>
+        </label>
+        <label>Factors (comma-separated slugs)
+          <input name="factors" placeholder="e.g. magnesium,melatonin,meditation">
+        </label>
+        <button class="btn-primary" type="submit">Compare →</button>
+      </div>
+    </form>
+  </div>
+  {% else %}
+
+  <div class="compare-anchor-bar">
+    <span class="muted small">Comparing</span>
+    {% if axis == 'factor' %}
+    <span class="badge ghost">factors</span>
+    <span class="lib-arrow" aria-hidden="true">→</span>
+    <span class="compare-anchor-name">{{ anchor.name }}</span>
+    {% else %}
+    <span class="compare-anchor-name">{{ anchor.name }}</span>
+    <span class="lib-arrow" aria-hidden="true">→</span>
+    <span class="badge ghost">outcomes</span>
+    {% endif %}
+    <span class="muted small">· {{ candidates|length }} candidate{{ candidates|length != 1 and "s" or "" }}{% if missing %} · {{ missing|length }} not in graph{% endif %}</span>
+    <a class="link" href="/compare" style="margin-left:auto">↺ New comparison</a>
+  </div>
+
+  {% if best or most_uncertain or potential_downside %}
+  <div class="compare-callouts">
+    {% if best %}
+    <div class="compare-callout compare-callout-best">
+      <p class="compare-callout-eyebrow">Best supported</p>
+      <a href="/edge/{{ best.id }}" class="compare-callout-link">
+        <h3>{{ best.factor.name if axis == 'factor' else best.outcome.name }}</h3>
+        <div class="compare-callout-meta">
+          <span class="pill tier-{{ best.tier }}">{{ best.tier }}</span>
+          <span class="muted small">{{ best.n_studies }} studies · {{ "{:,}".format(best.total_participants) }} participants</span>
+        </div>
+      </a>
+    </div>
+    {% endif %}
+    {% if most_uncertain %}
+    <div class="compare-callout compare-callout-uncertain">
+      <p class="compare-callout-eyebrow">Most uncertain</p>
+      <a href="/edge/{{ most_uncertain.id }}" class="compare-callout-link">
+        <h3>{{ most_uncertain.factor.name if axis == 'factor' else most_uncertain.outcome.name }}</h3>
+        <div class="compare-callout-meta">
+          <span class="pill tier-X">CONTESTED</span>
+        </div>
+      </a>
+    </div>
+    {% endif %}
+    {% if potential_downside %}
+    <div class="compare-callout compare-callout-downside">
+      <p class="compare-callout-eyebrow">Potential downside</p>
+      <a href="/edge/{{ potential_downside.id }}" class="compare-callout-link">
+        <h3>{{ potential_downside.factor.name if axis == 'factor' else potential_downside.outcome.name }}</h3>
+        <div class="compare-callout-meta">
+          <span class="badge dir-{{ potential_downside.direction }}">{{ DIRECTION_LABEL[potential_downside.direction] }}</span>
+        </div>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="compare-table-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>{{ axis == 'factor' and 'Factor' or 'Outcome' }}</th>
+          <th>Tier</th>
+          <th>Direction</th>
+          <th>Effect</th>
+          <th>Studies</th>
+          <th>Participants</th>
+          <th>Population</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in ranked %}
+        <tr class="{% if c.any_retracted %}is-retracted{% endif %}">
+          <td>
+            <a href="/edge/{{ c.id }}" class="compare-row-name">
+              <b>{{ c.factor.name if axis == 'factor' else c.outcome.name }}</b>
+              {% if c.summary %}<small class="muted">{{ c.summary[:140] }}{% if c.summary|length > 140 %}…{% endif %}</small>{% endif %}
+            </a>
+          </td>
+          <td><span class="pill tier-{{ c.tier }}">{{ c.tier }}</span></td>
+          <td><span class="badge dir-{{ c.direction }}">{{ DIRECTION_LABEL[c.direction] }}</span></td>
+          <td>{{ c.effect_size or "—" }}</td>
+          <td><b>{{ c.n_studies }}</b></td>
+          <td>{{ c.total_participants and "{:,}".format(c.total_participants) or "—" }}</td>
+          <td><small class="muted">{{ c.population or "general adult" }}</small></td>
+          <td><a class="link" href="/edge/{{ c.id }}">→</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% if missing %}
+  <p class="compare-missing muted body-sm"><b>Not yet in our graph:</b> {{ missing|join(', ') }} — could be added by the daily ingest as new evidence lands.</p>
+  {% endif %}
+  {% endif %}
+</section>
+{% endblock %}
