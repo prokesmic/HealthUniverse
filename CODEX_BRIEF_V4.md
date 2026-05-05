@@ -332,32 +332,214 @@ PR body:
 
 ---
 
+## Track D — Counter-evidence sidebar
+
+> Note for the reviewer: Track B was merged 2026-05-05. Track A and
+> Track C are still open. Track D is new as of this revision.
+
+### Branch: `feat/codex-counter-evidence`
+
+### Why this matters
+
+Right now `/edge/{id}` shows only studies that *support* the edge's
+direction. That's an honesty problem. For tier-X (contested) edges
+especially, but also for tier-A/B, credibility jumps when we
+side-by-side the strongest disagreeing studies. This is what real
+researchers look for first when reading a claim.
+
+### What to build
+
+#### 1. Schema migration `migrations/003_add_counter_evidence.py`
+
+Add a boolean column to the existing `evidence` table:
+
+```sql
+ALTER TABLE evidence ADD COLUMN is_counter INTEGER NOT NULL DEFAULT 0;
+CREATE INDEX IF NOT EXISTS idx_evidence_counter
+  ON evidence(edge_id, is_counter);
+```
+
+Idempotent — check `PRAGMA table_info(evidence)` before adding (same
+pattern as `migrations/001_add_embeddings.py`).
+
+#### 2. New payload format under `data/counter_evidence_payloads/`
+
+Each file is `{factor_slug}__{outcome_slug}.json`:
+
+```json
+{
+  "schema_version": 1,
+  "factor_slug":  "vitamin_d",
+  "outcome_slug": "cvd",
+  "edge_direction": "protective",
+  "counter_evidence": [
+    {
+      "citation":      "Bjelakovic G et al 2014 Cochrane Database Syst Rev",
+      "pmid":          "24414552",
+      "doi":           "10.1002/14651858.CD007470.pub3",
+      "year":          2014,
+      "study_type":    "systematic_review",
+      "n_participants": 95286,
+      "direction":     "neutral",
+      "quality":       "high",
+      "notes":         "Cochrane review found no consistent reduction in cardiovascular mortality from vitamin D supplementation in adults; effect was confined to all-cause mortality with vitamin D3."
+    }
+  ]
+}
+```
+
+#### 3. Extend `seed_from_payloads.py`
+
+Add a new mode `seed_from_payloads.py counter ingest` and
+`counter validate --verify`. Reuses the existing `verify_citations`
+function. Additional rule: every counter row's `direction` MUST DIFFER
+from the existing edge's `direction` (else it's just normal supporting
+evidence). Validator must look up the edge to check this.
+
+When ingesting, set `is_counter=1` on the inserted evidence rows. Write
+an `edge_history` row with `actor='codex_counter'` and
+`reason='added counter-evidence'`.
+
+#### 4. UI changes in `web/templates/edge.html`
+
+Add a separate panel below the supporting Evidence table:
+
+```jinja
+{% if counter_evidence %}
+<h2>Counter-evidence ({{ counter_evidence|length }})</h2>
+<p class="muted body-sm">High-quality studies that disagree with the
+direction above. We show them so the picture stays honest.</p>
+<table class="evidence-table evidence-counter">
+  ...
+</table>
+{% endif %}
+```
+
+Update the `/edge/{id}` route in `web/app.py` to fetch counter rows
+separately:
+
+```python
+evidence = conn.execute(
+    "SELECT * FROM evidence WHERE edge_id=? AND is_counter=0 "
+    "ORDER BY year DESC", (edge_id,)).fetchall()
+counter = conn.execute(
+    "SELECT * FROM evidence WHERE edge_id=? AND is_counter=1 "
+    "ORDER BY year DESC", (edge_id,)).fetchall()
+```
+
+For tier-X edges, render the counter panel **expanded by default** (it's
+the whole point of tier-X — both sides matter equally).
+
+CSS: tint counter rows with `--tier-X-bg` left border so the panel reads
+visually different from the supporting table without being aggressive.
+
+#### 5. Coverage requirements
+
+Submit counter-evidence payloads for **at least these target edges** —
+get them from the live API:
+
+```bash
+# All current tier-X edges (whole point of the panel)
+curl 'https://health-universe.vercel.app/api/edges?tier=X&limit=50'
+# Top 30 tier-A edges (highest stakes; counter-evidence here is most valuable)
+curl 'https://health-universe.vercel.app/api/edges?tier=A&limit=30'
+# Plus any tier-B edge where you happen to know a strong counter exists
+```
+
+Aim for **80–120 counter-evidence files**, each with 1–4 disagreeing
+studies. Don't pad — if a tier-A edge truly has no high-quality
+counter-evidence, skip it. Quality > quantity.
+
+#### 6. Tests in `tests/test_counter_evidence.py`
+
+- Schema migration is idempotent (running twice is safe)
+- Validator rejects a counter row whose `direction` matches the edge's
+  direction
+- Validator rejects a counter row without a PMID for stat-quantitative
+  study types (reuses Track-A rules)
+- Ingester sets `is_counter=1`
+- `/edge/{id}` route returns counter rows in the response when present
+- Tier-X page shows the counter panel expanded
+
+### Validation gate
+
+```bash
+git checkout -b feat/codex-counter-evidence
+python migrations/003_add_counter_evidence.py
+source .venv/bin/activate
+python seed_from_payloads.py counter validate --verify  # MUST end "0 failed"
+python seed_from_payloads.py counter ingest --dry-run
+python -m pytest tests/test_counter_evidence.py -v
+```
+
+PR body must include:
+1. Full `--verify` output ending "0 failed"
+2. Number of edges covered, broken down by tier (A / B / X)
+3. 5 random `(factor, outcome, counter PMID, year, journal, direction)`
+   rows
+4. Screenshot of an `/edge/{id}` page (any tier-X edge) showing the
+   counter panel rendered
+
+### Quality bar
+
+- Counter-evidence must come from **real high-quality studies that
+  genuinely disagree**, not weak studies cherry-picked to muddy the
+  water. A Cochrane review concluding "no effect" against a tier-A
+  "protective" claim is gold; a single low-quality cross-sectional that
+  happened to find no association is not.
+- Notes field must explain *why* the study disagrees — the design
+  difference, the population, the timeframe — not just restate the
+  finding.
+- If a tier-A edge has no honest counter-evidence after good-faith
+  searching, **say so in the PR description rather than fabricating**.
+  The reviewer would rather see "tier-A on alcohol → breast cancer:
+  could find no high-quality counter-evidence; the effect is too well
+  established" than weak filler.
+
+### Don't touch
+
+- `seed.py`, `adjudicate.py`, `claude_client.py` — paid path
+- `web/illustrations.py` — visual identity is locked
+- The existing `evidence` rows (`is_counter=0`) — don't repoint them
+- Tier values, direction values, summary, mechanism — those are owned
+  by the edge, not by counter-evidence
+
+---
+
 ## Hand-off summary — what to tell Codex
 
 > Pick a track. One PR per track. Don't combine.
 >
-> **Track A** (most volume): `CODEX_BRIEF_V4.md` §A — produce ~250
+> **Track A** (most content): `CODEX_BRIEF_V4.md` §A — produce ~250
 > payloads, run `validate --verify`, PR.
 >
-> **Track B** (smallest): `CODEX_BRIEF_V4.md` §B — WCAG 2.1 AA pass
-> across the FastAPI app. Use axe-core for validation. PR.
+> **Track B** ✅ shipped 2026-05-05. Skip.
 >
 > **Track C** (most plumbing): `CODEX_BRIEF_V4.md` §C — build PMID
-> retraction watcher with schema migration, UI integration, launchd job,
-> and tests. PR.
+> retraction watcher with schema migration, UI integration, launchd
+> job, and tests. PR.
+>
+> **Track D** (highest credibility upgrade): `CODEX_BRIEF_V4.md` §D —
+> counter-evidence sidebar. New schema column, new payload format,
+> extends the existing validator, UI panel on `/edge/{id}`. ~80-120
+> counter-evidence files prioritising tier-X and tier-A edges. PR.
 >
 > Repo etiquette in `AGENTS.md`. Don't run our paid Claude paths. Don't
-> touch the schema except as part of Track C's migration. PRs only.
+> touch the schema except as part of Track C's or Track D's migration.
+> PRs only.
 
 ---
 
-## Why three tracks (rather than one big PR)
+## Why separate tracks (rather than one big PR)
 
 Each is small enough to review independently:
 - **A** is data only — no code changes.
-- **B** is CSS + template tweaks, no Python logic.
+- **B** is CSS + template tweaks, no Python logic. ✅ shipped.
 - **C** is one new module + schema migration + tests + plist — clearly
   scoped and doesn't touch existing routes' logic.
 
-If you do all three, do them as three separate PRs in order A → B → C.
-Each can land independently.
+- **D** is a new schema column + a new payload format + an additive UI
+  panel — touches the same areas C touches but cleanly separable.
+
+If you do all open ones (A, C, D), ship them as three separate PRs in
+order A → C → D. Each lands independently.
