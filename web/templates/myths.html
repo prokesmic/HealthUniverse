@@ -1,22 +1,80 @@
 {% extends "base.html" %}
 {% block title %}{{ title }} — Health Universe{% endblock %}
 {% block content %}
-<section class="list-page">
-  <a class="back" href="/">← Back</a>
-  <h1>Myths and contested claims</h1>
-  <p class="muted">Things people once believed (or still argue about) that the evidence has refuted, weakened, or split. Kept visible so you can see <em>why</em> the picture changed.</p>
+<section class="myths-page">
+  <a class="back" href="/">← Back to Health Universe</a>
 
-  <div class="list-grid">
-    {% for r in rows %}
-    <a class="feat-card tier-bg-{{ r.tier }}" href="/edge/{{ r.id }}">
-      <span class="pill tier-{{ r.tier }}">{{ r.tier == 'X' and 'CONTESTED' or 'DEPRECATED' }}</span>
-      <h2>{{ r.f_name }} and {{ r.o_name }}</h2>
-      <p>{{ r.summary or "—" }}</p>
-      {% if r.reason %}<p class="muted small"><b>Why it changed:</b> {{ r.reason }}</p>{% endif %}
-    </a>
-    {% else %}
-    <div class="empty">No myth cards yet. They'll show up after the daily ingest demotes any tier-A/B claim.</div>
-    {% endfor %}
+  <header class="myths-head">
+    <p class="myths-eyebrow">Editorial · what the field changed its mind about</p>
+    <h1 class="myths-title">Myths &amp; contested claims</h1>
+    <p class="myths-lede">Health science is supposed to update. These are relationships the evidence has refuted, weakened, or genuinely split on. We keep them visible so you can see <em>why</em> the picture changed — and so the next thing we have to revise is on the same shelf as the last.</p>
+  </header>
+
+  {% set contested = rows | selectattr('tier','equalto','X') | list %}
+  {% set deprecated = rows | rejectattr('tier','equalto','X') | list %}
+
+  {% if contested %}
+  <section class="myths-section">
+    <div class="myths-section-head">
+      <h2 class="myths-h2">Contested <span class="myths-h2-count">{{ contested|length }}</span></h2>
+      <p class="myths-section-lede">Evidence is genuinely split. Both directions have credible high-quality studies behind them. Read the supporting and counter-evidence side by side before you decide.</p>
+    </div>
+    <div class="myth-list">
+      {% for r in contested %}
+      <a class="myth-card myth-contested" href="/edge/{{ r.id }}">
+        <div class="myth-card-flag">
+          <span class="myth-status">⊘ Contested</span>
+        </div>
+        <div class="myth-card-body">
+          <h3 class="myth-card-title">{{ r.f_name }} <span class="lib-arrow" aria-hidden="true">→</span> {{ r.o_name }}</h3>
+          {% if r.summary %}<p class="myth-card-summary">{{ r.summary[:280] }}{% if r.summary|length > 280 %}…{% endif %}</p>{% endif %}
+          {% if r.reason %}
+          <p class="myth-card-reason"><b>Why the field can't agree:</b> {{ r.reason }}</p>
+          {% endif %}
+        </div>
+        <span class="myth-card-arrow" aria-hidden="true">→</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if deprecated %}
+  <section class="myths-section">
+    <div class="myths-section-head">
+      <h2 class="myths-h2">Deprecated <span class="myths-h2-count">{{ deprecated|length }}</span></h2>
+      <p class="myths-section-lede">Once held, since refuted. Newer high-quality evidence has overturned what these cards used to say.</p>
+    </div>
+    <div class="myth-list">
+      {% for r in deprecated %}
+      <a class="myth-card myth-deprecated" href="/edge/{{ r.id }}">
+        <div class="myth-card-flag">
+          <span class="myth-status myth-status-dep">↺ Deprecated</span>
+        </div>
+        <div class="myth-card-body">
+          <h3 class="myth-card-title">{{ r.f_name }} <span class="lib-arrow" aria-hidden="true">→</span> {{ r.o_name }}</h3>
+          {% if r.summary %}<p class="myth-card-summary">{{ r.summary[:280] }}{% if r.summary|length > 280 %}…{% endif %}</p>{% endif %}
+          {% if r.reason %}
+          <p class="myth-card-reason"><b>Why it changed:</b> {{ r.reason }}</p>
+          {% endif %}
+        </div>
+        <span class="myth-card-arrow" aria-hidden="true">→</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if not rows %}
+  <div class="library-empty">
+    <div class="library-empty-mark" aria-hidden="true">∅</div>
+    <h2>Nothing demoted yet</h2>
+    <p class="muted">Once the daily Gemma loop or a Claude adjudication round demotes a tier-A or tier-B claim, it'll show up here. The graph is healthier when this page has a few entries — it means we're updating.</p>
+    <div class="disc-empty-actions">
+      <a class="btn-secondary inline" href="/discoveries">Recent discoveries →</a>
+      <a class="btn-secondary inline" href="/changes">Tier history →</a>
+    </div>
   </div>
+  {% endif %}
 </section>
 {% endblock %}
