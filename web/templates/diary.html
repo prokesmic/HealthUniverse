@@ -1,45 +1,75 @@
 {% extends "base.html" %}
 {% block title %}Stack diary — Health Universe{% endblock %}
 {% block content %}
-<section class="diary-page">
-  <a class="back" href="/">← Back</a>
-  <h1>Stack diary</h1>
-  <p class="lede">Tick what you did and how you felt. After a couple of weeks the diary correlates your habits with your reported outcomes.<br/><b>Stays on your device only</b> — it's stored in your browser, never sent to us.</p>
+<section class="diary-page-v2">
+  <a class="back" href="/">← Back to Health Universe</a>
 
-  <div class="diary-grid">
-    <div class="card">
-      <h2>Today</h2>
-      <p class="body-sm muted" id="diary-date"></p>
+  <header class="diary-head">
+    <p class="diary-eyebrow">Daily journal · stays on your device</p>
+    <h1 class="diary-title">Stack diary</h1>
+    <p class="diary-lede">Tick what you did and how you felt. After a couple of weeks the diary will correlate your habits with how you reported feeling — your own n=1 trial running quietly next to the population evidence in the rest of the app.</p>
+    <p class="diary-privacy"><span class="diary-privacy-icon" aria-hidden="true">⌥</span> Saved in <code>localStorage</code> on this browser. Nothing leaves your device. Export-as-JSON to keep your data portable.</p>
+  </header>
 
-      <h3>What did you do?</h3>
-      <div class="chip-grid" id="diary-factors">
-        {% for f in factors %}
-        <label class="chip"><input type="checkbox" data-factor="{{ f.slug }}">{{ f.name }}</label>
-        {% endfor %}
-      </div>
+  <div class="diary-grid-v2">
+    <article class="diary-log">
+      <header class="diary-log-head">
+        <p class="diary-section-eyebrow">Today's entry</p>
+        <h2 class="diary-section-h" id="diary-date"></h2>
+      </header>
 
-      <h3>How did you feel? (1-5)</h3>
-      <div class="diary-scale">
-        {% for o in daily_outcomes %}
-        <div class="diary-row">
-          <label for="d-{{ o }}">{{ o.replace("_", " ").title() }}</label>
-          <input type="range" min="1" max="5" value="3" id="d-{{ o }}" data-outcome="{{ o }}">
-          <span class="diary-val" id="d-{{ o }}-v">3</span>
+      <fieldset class="diary-fieldset">
+        <legend class="diary-section-legend"><span class="stack-num">01</span> What did you do today?</legend>
+        <p class="diary-field-help">Tick anything you actually did. Don't optimise for honesty later.</p>
+        <div class="diary-factor-chips">
+          {% for f in factors %}
+          <label class="diary-chip">
+            <input type="checkbox" data-factor="{{ f.slug }}">
+            <span>{{ f.name }}</span>
+          </label>
+          {% endfor %}
         </div>
-        {% endfor %}
+      </fieldset>
+
+      <fieldset class="diary-fieldset">
+        <legend class="diary-section-legend"><span class="stack-num">02</span> How did you feel?</legend>
+        <p class="diary-field-help">Quick subjective rating. The patterns over weeks are what matters, not any single day.</p>
+        <div class="diary-scale-v2">
+          {% for o in daily_outcomes %}
+          <div class="diary-row-v2">
+            <label class="diary-row-label" for="d-{{ o }}">{{ o.replace("_", " ").title() }}</label>
+            <div class="diary-slider-wrap">
+              <input type="range" min="1" max="5" value="3" id="d-{{ o }}" data-outcome="{{ o }}" class="diary-slider">
+              <div class="diary-slider-marks" aria-hidden="true">
+                <span>poor</span><span>·</span><span>·</span><span>·</span><span>great</span>
+              </div>
+            </div>
+            <span class="diary-val-v2" id="d-{{ o }}-v">3</span>
+          </div>
+          {% endfor %}
+        </div>
+      </fieldset>
+
+      <div class="diary-actions">
+        <button class="btn-primary" id="diary-save">Save today</button>
+        <button class="btn-secondary" id="diary-export">⤓ Export JSON</button>
+        <button class="btn-secondary" id="diary-clear">Clear all</button>
+      </div>
+    </article>
+
+    <aside class="diary-side-v2">
+      <div class="diary-trends">
+        <p class="diary-section-eyebrow">Patterns</p>
+        <h2 class="diary-section-h">What it's noticing</h2>
+        <p id="diary-summary" class="diary-summary-text">Save at least 3 days of data to see correlations.</p>
+        <ul id="diary-correlations" class="diary-correlations"></ul>
       </div>
 
-      <button class="btn-primary" id="diary-save">Save today</button>
-      <button class="btn-secondary" id="diary-export">Export JSON</button>
-      <button class="btn-secondary" id="diary-clear">Clear all</button>
-    </div>
-
-    <aside class="card">
-      <h3>Trends</h3>
-      <p id="diary-summary" class="body-sm muted">Save at least 3 days of data to see correlations.</p>
-      <div id="diary-chart"></div>
-      <h4>Days logged</h4>
-      <ul id="diary-days" class="diary-days"></ul>
+      <div class="diary-history">
+        <p class="diary-section-eyebrow">History</p>
+        <h2 class="diary-section-h">Days logged</h2>
+        <ul id="diary-days" class="diary-days-v2"></ul>
+      </div>
     </aside>
   </div>
 </section>
@@ -49,13 +79,13 @@ const KEY = "hu_diary_v1";
 function load(){ try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){return{}} }
 function save(d){ localStorage.setItem(KEY, JSON.stringify(d)) }
 
-const today = new Date().toISOString().slice(0, 10);
+const today = new Date().toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+const todayKey = new Date().toISOString().slice(0, 10);
 document.getElementById("diary-date").textContent = today;
 
 const data = load();
-const todayRec = data[today] || { factors: [], outcomes: {} };
+const todayRec = data[todayKey] || { factors: [], outcomes: {} };
 
-// Pre-fill from saved
 document.querySelectorAll("[data-factor]").forEach(cb => {
   cb.checked = todayRec.factors.includes(cb.dataset.factor);
 });
@@ -69,19 +99,21 @@ document.getElementById("diary-save").onclick = () => {
   const factors = [...document.querySelectorAll("[data-factor]:checked")].map(c => c.dataset.factor);
   const outcomes = {};
   document.querySelectorAll("[data-outcome]").forEach(r => outcomes[r.dataset.outcome] = parseInt(r.value));
-  data[today] = { factors, outcomes };
+  data[todayKey] = { factors, outcomes };
   save(data);
   render();
-  alert("Saved.");
+  const btn = document.getElementById("diary-save");
+  const orig = btn.textContent; btn.textContent = "✓ Saved";
+  setTimeout(() => btn.textContent = orig, 1500);
 };
 document.getElementById("diary-export").onclick = () => {
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = `stack-diary-${today}.json`; a.click();
+  a.download = `stack-diary-${todayKey}.json`; a.click();
 };
 document.getElementById("diary-clear").onclick = () => {
-  if (confirm("Wipe all diary data on this device?")) { localStorage.removeItem(KEY); render(); }
+  if (confirm("Wipe all diary data on this device?")) { localStorage.removeItem(KEY); render(); location.reload(); }
 };
 
 function correlate(xs, ys) {
@@ -98,13 +130,23 @@ function render() {
   const data = load();
   const days = Object.keys(data).sort().reverse();
   const ul = document.getElementById("diary-days");
-  ul.innerHTML = days.slice(0, 14).map(d => `<li><b>${d}</b> — ${data[d].factors.length} factor(s)</li>`).join("");
+  if (days.length === 0) {
+    ul.innerHTML = '<li class="diary-day-empty">No entries yet. Save today to start.</li>';
+  } else {
+    ul.innerHTML = days.slice(0, 14).map(d => {
+      const ent = data[d];
+      const fcount = ent.factors.length;
+      const avg = Object.values(ent.outcomes || {}).reduce((s, v) => s + v, 0) / Math.max(Object.keys(ent.outcomes || {}).length, 1);
+      return `<li><span class="diary-day-date">${d}</span><span class="diary-day-stats">${fcount} factor${fcount !== 1 ? 's' : ''} · avg ${avg.toFixed(1)}/5</span></li>`;
+    }).join("");
+  }
   const summary = document.getElementById("diary-summary");
+  const corrUl = document.getElementById("diary-correlations");
   if (days.length < 3) {
-    summary.textContent = `${days.length} day(s) logged. Need 3+ for correlations.`;
+    summary.textContent = `${days.length} day${days.length !== 1 ? 's' : ''} logged. Need 3+ days for correlations.`;
+    corrUl.innerHTML = '';
     return;
   }
-  // Compute correlation for each (factor, outcome) pair where we have signal
   const factors = [...new Set(days.flatMap(d => data[d].factors))];
   const outs = Object.keys(data[days[0]].outcomes || {});
   const rows = [];
@@ -118,13 +160,21 @@ function render() {
   }
   rows.sort((a, b) => Math.abs(b.r) - Math.abs(a.r));
   if (!rows.length) {
-    summary.textContent = `${days.length} days logged · no strong correlations yet (|r| < 0.4).`;
+    summary.textContent = `${days.length} days logged · no strong patterns yet (correlation must be |r| ≥ 0.4 to surface).`;
+    corrUl.innerHTML = '';
     return;
   }
-  summary.innerHTML = `<b>${days.length} days logged</b> · top correlations:<br/>` +
-    rows.slice(0, 6).map(({ f, o, r }) =>
-      `<span style="display:block">• <b>${f.replace(/_/g, ' ')}</b> ↔ <b>${o.replace(/_/g, ' ')}</b>: r = ${r.toFixed(2)} ${r > 0 ? '↑' : '↓'}</span>`
-    ).join("");
+  summary.textContent = `${days.length} days logged · ${rows.length} pattern${rows.length !== 1 ? 's' : ''} above the 0.4 threshold:`;
+  corrUl.innerHTML = rows.slice(0, 6).map(({ f, o, r }) => {
+    const dir = r > 0 ? '↑' : '↓';
+    const dirClass = r > 0 ? 'corr-pos' : 'corr-neg';
+    const fhuman = f.replace(/_/g, ' ');
+    const ohuman = o.replace(/_/g, ' ');
+    return `<li class="${dirClass}">
+      <div class="corr-pair"><b>${fhuman}</b> <span class="lib-arrow">↔</span> <b>${ohuman}</b></div>
+      <div class="corr-meta"><span class="corr-dir">${dir}</span><span class="corr-r">r = ${r.toFixed(2)}</span></div>
+    </li>`;
+  }).join("");
 }
 render();
 </script>
