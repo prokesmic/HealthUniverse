@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title %}Explore — Health Universe{% endblock %}
+{% block content %}
+<section class="explore-page">
+  <a class="back" href="/">← Back</a>
+  <h1>Graph explorer</h1>
+  <p class="muted">Click an entity to see its 1-hop neighborhood. Edge color encodes tier; thickness encodes confidence.</p>
+
+  <div class="explore-grid">
+    <aside class="explore-picker card">
+      <h3>Pick a focus</h3>
+      <input id="exFilter" placeholder="filter…" oninput="exFilter(this.value)" />
+      <details open><summary>Factors ({{ factors|length }})</summary>
+        <ul class="explore-list">
+          {% for f in factors %}<li data-name="{{ f.name|lower }}"><a href="/explore?focus={{ f.slug }}" class="{% if focus==f.slug %}sel{% endif %}">{{ f.name }}</a></li>{% endfor %}
+        </ul>
+      </details>
+      <details><summary>Outcomes ({{ outcomes|length }})</summary>
+        <ul class="explore-list">
+          {% for o in outcomes %}<li data-name="{{ o.name|lower }}"><a href="/explore?focus={{ o.slug }}" class="{% if focus==o.slug %}sel{% endif %}">{{ o.name }}</a></li>{% endfor %}
+        </ul>
+      </details>
+    </aside>
+
+    <div class="explore-canvas card">
+      {% if focus_entity %}
+        <h3>{{ focus_entity.name }}<small class="muted"> · {{ focus_entity.kind }}</small></h3>
+        <p class="body-sm muted">{{ edges|length }} edge{{ edges|length != 1 and "s" or "" }} · {{ nodes|length }} entit{{ nodes|length != 1 and "ies" or "y" }}</p>
+        <svg id="graph" viewBox="-300 -300 600 600" preserveAspectRatio="xMidYMid meet"
+             style="width:100%; height:520px; background:var(--bg-soft); border-radius:12px;">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 Z" fill="#888"/>
+            </marker>
+          </defs>
+        </svg>
+        <script>
+          const NODES = {{ nodes | tojson }};
+          const EDGES = {{ edges | tojson }};
+          const FOCUS = "{{ focus }}";
+          // Deterministic radial layout: focus center, others in concentric rings.
+          // Factors on left half, outcomes on right.
+          const TIER_COLOR = {A:"#3b8e5a", B:"#c8a02a", C:"#d97757", D:"#c44545", X:"#7a6a8c"};
+          const KIND_COLOR = {
+            food:"#7c8e3a", nutrient:"#7c8e3a", supplement:"#3b8e5a",
+            drug:"#5a7eb0", activity:"#c9a961", behavior:"#a08560",
+            environmental:"#7a6a8c", process:"#1f3a2e",
+            condition:"#c44545", biomarker:"#3b8e5a", pathogen:"#a08560", gene:"#5a7eb0"
+          };
+          function layout() {
+            const positions = {};
+            // Focus at center
+            positions[FOCUS] = [0, 0];
+            // Other nodes spread around
+            const others = NODES.filter(n => n.slug !== FOCUS);
+            const step = (2 * Math.PI) / Math.max(others.length, 1);
+            others.forEach((n, i) => {
+              const angle = i * step - Math.PI / 2;
+              const r = 180 + (i % 3) * 30;
+              positions[n.slug] = [Math.cos(angle) * r, Math.sin(angle) * r];
+            });
+            return positions;
+          }
+          function render() {
+            const pos = layout();
+            const svg = document.getElementById("graph");
+            const ns = "http://www.w3.org/2000/svg";
+            // Draw edges first (so they go behind nodes)
+            EDGES.forEach(e => {
+              const [x1, y1] = pos[e.from] || [0, 0];
+              const [x2, y2] = pos[e.to] || [0, 0];
+              const line = document.createElementNS(ns, "line");
+              line.setAttribute("x1", x1); line.setAttribute("y1", y1);
+              line.setAttribute("x2", x2); line.setAttribute("y2", y2);
+              line.setAttribute("stroke", TIER_COLOR[e.tier] || "#888");
+              line.setAttribute("stroke-width", e.tier === "A" ? 2.5 : e.tier === "B" ? 1.8 : 1.1);
+              line.setAttribute("stroke-opacity", "0.65");
+              line.setAttribute("marker-end", "url(#arr)");
+              svg.appendChild(line);
+              // tooltip
+              const t = document.createElementNS(ns, "title");
+              t.textContent = `${e.from} → ${e.to}: tier ${e.tier} · ${e.direction}`;
+              line.appendChild(t);
+              line.style.cursor = "pointer";
+              line.onclick = () => location.href = "/edge/" + e.id;
+            });
+            NODES.forEach(n => {
+              const [x, y] = pos[n.slug];
+              const g = document.createElementNS(ns, "g");
+              g.setAttribute("transform", `translate(${x},${y})`);
+              g.style.cursor = "pointer";
+              g.onclick = () => location.href = "/explore?focus=" + n.slug;
+              const c = document.createElementNS(ns, "circle");
+              c.setAttribute("r", n.slug === FOCUS ? 10 : 6);
+              c.setAttribute("fill", KIND_COLOR[n.kind] || "#888");
+              c.setAttribute("stroke", n.slug === FOCUS ? "#1f3a2e" : "#fff");
+              c.setAttribute("stroke-width", n.slug === FOCUS ? 3 : 1.5);
+              g.appendChild(c);
+              const text = document.createElementNS(ns, "text");
+              text.setAttribute("x", 12); text.setAttribute("y", 4);
+              text.setAttribute("font-size", "11");
+              text.setAttribute("font-family", "Inter, sans-serif");
+              text.setAttribute("fill", "#2a2520");
+              text.textContent = n.name.length > 28 ? n.name.slice(0, 26) + "…" : n.name;
+              g.appendChild(text);
+              const tt = document.createElementNS(ns, "title");
+              tt.textContent = `${n.name} (${n.kind})`;
+              g.appendChild(tt);
+              svg.appendChild(g);
+            });
+          }
+          render();
+        </script>
+        <h4>Edges</h4>
+        <ul class="explore-edge-list">
+          {% for e in edges %}
+          <li><a href="/edge/{{ e.id }}"><span class="pill tier-{{ e.tier }}">{{ e.tier }}</span> <b>{{ e.from }}</b> → <b>{{ e.to }}</b> <span class="muted small">{{ DIRECTION_LABEL[e.direction] }}</span></a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <div class="empty">Pick a factor or outcome on the left to explore its connections.</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+<script>
+  function exFilter(q) {
+    q = (q || "").toLowerCase();
+    document.querySelectorAll(".explore-list li").forEach(li => {
+      li.style.display = !q || li.dataset.name.includes(q) ? "" : "none";
+    });
+  }
+</script>
+{% endblock %}

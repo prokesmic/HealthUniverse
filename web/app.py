@@ -251,6 +251,128 @@ def me_clear():
     return resp
 
 
+@app.get("/robots.txt")
+def robots():
+    return Response(
+        "User-agent: *\nAllow: /\nSitemap: https://health-universe.vercel.app/sitemap.xml\n",
+        media_type="text/plain")
+
+
+@app.get("/sitemap.xml")
+def sitemap():
+    base = "https://health-universe.vercel.app"
+    urls = [f"{base}/", f"{base}/discoveries", f"{base}/myths", f"{base}/changes",
+            f"{base}/me", f"{base}/search"]
+    urls += [f"{base}/tier/{t}" for t in ("A", "B", "C", "D", "X")]
+    with connect() as conn:
+        urls += [f"{base}/category/{c['slug']}" for c in CATEGORIES]
+        for r in conn.execute("SELECT id, updated_at FROM edge").fetchall():
+            urls.append(f"{base}/edge/{r['id']}")
+    body = ['<?xml version="1.0" encoding="UTF-8"?>',
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for u in urls:
+        body.append(f"<url><loc>{u}</loc></url>")
+    body.append("</urlset>")
+    return Response("\n".join(body), media_type="application/xml")
+
+
+# ---- public JSON API --------------------------------------------------------
+
+@app.get("/explore", response_class=HTMLResponse)
+def explore(request: Request, focus: str = ""):
+    """Interactive graph explorer. Pick a 'focus' entity slug to see its
+    1-hop neighborhood as a force-directed graph. No JS framework — uses
+    a small embedded SVG renderer with deterministic layout."""
+    with connect() as conn:
+        all_factors = [dict(r) for r in conn.execute(
+            "SELECT slug, name FROM entity WHERE kind IN "
+            "('food','nutrient','supplement','drug','activity','behavior','environmental') "
+            "ORDER BY name").fetchall()]
+        all_outcomes = [dict(r) for r in conn.execute(
+            "SELECT slug, name FROM entity WHERE kind IN "
+            "('condition','process','biomarker') ORDER BY name").fetchall()]
+
+        focus_entity = None
+        nodes: list[dict] = []
+        edges: list[dict] = []
+        if focus:
+            focus_entity = conn.execute(
+                "SELECT * FROM entity WHERE slug=?", (focus,)).fetchone()
+            if focus_entity:
+                rows = conn.execute("""
+                    SELECT e.id, e.tier, e.direction, e.summary,
+                           f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                           o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
+                    FROM edge e
+                    JOIN entity f ON f.id = e.factor_id
+                    JOIN entity o ON o.id = e.outcome_id
+                    WHERE e.factor_id = ? OR e.outcome_id = ?
+                    ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2
+                                  WHEN 'C' THEN 3 ELSE 4 END LIMIT 80""",
+                    (focus_entity["id"], focus_entity["id"])).fetchall()
+                seen = {focus_entity["slug"]: dict(focus_entity)}
+                for r in rows:
+                    if r["f_slug"] not in seen:
+                        seen[r["f_slug"]] = {"slug": r["f_slug"], "name": r["f_name"], "kind": r["f_kind"]}
+                    if r["o_slug"] not in seen:
+                        seen[r["o_slug"]] = {"slug": r["o_slug"], "name": r["o_name"], "kind": r["o_kind"]}
+                    edges.append({
+                        "id": r["id"], "from": r["f_slug"], "to": r["o_slug"],
+                        "tier": r["tier"], "direction": r["direction"],
+                        "summary": r["summary"],
+                    })
+                nodes = list(seen.values())
+
+    return render(request, "explore.html", {
+        "title": "Explore",
+        "factors": all_factors,
+        "outcomes": all_outcomes,
+        "focus": focus, "focus_entity": dict(focus_entity) if focus_entity else None,
+        "nodes": nodes, "edges": edges,
+    })
+
+
+@app.get("/api/edges")
+def api_edges(tier: str = "", direction: str = "", limit: int = 100):
+    """JSON list of edges. Query: ?tier=A&direction=protective&limit=50"""
+    sql = """SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
+                    e.population, e.updated_at,
+                    f.slug AS factor_slug, f.name AS factor_name,
+                    o.slug AS outcome_slug, o.name AS outcome_name,
+                    (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies
+             FROM edge e
+             JOIN entity f ON f.id=e.factor_id
+             JOIN entity o ON o.id=e.outcome_id WHERE 1=1"""
+    params: list = []
+    if tier:
+        sql += " AND e.tier = ?"; params.append(tier)
+    if direction:
+        sql += " AND e.direction = ?"; params.append(direction)
+    sql += " ORDER BY e.updated_at DESC LIMIT ?"; params.append(min(limit, 500))
+    with connect() as conn:
+        rows = [dict(r) for r in conn.execute(sql, params).fetchall()]
+    return {"count": len(rows), "edges": rows}
+
+
+@app.get("/api/entities/{slug}")
+def api_entity(slug: str):
+    with connect() as conn:
+        e = conn.execute("SELECT * FROM entity WHERE slug=?", (slug,)).fetchone()
+        if not e:
+            return Response('{"error":"not found"}', status_code=404,
+                            media_type="application/json")
+        out_edges = [dict(r) for r in conn.execute("""
+            SELECT e.id, e.tier, e.direction, e.summary, o.slug AS outcome_slug, o.name AS outcome_name
+            FROM edge e JOIN entity o ON o.id=e.outcome_id WHERE e.factor_id=?""",
+            (e["id"],)).fetchall()]
+        in_edges = [dict(r) for r in conn.execute("""
+            SELECT e.id, e.tier, e.direction, e.summary, f.slug AS factor_slug, f.name AS factor_name
+            FROM edge e JOIN entity f ON f.id=e.factor_id WHERE e.outcome_id=?""",
+            (e["id"],)).fetchall()]
+    out = dict(e); out.pop("embedding", None); out.pop("embedded_at", None)
+    return {"entity": out, "as_factor": out_edges, "as_outcome": in_edges}
+
+
 @app.get("/edge/{edge_id}.png")
 def edge_png(edge_id: int):
     from web.share import render_edge_png
@@ -311,26 +433,48 @@ def by_tier(request: Request, tier: str):
 
 @app.get("/search", response_class=HTMLResponse)
 def search(request: Request, q: str = ""):
+    """Search across entities + edges with simple ranked relevance:
+    name-prefix > name-substring > alias > summary substring."""
     q = q.strip()
     edges: list[dict] = []
     entities: list[dict] = []
     if q:
         like = f"%{q}%"
+        prefix = f"{q}%"
         with connect() as conn:
+            entities = [dict(r) for r in conn.execute("""
+                SELECT slug, name, kind,
+                       CASE
+                         WHEN LOWER(name) LIKE LOWER(?) THEN 1
+                         WHEN LOWER(name) LIKE LOWER(?) THEN 2
+                         WHEN LOWER(COALESCE(aliases,'')) LIKE LOWER(?) THEN 3
+                         ELSE 4
+                       END AS rel
+                FROM entity
+                WHERE LOWER(name) LIKE LOWER(?)
+                   OR LOWER(COALESCE(aliases,'')) LIKE LOWER(?)
+                ORDER BY rel, name LIMIT 30""",
+                (prefix, like, like, like, like)).fetchall()]
             edges = [dict(r) for r in conn.execute("""
                 SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
-                       f.name AS f_name, o.name AS o_name
+                       f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                       o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind,
+                       CASE
+                         WHEN LOWER(f.name) LIKE LOWER(?) OR LOWER(o.name) LIKE LOWER(?) THEN 1
+                         WHEN LOWER(e.summary) LIKE LOWER(?) THEN 2
+                         WHEN LOWER(e.mechanism) LIKE LOWER(?) THEN 3
+                         ELSE 4
+                       END AS rel
                 FROM edge e
                 JOIN entity f ON f.id = e.factor_id
                 JOIN entity o ON o.id = e.outcome_id
-                WHERE f.name LIKE ? OR o.name LIKE ?
-                   OR e.summary LIKE ? OR e.mechanism LIKE ?
-                ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2
-                              WHEN 'C' THEN 3 WHEN 'X' THEN 4 ELSE 5 END
-                LIMIT 50""", (like, like, like, like)).fetchall()]
-            entities = [dict(r) for r in conn.execute(
-                "SELECT slug, name, kind FROM entity WHERE name LIKE ? "
-                "ORDER BY name LIMIT 20", (like,)).fetchall()]
+                WHERE LOWER(f.name) LIKE LOWER(?) OR LOWER(o.name) LIKE LOWER(?)
+                   OR LOWER(e.summary) LIKE LOWER(?) OR LOWER(e.mechanism) LIKE LOWER(?)
+                ORDER BY rel,
+                         CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2
+                                     WHEN 'C' THEN 3 WHEN 'X' THEN 4 ELSE 5 END
+                LIMIT 60""",
+                (like, like, like, like, like, like, like, like)).fetchall()]
     return render(request, "search.html", {
         "title": f"Search: {q}" if q else "Search",
         "q": q, "edges": edges, "entities": entities,

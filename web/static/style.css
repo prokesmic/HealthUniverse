@@ -466,6 +466,55 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   .disc-card { grid-template-columns: 140px 1fr; }
 }
 
+/* ---------- Onboarding card on /me ---------- */
+.onboarding { background: linear-gradient(180deg, var(--tier-A-bg) 0%, var(--surface) 100%); margin-bottom: 18px; }
+.onboarding h3 { font-size: 20px; margin-bottom: 6px; }
+.onboarding-list { list-style: none; padding: 0; margin: 8px 0; }
+.onboarding-list li { padding: 4px 0; }
+
+/* ---------- Graph explorer ---------- */
+.explore-grid { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 16px; }
+.explore-picker input { width: 100%; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 12px; font: inherit; background: white; }
+.explore-picker details { margin-bottom: 8px; }
+.explore-picker summary { cursor: pointer; font-weight: 500; padding: 4px 0; }
+.explore-list { list-style: none; padding: 0; margin: 6px 0 0; max-height: 360px; overflow-y: auto; }
+.explore-list li a { display: block; padding: 4px 8px; font-size: 13px; color: var(--ink-soft); border-radius: 4px; }
+.explore-list li a:hover { background: var(--bg-soft); color: var(--ink); }
+.explore-list li a.sel { background: var(--tier-A-bg); color: var(--tier-A); font-weight: 600; }
+.explore-canvas { min-height: 600px; }
+.explore-edge-list { list-style: none; padding: 0; margin: 12px 0 0; max-height: 280px; overflow-y: auto; }
+.explore-edge-list li a { display: block; padding: 6px 10px; border-radius: 6px; font-size: 13px; color: inherit; }
+.explore-edge-list li a:hover { background: var(--bg-soft); }
+
+/* ---------- Mobile pass ---------- */
+@media (max-width: 720px) {
+  main { padding: 16px 14px 48px; }
+  .topnav { padding: 12px 14px; gap: 10px; grid-template-columns: 1fr auto; }
+  .topnav-search { display: none; }      /* search button-only on mobile */
+  .topnav-links { grid-column: 1 / -1; overflow-x: auto; gap: 16px; padding-bottom: 4px; -webkit-overflow-scrolling: touch; }
+  .topnav-links a.active::after { bottom: -6px; height: 2px; }
+  h1 { font-size: 30px; }
+  .hero h1 .dot { font-size: inherit; }
+  .hero { display: block; }
+  .hero-side { margin-top: 18px; gap: 12px; }
+  .stats { gap: 16px; }
+  .stat b { font-size: 18px; }
+  .strip-track { grid-auto-columns: 86vw; }
+  .strip-card { min-height: 200px; }
+  .featured-grid, .strength-grid, .list-grid, .discovery-grid { grid-template-columns: 1fr !important; }
+  .disc-card { grid-template-columns: 90px 1fr; }
+  .disc-art > svg { min-height: 0; height: 100%; }
+  .feat-card .heart { top: 132px; }
+  .me-page .me-grid, .explore-grid { grid-template-columns: 1fr; gap: 14px; }
+  .edge-grid { grid-template-columns: 1fr; }
+  .edge-head { flex-direction: column; align-items: flex-start; }
+  .edge-head h1 { font-size: 26px; }
+  .row-2 { grid-template-columns: 1fr !important; }
+  .change-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 8px; }
+  .change-row .when { font-size: 11px; }
+  .feat-art, .strip-art { height: 110px; }
+}
+
 .footer { padding: 24px 36px; color: var(--muted); font-size: 12px; text-align: center; }
 
 /* ---------- responsive ---------- */

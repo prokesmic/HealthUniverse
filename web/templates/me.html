@@ -6,6 +6,19 @@
   <h1>My stack</h1>
   <p class="muted">Stored only in a cookie on your device. Nothing leaves your browser.</p>
 
+  {% if not profile.conditions and not profile.stack %}
+  <div class="card onboarding">
+    <h3>Get started in 30 seconds</h3>
+    <p class="body-sm">Tick the conditions you want to manage or avoid, and the foods/supplements/activities you currently do. The home feed will re-rank to surface what's most relevant for <em>you</em>.</p>
+    <ul class="onboarding-list body-sm">
+      <li><b>Step 1.</b> Pick a few conditions below — even just &ldquo;all-cause mortality&rdquo; works.</li>
+      <li><b>Step 2.</b> Tick anything in your current stack — diet pattern, supplements, exercise.</li>
+      <li><b>Step 3.</b> Save. The home feed will personalize, and conflicts in your stack get flagged.</li>
+    </ul>
+    <p class="body-sm muted">Privacy: this profile lives in a single signed cookie. We never see it. You can clear it anytime.</p>
+  </div>
+  {% endif %}
+
   <div class="me-grid">
     <form method="post" action="/me" class="card me-form">
       <div class="row-2">
