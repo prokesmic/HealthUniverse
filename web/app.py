@@ -416,20 +416,44 @@ def edge_detail(request: Request, edge_id: int):
             WHERE e.id = ?""", (edge_id,)).fetchone()
         if not e:
             return HTMLResponse("Not found", status_code=404)
-        evidence = conn.execute(
-            "SELECT * FROM evidence WHERE edge_id=? AND COALESCE(is_counter,0)=0 "
-            "ORDER BY year DESC", (edge_id,)).fetchall()
-        counter = conn.execute(
-            "SELECT * FROM evidence WHERE edge_id=? AND COALESCE(is_counter,0)=1 "
-            "ORDER BY year DESC", (edge_id,)).fetchall()
+        # LEFT JOIN evidence_status so retracted PMIDs show a red pill.
+        # Table may not exist on a fresh DB — guard with try/except.
+        try:
+            evidence = conn.execute("""
+                SELECT ev.*, COALESCE(s.is_retracted, 0) AS is_retracted,
+                       s.retraction_note
+                FROM evidence ev
+                LEFT JOIN evidence_status s ON s.pmid = ev.pmid
+                WHERE ev.edge_id=? AND COALESCE(ev.is_counter,0)=0
+                ORDER BY ev.year DESC""", (edge_id,)).fetchall()
+            counter = conn.execute("""
+                SELECT ev.*, COALESCE(s.is_retracted, 0) AS is_retracted,
+                       s.retraction_note
+                FROM evidence ev
+                LEFT JOIN evidence_status s ON s.pmid = ev.pmid
+                WHERE ev.edge_id=? AND COALESCE(ev.is_counter,0)=1
+                ORDER BY ev.year DESC""", (edge_id,)).fetchall()
+        except Exception:
+            evidence = conn.execute(
+                "SELECT *, 0 AS is_retracted, NULL AS retraction_note "
+                "FROM evidence WHERE edge_id=? AND COALESCE(is_counter,0)=0 "
+                "ORDER BY year DESC", (edge_id,)).fetchall()
+            counter = conn.execute(
+                "SELECT *, 0 AS is_retracted, NULL AS retraction_note "
+                "FROM evidence WHERE edge_id=? AND COALESCE(is_counter,0)=1 "
+                "ORDER BY year DESC", (edge_id,)).fetchall()
         history = conn.execute(
             "SELECT * FROM edge_history WHERE edge_id = ? ORDER BY changed_at DESC",
             (edge_id,)).fetchall()
+    ev_rows = [dict(r) for r in evidence]
+    co_rows = [dict(r) for r in counter]
+    retracted_count = sum(1 for r in ev_rows + co_rows if r.get("is_retracted"))
     return render(request, "edge.html", {
         "e": dict(e),
-        "evidence": [dict(r) for r in evidence],
-        "counter": [dict(r) for r in counter],
+        "evidence": ev_rows,
+        "counter": co_rows,
         "history": [dict(r) for r in history],
+        "retracted_evidence_count": retracted_count,
     })
 
 
