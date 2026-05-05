@@ -32,23 +32,69 @@
   </header>
 
   {% if not q %}
-  <div class="search-suggestions-v2">
-    <h2 class="search-h2">Try a real question</h2>
+  <div class="search-onboard">
+    <h2 class="search-h2">Where do you want to start?</h2>
+    <div class="search-onboard-grid">
+      <a class="search-onboard-card" href="/search?q=improve sleep">
+        <span class="search-onboard-icon" aria-hidden="true">☾</span>
+        <h3>Improve my sleep</h3>
+        <p class="muted body-sm">What helps, what hurts, and what's contested for sleep quality and duration.</p>
+      </a>
+      <a class="search-onboard-card" href="/search?q=reduce cardiovascular risk">
+        <span class="search-onboard-icon" aria-hidden="true">♥</span>
+        <h3>Lower CV risk</h3>
+        <p class="muted body-sm">The strongest tier-A interventions for cardiovascular events and hypertension.</p>
+      </a>
+      <a class="search-onboard-card" href="/search?q=cancer prevention">
+        <span class="search-onboard-icon" aria-hidden="true">⊛</span>
+        <h3>Cancer prevention</h3>
+        <p class="muted body-sm">Modifiable factors with the strongest evidence across major cancer types.</p>
+      </a>
+      <a class="search-onboard-card" href="/search?q=more energy">
+        <span class="search-onboard-icon" aria-hidden="true">⚡</span>
+        <h3>More energy</h3>
+        <p class="muted body-sm">Sleep, exercise, micronutrients, and stress — what genuinely moves the needle.</p>
+      </a>
+      <a class="search-onboard-card" href="/me">
+        <span class="search-onboard-icon" aria-hidden="true">⚙</span>
+        <h3>Optimise my stack</h3>
+        <p class="muted body-sm">Save your conditions and current habits to get personalised re-ranking.</p>
+      </a>
+      <a class="search-onboard-card" href="/compare">
+        <span class="search-onboard-icon" aria-hidden="true">⇄</span>
+        <h3>Compare options</h3>
+        <p class="muted body-sm">Put magnesium, melatonin, exercise, and meditation side-by-side.</p>
+      </a>
+    </div>
+
+    <h2 class="search-h2">Or ask a real question</h2>
     <div class="search-tries">
-      <a href="/search?q=Should I take creatine">Should I take creatine?</a>
-      <a href="/search?q=alcohol breast cancer">Alcohol and breast cancer</a>
       <a href="/search?q=what helps with sleep">What helps with sleep?</a>
+      <a href="/search?q=alcohol vs heart disease">Alcohol vs heart disease</a>
+      <a href="/search?q=what changed for omega-3">What changed for omega-3</a>
+      <a href="/search?q=best evidence for dementia prevention">Best evidence for dementia prevention</a>
       <a href="/search?q=ultra-processed food">Ultra-processed food</a>
-      <a href="/search?q=lower dementia risk">Lower dementia risk</a>
-      <a href="/search?q=intermittent fasting type 2 diabetes">Intermittent fasting and T2D</a>
     </div>
-    <h2 class="search-h2">Or browse</h2>
-    <div class="search-tries">
-      <a href="/tier/A">Strong evidence (tier A)</a>
-      <a href="/myths">Myths and contested claims</a>
-      <a href="/discoveries">Recent discoveries</a>
-      <a href="/explore">Graph explorer</a>
-    </div>
+  </div>
+  {% endif %}
+
+  {% if q and intent and intent.intent != 'just_search' %}
+  <div class="search-intent">
+    {% if intent.intent == 'helps_with' %}
+    <p class="search-intent-line">Looks like you're asking <b>what helps with {{ intent.target }}</b>. We're showing protective + tier-A/B evidence first.</p>
+    <a class="link" href="/compare?outcome={{ intent.target | replace(' ','_') }}&factors=">→ Compare specific factors for {{ intent.target }}</a>
+    {% elif intent.intent == 'harms' %}
+    <p class="search-intent-line">Looks like you're asking <b>what raises risk of {{ intent.target }}</b>. We're surfacing harmful-direction evidence.</p>
+    {% elif intent.intent == 'compare_two' %}
+    <p class="search-intent-line">Looks like you want to compare <b>{{ intent.a }}</b> and <b>{{ intent.b }}</b>.</p>
+    <a class="link" href="/compare?factor={{ intent.a | replace(' ','_') }}&outcomes=">→ See {{ intent.a }} across multiple outcomes</a>
+    {% elif intent.intent == 'what_changed' %}
+    <p class="search-intent-line">Looks like you want recent changes for <b>{{ intent.target }}</b>.</p>
+    <a class="link" href="/changes?days=30">→ See all recent evidence movement</a>
+    {% elif intent.intent == 'best_evidence' %}
+    <p class="search-intent-line">Looks like you want the strongest evidence for <b>{{ intent.target }}</b>. Tier-A results first.</p>
+    <a class="link" href="/tier/A">→ Browse all tier-A relationships</a>
+    {% endif %}
   </div>
   {% endif %}
 

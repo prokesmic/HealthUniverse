@@ -154,6 +154,28 @@ def _new_discoveries(conn, days: int = 14, limit: int = 20) -> list[dict]:
 PAGE_SIZE = 60
 
 
+def _classify_query(q: str) -> dict:
+    """Detect query intent: helps_with, harms, compare_two, what_changed,
+    best_evidence, just_search. Returns intent + extracted slots."""
+    import re
+    ql = (q or "").lower().strip()
+    if not ql:
+        return {"intent": "just_search"}
+    m = re.match(r"(?:what|things)\s+(?:helps?|improves?|reduces?|prevents?|treats?|works for)\s+(?:with\s+)?(.+)", ql)
+    if m: return {"intent": "helps_with", "target": m.group(1).strip("?").strip()}
+    m = re.match(r"(?:what|things)\s+(?:harms?|hurts?|causes?|raises?|increases?|worsens?)\s+(?:risk\s+of\s+)?(.+)", ql)
+    if m: return {"intent": "harms", "target": m.group(1).strip("?").strip()}
+    m = re.match(r"compare\s+(.+?)\s+(?:and|vs)\s+(.+)", ql)
+    if m: return {"intent": "compare_two", "a": m.group(1).strip(), "b": m.group(2).strip("?").strip()}
+    m = re.match(r"^(.+?)\s+(?:vs|versus)\s+(.+)$", ql)
+    if m: return {"intent": "compare_two", "a": m.group(1).strip(), "b": m.group(2).strip("?").strip()}
+    m = re.match(r"(?:what\s+changed|changes?)\s+(?:for|in|about)\s+(.+)", ql)
+    if m: return {"intent": "what_changed", "target": m.group(1).strip("?").strip()}
+    m = re.match(r"(?:best|strongest|highest[- ]quality)\s+evidence\s+(?:for|on|about)\s+(.+)", ql)
+    if m: return {"intent": "best_evidence", "target": m.group(1).strip("?").strip()}
+    return {"intent": "just_search"}
+
+
 def _paginate(total: int, page: int) -> dict:
     pages = max(1, (total + PAGE_SIZE - 1) // PAGE_SIZE)
     page = max(1, min(page, pages))
@@ -1140,9 +1162,8 @@ def by_tier(request: Request, tier: str, page: int = 1):
 
 @app.get("/search", response_class=HTMLResponse)
 def search(request: Request, q: str = ""):
-    """Hybrid search: substring match (fast, exact) merged with semantic
-    cosine similarity (catches paraphrased queries like
-    'what helps with sleep' matching insomnia/dementia/etc.)."""
+    """Hybrid search with intent detection: substring + semantic cosine,
+    plus routing hints based on the natural-language intent of the query."""
     q = q.strip()
     edges: list[dict] = []
     entities: list[dict] = []
@@ -1221,6 +1242,7 @@ def search(request: Request, q: str = ""):
         "title": f"Search: {q}" if q else "Search",
         "q": q, "edges": edges, "entities": entities,
         "semantic_added": semantic_added,
+        "intent": _classify_query(q) if q else None,
     })
 
 
