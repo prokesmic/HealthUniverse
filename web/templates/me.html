@@ -1,83 +1,117 @@
 {% extends "base.html" %}
-{% block title %}My Stack — Health Universe{% endblock %}
+{% block title %}My stack — Health Universe{% endblock %}
 {% block content %}
-<section class="me-page">
-  <a class="back" href="/">← Back</a>
-  <h1>My stack</h1>
-  <p class="muted">Stored only in a cookie on your device. Nothing leaves your browser.</p>
+<section class="stack-page">
+  <a class="back" href="/">← Back to Health Universe</a>
+
+  <header class="stack-head">
+    <p class="stack-eyebrow">Private workspace · stays on this device</p>
+    <h1 class="stack-title">My stack</h1>
+    <p class="stack-lede">Tell Health Universe a little about you and what you actually do. The home feed, the risk dial, and Ask My Universe will re-rank around your conditions and current habits.</p>
+    <p class="stack-privacy"><span class="stack-privacy-icon" aria-hidden="true">⌥</span> Saved in a single signed cookie on this browser. We never see it. <a class="link" href="/about">How privacy works →</a></p>
+  </header>
 
   {% if not profile.conditions and not profile.stack %}
-  <div class="card onboarding">
+  <div class="stack-onboarding">
     <h2>Get started in 30 seconds</h2>
-    <p class="body-sm">Tick the conditions you want to manage or avoid, and the foods/supplements/activities you currently do. The home feed will re-rank to surface what's most relevant for <em>you</em>.</p>
-    <ul class="onboarding-list body-sm">
-      <li><b>Step 1.</b> Pick a few conditions below — even just &ldquo;all-cause mortality&rdquo; works.</li>
-      <li><b>Step 2.</b> Tick anything in your current stack — diet pattern, supplements, exercise.</li>
-      <li><b>Step 3.</b> Save. The home feed will personalize, and conflicts in your stack get flagged.</li>
-    </ul>
-    <p class="body-sm muted">Privacy: this profile lives in a single signed cookie. We never see it. You can clear it anytime.</p>
+    <ol class="stack-steps">
+      <li><b>Pick conditions</b> you want to manage or avoid. Even just <em>all-cause mortality</em> works as a starter.</li>
+      <li><b>Tick your current stack</b> — diet pattern, supplements you already take, regular activities.</li>
+      <li><b>Save.</b> The home feed personalises and we flag any conflicts inside your stack.</li>
+    </ol>
   </div>
   {% endif %}
 
-  <div class="me-grid">
-    <form method="post" action="/me" class="card me-form">
-      <div class="row-2">
-        <label>Age <input type="number" name="age" min="1" max="120" value="{{ profile.age or '' }}"></label>
-        <label>Sex
-          <select name="sex">
-            <option value="">—</option>
-            {% for s in ['female','male','other'] %}
-            <option value="{{s}}" {% if profile.sex==s %}selected{% endif %}>{{s}}</option>
-            {% endfor %}
-          </select>
-        </label>
-      </div>
+  <div class="stack-grid">
+    <form method="post" action="/me" class="stack-form">
+      <fieldset class="stack-fieldset">
+        <legend class="stack-legend"><span class="stack-num">01</span> About you</legend>
+        <div class="stack-row-2">
+          <label class="stack-label">Age
+            <input type="number" name="age" min="1" max="120" value="{{ profile.age or '' }}" placeholder="—">
+          </label>
+          <label class="stack-label">Sex
+            <select name="sex">
+              <option value="">—</option>
+              {% for s in ['female','male','other'] %}
+              <option value="{{s}}" {% if profile.sex==s %}selected{% endif %}>{{s}}</option>
+              {% endfor %}
+            </select>
+          </label>
+        </div>
+      </fieldset>
 
-      <fieldset>
-        <legend>Conditions you want to manage or avoid</legend>
-        <div class="chip-grid">
+      <fieldset class="stack-fieldset">
+        <legend class="stack-legend"><span class="stack-num">02</span> Conditions you care about</legend>
+        <p class="stack-fieldset-help">Things you want to manage, prevent, or follow research on.</p>
+        <div class="stack-chips">
         {% for o in outcomes %}
-          <label class="chip"><input type="checkbox" name="conditions" value="{{o.slug}}"
-            {% if o.slug in profile.conditions %}checked{% endif %}>{{o.name}}</label>
+          <label class="stack-chip">
+            <input type="checkbox" name="conditions" value="{{o.slug}}"
+              {% if o.slug in profile.conditions %}checked{% endif %}>
+            <span>{{o.name}}</span>
+          </label>
         {% endfor %}
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend>Current stack (foods, supplements, activities)</legend>
-        <div class="chip-grid">
+      <fieldset class="stack-fieldset">
+        <legend class="stack-legend"><span class="stack-num">03</span> Your current stack</legend>
+        <p class="stack-fieldset-help">Foods, supplements, activities, behaviours you actually do.</p>
+        <div class="stack-chips">
         {% for f in factors %}
-          <label class="chip"><input type="checkbox" name="stack" value="{{f.slug}}"
-            {% if f.slug in profile.stack %}checked{% endif %}>{{f.name}}</label>
+          <label class="stack-chip">
+            <input type="checkbox" name="stack" value="{{f.slug}}"
+              {% if f.slug in profile.stack %}checked{% endif %}>
+            <span>{{f.name}}</span>
+          </label>
         {% endfor %}
         </div>
       </fieldset>
 
-      <div class="row-between">
-        <button class="btn-primary" type="submit">Save</button>
-        <button class="btn-secondary" type="submit" formaction="/me/clear">Clear</button>
+      <div class="stack-actions">
+        <button class="btn-primary" type="submit">Save profile</button>
+        <button class="btn-secondary" type="submit" formaction="/me/clear" formmethod="post">Clear all</button>
       </div>
     </form>
 
-    <section aria-labelledby="relevant-for-you-heading">
-      <h2 id="relevant-for-you-heading">Relevant for you</h2>
-      <p class="muted">Re-ranked by your stack and conditions.</p>
-      <div class="list-grid one">
-        {% for e in relevant %}
-        <a class="feat-card tier-bg-{{ e.tier }}" href="/edge/{{ e.id }}">
-          <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
-          <h3>{{ e.f_name }} and {{ e.o_name }}</h3>
-          <p>{{ e.summary }}</p>
-          <div class="feat-meta">
-            <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
-            <span class="muted small">Updated {{ e.updated_at[:10] }}</span>
-          </div>
-        </a>
+    <aside class="stack-side">
+      <div class="stack-summary">
+        <h2 class="stack-side-h">Your snapshot</h2>
+        {% if profile.age or profile.sex or profile.conditions or profile.stack %}
+        <dl class="stack-snapshot">
+          {% if profile.age or profile.sex %}
+          <div><dt>Demographics</dt><dd>{{ profile.age or "—" }}{% if profile.age and profile.sex %} · {% endif %}{{ profile.sex or "" }}</dd></div>
+          {% endif %}
+          <div><dt>Conditions tracked</dt><dd>{{ profile.conditions|length }}</dd></div>
+          <div><dt>Stack items</dt><dd>{{ profile.stack|length }}</dd></div>
+        </dl>
         {% else %}
-        <div class="empty">Save a profile and we'll rank what's relevant for you.</div>
-        {% endfor %}
+        <p class="muted body-sm">Save a profile and your snapshot lives here.</p>
+        {% endif %}
       </div>
-    </section>
+
+      <div class="stack-relevant">
+        <h2 class="stack-side-h">Relevant for you</h2>
+        <p class="muted body-sm">Re-ranked from the graph by your stack and conditions. Click into any card to see the supporting evidence.</p>
+        <div class="stack-relevant-list">
+          {% for e in relevant %}
+          <a class="stack-rel-card" href="/edge/{{ e.id }}">
+            <div class="stack-rel-head">
+              <span class="pill tier-{{ e.tier }}">{{ e.tier }}</span>
+              <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+            </div>
+            <h3>{{ e.f_name }} <span class="lib-arrow" aria-hidden="true">→</span> {{ e.o_name }}</h3>
+            {% if e.summary %}<p>{{ e.summary[:180] }}{% if e.summary|length > 180 %}…{% endif %}</p>{% endif %}
+          </a>
+          {% else %}
+          <div class="stack-empty">
+            <p>Save a profile and we'll rank what's relevant for you here.</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </aside>
   </div>
 </section>
 {% endblock %}

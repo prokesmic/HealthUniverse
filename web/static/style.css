@@ -727,6 +727,135 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 }
 
 /* =============================================================
+   /me — private workspace
+   ============================================================= */
+
+.stack-page { max-width: 1200px; margin: 0 auto; }
+.stack-page .back { color: var(--ink-soft); font-size: 13px; }
+.stack-head {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+  border: 1px solid var(--line); border-radius: 22px;
+  padding: 32px 40px; margin: 18px 0 28px;
+}
+.stack-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; margin: 0 0 8px; }
+.stack-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: 52px; line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 14px; color: var(--ink); }
+.stack-lede { font-size: 16px; line-height: 1.55; max-width: 720px; color: var(--ink-soft); margin: 0 0 14px; }
+.stack-privacy {
+  display: inline-flex; gap: 8px; align-items: center;
+  background: var(--tier-A-bg); color: var(--tier-A);
+  border: 1px solid var(--tier-A); border-radius: 999px;
+  padding: 6px 14px; font-size: 13px; font-weight: 500;
+}
+.stack-privacy-icon { font-size: 14px; }
+.stack-privacy a { color: inherit; text-decoration: underline; }
+
+.stack-onboarding {
+  background: var(--bg-soft); border: 1px dashed var(--gold);
+  border-radius: 14px; padding: 20px 24px; margin-bottom: 24px;
+}
+.stack-onboarding h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 20px; margin: 0 0 10px; }
+.stack-steps { padding-left: 20px; margin: 0; }
+.stack-steps li { padding: 4px 0; line-height: 1.55; color: var(--ink-soft); }
+.stack-steps b { color: var(--ink); }
+
+.stack-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 24px; align-items: start; }
+
+.stack-form {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 18px; padding: 32px;
+}
+.stack-fieldset { border: 0; padding: 0; margin: 0 0 28px; }
+.stack-fieldset:last-of-type { margin-bottom: 18px; }
+.stack-legend {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px;
+  color: var(--ink); padding: 0; margin: 0 0 4px;
+  display: flex; align-items: baseline; gap: 12px;
+}
+.stack-num {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.1em; color: var(--gold);
+  border: 1px solid var(--gold); border-radius: 4px;
+  padding: 2px 6px;
+}
+.stack-fieldset-help { font-size: 14px; color: var(--ink-soft); margin: 0 0 14px; }
+.stack-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.stack-label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--ink-soft); font-weight: 500; }
+.stack-label input, .stack-label select {
+  padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px;
+  background: white; font: inherit; font-size: 15px; color: var(--ink);
+}
+.stack-label input:focus-visible, .stack-label select:focus-visible {
+  border-color: var(--gold); outline-offset: 2px;
+}
+.stack-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.stack-chip {
+  display: inline-flex; cursor: pointer; user-select: none;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 999px; padding: 8px 14px;
+  font-size: 13px; color: var(--ink-soft);
+  transition: border-color .12s ease, background .12s ease, color .12s ease;
+}
+.stack-chip:hover { border-color: var(--gold); }
+.stack-chip input { display: none; }
+.stack-chip:has(input:checked) {
+  background: var(--tier-A-bg); border-color: var(--tier-A); color: var(--tier-A);
+  font-weight: 500;
+}
+.stack-chip:has(input:focus-visible) { outline: 3px solid rgba(201, 169, 97, 0.5); outline-offset: 2px; }
+.stack-actions {
+  display: flex; gap: 10px; padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.stack-actions .btn-primary, .stack-actions .btn-secondary { width: auto; padding: 12px 22px; margin: 0; }
+
+.stack-side {
+  position: sticky; top: 24px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.stack-summary, .stack-relevant {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 16px; padding: 20px 22px;
+}
+.stack-side-h {
+  font-family: 'Fraunces', serif; font-weight: 500;
+  font-size: 18px; margin: 0 0 10px;
+}
+.stack-snapshot { margin: 0; }
+.stack-snapshot > div {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 6px 0; border-bottom: 1px solid var(--line);
+}
+.stack-snapshot > div:last-child { border-bottom: 0; }
+.stack-snapshot dt { color: var(--ink-soft); font-size: 13px; margin: 0; }
+.stack-snapshot dd { color: var(--ink); font-weight: 500; margin: 0; }
+
+.stack-relevant-list { display: flex; flex-direction: column; gap: 8px; max-height: 540px; overflow-y: auto; padding-top: 6px; }
+.stack-rel-card {
+  display: block; padding: 12px 14px;
+  background: var(--bg-soft); border: 1px solid var(--line);
+  border-radius: 10px; color: inherit;
+  transition: border-color .12s ease, background .12s ease;
+}
+.stack-rel-card:hover { border-color: var(--gold); background: var(--surface); }
+.stack-rel-head { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 4px; }
+.stack-rel-head .pill { font-size: 9px; padding: 2px 6px; }
+.stack-rel-card h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 15px; margin: 4px 0; line-height: 1.25; color: var(--ink); }
+.stack-rel-card p { font-size: 12.5px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+.stack-empty { padding: 18px 14px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 10px; }
+
+@media (max-width: 1024px) {
+  .stack-grid { grid-template-columns: 1fr; }
+  .stack-side { position: static; }
+  .stack-relevant-list { max-height: none; }
+}
+@media (max-width: 720px) {
+  .stack-head { padding: 24px 22px; }
+  .stack-title { font-size: 36px; }
+  .stack-form { padding: 22px 18px; }
+  .stack-row-2 { grid-template-columns: 1fr; }
+}
+
+/* =============================================================
    Changes feed — transparent evidence-ops changelog
    ============================================================= */
 
