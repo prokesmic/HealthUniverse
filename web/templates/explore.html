@@ -1,133 +1,180 @@
 {% extends "base.html" %}
 {% block title %}Explore — Health Universe{% endblock %}
 {% block content %}
-<section class="explore-page">
-  <a class="back" href="/">← Back</a>
-  <h1>Graph explorer</h1>
-  <p class="muted">Click an entity to see its 1-hop neighborhood. Edge color encodes tier; thickness encodes confidence.</p>
+<section class="explore-page-v2">
+  <a class="back" href="/">← Back to Health Universe</a>
 
-  <div class="explore-grid">
-    <div class="explore-picker card">
-      <h2>Pick a focus</h2>
+  <header class="explore-head">
+    <p class="explore-eyebrow">Knowledge graph · 1-hop neighborhoods</p>
+    <h1 class="explore-title">Graph explorer</h1>
+    <p class="explore-lede">Pick any factor or outcome to see what it connects to. Edge color encodes tier; click any node to walk to its neighborhood; click any edge to open its evidence card.</p>
+  </header>
+
+  <div class="explore-grid-v2">
+    <aside class="explore-picker-v2">
+      <p class="diary-section-eyebrow">Pick a focus</p>
       <label class="sr-only" for="exFilter">Filter entities</label>
-      <input id="exFilter" placeholder="filter…" aria-label="Filter entities" oninput="exFilter(this.value)" />
-      <details open><summary>Factors ({{ factors|length }})</summary>
-        <ul class="explore-list">
+      <input id="exFilter" class="explore-filter" placeholder="Filter entities…"
+             aria-label="Filter entities" oninput="exFilter(this.value)" />
+      <details open class="explore-cat">
+        <summary><b>Factors</b> <span class="explore-count">{{ factors|length }}</span></summary>
+        <ul class="explore-list-v2">
           {% for f in factors %}<li data-name="{{ f.name|lower }}"><a href="/explore?focus={{ f.slug }}" class="{% if focus==f.slug %}sel{% endif %}">{{ f.name }}</a></li>{% endfor %}
         </ul>
       </details>
-      <details><summary>Outcomes ({{ outcomes|length }})</summary>
-        <ul class="explore-list">
+      <details class="explore-cat">
+        <summary><b>Outcomes</b> <span class="explore-count">{{ outcomes|length }}</span></summary>
+        <ul class="explore-list-v2">
           {% for o in outcomes %}<li data-name="{{ o.name|lower }}"><a href="/explore?focus={{ o.slug }}" class="{% if focus==o.slug %}sel{% endif %}">{{ o.name }}</a></li>{% endfor %}
         </ul>
       </details>
-    </div>
+      <div class="explore-legend">
+        <p class="explore-legend-h">Edge color</p>
+        <ul class="explore-legend-list">
+          <li><span class="explore-legend-dot" style="background:var(--tier-A)"></span>A · Strong</li>
+          <li><span class="explore-legend-dot" style="background:var(--tier-B)"></span>B · Moderate</li>
+          <li><span class="explore-legend-dot" style="background:var(--tier-C)"></span>C · Emerging</li>
+          <li><span class="explore-legend-dot" style="background:var(--tier-D)"></span>D · Limited</li>
+          <li><span class="explore-legend-dot" style="background:var(--tier-X)"></span>X · Contested</li>
+        </ul>
+      </div>
+    </aside>
 
-    <div class="explore-canvas card">
+    <main class="explore-canvas-v2">
       {% if focus_entity %}
-        <h2>{{ focus_entity.name }}<small class="muted"> · {{ focus_entity.kind }}</small></h2>
-        <p class="body-sm muted">{{ edges|length }} edge{{ edges|length != 1 and "s" or "" }} · {{ nodes|length }} entit{{ nodes|length != 1 and "ies" or "y" }}</p>
+      <header class="explore-focus-head">
+        <div>
+          <p class="diary-section-eyebrow">Focus · {{ focus_entity.kind }}</p>
+          <h2 class="explore-focus-title">{{ focus_entity.name }}</h2>
+        </div>
+        <div class="explore-focus-meta">
+          <span class="badge ghost">{{ edges|length }} edge{{ edges|length != 1 and "s" or "" }}</span>
+          <span class="badge ghost">{{ nodes|length }} entit{{ nodes|length != 1 and "ies" or "y" }}</span>
+        </div>
+      </header>
+
+      <div class="explore-canvas-frame">
         <svg id="graph" viewBox="-300 -300 600 600" preserveAspectRatio="xMidYMid meet"
-             style="width:100%; height:520px; background:var(--bg-soft); border-radius:12px;">
+             style="width:100%; height:560px; background:var(--bg-soft); border-radius:14px;">
           <defs>
             <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
               <path d="M 0 0 L 10 5 L 0 10 Z" fill="#888"/>
             </marker>
           </defs>
         </svg>
-        <script>
-          const NODES = {{ nodes | tojson }};
-          const EDGES = {{ edges | tojson }};
-          const FOCUS = "{{ focus }}";
-          // Deterministic radial layout: focus center, others in concentric rings.
-          // Factors on left half, outcomes on right.
-          const TIER_COLOR = {A:"#3b8e5a", B:"#c8a02a", C:"#d97757", D:"#c44545", X:"#7a6a8c"};
-          const KIND_COLOR = {
-            food:"#7c8e3a", nutrient:"#7c8e3a", supplement:"#3b8e5a",
-            drug:"#5a7eb0", activity:"#c9a961", behavior:"#a08560",
-            environmental:"#7a6a8c", process:"#1f3a2e",
-            condition:"#c44545", biomarker:"#3b8e5a", pathogen:"#a08560", gene:"#5a7eb0"
-          };
-          function layout() {
-            const positions = {};
-            // Focus at center
-            positions[FOCUS] = [0, 0];
-            // Other nodes spread around
-            const others = NODES.filter(n => n.slug !== FOCUS);
-            const step = (2 * Math.PI) / Math.max(others.length, 1);
-            others.forEach((n, i) => {
-              const angle = i * step - Math.PI / 2;
-              const r = 180 + (i % 3) * 30;
-              positions[n.slug] = [Math.cos(angle) * r, Math.sin(angle) * r];
-            });
-            return positions;
-          }
-          function render() {
-            const pos = layout();
-            const svg = document.getElementById("graph");
-            const ns = "http://www.w3.org/2000/svg";
-            // Draw edges first (so they go behind nodes)
-            EDGES.forEach(e => {
-              const [x1, y1] = pos[e.from] || [0, 0];
-              const [x2, y2] = pos[e.to] || [0, 0];
-              const line = document.createElementNS(ns, "line");
-              line.setAttribute("x1", x1); line.setAttribute("y1", y1);
-              line.setAttribute("x2", x2); line.setAttribute("y2", y2);
-              line.setAttribute("stroke", TIER_COLOR[e.tier] || "#888");
-              line.setAttribute("stroke-width", e.tier === "A" ? 2.5 : e.tier === "B" ? 1.8 : 1.1);
-              line.setAttribute("stroke-opacity", "0.65");
-              line.setAttribute("marker-end", "url(#arr)");
-              svg.appendChild(line);
-              // tooltip
-              const t = document.createElementNS(ns, "title");
-              t.textContent = `${e.from} → ${e.to}: tier ${e.tier} · ${e.direction}`;
-              line.appendChild(t);
-              line.style.cursor = "pointer";
-              line.onclick = () => location.href = "/edge/" + e.id;
-            });
-            NODES.forEach(n => {
-              const [x, y] = pos[n.slug];
-              const g = document.createElementNS(ns, "g");
-              g.setAttribute("transform", `translate(${x},${y})`);
-              g.style.cursor = "pointer";
-              g.onclick = () => location.href = "/explore?focus=" + n.slug;
-              const c = document.createElementNS(ns, "circle");
-              c.setAttribute("r", n.slug === FOCUS ? 10 : 6);
-              c.setAttribute("fill", KIND_COLOR[n.kind] || "#888");
-              c.setAttribute("stroke", n.slug === FOCUS ? "#1f3a2e" : "#fff");
-              c.setAttribute("stroke-width", n.slug === FOCUS ? 3 : 1.5);
-              g.appendChild(c);
-              const text = document.createElementNS(ns, "text");
-              text.setAttribute("x", 12); text.setAttribute("y", 4);
-              text.setAttribute("font-size", "11");
-              text.setAttribute("font-family", "Inter, sans-serif");
-              text.setAttribute("fill", "#2a2520");
-              text.textContent = n.name.length > 28 ? n.name.slice(0, 26) + "…" : n.name;
-              g.appendChild(text);
-              const tt = document.createElementNS(ns, "title");
-              tt.textContent = `${n.name} (${n.kind})`;
-              g.appendChild(tt);
-              svg.appendChild(g);
-            });
-          }
-          render();
-        </script>
-        <h3>Edges</h3>
-        <ul class="explore-edge-list">
+        <p class="explore-canvas-hint muted small">Tip · click any edge line to open its evidence card; click any node to walk the graph.</p>
+      </div>
+
+      <section class="explore-edges-v2">
+        <h3 class="explore-edges-h">Edges <span class="explore-count">{{ edges|length }}</span></h3>
+        <ul class="explore-edge-list-v2">
           {% for e in edges %}
-          <li><a href="/edge/{{ e.id }}"><span class="pill tier-{{ e.tier }}">{{ e.tier }}</span> <b>{{ e.from }}</b> → <b>{{ e.to }}</b> <span class="muted small">{{ DIRECTION_LABEL[e.direction] }}</span></a></li>
+          <li>
+            <a href="/edge/{{ e.id }}">
+              <span class="pill tier-{{ e.tier }}">{{ e.tier }}</span>
+              <span class="explore-edge-pair"><b>{{ e.from }}</b> <span class="lib-arrow">→</span> <b>{{ e.to }}</b></span>
+              <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+            </a>
+          </li>
           {% endfor %}
         </ul>
+      </section>
+
+      <script>
+        const NODES = {{ nodes | tojson }};
+        const EDGES = {{ edges | tojson }};
+        const FOCUS = "{{ focus }}";
+        const TIER_COLOR = {A:"#3b8e5a", B:"#c8a02a", C:"#d97757", D:"#c44545", X:"#7a6a8c"};
+        const KIND_COLOR = {
+          food:"#7c8e3a", nutrient:"#7c8e3a", supplement:"#3b8e5a",
+          drug:"#5a7eb0", activity:"#c9a961", behavior:"#a08560",
+          environmental:"#7a6a8c", process:"#1f3a2e",
+          condition:"#c44545", biomarker:"#3b8e5a", pathogen:"#a08560", gene:"#5a7eb0"
+        };
+        function layout() {
+          const positions = {};
+          positions[FOCUS] = [0, 0];
+          const others = NODES.filter(n => n.slug !== FOCUS);
+          const step = (2 * Math.PI) / Math.max(others.length, 1);
+          others.forEach((n, i) => {
+            const angle = i * step - Math.PI / 2;
+            const r = 180 + (i % 3) * 30;
+            positions[n.slug] = [Math.cos(angle) * r, Math.sin(angle) * r];
+          });
+          return positions;
+        }
+        function render() {
+          const pos = layout();
+          const svg = document.getElementById("graph");
+          const ns = "http://www.w3.org/2000/svg";
+          EDGES.forEach(e => {
+            const [x1, y1] = pos[e.from] || [0, 0];
+            const [x2, y2] = pos[e.to] || [0, 0];
+            const line = document.createElementNS(ns, "line");
+            line.setAttribute("x1", x1); line.setAttribute("y1", y1);
+            line.setAttribute("x2", x2); line.setAttribute("y2", y2);
+            line.setAttribute("stroke", TIER_COLOR[e.tier] || "#888");
+            line.setAttribute("stroke-width", e.tier === "A" ? 2.5 : e.tier === "B" ? 1.8 : 1.1);
+            line.setAttribute("stroke-opacity", "0.65");
+            line.setAttribute("marker-end", "url(#arr)");
+            svg.appendChild(line);
+            const t = document.createElementNS(ns, "title");
+            t.textContent = `${e.from} → ${e.to}: tier ${e.tier} · ${e.direction}`;
+            line.appendChild(t);
+            line.style.cursor = "pointer";
+            line.onclick = () => location.href = "/edge/" + e.id;
+          });
+          NODES.forEach(n => {
+            const [x, y] = pos[n.slug];
+            const g = document.createElementNS(ns, "g");
+            g.setAttribute("transform", `translate(${x},${y})`);
+            g.style.cursor = "pointer";
+            g.onclick = () => location.href = "/explore?focus=" + n.slug;
+            const c = document.createElementNS(ns, "circle");
+            c.setAttribute("r", n.slug === FOCUS ? 11 : 6);
+            c.setAttribute("fill", KIND_COLOR[n.kind] || "#888");
+            c.setAttribute("stroke", n.slug === FOCUS ? "#1f3a2e" : "#fffdf6");
+            c.setAttribute("stroke-width", n.slug === FOCUS ? 3 : 1.5);
+            g.appendChild(c);
+            const text = document.createElementNS(ns, "text");
+            text.setAttribute("x", 14); text.setAttribute("y", 4);
+            text.setAttribute("font-size", "11");
+            text.setAttribute("font-family", "Inter, sans-serif");
+            text.setAttribute("fill", "#2a2520");
+            text.textContent = n.name.length > 26 ? n.name.slice(0, 24) + "…" : n.name;
+            g.appendChild(text);
+            const tt = document.createElementNS(ns, "title");
+            tt.textContent = `${n.name} (${n.kind})`;
+            g.appendChild(tt);
+            svg.appendChild(g);
+          });
+        }
+        render();
+      </script>
       {% else %}
-        <div class="empty">Pick a factor or outcome on the left to explore its connections.</div>
+      <div class="explore-empty-v2">
+        <div class="library-empty-mark" aria-hidden="true">⌘</div>
+        <h2>Pick a focus to start</h2>
+        <p class="muted">Choose any factor (food, supplement, drug, activity, environmental exposure) or outcome (condition, biomarker, process) on the left. The graph will draw its 1-hop neighborhood and you can walk from there.</p>
+        <div class="explore-empty-suggestions">
+          <p class="diary-section-eyebrow">Try one</p>
+          <a class="explore-suggest" href="/explore?focus=magnesium">Magnesium</a>
+          <a class="explore-suggest" href="/explore?focus=alcohol">Alcohol</a>
+          <a class="explore-suggest" href="/explore?focus=cvd">Cardiovascular disease</a>
+          <a class="explore-suggest" href="/explore?focus=alzheimers">Alzheimer's</a>
+          <a class="explore-suggest" href="/explore?focus=aerobic_exercise">Aerobic exercise</a>
+          <a class="explore-suggest" href="/explore?focus=ultra_processed">Ultra-processed food</a>
+        </div>
+      </div>
       {% endif %}
-    </div>
+    </main>
   </div>
 </section>
+
 <script>
   function exFilter(q) {
     q = (q || "").toLowerCase();
-    document.querySelectorAll(".explore-list li").forEach(li => {
+    document.querySelectorAll(".explore-list-v2 li").forEach(li => {
       li.style.display = !q || li.dataset.name.includes(q) ? "" : "none";
     });
   }
