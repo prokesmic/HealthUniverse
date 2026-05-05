@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "opioids_long_term",
+      "outcome_slug": "hypogonadism",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults on long-term opioid therapy",
+      "mechanism": "Opioids suppress hypothalamic GnRH release and downstream LH secretion, a direct endocrine route to low testosterone, sexual dysfunction, and fatigue during long-term therapy.",
+      "summary": "The anchor for this edge is the 2026 García-Becerra meta analysis in Int J Impot Res, which suggests that long-term opioid therapy tracks with higher risk or worse outcomes for hypogonadism. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "GarcaBecerraCA et al 2026 Int J Impot Res",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cardiovascular and prostate cancer risk associated to testosterone replacement therapy - a systematic review and meta-analysis of 41 randomized controlled trials.",
+          "doi": "10.1038/s41443-026-01237-4",
+          "n_participants": 11161,
+          "pmid": "41673435"
+        },
+        {
+          "citation": "GudinJA et al 2015 Pain Med",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Opioid Related Endocrinopathy.",
+          "doi": "10.1111/pme.12926",
+          "n_participants": 100,
+          "pmid": "26461076"
+        },
+        {
+          "citation": "SmithHS et al 2012 Pain Physician",
+          "year": 2012,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Opioid-induced androgen deficiency (OPIAD).",
+          "doi": "",
+          "n_participants": 100,
+          "pmid": "22786453"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "opioids_long_term",
+      "name": "Long-term opioid therapy",
+      "kind": "drug",
+      "aliases": [],
+      "description": "Long-term opioid therapy as a medication exposure."
+    },
+    {
+      "slug": "hypogonadism",
+      "name": "Hypogonadism",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Hypogonadism as a clinically relevant health outcome."
+    }
+  ]
+}

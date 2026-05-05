@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "polypharmacy",
+      "outcome_slug": "falls",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults aged 65 and older",
+      "mechanism": "Taking many medications at once raises the odds of sedation, orthostasis, and drug-drug interactions, which is why fall risk rises with polypharmacy even before one specific drug is blamed.",
+      "summary": "The anchor for this edge is the 2026 Carollo meta analysis in Age Ageing, which suggests that polypharmacy tracks with higher risk or worse outcomes for falls. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "CarolloM et al 2026 Age Ageing",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Evaluating the impact of medication review and deprescribing on prescribing appropriateness and clinical outcomes in older people residing in long-term care facilities: a systematic review and meta-analysis.",
+          "doi": "10.1093/ageing/afag084",
+          "n_participants": 3548,
+          "pmid": "41967033"
+        },
+        {
+          "citation": "DasS et al 2026 BMC Geriatr",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Deprescribing preventive medications in older adults with advanced frailty, dementia, or limited life expectancy: a systematic review and meta-analysis.",
+          "doi": "10.1186/s12877-026-07354-5",
+          "n_participants": 33000,
+          "pmid": "41840386"
+        },
+        {
+          "citation": "ElmotiaK et al 2025 Res Gerontol Nurs",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Geriatric Syndromes in Older Adults With and Without Diabetes: A Systematic Review and Meta-Analysis.",
+          "doi": "10.3928/19404921-20250115-01",
+          "n_participants": 5420,
+          "pmid": "39874547"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "polypharmacy",
+      "name": "Polypharmacy",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Polypharmacy as a behavioral exposure or habit."
+    }
+  ]
+}

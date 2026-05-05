@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "fluoride_high",
+      "outcome_slug": "iq",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "children exposed to high fluoride concentrations",
+      "mechanism": "The proposed neurodevelopmental route is chronic excess fluoride exposure during vulnerable brain development, though confounding and exposure assessment remain major issues.",
+      "summary": "The strongest piece here is the 2021 Miranda meta analysis in Sci Rep, which ties high fluoride exposure to iq and measured intelligence in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "MirandaGHN et al 2021 Sci Rep",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "A systematic review and meta-analysis of the association between fluoride exposure and neurological disorders.",
+          "doi": "10.1038/s41598-021-99688-w",
+          "n_participants": 4024,
+          "pmid": "34811523"
+        },
+        {
+          "citation": "GopuBP et al 2022 Int J Environ Res Public Health",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Relationship between Fluoride Exposure and Cognitive Outcomes from Gestation to Adulthood-A Systematic Review.",
+          "doi": "10.3390/ijerph20010022",
+          "n_participants": 15072,
+          "pmid": "36612346"
+        },
+        {
+          "citation": "ChoiAL et al 2012 Environ Health Perspect",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Developmental fluoride neurotoxicity: a systematic review and meta-analysis.",
+          "doi": "10.1289/ehp.1104912",
+          "n_participants": 2011,
+          "pmid": "22820538"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "fluoride_high",
+      "name": "High fluoride exposure",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "High fluoride exposure as an environmental or occupational exposure."
+    },
+    {
+      "slug": "iq",
+      "name": "IQ and measured intelligence",
+      "kind": "process",
+      "aliases": [],
+      "description": "IQ and measured intelligence as a measurable physiological or clinical process."
+    }
+  ]
+}

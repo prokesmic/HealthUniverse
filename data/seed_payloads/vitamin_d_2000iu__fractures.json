@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vitamin_d_2000iu",
+      "outcome_slug": "fractures",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "Different designs and subgroups point in different directions, so a single pooled estimate is not the right way to read this edge.",
+      "population": "community-dwelling adults",
+      "mechanism": "At 2000 IU/day the key question is whether more complete repletion improves muscle and bone enough to change fractures without overshooting into diminishing returns.",
+      "summary": "The anchor for this edge is the 2024 Chakhtoura meta analysis in Cochrane Database Syst Rev, which suggests that vitamin d about 2000 iu/day produces mixed findings across studies for fractures. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Subgroup differences, dose thresholds, and competing mechanisms likely explain why the literature does not settle into one clean direction.",
+      "evidence": [
+        {
+          "citation": "ChakhtouraMT et al 2024 Cochrane Database Syst Rev",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Oral vitamin D supplementation for adults with obesity undergoing bariatric surgery.",
+          "doi": "10.1002/14651858.CD011800.pub2",
+          "n_participants": 314,
+          "pmid": "39351881"
+        },
+        {
+          "citation": "SivakumarG et al 2019 Sports Health",
+          "year": 2019,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Vitamin D Supplementation in Military Personnel: A Systematic Review of Randomized Controlled Trials.",
+          "doi": "10.1177/1941738119857717",
+          "n_participants": 2000,
+          "pmid": "31268835"
+        },
+        {
+          "citation": "BischoffFerrariHA et al 2012 N Engl J Med",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "A pooled analysis of vitamin D dose requirements for fracture prevention.",
+          "doi": "10.1056/NEJMoa1109617",
+          "n_participants": 31022,
+          "pmid": "22762317"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vitamin_d_2000iu",
+      "name": "Vitamin D about 2000 IU/day",
+      "kind": "supplement",
+      "aliases": [],
+      "description": "Vitamin D about 2000 IU/day as a supplement exposure."
+    },
+    {
+      "slug": "fractures",
+      "name": "Fractures",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Fractures as a clinically relevant health outcome."
+    }
+  ]
+}

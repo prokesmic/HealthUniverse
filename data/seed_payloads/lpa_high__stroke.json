@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "lpa_high",
+      "outcome_slug": "stroke",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults in prevention cohorts",
+      "mechanism": "High lipoprotein(a) has a biologically plausible route to worse stroke, and the mechanism is consistent with the kinds of tissues or systems most directly exposed.",
+      "summary": "The strongest piece here is the 2025 Cancelli meta analysis in Arch Cardiovasc Dis, which ties high lipoprotein(a) to stroke in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "CancelliG et al 2025 Arch Cardiovasc Dis",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between lipoprotein(a) concentration and outcomes after percutaneous coronary intervention: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.acvd.2025.05.009",
+          "n_participants": 40241,
+          "pmid": "40615341"
+        },
+        {
+          "citation": "ChuanchaiW et al 2026 J Clin Lipidol",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Predictive value of lipoprotein(a) in patients undergoing percutaneous coronary intervention with drug-eluting stent: A meta-analysis.",
+          "doi": "10.1016/j.jacl.2026.02.002",
+          "n_participants": 27618,
+          "pmid": "42002380"
+        },
+        {
+          "citation": "NichollsSJ et al 2025 J Am Coll Cardiol",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Impact of Obicetrapib on Major Adverse Cardiovascular Events in High-Risk Patients: A Pooled Analysis.",
+          "doi": "10.1016/j.jacc.2025.07.056",
+          "n_participants": 2530,
+          "pmid": "40888776"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "lpa_high",
+      "name": "High lipoprotein(a)",
+      "kind": "biomarker",
+      "aliases": [],
+      "description": "High lipoprotein(a) as a measurable biomarker."
+    },
+    {
+      "slug": "stroke",
+      "name": "Stroke",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Stroke as a clinically relevant health outcome."
+    }
+  ]
+}

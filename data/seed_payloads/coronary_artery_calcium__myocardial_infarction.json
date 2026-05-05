@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "coronary_artery_calcium",
+      "outcome_slug": "myocardial_infarction",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "asymptomatic adults undergoing calcium scoring",
+      "mechanism": "Coronary calcium reflects established plaque burden, so it is a direct anatomical signal of future myocardial infarction risk.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2020 Lo-Kioeng-Shioe meta analysis in Int J Cardiol already points to coronary artery calcium scoring tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "LoKioengShioeMS et al 2020 Int J Cardiol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prognostic value of coronary artery calcium score in symptomatic individuals: A meta-analysis of 34,000 subjects.",
+          "doi": "10.1016/j.ijcard.2019.06.003",
+          "n_participants": 34041,
+          "pmid": "31229262"
+        },
+        {
+          "citation": "AkerA et al 2025 Int J Cardiol Heart Vasc",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The long-term prognostic value of CT coronary artery calcium score in asymptomatic patients with type 2 diabetes.",
+          "doi": "10.1016/j.ijcha.2025.101799",
+          "n_participants": 735,
+          "pmid": "41467227"
+        },
+        {
+          "citation": "DoshiA et al 2024 Am J Cardiol",
+          "year": 2024,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Aspirin for Primary Prevention in Patients With Elevated Coronary Artery Calcium Score: A Systematic Review of Current Evidences.",
+          "doi": "10.1016/j.amjcard.2024.03.021",
+          "n_participants": 2191,
+          "pmid": "38548012"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "coronary_artery_calcium",
+      "name": "Coronary artery calcium scoring",
+      "kind": "activity",
+      "aliases": [],
+      "description": "Coronary artery calcium scoring as a structured activity or treatment exposure."
+    },
+    {
+      "slug": "myocardial_infarction",
+      "name": "Myocardial infarction",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Myocardial infarction as a clinically relevant health outcome."
+    }
+  ]
+}

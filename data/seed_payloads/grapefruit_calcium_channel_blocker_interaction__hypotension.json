@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "grapefruit_calcium_channel_blocker_interaction",
+      "outcome_slug": "hypotension",
+      "direction": "harmful",
+      "tier": "D",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults combining grapefruit with susceptible calcium-channel blockers",
+      "mechanism": "The same CYP3A4 inhibition can raise levels of some calcium-channel blockers enough to exaggerate vasodilation and produce symptomatic hypotension.",
+      "summary": "The anchor for this edge is the 2025 Methaneethorn meta analysis in Complement Ther Med, which suggests that grapefruit- calcium channel blocker interaction tracks with higher risk or worse outcomes for hypotension. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "MethaneethornJ et al 2025 Complement Ther Med",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Pharmacokinetic interactions of fruit juices with antihypertensive drugs in humans: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.ctim.2025.103165",
+          "n_participants": 2024,
+          "pmid": "40122403"
+        },
+        {
+          "citation": "UesawaY et al 2012 Curr Pharm Biotechnol",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Integrated analysis on the physicochemical properties of dihydropyridine calcium channel blockers in grapefruit juice interactions.",
+          "doi": "10.2174/138920112800958878",
+          "n_participants": 13,
+          "pmid": "22039822"
+        },
+        {
+          "citation": "SeguraSaldaaP et al 2026 Eur Heart J Open",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Comparison between no fasting vs. fasting in patients undergoing cardiac catheterization laboratory procedures: a systematic review and meta-analysis.",
+          "doi": "10.1093/ehjopen/oeaf123",
+          "n_participants": 2736,
+          "pmid": "42078333"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "grapefruit_calcium_channel_blocker_interaction",
+      "name": "Grapefruit-calcium channel blocker interaction",
+      "kind": "drug",
+      "aliases": [],
+      "description": "Grapefruit-calcium channel blocker interaction as a medication exposure."
+    },
+    {
+      "slug": "hypotension",
+      "name": "Hypotension",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Hypotension as a clinically relevant health outcome."
+    }
+  ]
+}

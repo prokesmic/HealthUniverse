@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "cpap_adherence",
+      "outcome_slug": "cvd",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with obstructive sleep apnea using CPAP",
+      "mechanism": "Consistent CPAP use reduces nightly hypoxic surges, sympathetic spikes, and blood-pressure variability, the main route by which cardiovascular benefit would be expected.",
+      "summary": "The anchor for this edge is the 2025 van Doorn meta analysis in Cochrane Database Syst Rev, which suggests that high cpap adherence tracks with lower risk or better outcomes for cardiovascular disease. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Healthier-user bias, screening intensity, and baseline risk can all inflate apparent benefit in observational work, so the magnitude should be read conservatively.",
+      "evidence": [
+        {
+          "citation": "vanDoornS et al 2025 Cochrane Database Syst Rev",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Clinical utility of limited channel sleep studies versus polysomnography for obstructive sleep apnoea.",
+          "doi": "10.1002/14651858.CD013810.pub2",
+          "n_participants": 1143,
+          "pmid": "40326548"
+        },
+        {
+          "citation": "SnchezdelaTorreM et al 2023 JAMA",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Adherence to CPAP Treatment and the Risk of Recurrent Cardiovascular Events: A Meta-Analysis.",
+          "doi": "10.1001/jama.2023.17465",
+          "n_participants": 4186,
+          "pmid": "37787793"
+        },
+        {
+          "citation": "LiAuthorH et al 2022 Rev Cardiovasc Med",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The Effects of Continuous Positive Airway Pressure Therapy for Secondary Cardiovascular Prevention in Patients with Obstructive Sleep Apnoea: A Systematic Review and Meta-Analysis.",
+          "doi": "10.31083/j.rcm2306195",
+          "n_participants": 4493,
+          "pmid": "39077164"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cpap_adherence",
+      "name": "High CPAP adherence",
+      "kind": "activity",
+      "aliases": [],
+      "description": "High CPAP adherence as a structured activity or treatment exposure."
+    }
+  ]
+}

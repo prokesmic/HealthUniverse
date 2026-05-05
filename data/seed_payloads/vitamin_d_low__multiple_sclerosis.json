@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vitamin_d_low",
+      "outcome_slug": "multiple_sclerosis",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults at risk for or living with multiple sclerosis",
+      "mechanism": "Low vitamin D may weaken immune regulation and tilt toward pro-inflammatory responses relevant to multiple sclerosis susceptibility or activity.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Li meta analysis in Front Immunol already points to low vitamin d status tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "LiAuthorY et al 2026 Front Immunol",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Vitamin D status, supplementation, and multiple sclerosis: a systematic review and meta-analysis.",
+          "doi": "10.3389/fimmu.2026.1775270",
+          "n_participants": 2025,
+          "pmid": "41983136"
+        },
+        {
+          "citation": "ZhangY et al 2025 Front Neurol",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Vitamin D deficiency and multiple sclerosis relapse: a meta-analysis.",
+          "doi": "10.3389/fneur.2025.1727615",
+          "n_participants": 1078,
+          "pmid": "41551317"
+        },
+        {
+          "citation": "MeridMW et al 2025 Mult Scler Relat Disord",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "A systematic review and meta-analysis on gene-environment interaction effects on the associations of vitamin D and sun exposure with multiple sclerosis risk.",
+          "doi": "10.1016/j.msard.2025.106634",
+          "n_participants": 10857,
+          "pmid": "40716233"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vitamin_d_low",
+      "name": "Low vitamin D status",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Low vitamin D status as a clinically relevant health outcome."
+    },
+    {
+      "slug": "multiple_sclerosis",
+      "name": "Multiple sclerosis",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Multiple sclerosis as a clinically relevant health outcome."
+    }
+  ]
+}

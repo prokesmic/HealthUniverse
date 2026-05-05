@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "polypharmacy",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "community-dwelling and hospitalized older adults",
+      "mechanism": "Polypharmacy is partly a marker of illness burden, but cumulative adverse effects, prescribing cascades, and interaction toxicity provide a direct pathway to higher mortality too.",
+      "summary": "The strongest piece here is the 2026 Das meta analysis in BMC Geriatr, which ties polypharmacy to all-cause mortality in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "DasS et al 2026 BMC Geriatr",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Deprescribing preventive medications in older adults with advanced frailty, dementia, or limited life expectancy: a systematic review and meta-analysis.",
+          "doi": "10.1186/s12877-026-07354-5",
+          "n_participants": 33000,
+          "pmid": "41840386"
+        },
+        {
+          "citation": "MajidS et al 2025 Cureus",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Impact of Direct Oral Anticoagulants vs. Warfarin on Stroke Prevention in Elderly Patients With Atrial Fibrillation: A Systematic Review and Meta-Analysis.",
+          "doi": "10.7759/cureus.99818",
+          "n_participants": 95,
+          "pmid": "41573464"
+        },
+        {
+          "citation": "GnjidicD et al 2025 Cochrane Database Syst Rev",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Withdrawal of antihypertensive drugs in older people.",
+          "doi": "10.1002/14651858.CD012572.pub3",
+          "n_participants": 1073,
+          "pmid": "40162571"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "polypharmacy",
+      "name": "Polypharmacy",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Polypharmacy as a behavioral exposure or habit."
+    }
+  ]
+}

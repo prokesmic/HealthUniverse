@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "frailty_index",
+      "outcome_slug": "postoperative_complications",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "older adults undergoing surgery",
+      "mechanism": "Frailty leaves less physiologic margin for surgery, so stress responses, immobility, and wound-healing demands more easily tip into complications.",
+      "summary": "The strongest piece here is the 2022 Li cohort in BMC Anesthesiol, which ties frailty index to postoperative complications in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "LiAuthorCQ et al 2022 BMC Anesthesiol",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The composite risk index based on frailty predicts postoperative complications in older patients recovering from elective digestive tract surgery: a retrospective cohort study.",
+          "doi": "10.1186/s12871-021-01549-6",
+          "n_participants": 923,
+          "pmid": "34979937"
+        },
+        {
+          "citation": "SerranoVertizL et al 2026 Curr Med Res Opin",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Influence of frailty syndrome on disease outcomes in systemic lupus erythematosus: a systematic review and narrative synthesis.",
+          "doi": "10.1080/03007995.2026.2637197",
+          "n_participants": 1566,
+          "pmid": "41802208"
+        },
+        {
+          "citation": "LeeACH et al 2024 PLoS One",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The risk analysis index is an independent predictor of outcomes after lung cancer resection.",
+          "doi": "10.1371/journal.pone.0303281",
+          "n_participants": 29420,
+          "pmid": "38753607"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "frailty_index",
+      "name": "Frailty index",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Frailty index as a behavioral exposure or habit."
+    },
+    {
+      "slug": "postoperative_complications",
+      "name": "Postoperative complications",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Postoperative complications as a clinically relevant health outcome."
+    }
+  ]
+}

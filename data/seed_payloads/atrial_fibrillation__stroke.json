@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "atrial_fibrillation",
+      "outcome_slug": "stroke",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with atrial fibrillation",
+      "mechanism": "Atrial fibrillation causes blood stasis in the left atrium and appendage, making cardioembolic stroke a direct mechanistic consequence.",
+      "summary": "The anchor for this edge is the 2026 Cai meta analysis in Front Cardiovasc Med, which suggests that atrial fibrillation tracks with higher risk or worse outcomes for stroke. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "CaiB et al 2026 Front Cardiovasc Med",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Intravenous thrombolysis for acute cerebral embolism during atrial fibrillation ablation: a case report and systematic review with meta-analysis.",
+          "doi": "10.3389/fcvm.2026.1801300",
+          "n_participants": 90,
+          "pmid": "42079704"
+        },
+        {
+          "citation": "ChaoTF et al 2026 Eur Heart J",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Direct oral anticoagulants vs warfarin in Asian vs non-Asian patients with atrial fibrillation: a patient-level meta-analysis from COMBINE AF.",
+          "doi": "10.1093/eurheartj/ehag246",
+          "n_participants": 471,
+          "pmid": "42059513"
+        },
+        {
+          "citation": "MetwalyAS et al 2026 Cureus",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Direct Oral Anticoagulants Versus Warfarin in Atrial Fibrillation With Advanced Chronic Kidney Disease: A Systematic Review and Meta-Analysis.",
+          "doi": "10.7759/cureus.106043",
+          "n_participants": 184136,
+          "pmid": "42058359"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "atrial_fibrillation",
+      "name": "Atrial fibrillation",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Atrial fibrillation as a clinically relevant health outcome."
+    },
+    {
+      "slug": "stroke",
+      "name": "Stroke",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Stroke as a clinically relevant health outcome."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "periodontal_disease",
+      "outcome_slug": "pcos",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "women with periodontal disease",
+      "mechanism": "Systemic inflammatory spillover and insulin-resistance signaling may help connect periodontal disease with PCOS-related metabolic burden.",
+      "summary": "The strongest piece here is the 2025 Bitonti meta analysis in Dent J (Basel), which ties periodontal disease to polycystic ovary syndrome in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "BitontiV et al 2025 Dent J (Basel)",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Association Between Periodontal Disease and Polycystic Ovary Syndrome: A Systematic Review and Meta-Analysis.",
+          "doi": "10.3390/dj13050188",
+          "n_participants": 1990,
+          "pmid": "40422608"
+        },
+        {
+          "citation": "MrquezArricoCF et al 2020 J Clin Med",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between Periodontal Diseases and Polycystic Ovary Syndrome: A Systematic Review.",
+          "doi": "10.3390/jcm9051586",
+          "n_participants": 10,
+          "pmid": "32456146"
+        },
+        {
+          "citation": "KellesarianSV et al 2017 Int J Impot Res",
+          "year": 2017,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between periodontal disease and polycystic ovary syndrome: a systematic review.",
+          "doi": "10.1038/ijir.2017.7",
+          "n_participants": 2016,
+          "pmid": "28275229"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "periodontal_disease",
+      "name": "Periodontal disease",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Periodontal disease as a clinically relevant health outcome."
+    },
+    {
+      "slug": "pcos",
+      "name": "Polycystic ovary syndrome",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Polycystic ovary syndrome as a clinically relevant health outcome."
+    }
+  ]
+}

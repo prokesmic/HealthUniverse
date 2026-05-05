@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "psa_screening",
+      "outcome_slug": "overdiagnosis",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "screening-age men",
+      "mechanism": "Because PSA is organ-sensitive but not cancer-specific, it identifies many indolent tumors that would never have threatened health.",
+      "summary": "The anchor for this edge is the 2026 Bennett systematic review in Curr Oncol, which suggests that psa screening tracks with higher risk or worse outcomes for overdiagnosis. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "BennettA et al 2026 Curr Oncol",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Benefits and Harms of Screening for Prostate Cancer in Adults Aged 18 Years and Older: A Systematic Review.",
+          "doi": "10.3390/curroncol33040199",
+          "n_participants": 1000,
+          "pmid": "42041720"
+        },
+        {
+          "citation": "ZhangZ et al 2023 Front Oncol",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Application and optimization of prostate-specific antigen screening strategy in the diagnosis of prostate cancer: a systematic review.",
+          "doi": "10.3389/fonc.2023.1320681",
+          "n_participants": 100,
+          "pmid": "38264758"
+        },
+        {
+          "citation": "LinYT et al 2026 JMIR Aging",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Web-Based Personalized Machine Learning Recommendations to Enhance Shared Decision-Making in Prostate-Specific Antigen Screening: Randomized Controlled Trial.",
+          "doi": "10.2196/83238",
+          "n_participants": 507,
+          "pmid": "41973864"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "psa_screening",
+      "name": "PSA screening",
+      "kind": "activity",
+      "aliases": [],
+      "description": "PSA screening as a structured activity or treatment exposure."
+    },
+    {
+      "slug": "overdiagnosis",
+      "name": "Overdiagnosis",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Overdiagnosis as a clinically relevant health outcome."
+    }
+  ]
+}

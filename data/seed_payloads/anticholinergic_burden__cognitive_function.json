@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "anticholinergic_burden",
+      "outcome_slug": "cognitive_function",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "older adults taking anticholinergic medications",
+      "mechanism": "Blocking central muscarinic signaling predictably impairs attention and memory, making anticholinergic load a mechanistically strong driver of worse cognitive performance.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Mancini meta analysis in Am J Psychiatry already points to high anticholinergic burden tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ManciniV et al 2025 Am J Psychiatry",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Anticholinergic Burden and Cognitive Function in Psychosis: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1176/appi.ajp.20240260",
+          "n_participants": 4620,
+          "pmid": "40007252"
+        },
+        {
+          "citation": "AlShuhaimiL et al 2025 J Intellect Disabil Res",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Ten-Year Outcomes of Anticholinergic Use Among Older Adults With Intellectual Disability: Findings From the Intellectual Disability Supplement to the Irish Longitudinal Study on Ageing (IDS-TILDA).",
+          "doi": "10.1111/jir.70018",
+          "n_participants": 487,
+          "pmid": "40713937"
+        },
+        {
+          "citation": "WangK et al 2021 Maturitas",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Anticholinergics and clinical outcomes amongst people with pre-existing dementia: A systematic review.",
+          "doi": "10.1016/j.maturitas.2021.06.004",
+          "n_participants": 2000,
+          "pmid": "34446273"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "anticholinergic_burden",
+      "name": "High anticholinergic burden",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "High anticholinergic burden as a behavioral exposure or habit."
+    }
+  ]
+}

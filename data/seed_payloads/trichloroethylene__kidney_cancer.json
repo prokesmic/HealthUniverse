@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "trichloroethylene",
+      "outcome_slug": "kidney_cancer",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "workers or residents exposed to trichloroethylene",
+      "mechanism": "Kidney metabolism of trichloroethylene generates reactive intermediates capable of tubular DNA injury, matching the observed concern about renal cell carcinoma.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2012 Karami meta analysis in Occup Environ Med already points to trichloroethylene exposure tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "KaramiS et al 2012 Occup Environ Med",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Occupational trichloroethylene exposure and kidney cancer risk: a meta-analysis.",
+          "doi": "10.1136/oemed-2012-100932",
+          "n_participants": 15,
+          "pmid": "23000822"
+        },
+        {
+          "citation": "KelshMA et al 2010 Epidemiology",
+          "year": 2010,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Occupational trichloroethylene exposure and kidney cancer: a meta-analysis.",
+          "doi": "10.1097/EDE.0b013e3181c30e92",
+          "n_participants": 23,
+          "pmid": "20010212"
+        },
+        {
+          "citation": "LipworthL et al 2009 Clin Epidemiol",
+          "year": 2009,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Epidemiologic characteristics and risk factors for renal cell cancer.",
+          "doi": "10.2147/clep.s4759",
+          "n_participants": 85,
+          "pmid": "20865085"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "trichloroethylene",
+      "name": "Trichloroethylene exposure",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "Trichloroethylene exposure as an environmental or occupational exposure."
+    },
+    {
+      "slug": "kidney_cancer",
+      "name": "Kidney cancer",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Kidney cancer as a clinically relevant health outcome."
+    }
+  ]
+}

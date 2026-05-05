@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "formaldehyde",
+      "outcome_slug": "nasopharyngeal_cancer",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "workers exposed to formaldehyde",
+      "mechanism": "Formaldehyde is a reactive aldehyde that causes local protein and DNA crosslinking in exposed airway mucosa, fitting a nasopharyngeal carcinogenesis pathway.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Nie cohort in Ann Work Expo Health already points to formaldehyde exposure tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "NieJ et al 2025 Ann Work Expo Health",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Overview of historical formaldehyde occupational exposure in China.",
+          "doi": "10.1093/annweh/wxaf037",
+          "n_participants": 20447,
+          "pmid": "40660678"
+        },
+        {
+          "citation": "ProtanoC et al 2021 Cancers (Basel)",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Carcinogenic Effects of Formaldehyde Occupational Exposure: A Systematic Review.",
+          "doi": "10.3390/cancers14010165",
+          "n_participants": 2004,
+          "pmid": "35008329"
+        },
+        {
+          "citation": "DeweyJ et al 2026 Laryngoscope",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Incidence and Risks of Chronic Rhinosinusitis in Head and Neck Cancer: A Meta-Analysis.",
+          "doi": "10.1002/lary.70538",
+          "n_participants": 3685,
+          "pmid": "41934348"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "formaldehyde",
+      "name": "Formaldehyde exposure",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "Formaldehyde exposure as an environmental or occupational exposure."
+    },
+    {
+      "slug": "nasopharyngeal_cancer",
+      "name": "Nasopharyngeal cancer",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Nasopharyngeal cancer as a clinically relevant health outcome."
+    }
+  ]
+}

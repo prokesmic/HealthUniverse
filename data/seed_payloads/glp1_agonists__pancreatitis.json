@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "glp1_agonists",
+      "outcome_slug": "pancreatitis",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults using GLP-1 receptor agonists",
+      "mechanism": "The concern is that incretin signaling changes pancreatic secretion and can coexist with rapid weight loss and gallstone formation, making pancreatitis a biologically plausible but still debated adverse signal.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Wen meta analysis in Endocrinol Diabetes Metab already points to glp-1 receptor agonists tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "WenJ et al 2025 Endocrinol Diabetes Metab",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Evaluating the Rates of Pancreatitis and Pancreatic Cancer Among GLP-1 Receptor Agonists: A Systematic Review and Meta-Analysis of Randomised Controlled Trials.",
+          "doi": "10.1002/edm2.70113",
+          "n_participants": 66232,
+          "pmid": "40988099"
+        },
+        {
+          "citation": "GalliM et al 2025 J Am Coll Cardiol",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cardiovascular Effects and Tolerability of GLP-1 Receptor Agonists: A Systematic Review and Meta-Analysis of 99,599 Patients.",
+          "doi": "10.1016/j.jacc.2025.08.027",
+          "n_participants": 99599,
+          "pmid": "40892610"
+        },
+        {
+          "citation": "NreuB et al 2023 Minerva Endocrinol (Torino)",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Pancreatitis and pancreatic cancer in patients with type 2 diabetes treated with glucagon-like peptide-1 receptor agonists: an updated meta-analysis of randomized controlled trials.",
+          "doi": "10.23736/S2724-6507.20.03219-8",
+          "n_participants": 95,
+          "pmid": "32720500"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "pancreatitis",
+      "name": "Pancreatitis",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Pancreatitis as a clinically relevant health outcome."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "coronary_artery_calcium",
+      "outcome_slug": "cvd_risk_reclassification",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+      "population": "asymptomatic adults undergoing prevention risk stratification",
+      "mechanism": "Coronary artery calcium scoring plausibly improves cardiovascular risk reclassification through a factor-specific pathway documented in the literature, even if the exact size of benefit varies by population and dose.",
+      "summary": "The anchor for this edge is the 2021 Matos cohort in Rev Port Cardiol (Engl Ed), which suggests that coronary artery calcium scoring tracks with lower risk or better outcomes for cardiovascular risk reclassification. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Healthier-user bias, screening intensity, and baseline risk can all inflate apparent benefit in observational work, so the magnitude should be read conservatively.",
+      "evidence": [
+        {
+          "citation": "MatosD et al 2021 Rev Port Cardiol (Engl Ed)",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Coronary artery calcium scoring and cardiovascular risk reclassification in patients undergoing coronary computed tomography angiography.",
+          "doi": "10.1016/j.repc.2020.04.011",
+          "n_participants": 467,
+          "pmid": "33303300"
+        },
+        {
+          "citation": "MantiniC et al 2018 Eur J Radiol",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Influence of image reconstruction parameters on cardiovascular risk reclassification by Computed Tomography Coronary Artery Calcium Score.",
+          "doi": "10.1016/j.ejrad.2018.01.005",
+          "n_participants": 113,
+          "pmid": "29571781"
+        },
+        {
+          "citation": "FudimM et al 2016 Data Brief",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Data on coronary artery calcium score performance and cardiovascular risk reclassification across gender and ethnicities.",
+          "doi": "10.1016/j.dib.2016.01.002",
+          "n_participants": 6814,
+          "pmid": "26909370"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "coronary_artery_calcium",
+      "name": "Coronary artery calcium scoring",
+      "kind": "activity",
+      "aliases": [],
+      "description": "Coronary artery calcium scoring as a structured activity or treatment exposure."
+    },
+    {
+      "slug": "cvd_risk_reclassification",
+      "name": "Cardiovascular risk reclassification",
+      "kind": "process",
+      "aliases": [],
+      "description": "Cardiovascular risk reclassification as a measurable physiological or clinical process."
+    }
+  ]
+}

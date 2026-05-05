@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "resting_heart_rate_high",
+      "outcome_slug": "cvd",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults in community cohorts",
+      "mechanism": "Persistently high resting heart rate reflects sympathetic tone and higher myocardial workload, both linked to worse cardiovascular outcomes.",
+      "summary": "The anchor for this edge is the 2023 Shiga rct in Circ Rep, which suggests that high resting heart rate tracks with higher risk or worse outcomes for cardiovascular disease. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ShigaT et al 2023 Circ Rep",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Rationale and Design of the Effect of Ivabradine on Exercise Tolerance in Patients With Chronic Heart Failure (EXCILE-HF) Trial - Protocol for a Multicenter Randomized Controlled Trial.",
+          "doi": "10.1253/circrep.CR-22-0134",
+          "n_participants": 75,
+          "pmid": "37025937"
+        },
+        {
+          "citation": "MohanJC et al 2024 J Assoc Physicians India",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Position of Beta-blockers in the Treatment of Hypertension Today: An Indian Consensus.",
+          "doi": "10.59556/japi.72.0715",
+          "n_participants": 2023,
+          "pmid": "39390868"
+        },
+        {
+          "citation": "RasouliMA et al 2026 Health Sci Rep",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Diagnostic Accuracy of Cardiovascular Disease Prediction Models: A Systematic Review and Meta-Analysis of Validation Studies.",
+          "doi": "10.1002/hsr2.72469",
+          "n_participants": 47276,
+          "pmid": "42078554"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "resting_heart_rate_high",
+      "name": "High resting heart rate",
+      "kind": "biomarker",
+      "aliases": [],
+      "description": "High resting heart rate as a measurable biomarker."
+    }
+  ]
+}

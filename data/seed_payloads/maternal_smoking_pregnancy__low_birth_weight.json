@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "maternal_smoking_pregnancy",
+      "outcome_slug": "low_birth_weight",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "infants exposed to prenatal maternal smoking",
+      "mechanism": "Placental vasoconstriction and chronic carbon-monoxide exposure reduce fetal oxygen delivery, a direct route to lower birth weight.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2024 Deng meta analysis in Int J Infect Dis already points to maternal smoking during pregnancy tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "DengS et al 2024 Int J Infect Dis",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Risk factors for respiratory syncytial virus-associated acute lower respiratory infection in children under 5 years: An updated systematic review and meta-analysis.",
+          "doi": "10.1016/j.ijid.2024.107125",
+          "n_participants": 2022,
+          "pmid": "38945430"
+        },
+        {
+          "citation": "DiAuthorHK et al 2022 World J Pediatr",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maternal smoking status during pregnancy and low birth weight in offspring: systematic review and meta-analysis of 55 cohort studies published from 1986 to 2020.",
+          "doi": "10.1007/s12519-021-00501-5",
+          "n_participants": 4940,
+          "pmid": "35089538"
+        },
+        {
+          "citation": "YuAuthorC et al 2019 Eur J Pediatr",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maternal smoking during pregnancy and risk of cryptorchidism: a systematic review and meta-analysis.",
+          "doi": "10.1007/s00431-018-3293-9",
+          "n_participants": 111712,
+          "pmid": "30465272"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "maternal_smoking_pregnancy",
+      "name": "Maternal smoking during pregnancy",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Maternal smoking during pregnancy as a behavioral exposure or habit."
+    },
+    {
+      "slug": "low_birth_weight",
+      "name": "Low birth weight",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Low birth weight as a clinically relevant health outcome."
+    }
+  ]
+}

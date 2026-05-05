@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "black_carbon",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults exposed to traffic-related black carbon",
+      "mechanism": "Black-carbon exposure tracks with high oxidative and inflammatory particle burden, which can raise death risk across cardiovascular and respiratory pathways.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2024 Karimi meta analysis in J Environ Health Sci Eng already points to black carbon exposure tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "KarimiB et al 2024 J Environ Health Sci Eng",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Long-term exposure to air pollution on cardio-respiratory, and lung cancer mortality: a systematic review and meta-analysis.",
+          "doi": "10.1007/s40201-024-00900-6",
+          "n_participants": 1007,
+          "pmid": "38887768"
+        },
+        {
+          "citation": "LuAuthorH et al 2026 Environ Sci Technol",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Explanatory Machine Learning Model to Associate All-Cause Mortality with PM",
+          "doi": "10.1021/acs.est.6c00976",
+          "n_participants": 2010,
+          "pmid": "41980261"
+        },
+        {
+          "citation": "NobileF et al 2024 Front Epidemiol",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "External exposome and all-cause mortality in European cohorts: the EXPANSE project.",
+          "doi": "10.3389/fepid.2024.1327218",
+          "n_participants": 27913545,
+          "pmid": "38863881"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "black_carbon",
+      "name": "Black carbon exposure",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "Black carbon exposure as an environmental or occupational exposure."
+    }
+  ]
+}

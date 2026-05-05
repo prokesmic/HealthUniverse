@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ozone",
+      "outcome_slug": "respiratory_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults exposed to higher ambient ozone",
+      "mechanism": "Ozone is a strong airway oxidant that worsens pulmonary inflammation and can push vulnerable lungs toward fatal decompensation.",
+      "summary": "The anchor for this edge is the 2025 Shams cohort in Sci Total Environ, which suggests that ground-level ozone tracks with higher risk or worse outcomes for respiratory mortality. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ShamsSR et al 2025 Sci Total Environ",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Deep learning-based forecasting of daily maximum ozone levels and assessment of socioeconomic and health impacts in South Korea.",
+          "doi": "10.1016/j.scitotenv.2025.179684",
+          "n_participants": 93,
+          "pmid": "40409021"
+        },
+        {
+          "citation": "WangY et al 2026 Environ Pollut",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effect of compound heat and ozone events on health outcomes: a systematic review and meta-analysis of epidemiological evidence.",
+          "doi": "10.1016/j.envpol.2025.127570",
+          "n_participants": 20348,
+          "pmid": "41422906"
+        },
+        {
+          "citation": "JiaX et al 2026 J Hazard Mater",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of short-term exposure to ozone with total and cause-specific mortality: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.jhazmat.2025.140825",
+          "n_participants": 2025,
+          "pmid": "41422589"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "respiratory_mortality",
+      "name": "Respiratory mortality",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Respiratory mortality as a clinically relevant health outcome."
+    }
+  ]
+}

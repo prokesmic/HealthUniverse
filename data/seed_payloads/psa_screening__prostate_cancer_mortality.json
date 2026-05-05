@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "psa_screening",
+      "outcome_slug": "prostate_cancer_mortality",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "Different designs and subgroups point in different directions, so a single pooled estimate is not the right way to read this edge.",
+      "population": "screening-age men",
+      "mechanism": "PSA screening can move some aggressive prostate cancers into a more treatable window, but it also finds many slow-growing tumors that inflate diagnosis without helping survival.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2018 Vernooij systematic review in BMJ Open already points to psa screening produces mixed findings across studies, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Subgroup differences, dose thresholds, and competing mechanisms likely explain why the literature does not settle into one clean direction.",
+      "evidence": [
+        {
+          "citation": "VernooijRWM et al 2018 BMJ Open",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Values and preferences of men for undergoing prostate-specific antigen screening for prostate cancer: a systematic review.",
+          "doi": "10.1136/bmjopen-2018-025470",
+          "n_participants": 1000,
+          "pmid": "30185585"
+        },
+        {
+          "citation": "MartinRM et al 2024 JAMA",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Prostate-Specific Antigen Screening and 15-Year Prostate Cancer Mortality: A Secondary Analysis of the CAP Randomized Clinical Trial.",
+          "doi": "10.1001/jama.2024.4011",
+          "n_participants": 1451,
+          "pmid": "38581198"
+        },
+        {
+          "citation": "BestwickJP et al 2026 J Med Screen",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Screening for prostate cancer.",
+          "doi": "10.1177/09691413261440207",
+          "n_participants": 1000,
+          "pmid": "41972986"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "psa_screening",
+      "name": "PSA screening",
+      "kind": "activity",
+      "aliases": [],
+      "description": "PSA screening as a structured activity or treatment exposure."
+    },
+    {
+      "slug": "prostate_cancer_mortality",
+      "name": "Prostate cancer mortality",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Prostate cancer mortality as a clinically relevant health outcome."
+    }
+  ]
+}

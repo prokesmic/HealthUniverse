@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "fasting_insulin_high",
+      "outcome_slug": "pancreatic_cancer",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults in metabolic or cancer cohorts",
+      "mechanism": "Chronically high insulin may create a proliferative environment and also track early metabolic dysfunction linked to pancreatic cancer risk.",
+      "summary": "The anchor for this edge is the 2022 Grigor'eva meta analysis in Ter Arkh, which suggests that high fasting insulin tracks with higher risk or worse outcomes for pancreatic cancer. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "GrigorevaIN et al 2022 Ter Arkh",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "[Pancreatic cancer risk: alcoholic and non-alcoholic beverages].",
+          "doi": "10.26442/00403660.2022.02.201375",
+          "n_participants": 19952019,
+          "pmid": "36286749"
+        },
+        {
+          "citation": "LoAuthorC et al 2018 Cochrane Database Syst Rev",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Insulin and glucose-lowering agents for treating people with diabetes and chronic kidney disease.",
+          "doi": "10.1002/14651858.CD011798.pub2",
+          "n_participants": 13036,
+          "pmid": "30246878"
+        },
+        {
+          "citation": "SeguraCuevaKA et al 2026 J Clin Med",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Periodontitis and Pancreatic Cancer Risk: A Systematic Review, Meta-Analysis, and Trial Sequential Analysis.",
+          "doi": "10.3390/jcm15083154",
+          "n_participants": 476245,
+          "pmid": "42074956"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "fasting_insulin_high",
+      "name": "High fasting insulin",
+      "kind": "biomarker",
+      "aliases": [],
+      "description": "High fasting insulin as a measurable biomarker."
+    },
+    {
+      "slug": "pancreatic_cancer",
+      "name": "Pancreatic cancer",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Pancreatic cancer as a clinically relevant health outcome."
+    }
+  ]
+}

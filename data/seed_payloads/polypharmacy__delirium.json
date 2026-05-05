@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "polypharmacy",
+      "outcome_slug": "delirium",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "older adults during acute illness or hospitalization",
+      "mechanism": "Layering psychoactive, anticholinergic, and hemodynamically active drugs narrows the brain's reserve and can precipitate delirium during illness or hospitalization.",
+      "summary": "The strongest piece here is the 2025 Pérez-Ros meta analysis in Worldviews Evid Based Nurs, which ties polypharmacy to delirium in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "PrezRosP et al 2025 Worldviews Evid Based Nurs",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Mortality Risk Following Delirium in Older Inpatients: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1111/wvn.70027",
+          "n_participants": 491604,
+          "pmid": "40369782"
+        },
+        {
+          "citation": "LeeY et al 2026 J Perioper Pract",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of polypharmacy and perioperative outcomes: Systematic review and meta-analysis.",
+          "doi": "10.1177/17504589251320818",
+          "n_participants": 2024,
+          "pmid": "40012179"
+        },
+        {
+          "citation": "PoulsenLM et al 2026 Acta Anaesthesiol Scand",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Mortality Predictions Including Pre-Admission Functional Status in ICU Patients With Delirium-A Substudy of the AID-ICU Trial.",
+          "doi": "10.1111/aas.70225",
+          "n_participants": 1000,
+          "pmid": "41863137"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "polypharmacy",
+      "name": "Polypharmacy",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Polypharmacy as a behavioral exposure or habit."
+    },
+    {
+      "slug": "delirium",
+      "name": "Delirium",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Delirium as a clinically relevant health outcome."
+    }
+  ]
+}

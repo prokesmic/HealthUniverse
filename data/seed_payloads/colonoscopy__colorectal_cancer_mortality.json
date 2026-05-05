@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "colonoscopy",
+      "outcome_slug": "colorectal_cancer_mortality",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+      "population": "average-risk and elevated-risk adults",
+      "mechanism": "Colonoscopy can lower mortality both by detecting cancers earlier and by removing premalignant adenomas before they ever become invasive.",
+      "summary": "For colorectal cancer mortality, the most useful starting point is the 2024 Han meta analysis in Front Oncol. It found that colonoscopy screening tracks with lower risk or better outcomes, and the follow-on evidence is broadly consistent even when absolute benefit or harm is modest.",
+      "caveats": "Healthier-user bias, screening intensity, and baseline risk can all inflate apparent benefit in observational work, so the magnitude should be read conservatively.",
+      "evidence": [
+        {
+          "citation": "HanC et al 2024 Front Oncol",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effectiveness of sigmoidoscopy or colonoscopy screening on colorectal cancer incidence and mortality: a systematic review and meta-analysis of randomized controlled trial.",
+          "doi": "10.3389/fonc.2024.1364923",
+          "n_participants": 663319,
+          "pmid": "38549924"
+        },
+        {
+          "citation": "JodalHC et al 2019 BMJ Open",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Colorectal cancer screening with faecal testing, sigmoidoscopy or colonoscopy: a systematic review and network meta-analysis.",
+          "doi": "10.1136/bmjopen-2019-032773",
+          "n_participants": 96,
+          "pmid": "31578199"
+        },
+        {
+          "citation": "ShiJ et al 2025 Eur J Epidemiol",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of colonoscopy screening on risks of colorectal cancer and related death: instrumental variable estimation of per-protocol effects.",
+          "doi": "10.1007/s10654-025-01209-w",
+          "n_participants": 56365,
+          "pmid": "40278966"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "colonoscopy",
+      "name": "Colonoscopy screening",
+      "kind": "activity",
+      "aliases": [],
+      "description": "Colonoscopy screening as a structured activity or treatment exposure."
+    },
+    {
+      "slug": "colorectal_cancer_mortality",
+      "name": "Colorectal cancer mortality",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Colorectal cancer mortality as a clinically relevant health outcome."
+    }
+  ]
+}

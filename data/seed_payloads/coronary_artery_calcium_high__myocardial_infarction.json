@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "coronary_artery_calcium_high",
+      "outcome_slug": "myocardial_infarction",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "asymptomatic adults with calcium scoring",
+      "mechanism": "High coronary calcium marks an already plaque-rich coronary tree, making future myocardial infarction more likely.",
+      "summary": "The anchor for this edge is the 2026 Park cohort in Prog Cardiovasc Dis, which suggests that high coronary artery calcium score tracks with higher risk or worse outcomes for myocardial infarction. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ParkJR et al 2026 Prog Cardiovasc Dis",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Incremental prognostic value of coronary CTA after treadmill testing in noncardiac surgery candidates: Results from a multicenter prospective cohort.",
+          "doi": "10.1016/j.pcad.2026.02.002",
+          "n_participants": 447,
+          "pmid": "41730378"
+        },
+        {
+          "citation": "SuAuthorA et al 2023 Transplant Direct",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "High Coronary Artery Calcium Score Is Associated With Increased Major Adverse Cardiac Events After Liver Transplantation.",
+          "doi": "10.1097/TXD.0000000000001426",
+          "n_participants": 227,
+          "pmid": "36700067"
+        },
+        {
+          "citation": "AlRifaiM et al 2025 Circ Cardiovasc Imaging",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Prognostic Value of PET-Derived Myocardial Flow Reserve in Patients With Very High Coronary Artery Calcium Score.",
+          "doi": "10.1161/CIRCIMAGING.125.018361",
+          "n_participants": 3091,
+          "pmid": "40772307"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "coronary_artery_calcium_high",
+      "name": "High coronary artery calcium score",
+      "kind": "biomarker",
+      "aliases": [],
+      "description": "High coronary artery calcium score as a measurable biomarker."
+    },
+    {
+      "slug": "myocardial_infarction",
+      "name": "Myocardial infarction",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Myocardial infarction as a clinically relevant health outcome."
+    }
+  ]
+}

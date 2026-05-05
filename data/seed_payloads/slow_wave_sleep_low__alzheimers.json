@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "slow_wave_sleep_low",
+      "outcome_slug": "alzheimers",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "older adults with sleep or biomarker assessments",
+      "mechanism": "Slow-wave sleep supports glymphatic clearance and synchronised cortical activity, both relevant to amyloid and tau handling in Alzheimer's disease.",
+      "summary": "The anchor for this edge is the 2026 Zhang meta analysis in Sleep Med Rev, which suggests that low slow-wave sleep tracks with higher risk or worse outcomes for alzheimer's disease. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ZhangY et al 2026 Sleep Med Rev",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Sleep abnormalities across different clinical stages of Alzheimer's disease: A systematic review and network meta-analysis.",
+          "doi": "10.1016/j.smrv.2026.102289",
+          "n_participants": 100,
+          "pmid": "41985272"
+        },
+        {
+          "citation": "HollowayBM et al 2025 J Clin Sleep Med",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Comorbid insomnia and sleep apnea is associated with worse verbal episodic memory in older females.",
+          "doi": "10.5664/jcsm.11902",
+          "n_participants": 2138,
+          "pmid": "41025403"
+        },
+        {
+          "citation": "EyobE et al 2024 J Alzheimers Dis",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "A Randomized-Controlled Trial Targeting Cognition in Early Alzheimer's Disease by Improving Sleep with Trazodone (REST).",
+          "doi": "10.3233/JAD-230635",
+          "n_participants": 100,
+          "pmid": "39422935"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "slow_wave_sleep_low",
+      "name": "Low slow-wave sleep",
+      "kind": "process",
+      "aliases": [],
+      "description": "Low slow-wave sleep as a measurable physiological or clinical process."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hcaa_pah_exposure",
+      "outcome_slug": "breast_cancer",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with higher intake of charred meats",
+      "mechanism": "Mutagenic compounds from heavily charred meat can form DNA adducts in hormonally responsive tissue, making breast cancer a biologically plausible target.",
+      "summary": "The anchor for this edge is the 2009 Andersen cohort in BMC Cancer, which suggests that hca and pah exposure from charred foods tracks with higher risk or worse outcomes for breast cancer. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "AndersenV et al 2009 BMC Cancer",
+          "year": 2009,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Polymorphisms in the xenobiotic transporter Multidrug Resistance 1 (MDR1) and interaction with meat intake in relation to risk of colorectal cancer in a Danish prospective case-cohort study.",
+          "doi": "10.1186/1471-2407-9-407",
+          "n_participants": 765,
+          "pmid": "19930591"
+        },
+        {
+          "citation": "HampfS et al 2026 Sci Rep",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Network analysis of quality of life and depression in a randomized breast cancer trial with ten-years follow-up.",
+          "doi": "10.1038/s41598-026-51322-3",
+          "n_participants": 364,
+          "pmid": "42082582"
+        },
+        {
+          "citation": "WoganGN et al 2004 Semin Cancer Biol",
+          "year": 2004,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Environmental and chemical carcinogenesis.",
+          "doi": "10.1016/j.semcancer.2004.06.010",
+          "n_participants": 180,
+          "pmid": "15489140"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hcaa_pah_exposure",
+      "name": "HCA and PAH exposure from charred foods",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "HCA and PAH exposure from charred foods as an environmental or occupational exposure."
+    }
+  ]
+}

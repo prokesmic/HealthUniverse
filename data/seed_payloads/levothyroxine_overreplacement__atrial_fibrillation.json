@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "levothyroxine_overreplacement",
+      "outcome_slug": "atrial_fibrillation",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with suppressed TSH on levothyroxine",
+      "mechanism": "Excess thyroid hormone increases adrenergic sensitivity and atrial excitability, providing a straightforward mechanism for more atrial fibrillation when replacement overshoots.",
+      "summary": "The strongest piece here is the 2026 Cai meta analysis in Front Cardiovasc Med, which ties levothyroxine over- replacement to atrial fibrillation in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "CaiB et al 2026 Front Cardiovasc Med",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Intravenous thrombolysis for acute cerebral embolism during atrial fibrillation ablation: a case report and systematic review with meta-analysis.",
+          "doi": "10.3389/fcvm.2026.1801300",
+          "n_participants": 90,
+          "pmid": "42079704"
+        },
+        {
+          "citation": "SamirOK et al 2026 Clin Cardiol",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Methodological Concerns Regarding a Recent Meta-Analysis of Direct Oral Anticoagulants Versus Vitamin K Antagonists in Non-Valvular Atrial Fibrillation.",
+          "doi": "10.1002/clc.70341",
+          "n_participants": 100,
+          "pmid": "42080815"
+        },
+        {
+          "citation": "GencerB et al 2013 Endocr Metab Immune Disord Drug Targets",
+          "year": 2013,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Subclinical thyroid dysfunction and cardiovascular outcomes among prospective cohort studies.",
+          "doi": "10.2174/1871530311313010003",
+          "n_participants": 70,
+          "pmid": "23369133"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "levothyroxine_overreplacement",
+      "name": "Levothyroxine over-replacement",
+      "kind": "drug",
+      "aliases": [],
+      "description": "Levothyroxine over-replacement as a medication exposure."
+    },
+    {
+      "slug": "atrial_fibrillation",
+      "name": "Atrial fibrillation",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Atrial fibrillation as a clinically relevant health outcome."
+    }
+  ]
+}

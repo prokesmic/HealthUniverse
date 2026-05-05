@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "cgm_t2d",
+      "outcome_slug": "time_in_range",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with type 2 diabetes",
+      "mechanism": "CGM improves time-in-range by exposing post-prandial spikes and nocturnal lows that fingerstick testing often misses.",
+      "summary": "The anchor for this edge is the 2026 Okada rct in Res Social Adm Pharm, which suggests that continuous glucose monitoring in type 2 diabetes tracks with lower risk or better outcomes for time in range. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Healthier-user bias, screening intensity, and baseline risk can all inflate apparent benefit in observational work, so the magnitude should be read conservatively.",
+      "evidence": [
+        {
+          "citation": "OkadaH et al 2026 Res Social Adm Pharm",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of different frequencies of intermittently scanned continuous glucose monitoring on glycemic control in adults with type 2 diabetes not using insulin: The COMPASS-libre randomized controlled trial.",
+          "doi": "10.1016/j.sapharm.2026.04.005",
+          "n_participants": 808,
+          "pmid": "42002475"
+        },
+        {
+          "citation": "BerthoumieuxA et al 2026 J Med Internet Res",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A Digital Diabetes Self-Management Education and Support Program Integrated With Continuous Glucose Monitoring Improves Glycemic Control: A Randomized Controlled Trial.",
+          "doi": "10.2196/78321",
+          "n_participants": 51,
+          "pmid": "41996671"
+        },
+        {
+          "citation": "MahmudFH et al 2025 Nat Med",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Adjunct-to-insulin therapy using SGLT2 inhibitors in youth with type 1 diabetes: a randomized controlled trial.",
+          "doi": "10.1038/s41591-025-03723-6",
+          "n_participants": 180,
+          "pmid": "40481206"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cgm_t2d",
+      "name": "Continuous glucose monitoring in type 2 diabetes",
+      "kind": "activity",
+      "aliases": [],
+      "description": "Continuous glucose monitoring in type 2 diabetes as a structured activity or treatment exposure."
+    },
+    {
+      "slug": "time_in_range",
+      "name": "Time in range",
+      "kind": "process",
+      "aliases": [],
+      "description": "Time in range as a measurable physiological or clinical process."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "homa_ir_high",
+      "outcome_slug": "colorectal_cancer",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults in metabolic or cancer cohorts",
+      "mechanism": "Insulin resistance raises insulin and IGF signaling while also feeding inflammation, a reasonable pathway toward colorectal tumor growth.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 AlHussaini meta analysis in Pharmaceutics already points to high homa-ir tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "AlHussainiKI et al 2026 Pharmaceutics",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Remimazolam Versus Propofol for General Anesthesia in Older Adults Undergoing Colon Cancer Surgery: A Systematic Review and Meta-Analysis of Comparative Studies.",
+          "doi": "10.3390/pharmaceutics18040448",
+          "n_participants": 542,
+          "pmid": "42076100"
+        },
+        {
+          "citation": "GiulianiJ et al 2026 J Clin Med",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Metastatic Colorectal Cancer Beyond Third-Line Treatment: Systematic Review and Meta-Analysis of Later-Line Therapies.",
+          "doi": "10.3390/jcm15083128",
+          "n_participants": 102,
+          "pmid": "42074928"
+        },
+        {
+          "citation": "AlKhafajiN et al 2026 Br J Cancer",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "A comparison of overall survival from early-onset and late-onset colorectal cancer stratified by TNM stage: a systematic review.",
+          "doi": "10.1038/s41416-026-03426-w",
+          "n_participants": 332451,
+          "pmid": "42082649"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "homa_ir_high",
+      "name": "High HOMA-IR",
+      "kind": "biomarker",
+      "aliases": [],
+      "description": "High HOMA-IR as a measurable biomarker."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "lead_occupational",
+      "outcome_slug": "hypertension",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "workers with occupational lead exposure",
+      "mechanism": "Lead promotes vascular oxidative stress and impairs nitric-oxide signaling while also affecting renal sodium handling, a plausible route to higher blood pressure.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Yang meta analysis in Front Public Health already points to occupational lead exposure tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "YangP et al 2025 Front Public Health",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Relationship between lead exposure and different types of hypertension: systematic review and dose-response meta-analysis.",
+          "doi": "10.3389/fpubh.2025.1706805",
+          "n_participants": 181500,
+          "pmid": "41450520"
+        },
+        {
+          "citation": "YuAuthorYL et al 2023 J Clin Hypertens (Greenwich)",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Blood pressure and renal function responses in workers exposed to lead for up to six years.",
+          "doi": "10.1111/jch.14748",
+          "n_participants": 234,
+          "pmid": "37938055"
+        },
+        {
+          "citation": "YuAuthorYL et al 2023 Kardiol Pol",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Blood pressure and hypertension in relation to lead exposure updated according to present-day blood lead levels.",
+          "doi": "10.33963/KP.a2023.0142",
+          "n_participants": 40,
+          "pmid": "37366260"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "lead_occupational",
+      "name": "Occupational lead exposure",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "Occupational lead exposure as an environmental or occupational exposure."
+    }
+  ]
+}

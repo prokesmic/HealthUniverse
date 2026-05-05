@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vitamin_d_older_adults",
+      "outcome_slug": "falls",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "Different designs and subgroups point in different directions, so a single pooled estimate is not the right way to read this edge.",
+      "population": "adults aged 75 years and older",
+      "mechanism": "Any fall effect in late life would be expected to operate through muscle function and neuromuscular coordination, not just bone metabolism, which is why dose and baseline deficiency matter.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Alalwani meta analysis in Clin Pract already points to vitamin d supplementation in adults 75+ produces mixed findings across studies, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Subgroup differences, dose thresholds, and competing mechanisms likely explain why the literature does not settle into one clean direction.",
+      "evidence": [
+        {
+          "citation": "AlalwaniYJ et al 2026 Clin Pract",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Fall Prevention Interventions and Fracture Risk in Community-Dwelling Older Adults: A Systematic Review and Meta-Analysis.",
+          "doi": "10.3390/clinpract16030052",
+          "n_participants": 25000,
+          "pmid": "41892496"
+        },
+        {
+          "citation": "TorresLopezR et al 2025 J Clin Med",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Efficacy of Vitamin D Supplementation on the Risk of Falls Among Community-Dwelling Older Adults: A Systematic Review and Meta-Analysis.",
+          "doi": "10.3390/jcm14176117",
+          "n_participants": 23211,
+          "pmid": "40943885"
+        },
+        {
+          "citation": "DyerSM et al 2025 Cochrane Database Syst Rev",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Interventions for preventing falls in older people in care facilities.",
+          "doi": "10.1002/14651858.CD016064",
+          "n_participants": 68964,
+          "pmid": "40832852"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vitamin_d_older_adults",
+      "name": "Vitamin D supplementation in adults 75+",
+      "kind": "supplement",
+      "aliases": [],
+      "description": "Vitamin D supplementation in adults 75+ as a supplement exposure."
+    }
+  ]
+}
