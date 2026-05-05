@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Risk dial — Health Universe{% endblock %}
+{% block content %}
+<section class="risk-page">
+  <a class="back" href="/">← Back</a>
+  <h1>Risk dial</h1>
+  <p class="lede">High-leverage tier-A and tier-B relationships involving things in your stack or the conditions you care about. The factors that move the dial most.</p>
+
+  {% if not (profile.stack or profile.conditions) %}
+  <div class="card empty">
+    <p>Save a profile on <a class="link" href="/me">My stack</a> first — pick a few conditions and current habits and this dial will populate.</p>
+  </div>
+  {% else %}
+  <p class="muted body-sm">Disclaimer: this is a directional summary of the strongest tier-A/B evidence relevant to you. It is <b>not</b> a clinical risk score. For real numbers (10-year cardiovascular risk, dementia probability) talk to a clinician and use validated calculators like QRISK or Framingham.</p>
+
+  <div class="risk-grid">
+    {% for m in movers %}
+    <a class="risk-card tier-bg-{{ m.tier }}" href="/edge/{{ m.id }}">
+      <div class="risk-head">
+        <span class="pill tier-{{ m.tier }}">{{ TIER_LABEL[m.tier] | upper }}</span>
+        <span class="badge dir-{{ m.direction }}">{{ DIRECTION_LABEL[m.direction] }}</span>
+        {% if m.effect_size %}<span class="badge ghost">Effect: {{ m.effect_size }}</span>{% endif %}
+      </div>
+      <h3>{{ m.f_name }} → {{ m.o_name }}</h3>
+      <p class="body-sm">{{ m.summary[:240] }}</p>
+      <small class="muted">{{ m.why == "in_your_stack" and "in your current stack" or "for a condition you track" }}</small>
+    </a>
+    {% else %}
+    <p class="empty">No tier-A/B edges yet for what you've selected. The graph is still growing — check back tomorrow after the cron runs, or expand your <a class="link" href="/me">stack</a>.</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

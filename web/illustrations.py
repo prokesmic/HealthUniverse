@@ -79,40 +79,26 @@ def _pick(rng, options):
 # ---------------------------------------------------------------------------
 
 def _backdrop(w: int, h: int, seed: int, *, c1: str, c2: str, c3: str) -> str:
+    """Calm cream backdrop with two soft color washes. No grain. No third
+    layer. Codex feedback: original simpler look."""
     return f"""
 <defs>
-  <radialGradient id="bg1-{seed}" cx="28%" cy="38%" r="62%">
-    <stop offset="0%"  stop-color="{c1}" stop-opacity="0.95"/>
-    <stop offset="55%" stop-color="{c1}" stop-opacity="0.3"/>
+  <radialGradient id="bg1-{seed}" cx="30%" cy="40%" r="60%">
+    <stop offset="0%"  stop-color="{c1}" stop-opacity="0.78"/>
     <stop offset="100%" stop-color="#f7f1e3" stop-opacity="0"/>
   </radialGradient>
   <radialGradient id="bg2-{seed}" cx="78%" cy="68%" r="60%">
-    <stop offset="0%"  stop-color="{c2}" stop-opacity="0.85"/>
-    <stop offset="55%" stop-color="{c2}" stop-opacity="0.25"/>
-    <stop offset="100%" stop-color="#f7f1e3" stop-opacity="0"/>
-  </radialGradient>
-  <radialGradient id="bg3-{seed}" cx="58%" cy="22%" r="48%">
-    <stop offset="0%"  stop-color="{c3}" stop-opacity="0.5"/>
+    <stop offset="0%"  stop-color="{c2}" stop-opacity="0.7"/>
     <stop offset="100%" stop-color="#f7f1e3" stop-opacity="0"/>
   </radialGradient>
   <linearGradient id="bgL-{seed}" x1="0" x2="0" y1="0" y2="1">
     <stop offset="0%"  stop-color="#fffdf6"/>
     <stop offset="100%" stop-color="#f7f1e3"/>
   </linearGradient>
-  <filter id="grain-{seed}" x="0" y="0" width="100%" height="100%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="{seed % 65535}" />
-    <feColorMatrix values="0 0 0 0 0.5
-                           0 0 0 0 0.45
-                           0 0 0 0 0.35
-                           0 0 0 0.06 0"/>
-    <feComposite in2="SourceGraphic" operator="in"/>
-  </filter>
 </defs>
 <rect width="{w}" height="{h}" fill="url(#bgL-{seed})"/>
 <rect width="{w}" height="{h}" fill="url(#bg1-{seed})"/>
-<rect width="{w}" height="{h}" fill="url(#bg2-{seed})"/>
-<rect width="{w}" height="{h}" fill="url(#bg3-{seed})"/>
-<rect width="{w}" height="{h}" filter="url(#grain-{seed})" opacity="0.4"/>"""
+<rect width="{w}" height="{h}" fill="url(#bg2-{seed})"/>"""
 
 
 # ---------------------------------------------------------------------------
@@ -470,24 +456,16 @@ def edge_svg(*, factor_slug: str, outcome_slug: str, tier: str = "C",
     ]
     parts.append(_backdrop(w, h, seed, c1=f_light, c2=o_light, c3=accent_light))
 
-    # Factor art on the left half
-    parts.append(f'<g transform="translate({-int(w*0.05)} 0)">')
-    parts.append(f_art(int(w*0.62), h, rng, accent=f_dark, light=f_light))
-    parts.append('</g>')
-    # Outcome art on the right half
-    parts.append(f'<g transform="translate({int(w*0.42)} 0)">')
-    parts.append(o_art(int(w*0.62), h, rng, accent=o_dark, light=o_light))
-    parts.append('</g>')
+    # Single calm orbital art layer using the kind of the OUTCOME side.
+    # Codex feedback: original simpler orbital/blob artwork.
+    parts.append(_art_orbital(w, h, rng, accent=accent_dark, light=accent_light))
 
-    # Connecting curve
-    parts.append(_connecting_curve(w, h, rng, accent=accent_dark))
-
-    # Tier accent dots — denser
-    for _ in range(14 + int(rng() * 10)):
+    # Sparse accent dots — calm, not dense
+    for _ in range(7 + int(rng() * 5)):
         x, y = int(rng() * w), int(rng() * h)
-        r = 1.2 + rng() * 2.4
-        col = accent_dark if rng() < 0.45 else "#c9a961"
-        parts.append(f'<circle cx="{x}" cy="{y}" r="{r:.1f}" fill="{col}" opacity="{0.4+rng()*0.5:.2f}"/>')
+        r = 1.5 + rng() * 1.8
+        col = "#c9a961" if rng() < 0.7 else accent_dark
+        parts.append(f'<circle cx="{x}" cy="{y}" r="{r:.1f}" fill="{col}" opacity="{0.5+rng()*0.3:.2f}"/>')
 
     parts.append("</svg>")
     return "".join(parts)

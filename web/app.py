@@ -267,6 +267,108 @@ def me_clear():
     return resp
 
 
+@app.get("/ask", response_class=HTMLResponse)
+def ask_page(request: Request, q: str = ""):
+    p = decode(request.cookies.get(COOKIE))
+    answer = None
+    if q.strip():
+        try:
+            from ask import ask as _ask
+            answer = _ask(q, profile=p)
+        except Exception as e:
+            answer = {"error": str(e)}
+    return render(request, "ask.html", {
+        "title": "Ask my universe",
+        "q": q, "answer": answer, "profile": p,
+    })
+
+
+@app.get("/risk", response_class=HTMLResponse)
+def risk_dial(request: Request):
+    """Risk dial — surface tier-A/B factors in user's stack/conditions."""
+    p = decode(request.cookies.get(COOKIE))
+    if not (p.conditions or p.stack):
+        return render(request, "risk.html", {
+            "title": "Risk dial", "profile": p, "movers": [], "outcomes": [],
+        })
+    with connect() as conn:
+        # Top movers = tier-A/B edges where the factor IS in the user's stack
+        # OR the outcome IS one of their conditions.
+        # We rank by (tier weight × |effect_size|) and surface the strongest.
+        movers = []
+        # Edges on the user's stack
+        if p.stack:
+            placeholders = ",".join("?" * len(p.stack))
+            rows = conn.execute(f"""
+                SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
+                       f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                       o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
+                FROM edge e
+                JOIN entity f ON f.id=e.factor_id
+                JOIN entity o ON o.id=e.outcome_id
+                WHERE f.slug IN ({placeholders})
+                  AND e.tier IN ('A','B')
+                ORDER BY CASE e.tier WHEN 'A' THEN 1 ELSE 2 END,
+                  CASE e.effect_size WHEN 'large' THEN 1 WHEN 'moderate' THEN 2
+                                     WHEN 'small' THEN 3 ELSE 4 END
+                LIMIT 20""", p.stack).fetchall()
+            for r in rows:
+                d = dict(r); d["why"] = "in_your_stack"
+                movers.append(d)
+        # Edges pointing at user's conditions
+        if p.conditions:
+            placeholders = ",".join("?" * len(p.conditions))
+            rows = conn.execute(f"""
+                SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
+                       f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                       o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
+                FROM edge e
+                JOIN entity f ON f.id=e.factor_id
+                JOIN entity o ON o.id=e.outcome_id
+                WHERE o.slug IN ({placeholders})
+                  AND e.tier IN ('A','B')
+                  AND f.slug NOT IN ({",".join("?"*max(len(p.stack), 1)) if p.stack else "''"})
+                ORDER BY CASE e.tier WHEN 'A' THEN 1 ELSE 2 END,
+                  CASE e.effect_size WHEN 'large' THEN 1 WHEN 'moderate' THEN 2
+                                     WHEN 'small' THEN 3 ELSE 4 END
+                LIMIT 20""", (*p.conditions, *(p.stack or []))).fetchall()
+            for r in rows:
+                d = dict(r); d["why"] = "for_your_condition"
+                movers.append(d)
+    # De-dup by edge id
+    seen: set[int] = set(); ordered = []
+    for m in movers:
+        if m["id"] in seen: continue
+        seen.add(m["id"]); ordered.append(m)
+    return render(request, "risk.html", {
+        "title": "Risk dial", "profile": p, "movers": ordered[:30],
+    })
+
+
+@app.get("/diary", response_class=HTMLResponse)
+def diary(request: Request):
+    """Stack diary — client-side log + correlations.
+    The page is mostly static; data lives in localStorage so nothing leaves
+    the device. Backend just lists possible factors/outcomes for checkboxes."""
+    p = decode(request.cookies.get(COOKIE))
+    with connect() as conn:
+        all_factors = [dict(r) for r in conn.execute(
+            "SELECT slug, name, kind FROM entity WHERE kind IN "
+            "('food','supplement','activity','behavior') ORDER BY name").fetchall()]
+        all_outcomes = [dict(r) for r in conn.execute(
+            "SELECT slug, name FROM entity WHERE kind='process' "
+            "AND slug IN ('sleep_quality','inflammation','insulin_resistance',"
+            "'cognitive_decline','gut_microbiome') ORDER BY name").fetchall()]
+        # Tracker outcomes user might subjectively rate: alertness, mood,
+        # energy, digestion, sleep — these aren't entities; UI provides them
+    daily_outcomes = ["energy", "mood", "sleep_quality", "digestion",
+                       "stress", "soreness"]
+    return render(request, "diary.html", {
+        "title": "Stack diary", "profile": p,
+        "factors": all_factors, "daily_outcomes": daily_outcomes,
+    })
+
+
 @app.get("/about", response_class=HTMLResponse)
 def about(request: Request):
     """Methodology + disclaimer + how it's built."""

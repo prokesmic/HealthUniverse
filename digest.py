@@ -78,6 +78,48 @@ def _push_ntfy(title: str, body: str, click: str | None = None) -> bool:
         print(f"ntfy push failed: {e}"); return False
 
 
+def run_personalized(*, hours: int = 24, push: bool = False,
+                     stack_slugs: list[str] | None = None,
+                     condition_slugs: list[str] | None = None,
+                     ntfy_topic: str | None = None) -> dict:
+    """Per-user digest: only changes touching the user's stack or conditions."""
+    LOG_DIR.mkdir(parents=True, exist_ok=True)
+    with connect() as conn:
+        rows = _changes_since(conn, hours)
+    relevant: list[dict] = []
+    for r in rows:
+        # changes_since returns f_name and o_name only — match by name OR
+        # query underlying entity slug.
+        with connect() as conn:
+            f_slug = conn.execute(
+                "SELECT slug FROM entity WHERE name=? LIMIT 1", (r["f_name"],)
+            ).fetchone()
+            o_slug = conn.execute(
+                "SELECT slug FROM entity WHERE name=? LIMIT 1", (r["o_name"],)
+            ).fetchone()
+        f, o = (f_slug["slug"] if f_slug else None), (o_slug["slug"] if o_slug else None)
+        if (stack_slugs and f in (stack_slugs or [])) or \
+           (condition_slugs and o in (condition_slugs or [])):
+            relevant.append(r)
+    md = _format_markdown(relevant, f"last {hours}h, personalised")
+    out_path = LOG_DIR / f"digest-personal-{dt.date.today().isoformat()}.md"
+    out_path.write_text(md)
+    print(f"[digest-personal] wrote {out_path} ({len(relevant)} relevant)")
+    if push and relevant and ntfy_topic:
+        body = "\n".join(f"• {r['f_name']} → {r['o_name']} "
+                         f"({r['old_value'] or 'new'} → {r['new_value']})"
+                         for r in relevant[:5])
+        try:
+            r2 = httpx.post(f"{NTFY_BASE}/{ntfy_topic}",
+                            data=body.encode(),
+                            headers={"Title": f"Health Universe — {len(relevant)} personal update(s)"},
+                            timeout=15.0)
+            print(f"  ntfy {ntfy_topic}: {r2.status_code}")
+        except Exception as e:
+            print(f"  ntfy failed: {e}")
+    return {"changes": len(relevant), "path": str(out_path)}
+
+
 def run(*, hours: int = 24, push: bool = False) -> dict:
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     with connect() as conn:

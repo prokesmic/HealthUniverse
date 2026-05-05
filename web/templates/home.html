@@ -19,6 +19,16 @@
         <div><b>Updated</b><small>{{ stats.updated[:10] if stats.updated != "—" else "—" }}</small></div>
       </div>
     </div>
+
+    <nav class="categories" aria-label="Categories">
+      {% for c in categories %}
+      <a class="cat" href="/category/{{ c.slug }}">
+        <span class="cat-icon icon-{{ c.icon }}" aria-hidden="true"></span>
+        <b>{{ c.label }}</b>
+        <small>{{ "{:,}".format(c.count) }}</small>
+      </a>
+      {% endfor %}
+    </nav>
   </div>
   <div class="hero-art" aria-hidden="true">
     {{ hero_svg() | safe }}
@@ -62,16 +72,6 @@
     </div>
     {% endif %}
   </div>
-</section>
-
-<section class="categories">
-  {% for c in categories %}
-  <a class="cat" href="/category/{{ c.slug }}">
-    <span class="cat-icon icon-{{ c.icon }}" aria-hidden="true"></span>
-    <b>{{ c.label }}</b>
-    <small>{{ "{:,}".format(c.count) }}</small>
-  </a>
-  {% endfor %}
 </section>
 
 {% if discoveries %}
