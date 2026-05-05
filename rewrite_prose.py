@@ -27,6 +27,9 @@ sys.path.insert(0, str(ROOT))
 from db import connect                                # noqa: E402
 from ollama_client import call, OllamaUnavailable     # noqa: E402
 
+REWRITE_MODEL = "llama3:8b"   # non-thinking, fast (~5s/edge vs ~10min on gemma4:26b)
+
+
 SYSTEM = """You rewrite knowledge-graph card prose. You receive a (factor → outcome) \
 pair, the evidence rows that support it, and the existing draft prose. You return \
 two short pieces of plain English: a 2-4 sentence summary, and a 2-3 sentence \
@@ -108,21 +111,33 @@ def rewrite_one(conn, edge: dict) -> dict | None:
         mechanism=edge["mechanism"][:600],
         evidence_lines=_evidence_lines(evidence),
     )
-    text = call(system=SYSTEM, user=user, temperature=0.3, num_predict=1500)
+    text = call(system=SYSTEM, user=user, model=REWRITE_MODEL,
+                temperature=0.3, num_predict=900)
+    return _extract_json(text)
+
+
+def _extract_json(text: str) -> dict | None:
+    """Robust JSON extraction. Handles fenced blocks, preamble prose,
+    and non-greedy multi-line JSON objects."""
     import json, re
-    m = re.search(r"\{[^{}]*\"summary\"[^{}]*\}", text, re.DOTALL)
-    if not m:
-        # try fenced block
-        m2 = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
-        if not m2:
-            return None
-        m = m2.group(1)
-    else:
-        m = m.group(0)
-    try:
-        return json.loads(m)
-    except Exception:
-        return None
+    # Try fenced block first (llama3 prefers this)
+    m = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
+    if m:
+        try: return json.loads(m.group(1))
+        except Exception: pass
+    # Find first balanced {...}
+    start = text.find("{")
+    while start != -1:
+        depth = 0
+        for i, ch in enumerate(text[start:], start):
+            if ch == "{": depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth == 0:
+                    try: return json.loads(text[start:i + 1])
+                    except Exception: break
+        start = text.find("{", start + 1)
+    return None
 
 
 def run(*, limit: int = 250, dry_run: bool = False) -> dict:
@@ -148,7 +163,8 @@ def run(*, limit: int = 250, dry_run: bool = False) -> dict:
 
         new_sum = payload["summary"].strip()
         new_mech = payload["mechanism"].strip()
-        if len(new_sum) < 60 or len(new_mech) < 40:
+        # Floor lowered: "Mechanism not well established." is honest and short.
+        if len(new_sum) < 60 or len(new_mech) < 25:
             summary["skipped"] += 1; continue
 
         if dry_run:

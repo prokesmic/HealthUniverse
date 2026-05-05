@@ -13,7 +13,7 @@ ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 from db import connect  # noqa: E402
 from profile import COOKIE, Profile, decode, encode, relevance_score  # noqa: E402
-from web.illustrations import edge_svg  # noqa: E402
+from web.illustrations import edge_svg, hero_svg  # noqa: E402
 
 app = FastAPI(title="Health Universe")
 WEB_DIR = Path(__file__).parent
@@ -23,6 +23,7 @@ app.mount("/static", StaticFiles(directory=str(WEB_DIR / "static")), name="stati
 # Make `edge_svg(...)` callable from any Jinja template.
 # (Functions in env.globals are hashable, unlike dict-valued globals.)
 templates.env.globals["edge_svg"] = edge_svg
+templates.env.globals["hero_svg"] = hero_svg
 
 
 # ---- tier display helpers ----------------------------------------------------
@@ -264,6 +265,34 @@ def me_clear():
     resp = RedirectResponse("/me", status_code=303)
     resp.delete_cookie(COOKIE)
     return resp
+
+
+@app.get("/about", response_class=HTMLResponse)
+def about(request: Request):
+    """Methodology + disclaimer + how it's built."""
+    with connect() as conn:
+        stats = _stats(conn)
+        spent = conn.execute(
+            "SELECT COALESCE(SUM(usd), 0) AS u FROM cost_ledger").fetchone()["u"]
+        tier_counts = {r["tier"]: r["c"] for r in conn.execute(
+            "SELECT tier, COUNT(*) c FROM edge GROUP BY tier").fetchall()}
+        n_retracted = 0
+        try:
+            n_retracted = conn.execute(
+                "SELECT COUNT(*) c FROM evidence_status WHERE is_retracted=1"
+            ).fetchone()["c"]
+        except Exception:
+            pass
+        n_pmid_distinct = conn.execute(
+            "SELECT COUNT(DISTINCT pmid) c FROM evidence WHERE pmid IS NOT NULL"
+        ).fetchone()["c"]
+    return render(request, "about.html", {
+        "title": "About",
+        "stats": stats, "spent_usd": spent,
+        "tier_counts": tier_counts,
+        "n_retracted": n_retracted,
+        "n_pmid_distinct": n_pmid_distinct,
+    })
 
 
 @app.get("/robots.txt")

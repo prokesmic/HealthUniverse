@@ -514,6 +514,31 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 .explore-edge-list li a { display: block; padding: 6px 10px; border-radius: 6px; font-size: 13px; color: inherit; }
 .explore-edge-list li a:hover { background: var(--bg-soft); }
 
+/* ---------- About page ---------- */
+.about-page { max-width: 980px; }
+.about-lede { font-size: 19px; max-width: 760px; margin-bottom: 28px; }
+.about-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 18px; margin-bottom: 32px;
+}
+.about-stats > div { text-align: left; padding: 0 8px; border-right: 1px solid var(--line); }
+.about-stats > div:last-child { border-right: 0; }
+.about-stats b { display: block; font-family: 'Fraunces', serif; font-weight: 500; font-size: 26px; color: var(--ink); }
+.about-stats small { color: var(--ink-soft); }
+.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 32px; margin-bottom: 32px; }
+.about-side { display: flex; flex-direction: column; gap: 14px; }
+.about-side .card h3 { font-size: 18px; margin-bottom: 8px; }
+.about-steps { padding-left: 20px; }
+.about-steps li { margin-bottom: 14px; line-height: 1.6; }
+.about-steps b { color: var(--ink); }
+.tier-grid { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 6px; }
+.tier-grid li { display: grid; grid-template-columns: 36px 1fr; gap: 8px; align-items: baseline; font-size: 14px; }
+.tier-grid .pill { font-size: 11px; padding: 3px 8px; }
+.about-wont { padding-left: 20px; }
+.about-wont li { margin-bottom: 8px; }
+@media (max-width: 880px) { .about-grid { grid-template-columns: 1fr; } .about-stats { grid-template-columns: repeat(2, 1fr); } }
+
 /* ---------- Pagination ---------- */
 .pagination { display: flex; justify-content: center; align-items: center; gap: 16px; margin: 32px 0 16px; }
 

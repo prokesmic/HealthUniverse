@@ -15,6 +15,7 @@ const OUT  = path.join(__dirname, '..', 'data', 'screenshots');
 
 const ROUTES = [
   '/',
+  '/about',
   '/discoveries',
   '/explore',
   '/explore?focus=magnesium',
