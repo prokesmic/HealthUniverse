@@ -25,6 +25,12 @@ sys.path.insert(0, str(ROOT))
 from db import connect          # noqa: E402
 from ollama_client import call_json, OllamaUnavailable  # noqa: E402
 from ingest import pubmed, europepmc  # noqa: E402
+try:
+    from dedupe import find_near_edge      # noqa: E402
+    from embeddings import embed, pack     # noqa: E402
+    EMBED_OK = True
+except Exception:
+    EMBED_OK = False
 
 
 # ----------------------------------------------------------------------------
@@ -210,18 +216,44 @@ def _apply_claim(conn, paper: dict, claim: dict, fmap: dict, omap: dict) -> dict
     }
 
     if edge is None:
-        # New edge: create at C/D depending on this single piece of evidence
-        score = score_edge([ev_row])
-        new_tier = score_to_tier(score, 1, has_high_tier_evidence([ev_row]))
-        cur = conn.execute(
-            "INSERT INTO edge (factor_id, outcome_id, direction, tier, "
-            "summary, mechanism, population, seed_source) "
-            "VALUES (?, ?, ?, ?, ?, '', 'general adult', 'gemma_daily')",
-            (f["id"], o["id"], claim.get("direction", "mixed"), new_tier,
-             claim.get("notes", "")),
-        )
-        edge_id = cur.lastrowid
-        old_tier = None
+        # Before creating a new edge, check if a near-duplicate already exists
+        # for this factor (e.g. another outcome that means the same thing).
+        # If so, fold the evidence into that edge instead of creating a dupe.
+        folded_into = None
+        if EMBED_OK:
+            try:
+                folded_into = find_near_edge(
+                    f["id"], o["id"], claim.get("notes", "") or omap.get(oslug, ""),
+                    threshold=0.93)
+            except Exception:
+                folded_into = None
+        if folded_into:
+            edge_id = folded_into
+            old_tier = conn.execute("SELECT tier FROM edge WHERE id=?",
+                                    (folded_into,)).fetchone()["tier"]
+        else:
+            # Create new edge at C/D from this single piece of evidence
+            score = score_edge([ev_row])
+            new_tier = score_to_tier(score, 1, has_high_tier_evidence([ev_row]))
+            cur = conn.execute(
+                "INSERT INTO edge (factor_id, outcome_id, direction, tier, "
+                "summary, mechanism, population, seed_source) "
+                "VALUES (?, ?, ?, ?, ?, '', 'general adult', 'gemma_daily')",
+                (f["id"], o["id"], claim.get("direction", "mixed"), new_tier,
+                 claim.get("notes", "")),
+            )
+            edge_id = cur.lastrowid
+            old_tier = None
+            # Embed the new edge so future near-dup checks can match it.
+            if EMBED_OK:
+                try:
+                    text = (f"{fmap[fslug]} -> {omap[oslug]}: "
+                            f"{claim.get('notes','')} ({claim.get('direction')})")
+                    conn.execute(
+                        "UPDATE edge SET embedding=?, embedded_at=datetime('now') "
+                        "WHERE id=?", (pack(embed(text)), edge_id))
+                except Exception:
+                    pass
     else:
         edge_id = edge["id"]
         old_tier = edge["tier"]
