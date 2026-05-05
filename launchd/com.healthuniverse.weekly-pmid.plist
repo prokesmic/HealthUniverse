@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Weekly PMID retraction watcher.
+     Install:
+       cp launchd/com.healthuniverse.weekly-pmid.plist ~/Library/LaunchAgents/
+       launchctl bootstrap gui/$UID ~/Library/LaunchAgents/com.healthuniverse.weekly-pmid.plist
+     Edit the repo path below if HealthUniverse lives elsewhere. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>            <string>com.healthuniverse.weekly-pmid</string>
+  <key>ProgramArguments</key>
+    <array>
+      <string>/bin/bash</string>
+      <string>-lc</string>
+      <string>cd /Users/michalai/HealthUniverse &amp;&amp; ./launchd/run-pmid-watcher.sh</string>
+    </array>
+  <key>StartCalendarInterval</key>
+    <dict>
+      <key>Weekday</key> <integer>0</integer>
+      <key>Hour</key>    <integer>4</integer>
+      <key>Minute</key>  <integer>30</integer>
+    </dict>
+  <key>RunAtLoad</key>        <false/>
+</dict>
+</plist>

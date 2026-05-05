@@ -417,15 +417,26 @@ def edge_detail(request: Request, edge_id: int):
         if not e:
             return HTMLResponse("Not found", status_code=404)
         evidence = conn.execute(
-            "SELECT * FROM evidence WHERE edge_id = ? ORDER BY year DESC",
+            """
+            SELECT ev.*,
+                   COALESCE(es.is_retracted, 0) AS is_retracted,
+                   es.retraction_note
+            FROM evidence ev
+            LEFT JOIN evidence_status es ON es.pmid = ev.pmid
+            WHERE ev.edge_id = ?
+            ORDER BY ev.year DESC, ev.id DESC
+            """,
             (edge_id,)).fetchall()
         history = conn.execute(
             "SELECT * FROM edge_history WHERE edge_id = ? ORDER BY changed_at DESC",
             (edge_id,)).fetchall()
+    evidence_rows = [dict(r) for r in evidence]
+    retracted_count = sum(1 for r in evidence_rows if r["is_retracted"])
     return render(request, "edge.html", {
         "e": dict(e),
-        "evidence": [dict(r) for r in evidence],
+        "evidence": evidence_rows,
         "history": [dict(r) for r in history],
+        "retracted_evidence_count": retracted_count,
     })
 
 

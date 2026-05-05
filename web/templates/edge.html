@@ -31,6 +31,11 @@
 
   <div class="edge-grid">
     <div>
+      {% if retracted_evidence_count %}
+      <div class="edge-alert">
+        This edge has {{ retracted_evidence_count }} retracted stud{{ retracted_evidence_count == 1 and "y" or "ies" }}. Tier should be reconsidered.
+      </div>
+      {% endif %}
       <details class="why-tier">
         <summary>Why this tier? <small class="muted">audit trail</small></summary>
         <p class="muted small">Tier was last set on {{ e.last_reviewed[:10] }} by <b>{{ e.seed_source }}</b>.
@@ -53,7 +58,16 @@
         <tbody>
         {% for ev in evidence %}
           <tr>
-            <td>{{ ev.citation }}<br/><small class="muted">{{ ev.notes }}</small></td>
+            <td>
+              <div class="citation-head">
+                <span>{{ ev.citation }}</span>
+                {% if ev.is_retracted %}<span class="pill tier-D">RETRACTED</span>{% endif %}
+              </div>
+              {% if ev.notes %}<small class="muted">{{ ev.notes }}</small>{% endif %}
+              {% if ev.is_retracted and ev.retraction_note %}
+              <small class="muted retraction-note">{{ ev.retraction_note }}</small>
+              {% endif %}
+            </td>
             <td>{{ ev.year or "—" }}</td>
             <td>{{ ev.study_type or "—" }}</td>
             <td>{{ ev.n_participants or "—" }}</td>

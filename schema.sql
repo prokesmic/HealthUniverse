@@ -71,6 +71,16 @@ CREATE TABLE IF NOT EXISTS evidence (
 CREATE INDEX IF NOT EXISTS idx_evidence_edge ON evidence(edge_id);
 CREATE INDEX IF NOT EXISTS idx_evidence_pmid ON evidence(pmid);
 
+CREATE TABLE IF NOT EXISTS evidence_status (
+    pmid            TEXT PRIMARY KEY,
+    is_retracted    INTEGER NOT NULL DEFAULT 0,
+    retraction_note TEXT,
+    last_checked    TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_status_retracted
+    ON evidence_status(is_retracted);
+
 -- History: every tier change recorded so cards can show "what changed".
 CREATE TABLE IF NOT EXISTS edge_history (
     id          INTEGER PRIMARY KEY,
