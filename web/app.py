@@ -505,6 +505,23 @@ def sitemap():
 
 # ---- public JSON API --------------------------------------------------------
 
+@app.get("/labs", response_class=HTMLResponse)
+def labs_page(request: Request):
+    """Lab + wearable ingestion foundations. Data stays in localStorage on
+    this device (consistent with profile + diary trust model). The UI
+    accepts blood-marker entries and a JSON upload from common formats.
+    Future: feed these values into profile-aware ranking via /api/profile-brief."""
+    # The set of biomarker entities we already track in the graph
+    with connect() as conn:
+        biomarkers = [dict(r) for r in conn.execute(
+            "SELECT slug, name FROM entity WHERE kind='biomarker' ORDER BY name"
+        ).fetchall()]
+    return render(request, "labs.html", {
+        "title": "Labs and wearables",
+        "biomarkers": biomarkers,
+    })
+
+
 @app.get("/protocols", response_class=HTMLResponse)
 def protocols_index(request: Request):
     """N-of-1 protocol builder. State lives in localStorage on the

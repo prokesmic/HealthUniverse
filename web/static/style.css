@@ -766,6 +766,56 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 }
 
 /* =============================================================
+   /labs — lab + wearable ingestion foundations
+   ============================================================= */
+
+.labs-page { max-width: 1080px; margin: 0 auto; }
+.labs-page .back { color: var(--ink-soft); font-size: 13px; }
+.labs-head {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+  border: 1px solid var(--line); border-radius: 22px;
+  padding: 32px 40px; margin: 18px 0 24px;
+}
+.labs-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; margin: 0 0 8px; }
+.labs-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: 52px; line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 14px; color: var(--ink); }
+.labs-lede { font-size: 16px; line-height: 1.55; max-width: 720px; color: var(--ink-soft); margin: 0 0 14px; }
+.labs-privacy {
+  display: inline-flex; gap: 8px; align-items: center;
+  background: var(--tier-A-bg); color: var(--tier-A);
+  border: 1px solid var(--tier-A); border-radius: 999px;
+  padding: 6px 14px; font-size: 13px;
+}
+.labs-privacy code { font-family: 'Inter'; font-size: 12px; background: rgba(255,255,255,0.6); padding: 0 4px; border-radius: 3px; }
+
+.labs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+.labs-card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 26px; }
+.labs-card.labs-history { grid-column: 1 / -1; }
+.labs-h { font-family: 'Fraunces', serif; font-weight: 500; font-size: 18px; margin: 0 0 8px; }
+
+.lab-form { margin-top: 12px; }
+.lab-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 12px; }
+.lab-row label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--ink-soft); font-weight: 500; }
+.lab-row select, .lab-row input { padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: white; font: inherit; font-size: 14px; }
+.lab-form .btn-primary { width: auto; padding: 10px 18px; margin: 0; }
+
+.lab-list { list-style: none; padding: 0; margin: 8px 0 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
+.lab-item { padding: 12px 14px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px; }
+.lab-item-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+.lab-item-head b { font-size: 14px; color: var(--ink); }
+.lab-item-value { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; color: var(--ink); line-height: 1; }
+.lab-empty { padding: 12px; text-align: center; }
+
+.lab-actions { display: flex; gap: 10px; padding-top: 12px; border-top: 1px solid var(--line); }
+.lab-actions .btn-secondary { width: auto; padding: 8px 14px; margin: 0; }
+
+.labs-disclaimer { font-style: italic; font-size: 13px; color: var(--muted); padding-top: 18px; border-top: 1px solid var(--line); }
+
+@media (max-width: 720px) {
+  .labs-title { font-size: 36px; }
+  .labs-grid { grid-template-columns: 1fr; }
+}
+
+/* =============================================================
    /protocols — N-of-1 protocol builder
    ============================================================= */
 

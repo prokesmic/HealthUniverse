@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}Labs and wearables — Health Universe{% endblock %}
+{% block content %}
+<section class="labs-page">
+  <a class="back" href="/">← Back to Health Universe</a>
+
+  <header class="labs-head">
+    <p class="labs-eyebrow">Personal data · stays on this device</p>
+    <h1 class="labs-title">Labs and wearables</h1>
+    <p class="labs-lede">Add your bloodwork or a wearable summary. Future versions of the brief and risk dial will use these values to refine relevance — e.g. an iron edge becomes more relevant if your ferritin is low. Foundation only for now: storing values, not yet wiring them into ranking.</p>
+    <p class="labs-privacy"><span class="labs-privacy-icon" aria-hidden="true">⌥</span> All values live in <code>localStorage</code> on this browser. Nothing is uploaded.</p>
+  </header>
+
+  <div class="labs-grid">
+    <section class="labs-card">
+      <h2 class="labs-h">Blood markers</h2>
+      <p class="muted body-sm">Add the values from a recent blood test. We'll match them to biomarker entities we already track in the evidence graph.</p>
+      <form id="lab-form" class="lab-form">
+        <div class="lab-row">
+          <label>Marker
+            <select id="lab-marker" required>
+              <option value="">— pick —</option>
+              {% for b in biomarkers %}
+              <option value="{{ b.slug }}">{{ b.name }}</option>
+              {% endfor %}
+              <option value="other">Other (free text)</option>
+            </select>
+          </label>
+          <label id="lab-other-wrap" style="display:none">Custom name
+            <input type="text" id="lab-other" placeholder="e.g. ferritin">
+          </label>
+          <label>Value
+            <input type="text" id="lab-value" placeholder="e.g. 80 or 5.4">
+          </label>
+          <label>Unit
+            <input type="text" id="lab-unit" placeholder="mg/dL">
+          </label>
+          <label>Date
+            <input type="date" id="lab-date">
+          </label>
+        </div>
+        <button class="btn-primary" type="submit">Save value</button>
+      </form>
+    </section>
+
+    <section class="labs-card">
+      <h2 class="labs-h">Wearable summary</h2>
+      <p class="muted body-sm">Drop a JSON or CSV from Apple Health, Garmin, Oura, or Whoop exports. We'll keep the file in this browser and parse a few fields.</p>
+      <input type="file" id="wear-upload" accept=".json,.csv,.txt">
+      <p class="muted small" id="wear-status">No file uploaded yet.</p>
+    </section>
+
+    <section class="labs-card labs-history">
+      <h2 class="labs-h">Your values</h2>
+      <ul id="lab-list" class="lab-list">
+        <li class="lab-empty muted body-sm">Nothing logged yet.</li>
+      </ul>
+      <div class="lab-actions">
+        <button class="btn-secondary" id="lab-export">⤓ Export JSON</button>
+        <button class="btn-secondary" id="lab-clear">Clear all</button>
+      </div>
+    </section>
+  </div>
+
+  <p class="labs-disclaimer">Reference ranges depend on lab and population. We don't interpret values clinically — that's a doctor's job. We just store and surface them.</p>
+</section>
+
+<script>
+const KEY = "hu_labs_v1";
+function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{"values":[],"wearable":null}'); } catch (e) { return { values: [], wearable: null }; } }
+function save(d) { localStorage.setItem(KEY, JSON.stringify(d)); }
+
+document.getElementById("lab-marker").onchange = e => {
+  document.getElementById("lab-other-wrap").style.display =
+    e.target.value === "other" ? "" : "none";
+};
+
+document.getElementById("lab-form").onsubmit = e => {
+  e.preventDefault();
+  const marker = document.getElementById("lab-marker").value;
+  const other = document.getElementById("lab-other").value;
+  const value = document.getElementById("lab-value").value;
+  const unit = document.getElementById("lab-unit").value;
+  const date = document.getElementById("lab-date").value || new Date().toISOString().slice(0, 10);
+  if (!marker || !value) return;
+  const d = load();
+  d.values.push({
+    marker: marker === "other" ? other : marker,
+    label: marker === "other" ? other : document.getElementById("lab-marker").selectedOptions[0].textContent,
+    value, unit, date,
+  });
+  save(d);
+  e.target.reset();
+  document.getElementById("lab-other-wrap").style.display = "none";
+  render();
+};
+
+document.getElementById("wear-upload").onchange = async e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const text = await file.text();
+  const d = load();
+  d.wearable = { name: file.name, size: file.size, raw: text.slice(0, 50000), at: new Date().toISOString() };
+  save(d);
+  document.getElementById("wear-status").textContent =
+    `✓ ${file.name} · ${(file.size / 1024).toFixed(1)} KB · stored locally`;
+};
+
+document.getElementById("lab-export").onclick = () => {
+  const d = load();
+  const blob = new Blob([JSON.stringify(d, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `health-universe-labs-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+};
+document.getElementById("lab-clear").onclick = () => {
+  if (!confirm("Wipe all lab values and wearable data on this device?")) return;
+  localStorage.removeItem(KEY); render();
+  document.getElementById("wear-status").textContent = "No file uploaded yet.";
+};
+
+function render() {
+  const d = load();
+  const ul = document.getElementById("lab-list");
+  if (!d.values.length) {
+    ul.innerHTML = '<li class="lab-empty muted body-sm">Nothing logged yet.</li>';
+  } else {
+    ul.innerHTML = d.values.slice().reverse().map(v => `
+      <li class="lab-item">
+        <div class="lab-item-head">
+          <b>${v.label}</b>
+          <span class="muted small">${v.date}</span>
+        </div>
+        <div class="lab-item-value">${v.value} <span class="muted small">${v.unit || ""}</span></div>
+      </li>`).join("");
+  }
+  if (d.wearable) {
+    document.getElementById("wear-status").textContent =
+      `✓ ${d.wearable.name} · ${(d.wearable.size / 1024).toFixed(1)} KB · stored ${d.wearable.at.slice(0, 10)}`;
+  }
+}
+render();
+</script>
+{% endblock %}
