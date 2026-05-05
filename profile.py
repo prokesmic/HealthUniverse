@@ -30,6 +30,10 @@ class Profile:
     conditions: list[str] = field(default_factory=list)   # entity slugs
     goals:      list[str] = field(default_factory=list)   # entity slugs / free
     stack:      list[str] = field(default_factory=list)   # factor slugs (current supplements/diet)
+    # Watchlists — explicit follow signals for change intelligence
+    watch_factors:  list[str] = field(default_factory=list)
+    watch_outcomes: list[str] = field(default_factory=list)
+    watch_edges:    list[int] = field(default_factory=list)
 
 
 def _sign(payload: bytes) -> str:
@@ -63,7 +67,8 @@ def decode(token: str | None) -> Profile:
     try:
         data = json.loads(raw)
         return Profile(**{k: data.get(k) for k in
-                          ("age", "sex", "conditions", "goals", "stack")
+                          ("age", "sex", "conditions", "goals", "stack",
+                           "watch_factors", "watch_outcomes", "watch_edges")
                           if k in data})
     except Exception:
         return Profile()

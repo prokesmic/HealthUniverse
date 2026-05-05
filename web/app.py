@@ -284,6 +284,37 @@ async def me_save(request: Request,
     return resp
 
 
+@app.post("/follow")
+async def follow(request: Request, kind: str = Form(...),
+                 slug: str = Form(""), edge_id: str = Form(""),
+                 next: str = Form("/")):
+    """Toggle a watchlist entry. kind in {factor, outcome, edge}."""
+    p = decode(request.cookies.get(COOKIE))
+    if kind == "factor" and slug:
+        if slug in p.watch_factors:
+            p.watch_factors.remove(slug)
+        else:
+            p.watch_factors.append(slug)
+    elif kind == "outcome" and slug:
+        if slug in p.watch_outcomes:
+            p.watch_outcomes.remove(slug)
+        else:
+            p.watch_outcomes.append(slug)
+    elif kind == "edge" and edge_id:
+        try:
+            eid = int(edge_id)
+            if eid in p.watch_edges:
+                p.watch_edges.remove(eid)
+            else:
+                p.watch_edges.append(eid)
+        except ValueError:
+            pass
+    resp = RedirectResponse(next or "/", status_code=303)
+    resp.set_cookie(COOKIE, encode(p), max_age=60*60*24*365,
+                    httponly=False, samesite="lax")
+    return resp
+
+
 @app.post("/me/clear")
 def me_clear():
     resp = RedirectResponse("/me", status_code=303)
@@ -1031,6 +1062,7 @@ def edge_png(edge_id: int):
 
 @app.get("/edge/{edge_id}", response_class=HTMLResponse)
 def edge_detail(request: Request, edge_id: int):
+    profile = decode(request.cookies.get(COOKIE))
     with connect() as conn:
         e = conn.execute("""
             SELECT e.*, f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
@@ -1079,6 +1111,7 @@ def edge_detail(request: Request, edge_id: int):
         "counter": co_rows,
         "history": [dict(r) for r in history],
         "retracted_evidence_count": retracted_count,
+        "profile": profile,
     })
 
 
@@ -1212,24 +1245,49 @@ def myths(request: Request):
 
 
 @app.get("/changes", response_class=HTMLResponse)
-def changes(request: Request, days: int = 14):
-    """What changed recently — tier promotions/demotions, new edges."""
+def changes(request: Request, days: int = 14, personal: int = 0):
+    """Recent edge changes. personal=1 filters to the user's watchlists +
+    tracked stack and conditions."""
+    p = decode(request.cookies.get(COOKIE))
+    has_watch = bool(p.watch_factors or p.watch_outcomes or p.watch_edges
+                     or p.stack or p.conditions)
+    sql = """
+        SELECT h.changed_at, h.field, h.old_value, h.new_value, h.reason, h.actor,
+               e.id AS edge_id, e.tier, e.direction,
+               f.slug AS f_slug, f.name AS f_name,
+               o.slug AS o_slug, o.name AS o_name
+        FROM edge_history h
+        JOIN edge e ON e.id = h.edge_id
+        JOIN entity f ON f.id = e.factor_id
+        JOIN entity o ON o.id = e.outcome_id
+        WHERE h.changed_at >= datetime('now', ?)"""
+    params: list = [f"-{int(days)} days"]
+    if personal and has_watch:
+        watched_factors = list(set(p.watch_factors + p.stack))
+        watched_outcomes = list(set(p.watch_outcomes + p.conditions))
+        clauses = []
+        if watched_factors:
+            clauses.append(f"f.slug IN ({','.join('?'*len(watched_factors))})")
+            params.extend(watched_factors)
+        if watched_outcomes:
+            clauses.append(f"o.slug IN ({','.join('?'*len(watched_outcomes))})")
+            params.extend(watched_outcomes)
+        if p.watch_edges:
+            clauses.append(f"e.id IN ({','.join('?'*len(p.watch_edges))})")
+            params.extend(p.watch_edges)
+        if clauses:
+            sql += " AND (" + " OR ".join(clauses) + ")"
+    sql += " ORDER BY h.changed_at DESC LIMIT 200"
     with connect() as conn:
-        rows = conn.execute("""
-            SELECT h.changed_at, h.field, h.old_value, h.new_value, h.reason, h.actor,
-                   e.id AS edge_id, e.tier, e.direction,
-                   f.name AS f_name, o.name AS o_name
-            FROM edge_history h
-            JOIN edge e ON e.id = h.edge_id
-            JOIN entity f ON f.id = e.factor_id
-            JOIN entity o ON o.id = e.outcome_id
-            WHERE h.changed_at >= datetime('now', ?)
-            ORDER BY h.changed_at DESC LIMIT 200""",
-            (f"-{int(days)} days",)).fetchall()
+        rows = conn.execute(sql, params).fetchall()
     return render(request, "changes.html", {
         "title": "What changed",
         "rows": [dict(r) for r in rows],
         "days": days,
+        "personal": bool(personal),
+        "has_watch": has_watch,
+        "watch_count": len(p.watch_factors) + len(p.watch_outcomes) + len(p.watch_edges) + len(p.stack) + len(p.conditions),
+        "profile": p,
     })
 
 

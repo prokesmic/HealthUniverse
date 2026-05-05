@@ -5,9 +5,17 @@
   <a class="back" href="/">← Back to Health Universe</a>
 
   <header class="changes-head">
-    <p class="changes-eyebrow">Evidence operations · transparent changelog</p>
-    <h1 class="changes-title">What changed</h1>
-    <p class="changes-lede">Every tier promotion, demotion, and new edge in the last {{ days }} days. The graph drifts as research lands; this is where you see it move.</p>
+    <p class="changes-eyebrow">{% if personal %}Personalised feed · only what you watch{% else %}Evidence operations · transparent changelog{% endif %}</p>
+    <h1 class="changes-title">{% if personal %}Your changes{% else %}What changed{% endif %}</h1>
+    <p class="changes-lede">{% if personal %}Filtered to your watchlist and saved profile — {{ watch_count }} watched item{{ watch_count != 1 and "s" or "" }}.{% else %}Every tier promotion, demotion, and new edge in the last {{ days }} days. The graph drifts as research lands; this is where you see it move.{% endif %}</p>
+    {% if has_watch %}
+    <div class="changes-toggle">
+      <a class="changes-toggle-btn {% if not personal %}active{% endif %}" href="/changes?days={{ days }}">All changes</a>
+      <a class="changes-toggle-btn {% if personal %}active{% endif %}" href="/changes?days={{ days }}&personal=1">My watchlist</a>
+    </div>
+    {% else %}
+    <p class="changes-watch-hint muted body-sm">Tip · save a <a class="link" href="/me">profile</a> or follow a few factors and outcomes from any edge page to get a personalised feed here.</p>
+    {% endif %}
   </header>
 
   {% set promotions = rows | selectattr('field','equalto','tier') | selectattr('new_value','in',['A','B']) | rejectattr('old_value','in',['A','B']) | list %}

@@ -60,6 +60,14 @@
     </dl>
 
     <div class="dossier-actions">
+      <form method="post" action="/follow" style="display:inline">
+        <input type="hidden" name="kind" value="edge">
+        <input type="hidden" name="edge_id" value="{{ e.id }}">
+        <input type="hidden" name="next" value="/edge/{{ e.id }}">
+        <button class="btn-secondary inline {% if e.id in (profile.watch_edges if profile else []) %}is-following{% endif %}" type="submit">
+          {% if e.id in (profile.watch_edges if profile else []) %}✓ Following{% else %}+ Follow this edge{% endif %}
+        </button>
+      </form>
       <a class="btn-secondary inline" href="/edge/{{ e.id }}.png" target="_blank" rel="noopener">⤓ Share card (PNG)</a>
       <a class="btn-secondary inline" href="/explore?focus={{ e.f_slug }}">↗ Explore {{ e.f_name }}</a>
       <a class="btn-secondary inline" href="/explore?focus={{ e.o_slug }}">↗ Explore {{ e.o_name }}</a>
