@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}Today's brief — Health Universe{% endblock %}
+{% block content %}
+<section class="brief-page">
+  <a class="back" href="/">← Back to Health Universe</a>
+
+  <header class="brief-head">
+    <p class="brief-eyebrow">{% if days == 7 %}This week{% elif days == 30 %}This month{% else %}Last {{ days }} days{% endif %} · personalised memo</p>
+    <h1 class="brief-title">Today's brief</h1>
+    {% if brief.has_profile %}
+    <p class="brief-lede">A personalised digest, ranked against your stack and the conditions you track. Tier-A protective moves you might consider, red flags inside what you already do, and what's changed in your tracked areas.</p>
+    {% else %}
+    <p class="brief-lede">Personalised briefings need a profile. Save your conditions and current stack on <a class="link" href="/me">My stack</a> and this page will fill with what's actually relevant to you.</p>
+    <a class="btn-primary inline" href="/me" style="width:auto; margin-top:14px">Set up my stack →</a>
+    {% endif %}
+  </header>
+
+  {% if brief.has_profile %}
+  <div class="brief-toggle">
+    <a class="brief-toggle-btn {% if days == 7 %}active{% endif %}" href="/brief?days=7">7 days</a>
+    <a class="brief-toggle-btn {% if days == 14 %}active{% endif %}" href="/brief?days=14">2 weeks</a>
+    <a class="brief-toggle-btn {% if days == 30 %}active{% endif %}" href="/brief?days=30">30 days</a>
+  </div>
+
+  {% if brief.featured %}
+  <article class="brief-featured">
+    <p class="brief-section-eyebrow">Featured · most relevant for you</p>
+    <a href="/edge/{{ brief.featured.id }}" class="brief-featured-link">
+      <div class="brief-featured-tags">
+        <span class="pill tier-{{ brief.featured.tier }}">{{ TIER_LABEL[brief.featured.tier] | upper }}</span>
+        <span class="badge dir-{{ brief.featured.direction }}">{{ DIRECTION_LABEL[brief.featured.direction] }}</span>
+      </div>
+      <h2 class="brief-featured-title">{{ brief.featured.f_name }} <span class="lib-arrow" aria-hidden="true">→</span> {{ brief.featured.o_name }}</h2>
+      {% if brief.featured.summary %}<p class="brief-featured-summary">{{ brief.featured.summary }}</p>{% endif %}
+    </a>
+  </article>
+  {% endif %}
+
+  <div class="brief-grid">
+    {% if brief.no_regret %}
+    <section class="brief-section">
+      <p class="brief-section-eyebrow">Top moves · broad upside, low downside</p>
+      <h2 class="brief-section-h">No-regret moves</h2>
+      <ul class="brief-list">
+        {% for m in brief.no_regret[:5] %}
+        <li>
+          <a href="/edge/{{ m.id }}" class="brief-list-item">
+            <div class="brief-list-pair">
+              <b>{{ m.f_name }}</b> <span class="lib-arrow" aria-hidden="true">→</span> {{ m.o_name }}
+            </div>
+            <div class="brief-list-tags">
+              <span class="pill tier-{{ m.tier }}">{{ m.tier }}</span>
+              <span class="badge dir-protective">Beneficial</span>
+              {% if m.effect_size %}<span class="muted small">· {{ m.effect_size }} effect</span>{% endif %}
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    {% if brief.red_flags %}
+    <section class="brief-section brief-flags">
+      <p class="brief-section-eyebrow">Stack alerts · review or monitor</p>
+      <h2 class="brief-section-h">Red flags in your stack</h2>
+      <ul class="brief-list">
+        {% for r in brief.red_flags[:5] %}
+        <li>
+          <a href="/edge/{{ r.id }}" class="brief-list-item">
+            <div class="brief-list-pair">
+              <b>{{ r.f_name }}</b> <span class="lib-arrow" aria-hidden="true">→</span> {{ r.o_name }}
+            </div>
+            <div class="brief-list-tags">
+              <span class="pill tier-{{ r.tier }}">{{ r.tier }}</span>
+              <span class="badge dir-{{ r.direction }}">{{ DIRECTION_LABEL[r.direction] }}</span>
+              {% if r.tier == 'A' or r.tier == 'B' %}<span class="brief-action-tag">⚠ review</span>
+              {% else %}<span class="brief-action-tag muted">monitor</span>{% endif %}
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  </div>
+
+  {% if brief.recent_changes %}
+  <section class="brief-section">
+    <p class="brief-section-eyebrow">Last {{ days }} days in your tracked areas</p>
+    <h2 class="brief-section-h">What changed</h2>
+    <ol class="brief-changes">
+      {% for c in brief.recent_changes %}
+      <li>
+        <a href="/edge/{{ c.edge_id }}" class="brief-change-item">
+          <span class="brief-change-date">{{ c.changed_at[:10] }}</span>
+          <div class="brief-change-body">
+            <b>{{ c.f_name }}</b> <span class="lib-arrow">→</span> {{ c.o_name }}
+            {% if c.field == 'tier' and c.old_value and c.new_value %}
+              <span class="muted small">tier {{ c.old_value }} → {{ c.new_value }}</span>
+            {% else %}
+              <span class="muted small">{{ c.field }}</span>
+            {% endif %}
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+
+  {% if brief.relevant and not brief.featured %}
+  <section class="brief-section">
+    <p class="brief-section-eyebrow">Most relevant edges</p>
+    <h2 class="brief-section-h">Worth reading next</h2>
+    <ul class="brief-list">
+      {% for e in brief.relevant[:5] %}
+      <li>
+        <a href="/edge/{{ e.id }}" class="brief-list-item">
+          <div class="brief-list-pair"><b>{{ e.f_name }}</b> <span class="lib-arrow">→</span> {{ e.o_name }}</div>
+          <div class="brief-list-tags">
+            <span class="pill tier-{{ e.tier }}">{{ e.tier }}</span>
+            <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+          </div>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <p class="brief-disclaimer">Heuristic personalisation. Not medical advice. Cross-reference with a clinician for anything you'd actually change in your routine.</p>
+  {% endif %}
+</section>
+{% endblock %}

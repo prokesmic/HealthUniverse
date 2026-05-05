@@ -444,6 +444,20 @@ def sitemap():
 
 # ---- public JSON API --------------------------------------------------------
 
+@app.get("/brief", response_class=HTMLResponse)
+def brief_page(request: Request, days: int = 14):
+    """Profile-aware daily/weekly briefing."""
+    profile = decode(request.cookies.get(COOKIE))
+    with connect() as conn:
+        brief = _profile_brief(conn, profile, days=days)
+    return render(request, "brief.html", {
+        "title": "Today's brief",
+        "profile": profile,
+        "brief": brief,
+        "days": days,
+    })
+
+
 @app.get("/compare", response_class=HTMLResponse)
 def compare_page(request: Request,
                  outcome: str = "", factors: str = "",
