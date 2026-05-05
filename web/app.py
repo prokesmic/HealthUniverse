@@ -13,7 +13,9 @@ ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 from db import connect  # noqa: E402
 from profile import COOKIE, Profile, decode, encode, relevance_score  # noqa: E402
-from web.illustrations import edge_svg, hero_svg  # noqa: E402
+from web.illustrations import (   # noqa: E402
+    edge_svg, hero_svg, featured_card_svg, discovery_card_svg, strength_wave_svg,
+)
 
 app = FastAPI(title="Health Universe")
 WEB_DIR = Path(__file__).parent
@@ -24,6 +26,9 @@ app.mount("/static", StaticFiles(directory=str(WEB_DIR / "static")), name="stati
 # (Functions in env.globals are hashable, unlike dict-valued globals.)
 templates.env.globals["edge_svg"] = edge_svg
 templates.env.globals["hero_svg"] = hero_svg
+templates.env.globals["featured_card_svg"] = featured_card_svg
+templates.env.globals["discovery_card_svg"] = discovery_card_svg
+templates.env.globals["strength_wave_svg"] = strength_wave_svg
 
 
 # ---- tier display helpers ----------------------------------------------------

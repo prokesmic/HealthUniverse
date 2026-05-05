@@ -82,11 +82,13 @@
   </div>
   <div class="strip-track">
     {% for d in discoveries %}
-    <a class="strip-card tier-bg-{{ d.tier }}" href="/edge/{{ d.id }}">
-      <div class="strip-art">{{ edge_svg(factor_slug=d.f_slug, outcome_slug=d.o_slug, tier=d.tier, factor_kind=d.f_kind, outcome_kind=d.o_kind, w=320, h=140) | safe }}</div>
-      <span class="pill tier-{{ d.tier }}">{{ TIER_LABEL[d.tier] | upper }}</span>
-      <h3>{{ d.f_name }} <span class="arrow">→</span> {{ d.o_name }}</h3>
-      <span class="badge dir-{{ d.direction }}">{{ DIRECTION_LABEL[d.direction] }}</span>
+    <a class="strip-card-premium" href="/edge/{{ d.id }}">
+      <div class="strip-art">{{ discovery_card_svg(factor_slug=d.f_slug, outcome_slug=d.o_slug, tier=d.tier, factor_kind=d.f_kind, outcome_kind=d.o_kind) | safe }}</div>
+      <div class="strip-content">
+        <span class="pill tier-{{ d.tier }}">{{ TIER_LABEL[d.tier] | upper }}</span>
+        <h3>{{ d.f_name }} <span class="arrow">→</span> {{ d.o_name }}</h3>
+        <span class="badge dir-{{ d.direction }}">{{ DIRECTION_LABEL[d.direction] }}</span>
+      </div>
     </a>
     {% endfor %}
   </div>
@@ -100,16 +102,20 @@
   </div>
   <div class="featured-grid">
     {% for f in featured %}
-    <article class="feat-card tier-bg-{{ f.tier }}">
-      <div class="feat-art">{{ edge_svg(factor_slug=f.f_slug, outcome_slug=f.o_slug, tier=f.tier, factor_kind=f.f_kind, outcome_kind="condition", w=380, h=140) | safe }}</div>
-      <span class="pill tier-{{ f.tier }}">{{ TIER_LABEL[f.tier] | upper }}</span>
-      <button class="heart" type="button" aria-label="Save relationship">♡</button>
-      <h3>{{ f.f_name }} and {{ f.o_name }}</h3>
-      <p>{{ f.summary }}</p>
-      <div class="feat-meta">
-        <span class="badge dir-{{ f.direction }}">{{ DIRECTION_LABEL[f.direction] }}</span>
-        <span class="badge ghost">{{ f.top_study or "—" }}</span>
-        <span class="muted small">Updated {{ f.updated_at[:10] }}</span>
+    <article class="feat-card-premium">
+      <div class="feat-bg" aria-hidden="true">{{ featured_card_svg(factor_slug=f.f_slug, outcome_slug=f.o_slug, tier=f.tier, factor_kind=f.f_kind, outcome_kind="condition") | safe }}</div>
+      <div class="feat-overlay">
+        <div class="feat-overlay-head">
+          <span class="pill tier-{{ f.tier }}">{{ TIER_LABEL[f.tier] | upper }}</span>
+          <button class="heart" type="button" aria-label="Save relationship">♡</button>
+        </div>
+        <h3>{{ f.f_name }} and {{ f.o_name }}</h3>
+        <p>{{ f.summary }}</p>
+        <div class="feat-meta">
+          <span class="badge dir-{{ f.direction }}">{{ DIRECTION_LABEL[f.direction] }}</span>
+          <span class="badge ghost">{{ f.top_study or "—" }}</span>
+          <span class="muted small">Updated {{ f.updated_at[:10] }}</span>
+        </div>
       </div>
       <a class="card-link" href="/edge/{{ f.id }}" aria-label="Open relationship details"></a>
     </article>
@@ -133,7 +139,7 @@
         {% for i in range(5) %}<span class="dotmark {% if i < TIER_DOTS[b.tier] %}on{% endif %}"></span>{% endfor %}
       </div>
       <p>{{ b.blurb }}</p>
-      <div class="wave"></div>
+      <div class="bucket-wave" aria-hidden="true">{{ strength_wave_svg(tier=b.tier) | safe }}</div>
     </a>
     {% endfor %}
   </div>
