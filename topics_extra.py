@@ -70,7 +70,10 @@ ENTITIES: list[tuple[str, str, str]] = [
     ("hrt_combined",               "Combined estrogen+progesterone HRT",    "drug"),
     ("glp1_agonists",              "GLP-1 receptor agonists",               "drug"),
     ("nsaids_chronic",             "Chronic NSAID use",                     "drug"),
-    # Factors — supplements / nutrients
+    # Factors — supplements / nutrients (some assumed-existing fillers)
+    ("folate",                     "Folate",                                "supplement"),
+    ("iodine",                     "Iodine",                                "supplement"),
+    ("respiratory_infection",      "Respiratory infection risk",            "condition"),
     ("vitamin_e",                  "Vitamin E (alpha-tocopherol)",          "supplement"),
     ("ashwagandha",                "Ashwagandha",                           "supplement"),
     ("rhodiola",                   "Rhodiola rosea",                        "supplement"),
