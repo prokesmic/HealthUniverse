@@ -1,29 +1,47 @@
 {% extends "base.html" %}
 {% block title %}{{ title }} — Health Universe{% endblock %}
 {% block content %}
-<section class="list-page">
-  <a class="back" href="/">← Back</a>
-  <h1>{{ title }}</h1>
-  {% if pg %}
-  <p class="muted">{{ pg.total }} relationship{{ pg.total != 1 and "s" or "" }} · page {{ pg.page }} of {{ pg.pages }}</p>
-  {% else %}
-  <p class="muted">{{ edges|length }} relationship{{ edges|length != 1 and "s" or "" }}</p>
-  {% endif %}
+<section class="library-page">
+  <a class="back" href="/">← Back to Health Universe</a>
 
-  <div class="list-grid">
+  <header class="library-head">
+    <p class="library-eyebrow">Evidence library</p>
+    <h1 class="library-title">{{ title }}</h1>
+    <p class="library-meta">
+      {% if pg %}
+        <b>{{ pg.total }}</b> relationship{{ pg.total != 1 and "s" or "" }} ·
+        Page {{ pg.page }} of {{ pg.pages }}
+      {% else %}
+        <b>{{ edges|length }}</b> relationship{{ edges|length != 1 and "s" or "" }}
+      {% endif %}
+    </p>
+  </header>
+
+  <div class="library-list">
     {% for e in edges %}
-    <a class="feat-card tier-bg-{{ e.tier }}" href="/edge/{{ e.id }}">
-      {% if e.f_slug %}<div class="feat-art">{{ edge_svg(factor_slug=e.f_slug, outcome_slug=e.o_slug, tier=e.tier, factor_kind=e.f_kind, outcome_kind=e.o_kind, w=380, h=130) | safe }}</div>{% endif %}
-      <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
-      <h2>{{ e.f_name }} and {{ e.o_name }}</h2>
-      <p>{{ e.summary }}</p>
-      <div class="feat-meta">
-        <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
-        <span class="muted small">Updated {{ e.updated_at[:10] }}</span>
+    <a class="lib-card" href="/edge/{{ e.id }}">
+      <div class="lib-card-rail tier-rail-{{ e.tier }}"></div>
+      <div class="lib-card-body">
+        <div class="lib-card-head">
+          <div class="lib-card-tags">
+            <span class="pill tier-{{ e.tier }}">{{ e.tier }}</span>
+            <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+          </div>
+          <span class="muted small">{{ e.updated_at[:10] }}</span>
+        </div>
+        <h2 class="lib-card-title">{{ e.f_name }} <span class="lib-arrow" aria-hidden="true">→</span> {{ e.o_name }}</h2>
+        {% if e.summary %}<p class="lib-card-summary">{{ e.summary[:220] }}{% if e.summary|length > 220 %}…{% endif %}</p>{% endif %}
+      </div>
+      <div class="lib-card-side" aria-hidden="true">
+        <span class="lib-card-arrow">→</span>
       </div>
     </a>
     {% else %}
-    <div class="empty">No relationships in this category yet.</div>
+    <div class="library-empty">
+      <div class="library-empty-mark" aria-hidden="true">∅</div>
+      <h2>No relationships here yet</h2>
+      <p class="muted">This {{ "tier" in title|lower and "tier" or "category" }} is currently empty. The graph keeps growing — try <a class="link" href="/tier/A">tier A</a>, <a class="link" href="/tier/B">tier B</a>, or browse <a class="link" href="/discoveries">recent discoveries</a>.</p>
+    </div>
     {% endfor %}
   </div>
 

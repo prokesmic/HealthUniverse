@@ -727,6 +727,80 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 }
 
 /* =============================================================
+   Library list pages — /tier/{tier} and /category/{slug}
+   ============================================================= */
+
+.library-page { max-width: 1080px; margin: 0 auto; }
+.library-page .back { color: var(--ink-soft); font-size: 13px; }
+.library-head {
+  padding: 24px 0 28px;
+  border-bottom: 1px solid var(--line);
+  margin: 18px 0 28px;
+}
+.library-eyebrow {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--gold); font-weight: 600; margin: 0 0 8px;
+}
+.library-title {
+  font-family: 'Fraunces', serif; font-weight: 400;
+  font-size: 56px; line-height: 1.0; letter-spacing: -0.02em;
+  margin: 0 0 14px; color: var(--ink);
+}
+.library-meta { color: var(--ink-soft); margin: 0; }
+.library-meta b { color: var(--ink); font-weight: 600; }
+
+.library-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+.lib-card {
+  display: grid; grid-template-columns: 6px 1fr 32px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 14px; overflow: hidden; color: inherit;
+  transition: border-color .15s ease, transform .12s ease;
+}
+.lib-card:hover { border-color: var(--gold); transform: translateX(2px); }
+.lib-card-rail { background: var(--line); }
+.tier-rail-A { background: var(--tier-A); }
+.tier-rail-B { background: var(--tier-B); }
+.tier-rail-C { background: var(--tier-C); }
+.tier-rail-D { background: var(--tier-D); }
+.tier-rail-X { background: var(--tier-X); }
+.lib-card-body { padding: 16px 20px; min-width: 0; }
+.lib-card-head {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 8px; margin-bottom: 8px;
+}
+.lib-card-tags { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+.lib-card-tags .pill { font-size: 10px; padding: 2px 8px; }
+.lib-card-title {
+  font-family: 'Fraunces', serif; font-weight: 500;
+  font-size: 21px; line-height: 1.2; margin: 4px 0; color: var(--ink);
+}
+.lib-arrow { color: var(--gold); }
+.lib-card-summary {
+  font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 6px 0 0;
+}
+.lib-card-side {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); padding-right: 12px;
+}
+.lib-card-arrow {
+  font-size: 18px; transition: transform .15s ease;
+}
+.lib-card:hover .lib-card-arrow { transform: translateX(4px); color: var(--gold); }
+
+.library-empty {
+  text-align: center; padding: 60px 36px;
+  background: var(--surface); border: 1px dashed var(--line); border-radius: 18px;
+}
+.library-empty-mark { font-family: 'Fraunces', serif; font-size: 80px; color: var(--gold); opacity: 0.4; line-height: 1; }
+.library-empty h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 26px; margin: 12px 0; }
+.library-empty p { max-width: 460px; margin: 0 auto; }
+
+@media (max-width: 720px) {
+  .library-title { font-size: 38px; }
+  .lib-card-head { flex-direction: column; align-items: flex-start; }
+}
+
+/* =============================================================
    Discoveries — curated evidence desk
    ============================================================= */
 
