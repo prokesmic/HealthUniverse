@@ -148,7 +148,11 @@ def validate_payload(p: dict, *, known_factor_slugs: set[str] | None = None,
     if p.get("schema_version") != 1:
         errors.append("schema_version must be 1")
 
-    # Optional new entities
+    mode = p.get("mode", "replace")
+    if mode not in ("replace", "densify"):
+        errors.append("mode must be 'replace' (default) or 'densify'")
+
+    # Optional new entities (not allowed in densify mode)
     new_ents = p.get("new_entities", []) or []
     new_slugs: set[str] = set()
     if not isinstance(new_ents, list):
@@ -161,6 +165,9 @@ def validate_payload(p: dict, *, known_factor_slugs: set[str] | None = None,
             if e.get("kind") and e["kind"] not in VALID_KINDS:
                 errors.append(f"new_entities[{i}].kind invalid: {e['kind']}")
             new_slugs.add(e.get("slug", ""))
+        if mode == "densify" and new_ents:
+            errors.append("densify mode cannot declare new_entities (target edge "
+                          "must already exist on known entities)")
 
     # Edges
     edges = p.get("edges")
@@ -168,10 +175,17 @@ def validate_payload(p: dict, *, known_factor_slugs: set[str] | None = None,
         errors.append("edges must be a non-empty list")
         return errors
 
+    # In densify mode the edge prose fields are optional (we don't touch them);
+    # only factor_slug, outcome_slug, evidence are required.
+    if mode == "densify":
+        required_edge_fields = ("factor_slug", "outcome_slug", "evidence")
+    else:
+        required_edge_fields = ("factor_slug", "outcome_slug", "direction",
+                                "tier", "summary", "mechanism", "evidence")
+
     for i, e in enumerate(edges):
         prefix = f"edges[{i}]"
-        for k in ("factor_slug", "outcome_slug", "direction", "tier",
-                 "summary", "mechanism", "evidence"):
+        for k in required_edge_fields:
             if e.get(k) in (None, ""):
                 errors.append(f"{prefix}.{k} required")
         if e.get("direction") and e["direction"] not in VALID_DIRECTIONS:
@@ -195,8 +209,10 @@ def validate_payload(p: dict, *, known_factor_slugs: set[str] | None = None,
         if not isinstance(ev, list) or not ev:
             errors.append(f"{prefix}.evidence must be a non-empty list")
         else:
-            if len(ev) < 3:
-                errors.append(f"{prefix}.evidence must have >=3 rows (found {len(ev)})")
+            min_rows = 1 if mode == "densify" else 3
+            if len(ev) < min_rows:
+                errors.append(f"{prefix}.evidence must have >={min_rows} row(s) "
+                              f"(found {len(ev)})")
             for j, r in enumerate(ev):
                 if not r.get("citation"):
                     errors.append(f"{prefix}.evidence[{j}].citation required")
@@ -207,11 +223,12 @@ def validate_payload(p: dict, *, known_factor_slugs: set[str] | None = None,
                 if r.get("direction") and r["direction"] not in VALID_DIRECTIONS:
                     errors.append(f"{prefix}.evidence[{j}].direction invalid")
 
-        # Anti-fabrication heuristics
-        if len(e.get("summary", "")) < 80:
-            errors.append(f"{prefix}.summary too short (need 2-4 sentences)")
-        if len(e.get("mechanism", "")) < 60:
-            errors.append(f"{prefix}.mechanism too short")
+        # Anti-fabrication heuristics — only enforced for replace mode
+        if mode != "densify":
+            if len(e.get("summary", "")) < 80:
+                errors.append(f"{prefix}.summary too short (need 2-4 sentences)")
+            if len(e.get("mechanism", "")) < 60:
+                errors.append(f"{prefix}.mechanism too short")
 
     return errors
 
@@ -281,8 +298,16 @@ def validate_dir(payload_dir: Path = PAYLOAD_DIR, *, verify: bool = False) -> tu
 # Ingestion
 # ----------------------------------------------------------------------------
 
-def _persist_edge(conn, e: dict, file_name: str) -> tuple[int, str]:
-    """Insert/update one edge + its evidence. Returns (edge_id, action)."""
+def _persist_edge(conn, e: dict, file_name: str, mode: str = "replace") -> tuple[int, str]:
+    """Insert/update one edge + its evidence. Returns (edge_id, action).
+
+    Modes:
+      replace   default; create the edge if missing or update prose+tier and
+                replace evidence rows wholesale (used by v2/v3/v4 batches)
+      densify   edge MUST already exist; add new evidence rows that aren't
+                already on the edge (deduped by PMID); never touches summary,
+                mechanism, caveats, tier, direction
+    """
     fid = conn.execute("SELECT id FROM entity WHERE slug=?",
                        (e["factor_slug"],)).fetchone()
     oid = conn.execute("SELECT id FROM entity WHERE slug=?",
@@ -295,12 +320,47 @@ def _persist_edge(conn, e: dict, file_name: str) -> tuple[int, str]:
     existing = conn.execute(
         "SELECT id FROM edge WHERE factor_id=? AND outcome_id=? AND population=?",
         (fid["id"], oid["id"], population)).fetchone()
-    summary = e.get("summary", "")
-    if "[seeded by Codex]" not in summary and "[codex" not in summary.lower():
-        # Tag externally-seeded edges so we can tell them apart later
-        # without changing the schema enum.
-        summary = summary  # keep as-is; we tag in edge_history.reason instead
 
+    if mode == "densify":
+        if not existing:
+            raise ValueError(
+                f"densify mode in {file_name}: no existing edge for "
+                f"{e['factor_slug']} -> {e['outcome_slug']} (pop={population}). "
+                f"Densify only adds evidence to edges that already exist.")
+        edge_id = existing["id"]
+
+        existing_pmids = {r["pmid"] for r in conn.execute(
+            "SELECT pmid FROM evidence WHERE edge_id=? AND pmid IS NOT NULL",
+            (edge_id,)).fetchall()}
+
+        added = 0
+        skipped_dup = 0
+        for ev in e["evidence"]:
+            pmid = ev.get("pmid")
+            if pmid and pmid in existing_pmids:
+                skipped_dup += 1
+                continue
+            conn.execute(
+                "INSERT INTO evidence (edge_id, citation, year, study_type, "
+                "n_participants, direction, quality, notes, pmid, doi) "
+                "VALUES (?,?,?,?,?,?,?,?,?,?)",
+                (edge_id, ev.get("citation", ""), ev.get("year"),
+                 ev.get("study_type"), ev.get("n_participants"),
+                 ev.get("direction"), ev.get("quality"), ev.get("notes", ""),
+                 ev.get("pmid"), ev.get("doi")))
+            if pmid:
+                existing_pmids.add(pmid)
+            added += 1
+        conn.execute(
+            "INSERT INTO edge_history (edge_id, field, old_value, new_value, "
+            "reason, actor) VALUES (?, 'evidence', NULL, ?, ?, 'codex_densify')",
+            (edge_id,
+             json.dumps({"added": added, "skipped_dup": skipped_dup}),
+             f"densify: +{added} evidence row(s) from {file_name}"))
+        return edge_id, ("densified" if added else "no_change")
+
+    # ---- replace mode (default) ----
+    summary = e.get("summary", "")
     if existing:
         conn.execute(
             "UPDATE edge SET direction=?, tier=?, effect_size=?, effect_quant=?, "
@@ -328,11 +388,12 @@ def _persist_edge(conn, e: dict, file_name: str) -> tuple[int, str]:
     for ev in e["evidence"]:
         conn.execute(
             "INSERT INTO evidence (edge_id, citation, year, study_type, "
-            "n_participants, direction, quality, notes) "
-            "VALUES (?,?,?,?,?,?,?,?)",
+            "n_participants, direction, quality, notes, pmid, doi) "
+            "VALUES (?,?,?,?,?,?,?,?,?,?)",
             (edge_id, ev.get("citation", ""), ev.get("year"),
              ev.get("study_type"), ev.get("n_participants"),
-             ev.get("direction"), ev.get("quality"), ev.get("notes", "")))
+             ev.get("direction"), ev.get("quality"), ev.get("notes", ""),
+             ev.get("pmid"), ev.get("doi")))
 
     conn.execute(
         "INSERT INTO edge_history (edge_id, field, old_value, new_value, "
@@ -343,8 +404,8 @@ def _persist_edge(conn, e: dict, file_name: str) -> tuple[int, str]:
 
 
 def ingest_dir(payload_dir: Path = PAYLOAD_DIR, *, dry_run: bool = False) -> dict:
-    summary = {"created": 0, "updated": 0, "new_entities": 0,
-               "files": 0, "errors": []}
+    summary = {"created": 0, "updated": 0, "densified": 0, "no_change": 0,
+               "new_entities": 0, "files": 0, "errors": []}
     files = sorted(payload_dir.glob("*.json"))
     files = [f for f in files if not f.name.startswith("_")]
 
@@ -371,10 +432,11 @@ def ingest_dir(payload_dir: Path = PAYLOAD_DIR, *, dry_run: bool = False) -> dic
                               kind=ent["kind"], aliases=ent.get("aliases") or [],
                               description=ent.get("description", ""))
                 summary["new_entities"] += 1
+            mode = p.get("mode", "replace")
             for e in p["edges"]:
                 try:
-                    _, action = _persist_edge(conn, e, f.name)
-                    summary[action] += 1
+                    _, action = _persist_edge(conn, e, f.name, mode=mode)
+                    summary[action] = summary.get(action, 0) + 1
                 except Exception as exc:
                     summary["errors"].append(f"{f.name}: {exc}")
         summary["files"] += 1
