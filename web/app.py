@@ -520,6 +520,377 @@ def api_edges(tier: str = "", direction: str = "", limit: int = 100):
     return {"count": len(rows), "edges": rows}
 
 
+def _serialize_evidence(rows: list[dict]) -> list[dict]:
+    """Canonical citation row shape — the agent-stable contract."""
+    out = []
+    for r in rows:
+        out.append({
+            "citation":       r.get("citation"),
+            "pmid":           r.get("pmid"),
+            "doi":            r.get("doi"),
+            "year":           r.get("year"),
+            "study_type":     r.get("study_type"),
+            "n_participants": r.get("n_participants"),
+            "quality":        r.get("quality"),
+            "direction":      r.get("direction"),
+            "is_retracted":   bool(r.get("is_retracted")),
+            "retraction_note": r.get("retraction_note"),
+            "notes":          r.get("notes"),
+        })
+    return out
+
+
+def _study_mix(rows: list[dict]) -> dict[str, int]:
+    mix: dict[str, int] = {}
+    for r in rows:
+        st = r.get("study_type") or "unspecified"
+        mix[st] = mix.get(st, 0) + 1
+    return mix
+
+
+@app.get("/api/edges/{edge_id}")
+def api_edge_detail(edge_id: int):
+    """Full structured payload for one edge — the canonical agent shape.
+
+    Includes: edge metadata, factor + outcome objects, summary, mechanism,
+    caveats, effect, population, supporting evidence rows, counter-evidence
+    rows, retraction status, history, and a study-mix summary.
+    """
+    with connect() as conn:
+        e = conn.execute("""
+            SELECT e.*, f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                   o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
+            FROM edge e
+            JOIN entity f ON f.id = e.factor_id
+            JOIN entity o ON o.id = e.outcome_id
+            WHERE e.id = ?""", (edge_id,)).fetchone()
+        if not e:
+            return Response('{"error":"not found"}', status_code=404,
+                            media_type="application/json")
+        try:
+            evs = conn.execute("""
+                SELECT ev.*, COALESCE(s.is_retracted, 0) AS is_retracted,
+                       s.retraction_note
+                FROM evidence ev
+                LEFT JOIN evidence_status s ON s.pmid = ev.pmid
+                WHERE ev.edge_id = ?
+                ORDER BY ev.year DESC""", (edge_id,)).fetchall()
+        except Exception:
+            evs = conn.execute(
+                "SELECT *, 0 AS is_retracted, NULL AS retraction_note "
+                "FROM evidence WHERE edge_id=? ORDER BY year DESC",
+                (edge_id,)).fetchall()
+        history = conn.execute(
+            "SELECT changed_at, field, old_value, new_value, reason, actor "
+            "FROM edge_history WHERE edge_id=? ORDER BY changed_at DESC",
+            (edge_id,)).fetchall()
+
+    e = dict(e)
+    evs = [dict(r) for r in evs]
+    supporting = [r for r in evs if not r.get("is_counter")]
+    counter = [r for r in evs if r.get("is_counter")]
+    retracted = sum(1 for r in evs if r.get("is_retracted"))
+    return {
+        "id": e["id"],
+        "tier": e["tier"],
+        "direction": e["direction"],
+        "summary": e["summary"],
+        "mechanism": e["mechanism"],
+        "caveats": e["caveats"],
+        "effect_size": e["effect_size"],
+        "effect_quant": e["effect_quant"],
+        "population": e["population"],
+        "seed_source": e["seed_source"],
+        "factor": {"slug": e["f_slug"], "name": e["f_name"], "kind": e["f_kind"]},
+        "outcome": {"slug": e["o_slug"], "name": e["o_name"], "kind": e["o_kind"]},
+        "evidence": _serialize_evidence(supporting),
+        "counter_evidence": _serialize_evidence(counter),
+        "retraction": {
+            "any": retracted > 0,
+            "count": retracted,
+        },
+        "study_mix": _study_mix(evs),
+        "n_studies": len(supporting),
+        "n_counter": len(counter),
+        "last_reviewed": e["last_reviewed"],
+        "updated_at": e["updated_at"],
+        "history": [dict(r) for r in history],
+        "share_card": f"/edge/{edge_id}.png",
+        "html_url": f"/edge/{edge_id}",
+    }
+
+
+def _edge_compare_obj(conn, edge_row: dict) -> dict:
+    """Compact comparable object used by /api/compare."""
+    e = dict(edge_row)
+    evs = conn.execute(
+        "SELECT study_type, quality, direction, n_participants, "
+        "       COALESCE((SELECT 1 FROM evidence_status s WHERE s.pmid=ev.pmid AND s.is_retracted=1), 0) AS is_retracted "
+        "FROM evidence ev WHERE edge_id=?", (e["id"],)).fetchall()
+    evs = [dict(r) for r in evs]
+    total_n = sum(r.get("n_participants") or 0 for r in evs)
+    return {
+        "id": e["id"],
+        "tier": e["tier"],
+        "direction": e["direction"],
+        "summary": e["summary"],
+        "effect_size": e["effect_size"],
+        "effect_quant": e["effect_quant"],
+        "population": e["population"],
+        "factor": {"slug": e["f_slug"], "name": e["f_name"]},
+        "outcome": {"slug": e["o_slug"], "name": e["o_name"]},
+        "n_studies": len(evs),
+        "study_mix": _study_mix(evs),
+        "total_participants": total_n,
+        "any_retracted": any(r.get("is_retracted") for r in evs),
+        "html_url": f"/edge/{e['id']}",
+    }
+
+
+@app.get("/api/compare")
+def api_compare(outcome: str = "", factors: str = "",
+                factor: str = "", outcomes: str = ""):
+    """Compare multiple factors for one outcome, or multiple outcomes for
+    one factor. Returns a normalized list ready for ranking and narration.
+
+    Examples:
+      /api/compare?outcome=sleep_quality&factors=magnesium,melatonin
+      /api/compare?factor=magnesium&outcomes=sleep_quality,anxiety
+    """
+    if outcome and factors:
+        slugs = [s.strip() for s in factors.split(",") if s.strip()]
+        with connect() as conn:
+            o = conn.execute("SELECT id, slug, name FROM entity WHERE slug=?",
+                             (outcome,)).fetchone()
+            if not o:
+                return Response('{"error":"unknown outcome"}', status_code=404,
+                                media_type="application/json")
+            placeholders = ",".join("?" * len(slugs))
+            rows = conn.execute(f"""
+                SELECT e.*, f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                       o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
+                FROM edge e
+                JOIN entity f ON f.id = e.factor_id
+                JOIN entity o ON o.id = e.outcome_id
+                WHERE o.slug = ? AND f.slug IN ({placeholders})""",
+                (outcome, *slugs)).fetchall()
+            results = [_edge_compare_obj(conn, r) for r in rows]
+            missing = sorted(set(slugs) - {r["factor"]["slug"] for r in results})
+        return {"axis": "factor",
+                "anchor": {"slug": o["slug"], "name": o["name"]},
+                "candidates": results, "missing": missing}
+
+    if factor and outcomes:
+        slugs = [s.strip() for s in outcomes.split(",") if s.strip()]
+        with connect() as conn:
+            f = conn.execute("SELECT id, slug, name FROM entity WHERE slug=?",
+                             (factor,)).fetchone()
+            if not f:
+                return Response('{"error":"unknown factor"}', status_code=404,
+                                media_type="application/json")
+            placeholders = ",".join("?" * len(slugs))
+            rows = conn.execute(f"""
+                SELECT e.*, f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                       o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
+                FROM edge e
+                JOIN entity f ON f.id = e.factor_id
+                JOIN entity o ON o.id = e.outcome_id
+                WHERE f.slug = ? AND o.slug IN ({placeholders})""",
+                (factor, *slugs)).fetchall()
+            results = [_edge_compare_obj(conn, r) for r in rows]
+            missing = sorted(set(slugs) - {r["outcome"]["slug"] for r in results})
+        return {"axis": "outcome",
+                "anchor": {"slug": f["slug"], "name": f["name"]},
+                "candidates": results, "missing": missing}
+
+    return Response(
+        '{"error":"need either outcome+factors or factor+outcomes query params"}',
+        status_code=400, media_type="application/json")
+
+
+@app.get("/api/changes")
+def api_changes(since: str = "", days: int = 14, tier: str = "",
+                direction: str = "", factor: str = "", outcome: str = "",
+                limit: int = 200):
+    """Recent edge-history changes. Used by agents and watchlists."""
+    sql = """SELECT h.changed_at, h.field, h.old_value, h.new_value, h.reason, h.actor,
+                    e.id AS edge_id, e.tier, e.direction,
+                    f.slug AS f_slug, f.name AS f_name,
+                    o.slug AS o_slug, o.name AS o_name
+             FROM edge_history h
+             JOIN edge e ON e.id = h.edge_id
+             JOIN entity f ON f.id = e.factor_id
+             JOIN entity o ON o.id = e.outcome_id
+             WHERE 1=1 """
+    params: list = []
+    if since:
+        sql += " AND h.changed_at >= ?"; params.append(since)
+    elif days:
+        sql += " AND h.changed_at >= datetime('now', ?)"; params.append(f"-{int(days)} days")
+    if tier:
+        sql += " AND e.tier = ?"; params.append(tier)
+    if direction:
+        sql += " AND e.direction = ?"; params.append(direction)
+    if factor:
+        sql += " AND f.slug = ?"; params.append(factor)
+    if outcome:
+        sql += " AND o.slug = ?"; params.append(outcome)
+    sql += " ORDER BY h.changed_at DESC LIMIT ?"; params.append(min(limit, 1000))
+
+    with connect() as conn:
+        rows = [dict(r) for r in conn.execute(sql, params).fetchall()]
+    out = []
+    for r in rows:
+        is_promote = (r["field"] == "tier" and r.get("new_value") in ("A", "B")
+                      and r.get("old_value") not in ("A", "B"))
+        is_demote  = (r["field"] == "tier" and r.get("old_value") in ("A", "B")
+                      and r.get("new_value") not in ("A", "B"))
+        out.append({
+            "changed_at": r["changed_at"],
+            "edge_id": r["edge_id"],
+            "edge_url": f"/edge/{r['edge_id']}",
+            "edge_api_url": f"/api/edges/{r['edge_id']}",
+            "field": r["field"],
+            "old_value": r["old_value"],
+            "new_value": r["new_value"],
+            "reason": r["reason"],
+            "actor": r["actor"],
+            "is_promotion": is_promote,
+            "is_demotion": is_demote,
+            "factor": {"slug": r["f_slug"], "name": r["f_name"]},
+            "outcome": {"slug": r["o_slug"], "name": r["o_name"]},
+            "current_tier": r["tier"],
+            "current_direction": r["direction"],
+        })
+    return {"count": len(out), "changes": out}
+
+
+def _no_regret_movers(conn, profile: Profile, limit: int = 8) -> list[dict]:
+    """Tier-A protective edges, broad applicability, low controversy.
+    Used by /api/profile-brief and the /me + /risk + /brief surfaces."""
+    rows = conn.execute("""
+        SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
+               f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+               o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
+        FROM edge e
+        JOIN entity f ON f.id = e.factor_id
+        JOIN entity o ON o.id = e.outcome_id
+        WHERE e.tier = 'A' AND e.direction = 'protective'
+          AND (e.population IS NULL OR e.population LIKE '%general%' OR e.population = '')
+          AND NOT EXISTS (SELECT 1 FROM evidence ev2
+                          JOIN evidence_status s ON s.pmid = ev2.pmid
+                          WHERE ev2.edge_id = e.id AND s.is_retracted = 1)
+        ORDER BY (SELECT COUNT(*) FROM evidence WHERE edge_id=e.id) DESC
+        LIMIT ?""", (limit,)).fetchall()
+    return [dict(r) for r in rows]
+
+
+def _red_flags_in_stack(conn, profile: Profile, limit: int = 12) -> list[dict]:
+    """Harmful or contested edges where the user's stack is the factor."""
+    if not profile.stack:
+        return []
+    placeholders = ",".join("?" * len(profile.stack))
+    rows = conn.execute(f"""
+        SELECT e.id, e.tier, e.direction, e.summary,
+               f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+               o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
+        FROM edge e
+        JOIN entity f ON f.id = e.factor_id
+        JOIN entity o ON o.id = e.outcome_id
+        WHERE f.slug IN ({placeholders})
+          AND (e.direction IN ('harmful','u_shaped','mixed') OR e.tier = 'X')
+        ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 WHEN 'X' THEN 3 ELSE 4 END,
+                 CASE e.direction WHEN 'harmful' THEN 1 WHEN 'u_shaped' THEN 2 WHEN 'mixed' THEN 3 ELSE 4 END
+        LIMIT ?""", (*profile.stack, limit)).fetchall()
+    return [dict(r) for r in rows]
+
+
+def _profile_brief(conn, profile: Profile, days: int = 14) -> dict:
+    """The shared logic powering /api/profile-brief, /brief, /me, and /risk."""
+    rel_query_parts = []
+    rel_params = []
+    if profile.stack:
+        rel_query_parts.append(f"f.slug IN ({','.join('?' * len(profile.stack))})")
+        rel_params.extend(profile.stack)
+    if profile.conditions:
+        rel_query_parts.append(f"o.slug IN ({','.join('?' * len(profile.conditions))})")
+        rel_params.extend(profile.conditions)
+    relevant = []
+    if rel_query_parts:
+        rel_sql = (
+            "SELECT e.id, e.tier, e.direction, e.summary, e.effect_size, "
+            "       f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind, "
+            "       o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind "
+            "FROM edge e "
+            "JOIN entity f ON f.id = e.factor_id "
+            "JOIN entity o ON o.id = e.outcome_id "
+            "WHERE (" + " OR ".join(rel_query_parts) + ") "
+            "ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 WHEN 'C' THEN 3 ELSE 4 END "
+            "LIMIT 50"
+        )
+        rows = [dict(r) for r in conn.execute(rel_sql, rel_params).fetchall()]
+        rows.sort(key=lambda e: -relevance_score(e, profile))
+        relevant = rows[:12]
+
+    red_flags = _red_flags_in_stack(conn, profile, limit=8)
+    no_regret = _no_regret_movers(conn, profile, limit=8)
+
+    # What's changed in tracked areas (last `days`)
+    where = ""
+    params: list = []
+    if profile.conditions or profile.stack:
+        clauses = []
+        if profile.stack:
+            clauses.append(f"f.slug IN ({','.join('?' * len(profile.stack))})")
+            params.extend(profile.stack)
+        if profile.conditions:
+            clauses.append(f"o.slug IN ({','.join('?' * len(profile.conditions))})")
+            params.extend(profile.conditions)
+        where = "AND (" + " OR ".join(clauses) + ")"
+    changes_sql = (
+        "SELECT h.changed_at, h.field, h.old_value, h.new_value, h.actor, "
+        "       e.id AS edge_id, e.tier, "
+        "       f.slug AS f_slug, f.name AS f_name, "
+        "       o.slug AS o_slug, o.name AS o_name "
+        "FROM edge_history h "
+        "JOIN edge e ON e.id = h.edge_id "
+        "JOIN entity f ON f.id = e.factor_id "
+        "JOIN entity o ON o.id = e.outcome_id "
+        "WHERE h.changed_at >= datetime('now', ?) "
+        + where +
+        " ORDER BY h.changed_at DESC LIMIT 12"
+    )
+    recent_changes = [dict(r) for r in conn.execute(
+        changes_sql, (f"-{days} days", *params)).fetchall()]
+
+    featured = relevant[0] if relevant else None
+
+    return {
+        "has_profile": bool(profile.conditions or profile.stack or profile.age),
+        "tracked": {
+            "conditions": profile.conditions,
+            "stack": profile.stack,
+        },
+        "relevant": relevant,
+        "red_flags": red_flags,
+        "no_regret": no_regret,
+        "recent_changes": recent_changes,
+        "featured": featured,
+    }
+
+
+@app.get("/api/profile-brief")
+def api_profile_brief(request: Request, days: int = 14):
+    """Profile-aware briefing for an agent or the /brief page.
+
+    Reads the saved profile cookie. Returns relevant edges, red flags,
+    no-regret moves, recent changes in tracked areas, and a featured edge.
+    """
+    profile = decode(request.cookies.get(COOKIE))
+    with connect() as conn:
+        return _profile_brief(conn, profile, days=days)
+
+
 @app.get("/api/entities/{slug}")
 def api_entity(slug: str):
     with connect() as conn:
