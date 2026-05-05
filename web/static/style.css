@@ -727,6 +727,85 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 }
 
 /* =============================================================
+   Changes feed — transparent evidence-ops changelog
+   ============================================================= */
+
+.changes-page { max-width: 980px; margin: 0 auto; }
+.changes-page .back { color: var(--ink-soft); font-size: 13px; }
+.changes-head { padding: 24px 0 22px; margin: 18px 0 22px; border-bottom: 1px solid var(--line); }
+.changes-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; margin: 0 0 8px; }
+.changes-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: 52px; line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 12px; color: var(--ink); }
+.changes-lede { font-size: 16px; line-height: 1.55; max-width: 720px; color: var(--ink-soft); margin: 0; }
+
+.changes-summary {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  margin-bottom: 28px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 14px;
+  padding: 18px 24px;
+}
+.changes-summary > div { padding-right: 18px; border-right: 1px solid var(--line); }
+.changes-summary > div:last-child { border-right: 0; }
+.changes-summary b {
+  display: block; font-family: 'Fraunces', serif; font-weight: 500;
+  font-size: 26px; color: var(--ink);
+}
+.changes-summary small { color: var(--ink-soft); font-size: 12px; }
+.changes-summary-promote b { color: var(--tier-A); }
+.changes-summary-demote b { color: var(--tier-D); }
+
+.changes-feed { list-style: none; padding: 0; margin: 0; }
+.change-item {
+  margin-bottom: 8px;
+}
+.change-link {
+  display: grid; grid-template-columns: 44px 1fr; gap: 14px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; padding: 14px 18px; color: inherit;
+  transition: border-color .15s ease, transform .12s ease;
+}
+.change-link:hover { border-color: var(--gold); transform: translateX(2px); }
+.change-mark {
+  font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500;
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--bg-soft); color: var(--ink-soft);
+  align-self: flex-start;
+}
+.change-item.is-promote .change-mark { background: var(--tier-A-bg); color: var(--tier-A); }
+.change-item.is-promote .change-link { border-left: 3px solid var(--tier-A); }
+.change-item.is-demote .change-mark { background: var(--tier-D-bg); color: var(--tier-D); }
+.change-item.is-demote .change-link { border-left: 3px solid var(--tier-D); }
+.change-item.is-new .change-mark { background: var(--gold-soft); color: var(--gold); }
+.change-item.is-new .change-link { border-left: 3px solid var(--gold); }
+
+.change-body { min-width: 0; }
+.change-line { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 4px; }
+.change-date { font-size: 12px; color: var(--ink-soft); font-weight: 500; }
+.change-actor {
+  font-size: 11px; padding: 2px 8px;
+  background: var(--bg-soft); border: 1px solid var(--line);
+  border-radius: 4px; color: var(--ink-soft);
+}
+.change-tag {
+  font-size: 10px; font-weight: 600; padding: 2px 8px;
+  border-radius: 4px; letter-spacing: 0.06em;
+  background: var(--bg-soft); color: var(--ink-soft);
+}
+.change-tag-promote { background: var(--tier-A-bg); color: var(--tier-A); }
+.change-tag-demote { background: var(--tier-D-bg); color: var(--tier-D); }
+.change-tag-new { background: var(--gold-soft); color: var(--ink); }
+.change-pair { font-family: 'Fraunces', serif; font-size: 17px; line-height: 1.3; margin: 4px 0; color: var(--ink); }
+.change-pair b { font-weight: 500; }
+.change-delta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.change-delta .pill { font-size: 10px; padding: 2px 8px; }
+
+@media (max-width: 720px) {
+  .changes-title { font-size: 36px; }
+  .changes-summary { grid-template-columns: repeat(2, 1fr); gap: 14px 0; }
+  .changes-summary > div:nth-child(2) { border-right: 0; }
+}
+
+/* =============================================================
    Myths & contested claims — editorial page
    ============================================================= */
 

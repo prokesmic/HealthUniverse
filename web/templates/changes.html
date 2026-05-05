@@ -1,33 +1,69 @@
 {% extends "base.html" %}
 {% block title %}What changed — Health Universe{% endblock %}
 {% block content %}
-<section class="list-page">
-  <a class="back" href="/">← Back</a>
-  <h1>What changed</h1>
-  <p class="muted">Last {{ days }} days · {{ rows|length }} update{{ rows|length != 1 and "s" or "" }}</p>
+<section class="changes-page">
+  <a class="back" href="/">← Back to Health Universe</a>
 
-  <ul class="changes">
+  <header class="changes-head">
+    <p class="changes-eyebrow">Evidence operations · transparent changelog</p>
+    <h1 class="changes-title">What changed</h1>
+    <p class="changes-lede">Every tier promotion, demotion, and new edge in the last {{ days }} days. The graph drifts as research lands; this is where you see it move.</p>
+  </header>
+
+  {% set promotions = rows | selectattr('field','equalto','tier') | selectattr('new_value','in',['A','B']) | rejectattr('old_value','in',['A','B']) | list %}
+  {% set demotions = rows | selectattr('field','equalto','tier') | selectattr('old_value','in',['A','B']) | rejectattr('new_value','in',['A','B']) | list %}
+  {% set new_edges = rows | selectattr('field','in',['seed']) | list %}
+
+  <div class="changes-summary">
+    <div><b>{{ rows|length }}</b><small>total changes</small></div>
+    <div class="changes-summary-promote"><b>↑ {{ promotions|length }}</b><small>promoted to A or B</small></div>
+    <div class="changes-summary-demote"><b>↓ {{ demotions|length }}</b><small>demoted from A or B</small></div>
+    <div><b>+{{ new_edges|length }}</b><small>new edges seeded</small></div>
+  </div>
+
+  <ol class="changes-feed">
     {% for r in rows %}
-    <li>
-      <a class="change-row" href="/edge/{{ r.edge_id }}">
-        <span class="when">{{ r.changed_at[:10] }}</span>
-        <span class="what">
-          <b>{{ r.f_name }}</b> → <b>{{ r.o_name }}</b>
-          <small class="muted">· {{ r.actor }}</small>
-        </span>
-        <span class="delta">
-          {% if r.field == 'tier' %}
-            {% if r.old_value %}<span class="pill tier-{{ r.old_value }}">{{ TIER_LABEL.get(r.old_value, r.old_value) }}</span> →{% else %}new edge →{% endif %}
-            <span class="pill tier-{{ r.new_value }}">{{ TIER_LABEL.get(r.new_value, r.new_value) }}</span>
-          {% else %}
-            {{ r.field }}: {{ r.reason or '—' }}
-          {% endif %}
-        </span>
+    {% set is_promote = r.field == 'tier' and r.new_value in ['A','B'] and r.old_value not in ['A','B'] %}
+    {% set is_demote = r.field == 'tier' and r.old_value in ['A','B'] and r.new_value not in ['A','B'] %}
+    {% set is_new = r.field == 'seed' or r.old_value is none %}
+    {% set is_tier = r.field == 'tier' %}
+    <li class="change-item {% if is_promote %}is-promote{% elif is_demote %}is-demote{% elif is_new %}is-new{% endif %}">
+      <a class="change-link" href="/edge/{{ r.edge_id }}">
+        <div class="change-mark" aria-hidden="true">
+          {% if is_promote %}↑{% elif is_demote %}↓{% elif is_new %}★{% else %}·{% endif %}
+        </div>
+        <div class="change-body">
+          <div class="change-line">
+            <span class="change-date">{{ r.changed_at[:10] }}</span>
+            <span class="change-actor">{{ r.actor }}</span>
+            {% if is_tier %}
+              {% if is_promote %}<span class="change-tag change-tag-promote">PROMOTED</span>
+              {% elif is_demote %}<span class="change-tag change-tag-demote">DEMOTED</span>
+              {% elif is_new %}<span class="change-tag change-tag-new">NEW EDGE</span>
+              {% else %}<span class="change-tag">RE-SCORED</span>{% endif %}
+            {% elif is_new %}<span class="change-tag change-tag-new">NEW EDGE</span>
+            {% else %}<span class="change-tag">{{ r.field|upper }}</span>{% endif %}
+          </div>
+          <div class="change-pair"><b>{{ r.f_name }}</b> <span class="lib-arrow" aria-hidden="true">→</span> <b>{{ r.o_name }}</b></div>
+          <div class="change-delta">
+            {% if r.field == 'tier' %}
+              {% if r.old_value %}<span class="pill tier-{{ r.old_value }}">{{ r.old_value }}</span><span class="muted">→</span>{% endif %}
+              <span class="pill tier-{{ r.new_value }}">{{ r.new_value }}</span>
+              {% if r.reason %}<span class="muted small">· {{ r.reason }}</span>{% endif %}
+            {% else %}
+              <span class="muted small">{{ r.reason or r.field }}</span>
+            {% endif %}
+          </div>
+        </div>
       </a>
     </li>
     {% else %}
-    <li class="empty">No changes yet. After the daily ingest runs, tier promotions and new edges will land here.</li>
+    <li class="library-empty">
+      <div class="library-empty-mark" aria-hidden="true">∅</div>
+      <h2>No changes in the last {{ days }} days</h2>
+      <p class="muted">Once the daily Gemma loop runs (05:15) and finds anything new, tier movement will land here in real time.</p>
+    </li>
     {% endfor %}
-  </ul>
+  </ol>
 </section>
 {% endblock %}
