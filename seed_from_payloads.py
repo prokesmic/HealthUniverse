@@ -8,16 +8,21 @@ research run, in the same shape `seed.py` writes.
 Usage:
     python seed_from_payloads.py validate            # validate all files, no DB writes
     python seed_from_payloads.py validate path.json  # validate one
+    python seed_from_payloads.py validate --verify   # also check PMIDs against PubMed (slow)
     python seed_from_payloads.py ingest              # write everything to DB
     python seed_from_payloads.py ingest --dry-run    # show what would change
 """
 from __future__ import annotations
 
 import argparse
+import difflib
 import json
 import sys
+import time
 from pathlib import Path
 from typing import Any
+
+import httpx
 
 ROOT = Path(__file__).parent.resolve()
 sys.path.insert(0, str(ROOT))
@@ -36,6 +41,98 @@ VALID_STUDY_TYPES = {"meta_analysis", "systematic_review", "rct", "cohort",
                      "case_control", "cross_sectional", "mechanistic",
                      "animal", "case_report", "expert_opinion"}
 VALID_QUALITIES  = {"high", "moderate", "low", "very_low"}
+
+# Study types where n_participants is required (others are mechanism/animal/
+# expert opinion where total-n may not apply).
+N_REQUIRED_TYPES = {"meta_analysis", "systematic_review", "rct", "cohort",
+                    "case_control", "cross_sectional"}
+
+
+# ----------------------------------------------------------------------------
+# Citation truthfulness checks — catches the failure mode where a payload has
+# valid JSON shape but fabricated/abbreviated/templated citations.
+# ----------------------------------------------------------------------------
+
+def _pubmed_lookup(pmids: list[str]) -> dict[str, dict]:
+    """Fetch title/journal/year for a batch of PMIDs from PubMed esummary.
+    Free, no key needed, ~3 req/s rate limit."""
+    out: dict[str, dict] = {}
+    for chunk_start in range(0, len(pmids), 100):
+        chunk = pmids[chunk_start:chunk_start + 100]
+        try:
+            r = httpx.get(
+                "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
+                params={"db": "pubmed", "id": ",".join(chunk),
+                        "retmode": "json"},
+                timeout=30.0,
+            )
+            r.raise_for_status()
+            for pmid, rec in r.json().get("result", {}).items():
+                if pmid == "uids" or not isinstance(rec, dict):
+                    continue
+                out[pmid] = {
+                    "title": rec.get("title", ""),
+                    "journal": rec.get("source", ""),
+                    "year": rec.get("pubdate", "")[:4] if rec.get("pubdate") else "",
+                }
+        except Exception as e:
+            print(f"  [pubmed lookup] {e}", file=sys.stderr)
+        time.sleep(0.4)
+    return out
+
+
+def _title_matches(claimed: str, real: str) -> bool:
+    """Fuzzy: titles match if they share >=70% of the words (case-insensitive)."""
+    if not claimed or not real:
+        return False
+    a = " ".join(claimed.lower().split())
+    b = " ".join(real.lower().split())
+    return difflib.SequenceMatcher(None, a, b).ratio() >= 0.65
+
+
+def verify_citations(payload: dict, pubmed_cache: dict[str, dict]) -> list[str]:
+    """Return errors. Requires every evidence row of stat-quantitative type
+    to have a real PMID resolvable on PubMed AND a title that matches what
+    PubMed returns."""
+    errors: list[str] = []
+    for i, e in enumerate(payload.get("edges", [])):
+        for j, ev in enumerate(e.get("evidence", [])):
+            prefix = f"edges[{i}].evidence[{j}]"
+            st = ev.get("study_type")
+
+            # Hard rule: stat-quantitative studies must carry a PMID
+            if st in N_REQUIRED_TYPES and not ev.get("pmid"):
+                errors.append(f"{prefix}: study_type={st} requires a PMID")
+
+            # If a PMID is given, it must resolve and the title must match
+            pmid = ev.get("pmid")
+            if pmid:
+                rec = pubmed_cache.get(str(pmid))
+                if not rec:
+                    errors.append(f"{prefix}: PMID {pmid} did not resolve on PubMed")
+                else:
+                    notes = ev.get("notes", "")
+                    if notes and not _title_matches(notes, rec["title"]):
+                        # Title may live in either `notes` (Codex's pattern)
+                        # or be parseable from `citation`. Try both.
+                        if not _title_matches(ev.get("citation", ""), rec["title"]):
+                            errors.append(
+                                f"{prefix}: PMID {pmid} resolves to "
+                                f"{rec['title'][:80]!r} which doesn't match "
+                                f"the claimed citation/notes")
+
+            # Citation must look like a real first-author surname + year, not
+            # a single-letter placeholder
+            cit = ev.get("citation", "")
+            first_token = cit.split()[0] if cit else ""
+            if first_token and len(first_token.rstrip(".,")) <= 2:
+                errors.append(f"{prefix}: citation '{cit[:60]}' starts with "
+                              f"a single-letter token; use 'Surname JF' format")
+
+            # Stat-quantitative studies must report n_participants
+            if st in N_REQUIRED_TYPES and ev.get("n_participants") in (None, 0, ""):
+                errors.append(f"{prefix}: study_type={st} requires n_participants")
+    return errors
 
 
 # ----------------------------------------------------------------------------
@@ -130,26 +227,52 @@ def _known_slugs(conn) -> tuple[set[str], set[str]]:
     return factors, outcomes
 
 
-def validate_dir(payload_dir: Path = PAYLOAD_DIR) -> tuple[int, int]:
+def validate_dir(payload_dir: Path = PAYLOAD_DIR, *, verify: bool = False) -> tuple[int, int]:
+    """Validate every JSON in payload_dir. With verify=True, additionally
+    resolves every PMID against PubMed and checks the title matches."""
     if not payload_dir.exists():
         print(f"No payload dir at {payload_dir}"); return (0, 0)
     files = sorted(payload_dir.glob("*.json"))
     files = [f for f in files if not f.name.startswith("_")]
     with connect() as conn:
         kf, ko = _known_slugs(conn)
-    ok = bad = 0
+
+    parsed: list[tuple[Path, dict]] = []
+    parse_errors: list[Path] = []
     for f in files:
         try:
-            p = json.loads(f.read_text())
+            parsed.append((f, json.loads(f.read_text())))
         except Exception as e:
-            print(f"[FAIL] {f.name}: cannot parse JSON: {e}"); bad += 1; continue
+            print(f"[FAIL] {f.name}: cannot parse JSON: {e}")
+            parse_errors.append(f)
+
+    pubmed_cache: dict[str, dict] = {}
+    if verify:
+        all_pmids: list[str] = []
+        for _, p in parsed:
+            for e in p.get("edges", []) or []:
+                for ev in e.get("evidence", []) or []:
+                    if ev.get("pmid"):
+                        all_pmids.append(str(ev["pmid"]))
+        unique = sorted(set(all_pmids))
+        print(f"[verify] looking up {len(unique)} unique PMIDs on PubMed ...")
+        pubmed_cache = _pubmed_lookup(unique)
+        print(f"[verify] {len(pubmed_cache)}/{len(unique)} resolved")
+
+    ok = bad = 0
+    for f, p in parsed:
         errs = validate_payload(p, known_factor_slugs=kf, known_outcome_slugs=ko)
+        if verify:
+            errs += verify_citations(p, pubmed_cache)
         if errs:
-            print(f"[FAIL] {f.name}:"); [print(f"  - {e}") for e in errs]
+            print(f"[FAIL] {f.name}:"); [print(f"  - {e}") for e in errs[:6]]
+            if len(errs) > 6: print(f"  ... and {len(errs)-6} more")
             bad += 1
         else:
             print(f"[OK]   {f.name} ({len(p.get('edges', []))} edge(s))")
             ok += 1
+
+    bad += len(parse_errors)
     print(f"\n{ok} ok, {bad} failed, {len(files)} total")
     return ok, bad
 
@@ -269,6 +392,8 @@ def main() -> None:
     ap.add_argument("cmd", choices=("validate", "ingest"))
     ap.add_argument("path", nargs="?", help="single file to validate")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--verify", action="store_true",
+                    help="also resolve every PMID against PubMed (slow)")
     a = ap.parse_args()
 
     if a.cmd == "validate":
@@ -277,11 +402,16 @@ def main() -> None:
             with connect() as conn:
                 kf, ko = _known_slugs(conn)
             errs = validate_payload(p, known_factor_slugs=kf, known_outcome_slugs=ko)
+            if a.verify:
+                pmids = [str(ev["pmid"]) for e in p.get("edges", [])
+                         for ev in e.get("evidence", []) if ev.get("pmid")]
+                cache = _pubmed_lookup(sorted(set(pmids))) if pmids else {}
+                errs += verify_citations(p, cache)
             if errs:
                 print(f"[FAIL] {a.path}:"); [print(f"  - {e}") for e in errs]; sys.exit(1)
             print(f"[OK] {a.path}")
         else:
-            ok, bad = validate_dir()
+            ok, bad = validate_dir(verify=a.verify)
             sys.exit(1 if bad else 0)
     else:
         ingest_dir(dry_run=a.dry_run)
