@@ -213,7 +213,7 @@ def home(request: Request):
         discoveries = _new_discoveries(conn, days=14, limit=8)
     if any([p.conditions, p.goals, p.stack]):
         featured.sort(key=lambda e: -relevance_score(e, p))
-    featured = featured[:3]
+    featured = featured[:4]
     spotlight = featured[0] if featured else None
     return render(request, "home.html", {
         "stats": stats, "categories": cats,

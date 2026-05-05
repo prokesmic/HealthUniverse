@@ -843,5 +843,12 @@ def hero_svg() -> str:
         parts.append(f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="#c9a961" stroke-width="0.5" opacity="0.5"/>')
     parts.append('<circle cx="425" cy="218" r="5" fill="#1f3a2e"/>')
     parts.append('<circle cx="38" cy="246" r="3.5" fill="#3b8e5a"/>')
+    # Flowing green/gold wave underneath the globe
+    parts.append('<path d="M -10 380 C 80 340, 160 420, 230 380 S 380 340, 470 390 L 470 460 L -10 460 Z" '
+                 'fill="#1f3a2e" opacity="0.92"/>')
+    parts.append('<path d="M -10 395 C 80 360, 170 430, 250 395 S 390 360, 470 405" '
+                 'fill="none" stroke="#c9a961" stroke-width="1.5" opacity="0.85"/>')
+    parts.append('<path d="M -10 410 C 90 380, 180 440, 260 410 S 400 380, 470 420" '
+                 'fill="none" stroke="#e6c98a" stroke-width="1" opacity="0.55"/>')
     parts.append('</svg>')
     return "".join(parts)

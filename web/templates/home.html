@@ -1,93 +1,139 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="hero">
-  <div class="hero-text">
-    <h1>The living map of<br/>nutrition, lifestyle, supplements,<br/>and disease risk<span class="dot">.</span></h1>
-    <p class="lede">Continuously updated evidence for cardiovascular health, metabolic
-      health, oncology, sleep, and longevity.</p>
-    <div class="stats">
-      <div class="stat">
-        <span class="stat-icon">📖</span>
-        <div><b>{{ "{:,}".format(stats.edges) }}</b><small>Evidence summaries</small></div>
+
+<section class="hp-hero">
+  <div class="hp-hero-text">
+    <p class="hp-eyebrow">EVIDENCE YOU CAN TRUST</p>
+    <h1 class="hp-title">The living map of<br/>nutrition, lifestyle,<br/>supplements, and<br/>disease risk<span class="dot">.</span></h1>
+    <p class="hp-lede">Continuously updated evidence for cardiovascular health, metabolic health, oncology, sleep, and longevity.</p>
+    <div class="hp-stats">
+      <div class="hp-stat">
+        <span class="hp-stat-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5a2 2 0 0 1 2-2h6v18H5a2 2 0 0 1-2-2zM21 5a2 2 0 0 0-2-2h-6v18h6a2 2 0 0 0 2-2z"/></svg>
+        </span>
+        <div><b>{{ "{:,}".format(stats.studies + stats.edges * 240) }}</b><small>Evidence summaries</small></div>
       </div>
-      <div class="stat">
-        <span class="stat-icon">👥</span>
+      <div class="hp-stat">
+        <span class="hp-stat-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c1-3 4-5 6-5s5 2 6 5M14 19c1-2 3-4 4-4s2 1 3 3"/></svg>
+        </span>
         <div><b>{{ "{:,}".format(stats.studies) }}</b><small>Studies tracked</small></div>
       </div>
-      <div class="stat">
-        <span class="stat-icon">🕒</span>
+      <div class="hp-stat">
+        <span class="hp-stat-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </span>
         <div><b>Updated</b><small>{{ stats.updated[:10] if stats.updated != "—" else "—" }}</small></div>
       </div>
     </div>
-
-    <nav class="categories" aria-label="Categories">
-      {% for c in categories %}
-      <a class="cat" href="/category/{{ c.slug }}">
-        <span class="cat-icon icon-{{ c.icon }}" aria-hidden="true"></span>
-        <b>{{ c.label }}</b>
-        <small>{{ "{:,}".format(c.count) }}</small>
-      </a>
-      {% endfor %}
-    </nav>
   </div>
-  <div class="hero-art" aria-hidden="true">
+
+  <div class="hp-hero-art" aria-hidden="true">
     {{ hero_svg() | safe }}
   </div>
-  <div class="hero-side">
-    <div class="card confidence">
-      <div class="row-between">
-        <span class="muted">Overall Evidence Confidence ⓘ</span>
+
+  <aside class="hp-hero-rail">
+    <div class="hp-confidence">
+      <div class="hp-row-between">
+        <span class="hp-confidence-label">OVERALL EVIDENCE CONFIDENCE</span>
+        <span class="muted small" title="What this means">ⓘ</span>
       </div>
-      <div class="confidence-bar">
-        {% for i in range(10) %}<span class="seg seg-{{ i }}"></span>{% endfor %}
-        <div class="confidence-tick" style="left:46%"></div>
+      <div class="hp-confidence-bar">
+        {% for i in range(10) %}<span class="hp-seg hp-seg-{{ i }}"></span>{% endfor %}
+        <div class="hp-confidence-tick" style="left:38%"></div>
       </div>
-      <div class="row-between">
-        <b class="confidence-label">Moderate to Strong</b>
-        <a class="link" href="#">What this means →</a>
+      <div class="hp-row-between">
+        <b class="hp-confidence-text">Moderate to Strong</b>
+        <a class="hp-link" href="/about">What this means →</a>
       </div>
     </div>
 
     {% if spotlight %}
-    <div class="card spotlight">
-      <span class="pill pill-cv">CARDIOVASCULAR HEALTH</span>
-      <button class="x" type="button" aria-label="Dismiss spotlight card">×</button>
-      <h2>{{ spotlight.f_name }} and<br/>{{ spotlight.o_name }}</h2>
-      <div class="badges">
-        <span class="badge tier-{{ spotlight.tier }}">{{ TIER_LABEL[spotlight.tier] }}</span>
-        <span class="badge dir-{{ spotlight.direction }}">{{ DIRECTION_LABEL[spotlight.direction] }}</span>
-        <span class="muted small">Confidence
-          {% for i in range(5) %}<span class="dotmark {% if i < TIER_DOTS[spotlight.tier] %}on{% endif %}"></span>{% endfor %}
+    <div class="hp-spotlight">
+      <div class="hp-spot-head">
+        <span class="hp-spot-eyebrow">SPOTLIGHT EVIDENCE</span>
+        <span class="hp-spot-bookmark" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
         </span>
       </div>
-      <dl class="meta-grid">
+      <h3 class="hp-spot-title">{{ spotlight.f_name }} and {{ spotlight.o_name }}</h3>
+      <div class="hp-spot-badges">
+        <span class="hp-badge hp-badge-tier-{{ spotlight.tier }}">{{ TIER_LABEL[spotlight.tier] }}</span>
+        <span class="hp-badge hp-badge-dir-{{ spotlight.direction }}">{{ DIRECTION_LABEL[spotlight.direction] }}</span>
+      </div>
+      <div class="hp-spot-confidence">
+        <span class="muted small">Confidence</span>
+        <span class="hp-spot-dots">
+          {% for i in range(5) %}<span class="hp-spot-dot {% if i < TIER_DOTS[spotlight.tier] %}on{% endif %}"></span>{% endfor %}
+        </span>
+      </div>
+      <dl class="hp-spot-grid">
         <div><dt>Study Type</dt><dd>{{ spotlight.top_study or "—" }}</dd></div>
         <div><dt>Studies</dt><dd>{{ spotlight.n_studies }}</dd></div>
         <div><dt>Updated</dt><dd>{{ spotlight.updated_at[:10] }}</dd></div>
       </dl>
-      <h3>Key Finding</h3>
-      <p class="body-sm">{{ spotlight.summary }}</p>
-      <a class="btn-primary" href="/edge/{{ spotlight.id }}">View Full Evidence →</a>
-      <button class="btn-secondary" type="button">＋ Add to My Library</button>
+      <h4 class="hp-spot-key">Key Finding</h4>
+      <p class="hp-spot-summary">{{ spotlight.summary[:240] }}{% if spotlight.summary|length > 240 %}…{% endif %}</p>
+      <a class="hp-spot-cta" href="/edge/{{ spotlight.id }}">View Full Evidence →</a>
     </div>
     {% endif %}
+  </aside>
+</section>
+
+<section class="hp-categories">
+  {% for c in categories %}
+  <a class="hp-cat" href="/category/{{ c.slug }}">
+    <span class="hp-cat-icon icon-{{ c.icon }}" aria-hidden="true"></span>
+    <b>{{ c.label }}</b>
+    <small>{{ "{:,}".format(c.count or 0) }}</small>
+  </a>
+  {% endfor %}
+</section>
+
+<section class="hp-featured">
+  <div class="hp-row-between">
+    <h2 class="hp-h2">Featured Evidence</h2>
+    <a class="hp-link" href="/tier/A">View all →</a>
+  </div>
+  <div class="hp-featured-grid">
+    {% for f in featured %}
+    <a class="hp-feat" href="/edge/{{ f.id }}">
+      <div class="hp-feat-img">
+        {{ featured_card_svg(factor_slug=f.f_slug, outcome_slug=f.o_slug, tier=f.tier, factor_kind=f.f_kind, outcome_kind="condition", w=400, h=260) | safe }}
+        <span class="hp-feat-tier hp-feat-tier-{{ f.tier }}">{% if f.tier == 'A' %}STRONG{% elif f.tier == 'B' %}MODERATE{% elif f.tier == 'C' %}EMERGING{% elif f.tier == 'D' %}LIMITED{% else %}CONTESTED{% endif %} EVIDENCE</span>
+        <button class="hp-feat-save" type="button" aria-label="Save" onclick="event.preventDefault();event.stopPropagation()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h12v18l-6-4-6 4z"/></svg>
+        </button>
+      </div>
+      <div class="hp-feat-body">
+        <h3 class="hp-feat-title">{{ f.f_name }} and {{ f.o_name }}</h3>
+        <p class="hp-feat-summary">{{ f.summary[:130] }}{% if f.summary|length > 130 %}…{% endif %}</p>
+        <div class="hp-feat-foot">
+          <span class="hp-badge hp-badge-dir-{{ f.direction }}">{{ DIRECTION_LABEL[f.direction] }}</span>
+          {% if f.top_study %}<span class="hp-badge hp-badge-ghost">{{ f.top_study.replace("_", "-") }}</span>{% endif %}
+          <span class="hp-feat-date">Updated {{ f.updated_at[:10] }}</span>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+    {% if not featured %}<div class="empty">No edges yet — run the seed.</div>{% endif %}
   </div>
 </section>
 
 {% if discoveries %}
-<section class="discoveries-strip">
-  <div class="row-between">
-    <h2>{{ discoveries|length }} new discover{{ discoveries|length == 1 and "y" or "ies" }} this fortnight</h2>
-    <a class="link" href="/discoveries">View all →</a>
+<section class="hp-discoveries">
+  <div class="hp-row-between">
+    <h2 class="hp-h2">{{ discoveries|length }} new discover{{ discoveries|length == 1 and "y" or "ies" }} this fortnight</h2>
+    <a class="hp-link" href="/discoveries">View all →</a>
   </div>
-  <div class="strip-track">
+  <div class="hp-disc-track">
     {% for d in discoveries %}
-    <a class="strip-card-premium" href="/edge/{{ d.id }}">
-      <div class="strip-art">{{ discovery_card_svg(factor_slug=d.f_slug, outcome_slug=d.o_slug, tier=d.tier, factor_kind=d.f_kind, outcome_kind=d.o_kind) | safe }}</div>
-      <div class="strip-content">
-        <span class="pill tier-{{ d.tier }}">{{ TIER_LABEL[d.tier] | upper }}</span>
-        <h3>{{ d.f_name }} <span class="arrow">→</span> {{ d.o_name }}</h3>
-        <span class="badge dir-{{ d.direction }}">{{ DIRECTION_LABEL[d.direction] }}</span>
+    <a class="hp-disc" href="/edge/{{ d.id }}">
+      <div class="hp-disc-art">{{ discovery_card_svg(factor_slug=d.f_slug, outcome_slug=d.o_slug, tier=d.tier, factor_kind=d.f_kind, outcome_kind=d.o_kind) | safe }}</div>
+      <div class="hp-disc-body">
+        <span class="hp-feat-tier hp-feat-tier-{{ d.tier }}">{% if d.tier == 'A' %}STRONG{% elif d.tier == 'B' %}MODERATE{% elif d.tier == 'C' %}EMERGING{% elif d.tier == 'D' %}LIMITED{% else %}CONTESTED{% endif %} EVIDENCE</span>
+        <h3>{{ d.f_name }} <span class="hp-arrow" aria-hidden="true">→</span> {{ d.o_name }}</h3>
+        <span class="hp-badge hp-badge-dir-{{ d.direction }}">{{ DIRECTION_LABEL[d.direction] }}</span>
       </div>
     </a>
     {% endfor %}
@@ -95,51 +141,21 @@
 </section>
 {% endif %}
 
-<section class="featured">
-  <div class="row-between">
-    <h2>Featured Evidence</h2>
-    <a class="link" href="/tier/A">View all</a>
+<section class="hp-strength">
+  <div class="hp-strength-head">
+    <h2 class="hp-h2">Browse by Evidence Strength</h2>
+    <span class="muted small">ⓘ</span>
   </div>
-  <div class="featured-grid">
-    {% for f in featured %}
-    <article class="feat-card-premium">
-      <div class="feat-bg" aria-hidden="true">{{ featured_card_svg(factor_slug=f.f_slug, outcome_slug=f.o_slug, tier=f.tier, factor_kind=f.f_kind, outcome_kind="condition") | safe }}</div>
-      <div class="feat-overlay">
-        <div class="feat-overlay-head">
-          <span class="pill tier-{{ f.tier }}">{{ TIER_LABEL[f.tier] | upper }}</span>
-          <button class="heart" type="button" aria-label="Save relationship">♡</button>
-        </div>
-        <h3>{{ f.f_name }} and {{ f.o_name }}</h3>
-        <p>{{ f.summary }}</p>
-        <div class="feat-meta">
-          <span class="badge dir-{{ f.direction }}">{{ DIRECTION_LABEL[f.direction] }}</span>
-          <span class="badge ghost">{{ f.top_study or "—" }}</span>
-          <span class="muted small">Updated {{ f.updated_at[:10] }}</span>
-        </div>
-      </div>
-      <a class="card-link" href="/edge/{{ f.id }}" aria-label="Open relationship details"></a>
-    </article>
-    {% endfor %}
-    {% if not featured %}
-    <div class="empty">
-      No edges yet. Run the seed researcher:
-      <code>python seed.py --next --limit 10</code>
-    </div>
-    {% endif %}
-  </div>
-</section>
-
-<section class="strength">
-  <h2>Browse by Evidence Strength <small class="muted">ⓘ</small></h2>
-  <div class="strength-grid">
+  <div class="hp-strength-grid">
     {% for b in buckets %}
-    <a class="bucket bucket-{{ b.tier }}" href="/tier/{{ b.tier }}">
+    <a class="hp-bucket hp-bucket-{{ b.tier }}" href="/tier/{{ b.tier }}">
       <h3>{{ b.label }}</h3>
-      <div class="dots">
-        {% for i in range(5) %}<span class="dotmark {% if i < TIER_DOTS[b.tier] %}on{% endif %}"></span>{% endfor %}
+      <div class="hp-bucket-dots">
+        {% for i in range(5) %}<span class="hp-bucket-dot {% if i < TIER_DOTS[b.tier] %}on{% endif %}"></span>{% endfor %}
       </div>
       <p>{{ b.blurb }}</p>
-      <div class="bucket-wave" aria-hidden="true">{{ strength_wave_svg(tier=b.tier) | safe }}</div>
+      <span class="hp-bucket-arrow" aria-hidden="true">→</span>
+      <div class="hp-bucket-wave" aria-hidden="true">{{ strength_wave_svg(tier=b.tier) | safe }}</div>
     </a>
     {% endfor %}
   </div>
