@@ -26,14 +26,20 @@
       <div class="dots big">
         {% for i in range(5) %}<span class="dotmark {% if i < TIER_DOTS[e.tier] %}on{% endif %}"></span>{% endfor %}
       </div>
+      <small class="muted">{{ evidence|length }} evidence row{{ evidence|length != 1 and "s" or "" }}</small>
     </div>
   </div>
 
   <div class="edge-grid">
     <div>
+      <div class="edge-visual">
+        {{ edge_svg(factor_slug=e.f_slug, outcome_slug=e.o_slug, tier=e.tier, factor_kind=e.f_kind, outcome_kind=e.o_kind, w=920, h=220) | safe }}
+      </div>
       {% if retracted_evidence_count %}
       <div class="edge-alert">
-        This edge has {{ retracted_evidence_count }} retracted stud{{ retracted_evidence_count == 1 and "y" or "ies" }}. Tier should be reconsidered.
+        <span class="edge-alert-kicker">Evidence integrity alert</span>
+        <strong>This edge has {{ retracted_evidence_count }} retracted stud{{ retracted_evidence_count == 1 and "y" or "ies" }}.</strong>
+        Tier should be reconsidered before treating this conclusion as stable.
       </div>
       {% endif %}
       <details class="why-tier">
@@ -45,41 +51,78 @@
       <div class="share-row">
         <a class="btn-secondary inline" href="/edge/{{ e.id }}.png" target="_blank">⤓ Share card (PNG)</a>
       </div>
-      <h3>Summary</h3>
-      <p>{{ e.summary }}</p>
-      {% if e.effect_quant %}<p><b>Effect:</b> {{ e.effect_quant }}</p>{% endif %}
-      <h3>Mechanism</h3>
-      <p>{{ e.mechanism or "—" }}</p>
-      {% if e.caveats %}<h3>Caveats</h3><p>{{ e.caveats }}</p>{% endif %}
+      <div class="edge-story-grid">
+        <article class="edge-panel">
+          <span class="edge-panel-label">Summary</span>
+          <p class="edge-panel-copy">{{ e.summary }}</p>
+          {% if e.effect_quant %}
+          <div class="edge-inline-metric">
+            <span class="muted small">Effect estimate</span>
+            <strong>{{ e.effect_quant }}</strong>
+          </div>
+          {% endif %}
+        </article>
+        <article class="edge-panel">
+          <span class="edge-panel-label">Mechanism</span>
+          <p class="edge-panel-copy">{{ e.mechanism or "No mechanism summary yet." }}</p>
+        </article>
+        {% if e.caveats %}
+        <article class="edge-panel edge-panel-caveat">
+          <span class="edge-panel-label">Caveats</span>
+          <p class="edge-panel-copy">{{ e.caveats }}</p>
+        </article>
+        {% endif %}
+      </div>
 
-      <h3>Evidence ({{ evidence|length }})</h3>
-      <table class="evidence-table">
-        <thead><tr><th>Citation</th><th>Year</th><th>Type</th><th>n</th><th>Quality</th><th>Direction</th></tr></thead>
-        <tbody>
-        {% for ev in evidence %}
-          <tr>
-            <td>
-              <div class="citation-head">
-                <span>{{ ev.citation }}</span>
-                {% if ev.is_retracted %}<span class="pill tier-D">RETRACTED</span>{% endif %}
-              </div>
-              {% if ev.notes %}<small class="muted">{{ ev.notes }}</small>{% endif %}
-              {% if ev.is_retracted and ev.retraction_note %}
-              <small class="muted retraction-note">{{ ev.retraction_note }}</small>
-              {% endif %}
-            </td>
-            <td>{{ ev.year or "—" }}</td>
-            <td>{{ ev.study_type or "—" }}</td>
-            <td>{{ ev.n_participants or "—" }}</td>
-            <td>{{ ev.quality or "—" }}</td>
-            <td>{{ ev.direction or "—" }}</td>
-          </tr>
-        {% endfor %}
-        </tbody>
-      </table>
+      <div class="evidence-card">
+        <div class="row-between evidence-card-head">
+          <div>
+            <h3>Evidence dossier</h3>
+            <p class="muted body-sm">Every row below is stored independently so the edge can be rescored as new studies arrive.</p>
+          </div>
+          <span class="badge ghost">{{ evidence|length }} source{{ evidence|length != 1 and "s" or "" }}</span>
+        </div>
+        <table class="evidence-table">
+          <thead><tr><th>Citation</th><th>Year</th><th>Type</th><th>n</th><th>Quality</th><th>Direction</th></tr></thead>
+          <tbody>
+          {% for ev in evidence %}
+            <tr class="{% if ev.is_retracted %}is-retracted{% endif %}">
+              <td>
+                <div class="citation-head">
+                  <span class="citation-title">{{ ev.citation }}</span>
+                  {% if ev.is_retracted %}<span class="pill retract-pill">RETRACTED</span>{% endif %}
+                </div>
+                <div class="citation-subline">
+                  {% if ev.pmid %}<span>PMID {{ ev.pmid }}</span>{% endif %}
+                  {% if ev.doi %}<span>DOI {{ ev.doi }}</span>{% endif %}
+                </div>
+                {% if ev.notes %}<small class="muted">{{ ev.notes }}</small>{% endif %}
+                {% if ev.is_retracted and ev.retraction_note %}
+                <small class="muted retraction-note">{{ ev.retraction_note }}</small>
+                {% endif %}
+              </td>
+              <td>{{ ev.year or "—" }}</td>
+              <td>{{ ev.study_type or "—" }}</td>
+              <td>{{ ev.n_participants or "—" }}</td>
+              <td>{{ ev.quality or "—" }}</td>
+              <td>{{ ev.direction or "—" }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
-    <aside>
-      <div class="card">
+    <aside class="edge-sidebar">
+      <div class="card edge-sidebar-card">
+        <h4>Evidence profile</h4>
+        <dl class="edge-fact-grid">
+          <div><dt>Tier</dt><dd>{{ TIER_LABEL[e.tier] }}</dd></div>
+          <div><dt>Direction</dt><dd>{{ DIRECTION_LABEL[e.direction] }}</dd></div>
+          <div><dt>Rows tracked</dt><dd>{{ evidence|length }}</dd></div>
+          <div><dt>Retracted</dt><dd>{{ retracted_evidence_count }}</dd></div>
+        </dl>
+      </div>
+      <div class="card edge-sidebar-card">
         <h4>History</h4>
         <ul class="history">
         {% for h in history %}
@@ -87,7 +130,7 @@
         {% endfor %}
         </ul>
       </div>
-      <div class="card">
+      <div class="card edge-sidebar-card">
         <h4>Last reviewed</h4>
         <p>{{ e.last_reviewed[:10] }}</p>
         <p class="muted small">Source: {{ e.seed_source }}</p>

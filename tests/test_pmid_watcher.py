@@ -95,4 +95,4 @@ def test_edge_page_shows_retraction_banner(client, tmpdb):
     response = client.get(f"/edge/{seeded['edge_id']}")
     assert response.status_code == 200
     assert "RETRACTED" in response.text
-    assert "Tier should be reconsidered." in response.text
+    assert "Tier should be reconsidered before treating this conclusion as stable." in response.text
