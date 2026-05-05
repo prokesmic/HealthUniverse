@@ -766,6 +766,82 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 }
 
 /* =============================================================
+   /products + /product/{slug} — supplement quality layer
+   ============================================================= */
+
+.products-page, .product-page { max-width: 1100px; margin: 0 auto; }
+.products-page .back, .product-page .back { color: var(--ink-soft); font-size: 13px; }
+.products-head, .product-head {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+  border: 1px solid var(--line); border-radius: 22px;
+  padding: 32px 40px; margin: 18px 0 24px;
+}
+.products-eyebrow, .product-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; margin: 0 0 8px; }
+.products-title, .product-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: 44px; line-height: 1.05; letter-spacing: -0.015em; margin: 0 0 14px; color: var(--ink); }
+.products-lede { font-size: 16px; line-height: 1.55; max-width: 760px; color: var(--ink-soft); margin: 0 0 16px; }
+.products-disclaimer {
+  display: grid; grid-template-columns: 32px 1fr; gap: 12px;
+  background: var(--bg-soft); border: 1px solid var(--line);
+  border-left: 3px solid var(--tier-C);
+  border-radius: 10px; padding: 14px 18px;
+  font-size: 13.5px; line-height: 1.55;
+}
+.products-disc-icon { font-size: 18px; color: var(--tier-C); }
+.products-disclaimer b { color: var(--ink); }
+
+.products-grid { display: flex; flex-direction: column; gap: 28px; }
+.products-section-h { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; margin: 0 0 12px; color: var(--ink); }
+.products-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.product-card {
+  display: block; padding: 16px 18px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; color: inherit;
+  transition: border-color .12s ease;
+}
+.product-card:hover { border-color: var(--gold); }
+.product-card h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 16px; margin: 0 0 4px; color: var(--ink); }
+.product-card-form { margin: 0 0 10px; font-size: 12px; color: var(--ink-soft); }
+.product-quality-bar { display: flex; gap: 4px; }
+.quality-pip {
+  display: inline-grid; place-items: center;
+  width: 28px; height: 22px; border-radius: 4px;
+  font-size: 10px; font-weight: 600;
+  background: var(--bg-soft); color: var(--muted);
+}
+.quality-pip.good { background: var(--tier-A-bg); color: var(--tier-A); }
+.quality-pip.bad { background: var(--tier-D-bg); color: var(--tier-D); }
+.quality-pip.unknown { background: var(--bg-soft); color: var(--muted); }
+
+.product-meta { color: var(--ink-soft); margin: 0; }
+.product-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 24px; }
+.product-quality { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 28px 32px; }
+.product-h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; margin: 0 0 16px; color: var(--ink); }
+.product-dim-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.product-dim {
+  padding: 16px 18px; background: var(--bg-soft);
+  border: 1px solid var(--line); border-left: 3px solid var(--tier-A);
+  border-radius: 10px;
+}
+.product-dim.unknown { border-left-color: var(--muted); background: var(--surface); }
+.product-dim h3 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; margin: 0 0 4px; color: var(--ink); }
+.product-dim p { margin: 4px 0; font-size: 14px; line-height: 1.55; }
+.product-side { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+.product-edges { list-style: none; padding: 0; margin: 8px 0 0; }
+.product-edges li { margin-bottom: 4px; }
+.product-edges a {
+  display: flex; gap: 8px; padding: 8px 12px; align-items: center;
+  background: var(--bg-soft); border: 1px solid var(--line); border-radius: 8px;
+  color: inherit; font-size: 13px;
+}
+.product-edges a:hover { border-color: var(--gold); }
+.product-edges .pill { font-size: 9px; padding: 2px 6px; }
+
+@media (max-width: 880px) {
+  .products-title, .product-title { font-size: 32px; }
+  .product-grid { grid-template-columns: 1fr; }
+}
+
+/* =============================================================
    /brief — profile-aware daily memo
    ============================================================= */
 

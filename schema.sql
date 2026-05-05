@@ -87,6 +87,33 @@ CREATE TABLE IF NOT EXISTS evidence_status (
 CREATE INDEX IF NOT EXISTS idx_status_retracted
     ON evidence_status(is_retracted);
 
+-- Supplement product layer — products are separate from intervention
+-- evidence. Quality dimensions are scaffolded but never fabricated.
+-- If we don't have testing data, we say so on the card.
+CREATE TABLE IF NOT EXISTS product (
+    id              INTEGER PRIMARY KEY,
+    slug            TEXT NOT NULL UNIQUE,
+    name            TEXT NOT NULL,
+    brand           TEXT,
+    entity_slug     TEXT,           -- which supplement entity this product is a form of
+    form            TEXT,           -- capsule, powder, liquid, gel, etc.
+    typical_dose_mg INTEGER,        -- the labeled dose if simple
+    notes           TEXT,
+    -- Quality dimensions (each 0-3 score with a 'unknown' option)
+    label_accuracy_score        INTEGER,   -- 0..3, NULL = unknown
+    label_accuracy_note         TEXT,
+    contamination_score         INTEGER,
+    contamination_note          TEXT,
+    dosage_alignment_score      INTEGER,   -- vs evidence-supported range
+    dosage_alignment_note       TEXT,
+    third_party_tested          INTEGER,   -- 0/1; NULL = unknown
+    third_party_org             TEXT,      -- e.g. "USP", "NSF", "Informed Sport"
+    formulation_concerns        TEXT,
+    last_reviewed               TEXT,
+    created_at                  TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_product_entity ON product(entity_slug);
+
 -- History: every tier change recorded so cards can show "what changed".
 CREATE TABLE IF NOT EXISTS edge_history (
     id          INTEGER PRIMARY KEY,

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Supplement product quality — Health Universe{% endblock %}
+{% block content %}
+<section class="products-page">
+  <a class="back" href="/">← Back to Health Universe</a>
+
+  <header class="products-head">
+    <p class="products-eyebrow">Product quality · scaffolded carefully</p>
+    <h1 class="products-title">Supplement product quality</h1>
+    <p class="products-lede">Most of the health internet tells you <em>whether</em> a supplement works. We track that on the evidence side. This is a separate layer about the products themselves: label accuracy, contamination, dose alignment with the evidence-supported range, and third-party testing status.</p>
+    <div class="products-disclaimer">
+      <span class="products-disc-icon" aria-hidden="true">ⓘ</span>
+      <div>
+        <b>Foundation only.</b> We're scaffolding this layer carefully — when we don't have independent testing data for a brand, we say so. We never fabricate quality scores. If you don't see your brand listed, that means we don't have verified data on it yet.
+      </div>
+    </div>
+  </header>
+
+  {% if not products %}
+  <div class="library-empty">
+    <div class="library-empty-mark" aria-hidden="true">∅</div>
+    <h2>No products in the database yet</h2>
+    <p class="muted">This page is the foundation for a future product-quality layer. Products will be added when we have independent testing data (USP, NSF, ConsumerLab, Informed Sport, etc.) — never fabricated. The supplement evidence in the rest of the app already works without products.</p>
+    <div class="disc-empty-actions" style="margin-top: 18px">
+      <a class="btn-secondary inline" href="/category/supplements">Browse supplement evidence →</a>
+    </div>
+  </div>
+  {% else %}
+  <div class="products-grid">
+    {% for slug, items in by_entity.items() %}
+    <section class="products-section">
+      <h2 class="products-section-h">{{ items[0].entity_name or slug }}</h2>
+      <div class="products-list">
+        {% for p in items %}
+        <a class="product-card" href="/product/{{ p.slug }}">
+          <h3>{{ p.name }} <span class="muted small">{{ p.brand or '' }}</span></h3>
+          <p class="product-card-form">{{ p.form or '' }}{% if p.typical_dose_mg %} · {{ p.typical_dose_mg }} mg{% endif %}</p>
+          <div class="product-quality-bar">
+            {% set labelOK = p.label_accuracy_score and p.label_accuracy_score >= 2 %}
+            {% set contamOK = p.contamination_score and p.contamination_score >= 2 %}
+            <span class="quality-pip {% if p.label_accuracy_score is none %}unknown{% elif labelOK %}good{% else %}bad{% endif %}" title="Label accuracy">L</span>
+            <span class="quality-pip {% if p.contamination_score is none %}unknown{% elif contamOK %}good{% else %}bad{% endif %}" title="Contamination">C</span>
+            <span class="quality-pip {% if p.dosage_alignment_score is none %}unknown{% elif p.dosage_alignment_score >= 2 %}good{% else %}bad{% endif %}" title="Dose alignment">D</span>
+            <span class="quality-pip {% if p.third_party_tested is none %}unknown{% elif p.third_party_tested %}good{% else %}bad{% endif %}" title="3rd-party tested">3P</span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}{{ p.name }} — product quality{% endblock %}
+{% block content %}
+<section class="product-page">
+  <a class="back" href="/products">← All products</a>
+
+  <header class="product-head">
+    <p class="product-eyebrow">Product quality · {{ p.entity_name or '' }}</p>
+    <h1 class="product-title">{{ p.name }}</h1>
+    <p class="product-meta">
+      {% if p.brand %}<b>{{ p.brand }}</b>{% endif %}
+      {% if p.form %}<span class="muted">· {{ p.form }}</span>{% endif %}
+      {% if p.typical_dose_mg %}<span class="muted">· {{ p.typical_dose_mg }} mg</span>{% endif %}
+    </p>
+  </header>
+
+  <div class="product-grid">
+    <section class="product-quality">
+      <h2 class="product-h2">Quality dimensions</h2>
+      <ul class="product-dim-list">
+        <li class="product-dim {% if p.label_accuracy_score is none %}unknown{% endif %}">
+          <h3>Label accuracy</h3>
+          {% if p.label_accuracy_score is none %}<p class="muted">No independent testing data on file.</p>
+          {% else %}<p>Score: <b>{{ p.label_accuracy_score }} / 3</b></p>{% if p.label_accuracy_note %}<p class="muted body-sm">{{ p.label_accuracy_note }}</p>{% endif %}{% endif %}
+        </li>
+        <li class="product-dim {% if p.contamination_score is none %}unknown{% endif %}">
+          <h3>Contamination risk</h3>
+          {% if p.contamination_score is none %}<p class="muted">No independent testing data on file.</p>
+          {% else %}<p>Score: <b>{{ p.contamination_score }} / 3</b></p>{% if p.contamination_note %}<p class="muted body-sm">{{ p.contamination_note }}</p>{% endif %}{% endif %}
+        </li>
+        <li class="product-dim {% if p.dosage_alignment_score is none %}unknown{% endif %}">
+          <h3>Dose alignment</h3>
+          {% if p.dosage_alignment_score is none %}<p class="muted">No data on dose alignment with evidence-supported range.</p>
+          {% else %}<p>Score: <b>{{ p.dosage_alignment_score }} / 3</b></p>{% if p.dosage_alignment_note %}<p class="muted body-sm">{{ p.dosage_alignment_note }}</p>{% endif %}{% endif %}
+        </li>
+        <li class="product-dim {% if p.third_party_tested is none %}unknown{% endif %}">
+          <h3>Third-party tested</h3>
+          {% if p.third_party_tested is none %}<p class="muted">Unknown — we haven't verified.</p>
+          {% elif p.third_party_tested %}<p>✓ Tested by <b>{{ p.third_party_org or 'an independent organisation' }}</b></p>
+          {% else %}<p>No third-party testing on file.</p>{% endif %}
+        </li>
+        {% if p.formulation_concerns %}
+        <li class="product-dim">
+          <h3>Formulation concerns</h3>
+          <p>{{ p.formulation_concerns }}</p>
+        </li>
+        {% endif %}
+      </ul>
+    </section>
+
+    {% if edges %}
+    <aside class="product-side">
+      <h2 class="product-h2">Underlying evidence</h2>
+      <p class="muted body-sm">If you choose to take {{ p.entity_name or "this supplement" }}, this is the evidence on the substance itself, separate from the brand.</p>
+      <ul class="product-edges">
+        {% for e in edges %}
+        <li>
+          <a href="/edge/{{ e.id }}">
+            <span class="pill tier-{{ e.tier }}">{{ e.tier }}</span>
+            <span>{{ e.o_name }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </aside>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

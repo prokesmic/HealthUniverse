@@ -505,6 +505,70 @@ def sitemap():
 
 # ---- public JSON API --------------------------------------------------------
 
+@app.get("/products", response_class=HTMLResponse)
+def products_index(request: Request, entity: str = ""):
+    """Supplement product-quality layer. Browse products keyed to
+    supplement entities. Where we don't have independent testing data,
+    we say so explicitly."""
+    with connect() as conn:
+        try:
+            sql = ("SELECT p.*, e.name AS entity_name "
+                   "FROM product p LEFT JOIN entity e ON e.slug = p.entity_slug")
+            params: list = []
+            if entity:
+                sql += " WHERE p.entity_slug = ?"; params.append(entity)
+            sql += " ORDER BY p.name"
+            products = [dict(r) for r in conn.execute(sql, params).fetchall()]
+        except Exception:
+            products = []
+        # Group products by entity for the index page
+        by_entity: dict[str, list[dict]] = {}
+        for p in products:
+            by_entity.setdefault(p["entity_slug"] or "—", []).append(p)
+        # Supplement entities that have at least one product or could
+        supp_entities = [dict(r) for r in conn.execute(
+            "SELECT slug, name FROM entity WHERE kind='supplement' ORDER BY name"
+        ).fetchall()]
+    return render(request, "products.html", {
+        "title": "Supplement product quality",
+        "products": products,
+        "by_entity": by_entity,
+        "entity_filter": entity,
+        "all_supplements": supp_entities,
+    })
+
+
+@app.get("/product/{slug}", response_class=HTMLResponse)
+def product_detail(request: Request, slug: str):
+    with connect() as conn:
+        try:
+            p = conn.execute(
+                "SELECT p.*, e.name AS entity_name "
+                "FROM product p LEFT JOIN entity e ON e.slug = p.entity_slug "
+                "WHERE p.slug = ?", (slug,)).fetchone()
+        except Exception:
+            p = None
+        if not p:
+            return HTMLResponse("Product not found — the product quality layer "
+                                "is just being scaffolded.", status_code=404)
+        # Related evidence on the parent supplement entity
+        edges = []
+        if p["entity_slug"]:
+            edges = [dict(r) for r in conn.execute("""
+                SELECT e.id, e.tier, e.direction, e.summary,
+                       o.name AS o_name, o.slug AS o_slug
+                FROM edge e
+                JOIN entity f ON f.id = e.factor_id
+                JOIN entity o ON o.id = e.outcome_id
+                WHERE f.slug = ?
+                ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2
+                              WHEN 'C' THEN 3 ELSE 4 END LIMIT 12""",
+                (p["entity_slug"],)).fetchall()]
+    return render(request, "product.html", {
+        "title": p["name"], "p": dict(p), "edges": edges,
+    })
+
+
 @app.get("/brief", response_class=HTMLResponse)
 def brief_page(request: Request, days: int = 14):
     """Profile-aware daily/weekly briefing."""
