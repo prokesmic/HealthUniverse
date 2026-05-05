@@ -1,44 +1,95 @@
 {% extends "base.html" %}
 {% block title %}{{ title }} — Health Universe{% endblock %}
 {% block content %}
-<section class="list-page">
-  <a class="back" href="/">← Back</a>
-  <h1>Search</h1>
-  <form class="search-form" method="get" action="/search">
-    <label class="sr-only" for="search-page-query">Search query</label>
-    <input id="search-page-query" name="q" value="{{ q }}" placeholder="Search foods, conditions, mechanisms…" autofocus>
-    <button class="btn-primary" type="submit">Search</button>
-  </form>
+<section class="search-page">
+  <a class="back" href="/">← Back to Health Universe</a>
+
+  <header class="search-head">
+    <p class="search-eyebrow">Evidence retrieval</p>
+    <h1 class="search-title">{% if q %}Results for &ldquo;{{ q }}&rdquo;{% else %}Search the universe{% endif %}</h1>
+    <form class="search-bigform" method="get" action="/search">
+      <label class="sr-only" for="search-page-query">Search query</label>
+      <span class="search-icon" aria-hidden="true">⌕</span>
+      <input id="search-page-query" name="q" value="{{ q }}" autofocus
+        placeholder="Search foods, conditions, mechanisms, or ask a real question…">
+      <button class="btn-primary" type="submit">Search</button>
+    </form>
+    {% if q %}
+    <div class="search-meta">
+      {% set total = (entities|length) + (edges|length) %}
+      <span><b>{{ total }}</b> result{{ total != 1 and "s" or "" }}</span>
+      {% if entities %}<span>·</span><span>{{ entities|length }} topic{{ entities|length != 1 and "s" or "" }}</span>{% endif %}
+      {% if edges %}<span>·</span><span>{{ edges|length }} evidence card{{ edges|length != 1 and "s" or "" }}</span>{% endif %}
+      {% if semantic_added %}
+      <span>·</span>
+      <span class="search-semantic-tag">↻ {{ semantic_added }} semantic match{{ semantic_added != 1 and "es" or "" }}</span>
+      {% endif %}
+    </div>
+    {% if semantic_added %}
+    <p class="search-semantic-note muted body-sm">A few of these results were found by meaning, not exact words — paraphrased queries surface related concepts.</p>
+    {% endif %}
+    {% endif %}
+  </header>
+
+  {% if not q %}
+  <div class="search-suggestions-v2">
+    <h2 class="search-h2">Try a real question</h2>
+    <div class="search-tries">
+      <a href="/search?q=Should I take creatine">Should I take creatine?</a>
+      <a href="/search?q=alcohol breast cancer">Alcohol and breast cancer</a>
+      <a href="/search?q=what helps with sleep">What helps with sleep?</a>
+      <a href="/search?q=ultra-processed food">Ultra-processed food</a>
+      <a href="/search?q=lower dementia risk">Lower dementia risk</a>
+      <a href="/search?q=intermittent fasting type 2 diabetes">Intermittent fasting and T2D</a>
+    </div>
+    <h2 class="search-h2">Or browse</h2>
+    <div class="search-tries">
+      <a href="/tier/A">Strong evidence (tier A)</a>
+      <a href="/myths">Myths and contested claims</a>
+      <a href="/discoveries">Recent discoveries</a>
+      <a href="/explore">Graph explorer</a>
+    </div>
+  </div>
+  {% endif %}
 
   {% if q %}
-    {% if semantic_added %}
-    <p class="muted body-sm">{{ semantic_added }} of these {{ edges|length }} matches are semantic — paraphrased queries surface related concepts (e.g. "what helps with sleep" returns insomnia, dementia).</p>
-    {% endif %}
     {% if entities %}
-    <h2>Topics</h2>
-    <div class="chip-grid">
-      {% for e in entities %}
-      <a class="chip" href="/category/{{ e.kind }}">{{ e.name }} <small class="muted">({{ e.kind }})</small></a>
-      {% endfor %}
-    </div>
+    <section class="search-section">
+      <h2 class="search-h2">Topics <span class="search-h2-count">{{ entities|length }}</span></h2>
+      <p class="muted body-sm">Direct matches in our entity catalog. Click into a topic to explore everything connected to it.</p>
+      <div class="search-topics">
+        {% for e in entities %}
+        <a class="search-topic" href="/explore?focus={{ e.slug }}">
+          <b>{{ e.name }}</b>
+          <span class="muted small">{{ e.kind }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
     {% endif %}
 
-    <h2>Evidence</h2>
-    <div class="list-grid">
-      {% for e in edges %}
-      <a class="feat-card tier-bg-{{ e.tier }}" href="/edge/{{ e.id }}">
-        <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
-        <h2>{{ e.f_name }} and {{ e.o_name }}</h2>
-        <p>{{ e.summary }}</p>
-        <div class="feat-meta">
-          <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+    <section class="search-section">
+      <h2 class="search-h2">Evidence cards <span class="search-h2-count">{{ edges|length }}</span></h2>
+      <div class="search-results">
+        {% for e in edges %}
+        <a class="search-result" href="/edge/{{ e.id }}">
+          <div class="search-result-head">
+            <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
+            <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+          </div>
+          <h3 class="search-result-title">{{ e.f_name }} <span class="lib-arrow" aria-hidden="true">→</span> {{ e.o_name }}</h3>
+          {% if e.summary %}<p class="search-result-summary">{{ e.summary[:240] }}{% if e.summary|length > 240 %}…{% endif %}</p>{% endif %}
           <span class="muted small">Updated {{ e.updated_at[:10] }}</span>
+        </a>
+        {% else %}
+        <div class="library-empty">
+          <div class="library-empty-mark" aria-hidden="true">∅</div>
+          <h2>Nothing matched</h2>
+          <p class="muted">Try a broader query or one of the prompts on this page. The graph has 700+ relationships but doesn't yet cover everything.</p>
         </div>
-      </a>
-      {% else %}
-      <div class="empty">No matches.</div>
-      {% endfor %}
-    </div>
+        {% endfor %}
+      </div>
+    </section>
   {% endif %}
 </section>
 {% endblock %}

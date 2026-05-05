@@ -727,6 +727,103 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 }
 
 /* =============================================================
+   Search page — evidence retrieval surface
+   ============================================================= */
+
+.search-page { max-width: 1080px; margin: 0 auto; }
+.search-page .back { color: var(--ink-soft); font-size: 13px; }
+.search-head {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+  border: 1px solid var(--line); border-radius: 22px;
+  padding: 32px 36px; margin: 18px 0 28px;
+}
+.search-eyebrow {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--gold); font-weight: 600; margin: 0 0 8px;
+}
+.search-title {
+  font-family: 'Fraunces', serif; font-weight: 400;
+  font-size: 42px; line-height: 1.1; letter-spacing: -0.015em;
+  margin: 0 0 22px; color: var(--ink); word-break: break-word;
+}
+.search-bigform {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 14px; padding: 8px 8px 8px 18px;
+  margin-bottom: 12px;
+}
+.search-icon { font-size: 22px; color: var(--gold); line-height: 1; }
+.search-bigform input {
+  flex: 1; border: 0; outline: none; background: transparent;
+  font: inherit; font-size: 16px; color: var(--ink); padding: 12px 6px;
+}
+.search-bigform .btn-primary { width: auto; padding: 12px 22px; margin: 0; }
+.search-meta { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; color: var(--ink-soft); font-size: 14px; margin-top: 4px; }
+.search-meta b { color: var(--ink); }
+.search-semantic-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 12px; padding: 3px 10px; border-radius: 999px;
+  background: var(--tier-A-bg); color: var(--tier-A);
+  border: 1px solid var(--tier-A);
+}
+.search-semantic-note { margin: 8px 0 0; }
+
+.search-suggestions-v2 { margin-bottom: 36px; }
+.search-tries { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.search-tries a {
+  display: inline-flex; padding: 10px 16px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 999px; color: var(--ink-soft); font-size: 14px;
+}
+.search-tries a:hover { border-color: var(--gold); color: var(--ink); }
+
+.search-section { margin-bottom: 32px; }
+.search-h2 {
+  font-family: 'Fraunces', serif; font-weight: 500;
+  font-size: 22px; margin: 0 0 8px;
+  display: flex; align-items: baseline; gap: 8px; color: var(--ink);
+}
+.search-h2-count {
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+  color: var(--ink-soft); background: var(--bg-soft);
+  border-radius: 999px; padding: 2px 10px; letter-spacing: 0.02em;
+}
+
+.search-topics { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-top: 12px; }
+.search-topic {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 12px 16px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 10px;
+  color: var(--ink); transition: border-color .15s ease;
+}
+.search-topic:hover { border-color: var(--gold); }
+.search-topic b { font-size: 14px; }
+.search-topic .muted { font-size: 11px; }
+
+.search-results { display: flex; flex-direction: column; gap: 10px; }
+.search-result {
+  display: block; padding: 16px 20px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; color: inherit;
+  transition: border-color .15s ease, transform .12s ease;
+}
+.search-result:hover { border-color: var(--gold); transform: translateX(2px); }
+.search-result-head { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 8px; }
+.search-result-head .pill { font-size: 10px; padding: 2px 8px; }
+.search-result-title {
+  font-family: 'Fraunces', serif; font-weight: 500;
+  font-size: 20px; line-height: 1.22; margin: 4px 0; color: var(--ink);
+}
+.search-result-summary { font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 6px 0; }
+
+@media (max-width: 720px) {
+  .search-head { padding: 24px 22px; }
+  .search-title { font-size: 30px; }
+  .search-bigform { flex-direction: column; align-items: stretch; padding: 12px; }
+  .search-bigform .btn-primary { width: 100%; }
+}
+
+/* =============================================================
    Library list pages — /tier/{tier} and /category/{slug}
    ============================================================= */
 
