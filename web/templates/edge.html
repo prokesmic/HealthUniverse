@@ -92,16 +92,68 @@
       {% endif %}
 
       {# Supporting evidence #}
-      <section class="dossier-section">
+      <section class="dossier-section" id="evidence-section">
         <div class="dossier-section-head">
           <h2 class="dossier-h2"><span class="dossier-num">03</span> Supporting evidence</h2>
-          <span class="muted small">{{ evidence|length }} stud{{ evidence|length == 1 and "y" or "ies" }}</span>
+          <span class="muted small">{{ evidence|length }} stud{{ evidence|length == 1 and "y" or "ies" }}{% if counter %} · {{ counter|length }} counter{% endif %}</span>
         </div>
 
         {% if evidence %}
-        <div class="evidence-list">
+        <div class="evidence-rail">
+          {# Compact study-mix summary #}
+          {% set st_counts = {} %}
+          {% set total_n_ns = namespace(v=0) %}
           {% for ev in evidence %}
-          <article class="evidence-row {% if ev.is_retracted %}is-retracted{% endif %}">
+            {% set _ = st_counts.update({ev.study_type or 'other': st_counts.get(ev.study_type or 'other', 0) + 1}) %}
+            {% if ev.n_participants %}{% set total_n_ns.v = total_n_ns.v + ev.n_participants %}{% endif %}
+          {% endfor %}
+          {% set total_n = total_n_ns.v %}
+          <div class="evidence-rail-stat">
+            <dt>Total studies</dt><dd>{{ evidence|length }}</dd>
+          </div>
+          <div class="evidence-rail-stat">
+            <dt>Participants</dt><dd>{{ total_n and "{:,}".format(total_n) or "—" }}</dd>
+          </div>
+          {% if st_counts.get('meta_analysis') or st_counts.get('systematic_review') %}
+          <div class="evidence-rail-stat highlight">
+            <dt>Meta / SR</dt><dd>{{ st_counts.get('meta_analysis', 0) + st_counts.get('systematic_review', 0) }}</dd>
+          </div>
+          {% endif %}
+          {% if st_counts.get('rct') %}
+          <div class="evidence-rail-stat">
+            <dt>RCTs</dt><dd>{{ st_counts.get('rct', 0) }}</dd>
+          </div>
+          {% endif %}
+          {% if retracted_evidence_count %}
+          <div class="evidence-rail-stat alert">
+            <dt>Retracted</dt><dd>{{ retracted_evidence_count }}</dd>
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="evidence-controls" role="toolbar" aria-label="Filter evidence">
+          <button class="ev-filter active" data-ev-filter="all">All</button>
+          {% for st, n in st_counts.items() %}
+            {% if n %}<button class="ev-filter" data-ev-filter="{{ st }}">{{ st.replace("_", " ") }} ({{ n }})</button>{% endif %}
+          {% endfor %}
+          <span class="ev-sort-spacer"></span>
+          <label class="ev-sort-label">Sort
+            <select id="evSort">
+              <option value="year-desc">Newest first</option>
+              <option value="year-asc">Oldest first</option>
+              <option value="quality">Quality (high → low)</option>
+              <option value="n-desc">Largest n first</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="evidence-list" id="evidence-list">
+          {% for ev in evidence %}
+          <article class="evidence-row {% if ev.is_retracted %}is-retracted{% endif %}"
+                   data-study-type="{{ ev.study_type or 'other' }}"
+                   data-year="{{ ev.year or 0 }}"
+                   data-quality="{% if ev.quality == 'high' %}4{% elif ev.quality == 'moderate' %}3{% elif ev.quality == 'low' %}2{% elif ev.quality == 'very_low' %}1{% else %}0{% endif %}"
+                   data-n="{{ ev.n_participants or 0 }}">
             <div class="evidence-row-main">
               <div class="evidence-citation">
                 <span>{{ ev.citation }}</span>
@@ -210,4 +262,39 @@
     </aside>
   </div>
 </section>
+
+<script>
+(function() {
+  const list = document.getElementById("evidence-list");
+  if (!list) return;
+  const filterButtons = document.querySelectorAll(".ev-filter");
+  const sortSelect = document.getElementById("evSort");
+  let activeFilter = "all";
+  function apply() {
+    const rows = Array.from(list.children);
+    rows.forEach(r => {
+      const matches = activeFilter === "all" || r.dataset.studyType === activeFilter;
+      r.style.display = matches ? "" : "none";
+    });
+    if (sortSelect) {
+      const sort = sortSelect.value;
+      const visible = rows.filter(r => r.style.display !== "none");
+      visible.sort((a, b) => {
+        if (sort === "year-asc")  return (+a.dataset.year) - (+b.dataset.year);
+        if (sort === "quality")   return (+b.dataset.quality) - (+a.dataset.quality);
+        if (sort === "n-desc")    return (+b.dataset.n) - (+a.dataset.n);
+        return (+b.dataset.year) - (+a.dataset.year); // year-desc default
+      });
+      visible.forEach(r => list.appendChild(r));
+    }
+  }
+  filterButtons.forEach(b => b.onclick = () => {
+    filterButtons.forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    activeFilter = b.dataset.evFilter;
+    apply();
+  });
+  if (sortSelect) sortSelect.onchange = apply;
+})();
+</script>
 {% endblock %}

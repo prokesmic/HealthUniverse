@@ -2218,6 +2218,37 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 .dossier-caveats .dossier-h2 { margin-top: 0; }
 .dossier-caveats p { color: var(--ink); }
 
+/* Evidence summary rail — small stats above the list */
+.evidence-rail {
+  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr);
+  gap: 0; margin: 8px 0 14px;
+  background: var(--bg-soft); border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.evidence-rail-stat { padding: 12px 16px; border-right: 1px solid var(--line); }
+.evidence-rail-stat:last-child { border-right: 0; }
+.evidence-rail-stat dt { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin: 0 0 2px; }
+.evidence-rail-stat dd { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; color: var(--ink); margin: 0; line-height: 1; }
+.evidence-rail-stat.highlight dd { color: var(--tier-A); }
+.evidence-rail-stat.alert dd { color: var(--tier-D); }
+
+/* Evidence filter / sort controls */
+.evidence-controls {
+  display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.ev-filter {
+  padding: 6px 12px; font-size: 12px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 999px; color: var(--ink-soft); cursor: pointer;
+  font-family: inherit;
+}
+.ev-filter:hover { border-color: var(--gold); }
+.ev-filter.active { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.ev-sort-spacer { flex: 1; }
+.ev-sort-label { font-size: 11px; color: var(--ink-soft); display: flex; align-items: center; gap: 6px; }
+.ev-sort-label select { padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: white; font: inherit; font-size: 12px; }
+
 /* Evidence list — replaces the table on dossier */
 .evidence-list { display: grid; gap: 12px; }
 .evidence-list-counter { background: var(--tier-X-bg); padding: 14px;
