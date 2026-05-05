@@ -7,9 +7,10 @@
   <p class="muted">Click an entity to see its 1-hop neighborhood. Edge color encodes tier; thickness encodes confidence.</p>
 
   <div class="explore-grid">
-    <aside class="explore-picker card">
-      <h3>Pick a focus</h3>
-      <input id="exFilter" placeholder="filter…" oninput="exFilter(this.value)" />
+    <div class="explore-picker card">
+      <h2>Pick a focus</h2>
+      <label class="sr-only" for="exFilter">Filter entities</label>
+      <input id="exFilter" placeholder="filter…" aria-label="Filter entities" oninput="exFilter(this.value)" />
       <details open><summary>Factors ({{ factors|length }})</summary>
         <ul class="explore-list">
           {% for f in factors %}<li data-name="{{ f.name|lower }}"><a href="/explore?focus={{ f.slug }}" class="{% if focus==f.slug %}sel{% endif %}">{{ f.name }}</a></li>{% endfor %}
@@ -20,11 +21,11 @@
           {% for o in outcomes %}<li data-name="{{ o.name|lower }}"><a href="/explore?focus={{ o.slug }}" class="{% if focus==o.slug %}sel{% endif %}">{{ o.name }}</a></li>{% endfor %}
         </ul>
       </details>
-    </aside>
+    </div>
 
     <div class="explore-canvas card">
       {% if focus_entity %}
-        <h3>{{ focus_entity.name }}<small class="muted"> · {{ focus_entity.kind }}</small></h3>
+        <h2>{{ focus_entity.name }}<small class="muted"> · {{ focus_entity.kind }}</small></h2>
         <p class="body-sm muted">{{ edges|length }} edge{{ edges|length != 1 and "s" or "" }} · {{ nodes|length }} entit{{ nodes|length != 1 and "ies" or "y" }}</p>
         <svg id="graph" viewBox="-300 -300 600 600" preserveAspectRatio="xMidYMid meet"
              style="width:100%; height:520px; background:var(--bg-soft); border-radius:12px;">
@@ -111,7 +112,7 @@
           }
           render();
         </script>
-        <h4>Edges</h4>
+        <h3>Edges</h3>
         <ul class="explore-edge-list">
           {% for e in edges %}
           <li><a href="/edge/{{ e.id }}"><span class="pill tier-{{ e.tier }}">{{ e.tier }}</span> <b>{{ e.from }}</b> → <b>{{ e.to }}</b> <span class="muted small">{{ DIRECTION_LABEL[e.direction] }}</span></a></li>

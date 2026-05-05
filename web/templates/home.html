@@ -40,7 +40,7 @@
       {% endfor %}
     </svg>
   </div>
-  <aside class="hero-side">
+  <div class="hero-side">
     <div class="card confidence">
       <div class="row-between">
         <span class="muted">Overall Evidence Confidence ⓘ</span>
@@ -58,8 +58,8 @@
     {% if spotlight %}
     <div class="card spotlight">
       <span class="pill pill-cv">CARDIOVASCULAR HEALTH</span>
-      <button class="x" aria-label="dismiss">×</button>
-      <h3>{{ spotlight.f_name }} and<br/>{{ spotlight.o_name }}</h3>
+      <button class="x" type="button" aria-label="Dismiss spotlight card">×</button>
+      <h2>{{ spotlight.f_name }} and<br/>{{ spotlight.o_name }}</h2>
       <div class="badges">
         <span class="badge tier-{{ spotlight.tier }}">{{ TIER_LABEL[spotlight.tier] }}</span>
         <span class="badge dir-{{ spotlight.direction }}">{{ DIRECTION_LABEL[spotlight.direction] }}</span>
@@ -72,13 +72,13 @@
         <div><dt>Studies</dt><dd>{{ spotlight.n_studies }}</dd></div>
         <div><dt>Updated</dt><dd>{{ spotlight.updated_at[:10] }}</dd></div>
       </dl>
-      <h4>Key Finding</h4>
+      <h3>Key Finding</h3>
       <p class="body-sm">{{ spotlight.summary }}</p>
       <a class="btn-primary" href="/edge/{{ spotlight.id }}">View Full Evidence →</a>
-      <button class="btn-secondary">＋ Add to My Library</button>
+      <button class="btn-secondary" type="button">＋ Add to My Library</button>
     </div>
     {% endif %}
-  </aside>
+  </div>
 </section>
 
 <section class="categories">
@@ -120,7 +120,7 @@
     <article class="feat-card tier-bg-{{ f.tier }}">
       <div class="feat-art">{{ edge_svg(factor_slug=f.f_slug, outcome_slug=f.o_slug, tier=f.tier, factor_kind=f.f_kind, outcome_kind="condition", w=380, h=140) | safe }}</div>
       <span class="pill tier-{{ f.tier }}">{{ TIER_LABEL[f.tier] | upper }}</span>
-      <button class="heart" aria-label="save">♡</button>
+      <button class="heart" type="button" aria-label="Save relationship">♡</button>
       <h3>{{ f.f_name }} and {{ f.o_name }}</h3>
       <p>{{ f.summary }}</p>
       <div class="feat-meta">
@@ -128,7 +128,7 @@
         <span class="badge ghost">{{ f.top_study or "—" }}</span>
         <span class="muted small">Updated {{ f.updated_at[:10] }}</span>
       </div>
-      <a class="card-link" href="/edge/{{ f.id }}" aria-label="Open"></a>
+      <a class="card-link" href="/edge/{{ f.id }}" aria-label="Open relationship details"></a>
     </article>
     {% endfor %}
     {% if not featured %}

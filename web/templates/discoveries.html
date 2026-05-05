@@ -15,7 +15,7 @@
           <span class="pill tier-{{ r.tier }}">{{ TIER_LABEL[r.tier] | upper }}</span>
           <span class="muted small">{{ (r.promoted_at or r.updated_at)[:10] }}</span>
         </div>
-        <h3>{{ r.f_name }} <span class="arrow">→</span> {{ r.o_name }}</h3>
+        <h2>{{ r.f_name }} <span class="arrow">→</span> {{ r.o_name }}</h2>
         <p>{{ r.summary }}</p>
         <div class="feat-meta">
           <span class="badge dir-{{ r.direction }}">{{ DIRECTION_LABEL[r.direction] }}</span>
