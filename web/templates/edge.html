@@ -9,121 +9,205 @@
 <meta name="twitter:card" content="summary_large_image">
 {% endblock %}
 {% block content %}
-<section class="edge-page">
-  <a class="back" href="/">← Back</a>
-  <div class="edge-head">
+
+{# ── Dossier hero ─────────────────────────────────────────────────── #}
+<section class="dossier">
+  <a class="back" href="/">← Back to Health Universe</a>
+
+  {% if retracted_evidence_count %}
+  <div class="dossier-banner-alert" role="alert">
+    <span class="dossier-banner-icon" aria-hidden="true">⚠</span>
     <div>
-      <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
-      <h1>{{ e.f_name }} <span class="arrow">→</span> {{ e.o_name }}</h1>
-      <div class="badges">
-        <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
-        {% if e.effect_size %}<span class="badge ghost">Effect: {{ e.effect_size }}</span>{% endif %}
-        {% if e.population %}<span class="badge ghost">{{ e.population }}</span>{% endif %}
-      </div>
-    </div>
-    <div class="confidence-card">
-      <span class="muted small">Confidence</span>
-      <div class="dots big">
-        {% for i in range(5) %}<span class="dotmark {% if i < TIER_DOTS[e.tier] %}on{% endif %}"></span>{% endfor %}
-      </div>
+      <b>Retraction warning.</b>
+      This edge cites {{ retracted_evidence_count }} retracted stud{{ retracted_evidence_count == 1 and "y" or "ies" }}.
+      Tier should be reconsidered.
     </div>
   </div>
+  {% endif %}
 
-  <div class="edge-grid">
-    <div>
-      {% if retracted_evidence_count %}
-      <div class="edge-alert" role="alert">
-        ⚠ This edge has {{ retracted_evidence_count }} retracted stud{{ retracted_evidence_count == 1 and "y" or "ies" }}. Tier should be reconsidered.
+  <header class="dossier-hero">
+    <div class="dossier-eyebrow">
+      <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
+      <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+      {% if e.population %}<span class="badge ghost">Population: {{ e.population }}</span>{% endif %}
+    </div>
+    <h1 class="dossier-title">
+      {{ e.f_name }} <span class="dossier-arrow" aria-hidden="true">→</span> {{ e.o_name }}
+    </h1>
+
+    <dl class="dossier-stats">
+      <div>
+        <dt>Confidence</dt>
+        <dd class="dossier-conf">
+          {% for i in range(5) %}<span class="dotmark big {% if i < TIER_DOTS[e.tier] %}on{% endif %}"></span>{% endfor %}
+          <span class="muted small">{{ TIER_LABEL[e.tier] }}</span>
+        </dd>
+      </div>
+      <div>
+        <dt>Studies</dt>
+        <dd>{{ evidence|length }}{% if counter %} <span class="muted small">+ {{ counter|length }} counter</span>{% endif %}</dd>
+      </div>
+      {% if e.effect_size %}
+      <div>
+        <dt>Effect size</dt>
+        <dd>{{ e.effect_size | capitalize }}{% if e.effect_quant %} <span class="muted small">· {{ e.effect_quant }}</span>{% endif %}</dd>
       </div>
       {% endif %}
-      <details class="why-tier">
-        <summary>Why this tier? <small class="muted">audit trail</small></summary>
-        <p class="muted small">Tier was last set on {{ e.last_reviewed[:10] }} by <b>{{ e.seed_source }}</b>.
-          {% if history %}{{ history|length }} historical change{{ history|length != 1 and "s" or "" }} below.{% endif %}
-        </p>
-      </details>
-      <div class="share-row">
-        <a class="btn-secondary inline" href="/edge/{{ e.id }}.png" target="_blank">⤓ Share card (PNG)</a>
+      <div>
+        <dt>Last reviewed</dt>
+        <dd>{{ e.last_reviewed[:10] }}<br/><span class="muted small">{{ e.seed_source }}</span></dd>
       </div>
-      <h2>Summary</h2>
-      <p>{{ e.summary }}</p>
-      {% if e.effect_quant %}<p><b>Effect:</b> {{ e.effect_quant }}</p>{% endif %}
-      <h2>Mechanism</h2>
-      <p>{{ e.mechanism or "—" }}</p>
-      {% if e.caveats %}<h2>Caveats</h2><p>{{ e.caveats }}</p>{% endif %}
+    </dl>
 
-      <h2>Supporting evidence ({{ evidence|length }})</h2>
-      <table class="evidence-table">
-        <thead><tr><th>Citation</th><th>Year</th><th>Type</th><th>n</th><th>Quality</th><th>Direction</th></tr></thead>
-        <tbody>
-        {% for ev in evidence %}
-          <tr>
-            <td>
-              <div class="citation-head">
+    <div class="dossier-actions">
+      <a class="btn-secondary inline" href="/edge/{{ e.id }}.png" target="_blank" rel="noopener">⤓ Share card (PNG)</a>
+      <a class="btn-secondary inline" href="/explore?focus={{ e.f_slug }}">↗ Explore {{ e.f_name }}</a>
+      <a class="btn-secondary inline" href="/explore?focus={{ e.o_slug }}">↗ Explore {{ e.o_name }}</a>
+    </div>
+  </header>
+
+  {# ── Body ───────────────────────────────────────────────────────── #}
+  <div class="dossier-grid">
+    <article class="dossier-body">
+
+      {# Summary — the lede #}
+      <section class="dossier-section dossier-lede">
+        <p>{{ e.summary }}</p>
+      </section>
+
+      {# Mechanism #}
+      {% if e.mechanism %}
+      <section class="dossier-section">
+        <h2 class="dossier-h2"><span class="dossier-num">01</span> Mechanism</h2>
+        <p>{{ e.mechanism }}</p>
+      </section>
+      {% endif %}
+
+      {# Caveats #}
+      {% if e.caveats %}
+      <section class="dossier-section dossier-caveats">
+        <h2 class="dossier-h2"><span class="dossier-num">02</span> Caveats</h2>
+        <p>{{ e.caveats }}</p>
+      </section>
+      {% endif %}
+
+      {# Supporting evidence #}
+      <section class="dossier-section">
+        <div class="dossier-section-head">
+          <h2 class="dossier-h2"><span class="dossier-num">03</span> Supporting evidence</h2>
+          <span class="muted small">{{ evidence|length }} stud{{ evidence|length == 1 and "y" or "ies" }}</span>
+        </div>
+
+        {% if evidence %}
+        <div class="evidence-list">
+          {% for ev in evidence %}
+          <article class="evidence-row {% if ev.is_retracted %}is-retracted{% endif %}">
+            <div class="evidence-row-main">
+              <div class="evidence-citation">
+                <span>{{ ev.citation }}</span>
+                {% if ev.is_retracted %}<span class="pill tier-D" title="Marked retracted on PubMed">RETRACTED</span>{% endif %}
+              </div>
+              {% if ev.notes %}<p class="evidence-notes">{{ ev.notes }}</p>{% endif %}
+              {% if ev.is_retracted and ev.retraction_note %}
+              <p class="evidence-retraction">{{ ev.retraction_note }}</p>
+              {% endif %}
+              <div class="evidence-meta">
+                {% if ev.study_type %}<span class="ev-tag tag-{{ ev.study_type }}">{{ ev.study_type.replace("_", " ") }}</span>{% endif %}
+                {% if ev.quality %}<span class="ev-tag qual-{{ ev.quality }}">quality: {{ ev.quality.replace("_", " ") }}</span>{% endif %}
+                {% if ev.direction %}<span class="ev-tag dir-{{ ev.direction }}">{{ ev.direction.replace("_", " ") }}</span>{% endif %}
+              </div>
+            </div>
+            <div class="evidence-row-side">
+              <div class="evidence-year">{{ ev.year or "—" }}</div>
+              {% if ev.n_participants %}<div class="evidence-n">n={{ "{:,}".format(ev.n_participants) }}</div>{% endif %}
+              {% if ev.pmid %}<a class="evidence-link" href="https://pubmed.ncbi.nlm.nih.gov/{{ ev.pmid }}/" target="_blank" rel="noopener">PubMed ↗</a>
+              {% elif ev.doi %}<a class="evidence-link" href="https://doi.org/{{ ev.doi }}" target="_blank" rel="noopener">DOI ↗</a>{% endif %}
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+        {% else %}
+        <p class="muted">No supporting evidence rows on file.</p>
+        {% endif %}
+      </section>
+
+      {# Counter-evidence #}
+      {% if counter %}
+      <section class="dossier-section dossier-counter">
+        <div class="dossier-section-head">
+          <h2 class="dossier-h2"><span class="dossier-num">04</span> Counter-evidence <span class="muted small">({{ counter|length }})</span></h2>
+        </div>
+        <p class="muted body-sm">High-quality studies that disagree with the direction above. {% if e.tier == 'X' %}For contested edges, this is the whole point.{% else %}We surface them so the picture stays honest.{% endif %}</p>
+        <div class="evidence-list evidence-list-counter">
+          {% for ev in counter %}
+          <article class="evidence-row {% if ev.is_retracted %}is-retracted{% endif %}">
+            <div class="evidence-row-main">
+              <div class="evidence-citation">
                 <span>{{ ev.citation }}</span>
                 {% if ev.is_retracted %}<span class="pill tier-D">RETRACTED</span>{% endif %}
               </div>
-              {% if ev.notes %}<small class="muted">{{ ev.notes }}</small>{% endif %}
+              {% if ev.notes %}<p class="evidence-notes">{{ ev.notes }}</p>{% endif %}
               {% if ev.is_retracted and ev.retraction_note %}
-                <br/><small class="muted retraction-note">{{ ev.retraction_note }}</small>
+              <p class="evidence-retraction">{{ ev.retraction_note }}</p>
               {% endif %}
-            </td>
-            <td>{{ ev.year or "—" }}</td>
-            <td>{{ ev.study_type or "—" }}</td>
-            <td>{{ ev.n_participants or "—" }}</td>
-            <td>{{ ev.quality or "—" }}</td>
-            <td>{{ ev.direction or "—" }}</td>
-          </tr>
-        {% endfor %}
-        </tbody>
-      </table>
-
-      {% if counter %}
-      <details class="counter-panel" {% if e.tier == 'X' %}open{% endif %}>
-        <summary><h2 style="display:inline">Counter-evidence ({{ counter|length }})</h2></summary>
-        <p class="muted body-sm">High-quality studies that disagree with the direction above. We surface them so the picture stays honest{% if e.tier == 'X' %} — and for contested edges this is the whole point{% endif %}.</p>
-        <table class="evidence-table evidence-counter">
-          <thead><tr><th>Citation</th><th>Year</th><th>Type</th><th>n</th><th>Quality</th><th>Direction</th></tr></thead>
-          <tbody>
-          {% for ev in counter %}
-            <tr>
-              <td>
-                <div class="citation-head">
-                  <span>{{ ev.citation }}</span>
-                  {% if ev.is_retracted %}<span class="pill tier-D">RETRACTED</span>{% endif %}
-                </div>
-                {% if ev.notes %}<small class="muted">{{ ev.notes }}</small>{% endif %}
-                {% if ev.is_retracted and ev.retraction_note %}
-                  <br/><small class="muted retraction-note">{{ ev.retraction_note }}</small>
-                {% endif %}
-              </td>
-              <td>{{ ev.year or "—" }}</td>
-              <td>{{ ev.study_type or "—" }}</td>
-              <td>{{ ev.n_participants or "—" }}</td>
-              <td>{{ ev.quality or "—" }}</td>
-              <td>{{ ev.direction or "—" }}</td>
-            </tr>
+              <div class="evidence-meta">
+                {% if ev.study_type %}<span class="ev-tag tag-{{ ev.study_type }}">{{ ev.study_type.replace("_", " ") }}</span>{% endif %}
+                {% if ev.quality %}<span class="ev-tag qual-{{ ev.quality }}">quality: {{ ev.quality.replace("_", " ") }}</span>{% endif %}
+                {% if ev.direction %}<span class="ev-tag dir-{{ ev.direction }}">{{ ev.direction.replace("_", " ") }}</span>{% endif %}
+              </div>
+            </div>
+            <div class="evidence-row-side">
+              <div class="evidence-year">{{ ev.year or "—" }}</div>
+              {% if ev.n_participants %}<div class="evidence-n">n={{ "{:,}".format(ev.n_participants) }}</div>{% endif %}
+              {% if ev.pmid %}<a class="evidence-link" href="https://pubmed.ncbi.nlm.nih.gov/{{ ev.pmid }}/" target="_blank" rel="noopener">PubMed ↗</a>
+              {% elif ev.doi %}<a class="evidence-link" href="https://doi.org/{{ ev.doi }}" target="_blank" rel="noopener">DOI ↗</a>{% endif %}
+            </div>
+          </article>
           {% endfor %}
-          </tbody>
-        </table>
-      </details>
+        </div>
+      </section>
       {% endif %}
-    </div>
-    <div>
-      <div class="card">
-        <h3>History</h3>
-        <ul class="history">
-        {% for h in history %}
-          <li><b>{{ h.changed_at[:10] }}</b> · {{ h.actor }} · {{ h.reason or h.field }}</li>
-        {% endfor %}
-        </ul>
+
+      {# Disclaimer #}
+      <p class="dossier-disclaimer">Not medical advice. This dossier summarises peer-reviewed research; consult a clinician for decisions specific to you.</p>
+    </article>
+
+    {# Sidebar: audit + history #}
+    <aside class="dossier-side">
+      <div class="dossier-side-card">
+        <h3>Audit trail</h3>
+        <p class="muted body-sm">Tier last set on <b>{{ e.last_reviewed[:10] }}</b> by <b>{{ e.seed_source }}</b>.</p>
+        {% if history %}
+        <ol class="dossier-timeline">
+          {% for h in history %}
+          <li>
+            <span class="dossier-tl-date">{{ h.changed_at[:10] }}</span>
+            <span class="dossier-tl-actor">{{ h.actor }}</span>
+            {% if h.field == 'tier' and h.old_value and h.new_value %}
+            <div class="dossier-tl-tierchange">
+              <span class="pill tier-{{ h.old_value }}">{{ h.old_value }}</span>
+              <span class="dossier-arrow" aria-hidden="true">→</span>
+              <span class="pill tier-{{ h.new_value }}">{{ h.new_value }}</span>
+            </div>
+            {% endif %}
+            <small class="muted">{{ h.reason or h.field }}</small>
+          </li>
+          {% endfor %}
+        </ol>
+        {% else %}
+        <p class="muted body-sm">No prior changes recorded.</p>
+        {% endif %}
       </div>
-      <div class="card">
-        <h3>Last reviewed</h3>
-        <p>{{ e.last_reviewed[:10] }}</p>
-        <p class="muted small">Source: {{ e.seed_source }}</p>
+
+      <div class="dossier-side-card">
+        <h3>About this card</h3>
+        <p class="body-sm muted">Source: <b>{{ e.seed_source }}</b>. {% if e.seed_source == "claude_seed" %}One-off deep research with $50 Claude cap.{% elif e.seed_source == "gemma_daily" %}Auto-extracted by the daily Gemma loop from new abstracts.{% else %}Imported from a verified payload (every PMID resolves on PubMed).{% endif %}</p>
+        <p class="body-sm">
+          <a class="link" href="/about">How tiers work →</a><br/>
+          <a class="link" href="/myths">When evidence flips →</a>
+        </p>
       </div>
-    </div>
+    </aside>
   </div>
 </section>
 {% endblock %}
