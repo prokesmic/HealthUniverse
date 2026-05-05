@@ -16,6 +16,8 @@ CREATE TABLE IF NOT EXISTS entity (
                     'biomarker','condition','process')),
     aliases       TEXT,           -- JSON array
     description   TEXT,
+    embedding     BLOB,
+    embedded_at   TEXT,
     created_at    TEXT NOT NULL DEFAULT (datetime('now')),
     updated_at    TEXT NOT NULL DEFAULT (datetime('now'))
 );
@@ -36,6 +38,8 @@ CREATE TABLE IF NOT EXISTS edge (
     summary         TEXT,         -- card body copy
     caveats         TEXT,
     seed_source     TEXT NOT NULL CHECK (seed_source IN ('claude_seed','gemma_daily','manual')),
+    embedding       BLOB,
+    embedded_at     TEXT,
     created_at      TEXT NOT NULL DEFAULT (datetime('now')),
     updated_at      TEXT NOT NULL DEFAULT (datetime('now')),
     last_reviewed   TEXT NOT NULL DEFAULT (datetime('now')),
@@ -65,11 +69,13 @@ CREATE TABLE IF NOT EXISTS evidence (
     quality       TEXT CHECK (quality IN ('high','moderate','low','very_low')),
     notes         TEXT,
     source_id     INTEGER REFERENCES source(id),
+    is_counter    INTEGER NOT NULL DEFAULT 0,
     created_at    TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
 CREATE INDEX IF NOT EXISTS idx_evidence_edge ON evidence(edge_id);
 CREATE INDEX IF NOT EXISTS idx_evidence_pmid ON evidence(pmid);
+CREATE INDEX IF NOT EXISTS idx_evidence_counter ON evidence(edge_id, is_counter);
 
 -- History: every tier change recorded so cards can show "what changed".
 CREATE TABLE IF NOT EXISTS edge_history (

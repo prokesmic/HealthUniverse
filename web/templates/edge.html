@@ -47,7 +47,7 @@
       <p>{{ e.mechanism or "—" }}</p>
       {% if e.caveats %}<h2>Caveats</h2><p>{{ e.caveats }}</p>{% endif %}
 
-      <h2>Evidence ({{ evidence|length }})</h2>
+      <h2>Supporting evidence ({{ evidence|length }})</h2>
       <table class="evidence-table">
         <thead><tr><th>Citation</th><th>Year</th><th>Type</th><th>n</th><th>Quality</th><th>Direction</th></tr></thead>
         <tbody>
@@ -63,6 +63,28 @@
         {% endfor %}
         </tbody>
       </table>
+
+      {% if counter %}
+      <details class="counter-panel" {% if e.tier == 'X' %}open{% endif %}>
+        <summary><h2 style="display:inline">Counter-evidence ({{ counter|length }})</h2></summary>
+        <p class="muted body-sm">High-quality studies that disagree with the direction above. We surface them so the picture stays honest{% if e.tier == 'X' %} — and for contested edges this is the whole point{% endif %}.</p>
+        <table class="evidence-table evidence-counter">
+          <thead><tr><th>Citation</th><th>Year</th><th>Type</th><th>n</th><th>Quality</th><th>Direction</th></tr></thead>
+          <tbody>
+          {% for ev in counter %}
+            <tr>
+              <td>{{ ev.citation }}<br/><small class="muted">{{ ev.notes }}</small></td>
+              <td>{{ ev.year or "—" }}</td>
+              <td>{{ ev.study_type or "—" }}</td>
+              <td>{{ ev.n_participants or "—" }}</td>
+              <td>{{ ev.quality or "—" }}</td>
+              <td>{{ ev.direction or "—" }}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </details>
+      {% endif %}
     </div>
     <div>
       <div class="card">

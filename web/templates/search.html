@@ -11,6 +11,9 @@
   </form>
 
   {% if q %}
+    {% if semantic_added %}
+    <p class="muted body-sm">{{ semantic_added }} of these {{ edges|length }} matches are semantic — paraphrased queries surface related concepts (e.g. "what helps with sleep" returns insomnia, dementia).</p>
+    {% endif %}
     {% if entities %}
     <h2>Topics</h2>
     <div class="chip-grid">

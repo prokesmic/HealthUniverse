@@ -417,14 +417,18 @@ def edge_detail(request: Request, edge_id: int):
         if not e:
             return HTMLResponse("Not found", status_code=404)
         evidence = conn.execute(
-            "SELECT * FROM evidence WHERE edge_id = ? ORDER BY year DESC",
-            (edge_id,)).fetchall()
+            "SELECT * FROM evidence WHERE edge_id=? AND COALESCE(is_counter,0)=0 "
+            "ORDER BY year DESC", (edge_id,)).fetchall()
+        counter = conn.execute(
+            "SELECT * FROM evidence WHERE edge_id=? AND COALESCE(is_counter,0)=1 "
+            "ORDER BY year DESC", (edge_id,)).fetchall()
         history = conn.execute(
             "SELECT * FROM edge_history WHERE edge_id = ? ORDER BY changed_at DESC",
             (edge_id,)).fetchall()
     return render(request, "edge.html", {
         "e": dict(e),
         "evidence": [dict(r) for r in evidence],
+        "counter": [dict(r) for r in counter],
         "history": [dict(r) for r in history],
     })
 
@@ -454,12 +458,20 @@ def by_tier(request: Request, tier: str, page: int = 1):
 
 @app.get("/search", response_class=HTMLResponse)
 def search(request: Request, q: str = ""):
-    """Search across entities + edges with simple ranked relevance:
-    name-prefix > name-substring > alias > summary substring."""
+    """Hybrid search: substring match (fast, exact) merged with semantic
+    cosine similarity (catches paraphrased queries like
+    'what helps with sleep' matching insomnia/dementia/etc.)."""
     q = q.strip()
     edges: list[dict] = []
     entities: list[dict] = []
+    semantic_added = 0
     if q:
+        # Try semantic search first; fall back to substring-only if Ollama unreachable
+        try:
+            from embeddings import embed, unpack, cosine
+            qvec = embed(q)
+        except Exception:
+            qvec = None
         like = f"%{q}%"
         prefix = f"{q}%"
         with connect() as conn:
@@ -496,9 +508,37 @@ def search(request: Request, q: str = ""):
                                      WHEN 'C' THEN 3 WHEN 'X' THEN 4 ELSE 5 END
                 LIMIT 60""",
                 (like, like, like, like, like, like, like, like)).fetchall()]
+
+            # Semantic merge: if we have a query embedding, fetch all
+            # edges with embeddings, score by cosine, and merge top-N
+            # into the result list (deduped by id).
+            if qvec:
+                seen_ids = {e["id"] for e in edges}
+                cand = conn.execute(
+                    "SELECT e.id, e.tier, e.direction, e.summary, e.updated_at, "
+                    "       e.embedding, "
+                    "       f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind, "
+                    "       o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind "
+                    "FROM edge e JOIN entity f ON f.id=e.factor_id "
+                    "JOIN entity o ON o.id=e.outcome_id "
+                    "WHERE e.embedding IS NOT NULL").fetchall()
+                scored: list[tuple[float, dict]] = []
+                for r in cand:
+                    if r["id"] in seen_ids:
+                        continue
+                    sim = cosine(qvec, unpack(r["embedding"]))
+                    if sim >= 0.55:           # threshold; tuneable
+                        d = {k: r[k] for k in r.keys() if k != "embedding"}
+                        d["semantic_score"] = round(sim, 3)
+                        scored.append((sim, d))
+                scored.sort(key=lambda x: -x[0])
+                for _, d in scored[:30]:
+                    edges.append(d)
+                    semantic_added += 1
     return render(request, "search.html", {
         "title": f"Search: {q}" if q else "Search",
         "q": q, "edges": edges, "entities": entities,
+        "semantic_added": semantic_added,
     })
 
 

@@ -311,20 +311,35 @@ def run(*, days_back: int = 2, per_entity: int = 6, dry_run: bool = False) -> di
         title = (p.get("title") or "")[:80]
         if not p.get("abstract"):
             continue
-        try:
-            extraction = call_json(
-                system=EXTRACT_SYSTEM,
-                user=EXTRACT_USER_TMPL.format(
-                    factors=fact_lines, outcomes=out_lines,
-                    title=p.get("title",""), journal=p.get("journal",""),
-                    year=p.get("year",""), abstract=p.get("abstract","")[:6000],
-                ),
-                temperature=0.1, num_predict=3000,
-            )
-        except OllamaUnavailable as e:
-            print(f"[ingest] STOP: {e}"); return summary
-        except Exception as e:
-            print(f"[ingest] extract fail '{title}': {e}"); continue
+        user_prompt = EXTRACT_USER_TMPL.format(
+            factors=fact_lines, outcomes=out_lines,
+            title=p.get("title",""), journal=p.get("journal",""),
+            year=p.get("year",""), abstract=p.get("abstract","")[:6000],
+        )
+        extraction = None
+        last_err: Exception | None = None
+        # Up to 2 attempts: first normal, second with stricter "JSON only,
+        # no thinking" prompt + larger num_predict.
+        for attempt in range(2):
+            try:
+                extraction = call_json(
+                    system=EXTRACT_SYSTEM if attempt == 0
+                        else EXTRACT_SYSTEM + " /no_think Return ONLY the JSON object. Do not think out loud, do not explain, do not add any prose before or after.",
+                    user=user_prompt,
+                    temperature=0.0 if attempt == 1 else 0.1,
+                    num_predict=3000 if attempt == 0 else 4500,
+                )
+                break
+            except OllamaUnavailable as e:
+                print(f"[ingest] STOP: {e}"); return summary
+            except Exception as e:
+                last_err = e
+                continue
+        if extraction is None:
+            print(f"[ingest] extract fail '{title}': {last_err}")
+            with connect() as conn:
+                _record_paper(conn, p, {"_extract_error": str(last_err)[:200]})
+            continue
 
         if not isinstance(extraction, dict) or not extraction.get("relevant"):
             with connect() as conn:

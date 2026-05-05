@@ -517,6 +517,17 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 /* ---------- Pagination ---------- */
 .pagination { display: flex; justify-content: center; align-items: center; gap: 16px; margin: 32px 0 16px; }
 
+/* ---------- Counter-evidence panel ---------- */
+.counter-panel { margin-top: 24px; padding: 12px 16px; background: var(--tier-X-bg);
+  border-left: 4px solid var(--tier-X); border-radius: 8px; }
+.counter-panel summary { cursor: pointer; list-style: none; }
+.counter-panel summary::-webkit-details-marker { display: none; }
+.counter-panel summary h2 { margin: 0; }
+.counter-panel summary::before { content: "▸ "; color: var(--tier-X); font-weight: 600; }
+.counter-panel[open] summary::before { content: "▾ "; }
+.evidence-counter { background: rgba(255, 255, 255, 0.4); border-radius: 6px; }
+.evidence-counter td { border-bottom-color: rgba(122, 106, 140, 0.2); }
+
 .feat-card:focus-visible,
 .bucket:focus-visible,
 .cat:focus-visible,
