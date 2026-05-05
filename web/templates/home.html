@@ -97,7 +97,8 @@
   </div>
   <div class="hp-featured-grid">
     {% for f in featured %}
-    <a class="hp-feat" href="/edge/{{ f.id }}">
+    <a class="hp-feat {% if f.breakthrough %}is-breakthrough{% endif %}" href="/edge/{{ f.id }}">
+      {% if f.breakthrough %}<span class="hp-breakthrough-ribbon">BREAKTHROUGH</span>{% endif %}
       <div class="hp-feat-img">
         {{ featured_card_svg(factor_slug=f.f_slug, outcome_slug=f.o_slug, tier=f.tier, factor_kind=f.f_kind, outcome_kind="condition", w=400, h=260) | safe }}
         <span class="hp-feat-tier hp-feat-tier-{{ f.tier }}">{% if f.tier == 'A' %}STRONG{% elif f.tier == 'B' %}MODERATE{% elif f.tier == 'C' %}EMERGING{% elif f.tier == 'D' %}LIMITED{% else %}CONTESTED{% endif %} EVIDENCE</span>
@@ -128,7 +129,8 @@
   </div>
   <div class="hp-disc-track">
     {% for d in discoveries %}
-    <a class="hp-disc" href="/edge/{{ d.id }}">
+    <a class="hp-disc {% if d.breakthrough %}is-breakthrough{% endif %}" href="/edge/{{ d.id }}">
+      {% if d.breakthrough %}<span class="hp-breakthrough-ribbon">BREAKTHROUGH</span>{% endif %}
       <div class="hp-disc-art">{{ discovery_card_svg(factor_slug=d.f_slug, outcome_slug=d.o_slug, tier=d.tier, factor_kind=d.f_kind, outcome_kind=d.o_kind) | safe }}</div>
       <div class="hp-disc-body">
         <span class="hp-feat-tier hp-feat-tier-{{ d.tier }}">{% if d.tier == 'A' %}STRONG{% elif d.tier == 'B' %}MODERATE{% elif d.tier == 'C' %}EMERGING{% elif d.tier == 'D' %}LIMITED{% else %}CONTESTED{% endif %} EVIDENCE</span>

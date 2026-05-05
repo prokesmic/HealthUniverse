@@ -103,14 +103,19 @@ def _stats(conn) -> dict:
 
 def _featured(conn, limit: int = 3) -> list[dict]:
     rows = conn.execute("""
-        SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
+        SELECT e.id, e.tier, e.direction, e.summary, e.updated_at, e.created_at,
                f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
                o.slug AS o_slug, o.name AS o_name,
                (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies,
                (SELECT study_type FROM evidence ev WHERE ev.edge_id=e.id
                 ORDER BY CASE study_type
                   WHEN 'meta_analysis' THEN 1 WHEN 'systematic_review' THEN 2
-                  WHEN 'rct' THEN 3 WHEN 'cohort' THEN 4 ELSE 5 END LIMIT 1) AS top_study
+                  WHEN 'rct' THEN 3 WHEN 'cohort' THEN 4 ELSE 5 END LIMIT 1) AS top_study,
+               (SELECT MAX(changed_at) FROM edge_history h
+                WHERE h.edge_id=e.id AND h.field='tier'
+                  AND h.new_value IN ('A','B')
+                  AND (h.old_value IS NULL OR h.old_value NOT IN ('A','B'))
+               ) AS promoted_at
         FROM edge e
         JOIN entity f ON f.id = e.factor_id
         JOIN entity o ON o.id = e.outcome_id
@@ -118,7 +123,12 @@ def _featured(conn, limit: int = 3) -> list[dict]:
         ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 ELSE 3 END,
                  e.updated_at DESC
         LIMIT ?""", (limit,)).fetchall()
-    return [dict(r) for r in rows]
+    out = [dict(r) for r in rows]
+    for e in out:
+        e["score"] = _importance_score(e)
+        e["breakthrough"] = _is_breakthrough(e)
+    out.sort(key=lambda e: (-(1 if e["breakthrough"] else 0), -e["score"]))
+    return out
 
 
 def _new_discoveries(conn, days: int = 14, limit: int = 20) -> list[dict]:
@@ -148,7 +158,77 @@ def _new_discoveries(conn, days: int = 14, limit: int = 20) -> list[dict]:
         )
         ORDER BY COALESCE(promoted_at, e.created_at) DESC
         LIMIT ?""", (f"-{days} days", f"-{days} days", limit)).fetchall()
-    return [dict(r) for r in rows]
+    out = [dict(r) for r in rows]
+    # Pull top_study so importance score has full input
+    if out:
+        edge_ids = [e["id"] for e in out]
+        ph = ",".join("?" * len(edge_ids))
+        ts = conn.execute(
+            f"""SELECT edge_id, study_type FROM evidence
+                WHERE edge_id IN ({ph})
+                ORDER BY edge_id,
+                  CASE study_type WHEN 'meta_analysis' THEN 1
+                    WHEN 'systematic_review' THEN 2 WHEN 'rct' THEN 3
+                    WHEN 'cohort' THEN 4 ELSE 5 END""",
+            edge_ids).fetchall()
+        best: dict[int, str] = {}
+        for r in ts:
+            best.setdefault(r["edge_id"], r["study_type"])
+        for e in out:
+            e["top_study"] = best.get(e["id"])
+    for e in out:
+        e["score"] = _importance_score(e)
+        e["breakthrough"] = _is_breakthrough(e)
+    # Most important + most confirmed first; breakthroughs lifted to top
+    out.sort(key=lambda e: (-(1 if e["breakthrough"] else 0), -e["score"]))
+    return out
+
+
+_TIER_W = {"A": 5.0, "B": 3.0, "C": 1.5, "X": 1.0, "D": 0.5, "deprecated": 0.2}
+_STUDY_W = {"meta_analysis": 2.0, "systematic_review": 1.6, "rct": 1.2, "cohort": 0.7,
+            "case_control": 0.5, "cross_sectional": 0.3, "mechanistic": 0.2}
+
+
+def _importance_score(e: dict) -> float:
+    """Combined importance × confirmation score for ranking discoveries/featured.
+    Tier weight + log(n_studies) + top-study quality + direction definiteness +
+    recent-promotion boost."""
+    import math
+    tier = e.get("tier") or "C"
+    n = int(e.get("n_studies") or 0)
+    top = e.get("top_study") or ""
+    direction = e.get("direction") or "mixed"
+    score = _TIER_W.get(tier, 0.5)
+    score += math.log1p(n) * 0.6                    # confirmation depth
+    score += _STUDY_W.get(top, 0.0)                 # quality of best study
+    score += 1.0 if direction in ("protective", "harmful") else 0.4
+    if e.get("promoted_at"):                        # tier promotion is a signal
+        score *= 1.35
+    return round(score, 3)
+
+
+def _is_breakthrough(e: dict) -> bool:
+    """Flag genuine evidence shifts — not just freshly-seeded data:
+    - tier-promotion event recorded within 30d (A) or 14d (B), AND
+    - sufficient depth: ≥4 studies, with at least one meta_analysis or
+      systematic_review as the top study type."""
+    promoted = (e.get("promoted_at") or "")[:10]
+    if not promoted:
+        return False
+    try:
+        days_since = (datetime_now() - datetime.fromisoformat(promoted)).days
+    except Exception:
+        return False
+    n = int(e.get("n_studies") or 0)
+    top = e.get("top_study") or ""
+    deep = n >= 4 and top in ("meta_analysis", "systematic_review")
+    if not deep:
+        return False
+    if e.get("tier") == "A" and days_since <= 30:
+        return True
+    if e.get("tier") == "B" and days_since <= 14:
+        return True
+    return False
 
 
 PAGE_SIZE = 60
@@ -219,6 +299,78 @@ def home(request: Request):
         "stats": stats, "categories": cats,
         "featured": featured, "buckets": buckets, "spotlight": spotlight,
         "profile": p, "discoveries": discoveries,
+    })
+
+
+@app.get("/prevent", response_class=HTMLResponse)
+def prevent_page(request: Request, q: str = "", condition: str = ""):
+    """User enters a condition they want to prevent. We show what to DO
+    (protective edges, ranked by importance) and what to AVOID (harmful /
+    u_shaped / mixed risk edges, ranked by importance)."""
+    query = (q or condition or "").strip()
+    do_rows: list[dict] = []
+    avoid_rows: list[dict] = []
+    matched: dict | None = None
+    suggestions: list[dict] = []
+    with connect() as conn:
+        outcomes = conn.execute(
+            "SELECT slug, name, kind FROM entity WHERE kind IN "
+            "('condition','outcome','marker') ORDER BY name").fetchall()
+        outcomes = [dict(r) for r in outcomes]
+        if query:
+            ql = query.lower()
+            # Exact slug, exact name, contained-in name
+            matched = next((o for o in outcomes if o["slug"] == ql), None)
+            if not matched:
+                matched = next((o for o in outcomes if o["name"].lower() == ql), None)
+            if not matched:
+                matches = [o for o in outcomes if ql in o["name"].lower()]
+                if len(matches) == 1:
+                    matched = matches[0]
+                else:
+                    suggestions = matches[:8]
+        if matched:
+            base = """
+                SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
+                       e.created_at,
+                       f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                       o.slug AS o_slug, o.name AS o_name,
+                       (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies,
+                       (SELECT study_type FROM evidence ev WHERE ev.edge_id=e.id
+                        ORDER BY CASE study_type WHEN 'meta_analysis' THEN 1
+                          WHEN 'systematic_review' THEN 2 WHEN 'rct' THEN 3
+                          WHEN 'cohort' THEN 4 ELSE 5 END LIMIT 1) AS top_study,
+                       (SELECT MAX(changed_at) FROM edge_history h
+                        WHERE h.edge_id=e.id AND h.field='tier'
+                          AND h.new_value IN ('A','B')
+                          AND (h.old_value IS NULL OR h.old_value NOT IN ('A','B'))
+                       ) AS promoted_at
+                FROM edge e
+                JOIN entity f ON f.id=e.factor_id
+                JOIN entity o ON o.id=e.outcome_id
+                WHERE o.slug = ?
+                  AND e.tier IN ('A','B','C','X')
+                  AND e.direction = ?
+            """
+            protective = conn.execute(base, (matched["slug"], "protective")).fetchall()
+            harmful = conn.execute(base, (matched["slug"], "harmful")).fetchall()
+            ushape = conn.execute(base, (matched["slug"], "u_shaped")).fetchall()
+            mixed = conn.execute(base, (matched["slug"], "mixed")).fetchall()
+            do_rows = [dict(r) for r in protective]
+            avoid_rows = [dict(r) for r in harmful] + [dict(r) for r in ushape] + [dict(r) for r in mixed]
+            for e in do_rows + avoid_rows:
+                e["score"] = _importance_score(e)
+                e["breakthrough"] = _is_breakthrough(e)
+            do_rows.sort(key=lambda e: (-(1 if e["breakthrough"] else 0), -e["score"]))
+            avoid_rows.sort(key=lambda e: (-(1 if e["breakthrough"] else 0), -e["score"]))
+    return render(request, "prevent.html", {
+        "title": "Prevent",
+        "query": query,
+        "matched": matched,
+        "suggestions": suggestions,
+        "do_rows": do_rows[:20],
+        "avoid_rows": avoid_rows[:20],
+        "outcomes": outcomes,
     })
 
 
