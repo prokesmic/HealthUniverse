@@ -1,30 +1,52 @@
 {% extends "base.html" %}
 {% block title %}Discoveries — Health Universe{% endblock %}
 {% block content %}
-<section class="list-page">
-  <a class="back" href="/">← Back</a>
-  <h1>Discoveries</h1>
-  <p class="muted">{{ rows|length }} discovery{{ rows|length != 1 and "ies" or "" }} in the last {{ days }} days · tier promotions and newly-confident relationships.</p>
+<section class="disc-page">
+  <a class="back" href="/">← Back to Health Universe</a>
 
-  <div class="discovery-grid">
+  <header class="disc-head">
+    <p class="disc-eyebrow">A curated desk of newly meaningful findings</p>
+    <h1 class="disc-title">Discoveries</h1>
+    <p class="disc-lede">Edges promoted into high-confidence territory or newly published at <span class="pill tier-C">EMERGING</span> evidence or stronger. Refreshed every morning by the Gemma daily ingest.</p>
+    <dl class="disc-stats">
+      <div><dt>Total in last {{ days }} days</dt><dd>{{ pg.total if pg else rows|length }}</dd></div>
+      <div><dt>Promoted to A or B</dt><dd>{{ promoted_count }}</dd></div>
+      <div><dt>Newly published</dt><dd>{{ new_count }}</dd></div>
+      <div><dt>This past week</dt><dd>{{ week_count }}</dd></div>
+    </dl>
+  </header>
+
+  <div class="disc-grid">
     {% for r in rows %}
-    <a class="disc-card tier-bg-{{ r.tier }}" href="/edge/{{ r.id }}">
-      <div class="disc-art">{{ edge_svg(factor_slug=r.f_slug, outcome_slug=r.o_slug, tier=r.tier, factor_kind=r.f_kind, outcome_kind=r.o_kind) | safe }}</div>
-      <div class="disc-body">
-        <div class="row-between">
-          <span class="pill tier-{{ r.tier }}">{{ TIER_LABEL[r.tier] | upper }}</span>
+    <a class="disc-card-v2 tier-bg-{{ r.tier }}" href="/edge/{{ r.id }}">
+      <div class="disc-art-v2">{{ discovery_card_svg(factor_slug=r.f_slug, outcome_slug=r.o_slug, tier=r.tier, factor_kind=r.f_kind, outcome_kind=r.o_kind) | safe }}</div>
+      <div class="disc-body-v2">
+        <div class="disc-row">
+          {% if r.promoted_at %}
+            <span class="disc-status disc-status-promoted">⬆ Promoted to {{ r.tier }}</span>
+          {% else %}
+            <span class="disc-status disc-status-new">★ New at {{ r.tier }}</span>
+          {% endif %}
           <span class="muted small">{{ (r.promoted_at or r.updated_at)[:10] }}</span>
         </div>
-        <h2>{{ r.f_name }} <span class="arrow">→</span> {{ r.o_name }}</h2>
-        <p>{{ r.summary }}</p>
-        <div class="feat-meta">
+        <h2 class="disc-card-title">{{ r.f_name }} <span class="arrow">→</span> {{ r.o_name }}</h2>
+        <p class="disc-card-summary">{{ r.summary[:240] }}{% if r.summary|length > 240 %}…{% endif %}</p>
+        <div class="disc-foot">
           <span class="badge dir-{{ r.direction }}">{{ DIRECTION_LABEL[r.direction] }}</span>
-          <span class="muted small">{{ r.n_studies }} studies</span>
+          <span class="muted small">{{ r.n_studies }} stud{{ r.n_studies != 1 and "ies" or "y" }}</span>
         </div>
       </div>
     </a>
     {% else %}
-    <div class="empty">No new discoveries yet — they'll appear here when the daily Gemma loop promotes an edge into tier A or B, or creates a new high-confidence one.</div>
+    <div class="disc-empty">
+      <div class="disc-empty-mark" aria-hidden="true">∅</div>
+      <h2>No new discoveries yet</h2>
+      <p class="muted">Nothing has been promoted into a new tier in the last {{ days }} days. The daily Gemma loop runs every morning at 05:15 — check back tomorrow, or browse the existing graph by tier or category.</p>
+      <div class="disc-empty-actions">
+        <a class="btn-secondary inline" href="/tier/A">View tier-A evidence →</a>
+        <a class="btn-secondary inline" href="/changes">Recent changes →</a>
+      </div>
+    </div>
     {% endfor %}
   </div>
 

@@ -727,6 +727,105 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 }
 
 /* =============================================================
+   Discoveries — curated evidence desk
+   ============================================================= */
+
+.disc-page { max-width: 1240px; margin: 0 auto; }
+.disc-page .back { color: var(--ink-soft); font-size: 13px; }
+.disc-head {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+  border: 1px solid var(--line); border-radius: 22px;
+  padding: 36px 40px; margin: 18px 0 32px;
+}
+.disc-eyebrow {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--gold); font-weight: 600; margin: 0 0 8px;
+}
+.disc-title {
+  font-family: 'Fraunces', serif; font-weight: 400;
+  font-size: 56px; line-height: 1.0; letter-spacing: -0.02em;
+  margin: 0 0 14px; color: var(--ink);
+}
+.disc-lede {
+  font-size: 17px; line-height: 1.55; max-width: 720px; color: var(--ink-soft);
+  margin: 0 0 22px;
+}
+.disc-lede .pill { font-size: 10px; padding: 2px 8px; vertical-align: 2px; }
+.disc-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  border-top: 1px solid var(--line); padding-top: 18px; margin: 0;
+}
+.disc-stats > div { padding-right: 14px; border-right: 1px solid var(--line); }
+.disc-stats > div:last-child { border-right: 0; padding-right: 0; }
+.disc-stats dt {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink-soft); margin: 0 0 4px;
+}
+.disc-stats dd {
+  font-family: 'Fraunces', serif; font-weight: 500;
+  font-size: 28px; color: var(--ink); margin: 0;
+}
+.disc-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  margin-bottom: 36px;
+}
+.disc-card-v2 {
+  display: grid; grid-template-rows: auto 1fr;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 18px; overflow: hidden; color: inherit;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.disc-card-v2:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(40, 32, 20, .08); }
+.disc-art-v2 {
+  height: 130px; overflow: hidden; position: relative;
+  border-bottom: 1px solid var(--line);
+}
+.disc-art-v2 > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.disc-body-v2 { padding: 18px 22px 22px; display: flex; flex-direction: column; gap: 8px; }
+.disc-row {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+}
+.disc-status {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 600; padding: 4px 10px;
+  border-radius: 999px; letter-spacing: 0.04em;
+}
+.disc-status-promoted {
+  background: var(--tier-A-bg); color: var(--tier-A); border: 1px solid var(--tier-A);
+}
+.disc-status-new {
+  background: var(--tier-B-bg); color: #8a6c18; border: 1px solid var(--tier-B);
+}
+.disc-card-title {
+  font-family: 'Fraunces', serif; font-weight: 500;
+  font-size: 22px; line-height: 1.2; margin: 4px 0; color: var(--ink);
+}
+.disc-card-title .arrow { color: var(--gold); }
+.disc-card-summary {
+  font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 0;
+}
+.disc-foot {
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  margin-top: auto; padding-top: 6px;
+}
+.disc-empty {
+  grid-column: 1 / -1; text-align: center; padding: 60px 36px;
+  background: var(--surface); border: 1px dashed var(--line); border-radius: 18px;
+}
+.disc-empty-mark { font-family: 'Fraunces', serif; font-size: 80px; color: var(--gold); opacity: 0.4; line-height: 1; }
+.disc-empty h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 26px; margin: 12px 0; }
+.disc-empty p { max-width: 460px; margin: 0 auto 24px; }
+.disc-empty-actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.disc-empty-actions .btn-secondary { width: auto; padding: 10px 18px; margin: 0; }
+@media (max-width: 880px) {
+  .disc-grid { grid-template-columns: 1fr; }
+  .disc-head { padding: 28px 22px; }
+  .disc-title { font-size: 38px; }
+  .disc-stats { grid-template-columns: repeat(2, 1fr); gap: 14px 0; }
+  .disc-stats > div:nth-child(2) { border-right: 0; }
+}
+
+/* =============================================================
    Edge dossier — premium evidence brief
    ============================================================= */
 

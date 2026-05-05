@@ -11,7 +11,13 @@ from fastapi.templating import Jinja2Templates
 
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
+from datetime import datetime, timedelta  # noqa: E402
+
 from db import connect  # noqa: E402
+
+
+def datetime_now():
+    return datetime.now()
 from profile import COOKIE, Profile, decode, encode, relevance_score  # noqa: E402
 from web.illustrations import (   # noqa: E402
     edge_svg, hero_svg, featured_card_svg, discovery_card_svg, strength_wave_svg,
@@ -197,13 +203,22 @@ def home(request: Request):
 @app.get("/discoveries", response_class=HTMLResponse)
 def discoveries(request: Request, days: int = 30, page: int = 1):
     with connect() as conn:
-        # Fetch up to 200 candidates, then paginate slice
         all_rows = _new_discoveries(conn, days=days, limit=200)
+        # Split into "promoted into A/B" vs "newly created at C+"
+        promoted = [r for r in all_rows if r.get("promoted_at")]
+        newly_created = [r for r in all_rows if not r.get("promoted_at")]
+        # Total over the last 7 days for a "this week" headline
+        week_count = sum(1 for r in all_rows if
+            (r.get("promoted_at") or r.get("updated_at"))[:10] >=
+            (datetime_now() - timedelta(days=7)).strftime("%Y-%m-%d"))
     pg = _paginate(len(all_rows), page)
     rows = all_rows[pg["offset"]: pg["offset"] + PAGE_SIZE]
     return render(request, "discoveries.html", {
         "title": "Discoveries", "rows": rows, "days": days,
         "pg": pg, "base_path": "/discoveries",
+        "promoted_count": len(promoted),
+        "new_count": len(newly_created),
+        "week_count": week_count,
     })
 
 
