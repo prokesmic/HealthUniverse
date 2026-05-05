@@ -15,7 +15,7 @@
     <a class="feat-card tier-bg-{{ e.tier }}" href="/edge/{{ e.id }}">
       {% if e.f_slug %}<div class="feat-art">{{ edge_svg(factor_slug=e.f_slug, outcome_slug=e.o_slug, tier=e.tier, factor_kind=e.f_kind, outcome_kind=e.o_kind, w=380, h=130) | safe }}</div>{% endif %}
       <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
-      <h3>{{ e.f_name }} and {{ e.o_name }}</h3>
+      <h2>{{ e.f_name }} and {{ e.o_name }}</h2>
       <p>{{ e.summary }}</p>
       <div class="feat-meta">
         <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>

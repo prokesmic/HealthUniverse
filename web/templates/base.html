@@ -16,7 +16,8 @@
 <link rel="stylesheet" href="/static/style.css" />
 </head>
 <body>
-<header class="topnav">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="topnav" role="banner">
   <a class="brand" href="/">
     <span class="brand-mark" aria-hidden="true">
       <svg viewBox="0 0 48 48" width="44" height="44">
@@ -31,7 +32,7 @@
     </span>
     <span class="brand-text"><b>HEALTH</b><br/>UNIVERSE</span>
   </a>
-  <nav class="topnav-links">
+  <nav class="topnav-links" aria-label="Primary">
     <a href="/">Home</a>
     <a href="/discoveries">Discoveries</a>
     <a href="/tier/A">Evidence</a>
@@ -40,18 +41,19 @@
     <a href="/me">My stack</a>
   </nav>
   <form class="topnav-search" method="get" action="/search">
+    <label class="sr-only" for="site-search-query">Site search</label>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <input name="q" placeholder="Search evidence, topics, conditions…" />
+    <input id="site-search-query" name="q" placeholder="Search evidence, topics, conditions…" aria-label="Site search" />
     <kbd>⏎</kbd>
   </form>
   <div class="topnav-actions">
-    <button aria-label="Saved"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18l-6-4-6 4z"/></svg></button>
-    <button aria-label="Notifications"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg></button>
+    <button type="button" aria-label="Open saved evidence"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18l-6-4-6 4z"/></svg></button>
+    <button type="button" aria-label="Open notifications"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg></button>
     <span class="avatar">DR</span>
   </div>
 </header>
 
-<main>{% block content %}{% endblock %}</main>
+<main id="main-content" tabindex="-1">{% block content %}{% endblock %}</main>
 
 <footer class="footer">
   <span>Health Universe — not medical advice. Consult a clinician.</span>

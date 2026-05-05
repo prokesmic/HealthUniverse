@@ -5,7 +5,8 @@
   <a class="back" href="/">← Back</a>
   <h1>Search</h1>
   <form class="search-form" method="get" action="/search">
-    <input name="q" value="{{ q }}" placeholder="Search foods, conditions, mechanisms…" autofocus>
+    <label class="sr-only" for="search-page-query">Search query</label>
+    <input id="search-page-query" name="q" value="{{ q }}" placeholder="Search foods, conditions, mechanisms…" autofocus>
     <button class="btn-primary" type="submit">Search</button>
   </form>
 
@@ -24,7 +25,7 @@
       {% for e in edges %}
       <a class="feat-card tier-bg-{{ e.tier }}" href="/edge/{{ e.id }}">
         <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
-        <h3>{{ e.f_name }} and {{ e.o_name }}</h3>
+        <h2>{{ e.f_name }} and {{ e.o_name }}</h2>
         <p>{{ e.summary }}</p>
         <div class="feat-meta">
           <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>

@@ -10,7 +10,7 @@
     {% for r in rows %}
     <a class="feat-card tier-bg-{{ r.tier }}" href="/edge/{{ r.id }}">
       <span class="pill tier-{{ r.tier }}">{{ r.tier == 'X' and 'CONTESTED' or 'DEPRECATED' }}</span>
-      <h3>{{ r.f_name }} and {{ r.o_name }}</h3>
+      <h2>{{ r.f_name }} and {{ r.o_name }}</h2>
       <p>{{ r.summary or "—" }}</p>
       {% if r.reason %}<p class="muted small"><b>Why it changed:</b> {{ r.reason }}</p>{% endif %}
     </a>

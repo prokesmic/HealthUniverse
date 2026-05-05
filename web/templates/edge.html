@@ -40,14 +40,14 @@
       <div class="share-row">
         <a class="btn-secondary inline" href="/edge/{{ e.id }}.png" target="_blank">⤓ Share card (PNG)</a>
       </div>
-      <h3>Summary</h3>
+      <h2>Summary</h2>
       <p>{{ e.summary }}</p>
       {% if e.effect_quant %}<p><b>Effect:</b> {{ e.effect_quant }}</p>{% endif %}
-      <h3>Mechanism</h3>
+      <h2>Mechanism</h2>
       <p>{{ e.mechanism or "—" }}</p>
-      {% if e.caveats %}<h3>Caveats</h3><p>{{ e.caveats }}</p>{% endif %}
+      {% if e.caveats %}<h2>Caveats</h2><p>{{ e.caveats }}</p>{% endif %}
 
-      <h3>Evidence ({{ evidence|length }})</h3>
+      <h2>Evidence ({{ evidence|length }})</h2>
       <table class="evidence-table">
         <thead><tr><th>Citation</th><th>Year</th><th>Type</th><th>n</th><th>Quality</th><th>Direction</th></tr></thead>
         <tbody>
@@ -64,9 +64,9 @@
         </tbody>
       </table>
     </div>
-    <aside>
+    <div>
       <div class="card">
-        <h4>History</h4>
+        <h3>History</h3>
         <ul class="history">
         {% for h in history %}
           <li><b>{{ h.changed_at[:10] }}</b> · {{ h.actor }} · {{ h.reason or h.field }}</li>
@@ -74,11 +74,11 @@
         </ul>
       </div>
       <div class="card">
-        <h4>Last reviewed</h4>
+        <h3>Last reviewed</h3>
         <p>{{ e.last_reviewed[:10] }}</p>
         <p class="muted small">Source: {{ e.seed_source }}</p>
       </div>
-    </aside>
+    </div>
   </div>
 </section>
 {% endblock %}
