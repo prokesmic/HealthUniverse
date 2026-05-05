@@ -505,6 +505,68 @@ def sitemap():
 
 # ---- public JSON API --------------------------------------------------------
 
+@app.get("/protocols", response_class=HTMLResponse)
+def protocols_index(request: Request):
+    """N-of-1 protocol builder. State lives in localStorage on the
+    user's device — same trust model as /diary. We ship a few templates."""
+    templates_data = [
+        {"slug": "magnesium-sleep",
+         "title": "Magnesium for sleep onset",
+         "factor": "magnesium",
+         "outcome": "sleep_quality",
+         "duration_days": 14,
+         "intervention": "Take 200–300 mg magnesium glycinate ~1 hour before bed.",
+         "measures": ["sleep_onset_min", "wake_count", "morning_freshness"],
+         "evidence_edges": [],
+         "blurb": "A small randomized signal exists. Two weeks is short but enough to notice direction."},
+        {"slug": "earlier-dinner-glucose",
+         "title": "Earlier dinner for glucose / sleep",
+         "factor": "intermittent_fasting",
+         "outcome": "insulin_resistance",
+         "duration_days": 21,
+         "intervention": "Finish dinner ≥3 hours before bed for 3 weeks.",
+         "measures": ["fasting_glucose_proxy", "morning_freshness", "evening_hunger"],
+         "blurb": "Time-restricted eating with an earlier window has small but real signal in cohorts."},
+        {"slug": "creatine-strength",
+         "title": "Creatine for strength + cognition",
+         "factor": "creatine",
+         "outcome": "sarcopenia",
+         "duration_days": 56,
+         "intervention": "5 g creatine monohydrate daily after the heaviest meal.",
+         "measures": ["grip_or_pushups", "perceived_focus", "subjective_fatigue"],
+         "blurb": "Tier-A on muscle outcomes; cognition signal is weaker but real for vegetarians and older adults."},
+        {"slug": "morning-light-mood",
+         "title": "Morning bright light for mood",
+         "factor": "daylight_morning",
+         "outcome": "depression",
+         "duration_days": 14,
+         "intervention": "≥10 minutes of outdoor daylight within an hour of waking.",
+         "measures": ["morning_freshness", "mood", "afternoon_dip"],
+         "blurb": "Cheap to try. Effect on circadian phase is well-established; subjective mood effect varies."},
+        {"slug": "walking-mood",
+         "title": "Daily walking for mood",
+         "factor": "walking_daily",
+         "outcome": "depression",
+         "duration_days": 28,
+         "intervention": "≥7000 steps daily, no calendar gaps.",
+         "measures": ["mood", "energy", "stress"],
+         "blurb": "Strong evidence on mortality + meaningful evidence on mood. Easy compliance test."},
+    ]
+    return render(request, "protocols.html", {
+        "title": "N-of-1 protocols",
+        "templates": templates_data,
+    })
+
+
+@app.get("/protocol/{slug}", response_class=HTMLResponse)
+def protocol_detail(request: Request, slug: str):
+    """Detail for a specific protocol template, including a 'start this'
+    button that adds it to the localStorage diary protocol list."""
+    return render(request, "protocol.html", {
+        "title": "Protocol", "slug": slug,
+    })
+
+
 @app.get("/products", response_class=HTMLResponse)
 def products_index(request: Request, entity: str = ""):
     """Supplement product-quality layer. Browse products keyed to

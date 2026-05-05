@@ -766,6 +766,61 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 }
 
 /* =============================================================
+   /protocols — N-of-1 protocol builder
+   ============================================================= */
+
+.protocols-page { max-width: 1080px; margin: 0 auto; }
+.protocols-page .back { color: var(--ink-soft); font-size: 13px; }
+.protocols-head {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+  border: 1px solid var(--line); border-radius: 22px;
+  padding: 32px 40px; margin: 18px 0 24px;
+}
+.protocols-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; margin: 0 0 8px; }
+.protocols-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: 52px; line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 14px; color: var(--ink); }
+.protocols-lede { font-size: 16px; line-height: 1.55; max-width: 720px; color: var(--ink-soft); margin: 0; }
+
+.protocols-section { margin-bottom: 28px; }
+.protocols-section-h { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; margin: 0 0 8px; color: var(--ink); }
+
+.protocols-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-top: 14px; }
+.protocol-card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 14px; padding: 22px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: border-color .12s ease;
+}
+.protocol-card:hover { border-color: var(--gold); }
+.protocol-card-head h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 19px; margin: 4px 0 0; color: var(--ink); }
+.protocol-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); font-weight: 600; margin: 0; }
+.protocol-blurb { font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+.protocol-detail { font-size: 13px; line-height: 1.55; color: var(--ink); padding: 12px 14px; background: var(--bg-soft); border-radius: 8px; border-left: 2px solid var(--gold); }
+.protocol-detail p { margin: 4px 0; }
+.protocol-detail b { color: var(--ink); }
+.protocol-tag { display: inline-block; font-size: 11px; padding: 2px 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; margin: 2px 4px 2px 0; }
+.protocol-start { width: 100%; margin: 4px 0 0; }
+
+.protocols-active { display: grid; gap: 12px; margin-top: 12px; }
+.protocol-active {
+  background: var(--surface); border: 1px solid var(--line);
+  border-left: 3px solid var(--tier-A);
+  border-radius: 12px; padding: 18px 22px;
+}
+.protocol-active-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.protocol-active-head h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 18px; margin: 0; color: var(--ink); }
+.protocol-progress { width: 100%; height: 6px; background: var(--bg-soft); border-radius: 3px; overflow: hidden; margin-bottom: 12px; }
+.protocol-progress-fill { height: 100%; background: var(--tier-A); transition: width .3s ease; }
+.protocol-active-meta { font-size: 13px; line-height: 1.55; color: var(--ink-soft); margin: 4px 0; }
+.protocol-active-actions { display: flex; gap: 8px; margin-top: 12px; }
+.protocol-active-actions .btn-secondary { width: auto; padding: 8px 14px; margin: 0; }
+.protocols-disclaimer { font-style: italic; font-size: 13px; color: var(--muted); padding-top: 20px; border-top: 1px solid var(--line); }
+
+@media (max-width: 720px) {
+  .protocols-title { font-size: 36px; }
+  .protocols-head { padding: 24px 22px; }
+}
+
+/* =============================================================
    /products + /product/{slug} — supplement quality layer
    ============================================================= */
 

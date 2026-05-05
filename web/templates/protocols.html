@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}N-of-1 protocols — Health Universe{% endblock %}
+{% block content %}
+<section class="protocols-page">
+  <a class="back" href="/">← Back to Health Universe</a>
+
+  <header class="protocols-head">
+    <p class="protocols-eyebrow">N-of-1 · personal experiments</p>
+    <h1 class="protocols-title">Protocols</h1>
+    <p class="protocols-lede">Run structured self-experiments anchored on the evidence in this graph. Each protocol is a fixed intervention, a fixed duration, and a small set of subjective measures you log daily in your <a class="link" href="/diary">stack diary</a>. Protocols live in this browser only — nothing leaves your device.</p>
+  </header>
+
+  <section class="protocols-section">
+    <h2 class="protocols-section-h">Templates</h2>
+    <p class="muted body-sm">Pick one to start. You can run multiple at once. Honest summary at the end — no fake certainty.</p>
+    <div class="protocols-grid">
+      {% for t in templates %}
+      <div class="protocol-card">
+        <div class="protocol-card-head">
+          <p class="protocol-eyebrow">{{ t.duration_days }} days</p>
+          <h3>{{ t.title }}</h3>
+        </div>
+        <p class="protocol-blurb">{{ t.blurb }}</p>
+        <div class="protocol-detail">
+          <p><b>Intervention.</b> {{ t.intervention }}</p>
+          <p><b>You log daily.</b> {% for m in t.measures %}<span class="protocol-tag">{{ m.replace('_', ' ') }}</span>{% endfor %}</p>
+        </div>
+        <button class="btn-primary protocol-start"
+                data-slug="{{ t.slug }}"
+                data-title="{{ t.title }}"
+                data-duration="{{ t.duration_days }}"
+                data-factor="{{ t.factor }}"
+                data-outcome="{{ t.outcome }}"
+                data-intervention="{{ t.intervention }}"
+                data-measures="{{ t.measures|join(',') }}">
+          Start protocol →
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="protocols-section">
+    <h2 class="protocols-section-h">Your active protocols</h2>
+    <div id="active-protocols" class="protocols-active">
+      <p class="muted body-sm" id="no-active">None yet. Pick a template above.</p>
+    </div>
+  </section>
+
+  <p class="protocols-disclaimer">N-of-1 results are directional, not clinical proof. Useful for noticing whether <em>you</em> respond to <em>this</em> intervention, not for telling anyone else what to do.</p>
+</section>
+
+<script>
+const KEY = "hu_protocols_v1";
+function load() { try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { return []; } }
+function save(arr) { localStorage.setItem(KEY, JSON.stringify(arr)); }
+
+document.querySelectorAll(".protocol-start").forEach(btn => {
+  btn.onclick = () => {
+    const list = load();
+    const exists = list.some(p => p.slug === btn.dataset.slug);
+    if (exists) {
+      alert("This protocol is already active.");
+      return;
+    }
+    list.push({
+      slug: btn.dataset.slug,
+      title: btn.dataset.title,
+      duration: parseInt(btn.dataset.duration),
+      factor: btn.dataset.factor,
+      outcome: btn.dataset.outcome,
+      intervention: btn.dataset.intervention,
+      measures: btn.dataset.measures.split(","),
+      started: new Date().toISOString().slice(0, 10),
+      adherence: [],
+    });
+    save(list);
+    render();
+    btn.textContent = "✓ Started";
+    setTimeout(() => btn.textContent = "Start protocol →", 1200);
+  };
+});
+
+function render() {
+  const list = load();
+  const wrap = document.getElementById("active-protocols");
+  const none = document.getElementById("no-active");
+  if (list.length === 0) {
+    wrap.innerHTML = '<p class="muted body-sm" id="no-active">None yet. Pick a template above.</p>';
+    return;
+  }
+  wrap.innerHTML = list.map(p => {
+    const start = new Date(p.started);
+    const today = new Date();
+    const daysIn = Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1;
+    const pct = Math.min(100, Math.round((daysIn / p.duration) * 100));
+    const days = Math.min(daysIn, p.duration);
+    return `<article class="protocol-active">
+      <div class="protocol-active-head">
+        <h3>${p.title}</h3>
+        <span class="muted small">Day ${days} of ${p.duration}</span>
+      </div>
+      <div class="protocol-progress"><div class="protocol-progress-fill" style="width:${pct}%"></div></div>
+      <p class="protocol-active-meta"><b>Doing:</b> ${p.intervention}</p>
+      <p class="protocol-active-meta"><b>Measuring:</b> ${p.measures.join(", ").replace(/_/g, " ")}</p>
+      <div class="protocol-active-actions">
+        <a class="btn-secondary inline" href="/diary">Log today in diary →</a>
+        <button class="btn-secondary inline" data-stop="${p.slug}">Stop</button>
+      </div>
+    </article>`;
+  }).join("");
+  document.querySelectorAll("[data-stop]").forEach(b => {
+    b.onclick = () => {
+      if (!confirm("End this protocol? Logged diary data is preserved.")) return;
+      save(load().filter(p => p.slug !== b.dataset.stop));
+      render();
+    };
+  });
+}
+render();
+</script>
+{% endblock %}
