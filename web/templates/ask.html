@@ -1,60 +1,95 @@
 {% extends "base.html" %}
 {% block title %}Ask my universe — Health Universe{% endblock %}
 {% block content %}
-<section class="ask-page">
-  <a class="back" href="/">← Back</a>
-  <h1>Ask my universe</h1>
-  <p class="lede ask-lede">Type a real question. The answer is grounded in our knowledge graph — every claim links back to a specific evidence card. Personalised if you've saved a <a href="/me">profile</a>.</p>
+<section class="ask-page-v2">
+  <a class="back" href="/">← Back to Health Universe</a>
 
-  <form class="ask-form" method="get" action="/ask">
+  <header class="ask-head">
+    <p class="ask-eyebrow">Evidence-backed question surface · grounded in our graph</p>
+    <h1 class="ask-title">Ask my universe</h1>
+    <p class="ask-lede">Type a real question. The answer is grounded in our knowledge graph — every claim links back to a specific evidence card. Personalised if you've saved a <a class="link" href="/me">profile</a>.</p>
+  </header>
+
+  <form class="ask-composer" method="get" action="/ask">
     <label class="sr-only" for="ask-input">Your question</label>
-    <textarea id="ask-input" name="q" rows="3" autofocus placeholder="e.g. Should I take creatine if I'm 45 with no health issues?">{{ q or '' }}</textarea>
-    <button class="btn-primary" type="submit">Ask</button>
+    <textarea id="ask-input" name="q" rows="3" autofocus
+      placeholder="e.g. Should I take creatine if I'm 45 with no health issues?">{{ q or '' }}</textarea>
+    <div class="ask-composer-foot">
+      <span class="ask-composer-hint muted small">Grounded in {{ '' }}<b>764</b> evidence cards · cites real PMIDs · refuses if it can't find relevant evidence</span>
+      <button class="btn-primary" type="submit">Ask →</button>
+    </div>
   </form>
 
   {% if not q %}
-  <div class="ask-suggestions">
-    <p class="muted body-sm">Try one of these:</p>
-    <ul>
-      <li><a href="/ask?q=Should I take creatine?">Should I take creatine?</a></li>
-      <li><a href="/ask?q=Is one glass of wine a day OK if my mother had breast cancer?">Is one glass of wine a day OK if my mother had breast cancer?</a></li>
-      <li><a href="/ask?q=What's the strongest evidence for things that help with sleep?">What's the strongest evidence for things that help with sleep?</a></li>
-      <li><a href="/ask?q=Do I really need to worry about ultra-processed food?">Do I really need to worry about ultra-processed food?</a></li>
-      <li><a href="/ask?q=What lowers dementia risk in middle age?">What lowers dementia risk in middle age?</a></li>
-      <li><a href="/ask?q=Is intermittent fasting good for type 2 diabetes?">Is intermittent fasting good for type 2 diabetes?</a></li>
-    </ul>
+  <div class="ask-suggestions-v2">
+    <h2 class="ask-sub">Try one of these</h2>
+    <div class="ask-tries">
+      <a href="/ask?q=Should I take creatine?">Should I take creatine?</a>
+      <a href="/ask?q=Is one glass of wine a day OK if my mother had breast cancer?">One glass of wine a day with family history of breast cancer</a>
+      <a href="/ask?q=What's the strongest evidence for things that help with sleep?">Strongest evidence for sleep</a>
+      <a href="/ask?q=Do I really need to worry about ultra-processed food?">Ultra-processed food</a>
+      <a href="/ask?q=What lowers dementia risk in middle age?">Lower dementia risk in middle age</a>
+      <a href="/ask?q=Is intermittent fasting good for type 2 diabetes?">Intermittent fasting and T2D</a>
+    </div>
   </div>
   {% endif %}
 
   {% if answer %}
     {% if answer.error %}
-      <div class="ask-answer ask-error">
-        <p><b>Couldn't run the query:</b> {{ answer.error }}</p>
-        <p class="muted small">Most likely the local Gemma server isn't running. On the deployed Vercel build this is expected — Ask works in development with Ollama running locally.</p>
+      <div class="ask-memo ask-memo-error">
+        <div class="ask-memo-head">
+          <span class="ask-memo-icon" aria-hidden="true">⚠</span>
+          <h2>Couldn't run the query</h2>
+        </div>
+        <p>{{ answer.error }}</p>
+        <p class="muted body-sm">Most likely the local Gemma server isn't running. On the deployed Vercel build this is expected — Ask works in development mode with Ollama running locally.</p>
       </div>
     {% elif answer.refused %}
-      <div class="ask-answer ask-refused">
+      <div class="ask-memo ask-memo-refused">
+        <div class="ask-memo-head">
+          <span class="ask-memo-icon" aria-hidden="true">∅</span>
+          <h2>I don't have evidence for this</h2>
+        </div>
         <p>{{ answer.answer }}</p>
+        <p class="muted body-sm">Try rephrasing, or browse <a class="link" href="/explore">the graph</a> directly.</p>
       </div>
     {% else %}
-      <div class="ask-answer">
+      <article class="ask-memo">
         {% if answer.any_retracted %}
-        <div class="edge-alert" role="alert">⚠ One or more cited papers in the underlying evidence have been flagged as retracted.</div>
+        <div class="dossier-banner-alert" role="alert">
+          <span class="dossier-banner-icon" aria-hidden="true">⚠</span>
+          <div><b>Retraction warning.</b> One or more cited papers in the underlying evidence have been flagged as retracted on PubMed.</div>
+        </div>
         {% endif %}
-        <div class="ask-prose">{{ answer.answer | safe }}</div>
+        <div class="ask-memo-eyebrow">Evidence-backed answer · cites the graph</div>
+        <div class="ask-memo-prose">{{ answer.answer | safe }}</div>
+
         {% if answer.edges_used %}
-        <h3>Cited edges</h3>
-        <ul class="ask-citations">
-          {% for e in answer.edges_used %}
-          <li>
-            <a href="/edge/{{ e.id }}"><span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span> <b>{{ e.f_name }}</b> → <b>{{ e.o_name }}</b></a>
-            <small class="muted">· {{ DIRECTION_LABEL[e.direction] }} · sim {{ "%.2f"|format(e._sim) }}</small>
-          </li>
-          {% endfor %}
-        </ul>
+        <div class="ask-citations-v2">
+          <h3 class="ask-cit-h">Cited edges</h3>
+          <ol class="ask-cit-list">
+            {% for e in answer.edges_used %}
+            <li>
+              <a href="/edge/{{ e.id }}">
+                <span class="ask-cit-num">{{ loop.index }}</span>
+                <div class="ask-cit-body">
+                  <div class="ask-cit-head">
+                    <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
+                    <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+                    {% if e._sim %}<span class="ask-cit-sim">{{ "%.0f"|format(e._sim * 100) }}% match</span>{% endif %}
+                  </div>
+                  <div class="ask-cit-pair"><b>{{ e.f_name }}</b> <span class="lib-arrow">→</span> <b>{{ e.o_name }}</b></div>
+                </div>
+                <span class="ask-cit-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+            {% endfor %}
+          </ol>
+        </div>
         {% endif %}
-        <p class="ask-disclaimer">Not medical advice — consult a clinician.</p>
-      </div>
+
+        <p class="ask-disclaimer-v2">Not medical advice — consult a clinician.</p>
+      </article>
     {% endif %}
   {% endif %}
 </section>

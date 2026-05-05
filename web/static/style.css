@@ -727,6 +727,114 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 }
 
 /* =============================================================
+   /ask — Ask my universe
+   ============================================================= */
+
+.ask-page-v2 { max-width: 880px; margin: 0 auto; }
+.ask-page-v2 .back { color: var(--ink-soft); font-size: 13px; }
+.ask-head {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+  border: 1px solid var(--line); border-radius: 22px;
+  padding: 32px 40px; margin: 18px 0 22px;
+}
+.ask-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; margin: 0 0 8px; }
+.ask-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: 52px; line-height: 1.0; letter-spacing: -0.02em; margin: 0 0 14px; color: var(--ink); }
+.ask-lede { font-size: 16px; line-height: 1.55; max-width: 720px; color: var(--ink-soft); margin: 0; }
+
+.ask-composer {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 16px; padding: 18px; margin-bottom: 16px;
+}
+.ask-composer textarea {
+  width: 100%; border: 0; resize: vertical; min-height: 70px;
+  font: inherit; font-size: 17px; line-height: 1.5; color: var(--ink);
+  background: transparent; outline: none;
+}
+.ask-composer-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 12px; flex-wrap: wrap; margin-top: 10px;
+  padding-top: 10px; border-top: 1px solid var(--line);
+}
+.ask-composer-foot .btn-primary { width: auto; padding: 10px 22px; margin: 0; }
+.ask-composer-hint b { color: var(--ink); }
+
+.ask-suggestions-v2 { margin-bottom: 28px; }
+.ask-sub { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; margin: 0 0 10px; color: var(--ink); }
+.ask-tries { display: flex; flex-wrap: wrap; gap: 8px; }
+.ask-tries a {
+  display: inline-flex; padding: 9px 16px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 999px; color: var(--ink-soft); font-size: 13px;
+}
+.ask-tries a:hover { border-color: var(--gold); color: var(--ink); }
+
+.ask-memo {
+  background: var(--surface); border: 1px solid var(--line);
+  border-left: 4px solid var(--gold); border-radius: 16px;
+  padding: 28px 36px; margin-bottom: 24px;
+}
+.ask-memo-error { border-left-color: var(--tier-D); background: var(--tier-D-bg); }
+.ask-memo-refused { border-left-color: var(--muted); background: var(--bg-soft); }
+.ask-memo-head { display: flex; gap: 12px; align-items: center; margin-bottom: 8px; }
+.ask-memo-icon { font-size: 24px; }
+.ask-memo h2 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; margin: 0; }
+.ask-memo-eyebrow {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--gold); font-weight: 600; margin: 0 0 8px;
+}
+.ask-memo-prose { font-size: 16.5px; line-height: 1.7; color: var(--ink); }
+.ask-memo-prose p { margin: 0 0 14px; color: var(--ink); }
+.ask-memo-prose a { color: var(--primary); text-decoration: underline; text-decoration-color: var(--gold-soft); }
+
+.ask-citations-v2 {
+  margin: 24px 0 12px; padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.ask-cit-h {
+  font-family: 'Fraunces', serif; font-weight: 500; font-size: 16px; margin: 0 0 10px;
+  color: var(--ink);
+}
+.ask-cit-list { list-style: none; padding: 0; margin: 0; }
+.ask-cit-list li { margin-bottom: 6px; }
+.ask-cit-list a {
+  display: grid; grid-template-columns: 28px 1fr 24px; gap: 12px; align-items: center;
+  padding: 10px 14px; background: var(--bg-soft);
+  border: 1px solid var(--line); border-radius: 10px; color: inherit;
+  transition: border-color .15s ease, transform .12s ease;
+}
+.ask-cit-list a:hover { border-color: var(--gold); transform: translateX(2px); }
+.ask-cit-num {
+  display: inline-grid; place-items: center;
+  width: 24px; height: 24px;
+  font-family: 'Fraunces', serif; font-size: 12px;
+  background: var(--gold); color: var(--ink);
+  border-radius: 50%; font-weight: 600;
+}
+.ask-cit-head { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 4px; }
+.ask-cit-head .pill { font-size: 9px; padding: 2px 6px; }
+.ask-cit-sim {
+  font-size: 11px; padding: 1px 8px;
+  background: var(--tier-A-bg); color: var(--tier-A);
+  border-radius: 999px; font-weight: 500;
+}
+.ask-cit-pair { font-family: 'Fraunces', serif; font-size: 15px; line-height: 1.3; color: var(--ink); }
+.ask-cit-pair b { font-weight: 500; }
+.ask-cit-pair .lib-arrow { color: var(--gold); }
+.ask-cit-arrow { color: var(--muted); font-size: 16px; }
+
+.ask-disclaimer-v2 {
+  margin: 18px 0 0; padding-top: 14px;
+  border-top: 1px solid var(--line);
+  font-style: italic; font-size: 13px; color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .ask-head { padding: 24px 22px; }
+  .ask-title { font-size: 36px; }
+  .ask-memo { padding: 22px 20px; }
+}
+
+/* =============================================================
    /risk — personalised briefing
    ============================================================= */
 
