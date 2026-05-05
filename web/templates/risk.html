@@ -1,34 +1,88 @@
 {% extends "base.html" %}
 {% block title %}Risk dial — Health Universe{% endblock %}
 {% block content %}
-<section class="risk-page">
-  <a class="back" href="/">← Back</a>
-  <h1>Risk dial</h1>
-  <p class="lede">High-leverage tier-A and tier-B relationships involving things in your stack or the conditions you care about. The factors that move the dial most.</p>
+<section class="risk-page-v2">
+  <a class="back" href="/">← Back to Health Universe</a>
+
+  <header class="risk-head">
+    <p class="risk-eyebrow">Personalised briefing · directional, not clinical</p>
+    <h1 class="risk-title">Risk dial</h1>
+    <p class="risk-lede">High-leverage tier-A and tier-B relationships involving things in your stack or the conditions you care about. The factors that move the dial most for <em>you</em>.</p>
+  </header>
 
   {% if not (profile.stack or profile.conditions) %}
-  <div class="card empty">
-    <p>Save a profile on <a class="link" href="/me">My stack</a> first — pick a few conditions and current habits and this dial will populate.</p>
+  <div class="risk-empty">
+    <div class="risk-empty-mark" aria-hidden="true">◔</div>
+    <h2>The dial is blank</h2>
+    <p class="muted">Save a profile on <a class="link" href="/me">My stack</a> with the conditions you care about and the habits you currently keep. The dial will populate with the strongest evidence connecting <em>your</em> factors to <em>your</em> outcomes.</p>
+    <a class="btn-primary inline" href="/me" style="width:auto; margin-top: 14px;">Set up my stack →</a>
   </div>
   {% else %}
-  <p class="muted body-sm">Disclaimer: this is a directional summary of the strongest tier-A/B evidence relevant to you. It is <b>not</b> a clinical risk score. For real numbers (10-year cardiovascular risk, dementia probability) talk to a clinician and use validated calculators like QRISK or Framingham.</p>
 
-  <div class="risk-grid">
-    {% for m in movers %}
-    <a class="risk-card tier-bg-{{ m.tier }}" href="/edge/{{ m.id }}">
-      <div class="risk-head">
-        <span class="pill tier-{{ m.tier }}">{{ TIER_LABEL[m.tier] | upper }}</span>
-        <span class="badge dir-{{ m.direction }}">{{ DIRECTION_LABEL[m.direction] }}</span>
-        {% if m.effect_size %}<span class="badge ghost">Effect: {{ m.effect_size }}</span>{% endif %}
-      </div>
-      <h3>{{ m.f_name }} → {{ m.o_name }}</h3>
-      <p class="body-sm">{{ m.summary[:240] }}</p>
-      <small class="muted">{{ m.why == "in_your_stack" and "in your current stack" or "for a condition you track" }}</small>
-    </a>
-    {% else %}
-    <p class="empty">No tier-A/B edges yet for what you've selected. The graph is still growing — check back tomorrow after the cron runs, or expand your <a class="link" href="/me">stack</a>.</p>
-    {% endfor %}
+  <div class="risk-disclaimer">
+    <span class="risk-disc-icon" aria-hidden="true">ⓘ</span>
+    <div>
+      <b>Read this as a research summary, not a clinical risk score.</b>
+      For real numbers (10-year cardiovascular risk, dementia probability) talk to a clinician and use validated calculators like QRISK or Framingham.
+    </div>
   </div>
+
+  {% set in_stack = movers | selectattr('why','equalto','in_your_stack') | list %}
+  {% set for_condition = movers | selectattr('why','equalto','for_your_condition') | list %}
+
+  {% if in_stack %}
+  <section class="risk-section">
+    <div class="risk-section-head">
+      <h2 class="risk-h2">In your stack <span class="risk-h2-count">{{ in_stack|length }}</span></h2>
+      <p class="risk-section-lede">Tier-A and tier-B evidence about things you've already added to your stack. Surfaced first because they're the easiest dial to actually move.</p>
+    </div>
+    <div class="risk-grid-v2">
+      {% for m in in_stack %}
+      <a class="risk-card-v2 risk-effect-{{ m.effect_size or 'unknown' }}" href="/edge/{{ m.id }}">
+        <div class="risk-card-head">
+          <span class="pill tier-{{ m.tier }}">{{ m.tier }}</span>
+          <span class="badge dir-{{ m.direction }}">{{ DIRECTION_LABEL[m.direction] }}</span>
+          {% if m.effect_size %}<span class="risk-effect">{{ m.effect_size }} effect</span>{% endif %}
+        </div>
+        <h3 class="risk-card-title">{{ m.f_name }} <span class="lib-arrow" aria-hidden="true">→</span> {{ m.o_name }}</h3>
+        <p class="risk-card-summary">{{ m.summary[:240] }}{% if m.summary|length > 240 %}…{% endif %}</p>
+        <span class="risk-why">In your stack</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if for_condition %}
+  <section class="risk-section">
+    <div class="risk-section-head">
+      <h2 class="risk-h2">For conditions you track <span class="risk-h2-count">{{ for_condition|length }}</span></h2>
+      <p class="risk-section-lede">Strongest factors known to move the conditions on your list. New things you could consider adding.</p>
+    </div>
+    <div class="risk-grid-v2">
+      {% for m in for_condition %}
+      <a class="risk-card-v2 risk-effect-{{ m.effect_size or 'unknown' }}" href="/edge/{{ m.id }}">
+        <div class="risk-card-head">
+          <span class="pill tier-{{ m.tier }}">{{ m.tier }}</span>
+          <span class="badge dir-{{ m.direction }}">{{ DIRECTION_LABEL[m.direction] }}</span>
+          {% if m.effect_size %}<span class="risk-effect">{{ m.effect_size }} effect</span>{% endif %}
+        </div>
+        <h3 class="risk-card-title">{{ m.f_name }} <span class="lib-arrow" aria-hidden="true">→</span> {{ m.o_name }}</h3>
+        <p class="risk-card-summary">{{ m.summary[:240] }}{% if m.summary|length > 240 %}…{% endif %}</p>
+        <span class="risk-why risk-why-condition">For a condition you track</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if not in_stack and not for_condition %}
+  <div class="risk-empty">
+    <div class="risk-empty-mark" aria-hidden="true">∅</div>
+    <h2>No tier-A/B edges yet for what you've selected</h2>
+    <p class="muted">The graph keeps growing. Try adding a few more conditions or stack items on <a class="link" href="/me">My stack</a>, or come back tomorrow after the daily ingest runs.</p>
+  </div>
+  {% endif %}
   {% endif %}
 </section>
 {% endblock %}
