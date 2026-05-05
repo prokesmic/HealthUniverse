@@ -4,11 +4,16 @@
 <section class="list-page">
   <a class="back" href="/">← Back</a>
   <h1>{{ title }}</h1>
+  {% if pg %}
+  <p class="muted">{{ pg.total }} relationship{{ pg.total != 1 and "s" or "" }} · page {{ pg.page }} of {{ pg.pages }}</p>
+  {% else %}
   <p class="muted">{{ edges|length }} relationship{{ edges|length != 1 and "s" or "" }}</p>
+  {% endif %}
 
   <div class="list-grid">
     {% for e in edges %}
     <a class="feat-card tier-bg-{{ e.tier }}" href="/edge/{{ e.id }}">
+      {% if e.f_slug %}<div class="feat-art">{{ edge_svg(factor_slug=e.f_slug, outcome_slug=e.o_slug, tier=e.tier, factor_kind=e.f_kind, outcome_kind=e.o_kind, w=380, h=130) | safe }}</div>{% endif %}
       <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
       <h3>{{ e.f_name }} and {{ e.o_name }}</h3>
       <p>{{ e.summary }}</p>
@@ -21,5 +26,13 @@
     <div class="empty">No relationships in this category yet.</div>
     {% endfor %}
   </div>
+
+  {% if pg and pg.pages > 1 %}
+  <nav class="pagination">
+    {% if pg.has_prev %}<a class="btn-secondary inline" href="{{ base_path }}?page={{ pg.page - 1 }}">← Prev</a>{% endif %}
+    <span class="muted">Page {{ pg.page }} / {{ pg.pages }}</span>
+    {% if pg.has_next %}<a class="btn-secondary inline" href="{{ base_path }}?page={{ pg.page + 1 }}">Next →</a>{% endif %}
+  </nav>
+  {% endif %}
 </section>
 {% endblock %}

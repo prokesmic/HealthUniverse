@@ -139,6 +139,17 @@ def _new_discoveries(conn, days: int = 14, limit: int = 20) -> list[dict]:
     return [dict(r) for r in rows]
 
 
+PAGE_SIZE = 60
+
+
+def _paginate(total: int, page: int) -> dict:
+    pages = max(1, (total + PAGE_SIZE - 1) // PAGE_SIZE)
+    page = max(1, min(page, pages))
+    return {"page": page, "pages": pages, "total": total,
+            "has_prev": page > 1, "has_next": page < pages,
+            "offset": (page - 1) * PAGE_SIZE}
+
+
 def _evidence_strength_buckets(conn) -> list[dict]:
     rows = conn.execute(
         "SELECT tier, COUNT(*) c FROM edge GROUP BY tier").fetchall()
@@ -178,11 +189,15 @@ def home(request: Request):
 
 
 @app.get("/discoveries", response_class=HTMLResponse)
-def discoveries(request: Request, days: int = 30):
+def discoveries(request: Request, days: int = 30, page: int = 1):
     with connect() as conn:
-        rows = _new_discoveries(conn, days=days, limit=200)
+        # Fetch up to 200 candidates, then paginate slice
+        all_rows = _new_discoveries(conn, days=days, limit=200)
+    pg = _paginate(len(all_rows), page)
+    rows = all_rows[pg["offset"]: pg["offset"] + PAGE_SIZE]
     return render(request, "discoveries.html", {
         "title": "Discoveries", "rows": rows, "days": days,
+        "pg": pg, "base_path": "/discoveries",
     })
 
 
@@ -415,19 +430,25 @@ def edge_detail(request: Request, edge_id: int):
 
 
 @app.get("/tier/{tier}", response_class=HTMLResponse)
-def by_tier(request: Request, tier: str):
+def by_tier(request: Request, tier: str, page: int = 1):
     with connect() as conn:
+        total = conn.execute(
+            "SELECT COUNT(*) c FROM edge WHERE tier=?", (tier,)).fetchone()["c"]
+        pg = _paginate(total, page)
         rows = conn.execute("""
             SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
-                   f.name AS f_name, o.name AS o_name
+                   f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                   o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
             FROM edge e
             JOIN entity f ON f.id = e.factor_id
             JOIN entity o ON o.id = e.outcome_id
             WHERE e.tier = ?
-            ORDER BY e.updated_at DESC""", (tier,)).fetchall()
+            ORDER BY e.updated_at DESC LIMIT ? OFFSET ?""",
+            (tier, PAGE_SIZE, pg["offset"])).fetchall()
     return render(request, "list.html", {
         "title": TIER_LABEL.get(tier, tier),
         "edges": [dict(r) for r in rows],
+        "pg": pg, "base_path": f"/tier/{tier}",
     })
 
 
@@ -524,36 +545,49 @@ def changes(request: Request, days: int = 14):
 
 
 @app.get("/category/{slug}", response_class=HTMLResponse)
-def category(request: Request, slug: str):
+def category(request: Request, slug: str, page: int = 1):
     cat = next((c for c in CATEGORIES if c["slug"] == slug), None)
     if not cat:
         return HTMLResponse("Not found", status_code=404)
     with connect() as conn:
         if "kinds" in cat:
             placeholders = ",".join("?" * len(cat["kinds"]))
+            total = conn.execute(
+                f"SELECT COUNT(*) c FROM edge e JOIN entity f ON e.factor_id=f.id "
+                f"WHERE f.kind IN ({placeholders})", cat["kinds"]).fetchone()["c"]
+            pg = _paginate(total, page)
             rows = conn.execute(f"""
                 SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
-                       f.name AS f_name, o.name AS o_name
+                       f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                       o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
                 FROM edge e
                 JOIN entity f ON f.id = e.factor_id
                 JOIN entity o ON o.id = e.outcome_id
                 WHERE f.kind IN ({placeholders})
                 ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2
                               WHEN 'C' THEN 3 WHEN 'X' THEN 4 ELSE 5 END,
-                         e.updated_at DESC""", cat["kinds"]).fetchall()
+                         e.updated_at DESC LIMIT ? OFFSET ?""",
+                (*cat["kinds"], PAGE_SIZE, pg["offset"])).fetchall()
         else:
             placeholders = ",".join("?" * len(cat["outcomes"]))
+            total = conn.execute(
+                f"SELECT COUNT(*) c FROM edge e JOIN entity o ON e.outcome_id=o.id "
+                f"WHERE o.slug IN ({placeholders})", cat["outcomes"]).fetchone()["c"]
+            pg = _paginate(total, page)
             rows = conn.execute(f"""
                 SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
-                       f.name AS f_name, o.name AS o_name
+                       f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                       o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
                 FROM edge e
                 JOIN entity f ON f.id = e.factor_id
                 JOIN entity o ON o.id = e.outcome_id
                 WHERE o.slug IN ({placeholders})
                 ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2
                               WHEN 'C' THEN 3 WHEN 'X' THEN 4 ELSE 5 END,
-                         e.updated_at DESC""", cat["outcomes"]).fetchall()
+                         e.updated_at DESC LIMIT ? OFFSET ?""",
+                (*cat["outcomes"], PAGE_SIZE, pg["offset"])).fetchall()
     return render(request, "list.html", {
         "title": cat["label"],
         "edges": [dict(r) for r in rows],
+        "pg": pg, "base_path": f"/category/{slug}",
     })

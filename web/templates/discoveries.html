@@ -27,5 +27,13 @@
     <div class="empty">No new discoveries yet — they'll appear here when the daily Gemma loop promotes an edge into tier A or B, or creates a new high-confidence one.</div>
     {% endfor %}
   </div>
+
+  {% if pg and pg.pages > 1 %}
+  <nav class="pagination">
+    {% if pg.has_prev %}<a class="btn-secondary inline" href="{{ base_path }}?page={{ pg.page - 1 }}">← Prev</a>{% endif %}
+    <span class="muted">Page {{ pg.page }} / {{ pg.pages }}</span>
+    {% if pg.has_next %}<a class="btn-secondary inline" href="{{ base_path }}?page={{ pg.page + 1 }}">Next →</a>{% endif %}
+  </nav>
+  {% endif %}
 </section>
 {% endblock %}
