@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "calcium",
+      "outcome_slug": "thyroid_control",
+      "direction": "harmful",
+      "tier": "D",
+      "effect_size": "unknown",
+      "effect_quant": "Randomized trials suggest the direction is more reliable than any single pooled magnitude.",
+      "population": "adults taking levothyroxine near calcium dosing",
+      "mechanism": "These exposures act mainly through renal sodium handling, vascular smooth-muscle tone, and neurohormonal blood-pressure regulation. That makes them particularly relevant to Thyroid control when salt sensitivity, baseline blood pressure, or medication use already place the system under stress.",
+      "summary": "Randomized trials link calcium to worse thyroid control in adults taking levothyroxine near calcium dosing. The average effect is usually unknown rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "CaoY et al 2025 Front Public Health",
+          "year": 2025,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Associations of combined exposure to selected metal mixtures with thyroid hormones in children: a cross-sectional study in China.",
+          "doi": "10.3389/fpubh.2025.1387702",
+          "pmid": "39911218",
+          "n_participants": 12470
+        },
+        {
+          "citation": "ChopraIJ et al 2003 Metabolism",
+          "year": 2003,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Treatment of primary hypothyroidism during pregnancy: is there an increase in thyroxine dose requirement in pregnancy?",
+          "doi": "10.1053/meta.2003.50019",
+          "pmid": "12524672",
+          "n_participants": 11
+        },
+        {
+          "citation": "DiskinCJ et al 2007 Int Urol Nephrol",
+          "year": 2007,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Effect of phosphate binders upon TSH and L-thyroxine dose in patients on thyroid replacement.",
+          "doi": "10.1007/s11255-006-9166-6",
+          "pmid": "17216296",
+          "n_participants": 1566
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "calcium",
+      "name": "Calcium",
+      "kind": "supplement",
+      "aliases": [
+        "dietary calcium"
+      ],
+      "description": "Calcium intake from food or supplements."
+    },
+    {
+      "slug": "thyroid_control",
+      "name": "Thyroid control",
+      "kind": "process",
+      "aliases": [
+        "thyroid hormone control"
+      ],
+      "description": "Adequate biochemical control of thyroid replacement therapy."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "cpap",
+      "outcome_slug": "cognitive_function",
+      "direction": "protective",
+      "tier": "D",
+      "effect_size": "unknown",
+      "effect_quant": "Pooled meta-analytic evidence suggest the direction is more reliable than any single pooled magnitude.",
+      "population": "adults with obstructive sleep apnea",
+      "mechanism": "Continuous positive airway pressure is plausibly linked to Cognitive function through mechanisms that fit its exposure class and target tissue, but the exact pathway depends on dose, timing, and baseline vulnerability. The best interpretation is usually that it changes the biologic setting in which Cognitive function develops rather than acting as a single on-off switch.",
+      "summary": "CPAP evidence is strongest for symptom relief and sleepiness; harder vascular or cognitive endpoints improve less consistently. Pooled meta-analytic evidence link continuous positive airway pressure to better cognitive function in adults with obstructive sleep apnea. The average effect is usually unknown rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "HaoY et al 2025 Aging Clin Exp Res",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Comparative effectiveness of different dual task mode interventions on cognitive function in older adults with mild cognitive impairment or dementia: a systematic review and network meta-analysis.",
+          "doi": "10.1007/s40520-025-03016-5",
+          "pmid": "40304821",
+          "n_participants": 2370
+        },
+        {
+          "citation": "HuangX et al 2022 J Sport Health Sci",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Comparative efficacy of various exercise interventions on cognitive function in patients with mild cognitive impairment or dementia: A systematic review and network meta-analysis.",
+          "doi": "10.1016/j.jshs.2021.05.003",
+          "pmid": "34004389",
+          "n_participants": 5606
+        },
+        {
+          "citation": "MeshkatS et al 2024 Psychiatry Clin Neurosci",
+          "year": 2024,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Impact of psilocybin on cognitive function: A systematic review.",
+          "doi": "10.1111/pcn.13741",
+          "pmid": "39354706",
+          "n_participants": 2959
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cognitive_function",
+      "name": "Cognitive function",
+      "kind": "process",
+      "aliases": [
+        "global cognition"
+      ],
+      "description": "General cognitive performance including memory, attention, and executive function."
+    },
+    {
+      "slug": "cpap",
+      "name": "Continuous positive airway pressure",
+      "kind": "activity",
+      "aliases": [
+        "CPAP"
+      ],
+      "description": "Continuous positive airway pressure treatment for obstructive sleep apnea."
+    }
+  ]
+}

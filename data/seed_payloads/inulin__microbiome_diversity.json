@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "inulin",
+      "outcome_slug": "microbiome_diversity",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Systematic reviews drawing on randomized studies suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "general adult",
+      "mechanism": "This factor changes substrate delivery, microbial competition, short-chain fatty-acid production, or early-life colonization patterns in the gut. Those changes are most directly linked to Gut microbiome diversity when the endpoint is microbial composition, barrier function, or a gut-mediated immune phenotype.",
+      "summary": "The strongest gut-related effects usually appear in intermediate outcomes such as fermentation products, stool features, or symptom scores rather than sweeping microbiome reset claims. Systematic reviews drawing on randomized studies link inulin to better gut microbiome diversity in general adult. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "AldubayanMA et al 2023 Front Nutr",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Supplementation with inulin-type fructans affects gut microbiota and attenuates some of the cardiometabolic benefits of a plant-based diet in individuals with overweight or obesity.",
+          "doi": "10.3389/fnut.2023.1108088",
+          "pmid": "37181156",
+          "n_participants": 100
+        },
+        {
+          "citation": "LeBastardQ et al 2020 Eur J Clin Microbiol Infect Dis",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The effects of inulin on gut microbial composition: a systematic review of evidence from human studies.",
+          "doi": "10.1007/s10096-019-03721-w",
+          "pmid": "31707507",
+          "n_participants": 1
+        },
+        {
+          "citation": "KimCE et al 2022 Nutrients",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The Impact of Prebiotic, Probiotic, and Synbiotic Supplements and Yogurt Consumption on the Risk of Colorectal Neoplasia among Adults: A Systematic Review.",
+          "doi": "10.3390/nu14224937",
+          "pmid": "36432622",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "inulin",
+      "name": "Inulin",
+      "kind": "supplement",
+      "aliases": [
+        "inulin fiber"
+      ],
+      "description": "Inulin as a prebiotic fermentable fiber."
+    },
+    {
+      "slug": "microbiome_diversity",
+      "name": "Gut microbiome diversity",
+      "kind": "process",
+      "aliases": [
+        "gut microbial diversity"
+      ],
+      "description": "Alpha diversity or overall richness of the gut microbiome."
+    }
+  ]
+}

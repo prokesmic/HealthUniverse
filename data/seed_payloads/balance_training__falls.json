@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "balance_training",
+      "outcome_slug": "falls",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "older adults",
+      "mechanism": "Exercise influences cerebral perfusion, insulin sensitivity, inflammatory tone, neuromuscular reserve, and trophic signaling such as BDNF, but different modalities stress those systems differently. The pathway to Falls is therefore partly modality-specific, with intensity, balance challenge, or muscle loading each contributing distinct benefits.",
+      "summary": "Pooled meta-analytic evidence link balance training to lower risk of falls in older adults. The average effect is usually moderate rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "WongYuISK et al 2019 Am J Phys Med Rehabil",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Multisystem Balance Training Reduces Injurious Fall Risk in Parkinson Disease: A Randomized Trial.",
+          "doi": "10.1097/PHM.0000000000001035",
+          "pmid": "30211719",
+          "n_participants": 43
+        },
+        {
+          "citation": "SunM et al 2021 Int J Environ Res Public Health",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The Effect of Exercise Intervention on Reducing the Fall Risk in Older Adults: A Meta-Analysis of Randomized Controlled Trials.",
+          "doi": "10.3390/ijerph182312562",
+          "pmid": "34886293",
+          "n_participants": 648
+        },
+        {
+          "citation": "OkuboY et al 2017 Br J Sports Med",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Step training improves reaction time, gait and balance and reduces falls in older people: a systematic review and meta-analysis.",
+          "doi": "10.1136/bjsports-2015-095452",
+          "pmid": "26746905",
+          "n_participants": 660
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "balance_training",
+      "name": "Balance training",
+      "kind": "activity",
+      "aliases": [
+        "balance exercise"
+      ],
+      "description": "Structured balance-focused exercise."
+    },
+    {
+      "slug": "falls",
+      "name": "Falls",
+      "kind": "condition",
+      "aliases": [
+        "fall risk"
+      ],
+      "description": "Falls or recurrent falls among older adults."
+    }
+  ]
+}

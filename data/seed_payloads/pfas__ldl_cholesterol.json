@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "pfas",
+      "outcome_slug": "ldl_cholesterol",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "general adult",
+      "mechanism": "This exposure is studied mainly through oxidative stress, endocrine disruption, inflammatory signaling, or direct tissue toxicity, with the dominant pathway varying by pollutant. For LDL cholesterol, the main uncertainty is usually exposure measurement rather than complete biologic implausibility.",
+      "summary": "Pooled meta-analytic evidence link pfas (forever chemicals) to higher ldl cholesterol in general adult. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "BelowJE et al 2016 Sci Rep",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Meta-analysis of lipid-traits in Hispanics identifies novel loci, population-specific effects, and tissue-specific enrichment of eQTLs.",
+          "doi": "10.1038/srep19429",
+          "pmid": "26780889",
+          "n_participants": 7876
+        },
+        {
+          "citation": "HusseyMR et al 2025 Eur J Epidemiol",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The relationship between PFAS exposure and dyslipidemia: an updated review, meta-analysis, and evaluation of bias.",
+          "doi": "10.1007/s10654-025-01271-4",
+          "pmid": "40801989",
+          "n_participants": 1
+        },
+        {
+          "citation": "LiuB et al 2023 Environ Health Perspect",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Associations between Per- and Polyfluoroalkyl Substances Exposures and Blood Lipid Levels among Adults-A Meta-Analysis.",
+          "doi": "10.1289/EHP11840",
+          "pmid": "37141244",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ldl_cholesterol",
+      "name": "LDL cholesterol",
+      "kind": "biomarker",
+      "aliases": [
+        "LDL-C"
+      ],
+      "description": "Circulating low-density lipoprotein cholesterol concentration."
+    }
+  ]
+}

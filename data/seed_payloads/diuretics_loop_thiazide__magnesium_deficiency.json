@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "diuretics_loop_thiazide",
+      "outcome_slug": "magnesium_deficiency",
+      "direction": "harmful",
+      "tier": "D",
+      "effect_size": "unknown",
+      "effect_quant": "Pooled meta-analytic evidence suggest the direction is more reliable than any single pooled magnitude.",
+      "population": "adults using loop or thiazide diuretics",
+      "mechanism": "This drug-related edge is biologically plausible because the medication changes absorption, excretion, endocrine signaling, or tissue turnover in a predictable direction. Duration, dose, and co-medication use usually determine whether the effect becomes clinically relevant for Magnesium deficiency.",
+      "summary": "Pooled meta-analytic evidence link loop or thiazide diuretic use to higher risk of magnesium deficiency in adults using loop or thiazide diuretics. The average effect is usually unknown rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "RasoulD et al 2024 Cochrane Database Syst Rev",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Continuous infusion versus bolus injection of loop diuretics for acute heart failure.",
+          "doi": "10.1002/14651858.CD014811.pub2",
+          "pmid": "38775253",
+          "n_participants": 681
+        },
+        {
+          "citation": "PickeringG et al 2020 Nutrients",
+          "year": 2020,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "very_low",
+          "notes": "Magnesium Status and Stress: The Vicious Circle Concept Revisited.",
+          "doi": "10.3390/nu12123672",
+          "n_participants": null,
+          "pmid": "33260549"
+        },
+        {
+          "citation": "FiorentiniD et al 2021 Nutrients",
+          "year": 2021,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "very_low",
+          "notes": "Magnesium: Biochemistry, Nutrition, Detection, and Social Impact of Diseases Linked to Its Deficiency.",
+          "doi": "10.3390/nu13041136",
+          "n_participants": null,
+          "pmid": "33808247"
+        },
+        {
+          "citation": "WilliamJH et al 2016 J Clin Pharmacol",
+          "year": 2016,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "very_low",
+          "notes": "Magnesium Deficiency and Proton-Pump Inhibitor Use: A Clinical Review.",
+          "doi": "10.1002/jcph.672",
+          "n_participants": null,
+          "pmid": "26582556"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "diuretics_loop_thiazide",
+      "name": "Loop or thiazide diuretic use",
+      "kind": "drug",
+      "aliases": [
+        "diuretic therapy"
+      ],
+      "description": "Use of loop diuretics or thiazide diuretics for hypertension or edema."
+    },
+    {
+      "slug": "magnesium_deficiency",
+      "name": "Magnesium deficiency",
+      "kind": "condition",
+      "aliases": [
+        "low magnesium status"
+      ],
+      "description": "Magnesium deficiency or low magnesium status."
+    }
+  ]
+}

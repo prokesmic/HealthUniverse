@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "periodontal_disease",
+      "name": "Periodontal disease",
+      "kind": "condition",
+      "aliases": [
+        "gum disease"
+      ],
+      "description": "Periodontitis or advanced periodontal inflammation."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "periodontal_disease",
+      "outcome_slug": "t2d",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "general adult",
+      "mechanism": "This factor likely influences Type 2 diabetes through a mix of reserve, disability, social engagement, inflammation, and shared chronic-disease burden rather than one single biochemical pathway. That matters because some of these variables behave partly as markers of physiologic aging and partly as modifiable contributors.",
+      "summary": "In general adult, pooled meta-analytic evidence suggest that periodontal disease tracks with higher risk of type 2 diabetes. Most disagreement in the literature is about size, subgroup sensitivity, or dose threshold rather than about whether the relationship exists at all.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "WangTF et al 2014 Medicine (Baltimore)",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effects of periodontal therapy on metabolic control in patients with type 2 diabetes mellitus and periodontal disease: a meta-analysis.",
+          "doi": "10.1097/MD.0000000000000292",
+          "pmid": "25526470",
+          "n_participants": 143
+        },
+        {
+          "citation": "PerezLosadaFL et al 2016 Med Oral Patol Oral Cir Bucal",
+          "year": 2016,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Correlation between periodontal disease management and metabolic control of type 2 diabetes mellitus. A systematic literature review.",
+          "doi": "10.4317/medoral.21048",
+          "pmid": "26827070",
+          "n_participants": 1912
+        },
+        {
+          "citation": "MarlowNM et al 2011 J Public Health Dent",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Health insurance status is associated with periodontal disease progression among Gullah African-Americans with type 2 diabetes mellitus.",
+          "doi": "10.1111/j.1752-7325.2011.00243.x",
+          "pmid": "21774138",
+          "n_participants": 93
+        }
+      ]
+    }
+  ]
+}

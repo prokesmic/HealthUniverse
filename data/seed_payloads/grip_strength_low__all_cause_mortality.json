@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "grip_strength_low",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "older adults",
+      "mechanism": "This factor likely influences All-cause mortality through a mix of reserve, disability, social engagement, inflammation, and shared chronic-disease burden rather than one single biochemical pathway. That matters because some of these variables behave partly as markers of physiologic aging and partly as modifiable contributors.",
+      "summary": "Low grip strength appears tied to higher risk of all-cause mortality in older adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "ZhangF et al 2023 Int Urol Nephrol",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Handgrip strength and all-cause mortality in patients with chronic kidney disease: an updated systematic review and meta-analysis of cohort studies.",
+          "doi": "10.1007/s11255-023-03603-3",
+          "pmid": "37076597",
+          "n_participants": 16106
+        },
+        {
+          "citation": "WuM et al 2022 Chin Med J (Engl)",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Associations of muscle mass, strength, and quality with all-cause mortality in China: a population-based cohort study.",
+          "doi": "10.1097/CM9.0000000000002193",
+          "pmid": "35838536",
+          "n_participants": 23290
+        },
+        {
+          "citation": "RanM et al 2026 Arch Gerontol Geriatr",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Handgrip strength asymmetry is associated with mortality risk: Systematic review and meta-analysis.",
+          "doi": "10.1016/j.archger.2026.106237",
+          "pmid": "41955643",
+          "n_participants": 900253
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "grip_strength_low",
+      "name": "Low grip strength",
+      "kind": "condition",
+      "aliases": [
+        "poor handgrip strength"
+      ],
+      "description": "Low handgrip strength as a marker of weakness."
+    }
+  ]
+}

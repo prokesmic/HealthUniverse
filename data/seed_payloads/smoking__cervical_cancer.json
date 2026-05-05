@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "smoking",
+      "outcome_slug": "cervical_cancer",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "adult women",
+      "mechanism": "Smoking is plausibly linked to Cervical cancer through mechanisms that fit its exposure class and target tissue, but the exact pathway depends on dose, timing, and baseline vulnerability. The best interpretation is usually that it changes the biologic setting in which Cervical cancer develops rather than acting as a single on-off switch.",
+      "summary": "Smoking appears tied to higher risk of cervical cancer in adult women mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "MalevoltiMC et al 2023 Eur J Cancer Prev",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Dose-risk relationships between cigarette smoking and cervical cancer: a systematic review and meta-analysis.",
+          "doi": "10.1097/CEJ.0000000000000773",
+          "pmid": "36440802",
+          "n_participants": 109
+        },
+        {
+          "citation": "SuB et al 2018 Medicine (Baltimore)",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The relation of passive smoking with cervical cancer: A systematic review and meta-analysis.",
+          "doi": "10.1097/MD.0000000000013061",
+          "pmid": "30431576",
+          "n_participants": 384995
+        },
+        {
+          "citation": "ZengXT et al 2012 Asian Pac J Cancer Prev",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Passive smoking and cervical cancer risk: a meta-analysis based on 3,230 cases and 2,982 controls.",
+          "doi": "10.7314/apjcp.2012.13.6.2687",
+          "pmid": "22938442",
+          "n_participants": 3230
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cervical_cancer",
+      "name": "Cervical cancer",
+      "kind": "condition",
+      "aliases": [
+        "cervical carcinoma"
+      ],
+      "description": "Cancer of the cervix."
+    }
+  ]
+}

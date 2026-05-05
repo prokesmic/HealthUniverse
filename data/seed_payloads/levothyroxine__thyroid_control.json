@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "levothyroxine",
+      "outcome_slug": "thyroid_control",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Dose-response meta-analyses backed by prospective cohorts point in more than one direction, so no single pooled effect estimate is reliable enough to summarize cleanly.",
+      "population": "adults taking levothyroxine with interfering supplements",
+      "mechanism": "Levothyroxine absorption is easily reduced by concurrent calcium, iron, and other binding agents in the gut, so dosing timing strongly changes bioavailability. That mechanism directly links supplement overlap to poorer Thyroid control.",
+      "summary": "In adults taking levothyroxine with interfering supplements, dose-response meta-analyses backed by prospective cohorts suggest that levothyroxine tracks with mixed effects on thyroid control. This is one of the cleaner pharmacology edges in the set because the adverse pathway is predictable and monitoring can often reduce harm.",
+      "caveats": "Medication benefits may still outweigh this risk. The practical implication is usually monitoring, dosing separation, or targeted supplementation rather than indiscriminate discontinuation.",
+      "evidence": [
+        {
+          "citation": "DuF et al 2025 Cardiovasc Diabetol",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Glucagon-like peptide-1 receptor agonists and risk for cardiovascular events in older adults treated with levothyroxine: a target trial emulation.",
+          "doi": "10.1186/s12933-025-02971-7",
+          "pmid": "41444586",
+          "n_participants": 2384
+        },
+        {
+          "citation": "HassanMM et al 2025 Cureus",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Outcomes of Bariatric Surgery in Hypothyroid Patients Taking Levothyroxine: A Systematic Review and Meta-Analysis.",
+          "doi": "10.7759/cureus.88354",
+          "pmid": "40837934",
+          "n_participants": 922
+        },
+        {
+          "citation": "GuzmanPradoY et al 2021 J Gen Intern Med",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Concomitant Use of Levothyroxine and Proton Pump Inhibitors in Patients with Primary Hypothyroidism: a Systematic Review.",
+          "doi": "10.1007/s11606-020-06403-y",
+          "pmid": "33469743",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "levothyroxine",
+      "name": "Levothyroxine",
+      "kind": "drug",
+      "aliases": [
+        "thyroxine replacement"
+      ],
+      "description": "Levothyroxine treatment used for hypothyroidism replacement therapy."
+    },
+    {
+      "slug": "thyroid_control",
+      "name": "Thyroid control",
+      "kind": "process",
+      "aliases": [
+        "thyroid hormone control"
+      ],
+      "description": "Adequate biochemical control of thyroid replacement therapy."
+    }
+  ]
+}

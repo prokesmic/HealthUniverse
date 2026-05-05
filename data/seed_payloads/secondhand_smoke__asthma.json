@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "secondhand_smoke",
+      "outcome_slug": "asthma",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "children",
+      "mechanism": "This exposure is studied mainly through oxidative stress, endocrine disruption, inflammatory signaling, or direct tissue toxicity, with the dominant pathway varying by pollutant. For Asthma, the main uncertainty is usually exposure measurement rather than complete biologic implausibility.",
+      "summary": "Secondhand smoke exposure appears tied to higher risk of asthma in children mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "HeZ et al 2020 Pediatr Pulmonol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The association between secondhand smoke and childhood asthma: A systematic review and meta-analysis.",
+          "doi": "10.1002/ppul.24961",
+          "pmid": "32667747",
+          "n_participants": 26970
+        },
+        {
+          "citation": "WangZ et al 2015 Ann Allergy Asthma Immunol",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effects of secondhand smoke exposure on asthma morbidity and health care utilization in children: a systematic review and meta-analysis.",
+          "doi": "10.1016/j.anai.2015.08.005",
+          "pmid": "26411971",
+          "n_participants": 1945
+        },
+        {
+          "citation": "BurkeH et al 2012 Pediatrics",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prenatal and passive smoke exposure and incidence of asthma and wheeze: systematic review and meta-analysis.",
+          "doi": "10.1542/peds.2011-2196",
+          "pmid": "22430451",
+          "n_participants": 354
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "asthma",
+      "name": "Asthma",
+      "kind": "condition",
+      "aliases": [
+        "childhood asthma"
+      ],
+      "description": "Asthma or recurrent wheeze diagnosed in childhood or later life."
+    },
+    {
+      "slug": "secondhand_smoke",
+      "name": "Secondhand smoke exposure",
+      "kind": "environmental",
+      "aliases": [
+        "passive smoking"
+      ],
+      "description": "Exposure to tobacco smoke from other people."
+    }
+  ]
+}

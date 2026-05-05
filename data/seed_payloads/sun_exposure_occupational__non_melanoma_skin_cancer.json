@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "sun_exposure_occupational",
+      "outcome_slug": "non_melanoma_skin_cancer",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "outdoor workers",
+      "mechanism": "Ultraviolet exposure can directly induce DNA photoproducts and mutational damage in skin while also modifying vitamin D status and immune surveillance. For Non-melanoma skin cancer, the critical issue is usually cumulative and intermittent UV patterning rather than simply time spent outdoors.",
+      "summary": "Occupational sun exposure appears tied to higher risk of non-melanoma skin cancer in outdoor workers mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "LoneyT et al 2021 Br J Dermatol",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Global evidence on occupational sun exposure and keratinocyte cancers: a systematic review.",
+          "doi": "10.1111/bjd.19152",
+          "pmid": "32320481",
+          "n_participants": 15233
+        },
+        {
+          "citation": "PauloMS et al 2019 Environ Int",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "WHO/ILO work-related burden of disease and injury: Protocol for systematic reviews of occupational exposure to solar ultraviolet radiation and of the effect of occupational exposure to solar ultraviolet radiation on melanoma and non-melanoma skin cancer.",
+          "doi": "10.1016/j.envint.2018.09.039",
+          "pmid": "30792021",
+          "n_participants": 1
+        },
+        {
+          "citation": "GandiniS et al 2005 Eur J Cancer",
+          "year": 2005,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Meta-analysis of risk factors for cutaneous melanoma: II. Sun exposure.",
+          "doi": "10.1016/j.ejca.2004.10.016",
+          "pmid": "15617990",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "non_melanoma_skin_cancer",
+      "name": "Non-melanoma skin cancer",
+      "kind": "condition",
+      "aliases": [
+        "basal cell and squamous cell skin cancer"
+      ],
+      "description": "Non-melanoma skin cancers including basal cell and squamous cell carcinomas."
+    },
+    {
+      "slug": "sun_exposure_occupational",
+      "name": "Occupational sun exposure",
+      "kind": "environmental",
+      "aliases": [
+        "outdoor occupational UV exposure"
+      ],
+      "description": "Regular occupational ultraviolet exposure among outdoor workers."
+    }
+  ]
+}

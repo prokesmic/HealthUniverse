@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "alcohol_evening",
+      "outcome_slug": "sleep_quality",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence point in more than one direction, so no single pooled effect estimate is reliable enough to summarize cleanly.",
+      "population": "general adult",
+      "mechanism": "Alcohol near bedtime initially enhances GABAergic sedation but later fragments sleep as blood alcohol falls, sympathetic tone rises, and REM rebound occurs. That pattern is especially relevant to Sleep quality because the exposure changes sleep architecture rather than just sleep duration.",
+      "summary": "Pooled meta-analytic evidence link evening alcohol intake to mixed effects on sleep quality in general adult. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "ChenMY et al 2024 Gen Hosp Psychiatry",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Global prevalence of poor sleep quality in cancer patients: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.genhosppsych.2023.12.004",
+          "pmid": "38382421",
+          "n_participants": 16223
+        },
+        {
+          "citation": "DuquetL et al 2025 Addict Biol",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "The Impact of Physical Activity on Sleep in Alcohol Users: A Systematic Review.",
+          "doi": "10.1111/adb.70050",
+          "pmid": "40622082",
+          "n_participants": 4995
+        },
+        {
+          "citation": "BurgosSanchezC et al 2020 Otolaryngol Head Neck Surg",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Impact of Alcohol Consumption on Snoring and Sleep Apnea: A Systematic Review and Meta-analysis.",
+          "doi": "10.1177/0194599820931087",
+          "pmid": "32513091",
+          "n_participants": 279
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "alcohol_evening",
+      "name": "Evening alcohol intake",
+      "kind": "behavior",
+      "aliases": [
+        "alcohol before bedtime"
+      ],
+      "description": "Alcohol intake during the evening hours close to habitual sleep onset."
+    }
+  ]
+}

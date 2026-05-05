@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "tooth_loss",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "older adults",
+      "mechanism": "This factor likely influences All-cause mortality through a mix of reserve, disability, social engagement, inflammation, and shared chronic-disease burden rather than one single biochemical pathway. That matters because some of these variables behave partly as markers of physiologic aging and partly as modifiable contributors.",
+      "summary": "Pooled meta-analytic evidence link tooth loss to higher risk of all-cause mortality in older adults. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "WuYJ et al 2024 Heliyon",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of tooth loss and periodontal disease with all-cause mortality in cancer survivors: A cohort study based on NHANES.",
+          "doi": "10.1016/j.heliyon.2024.e36813",
+          "pmid": "39286207",
+          "n_participants": 1267
+        },
+        {
+          "citation": "PengJ et al 2019 Biosci Rep",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The relationship between tooth loss and mortality from all causes, cardiovascular diseases, and coronary heart disease in the general population: systematic review and dose-response meta-analysis of prospective cohort studies.",
+          "doi": "10.1042/BSR20181773",
+          "pmid": "30530864",
+          "n_participants": 1
+        },
+        {
+          "citation": "PolzerI et al 2012 Clin Oral Investig",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The association of tooth loss with all-cause and circulatory mortality. Is there a benefit of replaced teeth? A systematic review and meta-analysis.",
+          "doi": "10.1007/s00784-011-0625-9",
+          "pmid": "22086361",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "tooth_loss",
+      "name": "Tooth loss",
+      "kind": "condition",
+      "aliases": [
+        "edentulism"
+      ],
+      "description": "Partial or complete tooth loss."
+    }
+  ]
+}

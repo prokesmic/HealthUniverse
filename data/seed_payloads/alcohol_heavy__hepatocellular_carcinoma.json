@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "alcohol_heavy",
+      "outcome_slug": "hepatocellular_carcinoma",
+      "direction": "harmful",
+      "tier": "D",
+      "effect_size": "unknown",
+      "effect_quant": "Pooled meta-analytic evidence suggest the direction is more reliable than any single pooled magnitude.",
+      "population": "general adult",
+      "mechanism": "Ethanol is metabolized to acetaldehyde, which can damage DNA and proteins, and even lower-dose drinking can raise circulating estradiol and impair folate handling. Those pathways are most relevant to long-latency outcomes like Hepatocellular carcinoma, where cumulative exposure matters more than a single episode.",
+      "summary": "Heavy alcohol intake appears tied to higher risk of hepatocellular carcinoma in general adult mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Absolute risk changes at low intake are small and can be outweighed by baseline cancer risk, but the linearity of the alcohol signal means 'light' does not mean zero biological effect.",
+      "evidence": [
+        {
+          "citation": "KennedyOJ et al 2017 BMJ Open",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Coffee, including caffeinated and decaffeinated coffee, and the risk of hepatocellular carcinoma: a systematic review and dose-response meta-analysis.",
+          "doi": "10.1136/bmjopen-2016-013739",
+          "pmid": "28490552",
+          "n_participants": 2272642
+        },
+        {
+          "citation": "YangY et al 2014 Gastroenterology",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Increased intake of vegetables, but not fruit, reduces risk for hepatocellular carcinoma: a meta-analysis.",
+          "doi": "10.1053/j.gastro.2014.08.005",
+          "pmid": "25127680",
+          "n_participants": 1290045
+        },
+        {
+          "citation": "JunS et al 2023 Epidemiol Health",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cancer risk based on alcohol consumption levels: a comprehensive systematic review and meta-analysis.",
+          "doi": "10.4178/epih.e2023092",
+          "pmid": "37905315",
+          "n_participants": 106
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "alcohol_heavy",
+      "name": "Heavy alcohol intake",
+      "kind": "food",
+      "aliases": [
+        "heavy drinking"
+      ],
+      "description": "Alcohol intake in a high habitual dose range, usually well above guideline levels."
+    },
+    {
+      "slug": "hepatocellular_carcinoma",
+      "name": "Hepatocellular carcinoma",
+      "kind": "condition",
+      "aliases": [
+        "liver cancer"
+      ],
+      "description": "Primary hepatocellular carcinoma of the liver."
+    }
+  ]
+}

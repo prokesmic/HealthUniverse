@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "alcohol_heavy",
+      "outcome_slug": "colorectal_cancer",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "general adult",
+      "mechanism": "Ethanol is metabolized to acetaldehyde, which can damage DNA and proteins, and even lower-dose drinking can raise circulating estradiol and impair folate handling. Those pathways are most relevant to long-latency outcomes like Colorectal cancer, where cumulative exposure matters more than a single episode.",
+      "summary": "Heavy alcohol intake appears tied to higher risk of colorectal cancer in general adult mainly through pooled meta-analytic evidence. For colorectal cancer, the slope is less obvious at very low intake than it is for breast or liver outcomes, but heavier exposure becomes more consistently adverse.",
+      "caveats": "Absolute risk changes at low intake are small and can be outweighed by baseline cancer risk, but the linearity of the alcohol signal means 'light' does not mean zero biological effect.",
+      "evidence": [
+        {
+          "citation": "KimY et al 2019 Cancer Epidemiol Biomarkers Prev",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between Alcohol Consumption and Survival in Colorectal Cancer: A Meta-analysis.",
+          "doi": "10.1158/1055-9965.EPI-19-0156",
+          "pmid": "31399475",
+          "n_participants": 32846
+        },
+        {
+          "citation": "MoskalA et al 2007 Int J Cancer",
+          "year": 2007,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Alcohol intake and colorectal cancer risk: a dose-response meta-analysis of published cohort studies.",
+          "doi": "10.1002/ijc.22299",
+          "pmid": "17096321",
+          "n_participants": 6300
+        },
+        {
+          "citation": "BagnardiV et al 2001 Br J Cancer",
+          "year": 2001,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "A meta-analysis of alcohol drinking and cancer risk.",
+          "doi": "10.1054/bjoc.2001.2140",
+          "pmid": "11742491",
+          "n_participants": 117000
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "alcohol_heavy",
+      "name": "Heavy alcohol intake",
+      "kind": "food",
+      "aliases": [
+        "heavy drinking"
+      ],
+      "description": "Alcohol intake in a high habitual dose range, usually well above guideline levels."
+    }
+  ]
+}

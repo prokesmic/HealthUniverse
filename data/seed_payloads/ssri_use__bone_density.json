@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ssri_use",
+      "outcome_slug": "bone_density",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "older adults using SSRIs",
+      "mechanism": "This drug-related edge is biologically plausible because the medication changes absorption, excretion, endocrine signaling, or tissue turnover in a predictable direction. Duration, dose, and co-medication use usually determine whether the effect becomes clinically relevant for Bone mineral density.",
+      "summary": "In older adults using SSRIs, pooled meta-analytic evidence suggest that ssri use tracks with worse bone mineral density. Most disagreement in the literature is about size, subgroup sensitivity, or dose threshold rather than about whether the relationship exists at all.",
+      "caveats": "Medication benefits may still outweigh this risk. The practical implication is usually monitoring, dosing separation, or targeted supplementation rather than indiscriminate discontinuation.",
+      "evidence": [
+        {
+          "citation": "ZhouC et al 2018 Osteoporos Int",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effect of selective serotonin reuptake inhibitors on bone mineral density: a systematic review and meta-analysis.",
+          "doi": "10.1007/s00198-018-4413-0",
+          "pmid": "29435621",
+          "n_participants": 1
+        },
+        {
+          "citation": "KumarM et al 2020 Eur J Clin Pharmacol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Alliance between selective serotonin reuptake inhibitors and fracture risk: an updated systematic review and meta-analysis.",
+          "doi": "10.1007/s00228-020-02893-1",
+          "pmid": "32556910",
+          "n_participants": 1
+        },
+        {
+          "citation": "EomCS et al 2012 J Bone Miner Res",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Use of selective serotonin reuptake inhibitors and risk of fracture: a systematic review and meta-analysis.",
+          "doi": "10.1002/jbmr.1554",
+          "pmid": "22258738",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "bone_density",
+      "name": "Bone mineral density",
+      "kind": "process",
+      "aliases": [
+        "BMD"
+      ],
+      "description": "Bone mineral density measured by DXA or a related method."
+    },
+    {
+      "slug": "ssri_use",
+      "name": "SSRI use",
+      "kind": "drug",
+      "aliases": [
+        "selective serotonin reuptake inhibitor use"
+      ],
+      "description": "Use of selective serotonin reuptake inhibitor antidepressants."
+    }
+  ]
+}

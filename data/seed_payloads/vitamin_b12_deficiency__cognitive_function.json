@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vitamin_b12_deficiency",
+      "outcome_slug": "cognitive_function",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "older adults",
+      "mechanism": "This factor affects Cognitive function through nutrient-dependent neurobiology: methylation and myelin maintenance for B12 and folate, oxygen delivery and dopamine synthesis for iron, thyroid-hormone production for iodine, or NMDA-related excitability for magnesium. Clinical effects are often most visible when deficiency is sustained or occurs during sensitive developmental windows.",
+      "summary": "Vitamin B12 deficiency appears tied to worse cognitive function in older adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "MarkunS et al 2021 Nutrients",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effects of Vitamin B12 Supplementation on Cognitive Function, Depressive Symptoms, and Fatigue: A Systematic Review, Meta-Analysis, and Meta-Regression.",
+          "doi": "10.3390/nu13030923",
+          "pmid": "33809274",
+          "n_participants": 6276
+        },
+        {
+          "citation": "FordAH et al 2019 Drugs Aging",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effect of Vitamin B Supplementation on Cognitive Function in the Elderly: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1007/s40266-019-00649-w",
+          "pmid": "30949983",
+          "n_participants": 15104
+        },
+        {
+          "citation": "NalderL et al 2021 J Nutr Health Aging",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Vitamin B12 and Folate Status in Cognitively Healthy Older Adults and Associations with Cognitive Performance.",
+          "doi": "10.1007/s12603-020-1489-y",
+          "pmid": "33575718",
+          "n_participants": 1946
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cognitive_function",
+      "name": "Cognitive function",
+      "kind": "process",
+      "aliases": [
+        "global cognition"
+      ],
+      "description": "General cognitive performance including memory, attention, and executive function."
+    },
+    {
+      "slug": "vitamin_b12_deficiency",
+      "name": "Vitamin B12 deficiency",
+      "kind": "condition",
+      "aliases": [
+        "B12 deficiency"
+      ],
+      "description": "Vitamin B12 deficiency or low B12 status."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "omega3_high_triglycerides",
+      "outcome_slug": "triglycerides_high",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "adults with hypertriglyceridemia",
+      "mechanism": "EPA and DHA lower hepatic VLDL production, shift membrane lipid signaling, and can modestly dampen inflammatory eicosanoid tone. Those mechanisms matter most for Elevated triglycerides when baseline triglycerides are high or the outcome is tightly linked to cardiometabolic inflammation.",
+      "summary": "Omega-3 in adults with high triglycerides appears tied to lower elevated triglycerides in adults with hypertriglyceridemia mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "SahebkarA et al 2018 Ann Med",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of omega-3 supplements on plasma apolipoprotein C-III concentrations: a systematic review and meta-analysis of randomized controlled trials.",
+          "doi": "10.1080/07853890.2018.1511919",
+          "pmid": "30102092",
+          "n_participants": 2062
+        },
+        {
+          "citation": "HarrisWS et al 2013 Postgrad Med",
+          "year": 2013,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "very_low",
+          "notes": "Omega-3 fatty acids and cardiovascular disease: new developments and applications.",
+          "doi": "10.3810/pgm.2013.11.2717",
+          "n_participants": null,
+          "pmid": "24200766"
+        },
+        {
+          "citation": "DayspringTD et al 2011 Int J Womens Health",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Understanding hypertriglyceridemia in women: clinical impact and management with prescription omega-3-acid ethyl esters.",
+          "doi": "10.2147/IJWH.S16702",
+          "pmid": "21445284",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "omega3_high_triglycerides",
+      "name": "Omega-3 in adults with high triglycerides",
+      "kind": "supplement",
+      "aliases": [
+        "EPA DHA for hypertriglyceridemia"
+      ],
+      "description": "Marine omega-3 supplementation in adults with elevated fasting triglycerides."
+    },
+    {
+      "slug": "triglycerides_high",
+      "name": "Elevated triglycerides",
+      "kind": "biomarker",
+      "aliases": [
+        "hypertriglyceridemia"
+      ],
+      "description": "Fasting triglyceride concentrations above the usual reference range."
+    }
+  ]
+}

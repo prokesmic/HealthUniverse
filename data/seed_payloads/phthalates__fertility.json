@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "phthalates",
+      "outcome_slug": "fertility",
+      "direction": "harmful",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "reproductive-age adults",
+      "mechanism": "Phthalates can alter PPAR signaling, sex-steroid balance, and adipocyte biology, which is why they are usually discussed as endocrine-disrupting exposures. Those pathways are the main reason they are investigated for Fertility.",
+      "summary": "Dose-response meta-analyses backed by prospective cohorts link phthalate exposure to adverse shifts in fertility in reproductive-age adults. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "LiX et al 2024 Environ Health (Wash)",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of Di(2-ethylhexyl) Phthalate Exposure with Reproductive Hormones in the General Population and the Susceptible Population: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1021/envhealth.4c00046",
+          "pmid": "39568700",
+          "n_participants": 28911
+        },
+        {
+          "citation": "BlaauwendraadSM et al 2024 EClinicalMedicine",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Associations of bisphenol and phthalate exposure and anti-M\u00fcllerian hormone levels in women of reproductive age.",
+          "doi": "10.1016/j.eclinm.2024.102734",
+          "pmid": "39114272",
+          "n_participants": 1405
+        },
+        {
+          "citation": "NitaTM et al 2026 Environ Toxicol Pharmacol",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Urinary concentrations of di-butyl phthalate isomers and reproductive hormonal parameters in adult men: A systematic review with dose-response meta-analysis.",
+          "doi": "10.1016/j.etap.2025.104900",
+          "pmid": "41380926",
+          "n_participants": 12128
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "fertility",
+      "name": "Fertility",
+      "kind": "process",
+      "aliases": [
+        "reproductive fertility"
+      ],
+      "description": "Human fertility and related reproductive outcomes."
+    },
+    {
+      "slug": "phthalates",
+      "name": "Phthalate exposure",
+      "kind": "environmental",
+      "aliases": [
+        "phthalate exposure"
+      ],
+      "description": "Exposure to phthalate plasticizers through consumer products or food contact materials."
+    }
+  ]
+}

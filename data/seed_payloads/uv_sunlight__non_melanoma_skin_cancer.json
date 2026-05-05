@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "uv_sunlight",
+      "outcome_slug": "non_melanoma_skin_cancer",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "light-skinned adults",
+      "mechanism": "Ultraviolet exposure can directly induce DNA photoproducts and mutational damage in skin while also modifying vitamin D status and immune surveillance. For Non-melanoma skin cancer, the critical issue is usually cumulative and intermittent UV patterning rather than simply time spent outdoors.",
+      "summary": "Sunlight / UV exposure appears tied to higher risk of non-melanoma skin cancer in light-skinned adults mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "ShraimR et al 2023 Mol Genet Genomic Med",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Systematic review on gene-sun exposure interactions in skin cancer.",
+          "doi": "10.1002/mgg3.2259",
+          "pmid": "37537768",
+          "n_participants": 1
+        },
+        {
+          "citation": "LopesFCPS et al 2021 JAMA Dermatol",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "UV Exposure and the Risk of Cutaneous Melanoma in Skin of Color: A Systematic Review.",
+          "doi": "10.1001/jamadermatol.2020.4616",
+          "pmid": "33325988",
+          "n_participants": 1
+        },
+        {
+          "citation": "KolitzE et al 2022 JAMA Dermatol",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "UV Exposure and the Risk of Keratinocyte Carcinoma in Skin of Color: A Systematic Review.",
+          "doi": "10.1001/jamadermatol.2022.0263",
+          "pmid": "35319719",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "non_melanoma_skin_cancer",
+      "name": "Non-melanoma skin cancer",
+      "kind": "condition",
+      "aliases": [
+        "basal cell and squamous cell skin cancer"
+      ],
+      "description": "Non-melanoma skin cancers including basal cell and squamous cell carcinomas."
+    }
+  ]
+}

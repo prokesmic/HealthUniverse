@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "sleep_apnea",
+      "outcome_slug": "hypertension",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "general adult",
+      "mechanism": "The main pathway runs through circadian timing, arousal biology, upper-airway physiology, thermoregulation, or sympathetic activation depending on the exposure. For Hypertension, the effect is usually strongest when the factor repeatedly disturbs sleep architecture or circadian alignment rather than acting once.",
+      "summary": "Pooled meta-analytic evidence link obstructive sleep apnea to higher risk of hypertension in general adult. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "KaramM et al 2025 Neuroophthalmology",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Obstructive Sleep Apnea in Idiopathic Intracranial Hypertension: Systematic Review and Meta-Analysis.",
+          "doi": "10.1080/01658107.2024.2371158",
+          "pmid": "40919091",
+          "n_participants": 241
+        },
+        {
+          "citation": "DuD et al 2025 Heart Lung",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Linking obstructive sleep apnea with pulmonary hypertension via pooled prevalence and causal association: A systematic review, meta-analysis and Mendelian randomization.",
+          "doi": "10.1016/j.hrtlng.2025.06.009",
+          "pmid": "40609175",
+          "n_participants": 1792
+        },
+        {
+          "citation": "AhmedAM et al 2023 Front Med (Lausanne)",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between obstructive sleep apnea and resistant hypertension: systematic review and meta-analysis.",
+          "doi": "10.3389/fmed.2023.1200952",
+          "pmid": "37332747",
+          "n_participants": 2541
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "sleep_apnea",
+      "name": "Obstructive sleep apnea",
+      "kind": "condition",
+      "aliases": [
+        "OSA"
+      ],
+      "description": "Obstructive sleep apnea syndrome."
+    }
+  ]
+}

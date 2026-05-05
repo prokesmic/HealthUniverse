@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "glucocorticoids_long_term",
+      "outcome_slug": "muscle_mass",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "adults on long-term systemic glucocorticoids",
+      "mechanism": "This drug-related edge is biologically plausible because the medication changes absorption, excretion, endocrine signaling, or tissue turnover in a predictable direction. Duration, dose, and co-medication use usually determine whether the effect becomes clinically relevant for Muscle mass.",
+      "summary": "Long-term glucocorticoid use appears tied to worse muscle mass in adults on long-term systemic glucocorticoids mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Medication benefits may still outweigh this risk. The practical implication is usually monitoring, dosing separation, or targeted supplementation rather than indiscriminate discontinuation.",
+      "evidence": [
+        {
+          "citation": "MatthewsE et al 2016 Cochrane Database Syst Rev",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Corticosteroids for the treatment of Duchenne muscular dystrophy.",
+          "doi": "10.1002/14651858.CD003725.pub4",
+          "pmid": "27149418",
+          "n_participants": 667
+        },
+        {
+          "citation": "RingeJD et al 2011 Arzneimittelforschung",
+          "year": 2011,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Potency of a combined alfacalcidol-alendronate therapy to reduce the risk of falls and fractures in elderly patients with glucocorticoid-induced osteoporosis.",
+          "doi": "10.1055/s-0031-1296175",
+          "pmid": "21428245",
+          "n_participants": 2579
+        },
+        {
+          "citation": "RamananAV et al 2005 Arthritis Rheum",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The effectiveness of treating juvenile dermatomyositis with methotrexate and aggressively tapered corticosteroids.",
+          "doi": "10.1002/art.21378",
+          "pmid": "16255046",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "glucocorticoids_long_term",
+      "name": "Long-term glucocorticoid use",
+      "kind": "drug",
+      "aliases": [
+        "chronic corticosteroid use"
+      ],
+      "description": "Long-term systemic glucocorticoid exposure."
+    },
+    {
+      "slug": "muscle_mass",
+      "name": "Muscle mass",
+      "kind": "process",
+      "aliases": [
+        "lean body mass"
+      ],
+      "description": "Skeletal muscle mass or lean mass over time."
+    }
+  ]
+}

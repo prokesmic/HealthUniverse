@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hormone_therapy_combined",
+      "outcome_slug": "breast_cancer",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "postmenopausal women",
+      "mechanism": "Exogenous estrogen, and especially estrogen-progestin combinations, can stimulate proliferation in hormone-responsive tissues while also changing clotting, lipids, and systemic inflammation. That makes the balance of benefit and harm for Breast cancer highly dependent on tissue type, duration, and timing relative to menopause.",
+      "summary": "Pooled meta-analytic evidence link combined menopausal hormone therapy to higher risk of breast cancer in postmenopausal women. The average effect is usually moderate rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "MudhuneGH et al 2019 Breast",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Safety of menopausal hormone therapy in breast cancer survivors older than fifty at diagnosis: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.breast.2019.06.002",
+          "pmid": "31344603",
+          "n_participants": 16002
+        },
+        {
+          "citation": "ShahNR et al 2005 Menopause",
+          "year": 2005,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Postmenopausal hormone therapy and breast cancer: a systematic review and meta-analysis.",
+          "doi": "10.1097/01.gme.0000184221.63459.e1",
+          "pmid": "16278609",
+          "n_participants": 700000
+        },
+        {
+          "citation": "deLignieresB et al 2002 Climacteric",
+          "year": 2002,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Combined hormone replacement therapy and risk of breast cancer in a French cohort study of 3175 women.",
+          "doi": "10.1080/713605312",
+          "pmid": "12626212",
+          "n_participants": 10000
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hormone_therapy_combined",
+      "name": "Combined menopausal hormone therapy",
+      "kind": "drug",
+      "aliases": [
+        "estrogen progestin therapy"
+      ],
+      "description": "Menopausal hormone therapy using both estrogen and a progestogen."
+    }
+  ]
+}

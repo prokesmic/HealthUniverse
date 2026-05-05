@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "indoor_mold",
+      "outcome_slug": "respiratory_symptoms",
+      "direction": "harmful",
+      "tier": "D",
+      "effect_size": "unknown",
+      "effect_quant": "Pooled meta-analytic evidence suggest the direction is more reliable than any single pooled magnitude.",
+      "population": "children and adults",
+      "mechanism": "This exposure is studied mainly through oxidative stress, endocrine disruption, inflammatory signaling, or direct tissue toxicity, with the dominant pathway varying by pollutant. For Respiratory symptoms, the main uncertainty is usually exposure measurement rather than complete biologic implausibility.",
+      "summary": "In children and adults, pooled meta-analytic evidence suggest that indoor mold exposure tracks with higher risk of respiratory symptoms. Most disagreement in the literature is about size, subgroup sensitivity, or dose threshold rather than about whether the relationship exists at all.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "AntovaT et al 2008 J Epidemiol Community Health",
+          "year": 2008,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Exposure to indoor mould and children's respiratory health in the PATY study.",
+          "doi": "10.1136/jech.2007.065896",
+          "pmid": "18621956",
+          "n_participants": 58000
+        },
+        {
+          "citation": "HurraJ et al 2017 Int J Hyg Environ Health",
+          "year": 2017,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "very_low",
+          "notes": "Medical diagnostics for indoor mold exposure.",
+          "doi": "10.1016/j.ijheh.2016.11.012",
+          "n_participants": null,
+          "pmid": "27986496"
+        },
+        {
+          "citation": "QuinnLA et al 2020 Syst Rev",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Respiratory syncytial virus prophylaxis for prevention of recurrent childhood wheeze and asthma: a systematic review.",
+          "doi": "10.1186/s13643-020-01527-y",
+          "pmid": "33239107",
+          "n_participants": 11195
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "indoor_mold",
+      "name": "Indoor mold exposure",
+      "kind": "environmental",
+      "aliases": [
+        "household mold exposure"
+      ],
+      "description": "Exposure to mold and damp indoor environments."
+    },
+    {
+      "slug": "respiratory_symptoms",
+      "name": "Respiratory symptoms",
+      "kind": "condition",
+      "aliases": [
+        "wheeze and respiratory symptoms"
+      ],
+      "description": "Respiratory symptoms such as wheeze, cough, dyspnea, or asthma-like complaints."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "sun_exposure_high",
+      "outcome_slug": "melanoma",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "fair-skinned adults",
+      "mechanism": "Ultraviolet exposure can directly induce DNA photoproducts and mutational damage in skin while also modifying vitamin D status and immune surveillance. For Melanoma, the critical issue is usually cumulative and intermittent UV patterning rather than simply time spent outdoors.",
+      "summary": "Pooled meta-analytic evidence link high cumulative sun exposure to higher risk of melanoma in fair-skinned adults. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "RotaM et al 2014 Br J Dermatol",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Alcohol drinking and cutaneous melanoma risk: a systematic review and dose-risk meta-analysis.",
+          "doi": "10.1111/bjd.12856",
+          "pmid": "24495200",
+          "n_participants": 6251
+        },
+        {
+          "citation": "MadukaRC et al 2023 J Surg Res",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Indoor Versus Outdoor: Does Occupational Sunlight Exposure Increase Melanoma Risk? A Systematic Review.",
+          "doi": "10.1016/j.jss.2022.10.025",
+          "pmid": "36423476",
+          "n_participants": 14
+        },
+        {
+          "citation": "GambichlerT et al 2025 Cancers (Basel)",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Impaired Overall Survival of Melanoma Patients Due to Antibiotic Use Prior to Immune Checkpoint Inhibitor Therapy: Systematic Review and Meta-Analysis.",
+          "doi": "10.3390/cancers17111872",
+          "pmid": "40507352",
+          "n_participants": 5213
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "melanoma",
+      "name": "Melanoma",
+      "kind": "condition",
+      "aliases": [
+        "cutaneous melanoma"
+      ],
+      "description": "Melanoma of the skin."
+    },
+    {
+      "slug": "sun_exposure_high",
+      "name": "High cumulative sun exposure",
+      "kind": "environmental",
+      "aliases": [
+        "high UV exposure"
+      ],
+      "description": "High chronic or intermittent cumulative ultraviolet exposure from sunlight."
+    }
+  ]
+}

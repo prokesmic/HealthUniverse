@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "sodium_reduction",
+      "outcome_slug": "blood_pressure_control",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "general adult",
+      "mechanism": "These exposures act mainly through renal sodium handling, vascular smooth-muscle tone, and neurohormonal blood-pressure regulation. That makes them particularly relevant to Blood pressure control when salt sensitivity, baseline blood pressure, or medication use already place the system under stress.",
+      "summary": "Sodium reduction appears tied to better blood pressure control in general adult mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "XunR et al 2023 Glob Heart",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of Behavioral Interventions for Salt Reduction on Blood Pressure and Urinary Sodium Excretion: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+          "doi": "10.5334/gh.1281",
+          "pmid": "38143483",
+          "n_participants": 4667
+        },
+        {
+          "citation": "MizutaE et al 2025 Hypertens Res",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of population-based sodium reduction interventions on blood pressure: a systematic review and meta-analysis of randomized trials.",
+          "doi": "10.1038/s41440-025-02181-4",
+          "pmid": "40055494",
+          "n_participants": 66803
+        },
+        {
+          "citation": "HeFJ et al 2013 BMJ",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of longer term modest salt reduction on blood pressure: Cochrane systematic review and meta-analysis of randomised trials.",
+          "doi": "10.1136/bmj.f1325",
+          "pmid": "23558162",
+          "n_participants": 3230
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "blood_pressure_control",
+      "name": "Blood pressure control",
+      "kind": "process",
+      "aliases": [
+        "lower blood pressure"
+      ],
+      "description": "Improved blood pressure control over time."
+    },
+    {
+      "slug": "sodium_reduction",
+      "name": "Sodium reduction",
+      "kind": "behavior",
+      "aliases": [
+        "salt reduction"
+      ],
+      "description": "Deliberate reduction in dietary sodium intake."
+    }
+  ]
+}

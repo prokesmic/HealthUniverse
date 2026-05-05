@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "antibiotics_early_life",
+      "outcome_slug": "asthma",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "children",
+      "mechanism": "This factor changes substrate delivery, microbial competition, short-chain fatty-acid production, or early-life colonization patterns in the gut. Those changes are most directly linked to Asthma when the endpoint is microbial composition, barrier function, or a gut-mediated immune phenotype.",
+      "summary": "Early-life antibiotic exposure appears tied to higher risk of asthma in children mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "MurkW et al 2011 Pediatrics",
+          "year": 2011,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prenatal or early-life exposure to antibiotics and risk of childhood asthma: a systematic review.",
+          "doi": "10.1542/peds.2010-2092",
+          "pmid": "21606151",
+          "n_participants": 20
+        },
+        {
+          "citation": "AhmadizarF et al 2017 Pediatr Allergy Immunol",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Early life antibiotic use and the risk of asthma and asthma exacerbations in children.",
+          "doi": "10.1111/pai.12725",
+          "pmid": "28423467",
+          "n_participants": 7393
+        },
+        {
+          "citation": "LeeTY et al 2024 Front Allergy",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Impact analysis of infant antibiotic exposure on the burden of asthma: a simulation modeling study.",
+          "doi": "10.3389/falgy.2024.1491985",
+          "pmid": "39764437",
+          "n_participants": 1000
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "antibiotics_early_life",
+      "name": "Early-life antibiotic exposure",
+      "kind": "drug",
+      "aliases": [
+        "antibiotics in infancy"
+      ],
+      "description": "Systemic antibiotic exposure during infancy or early childhood."
+    },
+    {
+      "slug": "asthma",
+      "name": "Asthma",
+      "kind": "condition",
+      "aliases": [
+        "childhood asthma"
+      ],
+      "description": "Asthma or recurrent wheeze diagnosed in childhood or later life."
+    }
+  ]
+}
