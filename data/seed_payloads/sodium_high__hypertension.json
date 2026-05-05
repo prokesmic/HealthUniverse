@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "sodium_high",
+      "outcome_slug": "hypertension",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "general adult",
+      "mechanism": "These exposures act mainly through renal sodium handling, vascular smooth-muscle tone, and neurohormonal blood-pressure regulation. That makes them particularly relevant to Hypertension when salt sensitivity, baseline blood pressure, or medication use already place the system under stress.",
+      "summary": "High sodium intake appears tied to higher risk of hypertension in general adult mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "BrandA et al 2022 Cochrane Database Syst Rev",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Replacing salt with low-sodium salt substitutes (LSSS) for cardiovascular health in adults, children and pregnant women.",
+          "doi": "10.1002/14651858.CD015207",
+          "pmid": "35944931",
+          "n_participants": 23200
+        },
+        {
+          "citation": "KhalesiS et al 2022 Nutr Rev",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Reducing salt intake: a systematic review and meta-analysis of behavior change interventions in adults.",
+          "doi": "10.1093/nutrit/nuab110",
+          "pmid": "34921314",
+          "n_participants": 7840
+        },
+        {
+          "citation": "GraudalNA et al 2020 Cochrane Database Syst Rev",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effects of low sodium diet versus high sodium diet on blood pressure, renin, aldosterone, catecholamines, cholesterol, and triglyceride.",
+          "doi": "10.1002/14651858.CD004022.pub5",
+          "pmid": "33314019",
+          "n_participants": 6276
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "sodium_high",
+      "name": "High sodium intake",
+      "kind": "nutrient",
+      "aliases": [
+        "high salt intake"
+      ],
+      "description": "Habitual intake of sodium above recommended levels."
+    }
+  ]
+}

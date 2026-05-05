@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "omega3_normal_triglycerides",
+      "outcome_slug": "ldl_cholesterol",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence point in more than one direction, so no single pooled effect estimate is reliable enough to summarize cleanly.",
+      "population": "general adult",
+      "mechanism": "EPA and DHA lower hepatic VLDL production, shift membrane lipid signaling, and can modestly dampen inflammatory eicosanoid tone. Those mechanisms matter most for LDL cholesterol when baseline triglycerides are high or the outcome is tightly linked to cardiometabolic inflammation.",
+      "summary": "In general adult, pooled meta-analytic evidence suggest that omega-3 in adults with normal triglycerides tracks with mixed effects on ldl cholesterol. Most disagreement in the literature is about size, subgroup sensitivity, or dose threshold rather than about whether the relationship exists at all.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "XiaoY et al 2022 Prostaglandins Leukot Essent Fatty Acids",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "The effects of omega-3 fatty acids in type 2 diabetes: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.plefa.2022.102456",
+          "pmid": "35717726",
+          "n_participants": 4991
+        },
+        {
+          "citation": "ZhangC et al 2025 Food Sci Nutr",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Effects of Omega-3 Fatty Acids Intake on Lipid Metabolism and Plaque Volume in Patients With Coronary Heart Disease: A Systematic Review and Dose-Response Meta-Analysis of Randomized Clinical Trials.",
+          "doi": "10.1002/fsn3.70372",
+          "pmid": "40463990",
+          "n_participants": 2061
+        },
+        {
+          "citation": "XiaY et al 2021 Ann Palliat Med",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Efficacy of omega-3 fatty acid supplementation on cardiovascular risk factors in patients with polycystic ovary syndrome: a systematic review and meta-analysis.",
+          "doi": "10.21037/apm-21-1050",
+          "pmid": "34237964",
+          "n_participants": 778
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ldl_cholesterol",
+      "name": "LDL cholesterol",
+      "kind": "biomarker",
+      "aliases": [
+        "LDL-C"
+      ],
+      "description": "Circulating low-density lipoprotein cholesterol concentration."
+    },
+    {
+      "slug": "omega3_normal_triglycerides",
+      "name": "Omega-3 in adults with normal triglycerides",
+      "kind": "supplement",
+      "aliases": [
+        "EPA DHA for normotriglyceridemia"
+      ],
+      "description": "Marine omega-3 supplementation in adults without baseline hypertriglyceridemia."
+    }
+  ]
+}

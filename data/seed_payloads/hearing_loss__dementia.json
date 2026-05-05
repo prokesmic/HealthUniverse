@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hearing_loss",
+      "name": "Age-related hearing loss",
+      "kind": "condition",
+      "aliases": [
+        "hearing impairment"
+      ],
+      "description": "Clinically meaningful hearing loss in later life."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hearing_loss",
+      "outcome_slug": "dementia",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "older adults",
+      "mechanism": "This factor likely influences Dementia (all-cause) through a mix of reserve, disability, social engagement, inflammation, and shared chronic-disease burden rather than one single biochemical pathway. That matters because some of these variables behave partly as markers of physiologic aging and partly as modifiable contributors.",
+      "summary": "Hearing loss appears tied to higher risk of dementia (all-cause) in older adults mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "FuX et al 2023 Innov Aging",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Relationship of Age-Related Hearing Loss with Cognitive Decline and Dementia in a Sinitic Language-Speaking Adult Population: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1093/geroni/igac078",
+          "pmid": "36873915",
+          "n_participants": 372154
+        },
+        {
+          "citation": "YuRC et al 2024 Ageing Res Rev",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Adult-onset hearing loss and incident cognitive impairment and dementia - A systematic review and meta-analysis of cohort studies.",
+          "doi": "10.1016/j.arr.2024.102346",
+          "pmid": "38788800",
+          "n_participants": 1548754
+        },
+        {
+          "citation": "ReadmanMR et al 2025 Aging Ment Health",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Hearing loss as a risk factor for dementia: a systematic review and meta-analysis from a global perspective.",
+          "doi": "10.1080/13607863.2025.2515180",
+          "pmid": "40511666",
+          "n_participants": 20
+        }
+      ]
+    }
+  ]
+}

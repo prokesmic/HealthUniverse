@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "diuretics_loop_thiazide",
+      "outcome_slug": "potassium",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "adults using loop or thiazide diuretics",
+      "mechanism": "This drug-related edge is biologically plausible because the medication changes absorption, excretion, endocrine signaling, or tissue turnover in a predictable direction. Duration, dose, and co-medication use usually determine whether the effect becomes clinically relevant for Potassium.",
+      "summary": "Pooled meta-analytic evidence link loop or thiazide diuretic use to adverse shifts in potassium in adults using loop or thiazide diuretics. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "RasoulD et al 2024 Cochrane Database Syst Rev",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Continuous infusion versus bolus injection of loop diuretics for acute heart failure.",
+          "doi": "10.1002/14651858.CD014811.pub2",
+          "pmid": "38775253",
+          "n_participants": 681
+        },
+        {
+          "citation": "SungLC et al 2024 Postgrad Med",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Thiazide diuretics versus loop diuretics in stage 3-5 CKD: impact on cardiorenal outcomes.",
+          "doi": "10.1080/00325481.2024.2396796",
+          "pmid": "39189768",
+          "n_participants": 59719
+        },
+        {
+          "citation": "BagshawSM et al 2007 Crit Care Resusc",
+          "year": 2007,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Loop diuretics in the management of acute renal failure: a systematic review and meta-analysis.",
+          "pmid": "17352669",
+          "n_participants": 555
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "diuretics_loop_thiazide",
+      "name": "Loop or thiazide diuretic use",
+      "kind": "drug",
+      "aliases": [
+        "diuretic therapy"
+      ],
+      "description": "Use of loop diuretics or thiazide diuretics for hypertension or edema."
+    },
+    {
+      "slug": "potassium",
+      "name": "Potassium",
+      "kind": "supplement",
+      "aliases": [
+        "dietary potassium"
+      ],
+      "description": "Potassium intake from food or supplements."
+    }
+  ]
+}

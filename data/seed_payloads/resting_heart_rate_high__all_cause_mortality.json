@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "resting_heart_rate_high",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "general adult",
+      "mechanism": "This factor likely influences All-cause mortality through a mix of reserve, disability, social engagement, inflammation, and shared chronic-disease burden rather than one single biochemical pathway. That matters because some of these variables behave partly as markers of physiologic aging and partly as modifiable contributors.",
+      "summary": "Pooled meta-analytic evidence link high resting heart rate to higher risk of all-cause mortality in general adult. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "LauK et al 2021 J Card Fail",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Resting Heart Rate as an Important Predictor of Mortality and Morbidity in Ambulatory Patients With Heart Failure: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1016/j.cardfail.2020.11.003",
+          "pmid": "33171294",
+          "n_participants": 163445
+        },
+        {
+          "citation": "XuT et al 2016 Medicine (Baltimore)",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The relationship between heart rate and mortality of patients with acute coronary syndromes in the coronary intervention era: Meta-analysis.",
+          "doi": "10.1097/MD.0000000000005371",
+          "pmid": "27861369",
+          "n_participants": 156374
+        },
+        {
+          "citation": "OmlorAJ et al 2020 Clin Res Cardiol",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Time-updated resting heart rate predicts mortality in patients with COPD.",
+          "doi": "10.1007/s00392-019-01572-1",
+          "pmid": "31734762",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "resting_heart_rate_high",
+      "name": "High resting heart rate",
+      "kind": "biomarker",
+      "aliases": [
+        "elevated resting pulse"
+      ],
+      "description": "Higher resting heart rate relative to peers."
+    }
+  ]
+}

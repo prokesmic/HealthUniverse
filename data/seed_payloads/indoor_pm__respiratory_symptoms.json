@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "indoor_pm",
+      "outcome_slug": "respiratory_symptoms",
+      "direction": "harmful",
+      "tier": "D",
+      "effect_size": "unknown",
+      "effect_quant": "Prospective cohort data suggest the direction is more reliable than any single pooled magnitude.",
+      "population": "children and adults",
+      "mechanism": "This exposure is studied mainly through oxidative stress, endocrine disruption, inflammatory signaling, or direct tissue toxicity, with the dominant pathway varying by pollutant. For Respiratory symptoms, the main uncertainty is usually exposure measurement rather than complete biologic implausibility.",
+      "summary": "Prospective cohort data link indoor particulate pollution to higher risk of respiratory symptoms in children and adults. The average effect is usually unknown rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "NorbackD et al 2019 Environ Int",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Sources of indoor particulate matter (PM) and outdoor air pollution in China in relation to asthma, wheeze, rhinitis and eczema among pre-school children: Synergistic effects between antibiotics use and PM10 and second hand smoke.",
+          "doi": "10.1016/j.envint.2019.01.036",
+          "pmid": "30731375",
+          "n_participants": 39782
+        },
+        {
+          "citation": "WichmannFA et al 2009 J Allergy Clin Immunol",
+          "year": 2009,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Increased asthma and respiratory symptoms in children exposed to petrochemical pollution.",
+          "doi": "10.1016/j.jaci.2008.09.052",
+          "pmid": "19111332",
+          "n_participants": 639
+        },
+        {
+          "citation": "RabbaniU et al 2022 J Occup Environ Med",
+          "year": 2022,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Indoor Air Pollution and Respiratory Health in a Metropolitan City of Pakistan.",
+          "doi": "10.1097/JOM.0000000000002573",
+          "pmid": "35672913",
+          "n_participants": 1629
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "indoor_pm",
+      "name": "Indoor particulate pollution",
+      "kind": "environmental",
+      "aliases": [
+        "indoor air particulates"
+      ],
+      "description": "Indoor airborne particulate exposure from cooking, heating, or poor ventilation."
+    },
+    {
+      "slug": "respiratory_symptoms",
+      "name": "Respiratory symptoms",
+      "kind": "condition",
+      "aliases": [
+        "wheeze and respiratory symptoms"
+      ],
+      "description": "Respiratory symptoms such as wheeze, cough, dyspnea, or asthma-like complaints."
+    }
+  ]
+}

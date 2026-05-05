@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "glucocorticoids_long_term",
+      "outcome_slug": "bone_density",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "adults on long-term systemic glucocorticoids",
+      "mechanism": "This drug-related edge is biologically plausible because the medication changes absorption, excretion, endocrine signaling, or tissue turnover in a predictable direction. Duration, dose, and co-medication use usually determine whether the effect becomes clinically relevant for Bone mineral density.",
+      "summary": "Long-term glucocorticoid use appears tied to worse bone mineral density in adults on long-term systemic glucocorticoids mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Medication benefits may still outweigh this risk. The practical implication is usually monitoring, dosing separation, or targeted supplementation rather than indiscriminate discontinuation.",
+      "evidence": [
+        {
+          "citation": "LeeKA et al 2021 Int J Rheum Dis",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Discriminative ability of trabecular bone score over bone mineral density for vertebral and fragility fracture in patients treated with long-term and low-dose glucocorticoid.",
+          "doi": "10.1111/1756-185X.14164",
+          "pmid": "34184827",
+          "n_participants": 89
+        },
+        {
+          "citation": "JonesA et al 2002 Cochrane Database Syst Rev",
+          "year": 2002,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Inhaled corticosteroid effects on bone metabolism in asthma and mild chronic obstructive pulmonary disease.",
+          "doi": "10.1002/14651858.CD003537",
+          "pmid": "11869676",
+          "n_participants": 106
+        },
+        {
+          "citation": "ChenCL et al 2024 Front Endocrinol (Lausanne)",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Superiority of denosumab over bisphosphonates in preventing and treating glucocorticoid-induced osteoporosis: a systematic review and meta-analysis with GRADE quality assessment.",
+          "doi": "10.3389/fendo.2024.1407692",
+          "pmid": "39744180",
+          "n_participants": 1043
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "bone_density",
+      "name": "Bone mineral density",
+      "kind": "process",
+      "aliases": [
+        "BMD"
+      ],
+      "description": "Bone mineral density measured by DXA or a related method."
+    },
+    {
+      "slug": "glucocorticoids_long_term",
+      "name": "Long-term glucocorticoid use",
+      "kind": "drug",
+      "aliases": [
+        "chronic corticosteroid use"
+      ],
+      "description": "Long-term systemic glucocorticoid exposure."
+    }
+  ]
+}

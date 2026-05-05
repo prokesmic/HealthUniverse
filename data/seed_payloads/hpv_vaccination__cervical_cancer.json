@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hpv_vaccination",
+      "outcome_slug": "cervical_cancer",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "adolescents and young adults",
+      "mechanism": "HPV vaccination prevents persistent infection with oncogenic viral strains, interrupting the pathway from cervical dysplasia to invasive malignancy. Because Cervical cancer is causally linked to HPV, this is one of the few prevention edges where the mechanism is direct and unusually well established.",
+      "summary": "HPV vaccination appears tied to lower risk of cervical cancer in adolescents and young adults mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "SsentongoP et al 2022 Medicine (Baltimore)",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Association of human papillomavirus vaccination with cervical cancer screening: A systematic review and meta-analysis.",
+          "doi": "10.1097/MD.0000000000029329",
+          "pmid": "35839062",
+          "n_participants": 12
+        },
+        {
+          "citation": "ArbynM et al 2018 Cochrane Database Syst Rev",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Prophylactic vaccination against human papillomaviruses to prevent cervical cancer and its precursors.",
+          "doi": "10.1002/14651858.CD009069.pub3",
+          "pmid": "29740819",
+          "n_participants": 73428
+        },
+        {
+          "citation": "BergmanH et al 2025 Cochrane Database Syst Rev",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Human papillomavirus (HPV) vaccination for the prevention of cervical cancer and other HPV-related diseases: a network meta-analysis.",
+          "doi": "10.1002/14651858.CD015364.pub2",
+          "pmid": "41276263",
+          "n_participants": 157414
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cervical_cancer",
+      "name": "Cervical cancer",
+      "kind": "condition",
+      "aliases": [
+        "cervical carcinoma"
+      ],
+      "description": "Cancer of the cervix."
+    },
+    {
+      "slug": "hpv_vaccination",
+      "name": "HPV vaccination",
+      "kind": "drug",
+      "aliases": [
+        "human papillomavirus vaccination"
+      ],
+      "description": "Vaccination against oncogenic human papillomavirus strains."
+    }
+  ]
+}

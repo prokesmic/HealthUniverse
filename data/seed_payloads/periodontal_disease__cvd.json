@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "periodontal_disease",
+      "name": "Periodontal disease",
+      "kind": "condition",
+      "aliases": [
+        "gum disease"
+      ],
+      "description": "Periodontitis or advanced periodontal inflammation."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "periodontal_disease",
+      "outcome_slug": "cvd",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "general adult",
+      "mechanism": "This factor likely influences Cardiovascular disease through a mix of reserve, disability, social engagement, inflammation, and shared chronic-disease burden rather than one single biochemical pathway. That matters because some of these variables behave partly as markers of physiologic aging and partly as modifiable contributors.",
+      "summary": "In general adult, pooled meta-analytic evidence suggest that periodontal disease tracks with higher risk of cardiovascular disease. Most disagreement in the literature is about size, subgroup sensitivity, or dose threshold rather than about whether the relationship exists at all.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "ArbildoVegaHI et al 2024 BMC Oral Health",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Periodontal disease and cardiovascular disease: umbrella review.",
+          "doi": "10.1186/s12903-024-04907-1",
+          "pmid": "39468505",
+          "n_participants": 516
+        },
+        {
+          "citation": "ScannapiecoFA et al 2003 Ann Periodontol",
+          "year": 2003,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Associations between periodontal disease and risk for atherosclerosis, cardiovascular disease, and stroke. A systematic review.",
+          "doi": "10.1902/annals.2003.8.1.38",
+          "pmid": "14971247",
+          "n_participants": 1526
+        },
+        {
+          "citation": "MustaphaIZ et al 2007 J Periodontol",
+          "year": 2007,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Markers of systemic bacterial exposure in periodontal disease and cardiovascular disease risk: a systematic review and meta-analysis.",
+          "doi": "10.1902/jop.2007.070140",
+          "pmid": "18052701",
+          "n_participants": 12
+        }
+      ]
+    }
+  ]
+}

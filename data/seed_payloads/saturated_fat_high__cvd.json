@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "saturated_fat_high",
+      "outcome_slug": "cvd",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "general adult",
+      "mechanism": "Dietary fat class alters lipoprotein metabolism, hepatic lipid trafficking, and membrane signaling in different directions: saturated fats tend to raise LDL particle burden, while mono- and polyunsaturated fats usually improve the substitution pattern. For Cardiovascular disease, the biologic effect is driven less by total fat and more by what carbohydrate or fat source is displaced.",
+      "summary": "Dose-response meta-analyses backed by prospective cohorts link high saturated fat intake to higher risk of cardiovascular disease in general adult. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "GuaschFerreM et al 2015 Am J Clin Nutr",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Dietary fat intake and risk of cardiovascular disease and all-cause mortality in a population at high risk of cardiovascular disease.",
+          "doi": "10.3945/ajcn.115.116046",
+          "pmid": "26561617",
+          "n_participants": 7038
+        },
+        {
+          "citation": "MaY et al 2024 Nutrients",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Dietary Macronutrient Intake and Cardiovascular Disease Risk and Mortality: A Systematic Review and Dose-Response Meta-Analysis of Prospective Cohort Studies.",
+          "doi": "10.3390/nu16010152",
+          "pmid": "38201983",
+          "n_participants": 5107821
+        },
+        {
+          "citation": "ReesK et al 2019 Cochrane Database Syst Rev",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Mediterranean-style diet for the primary and secondary prevention of cardiovascular disease.",
+          "doi": "10.1002/14651858.CD009825.pub3",
+          "pmid": "30864165",
+          "n_participants": 12461
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "saturated_fat_high",
+      "name": "High saturated fat intake",
+      "kind": "nutrient",
+      "aliases": [
+        "higher saturated fat diet"
+      ],
+      "description": "A diet pattern with a relatively high share of calories from saturated fatty acids."
+    }
+  ]
+}

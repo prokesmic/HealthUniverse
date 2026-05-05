@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "c_section_birth",
+      "outcome_slug": "childhood_microbiome",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A small and mixed literature suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "infants",
+      "mechanism": "This factor changes substrate delivery, microbial competition, short-chain fatty-acid production, or early-life colonization patterns in the gut. Those changes are most directly linked to Childhood gut microbiome when the endpoint is microbial composition, barrier function, or a gut-mediated immune phenotype.",
+      "summary": "Caesarean birth appears tied to adverse shifts in childhood gut microbiome in infants mainly through a small and mixed literature. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "WangX et al 2024 J Infect",
+          "year": 2024,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Impact of vaginal seeding on the gut microbiome of infants born via cesarean section: A systematic review.",
+          "doi": "10.1016/j.jinf.2024.106348",
+          "pmid": "39537035",
+          "n_participants": 261
+        },
+        {
+          "citation": "PivrncovaE et al 2022 Front Nutr",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Neonatal Diet and Gut Microbiome Development After C-Section During the First Three Months After Birth: A Systematic Review.",
+          "doi": "10.3389/fnut.2022.941549",
+          "pmid": "35967823",
+          "n_participants": 4628
+        },
+        {
+          "citation": "KamphorstK et al 2022 Front Pediatr",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Clinical outcomes following pre-, pro- and synbiotic supplementation after caesarean birth or antibiotic exposure in the first week of life in term born infants: A systematic review of the literature.",
+          "doi": "10.3389/fped.2022.974608",
+          "pmid": "36299694",
+          "n_participants": 11248
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "c_section_birth",
+      "name": "Caesarean birth",
+      "kind": "behavior",
+      "aliases": [
+        "cesarean section birth"
+      ],
+      "description": "Delivery by caesarean section rather than vaginal birth."
+    },
+    {
+      "slug": "childhood_microbiome",
+      "name": "Childhood gut microbiome",
+      "kind": "process",
+      "aliases": [
+        "infant gut microbiome"
+      ],
+      "description": "Composition and diversity of the gut microbiome during infancy or childhood."
+    }
+  ]
+}

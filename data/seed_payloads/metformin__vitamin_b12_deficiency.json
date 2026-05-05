@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "metformin",
+      "outcome_slug": "vitamin_b12_deficiency",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Dose-response meta-analyses backed by prospective cohorts suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "adults taking metformin",
+      "mechanism": "Metformin can impair calcium-dependent uptake of the intrinsic factor-vitamin B12 complex in the terminal ileum, and risk rises with longer exposure and higher dose. That is why the clearest association is with Vitamin B12 deficiency rather than with a short-term symptomatic drug adverse effect.",
+      "summary": "In adults taking metformin, dose-response meta-analyses backed by prospective cohorts suggest that metformin tracks with higher risk of vitamin b12 deficiency. This is one of the cleaner pharmacology edges in the set because the adverse pathway is predictable and monitoring can often reduce harm.",
+      "caveats": "Medication benefits may still outweigh this risk. The practical implication is usually monitoring, dosing separation, or targeted supplementation rather than indiscriminate discontinuation.",
+      "evidence": [
+        {
+          "citation": "NiafarM et al 2015 Intern Emerg Med",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The role of metformin on vitamin B12 deficiency: a meta-analysis review.",
+          "doi": "10.1007/s11739-014-1157-5",
+          "pmid": "25502588",
+          "n_participants": 8089
+        },
+        {
+          "citation": "JungC et al 2025 J Diabetes Investig",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Concomitant use of metformin and proton pump inhibitors increases vitamin B12 deficiency risk in type 2 diabetes.",
+          "doi": "10.1111/jdi.70037",
+          "pmid": "40183554",
+          "n_participants": 11200
+        },
+        {
+          "citation": "PratamaS et al 2022 Diabetes Metab Syndr",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The efficacy of vitamin B12 supplementation for treating vitamin B12 deficiency and peripheral neuropathy in metformin-treated type 2 diabetes mellitus patients: A systematic review.",
+          "doi": "10.1016/j.dsx.2022.102634",
+          "pmid": "36240684",
+          "n_participants": 506
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vitamin_b12_deficiency",
+      "name": "Vitamin B12 deficiency",
+      "kind": "condition",
+      "aliases": [
+        "B12 deficiency"
+      ],
+      "description": "Vitamin B12 deficiency or low B12 status."
+    }
+  ]
+}

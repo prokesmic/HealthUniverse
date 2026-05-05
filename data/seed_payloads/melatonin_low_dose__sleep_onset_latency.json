@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "melatonin_low_dose",
+      "outcome_slug": "sleep_onset_latency",
+      "direction": "protective",
+      "tier": "D",
+      "effect_size": "unknown",
+      "effect_quant": "Pooled meta-analytic evidence suggest the direction is more reliable than any single pooled magnitude.",
+      "population": "adults with delayed sleep onset",
+      "mechanism": "The main pathway runs through circadian timing, arousal biology, upper-airway physiology, thermoregulation, or sympathetic activation depending on the exposure. For Sleep onset latency, the effect is usually strongest when the factor repeatedly disturbs sleep architecture or circadian alignment rather than acting once.",
+      "summary": "Low-dose melatonin appears tied to lower sleep onset latency in adults with delayed sleep onset mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "CruzSanabriaF et al 2024 J Pineal Res",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Optimizing the Time and Dose of Melatonin as a Sleep-Promoting Drug: A Systematic Review of Randomized Controlled Trials and Dose-Response Meta-Analysis.",
+          "doi": "10.1111/jpi.12985",
+          "pmid": "38888087",
+          "n_participants": 1689
+        },
+        {
+          "citation": "WinklerA et al 2014 CNS Drugs",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Drug treatment of primary insomnia: a meta-analysis of polysomnographic randomized controlled trials.",
+          "doi": "10.1007/s40263-014-0198-7",
+          "pmid": "25168785",
+          "n_participants": 3820
+        },
+        {
+          "citation": "deCastroSilvaC et al 2010 J Pineal Res",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Melatonin improves sleep and reduces nitrite in the exhaled breath condensate in cystic fibrosis--a randomized, double-blind placebo-controlled study.",
+          "doi": "10.1111/j.1600-079X.2009.00726.x",
+          "pmid": "20025642",
+          "n_participants": 10
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "melatonin_low_dose",
+      "name": "Low-dose melatonin",
+      "kind": "supplement",
+      "aliases": [
+        "melatonin under 1 mg"
+      ],
+      "description": "Melatonin supplementation in a low physiologic dose range."
+    },
+    {
+      "slug": "sleep_onset_latency",
+      "name": "Sleep onset latency",
+      "kind": "process",
+      "aliases": [
+        "time to fall asleep"
+      ],
+      "description": "The time required to fall asleep after intending to sleep."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hormone_therapy_estrogen_only",
+      "outcome_slug": "endometrial_cancer",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Prospective cohort data suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "postmenopausal women with uterus",
+      "mechanism": "Exogenous estrogen, and especially estrogen-progestin combinations, can stimulate proliferation in hormone-responsive tissues while also changing clotting, lipids, and systemic inflammation. That makes the balance of benefit and harm for Endometrial cancer highly dependent on tissue type, duration, and timing relative to menopause.",
+      "summary": "Prospective cohort data link estrogen-only menopausal hormone therapy to higher risk of endometrial cancer in postmenopausal women with uterus. The average effect is usually moderate rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "TempferCB et al 2020 Cancers (Basel)",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Menopausal Hormone Therapy and Risk of Endometrial Cancer: A Systematic Review.",
+          "doi": "10.3390/cancers12082195",
+          "pmid": "32781573",
+          "n_participants": 21306
+        },
+        {
+          "citation": "SjogrenLL et al 2016 Maturitas",
+          "year": 2016,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Hormone replacement therapy and the risk of endometrial cancer: A systematic review.",
+          "doi": "10.1016/j.maturitas.2016.05.013",
+          "pmid": "27451318",
+          "n_participants": 1
+        },
+        {
+          "citation": "CreasmanWT et al 2005 Curr Opin Oncol",
+          "year": 2005,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Hormone replacement therapy after cancers.",
+          "doi": "10.1097/01.cco.0000174034.62032.08",
+          "pmid": "16093802",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "endometrial_cancer",
+      "name": "Endometrial cancer",
+      "kind": "condition",
+      "aliases": [
+        "uterine endometrial cancer"
+      ],
+      "description": "Cancer of the endometrium."
+    },
+    {
+      "slug": "hormone_therapy_estrogen_only",
+      "name": "Estrogen-only menopausal hormone therapy",
+      "kind": "drug",
+      "aliases": [
+        "unopposed estrogen therapy"
+      ],
+      "description": "Menopausal hormone therapy using estrogen without progestogen."
+    }
+  ]
+}

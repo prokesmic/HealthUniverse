@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "iron_deficiency",
+      "outcome_slug": "cognitive_function",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "children and reproductive-age women",
+      "mechanism": "This factor affects Cognitive function through nutrient-dependent neurobiology: methylation and myelin maintenance for B12 and folate, oxygen delivery and dopamine synthesis for iron, thyroid-hormone production for iodine, or NMDA-related excitability for magnesium. Clinical effects are often most visible when deficiency is sustained or occurs during sensitive developmental windows.",
+      "summary": "In children and reproductive-age women, dose-response meta-analyses backed by prospective cohorts suggest that iron deficiency tracks with worse cognitive function. Most disagreement in the literature is about size, subgroup sensitivity, or dose threshold rather than about whether the relationship exists at all.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "WangB et al 2013 Cochrane Database Syst Rev",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Iron therapy for improving psychomotor development and cognitive function in children under the age of three with iron deficiency anaemia.",
+          "doi": "10.1002/14651858.CD001444.pub2",
+          "pmid": "23744449",
+          "n_participants": 225
+        },
+        {
+          "citation": "LoganS et al 2001 Cochrane Database Syst Rev",
+          "year": 2001,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Iron therapy for improving psychomotor development and cognitive function in children under the age of three with iron deficiency anaemia.",
+          "doi": "10.1002/14651858.CD001444",
+          "pmid": "11405989",
+          "n_participants": 180
+        },
+        {
+          "citation": "DoomJR et al 2021 Nutr Neurosci",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Infant iron deficiency, iron supplementation, and psychosocial stress as predictors of neurocognitive development in Chilean adolescents.",
+          "doi": "10.1080/1028415X.2019.1651105",
+          "pmid": "31397220",
+          "n_participants": 796
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cognitive_function",
+      "name": "Cognitive function",
+      "kind": "process",
+      "aliases": [
+        "global cognition"
+      ],
+      "description": "General cognitive performance including memory, attention, and executive function."
+    },
+    {
+      "slug": "iron_deficiency",
+      "name": "Iron deficiency",
+      "kind": "condition",
+      "aliases": [
+        "low iron status"
+      ],
+      "description": "Iron deficiency with or without anemia."
+    }
+  ]
+}

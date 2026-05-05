@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "alcohol_heavy",
+      "outcome_slug": "breast_cancer",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "adult women",
+      "mechanism": "Ethanol is metabolized to acetaldehyde, which can damage DNA and proteins, and even lower-dose drinking can raise circulating estradiol and impair folate handling. Those pathways are most relevant to long-latency outcomes like Breast cancer, where cumulative exposure matters more than a single episode.",
+      "summary": "The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally upward even below a drink a day. Pooled meta-analytic evidence link heavy alcohol intake to higher risk of breast cancer in adult women. The average effect is usually moderate rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Absolute risk changes at low intake are small and can be outweighed by baseline cancer risk, but the linearity of the alcohol signal means 'light' does not mean zero biological effect.",
+      "evidence": [
+        {
+          "citation": "JunS et al 2023 Epidemiol Health",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cancer risk based on alcohol consumption levels: a comprehensive systematic review and meta-analysis.",
+          "doi": "10.4178/epih.e2023092",
+          "pmid": "37905315",
+          "n_participants": 106
+        },
+        {
+          "citation": "KeyJ et al 2006 Cancer Causes Control",
+          "year": 2006,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Meta-analysis of studies of alcohol and breast cancer with consideration of the methodological issues.",
+          "doi": "10.1007/s10552-006-0011-0",
+          "pmid": "16783604",
+          "n_participants": 60653
+        },
+        {
+          "citation": "BagnardiV et al 2015 Br J Cancer",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Alcohol consumption and site-specific cancer risk: a comprehensive dose-response meta-analysis.",
+          "doi": "10.1038/bjc.2014.579",
+          "pmid": "25422909",
+          "n_participants": 572
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "alcohol_heavy",
+      "name": "Heavy alcohol intake",
+      "kind": "food",
+      "aliases": [
+        "heavy drinking"
+      ],
+      "description": "Alcohol intake in a high habitual dose range, usually well above guideline levels."
+    }
+  ]
+}

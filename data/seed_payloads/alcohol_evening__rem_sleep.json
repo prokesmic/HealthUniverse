@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "alcohol_evening",
+      "outcome_slug": "rem_sleep",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Prospective cohort data suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "general adult",
+      "mechanism": "Alcohol near bedtime initially enhances GABAergic sedation but later fragments sleep as blood alcohol falls, sympathetic tone rises, and REM rebound occurs. That pattern is especially relevant to REM sleep because the exposure changes sleep architecture rather than just sleep duration.",
+      "summary": "Prospective cohort data link evening alcohol intake to more disrupted REM sleep in general adult. The average effect is usually moderate rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "KissO et al 2023 Sleep",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Effects of emerging alcohol use on developmental trajectories of functional sleep measures in adolescents.",
+          "doi": "10.1093/sleep/zsad113",
+          "pmid": "37058610",
+          "n_participants": 9443
+        },
+        {
+          "citation": "HoqueR et al 2010 J Clin Sleep Med",
+          "year": 2010,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "very_low",
+          "notes": "Pharmacologically induced/exacerbated restless legs syndrome, periodic limb movements of sleep, and REM behavior disorder/REM sleep without atonia: literature review, qualitative scoring, and comparative analysis.",
+          "n_participants": null,
+          "pmid": "20191944"
+        },
+        {
+          "citation": "MarshallJC et al 2011 J Undergrad Neurosci Educ",
+          "year": 2011,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "very_low",
+          "notes": "Use of personal EEG monitors in a behavioral neuroscience course to investigate natural setting sleep patterns and the factors affecting them in college students.",
+          "n_participants": null,
+          "pmid": "23626495"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "alcohol_evening",
+      "name": "Evening alcohol intake",
+      "kind": "behavior",
+      "aliases": [
+        "alcohol before bedtime"
+      ],
+      "description": "Alcohol intake during the evening hours close to habitual sleep onset."
+    },
+    {
+      "slug": "rem_sleep",
+      "name": "REM sleep",
+      "kind": "process",
+      "aliases": [
+        "rapid eye movement sleep"
+      ],
+      "description": "Rapid eye movement sleep time or proportion."
+    }
+  ]
+}

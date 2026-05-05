@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "saturated_fat_high",
+      "outcome_slug": "ldl_cholesterol",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Dose-response meta-analyses backed by prospective cohorts suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "general adult",
+      "mechanism": "Dietary fat class alters lipoprotein metabolism, hepatic lipid trafficking, and membrane signaling in different directions: saturated fats tend to raise LDL particle burden, while mono- and polyunsaturated fats usually improve the substitution pattern. For LDL cholesterol, the biologic effect is driven less by total fat and more by what carbohydrate or fat source is displaced.",
+      "summary": "Dose-response meta-analyses backed by prospective cohorts link high saturated fat intake to higher ldl cholesterol in general adult. The average effect is usually moderate rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "VincentMJ et al 2019 Am J Clin Nutr",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Meta-regression analysis of the effects of dietary cholesterol intake on LDL and HDL cholesterol.",
+          "doi": "10.1093/ajcn/nqy273",
+          "pmid": "30596814",
+          "n_participants": 2652
+        },
+        {
+          "citation": "OzenE et al 2022 Nutr Metab (Lond)",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association between dietary saturated fat with cardiovascular disease risk markers and body composition in healthy adults: findings from the cross-sectional BODYCON study.",
+          "doi": "10.1186/s12986-022-00650-y",
+          "pmid": "35241101",
+          "n_participants": 409
+        },
+        {
+          "citation": "ReesK et al 2019 Cochrane Database Syst Rev",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Mediterranean-style diet for the primary and secondary prevention of cardiovascular disease.",
+          "doi": "10.1002/14651858.CD009825.pub3",
+          "pmid": "30864165",
+          "n_participants": 12461
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ldl_cholesterol",
+      "name": "LDL cholesterol",
+      "kind": "biomarker",
+      "aliases": [
+        "LDL-C"
+      ],
+      "description": "Circulating low-density lipoprotein cholesterol concentration."
+    },
+    {
+      "slug": "saturated_fat_high",
+      "name": "High saturated fat intake",
+      "kind": "nutrient",
+      "aliases": [
+        "higher saturated fat diet"
+      ],
+      "description": "A diet pattern with a relatively high share of calories from saturated fatty acids."
+    }
+  ]
+}

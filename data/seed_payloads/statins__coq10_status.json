@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "statins",
+      "outcome_slug": "coq10_status",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "adults taking statins",
+      "mechanism": "Statins inhibit HMG-CoA reductase upstream of the mevalonate pathway, which lowers cholesterol synthesis and can also modestly reduce endogenous coenzyme Q10 production. That biochemical linkage explains why Coenzyme Q10 status is discussed mostly as a monitoring question rather than a severe toxicity in most users.",
+      "summary": "Statin therapy appears tied to adverse shifts in coenzyme q10 status in adults taking statins mainly through pooled meta-analytic evidence. This is one of the cleaner pharmacology edges in the set because the adverse pathway is predictable and monitoring can often reduce harm.",
+      "caveats": "Medication benefits may still outweigh this risk. The practical implication is usually monitoring, dosing separation, or targeted supplementation rather than indiscriminate discontinuation.",
+      "evidence": [
+        {
+          "citation": "MolyneuxSL et al 2009 N Z Med J",
+          "year": 2009,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Coenzyme Q10; an adjunctive therapy for congestive heart failure?",
+          "pmid": "19966871",
+          "n_participants": 236
+        },
+        {
+          "citation": "QuH et al 2018 J Am Heart Assoc",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effects of Coenzyme Q10 on Statin-Induced Myopathy: An Updated Meta-Analysis of Randomized Controlled Trials.",
+          "doi": "10.1161/JAHA.118.009835",
+          "pmid": "30371340",
+          "n_participants": 575
+        },
+        {
+          "citation": "MarcoffL et al 2007 J Am Coll Cardiol",
+          "year": 2007,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The role of coenzyme Q10 in statin-associated myopathy: a systematic review.",
+          "doi": "10.1016/j.jacc.2007.02.049",
+          "pmid": "17560286",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "coq10_status",
+      "name": "Coenzyme Q10 status",
+      "kind": "biomarker",
+      "aliases": [
+        "CoQ10 levels"
+      ],
+      "description": "Circulating or tissue coenzyme Q10 concentration."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "high_adiposity",
+      "outcome_slug": "endometrial_cancer",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Dose-response meta-analyses backed by prospective cohorts suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "adult women",
+      "mechanism": "Higher adiposity is plausibly linked to Endometrial cancer through mechanisms that fit its exposure class and target tissue, but the exact pathway depends on dose, timing, and baseline vulnerability. The best interpretation is usually that it changes the biologic setting in which Endometrial cancer develops rather than acting as a single on-off switch.",
+      "summary": "In adult women, dose-response meta-analyses backed by prospective cohorts suggest that higher adiposity tracks with higher risk of endometrial cancer. Most disagreement in the literature is about size, subgroup sensitivity, or dose threshold rather than about whether the relationship exists at all.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "CusimanoMC et al 2019 Am J Obstet Gynecol",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Laparoscopic and robotic hysterectomy in endometrial cancer patients with obesity: a systematic review and meta-analysis of conversions and complications.",
+          "doi": "10.1016/j.ajog.2019.05.004",
+          "pmid": "31082383",
+          "n_participants": 10800
+        },
+        {
+          "citation": "DallalCM et al 2013 Endocr Relat Cancer",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Obesity-related hormones and endometrial cancer among postmenopausal women: a nested case-control study within the B~FIT cohort.",
+          "doi": "10.1530/ERC-12-0229",
+          "pmid": "23222000",
+          "n_participants": 15595
+        },
+        {
+          "citation": "KabatGC et al 2015 Cancer Causes Control",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Risk of breast, endometrial, colorectal, and renal cancers in postmenopausal women in association with a body shape index and other anthropometric measures.",
+          "doi": "10.1007/s10552-014-0501-4",
+          "pmid": "25430815",
+          "n_participants": 143901
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "endometrial_cancer",
+      "name": "Endometrial cancer",
+      "kind": "condition",
+      "aliases": [
+        "uterine endometrial cancer"
+      ],
+      "description": "Cancer of the endometrium."
+    },
+    {
+      "slug": "high_adiposity",
+      "name": "Higher adiposity",
+      "kind": "behavior",
+      "aliases": [
+        "obesity or higher body fatness"
+      ],
+      "description": "Persistent higher adiposity or obesity status over time."
+    }
+  ]
+}

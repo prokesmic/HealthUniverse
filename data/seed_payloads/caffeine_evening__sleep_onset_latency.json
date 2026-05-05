@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "caffeine_evening",
+      "outcome_slug": "sleep_onset_latency",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "general adult",
+      "mechanism": "The main pathway runs through circadian timing, arousal biology, upper-airway physiology, thermoregulation, or sympathetic activation depending on the exposure. For Sleep onset latency, the effect is usually strongest when the factor repeatedly disturbs sleep architecture or circadian alignment rather than acting once.",
+      "summary": "In general adult, pooled meta-analytic evidence suggest that evening caffeine intake tracks with higher sleep onset latency. Most disagreement in the literature is about size, subgroup sensitivity, or dose threshold rather than about whether the relationship exists at all.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "BarnardJ et al 2022 Nutrients",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Impact of Dietary Factors on the Sleep of Athletically Trained Populations: A Systematic Review.",
+          "doi": "10.3390/nu14163271",
+          "pmid": "36014779",
+          "n_participants": 16
+        },
+        {
+          "citation": "NewburyJW et al 2022 Int J Sport Nutr Exerc Metab",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Evening Caffeine Did Not Improve 100-m Swimming Time Trials Performed 60 Min Post-Ingestion or the Next Morning After Sleep.",
+          "doi": "10.1123/ijsnem.2022-0042",
+          "pmid": "35894958",
+          "n_participants": 1
+        },
+        {
+          "citation": "BartelKA et al 2015 Sleep Med Rev",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Protective and risk factors for adolescent sleep: a meta-analytic review.",
+          "doi": "10.1016/j.smrv.2014.08.002",
+          "pmid": "25444442",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "caffeine_evening",
+      "name": "Evening caffeine intake",
+      "kind": "behavior",
+      "aliases": [
+        "caffeine within six hours of bedtime"
+      ],
+      "description": "Caffeine intake in the late afternoon or evening close to bedtime."
+    },
+    {
+      "slug": "sleep_onset_latency",
+      "name": "Sleep onset latency",
+      "kind": "process",
+      "aliases": [
+        "time to fall asleep"
+      ],
+      "description": "The time required to fall asleep after intending to sleep."
+    }
+  ]
+}

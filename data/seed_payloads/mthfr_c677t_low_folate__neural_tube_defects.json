@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "mthfr_c677t_low_folate",
+      "outcome_slug": "neural_tube_defects",
+      "direction": "harmful",
+      "tier": "D",
+      "effect_size": "unknown",
+      "effect_quant": "Dose-response meta-analyses backed by prospective cohorts suggest the direction is more reliable than any single pooled magnitude.",
+      "population": "pregnancies with low folate and maternal MTHFR C677T",
+      "mechanism": "The interaction hypothesis is that genotype changes how the exposure is handled or translated into downstream biology, whether through lipoprotein trafficking, one-carbon metabolism, appetite regulation, or lactose-related dietary behavior. For Neural tube defects, that means any observed effect should be read as effect modification, not genetic destiny.",
+      "summary": "In pregnancies with low folate and maternal MTHFR C677T, dose-response meta-analyses backed by prospective cohorts suggest that mthfr c677t with low folate tracks with higher risk of neural tube defects. Interaction studies tend to be directionally interesting but smaller and less stable than mainstream single-exposure associations.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "OumerM et al 2021 BMC Pediatr",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Birth prevalence of neural tube defects and associated risk factors in Africa: a systematic review and meta-analysis.",
+          "doi": "10.1186/s12887-021-02653-9",
+          "pmid": "33882899",
+          "n_participants": 6086384
+        },
+        {
+          "citation": "ViswanathanM et al 2023 JAMA",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Folic Acid Supplementation to Prevent Neural Tube Defects: Updated Evidence Report and Systematic Review for the US Preventive Services Task Force.",
+          "doi": "10.1001/jama.2023.9864",
+          "pmid": "37526714",
+          "n_participants": 1244072
+        },
+        {
+          "citation": "KochMC et al 1998 Eur J Pediatr",
+          "year": 1998,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Evaluation of the MTHFR C677T allele and the MTHFR gene locus in a German spina bifida population.",
+          "doi": "10.1007/s004310050860",
+          "pmid": "9667406",
+          "n_participants": 153
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "mthfr_c677t_low_folate",
+      "name": "MTHFR C677T with low folate",
+      "kind": "gene",
+      "aliases": [
+        "MTHFR variant with low folate status"
+      ],
+      "description": "MTHFR C677T carrier status combined with low folate intake or status."
+    },
+    {
+      "slug": "neural_tube_defects",
+      "name": "Neural tube defects",
+      "kind": "condition",
+      "aliases": [
+        "NTD risk"
+      ],
+      "description": "Neural tube defects in pregnancy outcomes."
+    }
+  ]
+}

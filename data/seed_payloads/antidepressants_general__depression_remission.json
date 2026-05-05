@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "antidepressants_general",
+      "outcome_slug": "depression_remission",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Systematic reviews drawing on randomized studies suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+      "population": "adults with major depressive disorder",
+      "mechanism": "These interventions target Depression remission through very different pathways: antidepressants alter monoaminergic and downstream neuroplastic signaling, while CBT changes appraisal, avoidance, and learned behavioral loops. That is why effect size can vary with symptom subtype, adherence, and baseline severity.",
+      "summary": "Systematic reviews drawing on randomized studies link antidepressant treatment to favorable shifts in depression remission in adults with major depressive disorder. The average effect is usually moderate rather than dramatic, so this edge is better read as a risk modifier than a stand-alone cause or cure.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "AlemiF et al 2024 J Ment Health Policy Econ",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effectiveness of Antidepressants in Combination with Psychotherapy.",
+          "pmid": "38634393",
+          "n_participants": 3678082
+        },
+        {
+          "citation": "HenkelV et al 2009 J Affect Disord",
+          "year": 2009,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Does early improvement triggered by antidepressants predict response/remission? Analysis of data from a naturalistic study on a large sample of inpatients with major depression.",
+          "doi": "10.1016/j.jad.2008.10.011",
+          "pmid": "19027961",
+          "n_participants": 795
+        },
+        {
+          "citation": "KlimanovaS et al 2024 Consort Psychiatr",
+          "year": 2024,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The Use of Melatoninergic Antidepressants for Stabilization of Remission in Depression Comorbid with Alcohol Abuse, Anxiety or Neuropsychiatric Disorders: A Systematic Review.",
+          "doi": "10.17816/CP15560",
+          "pmid": "39980619",
+          "n_participants": 1833
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "antidepressants_general",
+      "name": "Antidepressant treatment",
+      "kind": "drug",
+      "aliases": [
+        "antidepressant medication"
+      ],
+      "description": "Treatment with antidepressant medication across major drug classes."
+    },
+    {
+      "slug": "depression_remission",
+      "name": "Depression remission",
+      "kind": "process",
+      "aliases": [
+        "remission of depression"
+      ],
+      "description": "Clinical remission of depressive symptoms."
+    }
+  ]
+}

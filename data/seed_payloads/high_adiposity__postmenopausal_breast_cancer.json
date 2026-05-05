@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "high_adiposity",
+      "outcome_slug": "postmenopausal_breast_cancer",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "postmenopausal women",
+      "mechanism": "Higher adiposity is plausibly linked to Postmenopausal breast cancer through mechanisms that fit its exposure class and target tissue, but the exact pathway depends on dose, timing, and baseline vulnerability. The best interpretation is usually that it changes the biologic setting in which Postmenopausal breast cancer develops rather than acting as a single on-off switch.",
+      "summary": "Higher adiposity appears tied to higher risk of postmenopausal breast cancer in postmenopausal women mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headline-level breakthrough.",
+      "caveats": "Dose, timing, and baseline risk still matter. Observational edges may partly reflect broader lifestyle patterning, while small trials can overstate benefit if follow-up is short.",
+      "evidence": [
+        {
+          "citation": "FreislingH et al 2017 Br J Cancer",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Comparison of general obesity and measures of body fat distribution in older adults in relation to cancer risk: meta-analysis of individual participant data of seven prospective cohorts in Europe.",
+          "doi": "10.1038/bjc.2017.106",
+          "pmid": "28441380",
+          "n_participants": 24751
+        },
+        {
+          "citation": "DelConsoleP et al 2026 Geroscience",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Overweight and obesity increase breast cancer risk in postmenopausal women: a meta-analysis of 38 observational studies.",
+          "doi": "10.1007/s11357-026-02257-0",
+          "pmid": "41981355",
+          "n_participants": 115870
+        },
+        {
+          "citation": "IyengarNM et al 2019 JAMA Oncol",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of Body Fat and Risk of Breast Cancer in Postmenopausal Women With Normal Body Mass Index: A Secondary Analysis of a Randomized Clinical Trial and Observational Study.",
+          "doi": "10.1001/jamaoncol.2018.5327",
+          "pmid": "30520976",
+          "n_participants": 3460
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "high_adiposity",
+      "name": "Higher adiposity",
+      "kind": "behavior",
+      "aliases": [
+        "obesity or higher body fatness"
+      ],
+      "description": "Persistent higher adiposity or obesity status over time."
+    },
+    {
+      "slug": "postmenopausal_breast_cancer",
+      "name": "Postmenopausal breast cancer",
+      "kind": "condition",
+      "aliases": [
+        "breast cancer after menopause"
+      ],
+      "description": "Breast cancer risk among postmenopausal women."
+    }
+  ]
+}

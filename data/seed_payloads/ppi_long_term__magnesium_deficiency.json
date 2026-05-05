@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ppi_long_term",
+      "outcome_slug": "magnesium_deficiency",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+      "population": "adults on chronic PPI therapy",
+      "mechanism": "Chronic proton-pump inhibition lowers gastric acidity, which can impair release or absorption of certain nutrients and may alter bone or magnesium handling over long exposure periods. That makes Magnesium deficiency more plausible with duration-dependent use than with short courses.",
+      "summary": "Long-term proton pump inhibitor use appears tied to higher risk of magnesium deficiency in adults on chronic PPI therapy mainly through pooled meta-analytic evidence. This is one of the cleaner pharmacology edges in the set because the adverse pathway is predictable and monitoring can often reduce harm.",
+      "caveats": "Medication benefits may still outweigh this risk. The practical implication is usually monitoring, dosing separation, or targeted supplementation rather than indiscriminate discontinuation.",
+      "evidence": [
+        {
+          "citation": "ShahidMS et al 2025 Cureus",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "A Systematic Review of Long-Term Use of Proton Pump Inhibitors (PPIs) in Older Adults on Polypharmacy: Do PPIs Deplete Nutrients?",
+          "doi": "10.7759/cureus.90888",
+          "pmid": "40995253",
+          "n_participants": 693
+        },
+        {
+          "citation": "ChinzonD et al 2022 Arq Gastroenterol",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "SAFETY OF LONG-TERM PROTON PUMP INHIBITORS: FACTS AND MYTHS.",
+          "doi": "10.1590/S0004-2803.202202000-40",
+          "pmid": "35830032",
+          "n_participants": 1
+        },
+        {
+          "citation": "RibiereS et al 2019 Presse Med",
+          "year": 2019,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "[What is the REAL long-term risk of proton pump inhibitors?].",
+          "doi": "10.1016/j.lpm.2019.02.011",
+          "pmid": "30926204",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "magnesium_deficiency",
+      "name": "Magnesium deficiency",
+      "kind": "condition",
+      "aliases": [
+        "low magnesium status"
+      ],
+      "description": "Magnesium deficiency or low magnesium status."
+    },
+    {
+      "slug": "ppi_long_term",
+      "name": "Long-term proton pump inhibitor use",
+      "kind": "drug",
+      "aliases": [
+        "chronic PPI use"
+      ],
+      "description": "Proton pump inhibitor use continued long enough to plausibly alter nutrient absorption or bone outcomes."
+    }
+  ]
+}
