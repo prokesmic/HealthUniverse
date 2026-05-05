@@ -91,6 +91,42 @@
         {% endif %}
       </div>
 
+      {% if red_flags %}
+      <div class="stack-redflags">
+        <h2 class="stack-side-h">⚠ Red flags in your stack</h2>
+        <p class="muted body-sm">Harmful, contested, or dose-sensitive evidence about things you're already doing. Worth a closer look.</p>
+        <ul class="stack-flag-list">
+          {% for r in red_flags[:5] %}
+          <li>
+            <a href="/edge/{{ r.id }}" class="stack-flag-card">
+              <span class="pill tier-{{ r.tier }}">{{ r.tier }}</span>
+              <span class="badge dir-{{ r.direction }}">{{ DIRECTION_LABEL[r.direction] }}</span>
+              <h3>{{ r.f_name }} <span class="lib-arrow">→</span> {{ r.o_name }}</h3>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if no_regret %}
+      <div class="stack-noregret">
+        <h2 class="stack-side-h">★ No-regret moves</h2>
+        <p class="muted body-sm">Tier-A protective edges with broad applicability and low downside. Strong evidence, low controversy.</p>
+        <ul class="stack-flag-list">
+          {% for m in no_regret[:5] %}
+          <li>
+            <a href="/edge/{{ m.id }}" class="stack-flag-card stack-flag-good">
+              <span class="pill tier-{{ m.tier }}">{{ m.tier }}</span>
+              <span class="badge dir-protective">Beneficial</span>
+              <h3>{{ m.f_name }} <span class="lib-arrow">→</span> {{ m.o_name }}</h3>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
       <div class="stack-relevant">
         <h2 class="stack-side-h">Relevant for you</h2>
         <p class="muted body-sm">Re-ranked from the graph by your stack and conditions. Click into any card to see the supporting evidence.</p>

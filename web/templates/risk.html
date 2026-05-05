@@ -83,6 +83,54 @@
     <p class="muted">The graph keeps growing. Try adding a few more conditions or stack items on <a class="link" href="/me">My stack</a>, or come back tomorrow after the daily ingest runs.</p>
   </div>
   {% endif %}
+
+  {% if red_flags or no_regret %}
+  <div class="risk-flags-grid">
+    {% if red_flags %}
+    <section class="risk-section">
+      <div class="risk-section-head">
+        <h2 class="risk-h2">⚠ Red flags in your stack <span class="risk-h2-count">{{ red_flags|length }}</span></h2>
+        <p class="risk-section-lede">Harmful, contested, or dose-sensitive evidence about things you're already doing.</p>
+      </div>
+      <div class="risk-grid-v2">
+        {% for r in red_flags[:6] %}
+        <a class="risk-card-v2 risk-flag-card" href="/edge/{{ r.id }}">
+          <div class="risk-card-head">
+            <span class="pill tier-{{ r.tier }}">{{ r.tier }}</span>
+            <span class="badge dir-{{ r.direction }}">{{ DIRECTION_LABEL[r.direction] }}</span>
+          </div>
+          <h3 class="risk-card-title">{{ r.f_name }} <span class="lib-arrow">→</span> {{ r.o_name }}</h3>
+          {% if r.summary %}<p class="risk-card-summary">{{ r.summary[:180] }}{% if r.summary|length > 180 %}…{% endif %}</p>{% endif %}
+          <span class="risk-action-tag risk-action-review">⚠ {% if r.tier in ['A','B'] %}review{% else %}monitor{% endif %}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if no_regret %}
+    <section class="risk-section">
+      <div class="risk-section-head">
+        <h2 class="risk-h2">★ No-regret moves <span class="risk-h2-count">{{ no_regret|length }}</span></h2>
+        <p class="risk-section-lede">Tier-A protective edges with broad applicability. Strong evidence, low controversy, easy to consider adding.</p>
+      </div>
+      <div class="risk-grid-v2">
+        {% for m in no_regret[:6] %}
+        <a class="risk-card-v2 risk-noregret-card" href="/edge/{{ m.id }}">
+          <div class="risk-card-head">
+            <span class="pill tier-{{ m.tier }}">{{ m.tier }}</span>
+            <span class="badge dir-protective">Beneficial</span>
+            {% if m.effect_size %}<span class="risk-effect">{{ m.effect_size }} effect</span>{% endif %}
+          </div>
+          <h3 class="risk-card-title">{{ m.f_name }} <span class="lib-arrow">→</span> {{ m.o_name }}</h3>
+          {% if m.summary %}<p class="risk-card-summary">{{ m.summary[:180] }}{% if m.summary|length > 180 %}…{% endif %}</p>{% endif %}
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+  </div>
+  {% endif %}
   {% endif %}
 </section>
 {% endblock %}

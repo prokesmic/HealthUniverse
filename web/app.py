@@ -253,11 +253,15 @@ def me(request: Request):
                 (*p.stack, *p.conditions)).fetchall()
             relevant = sorted([dict(r) for r in rows],
                               key=lambda e: -relevance_score(e, p))[:30]
+        red_flags = _red_flags_in_stack(conn, p, limit=8)
+        no_regret = _no_regret_movers(conn, p, limit=8)
     return render(request, "me.html", {
         "profile": p,
         "factors": [dict(r) for r in all_factors],
         "outcomes": [dict(r) for r in all_outcomes],
         "relevant": relevant,
+        "red_flags": red_flags,
+        "no_regret": no_regret,
     })
 
 
@@ -360,8 +364,12 @@ def risk_dial(request: Request):
     for m in movers:
         if m["id"] in seen: continue
         seen.add(m["id"]); ordered.append(m)
+    with connect() as conn:
+        red_flags = _red_flags_in_stack(conn, p, limit=10)
+        no_regret = _no_regret_movers(conn, p, limit=10)
     return render(request, "risk.html", {
         "title": "Risk dial", "profile": p, "movers": ordered[:30],
+        "red_flags": red_flags, "no_regret": no_regret,
     })
 
 

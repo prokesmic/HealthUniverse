@@ -726,6 +726,35 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   h1 { font-size: 36px; }
 }
 
+/* Red flags + no-regret on /me + /risk */
+.stack-redflags, .stack-noregret { margin-bottom: 16px; padding: 16px 20px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.stack-redflags { border-left: 3px solid var(--tier-D); }
+.stack-noregret { border-left: 3px solid var(--tier-A); }
+.stack-flag-list { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 6px; }
+.stack-flag-card {
+  display: block; padding: 10px 12px;
+  background: var(--bg-soft); border: 1px solid var(--line);
+  border-radius: 8px; color: inherit;
+  transition: border-color .12s ease;
+}
+.stack-flag-card:hover { border-color: var(--gold); }
+.stack-flag-card .pill, .stack-flag-card .badge { font-size: 9px; padding: 2px 6px; vertical-align: 1px; }
+.stack-flag-card h3 { font-family: 'Fraunces', serif; font-weight: 500; font-size: 14px; line-height: 1.3; margin: 6px 0 0; color: var(--ink); }
+.stack-flag-card .lib-arrow { color: var(--gold); }
+
+.risk-flags-grid { display: flex; flex-direction: column; gap: 32px; margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); }
+.risk-flag-card { border-left-color: var(--tier-D); }
+.risk-noregret-card { border-left-color: var(--tier-A); }
+.risk-action-tag {
+  display: inline-block; margin-top: 8px;
+  font-size: 11px; padding: 3px 10px;
+  border-radius: 999px; font-weight: 600;
+}
+.risk-action-review {
+  background: var(--tier-D-bg); color: var(--tier-D);
+  border: 1px solid var(--tier-D);
+}
+
 /* =============================================================
    /brief — profile-aware daily memo
    ============================================================= */
