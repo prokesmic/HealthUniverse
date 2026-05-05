@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "fit_testing",
+      "outcome_slug": "colorectal_cancer_mortality",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+      "population": "average-risk adults in organised screening programs",
+      "mechanism": "FIT works by flagging occult blood from early lesions, shifting diagnosis toward more curable colorectal cancers when participation is high.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2019 Jodal meta analysis in BMJ Open already points to fit screening tracks with lower risk or better outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Healthier-user bias, screening intensity, and baseline risk can all inflate apparent benefit in observational work, so the magnitude should be read conservatively.",
+      "evidence": [
+        {
+          "citation": "JodalHC et al 2019 BMJ Open",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Colorectal cancer screening with faecal testing, sigmoidoscopy or colonoscopy: a systematic review and network meta-analysis.",
+          "doi": "10.1136/bmjopen-2019-032773",
+          "n_participants": 96,
+          "pmid": "31578199"
+        },
+        {
+          "citation": "HufSW et al 2021 J Gen Intern Med",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Text Messaging and Opt-out Mailed Outreach in Colorectal Cancer Screening: a Randomized Clinical Trial.",
+          "doi": "10.1007/s11606-020-06415-8",
+          "n_participants": 87,
+          "pmid": "33511567"
+        },
+        {
+          "citation": "SaitoH et al 2020 Int J Colorectal Dis",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of screening using annual fecal immunochemical test alone versus combined with one-time colonoscopy in reducing colorectal cancer mortality: the Akita Japan population-based colonoscopy screening trial (Akita pop-colon trial).",
+          "doi": "10.1007/s00384-020-03518-w",
+          "n_participants": 4875,
+          "pmid": "32034490"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "fit_testing",
+      "name": "FIT screening",
+      "kind": "activity",
+      "aliases": [],
+      "description": "FIT screening as a structured activity or treatment exposure."
+    },
+    {
+      "slug": "colorectal_cancer_mortality",
+      "name": "Colorectal cancer mortality",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Colorectal cancer mortality as a clinically relevant health outcome."
+    }
+  ]
+}

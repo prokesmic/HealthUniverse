@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "polypharmacy",
+      "outcome_slug": "hospitalisation",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "community-dwelling older adults",
+      "mechanism": "Polypharmacy has a biologically plausible route to worse hospitalisation, and the mechanism is consistent with the kinds of tissues or systems most directly exposed.",
+      "summary": "For hospitalisation, the most useful starting point is the 2024 Carollo meta analysis in J Am Geriatr Soc. It found that polypharmacy tracks with higher risk or worse outcomes, and the follow-on evidence is broadly consistent even when absolute benefit or harm is modest.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "CarolloM et al 2024 J Am Geriatr Soc",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Clinical impact of medication review and deprescribing in older inpatients: A systematic review and meta-analysis.",
+          "doi": "10.1111/jgs.19035",
+          "n_participants": 99,
+          "pmid": "38822740"
+        },
+        {
+          "citation": "EriksenAV et al 2022 Eur Geriatr Med",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Older patients acutely admitted and readmitted to the same geriatric department: a descriptive cohort study of primary diagnoses and health characteristics.",
+          "doi": "10.1007/s41999-022-00670-0",
+          "n_participants": 49,
+          "pmid": "35900651"
+        },
+        {
+          "citation": "UcarerCR et al 2026 Drugs Aging",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Hospitalisation as an Opportunity to Optimise Quality Use of Medicines in Older Adults: A Systematic Review.",
+          "doi": "10.1007/s40266-026-01299-5",
+          "n_participants": 2025,
+          "pmid": "42047996"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "polypharmacy",
+      "name": "Polypharmacy",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Polypharmacy as a behavioral exposure or habit."
+    },
+    {
+      "slug": "hospitalisation",
+      "name": "Hospitalisation",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Hospitalisation as a clinically relevant health outcome."
+    }
+  ]
+}

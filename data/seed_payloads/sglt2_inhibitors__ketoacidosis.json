@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "sglt2_inhibitors",
+      "outcome_slug": "ketoacidosis",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults taking SGLT2 inhibitors",
+      "mechanism": "The same glycosuric effect that lowers glucose also reduces insulin requirements and can raise glucagon, making euglycemic ketoacidosis biologically plausible during illness, fasting, or perioperative stress.",
+      "summary": "The strongest piece here is the 2025 Zheng meta analysis in Medicine (Baltimore), which ties sglt2 inhibitors to diabetic ketoacidosis in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ZhengY et al 2025 Medicine (Baltimore)",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Long-term effect of sodium-glucose cotransporter 2 inhibitors in kidney functions: A systematic review and meta-analysis.",
+          "doi": "10.1097/MD.0000000000041422",
+          "n_participants": 244,
+          "pmid": "39960956"
+        },
+        {
+          "citation": "QianJ et al 2026 Clin Nephrol",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Impact of diabetes on the effects of SGLT2 inhibitors on kidney outcomes: An updated drug/dose-dependent meta-analysis.",
+          "doi": "10.5414/CN111749",
+          "n_participants": 98516,
+          "pmid": "41235415"
+        },
+        {
+          "citation": "BhanushaliKB et al 2024 Curr Probl Cardiol",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Pharmacovigilance study for SGLT 2 inhibitors- Safety review of real-world data & randomized clinical trials.",
+          "doi": "10.1016/j.cpcardiol.2024.102664",
+          "n_participants": 100,
+          "pmid": "38789017"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "sglt2_inhibitors",
+      "name": "SGLT2 inhibitors",
+      "kind": "drug",
+      "aliases": [],
+      "description": "SGLT2 inhibitors as a medication exposure."
+    },
+    {
+      "slug": "ketoacidosis",
+      "name": "Diabetic ketoacidosis",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Diabetic ketoacidosis as a clinically relevant health outcome."
+    }
+  ]
+}

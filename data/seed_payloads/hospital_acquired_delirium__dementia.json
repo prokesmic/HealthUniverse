@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hospital_acquired_delirium",
+      "outcome_slug": "dementia",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "older adults after delirium during hospitalisation",
+      "mechanism": "Delirium exposes a vulnerable brain to acute neuroinflammation and network failure, and it may also reveal reserve that was already close to failing before hospitalization.",
+      "summary": "The anchor for this edge is the 2026 Zhao meta analysis in Front Neurol, which suggests that hospital-acquired delirium tracks with higher risk or worse outcomes for dementia (all-cause). Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ZhaoY et al 2026 Front Neurol",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Frailty status and the risk of dementia, Alzheimer's disease: a meta-analysis of observational studies.",
+          "doi": "10.3389/fneur.2026.1798080",
+          "n_participants": 835992,
+          "pmid": "42037682"
+        },
+        {
+          "citation": "HuntCJ et al 2026 Front Dement",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Herpes simplex virus 2 and dementia risk: a systematic review and meta-analysis.",
+          "doi": "10.3389/frdem.2026.1737068",
+          "n_participants": 751156,
+          "pmid": "41953111"
+        },
+        {
+          "citation": "OyeSomefunA et al 2026 PLoS One",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Relationships between physical activity, sedentary behaviour, sleep, and dementia: A systematic review and meta-analysis of cohort studies.",
+          "doi": "10.1371/journal.pone.0343621",
+          "n_participants": 2855529,
+          "pmid": "41950182"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hospital_acquired_delirium",
+      "name": "Hospital-acquired delirium",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Hospital-acquired delirium as a clinically relevant health outcome."
+    }
+  ]
+}

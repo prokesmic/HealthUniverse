@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "testosterone_replacement",
+      "outcome_slug": "cvd",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "unknown",
+      "effect_quant": "Different designs and subgroups point in different directions, so a single pooled estimate is not the right way to read this edge.",
+      "population": "men receiving testosterone replacement",
+      "mechanism": "Testosterone can shift hematocrit, thrombosis risk, and fluid balance while also changing body composition, which is why cardiovascular effects remain controversial.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2024 Jaiswal meta analysis in Prog Cardiovasc Dis already points to testosterone replacement therapy produces mixed findings across studies, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "This is a contested edge. Exposure measurement, confounding, and publication-era effects all matter, so confidence should stay low until cleaner data accumulate.",
+      "evidence": [
+        {
+          "citation": "JaiswalV et al 2024 Prog Cardiovasc Dis",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Association between testosterone replacement therapy and cardiovascular outcomes: A meta-analysis of 30 randomized controlled trials.",
+          "doi": "10.1016/j.pcad.2024.04.001",
+          "n_participants": 11502,
+          "pmid": "38589271"
+        },
+        {
+          "citation": "HaradaN et al 2018 Biosci Biotechnol Biochem",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Role of androgens in energy metabolism affecting on body composition, metabolic syndrome, type 2 diabetes, cardiovascular disease, and longevity: lessons from a meta-analysis and rodent studies.",
+          "doi": "10.1080/09168451.2018.1490172",
+          "n_participants": 100,
+          "pmid": "29957125"
+        },
+        {
+          "citation": "GaglianoJucT et al 2025 Am Heart J",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Association of testosterone-induced increase in neutrophil and monocyte counts with thromboembolic events: The TRAVERSE trial.",
+          "doi": "10.1016/j.ahj.2025.04.004",
+          "n_participants": 5204,
+          "pmid": "40246046"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "testosterone_replacement",
+      "name": "Testosterone replacement therapy",
+      "kind": "drug",
+      "aliases": [],
+      "description": "Testosterone replacement therapy as a medication exposure."
+    }
+  ]
+}

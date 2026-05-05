@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "cooking_high_temp_meat",
+      "outcome_slug": "breast_cancer",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with frequent high-temperature meat intake",
+      "mechanism": "High-temperature meat cooking has a biologically plausible route to worse breast cancer, and the mechanism is consistent with the kinds of tissues or systems most directly exposed.",
+      "summary": "The anchor for this edge is the 2022 Reng meta analysis in Front Nutr, which suggests that high-temperature meat cooking tracks with higher risk or worse outcomes for breast cancer. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "RengQ et al 2022 Front Nutr",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Dietary meat mutagens intake and cancer risk: A systematic review and meta-analysis.",
+          "doi": "10.3389/fnut.2022.962688",
+          "n_participants": 1786410,
+          "pmid": "36211500"
+        },
+        {
+          "citation": "LeeHJ et al 2013 Nutr Cancer",
+          "year": 2013,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Polymorphisms in xenobiotic metabolizing genes, intakes of heterocyclic amines and red meat, and postmenopausal breast cancer.",
+          "doi": "10.1080/01635581.2013.824991",
+          "n_participants": 579,
+          "pmid": "24099317"
+        },
+        {
+          "citation": "WuAuthorK et al 2010 Cancer Epidemiol Biomarkers Prev",
+          "year": 2010,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Meat mutagens and breast cancer in postmenopausal women--a cohort analysis.",
+          "doi": "10.1158/1055-9965.EPI-10-0002",
+          "n_participants": 533618,
+          "pmid": "20447922"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cooking_high_temp_meat",
+      "name": "High-temperature meat cooking",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "High-temperature meat cooking as a behavioral exposure or habit."
+    }
+  ]
+}

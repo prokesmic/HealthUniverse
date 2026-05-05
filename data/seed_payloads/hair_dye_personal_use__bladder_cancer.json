@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hair_dye_personal_use",
+      "outcome_slug": "bladder_cancer",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with recurrent personal hair dye use",
+      "mechanism": "Some hair dyes historically contained aromatic amines that can be metabolized to urothelial carcinogens, though exposure intensity varies sharply by era and formulation.",
+      "summary": "The strongest piece here is the 2014 Turati meta analysis in Ann Epidemiol, which ties personal hair dye use to bladder cancer in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "TuratiF et al 2014 Ann Epidemiol",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Personal hair dye use and bladder cancer: a meta-analysis.",
+          "doi": "10.1016/j.annepidem.2013.11.003",
+          "n_participants": 8504,
+          "pmid": "24342029"
+        },
+        {
+          "citation": "KelshMA et al 2008 Cancer Causes Control",
+          "year": 2008,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Personal use of hair dyes and risk of bladder cancer: a meta-analysis of epidemiologic data.",
+          "doi": "10.1007/s10552-008-9123-z",
+          "n_participants": 97,
+          "pmid": "18286379"
+        },
+        {
+          "citation": "TakkoucheB et al 2005 JAMA",
+          "year": 2005,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Personal use of hair dyes and risk of cancer: a meta-analysis.",
+          "doi": "10.1001/jama.293.20.2516",
+          "n_participants": 1966,
+          "pmid": "15914752"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hair_dye_personal_use",
+      "name": "Personal hair dye use",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "Personal hair dye use as an environmental or occupational exposure."
+    }
+  ]
+}

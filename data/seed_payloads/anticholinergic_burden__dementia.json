@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "anticholinergic_burden",
+      "outcome_slug": "dementia",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "older adults taking anticholinergic medications",
+      "mechanism": "Repeated central anticholinergic exposure may accelerate cognitive decline by chronically impairing cholinergic tone in a brain already vulnerable to neurodegeneration.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Maguire meta analysis in Age Ageing already points to high anticholinergic burden tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "MaguireT et al 2026 Age Ageing",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Antimuscarinic medication used for the treatment of overactive bladder in women and the risk of cognitive decline, cardiovascular disease and mortality-a systematic review.",
+          "doi": "10.1093/ageing/afag027",
+          "n_participants": 675,
+          "pmid": "41686541"
+        },
+        {
+          "citation": "ZhaoY et al 2026 Front Neurol",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Frailty status and the risk of dementia, Alzheimer's disease: a meta-analysis of observational studies.",
+          "doi": "10.3389/fneur.2026.1798080",
+          "n_participants": 835992,
+          "pmid": "42037682"
+        },
+        {
+          "citation": "WangK et al 2021 Maturitas",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Anticholinergics and clinical outcomes amongst people with pre-existing dementia: A systematic review.",
+          "doi": "10.1016/j.maturitas.2021.06.004",
+          "n_participants": 2000,
+          "pmid": "34446273"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "anticholinergic_burden",
+      "name": "High anticholinergic burden",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "High anticholinergic burden as a behavioral exposure or habit."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "loneliness",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "older adults",
+      "mechanism": "Chronic social disconnection combines physiological stress with lower activity, worse self-care, and less buffering during illness, which helps explain its mortality signal.",
+      "summary": "The anchor for this edge is the 2025 Cheng meta analysis in BMJ Oncol, which suggests that loneliness tracks with higher risk or worse outcomes for all-cause mortality. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ChengS et al 2025 BMJ Oncol",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Impact of loneliness on cancer mortality: a systematic review and meta-analysis.",
+          "doi": "10.1136/bmjonc-2025-000840",
+          "n_participants": 6248,
+          "pmid": "41158749"
+        },
+        {
+          "citation": "NakouA et al 2025 Aging Clin Exp Res",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Loneliness, social isolation, and living alone: a comprehensive systematic review, meta-analysis, and meta-regression of mortality risks in older adults.",
+          "doi": "10.1007/s40520-024-02925-1",
+          "n_participants": 11964,
+          "pmid": "39836319"
+        },
+        {
+          "citation": "YuAuthorB et al 2023 Trends Cogn Sci",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Social disconnection and mortality: new evidence for old truths.",
+          "doi": "10.1016/j.tics.2023.08.001",
+          "n_participants": 90,
+          "pmid": "37599151"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "loneliness",
+      "name": "Loneliness",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Loneliness as a behavioral exposure or habit."
+    }
+  ]
+}

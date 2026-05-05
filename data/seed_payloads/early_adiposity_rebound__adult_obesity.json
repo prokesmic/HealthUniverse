@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "early_adiposity_rebound",
+      "outcome_slug": "adult_obesity",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "children followed into adolescence or adulthood",
+      "mechanism": "Earlier rebound signals a metabolic trajectory toward earlier and more persistent fat accumulation, making later obesity biologically and developmentally plausible.",
+      "summary": "The strongest piece here is the 2022 De Giuseppe cohort in Metabolites, which ties early adiposity rebound to adult obesity in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "DeGiuseppeR et al 2022 Metabolites",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "LIMIT: LIfestyle and Microbiome InTeraction Early Adiposity Rebound in Children, a Study Protocol.",
+          "doi": "10.3390/metabo12090809",
+          "n_participants": 272,
+          "pmid": "36144214"
+        },
+        {
+          "citation": "CissAH et al 2021 Int J Obes (Lond)",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association between perinatal factors, genetic susceptibility to obesity and age at adiposity rebound in children of the EDEN mother-child cohort.",
+          "doi": "10.1038/s41366-021-00847-w",
+          "n_participants": 1415,
+          "pmid": "33986455"
+        },
+        {
+          "citation": "TotzauerM et al 2022 Pediatr Obes",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Different protein intake in the first year and its effects on adiposity rebound and obesity throughout childhood: 11 years follow-up of a randomized controlled trial.",
+          "doi": "10.1111/ijpo.12961",
+          "n_participants": 1090,
+          "pmid": "36355369"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "early_adiposity_rebound",
+      "name": "Early adiposity rebound",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Early adiposity rebound as a behavioral exposure or habit."
+    },
+    {
+      "slug": "adult_obesity",
+      "name": "Adult obesity",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Adult obesity as a clinically relevant health outcome."
+    }
+  ]
+}

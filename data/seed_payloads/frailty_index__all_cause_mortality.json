@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "frailty_index",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "older adults in community or hospital cohorts",
+      "mechanism": "A high frailty index reflects multisystem reserve failure; once reserve is low, small insults cause disproportionate decompensation and mortality.",
+      "summary": "For all-cause mortality, the most useful starting point is the 2025 Nguyen rct in J Am Geriatr Soc. It found that frailty index tracks with higher risk or worse outcomes, and the follow-on evidence is broadly consistent even when absolute benefit or harm is modest.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "NguyenTN et al 2025 J Am Geriatr Soc",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The Efficacy and Safety of Canagliflozin by Frailty Status in Participants of the CANVAS and CREDENCE Trials.",
+          "doi": "10.1111/jgs.19444",
+          "n_participants": 14543,
+          "pmid": "40105285"
+        },
+        {
+          "citation": "PandeyA et al 2022 Circulation",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Frailty Status Modifies the Efficacy of Exercise Training Among Patients With Chronic Heart Failure and Reduced Ejection Fraction: An Analysis From the HF-ACTION Trial.",
+          "doi": "10.1161/CIRCULATIONAHA.122.059983",
+          "n_participants": 2130,
+          "pmid": "35616018"
+        },
+        {
+          "citation": "ZhouL et al 2026 BMC Cardiovasc Disord",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Impact of frailty on outcomes in atrial fibrillation and HFpEF: data from the TOPCAT trial.",
+          "doi": "10.1186/s12872-025-05306-2",
+          "n_participants": 721,
+          "pmid": "41691162"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "frailty_index",
+      "name": "Frailty index",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Frailty index as a behavioral exposure or habit."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "adverse_childhood_experiences",
+      "outcome_slug": "adult_obesity",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with documented childhood adversity",
+      "mechanism": "Adverse childhood experiences has a biologically plausible route to worse adult obesity, and the mechanism is consistent with the kinds of tissues or systems most directly exposed.",
+      "summary": "The strongest piece here is the 2020 Wiss meta analysis in Physiol Behav, which ties adverse childhood experiences to adult obesity in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "WissDA et al 2020 Physiol Behav",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Adverse Childhood Experiences and Adult Obesity: A Systematic Review of Plausible Mechanisms and Meta-Analysis of Cross-Sectional Studies.",
+          "doi": "10.1016/j.physbeh.2020.112964",
+          "n_participants": 118691,
+          "pmid": "32479804"
+        },
+        {
+          "citation": "JimenezV et al 2021 Dev Psychobiol",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Associations of adverse childhood experiences with stress physiology and insulin resistance in adolescents at risk for adult obesity.",
+          "doi": "10.1002/dev.22127",
+          "n_participants": 90,
+          "pmid": "33991342"
+        },
+        {
+          "citation": "MogollnCanalOM et al 2026 Behav Sci (Basel)",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Early Adverse Experiences and the Likelihood of Substance Use Disorders and Non-Fatal Overdose in Clinical and Community Settings: A Systematic Review and Meta-Analysis.",
+          "doi": "10.3390/bs16040589",
+          "n_participants": 67228,
+          "pmid": "42073952"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "adverse_childhood_experiences",
+      "name": "Adverse childhood experiences",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Adverse childhood experiences as a behavioral exposure or habit."
+    },
+    {
+      "slug": "adult_obesity",
+      "name": "Adult obesity",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Adult obesity as a clinically relevant health outcome."
+    }
+  ]
+}

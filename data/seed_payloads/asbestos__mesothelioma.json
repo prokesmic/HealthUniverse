@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "asbestos",
+      "outcome_slug": "mesothelioma",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "occupationally exposed adults",
+      "mechanism": "Biopersistent asbestos fibers lodge in pleura, provoke chronic macrophage activation, and cause direct chromosomal injury, a textbook pathway toward malignant mesothelioma.",
+      "summary": "The strongest piece here is the 2026 Seyyedsalehi meta analysis in J Thorac Oncol, which ties asbestos exposure to mesothelioma in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "SeyyedsalehiMS et al 2026 J Thorac Oncol",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Occupational exposure to asbestos-free talc and risk of respiratory cancers, including larynx, lung and mesothelioma: a systematic review and meta-analysis.",
+          "doi": "10.1016/j.jtho.2026.103710",
+          "n_participants": 98,
+          "pmid": "41967769"
+        },
+        {
+          "citation": "GBDAmericasOccupationalExposureCollaborators et al 2026 Lancet Reg Health Am",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Burden of cancer attributable to occupational asbestos exposure in the Americas, 1990-2023: an analysis using the Global Burden of Disease Study 2023.",
+          "doi": "10.1016/j.lana.2026.101463",
+          "n_participants": 100000,
+          "pmid": "42005088"
+        },
+        {
+          "citation": "AvilsSalasA et al 2026 BMC Cancer",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Clinical, diagnostic and prognostic relevance of GATA3 in malignant pleural mesothelioma: a retrospective cohort study.",
+          "doi": "10.1186/s12885-026-15692-1",
+          "n_participants": 91,
+          "pmid": "41928138"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "asbestos",
+      "name": "Asbestos exposure",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "Asbestos exposure as an environmental or occupational exposure."
+    },
+    {
+      "slug": "mesothelioma",
+      "name": "Mesothelioma",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Mesothelioma as a clinically relevant health outcome."
+    }
+  ]
+}

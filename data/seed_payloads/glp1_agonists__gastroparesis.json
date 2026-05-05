@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "glp1_agonists",
+      "outcome_slug": "gastroparesis",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults using GLP-1 receptor agonists",
+      "mechanism": "These drugs deliberately slow gastric emptying and reduce antral motility. In susceptible people that same mechanism can tip from useful satiety into persistent nausea, retained gastric contents, or clinically important gastroparesis.",
+      "summary": "The strongest piece here is the 2026 Abomohsen meta analysis in Can J Diabetes, which ties glp-1 receptor agonists to gastroparesis in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "AbomohsenM et al 2026 Can J Diabetes",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Preferred GLP-1 Receptor Agonists in Type 2 Diabetes With Established Cardiovascular Disease or High Cardiovascular Risk: A Network Meta-Analysis of Randomized Trials.",
+          "doi": "10.1016/j.jcjd.2026.04.001",
+          "n_participants": 83215,
+          "pmid": "41967797"
+        },
+        {
+          "citation": "CorcoranE et al 2026 Mol Cell Neurosci",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The effects of GLP-1 receptor agonists on Alzheimer's pathophysiology: A systematic review.",
+          "doi": "10.1016/j.mcn.2026.104091",
+          "n_participants": 100,
+          "pmid": "42014236"
+        },
+        {
+          "citation": "GunasekaranP et al 2026 Dis Mon",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Approved weight loss drugs for obesity with a thorough emphasis on GLP-1 agonist medications: A systematic review.",
+          "doi": "10.1016/j.disamonth.2026.102113",
+          "n_participants": 2020,
+          "pmid": "41991422"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "gastroparesis",
+      "name": "Gastroparesis",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Gastroparesis as a clinically relevant health outcome."
+    }
+  ]
+}

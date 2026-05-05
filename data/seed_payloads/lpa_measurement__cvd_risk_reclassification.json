@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "lpa_measurement",
+      "outcome_slug": "cvd_risk_reclassification",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults undergoing primary-prevention risk stratification",
+      "mechanism": "Measuring Lp(a) can uncover inherited atherothrombotic risk that standard LDL panels miss, changing who is classified as higher risk.",
+      "summary": "The anchor for this edge is the 2020 Willeit meta analysis in J Am Heart Assoc, which suggests that lipoprotein(a) measurement tracks with lower risk or better outcomes for cardiovascular risk reclassification. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Healthier-user bias, screening intensity, and baseline risk can all inflate apparent benefit in observational work, so the magnitude should be read conservatively.",
+      "evidence": [
+        {
+          "citation": "WilleitP et al 2020 J Am Heart Assoc",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Low-Density Lipoprotein Cholesterol Corrected for Lipoprotein(a) Cholesterol, Risk Thresholds, and Cardiovascular Events.",
+          "doi": "10.1161/JAHA.119.016318",
+          "n_participants": 144,
+          "pmid": "33222611"
+        },
+        {
+          "citation": "LakkineniL et al 2026 J Clin Lipidol",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Intraindividual variability in lipoprotein(a).",
+          "doi": "10.1016/j.jacl.2026.01.016",
+          "n_participants": 250,
+          "pmid": "41723017"
+        },
+        {
+          "citation": "LiuHH et al 2020 J Am Heart Assoc",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Predicting Cardiovascular Outcomes by Baseline Lipoprotein(a) Concentrations: A Large Cohort and Long-Term Follow-up Study on Real-World Patients Receiving Percutaneous Coronary Intervention.",
+          "doi": "10.1161/JAHA.119.014581",
+          "n_participants": 4078,
+          "pmid": "32013705"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "lpa_measurement",
+      "name": "Lipoprotein(a) measurement",
+      "kind": "activity",
+      "aliases": [],
+      "description": "Lipoprotein(a) measurement as a structured activity or treatment exposure."
+    },
+    {
+      "slug": "cvd_risk_reclassification",
+      "name": "Cardiovascular risk reclassification",
+      "kind": "process",
+      "aliases": [],
+      "description": "Cardiovascular risk reclassification as a measurable physiological or clinical process."
+    }
+  ]
+}

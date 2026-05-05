@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "breastfeeding_12_months",
+      "outcome_slug": "adult_obesity",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+      "population": "children followed into later life",
+      "mechanism": "If breastfeeding duration matters, the mechanism is likely cumulative early-life metabolic programming rather than a drug-like effect of one nutrient.",
+      "summary": "The strongest piece here is the 2025 Muscogiuri meta analysis in Nutrition, which ties breastfeeding for at least 12 months to adult obesity in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Healthier-user bias, screening intensity, and baseline risk can all inflate apparent benefit in observational work, so the magnitude should be read conservatively.",
+      "evidence": [
+        {
+          "citation": "MuscogiuriG et al 2025 Nutrition",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Mediterranean diet for the primary prevention of cardiometabolic diseases: evidence from a systematic review and meta-analysis featured in the Italian National Guidelines \"La Dieta Mediterranea\".",
+          "doi": "10.1016/j.nut.2025.112947",
+          "n_participants": 2024,
+          "pmid": "42048757"
+        },
+        {
+          "citation": "EghbaliM et al 2026 BMC Endocr Disord",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Impact of fat mass and obesity-associated (FTO) gene variants on adult obesity and overweight: a comprehensive meta-analysis.",
+          "doi": "10.1186/s12902-026-02209-x",
+          "n_participants": 34206,
+          "pmid": "41862896"
+        },
+        {
+          "citation": "TaylorBJ et al 2011 BMC Public Health",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Prevention of Overweight in Infancy (POI.nz) study: a randomised controlled trial of sleep, food and activity interventions for preventing overweight from birth.",
+          "doi": "10.1186/1471-2458-11-942",
+          "n_participants": 800,
+          "pmid": "22182309"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "breastfeeding_12_months",
+      "name": "Breastfeeding for at least 12 months",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Breastfeeding for at least 12 months as a behavioral exposure or habit."
+    },
+    {
+      "slug": "adult_obesity",
+      "name": "Adult obesity",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Adult obesity as a clinically relevant health outcome."
+    }
+  ]
+}

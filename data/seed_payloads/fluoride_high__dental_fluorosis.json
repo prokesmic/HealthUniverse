@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "fluoride_high",
+      "outcome_slug": "dental_fluorosis",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "children exposed to excess fluoride during tooth development",
+      "mechanism": "Excess fluoride during enamel formation disrupts ameloblast mineralization, which directly produces dental fluorosis.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Mazzoli meta analysis in Environ Health already points to high fluoride exposure tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "MazzoliR et al 2025 Environ Health",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The association of fluoride exposure with bone density and fracture risk: a dose-response meta-analysis.",
+          "doi": "10.1186/s12940-025-01226-y",
+          "n_participants": 2024,
+          "pmid": "41068882"
+        },
+        {
+          "citation": "MittalHC et al 2025 J Public Health Dent",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prevalence of Dental Fluorosis in India: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1111/jphd.70004",
+          "n_participants": 108678,
+          "pmid": "40741788"
+        },
+        {
+          "citation": "PongsapipatanaN et al 2026 Ecotoxicol Environ Saf",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Urinary proteomic biomarkers of systemic fluoride exposure in children.",
+          "doi": "10.1016/j.ecoenv.2025.119643",
+          "n_participants": 460,
+          "pmid": "41601072"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "fluoride_high",
+      "name": "High fluoride exposure",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "High fluoride exposure as an environmental or occupational exposure."
+    },
+    {
+      "slug": "dental_fluorosis",
+      "name": "Dental fluorosis",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Dental fluorosis as a clinically relevant health outcome."
+    }
+  ]
+}

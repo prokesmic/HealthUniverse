@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "periodontal_disease",
+      "outcome_slug": "rheumatoid_arthritis",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with periodontal disease",
+      "mechanism": "Periodontal inflammation can feed systemic citrullination and immune activation, a plausible bridge to rheumatoid arthritis.",
+      "summary": "The anchor for this edge is the 2024 Dolcezza meta analysis in J Clin Med, which suggests that periodontal disease tracks with higher risk or worse outcomes for rheumatoid arthritis. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "DolcezzaS et al 2024 J Clin Med",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Relationship Between Rheumatoid Arthritis and Periodontal Disease-Systematic Review and Meta-Analysis.",
+          "doi": "10.3390/jcm14010010",
+          "n_participants": 146,
+          "pmid": "39797091"
+        },
+        {
+          "citation": "RakD et al 2024 Minerva Dent Oral Sci",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Correlation between rheumatoid arthritis and chronic periodontitis: a systematic review and meta-analysis.",
+          "doi": "10.23736/S2724-6329.23.04891-X",
+          "n_participants": 2022,
+          "pmid": "38869834"
+        },
+        {
+          "citation": "TanPR et al 2024 Front Immunol",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Higher odds of periodontitis in systemic lupus erythematosus compared to controls and rheumatoid arthritis: a systematic review, meta-analysis and network meta-analysis.",
+          "doi": "10.3389/fimmu.2024.1356714",
+          "n_participants": 766323,
+          "pmid": "38629069"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "periodontal_disease",
+      "name": "Periodontal disease",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Periodontal disease as a clinically relevant health outcome."
+    },
+    {
+      "slug": "rheumatoid_arthritis",
+      "name": "Rheumatoid arthritis",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Rheumatoid arthritis as a clinically relevant health outcome."
+    }
+  ]
+}

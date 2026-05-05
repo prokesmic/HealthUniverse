@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "coronary_artery_calcium_high",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "asymptomatic adults with calcium scoring",
+      "mechanism": "A high calcium score is a direct readout of cumulative coronary plaque burden, which makes it informative for overall mortality as well as heart attacks.",
+      "summary": "The strongest piece here is the 2023 Su cohort in Transplant Direct, which ties high coronary artery calcium score to all-cause mortality in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "SuAuthorA et al 2023 Transplant Direct",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "High Coronary Artery Calcium Score Is Associated With Increased Major Adverse Cardiac Events After Liver Transplantation.",
+          "doi": "10.1097/TXD.0000000000001426",
+          "n_participants": 227,
+          "pmid": "36700067"
+        },
+        {
+          "citation": "ChenLQ et al 2021 Coron Artery Dis",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Long-term all-cause mortality among asymptomatic individuals with 80th percentile of coronary calcium score based on age and gender in the St. Francis Heart Study.",
+          "doi": "10.1097/MCA.0000000000001017",
+          "n_participants": 1005,
+          "pmid": "33826539"
+        },
+        {
+          "citation": "WangF et al 2018 Clin Appl Thromb Hemost",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The Value of Big Endothelin-1 in the Assessment of the Severity of Coronary Artery Calcification.",
+          "doi": "10.1177/1076029618764846",
+          "n_participants": 956,
+          "pmid": "29562761"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "coronary_artery_calcium_high",
+      "name": "High coronary artery calcium score",
+      "kind": "biomarker",
+      "aliases": [],
+      "description": "High coronary artery calcium score as a measurable biomarker."
+    }
+  ]
+}

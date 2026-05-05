@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "maternal_alcohol_pregnancy",
+      "outcome_slug": "low_birth_weight",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "infants with prenatal alcohol exposure",
+      "mechanism": "Maternal alcohol use during pregnancy has a biologically plausible route to worse low birth weight, and the mechanism is consistent with the kinds of tissues or systems most directly exposed.",
+      "summary": "The anchor for this edge is the 2025 Chan meta analysis in Mol Psychiatry, which suggests that maternal alcohol use during pregnancy tracks with higher risk or worse outcomes for low birth weight. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ChanJKN et al 2025 Mol Psychiatry",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Adverse obstetric and neonatal outcomes associated with maternal schizophrenia-spectrum disorders and prenatal antipsychotic use: a meta-analysis of 37,214,330 pregnancy deliveries and propensity-score weighted population-based cohort study assessing confounder dependency of risk estimates.",
+          "doi": "10.1038/s41380-024-02723-1",
+          "n_participants": 37214330,
+          "pmid": "39223277"
+        },
+        {
+          "citation": "MinozziS et al 2020 Cochrane Database Syst Rev",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maintenance agonist treatments for opiate-dependent pregnant women.",
+          "doi": "10.1002/14651858.CD006318.pub4",
+          "n_participants": 49131,
+          "pmid": "33165953"
+        },
+        {
+          "citation": "LiuF et al 2025 Clin Psychol Psychother",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Genetic and Environmental Risk Factors for Intermittent Explosive Disorder, ADHD and Conduct Disorder: Shared and Unique Influences.",
+          "doi": "10.1002/cpp.70195",
+          "n_participants": 44,
+          "pmid": "41399269"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "maternal_alcohol_pregnancy",
+      "name": "Maternal alcohol use during pregnancy",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Maternal alcohol use during pregnancy as a behavioral exposure or habit."
+    },
+    {
+      "slug": "low_birth_weight",
+      "name": "Low birth weight",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Low birth weight as a clinically relevant health outcome."
+    }
+  ]
+}

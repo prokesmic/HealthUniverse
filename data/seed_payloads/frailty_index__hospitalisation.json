@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "frailty_index",
+      "outcome_slug": "hospitalisation",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "older adults in community or hospital cohorts",
+      "mechanism": "Frailty index has a biologically plausible route to worse hospitalisation, and the mechanism is consistent with the kinds of tissues or systems most directly exposed.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2024 Wang cohort in BMJ Open already points to frailty index tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "WangL et al 2024 BMJ Open",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association between the frailty index and readmission risk in hospitalised elderly Chinese patients: a retrospective cohort study.",
+          "doi": "10.1136/bmjopen-2023-076861",
+          "n_participants": 470,
+          "pmid": "38417955"
+        },
+        {
+          "citation": "SimoN et al 2021 J Nutr Health Aging",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Frailty Index, Hospital Admission and Number of Days Spent in Hospital in Nursing Home Residents: Results from the Incur Study.",
+          "doi": "10.1007/s12603-020-1561-7",
+          "n_participants": 768,
+          "pmid": "33491028"
+        },
+        {
+          "citation": "AbdelmonemM et al 2025 Perioper Med (Lond)",
+          "year": 2025,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The impact of frailty on functional recovery after cardiac surgery-a case control study.",
+          "doi": "10.1186/s13741-025-00526-8",
+          "n_participants": 669,
+          "pmid": "40270002"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "frailty_index",
+      "name": "Frailty index",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Frailty index as a behavioral exposure or habit."
+    },
+    {
+      "slug": "hospitalisation",
+      "name": "Hospitalisation",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Hospitalisation as a clinically relevant health outcome."
+    }
+  ]
+}

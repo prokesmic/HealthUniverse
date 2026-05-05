@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "glp1_agonists",
+      "outcome_slug": "major_adverse_cv_events",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with obesity or type 2 diabetes",
+      "mechanism": "GLP-1 agonists lower appetite, body weight, post-prandial glucose, and often blood pressure, while also improving endothelial and inflammatory markers; that combination is a plausible route to fewer major cardiovascular events.",
+      "summary": "The anchor for this edge is the 2025 Rai meta analysis in Cureus, which suggests that glp-1 receptor agonists tracks with lower risk or better outcomes for major adverse cardiovascular events. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Healthier-user bias, screening intensity, and baseline risk can all inflate apparent benefit in observational work, so the magnitude should be read conservatively.",
+      "evidence": [
+        {
+          "citation": "RaiA et al 2025 Cureus",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Cardiorenal Safety Markers With Injectable Glucagon-Like Peptide-1 (GLP-1) Agonists in Type 2 Diabetes: A Network Meta-Analysis.",
+          "doi": "10.7759/cureus.96162",
+          "n_participants": 90000,
+          "pmid": "41367446"
+        },
+        {
+          "citation": "GalliM et al 2025 J Am Coll Cardiol",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Cardiovascular Effects and Tolerability of GLP-1 Receptor Agonists: A Systematic Review and Meta-Analysis of 99,599 Patients.",
+          "doi": "10.1016/j.jacc.2025.08.027",
+          "n_participants": 99599,
+          "pmid": "40892610"
+        },
+        {
+          "citation": "KristensenSL et al 2019 Lancet Diabetes Endocrinol",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Cardiovascular, mortality, and kidney outcomes with GLP-1 receptor agonists in patients with type 2 diabetes: a systematic review and meta-analysis of cardiovascular outcome trials.",
+          "doi": "10.1016/S2213-8587(19)30249-9",
+          "n_participants": 99,
+          "pmid": "31422062"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "major_adverse_cv_events",
+      "name": "Major adverse cardiovascular events",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Major adverse cardiovascular events as a clinically relevant health outcome."
+    }
+  ]
+}

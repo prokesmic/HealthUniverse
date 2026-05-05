@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "chlorinated_dbps",
+      "outcome_slug": "bladder_cancer",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults exposed to chlorinated drinking water",
+      "mechanism": "Disinfection by-products in chlorinated water include mutagenic compounds that contact the urothelium during urine storage, fitting a bladder-cancer pathway.",
+      "summary": "The anchor for this edge is the 2026 Lim systematic review in BJUI Compass, which suggests that chlorinated disinfection by-products tracks with higher risk or worse outcomes for bladder cancer. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "LimS et al 2026 BJUI Compass",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Lymph node dissection during cystectomy for non-muscle-invasive bladder cancer: A systematic review.",
+          "doi": "10.1002/bco2.70201",
+          "n_participants": 35,
+          "pmid": "42063588"
+        },
+        {
+          "citation": "DrAuthorB et al 2026 Cancer Metastasis Rev",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Genetic characteristics and targeted treatments of primary bladder and urachal adenocarcinomas: a systematic review with pooled descriptive genomic analyses.",
+          "doi": "10.1007/s10555-026-10332-3",
+          "n_participants": 100,
+          "pmid": "42062619"
+        },
+        {
+          "citation": "KhatriC et al 2026 Sci Rep",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Doublet versus triplet therapy in Indian patients with locally advanced & metastatic gall bladder cancer: a randomised trial.",
+          "doi": "10.1038/s41598-026-36231-9",
+          "n_participants": 60,
+          "pmid": "42069801"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "chlorinated_dbps",
+      "name": "Chlorinated disinfection by-products",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "Chlorinated disinfection by-products as an environmental or occupational exposure."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "benzene",
+      "outcome_slug": "leukemia",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "workers with benzene exposure",
+      "mechanism": "Benzene metabolites damage hematopoietic stem cells and bone-marrow DNA repair, which is why leukemia is its signature cancer outcome.",
+      "summary": "The strongest piece here is the 2022 Zhang meta analysis in J Environ Sci (China), which ties benzene exposure to leukemia in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ZhangH et al 2022 J Environ Sci (China)",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Meta-analysis of the effect of low-level occupational benzene exposure on human peripheral blood leukocyte counts in China.",
+          "doi": "10.1016/j.jes.2021.08.035",
+          "n_participants": 2020,
+          "pmid": "35459485"
+        },
+        {
+          "citation": "CheanD et al 2026 Intensive Care Med",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Temporal trends and prognostic factors in critically ill adult patients with acute leukemia: an individual participant data meta-analysis.",
+          "doi": "10.1007/s00134-026-08449-8",
+          "n_participants": 2003,
+          "pmid": "42081104"
+        },
+        {
+          "citation": "MaltoniC et al 1983 Am J Ind Med",
+          "year": 1983,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Benzene: a multipotential carcinogen. Results of long-term bioassays performed at the Bologna Institute of Oncology.",
+          "doi": "10.1002/ajim.4700040503",
+          "n_participants": 1976,
+          "pmid": "6353911"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "benzene",
+      "name": "Benzene exposure",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "Benzene exposure as an environmental or occupational exposure."
+    },
+    {
+      "slug": "leukemia",
+      "name": "Leukemia",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Leukemia as a clinically relevant health outcome."
+    }
+  ]
+}

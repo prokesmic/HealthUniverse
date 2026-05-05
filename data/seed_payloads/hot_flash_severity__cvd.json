@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hot_flash_severity",
+      "outcome_slug": "cvd",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "postmenopausal women",
+      "mechanism": "Severe vasomotor symptoms may signal endothelial instability and autonomic dysregulation in addition to estrogen withdrawal, which could connect them to cardiovascular risk.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2023 Armeni meta analysis in Maturitas already points to severe vasomotor symptoms tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ArmeniA et al 2023 Maturitas",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Vasomotor symptoms and risk of cardiovascular disease in peri- and postmenopausal women: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.maturitas.2023.02.004",
+          "n_participants": 96,
+          "pmid": "36907116"
+        },
+        {
+          "citation": "HickeyM et al 2026 Nat Rev Endocrinol",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Risk factors, management and consequences of severe menopausal vasomotor symptoms.",
+          "doi": "10.1038/s41574-026-01245-w",
+          "n_participants": 70,
+          "pmid": "41882338"
+        },
+        {
+          "citation": "KahleovaH et al 2025 Maturitas",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Isoflavones and changes in body weight and severe hot flashes in postmenopausal women: A secondary analysis of a randomized clinical trial.",
+          "doi": "10.1016/j.maturitas.2025.108661",
+          "n_participants": 84,
+          "pmid": "40663878"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hot_flash_severity",
+      "name": "Severe vasomotor symptoms",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Severe vasomotor symptoms as a clinically relevant health outcome."
+    }
+  ]
+}

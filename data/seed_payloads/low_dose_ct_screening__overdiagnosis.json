@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "low_dose_ct_screening",
+      "outcome_slug": "overdiagnosis",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "heavy smokers and former heavy smokers",
+      "mechanism": "Low-dose CT screening has a biologically plausible route to worse overdiagnosis, and the mechanism is consistent with the kinds of tissues or systems most directly exposed.",
+      "summary": "The anchor for this edge is the 2025 Du meta analysis in Int J Cancer, which suggests that low-dose ct screening tracks with higher risk or worse outcomes for overdiagnosis. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "DuAuthorY et al 2025 Int J Cancer",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Overdiagnosis in low-dose CT lung cancer screening: A systematic review and meta-analysis of overall magnitude and subgroup variations.",
+          "doi": "10.1002/ijc.70049",
+          "n_participants": 2024,
+          "pmid": "40679325"
+        },
+        {
+          "citation": "daRochaKC et al 2026 Rev Bras Ginecol Obstet",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Human papillomavirus-based vs. cytology for cervical cancer screening: a systematic review with meta-analysis.",
+          "doi": "10.61622/rbgo/2026rbgo130",
+          "n_participants": 414846,
+          "pmid": "41988240"
+        },
+        {
+          "citation": "BennettA et al 2026 Curr Oncol",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Benefits and Harms of Screening for Prostate Cancer in Adults Aged 18 Years and Older: A Systematic Review.",
+          "doi": "10.3390/curroncol33040199",
+          "n_participants": 1000,
+          "pmid": "42041720"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "low_dose_ct_screening",
+      "name": "Low-dose CT screening",
+      "kind": "activity",
+      "aliases": [],
+      "description": "Low-dose CT screening as a structured activity or treatment exposure."
+    },
+    {
+      "slug": "overdiagnosis",
+      "name": "Overdiagnosis",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Overdiagnosis as a clinically relevant health outcome."
+    }
+  ]
+}

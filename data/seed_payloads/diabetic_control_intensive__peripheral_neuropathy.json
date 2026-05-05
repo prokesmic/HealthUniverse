@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "diabetic_control_intensive",
+      "outcome_slug": "peripheral_neuropathy",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with diabetes",
+      "mechanism": "Tighter glycemic control should slow neuropathy by reducing glucose-driven nerve and microvascular damage over time.",
+      "summary": "The strongest piece here is the 2022 Carvajal-Moreno systematic review in J Clin Med, which ties intensive glycaemic control to peripheral neuropathy in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Healthier-user bias, screening intensity, and baseline risk can all inflate apparent benefit in observational work, so the magnitude should be read conservatively.",
+      "evidence": [
+        {
+          "citation": "CarvajalMorenoL et al 2022 J Clin Med",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Prevention of Peripheral Distal Polyneuropathy in Patients with Diabetes: A Systematic Review.",
+          "doi": "10.3390/jcm11061723",
+          "n_participants": 23595,
+          "pmid": "35330052"
+        },
+        {
+          "citation": "SunS et al 2022 Therapie",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Reappraisal of the efficacy of intensive glycaemic control on microvascular complications in patients with type 2 diabetes: A meta-analysis of randomised control-trials.",
+          "doi": "10.1016/j.therap.2021.10.002",
+          "n_participants": 28614,
+          "pmid": "34782145"
+        },
+        {
+          "citation": "PonirakisG et al 2021 J Diabetes Investig",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Painful diabetic neuropathy is associated with increased nerve regeneration in patients with type 2 diabetes undergoing intensive glycemic control.",
+          "doi": "10.1111/jdi.13544",
+          "n_participants": 28,
+          "pmid": "33714226"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "diabetic_control_intensive",
+      "name": "Intensive glycaemic control",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Intensive glycaemic control as a behavioral exposure or habit."
+    },
+    {
+      "slug": "peripheral_neuropathy",
+      "name": "Peripheral neuropathy",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Peripheral neuropathy as a clinically relevant health outcome."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vitamin_d_1000iu",
+      "outcome_slug": "fractures",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "Different designs and subgroups point in different directions, so a single pooled estimate is not the right way to read this edge.",
+      "population": "community-dwelling adults",
+      "mechanism": "Any fracture benefit from 1000 IU/day would mainly come through correcting mild insufficiency, not from pharmacologic bone effects in already replete adults.",
+      "summary": "The anchor for this edge is the 2019 Yao meta analysis in JAMA Netw Open, which suggests that vitamin d about 1000 iu/day produces mixed findings across studies for fractures. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Subgroup differences, dose thresholds, and competing mechanisms likely explain why the literature does not settle into one clean direction.",
+      "evidence": [
+        {
+          "citation": "YaoP et al 2019 JAMA Netw Open",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Vitamin D and Calcium for the Prevention of Fracture: A Systematic Review and Meta-analysis.",
+          "doi": "10.1001/jamanetworkopen.2019.17789",
+          "n_participants": 500,
+          "pmid": "31860103"
+        },
+        {
+          "citation": "BischoffFerrariHA et al 2019 Z Gerontol Geriatr",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Should vitamin D administration for fracture prevention be continued? : A discussion of recent meta-analysis findings.",
+          "doi": "10.1007/s00391-019-01573-9",
+          "n_participants": 100000,
+          "pmid": "31263959"
+        },
+        {
+          "citation": "ChungM et al 2011 Ann Intern Med",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Vitamin D with or without calcium supplementation for prevention of cancer and fractures: an updated meta-analysis for the U.S. Preventive Services Task Force.",
+          "doi": "10.7326/0003-4819-155-12-201112200-00005",
+          "n_participants": 1000,
+          "pmid": "22184690"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vitamin_d_1000iu",
+      "name": "Vitamin D about 1000 IU/day",
+      "kind": "supplement",
+      "aliases": [],
+      "description": "Vitamin D about 1000 IU/day as a supplement exposure."
+    },
+    {
+      "slug": "fractures",
+      "name": "Fractures",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Fractures as a clinically relevant health outcome."
+    }
+  ]
+}

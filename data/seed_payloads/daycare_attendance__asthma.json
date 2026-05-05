@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "daycare_attendance",
+      "outcome_slug": "asthma",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "Different designs and subgroups point in different directions, so a single pooled estimate is not the right way to read this edge.",
+      "population": "children attending daycare",
+      "mechanism": "This edge is mechanistically plausible in both directions because context changes the dominant pathway, which helps explain why the literature is mixed rather than cleanly positive or negative.",
+      "summary": "The anchor for this edge is the 2021 Owora meta analysis in Pediatr Allergy Immunol, which suggests that daycare attendance produces mixed findings across studies for asthma. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Subgroup differences, dose thresholds, and competing mechanisms likely explain why the literature does not settle into one clean direction.",
+      "evidence": [
+        {
+          "citation": "OworaAH et al 2021 Pediatr Allergy Immunol",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Childhood wheeze trajectory-specific risk factors: A systematic review and meta-analysis.",
+          "doi": "10.1111/pai.13313",
+          "n_participants": 2019,
+          "pmid": "32668501"
+        },
+        {
+          "citation": "DengS et al 2024 Int J Infect Dis",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Risk factors for respiratory syncytial virus-associated acute lower respiratory infection in children under 5 years: An updated systematic review and meta-analysis.",
+          "doi": "10.1016/j.ijid.2024.107125",
+          "n_participants": 2022,
+          "pmid": "38945430"
+        },
+        {
+          "citation": "GarcaEzquiagaJ et al 2026 Acta Paediatr",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Incidence and Early-Life Risk Factors for Food Allergy in a Spanish Birth Cohort.",
+          "doi": "10.1111/apa.70530",
+          "n_participants": 1006,
+          "pmid": "41989187"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "daycare_attendance",
+      "name": "Daycare attendance",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Daycare attendance as a behavioral exposure or habit."
+    }
+  ]
+}

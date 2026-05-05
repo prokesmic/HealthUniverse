@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "endothelial_dysfunction_fmd",
+      "outcome_slug": "myocardial_infarction",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults in vascular-risk cohorts",
+      "mechanism": "Endothelial dysfunction can precede plaque instability and thrombosis, which is why impaired FMD may herald myocardial infarction risk.",
+      "summary": "The anchor for this edge is the 2025 Hermawan meta analysis in J Clin Med, which suggests that endothelial dysfunction by flow-mediated dilation tracks with higher risk or worse outcomes for myocardial infarction. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "HermawanHO et al 2025 J Clin Med",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prognostic Value of Flow-Mediated Dilation and Reactive Hyperemia Index in Heart Failure: A Systematic Review and Meta-Analysis.",
+          "doi": "10.3390/jcm15010149",
+          "n_participants": 1890,
+          "pmid": "41517397"
+        },
+        {
+          "citation": "DietzSM et al 2015 PLoS One",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Peripheral Endothelial (Dys)Function, Arterial Stiffness and Carotid Intima-Media Thickness in Patients after Kawasaki Disease: A Systematic Review and Meta-Analyses.",
+          "doi": "10.1371/journal.pone.0130913",
+          "n_participants": 100,
+          "pmid": "26161871"
+        },
+        {
+          "citation": "AispuruLancheR et al 2024 Ther Adv Cardiovasc Dis",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Vascular-endothelial adaptations following low and high volumes of high-intensity interval training in patients after myocardial infarction.",
+          "doi": "10.1177/17539447241286036",
+          "n_participants": 28,
+          "pmid": "39380195"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "endothelial_dysfunction_fmd",
+      "name": "Endothelial dysfunction by flow-mediated dilation",
+      "kind": "biomarker",
+      "aliases": [],
+      "description": "Endothelial dysfunction by flow-mediated dilation as a measurable biomarker."
+    },
+    {
+      "slug": "myocardial_infarction",
+      "name": "Myocardial infarction",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Myocardial infarction as a clinically relevant health outcome."
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "cgm_t2d",
+      "outcome_slug": "hba1c",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with type 2 diabetes",
+      "mechanism": "Continuous glucose monitoring changes behavior and medication timing by making hyperglycemia visible in real time, which is the route to lower HbA1c.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Zhu meta analysis in BMC Endocr Disord already points to continuous glucose monitoring in type 2 diabetes tracks with lower risk or better outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Healthier-user bias, screening intensity, and baseline risk can all inflate apparent benefit in observational work, so the magnitude should be read conservatively.",
+      "evidence": [
+        {
+          "citation": "ZhuJ et al 2026 BMC Endocr Disord",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy of continuous glucose monitoring in comparison to self-blood glucose monitoring in patients with type 2 diabetes mellitus under insulin treatment: a systematic review and meta-analysis.",
+          "doi": "10.1186/s12902-026-02167-4",
+          "n_participants": 1550,
+          "pmid": "41942969"
+        },
+        {
+          "citation": "HespanholLC et al 2026 Diabetes Care",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Automated Insulin Delivery Systems in Type 2 Diabetes Mellitus: A Systematic Review and Meta-analysis.",
+          "doi": "10.2337/dc25-2435",
+          "n_participants": 1530,
+          "pmid": "41940799"
+        },
+        {
+          "citation": "LianX et al 2025 Front Endocrinol (Lausanne)",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Impact of real-time continuous glucose monitoring on glycaemic control in adults with type 2 diabetes: systematic review and meta-analysis.",
+          "doi": "10.3389/fendo.2025.1761579",
+          "n_participants": 437,
+          "pmid": "41659334"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cgm_t2d",
+      "name": "Continuous glucose monitoring in type 2 diabetes",
+      "kind": "activity",
+      "aliases": [],
+      "description": "Continuous glucose monitoring in type 2 diabetes as a structured activity or treatment exposure."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "silica_dust",
+      "outcome_slug": "lupus",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "workers exposed to crystalline silica",
+      "mechanism": "Silica exposure can dysregulate innate immunity and autoantigen handling, which is why it has long been linked to lupus and other autoimmune disease.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2020 Xu meta analysis in Int J Rheum Dis already points to crystalline silica exposure tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "XuAuthorY et al 2020 Int J Rheum Dis",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of FcγRIIA-R/H131 polymorphism and systemic lupus erythematosus lupus nephritis risk: A meta-analysis.",
+          "doi": "10.1111/1756-185X.13815",
+          "n_participants": 2065,
+          "pmid": "32189478"
+        },
+        {
+          "citation": "LiuS et al 2018 Beijing Da Xue Xue Bao Yi Xue Ban",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "[Efficacy of mesenchymal stem cells on systemic lupus erythematosus:a meta-analysis].",
+          "doi": "",
+          "n_participants": 213,
+          "pmid": "30562774"
+        },
+        {
+          "citation": "DaviesR et al 2024 Clin Transl Sci",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "A first-in-human, randomized study of the safety, pharmacokinetics and pharmacodynamics of povetacicept, an enhanced dual BAFF/APRIL antagonist, in healthy adults.",
+          "doi": "10.1111/cts.70055",
+          "n_participants": 960,
+          "pmid": "39494621"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "silica_dust",
+      "name": "Crystalline silica exposure",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "Crystalline silica exposure as an environmental or occupational exposure."
+    },
+    {
+      "slug": "lupus",
+      "name": "Systemic lupus erythematosus",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Systemic lupus erythematosus as a clinically relevant health outcome."
+    }
+  ]
+}

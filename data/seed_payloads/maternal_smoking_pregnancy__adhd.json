@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "maternal_smoking_pregnancy",
+      "outcome_slug": "adhd",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "children exposed to prenatal maternal smoking",
+      "mechanism": "Nicotine and combustion toxicants cross the placenta and can disrupt fetal brain development, while placental hypoxia adds another biologically plausible route to ADHD-like outcomes.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Ambildhok systematic review in Cureus already points to maternal smoking during pregnancy tracks with higher risk or worse outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "AmbildhokK et al 2026 Cureus",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Consequences of Prenatal Tobacco Exposure: A Systematic Review of Birth Outcomes and Developmental Trajectories.",
+          "doi": "10.7759/cureus.105888",
+          "n_participants": 2025,
+          "pmid": "42037809"
+        },
+        {
+          "citation": "LiuF et al 2025 Clin Psychol Psychother",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Genetic and Environmental Risk Factors for Intermittent Explosive Disorder, ADHD and Conduct Disorder: Shared and Unique Influences.",
+          "doi": "10.1002/cpp.70195",
+          "n_participants": 44,
+          "pmid": "41399269"
+        },
+        {
+          "citation": "PeltekidiA et al 2025 J Clin Med",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maternal Smoking During Pregnancy and Risk of Autism Spectrum Disorder in Offspring: A Systematic Review and Meta-Analysis.",
+          "doi": "10.3390/jcm14238584",
+          "n_participants": 2020,
+          "pmid": "41375887"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "maternal_smoking_pregnancy",
+      "name": "Maternal smoking during pregnancy",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Maternal smoking during pregnancy as a behavioral exposure or habit."
+    },
+    {
+      "slug": "adhd",
+      "name": "Attention-deficit/hyperactivity disorder",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Attention-deficit/hyperactivity disorder as a clinically relevant health outcome."
+    }
+  ]
+}

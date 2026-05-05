@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "sarcopenia",
+      "outcome_slug": "hospitalisation",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "older adults and medically complex adults",
+      "mechanism": "Low muscle mass reduces mobility, respiratory reserve, and recovery capacity, which explains why sarcopenia predicts harder hospital courses.",
+      "summary": "The strongest piece here is the 2024 Bertelsen rct in Trials, which ties sarcopenia to hospitalisation in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "BertelsenAS et al 2024 Trials",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "ROBot-assisted physical training of older patients during acUte hospitaliSaTion-study protocol for a randomised controlled trial (ROBUST).",
+          "doi": "10.1186/s13063-024-08044-6",
+          "n_participants": 488,
+          "pmid": "38576046"
+        },
+        {
+          "citation": "ZhaoY et al 2019 Aging Clin Exp Res",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Sarcopenia and hospital-related outcomes in the old people: a systematic review and meta-analysis.",
+          "doi": "10.1007/s40520-018-0931-z",
+          "n_participants": 4174,
+          "pmid": "29549649"
+        },
+        {
+          "citation": "YamanouchiK et al 2026 Spine Deform",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Radiographic paraspinal muscle size in adult spinal deformity: a systematic review and meta-analysis.",
+          "doi": "10.1007/s43390-026-01341-x",
+          "n_participants": 18,
+          "pmid": "41920498"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "sarcopenia",
+      "name": "Sarcopenia",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Sarcopenia as a clinically relevant health outcome."
+    },
+    {
+      "slug": "hospitalisation",
+      "name": "Hospitalisation",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Hospitalisation as a clinically relevant health outcome."
+    }
+  ]
+}

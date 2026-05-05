@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "gos_prebiotic",
+      "outcome_slug": "bifidobacteria_abundance",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+      "population": "healthy adults or infants",
+      "mechanism": "Galacto-oligosaccharides are preferential substrates for bifidobacteria, so increased abundance is the most direct expected response.",
+      "summary": "The strongest piece here is the 2022 Estorninos rct in Am J Clin Nutr, which ties galacto-oligosaccharides to bifidobacteria abundance in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Healthier-user bias, screening intensity, and baseline risk can all inflate apparent benefit in observational work, so the magnitude should be read conservatively.",
+      "evidence": [
+        {
+          "citation": "EstorninosE et al 2022 Am J Clin Nutr",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Term infant formula supplemented with milk-derived oligosaccharides shifts the gut microbiota closer to that of human milk-fed infants and improves intestinal immune defense: a randomized controlled trial.",
+          "doi": "10.1093/ajcn/nqab336",
+          "n_participants": 114,
+          "pmid": "34617558"
+        },
+        {
+          "citation": "TianR et al 2024 Food Funct",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of inulin, galacto-oligosaccharides, and polyphenols on the gut microbiota, with a focus on",
+          "doi": "10.1039/d4fo00428k",
+          "n_participants": 451,
+          "pmid": "38590256"
+        },
+        {
+          "citation": "BonnetN et al 2025 Nat Commun",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A young child formula with Limosilactobacillus reuteri and GOS modulates gut microbiome and enhances bone and muscle development: a randomized trial.",
+          "doi": "10.1038/s41467-025-66930-2",
+          "n_participants": 91,
+          "pmid": "41387706"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "gos_prebiotic",
+      "name": "Galacto-oligosaccharides",
+      "kind": "supplement",
+      "aliases": [],
+      "description": "Galacto-oligosaccharides as a supplement exposure."
+    },
+    {
+      "slug": "bifidobacteria_abundance",
+      "name": "Bifidobacteria abundance",
+      "kind": "process",
+      "aliases": [],
+      "description": "Bifidobacteria abundance as a measurable physiological or clinical process."
+    }
+  ]
+}

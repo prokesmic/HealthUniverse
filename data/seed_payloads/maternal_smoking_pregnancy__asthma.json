@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "maternal_smoking_pregnancy",
+      "outcome_slug": "asthma",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "children exposed to prenatal maternal smoking",
+      "mechanism": "Prenatal smoke exposure can alter fetal airway development and immune programming, increasing the likelihood of wheeze and asthma later on.",
+      "summary": "The anchor for this edge is the 2025 Pinot de Moira meta analysis in J Allergy Clin Immunol Pract, which suggests that maternal smoking during pregnancy tracks with higher risk or worse outcomes for asthma. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "PinotdeMoiraA et al 2025 J Allergy Clin Immunol Pract",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Understanding Social Inequalities in Childhood Asthma: Quantifying the Mediating Role of Modifiable Early-Life Risk Factors in Seven European Birth Cohorts.",
+          "doi": "10.1016/j.jaip.2025.02.032",
+          "n_participants": 107884,
+          "pmid": "40314625"
+        },
+        {
+          "citation": "JiaX et al 2024 PLoS One",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Perinatal maternal depression and the risk of childhood asthma in offspring: A meta-analysis.",
+          "doi": "10.1371/journal.pone.0310647",
+          "n_participants": 833230,
+          "pmid": "39348392"
+        },
+        {
+          "citation": "DengS et al 2024 Int J Infect Dis",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Risk factors for respiratory syncytial virus-associated acute lower respiratory infection in children under 5 years: An updated systematic review and meta-analysis.",
+          "doi": "10.1016/j.ijid.2024.107125",
+          "n_participants": 2022,
+          "pmid": "38945430"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "maternal_smoking_pregnancy",
+      "name": "Maternal smoking during pregnancy",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Maternal smoking during pregnancy as a behavioral exposure or habit."
+    }
+  ]
+}

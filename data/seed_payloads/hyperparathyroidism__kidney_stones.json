@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hyperparathyroidism",
+      "outcome_slug": "kidney_stones",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with primary hyperparathyroidism",
+      "mechanism": "Excess PTH raises calcium turnover and urinary calcium load, making kidney-stone formation a direct downstream risk.",
+      "summary": "The strongest piece here is the 2026 Jahrreiss systematic review in Wien Klin Wochenschr, which ties hyperparathyroidism to kidney stones in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "JahrreissV et al 2026 Wien Klin Wochenschr",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effect of parathyroidectomy on stone recurrence in primary hyperparathyroidism : A systematic review.",
+          "doi": "10.1007/s00508-026-02733-9",
+          "n_participants": 8000,
+          "pmid": "41874646"
+        },
+        {
+          "citation": "HoffmanK et al 2023 J Gastrointest Surg",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Incidence of Kidney Stones After Bariatric Surgeries: Comparing Roux-en-Y Gastric Bypass and Sleeve Gastrectomy.",
+          "doi": "10.1007/s11605-023-05849-9",
+          "n_participants": 22770,
+          "pmid": "37783913"
+        },
+        {
+          "citation": "DhayatNA et al 2022 Kidney Int Rep",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Predictors of Bone Mineral Density in Kidney Stone Formers.",
+          "doi": "10.1016/j.ekir.2021.12.003",
+          "n_participants": 504,
+          "pmid": "35257068"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hyperparathyroidism",
+      "name": "Hyperparathyroidism",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Hyperparathyroidism as a clinically relevant health outcome."
+    },
+    {
+      "slug": "kidney_stones",
+      "name": "Kidney stones",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Kidney stones as a clinically relevant health outcome."
+    }
+  ]
+}

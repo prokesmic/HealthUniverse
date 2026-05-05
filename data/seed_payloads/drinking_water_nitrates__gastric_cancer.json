@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "drinking_water_nitrates",
+      "outcome_slug": "gastric_cancer",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults exposed to nitrate-contaminated drinking water",
+      "mechanism": "In the stomach, nitrates can feed N-nitroso compound formation under the right conditions, a long-standing mechanistic explanation for gastric cancer concern.",
+      "summary": "The anchor for this edge is the 2022 Elwood meta analysis in Cancer Epidemiol, which suggests that drinking water nitrates tracks with higher risk or worse outcomes for gastric cancer. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ElwoodJM et al 2022 Cancer Epidemiol",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Nitrates in drinking water and cancers of the colon and rectum: a meta-analysis of epidemiological studies.",
+          "doi": "10.1016/j.canep.2022.102148",
+          "n_participants": 2021,
+          "pmid": "35429892"
+        },
+        {
+          "citation": "WuAuthorW et al 2026 Front Endocrinol (Lausanne)",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Type 2 diabetes mellitus and cancer: A systematic review and meta-analysis of Mendelian randomization studies.",
+          "doi": "10.3389/fendo.2026.1713815",
+          "n_participants": 2025,
+          "pmid": "42064762"
+        },
+        {
+          "citation": "TamrazM et al 2026 Toxics",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Prostate Cancer in the MENA Region: Attributable Burden of Behavioral and Environmental Exposures.",
+          "doi": "10.3390/toxics14010096",
+          "n_participants": 100000,
+          "pmid": "41600645"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "gastric_cancer",
+      "name": "Gastric cancer",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Gastric cancer as a clinically relevant health outcome."
+    }
+  ]
+}

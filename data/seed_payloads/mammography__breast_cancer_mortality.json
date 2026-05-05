@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "mammography",
+      "outcome_slug": "breast_cancer_mortality",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+      "population": "screening-age women",
+      "mechanism": "Mammography does not change tumor biology, but it can shift some diagnoses earlier enough to prevent breast-cancer deaths at the cost of false positives and overdiagnosis.",
+      "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Hunger meta analysis in Rofo already points to mammography screening tracks with lower risk or better outcomes, and later studies mostly refine the size of the effect rather than overturning it. In practice this reads more like a real risk signal than a one-off finding.",
+      "caveats": "Healthier-user bias, screening intensity, and baseline risk can all inflate apparent benefit in observational work, so the magnitude should be read conservatively.",
+      "evidence": [
+        {
+          "citation": "HungerT et al 2026 Rofo",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Extending the Age Range in Mammography Screening: A Benefit-Risk Assessment from a Radiation Protection Perspective.",
+          "doi": "10.1055/a-2674-5744",
+          "n_participants": 394080,
+          "pmid": "40876822"
+        },
+        {
+          "citation": "DibdenA et al 2023 Cancers (Basel)",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Reply to Yaffe, M.J. Correction for Self-Selection in Breast Cancer Screening. Comment on \"Dibden et al. Worldwide Review and Meta-Analysis of Cohort Studies Measuring the Effect of Mammography Screening Programmes on Incidence-Based Breast Cancer Mortality.",
+          "doi": "10.3390/cancers15184577",
+          "n_participants": 100,
+          "pmid": "37760546"
+        },
+        {
+          "citation": "YaffeMJ et al 2023 Cancers (Basel)",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Correction for Self-Selection in Breast Cancer Screening. Comment on Dibden et al. Worldwide Review and Meta-Analysis of Cohort Studies Measuring the Effect of Mammography Screening Programmes on Incidence-Based Breast Cancer Mortality.",
+          "doi": "10.3390/cancers15184576",
+          "n_participants": 40,
+          "pmid": "37760545"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "mammography",
+      "name": "Mammography screening",
+      "kind": "activity",
+      "aliases": [],
+      "description": "Mammography screening as a structured activity or treatment exposure."
+    },
+    {
+      "slug": "breast_cancer_mortality",
+      "name": "Breast cancer mortality",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Breast cancer mortality as a clinically relevant health outcome."
+    }
+  ]
+}

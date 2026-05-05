@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "daycare_attendance",
+      "outcome_slug": "allergic_disease",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "Different designs and subgroups point in different directions, so a single pooled estimate is not the right way to read this edge.",
+      "population": "children attending daycare",
+      "mechanism": "The counter-hypothesis is that broader microbial exposure may accelerate immune maturation and reduce some allergic outcomes, though the balance depends on timing and environment.",
+      "summary": "For allergic disease, the most useful starting point is the 2018 Wallace meta analysis in Cancer Epidemiol Biomarkers Prev. It found that daycare attendance produces mixed findings across studies, and the follow-on evidence is broadly consistent even when absolute benefit or harm is modest.",
+      "caveats": "Subgroup differences, dose thresholds, and competing mechanisms likely explain why the literature does not settle into one clean direction.",
+      "evidence": [
+        {
+          "citation": "WallaceAD et al 2018 Cancer Epidemiol Biomarkers Prev",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Allergies and Childhood Acute Lymphoblastic Leukemia: A Case-Control Study and Meta-analysis.",
+          "doi": "10.1158/1055-9965.EPI-17-0584",
+          "n_participants": 977,
+          "pmid": "30068517"
+        },
+        {
+          "citation": "DidaS et al 2026 J Asthma",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Prevalence of asthma, allergic rhinitis, and atopic dermatitis and their association with risk factors in children in the southern region of Bosnia and Herzegovina (BiH).",
+          "doi": "10.1080/02770903.2025.2570701",
+          "n_participants": 1851,
+          "pmid": "41055385"
+        },
+        {
+          "citation": "LiangQ et al 2026 Front Pediatr",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Early-life mercury exposure and allergic diseases in childhood: systematic review and meta-analysis.",
+          "doi": "10.3389/fped.2026.1776559",
+          "n_participants": 2025,
+          "pmid": "42038240"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "daycare_attendance",
+      "name": "Daycare attendance",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Daycare attendance as a behavioral exposure or habit."
+    }
+  ]
+}

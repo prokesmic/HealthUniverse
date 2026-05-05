@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "periodontal_disease",
+      "outcome_slug": "pregnancy_complications",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "pregnant women with periodontal disease",
+      "mechanism": "Inflamed periodontal tissue can seed systemic cytokines and bacteremia during pregnancy, a proposed route to obstetric complications.",
+      "summary": "The anchor for this edge is the 2025 Yasin meta analysis in Neonatology, which suggests that periodontal disease tracks with higher risk or worse outcomes for pregnancy complications. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "YasinR et al 2025 Neonatology",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Interventions to Prevent and Manage Infections in Pregnancy.",
+          "doi": "10.1159/000543690",
+          "n_participants": 2014,
+          "pmid": "39874953"
+        },
+        {
+          "citation": "GarcaMartosJM et al 2025 Prim Care Diabetes",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between periodontal disease and gestational diabetes: Systematic review and meta-analysis.",
+          "doi": "10.1016/j.pcd.2024.11.003",
+          "n_participants": 2032,
+          "pmid": "39627087"
+        },
+        {
+          "citation": "MolinerSnchezCA et al 2020 Int J Environ Res Public Health",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effect of per Capita Income on the Relationship between Periodontal Disease during Pregnancy and the Risk of Preterm Birth and Low Birth Weight Newborn. Systematic Review and Meta-Analysis.",
+          "doi": "10.3390/ijerph17218015",
+          "n_participants": 98,
+          "pmid": "33143275"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "periodontal_disease",
+      "name": "Periodontal disease",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Periodontal disease as a clinically relevant health outcome."
+    },
+    {
+      "slug": "pregnancy_complications",
+      "name": "Pregnancy complications",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Pregnancy complications as a clinically relevant health outcome."
+    }
+  ]
+}

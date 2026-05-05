@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "metabolically_healthy_obesity",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults classified as metabolically healthy despite obesity",
+      "mechanism": "Even when glucose and lipids look acceptable at one time point, excess adiposity can still raise long-term risk through ectopic fat, inflammation, and later metabolic drift.",
+      "summary": "The anchor for this edge is the 2023 Opio meta analysis in Int J Obes (Lond), which suggests that metabolically healthy obesity tracks with higher risk or worse outcomes for all-cause mortality. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "OpioJ et al 2023 Int J Obes (Lond)",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Overweight or obesity increases the risk of cardiovascular disease among older Australian adults, even in the absence of cardiometabolic risk factors: a Bayesian survival analysis from the Hunter Community Study.",
+          "doi": "10.1038/s41366-022-01241-w",
+          "n_participants": 2313,
+          "pmid": "36482073"
+        },
+        {
+          "citation": "PutraICS et al 2022 Diabetes Metab Syndr",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Metabolically unhealthy phenotype in normal weight population and risk of mortality and major adverse cardiac events: A meta-analysis of 41 prospective cohort studies.",
+          "doi": "10.1016/j.dsx.2022.102635",
+          "n_participants": 4028750,
+          "pmid": "36240685"
+        },
+        {
+          "citation": "OpioJ et al 2020 Obes Rev",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Metabolically healthy overweight/obesity are associated with increased risk of cardiovascular disease in adults, even in the absence of metabolic risk factors: A systematic review and meta-analysis of prospective cohort studies.",
+          "doi": "10.1111/obr.13127",
+          "n_participants": 4492723,
+          "pmid": "32869512"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "metabolically_healthy_obesity",
+      "name": "Metabolically healthy obesity",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Metabolically healthy obesity as a clinically relevant health outcome."
+    }
+  ]
+}

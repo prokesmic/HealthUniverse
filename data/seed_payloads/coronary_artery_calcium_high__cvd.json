@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "coronary_artery_calcium_high",
+      "outcome_slug": "cvd",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "asymptomatic adults with calcium scoring",
+      "mechanism": "High coronary artery calcium score has a biologically plausible route to worse cardiovascular disease, and the mechanism is consistent with the kinds of tissues or systems most directly exposed.",
+      "summary": "The strongest piece here is the 2023 Su cohort in Transplant Direct, which ties high coronary artery calcium score to cardiovascular disease in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "SuAuthorA et al 2023 Transplant Direct",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "High Coronary Artery Calcium Score Is Associated With Increased Major Adverse Cardiac Events After Liver Transplantation.",
+          "doi": "10.1097/TXD.0000000000001426",
+          "n_participants": 227,
+          "pmid": "36700067"
+        },
+        {
+          "citation": "TiesD et al 2022 Eur Heart J Cardiovasc Imaging",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Pre-screening to guide coronary artery calcium scoring for early identification of high-risk individuals in the general population.",
+          "doi": "10.1093/ehjci/jeac137",
+          "n_participants": 6530,
+          "pmid": "35851802"
+        },
+        {
+          "citation": "OhAuthorTR et al 2021 J Pers Med",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Predictive Model for High Coronary Artery Calcium Score in Young Patients with Non-Dialysis Chronic Kidney Disease.",
+          "doi": "10.3390/jpm11121372",
+          "n_participants": 87,
+          "pmid": "34945844"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "coronary_artery_calcium_high",
+      "name": "High coronary artery calcium score",
+      "kind": "biomarker",
+      "aliases": [],
+      "description": "High coronary artery calcium score as a measurable biomarker."
+    }
+  ]
+}

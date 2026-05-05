@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "sleep_apnea",
+      "outcome_slug": "atrial_fibrillation",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults with obstructive sleep apnea",
+      "mechanism": "Apneic hypoxia and intrathoracic pressure swings stretch the atria and destabilize autonomic tone, an established recipe for atrial fibrillation.",
+      "summary": "The anchor for this edge is the 2026 Makris meta analysis in Catheter Cardiovasc Interv, which suggests that obstructive sleep apnea tracks with higher risk or worse outcomes for atrial fibrillation. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "MakrisA et al 2026 Catheter Cardiovasc Interv",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Favorable Effects of Renal Denervation in Hypertension-Related Comorbidities. A Systematic Review and Meta-Analysis.",
+          "doi": "10.1002/ccd.70600",
+          "n_participants": 818,
+          "pmid": "41924963"
+        },
+        {
+          "citation": "WeiGC et al 2026 Medicine (Baltimore)",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Assessing the causal association between obstructive sleep apnea and the risk of atrial fibrillation.",
+          "doi": "10.1097/MD.0000000000047394",
+          "n_participants": 95,
+          "pmid": "41630271"
+        },
+        {
+          "citation": "JavaidSS et al 2025 Cardiol Rev",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Impact of Continuous Positive Airway Pressure on Cardiovascular Health in Patients With Obstructive Sleep Apnea: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1097/CRD.0000000000001004",
+          "n_participants": 361,
+          "pmid": "40694057"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "sleep_apnea",
+      "name": "Obstructive sleep apnea",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Obstructive sleep apnea as a clinically relevant health outcome."
+    },
+    {
+      "slug": "atrial_fibrillation",
+      "name": "Atrial fibrillation",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Atrial fibrillation as a clinically relevant health outcome."
+    }
+  ]
+}

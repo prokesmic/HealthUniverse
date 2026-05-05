@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "bisphosphonates",
+      "outcome_slug": "atypical_femur_fracture",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "long-term bisphosphonate users",
+      "mechanism": "Long suppression of bone turnover can leave microcracks unrepaired in the subtrochanteric femur, which is the leading biological explanation for atypical stress-type fractures after prolonged use.",
+      "summary": "The anchor for this edge is the 2023 Gates meta analysis in Syst Rev, which suggests that bisphosphonates tracks with higher risk or worse outcomes for atypical femur fracture. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "GatesM et al 2023 Syst Rev",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Screening for the primary prevention of fragility fractures among adults aged 40 years and older in primary care: systematic reviews of the effects and acceptability of screening and treatment, and the accuracy of risk prediction tools.",
+          "doi": "10.1186/s13643-023-02181-w",
+          "n_participants": 67611,
+          "pmid": "36945065"
+        },
+        {
+          "citation": "WangM et al 2022 JBMR Plus",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Bisphosphonate Drug Holidays: Evidence From Clinical Trials and Real-World Studies.",
+          "doi": "10.1002/jbm4.10629",
+          "n_participants": 19,
+          "pmid": "35720669"
+        },
+        {
+          "citation": "AdamsA et al 2024 Cochrane Database Syst Rev",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Bone-modifying agents for reducing bone loss in women with early and locally advanced breast cancer: a network meta-analysis.",
+          "doi": "10.1002/14651858.CD013451.pub2",
+          "n_participants": 35163,
+          "pmid": "38979716"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "bisphosphonates",
+      "name": "Bisphosphonates",
+      "kind": "drug",
+      "aliases": [],
+      "description": "Bisphosphonates as a medication exposure."
+    },
+    {
+      "slug": "atypical_femur_fracture",
+      "name": "Atypical femur fracture",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Atypical femur fracture as a clinically relevant health outcome."
+    }
+  ]
+}

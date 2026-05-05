@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "frailty_index",
+      "outcome_slug": "disability",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "older adults followed longitudinally",
+      "mechanism": "Frailty index has a biologically plausible route to worse functional disability, and the mechanism is consistent with the kinds of tissues or systems most directly exposed.",
+      "summary": "The anchor for this edge is the 2020 Shi cohort in J Gen Intern Med, which suggests that frailty index tracks with higher risk or worse outcomes for functional disability. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "ShiSM et al 2020 J Gen Intern Med",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Predicting Mortality and Adverse Outcomes: Comparing the Frailty Index to General Prognostic Indices.",
+          "doi": "10.1007/s11606-020-05700-w",
+          "n_participants": 1385,
+          "pmid": "32072368"
+        },
+        {
+          "citation": "SerranoVertizL et al 2026 Curr Med Res Opin",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Influence of frailty syndrome on disease outcomes in systemic lupus erythematosus: a systematic review and narrative synthesis.",
+          "doi": "10.1080/03007995.2026.2637197",
+          "n_participants": 1566,
+          "pmid": "41802208"
+        },
+        {
+          "citation": "WingoodM et al 2025 J Gerontol A Biol Sci Med Sci",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Frailty and physical activity: are all physical activity variables equal?",
+          "doi": "10.1093/gerona/glaf125",
+          "n_participants": 2021,
+          "pmid": "40498579"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "frailty_index",
+      "name": "Frailty index",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Frailty index as a behavioral exposure or habit."
+    },
+    {
+      "slug": "disability",
+      "name": "Functional disability",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Functional disability as a clinically relevant health outcome."
+    }
+  ]
+}

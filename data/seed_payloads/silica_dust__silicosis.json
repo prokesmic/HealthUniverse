@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "silica_dust",
+      "outcome_slug": "silicosis",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "workers exposed to crystalline silica",
+      "mechanism": "Crystalline silica kills alveolar macrophages and triggers a self-sustaining fibrotic response, which is the core mechanism behind silicosis.",
+      "summary": "The anchor for this edge is the 2026 Hua meta analysis in BMC Public Health, which suggests that crystalline silica exposure tracks with higher risk or worse outcomes for silicosis. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "HuaJT et al 2026 BMC Public Health",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Silicosis and silica dust sampling in mineral mining across 30 countries: a systematic review and meta-analysis.",
+          "doi": "10.1186/s12889-026-27032-w",
+          "n_participants": 36,
+          "pmid": "41862874"
+        },
+        {
+          "citation": "HowlettP et al 2023 PLOS Glob Public Health",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Silicosis, tuberculosis and silica exposure among artisanal and small-scale miners: A systematic review and modelling paper.",
+          "doi": "10.1371/journal.pgph.0002085",
+          "n_participants": 29562,
+          "pmid": "37733799"
+        },
+        {
+          "citation": "AnlimahF et al 2023 Environ Sci Pollut Res Int",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "A systematic review of the effectiveness of dust control measures adopted to reduce workplace exposure.",
+          "doi": "10.1007/s11356-023-26321-w",
+          "n_participants": 100,
+          "pmid": "36964805"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "silica_dust",
+      "name": "Crystalline silica exposure",
+      "kind": "environmental",
+      "aliases": [],
+      "description": "Crystalline silica exposure as an environmental or occupational exposure."
+    },
+    {
+      "slug": "silicosis",
+      "name": "Silicosis",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Silicosis as a clinically relevant health outcome."
+    }
+  ]
+}

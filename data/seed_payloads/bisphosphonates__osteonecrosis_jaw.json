@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "bisphosphonates",
+      "outcome_slug": "osteonecrosis_jaw",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults receiving oral or intravenous bisphosphonates",
+      "mechanism": "Very low jaw-turnover states, local trauma, and impaired healing around dental work help explain why osteonecrosis of the jaw clusters in heavily exposed bisphosphonate users.",
+      "summary": "The strongest piece here is the 2024 Adams meta analysis in Cochrane Database Syst Rev, which ties bisphosphonates to osteonecrosis of the jaw in a direction that later studies largely support. That makes this edge more about calibrating magnitude and context than arguing over whether the signal exists at all.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "AdamsA et al 2024 Cochrane Database Syst Rev",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Bone-modifying agents for reducing bone loss in women with early and locally advanced breast cancer: a network meta-analysis.",
+          "doi": "10.1002/14651858.CD013451.pub2",
+          "n_participants": 35163,
+          "pmid": "38979716"
+        },
+        {
+          "citation": "GatesM et al 2023 Syst Rev",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Screening for the primary prevention of fragility fractures among adults aged 40 years and older in primary care: systematic reviews of the effects and acceptability of screening and treatment, and the accuracy of risk prediction tools.",
+          "doi": "10.1186/s13643-023-02181-w",
+          "n_participants": 67611,
+          "pmid": "36945065"
+        },
+        {
+          "citation": "JakobT et al 2020 Cochrane Database Syst Rev",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Bisphosphonates or RANK-ligand-inhibitors for men with prostate cancer and bone metastases: a network meta-analysis.",
+          "doi": "10.1002/14651858.CD013020.pub2",
+          "n_participants": 5494,
+          "pmid": "33270906"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "bisphosphonates",
+      "name": "Bisphosphonates",
+      "kind": "drug",
+      "aliases": [],
+      "description": "Bisphosphonates as a medication exposure."
+    },
+    {
+      "slug": "osteonecrosis_jaw",
+      "name": "Osteonecrosis of the jaw",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Osteonecrosis of the jaw as a clinically relevant health outcome."
+    }
+  ]
+}

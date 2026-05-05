@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "carotid_intima_media_thickness",
+      "outcome_slug": "stroke",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+      "population": "adults in vascular-risk cohorts",
+      "mechanism": "Thicker carotid intima-media is a structural readout of arterial disease burden and is therefore plausibly linked to stroke risk.",
+      "summary": "The anchor for this edge is the 2026 Yao meta analysis in BMC Cardiovasc Disord, which suggests that high carotid intima-media thickness tracks with higher risk or worse outcomes for stroke. Later papers point in much the same direction, so the live uncertainty is usually about effect size or which subgroups carry the signal most strongly.",
+      "caveats": "Residual confounding and reverse causation remain possible in some observational studies, so the main readout is direction and plausibility rather than one exact risk number.",
+      "evidence": [
+        {
+          "citation": "YaoL et al 2026 BMC Cardiovasc Disord",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Risk factors for small vessel disease in adults with atherosclerosis: a systematic review and meta-analysis.",
+          "doi": "10.1186/s12872-026-05586-2",
+          "n_participants": 5585,
+          "pmid": "41645074"
+        },
+        {
+          "citation": "NiuQ et al 2025 Front Neurosci",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between circulating plasma CTRP3 levels and acute ischemic stroke: a systematic review and meta-analysis.",
+          "doi": "10.3389/fnins.2025.1582743",
+          "n_participants": 110,
+          "pmid": "40600192"
+        },
+        {
+          "citation": "ZhangY et al 2025 Medicine (Baltimore)",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Efficacy and safety of a traditional Chinese herbal formula Xuefu Zhuyu prescription for hypertension: A meta-analysis of randomized controlled trials.",
+          "doi": "10.1097/MD.0000000000041661",
+          "n_participants": 3391,
+          "pmid": "40489881"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "carotid_intima_media_thickness",
+      "name": "High carotid intima-media thickness",
+      "kind": "biomarker",
+      "aliases": [],
+      "description": "High carotid intima-media thickness as a measurable biomarker."
+    },
+    {
+      "slug": "stroke",
+      "name": "Stroke",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Stroke as a clinically relevant health outcome."
+    }
+  ]
+}
