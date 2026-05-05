@@ -1,73 +1,140 @@
 {% extends "base.html" %}
 {% block title %}About — Health Universe{% endblock %}
 {% block content %}
-<section class="about-page">
-  <a class="back" href="/">← Back</a>
+<section class="about-page-v2">
+  <a class="back" href="/">← Back to Health Universe</a>
 
-  <h1>About</h1>
-  <p class="lede about-lede">A continuously updated map of how nutrition, lifestyle, supplements, and environmental exposures affect chronic-disease risk. Built to be honest, cited, and cheap to keep alive.</p>
+  <header class="about-head-v2">
+    <p class="about-eyebrow">Methodology · what's behind every card</p>
+    <h1 class="about-title-v2">A continuously updated map of nutrition, lifestyle, supplements, and disease risk.</h1>
+    <p class="about-lede-v2">Built to be honest, cited, and cheap to keep alive.</p>
+  </header>
 
-  <div class="about-stats">
-    <div><b>{{ "{:,}".format(stats.edges) }}</b><small>relationships</small></div>
-    <div><b>{{ "{:,}".format(stats.studies) }}</b><small>studies tracked</small></div>
-    <div><b>{{ "{:,}".format(n_pmid_distinct) }}</b><small>distinct PubMed IDs</small></div>
-    <div><b>${{ "%.2f"|format(spent_usd) }}</b><small>lifetime LLM spend</small></div>
-  </div>
-
-  <div class="about-grid">
-    <div>
-      <h2>How a card gets here</h2>
-      <ol class="about-steps">
-        <li><b>Seed.</b> Each <em>(factor → outcome)</em> pair starts as a one-off deep research run. We use Claude Sonnet for the most leveraged ones (~750 pairs, capped at $50 lifetime), and Codex/Claude collaboratively-produced JSON payloads for the rest. Every quantitative evidence row is required to cite a real PubMed ID.</li>
-        <li><b>Verify.</b> The PMID validator hits PubMed esummary on every citation and rejects anything that doesn't resolve or whose title doesn't match. Single-letter "author" placeholders ("F 2026 Nutrients") are rejected. <code>n_participants</code> is required for meta-analyses, RCTs, cohorts, and case-control / cross-sectional rows.</li>
-        <li><b>Tier.</b> Evidence rows are weighted by study type and quality. The summed score maps to a confidence tier:
-          <ul class="tier-grid">
-            <li><span class="pill tier-A">A</span> Strong — ≥2 high-quality meta-analyses or large RCTs, consistent direction, mechanism known. <b>{{ tier_counts.get("A", 0) }} edges.</b></li>
-            <li><span class="pill tier-B">B</span> Moderate — multiple cohorts + plausible mechanism, minor conflicts. <b>{{ tier_counts.get("B", 0) }} edges.</b></li>
-            <li><span class="pill tier-C">C</span> Emerging — early RCTs or strong observational, mechanism plausible. <b>{{ tier_counts.get("C", 0) }} edges.</b></li>
-            <li><span class="pill tier-D">D</span> Limited — mechanistic / animal / single study only. <b>{{ tier_counts.get("D", 0) }} edges.</b></li>
-            <li><span class="pill tier-X">X</span> Contested — evidence genuinely split. We show the disagreement on <a href="/myths">/myths</a> and in the Counter-evidence panel on each card. <b>{{ tier_counts.get("X", 0) }} edges.</b></li>
-          </ul>
-        </li>
-        <li><b>Live update.</b> A <a href="https://github.com/prokesmic/HealthUniverse/blob/main/launchd/run-daily.sh">launchd job</a> fires every morning at 05:15. It pulls the last two days of new abstracts from PubMed and Europe PMC, asks local Gemma to extract any claims that match factors and outcomes already in the graph, re-scores affected edges, and queues anything that crossed into tier A or B for Claude review. The whole loop costs roughly $0 because Gemma runs on the user's Mac.</li>
-        <li><b>Retraction watch.</b> A second weekly job (Sundays 04:30) re-checks every PubMed ID we cite. Anything that PubMed has marked as retracted gets a red "RETRACTED" pill on its card and a reconsideration banner on the affected edge.</li>
-        <li><b>Counter-evidence.</b> For tier-X and selected high-stakes edges, we show studies that <em>disagree</em> in a separate panel below the supporting evidence. The whole point of this site falls apart if you only read confirmation.</li>
-      </ol>
+  <section class="about-numbers">
+    <div class="about-num-card">
+      <dt>Relationships</dt>
+      <dd>{{ "{:,}".format(stats.edges) }}</dd>
     </div>
+    <div class="about-num-card">
+      <dt>Studies tracked</dt>
+      <dd>{{ "{:,}".format(stats.studies) }}</dd>
+    </div>
+    <div class="about-num-card">
+      <dt>Distinct PubMed IDs</dt>
+      <dd>{{ "{:,}".format(n_pmid_distinct) }}</dd>
+    </div>
+    <div class="about-num-card">
+      <dt>Lifetime LLM spend</dt>
+      <dd>${{ "%.2f"|format(spent_usd) }}</dd>
+    </div>
+  </section>
 
-    <aside class="about-side">
-      <div class="card">
-        <h3>The cost rule</h3>
-        <p class="body-sm">Anthropic's API is used <b>only</b> for one-off seed research and tier-A/B adjudication, with a <b>hard $50 lifetime cap</b> enforced in <code>claude_client.py</code> via the <code>cost_ledger</code> table. Everything else (daily ingest, dedup, prose rewrites) runs on local <b>Gemma 4:26b</b> via Ollama. Embeddings use <b>nomic-embed-text</b> via Ollama.</p>
-        <p class="body-sm muted">Lifetime Claude spend so far: <b>${{ "%.2f"|format(spent_usd) }}</b>.</p>
+  <div class="about-grid-v2">
+    <article class="about-body-v2">
+      <section class="about-section">
+        <p class="about-section-eyebrow">How a card gets here</p>
+        <h2 class="about-section-h">Six steps</h2>
+
+        <ol class="about-steps-v2">
+          <li>
+            <span class="about-step-num">01</span>
+            <div class="about-step-body">
+              <h3>Seed</h3>
+              <p>Each <em>(factor → outcome)</em> pair starts as a one-off deep research run. We use Claude Sonnet for the most leveraged ones (~750 pairs, capped at $50 lifetime), and Codex/Claude collaboratively-produced JSON payloads for the rest. Every quantitative evidence row is required to cite a real PubMed ID.</p>
+            </div>
+          </li>
+          <li>
+            <span class="about-step-num">02</span>
+            <div class="about-step-body">
+              <h3>Verify</h3>
+              <p>The PMID validator hits PubMed esummary on every citation and rejects anything that doesn't resolve or whose title doesn't match. Single-letter "author" placeholders are rejected. <code>n_participants</code> is required for meta-analyses, RCTs, cohorts, case-control and cross-sectional rows.</p>
+            </div>
+          </li>
+          <li>
+            <span class="about-step-num">03</span>
+            <div class="about-step-body">
+              <h3>Tier</h3>
+              <p>Evidence rows are weighted by study type and quality. The summed score maps to a confidence tier:</p>
+              <ul class="about-tier-list">
+                <li><span class="pill tier-A">A</span> <b>Strong</b> — ≥2 high-quality meta-analyses or large RCTs, consistent direction, mechanism known. <span class="muted">{{ tier_counts.get("A", 0) }} edges.</span></li>
+                <li><span class="pill tier-B">B</span> <b>Moderate</b> — multiple cohorts + plausible mechanism, minor conflicts. <span class="muted">{{ tier_counts.get("B", 0) }} edges.</span></li>
+                <li><span class="pill tier-C">C</span> <b>Emerging</b> — early RCTs or strong observational, mechanism plausible. <span class="muted">{{ tier_counts.get("C", 0) }} edges.</span></li>
+                <li><span class="pill tier-D">D</span> <b>Limited</b> — mechanistic / animal / single study only. <span class="muted">{{ tier_counts.get("D", 0) }} edges.</span></li>
+                <li><span class="pill tier-X">X</span> <b>Contested</b> — evidence genuinely split. We show the disagreement on <a class="link" href="/myths">/myths</a> and in the counter-evidence panel on each card. <span class="muted">{{ tier_counts.get("X", 0) }} edges.</span></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <span class="about-step-num">04</span>
+            <div class="about-step-body">
+              <h3>Live update</h3>
+              <p>A launchd job fires every morning at 05:15. It pulls the last two days of new abstracts from PubMed and Europe PMC, asks local Gemma to extract any claims that match factors and outcomes already in the graph, re-scores affected edges, and queues anything that crossed into tier A or B for Claude review. The whole loop costs roughly $0 because Gemma runs on the user's Mac.</p>
+            </div>
+          </li>
+          <li>
+            <span class="about-step-num">05</span>
+            <div class="about-step-body">
+              <h3>Retraction watch</h3>
+              <p>A second weekly job (Sundays 04:30) re-checks every PubMed ID we cite. Anything PubMed has marked as retracted gets a red "RETRACTED" pill on its card and a reconsideration banner on the affected edge.</p>
+            </div>
+          </li>
+          <li>
+            <span class="about-step-num">06</span>
+            <div class="about-step-body">
+              <h3>Counter-evidence</h3>
+              <p>For tier-X and selected high-stakes edges, we show studies that <em>disagree</em> in a separate panel below the supporting evidence. The whole point of this site falls apart if you only read confirmation.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="about-section about-wont-section">
+        <p class="about-section-eyebrow">Limitations</p>
+        <h2 class="about-section-h">What this won't do</h2>
+        <ul class="about-wont-v2">
+          <li>Tell you what's right for you. We can show that "magnesium is associated with a small improvement in sleep onset latency in adults with low intake" — that's it. Whether you should take it is a clinician's call with your context.</li>
+          <li>Replace primary literature reading. Every card links its citations and you should follow them when the stakes are real.</li>
+          <li>Stay perfect. The graph drifts. We've built a retraction watcher and a daily re-score loop because we expect to be wrong about some things.</li>
+        </ul>
+      </section>
+
+      <section class="about-section">
+        <p class="about-section-eyebrow">Acknowledgements</p>
+        <h2 class="about-section-h">Built with</h2>
+        <p>The seed corpus was researched by <b>Claude Sonnet 4.6</b>. Daily ingest and prose polish run on <b>Gemma 4:26b</b> and <b>Llama 3 8B</b> via <a class="link" href="https://ollama.com">Ollama</a>. Embeddings via <b>nomic-embed-text</b>. Citations courtesy of the <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/">U.S. National Library of Medicine</a> and <a class="link" href="https://europepmc.org/">Europe PMC</a>. UI design language inspired by editorial print: Fraunces, Inter, cream, forest, ochre.</p>
+      </section>
+    </article>
+
+    <aside class="about-side-v2">
+      <div class="about-pillar">
+        <h3 class="about-pillar-h">The cost rule</h3>
+        <p>Anthropic's API is used <b>only</b> for one-off seed research and tier-A/B adjudication, with a <b>hard $50 lifetime cap</b> enforced in <code>claude_client.py</code> via the <code>cost_ledger</code> table. Everything else (daily ingest, dedup, prose rewrites) runs on local Gemma 4:26b via Ollama. Embeddings use nomic-embed-text via Ollama.</p>
+        <p class="muted body-sm">Lifetime Claude spend so far: <b>${{ "%.2f"|format(spent_usd) }}</b>.</p>
       </div>
-      <div class="card">
-        <h3>The "not medical advice" disclaimer</h3>
-        <p class="body-sm">This site summarises peer-reviewed research as objectively as we can manage. It cannot replace a clinician who knows your history, your meds, and your blood work. <b>Use it to ask better questions, not to treat yourself.</b></p>
-        <p class="body-sm">If a card says a thing is harmful and you're already doing it, talk to a human professional before changing anything.</p>
+
+      <div class="about-pillar about-pillar-warn">
+        <h3 class="about-pillar-h">Not medical advice</h3>
+        <p>This site summarises peer-reviewed research as objectively as we can manage. It cannot replace a clinician who knows your history, your meds, and your blood work.</p>
+        <p><b>Use it to ask better questions, not to treat yourself.</b> If a card says a thing is harmful and you're already doing it, talk to a human professional before changing anything.</p>
       </div>
-      <div class="card">
-        <h3>Open</h3>
-        <p class="body-sm">Code, schema, and the JSON payload format are all on <a class="link" href="https://github.com/prokesmic/HealthUniverse">GitHub</a>. The full edge graph is queryable at <a class="link" href="/api/edges">/api/edges</a> and per-entity at <a class="link" href="/api/entities/magnesium">/api/entities/{slug}</a>.</p>
-        <p class="body-sm">Sitemap: <a class="link" href="/sitemap.xml">/sitemap.xml</a></p>
+
+      <div class="about-pillar">
+        <h3 class="about-pillar-h">Open</h3>
+        <p>Code, schema, and the JSON payload format are all on <a class="link" href="https://github.com/prokesmic/HealthUniverse">GitHub</a>.</p>
+        <ul class="about-pillar-links">
+          <li><a class="link" href="/api/edges">/api/edges</a> — full edge list (JSON)</li>
+          <li><a class="link" href="/api/entities/magnesium">/api/entities/{slug}</a> — per-entity</li>
+          <li><a class="link" href="/sitemap.xml">/sitemap.xml</a></li>
+        </ul>
       </div>
+
       {% if n_retracted %}
-      <div class="card">
-        <h3>Retraction count</h3>
-        <p class="body-sm"><b>{{ n_retracted }}</b> evidence row{{ n_retracted != 1 and "s have" or " has" }} been flagged as retracted by PubMed since the watcher started running.</p>
+      <div class="about-pillar about-pillar-retraction">
+        <h3 class="about-pillar-h">Retraction count</h3>
+        <p><b>{{ n_retracted }}</b> evidence row{{ n_retracted != 1 and "s have" or " has" }} been flagged as retracted by PubMed since the watcher started.</p>
       </div>
       {% endif %}
     </aside>
   </div>
-
-  <h2>What this won't do</h2>
-  <ul class="about-wont">
-    <li>Tell you what's right for you. We can show that "magnesium is associated with a small improvement in sleep onset latency in adults with low intake" — that's it. Whether you should take it is a clinician's call with your context.</li>
-    <li>Replace primary literature reading. Every card links its citations and you should follow them when the stakes are real.</li>
-    <li>Stay perfect. The graph drifts. We've built a retraction watcher and a daily re-score loop because we expect to be wrong about some things.</li>
-  </ul>
-
-  <h2>Acknowledgements</h2>
-  <p>The seed corpus was researched by <b>Claude Sonnet 4.6</b>. Daily ingest and prose polish run on <b>Gemma 4:26b</b> and <b>Llama 3 8B</b> via <a class="link" href="https://ollama.com">Ollama</a>. Embeddings via <b>nomic-embed-text</b>. Citations courtesy of the <a class="link" href="https://pubmed.ncbi.nlm.nih.gov/">U.S. National Library of Medicine</a> and <a class="link" href="https://europepmc.org/">Europe PMC</a>. UI design language inspired by editorial print: Fraunces, Inter, cream, forest, ochre.</p>
 </section>
 {% endblock %}
