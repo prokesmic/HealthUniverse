@@ -625,8 +625,9 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   background: var(--surface); border: 1px solid var(--line);
   border-radius: var(--radius); padding: 18px; margin-bottom: 32px;
 }
-.about-stats > div { text-align: left; padding: 0 8px; border-right: 1px solid var(--line); }
-.about-stats > div:last-child { border-right: 0; }
+.about-stats > div { text-align: left; padding: 0 22px; border-right: 1px solid var(--line); }
+.about-stats > div:first-child { padding-left: 0; }
+.about-stats > div:last-child { border-right: 0; padding-right: 0; }
 .about-stats b { display: block; font-family: 'Fraunces', serif; font-weight: 500; font-size: 26px; color: var(--ink); }
 .about-stats small { color: var(--ink-soft); }
 .about-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 32px; margin-bottom: 32px; }
@@ -2177,8 +2178,9 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   border: 1px solid var(--line); border-radius: 14px;
   padding: 18px 24px;
 }
-.changes-summary > div { padding-right: 18px; border-right: 1px solid var(--line); }
-.changes-summary > div:last-child { border-right: 0; }
+.changes-summary > div { padding: 0 22px; border-right: 1px solid var(--line); }
+.changes-summary > div:first-child { padding-left: 0; }
+.changes-summary > div:last-child { border-right: 0; padding-right: 0; }
 .changes-summary b {
   display: block; font-family: 'Fraunces', serif; font-weight: 500;
   font-size: 26px; color: var(--ink);
@@ -2556,8 +2558,8 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
   border-top: 1px solid var(--line); padding-top: 22px; margin: 0;
 }
-.disc-stats > div { padding: 0 18px 0 0; border-right: 1px solid var(--line); }
-.disc-stats > div + div { padding-left: 18px; }
+.disc-stats > div { padding: 0 22px; border-right: 1px solid var(--line); }
+.disc-stats > div:first-child { padding-left: 0; }
 .disc-stats > div:last-child { border-right: 0; padding-right: 0; }
 .disc-stats dt {
   font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
@@ -2688,9 +2690,10 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
 }
 .dossier-stats > div {
-  padding: 14px 18px 14px 0;
+  padding: 16px 22px;
   border-right: 1px solid var(--line);
 }
+.dossier-stats > div:first-child { padding-left: 0; }
 .dossier-stats > div:last-child { border-right: 0; padding-right: 0; }
 .dossier-stats dt {
   font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
