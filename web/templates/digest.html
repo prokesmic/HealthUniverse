@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="digest-page">
+  <header class="digest-head">
+    <p class="hp-eyebrow">YOUR WEEKLY DIGEST · {{ today | upper }}</p>
+    <h1 class="hp-title">What changed in your<br/>universe this week<span class="dot">.</span></h1>
+    <p class="hp-lede">A 60-second briefing on evidence shifts in the
+      areas you track. Delivered every Sunday morning.</p>
+
+    {% if request and request.query_params.get('subscribed') %}
+    <div class="digest-confirm">✓ You're subscribed. We'll email the next one Sunday at 7am.</div>
+    {% else %}
+    <form class="digest-signup" method="post" action="/subscribe">
+      <input type="email" name="email" required placeholder="you@email.com">
+      <label class="digest-consent">
+        <input type="checkbox" name="consent" value="1" required>
+        Email me Sunday mornings. Unsubscribe anytime.
+      </label>
+      <button type="submit">Get the weekly digest</button>
+    </form>
+    <p class="digest-tiny">
+      Stored locally. No third-party trackers. The digest is generated
+      from your <a href="/me">stack</a> + watchlist.
+    </p>
+    {% endif %}
+  </header>
+
+  {% if not has_profile %}
+  <div class="digest-empty">
+    <h3>Set up your stack first</h3>
+    <p>The digest reads from <a href="/me">your stack</a> + watchlist.
+      Add a couple of conditions and refresh — you'll see a personal preview right here.</p>
+  </div>
+  {% endif %}
+
+  {% for section in sections %}
+  <section class="digest-section">
+    <header class="digest-sec-head">
+      <h2>{{ section.title }}</h2>
+      <p class="muted small">{{ section.blurb }}</p>
+    </header>
+    {% if section.rows %}
+    <ol class="digest-list">
+      {% for r in section.rows %}
+      <li class="digest-card {% if r.breakthrough %}is-breakthrough{% endif %}">
+        {% if r.breakthrough %}<span class="hp-breakthrough-ribbon">BREAKTHROUGH</span>{% endif %}
+        <div class="digest-card-tags">
+          <span class="hp-badge hp-badge-tier-{{ r.tier }}">{{ TIER_LABEL[r.tier] }}</span>
+          <span class="hp-badge hp-badge-dir-{{ r.direction }}">{{ DIRECTION_LABEL[r.direction] }}</span>
+          {% if r.effect_size and r.effect_size not in ('unknown','trivial') %}
+            <span class="prv-effect prv-effect-{{ r.effect_size }}">{{ r.effect_size|upper }}</span>
+          {% endif %}
+        </div>
+        <a class="digest-card-title" href="/edge/{{ r.id }}">
+          {{ r.f_name }} → {{ r.o_name }}
+        </a>
+        <p class="digest-card-summary">{{ r.summary[:180] }}{% if r.summary|length > 180 %}…{% endif %}</p>
+        {% if r.effect_quant %}<p class="digest-effect">📊 {{ r.effect_quant[:160] }}{% if r.effect_quant|length > 160 %}…{% endif %}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+    {% else %}
+    <p class="empty">Nothing this week.</p>
+    {% endif %}
+  </section>
+  {% endfor %}
+
+  <footer class="digest-foot">
+    <p class="muted small">Health Universe · Educational synthesis only — not medical advice.</p>
+  </footer>
+</section>
+
+{% endblock %}

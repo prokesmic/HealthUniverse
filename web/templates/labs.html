@@ -44,10 +44,29 @@
     </section>
 
     <section class="labs-card">
+      <h2 class="labs-h">Drop a lab PDF</h2>
+      <p class="muted body-sm">Upload a recent blood-test PDF. We extract the values
+        on the server (parsing only — no storage) and the matched markers
+        appear in <em>Your values</em> below for you to confirm.</p>
+      <form id="pdf-form">
+        <input type="file" id="pdf-upload" name="file" accept=".pdf" required>
+        <button class="btn-primary" type="submit">Parse PDF</button>
+      </form>
+      <p class="muted small" id="pdf-status">No PDF uploaded yet.</p>
+      <ul id="pdf-found" class="pdf-found"></ul>
+    </section>
+
+    <section class="labs-card">
       <h2 class="labs-h">Wearable summary</h2>
       <p class="muted body-sm">Drop a JSON or CSV from Apple Health, Garmin, Oura, or Whoop exports. We'll keep the file in this browser and parse a few fields.</p>
       <input type="file" id="wear-upload" accept=".json,.csv,.txt">
       <p class="muted small" id="wear-status">No file uploaded yet.</p>
+    </section>
+
+    <section class="labs-card labs-relevant" id="labs-relevant" style="display:none">
+      <h2 class="labs-h">Evidence relevant to your values</h2>
+      <p class="muted body-sm">Edges where one of your tracked markers is the factor or outcome — auto-ranked.</p>
+      <ul id="relevant-list" class="lib2-list" style="gap:8px"></ul>
     </section>
 
     <section class="labs-card labs-history">
@@ -95,6 +114,94 @@ document.getElementById("lab-form").onsubmit = e => {
   render();
 };
 
+/* PDF lab parser → server endpoint */
+document.getElementById("pdf-form").onsubmit = async e => {
+  e.preventDefault();
+  const file = document.getElementById("pdf-upload").files[0];
+  if (!file) return;
+  const status = document.getElementById("pdf-status");
+  status.textContent = "Parsing…";
+  const fd = new FormData();
+  fd.append("file", file);
+  let r;
+  try {
+    r = await fetch("/api/labs/parse-pdf", { method: "POST", body: fd });
+    if (!r.ok) throw new Error(await r.text());
+  } catch (err) {
+    status.textContent = "Could not parse: " + err.message;
+    return;
+  }
+  const data = await r.json();
+  const found = data.markers || [];
+  status.textContent = `✓ Parsed (${data.n_chars} chars). Found ${found.length} marker${found.length !== 1 ? "s" : ""}.`;
+  const ul = document.getElementById("pdf-found");
+  ul.innerHTML = "";
+  if (!found.length) {
+    ul.innerHTML = "<li class='muted small'>No matches. Try adding values manually above.</li>";
+    return;
+  }
+  found.forEach(m => {
+    const li = document.createElement("li");
+    li.innerHTML = `<b>${m.slug.replace(/_/g," ")}</b>: ${m.value} ${m.unit}
+      <button data-slug="${m.slug}" data-val="${m.value}" data-unit="${m.unit}"
+              class="btn-secondary inline pdf-add" type="button">+ Save</button>`;
+    ul.appendChild(li);
+  });
+  ul.querySelectorAll(".pdf-add").forEach(btn => {
+    btn.onclick = () => {
+      const d = load();
+      d.values.push({
+        marker: btn.dataset.slug, label: btn.dataset.slug.replace(/_/g, " "),
+        value: btn.dataset.val, unit: btn.dataset.unit,
+        date: new Date().toISOString().slice(0, 10),
+      });
+      save(d);
+      btn.textContent = "✓ Saved";
+      btn.disabled = true;
+      render();
+      loadRelevant();
+    };
+  });
+};
+
+/* Fetch evidence relevant to the user's tracked markers */
+async function loadRelevant() {
+  const d = load();
+  const slugs = [...new Set(d.values.map(v => v.marker))].filter(Boolean);
+  if (!slugs.length) {
+    document.getElementById("labs-relevant").style.display = "none";
+    return;
+  }
+  const r = await fetch("/api/labs/relevant-edges", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ markers: slugs }),
+  });
+  if (!r.ok) return;
+  const data = await r.json();
+  const list = document.getElementById("relevant-list");
+  list.innerHTML = "";
+  if (!data.edges.length) {
+    list.innerHTML = "<li class='muted'>No matching edges in our corpus yet for these markers.</li>";
+    document.getElementById("labs-relevant").style.display = "";
+    return;
+  }
+  data.edges.forEach(e => {
+    const a = document.createElement("a");
+    a.className = "lib2-card tier-rail-" + e.tier;
+    a.href = "/edge/" + e.id;
+    a.innerHTML = `<div class="lib2-card-rail tier-bg-${e.tier}">${e.tier}</div>
+      <div class="lib2-card-body"><div class="lib2-card-tags">
+        <span class="hp-badge hp-badge-tier-${e.tier}">tier ${e.tier}</span>
+        <span class="hp-badge hp-badge-dir-${e.direction}">${e.direction}</span>
+      </div>
+      <h3 class="lib2-card-title">${e.f_name} → ${e.o_name}</h3>
+      <p class="lib2-card-summary">${(e.summary || "").slice(0,180)}…</p></div>`;
+    list.appendChild(a);
+  });
+  document.getElementById("labs-relevant").style.display = "";
+}
+
 document.getElementById("wear-upload").onchange = async e => {
   const file = e.target.files[0];
   if (!file) return;
@@ -141,5 +248,6 @@ function render() {
   }
 }
 render();
+loadRelevant();
 </script>
 {% endblock %}

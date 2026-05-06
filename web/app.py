@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 from fastapi import FastAPI, Form, Request
-from fastapi.responses import HTMLResponse, RedirectResponse, Response
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
@@ -568,6 +568,266 @@ def my_plan(request: Request):
     })
 
 
+@app.get("/handout", response_class=HTMLResponse)
+def handout(request: Request, condition: str = "", patient: str = "",
+            kind: str = "prevent"):
+    """Print-friendly clinician handout. Same data as /prevent or /my-plan
+    but renders single-column on white with a patient-name banner and
+    auto-triggers the print dialog (browser saves as PDF). Works on
+    Vercel without server-side PDF deps.
+
+    kind=prevent  → single-condition handout (uses ?condition slug)
+    kind=plan     → user's combined plan (no patient-specific filter)"""
+    p = decode(request.cookies.get(COOKIE))
+    rendered_for = patient.strip() or None
+    today = datetime_now().strftime("%d %B %Y")
+    if kind == "plan":
+        # Reuse /my-plan logic
+        targets = list(p.conditions or [])
+        do_rows: list[dict] = []
+        hard_rows: list[dict] = []
+        cau_rows: list[dict] = []
+        with connect() as conn:
+            if targets:
+                ph = ",".join("?" * len(targets))
+                base = f"""
+                    SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
+                           e.effect_quant,
+                           f.name AS f_name, o.name AS o_name, o.slug AS o_slug,
+                           (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies
+                    FROM edge e JOIN entity f ON f.id=e.factor_id
+                    JOIN entity o ON o.id=e.outcome_id
+                    WHERE o.slug IN ({ph}) AND e.tier IN ('A','B','C') AND e.direction = ?
+                    ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 ELSE 3 END
+                """
+                do_rows = [dict(r) for r in conn.execute(base, (*targets, "protective")).fetchall()][:18]
+                hard_rows = [dict(r) for r in conn.execute(base, (*targets, "harmful")).fetchall()][:10]
+                cau_rows = ([dict(r) for r in conn.execute(base, (*targets, "u_shaped")).fetchall()]
+                            + [dict(r) for r in conn.execute(base, (*targets, "mixed")).fetchall()])[:8]
+        return render(request, "handout.html", {
+            "title": "Handout · plan",
+            "kind": "plan",
+            "patient": rendered_for,
+            "today": today,
+            "outcomes_label": ", ".join(p.conditions),
+            "do_rows": do_rows,
+            "hard_rows": hard_rows,
+            "caution_rows": cau_rows,
+        })
+    # condition-specific handout
+    if not condition:
+        return RedirectResponse("/prevent", status_code=303)
+    with connect() as conn:
+        match = conn.execute(
+            "SELECT slug, name FROM entity WHERE slug=? OR LOWER(name)=LOWER(?) LIMIT 1",
+            (condition, condition)).fetchone()
+        if not match:
+            return RedirectResponse(f"/prevent?q={condition}", status_code=303)
+        match = dict(match)
+        base = """
+            SELECT e.id, e.tier, e.direction, e.summary, e.effect_size, e.effect_quant,
+                   f.name AS f_name,
+                   (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies
+            FROM edge e JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE o.slug=? AND e.tier IN ('A','B','C') AND e.direction=?
+            ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 ELSE 3 END,
+                     CASE e.effect_size WHEN 'large' THEN 1 WHEN 'moderate' THEN 2 ELSE 3 END
+        """
+        do_rows = [dict(r) for r in conn.execute(base, (match["slug"], "protective")).fetchall()][:14]
+        hard_rows = [dict(r) for r in conn.execute(base, (match["slug"], "harmful")).fetchall()][:10]
+        cau_rows = ([dict(r) for r in conn.execute(base, (match["slug"], "u_shaped")).fetchall()]
+                    + [dict(r) for r in conn.execute(base, (match["slug"], "mixed")).fetchall()])[:8]
+    return render(request, "handout.html", {
+        "title": "Handout · " + match["name"],
+        "kind": "prevent",
+        "patient": rendered_for,
+        "today": today,
+        "outcomes_label": match["name"],
+        "do_rows": do_rows,
+        "hard_rows": hard_rows,
+        "caution_rows": cau_rows,
+    })
+
+
+@app.get("/coach", response_class=HTMLResponse)
+def coach_page(request: Request, q: str = ""):
+    """Conversational planner: builds a structured 30-day plan from the
+    user's profile + the corpus, with optional natural-language overlay
+    from local Gemma when Ollama is reachable."""
+    p = decode(request.cookies.get(COOKIE))
+    plan = None
+    answer = None
+    if p.conditions:
+        with connect() as conn:
+            no_regret = _no_regret_movers(conn, p, limit=5)
+            red_flags = _red_flags_in_stack(conn, p, limit=4)
+            # Pull factor-level edges to suggest specific actions
+            cond_ph = ",".join("?" * len(p.conditions))
+            actions = conn.execute(f"""
+                SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
+                       e.effect_quant, f.name AS f_name, f.kind AS f_kind,
+                       o.slug AS o_slug, o.name AS o_name,
+                       (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies
+                FROM edge e
+                JOIN entity f ON f.id=e.factor_id
+                JOIN entity o ON o.id=e.outcome_id
+                WHERE o.slug IN ({cond_ph})
+                  AND e.tier IN ('A','B')
+                  AND e.direction = 'protective'
+                  AND f.kind IN ('food','nutrient','behavior','activity','supplement')
+                ORDER BY CASE e.tier WHEN 'A' THEN 1 ELSE 2 END,
+                         CASE e.effect_size WHEN 'large' THEN 1 WHEN 'moderate' THEN 2 ELSE 3 END,
+                         e.updated_at DESC
+                LIMIT 12""", p.conditions).fetchall()
+        # Group actions into a 30-day plan: pick top 3 weekly anchors
+        anchors = []
+        seen_factors: set[str] = set()
+        for r in actions:
+            if r["f_name"] in seen_factors:
+                continue
+            seen_factors.add(r["f_name"])
+            anchors.append(dict(r))
+            if len(anchors) >= 4:
+                break
+        plan = {
+            "anchors": anchors,
+            "no_regret": no_regret,
+            "red_flags": red_flags,
+        }
+        # Optional: ask local Gemma to write a personal opening paragraph.
+        # Falls back gracefully if Ollama isn't reachable (e.g. on Vercel).
+        if q:
+            answer = _coach_llm(p, plan, q)
+    return render(request, "coach.html", {
+        "title": "My coach", "profile": p, "plan": plan, "q": q, "answer": answer,
+    })
+
+
+def _coach_llm(profile: Profile, plan: dict, question: str) -> str | None:
+    """Ground a Gemma response in the structured plan we already built —
+    no free-form medical claims, only commentary on what's already on
+    screen. Returns None if Ollama is unreachable."""
+    try:
+        from ollama_client import call, OllamaUnavailable
+    except Exception:
+        return None
+    try:
+        anchors = "\n".join(
+            f"- {a['f_name']}: {a['summary'][:140]}"
+            for a in plan.get("anchors", [])[:4])
+        avoid = "\n".join(
+            f"- {r['f_name']}: {r['summary'][:120]}"
+            for r in plan.get("red_flags", [])[:3])
+        system = (
+            "You are a careful evidence-based health-coach assistant. "
+            "ONLY discuss the items listed below — never invent new "
+            "interventions, doses, or PMIDs. Keep responses under 160 words. "
+            "End every reply with: 'Educational synthesis only — not medical advice.'"
+        )
+        user_msg = (
+            f"USER QUESTION: {question}\n\n"
+            f"USER CONDITIONS: {', '.join(profile.conditions) or 'none'}\n"
+            f"USER STACK: {', '.join(profile.stack) or 'none'}\n\n"
+            f"PROTECTIVE ANCHORS (only positive moves you may discuss):\n{anchors}\n\n"
+            f"AVOIDANCES (only if user asks about risks):\n{avoid}\n\n"
+            "Write a short reply addressing the user's question."
+        )
+        return call(system=system, user=user_msg, num_predict=400, retries=0)
+    except OllamaUnavailable:
+        return None
+    except Exception:
+        return None
+
+
+@app.get("/digest", response_class=HTMLResponse)
+def digest_preview(request: Request, days: int = 7):
+    """Renders what the weekly email digest would look like for this user.
+    Sources: tracked conditions/factors/edges + recent breakthroughs.
+    Same template can be used by the cron-driven email sender."""
+    p = decode(request.cookies.get(COOKIE))
+    has_profile = bool(p.conditions or p.watch_factors or p.watch_outcomes or p.watch_edges)
+    sections: list[dict] = []
+    with connect() as conn:
+        # Section 1: breakthroughs in tracked areas
+        all_disc = _new_discoveries(conn, days=days, limit=80)
+        # Filter to user's tracked outcomes/factors if any tracked at all
+        if has_profile:
+            tracked_o = set(p.conditions) | set(p.watch_outcomes)
+            tracked_f = set(p.watch_factors)
+            relevant = [d for d in all_disc
+                        if (tracked_o and d["o_slug"] in tracked_o)
+                        or (tracked_f and d["f_slug"] in tracked_f)
+                        or (d.get("breakthrough"))]
+        else:
+            relevant = [d for d in all_disc if d.get("breakthrough")] or all_disc[:6]
+        sections.append({
+            "title": f"This week's evidence shifts ({len(relevant)})",
+            "blurb": f"Discoveries and breakthroughs in the last {days} days"
+                     + (" in areas you track" if has_profile else ""),
+            "rows": relevant[:6],
+        })
+        # Section 2: top no-regret moves for tracked conditions
+        if p.conditions:
+            no_regret = _no_regret_movers(conn, p, limit=6)
+            sections.append({
+                "title": "Top no-regret moves for your stack",
+                "blurb": "Tier-A protective evidence for what you track",
+                "rows": no_regret,
+            })
+            # Section 3: red flags
+            red_flags = _red_flags_in_stack(conn, p, limit=6)
+            if red_flags:
+                sections.append({
+                    "title": "Watch outs",
+                    "blurb": "Edges in your tracked areas with harmful or U-shaped direction",
+                    "rows": red_flags,
+                })
+    return render(request, "digest.html", {
+        "title": "Weekly digest",
+        "profile": p,
+        "has_profile": has_profile,
+        "days": days,
+        "sections": sections,
+        "today": datetime_now().strftime("%A %d %B %Y"),
+    })
+
+
+@app.post("/subscribe")
+async def subscribe(request: Request, email: str = Form(...),
+                    consent: str = Form("")):
+    """Store email in data/subscribers.json (local-first; production sender
+    reads this file to dispatch the weekly digest)."""
+    import json as _json
+    import re as _re
+    if not _re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email):
+        return HTMLResponse("Invalid email", status_code=400)
+    if not consent:
+        return HTMLResponse("Consent required", status_code=400)
+    sub_file = Path(__file__).parent.parent / "data" / "subscribers.json"
+    subs: list[dict] = []
+    if sub_file.exists():
+        try: subs = _json.loads(sub_file.read_text())
+        except Exception: subs = []
+    p = decode(request.cookies.get(COOKIE))
+    if not any(s.get("email") == email for s in subs):
+        subs.append({
+            "email": email,
+            "subscribed_at": datetime_now().isoformat(),
+            "profile_snapshot": {
+                "conditions": p.conditions,
+                "watch_factors": p.watch_factors,
+                "watch_outcomes": p.watch_outcomes,
+            },
+        })
+        try:
+            sub_file.parent.mkdir(parents=True, exist_ok=True)
+            sub_file.write_text(_json.dumps(subs, indent=2))
+        except Exception:
+            pass     # Vercel filesystem is read-only; that's fine in prod
+    return RedirectResponse("/digest?subscribed=1", status_code=303)
+
+
 @app.get("/discoveries", response_class=HTMLResponse)
 def discoveries(request: Request, days: int = 30, page: int = 1):
     with connect() as conn:
@@ -646,7 +906,11 @@ async def me_save(request: Request,
         goals=[g for g in goals if g],
         stack=[s for s in stack if s],
     )
-    resp = RedirectResponse("/me", status_code=303)
+    # If the user just told us what conditions to track, take them straight
+    # to their personalised plan. Otherwise stay on /me (e.g. they only
+    # changed age or stack).
+    target = "/my-plan" if p.conditions else "/me"
+    resp = RedirectResponse(target, status_code=303)
     resp.set_cookie(COOKIE, encode(p), max_age=60*60*24*365,
                     httponly=False, samesite="lax")
     return resp
@@ -866,6 +1130,87 @@ def labs_page(request: Request):
         "title": "Labs and wearables",
         "biomarkers": biomarkers,
     })
+
+
+# ---- /api/labs/parse-pdf and /api/labs/relevant-edges ------------------
+
+_LAB_REGEXES = [
+    # marker_slug, regex, unit_hint
+    ("ldl_cholesterol",   r"\b(?:LDL[-\s]?C(?:holesterol)?)\D{0,40}?(\d{1,3}(?:\.\d+)?)\s*(?:mg/dL|mmol/L)?", "mg/dL"),
+    ("hdl_cholesterol",   r"\b(?:HDL[-\s]?C(?:holesterol)?)\D{0,40}?(\d{1,3}(?:\.\d+)?)\s*(?:mg/dL|mmol/L)?", "mg/dL"),
+    ("total_cholesterol", r"\b(?:Total[-\s]?C(?:holesterol)?|Cholesterol total)\D{0,40}?(\d{1,3}(?:\.\d+)?)\s*(?:mg/dL|mmol/L)?", "mg/dL"),
+    ("triglycerides",     r"\bTriglycerides\D{0,40}?(\d{1,3}(?:\.\d+)?)\s*(?:mg/dL|mmol/L)?", "mg/dL"),
+    ("hba1c",             r"\b(?:HbA1c|A1c|Glycated[\s-]Hemoglobin)\D{0,40}?(\d{1,2}(?:\.\d+)?)\s*%?", "%"),
+    ("fasting_glucose",   r"\b(?:Fasting\s+Glucose|Glucose\s+Fasting|FPG)\D{0,40}?(\d{1,3}(?:\.\d+)?)\s*(?:mg/dL|mmol/L)?", "mg/dL"),
+    ("ferritin",          r"\bFerritin\D{0,40}?(\d{1,4}(?:\.\d+)?)\s*(?:ng/mL|µg/L|ug/L)?", "ng/mL"),
+    ("vitamin_d",         r"\b(?:25[-\s]?OH[-\s]?Vitamin[-\s]D|Vitamin\s+D|25\(OH\)D)\D{0,40}?(\d{1,3}(?:\.\d+)?)\s*(?:ng/mL|nmol/L)?", "ng/mL"),
+    ("crp",               r"\b(?:hs-?CRP|C-?reactive\s+Protein|CRP)\D{0,40}?(\d{1,3}(?:\.\d+)?)\s*(?:mg/L|mg/dL)?", "mg/L"),
+    ("apob",              r"\bApoB\D{0,40}?(\d{1,3}(?:\.\d+)?)\s*(?:mg/dL|g/L)?", "mg/dL"),
+    ("blood_pressure_systolic",  r"\b(?:Systolic\s+BP|SBP|Blood Pressure)\D{0,40}?(\d{2,3})\s*(?:/\d{2,3})?\s*mmHg?", "mmHg"),
+    ("blood_pressure_diastolic", r"\b(?:Diastolic\s+BP|DBP)\D{0,40}?(\d{2,3})\s*mmHg?", "mmHg"),
+    ("egfr",              r"\b(?:eGFR)\D{0,40}?(\d{1,3}(?:\.\d+)?)", "mL/min/1.73m²"),
+    ("alt",               r"\b(?:ALT|SGPT)\D{0,40}?(\d{1,3}(?:\.\d+)?)\s*U/L?", "U/L"),
+    ("ast",               r"\b(?:AST|SGOT)\D{0,40}?(\d{1,3}(?:\.\d+)?)\s*U/L?", "U/L"),
+    ("tsh",               r"\bTSH\D{0,40}?(\d{1,3}(?:\.\d+)?)\s*(?:mIU/L|µIU/mL)?", "mIU/L"),
+    ("uric_acid",         r"\b(?:Uric\s+Acid)\D{0,40}?(\d{1,3}(?:\.\d+)?)\s*(?:mg/dL|µmol/L)?", "mg/dL"),
+]
+
+
+@app.post("/api/labs/parse-pdf")
+async def labs_parse_pdf(request: Request):
+    """Accepts a single PDF upload, extracts text, returns matched
+    biomarkers as JSON. Parsing happens server-side but values are
+    returned to the client and stored only in localStorage."""
+    import re as _re
+    form = await request.form()
+    upload = form.get("file")
+    if upload is None:
+        return JSONResponse({"error": "no file"}, status_code=400)
+    raw = await upload.read()
+    try:
+        from pypdf import PdfReader
+        from io import BytesIO
+        reader = PdfReader(BytesIO(raw))
+        text = "\n".join((p.extract_text() or "") for p in reader.pages)
+    except Exception as exc:
+        return JSONResponse({"error": f"pdf parse: {exc}"}, status_code=400)
+    found: list[dict] = []
+    for slug, pattern, unit in _LAB_REGEXES:
+        m = _re.search(pattern, text, _re.IGNORECASE)
+        if m:
+            try:
+                val = float(m.group(1))
+            except Exception:
+                continue
+            found.append({"slug": slug, "value": val, "unit": unit,
+                          "match": m.group(0)[:80]})
+    return JSONResponse({"markers": found, "n_chars": len(text)})
+
+
+@app.post("/api/labs/relevant-edges")
+async def labs_relevant_edges(request: Request):
+    """Given a list of marker slugs from the client, return the top
+    evidence edges that mention them as factor or outcome. The client
+    posts JSON: {"markers": ["ldl_cholesterol", "ferritin"]}."""
+    body = await request.json()
+    markers = [m for m in (body.get("markers") or []) if isinstance(m, str)]
+    if not markers:
+        return JSONResponse({"edges": []})
+    ph = ",".join("?" * len(markers))
+    with connect() as conn:
+        rows = conn.execute(f"""
+            SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
+                   f.slug AS f_slug, f.name AS f_name,
+                   o.slug AS o_slug, o.name AS o_name
+            FROM edge e
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE (f.slug IN ({ph}) OR o.slug IN ({ph}))
+              AND e.tier IN ('A','B','C')
+            ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 ELSE 3 END,
+                     e.updated_at DESC
+            LIMIT 24""", markers + markers).fetchall()
+    return JSONResponse({"edges": [dict(r) for r in rows]})
 
 
 @app.get("/protocols", response_class=HTMLResponse)

@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% if profile and profile.conditions %}
+<a class="hp-personal-banner" href="/my-plan">
+  <span class="hp-personal-eye">YOUR PERSONAL PLAN</span>
+  <b>Open your unified plan for {{ profile.conditions|length }} tracked
+    condition{{ profile.conditions|length != 1 and "s" or "" }}</b>
+  <small>Cards below are re-ranked for you. Click through to the full plan →</small>
+</a>
+{% endif %}
+
 <section class="hp-hero">
   <div class="hp-hero-text">
     <p class="hp-eyebrow">EVIDENCE YOU CAN TRUST</p>

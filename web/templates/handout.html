@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="handout-page">
+  <header class="handout-head no-print">
+    <a class="back" href="/{{ 'my-plan' if kind == 'plan' else 'prevent?q=' + outcomes_label }}">← Back</a>
+    <form class="handout-form" method="get" action="/handout">
+      <input type="hidden" name="kind" value="{{ kind }}">
+      {% if kind == 'prevent' %}<input type="hidden" name="condition" value="{{ outcomes_label }}">{% endif %}
+      <label>Patient name (optional, for your reference)
+        <input type="text" name="patient" value="{{ patient or '' }}" placeholder="e.g. Jane Doe">
+      </label>
+      <button type="submit" class="btn-secondary inline">Update</button>
+      <button type="button" class="btn-primary inline" onclick="window.print()">🖨 Print / save PDF</button>
+    </form>
+  </header>
+
+  <article class="handout-doc">
+    <header class="handout-meta">
+      <h1>Health Universe · Prevention plan</h1>
+      <dl>
+        {% if patient %}<dt>Prepared for</dt><dd>{{ patient }}</dd>{% endif %}
+        <dt>Topic</dt><dd>{{ outcomes_label }}</dd>
+        <dt>Date</dt><dd>{{ today }}</dd>
+      </dl>
+    </header>
+
+    <section class="handout-block">
+      <h2>Do this</h2>
+      <p class="muted">Protective evidence at tier A, B, or C — ranked by tier and effect size.</p>
+      {% if do_rows %}
+      <ol>
+        {% for e in do_rows %}
+        <li>
+          <b>{{ e.f_name }}</b>
+          <span class="handout-tag">tier {{ e.tier }}</span>
+          {% if e.effect_size and e.effect_size not in ('unknown','trivial') %}<span class="handout-tag">{{ e.effect_size }} effect</span>{% endif %}
+          <span class="handout-tag">{{ e.n_studies }} studies</span>
+          <p>{{ e.summary[:240] }}{% if e.summary|length > 240 %}…{% endif %}</p>
+          {% if e.effect_quant %}<p class="handout-effect">📊 {{ e.effect_quant[:200] }}{% if e.effect_quant|length > 200 %}…{% endif %}</p>{% endif %}
+          <p class="handout-source">hu/edge/{{ e.id }}</p>
+        </li>
+        {% endfor %}
+      </ol>
+      {% else %}<p class="muted">No protective evidence in our corpus yet for this condition.</p>{% endif %}
+    </section>
+
+    {% if hard_rows %}
+    <section class="handout-block">
+      <h2>Hard avoid</h2>
+      <p class="muted">Clearly harmful — more is worse.</p>
+      <ol>
+        {% for e in hard_rows %}
+        <li>
+          <b>{{ e.f_name }}</b>
+          <span class="handout-tag">tier {{ e.tier }}</span>
+          {% if e.effect_size and e.effect_size not in ('unknown','trivial') %}<span class="handout-tag">{{ e.effect_size }} effect</span>{% endif %}
+          <span class="handout-tag">{{ e.n_studies }} studies</span>
+          <p>{{ e.summary[:240] }}{% if e.summary|length > 240 %}…{% endif %}</p>
+          {% if e.effect_quant %}<p class="handout-effect">📊 {{ e.effect_quant[:200] }}{% if e.effect_quant|length > 200 %}…{% endif %}</p>{% endif %}
+          <p class="handout-source">hu/edge/{{ e.id }}</p>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+
+    {% if caution_rows %}
+    <section class="handout-block">
+      <h2>Use caution</h2>
+      <p class="muted">U-shaped or mixed — small/moderate may be fine; check with clinician.</p>
+      <ol>
+        {% for e in caution_rows %}
+        <li>
+          <b>{{ e.f_name }}</b>
+          <span class="handout-tag">tier {{ e.tier }}</span>
+          <span class="handout-tag">{{ e.direction }}</span>
+          <p>{{ e.summary[:200] }}{% if e.summary|length > 200 %}…{% endif %}</p>
+          <p class="handout-source">hu/edge/{{ e.id }}</p>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+
+    <footer class="handout-footer">
+      <p><b>This handout is educational only.</b> It is not medical advice and should not replace consultation with a qualified clinician. Each item links back to the full evidence dossier on Health Universe (paths shown as hu/edge/N). Last updated {{ today }}.</p>
+    </footer>
+  </article>
+</section>
+
+{% endblock %}
