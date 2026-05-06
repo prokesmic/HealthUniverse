@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="prv-hero">
+  <p class="hp-eyebrow">YOUR PERSONAL PLAN</p>
+  <h1 class="hp-title">A unified plan across<br/>everything you're tracking<span class="dot">.</span></h1>
+  {% if matched_outcomes %}
+  <p class="hp-lede">Aggregating prevention evidence across {{ matched_outcomes|length }}
+    condition{{ matched_outcomes|length != 1 and "s" or "" }} you're tracking
+    on <a class="hp-link" href="/me">your stack</a> — overlap means a single
+    move addresses multiple goals.</p>
+  <div class="prv-conditions-pills">
+    {% for o in matched_outcomes %}
+      <a class="hp-badge hp-badge-ghost" href="/prevent?q={{ o.slug }}">{{ o.name }}</a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="hp-lede">No conditions tracked yet. Add a few on
+    <a class="hp-link" href="/me">your stack</a> and we'll generate a unified
+    Do/Avoid playbook across all of them, with overlap counted so the
+    highest-leverage moves bubble up.</p>
+  {% endif %}
+</section>
+
+{% macro plan_card(e, kind) %}
+<li class="prv-card {% if e.breakthrough %}is-breakthrough{% endif %}">
+  {% if e.breakthrough %}<span class="hp-breakthrough-ribbon">BREAKTHROUGH</span>{% endif %}
+  {% if e.n_overlap > 1 %}
+    <span class="prv-overlap" title="Helps {{ e.n_overlap }} of your conditions">×{{ e.n_overlap }}</span>
+  {% endif %}
+  <div class="prv-card-head">
+    <a class="prv-card-title" href="/edge/{{ e.id }}">{{ e.f_name }}</a>
+    <span class="hp-badge hp-badge-tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] }}</span>
+    {% if e.effect_size %}<span class="prv-effect prv-effect-{{ e.effect_size }}">{{ e.effect_size|upper }} EFFECT</span>{% endif %}
+  </div>
+  <p class="prv-card-summary"><b>For:</b> {{ e.for_condition_names | join(", ") }}</p>
+  {% if e.effect_quant %}<p class="prv-card-effect">📊 {{ e.effect_quant[:160] }}{% if e.effect_quant|length > 160 %}…{% endif %}</p>{% endif %}
+  <div class="prv-card-foot">
+    <span class="muted small prv-score" title="Importance score">★ {{ "%.1f"|format(e.best_score) }}</span>
+  </div>
+</li>
+{% endmacro %}
+
+{% if matched_outcomes %}
+<section class="prv-result">
+  <div class="prv-grid">
+    <div class="prv-col prv-do">
+      <header>
+        <span class="prv-col-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>
+        </span>
+        <h3>Do this</h3>
+        <small>Protective across one or more of your conditions</small>
+      </header>
+      {% if do_rows %}
+      <ol class="prv-list">{% for e in do_rows %}{{ plan_card(e, 'do') }}{% endfor %}</ol>
+      {% else %}<p class="empty">Nothing protective in our corpus for the conditions you're tracking yet.</p>{% endif %}
+    </div>
+    <div class="prv-col prv-avoid">
+      <header>
+        <span class="prv-col-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg>
+        </span>
+        <h3>Hard avoid</h3>
+        <small>Clearly harmful for one or more conditions</small>
+      </header>
+      {% if hard_rows %}
+      <ol class="prv-list">{% for e in hard_rows %}{{ plan_card(e, 'hard') }}{% endfor %}</ol>
+      {% else %}<p class="empty">No clear-harm evidence in our corpus for the conditions you're tracking.</p>{% endif %}
+
+      <header class="prv-subhead">
+        <span class="prv-col-icon prv-col-icon-caution" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 1 21h22z"/><path d="M12 9v6"/><circle cx="12" cy="18" r=".7"/></svg>
+        </span>
+        <h3>Use caution</h3>
+        <small>U-shaped or mixed</small>
+      </header>
+      {% if caution_rows %}
+      <ol class="prv-list">{% for e in caution_rows %}{{ plan_card(e, 'caution') }}{% endfor %}</ol>
+      {% else %}<p class="empty">No U-shaped or mixed evidence yet.</p>{% endif %}
+    </div>
+  </div>
+  <div class="prv-actions">
+    <button type="button" onclick="window.print()" class="prv-print-btn">🖨 Print my plan</button>
+  </div>
+  <p class="muted small prv-disclaimer">Educational synthesis only — not
+    medical advice. Talk to a clinician before changing treatment.</p>
+</section>
+{% else %}
+<section class="prv-suggest">
+  <a class="hp-bucket-arrow inline-cta" href="/me">Set up your stack →</a>
+</section>
+{% endif %}
+
+{% endblock %}

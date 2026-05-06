@@ -110,6 +110,7 @@ def _stats(conn) -> dict:
 def _featured(conn, limit: int = 3) -> list[dict]:
     rows = conn.execute("""
         SELECT e.id, e.tier, e.direction, e.summary, e.updated_at, e.created_at,
+               e.effect_size, e.effect_quant,
                f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
                o.slug AS o_slug, o.name AS o_name,
                (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies,
@@ -142,6 +143,7 @@ def _new_discoveries(conn, days: int = 14, limit: int = 20) -> list[dict]:
     created in the last `days` at tier C or better. Newest first."""
     rows = conn.execute("""
         SELECT DISTINCT e.id, e.tier, e.direction, e.summary, e.updated_at,
+               e.effect_size, e.effect_quant,
                f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
                o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind,
                (SELECT MAX(changed_at) FROM edge_history h
@@ -247,6 +249,10 @@ def _classify_query(q: str) -> dict:
     ql = (q or "").lower().strip()
     if not ql:
         return {"intent": "just_search"}
+    m = re.match(r"(?:how (?:do i|to)|ways? to)\s+prevent\s+(.+)", ql)
+    if m: return {"intent": "prevent", "target": m.group(1).strip("?").strip()}
+    m = re.match(r"(?:prevent|avoid(?:ing)? (?:the )?risk of|reduce risk of)\s+(.+)", ql)
+    if m: return {"intent": "prevent", "target": m.group(1).strip("?").strip()}
     m = re.match(r"(?:what|things)\s+(?:helps?|improves?|reduces?|prevents?|treats?|works for)\s+(?:with\s+)?(.+)", ql)
     if m: return {"intent": "helps_with", "target": m.group(1).strip("?").strip()}
     m = re.match(r"(?:what|things)\s+(?:harms?|hurts?|causes?|raises?|increases?|worsens?)\s+(?:risk\s+of\s+)?(.+)", ql)
@@ -299,8 +305,16 @@ def home(request: Request):
         discoveries = _new_discoveries(conn, days=14, limit=8)
     if any([p.conditions, p.goals, p.stack]):
         featured.sort(key=lambda e: -relevance_score(e, p))
-    featured = featured[:4]
-    spotlight = featured[0] if featured else None
+    # Rotate the spotlight daily so the homepage feels alive: pick by
+    # day-of-year against the larger 12-edge featured pool, then take
+    # the next 4 starting from there.
+    spotlight = None
+    if featured:
+        idx = datetime_now().timetuple().tm_yday % len(featured)
+        spotlight = featured[idx]
+        featured = (featured[idx:] + featured[:idx])[:4]
+    else:
+        featured = []
     return render(request, "home.html", {
         "stats": stats, "categories": cats,
         "featured": featured, "buckets": buckets, "spotlight": spotlight,
@@ -315,7 +329,8 @@ def prevent_page(request: Request, q: str = "", condition: str = ""):
     u_shaped / mixed risk edges, ranked by importance)."""
     query = (q or condition or "").strip()
     do_rows: list[dict] = []
-    avoid_rows: list[dict] = []
+    hard_rows: list[dict] = []
+    caution_rows: list[dict] = []
     matched: dict | None = None
     suggestions: list[dict] = []
     with connect() as conn:
@@ -338,7 +353,7 @@ def prevent_page(request: Request, q: str = "", condition: str = ""):
         if matched:
             base = """
                 SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
-                       e.created_at,
+                       e.created_at, e.effect_size, e.effect_quant,
                        f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
                        o.slug AS o_slug, o.name AS o_name,
                        (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies,
@@ -363,20 +378,193 @@ def prevent_page(request: Request, q: str = "", condition: str = ""):
             ushape = conn.execute(base, (matched["slug"], "u_shaped")).fetchall()
             mixed = conn.execute(base, (matched["slug"], "mixed")).fetchall()
             do_rows = [dict(r) for r in protective]
-            avoid_rows = [dict(r) for r in harmful] + [dict(r) for r in ushape] + [dict(r) for r in mixed]
-            for e in do_rows + avoid_rows:
+            hard_rows = [dict(r) for r in harmful]              # linear / strong harm
+            caution_rows = [dict(r) for r in ushape] + [dict(r) for r in mixed]
+            for e in do_rows + hard_rows + caution_rows:
                 e["score"] = _importance_score(e)
                 e["breakthrough"] = _is_breakthrough(e)
-            do_rows.sort(key=lambda e: (-(1 if e["breakthrough"] else 0), -e["score"]))
-            avoid_rows.sort(key=lambda e: (-(1 if e["breakthrough"] else 0), -e["score"]))
+            for lst in (do_rows, hard_rows, caution_rows):
+                lst.sort(key=lambda e: (-(1 if e["breakthrough"] else 0), -e["score"]))
     return render(request, "prevent.html", {
         "title": "Prevent",
         "query": query,
         "matched": matched,
         "suggestions": suggestions,
         "do_rows": do_rows[:20],
-        "avoid_rows": avoid_rows[:20],
+        "hard_rows": hard_rows[:14],
+        "caution_rows": caution_rows[:10],
         "outcomes": outcomes,
+    })
+
+
+@app.get("/og/edge/{edge_id}.svg")
+def og_edge_svg(edge_id: int):
+    """Procedural OG share card for an edge — 1200×630 SVG so links to
+    /edge/{id} preview nicely in Slack, iMessage, X, LinkedIn."""
+    from fastapi.responses import Response
+    with connect() as conn:
+        row = conn.execute("""
+            SELECT e.tier, e.direction, e.summary, e.effect_size, e.effect_quant,
+                   f.name AS f_name, o.name AS o_name
+            FROM edge e
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE e.id=?""", (edge_id,)).fetchone()
+    if not row:
+        return Response(status_code=404, content="Not found")
+    e = dict(row)
+    tier = e["tier"] or "C"
+    tier_color = {"A":"#1f3a2e","B":"#3b8e5a","C":"#c9a961","X":"#a3552c","D":"#7c6c4d"}.get(tier, "#7c6c4d")
+    tier_label = {"A":"STRONG EVIDENCE","B":"MODERATE EVIDENCE","C":"EMERGING EVIDENCE",
+                  "X":"CONTESTED","D":"LIMITED"}.get(tier, "EVIDENCE")
+    title = f"{e['f_name']} → {e['o_name']}"
+    if len(title) > 64:
+        title = title[:61] + "…"
+    summary = (e["summary"] or "")[:170]
+    if len(e.get("summary") or "") > 170: summary += "…"
+    effect = e.get("effect_quant") or ""
+    if len(effect) > 140: effect = effect[:137] + "…"
+
+    def esc(s: str) -> str:
+        return (s.replace("&", "&amp;").replace("<", "&lt;")
+                 .replace(">", "&gt;").replace('"', "&quot;"))
+
+    svg = f"""<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fffaf0"/>
+      <stop offset="100%" stop-color="#f5ead0"/>
+    </linearGradient>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#caa257"/>
+      <stop offset="50%" stop-color="#f0d990"/>
+      <stop offset="100%" stop-color="#caa257"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- decorative globe -->
+  <g opacity="0.28">
+    <circle cx="1020" cy="310" r="220" fill="none" stroke="#c9a961" stroke-width="2"/>
+    {''.join(f'<ellipse cx="1020" cy="310" rx="220" ry="{40+i*22}" fill="none" stroke="#c9a961" stroke-width="0.8"/>' for i in range(8))}
+    {''.join(f'<ellipse cx="1020" cy="310" rx="{40+i*22}" ry="220" fill="none" stroke="#c9a961" stroke-width="0.8"/>' for i in range(8))}
+  </g>
+  <!-- brand -->
+  <text x="80" y="100" font-family="Inter, sans-serif" font-weight="700"
+        font-size="22" letter-spacing="6" fill="#1f3a2e">HEALTH UNIVERSE</text>
+  <!-- tier ribbon -->
+  <rect x="76" y="130" width="{16 + len(tier_label)*11}" height="36" rx="6" fill="{tier_color}"/>
+  <text x="{84}" y="155" font-family="Inter, sans-serif" font-weight="700"
+        font-size="14" letter-spacing="2.2" fill="#fffaf0">{esc(tier_label)}</text>
+  <!-- title -->
+  <text x="80" y="240" font-family="Fraunces, serif" font-weight="500"
+        font-size="56" fill="#1f3a2e">{esc(title)}</text>
+  <!-- summary -->
+  <foreignObject x="80" y="280" width="900" height="180">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font:400 22px/1.45 Inter, sans-serif; color:#4a5b51;">
+      {esc(summary)}
+    </div>
+  </foreignObject>
+  <!-- effect -->
+  {f'<rect x="80" y="490" width="900" height="68" rx="10" fill="#fbf3df" stroke="#c9a961"/>' if effect else ''}
+  {f'<foreignObject x="96" y="500" width="880" height="56"><div xmlns="http://www.w3.org/1999/xhtml" style="font:600 18px/1.4 Inter, sans-serif; color:#4a3920;">📊 {esc(effect)}</div></foreignObject>' if effect else ''}
+  <!-- footer ribbon -->
+  <rect x="0" y="610" width="1200" height="20" fill="url(#ribbon)"/>
+</svg>"""
+    return Response(content=svg, media_type="image/svg+xml",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
+@app.get("/my-plan", response_class=HTMLResponse)
+def my_plan(request: Request):
+    """Aggregate /prevent across every condition the user is tracking.
+    Dedupe protective and harmful factors across conditions, count overlap
+    so the highest-leverage moves bubble up."""
+    p = decode(request.cookies.get(COOKIE))
+    targets = list(p.conditions or [])
+    do_map: dict[str, dict] = {}
+    avoid_map: dict[str, dict] = {}
+    matched_outcomes: list[dict] = []
+    if targets:
+        with connect() as conn:
+            placeholders = ",".join("?" * len(targets))
+            outs = conn.execute(
+                f"SELECT slug, name FROM entity WHERE slug IN ({placeholders})",
+                targets).fetchall()
+            matched_outcomes = [dict(r) for r in outs]
+            base_sel = """
+                SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
+                       e.created_at, e.effect_size, e.effect_quant,
+                       f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                       o.slug AS o_slug, o.name AS o_name,
+                       (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies,
+                       (SELECT study_type FROM evidence ev WHERE ev.edge_id=e.id
+                        ORDER BY CASE study_type WHEN 'meta_analysis' THEN 1
+                          WHEN 'systematic_review' THEN 2 WHEN 'rct' THEN 3
+                          WHEN 'cohort' THEN 4 ELSE 5 END LIMIT 1) AS top_study,
+                       (SELECT MAX(changed_at) FROM edge_history h
+                        WHERE h.edge_id=e.id AND h.field='tier'
+                          AND h.new_value IN ('A','B')
+                          AND (h.old_value IS NULL OR h.old_value NOT IN ('A','B'))
+                       ) AS promoted_at
+                FROM edge e
+                JOIN entity f ON f.id=e.factor_id
+                JOIN entity o ON o.id=e.outcome_id
+                WHERE o.slug IN ({ph}) AND e.tier IN ('A','B','C')
+                  AND e.direction = ?
+            """
+            ph = ",".join("?" * len(targets))
+            do_rows = [dict(r) for r in conn.execute(
+                base_sel.format(ph=ph), targets + ["protective"]).fetchall()]
+            harm_rows = [dict(r) for r in conn.execute(
+                base_sel.format(ph=ph), targets + ["harmful"]).fetchall()]
+            ushape_rows = [dict(r) for r in conn.execute(
+                base_sel.format(ph=ph), targets + ["u_shaped"]).fetchall()]
+            mixed_rows = [dict(r) for r in conn.execute(
+                base_sel.format(ph=ph), targets + ["mixed"]).fetchall()]
+        # Aggregate by factor: factor that helps THREE conditions ranks higher.
+        for e in do_rows + harm_rows + ushape_rows + mixed_rows:
+            e["score"] = _importance_score(e)
+            e["breakthrough"] = _is_breakthrough(e)
+        def _agg(rows: list[dict]) -> dict[str, dict]:
+            out: dict[str, dict] = {}
+            for e in rows:
+                k = e["f_slug"]
+                if k not in out:
+                    out[k] = {**e, "for_conditions": [],
+                              "for_condition_names": [], "n_overlap": 0,
+                              "best_score": e["score"]}
+                rec = out[k]
+                if e["o_slug"] not in rec["for_conditions"]:
+                    rec["for_conditions"].append(e["o_slug"])
+                    rec["for_condition_names"].append(e["o_name"])
+                rec["n_overlap"] = len(rec["for_conditions"])
+                if e["score"] > rec["best_score"]:
+                    rec["best_score"] = e["score"]
+                    rec["tier"] = e["tier"]
+                    rec["effect_size"] = e["effect_size"]
+                    rec["effect_quant"] = e["effect_quant"]
+                    rec["id"] = e["id"]
+                    rec["summary"] = e["summary"]
+            return out
+        do_map = _agg(do_rows)
+        hard_map = _agg(harm_rows)
+        cau_map = _agg(ushape_rows + mixed_rows)
+        # Sort: overlap desc, then importance score desc.
+        def _sortkey(e: dict):
+            return (-(e["n_overlap"]), -(1 if e["breakthrough"] else 0), -e["best_score"])
+        do_list = sorted(do_map.values(), key=_sortkey)
+        hard_list = sorted(hard_map.values(), key=_sortkey)
+        caution_list = sorted(cau_map.values(), key=_sortkey)
+    else:
+        do_list = hard_list = caution_list = []
+    return render(request, "my_plan.html", {
+        "title": "My plan",
+        "profile": p,
+        "matched_outcomes": matched_outcomes,
+        "do_rows": do_list[:24],
+        "hard_rows": hard_list[:18],
+        "caution_rows": caution_list[:12],
     })
 
 
@@ -1539,11 +1727,26 @@ def search(request: Request, q: str = ""):
                 for _, d in scored[:30]:
                     edges.append(d)
                     semantic_added += 1
+    intent = _classify_query(q) if q else None
+    # Resolve "prevent X" / "helps with X" / "harms X" to a real outcome slug.
+    prevent_suggestion = None
+    if intent and intent.get("target"):
+        tg = intent["target"].lower().strip()
+        with connect() as conn:
+            outcomes = [dict(r) for r in conn.execute(
+                "SELECT slug, name FROM entity WHERE kind IN "
+                "('condition','outcome','marker')").fetchall()]
+        match = (next((o for o in outcomes if o["slug"] == tg), None)
+                 or next((o for o in outcomes if o["name"].lower() == tg), None)
+                 or next((o for o in outcomes if tg in o["name"].lower()), None))
+        if match and intent["intent"] in ("prevent", "helps_with", "harms", "best_evidence"):
+            prevent_suggestion = match
     return render(request, "search.html", {
         "title": f"Search: {q}" if q else "Search",
         "q": q, "edges": edges, "entities": entities,
         "semantic_added": semantic_added,
-        "intent": _classify_query(q) if q else None,
+        "intent": intent,
+        "prevent_suggestion": prevent_suggestion,
     })
 
 

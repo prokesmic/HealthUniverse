@@ -14,6 +14,17 @@
         placeholder="Search foods, conditions, mechanisms, or ask a real question…">
       <button class="btn-primary" type="submit">Search</button>
     </form>
+    {% if prevent_suggestion %}
+    <a class="search-prevent-cta" href="/prevent?q={{ prevent_suggestion.slug }}">
+      <span class="search-prevent-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <span class="search-prevent-text">
+        <small>OPEN THE PREVENTION PLAYBOOK</small>
+        <b>What to do and avoid for {{ prevent_suggestion.name }} →</b>
+      </span>
+    </a>
+    {% endif %}
     {% if q %}
     <div class="search-meta">
       {% set total = (entities|length) + (edges|length) %}

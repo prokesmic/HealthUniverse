@@ -31,6 +31,25 @@
 <section class="prv-suggest empty"><p class="muted">No condition matched “{{ query }}”. Try a more general term.</p></section>
 {% endif %}
 
+{% macro prv_card(e, kind) %}
+<li class="prv-card {% if e.breakthrough %}is-breakthrough{% endif %}">
+  {% if e.breakthrough %}<span class="hp-breakthrough-ribbon">BREAKTHROUGH</span>{% endif %}
+  <div class="prv-card-head">
+    <a class="prv-card-title" href="/edge/{{ e.id }}">{{ e.f_name }}</a>
+    <span class="hp-badge hp-badge-tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] }}</span>
+    {% if e.effect_size %}<span class="prv-effect prv-effect-{{ e.effect_size }}" title="Effect size">{{ e.effect_size|upper }} EFFECT</span>{% endif %}
+  </div>
+  <p class="prv-card-summary">{{ e.summary[:150] }}{% if e.summary|length > 150 %}…{% endif %}</p>
+  {% if e.effect_quant %}<p class="prv-card-effect">📊 {{ e.effect_quant[:160] }}{% if e.effect_quant|length > 160 %}…{% endif %}</p>{% endif %}
+  <div class="prv-card-foot">
+    {% if kind != 'do' %}<span class="hp-badge hp-badge-dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>{% endif %}
+    <span class="muted small">{{ e.n_studies }} studies</span>
+    {% if e.top_study %}<span class="hp-badge hp-badge-ghost">{{ e.top_study.replace("_", "-") }}</span>{% endif %}
+    <span class="muted small prv-score" title="Importance score">★ {{ "%.1f"|format(e.score) }}</span>
+  </div>
+</li>
+{% endmacro %}
+
 {% if matched %}
 <section class="prv-result">
   <div class="prv-summary">
@@ -38,7 +57,11 @@
     <h2 class="prv-summary-name">{{ matched.name }}</h2>
     <div class="prv-summary-counts">
       <span><b>{{ do_rows|length }}</b> things to do</span>
-      <span><b>{{ avoid_rows|length }}</b> things to avoid</span>
+      <span><b>{{ hard_rows|length }}</b> hard avoid</span>
+      <span><b>{{ caution_rows|length }}</b> use caution</span>
+    </div>
+    <div class="prv-actions">
+      <button type="button" onclick="window.print()" class="prv-print-btn">🖨 Print plan</button>
     </div>
   </div>
 
@@ -52,26 +75,8 @@
         <small>Protective evidence, ranked by importance × confirmation</small>
       </header>
       {% if do_rows %}
-      <ol class="prv-list">
-        {% for e in do_rows %}
-        <li class="prv-card {% if e.breakthrough %}is-breakthrough{% endif %}">
-          {% if e.breakthrough %}<span class="hp-breakthrough-ribbon">BREAKTHROUGH</span>{% endif %}
-          <div class="prv-card-head">
-            <a class="prv-card-title" href="/edge/{{ e.id }}">{{ e.f_name }}</a>
-            <span class="hp-badge hp-badge-tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] }}</span>
-          </div>
-          <p class="prv-card-summary">{{ e.summary[:160] }}{% if e.summary|length > 160 %}…{% endif %}</p>
-          <div class="prv-card-foot">
-            <span class="muted small">{{ e.n_studies }} studies</span>
-            {% if e.top_study %}<span class="hp-badge hp-badge-ghost">{{ e.top_study.replace("_", "-") }}</span>{% endif %}
-            <span class="muted small prv-score" title="Importance score">★ {{ "%.1f"|format(e.score) }}</span>
-          </div>
-        </li>
-        {% endfor %}
-      </ol>
-      {% else %}
-      <p class="empty">No protective evidence in our corpus yet for this condition.</p>
-      {% endif %}
+      <ol class="prv-list">{% for e in do_rows %}{{ prv_card(e, 'do') }}{% endfor %}</ol>
+      {% else %}<p class="empty">No protective evidence in our corpus yet for this condition.</p>{% endif %}
     </div>
 
     <div class="prv-col prv-avoid">
@@ -79,30 +84,23 @@
         <span class="prv-col-icon" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg>
         </span>
-        <h3>Avoid this</h3>
-        <small>Harmful, U-shaped, or mixed-risk evidence</small>
+        <h3>Hard avoid</h3>
+        <small>Linear harmful effects — more is worse</small>
       </header>
-      {% if avoid_rows %}
-      <ol class="prv-list">
-        {% for e in avoid_rows %}
-        <li class="prv-card {% if e.breakthrough %}is-breakthrough{% endif %}">
-          {% if e.breakthrough %}<span class="hp-breakthrough-ribbon">BREAKTHROUGH</span>{% endif %}
-          <div class="prv-card-head">
-            <a class="prv-card-title" href="/edge/{{ e.id }}">{{ e.f_name }}</a>
-            <span class="hp-badge hp-badge-tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] }}</span>
-          </div>
-          <p class="prv-card-summary">{{ e.summary[:160] }}{% if e.summary|length > 160 %}…{% endif %}</p>
-          <div class="prv-card-foot">
-            <span class="hp-badge hp-badge-dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
-            <span class="muted small">{{ e.n_studies }} studies</span>
-            <span class="muted small prv-score" title="Importance score">★ {{ "%.1f"|format(e.score) }}</span>
-          </div>
-        </li>
-        {% endfor %}
-      </ol>
-      {% else %}
-      <p class="empty">No harmful evidence in our corpus yet for this condition.</p>
-      {% endif %}
+      {% if hard_rows %}
+      <ol class="prv-list">{% for e in hard_rows %}{{ prv_card(e, 'hard') }}{% endfor %}</ol>
+      {% else %}<p class="empty">No clear-harm evidence in our corpus for this condition.</p>{% endif %}
+
+      <header class="prv-subhead">
+        <span class="prv-col-icon prv-col-icon-caution" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 1 21h22z"/><path d="M12 9v6"/><circle cx="12" cy="18" r=".7"/></svg>
+        </span>
+        <h3>Use caution</h3>
+        <small>U-shaped or mixed — small/moderate may be fine</small>
+      </header>
+      {% if caution_rows %}
+      <ol class="prv-list">{% for e in caution_rows %}{{ prv_card(e, 'caution') }}{% endfor %}</ol>
+      {% else %}<p class="empty">No U-shaped or mixed-risk evidence in our corpus.</p>{% endif %}
     </div>
   </div>
 
