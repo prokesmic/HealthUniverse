@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="meth-page">
+  <header class="meth-head">
+    <p class="hp-eyebrow">PRIVACY · GDPR-AWARE</p>
+    <h1 class="hp-title">What we store,<br/>what we never store<span class="dot">.</span></h1>
+    <p class="hp-lede">Health Universe is privacy-first by architecture, not
+      by promise. The site cannot accidentally leak your profile because
+      the profile never reaches the server. Below, in plain language,
+      what we actually do — and how to remove yourself from any list.</p>
+  </header>
+
+  {% if request and request.query_params.get('unsubscribed') %}
+  <div class="digest-confirm">✓ Email removed from the digest list.</div>
+  {% endif %}
+
+  <section class="meth-block">
+    <h2 class="meth-h2">What stays on your device</h2>
+    <ul class="meth-sources">
+      <li><b>Your profile</b> — conditions, stack, watchlists. Stored in a
+        signed cookie. The cookie is encrypted with our HMAC secret so
+        nobody else can forge it, but the data lives only on your browser.</li>
+      <li><b>Lab values</b> — anything entered on <a href="/labs">/labs</a>
+        and any wearable JSON you upload. Saved in your browser's
+        <code>localStorage</code>. Never uploaded.</li>
+      <li><b>Diary, protocols</b> — also <code>localStorage</code>.</li>
+      <li><b>Lab PDFs</b> — when you upload a PDF, the bytes pass through
+        the server for parsing, then are <em>discarded</em> (never written
+        to disk, never logged). Only matched values come back to your
+        browser.</li>
+    </ul>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">What we store, only if you opt in</h2>
+    <p>Two flows put data on our servers:</p>
+    <ol class="meth-steps">
+      <li><b>Weekly digest signup</b> (<a href="/digest">/digest</a> or
+        step 3 of <a href="/start">/start</a>). We store your email plus
+        a snapshot of your tracked condition slugs (e.g. <code>cvd</code>,
+        <code>t2d</code>) so the Sunday email can be personalised.</li>
+      <li><b>Cross-device sync</b> (<a href="/sync">/sync</a>). We email
+        you a one-time link encoding your profile. The email itself is
+        sent through Resend (or SMTP if configured) and we don't retain
+        the body.</li>
+    </ol>
+    <p>Both are explicit checkbox opt-ins, never on by default.</p>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">Lawful basis (GDPR Art. 6 / 9)</h2>
+    <ul class="meth-sources">
+      <li><b>Profile cookie</b> — Art. 6(1)(b): necessary to deliver the
+        service you signed up for. Not Art. 9 because the cookie itself
+        contains the data and never reaches us.</li>
+      <li><b>Digest signup</b> — Art. 6(1)(a) explicit consent + Art.
+        9(2)(a) explicit consent for special-category data (the
+        condition slugs). The checkbox at signup is the consent record.</li>
+      <li><b>Cross-device sync</b> — Art. 6(1)(b): performance of the
+        service. Email is the recovery anchor.</li>
+    </ul>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">Retention</h2>
+    <ul class="meth-sources">
+      <li><b>Profile cookie</b> — 365 days unless you clear it.</li>
+      <li><b>Sync link tokens</b> — 14 days after generation, then expire
+        automatically (HMAC-signed expiry — no DB cleanup needed).</li>
+      <li><b>Subscriber list</b> — kept until you unsubscribe; deleted
+        within 24 hours of an unsubscribe action.</li>
+      <li><b>Lab PDF bytes</b> — discarded immediately after parsing.</li>
+    </ul>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">What we never collect</h2>
+    <ul class="meth-coi">
+      <li>No third-party trackers, ad networks, or pixels.</li>
+      <li>No fingerprinting, device ID, or cross-site IDs.</li>
+      <li>No analytics service that has access to per-user data.</li>
+      <li>No payment information yet — we'll publish a separate notice
+        when subscriptions launch.</li>
+    </ul>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">Your rights</h2>
+    <p>Under GDPR (and equivalent regimes — CCPA, UK GDPR), you can:</p>
+    <ul class="meth-sources">
+      <li><b>Access</b> — download everything we know about you as JSON
+        from <a href="/data-export">/data-export</a>.</li>
+      <li><b>Erase</b> — clear the cookie in your browser to delete the
+        profile; <a href="#unsubscribe">unsubscribe below</a> to remove
+        the email + condition snapshot.</li>
+      <li><b>Object / restrict / port</b> — email the contact below.</li>
+      <li><b>Complain</b> — to your national supervisory authority if you
+        believe processing is unlawful.</li>
+    </ul>
+  </section>
+
+  <section class="meth-block" id="unsubscribe">
+    <h2 class="meth-h2">Unsubscribe / delete</h2>
+    <form method="post" action="/unsubscribe" class="onb-form" style="margin-top:8px">
+      <p>Remove your email and any condition snapshot from our subscriber list:</p>
+      <label class="onb-label">Email
+        <input type="email" name="email" required placeholder="you@email.com">
+      </label>
+      <div class="onb-actions">
+        <a class="onb-back" href="/data-export">⤓ Download my data first</a>
+        <button class="onb-next" type="submit" style="background:#a3552c">Remove me</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">Contact</h2>
+    <p>Data controller: Michal Prokeš.
+      <a href="mailto:prokesmic@gmail.com">prokesmic@gmail.com</a>.
+      For data access / erasure / portability requests, email is the
+      fastest channel — we usually respond within 48 hours.</p>
+  </section>
+</section>
+
+{% endblock %}

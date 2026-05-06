@@ -4037,3 +4037,141 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   .meth-tier-bar { grid-template-columns: 90px 1fr 70px; }
   .meth-changelog li { grid-template-columns: 1fr; gap: 4px; }
 }
+
+/* ============================================================
+   Drug-interaction warnings, /today, multi-profile, advisor cards
+   ============================================================ */
+.warn-block {
+  background: #fff5ed;
+  border: 1px solid #e8b59a;
+  border-left: 4px solid #a3552c;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin: 22px 0;
+}
+.warn-title {
+  font-family: "Fraunces", serif; font-weight: 500;
+  font-size: 22px; color: #8a3a1b; margin: 0 0 10px;
+}
+.warn-list { list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 10px; }
+.warn-item {
+  background: #fffaf0;
+  border: 1px solid rgba(163, 85, 44, 0.2);
+  border-radius: 10px;
+  padding: 12px 14px;
+  position: relative;
+  padding-left: 90px;
+}
+.warn-sev {
+  position: absolute;
+  left: 12px; top: 12px;
+  font: 700 10px "Inter"; letter-spacing: 0.1em;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #c9a961; color: #2a2a2a;
+}
+.warn-high   .warn-sev { background: #a3552c; color: #fffaf0; }
+.warn-moderate .warn-sev { background: #d4a93a; color: #2a2a2a; }
+.warn-low    .warn-sev { background: #ecdfb3; color: #6c4f1f; }
+.warn-item p { margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: #4a3920; }
+
+/* /today */
+.today-page { max-width: 720px; margin: 28px auto 80px; padding: 0 28px; }
+.today-head { margin-bottom: 22px; }
+.today-card {
+  background: linear-gradient(135deg, #fbf3df 0%, #f5ead0 100%);
+  border: 1px solid #ebd9a9;
+  border-radius: 18px;
+  padding: 28px 32px;
+  position: relative;
+  box-shadow: 0 12px 30px rgba(31,58,46,0.08);
+}
+.today-meta {
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  margin-bottom: 14px;
+}
+.today-card-title {
+  font-family: "Fraunces", serif; font-weight: 500;
+  font-size: 30px; line-height: 1.2; margin: 0 0 12px;
+}
+.today-card-title a { color: #1f3a2e; text-decoration: none; }
+.today-card-title a:hover { text-decoration: underline; }
+.today-card-summary { color: #4a5b51; font-size: 15px; line-height: 1.55; margin: 0 0 14px; }
+.today-actions {
+  display: flex; gap: 14px; align-items: center; margin-top: 18px;
+}
+#today-done {
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+/* Multi-profile UI on /me */
+.stack-profiles {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 14px; padding: 18px 22px; margin: 22px 0;
+}
+.stack-profiles-h {
+  font-family: "Fraunces", serif; font-weight: 500;
+  font-size: 20px; margin: 0 0 4px; color: var(--ink);
+}
+.stack-profile-list {
+  list-style: none; padding: 0; margin: 14px 0 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.stack-profile {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 10px 14px;
+  background: #fffaf0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.stack-profile.is-active {
+  border-left: 4px solid #1f3a2e;
+  background: #e7f3ea;
+}
+.stack-profile-name {
+  font-family: "Fraunces", serif; font-weight: 500;
+  font-size: 16px; color: var(--ink);
+}
+.stack-profile small { margin-right: auto; }
+.stack-profile-add {
+  display: flex; gap: 8px; margin-top: 12px;
+}
+.stack-profile-add input {
+  flex: 1; padding: 9px 12px;
+  border: 1px solid var(--line); border-radius: 8px;
+  font: 500 14px "Inter";
+}
+
+/* Advisor board on /methodology */
+.meth-board {
+  list-style: none; padding: 0; margin: 14px 0 0;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+}
+.meth-board-card {
+  padding: 14px 18px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 10px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.meth-board-card.meth-board-open {
+  background: rgba(201,169,97,0.06);
+  border-style: dashed;
+}
+.meth-board-role {
+  font: 600 11px "Inter"; letter-spacing: 0.1em;
+  color: #6c4f1f; text-transform: uppercase;
+}
+.meth-board-card b {
+  font-family: "Fraunces", serif; font-weight: 500;
+  font-size: 18px; color: #1f3a2e;
+}
+.meth-board-card small { font-size: 12px; color: var(--ink-soft); }
+
+@media (max-width: 720px) {
+  .meth-board { grid-template-columns: 1fr; }
+  .stack-profile { flex-direction: column; align-items: flex-start; }
+  .warn-item { padding-left: 14px; padding-top: 36px; }
+  .warn-sev { top: 8px; left: 12px; }
+}

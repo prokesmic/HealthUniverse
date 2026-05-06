@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="onb-page">
+  <header class="onb-head">
+    <p class="hp-eyebrow">CROSS-DEVICE SYNC · NO ACCOUNTS</p>
+    <h1 class="hp-title">Send your profile<br/>to another device<span class="dot">.</span></h1>
+    <p class="hp-lede">Your stack lives in a signed cookie on this browser. To
+      pick up where you left off on another device — or after clearing
+      cookies — we'll email you a one-click link that restores it.
+      Health Universe never stores your profile server-side.</p>
+  </header>
+
+  {% if sent %}
+  <div class="onb-form" style="text-align:center">
+    <h2 class="onb-h2">✓ Email sent</h2>
+    <p class="muted">Check your inbox. The restore link is valid for 14 days.</p>
+    <p class="muted small">Didn't get it? <a href="/sync">Try again</a> or check spam.</p>
+  </div>
+  {% else %}
+  <form class="onb-form" method="post" action="/sync" autocomplete="off">
+    <h2 class="onb-h2">Where should we send the link?</h2>
+    {% if error == 'bad-email' %}<p class="muted small" style="color:#a3552c">That email doesn't look right.</p>{% endif %}
+    {% if error == 'expired' %}<p class="muted small" style="color:#a3552c">That link expired. Send a fresh one below.</p>{% endif %}
+    <label class="onb-label">Email
+      <input type="email" name="email" required value="{{ profile.email or '' }}"
+             placeholder="you@email.com" autofocus>
+    </label>
+    <p class="muted small">We'll generate a token that encodes your current
+      profile, sign it with our HMAC secret, and email it to you. Anyone
+      with the link gets your profile — treat it like a password.</p>
+    <div class="onb-actions">
+      <a class="onb-back" href="/me">← Back</a>
+      <button class="onb-next" type="submit">Email me the link →</button>
+    </div>
+  </form>
+  {% endif %}
+</section>
+
+{% endblock %}

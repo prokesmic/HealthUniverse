@@ -41,6 +41,22 @@
 </li>
 {% endmacro %}
 
+{% if warnings %}
+<section class="warn-block">
+  <h2 class="warn-title">⚠ Interactions in your stack</h2>
+  <ul class="warn-list">
+    {% for w in warnings %}
+    <li class="warn-item warn-{{ w.severity }}">
+      <span class="warn-sev">{{ w.severity|upper }}</span>
+      <b>{{ w.label }}</b><br/>
+      <small class="muted">{{ w.pair | join(" + ") }}</small>
+      <p>{{ w.note }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
 {% if matched_outcomes %}
 <section class="prv-result">
   <div class="prv-grid">

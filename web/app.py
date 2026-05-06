@@ -18,7 +18,8 @@ from db import connect  # noqa: E402
 
 def datetime_now():
     return datetime.now()
-from profile import COOKIE, Profile, decode, encode, relevance_score  # noqa: E402
+from profile import (COOKIE, Profile, decode, encode, relevance_score,  # noqa
+                     make_sync_token, verify_sync_token, _PROFILE_FIELDS)
 from web.illustrations import (   # noqa: E402
     edge_svg, hero_svg, featured_card_svg, discovery_card_svg, strength_wave_svg,
 )
@@ -783,7 +784,200 @@ def my_plan(request: Request):
         "do_rows": do_list[:24],
         "hard_rows": hard_list[:18],
         "caution_rows": caution_list[:12],
+        "warnings": _interactions_for_stack(p.stack),
     })
+
+
+@app.get("/sync", response_class=HTMLResponse)
+def sync_form(request: Request, sent: int = 0, error: str = ""):
+    """Cross-device sync. User enters email → server emails a /restore link
+    that encodes the current profile. Clicking on another device restores
+    the cookie. No accounts, no DB — privacy-first."""
+    p = decode(request.cookies.get(COOKIE))
+    return render(request, "sync.html", {
+        "title": "Sync to another device",
+        "profile": p, "sent": bool(sent), "error": error,
+    })
+
+
+@app.post("/sync")
+async def sync_send(request: Request, email: str = Form(...)):
+    """Generate a sync token + email it as a /restore?token=X link."""
+    import os, re as _re
+    if not _re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email):
+        return RedirectResponse("/sync?error=bad-email", status_code=303)
+    p = decode(request.cookies.get(COOKIE))
+    p.email = email
+    token = make_sync_token(p, ttl_seconds=60 * 60 * 24 * 14)  # 14 days
+    base = str(request.base_url).rstrip("/")
+    link = f"{base}/restore?token={token}"
+    body = f"""<p>Click to restore your Health Universe profile on this device:</p>
+<p><a href="{link}">Restore my profile</a></p>
+<p style="font-size:12px;color:#777">Link valid for 14 days. Health Universe never stores your profile server-side; this email is the only way it reaches another device.</p>"""
+    sent = False
+    try:
+        if os.environ.get("RESEND_API_KEY"):
+            from digest_send import send_resend
+            send_resend(email, "Restore your Health Universe profile", body)
+            sent = True
+        elif os.environ.get("SMTP_USER"):
+            from digest_send import send_smtp
+            send_smtp(email, "Restore your Health Universe profile", body)
+            sent = True
+    except Exception:
+        pass
+    resp = RedirectResponse(f"/sync?sent={int(sent)}", status_code=303)
+    # Persist email on the existing cookie too (optional anchor)
+    resp.set_cookie(COOKIE, encode(p), max_age=60*60*24*365,
+                    httponly=False, samesite="lax")
+    return resp
+
+
+@app.get("/restore")
+def restore(request: Request, token: str = ""):
+    """Verify magic-link token and re-set the profile cookie."""
+    if not token:
+        return RedirectResponse("/sync", status_code=303)
+    p = verify_sync_token(token)
+    if not p:
+        return RedirectResponse("/sync?error=expired", status_code=303)
+    resp = RedirectResponse("/my-plan" if p.conditions else "/me",
+                            status_code=303)
+    resp.set_cookie(COOKIE, encode(p), max_age=60*60*24*365,
+                    httponly=False, samesite="lax")
+    return resp
+
+
+@app.get("/privacy", response_class=HTMLResponse)
+def privacy(request: Request):
+    """Full privacy disclosure — Art. 9 GDPR-aware language for the optional
+    digest signup, retention windows, lawful basis, and data-export link."""
+    return render(request, "privacy.html", {"title": "Privacy"})
+
+
+@app.get("/data-export")
+def data_export(request: Request):
+    """Download every byte of server-known data about this user as JSON.
+    Profile cookie + any subscriber row keyed by email."""
+    import json as _json
+    p = decode(request.cookies.get(COOKIE))
+    out = {"profile": {k: getattr(p, k) for k in _PROFILE_FIELDS},
+           "subscriber_record": None}
+    if p.email:
+        sub_file = Path(__file__).parent.parent / "data" / "subscribers.json"
+        try:
+            subs = _json.loads(sub_file.read_text()) if sub_file.exists() else []
+            out["subscriber_record"] = next((s for s in subs if s.get("email") == p.email), None)
+        except Exception:
+            pass
+    body = _json.dumps(out, indent=2).encode()
+    return Response(content=body, media_type="application/json",
+                    headers={"Content-Disposition": 'attachment; filename="health-universe-export.json"'})
+
+
+@app.post("/unsubscribe")
+async def unsubscribe(request: Request, email: str = Form("")):
+    """Remove an email from data/subscribers.json. Idempotent. No login."""
+    import json as _json
+    if not email:
+        p = decode(request.cookies.get(COOKIE))
+        email = p.email or ""
+    if not email:
+        return RedirectResponse("/privacy", status_code=303)
+    sub_file = Path(__file__).parent.parent / "data" / "subscribers.json"
+    if sub_file.exists():
+        try:
+            subs = _json.loads(sub_file.read_text())
+            subs = [s for s in subs if s.get("email") != email]
+            sub_file.write_text(_json.dumps(subs, indent=2))
+        except Exception:
+            pass
+    return RedirectResponse("/privacy?unsubscribed=1", status_code=303)
+
+
+@app.post("/me/switch-profile")
+async def switch_profile(request: Request, name: str = Form(...)):
+    """Move the named alternate into the active slot, archive the previous
+    active profile to alternates."""
+    p = decode(request.cookies.get(COOKIE))
+    target = next((alt for alt in p.alternates if alt.get("name") == name), None)
+    if not target:
+        return RedirectResponse("/me", status_code=303)
+    # Archive current active
+    archive = {k: getattr(p, k) for k in _PROFILE_FIELDS if k != "alternates"}
+    new_alternates = [a for a in p.alternates if a.get("name") != name]
+    new_alternates.append(archive)
+    new = Profile(**{k: target.get(k) for k in _PROFILE_FIELDS if k in target})
+    new.alternates = new_alternates
+    new.email = p.email                                   # email travels with the device
+    resp = RedirectResponse("/my-plan" if new.conditions else "/me", status_code=303)
+    resp.set_cookie(COOKIE, encode(new), max_age=60*60*24*365,
+                    httponly=False, samesite="lax")
+    return resp
+
+
+@app.post("/me/add-profile")
+async def add_profile(request: Request, name: str = Form(...)):
+    """Save the current profile as a named alternate, then switch to a
+    fresh blank profile so the user can fill it in for someone else."""
+    p = decode(request.cookies.get(COOKIE))
+    if not name.strip() or len(name) > 40:
+        return RedirectResponse("/me?err=name", status_code=303)
+    archived = {k: getattr(p, k) for k in _PROFILE_FIELDS if k != "alternates"}
+    archived["name"] = name.strip()
+    p.alternates.append(archived)
+    new = Profile()
+    new.alternates = p.alternates
+    new.email = p.email
+    resp = RedirectResponse("/me", status_code=303)
+    resp.set_cookie(COOKIE, encode(new), max_age=60*60*24*365,
+                    httponly=False, samesite="lax")
+    return resp
+
+
+@app.post("/me/delete-profile")
+async def delete_profile(request: Request, name: str = Form(...)):
+    p = decode(request.cookies.get(COOKIE))
+    p.alternates = [a for a in p.alternates if a.get("name") != name]
+    resp = RedirectResponse("/me", status_code=303)
+    resp.set_cookie(COOKIE, encode(p), max_age=60*60*24*365,
+                    httponly=False, samesite="lax")
+    return resp
+
+
+# ---- drug × supplement interaction warnings ---------------------------
+
+_INTERACTIONS_FILE = Path(__file__).parent.parent / "data" / "interactions.json"
+
+
+def _load_interactions() -> list[dict]:
+    import json as _json
+    if not _INTERACTIONS_FILE.exists():
+        return []
+    try:
+        return _json.loads(_INTERACTIONS_FILE.read_text())
+    except Exception:
+        return []
+
+
+def _interactions_for_stack(stack: list[str]) -> list[dict]:
+    """Return any interaction rows whose `pair` is fully covered by the user's stack."""
+    if not stack:
+        return []
+    s = set(stack)
+    out: list[dict] = []
+    for it in _load_interactions():
+        pair = set(it.get("pair", []))
+        if pair and pair.issubset(s):
+            out.append(it)
+    return out
+
+
+@app.get("/api/interactions/check")
+def api_interactions_check(request: Request):
+    """Return any interaction warnings active for the current cookie profile."""
+    p = decode(request.cookies.get(COOKIE))
+    return JSONResponse({"warnings": _interactions_for_stack(p.stack)})
 
 
 @app.get("/methodology", response_class=HTMLResponse)
@@ -999,6 +1193,44 @@ def handout(request: Request, condition: str = "", patient: str = "",
     })
 
 
+@app.get("/today", response_class=HTMLResponse)
+def today(request: Request):
+    """Daily one-card hit: pick a single anchor edge from the user's plan
+    based on day-of-year so it's stable for the day. Designed for daily
+    return + streak hook."""
+    p = decode(request.cookies.get(COOKIE))
+    pick = None
+    interactions: list[dict] = []
+    if p.conditions:
+        with connect() as conn:
+            cond_ph = ",".join("?" * len(p.conditions))
+            rows = conn.execute(f"""
+                SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
+                       e.effect_quant, f.name AS f_name,
+                       o.name AS o_name, o.slug AS o_slug,
+                       (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies
+                FROM edge e
+                JOIN entity f ON f.id=e.factor_id
+                JOIN entity o ON o.id=e.outcome_id
+                WHERE o.slug IN ({cond_ph})
+                  AND e.tier IN ('A','B') AND e.direction = 'protective'
+                ORDER BY CASE e.tier WHEN 'A' THEN 1 ELSE 2 END,
+                         CASE e.effect_size WHEN 'large' THEN 1 WHEN 'moderate' THEN 2 ELSE 3 END,
+                         e.id""", p.conditions).fetchall()
+        rows = [dict(r) for r in rows]
+        if rows:
+            idx = datetime_now().timetuple().tm_yday % len(rows)
+            pick = rows[idx]
+    interactions = _interactions_for_stack(p.stack)
+    return render(request, "today.html", {
+        "title": "Today",
+        "profile": p,
+        "pick": pick,
+        "interactions": interactions,
+        "today_label": datetime_now().strftime("%A %d %B %Y"),
+    })
+
+
 @app.get("/coach", response_class=HTMLResponse)
 def coach_page(request: Request, q: str = ""):
     """Conversational planner: builds a structured 30-day plan from the
@@ -1007,6 +1239,8 @@ def coach_page(request: Request, q: str = ""):
     p = decode(request.cookies.get(COOKIE))
     plan = None
     answer = None
+    model_used = ""
+    warnings = []
     if p.conditions:
         with connect() as conn:
             no_regret = _no_regret_movers(conn, p, limit=5)
@@ -1044,49 +1278,66 @@ def coach_page(request: Request, q: str = ""):
             "no_regret": no_regret,
             "red_flags": red_flags,
         }
-        # Optional: ask local Gemma to write a personal opening paragraph.
-        # Falls back gracefully if Ollama isn't reachable (e.g. on Vercel).
+        # Optional: ask LLM to write a personal opening paragraph.
+        # Tries local Gemma first; falls back to Claude if API key set.
         if q:
-            answer = _coach_llm(p, plan, q)
+            answer, model_used = _coach_llm(p, plan, q)
+        warnings = _interactions_for_stack(p.stack)
     return render(request, "coach.html", {
-        "title": "My coach", "profile": p, "plan": plan, "q": q, "answer": answer,
+        "title": "My coach", "profile": p, "plan": plan, "q": q,
+        "answer": answer, "model_used": model_used,
+        "warnings": warnings,
     })
 
 
-def _coach_llm(profile: Profile, plan: dict, question: str) -> str | None:
-    """Ground a Gemma response in the structured plan we already built —
-    no free-form medical claims, only commentary on what's already on
-    screen. Returns None if Ollama is unreachable."""
+def _coach_llm(profile: Profile, plan: dict, question: str) -> tuple[str | None, str]:
+    """Ground an LLM response in the structured plan we already built.
+    Tries local Gemma first (free); falls back to Claude Haiku via the
+    existing cost-capped client if a paid path is configured.
+    Returns (text, model_used) or (None, ''). Same constraints both ways:
+    only discuss items already on screen."""
+    anchors = "\n".join(
+        f"- {a['f_name']}: {a['summary'][:140]}"
+        for a in plan.get("anchors", [])[:4])
+    avoid = "\n".join(
+        f"- {r['f_name']}: {r['summary'][:120]}"
+        for r in plan.get("red_flags", [])[:3])
+    system = (
+        "You are a careful evidence-based health-coach assistant. "
+        "ONLY discuss the items listed below — never invent new "
+        "interventions, doses, or PMIDs. Keep responses under 160 words. "
+        "End every reply with: 'Educational synthesis only — not medical advice.'"
+    )
+    user_msg = (
+        f"USER QUESTION: {question}\n\n"
+        f"USER CONDITIONS: {', '.join(profile.conditions) or 'none'}\n"
+        f"USER STACK: {', '.join(profile.stack) or 'none'}\n\n"
+        f"PROTECTIVE ANCHORS (only positive moves you may discuss):\n{anchors}\n\n"
+        f"AVOIDANCES (only if user asks about risks):\n{avoid}\n\n"
+        "Write a short reply addressing the user's question."
+    )
+    # 1) Try local Gemma (free)
     try:
-        from ollama_client import call, OllamaUnavailable
+        from ollama_client import call as ollama_call, OllamaUnavailable
+        text = ollama_call(system=system, user=user_msg,
+                           num_predict=400, retries=0)
+        return text, "local-gemma"
     except Exception:
-        return None
-    try:
-        anchors = "\n".join(
-            f"- {a['f_name']}: {a['summary'][:140]}"
-            for a in plan.get("anchors", [])[:4])
-        avoid = "\n".join(
-            f"- {r['f_name']}: {r['summary'][:120]}"
-            for r in plan.get("red_flags", [])[:3])
-        system = (
-            "You are a careful evidence-based health-coach assistant. "
-            "ONLY discuss the items listed below — never invent new "
-            "interventions, doses, or PMIDs. Keep responses under 160 words. "
-            "End every reply with: 'Educational synthesis only — not medical advice.'"
-        )
-        user_msg = (
-            f"USER QUESTION: {question}\n\n"
-            f"USER CONDITIONS: {', '.join(profile.conditions) or 'none'}\n"
-            f"USER STACK: {', '.join(profile.stack) or 'none'}\n\n"
-            f"PROTECTIVE ANCHORS (only positive moves you may discuss):\n{anchors}\n\n"
-            f"AVOIDANCES (only if user asks about risks):\n{avoid}\n\n"
-            "Write a short reply addressing the user's question."
-        )
-        return call(system=system, user=user_msg, num_predict=400, retries=0)
-    except OllamaUnavailable:
-        return None
-    except Exception:
-        return None
+        pass
+    # 2) Cloud fallback — Claude via the existing cost-capped client.
+    # The client uses claude-sonnet-4-6 by default; the global $50 cap
+    # protects spend. Each /coach call is small (~400 tokens out, ~600 in)
+    # so each is a few cents at most.
+    import os
+    if os.environ.get("ANTHROPIC_API_KEY"):
+        try:
+            from claude_client import call as claude_call
+            text, _usage = claude_call(system=system, user=user_msg,
+                                       operation="coach", max_tokens=400)
+            return text, "claude-sonnet"
+        except Exception:
+            return None, ""
+    return None, ""
 
 
 @app.get("/digest", response_class=HTMLResponse)

@@ -202,15 +202,107 @@ async function loadRelevant() {
   document.getElementById("labs-relevant").style.display = "";
 }
 
+/* ── wearable importers ────────────────────────────────────────────
+   Auto-detect Oura, Whoop, Garmin, Apple Health export shapes.
+   Store only computed averages, not the raw export, to keep
+   localStorage manageable.
+   ─────────────────────────────────────────────────────────────── */
+function avg(arr) { return arr.length ? arr.reduce((a,b)=>a+b,0)/arr.length : 0; }
+function parseOuraJson(j) {
+  // Oura cloud "daily summary" export shape
+  const sleep = (j.daily_sleep || j.sleep || []).map(d => d.score || d.total_sleep_duration);
+  const hrv = (j.daily_sleep || []).map(d => d.contributors?.rem_sleep || null).filter(Boolean);
+  const rhr = (j.heart_rate || j.daily_readiness || []).map(d => d.resting_heart_rate || d.contributors?.resting_heart_rate).filter(Boolean);
+  return {
+    source: "oura",
+    avg_sleep_score: Math.round(avg(sleep)),
+    avg_resting_hr: Math.round(avg(rhr)),
+    n_days: Math.max(sleep.length, rhr.length),
+  };
+}
+function parseWhoopJson(j) {
+  const cycles = j.cycles || j.records || j;
+  const arr = Array.isArray(cycles) ? cycles : [];
+  return {
+    source: "whoop",
+    avg_recovery: Math.round(avg(arr.map(c => c.score?.recovery_score).filter(Boolean))),
+    avg_strain: avg(arr.map(c => c.score?.strain).filter(Boolean)).toFixed(1),
+    avg_resting_hr: Math.round(avg(arr.map(c => c.score?.resting_heart_rate).filter(Boolean))),
+    n_days: arr.length,
+  };
+}
+function parseGarminCsv(text) {
+  // Garmin Connect "Activities.csv" or "Wellness.csv" export — first row is headers
+  const lines = text.split(/\r?\n/).filter(Boolean);
+  if (lines.length < 2) return null;
+  const headers = lines[0].split(",").map(s => s.replace(/"/g,"").trim().toLowerCase());
+  const rows = lines.slice(1).map(l => l.split(","));
+  const col = name => headers.findIndex(h => h.includes(name));
+  const stepsIdx = col("step");
+  const sleepIdx = col("sleep");
+  const rhrIdx = col("resting hr") >= 0 ? col("resting hr") : col("rhr");
+  const num = i => i >= 0 ? rows.map(r => parseFloat((r[i]||"").replace(/[^0-9.]/g,""))).filter(n => !isNaN(n)) : [];
+  return {
+    source: "garmin",
+    avg_steps: Math.round(avg(num(stepsIdx))),
+    avg_sleep_min: Math.round(avg(num(sleepIdx))),
+    avg_resting_hr: Math.round(avg(num(rhrIdx))),
+    n_days: rows.length,
+  };
+}
+function parseAppleHealthXml(text) {
+  // Apple Health Export.xml — millions of <Record> entries. We don't load
+  // it whole; we count and average the most useful types only.
+  const types = {
+    HKQuantityTypeIdentifierStepCount: { count: 0, sum: 0, key: "avg_daily_steps" },
+    HKQuantityTypeIdentifierRestingHeartRate: { count: 0, sum: 0, key: "avg_resting_hr" },
+    HKQuantityTypeIdentifierHeartRateVariabilitySDNN: { count: 0, sum: 0, key: "avg_hrv_sdnn_ms" },
+    HKCategoryTypeIdentifierSleepAnalysis: { count: 0, sum: 0, key: "n_sleep_records" },
+  };
+  const re = /<Record\s+type="([^"]+)"\s+[^>]*?value="([\d.]+)"/g;
+  let m, scanned = 0;
+  while ((m = re.exec(text)) !== null) {
+    scanned++;
+    const t = types[m[1]];
+    if (t) { t.count++; t.sum += parseFloat(m[2]); }
+    if (scanned > 250000) break;       // hard ceiling on browser CPU
+  }
+  const out = { source: "apple-health", n_records_scanned: scanned };
+  for (const [_, v] of Object.entries(types)) {
+    if (v.count) out[v.key] = Math.round(v.sum / v.count);
+  }
+  return out;
+}
+
 document.getElementById("wear-upload").onchange = async e => {
   const file = e.target.files[0];
   if (!file) return;
+  const status = document.getElementById("wear-status");
+  status.textContent = `Reading ${file.name}…`;
   const text = await file.text();
+  let parsed = null, error = null;
+  try {
+    if (file.name.endsWith(".xml") || text.startsWith("<?xml")) {
+      parsed = parseAppleHealthXml(text);
+    } else if (file.name.endsWith(".csv") || text.includes(",") && text.split("\n",2)[0].includes(",")) {
+      parsed = parseGarminCsv(text);
+    } else if (file.name.endsWith(".json") || text.trim().startsWith("{") || text.trim().startsWith("[")) {
+      const j = JSON.parse(text);
+      if (j.cycles || j.records) parsed = parseWhoopJson(j);
+      else parsed = parseOuraJson(j);
+    }
+  } catch (err) {
+    error = err.message;
+  }
+  if (!parsed && !error) error = "Couldn't auto-detect format. Supported: Apple Health .xml, Oura .json, Whoop .json, Garmin .csv";
+  if (error) { status.textContent = "✗ " + error; return; }
   const d = load();
-  d.wearable = { name: file.name, size: file.size, raw: text.slice(0, 50000), at: new Date().toISOString() };
+  d.wearable = { name: file.name, size: file.size, parsed, at: new Date().toISOString() };
   save(d);
-  document.getElementById("wear-status").textContent =
-    `✓ ${file.name} · ${(file.size / 1024).toFixed(1)} KB · stored locally`;
+  status.innerHTML = `✓ ${file.name} · ${parsed.source} · ${parsed.n_days || parsed.n_records_scanned || 0} record${(parsed.n_days||parsed.n_records_scanned)===1?"":"s"} parsed locally.<br/>` +
+    Object.entries(parsed)
+      .filter(([k]) => k !== "source")
+      .map(([k,v]) => `<small><b>${k.replace(/_/g," ")}</b>: ${v}</small>`).join(" · ");
 };
 
 document.getElementById("lab-export").onclick = () => {

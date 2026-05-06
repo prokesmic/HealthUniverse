@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="today-page">
+  <header class="today-head">
+    <p class="hp-eyebrow">{{ today_label | upper }}</p>
+    <h1 class="hp-title">Your one card<br/>for today<span class="dot">.</span></h1>
+    <p id="streak-line" class="muted small" data-no-profile="{{ 0 if profile.conditions else 1 }}"></p>
+  </header>
+
+  {% if interactions %}
+  <section class="warn-block">
+    <h2 class="warn-title">⚠ Interactions in your stack</h2>
+    <ul class="warn-list">
+      {% for w in interactions %}
+      <li class="warn-item warn-{{ w.severity }}">
+        <span class="warn-sev">{{ w.severity|upper }}</span>
+        <b>{{ w.label }}</b><br/>
+        <small class="muted">{{ w.pair | join(" + ") }}</small>
+        <p>{{ w.note }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if pick %}
+  <article class="today-card">
+    <div class="today-meta">
+      <span class="hp-badge hp-badge-tier-{{ pick.tier }}">{{ TIER_LABEL[pick.tier] }}</span>
+      {% if pick.effect_size and pick.effect_size not in ('unknown','trivial') %}
+      <span class="prv-effect prv-effect-{{ pick.effect_size }}">{{ pick.effect_size|upper }} EFFECT</span>
+      {% endif %}
+      <span class="muted small">{{ pick.n_studies }} studies</span>
+    </div>
+    <h2 class="today-card-title">
+      <a href="/edge/{{ pick.id }}">{{ pick.f_name }} → {{ pick.o_name }}</a>
+    </h2>
+    <p class="today-card-summary">{{ pick.summary[:280] }}{% if pick.summary|length > 280 %}…{% endif %}</p>
+    {% if pick.effect_quant %}
+    <p class="prv-card-effect">📊 {{ pick.effect_quant[:180] }}{% if pick.effect_quant|length > 180 %}…{% endif %}</p>
+    {% endif %}
+    <div class="today-actions">
+      <button id="today-done" class="onb-next" type="button">✓ I did it today</button>
+      <a class="onb-back" href="/diary">Open diary →</a>
+    </div>
+  </article>
+  {% else %}
+  <div class="onb-form">
+    {% if profile.conditions %}
+    <h2 class="onb-h2">No protective edges yet for what you track</h2>
+    <p class="muted">As the corpus grows, your daily card will appear here. In the meantime, browse <a href="/my-plan">your plan</a>.</p>
+    {% else %}
+    <h2 class="onb-h2">Set up your stack to get a daily card</h2>
+    <p class="muted">Tell us what conditions to track on <a href="/start">/start</a> and we'll surface one anchor edge per day, picked from your plan.</p>
+    {% endif %}
+  </div>
+  {% endif %}
+</section>
+
+<script>
+(function(){
+  const STREAK_KEY = 'hu_today_streak_v1';
+  function load(){ try { return JSON.parse(localStorage.getItem(STREAK_KEY) || '{}'); } catch(_){ return {}; } }
+  function save(d){ localStorage.setItem(STREAK_KEY, JSON.stringify(d)); }
+  function todayKey(){ return new Date().toISOString().slice(0,10); }
+  function yesterdayKey(){ const d=new Date(); d.setDate(d.getDate()-1); return d.toISOString().slice(0,10); }
+
+  function render(){
+    const d = load();
+    const line = document.getElementById('streak-line');
+    if (!line) return;
+    const streak = d.streak || 0;
+    const last = d.last_done || '';
+    const todayDone = last === todayKey();
+    const fragments = [];
+    if (streak > 0) fragments.push('🔥 ' + streak + '-day streak');
+    if (todayDone) fragments.push('· marked today done');
+    line.textContent = fragments.join(' ') || 'Tap "I did it today" to start a streak.';
+    const btn = document.getElementById('today-done');
+    if (btn && todayDone) {
+      btn.textContent = '✓ Marked done today';
+      btn.disabled = true;
+      btn.style.opacity = 0.6;
+    }
+  }
+
+  const btn = document.getElementById('today-done');
+  if (btn) btn.onclick = () => {
+    const d = load();
+    const t = todayKey();
+    if (d.last_done === t) return;
+    if (d.last_done === yesterdayKey()) {
+      d.streak = (d.streak || 0) + 1;
+    } else {
+      d.streak = 1;
+    }
+    d.last_done = t;
+    save(d);
+    render();
+  };
+
+  render();
+})();
+</script>
+
+{% endblock %}

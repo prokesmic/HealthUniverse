@@ -34,6 +34,13 @@ class Profile:
     watch_factors:  list[str] = field(default_factory=list)
     watch_outcomes: list[str] = field(default_factory=list)
     watch_edges:    list[int] = field(default_factory=list)
+    # Multi-profile: optional named alternates (e.g. self + parent + spouse)
+    # Each entry is the same shape minus alternates/email itself.
+    name:           str | None = None         # display label for the active profile
+    alternates:     list[dict] = field(default_factory=list)
+    # Email is OPTIONAL and only stored when user opts into magic-link sync
+    # or the digest. Used as recovery anchor and unsubscribe key.
+    email:          str | None = None
 
 
 def _sign(payload: bytes) -> str:
@@ -60,18 +67,53 @@ def encode(p: Profile) -> str:
     return _sign(json.dumps(asdict(p), separators=(",", ":")).encode())
 
 
+_PROFILE_FIELDS = ("age", "sex", "conditions", "goals", "stack",
+                   "watch_factors", "watch_outcomes", "watch_edges",
+                   "name", "alternates", "email")
+
+
 def decode(token: str | None) -> Profile:
     if not token: return Profile()
     raw = _unsign(token)
     if not raw: return Profile()
     try:
         data = json.loads(raw)
-        return Profile(**{k: data.get(k) for k in
-                          ("age", "sex", "conditions", "goals", "stack",
-                           "watch_factors", "watch_outcomes", "watch_edges")
-                          if k in data})
+        return Profile(**{k: data.get(k) for k in _PROFILE_FIELDS if k in data})
     except Exception:
         return Profile()
+
+
+# ----------------------------------------------------------------------------
+# Magic-link sync — short-lived signed tokens that ENCODE the profile.
+# Click on a new device → cookie restored. No server-side accounts table.
+# ----------------------------------------------------------------------------
+
+def make_sync_token(p: Profile, ttl_seconds: int = 60 * 60 * 24) -> str:
+    """Return a token that encodes the profile + expiry. Email this in a
+    /restore?token=X link. The receiver verifies HMAC and sets the cookie."""
+    import time
+    payload = {
+        "p": asdict(p),
+        "exp": int(time.time()) + ttl_seconds,
+    }
+    return _sign(json.dumps(payload, separators=(",", ":")).encode())
+
+
+def verify_sync_token(token: str) -> Profile | None:
+    """Return Profile if token is valid AND unexpired, else None."""
+    import time
+    raw = _unsign(token)
+    if not raw:
+        return None
+    try:
+        data = json.loads(raw)
+        if int(data.get("exp", 0)) < int(time.time()):
+            return None
+        prof_data = data.get("p", {})
+        return Profile(**{k: prof_data.get(k) for k in _PROFILE_FIELDS
+                          if k in prof_data})
+    except Exception:
+        return None
 
 
 # ----------------------------------------------------------------------------

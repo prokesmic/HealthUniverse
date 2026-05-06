@@ -8,8 +8,41 @@
     <p class="stack-eyebrow">Private workspace · stays on this device</p>
     <h1 class="stack-title">My stack</h1>
     <p class="stack-lede">Tell Health Universe a little about you and what you actually do. The home feed, the risk dial, and Ask My Universe will re-rank around your conditions and current habits.</p>
-    <p class="stack-privacy"><span class="stack-privacy-icon" aria-hidden="true">⌥</span> Saved in a single signed cookie on this browser. We never see it. <a class="link" href="/about">How privacy works →</a></p>
+    <p class="stack-privacy"><span class="stack-privacy-icon" aria-hidden="true">⌥</span> Saved in a single signed cookie on this browser. We never see it. <a class="link" href="/privacy">Full privacy policy →</a> · <a class="link" href="/sync">Sync to another device →</a></p>
   </header>
+
+  {% if profile.alternates or profile.conditions %}
+  <section class="stack-profiles">
+    <h2 class="stack-profiles-h">Profiles</h2>
+    <p class="muted body-sm">One stack per person. Switch between yourself, a parent, a partner.</p>
+    <ul class="stack-profile-list">
+      <li class="stack-profile is-active">
+        <span class="stack-profile-name">{{ profile.name or "You" }}</span>
+        <small class="muted">active · {{ profile.conditions|length }} cond · {{ profile.stack|length }} item{{ profile.stack|length != 1 and "s" or "" }}</small>
+      </li>
+      {% for alt in profile.alternates %}
+      <li class="stack-profile">
+        <span class="stack-profile-name">{{ alt.name or "(unnamed)" }}</span>
+        <small class="muted">{{ (alt.conditions or [])|length }} cond · {{ (alt.stack or [])|length }} item{{ (alt.stack or [])|length != 1 and "s" or "" }}</small>
+        <form method="post" action="/me/switch-profile" style="display:inline">
+          <input type="hidden" name="name" value="{{ alt.name }}">
+          <button class="btn-secondary inline" type="submit">Switch</button>
+        </form>
+        <form method="post" action="/me/delete-profile" style="display:inline"
+              onsubmit="return confirm('Remove the profile for {{ alt.name }}?')">
+          <input type="hidden" name="name" value="{{ alt.name }}">
+          <button class="btn-secondary inline" type="submit" style="color:#a3552c">Remove</button>
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
+    <form method="post" action="/me/add-profile" class="stack-profile-add">
+      <input type="text" name="name" placeholder="Save current as… (e.g. 'Mum', 'Self')"
+             maxlength="40" required>
+      <button class="btn-secondary inline" type="submit">+ Save & start fresh</button>
+    </form>
+  </section>
+  {% endif %}
 
   {% if not profile.conditions and not profile.stack %}
   <div class="stack-onboarding">
