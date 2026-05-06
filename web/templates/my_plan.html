@@ -31,7 +31,7 @@
   <div class="prv-card-head">
     <a class="prv-card-title" href="/edge/{{ e.id }}">{{ e.f_name }}</a>
     <span class="hp-badge hp-badge-tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] }}</span>
-    {% if e.effect_size %}<span class="prv-effect prv-effect-{{ e.effect_size }}">{{ e.effect_size|upper }} EFFECT</span>{% endif %}
+    {% if e.effect_size and e.effect_size not in ('unknown', 'trivial') %}<span class="prv-effect prv-effect-{{ e.effect_size }}">{{ e.effect_size|upper }} EFFECT</span>{% endif %}
   </div>
   <p class="prv-card-summary"><b>For:</b> {{ e.for_condition_names | join(", ") }}</p>
   {% if e.effect_quant %}<p class="prv-card-effect">📊 {{ e.effect_quant[:160] }}{% if e.effect_quant|length > 160 %}…{% endif %}</p>{% endif %}

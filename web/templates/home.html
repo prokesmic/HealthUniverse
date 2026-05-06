@@ -111,7 +111,7 @@
         <p class="hp-feat-summary">{{ f.summary[:130] }}{% if f.summary|length > 130 %}…{% endif %}</p>
         <div class="hp-feat-foot">
           <span class="hp-badge hp-badge-dir-{{ f.direction }}">{{ DIRECTION_LABEL[f.direction] }}</span>
-          {% if f.effect_size %}<span class="prv-effect prv-effect-{{ f.effect_size }}">{{ f.effect_size|upper }}</span>{% endif %}
+          {% if f.effect_size and f.effect_size not in ('unknown', 'trivial') %}<span class="prv-effect prv-effect-{{ f.effect_size }}">{{ f.effect_size|upper }}</span>{% endif %}
           {% if f.top_study %}<span class="hp-badge hp-badge-ghost">{{ f.top_study.replace("_", "-") }}</span>{% endif %}
           <span class="hp-feat-date">Updated {{ f.updated_at[:10] }}</span>
         </div>

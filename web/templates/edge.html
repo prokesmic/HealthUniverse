@@ -50,10 +50,10 @@
         <dt>Studies</dt>
         <dd>{{ evidence|length }}{% if counter %} <span class="muted small">+ {{ counter|length }} counter</span>{% endif %}</dd>
       </div>
-      {% if e.effect_size %}
+      {% if e.effect_size and e.effect_size not in ('unknown',) %}
       <div>
         <dt>Effect size</dt>
-        <dd>{{ e.effect_size | capitalize }}{% if e.effect_quant %} <span class="muted small">· {{ e.effect_quant }}</span>{% endif %}</dd>
+        <dd>{{ e.effect_size | capitalize }}</dd>
       </div>
       {% endif %}
       <div>
@@ -85,6 +85,14 @@
       <section class="dossier-section dossier-lede">
         <p>{{ e.summary }}</p>
       </section>
+
+      {# Effect-size detail panel #}
+      {% if e.effect_quant %}
+      <section class="dossier-section dossier-effect">
+        <span class="dossier-effect-label" aria-hidden="true">📊 Effect</span>
+        <p>{{ e.effect_quant }}</p>
+      </section>
+      {% endif %}
 
       {# Mechanism #}
       {% if e.mechanism %}

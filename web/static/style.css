@@ -879,19 +879,19 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   font-size: 22px; line-height: 1.18; margin: 4px 0 10px;
   color: var(--ink);
 }
-.hp-spot-badges { display: flex; gap: 6px; margin-bottom: 8px; }
-.hp-spot-confidence { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; }
+.hp-spot-badges { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.hp-spot-confidence { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
 .hp-spot-dot {
   display: inline-block; width: 8px; height: 8px; border-radius: 50%;
-  background: var(--line); margin-right: 2px;
+  background: var(--line); margin-right: 3px;
 }
 .hp-spot-dot.on { background: #3b8e5a; }
 .hp-spot-grid {
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-  padding: 10px 0; margin: 8px 0;
+  padding: 14px 0; margin: 10px 0 12px;
 }
-.hp-spot-grid dt { font-size: 10px; color: var(--ink-soft); margin: 0 0 2px; text-transform: uppercase; letter-spacing: 0.04em; }
+.hp-spot-grid dt { font-size: 10px; color: var(--ink-soft); margin: 0 0 4px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
 .hp-spot-grid dd { margin: 0; font-size: 12.5px; font-weight: 500; color: var(--ink); }
 .hp-spot-key {
   font-family: 'Inter'; font-weight: 600; font-size: 13px;
@@ -927,19 +927,19 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 .hp-categories {
   display: grid; grid-template-columns: repeat(9, 1fr);
   background: var(--primary); border-radius: 14px;
-  padding: 10px 8px; margin-bottom: 36px;
+  padding: 18px 8px; margin-bottom: 36px;
   box-shadow: 0 6px 24px rgba(31, 58, 46, 0.12);
 }
 .hp-cat {
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  padding: 12px 6px; color: var(--primary-ink); text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 14px 8px; color: var(--primary-ink); text-align: center;
   border-right: 1px solid rgba(201, 169, 97, 0.15);
   transition: background .15s ease;
 }
 .hp-cat:last-child { border-right: 0; }
 .hp-cat:hover { background: rgba(201, 169, 97, 0.1); border-radius: 8px; }
-.hp-cat b { font-weight: 500; font-size: 12.5px; color: var(--primary-ink); line-height: 1.2; }
-.hp-cat small { color: rgba(247, 241, 227, 0.55); font-size: 11px; }
+.hp-cat b { font-weight: 500; font-size: 12.5px; color: var(--primary-ink); line-height: 1.2; margin-top: 2px; }
+.hp-cat small { color: rgba(247, 241, 227, 0.6); font-size: 11px; margin-top: 4px; letter-spacing: 0.04em; }
 .hp-cat-icon {
   width: 32px; height: 32px;
   display: inline-grid; place-items: center;
@@ -1003,10 +1003,10 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   margin: 0 0 14px;
 }
 .hp-feat-foot {
-  display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
-  padding-top: 12px; border-top: 1px solid var(--line);
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  padding-top: 14px; margin-top: auto; border-top: 1px solid var(--line);
 }
-.hp-feat-date { color: var(--ink-soft); font-size: 11px; margin-left: auto; }
+.hp-feat-date { color: var(--ink-soft); font-size: 11px; margin-left: auto; padding-left: 6px; }
 
 /* Discoveries — keep horizontal scrollable strip */
 .hp-discoveries { margin-bottom: 36px; }
@@ -2554,17 +2554,18 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 .disc-lede .pill { font-size: 10px; padding: 2px 8px; vertical-align: 2px; }
 .disc-stats {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
-  border-top: 1px solid var(--line); padding-top: 18px; margin: 0;
+  border-top: 1px solid var(--line); padding-top: 22px; margin: 0;
 }
-.disc-stats > div { padding-right: 14px; border-right: 1px solid var(--line); }
+.disc-stats > div { padding: 0 18px 0 0; border-right: 1px solid var(--line); }
+.disc-stats > div + div { padding-left: 18px; }
 .disc-stats > div:last-child { border-right: 0; padding-right: 0; }
 .disc-stats dt {
-  font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
-  color: var(--ink-soft); margin: 0 0 4px;
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink-soft); margin: 0 0 8px; font-weight: 500;
 }
 .disc-stats dd {
   font-family: 'Fraunces', serif; font-weight: 500;
-  font-size: 28px; color: var(--ink); margin: 0;
+  font-size: 28px; color: var(--ink); margin: 0; line-height: 1.1;
 }
 .disc-grid {
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
@@ -3070,7 +3071,7 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 .prv-card {
   position: relative;
   counter-increment: prv-count;
-  padding: 14px 14px 14px 46px;
+  padding: 16px 16px 14px 56px;
   border-radius: 12px;
   background: #fdf6e3;
   border: 1px solid #ecdfb3;
@@ -3078,17 +3079,18 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 }
 .prv-card::before {
   content: counter(prv-count);
-  position: absolute; left: 12px; top: 14px;
-  width: 24px; height: 24px;
+  position: absolute; left: 14px; top: 16px;
+  width: 28px; height: 28px;
   border-radius: 50%;
   background: #1f3a2e; color: #fffaf0;
-  font: 700 12px/24px "Inter", sans-serif;
+  font: 700 13px/28px "Inter", sans-serif;
   text-align: center;
 }
 .prv-avoid .prv-card::before { background: #8a3a1b; }
 .prv-card:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(31,58,46,.08); }
 .prv-card-head {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 8px;
 }
 .prv-card-title {
   font-family: "Fraunces", serif;
@@ -3273,3 +3275,45 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   margin-left: 6px;
   vertical-align: middle;
 }
+
+/* ============================================================
+   Polish pass — spacing, dossier effect panel, prevent details
+   ============================================================ */
+/* Dossier effect-quant panel inserted after the lede */
+.dossier-effect {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #fbf3df 0%, #f5ead0 100%);
+  border-left: 4px solid var(--gold);
+  border-radius: 10px;
+  margin-top: 0;
+}
+.dossier-effect-label {
+  flex-shrink: 0;
+  font: 600 12px/1 "Inter", sans-serif;
+  letter-spacing: 0.08em;
+  color: #6c4f1f;
+  background: rgba(255, 250, 240, 0.7);
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+.dossier-effect p {
+  margin: 0; color: #4a3920;
+  font: 500 15px/1.55 "Inter", sans-serif;
+}
+
+/* Prevent: extra breathing on the effect-quant snippet */
+.prv-card-effect {
+  padding: 10px 14px 10px 14px;
+  font-size: 13px; line-height: 1.5;
+}
+
+/* Hero stat icon + text breathing */
+.hp-stat { gap: 14px; }
+.hp-stat-icon { flex-shrink: 0; }
+
+/* Spotlight rail card padding fine-tune */
+.hp-spot-key { margin-top: 4px; margin-bottom: 6px; }
+
+/* Effect-size chip spacing in feat foot */
+.hp-feat-foot .prv-effect { margin-left: 0; padding: 4px 8px; }
