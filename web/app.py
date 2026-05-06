@@ -397,6 +397,224 @@ def prevent_page(request: Request, q: str = "", condition: str = ""):
     })
 
 
+def _og_template(eyebrow: str, title: str, summary: str, accent: str = "#1f3a2e",
+                 footer: str = "health-universe.vercel.app") -> str:
+    """Shared 1200×630 OG-card template — gold ribbon footer, decorative
+    globe in the upper right, large serif title, summary text."""
+    def esc(s: str) -> str:
+        return (s.replace("&","&amp;").replace("<","&lt;")
+                 .replace(">","&gt;").replace('"',"&quot;"))
+    title = title if len(title) <= 64 else title[:61] + "…"
+    summary = summary[:200] + ("…" if len(summary) > 200 else "")
+    eyebrow = eyebrow.upper()[:42]
+    return f"""<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fffaf0"/>
+      <stop offset="100%" stop-color="#f5ead0"/>
+    </linearGradient>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#caa257"/>
+      <stop offset="50%" stop-color="#f0d990"/>
+      <stop offset="100%" stop-color="#caa257"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity="0.22">
+    <circle cx="1020" cy="310" r="220" fill="none" stroke="#c9a961" stroke-width="2"/>
+    {''.join(f'<ellipse cx="1020" cy="310" rx="220" ry="{40+i*22}" fill="none" stroke="#c9a961" stroke-width="0.8"/>' for i in range(8))}
+    {''.join(f'<ellipse cx="1020" cy="310" rx="{40+i*22}" ry="220" fill="none" stroke="#c9a961" stroke-width="0.8"/>' for i in range(8))}
+  </g>
+  <text x="80" y="100" font-family="Inter, sans-serif" font-weight="700"
+        font-size="22" letter-spacing="6" fill="#1f3a2e">HEALTH UNIVERSE</text>
+  <rect x="76" y="130" width="{16 + len(eyebrow)*11}" height="36" rx="6" fill="{accent}"/>
+  <text x="84" y="155" font-family="Inter, sans-serif" font-weight="700"
+        font-size="14" letter-spacing="2.2" fill="#fffaf0">{esc(eyebrow)}</text>
+  <text x="80" y="240" font-family="Fraunces, serif" font-weight="500"
+        font-size="56" fill="#1f3a2e">{esc(title)}</text>
+  <foreignObject x="80" y="280" width="900" height="280">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font:400 22px/1.45 Inter, sans-serif; color:#4a5b51;">
+      {esc(summary)}
+    </div>
+  </foreignObject>
+  <text x="80" y="595" font-family="Inter, sans-serif" font-weight="500"
+        font-size="16" fill="#7c6c4d">{esc(footer)}</text>
+  <rect x="0" y="610" width="1200" height="20" fill="url(#ribbon)"/>
+</svg>"""
+
+
+@app.get("/api/cron/digest")
+def cron_digest(request: Request):
+    """Vercel Cron entry point. Sends the weekly digest to all subscribers.
+    Auth: Vercel sets the Authorization header to "Bearer ${CRON_SECRET}"
+    when invoking. Reject anyone else.
+
+    Configure in vercel.json:
+        { "crons": [{"path": "/api/cron/digest", "schedule": "0 7 * * SUN"}] }
+    plus env CRON_SECRET and RESEND_API_KEY (or SMTP_* for SMTP path).
+    """
+    import os
+    expected = os.environ.get("CRON_SECRET")
+    auth = request.headers.get("authorization", "")
+    if expected and auth != f"Bearer {expected}":
+        return JSONResponse({"error": "unauthorized"}, status_code=401)
+    sub_file = Path(__file__).parent.parent / "data" / "subscribers.json"
+    if not sub_file.exists():
+        return JSONResponse({"sent": 0, "note": "no subscribers"})
+    try:
+        import json as _json
+        subs = _json.loads(sub_file.read_text())
+    except Exception as e:
+        return JSONResponse({"error": str(e)}, status_code=500)
+    sent = 0
+    errors: list[dict] = []
+    for s in subs:
+        try:
+            from digest_send import render_digest_html, send_smtp
+            subject, html = render_digest_html(s.get("profile_snapshot", {}))
+            if os.environ.get("RESEND_API_KEY"):
+                _resend_send(s["email"], subject, html)
+            elif os.environ.get("SMTP_USER"):
+                send_smtp(s["email"], subject, html)
+            else:
+                continue                              # no transport configured
+            sent += 1
+        except Exception as exc:
+            errors.append({"email": s.get("email"), "error": str(exc)[:200]})
+    return JSONResponse({"sent": sent, "errors": errors})
+
+
+def _resend_send(to_addr: str, subject: str, html: str) -> None:
+    import os
+    import httpx
+    r = httpx.post(
+        "https://api.resend.com/emails",
+        headers={"Authorization": f"Bearer {os.environ['RESEND_API_KEY']}"},
+        json={
+            "from": os.environ.get("RESEND_FROM", "Health Universe <onboarding@resend.dev>"),
+            "to": [to_addr],
+            "subject": subject,
+            "html": html,
+        },
+        timeout=15,
+    )
+    r.raise_for_status()
+
+
+@app.get("/manifest.webmanifest")
+def webmanifest():
+    """PWA manifest. Lets users 'Add to Home Screen' on iOS/Android, run
+    fullscreen, and get the app a proper icon + name."""
+    from fastapi.responses import JSONResponse
+    return JSONResponse({
+        "name": "Health Universe",
+        "short_name": "HU",
+        "description": "Evidence-grounded prevention coach.",
+        "start_url": "/?source=pwa",
+        "display": "standalone",
+        "background_color": "#fdf6e3",
+        "theme_color": "#1f3a2e",
+        "icons": [
+            {"src": "/static/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+            {"src": "/static/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"},
+        ],
+        "categories": ["health", "education", "lifestyle"],
+    }, headers={"Cache-Control": "public, max-age=3600"})
+
+
+@app.get("/favicon.svg")
+def favicon_svg():
+    """Inline procedural favicon — globe + gold ring."""
+    from fastapi.responses import Response
+    svg = """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <circle cx="32" cy="32" r="30" fill="#1f3a2e"/>
+  <circle cx="32" cy="32" r="22" fill="none" stroke="#c9a961" stroke-width="2"/>
+  <ellipse cx="32" cy="32" rx="22" ry="9" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+  <ellipse cx="32" cy="32" rx="9" ry="22" fill="none" stroke="#c9a961" stroke-width="1.5"/>
+  <circle cx="32" cy="32" r="3" fill="#f0d990"/>
+</svg>"""
+    return Response(content=svg, media_type="image/svg+xml",
+                    headers={"Cache-Control": "public, max-age=86400"})
+
+
+@app.get("/og.svg")
+def og_default():
+    from fastapi.responses import Response
+    svg = _og_template(
+        eyebrow="EVIDENCE YOU CAN TRUST",
+        title="The living map of nutrition,\nlifestyle, and disease risk",
+        summary=("Continuously updated PMID-verified evidence for "
+                 "cardiovascular health, metabolic health, oncology, "
+                 "sleep, and longevity."),
+    )
+    return Response(content=svg, media_type="image/svg+xml",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
+@app.get("/og/prevent/{slug}.svg")
+def og_prevent(slug: str):
+    from fastapi.responses import Response
+    with connect() as conn:
+        row = conn.execute(
+            "SELECT slug, name FROM entity WHERE slug=? OR LOWER(name)=LOWER(?) LIMIT 1",
+            (slug, slug.replace("-", " "))).fetchone()
+        if not row:
+            return Response(status_code=404, content="not found")
+        # Top 3 protective + harmful for snippet
+        prot = conn.execute("""
+            SELECT f.name FROM edge e
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE o.slug=? AND e.direction='protective' AND e.tier IN ('A','B')
+            ORDER BY CASE e.tier WHEN 'A' THEN 1 ELSE 2 END LIMIT 3""",
+            (row["slug"],)).fetchall()
+        harm = conn.execute("""
+            SELECT f.name FROM edge e
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE o.slug=? AND e.direction='harmful' AND e.tier IN ('A','B')
+            ORDER BY CASE e.tier WHEN 'A' THEN 1 ELSE 2 END LIMIT 3""",
+            (row["slug"],)).fetchall()
+    do_list = ", ".join(r["name"] for r in prot) or "—"
+    avoid_list = ", ".join(r["name"] for r in harm) or "—"
+    summary = f"DO: {do_list}.   AVOID: {avoid_list}."
+    svg = _og_template(
+        eyebrow=f"PREVENTION PLAYBOOK",
+        title=f"Prevent {row['name']}",
+        summary=summary,
+        footer=f"health-universe.vercel.app/prevent?q={row['slug']}",
+    )
+    return Response(content=svg, media_type="image/svg+xml",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
+@app.get("/og/category/{slug}.svg")
+def og_category(slug: str):
+    from fastapi.responses import Response
+    cat = next((c for c in CATEGORIES if c["slug"] == slug), None)
+    if not cat:
+        return Response(status_code=404, content="not found")
+    with connect() as conn:
+        if "kinds" in cat:
+            ph = ",".join("?" * len(cat["kinds"]))
+            n = conn.execute(f"SELECT COUNT(*) c FROM edge e JOIN entity f ON f.id=e.factor_id WHERE f.kind IN ({ph})",
+                             cat["kinds"]).fetchone()["c"]
+        else:
+            ph = ",".join("?" * len(cat["outcomes"]))
+            n = conn.execute(f"SELECT COUNT(*) c FROM edge e JOIN entity o ON o.id=e.outcome_id WHERE o.slug IN ({ph})",
+                             cat["outcomes"]).fetchone()["c"]
+    svg = _og_template(
+        eyebrow="EVIDENCE LIBRARY",
+        title=cat["label"],
+        summary=f"{n} PMID-verified factor → outcome relationships in this category, "
+                "ranked by tier and effect size. Filter by tier, direction, or outcome.",
+        footer=f"health-universe.vercel.app/category/{slug}",
+    )
+    return Response(content=svg, media_type="image/svg+xml",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
 @app.get("/og/edge/{edge_id}.svg")
 def og_edge_svg(edge_id: int):
     """Procedural OG share card for an edge — 1200×630 SVG so links to
@@ -566,6 +784,137 @@ def my_plan(request: Request):
         "hard_rows": hard_list[:18],
         "caution_rows": caution_list[:12],
     })
+
+
+@app.get("/methodology", response_class=HTMLResponse)
+def methodology(request: Request):
+    """Trust page: how we tier evidence, sources we use, conflicts of
+    interest, who's behind it, and a live changelog from edge_history."""
+    with connect() as conn:
+        # Tier distribution
+        tier_rows = conn.execute(
+            "SELECT tier, COUNT(*) c FROM edge GROUP BY tier").fetchall()
+        tier_dist = {r["tier"]: r["c"] for r in tier_rows}
+        # Recency: how many edges updated in each window
+        from datetime import timedelta as _td
+        today = datetime_now()
+        windows = {
+            "Last 7 days":  (today - _td(days=7)).strftime("%Y-%m-%d"),
+            "Last 30 days": (today - _td(days=30)).strftime("%Y-%m-%d"),
+            "Last 90 days": (today - _td(days=90)).strftime("%Y-%m-%d"),
+        }
+        recency = {}
+        for label, since in windows.items():
+            recency[label] = conn.execute(
+                "SELECT COUNT(*) c FROM edge WHERE updated_at >= ?",
+                (since,)).fetchone()["c"]
+        # Top studies
+        n_studies = conn.execute("SELECT COUNT(*) c FROM evidence").fetchone()["c"]
+        n_pmids = conn.execute(
+            "SELECT COUNT(DISTINCT pmid) c FROM evidence WHERE pmid IS NOT NULL AND pmid != ''"
+        ).fetchone()["c"]
+        n_meta = conn.execute(
+            "SELECT COUNT(*) c FROM evidence WHERE study_type IN ('meta_analysis','systematic_review')"
+        ).fetchone()["c"]
+        n_rct = conn.execute(
+            "SELECT COUNT(*) c FROM evidence WHERE study_type='rct'"
+        ).fetchone()["c"]
+        # Recent changelog from edge_history
+        changelog = [dict(r) for r in conn.execute("""
+            SELECT h.changed_at, h.field, h.old_value, h.new_value, h.reason,
+                   e.id AS edge_id, f.name AS f_name, o.name AS o_name
+            FROM edge_history h
+            JOIN edge e ON e.id = h.edge_id
+            JOIN entity f ON f.id = e.factor_id
+            JOIN entity o ON o.id = e.outcome_id
+            WHERE h.field IN ('tier','direction')
+            ORDER BY h.changed_at DESC
+            LIMIT 20""").fetchall()]
+        n_edges = conn.execute("SELECT COUNT(*) c FROM edge").fetchone()["c"]
+    return render(request, "methodology.html", {
+        "title": "Methodology",
+        "tier_dist": tier_dist,
+        "recency": recency,
+        "n_edges": n_edges,
+        "n_studies": n_studies,
+        "n_pmids": n_pmids,
+        "n_meta": n_meta,
+        "n_rct": n_rct,
+        "changelog": changelog,
+    })
+
+
+@app.get("/start", response_class=HTMLResponse)
+def onboarding(request: Request, step: int = 1):
+    """Three-step onboarding: pick conditions → pick stack → optional
+    digest signup → land on /my-plan. Replaces 'land on home and figure
+    it out yourself' with a 60-second activation flow."""
+    p = decode(request.cookies.get(COOKIE))
+    with connect() as conn:
+        outcomes = [dict(r) for r in conn.execute(
+            "SELECT slug, name FROM entity WHERE kind IN "
+            "('condition','outcome') ORDER BY name").fetchall()]
+        factors = [dict(r) for r in conn.execute(
+            "SELECT slug, name, kind FROM entity WHERE kind IN "
+            "('food','supplement','nutrient','behavior','activity','medication') "
+            "ORDER BY name").fetchall()]
+        # Top conditions chosen by people (simple proxy: edges with most studies)
+        top_conditions = [dict(r) for r in conn.execute("""
+            SELECT o.slug, o.name, COUNT(e.id) AS n
+            FROM edge e JOIN entity o ON o.id=e.outcome_id
+            WHERE o.kind IN ('condition','outcome') AND e.tier IN ('A','B')
+            GROUP BY o.slug ORDER BY n DESC LIMIT 16""").fetchall()]
+    return render(request, "onboarding.html", {
+        "title": "Welcome to Health Universe",
+        "step": max(1, min(3, step)),
+        "profile": p,
+        "outcomes": outcomes,
+        "factors": factors,
+        "top_conditions": top_conditions,
+    })
+
+
+@app.post("/start")
+async def onboarding_save(request: Request,
+                          step: int = Form(1),
+                          conditions: list[str] = Form(default=[]),
+                          stack: list[str] = Form(default=[]),
+                          email: str = Form(""),
+                          consent: str = Form("")):
+    """Each step saves and advances. Step 3 finalises and redirects to /my-plan."""
+    import json as _json, re as _re
+    p = decode(request.cookies.get(COOKIE))
+    if step == 1:
+        p.conditions = [c for c in conditions if c]
+        p.watch_outcomes = list(set(p.watch_outcomes + p.conditions))
+        target = "/start?step=2"
+    elif step == 2:
+        p.stack = [s for s in stack if s]
+        target = "/start?step=3"
+    else:                                                  # step 3 — finish
+        if email and consent and _re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email):
+            sub_file = Path(__file__).parent.parent / "data" / "subscribers.json"
+            try:
+                subs = _json.loads(sub_file.read_text()) if sub_file.exists() else []
+                if not any(s.get("email") == email for s in subs):
+                    subs.append({
+                        "email": email,
+                        "subscribed_at": datetime_now().isoformat(),
+                        "profile_snapshot": {
+                            "conditions": p.conditions,
+                            "watch_factors": p.watch_factors,
+                            "watch_outcomes": p.watch_outcomes,
+                        },
+                    })
+                    sub_file.parent.mkdir(parents=True, exist_ok=True)
+                    sub_file.write_text(_json.dumps(subs, indent=2))
+            except Exception:
+                pass
+        target = "/my-plan" if p.conditions else "/me"
+    resp = RedirectResponse(target, status_code=303)
+    resp.set_cookie(COOKIE, encode(p), max_age=60*60*24*365,
+                    httponly=False, samesite="lax")
+    return resp
 
 
 @app.get("/handout", response_class=HTMLResponse)

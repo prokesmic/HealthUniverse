@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="meth-page">
+  <header class="meth-head">
+    <p class="hp-eyebrow">METHODOLOGY · TRANSPARENCY</p>
+    <h1 class="hp-title">How we tier evidence,<br/>and how to trust it<span class="dot">.</span></h1>
+    <p class="hp-lede">Health Universe is a living evidence graph maintained
+      with explicit rules and disclosed sources. Nothing here is medical
+      advice; everything here is auditable.</p>
+  </header>
+
+  {# Live corpus stats #}
+  <section class="meth-stats">
+    <h2 class="meth-h2">Today's corpus</h2>
+    <div class="meth-stat-grid">
+      <div><dt>Edges</dt><dd>{{ "{:,}".format(n_edges) }}</dd><small>factor → outcome relationships</small></div>
+      <div><dt>Studies</dt><dd>{{ "{:,}".format(n_studies) }}</dd><small>evidence rows attached to edges</small></div>
+      <div><dt>Distinct PMIDs</dt><dd>{{ "{:,}".format(n_pmids) }}</dd><small>verified against PubMed</small></div>
+      <div><dt>Meta-analyses + SRs</dt><dd>{{ "{:,}".format(n_meta) }}</dd><small>highest study tier</small></div>
+      <div><dt>RCTs</dt><dd>{{ "{:,}".format(n_rct) }}</dd><small>randomised controlled trials</small></div>
+      <div><dt>Recent activity</dt><dd>{{ "{:,}".format(recency.get("Last 30 days", 0)) }}</dd><small>edges updated in last 30 days</small></div>
+    </div>
+    <h3 class="meth-h3">Tier distribution</h3>
+    <div class="meth-tier-bars">
+      {% set total = (tier_dist.values()|list|sum) or 1 %}
+      {% for code, label in [('A','Strong'),('B','Moderate'),('C','Emerging'),('X','Contested'),('D','Limited')] %}
+      {% set n = tier_dist.get(code, 0) %}
+      <div class="meth-tier-bar tier-bg-{{ code }}">
+        <span class="meth-tier-bar-label">{{ label }}<small>{{ code }}</small></span>
+        <span class="meth-tier-bar-bar"><i style="width: {{ ((n / total) * 100)|round(1) }}%"></i></span>
+        <span class="meth-tier-bar-count">{{ n }} <small>({{ ((n / total) * 100)|round(0) }}%)</small></span>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">How tiers are assigned</h2>
+    <p>Every edge gets a tier from <b>A</b> (strong) to <b>D</b> (limited),
+      with <b>X</b> reserved for genuinely contested questions where the
+      literature itself is split. Tiers are computed from a deterministic
+      scoring function — never by editorial taste — and re-evaluated
+      every time new evidence is added.</p>
+    <table class="meth-tier-table">
+      <thead><tr><th>Tier</th><th>Required signal</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td><span class="hp-badge hp-badge-tier-A">Strong</span></td>
+            <td>≥ 2 high-quality meta-analyses or systematic reviews + total score ≥ 12, with a consistent direction</td>
+            <td>Statins → CVD, Smoking → Lung cancer</td></tr>
+        <tr><td><span class="hp-badge hp-badge-tier-B">Moderate</span></td>
+            <td>≥ 1 SR/meta-analysis + ≥ 2 cohorts or RCTs, total score ≥ 7, no major contradictions</td>
+            <td>Resistance training → Depression</td></tr>
+        <tr><td><span class="hp-badge hp-badge-tier-C">Emerging</span></td>
+            <td>Multiple consistent observational studies or one RCT; promising but not yet replicated</td>
+            <td>Mediterranean diet → Cognitive decline</td></tr>
+        <tr><td><span class="hp-badge hp-badge-tier-X">Contested</span></td>
+            <td>Literature is genuinely split; meta-analyses disagree</td>
+            <td>Coffee → All-cause mortality (mostly OK, depends on population)</td></tr>
+        <tr><td><span class="hp-badge hp-badge-tier-D">Limited</span></td>
+            <td>Mechanism only, animal studies, single small trial</td>
+            <td>Fringe supplements with one mouse paper</td></tr>
+      </tbody>
+    </table>
+    <p>Full rules live in
+      <a href="https://github.com/prokesmic/HealthUniverse/blob/main/seed.py" target="_blank" rel="noopener"><code>seed.py</code></a> +
+      <a href="https://github.com/prokesmic/HealthUniverse/blob/main/adjudicate.py" target="_blank" rel="noopener"><code>adjudicate.py</code></a>.</p>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">Sources</h2>
+    <ul class="meth-sources">
+      <li><b>Primary literature</b>: PubMed-indexed papers. Every quantitative
+        evidence row carries a real PMID, automatically verified against
+        PubMed E-utilities — fabricated PMIDs are rejected at validation
+        time.</li>
+      <li><b>Initial seeding</b>: Claude Sonnet 4.6 with a hard $50 lifetime
+        cost cap, used only for one-off deep research and tier-A/B
+        adjudication. ~$5.50 spent to date.</li>
+      <li><b>Daily maintenance</b>: local Gemma 4:26b via Ollama —
+        re-tiering, summary refreshing, and ingestion of new evidence
+        rows. No paid API calls in the recurring loop.</li>
+      <li><b>Retraction watcher</b>: a weekly job hits PubMed for every
+        cited PMID and flags retracted papers. Edges with a retraction
+        in their evidence stack are automatically demoted.</li>
+    </ul>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">Editorial process</h2>
+    <ol class="meth-steps">
+      <li><b>Seed.</b> A topic is identified; Claude pulls the
+        highest-quality literature it can find, attaches PMIDs, drafts a
+        summary, mechanism, caveats, and a tier with reasoning.</li>
+      <li><b>Validate.</b> The validator hits PubMed and rejects any row
+        with an unresolvable PMID, missing n_participants, or title
+        mismatch.</li>
+      <li><b>Adjudicate.</b> A second Claude pass scores the edge against
+        the deterministic tier rules and flags anything ambiguous.</li>
+      <li><b>Maintain.</b> Daily Gemma loop ingests new papers, refreshes
+        prose, and re-runs the tier calculation. The retraction watcher
+        runs weekly.</li>
+      <li><b>Audit.</b> Every change is logged in <code>edge_history</code>.
+        See the <a href="#changelog">live changelog below</a>.</li>
+    </ol>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">Conflicts of interest</h2>
+    <ul class="meth-coi">
+      <li><b>No supplement, food, or pharmaceutical sponsorships.</b>
+        Health Universe accepts no money or product from anyone whose
+        intervention appears in the graph.</li>
+      <li><b>No advertising.</b> The site has zero ads and zero ad-tech
+        trackers.</li>
+      <li><b>Privacy by default.</b> Profile and labs live in a signed
+        cookie + localStorage on your device. Nothing about your stack
+        ever reaches our server unless you subscribe to the digest, in
+        which case we store only the email and tracked-condition slugs.</li>
+      <li><b>Open source.</b> The codebase is fully public at
+        <a href="https://github.com/prokesmic/HealthUniverse" target="_blank" rel="noopener">github.com/prokesmic/HealthUniverse</a>.</li>
+    </ul>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">Who's behind this</h2>
+    <p>Health Universe was built and is maintained by
+      <a href="mailto:prokesmic@gmail.com">Michal Prokeš</a> with
+      Claude (Anthropic) and Codex acting as research assistants.
+      The seed corpus was drafted with explicit prompts; everything is
+      reviewed and tiered against the published rules. Disagreements?
+      File an issue on
+      <a href="https://github.com/prokesmic/HealthUniverse/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+  </section>
+
+  <section class="meth-block" id="changelog">
+    <h2 class="meth-h2">Live changelog</h2>
+    <p class="muted">Every tier or direction change in the last 20 events,
+      pulled directly from <code>edge_history</code> at page load.</p>
+    {% if changelog %}
+    <ul class="meth-changelog">
+      {% for c in changelog %}
+      <li class="meth-cl-{{ c.field }}">
+        <span class="meth-cl-time">{{ c.changed_at[:10] }}</span>
+        <a href="/edge/{{ c.edge_id }}" class="meth-cl-link">
+          <b>{{ c.f_name }}</b> → <b>{{ c.o_name }}</b>
+        </a>
+        <span class="meth-cl-change">
+          {{ c.field }}:
+          {% if c.old_value %}<code>{{ c.old_value }}</code> → {% endif %}
+          <code>{{ c.new_value }}</code>
+        </span>
+        {% if c.reason %}<small class="muted">— {{ c.reason[:120] }}</small>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="muted">No tier changes recorded yet — the corpus has been
+      stable since seed.</p>
+    {% endif %}
+  </section>
+
+  <p class="muted small meth-disclaim">Health Universe is educational
+    only. It is not medical advice and should not replace consultation
+    with a qualified clinician.</p>
+</section>
+
+{% endblock %}

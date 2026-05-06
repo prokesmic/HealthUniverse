@@ -79,6 +79,20 @@ def render_digest_html(profile_dict: dict, days: int = 7) -> tuple[str, str]:
     return subject, html
 
 
+def send_resend(to_addr: str, subject: str, html: str) -> None:
+    """Send via Resend HTTPS API. Requires RESEND_API_KEY."""
+    import httpx
+    api_key = os.environ["RESEND_API_KEY"]
+    sender = os.environ.get("RESEND_FROM", "Health Universe <onboarding@resend.dev>")
+    r = httpx.post(
+        "https://api.resend.com/emails",
+        headers={"Authorization": f"Bearer {api_key}"},
+        json={"from": sender, "to": [to_addr], "subject": subject, "html": html},
+        timeout=15,
+    )
+    r.raise_for_status()
+
+
 def send_smtp(to_addr: str, subject: str, html: str) -> None:
     msg = EmailMessage()
     msg["Subject"] = subject
@@ -118,7 +132,10 @@ def main() -> None:
             print(f"  wrote → {email}")
         elif args.send:
             try:
-                send_smtp(email, subject, html)
+                if os.environ.get("RESEND_API_KEY"):
+                    send_resend(email, subject, html)
+                else:
+                    send_smtp(email, subject, html)
                 print(f"  sent → {email}")
             except Exception as exc:
                 print(f"  ERR  → {email}: {exc}")

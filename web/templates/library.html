@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 {% block title %}{{ title }} — Health Universe{% endblock %}
+{% block og %}
+<meta property="og:site_name" content="Health Universe">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ title }} — Health Universe">
+<meta property="og:description" content="{{ subtitle or 'Evidence library for ' ~ title }}">
+<meta property="og:image" content="https://health-universe.vercel.app{% if base_path.startswith('/category/') %}/og/category/{{ base_path.split('/')[-1] }}.svg{% else %}/og.svg{% endif %}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+{% endblock %}
 {% block content %}
 {# Helpers — keep query-string mutations in one place #}
 {% macro qs(extra) -%}

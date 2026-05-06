@@ -1,4 +1,14 @@
 {% extends "base.html" %}
+{% block og %}
+<meta property="og:site_name" content="Health Universe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{% if matched %}Prevent {{ matched.name }}{% else %}Prevention playbook{% endif %} — Health Universe">
+<meta property="og:description" content="{% if matched %}Evidence-ranked Do / Avoid playbook for {{ matched.name }}.{% else %}Enter a condition; we rank what to do and what to avoid.{% endif %}">
+<meta property="og:image" content="https://health-universe.vercel.app{% if matched %}/og/prevent/{{ matched.slug }}.svg{% else %}/og.svg{% endif %}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+{% endblock %}
 {% block content %}
 
 <section class="prv-hero">

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="onb-page">
+  <header class="onb-head">
+    <p class="hp-eyebrow">WELCOME · 60 SECONDS</p>
+    <h1 class="hp-title">Tell us what to track,<br/>get your plan<span class="dot">.</span></h1>
+    <ol class="onb-steps">
+      <li class="{% if step == 1 %}is-active{% elif step > 1 %}is-done{% endif %}">1. Conditions</li>
+      <li class="{% if step == 2 %}is-active{% elif step > 2 %}is-done{% endif %}">2. Your stack</li>
+      <li class="{% if step == 3 %}is-active{% endif %}">3. Weekly digest</li>
+    </ol>
+  </header>
+
+  {% if step == 1 %}
+  <form class="onb-form" method="post" action="/start" autocomplete="off">
+    <input type="hidden" name="step" value="1">
+    <h2 class="onb-h2">What conditions do you want to manage or prevent?</h2>
+    <p class="muted">Pick as many as apply — even one is enough to get a plan. You can change these any time.</p>
+
+    <div class="onb-quick">
+      <p class="muted small">Common starting points:</p>
+      <div class="onb-chip-row">
+        {% for c in top_conditions %}
+        <label class="onb-chip">
+          <input type="checkbox" name="conditions" value="{{ c.slug }}"
+                 {% if c.slug in profile.conditions %}checked{% endif %}>
+          <span>{{ c.name }}</span>
+        </label>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="onb-other">
+      <details>
+        <summary class="onb-link">Search the full list ({{ outcomes|length }} conditions)</summary>
+        <input type="text" id="onb-cond-filter" placeholder="Filter by name…" class="onb-search">
+        <div class="onb-chip-row onb-chip-list" id="onb-cond-list">
+          {% for o in outcomes %}
+          <label class="onb-chip onb-chip-mini" data-name="{{ o.name|lower }}">
+            <input type="checkbox" name="conditions" value="{{ o.slug }}"
+                   {% if o.slug in profile.conditions %}checked{% endif %}>
+            <span>{{ o.name }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </details>
+    </div>
+
+    <div class="onb-actions">
+      <a href="/" class="onb-skip">Skip — just browse</a>
+      <button class="onb-next" type="submit">Next →</button>
+    </div>
+  </form>
+
+  {% elif step == 2 %}
+  <form class="onb-form" method="post" action="/start" autocomplete="off">
+    <input type="hidden" name="step" value="2">
+    <h2 class="onb-h2">Anything you're already taking or doing?</h2>
+    <p class="muted">Optional. We use this to flag conflicts and avoid suggesting things you already do.</p>
+
+    <input type="text" id="onb-stack-filter" placeholder="Filter foods, supplements, behaviors…" class="onb-search">
+    <div class="onb-chip-row onb-chip-list" id="onb-stack-list">
+      {% for f in factors %}
+      <label class="onb-chip onb-chip-mini" data-name="{{ f.name|lower }}">
+        <input type="checkbox" name="stack" value="{{ f.slug }}"
+               {% if f.slug in profile.stack %}checked{% endif %}>
+        <span>{{ f.name }}<small> · {{ f.kind }}</small></span>
+      </label>
+      {% endfor %}
+    </div>
+
+    <div class="onb-actions">
+      <a href="/start?step=1" class="onb-back">← Back</a>
+      <button class="onb-next" type="submit">Next →</button>
+    </div>
+  </form>
+
+  {% else %}
+  <form class="onb-form" method="post" action="/start" autocomplete="off">
+    <input type="hidden" name="step" value="3">
+    <h2 class="onb-h2">Want a Sunday-morning digest?</h2>
+    <p class="muted">A 60-second briefing on evidence shifts in your tracked areas. Skippable; you can subscribe later from <code>/digest</code>.</p>
+
+    <label class="onb-label">Email
+      <input type="email" name="email" placeholder="you@email.com">
+    </label>
+    <label class="onb-consent">
+      <input type="checkbox" name="consent" value="1">
+      Email me Sunday mornings. Stored locally, unsubscribe anytime.
+    </label>
+
+    <div class="onb-actions">
+      <a href="/start?step=2" class="onb-back">← Back</a>
+      <button class="onb-next" type="submit">Show my plan →</button>
+    </div>
+    <p class="muted small">No payment, no account. Profile lives in a signed cookie on this device.</p>
+  </form>
+  {% endif %}
+</section>
+
+<script>
+{# Lightweight typeahead for the chip lists #}
+function attachFilter(inputId, listId) {
+  const input = document.getElementById(inputId);
+  const list = document.getElementById(listId);
+  if (!input || !list) return;
+  input.oninput = () => {
+    const q = input.value.toLowerCase().trim();
+    list.querySelectorAll('label').forEach(el => {
+      el.style.display = !q || el.dataset.name.includes(q) ? '' : 'none';
+    });
+  };
+}
+attachFilter('onb-cond-filter', 'onb-cond-list');
+attachFilter('onb-stack-filter', 'onb-stack-list');
+</script>
+
+{% endblock %}
