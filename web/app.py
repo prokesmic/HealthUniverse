@@ -1626,27 +1626,127 @@ def edge_detail(request: Request, edge_id: int):
     })
 
 
-@app.get("/tier/{tier}", response_class=HTMLResponse)
-def by_tier(request: Request, tier: str, page: int = 1):
-    with connect() as conn:
-        total = conn.execute(
-            "SELECT COUNT(*) c FROM edge WHERE tier=?", (tier,)).fetchone()["c"]
+_LIB_SORTS = {
+    "importance": "Most important",
+    "latest": "Most recent",
+    "studies": "Most studied",
+    "az": "A → Z",
+}
+
+
+def _library_view(conn, where_sql: str, params: tuple, *,
+                  tier: str = "", direction: str = "",
+                  q: str = "", outcome: str = "",
+                  sort: str = "importance", group: str = "",
+                  page: int = 1):
+    """Pull matching edges, compute facets, filter/sort/group/paginate.
+    Returns a dict ready for the library template."""
+    sql = f"""
+        SELECT e.id, e.tier, e.direction, e.summary, e.updated_at, e.created_at,
+               e.effect_size,
+               f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+               o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind,
+               (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies,
+               (SELECT study_type FROM evidence ev WHERE ev.edge_id=e.id
+                ORDER BY CASE study_type WHEN 'meta_analysis' THEN 1
+                  WHEN 'systematic_review' THEN 2 WHEN 'rct' THEN 3
+                  WHEN 'cohort' THEN 4 ELSE 5 END LIMIT 1) AS top_study,
+               (SELECT MAX(changed_at) FROM edge_history h
+                WHERE h.edge_id=e.id AND h.field='tier'
+                  AND h.new_value IN ('A','B')
+                  AND (h.old_value IS NULL OR h.old_value NOT IN ('A','B'))
+               ) AS promoted_at
+        FROM edge e
+        JOIN entity f ON f.id=e.factor_id
+        JOIN entity o ON o.id=e.outcome_id
+        WHERE {where_sql}
+    """
+    rows = [dict(r) for r in conn.execute(sql, params).fetchall()]
+    for e in rows:
+        e["score"] = _importance_score(e)
+        e["breakthrough"] = _is_breakthrough(e)
+    # Facets — counts on the unfiltered set so the user always sees what's available
+    tier_counts: dict[str, int] = {}
+    dir_counts: dict[str, int] = {}
+    outcome_counts: dict[str, dict] = {}
+    for e in rows:
+        tier_counts[e["tier"]] = tier_counts.get(e["tier"], 0) + 1
+        dir_counts[e["direction"]] = dir_counts.get(e["direction"], 0) + 1
+        oslug = e["o_slug"]
+        if oslug not in outcome_counts:
+            outcome_counts[oslug] = {"slug": oslug, "name": e["o_name"], "count": 0}
+        outcome_counts[oslug]["count"] += 1
+    # Apply filters
+    tier_set = {t for t in (tier or "").split(",") if t}
+    dir_set = {d for d in (direction or "").split(",") if d}
+    ql = (q or "").lower().strip()
+    filtered = rows
+    if tier_set:
+        filtered = [e for e in filtered if e["tier"] in tier_set]
+    if dir_set:
+        filtered = [e for e in filtered if e["direction"] in dir_set]
+    if outcome:
+        filtered = [e for e in filtered if e["o_slug"] == outcome]
+    if ql:
+        filtered = [e for e in filtered if ql in (e["f_name"] or "").lower()
+                    or ql in (e["o_name"] or "").lower()
+                    or ql in (e["summary"] or "").lower()]
+    # Sort
+    if sort == "latest":
+        filtered.sort(key=lambda e: e["updated_at"] or "", reverse=True)
+    elif sort == "studies":
+        filtered.sort(key=lambda e: -(e["n_studies"] or 0))
+    elif sort == "az":
+        filtered.sort(key=lambda e: (e["f_name"] or "").lower())
+    else:                                              # importance (default)
+        filtered.sort(key=lambda e: (-(1 if e["breakthrough"] else 0), -e["score"]))
+    total = len(filtered)
+    # Group by outcome (skip pagination when grouped)
+    groups = None
+    if group == "outcome":
+        bucket: dict[str, dict] = {}
+        for e in filtered:
+            key = e["o_slug"]
+            if key not in bucket:
+                bucket[key] = {"slug": key, "name": e["o_name"], "edges": []}
+            bucket[key]["edges"].append(e)
+        groups = sorted(bucket.values(), key=lambda g: -len(g["edges"]))
+        page_edges: list[dict] = []
+        pg = {"page": 1, "pages": 1, "total": total,
+              "has_prev": False, "has_next": False, "offset": 0}
+    else:
         pg = _paginate(total, page)
-        rows = conn.execute("""
-            SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
-                   f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
-                   o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
-            FROM edge e
-            JOIN entity f ON f.id = e.factor_id
-            JOIN entity o ON o.id = e.outcome_id
-            WHERE e.tier = ?
-            ORDER BY e.updated_at DESC LIMIT ? OFFSET ?""",
-            (tier, PAGE_SIZE, pg["offset"])).fetchall()
-    return render(request, "list.html", {
+        page_edges = filtered[pg["offset"]: pg["offset"] + PAGE_SIZE]
+    # Sorted outcome list (for the "jump to" rail)
+    outcomes_sorted = sorted(outcome_counts.values(), key=lambda o: -o["count"])
+    return {
+        "rows": page_edges,
+        "groups": groups,
+        "pg": pg,
+        "tier_counts": tier_counts,
+        "dir_counts": dir_counts,
+        "outcomes": outcomes_sorted,
+        "filters": {"tier": tier, "direction": direction, "q": q,
+                    "outcome": outcome, "sort": sort, "group": group},
+        "sort_options": _LIB_SORTS,
+    }
+
+
+@app.get("/tier/{tier}", response_class=HTMLResponse)
+def by_tier(request: Request, tier: str, page: int = 1,
+            direction: str = "", q: str = "", outcome: str = "",
+            sort: str = "importance", group: str = ""):
+    with connect() as conn:
+        ctx = _library_view(conn, "e.tier = ?", (tier,),
+                            direction=direction, q=q, outcome=outcome,
+                            sort=sort, group=group, page=page)
+    ctx.update({
         "title": TIER_LABEL.get(tier, tier),
-        "edges": [dict(r) for r in rows],
-        "pg": pg, "base_path": f"/tier/{tier}",
+        "subtitle": f"{ctx['pg']['total']} relationship{'s' if ctx['pg']['total'] != 1 else ''} at this confidence tier",
+        "base_path": f"/tier/{tier}",
+        "tier_locked": tier,
     })
+    return render(request, "library.html", ctx)
 
 
 @app.get("/search", response_class=HTMLResponse)
@@ -1818,49 +1918,27 @@ def changes(request: Request, days: int = 14, personal: int = 0):
 
 
 @app.get("/category/{slug}", response_class=HTMLResponse)
-def category(request: Request, slug: str, page: int = 1):
+def category(request: Request, slug: str, page: int = 1,
+             tier: str = "", direction: str = "", q: str = "",
+             outcome: str = "", sort: str = "importance", group: str = ""):
     cat = next((c for c in CATEGORIES if c["slug"] == slug), None)
     if not cat:
         return HTMLResponse("Not found", status_code=404)
+    if "kinds" in cat:
+        ph = ",".join("?" * len(cat["kinds"]))
+        where = f"f.kind IN ({ph})"
+        params = tuple(cat["kinds"])
+    else:
+        ph = ",".join("?" * len(cat["outcomes"]))
+        where = f"o.slug IN ({ph})"
+        params = tuple(cat["outcomes"])
     with connect() as conn:
-        if "kinds" in cat:
-            placeholders = ",".join("?" * len(cat["kinds"]))
-            total = conn.execute(
-                f"SELECT COUNT(*) c FROM edge e JOIN entity f ON e.factor_id=f.id "
-                f"WHERE f.kind IN ({placeholders})", cat["kinds"]).fetchone()["c"]
-            pg = _paginate(total, page)
-            rows = conn.execute(f"""
-                SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
-                       f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
-                       o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
-                FROM edge e
-                JOIN entity f ON f.id = e.factor_id
-                JOIN entity o ON o.id = e.outcome_id
-                WHERE f.kind IN ({placeholders})
-                ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2
-                              WHEN 'C' THEN 3 WHEN 'X' THEN 4 ELSE 5 END,
-                         e.updated_at DESC LIMIT ? OFFSET ?""",
-                (*cat["kinds"], PAGE_SIZE, pg["offset"])).fetchall()
-        else:
-            placeholders = ",".join("?" * len(cat["outcomes"]))
-            total = conn.execute(
-                f"SELECT COUNT(*) c FROM edge e JOIN entity o ON e.outcome_id=o.id "
-                f"WHERE o.slug IN ({placeholders})", cat["outcomes"]).fetchone()["c"]
-            pg = _paginate(total, page)
-            rows = conn.execute(f"""
-                SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
-                       f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
-                       o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
-                FROM edge e
-                JOIN entity f ON f.id = e.factor_id
-                JOIN entity o ON o.id = e.outcome_id
-                WHERE o.slug IN ({placeholders})
-                ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2
-                              WHEN 'C' THEN 3 WHEN 'X' THEN 4 ELSE 5 END,
-                         e.updated_at DESC LIMIT ? OFFSET ?""",
-                (*cat["outcomes"], PAGE_SIZE, pg["offset"])).fetchall()
-    return render(request, "list.html", {
+        ctx = _library_view(conn, where, params,
+                            tier=tier, direction=direction, q=q, outcome=outcome,
+                            sort=sort, group=group, page=page)
+    ctx.update({
         "title": cat["label"],
-        "edges": [dict(r) for r in rows],
-        "pg": pg, "base_path": f"/category/{slug}",
+        "subtitle": f"{ctx['pg']['total']} relationship{'s' if ctx['pg']['total'] != 1 else ''} in this category",
+        "base_path": f"/category/{slug}",
     })
+    return render(request, "library.html", ctx)

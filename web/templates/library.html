@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} — Health Universe{% endblock %}
+{% block content %}
+{# Helpers — keep query-string mutations in one place #}
+{% macro qs(extra) -%}
+  {%- set merged = {} -%}
+  {%- for k,v in filters.items() -%}{%- if v -%}{%- set _ = merged.update({k: v}) -%}{%- endif -%}{%- endfor -%}
+  {%- set _ = merged.update(extra) -%}
+  {%- set parts = [] -%}
+  {%- for k,v in merged.items() -%}{%- if v -%}{%- set _ = parts.append(k ~ '=' ~ v) -%}{%- endif -%}{%- endfor -%}
+  {{- '?' ~ (parts | join('&')) if parts else '' -}}
+{%- endmacro %}
+
+{% set tier_chips = [
+  ('A', 'Strong', 'tier-A'),
+  ('B', 'Moderate', 'tier-B'),
+  ('C', 'Emerging', 'tier-C'),
+  ('X', 'Contested', 'tier-X'),
+  ('D', 'Limited', 'tier-D'),
+] %}
+{% set dir_chips = [
+  ('protective', 'Beneficial'),
+  ('harmful', 'Harmful'),
+  ('u_shaped', 'U-shaped'),
+  ('mixed', 'Mixed'),
+] %}
+
+<section class="lib2-page">
+  <a class="back" href="/">← Back to Health Universe</a>
+
+  <header class="lib2-head">
+    <p class="lib2-eyebrow">Evidence library</p>
+    <h1 class="lib2-title">{{ title }}</h1>
+    {% if subtitle %}<p class="lib2-sub">{{ subtitle }}</p>{% endif %}
+  </header>
+
+  {# Tier distribution chips — also act as filters #}
+  <div class="lib2-tier-row">
+    <a class="lib2-tier-chip {% if not filters.tier %}is-active{% endif %}"
+       href="{{ qs({'tier':''}) }}">
+      <b>{{ pg.total if not filters.tier else (tier_counts.values()|sum) }}</b>
+      <small>All evidence</small>
+    </a>
+    {% for tslug, tlabel, tcls in tier_chips %}
+      {% if tier_counts.get(tslug) %}
+      <a class="lib2-tier-chip {{ tcls }}
+                {% if filters.tier == tslug %}is-active{% endif %}"
+         href="{{ qs({'tier': tslug if filters.tier != tslug else ''}) }}">
+        <b>{{ tier_counts.get(tslug, 0) }}</b>
+        <small>{{ tlabel }}</small>
+      </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {# Filter / sort / group / search bar #}
+  <form class="lib2-controls" method="get" action="" autocomplete="off">
+    {% for k,v in filters.items() %}{% if v and k not in ('q','direction','sort','group','outcome') %}
+      <input type="hidden" name="{{ k }}" value="{{ v }}">
+    {% endif %}{% endfor %}
+
+    <div class="lib2-control lib2-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="text" name="q" value="{{ filters.q }}"
+             placeholder="Search inside this library…">
+    </div>
+
+    <div class="lib2-control">
+      <label class="lib2-label">Direction</label>
+      <select name="direction" onchange="this.form.submit()">
+        <option value="">Any</option>
+        {% for dslug, dlabel in dir_chips %}
+          {% if dir_counts.get(dslug) %}
+          <option value="{{ dslug }}" {% if filters.direction == dslug %}selected{% endif %}>{{ dlabel }} ({{ dir_counts.get(dslug, 0) }})</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="lib2-control">
+      <label class="lib2-label">Sort</label>
+      <select name="sort" onchange="this.form.submit()">
+        {% for k, v in sort_options.items() %}
+        <option value="{{ k }}" {% if filters.sort == k %}selected{% endif %}>{{ v }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="lib2-control lib2-group-toggle">
+      <label class="lib2-label">Group by</label>
+      <select name="group" onchange="this.form.submit()">
+        <option value="" {% if not filters.group %}selected{% endif %}>None (flat list)</option>
+        <option value="outcome" {% if filters.group == 'outcome' %}selected{% endif %}>Outcome</option>
+      </select>
+    </div>
+
+    <button class="lib2-apply" type="submit">Apply</button>
+    {% if filters.q or filters.direction or filters.outcome or filters.tier or filters.group %}
+    <a class="lib2-reset" href="{{ base_path }}">Clear all</a>
+    {% endif %}
+  </form>
+
+  {# When grouped: jump-to-outcome rail #}
+  {% if groups and groups|length > 1 %}
+  <nav class="lib2-jump" aria-label="Jump to outcome">
+    <span class="muted small">Jump to:</span>
+    {% for g in groups %}
+      <a href="#out-{{ g.slug }}" class="lib2-jump-link">{{ g.name }}<small>{{ g.edges|length }}</small></a>
+    {% endfor %}
+  </nav>
+  {% endif %}
+
+  {# ── Card macro ── #}
+  {% macro lib2_card(e) %}
+  <a class="lib2-card {% if e.breakthrough %}is-breakthrough{% endif %} tier-rail-{{ e.tier }}"
+     href="/edge/{{ e.id }}">
+    {% if e.breakthrough %}<span class="hp-breakthrough-ribbon">BREAKTHROUGH</span>{% endif %}
+    <div class="lib2-card-rail tier-bg-{{ e.tier }}">{{ e.tier }}</div>
+    <div class="lib2-card-body">
+      <div class="lib2-card-tags">
+        <span class="hp-badge hp-badge-tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] }}</span>
+        <span class="hp-badge hp-badge-dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
+        {% if e.effect_size and e.effect_size not in ('unknown','trivial') %}
+          <span class="prv-effect prv-effect-{{ e.effect_size }}">{{ e.effect_size|upper }}</span>
+        {% endif %}
+        {% if e.top_study %}<span class="hp-badge hp-badge-ghost">{{ e.top_study.replace("_","-") }}</span>{% endif %}
+        <span class="lib2-card-meta">★ {{ "%.1f"|format(e.score) }} · {{ e.n_studies }} studies · {{ e.updated_at[:10] }}</span>
+      </div>
+      <h3 class="lib2-card-title">{{ e.f_name }} <span class="hp-arrow" aria-hidden="true">→</span> {{ e.o_name }}</h3>
+      <p class="lib2-card-summary">{{ e.summary[:220] }}{% if e.summary|length > 220 %}…{% endif %}</p>
+    </div>
+  </a>
+  {% endmacro %}
+
+  {# ── Body: grouped or flat ── #}
+  {% if groups %}
+    {% for g in groups %}
+    <section class="lib2-group" id="out-{{ g.slug }}">
+      <header class="lib2-group-head">
+        <h2 class="lib2-group-title">{{ g.name }}</h2>
+        <span class="lib2-group-count">{{ g.edges|length }} edge{{ g.edges|length != 1 and "s" or "" }}</span>
+        <a class="lib2-group-cta" href="/prevent?q={{ g.slug }}">Prevention plan →</a>
+      </header>
+      <div class="lib2-group-list">
+        {% for e in g.edges %}{{ lib2_card(e) }}{% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  {% else %}
+    {% if rows %}
+    <div class="lib2-list">
+      {% for e in rows %}{{ lib2_card(e) }}{% endfor %}
+    </div>
+    {% else %}
+    <div class="lib2-empty">
+      <h3>No relationships match these filters</h3>
+      <p class="muted">Try clearing one of the filters or expanding the tier set.</p>
+      <a class="btn-secondary inline" href="{{ base_path }}">Reset filters</a>
+    </div>
+    {% endif %}
+    {% if pg.pages > 1 %}
+    <nav class="pagination" aria-label="Page navigation">
+      {% if pg.has_prev %}<a class="btn-secondary inline" href="{{ qs({'page': pg.page - 1}) }}">← Prev</a>{% endif %}
+      <span class="muted">Page {{ pg.page }} / {{ pg.pages }}</span>
+      {% if pg.has_next %}<a class="btn-secondary inline" href="{{ qs({'page': pg.page + 1}) }}">Next →</a>{% endif %}
+    </nav>
+    {% endif %}
+  {% endif %}
+</section>
+{% endblock %}
