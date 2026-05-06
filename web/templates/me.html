@@ -2,115 +2,191 @@
 {% block title %}My stack — Health Universe{% endblock %}
 {% block content %}
 <section class="stack-page">
-  <a class="back" href="/">← Back to Health Universe</a>
 
   <header class="stack-head">
     <p class="stack-eyebrow">Private workspace · stays on this device</p>
     <h1 class="stack-title">My stack</h1>
-    <p class="stack-lede">Tell Health Universe a little about you and what you actually do. The home feed, the risk dial, and Ask My Universe will re-rank around your conditions and current habits.</p>
-    <p class="stack-privacy"><span class="stack-privacy-icon" aria-hidden="true">⌥</span> Saved in a single signed cookie on this browser. We never see it. <a class="link" href="/privacy">Full privacy policy →</a> · <a class="link" href="/sync">Sync to another device →</a></p>
+    <p class="stack-lede">
+      Tell Health Universe what you care about. Every page — Today, My
+      plan, Coach, the home feed — re-ranks around the conditions and
+      stack items below.
+    </p>
+    <p class="stack-privacy">
+      <span class="stack-privacy-icon" aria-hidden="true">⌥</span>
+      Saved in a single signed cookie on this browser. We never see it.
+      <a class="link" href="/privacy">Privacy policy →</a> ·
+      <a class="link" href="/sync">Sync to another device →</a> ·
+      <a class="link" href="/data-export">Download my data →</a>
+    </p>
   </header>
 
+  {% if saved %}
+  <div class="stack-flash">✓ Profile saved. Your home feed and plan are re-ranked.</div>
+  {% endif %}
+
+  {# Multi-profile switcher only when there's something to switch between #}
   {% if profile.alternates or profile.conditions %}
   <section class="stack-profiles">
-    <h2 class="stack-profiles-h">Profiles</h2>
-    <p class="muted body-sm">One stack per person. Switch between yourself, a parent, a partner.</p>
+    <div class="stack-profiles-head">
+      <h2 class="stack-profiles-h">Profiles</h2>
+      <p class="muted body-sm">One stack per person. Switch between yourself, a parent, a partner.</p>
+    </div>
     <ul class="stack-profile-list">
       <li class="stack-profile is-active">
-        <span class="stack-profile-name">{{ profile.name or "You" }}</span>
-        <small class="muted">active · {{ profile.conditions|length }} cond · {{ profile.stack|length }} item{{ profile.stack|length != 1 and "s" or "" }}</small>
+        <span class="stack-profile-avatar">{{ (profile.name or 'You')[:2]|upper }}</span>
+        <div>
+          <span class="stack-profile-name">{{ profile.name or "You (default)" }}</span>
+          <small class="muted">active · {{ profile.conditions|length }} cond · {{ profile.stack|length }} stack</small>
+        </div>
+        <span class="stack-profile-tag">active</span>
       </li>
       {% for alt in profile.alternates %}
       <li class="stack-profile">
-        <span class="stack-profile-name">{{ alt.name or "(unnamed)" }}</span>
-        <small class="muted">{{ (alt.conditions or [])|length }} cond · {{ (alt.stack or [])|length }} item{{ (alt.stack or [])|length != 1 and "s" or "" }}</small>
-        <form method="post" action="/me/switch-profile" style="display:inline">
+        <span class="stack-profile-avatar">{{ (alt.name or '?')[:2]|upper }}</span>
+        <div>
+          <span class="stack-profile-name">{{ alt.name or "(unnamed)" }}</span>
+          <small class="muted">{{ (alt.conditions or [])|length }} cond · {{ (alt.stack or [])|length }} stack</small>
+        </div>
+        <form method="post" action="/me/switch-profile">
           <input type="hidden" name="name" value="{{ alt.name }}">
           <button class="btn-secondary inline" type="submit">Switch</button>
         </form>
-        <form method="post" action="/me/delete-profile" style="display:inline"
+        <form method="post" action="/me/delete-profile"
               onsubmit="return confirm('Remove the profile for {{ alt.name }}?')">
           <input type="hidden" name="name" value="{{ alt.name }}">
-          <button class="btn-secondary inline" type="submit" style="color:#a3552c">Remove</button>
+          <button class="btn-secondary inline stack-profile-rm" type="submit">×</button>
         </form>
       </li>
       {% endfor %}
     </ul>
     <form method="post" action="/me/add-profile" class="stack-profile-add">
-      <input type="text" name="name" placeholder="Save current as… (e.g. 'Mum', 'Self')"
+      <input type="text" name="name" placeholder="Save current profile as… (e.g. 'Mum', 'Self')"
              maxlength="40" required>
-      <button class="btn-secondary inline" type="submit">+ Save & start fresh</button>
+      <button class="btn-secondary inline" type="submit">+ Save &amp; start fresh</button>
     </form>
   </section>
   {% endif %}
 
   {% if not profile.conditions and not profile.stack %}
   <div class="stack-onboarding">
-    <h2>Get started in 30 seconds</h2>
-    <ol class="stack-steps">
-      <li><b>Pick conditions</b> you want to manage or avoid. Even just <em>all-cause mortality</em> works as a starter.</li>
-      <li><b>Tick your current stack</b> — diet pattern, supplements you already take, regular activities.</li>
-      <li><b>Save.</b> The home feed personalises and we flag any conflicts inside your stack.</li>
-    </ol>
+    <h2>New here?</h2>
+    <p class="muted body-sm">The fastest path is the 60-second onboarding wizard:</p>
+    <a class="btn-primary inline" href="/start">Open guided setup →</a>
+    <p class="muted body-sm" style="margin-top:10px">…or just fill in the form below.</p>
   </div>
   {% endif %}
 
   <div class="stack-grid">
-    <form method="post" action="/me" class="stack-form">
+    <form method="post" action="/me" class="stack-form" autocomplete="off">
+
+      {# ─ Section 1: Identity ─ #}
       <fieldset class="stack-fieldset">
         <legend class="stack-legend"><span class="stack-num">01</span> About you</legend>
-        <div class="stack-row-2">
+        <div class="stack-row-3">
+          <label class="stack-label">Display name (optional)
+            <input type="text" name="name" maxlength="40" placeholder="—"
+                   value="{{ profile.name or '' }}">
+            <small class="muted">Shown on the avatar dropdown. Useful when switching profiles.</small>
+          </label>
           <label class="stack-label">Age
-            <input type="number" name="age" min="1" max="120" value="{{ profile.age or '' }}" placeholder="—">
+            <input type="number" name="age" min="1" max="120"
+                   value="{{ profile.age or '' }}" placeholder="—">
           </label>
           <label class="stack-label">Sex
             <select name="sex">
-              <option value="">—</option>
-              {% for s in ['female','male','other'] %}
-              <option value="{{s}}" {% if profile.sex==s %}selected{% endif %}>{{s}}</option>
+              <option value="">— prefer not to say —</option>
+              {% for s, label in [('female','Female'),('male','Male'),('other','Other / non-binary')] %}
+              <option value="{{s}}" {% if profile.sex==s %}selected{% endif %}>{{label}}</option>
               {% endfor %}
             </select>
           </label>
         </div>
       </fieldset>
 
+      {# ─ Section 2: Conditions ─ #}
       <fieldset class="stack-fieldset">
-        <legend class="stack-legend"><span class="stack-num">02</span> Conditions you care about</legend>
-        <p class="stack-fieldset-help">Things you want to manage, prevent, or follow research on.</p>
-        <div class="stack-chips">
-        {% for o in outcomes %}
+        <legend class="stack-legend"><span class="stack-num">02</span> Conditions you want to manage or prevent</legend>
+        <p class="stack-fieldset-help">
+          Pick as many as apply. Each one re-ranks evidence, drives the
+          weekly digest, and triggers Coach + /my-plan.
+          <span id="cond-counter" class="stack-counter"></span>
+        </p>
+
+        {% if top_conditions %}
+        <p class="stack-quickpick-label">Common starting points</p>
+        <div class="stack-chips stack-chips-quick" id="cond-quick">
+          {% for c in top_conditions %}
           <label class="stack-chip">
-            <input type="checkbox" name="conditions" value="{{o.slug}}"
-              {% if o.slug in profile.conditions %}checked{% endif %}>
-            <span>{{o.name}}</span>
+            <input type="checkbox" name="conditions" value="{{ c.slug }}"
+              {% if c.slug in profile.conditions %}checked{% endif %}>
+            <span>{{ c.name }}</span>
           </label>
-        {% endfor %}
+          {% endfor %}
         </div>
+        {% endif %}
+
+        <details class="stack-collapsible" {% if profile.conditions|length > 4 %}open{% endif %}>
+          <summary class="stack-collapsible-sum">
+            Browse all {{ outcomes|length }} conditions
+            <small class="muted">+ tap to filter</small>
+          </summary>
+          <input type="text" id="cond-filter" placeholder="Filter by name…"
+                 class="stack-search-input">
+          <div class="stack-chips stack-chips-list" id="cond-list">
+            {% for o in outcomes %}
+            <label class="stack-chip stack-chip-mini" data-name="{{ o.name|lower }}">
+              <input type="checkbox" name="conditions" value="{{ o.slug }}"
+                {% if o.slug in profile.conditions %}checked{% endif %}>
+              <span>{{ o.name }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </details>
       </fieldset>
 
+      {# ─ Section 3: Stack ─ #}
       <fieldset class="stack-fieldset">
         <legend class="stack-legend"><span class="stack-num">03</span> Your current stack</legend>
-        <p class="stack-fieldset-help">Foods, supplements, activities, behaviours you actually do.</p>
-        <div class="stack-chips">
-        {% for f in factors %}
-          <label class="stack-chip">
-            <input type="checkbox" name="stack" value="{{f.slug}}"
-              {% if f.slug in profile.stack %}checked{% endif %}>
-            <span>{{f.name}}</span>
-          </label>
-        {% endfor %}
-        </div>
+        <p class="stack-fieldset-help">
+          Foods, supplements, behaviours, activities you actually do.
+          We use this to flag drug × supplement interactions and avoid
+          re-suggesting things you're already on.
+          <span id="stack-counter" class="stack-counter"></span>
+        </p>
+        <details class="stack-collapsible" {% if profile.stack|length > 0 %}open{% endif %}>
+          <summary class="stack-collapsible-sum">
+            Browse all {{ factors|length }} factors
+            <small class="muted">+ tap to filter by name or kind</small>
+          </summary>
+          <input type="text" id="stack-filter"
+                 placeholder="Filter (e.g. metformin, fiber, walking, magnesium)…"
+                 class="stack-search-input">
+          <div class="stack-chips stack-chips-list" id="stack-list">
+            {% for f in factors %}
+            <label class="stack-chip stack-chip-mini" data-name="{{ f.name|lower }} {{ f.kind|lower }}">
+              <input type="checkbox" name="stack" value="{{ f.slug }}"
+                {% if f.slug in profile.stack %}checked{% endif %}>
+              <span>{{ f.name }}<small class="muted"> · {{ f.kind }}</small></span>
+            </label>
+            {% endfor %}
+          </div>
+        </details>
       </fieldset>
 
       <div class="stack-actions">
-        <button class="btn-primary" type="submit">Save profile</button>
-        <button class="btn-secondary" type="submit" formaction="/me/clear" formmethod="post">Clear all</button>
+        <button class="btn-primary" type="submit">💾 Save profile</button>
+        <a class="btn-secondary inline" href="/my-plan">View my plan →</a>
+        <button class="btn-secondary stack-clear" type="submit"
+                formaction="/me/clear" formmethod="post"
+                onclick="return confirm('Clear everything in this active profile? Alternates and email are kept.')">
+          Clear active profile
+        </button>
       </div>
     </form>
 
     <aside class="stack-side">
       <div class="stack-summary">
-        <h2 class="stack-side-h">Your snapshot</h2>
+        <h2 class="stack-side-h">Snapshot</h2>
         {% if profile.age or profile.sex or profile.conditions or profile.stack %}
         <dl class="stack-snapshot">
           {% if profile.age or profile.sex %}
@@ -118,6 +194,8 @@
           {% endif %}
           <div><dt>Conditions tracked</dt><dd>{{ profile.conditions|length }}</dd></div>
           <div><dt>Stack items</dt><dd>{{ profile.stack|length }}</dd></div>
+          {% if profile.email %}<div><dt>Sync email</dt><dd>{{ profile.email }}</dd></div>{% endif %}
+          {% if profile.alternates %}<div><dt>Profiles</dt><dd>{{ 1 + profile.alternates|length }}</dd></div>{% endif %}
         </dl>
         {% else %}
         <p class="muted body-sm">Save a profile and your snapshot lives here.</p>
@@ -127,7 +205,7 @@
       {% if red_flags %}
       <div class="stack-redflags">
         <h2 class="stack-side-h">⚠ Red flags in your stack</h2>
-        <p class="muted body-sm">Harmful, contested, or dose-sensitive evidence about things you're already doing. Worth a closer look.</p>
+        <p class="muted body-sm">Harmful, contested, or dose-sensitive evidence about things you're already doing.</p>
         <ul class="stack-flag-list">
           {% for r in red_flags[:5] %}
           <li>
@@ -145,7 +223,7 @@
       {% if no_regret %}
       <div class="stack-noregret">
         <h2 class="stack-side-h">★ No-regret moves</h2>
-        <p class="muted body-sm">Tier-A protective edges with broad applicability and low downside. Strong evidence, low controversy.</p>
+        <p class="muted body-sm">Tier-A protective edges with broad applicability and low downside.</p>
         <ul class="stack-flag-list">
           {% for m in no_regret[:5] %}
           <li>
@@ -159,28 +237,62 @@
         </ul>
       </div>
       {% endif %}
-
-      <div class="stack-relevant">
-        <h2 class="stack-side-h">Relevant for you</h2>
-        <p class="muted body-sm">Re-ranked from the graph by your stack and conditions. Click into any card to see the supporting evidence.</p>
-        <div class="stack-relevant-list">
-          {% for e in relevant %}
-          <a class="stack-rel-card" href="/edge/{{ e.id }}">
-            <div class="stack-rel-head">
-              <span class="pill tier-{{ e.tier }}">{{ e.tier }}</span>
-              <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
-            </div>
-            <h3>{{ e.f_name }} <span class="lib-arrow" aria-hidden="true">→</span> {{ e.o_name }}</h3>
-            {% if e.summary %}<p>{{ e.summary[:180] }}{% if e.summary|length > 180 %}…{% endif %}</p>{% endif %}
-          </a>
-          {% else %}
-          <div class="stack-empty">
-            <p>Save a profile and we'll rank what's relevant for you here.</p>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
     </aside>
   </div>
 </section>
+
+<script>
+{# Live filtering and chip-counter for the conditions + stack lists. #}
+function attachFilter(inputId, listId) {
+  const input = document.getElementById(inputId);
+  const list = document.getElementById(listId);
+  if (!input || !list) return;
+  input.oninput = () => {
+    const q = input.value.toLowerCase().trim();
+    list.querySelectorAll('label').forEach(el => {
+      el.style.display = !q || el.dataset.name.includes(q) ? '' : 'none';
+    });
+  };
+}
+attachFilter('cond-filter', 'cond-list');
+attachFilter('stack-filter', 'stack-list');
+
+function syncQuickPickWithList(quickId, listId) {
+  // Keep the quick-pick chips and the full list checkboxes in sync.
+  const quick = document.getElementById(quickId);
+  const list = document.getElementById(listId);
+  if (!quick || !list) return;
+  function mirror(src, dst) {
+    src.querySelectorAll('input[type=checkbox]').forEach(box => {
+      box.addEventListener('change', () => {
+        dst.querySelectorAll(`input[value="${box.value}"]`).forEach(b => {
+          if (b !== box) b.checked = box.checked;
+        });
+      });
+    });
+  }
+  mirror(quick, list);
+  mirror(list, quick);
+}
+syncQuickPickWithList('cond-quick', 'cond-list');
+
+function updateCounter(name, counterId) {
+  const counter = document.getElementById(counterId);
+  if (!counter) return;
+  const update = () => {
+    const n = document.querySelectorAll(`input[name="${name}"]:checked`).length;
+    counter.textContent = n ? ` · ${n} selected` : '';
+  };
+  document.querySelectorAll(`input[name="${name}"]`).forEach(b => {
+    b.addEventListener('change', update);
+  });
+  update();
+}
+updateCounter('conditions', 'cond-counter');
+updateCounter('stack', 'stack-counter');
+
+{# Hide duplicate hidden form when the form has duplicate name fields.
+   Browsers will submit duplicates fine; we just dedupe what we render. #}
+</script>
+
 {% endblock %}

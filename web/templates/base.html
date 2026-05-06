@@ -42,24 +42,15 @@
     <span class="brand-text"><b>HEALTH</b><br/>UNIVERSE</span>
   </a>
   <nav class="topnav-links" aria-label="Primary">
-    <a href="/">Home</a>
-    <a href="/ask">Ask</a>
     <a href="/prevent">Prevent</a>
-    <a href="/brief">Brief</a>
     <a href="/discoveries">Discoveries</a>
-    <a href="/compare">Compare</a>
-    <a href="/explore">Graph</a>
-    <a href="/risk">Risk</a>
-    <a href="/diary">Diary</a>
-    <a href="/labs">Labs</a>
-    <a href="/protocols">Protocols</a>
-    <a href="/me">Stack</a>
-    <a href="/my-plan">My plan</a>
-    <a href="/today">Today</a>
-    <a href="/coach">Coach</a>
-    <a href="/digest">Digest</a>
-    <a href="/about">About</a>
-    <a href="/methodology">Methodology</a>
+    <a href="/tier/A">Library</a>
+    <a href="/ask">Ask</a>
+    {% if nav_profile and nav_profile.conditions %}
+      <a href="/my-plan">My plan</a>
+    {% else %}
+      <a href="/start" class="topnav-cta">Get started →</a>
+    {% endif %}
   </nav>
   <form class="topnav-search" method="get" action="/search">
     <label class="sr-only" for="site-search-query">Site search</label>
@@ -67,12 +58,66 @@
     <input id="site-search-query" name="q" placeholder="Search evidence, topics, conditions…" aria-label="Site search" />
     <kbd>⏎</kbd>
   </form>
-  <div class="topnav-actions">
-    <button type="button" aria-label="Open saved evidence"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18l-6-4-6 4z"/></svg></button>
-    <button type="button" aria-label="Open notifications"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9z"/><path d="M10 21a2 2 0 0 0 4 0"/></svg></button>
-    <span class="avatar">DR</span>
-  </div>
+  <details class="topnav-account" id="account-menu">
+    <summary aria-label="Open account menu">
+      <span class="avatar avatar-{% if nav_initials %}filled{% else %}empty{% endif %}">
+        {{ nav_initials or '+' }}
+      </span>
+    </summary>
+    <div class="account-panel" role="menu">
+      <div class="account-head">
+        {% if nav_profile and (nav_profile.conditions or nav_profile.stack or nav_profile.name) %}
+          <b>{{ nav_profile.name or 'Your stack' }}</b>
+          <small class="muted">
+            {{ (nav_profile.conditions or [])|length }} condition{{ (nav_profile.conditions or [])|length != 1 and "s" or "" }} ·
+            {{ (nav_profile.stack or [])|length }} item{{ (nav_profile.stack or [])|length != 1 and "s" or "" }} in stack
+          </small>
+        {% else %}
+          <b>Not set up yet</b>
+          <small class="muted">Build your personal evidence-based plan in 60 seconds.</small>
+          <a class="account-cta" href="/start">Get started →</a>
+        {% endif %}
+      </div>
+
+      <nav class="account-section" aria-label="Personal">
+        <span class="account-label">Personal</span>
+        <a href="/today" role="menuitem">📅 Today</a>
+        <a href="/me" role="menuitem">⚙ Edit my stack</a>
+        <a href="/my-plan" role="menuitem">📋 My plan</a>
+        <a href="/coach" role="menuitem">💬 Coach</a>
+        <a href="/diary" role="menuitem">📓 Diary</a>
+        <a href="/labs" role="menuitem">🧪 Labs &amp; wearables</a>
+        <a href="/protocols" role="menuitem">🔬 Protocols (n-of-1)</a>
+        <a href="/digest" role="menuitem">📨 Weekly digest</a>
+        <a href="/sync" role="menuitem">🔁 Sync to another device</a>
+      </nav>
+
+      <nav class="account-section" aria-label="Tools">
+        <span class="account-label">Tools</span>
+        <a href="/compare" role="menuitem">↔ Compare evidence</a>
+        <a href="/explore" role="menuitem">🌐 Graph view</a>
+        <a href="/risk" role="menuitem">🎯 Risk dial</a>
+        <a href="/brief" role="menuitem">📰 Brief</a>
+      </nav>
+
+      <nav class="account-section" aria-label="About">
+        <span class="account-label">About</span>
+        <a href="/methodology" role="menuitem">📐 Methodology &amp; tier rules</a>
+        <a href="/privacy" role="menuitem">🔒 Privacy</a>
+        <a href="/about" role="menuitem">ℹ About this project</a>
+        <a href="/data-export" role="menuitem">⤓ Download my data</a>
+      </nav>
+    </div>
+  </details>
 </header>
+
+<script>
+{# Close the account dropdown when the user clicks anywhere else #}
+document.addEventListener('click', function(ev){
+  var d = document.getElementById('account-menu');
+  if (d && d.open && !d.contains(ev.target)) d.open = false;
+});
+</script>
 
 <main id="main-content" tabindex="-1">{% block content %}{% endblock %}</main>
 

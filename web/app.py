@@ -69,7 +69,22 @@ _TEMPLATE_GLOBALS = {
 
 
 def render(request: Request, template: str, ctx: dict) -> HTMLResponse:
-    return templates.TemplateResponse(request, template, {**_TEMPLATE_GLOBALS, **ctx})
+    # Always inject the active profile so base.html can render the avatar
+    # dropdown without each route having to pass `profile` explicitly.
+    nav_profile = ctx.get("profile")
+    if nav_profile is None:
+        nav_profile = decode(request.cookies.get(COOKIE))
+    initials = ""
+    if nav_profile and nav_profile.name:
+        parts = [p for p in nav_profile.name.split() if p]
+        initials = "".join(p[0].upper() for p in parts[:2])
+    elif nav_profile and (nav_profile.conditions or nav_profile.stack):
+        initials = "ME"
+    return templates.TemplateResponse(request, template, {
+        **_TEMPLATE_GLOBALS, **ctx,
+        "nav_profile": nav_profile,
+        "nav_initials": initials,
+    })
 
 
 # ---- aggregate categories for the home grid ---------------------------------
@@ -1483,33 +1498,63 @@ def me(request: Request):
                               key=lambda e: -relevance_score(e, p))[:30]
         red_flags = _red_flags_in_stack(conn, p, limit=8)
         no_regret = _no_regret_movers(conn, p, limit=8)
+        # Top 16 most-studied conditions for quick-pick
+        top_conditions = [dict(r) for r in conn.execute("""
+            SELECT o.slug, o.name, COUNT(e.id) AS n
+            FROM edge e JOIN entity o ON o.id=e.outcome_id
+            WHERE o.kind IN ('condition','outcome') AND e.tier IN ('A','B')
+            GROUP BY o.slug ORDER BY n DESC LIMIT 16""").fetchall()]
     return render(request, "me.html", {
+        "title": "My stack",
         "profile": p,
         "factors": [dict(r) for r in all_factors],
         "outcomes": [dict(r) for r in all_outcomes],
         "relevant": relevant,
         "red_flags": red_flags,
         "no_regret": no_regret,
+        "top_conditions": top_conditions,
+        "saved": request.query_params.get("saved") == "1",
     })
 
 
 @app.post("/me")
 async def me_save(request: Request,
                   age: str = Form(""), sex: str = Form(""),
+                  name: str = Form(""),
                   conditions: list[str] = Form(default=[]),
                   goals: list[str] = Form(default=[]),
                   stack: list[str] = Form(default=[])):
+    # Preserve alternates + email + watchlist data when overwriting
+    existing = decode(request.cookies.get(COOKIE))
+    # Dedupe (the /me form has both quick-pick and full-list chips that
+    # can both submit the same slug)
+    def _uniq(seq: list[str]) -> list[str]:
+        seen: set[str] = set()
+        out: list[str] = []
+        for s in seq:
+            if s and s not in seen:
+                seen.add(s); out.append(s)
+        return out
     p = Profile(
         age=int(age) if age.isdigit() else None,
         sex=sex or None,
-        conditions=[c for c in conditions if c],
-        goals=[g for g in goals if g],
-        stack=[s for s in stack if s],
+        name=(name.strip()[:40] if name and name.strip() else None),
+        conditions=_uniq(conditions),
+        goals=_uniq(goals),
+        stack=_uniq(stack),
+        watch_factors=existing.watch_factors,
+        watch_outcomes=existing.watch_outcomes,
+        watch_edges=existing.watch_edges,
+        alternates=existing.alternates,
+        email=existing.email,
     )
     # If the user just told us what conditions to track, take them straight
-    # to their personalised plan. Otherwise stay on /me (e.g. they only
-    # changed age or stack).
-    target = "/my-plan" if p.conditions else "/me"
+    # to their personalised plan. Otherwise stay on /me with a saved flash.
+    if p.conditions and not existing.conditions:
+        # First time setting conditions — celebrate by jumping to the plan.
+        target = "/my-plan"
+    else:
+        target = "/me?saved=1"
     resp = RedirectResponse(target, status_code=303)
     resp.set_cookie(COOKIE, encode(p), max_age=60*60*24*365,
                     httponly=False, samesite="lax")
