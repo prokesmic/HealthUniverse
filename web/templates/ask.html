@@ -61,8 +61,18 @@
           <div><b>Retraction warning.</b> One or more cited papers in the underlying evidence have been flagged as retracted on PubMed.</div>
         </div>
         {% endif %}
-        <div class="ask-memo-eyebrow">Evidence-backed answer · cites the graph</div>
+        <div class="ask-memo-eyebrow">Evidence-backed answer · cites the graph
+          {% if answer.model_used and answer.model_used != 'local-gemma' %}
+            · synthesised by {{ answer.model_used }}
+          {% endif %}
+          {% if answer.retrieval_mode == 'keyword' %}
+            · keyword retrieval (semantic engine offline)
+          {% endif %}
+        </div>
         <div class="ask-memo-prose">{{ answer.answer | safe }}</div>
+        {% if answer.warning %}
+        <p class="muted body-sm" style="margin-top:14px">{{ answer.warning }}</p>
+        {% endif %}
 
         {% if answer.edges_used %}
         <div class="ask-citations-v2">

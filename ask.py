@@ -110,6 +110,76 @@ def _retrieve(qvec: list[float], p: Profile, k: int = TOP_K) -> list[dict]:
     return [{**d, "_sim": s, "_score": sc} for sc, s, d in scored[:k]]
 
 
+def _keyword_retrieve(question: str, p: Profile, k: int = TOP_K) -> list[dict]:
+    """Fallback retrieval when Ollama embeddings are unreachable.
+    Token-overlap scoring on factor name + outcome name + summary +
+    mechanism. Pure SQLite + Python; works on Vercel."""
+    import re as _re
+    tokens = [t.lower() for t in _re.findall(r"[a-zA-Z][a-zA-Z\-]{2,}", question)]
+    # Drop trivial stop words so the score isn't dominated by 'what', 'will'…
+    stop = {"the","and","for","with","what","will","does","best","help","good",
+            "should","take","have","this","that","when","from","about","into",
+            "would","could","might","can","are","you","my","your","most","why",
+            "how","is","of","to","in","on","or","be","by"}
+    tokens = [t for t in tokens if t not in stop]
+    if not tokens:
+        return []
+    with connect() as conn:
+        cands = conn.execute("""
+            SELECT e.id, e.tier, e.direction, e.summary, e.mechanism, e.population,
+                   f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                   o.slug AS o_slug, o.name AS o_name, o.kind AS o_kind
+            FROM edge e
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE e.tier IN ('A','B','C','X')""").fetchall()
+    scored: list[tuple[float, dict]] = []
+    for r in cands:
+        d = dict(r)
+        haystack = " ".join([
+            (d.get("f_name") or "").lower(),
+            (d.get("o_name") or "").lower(),
+            (d.get("summary") or "").lower(),
+            (d.get("mechanism") or "").lower(),
+        ])
+        # Token-overlap; weight name-hits more than summary-hits.
+        hits = 0.0
+        for t in tokens:
+            if t in (d.get("f_name") or "").lower() or t in (d.get("o_name") or "").lower():
+                hits += 2.0
+            elif t in haystack:
+                hits += 1.0
+        if hits == 0:
+            continue
+        sim = min(0.85, 0.3 + hits / max(4, len(tokens) * 2))   # bounded pseudo-similarity
+        rel = relevance_score(d, p)
+        score = sim + rel * 0.05
+        scored.append((score, sim, d))
+    scored.sort(key=lambda x: -x[0])
+    return [{**d, "_sim": s, "_score": sc} for sc, s, d in scored[:k]]
+
+
+def _call_llm(system: str, user: str) -> tuple[str, str]:
+    """Try local Ollama first (free), fall back to Claude (cost-capped)
+    if ANTHROPIC_API_KEY is set. Returns (text, model_used).
+    Raises RuntimeError if neither path is available."""
+    import os as _os
+    try:
+        text = call(system=system, user=user, temperature=0.2, num_predict=2000)
+        return text, "local-gemma"
+    except OllamaUnavailable:
+        pass
+    if _os.environ.get("ANTHROPIC_API_KEY"):
+        try:
+            from claude_client import call as claude_call
+            text, _u = claude_call(system=system, user=user,
+                                   operation="ask", max_tokens=1500)
+            return text, "claude-sonnet"
+        except Exception as exc:
+            raise RuntimeError(f"Both Ollama and Claude failed: {exc}")
+    raise RuntimeError("No LLM available. Set ANTHROPIC_API_KEY for the cloud path or run Ollama locally.")
+
+
 def _evidence_for(edge_id: int, *, counter: bool = False) -> list[dict]:
     with connect() as conn:
         try:
@@ -137,14 +207,20 @@ def ask(question: str, profile: Profile | None = None, *, k: int = TOP_K) -> dic
     if not question:
         return {"refused": True, "answer": "Ask a question."}
 
+    # 1) Retrieval — try semantic first, fall back to keyword if Ollama
+    #    embeddings are down (this is the Vercel-production case).
+    retrieval_mode = "semantic"
+    edges: list[dict] = []
     try:
         qvec = embed(question)
-    except EmbeddingsUnavailable as e:
-        return {"error": f"Embeddings unavailable: {e}", "answer": ""}
-    if not qvec:
-        return {"error": "Empty embedding", "answer": ""}
+        if qvec:
+            edges = _retrieve(qvec, profile, k=k)
+    except EmbeddingsUnavailable:
+        edges = []
+    if not edges:
+        edges = _keyword_retrieve(question, profile, k=k)
+        retrieval_mode = "keyword"
 
-    edges = _retrieve(qvec, profile, k=k)
     if not edges or edges[0]["_sim"] < MIN_SIM:
         return {
             "refused": True,
@@ -152,6 +228,7 @@ def ask(question: str, profile: Profile | None = None, *, k: int = TOP_K) -> dic
                        "The closest topics I cover have only weak overlap with your "
                        "question — please consult a clinician or rephrase."),
             "edges_used": [],
+            "retrieval_mode": retrieval_mode,
         }
 
     edge_blocks = []
@@ -171,15 +248,29 @@ def ask(question: str, profile: Profile | None = None, *, k: int = TOP_K) -> dic
         profile_block=_profile_block(profile),
         edges_block="\n\n".join(edge_blocks),
     )
+    # 2) Synthesis — try local Ollama, fall back to Claude (cost-capped).
     try:
-        text = call(system=SYSTEM, user=user, temperature=0.2, num_predict=2000)
-    except OllamaUnavailable as e:
-        return {"error": f"Local Gemma unavailable: {e}", "answer": ""}
+        text, model_used = _call_llm(SYSTEM, user)
+    except RuntimeError as e:
+        # Both LLMs unavailable: still return the retrieved edges so the
+        # user gets value from the retrieval layer alone.
+        return {
+            "answer": ("I found relevant evidence below but my reasoning "
+                       "engine is offline — open the cards for the full "
+                       "summaries."),
+            "edges_used": edges_used,
+            "any_retracted": any_retracted,
+            "retrieval_mode": retrieval_mode,
+            "model_used": "none",
+            "warning": str(e),
+        }
 
     return {
         "answer": text.strip(),
         "edges_used": edges_used,
         "any_retracted": any_retracted,
+        "retrieval_mode": retrieval_mode,
+        "model_used": model_used,
     }
 
 
