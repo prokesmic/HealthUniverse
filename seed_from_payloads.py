@@ -244,6 +244,10 @@ def _known_slugs(conn) -> tuple[set[str], set[str]]:
     return factors, outcomes
 
 
+def _all_entity_slugs(conn) -> set[str]:
+    return {r["slug"] for r in conn.execute("SELECT slug FROM entity").fetchall()}
+
+
 def validate_dir(payload_dir: Path = PAYLOAD_DIR, *, verify: bool = False) -> tuple[int, int]:
     """Validate every JSON in payload_dir. With verify=True, additionally
     resolves every PMID against PubMed and checks the title matches."""
@@ -253,6 +257,7 @@ def validate_dir(payload_dir: Path = PAYLOAD_DIR, *, verify: bool = False) -> tu
     files = [f for f in files if not f.name.startswith("_")]
     with connect() as conn:
         kf, ko = _known_slugs(conn)
+        all_slugs = _all_entity_slugs(conn)
 
     parsed: list[tuple[Path, dict]] = []
     parse_errors: list[Path] = []
@@ -278,7 +283,11 @@ def validate_dir(payload_dir: Path = PAYLOAD_DIR, *, verify: bool = False) -> tu
 
     ok = bad = 0
     for f, p in parsed:
-        errs = validate_payload(p, known_factor_slugs=kf, known_outcome_slugs=ko)
+        mode = p.get("mode", "replace")
+        factor_slugs = all_slugs if mode == "densify" else kf
+        outcome_slugs = all_slugs if mode == "densify" else ko
+        errs = validate_payload(p, known_factor_slugs=factor_slugs,
+                                known_outcome_slugs=outcome_slugs)
         if verify:
             errs += verify_citations(p, pubmed_cache)
         if errs:
@@ -416,7 +425,12 @@ def ingest_dir(payload_dir: Path = PAYLOAD_DIR, *, dry_run: bool = False) -> dic
             summary["errors"].append(f"{f.name}: {e}"); continue
         with connect() as conn:
             kf, ko = _known_slugs(conn)
-        errs = validate_payload(p, known_factor_slugs=kf, known_outcome_slugs=ko)
+            all_slugs = _all_entity_slugs(conn)
+        mode = p.get("mode", "replace")
+        factor_slugs = all_slugs if mode == "densify" else kf
+        outcome_slugs = all_slugs if mode == "densify" else ko
+        errs = validate_payload(p, known_factor_slugs=factor_slugs,
+                                known_outcome_slugs=outcome_slugs)
         if errs:
             summary["errors"].append(f"{f.name}: {len(errs)} validation error(s)")
             continue
@@ -463,7 +477,12 @@ def main() -> None:
             p = json.loads(Path(a.path).read_text())
             with connect() as conn:
                 kf, ko = _known_slugs(conn)
-            errs = validate_payload(p, known_factor_slugs=kf, known_outcome_slugs=ko)
+                all_slugs = _all_entity_slugs(conn)
+            mode = p.get("mode", "replace")
+            factor_slugs = all_slugs if mode == "densify" else kf
+            outcome_slugs = all_slugs if mode == "densify" else ko
+            errs = validate_payload(p, known_factor_slugs=factor_slugs,
+                                    known_outcome_slugs=outcome_slugs)
             if a.verify:
                 pmids = [str(ev["pmid"]) for e in p.get("edges", [])
                          for ev in e.get("evidence", []) if ev.get("pmid")]
