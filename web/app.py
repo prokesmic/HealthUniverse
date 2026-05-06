@@ -35,6 +35,12 @@ templates.env.globals["hero_svg"] = hero_svg
 templates.env.globals["featured_card_svg"] = featured_card_svg
 templates.env.globals["discovery_card_svg"] = discovery_card_svg
 templates.env.globals["strength_wave_svg"] = strength_wave_svg
+# Cache-bust static assets when style.css changes on disk.
+try:
+    _css_mtime = (WEB_DIR / "static" / "style.css").stat().st_mtime
+    templates.env.globals["asset_v"] = str(int(_css_mtime))
+except Exception:
+    templates.env.globals["asset_v"] = "1"
 
 
 # ---- tier display helpers ----------------------------------------------------

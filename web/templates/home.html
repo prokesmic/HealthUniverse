@@ -131,9 +131,11 @@
     {% for d in discoveries %}
     <a class="hp-disc {% if d.breakthrough %}is-breakthrough{% endif %}" href="/edge/{{ d.id }}">
       {% if d.breakthrough %}<span class="hp-breakthrough-ribbon">BREAKTHROUGH</span>{% endif %}
-      <div class="hp-disc-art">{{ discovery_card_svg(factor_slug=d.f_slug, outcome_slug=d.o_slug, tier=d.tier, factor_kind=d.f_kind, outcome_kind=d.o_kind) | safe }}</div>
-      <div class="hp-disc-body">
+      <div class="hp-disc-art">
+        {{ discovery_card_svg(factor_slug=d.f_slug, outcome_slug=d.o_slug, tier=d.tier, factor_kind=d.f_kind, outcome_kind=d.o_kind) | safe }}
         <span class="hp-feat-tier hp-feat-tier-{{ d.tier }}">{% if d.tier == 'A' %}STRONG{% elif d.tier == 'B' %}MODERATE{% elif d.tier == 'C' %}EMERGING{% elif d.tier == 'D' %}LIMITED{% else %}CONTESTED{% endif %} EVIDENCE</span>
+      </div>
+      <div class="hp-disc-body">
         <h3>{{ d.f_name }} <span class="hp-arrow" aria-hidden="true">→</span> {{ d.o_name }}</h3>
         <span class="hp-badge hp-badge-dir-{{ d.direction }}">{{ DIRECTION_LABEL[d.direction] }}</span>
       </div>

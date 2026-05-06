@@ -18,7 +18,8 @@
 
   <div class="disc-grid">
     {% for r in rows %}
-    <a class="disc-card-v2 tier-bg-{{ r.tier }}" href="/edge/{{ r.id }}">
+    <a class="disc-card-v2 tier-bg-{{ r.tier }} {% if r.breakthrough %}is-breakthrough{% endif %}" href="/edge/{{ r.id }}">
+      {% if r.breakthrough %}<span class="hp-breakthrough-ribbon">BREAKTHROUGH</span>{% endif %}
       <div class="disc-art-v2">{{ discovery_card_svg(factor_slug=r.f_slug, outcome_slug=r.o_slug, tier=r.tier, factor_kind=r.f_kind, outcome_kind=r.o_kind) | safe }}</div>
       <div class="disc-body-v2">
         <div class="disc-row">

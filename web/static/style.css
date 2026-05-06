@@ -81,25 +81,34 @@ summary:focus-visible {
 }
 
 /* ---------- top nav ---------- */
+html, body { overflow-x: clip; }
 .topnav {
   display: grid;
-  grid-template-columns: auto 1fr auto auto;
-  align-items: center; gap: 24px;
-  padding: 18px 36px; border-bottom: 1px solid transparent;
+  grid-template-columns: auto minmax(0,1fr) minmax(0,260px) auto;
+  align-items: center; gap: 18px;
+  padding: 16px 24px; border-bottom: 1px solid transparent;
 }
 .brand { display: flex; align-items: center; gap: 12px; color: var(--gold); }
 .brand-mark { display: inline-flex; }
 .brand-text { font-family: 'Fraunces', serif; color: var(--ink); font-size: 14px; line-height: 1.05; letter-spacing: 0.18em; }
 .brand-text b { letter-spacing: 0.18em; font-weight: 600; }
-.topnav-links { display: flex; gap: 28px; justify-self: center; }
-.topnav-links a { font-weight: 500; color: var(--ink-soft); padding: 6px 2px; position: relative; }
+.topnav-links {
+  display: flex; gap: 18px; justify-self: center;
+  min-width: 0; max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.topnav-links::-webkit-scrollbar { display: none; }
+.topnav-links a { font-weight: 500; color: var(--ink-soft); padding: 6px 2px; position: relative; white-space: nowrap; font-size: 14px; }
 .topnav-links a.active { color: var(--ink); }
 .topnav-links a.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -10px; height: 3px; background: var(--gold); border-radius: 2px; }
 .topnav-search {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 8px;
   background: var(--surface); border: 1px solid var(--line); border-radius: 999px;
-  padding: 10px 14px; min-width: 360px; color: var(--muted);
+  padding: 8px 12px; min-width: 0; color: var(--muted);
 }
+.topnav-search input { min-width: 0; }
 .topnav-search input { flex: 1; border: 0; background: transparent; outline: none; font: inherit; color: var(--ink); }
 .topnav-search kbd {
   font: 600 11px 'Inter'; padding: 2px 6px; border: 1px solid var(--line);
@@ -1007,11 +1016,13 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   scroll-snap-type: x mandatory;
 }
 .hp-disc {
+  position: relative;
   scroll-snap-align: start;
   background: var(--surface); border: 1px solid var(--line);
   border-radius: 14px; overflow: hidden; color: inherit;
   display: flex; flex-direction: column;
 }
+.hp-disc-body { position: relative; }
 .hp-disc-art { height: 130px; overflow: hidden; position: relative; border-bottom: 1px solid var(--line); }
 .hp-disc-art > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hp-disc-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
@@ -2944,7 +2955,8 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   border-right-color: #6c4f1f;
 }
 .hp-feat.is-breakthrough,
-.hp-disc.is-breakthrough {
+.hp-disc.is-breakthrough,
+.disc-card-v2.is-breakthrough {
   position: relative;
   border: 1.5px solid transparent;
   background-image:
