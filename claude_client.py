@@ -77,10 +77,16 @@ def call(*, system: str, user: str, operation: str, ref: str = "",
         output_tokens=resp.usage.output_tokens,
         usd=cost_of(MODEL, resp.usage.input_tokens, resp.usage.output_tokens),
     )
-    with connect() as conn:
-        record_cost(conn, provider="anthropic", model=MODEL, operation=operation,
-                    input_tokens=usage.input_tokens, output_tokens=usage.output_tokens,
-                    usd=usage.usd, ref=ref)
+    # Best-effort cost recording. On Vercel the SQLite DB is mounted
+    # read-only (READ_ONLY=true) so this write must not block returning
+    # the user-facing answer. Local dev still records normally.
+    try:
+        with connect() as conn:
+            record_cost(conn, provider="anthropic", model=MODEL, operation=operation,
+                        input_tokens=usage.input_tokens, output_tokens=usage.output_tokens,
+                        usd=usage.usd, ref=ref)
+    except Exception as exc:
+        print(f"[cost] WARN: could not record (read-only DB?): {exc}")
     text = "".join(b.text for b in resp.content if getattr(b, "type", None) == "text")
     if spent + usage.usd >= COST_CAP_USD:
         # Allow this call to complete since it's already paid for, but block subsequent.
