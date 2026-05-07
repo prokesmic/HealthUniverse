@@ -150,11 +150,14 @@ def _papers_for_today(conn, days_back: int = 2, per_entity: int = 8) -> list[dic
         try:
             pmids = pubmed.search_for_entity(r["name"], days_back=days_back, retmax=per_entity)
         except Exception as e:
-            print(f"  [pubmed] {r['name']}: {e}", file=sys.stderr); pmids = []
-        for p in pubmed.fetch_abstracts(pmids):
-            key = p.get("pmid") or p.get("doi")
-            if not key or key in seen: continue
-            seen.add(key); papers.append(p)
+            print(f"  [pubmed] search {r['name']}: {e}", file=sys.stderr); pmids = []
+        try:
+            for p in pubmed.fetch_abstracts(pmids):
+                key = p.get("pmid") or p.get("doi")
+                if not key or key in seen: continue
+                seen.add(key); papers.append(p)
+        except Exception as e:
+            print(f"  [pubmed] fetch {r['name']}: {e}", file=sys.stderr)
         try:
             for p in europepmc.search(r["name"], page_size=per_entity, days_back=days_back):
                 key = p.get("pmid") or p.get("doi")

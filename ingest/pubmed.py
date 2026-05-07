@@ -7,8 +7,38 @@ from typing import Iterator
 
 import httpx
 
+import os, random
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
-RATE_LIMIT_S = 0.4
+
+# Without an API key NCBI allows 3 req/sec.  With a key, 10 req/sec.
+# We're conservative either way; bursts spike easily past the limit.
+NCBI_API_KEY = os.environ.get("NCBI_API_KEY", "").strip() or None
+RATE_LIMIT_S = 0.12 if NCBI_API_KEY else 0.45
+
+
+def _request_with_retry(c: httpx.Client, url: str, params: dict,
+                         max_retries: int = 4):
+    """GET with exponential backoff on 429 + 5xx. Returns the response or
+    raises after max_retries. Adds API key if available."""
+    if NCBI_API_KEY:
+        params = {**params, "api_key": NCBI_API_KEY}
+    last_exc: Exception | None = None
+    for attempt in range(max_retries):
+        try:
+            r = c.get(url, params=params)
+            if r.status_code == 429 or 500 <= r.status_code < 600:
+                # Backoff: 0.8s, 2s, 4s, 8s + jitter
+                delay = (0.8 * (2 ** attempt)) + random.uniform(0, 0.4)
+                time.sleep(delay)
+                continue
+            r.raise_for_status()
+            return r
+        except (httpx.RequestError, httpx.HTTPStatusError) as exc:
+            last_exc = exc
+            time.sleep((0.8 * (2 ** attempt)) + random.uniform(0, 0.4))
+    if last_exc:
+        raise last_exc
+    raise RuntimeError(f"PubMed unreachable after {max_retries} retries")
 
 
 # PubMed publication-type filter applied to every search by default.
@@ -42,23 +72,31 @@ def search(term: str, *, days_back: int = 1, retmax: int = 50,
         "sort": "date", "reldate": days_back, "datetype": "edat",
     }
     with httpx.Client(timeout=30.0) as c:
-        r = c.get(f"{EUTILS}/esearch.fcgi", params=params)
-        r.raise_for_status()
+        r = _request_with_retry(c, f"{EUTILS}/esearch.fcgi", params)
+    time.sleep(RATE_LIMIT_S)
     return r.json().get("esearchresult", {}).get("idlist", [])
 
 
 def fetch_abstracts(pmids: list[str]) -> Iterator[dict]:
-    """Yield {pmid, title, abstract, journal, year, doi} for each PMID."""
+    """Yield {pmid, title, abstract, journal, year, doi} for each PMID.
+
+    Skips chunks that fail after retries instead of raising — one bad
+    fetch must not abort an 8-hour burst run.
+    """
     if not pmids:
         return
     for chunk_start in range(0, len(pmids), 50):
         chunk = pmids[chunk_start:chunk_start + 50]
         params = {"db": "pubmed", "id": ",".join(chunk),
                   "rettype": "abstract", "retmode": "xml"}
-        with httpx.Client(timeout=60.0) as c:
-            r = c.get(f"{EUTILS}/efetch.fcgi", params=params)
-            r.raise_for_status()
-        root = ET.fromstring(r.text)
+        try:
+            with httpx.Client(timeout=60.0) as c:
+                r = _request_with_retry(c, f"{EUTILS}/efetch.fcgi", params)
+            root = ET.fromstring(r.text)
+        except Exception as exc:
+            print(f"  [pubmed] efetch chunk {chunk[:3]}…: {exc}", flush=True)
+            time.sleep(2.0)
+            continue
         for art in root.findall(".//PubmedArticle"):
             yield _parse(art)
         time.sleep(RATE_LIMIT_S)
