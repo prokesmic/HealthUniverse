@@ -1105,13 +1105,17 @@ def stats_page(request: Request):
             SELECT substr(created_at, 1, 7) AS ym, COUNT(*) c
             FROM evidence WHERE created_at >= ?
             GROUP BY ym ORDER BY ym ASC""", (cutoff,)).fetchall()
-        # New edges added in last 30/90 days
+        # New edges added in last 30/90 days. Same seed-phase suppression
+        # as _stats(): if the window contains >50% of the corpus, every
+        # row is freshly-seeded, not a real "new this month" signal.
         new_30 = conn.execute(
             "SELECT COUNT(*) c FROM edge WHERE created_at >= ?",
             ((today - _td(days=30)).strftime("%Y-%m-%d"),)).fetchone()["c"]
         new_90 = conn.execute(
             "SELECT COUNT(*) c FROM edge WHERE created_at >= ?",
             ((today - _td(days=90)).strftime("%Y-%m-%d"),)).fetchone()["c"]
+        if n_edges and new_30 > n_edges * 0.5: new_30 = 0
+        if n_edges and new_90 > n_edges * 0.6: new_90 = 0
         n_breakthroughs = 0
         try:
             n_breakthroughs = conn.execute("""
@@ -1377,12 +1381,24 @@ def post_detail(request: Request, slug: str):
     except Exception:
         return HTMLResponse("Could not load post", status_code=500)
     # Render markdown body to HTML so the post reads as proper prose.
+    # Strip a leading H1 if present — the LLM often writes its own
+    # title line as the first markdown heading, which would visually
+    # duplicate the page title rendered above it.
+    body_md = post.get("body_md", "") or ""
+    body_md_lines = body_md.lstrip().splitlines()
+    while body_md_lines and not body_md_lines[0].strip():
+        body_md_lines.pop(0)
+    if body_md_lines and body_md_lines[0].lstrip().startswith("# "):
+        body_md_lines.pop(0)
+        # also drop any blank lines that follow the stripped heading
+        while body_md_lines and not body_md_lines[0].strip():
+            body_md_lines.pop(0)
+    body_md = "\n".join(body_md_lines)
     try:
         import markdown as _md
-        html_body = _md.markdown(post.get("body_md", ""),
-                                 extensions=["fenced_code", "tables"])
+        html_body = _md.markdown(body_md, extensions=["fenced_code", "tables"])
     except Exception:
-        html_body = "<pre>" + (post.get("body_md") or "") + "</pre>"
+        html_body = "<pre>" + body_md + "</pre>"
     return render(request, "post_detail.html", {
         "title": post.get("title", slug),
         "post": {**post, "slug": slug, "body_html": html_body},
@@ -1526,10 +1542,17 @@ def methodology(request: Request):
             "Last 90 days": (today - _td(days=90)).strftime("%Y-%m-%d"),
         }
         recency = {}
+        n_edges_total = conn.execute("SELECT COUNT(*) c FROM edge").fetchone()["c"]
         for label, since in windows.items():
             recency[label] = conn.execute(
                 "SELECT COUNT(*) c FROM edge WHERE updated_at >= ?",
                 (since,)).fetchone()["c"]
+        # Same seed-phase suppression: if the window contains >50% of the
+        # corpus, the "recent activity" number is just the freshly-seeded
+        # state, not a real signal.
+        for label in list(recency):
+            if n_edges_total and recency[label] > n_edges_total * 0.5:
+                recency[label] = 0
         # Top studies
         n_studies = conn.execute("SELECT COUNT(*) c FROM evidence").fetchone()["c"]
         n_pmids = conn.execute(
@@ -1901,12 +1924,18 @@ def digest_preview(request: Request, days: int = 7):
                         or (d.get("breakthrough"))]
         else:
             relevant = [d for d in all_disc if d.get("breakthrough")] or all_disc[:6]
-        sections.append({
-            "title": f"This week's evidence shifts ({len(relevant)})",
-            "blurb": f"Discoveries and breakthroughs in the last {days} days"
-                     + (" in areas you track" if has_profile else ""),
-            "rows": relevant[:6],
-        })
+        # Only render the section header when there's actually something
+        # to report. Avoid the "(0)" artefact on a freshly-seeded corpus.
+        if relevant:
+            title = "This week's evidence shifts"
+            if len(relevant) > 1:
+                title = f"This week's {len(relevant)} evidence shifts"
+            sections.append({
+                "title": title,
+                "blurb": f"Discoveries and breakthroughs in the last {days} days"
+                         + (" in areas you track" if has_profile else ""),
+                "rows": relevant[:6],
+            })
         # Section 2: top no-regret moves for tracked conditions
         if p.conditions:
             no_regret = _no_regret_movers(conn, p, limit=6)
@@ -1979,6 +2008,10 @@ def discoveries(request: Request, days: int = 30, page: int = 1):
         week_count = sum(1 for r in all_rows if
             (r.get("promoted_at") or r.get("updated_at"))[:10] >=
             (datetime_now() - timedelta(days=7)).strftime("%Y-%m-%d"))
+        # Suppress the "this past week" stat when it equals the total —
+        # that just means everything in the window is freshly seeded.
+        if week_count and week_count == len(all_rows):
+            week_count = 0
     pg = _paginate(len(all_rows), page)
     rows = all_rows[pg["offset"]: pg["offset"] + PAGE_SIZE]
     return render(request, "discoveries.html", {
