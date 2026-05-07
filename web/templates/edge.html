@@ -245,36 +245,113 @@
 
     {# Sidebar: audit + history #}
     <aside class="dossier-side">
-      <div class="dossier-side-card">
+      <div class="dossier-side-card audit-card">
         <h3>Audit trail</h3>
-        <p class="muted body-sm">Tier last set on <b>{{ e.last_reviewed[:10] }}</b> by <b>{{ e.seed_source }}</b>.</p>
-        {% if history %}
-        <ol class="dossier-timeline">
-          {% for h in history %}
+
+        {# ─── Layer 1: Status banner ─── #}
+        <ul class="audit-status">
           <li>
-            <span class="dossier-tl-date">{{ h.changed_at[:10] }}</span>
-            <span class="dossier-tl-actor">{{ h.actor }}</span>
-            {% if h.field == 'tier' and h.old_value and h.new_value %}
-            <div class="dossier-tl-tierchange">
-              <span class="pill tier-{{ h.old_value }}">{{ h.old_value }}</span>
-              <span class="dossier-arrow" aria-hidden="true">→</span>
-              <span class="pill tier-{{ h.new_value }}">{{ h.new_value }}</span>
+            <span class="audit-status-label">Tier</span>
+            <b><span class="pill tier-{{ e.tier }}">{{ e.tier }}</span>
+              {% if audit_summary.days_stable is not none %}
+                <small class="muted">stable {{ audit_summary.days_stable }} day{{ "s" if audit_summary.days_stable != 1 else "" }}</small>
+              {% endif %}
+            </b>
+          </li>
+          <li>
+            <span class="audit-status-label">Studies</span>
+            <b>{{ audit_summary.n_studies }}
+              {% if audit_summary.days_since_study is not none %}
+              <small class="muted">last added {{ audit_summary.days_since_study }} day{{ "s" if audit_summary.days_since_study != 1 else "" }} ago</small>
+              {% endif %}
+            </b>
+          </li>
+          <li>
+            <span class="audit-status-label">Last reviewed</span>
+            <b>{{ e.last_reviewed[:10] if e.last_reviewed else "—" }}
+              {% if audit_summary.days_since_review is not none %}
+              <small class="muted">{{ audit_summary.days_since_review }} day{{ "s" if audit_summary.days_since_review != 1 else "" }} ago</small>
+              {% endif %}
+            </b>
+          </li>
+        </ul>
+
+        {# ─── 90-day aggregate stats ─── #}
+        <div class="audit-90d">
+          <span class="audit-90d-label">Last 90 days</span>
+          <ul class="audit-90d-grid">
+            <li><b>{{ audit_summary.n_tier_changes_90d }}</b><small>tier change{{ "s" if audit_summary.n_tier_changes_90d != 1 else "" }}</small></li>
+            <li><b>{{ audit_summary.n_new_studies_90d }}</b><small>new stud{{ "ies" if audit_summary.n_new_studies_90d != 1 else "y" }}</small></li>
+            <li><b>{{ audit_summary.n_prose_90d }}</b><small>prose refresh{{ "es" if audit_summary.n_prose_90d != 1 else "" }}</small></li>
+            <li class="audit-90d-{{ 'alert' if audit_summary.n_retractions_90d else 'ok' }}"><b>{{ audit_summary.n_retractions_90d }}</b><small>retraction{{ "s" if audit_summary.n_retractions_90d != 1 else "" }}</small></li>
+          </ul>
+        </div>
+
+        {# ─── Layer 2: Headline events ─── #}
+        {% if audit_headlines %}
+        <h4 class="audit-section-h">Notable changes</h4>
+        <ol class="audit-events">
+          {% for ev in audit_headlines %}
+          <li class="audit-event audit-event-{{ ev.category }}">
+            <span class="audit-event-date">{{ ev.changed_at[:10] }}</span>
+            <div class="audit-event-body">
+              <b>{{ ev.headline }}</b>
+              {% if ev.category == 'tier_promotion' or ev.category == 'tier_demotion' %}
+                {% if ev.old_value and ev.new_value %}
+                <div class="audit-tierchange">
+                  <span class="pill tier-{{ ev.old_value }}">{{ ev.old_value }}</span>
+                  <span class="dossier-arrow" aria-hidden="true">→</span>
+                  <span class="pill tier-{{ ev.new_value }}">{{ ev.new_value }}</span>
+                </div>
+                {% endif %}
+              {% endif %}
+              {% if ev.detail %}<small class="muted">{{ ev.detail[:200] }}{% if ev.detail|length > 200 %}…{% endif %}</small>{% endif %}
+              <small class="audit-event-actor">{{ ev.agent_label }}</small>
             </div>
-            {% endif %}
-            <small class="muted">{{ h.reason or h.field }}</small>
           </li>
           {% endfor %}
         </ol>
         {% else %}
-        <p class="muted body-sm">No prior changes recorded.</p>
+        <p class="audit-stable muted body-sm">
+          {% if audit_summary.n_studies > 0 %}
+          ✓ No tier shifts or new studies in the last 90 days — this edge is stable.
+          {% else %}
+          No notable changes recorded yet.
+          {% endif %}
+        </p>
+        {% endif %}
+
+        {# ─── Layer 3: Maintenance log (collapsible) ─── #}
+        {% if audit_maintenance %}
+        <details class="audit-maint">
+          <summary>Show {{ audit_maintenance|length }} maintenance event{{ "s" if audit_maintenance|length != 1 else "" }}</summary>
+          <ol class="audit-events audit-events-quiet">
+            {% for ev in audit_maintenance %}
+            <li class="audit-event audit-event-{{ ev.category }}">
+              <span class="audit-event-date">{{ ev.changed_at[:10] }}</span>
+              <div class="audit-event-body">
+                <b>{{ ev.headline }}</b>
+                {% if ev.detail %}<small class="muted">{{ ev.detail[:160] }}{% if ev.detail|length > 160 %}…{% endif %}</small>{% endif %}
+                <small class="audit-event-actor">{{ ev.agent_label }}</small>
+              </div>
+            </li>
+            {% endfor %}
+          </ol>
+        </details>
         {% endif %}
       </div>
 
       <div class="dossier-side-card">
         <h3>About this card</h3>
-        <p class="body-sm muted">Source: <b>{{ e.seed_source }}</b>. {% if e.seed_source == "claude_seed" %}One-off deep research with $50 Claude cap.{% elif e.seed_source == "gemma_daily" %}Auto-extracted by the daily Gemma loop from new abstracts.{% else %}Imported from a verified payload (every PMID resolves on PubMed).{% endif %}</p>
+        <p class="body-sm muted">Initial source:
+          {% if e.seed_source == "claude_seed" %}<b>Initial deep research (Claude)</b>. One-off pass with the $50 lifetime cap.
+          {% elif e.seed_source == "gemma_daily" %}<b>Daily literature sweep</b>. Auto-extracted by the local Gemma loop from new abstracts.
+          {% else %}<b>Curated literature batch</b>. Every PMID was verified against PubMed before import.
+          {% endif %}
+        </p>
         <p class="body-sm">
-          <a class="link" href="/about">How tiers work →</a><br/>
+          <a class="link" href="/methodology">How tiers work →</a><br/>
+          <a class="link" href="/methodology#changelog">Live global changelog →</a><br/>
           <a class="link" href="/myths">When evidence flips →</a>
         </p>
       </div>

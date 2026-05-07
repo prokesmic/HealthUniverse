@@ -1028,17 +1028,29 @@ def methodology(request: Request):
         n_rct = conn.execute(
             "SELECT COUNT(*) c FROM evidence WHERE study_type='rct'"
         ).fetchone()["c"]
-        # Recent changelog from edge_history
-        changelog = [dict(r) for r in conn.execute("""
+        # Recent changelog from edge_history — classify + filter to
+        # meaningful events only (tier shifts, new evidence, retractions).
+        raw_changes = [dict(r) for r in conn.execute("""
             SELECT h.changed_at, h.field, h.old_value, h.new_value, h.reason,
+                   h.actor,
                    e.id AS edge_id, f.name AS f_name, o.name AS o_name
             FROM edge_history h
             JOIN edge e ON e.id = h.edge_id
             JOIN entity f ON f.id = e.factor_id
             JOIN entity o ON o.id = e.outcome_id
-            WHERE h.field IN ('tier','direction')
             ORDER BY h.changed_at DESC
-            LIMIT 20""").fetchall()]
+            LIMIT 200""").fetchall()]
+        changelog = []
+        for r in raw_changes:
+            ev = _classify_event(r)
+            if not ev["is_meaningful"]:
+                continue
+            ev["edge_id"] = r["edge_id"]
+            ev["f_name"]  = r["f_name"]
+            ev["o_name"]  = r["o_name"]
+            changelog.append(ev)
+            if len(changelog) >= 20:
+                break
         n_edges = conn.execute("SELECT COUNT(*) c FROM edge").fetchone()["c"]
     return render(request, "methodology.html", {
         "title": "Methodology",
@@ -2561,6 +2573,180 @@ def edge_png(edge_id: int):
                     headers={"Cache-Control": "public, max-age=86400"})
 
 
+# ---- audit-trail classification (per-edge + global) ----------------------
+
+# User-facing labels for internal agent codes. Anything not here passes
+# through verbatim so we don't accidentally hide unknown sources.
+_AGENT_LABELS = {
+    "manual":         "Hand-reviewed by maintainer",
+    "claude_seed":    "Initial deep research (Claude)",
+    "codex_payload":  "Curated literature batch",
+    "codex_densify":  "Literature scan",
+    "gemma_rewrite":  "Prose refresh",
+    "gemma_daily":    "Daily literature sweep",
+    "daily_ingest":   "Daily literature sweep",
+    "pmid_watcher":   "Retraction watch",
+}
+
+# Categories drive colour and grouping. Order matters — first match wins.
+_EVENT_CATEGORIES = (
+    ("tier_promotion",  "🟢", "Promoted"),
+    ("tier_demotion",   "🔴", "Demoted"),
+    ("retraction",      "🔴", "Retraction"),
+    ("evidence_added",  "🟡", "Evidence"),
+    ("scan_noop",       "⚪", "Scan"),
+    ("prose",           "⚪", "Prose"),
+    ("import",          "⚪", "Import"),
+    ("other",           "⚪", "Update"),
+)
+_TIER_RANK = {"A": 5, "B": 4, "C": 3, "X": 2, "D": 1, "deprecated": 0}
+
+
+def _classify_event(row: dict) -> dict:
+    """Translate a raw edge_history row into a user-facing event dict.
+
+    Returns: {category, headline, detail, agent_label, is_meaningful, raw}
+    `is_meaningful` separates headline events from maintenance noise so
+    the UI can collapse routine ingest passes by default.
+    """
+    field = (row.get("field") or "").lower()
+    old_v = row.get("old_value") or ""
+    new_v = row.get("new_value") or ""
+    reason = row.get("reason") or ""
+    actor = row.get("actor") or row.get("agent") or ""
+    agent_label = _AGENT_LABELS.get(actor, actor.replace("_", " "))
+
+    cat = "other"
+    headline = ""
+    detail = reason
+
+    if field == "tier" and old_v and new_v:
+        if _TIER_RANK.get(new_v, 0) > _TIER_RANK.get(old_v, 0):
+            cat = "tier_promotion"
+            headline = f"Promoted to tier {new_v}"
+            detail = reason or f"Was tier {old_v}; now tier {new_v}."
+        else:
+            cat = "tier_demotion"
+            headline = f"Demoted to tier {new_v}"
+            detail = reason or f"Was tier {old_v}; now tier {new_v}."
+    elif field == "tier" and new_v:                # initial set
+        cat = "import"
+        headline = f"Tier set to {new_v}"
+        detail = reason or "Initial review."
+    elif field == "direction" and old_v != new_v and old_v and new_v:
+        cat = "tier_demotion" if new_v == "harmful" else "other"
+        headline = f"Direction changed: {old_v} → {new_v}"
+        detail = reason or ""
+    elif field == "retraction" or "retract" in (reason or "").lower():
+        cat = "retraction"
+        headline = "Retraction warning"
+        detail = reason or "Cited paper was retracted."
+    # Densify / payload-import operations come in through `field=ingest`
+    # or with `payload` in reason. We want to summarise rather than
+    # show raw filenames + "+0 row(s)".
+    elif "densify" in (reason or "").lower():
+        n = 0
+        import re as _re
+        m = _re.search(r"\+(\d+)\s+evidence\s+row", reason)
+        if m:
+            try:    n = int(m.group(1))
+            except: n = 0
+        if n == 0:
+            cat = "scan_noop"
+            headline = "Literature scan complete"
+            detail = "No new papers found in this pass."
+        else:
+            cat = "evidence_added"
+            headline = f"+{n} stud{'y' if n == 1 else 'ies'} added"
+            detail = "From a curated literature batch."
+    elif "payload import" in (reason or "").lower():
+        cat = "import"
+        headline = "Curated batch imported"
+        # Strip the file path from the reason; users don't need it.
+        detail = "Verified PMIDs added to the corpus."
+    elif "rewrite" in (reason or "").lower() or "gemma" in actor:
+        cat = "prose"
+        headline = "Prose refreshed"
+        detail = "Summary, mechanism, or caveats text re-rendered. Underlying tier and evidence unchanged."
+    elif field == "summary" or field == "mechanism" or field == "caveats":
+        cat = "prose"
+        headline = f"{field.capitalize()} updated"
+        detail = reason or "Editorial polish only."
+
+    if not headline:
+        headline = (reason or field or "Update").capitalize()
+        cat = "other"
+
+    is_meaningful = cat in {"tier_promotion", "tier_demotion", "retraction",
+                            "evidence_added"}
+    return {
+        "category": cat,
+        "headline": headline,
+        "detail": detail,
+        "agent": actor,
+        "agent_label": agent_label,
+        "changed_at": row.get("changed_at") or "",
+        "old_value": old_v,
+        "new_value": new_v,
+        "is_meaningful": is_meaningful,
+        "raw": row,
+    }
+
+
+def _audit_summary(history_rows: list[dict], evidence_rows: list[dict],
+                   last_reviewed: str | None) -> dict:
+    """Compute the status banner + 90-day aggregate counts."""
+    from datetime import datetime as _dt, timedelta as _td
+    today = datetime_now()
+    cutoff = today - _td(days=90)
+    n_tier_changes = 0
+    n_new_studies = 0
+    n_prose = 0
+    n_retractions = 0
+    last_tier_change = None
+    last_new_study = None
+    for row in history_rows:
+        when = (row.get("changed_at") or "")[:10]
+        if not when:
+            continue
+        try:
+            d = _dt.strptime(when, "%Y-%m-%d")
+        except Exception:
+            continue
+        ev = _classify_event(row)
+        if d >= cutoff:
+            if ev["category"] in ("tier_promotion", "tier_demotion"):
+                n_tier_changes += 1
+            if ev["category"] == "evidence_added":
+                n_new_studies += 1
+            if ev["category"] == "prose":
+                n_prose += 1
+            if ev["category"] == "retraction":
+                n_retractions += 1
+        if ev["category"] in ("tier_promotion", "tier_demotion") and not last_tier_change:
+            last_tier_change = d
+        if ev["category"] == "evidence_added" and not last_new_study:
+            last_new_study = d
+    days_stable = (today - last_tier_change).days if last_tier_change else None
+    days_since_study = (today - last_new_study).days if last_new_study else None
+    days_since_review = None
+    if last_reviewed:
+        try:
+            days_since_review = (today - _dt.strptime(last_reviewed[:10], "%Y-%m-%d")).days
+        except Exception:
+            pass
+    return {
+        "n_tier_changes_90d": n_tier_changes,
+        "n_new_studies_90d": n_new_studies,
+        "n_prose_90d": n_prose,
+        "n_retractions_90d": n_retractions,
+        "days_stable": days_stable,
+        "days_since_study": days_since_study,
+        "days_since_review": days_since_review,
+        "n_studies": len(evidence_rows),
+    }
+
+
 @app.get("/edge/{edge_id}", response_class=HTMLResponse)
 def edge_detail(request: Request, edge_id: int):
     profile = decode(request.cookies.get(COOKIE))
@@ -2606,11 +2792,18 @@ def edge_detail(request: Request, edge_id: int):
     ev_rows = [dict(r) for r in evidence]
     co_rows = [dict(r) for r in counter]
     retracted_count = sum(1 for r in ev_rows + co_rows if r.get("is_retracted"))
+    raw_history = [dict(r) for r in history]
+    classified = [_classify_event(r) for r in raw_history]
+    audit_summary = _audit_summary(raw_history, ev_rows, dict(e).get("last_reviewed"))
     return render(request, "edge.html", {
         "e": dict(e),
         "evidence": ev_rows,
         "counter": co_rows,
-        "history": [dict(r) for r in history],
+        "history": raw_history,
+        "audit_events": classified,
+        "audit_headlines": [c for c in classified if c["is_meaningful"]],
+        "audit_maintenance": [c for c in classified if not c["is_meaningful"]],
+        "audit_summary": audit_summary,
         "retracted_evidence_count": retracted_count,
         "profile": profile,
     })

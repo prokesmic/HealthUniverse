@@ -171,22 +171,29 @@
 
   <section class="meth-block" id="changelog">
     <h2 class="meth-h2">Live changelog</h2>
-    <p class="muted">Every tier or direction change in the last 20 events,
-      pulled directly from <code>edge_history</code> at page load.</p>
+    <p class="muted">The last 20 meaningful changes — tier shifts, new
+      evidence, retractions — pulled directly from
+      <code>edge_history</code> at page load. Routine prose refreshes
+      and no-op literature scans are filtered out.</p>
     {% if changelog %}
     <ul class="meth-changelog">
       {% for c in changelog %}
-      <li class="meth-cl-{{ c.field }}">
-        <span class="meth-cl-time">{{ c.changed_at[:10] }}</span>
-        <a href="/edge/{{ c.edge_id }}" class="meth-cl-link">
-          <b>{{ c.f_name }}</b> → <b>{{ c.o_name }}</b>
-        </a>
-        <span class="meth-cl-change">
-          {{ c.field }}:
-          {% if c.old_value %}<code>{{ c.old_value }}</code> → {% endif %}
-          <code>{{ c.new_value }}</code>
-        </span>
-        {% if c.reason %}<small class="muted">— {{ c.reason[:120] }}</small>{% endif %}
+      <li class="audit-event audit-event-{{ c.category }}">
+        <span class="audit-event-date">{{ c.changed_at[:10] }}</span>
+        <div class="audit-event-body">
+          <a href="/edge/{{ c.edge_id }}" class="meth-cl-link">
+            <b>{{ c.f_name }}</b> <span class="dossier-arrow" aria-hidden="true">→</span> <b>{{ c.o_name }}</b>
+          </a>
+          <b class="audit-event-headline">{{ c.headline }}</b>
+          {% if c.category in ('tier_promotion', 'tier_demotion') and c.old_value and c.new_value %}
+          <div class="audit-tierchange">
+            <span class="pill tier-{{ c.old_value }}">{{ c.old_value }}</span>
+            <span class="dossier-arrow" aria-hidden="true">→</span>
+            <span class="pill tier-{{ c.new_value }}">{{ c.new_value }}</span>
+          </div>
+          {% endif %}
+          {% if c.detail %}<small class="muted">{{ c.detail[:160] }}{% if c.detail|length > 160 %}…{% endif %}</small>{% endif %}
+        </div>
       </li>
       {% endfor %}
     </ul>
