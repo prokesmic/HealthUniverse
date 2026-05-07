@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "sedentary_office_work",
+      "outcome_slug": "low_back_pain",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The office-sitting literature leans toward more low-back symptoms with prolonged sedentary work, but longitudinal evidence is weaker and less consistent than cross-sectional analyses.",
+      "population": "sedentary office workers",
+      "mechanism": "Long periods of seated work can concentrate spinal loading, reduce trunk-muscle variability, and amplify pain sensitivity when movement breaks are scarce. That biomechanical story is plausible, but it competes with confounding from stress, fitness, workstation design, and pre-existing pain, which helps explain why prospective estimates are less clear-cut.",
+      "summary": "The most defensible summary is that sedentary office work probably nudges low-back-pain risk upward, but the evidence is not uniform enough to call it a strong causal driver by itself. Cross-sectional and occupational syntheses usually point toward more symptoms with prolonged sitting, while longitudinal reviews are more cautious about incident pain.",
+      "caveats": "Because many studies are observational and rely on self-reported sitting time, reverse causation remains a real concern. This edge is best interpreted as support for reducing prolonged sitting and adding movement, not as proof that sitting alone explains most low-back pain in office workers.",
+      "evidence": [
+        {
+          "citation": "Baradaran Mahdavi S et al 2022 Health Promot Perspect",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association between sedentary behavior and low back pain; A systematic review and meta-analysis.",
+          "pmid": "35079583",
+          "n_participants": 15,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.24,
+            "ci_low": 1.02,
+            "ci_high": 1.5,
+            "comparator": "sedentary lifestyle versus lower sedentary exposure"
+          }
+        },
+        {
+          "citation": "Dzakpasu FQS et al 2021 Int J Behav Nutr Phys Act",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Musculoskeletal pain and sedentary behaviour in occupational and non-occupational settings: a systematic review with meta-analysis.",
+          "pmid": "34895248",
+          "n_participants": 79
+        },
+        {
+          "citation": "Alzahrani H et al 2022 J Pain",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The association between sedentary behavior and low back pain in adults: a systematic review and meta-analysis of longitudinal studies.",
+          "pmid": "35391924",
+          "n_participants": 100002,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.24,
+            "ci_low": 1.02,
+            "ci_high": 1.51,
+            "comparator": "at least 3 hours per day of sedentary behavior for LBP-related disability"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "sedentary_office_work",
+      "name": "Sedentary office work",
+      "kind": "behavior",
+      "aliases": [
+        "prolonged workplace sitting",
+        "desk-based sedentary work"
+      ],
+      "description": "Predominantly seated office work with long uninterrupted periods of sitting."
+    }
+  ]
+}

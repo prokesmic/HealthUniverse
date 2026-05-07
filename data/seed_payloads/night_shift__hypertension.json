@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "night_shift",
+      "name": "Night-shift work",
+      "kind": "behavior",
+      "aliases": [
+        "night work",
+        "overnight shift work"
+      ],
+      "description": "Occupational exposure to regular night-shift schedules, including fixed or rotating overnight work."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "night_shift",
+      "outcome_slug": "hypertension",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The best pooled evidence suggests shift schedules that include nights modestly raise blood pressure and probably increase hypertension risk, especially in rotating-shift cohorts.",
+      "population": "adult workers exposed to permanent or rotating night-shift schedules",
+      "mechanism": "Night-shift work disrupts circadian blood-pressure regulation, shortens sleep, and shifts eating and stress patterns in ways that plausibly push long-term vascular tone upward. The effect is not huge, but it is directionally consistent with the physiology of circadian misalignment.",
+      "summary": "This edge is stronger for elevated blood pressure than for a clean binary hypertension diagnosis, but the overall direction still leans harmful. The 2021 meta-analysis found small blood-pressure increases among shift workers, and older pooled work suggested a significant hypertension signal in rotating-shift cohorts.",
+      "caveats": "Different papers mix fixed nights, rotating schedules, and very different occupational settings, which makes the exact effect size unstable. The most defensible interpretation is a modest adverse influence rather than a dramatic standalone cause of hypertension.",
+      "evidence": [
+        {
+          "citation": "Madeira SG et al 2021 Int J Environ Res Public Health",
+          "pmid": "34201492",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "n_participants": 117252,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Impact of Different Types of Shift Work on Blood Pressure and Hypertension: A Systematic Review and Meta-Analysis.",
+          "effect_quant": {
+            "metric": "MD",
+            "value": 2.52,
+            "ci_low": 0.75,
+            "ci_high": 4.29,
+            "comparator": "systolic blood pressure in permanent night workers versus day workers"
+          }
+        },
+        {
+          "citation": "Manohar S et al 2017 J Hypertens",
+          "pmid": "28650914",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "n_participants": 394793,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Associations of rotational shift work and night shift status with hypertension: a systematic review and meta-analysis.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.34,
+            "ci_low": 1.08,
+            "ci_high": 1.67,
+            "comparator": "rotating shift work versus day work for hypertension in cohort studies"
+          }
+        },
+        {
+          "citation": "Boini S et al 2022 Front Public Health",
+          "pmid": "36504944",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "n_participants": 33,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "What do we know about the effect of night-shift work on cardiovascular risk factors? An umbrella review."
+        }
+      ]
+    }
+  ]
+}

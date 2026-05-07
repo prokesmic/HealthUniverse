@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "oral_contraceptives",
+      "outcome_slug": "cervical_cancer",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The overall literature suggests a modest increase in cervical-cancer risk with oral-contraceptive use, but the estimate is not uniform across study designs and HPV adjustment matters a great deal.",
+      "population": "adult women",
+      "mechanism": "Longer exposure to exogenous sex steroids may alter cervical epithelial susceptibility and persistence dynamics in HPV-related carcinogenesis. Even so, the association is hard to separate cleanly from sexual-behavior patterns, screening intensity, and HPV status, which is why study design changes the pooled answer so much.",
+      "summary": "The most defensible claim is that oral-contraceptive use may modestly increase cervical-cancer risk, especially with longer duration, but the evidence is not perfectly settled. Some broader meta-analyses find a clear association, while more limited case-control syntheses are much closer to null.",
+      "caveats": "Residual confounding by HPV exposure, screening, and sexual behavior is a major issue here. This edge should be interpreted as a risk signal to monitor, not as proof that oral contraceptives independently drive cervical cancer in every population.",
+      "evidence": [
+        {
+          "citation": "Asthana S et al 2020 Eur J Obstet Gynecol Reprod Biol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Oral contraceptives use and risk of cervical cancer-A systematic review & meta-analysis.",
+          "pmid": "32114321",
+          "n_participants": 19,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.51,
+            "ci_low": 1.35,
+            "ci_high": 1.68,
+            "comparator": "invasive cervical cancer risk in oral-contraceptive users versus nonusers"
+          }
+        },
+        {
+          "citation": "XuH et al 2017 J Obstet Gynaecol Res",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Is oral contraceptive use associated with an increased risk of cervical cancer? An evidence-based meta-analysis.",
+          "pmid": "28759170",
+          "n_participants": 15619,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.12,
+            "ci_low": 0.90,
+            "ci_high": 1.38,
+            "comparator": "oral-contraceptive users versus nonusers in case-control studies"
+          }
+        },
+        {
+          "citation": "Moreno V et al 1992 Acta Obstet Gynecol Scand",
+          "year": 1992,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Oral contraceptives and cancer of the cervix uteri. A meta-analysis.",
+          "pmid": "1326213",
+          "n_participants": 12
+        }
+      ]
+    }
+  ]
+}

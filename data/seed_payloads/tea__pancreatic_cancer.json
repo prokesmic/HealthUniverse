@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "tea",
+      "outcome_slug": "pancreatic_cancer",
+      "direction": "neutral",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Across pooled human studies, overall tea consumption does not show a reliable association with pancreatic-cancer risk in the general population.",
+      "population": "adults",
+      "mechanism": "Tea contains polyphenols with plausible anticancer activity, but population-level exposure is heterogeneous across tea types, preparation methods, and associated behaviors. That helps explain why the biologic rationale has not translated into a consistent overall epidemiologic effect for pancreatic cancer.",
+      "summary": "The broad tea literature is mostly neutral here. Multiple pooled analyses found no significant overall relationship between tea consumption and pancreatic-cancer risk, even though some subgroup results hint at lower risk in certain populations or tea types.",
+      "caveats": "This neutral classification applies to tea overall, not necessarily to specific tea types such as green tea in specific populations. Exposure measurement is noisy, and the evidence base mixes cohort and case-control studies with different confounding structures.",
+      "evidence": [
+        {
+          "citation": "Zhang YF et al 2015 Eur J Cancer Prev",
+          "year": 2015,
+          "study_type": "systematic_review",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Tea consumption and the incidence of cancer: a systematic review and meta-analysis of prospective observational studies.",
+          "pmid": "25370683",
+          "n_participants": 1
+        },
+        {
+          "citation": "Wang BY et al 2014 Nutr Cancer",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Consumption of tea and risk for pancreatic cancer: a meta-analysis of published epidemiological studies.",
+          "pmid": "25207625",
+          "n_participants": 14,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.95,
+            "ci_low": 0.84,
+            "ci_high": 1.08,
+            "comparator": "highest versus lowest tea consumption"
+          }
+        },
+        {
+          "citation": "Chen Ke et al 2014 Eur J Cancer Prev",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Relationship between tea consumption and pancreatic cancer risk: a meta-analysis based on prospective cohort studies and case-control studies.",
+          "pmid": "24858717",
+          "n_participants": 859783,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.99,
+            "ci_low": 0.89,
+            "ci_high": 1.11,
+            "comparator": "regular tea consumption versus lower intake"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "tea",
+      "name": "Tea consumption",
+      "kind": "food",
+      "aliases": [
+        "tea intake"
+      ],
+      "description": "Habitual consumption of tea as a beverage across different tea types."
+    }
+  ]
+}

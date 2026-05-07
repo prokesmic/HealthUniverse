@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "finasteride",
+      "name": "Finasteride treatment",
+      "kind": "drug",
+      "aliases": [
+        "oral finasteride"
+      ],
+      "description": "Finasteride used as a treatment for androgenetic alopecia."
+    },
+    {
+      "slug": "androgenetic_alopecia",
+      "name": "Androgenetic alopecia",
+      "kind": "condition",
+      "aliases": [
+        "pattern hair loss",
+        "male or female pattern hair loss"
+      ],
+      "description": "Progressive androgen-mediated scalp hair loss in men or women."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "finasteride",
+      "outcome_slug": "androgenetic_alopecia",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Pooled randomized evidence consistently shows that finasteride improves hair counts and patient-rated hair outcomes versus placebo in androgenetic alopecia.",
+      "population": "adults with androgenetic alopecia, especially men",
+      "mechanism": "Finasteride inhibits 5-alpha reductase, lowering dihydrotestosterone and reducing androgen-driven follicular miniaturization. That mechanism maps directly onto the condition biology, which is why finasteride tends to show clearer efficacy than many cosmetic or nutraceutical hair-loss interventions.",
+      "summary": "This is one of the stronger hair-regrowth treatment edges in the graph. Systematic reviews and network meta-analyses consistently place finasteride among the more effective evidence-based options for androgenetic alopecia, with benefits that are clinically real even if not universal or curative.",
+      "caveats": "The evidence is strongest for male-pattern hair loss and says less about women or atypical use patterns. Practical decision-making also has to weigh sexual and mood-related adverse-effect concerns, which sit outside the narrow efficacy question captured by this edge.",
+      "evidence": [
+        {
+          "citation": "Mella JM et al 2010 Arch Dermatol",
+          "pmid": "20956649",
+          "year": 2010,
+          "study_type": "systematic_review",
+          "n_participants": 3927,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy and safety of finasteride therapy for androgenetic alopecia: a systematic review."
+        },
+        {
+          "citation": "Gupta AK et al 2025 J Cosmet Dermatol",
+          "pmid": "40586152",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "n_participants": 33,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Comparative Efficacy of Minoxidil and 5-Alpha Reductase Inhibitors Monotherapy for Male Pattern Hair Loss: Network Meta-Analysis Study of Current Empirical Evidence."
+        },
+        {
+          "citation": "Feldman PR et al 2022 Front Med",
+          "pmid": "36755885",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "n_participants": 17,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Hair regrowth treatment efficacy and resistance in androgenetic alopecia: A systematic review and continuous Bayesian network meta-analysis."
+        }
+      ]
+    }
+  ]
+}

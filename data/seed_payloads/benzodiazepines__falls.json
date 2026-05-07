@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "benzodiazepines",
+      "outcome_slug": "falls",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Across repeated meta-analyses in older adults, benzodiazepine exposure is associated with higher fall risk, with pooled estimates generally landing around a 40% to 50% increase.",
+      "population": "older adults exposed to benzodiazepines",
+      "mechanism": "Benzodiazepines impair balance, slow reaction time, and increase sedation in the very population already most vulnerable to gait instability. That makes the fall signal clinically believable even before looking at the epidemiology.",
+      "summary": "This is one of the cleaner geriatric medication-risk edges in the corpus. The anchor is the modern psychotropics meta-analysis showing a consistent increase in falls with benzodiazepines, and the older pooled literature points in the same direction rather than cancelling it out.",
+      "caveats": "The evidence is observational and some of the risk likely reflects the frailty, insomnia, or anxiety that led to prescribing in the first place. Even so, the consistency across syntheses makes a purely confounded explanation hard to buy.",
+      "evidence": [
+        {
+          "citation": "Masudo C et al 2019 Yakugaku Zasshi",
+          "pmid": "30606917",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "n_participants": 13,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between elimination half-life of benzodiazepines and falls in the elderly: a meta-analysis of observational studies.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 2.0,
+            "ci_low": 1.46,
+            "ci_high": 2.73,
+            "comparator": "short-acting benzodiazepine receptor agonist exposure versus non-use"
+          }
+        },
+        {
+          "citation": "Seppala LJ et al 2018 J Am Med Dir Assoc",
+          "pmid": "29402652",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 248,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Fall-Risk-Increasing Drugs: A Systematic Review and Meta-Analysis: II. Psychotropics.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.42,
+            "ci_low": 1.22,
+            "ci_high": 1.65,
+            "comparator": "benzodiazepine use versus non-use in older adults"
+          }
+        },
+        {
+          "citation": "Woolcott JC et al 2009 Arch Intern Med",
+          "pmid": "19933955",
+          "year": 2009,
+          "study_type": "meta_analysis",
+          "n_participants": 79081,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Meta-analysis of the impact of 9 medication classes on falls in elderly persons."
+        }
+      ]
+    }
+  ]
+}

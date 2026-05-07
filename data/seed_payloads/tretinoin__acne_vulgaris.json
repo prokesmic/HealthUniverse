@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tretinoin",
+      "name": "Topical tretinoin",
+      "kind": "drug",
+      "aliases": [
+        "topical retinoic acid"
+      ],
+      "description": "Topical tretinoin formulations used for acne treatment."
+    },
+    {
+      "slug": "acne_vulgaris",
+      "name": "Acne vulgaris",
+      "kind": "condition",
+      "aliases": [
+        "common acne"
+      ],
+      "description": "Inflammatory and comedonal acne vulgaris of mild-to-moderate severity."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tretinoin",
+      "outcome_slug": "acne_vulgaris",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Topical tretinoin is an established acne therapy, with pooled and randomized-trial evidence showing clear lesion-count reductions versus vehicle and clinically meaningful efficacy in mild-to-moderate facial acne.",
+      "population": "adolescents and adults with mild-to-moderate acne vulgaris",
+      "mechanism": "Tretinoin normalizes follicular keratinization and reduces microcomedone formation, which makes it especially effective for comedonal acne and for preventing new lesion development over time. Its benefits are real, but they come with local irritation that affects adherence and real-world tolerance.",
+      "summary": "Unlike many cosmetic acne ingredients, tretinoin has a mature evidence base. A direct meta-analysis plus large randomized trials show that topical tretinoin improves both inflammatory and noninflammatory acne lesions, making it one of the more dependable topical acne interventions in the graph.",
+      "caveats": "The tradeoff is irritation: dryness, peeling, and erythema are common enough to influence adherence. This edge is about efficacy, not universal tolerability, and it should be interpreted in that more practical clinical context.",
+      "evidence": [
+        {
+          "citation": "Nighland M et al 2008 J Drugs Dermatol",
+          "pmid": "18724648",
+          "year": 2008,
+          "study_type": "meta_analysis",
+          "n_participants": 629,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Tretinoin microsphere gel in facial acne vulgaris: a meta-analysis."
+        },
+        {
+          "citation": "Schlessinger J et al 2007 J Drugs Dermatol",
+          "pmid": "17668526",
+          "year": 2007,
+          "study_type": "rct",
+          "n_participants": 4500,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Clinical safety and efficacy studies of a novel formulation combining 1.2% clindamycin phosphate and 0.025% tretinoin for the treatment of acne vulgaris."
+        },
+        {
+          "citation": "Thiboutot D et al 2001 Cutis",
+          "pmid": "11845943",
+          "year": 2001,
+          "study_type": "rct",
+          "n_participants": 168,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Randomized controlled trial of the tolerability, safety, and efficacy of adapalene gel 0.1% and tretinoin microsphere gel 0.1% for the treatment of acne vulgaris."
+        }
+      ]
+    }
+  ]
+}

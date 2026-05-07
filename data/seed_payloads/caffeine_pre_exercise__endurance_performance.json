@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "caffeine_pre_exercise",
+      "outcome_slug": "endurance_performance",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pre-exercise caffeine produces a small but repeatable improvement in endurance performance, especially in time-trial style tasks where small percentage gains matter.",
+      "population": "healthy adults and endurance-trained athletes",
+      "mechanism": "Caffeine antagonizes adenosine receptors, reducing perceived effort and central fatigue while also altering substrate use and neuromuscular drive. The ergogenic effect is usually modest rather than dramatic, but endurance competition is often decided by margins small enough for that to matter.",
+      "summary": "Caffeine is one of the sturdier ergogenic aids in the literature. Across repeated meta-analyses, taking caffeine before endurance exercise improves performance by a small but meaningful amount, with the most reliable gains seen in time-trial and sustained aerobic tasks rather than in every possible event format.",
+      "caveats": "Response varies by habitual intake, dose, event type, and side effects such as jitteriness or gastrointestinal distress. The average benefit does not guarantee that every athlete or every endurance context will improve.",
+      "evidence": [
+        {
+          "citation": "Southward K et al 2018 Sports Med",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The Effect of Acute Caffeine Ingestion on Endurance Performance: A Systematic Review and Meta-Analysis.",
+          "pmid": "29876876",
+          "n_participants": 46,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.41,
+            "ci_low": 0.21,
+            "ci_high": 0.61,
+            "comparator": "caffeine versus placebo for endurance time-trial completion time"
+          }
+        },
+        {
+          "citation": "Muñoz A et al 2022 Nutrients",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of Caffeine Intake on Endurance Running Performance and Time to Exhaustion: A Systematic Review and Meta-Analysis.",
+          "pmid": "36615805",
+          "n_participants": 254
+        },
+        {
+          "citation": "Grgic J et al 2020 Br J Sports Med",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Wake up and smell the coffee: caffeine supplementation and exercise performance-an umbrella review of 21 published meta-analyses.",
+          "pmid": "30926628",
+          "n_participants": 21
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "caffeine_pre_exercise",
+      "name": "Pre-exercise caffeine intake",
+      "kind": "supplement",
+      "aliases": [
+        "acute caffeine supplementation before exercise"
+      ],
+      "description": "Caffeine consumed before endurance exercise in ergogenic doses."
+    },
+    {
+      "slug": "endurance_performance",
+      "name": "Endurance performance",
+      "kind": "process",
+      "aliases": [
+        "aerobic endurance performance"
+      ],
+      "description": "Performance in sustained aerobic exercise tasks such as time trials or time-to-exhaustion tests."
+    }
+  ]
+}

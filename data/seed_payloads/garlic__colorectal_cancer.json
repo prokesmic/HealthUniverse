@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "garlic",
+      "name": "Garlic intake",
+      "kind": "food",
+      "aliases": [
+        "allium garlic consumption"
+      ],
+      "description": "Habitual dietary garlic intake from raw, cooked, or supplemental sources."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "garlic",
+      "outcome_slug": "colorectal_cancer",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "Case-control-heavy syntheses often suggest lower colorectal-cancer risk with higher garlic intake, but prospective cohort meta-analyses are essentially null.",
+      "population": "general adults",
+      "mechanism": "Garlic contains organosulfur compounds that can affect nitrosamine formation, detoxification enzymes, and colonic inflammatory tone. Those mechanisms are plausible, but they are not strong enough to rescue an epidemiology base that looks much weaker in prospective data than in retrospective studies.",
+      "summary": "This is a classic example of a promising dietary-cancer story that weakens when the study design improves. Pooled observational literature can look protective, especially in case-control datasets, but the prospective-only meta-analysis was basically null, so the fairest read is contested rather than beneficial.",
+      "caveats": "Garlic exposure is measured very differently across studies and often bundled with broader dietary patterns. Recall bias likely inflates benefit in case-control studies, which is why the prospective signal deserves more weight here.",
+      "evidence": [
+        {
+          "citation": "Zhou X et al 2020 Medicine",
+          "pmid": "31895803",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "n_participants": 12558,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Garlic intake and the risk of colorectal cancer: A meta-analysis."
+        },
+        {
+          "citation": "Chiavarini M et al 2016 Public Health Nutr",
+          "pmid": "25945653",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "n_participants": 14,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Garlic consumption and colorectal cancer risk in man: a systematic review and meta-analysis."
+        },
+        {
+          "citation": "Zhou JJ et al 2014 World J Gastroenterol",
+          "pmid": "25386091",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "n_participants": 5,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Consumption of garlic and risk of colorectal cancer: an updated meta-analysis of prospective studies."
+        }
+      ]
+    }
+  ]
+}

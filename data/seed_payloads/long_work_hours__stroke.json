@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "long_work_hours",
+      "name": "Long working hours",
+      "kind": "behavior",
+      "aliases": [
+        "overtime work",
+        "extended weekly work hours"
+      ],
+      "description": "Occupational exposure to persistently long work schedules or high overtime hours."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "long_work_hours",
+      "outcome_slug": "stroke",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The broad pooled literature leans toward higher stroke risk with very long work hours, but later cohort evidence suggests the signal may depend on stroke subtype rather than showing a uniform increase in overall stroke.",
+      "population": "working-age adults exposed to extended weekly work hours",
+      "mechanism": "Long hours can increase stress load, reduce sleep, and worsen blood-pressure and recovery patterns, which offers a plausible vascular pathway to stroke. The weaker overall epidemiology suggests that any effect may be strongest for haemorrhagic events or in more susceptible subgroups.",
+      "summary": "This is not a slam-dunk edge, but it is more than noise. The WHO/ILO stroke meta-analysis supports a harmful association with long working hours, whereas the Danish workforce cohort did not replicate a higher overall stroke rate and instead hinted at a subtype-specific signal for haemorrhagic stroke.",
+      "caveats": "Stroke subtype matters here, and the observational literature mixes different hour thresholds, occupations, and confounder adjustments. The right reading is modest and somewhat heterogeneous harm, not a universally large effect.",
+      "evidence": [
+        {
+          "citation": "Descatha Alexandre et al 2020 Environ Int",
+          "pmid": "32505015",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "n_participants": 17,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The effect of exposure to long working hours on stroke: A systematic review and meta-analysis from the WHO/ILO Joint Estimates of the Work-related Burden of Disease and Injury."
+        },
+        {
+          "citation": "Niedhammer Isabelle et al 2021 Scand J Work Environ Health",
+          "pmid": "34042163",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "n_participants": 72,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Psychosocial work exposures and health outcomes: a meta-review of 72 literature reviews with meta-analysis."
+        },
+        {
+          "citation": "Hannerz Harald et al 2018 Scand J Public Health",
+          "pmid": "29251227",
+          "year": 2018,
+          "study_type": "cohort",
+          "n_participants": 145861,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Long working hours and stroke among employees in the general workforce of Denmark.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.15,
+            "ci_low": 1.02,
+            "ci_high": 1.31,
+            "comparator": "per one category increase in working hours for haemorrhagic stroke"
+          }
+        }
+      ]
+    }
+  ]
+}

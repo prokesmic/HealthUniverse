@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "lycopene",
+      "outcome_slug": "prostate_cancer",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The observational literature suggests a modest inverse association between higher lycopene exposure and prostate cancer risk, but the signal is not strong enough to read as a stand-alone prevention strategy.",
+      "population": "adult men",
+      "mechanism": "Lycopene may matter through antioxidant effects in prostatic tissue, altered insulin-like growth signaling, and less oxidative DNA damage in chronically inflamed prostate microenvironments. The weak spot in the literature is that circulating levels and dietary intake may partly proxy broader dietary patterns rather than a pure lycopene effect.",
+      "summary": "A 2017 dose-response meta-analysis is the best single anchor here: higher dietary and circulating lycopene were both linked to lower prostate cancer risk, but not to a convincingly lower risk of advanced disease. The broader evidence stack supports a modest association rather than a dramatic anticancer effect.",
+      "caveats": "These are mainly observational data, so residual confounding by healthier overall eating patterns is a real possibility. The association looks weaker when the question is advanced or aggressive prostate cancer rather than total incidence.",
+      "evidence": [
+        {
+          "citation": "Rowles JL et al 2017 Prostate Cancer Prostatic Dis",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Increased dietary and circulating lycopene are associated with reduced prostate cancer risk: a systematic review and meta-analysis.",
+          "pmid": "28440323",
+          "n_participants": 692012,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.88,
+            "ci_low": 0.78,
+            "ci_high": 0.98,
+            "comparator": "lower dietary lycopene intake"
+          }
+        },
+        {
+          "citation": "Chen P et al 2015 Medicine (Baltimore)",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Lycopene and Risk of Prostate Cancer: A Systematic Review and Meta-Analysis.",
+          "pmid": "26287411",
+          "n_participants": 563299
+        },
+        {
+          "citation": "Wang Y et al 2015 PLoS One",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of Carotene and Lycopene on the Risk of Prostate Cancer: A Systematic Review and Dose-Response Meta-Analysis of Observational Studies.",
+          "pmid": "26372549",
+          "n_participants": 34,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.86,
+            "ci_low": 0.75,
+            "ci_high": 0.98,
+            "comparator": "lower dietary lycopene intake"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "lycopene",
+      "name": "Lycopene",
+      "kind": "nutrient",
+      "aliases": [
+        "tomato lycopene"
+      ],
+      "description": "Dietary or circulating lycopene exposure, usually from tomatoes and tomato products."
+    }
+  ]
+}

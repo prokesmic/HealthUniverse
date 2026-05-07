@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "maternal_stress_pregnancy",
+      "name": "Maternal psychological stress during pregnancy",
+      "kind": "behavior",
+      "aliases": [
+        "prenatal maternal stress",
+        "maternal stress in pregnancy"
+      ],
+      "description": "Psychological stress exposure during pregnancy, including major life stressors and maternal distress."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "maternal_stress_pregnancy",
+      "outcome_slug": "atopic_dermatitis",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The strongest pooled signal is a modest increase in childhood atopic dermatitis after prenatal maternal distress, but individual cohorts do not all agree on effect size or persistence.",
+      "population": "children exposed to maternal stress during pregnancy",
+      "mechanism": "Prenatal stress can alter fetal glucocorticoid exposure and early immune programming in ways that plausibly shift barrier and atopic vulnerability upward. That gives this edge a coherent developmental mechanism even though the human data are still mostly observational.",
+      "summary": "The meta-analysis is directionally clear: prenatal maternal distress is associated with more atopic dermatitis in offspring. What tempers the claim is that some later cohorts are smaller or null, so the right framing is a plausible risk amplifier rather than a stand-alone cause.",
+      "caveats": "Stress is measured very differently across studies and is tightly entangled with social adversity, sleep, and other maternal-health factors. That makes the direction more believable than the exact size of the effect.",
+      "evidence": [
+        {
+          "citation": "Flanigan C et al 2018 Clin Exp Allergy",
+          "pmid": "29331049",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 30,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prenatal maternal psychosocial stress and offspring's asthma and allergic disease: A systematic review and meta-analysis."
+        },
+        {
+          "citation": "Zhu TT et al 2024 Clin Transl Allergy",
+          "pmid": "38488856",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "n_participants": 22,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Early exposure to maternal stress and risk for atopic dermatitis in children: A systematic review and meta-analysis.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.29,
+            "ci_low": 1.13,
+            "ci_high": 1.47,
+            "comparator": "maternal distress exposure versus lower or no distress"
+          }
+        },
+        {
+          "citation": "Senter JP et al 2021 Int J Environ Res Public Health",
+          "pmid": "34574621",
+          "year": 2021,
+          "study_type": "cohort",
+          "n_participants": 426,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Maternal Stressful Life Events during Pregnancy and Atopic Dermatitis in Children Aged Approximately 4-6 Years."
+        }
+      ]
+    }
+  ]
+}

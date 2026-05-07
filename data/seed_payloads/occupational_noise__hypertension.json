@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "occupational_noise",
+      "outcome_slug": "hypertension",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The occupational-noise literature supports a small but directionally consistent increase in hypertension risk, especially at higher workplace exposures sustained over time.",
+      "population": "noise-exposed workers",
+      "mechanism": "Chronic workplace noise can sustain sympathetic activation, stress-hormone signaling, and impaired cardiovascular recovery across repeated work shifts. That pathway does not imply every noisy job causes hypertension, but it makes the observed small excess risk biologically coherent.",
+      "summary": "The WHO/ILO systematic review and meta-analysis judged occupational noise exposure to be associated with higher hypertension risk, and the older meta-analysis already pointed in the same direction. A newer cross-sectional worker study also found higher odds of hypertension in employees exposed to higher noise levels, so this edge looks like a modest but credible occupational cardiometabolic risk rather than a purely historical concern.",
+      "caveats": "The effect size is not large, and residual confounding from job strain, shift work, smoking, and other worksite factors remains possible. Exposure assessment also varies across studies, so the edge is best read as a small-risk occupational signal rather than a precise dose-response law.",
+      "evidence": [
+        {
+          "citation": "Teixeira LR et al 2021 Environ Int",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The effect of occupational exposure to noise on ischaemic heart disease, stroke and hypertension: A systematic review and meta-analysis from the WHO/ILO Joint Estimates of the Work-Related Burden of Disease and Injury.",
+          "pmid": "33612311",
+          "n_participants": 1
+        },
+        {
+          "citation": "van Kempen EE et al 2002 Environ Health Perspect",
+          "year": 2002,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The association between noise exposure and blood pressure and ischemic heart disease: a meta-analysis.",
+          "pmid": "11882483",
+          "n_participants": 43
+        },
+        {
+          "citation": "Wang J et al 2023 J Clin Hypertens",
+          "year": 2023,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of occupational noise exposure with hypertension: A cross-sectional study.",
+          "pmid": "36585815",
+          "n_participants": 4746
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "occupational_noise",
+      "name": "Occupational noise exposure",
+      "kind": "environmental",
+      "aliases": [
+        "workplace noise exposure",
+        "job-related noise"
+      ],
+      "description": "Chronic exposure to elevated noise levels in the workplace."
+    }
+  ]
+}

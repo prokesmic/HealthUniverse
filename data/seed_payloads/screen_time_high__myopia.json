@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "screen_time_high",
+      "outcome_slug": "myopia",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The most current pooled evidence suggests that more digital-screen time is associated with higher odds of myopia, with risk rising as daily exposure climbs.",
+      "population": "children and adolescents",
+      "mechanism": "High screen exposure combines prolonged near work, reduced blink rate, short viewing distances, and often less outdoor time, all of which plausibly push refractive development toward myopia. The exact causal contribution of screens versus the broader educational and indoor-life package remains uncertain, but the aggregate signal now leans harmful.",
+      "summary": "The best current summary is that heavy screen time is probably a myopia risk factor, even if it is not the only one and not the strongest one. Newer dose-response meta-analyses find higher odds of myopia with greater daily screen exposure, while older reviews were more equivocal because the literature was thinner and more heterogeneous.",
+      "caveats": "A large part of this literature is observational, so screen time is tangled with education, near-work intensity, and less time outdoors. This edge should be read as a modifiable risk signal rather than proof that screens alone drive the myopia epidemic.",
+      "evidence": [
+        {
+          "citation": "Lee YJ et al 2025 JAMA Netw Open",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Digital Screen Time and Myopia: A Systematic Review and Dose-Response Meta-Analysis.",
+          "pmid": "39982728",
+          "n_participants": 335524,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.21,
+            "ci_low": 1.13,
+            "ci_high": 1.3,
+            "comparator": "each additional hour of daily screen time"
+          }
+        },
+        {
+          "citation": "Zong Z et al 2024 BMC Public Health",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The association between screen time exposure and myopia in children and adolescents: a meta-analysis.",
+          "pmid": "38890613",
+          "n_participants": 19,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 2.39,
+            "ci_low": 2.07,
+            "ci_high": 2.76,
+            "comparator": "high versus low screen time in cohort studies"
+          }
+        },
+        {
+          "citation": "Foreman J et al 2021 Lancet Digit Health",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Association between digital smart device use and myopia: a systematic review and meta-analysis.",
+          "pmid": "34625399",
+          "n_participants": 33532
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "screen_time_high",
+      "name": "High digital screen time",
+      "kind": "behavior",
+      "aliases": [
+        "prolonged screen use",
+        "heavy digital-device use"
+      ],
+      "description": "High daily exposure to smartphones, tablets, computers, televisions, or other digital screens."
+    },
+    {
+      "slug": "myopia",
+      "name": "Myopia",
+      "kind": "condition",
+      "aliases": [
+        "short-sightedness",
+        "nearsightedness"
+      ],
+      "description": "Myopia or short-sighted refractive error in children or adolescents."
+    }
+  ]
+}

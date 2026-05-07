@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "beta_alanine",
+      "outcome_slug": "exercise_capacity",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Beta-alanine improves exercise capacity more consistently than headline sport performance, with the clearest gains in high-intensity efforts lasting roughly one to several minutes.",
+      "population": "healthy adults and athletes",
+      "mechanism": "Beta-alanine raises skeletal-muscle carnosine stores, which improves intracellular buffering during high-glycolytic exercise and delays fatigue from acidosis. That mechanism predicts its strongest effects in sustained high-intensity work rather than explosive efforts under 60 seconds, and the pooled literature follows that pattern closely.",
+      "summary": "The evidence for beta-alanine is real but narrower than supplement marketing implies. Meta-analyses repeatedly show a small overall benefit, driven mainly by better exercise capacity in efforts where buffering matters, while straightforward performance gains are less reliable.",
+      "caveats": "This is not a universal performance enhancer, and effects are small enough to disappear in poorly matched events. Paresthesia and supplement tolerance can also limit real-world usefulness depending on dose formulation.",
+      "evidence": [
+        {
+          "citation": "Hobson RM et al 2012 Amino Acids",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of beta-alanine supplementation on exercise performance: a meta-analysis.",
+          "pmid": "22270875",
+          "n_participants": 360
+        },
+        {
+          "citation": "Saunders B et al 2017 Br J Sports Med",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Beta-alanine supplementation to improve exercise capacity and performance: a systematic review and meta-analysis.",
+          "pmid": "27797728",
+          "n_participants": 1461,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.18,
+            "ci_low": 0.08,
+            "ci_high": 0.28,
+            "comparator": "beta-alanine versus placebo across pooled exercise outcomes"
+          }
+        },
+        {
+          "citation": "Esteves GP et al 2021 Int J Sport Nutr Exerc Metab",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Individual Participant Data Meta-Analysis Provides No Evidence of Intervention Response Variation in Individuals Supplementing With Beta-Alanine.",
+          "pmid": "34098531",
+          "n_participants": 4
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "beta_alanine",
+      "name": "Beta-alanine supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "beta alanine"
+      ],
+      "description": "Chronic beta-alanine supplementation intended to raise muscle carnosine."
+    },
+    {
+      "slug": "exercise_capacity",
+      "name": "Exercise capacity",
+      "kind": "process",
+      "aliases": [
+        "high-intensity exercise capacity"
+      ],
+      "description": "Capacity to sustain high-intensity exercise before exhaustion."
+    }
+  ]
+}

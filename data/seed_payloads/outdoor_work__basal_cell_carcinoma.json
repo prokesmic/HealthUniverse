@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "outdoor_work",
+      "outcome_slug": "basal_cell_carcinoma",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The occupational solar-radiation literature consistently places outdoor work on the harmful side for basal cell carcinoma, although the exact excess risk varies with latitude, duration, and protective behavior.",
+      "population": "outdoor workers",
+      "mechanism": "Outdoor work increases cumulative solar ultraviolet exposure to skin over many years, creating a direct pathway to keratinocyte DNA damage and carcinogenesis. This is one of the clearer occupational-environmental relationships in the dermatology space because the exposure mechanism is straightforward.",
+      "summary": "The updated review with meta-analysis found that occupational solar exposure is associated with higher basal cell carcinoma risk, confirming the earlier systematic review. A newer nationwide cohort on occupational solar ultraviolet radiation and non-melanoma skin cancer also supports the same general harmful direction, making this a solid occupational skin-cancer edge rather than a speculative one.",
+      "caveats": "Risk depends on geography, lifetime sun dose, skin phenotype, and use of protective clothing or sunscreen. Some studies combine different non-melanoma skin cancer outcomes, so the exact BCC-specific magnitude remains less precise than the overall direction.",
+      "evidence": [
+        {
+          "citation": "Wendt A et al 2024 Eur J Epidemiol",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Occupational solar exposure and basal cell carcinoma. A review of the epidemiologic literature with meta-analysis focusing on particular methodological aspects.",
+          "pmid": "38170370",
+          "n_participants": 1
+        },
+        {
+          "citation": "Diepgen TL et al 2011 Br J Dermatol",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Is occupational solar ultraviolet irradiation a relevant risk factor for basal cell carcinoma? A systematic review and meta-analysis of the epidemiological literature.",
+          "pmid": "21605109",
+          "n_participants": 1
+        },
+        {
+          "citation": "Schmidt SAJ et al 2025 Environ Pollut",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Occupational solar ultraviolet radiation and incidence of non-melanoma skin cancer in a nationwide cohort.",
+          "pmid": "41106796",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "outdoor_work",
+      "name": "Outdoor work",
+      "kind": "behavior",
+      "aliases": [
+        "outdoor occupation",
+        "working outdoors"
+      ],
+      "description": "Occupational work performed outdoors with substantial cumulative exposure to sunlight."
+    },
+    {
+      "slug": "basal_cell_carcinoma",
+      "name": "Basal cell carcinoma",
+      "kind": "condition",
+      "aliases": [
+        "BCC"
+      ],
+      "description": "The most common keratinocyte skin cancer arising from basal cells."
+    }
+  ]
+}

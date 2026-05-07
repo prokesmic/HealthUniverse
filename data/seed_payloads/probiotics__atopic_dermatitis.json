@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "probiotics",
+      "outcome_slug": "atopic_dermatitis",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The better pooled evidence suggests probiotics can modestly reduce atopic-dermatitis incidence, especially when used around the perinatal period, but the effect is not large and depends on strain mix and timing.",
+      "population": "infants and children",
+      "mechanism": "Probiotics may shape early immune tolerance, microbial colonization, and inflammatory signaling in ways that lower eczema risk or severity. In practice, benefit seems strongest when probiotics are given in the perinatal window or as mixed strains, which suggests the effect depends more on timing and formulation than on the generic label alone.",
+      "summary": "The most defensible read is modest protection, not a dramatic eczema solution. Meta-analyses of pediatric trials generally lean toward lower atopic-dermatitis incidence with probiotic use, but the signal is heterogeneous and looks stronger for prevention strategies around pregnancy and infancy than for treatment of established disease.",
+      "caveats": "This edge compresses several probiotic strains, doses, and use patterns into one broad factor, so it should be read as a family-level signal rather than proof that any probiotic will work. Because a more specific perinatal probiotic edge already exists elsewhere in the graph, this broader edge is intentionally kept conservative.",
+      "evidence": [
+        {
+          "citation": "Jiang W et al 2020 Paediatr Drugs",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The Role of Probiotics in the Prevention and Treatment of Atopic Dermatitis in Children: An Updated Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+          "pmid": "32748341",
+          "n_participants": 3865,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.7,
+            "ci_low": 0.57,
+            "ci_high": 0.84,
+            "comparator": "probiotics versus placebo in prevention studies"
+          }
+        },
+        {
+          "citation": "Panduru M et al 2015 J Eur Acad Dermatol Venereol",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Probiotics and primary prevention of atopic dermatitis: a meta-analysis of randomized controlled studies.",
+          "pmid": "24698503",
+          "n_participants": 16,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.64,
+            "ci_low": 0.53,
+            "ci_high": 0.77,
+            "comparator": "probiotic administration versus control"
+          }
+        },
+        {
+          "citation": "Voigt J et al 2022 Am J Clin Dermatol",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Lactobacillus rhamnosus Used in the Perinatal Period for the Prevention of Atopic Dermatitis in Infants: A Systematic Review and Meta-Analysis of Randomized Trials.",
+          "pmid": "36161401",
+          "n_participants": 11,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.6,
+            "ci_low": 0.47,
+            "ci_high": 0.75,
+            "comparator": "Lactobacillus rhamnosus exposure through the perinatal period versus control at age up to 2 years"
+          }
+        }
+      ]
+    }
+  ]
+}

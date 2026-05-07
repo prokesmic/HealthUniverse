@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "music_therapy",
+      "outcome_slug": "anxiety",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "Music-based interventions reduce anxiety symptoms across many randomized settings, but the magnitude varies a lot by population, intervention type, and context.",
+      "population": "adults in therapeutic or medical settings",
+      "mechanism": "Music therapy may reduce anxiety through autonomic downregulation, attentional redirection, emotional processing, and social co-regulation. The effect appears strongest for situational or state anxiety, which helps explain why hospital and labor settings often show larger benefits than longer-term follow-up.",
+      "summary": "The strongest overall read is that music therapy helps with anxiety in the short term, especially in stressful care settings. Meta-analyses of randomized trials repeatedly show lower anxiety scores after music-based interventions, but the exact size of benefit depends heavily on who is treated and how the intervention is delivered.",
+      "caveats": "This edge mostly reflects short-term symptom reduction rather than proof of durable remission in anxiety disorders. It also bundles several delivery styles under one label, so the estimate is better read as support for the general approach than for one exact protocol.",
+      "evidence": [
+        {
+          "citation": "Jia R et al 2021 Psychiatry Res",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of music therapy on anxiety: A meta-analysis of randomized controlled trials.",
+          "pmid": "34365216",
+          "n_participants": 1924,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -0.36,
+            "ci_low": -0.54,
+            "ci_high": -0.17,
+            "comparator": "control condition at post-intervention"
+          }
+        },
+        {
+          "citation": "Xiao M et al 2024 Minerva Anestesiol",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and safety of music therapy for the treatment of anxiety and delirium in ICU patients: a meta-analysis and systematic review of randomized controlled trials.",
+          "pmid": "38619185",
+          "n_participants": 14,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -1.09,
+            "ci_low": -1.52,
+            "ci_high": -0.67,
+            "comparator": "usual ICU care without music therapy"
+          }
+        },
+        {
+          "citation": "Santivanez-Acosta R et al 2020 Medicina (Kaunas)",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Music Therapy in Pain and Anxiety Management during Labor: A Systematic Review and Meta-Analysis.",
+          "pmid": "33050409",
+          "n_participants": 778,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -0.76,
+            "ci_low": -0.88,
+            "ci_high": -0.64,
+            "comparator": "control condition during the active phase of labor"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "music_therapy",
+      "name": "Music therapy",
+      "kind": "activity",
+      "aliases": [
+        "music-based therapy",
+        "therapeutic music intervention"
+      ],
+      "description": "Structured music-based interventions delivered for therapeutic benefit."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tea",
+      "name": "Tea consumption",
+      "kind": "food",
+      "aliases": [
+        "black, green, oolong, or mate tea intake"
+      ],
+      "description": "Habitual consumption of non-herbal tea beverages."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tea",
+      "outcome_slug": "thyroid_cancer",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The thyroid-cancer literature on tea is split: one older meta-analysis suggested modest protection, while large prospective cohorts were mostly null except for subgroup findings by menopausal status or histology.",
+      "population": "general adults with habitual tea consumption",
+      "mechanism": "Tea polyphenols may influence oxidative stress and thyroid-cell signaling, but any true effect seems to depend on subtype, dose, and hormonal context rather than showing up as a clean universal signal.",
+      "summary": "This edge is more unsettled than the mechanistic story would make you hope. The 2015 meta-analysis leaned protective, but the EPIC cohort was essentially null overall and the Japanese cohort split in opposite directions by menopausal status, so the most defensible label is mixed evidence.",
+      "caveats": "Tea subtype is a major issue here, and some of the more intriguing findings appear only in subgroup analyses. That keeps this from being a trustworthy prevention claim despite a plausible biologic rationale.",
+      "evidence": [
+        {
+          "citation": "Wang CY et al 2015 Int J Clin Exp Med",
+          "pmid": "26550420",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "n_participants": 106447,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Association of tea consumption and the risk of thyroid cancer: a meta-analysis.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.774,
+            "ci_low": 0.619,
+            "ci_high": 0.967,
+            "comparator": "highest versus lowest tea consumption"
+          }
+        },
+        {
+          "citation": "Michikawa T et al 2011 Cancer Causes Control",
+          "pmid": "21562752",
+          "year": 2011,
+          "study_type": "cohort",
+          "n_participants": 100507,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Green tea and coffee consumption and its association with thyroid cancer risk: a population-based cohort study in Japan."
+        },
+        {
+          "citation": "Zamora-Ros R et al 2019 Eur J Nutr",
+          "pmid": "30535794",
+          "year": 2019,
+          "study_type": "cohort",
+          "n_participants": 476108,
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Coffee and tea drinking in relation to the risk of differentiated thyroid carcinoma: results from the European Prospective Investigation into Cancer and Nutrition study.",
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.98,
+            "ci_low": 0.95,
+            "ci_high": 1.02,
+            "comparator": "per 100 mL/day tea intake for differentiated thyroid cancer risk"
+          }
+        }
+      ]
+    }
+  ]
+}

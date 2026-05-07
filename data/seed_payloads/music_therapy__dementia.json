@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "music_therapy",
+      "outcome_slug": "dementia",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Music-based interventions appear to improve some dementia-related outcomes, especially cognition and neuropsychiatric symptoms, but the effect is supportive rather than disease-modifying.",
+      "population": "adults with dementia",
+      "mechanism": "Music therapy likely works through preserved emotional and procedural neural networks, increased engagement, and reduced agitation rather than through reversal of neurodegeneration itself. That makes it plausible as a symptom-management intervention even when hard disease outcomes are unchanged.",
+      "summary": "The best-supported claim is that music therapy can modestly improve cognition and behavioral symptoms in people living with dementia. Meta-analyses of randomized trials generally point in a favorable direction, although the intervention is better viewed as supportive care than as a treatment that changes the underlying course of dementia.",
+      "caveats": "Trial quality and intervention formats vary widely, from passive listening to structured therapist-led sessions. Benefits are usually measured on symptom scales over short follow-up, so this edge should not be framed as prevention or cure.",
+      "evidence": [
+        {
+          "citation": "Wang X et al 2023 Psychiatry Res",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of music therapy on cognition, quality of life, and neuropsychiatric symptoms of patients with dementia: A systematic review and meta-analysis of randomized controlled trials.",
+          "pmid": "37783097",
+          "n_participants": 1780
+        },
+        {
+          "citation": "Moreira SV et al 2020 Front Med",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Music Therapy in the Treatment of Dementia: A Systematic Review and Meta-Analysis.",
+          "pmid": "32509790",
+          "n_participants": 8
+        },
+        {
+          "citation": "Zhang Y et al 2021 NeuroRehabilitation",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Does music therapy affect the global cognitive function of patients with dementia? A meta-analysis.",
+          "pmid": "33967069",
+          "n_participants": 8,
+          "effect_quant": {
+            "metric": "MD",
+            "value": 0.86,
+            "ci_low": 0.07,
+            "ci_high": 1.66,
+            "comparator": "MMSE score with music therapy versus standard care"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "music_therapy",
+      "name": "Music therapy",
+      "kind": "activity",
+      "aliases": [
+        "music-based therapy"
+      ],
+      "description": "Structured music listening or therapist-led music interventions used in clinical dementia care."
+    }
+  ]
+}

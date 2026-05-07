@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "cold_exposure",
+      "outcome_slug": "brown_adipose_tissue_activation",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Short-term cold exposure reliably increases brown-adipose-tissue activity and energy expenditure in humans, although the downstream metabolic payoff is much less certain than the activation itself.",
+      "population": "healthy adults",
+      "mechanism": "Cold stimulates sympathetic outflow and norepinephrine signaling at brown adipocytes, which increases thermogenesis, fatty-acid uptake, and glucose handling in activated tissue. The immediate response is physiologically robust; the open question is how much sustained whole-body metabolic benefit that activation delivers outside the lab.",
+      "summary": "The narrow claim here is strong: cold exposure activates brown adipose tissue in humans. Randomized and pooled evidence show higher energy expenditure and higher BAT activity under cold conditions, even though broader cardiometabolic claims still outrun the evidence.",
+      "caveats": "Most studies are small, short, and done under controlled laboratory cooling rather than real-world cold-plunge routines. BAT responsiveness also varies widely by age, adiposity, acclimation history, and measurement method.",
+      "evidence": [
+        {
+          "citation": "XuZ et al 2022 Front Physiol",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of Acute Cold Exposure on Energy Metabolism and Activity of Brown Adipose Tissue in Humans: A Systematic Review and Meta-Analysis.",
+          "pmid": "35837014",
+          "n_participants": 10,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 1.61,
+            "ci_low": 0.07,
+            "ci_high": 3.14,
+            "comparator": "acute cold exposure versus room temperature for BAT activity"
+          }
+        },
+        {
+          "citation": "Milanesio A et al 2024 Biomedicines",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Metabolic Effects of Brown Adipose Tissue Activity Due to Cold Exposure in Humans: A Systematic Review and Meta-Analysis of RCTs and Non-RCTs.",
+          "pmid": "38540150",
+          "n_participants": 85
+        },
+        {
+          "citation": "Hanssen MJW et al 2016 Metabolism",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A randomized trial of cold-exposure on energy expenditure and supraclavicular brown adipose tissue volume in humans.",
+          "pmid": "27173471",
+          "n_participants": 28
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "brown_adipose_tissue_activation",
+      "name": "Brown adipose tissue activation",
+      "kind": "process",
+      "aliases": [
+        "brown fat activation"
+      ],
+      "description": "Increased thermogenic activity or volume of brown adipose tissue in humans."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "night_shift",
+      "name": "Night-shift work",
+      "kind": "behavior",
+      "aliases": [
+        "night work",
+        "overnight shift work"
+      ],
+      "description": "Occupational exposure to regular night-shift schedules, including fixed or rotating overnight work."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "night_shift",
+      "outcome_slug": "obesity",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Night-shift work shows a modest obesity signal in some pooled analyses, especially night-only schedules, but the overall literature is heterogeneous enough that the most defensible read is mixed rather than decisive harm.",
+      "population": "adult workers, especially nurses and other health professionals doing night shifts",
+      "mechanism": "Working against the circadian clock changes sleep timing, appetite hormones, meal timing, and opportunity for recovery, all of which plausibly nudge long-term weight gain upward. The biologic pathway is believable even though the epidemiology is noisier than the mechanism suggests.",
+      "summary": "The best current synthesis is not a slam dunk. A nurses-focused meta-analysis found a small obesity increase for night-only shift work, while an older health-professionals review was essentially null overall, so the right top-line conclusion is mixed evidence with a modest adverse drift in some subgroups.",
+      "caveats": "Different papers define shift work, obesity thresholds, and occupational groups very differently. That makes the subgroup signal more believable than any single pooled number.",
+      "evidence": [
+        {
+          "citation": "Saulle R et al 2018 Clin Ter",
+          "pmid": "30151553",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 7,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Shift work, overweight and obesity in health professionals: a systematic review and meta-analysis.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.0,
+            "ci_low": 0.66,
+            "ci_high": 1.5,
+            "comparator": "night-shift work versus no night-shift work for obesity in nurses"
+          }
+        },
+        {
+          "citation": "Zhang Y et al 2020 Int J Nurs Stud",
+          "pmid": "32921429",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "n_participants": 74651,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between shift work and obesity among nurses: A systematic review and meta-analysis.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.12,
+            "ci_low": 1.03,
+            "ci_high": 1.21,
+            "comparator": "night-only shift work versus non-shift work for obesity in nurses"
+          }
+        },
+        {
+          "citation": "Boini S et al 2022 Front Public Health",
+          "pmid": "36504944",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "n_participants": 33,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "What do we know about the effect of night-shift work on cardiovascular risk factors? An umbrella review."
+        }
+      ]
+    }
+  ]
+}

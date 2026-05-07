@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "soy_isoflavones",
+      "outcome_slug": "breast_cancer",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The pooled epidemiology trends protective, especially in Asian populations and in higher-intake comparisons, but the signal is modest and context-dependent rather than universally large.",
+      "population": "adult women",
+      "mechanism": "Soy isoflavones such as genistein and daidzein can bind estrogen receptors with weaker activity than endogenous estradiol and may alter proliferation signaling, estrogen metabolism, and local inflammatory tone in breast tissue. Any effect likely depends on background diet, life-stage exposure, and microbiome-dependent metabolism rather than a single uniform pharmacologic action.",
+      "summary": "The strongest reading is not that soy isoflavones are a dramatic shield, but that higher habitual intake is associated with a modestly lower breast-cancer risk in pooled observational data. That pattern appears more convincing in Asian cohorts, where intake levels are higher and exposure starts earlier in life.",
+      "caveats": "This edge rests mainly on observational evidence, so geography, dietary pattern clustering, and measurement error matter. Biomarker trials on breast density do not show a straightforward large preventive effect, which is why the claim should stay modest.",
+      "evidence": [
+        {
+          "citation": "WuAH et al 2006 J Natl Cancer Inst",
+          "year": 2006,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Meta-analysis of soy intake and breast cancer risk.",
+          "pmid": "16595782",
+          "n_participants": 18,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.86,
+            "ci_low": 0.75,
+            "ci_high": 0.99,
+            "comparator": "high versus low soy intake"
+          }
+        },
+        {
+          "citation": "Trock BJ et al 2006 J Nutr Sci Vitaminol",
+          "year": 2006,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Soyfood intake in the prevention of breast cancer risk in women: a meta-analysis of observational epidemiological studies.",
+          "pmid": "17330506",
+          "n_participants": 21,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.81,
+            "ci_low": 0.67,
+            "ci_high": 0.99,
+            "comparator": "higher isoflavone intake versus lower intake"
+          }
+        },
+        {
+          "citation": "Chen M et al 2014 PLoS One",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Association between soy isoflavone intake and breast cancer risk for pre- and post-menopausal women: a meta-analysis of epidemiological studies.",
+          "pmid": "24586662",
+          "n_participants": 35,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.59,
+            "ci_low": 0.48,
+            "ci_high": 0.69,
+            "comparator": "higher versus lower intake in premenopausal women in Asian cohorts"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "soy_isoflavones",
+      "name": "Soy isoflavones",
+      "kind": "nutrient",
+      "aliases": [
+        "genistein and daidzein intake"
+      ],
+      "description": "Dietary exposure to soy-derived isoflavones from soy foods or concentrated soy intake."
+    }
+  ]
+}

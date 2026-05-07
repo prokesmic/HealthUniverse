@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "diabetic_control_intensive",
+      "name": "Intensive glycaemic control",
+      "kind": "behavior",
+      "aliases": [],
+      "description": "Intensive glycaemic control as a behavioral exposure or management strategy."
+    },
+    {
+      "slug": "diabetic_retinopathy",
+      "name": "Diabetic retinopathy",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Retinal microvascular disease associated with diabetes, including progression outcomes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "diabetic_control_intensive",
+      "outcome_slug": "diabetic_retinopathy",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across randomized-trial meta-analyses in type 2 diabetes, intensive glycaemic control consistently lowers retinopathy progression risk, though the effect is modest rather than dramatic.",
+      "population": "adults with type 2 diabetes",
+      "mechanism": "Lower long-term glucose exposure reduces retinal microvascular injury, oxidative stress, and glycation-driven damage to capillaries and neural retinal tissue. The benefit shows up most clearly in slowing progression rather than in completely preventing every retinal complication.",
+      "summary": "This is a solid microvascular-protection edge. Multiple meta-analyses of randomized trials show that tighter glycaemic control reduces retinopathy progression and related ocular interventions, even though the magnitude is not large enough to erase retinopathy risk altogether.",
+      "caveats": "The benefit has to be balanced against hypoglycaemia risk and is not a free pass to intensify glucose lowering in every patient. Most of the evidence is about progression-related outcomes in established type 2 diabetes rather than universal primary prevention.",
+      "evidence": [
+        {
+          "citation": "Kunutsor SK et al 2024 Diabetes Obes Metab",
+          "pmid": "38409644",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "n_participants": 51469,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Glycaemic control and macrovascular and microvascular outcomes: A systematic review and meta-analysis of trials investigating intensive glucose-lowering strategies in people with type 2 diabetes.",
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.85,
+            "ci_low": 0.78,
+            "ci_high": 0.93,
+            "comparator": "intensive versus standard glucose-lowering strategies for retinopathy"
+          }
+        },
+        {
+          "citation": "Sun S et al 2022 Therapie",
+          "pmid": "34782145",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "n_participants": 28614,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Reappraisal of the efficacy of intensive glycaemic control on microvascular complications in patients with type 2 diabetes: A meta-analysis of randomised control-trials.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.77,
+            "ci_low": 0.66,
+            "ci_high": 0.89,
+            "comparator": "tight versus standard glucose control for retinopathy progression"
+          }
+        },
+        {
+          "citation": "Zhang X et al 2015 Endocrine",
+          "pmid": "25355306",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "n_participants": 32523,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of intensive glycemic control in ocular complications in patients with type 2 diabetes: a meta-analysis of randomized clinical trials.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.69,
+            "ci_low": 0.55,
+            "ci_high": 0.87,
+            "comparator": "intensive versus conventional glycaemic control for retinopathy progression"
+          }
+        }
+      ]
+    }
+  ]
+}

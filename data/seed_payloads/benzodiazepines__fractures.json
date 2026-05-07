@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "benzodiazepines",
+      "outcome_slug": "fractures",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across observational meta-analyses, benzodiazepine exposure is consistently associated with a modestly higher fracture risk, with older adults carrying the clearest signal.",
+      "population": "older adults and general adult benzodiazepine users",
+      "mechanism": "Benzodiazepines can impair balance, reaction time, and postural control while also causing sedation and cognitive slowing, which raises fall risk and therefore downstream fracture risk. The association is biologically and clinically plausible even if part of the observed risk is amplified by frailty and indication bias.",
+      "summary": "This is a fairly sturdy harm signal. Multiple meta-analyses have found that benzodiazepine use is associated with a meaningful increase in fracture risk, especially hip fractures in older adults, making this one of the more actionable downside edges in the medication-safety literature.",
+      "caveats": "Some of the measured risk likely reflects underlying frailty, insomnia, anxiety, or other reasons benzodiazepines are prescribed in the first place. Even so, the consistency across large observational syntheses makes a purely confounded explanation unlikely.",
+      "evidence": [
+        {
+          "citation": "Poly TN et al 2020 Joint Bone Spine",
+          "pmid": "31778821",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "n_participants": 169660,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between benzodiazepines use and risk of hip fracture in the elderly people: A meta-analysis of observational studies.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.34,
+            "ci_low": 1.26,
+            "ci_high": 1.44,
+            "comparator": "benzodiazepine users versus non-users"
+          }
+        },
+        {
+          "citation": "Xing D et al 2014 Osteoporos Int",
+          "pmid": "24013517",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "n_participants": 25,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association between use of benzodiazepines and risk of fractures: a meta-analysis."
+        },
+        {
+          "citation": "Takkouche B et al 2007 Drug Saf",
+          "pmid": "17253881",
+          "year": 2007,
+          "study_type": "meta_analysis",
+          "n_participants": 23,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Psychotropic medications and the risk of fracture: a meta-analysis.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.34,
+            "ci_low": 1.24,
+            "ci_high": 1.45,
+            "comparator": "benzodiazepine users versus non-users"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "long_hours_55plus",
+      "outcome_slug": "stroke",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The signal is not dramatic, but pooled cohort evidence repeatedly shows higher stroke risk once weekly working time reaches 55 hours or more.",
+      "population": "working-age adults",
+      "mechanism": "Very long working hours likely increase stroke risk through sustained sympathetic activation, sleep restriction, poorer recovery, and spillover into blood pressure and metabolic strain. The dose-response pattern in pooled cohorts is more persuasive than any single national dataset.",
+      "summary": "The best anchor is the WHO/ILO stroke review in Environmental International, which found a moderate increase in incident stroke among people working at least 55 hours a week. The earlier Lancet meta-analysis points in the same direction, even though not every national cohort reproduces the pooled estimate equally well.",
+      "caveats": "Exposure measurement is imperfect and long hours correlate with job grade, shift timing, and baseline health. The evidence is stronger for incident stroke overall than for every subtype separately.",
+      "evidence": [
+        {
+          "citation": "Descatha A et al 2020 Environ Int",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The effect of exposure to long working hours on stroke: A systematic review and meta-analysis from the WHO/ILO Joint Estimates of the Work-related Burden of Disease and Injury.",
+          "pmid": "32505015",
+          "n_participants": 839680,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.35,
+            "ci_low": 1.13,
+            "ci_high": 1.61,
+            "comparator": "35 to 40 working hours per week"
+          }
+        },
+        {
+          "citation": "Kivimaki M et al 2015 Lancet",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Long working hours and risk of coronary heart disease and stroke: a systematic review and meta-analysis of published and unpublished data for 603,838 individuals.",
+          "pmid": "26298822",
+          "n_participants": 528908,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.33,
+            "ci_low": 1.11,
+            "ci_high": 1.61,
+            "comparator": "35 to 40 working hours per week"
+          }
+        },
+        {
+          "citation": "Hannerz H et al 2018 Scand J Public Health",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.15,
+            "ci_low": 1.02,
+            "ci_high": 1.31,
+            "comparator": "per one-category increase in working hours for hemorrhagic stroke"
+          },
+          "notes": "Long working hours and stroke among employees in the general workforce of Denmark.",
+          "pmid": "29251227",
+          "n_participants": 145861
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "long_hours_55plus",
+      "name": "Working 55 or more hours per week",
+      "kind": "behavior",
+      "aliases": [
+        "long working hours"
+      ],
+      "description": "Regular weekly working time at or above 55 hours."
+    }
+  ]
+}

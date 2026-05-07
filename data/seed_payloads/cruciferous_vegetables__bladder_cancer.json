@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "cruciferous_vegetables",
+      "outcome_slug": "bladder_cancer",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Older pooled observational datasets suggested lower bladder-cancer risk with higher cruciferous-vegetable intake, but newer prospective-only analyses are much closer to null.",
+      "population": "general adults",
+      "mechanism": "Cruciferous vegetables provide glucosinolate breakdown products such as isothiocyanates, which can increase phase II detoxification and may reduce urothelial exposure to carcinogenic metabolites. The weak point is not biologic plausibility but inconsistency when the evidence is restricted to better-controlled prospective cohorts.",
+      "summary": "This edge is a good example of why Health Universe should default to the boring claim. The early literature looked protective, but once larger prospective-only datasets were pooled, the apparent benefit narrowed and in some analyses disappeared, leaving at most a modest and uncertain signal.",
+      "caveats": "Dietary measurement error is substantial in this literature, and smoking is such a dominant bladder-cancer driver that residual confounding is hard to eliminate. Some broad fruit-and-vegetable meta-analyses also mix food-group definitions, which adds noise.",
+      "evidence": [
+        {
+          "citation": "Liu B et al 2013 World J Urol",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The association of cruciferous vegetables intake and risk of bladder cancer: a meta-analysis.",
+          "pmid": "22391648",
+          "n_participants": 10,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.80,
+            "ci_low": 0.69,
+            "ci_high": 0.92,
+            "comparator": "highest versus lowest cruciferous-vegetable intake"
+          }
+        },
+        {
+          "citation": "XuC et al 2014 Cancer Causes Control",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Intake of fruit and vegetables and risk of bladder cancer: a dose-response meta-analysis of observational studies.",
+          "pmid": "25248495",
+          "n_participants": 1121649,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.84,
+            "ci_low": 0.77,
+            "ci_high": 0.91,
+            "comparator": "highest versus lowest cruciferous-vegetable intake"
+          }
+        },
+        {
+          "citation": "WuJW et al 2022 Front Nutr",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Dietary consumption of cruciferous vegetables and bladder cancer risk: A systematic review and meta-analysis.",
+          "pmid": "36061884",
+          "n_participants": 8,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.92,
+            "ci_low": 0.80,
+            "ci_high": 1.06,
+            "comparator": "highest versus lowest cruciferous-vegetable intake"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cruciferous_vegetables",
+      "name": "Cruciferous vegetables",
+      "kind": "food",
+      "aliases": [
+        "broccoli and related brassica vegetables"
+      ],
+      "description": "Dietary intake of broccoli, cabbage, cauliflower, Brussels sprouts, and related cruciferous vegetables."
+    }
+  ]
+}

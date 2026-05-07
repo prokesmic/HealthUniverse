@@ -9,20 +9,29 @@
         "beta-hydroxy-beta-methylbutyrate"
       ],
       "description": "Supplementation with the leucine metabolite beta-hydroxy-beta-methylbutyrate."
+    },
+    {
+      "slug": "muscular_strength",
+      "name": "Muscular strength",
+      "kind": "process",
+      "aliases": [
+        "maximum strength performance"
+      ],
+      "description": "Maximal force production during resistance exercise tasks."
     }
   ],
   "edges": [
     {
       "factor_slug": "hmb",
-      "outcome_slug": "muscle_mass",
+      "outcome_slug": "muscular_strength",
       "direction": "neutral",
       "tier": "C",
       "effect_size": "small",
-      "effect_quant": "Across modern resistance-training meta-analyses, HMB does not meaningfully improve muscle-mass gains beyond training alone.",
+      "effect_quant": "Across pooled resistance-training studies, HMB generally does not add meaningful strength gains beyond training or placebo.",
       "population": "adults using resistance training or athletic conditioning",
-      "mechanism": "HMB is marketed as an anti-catabolic leucine metabolite that may reduce proteolysis and support recovery, but those theoretical effects have not translated into consistent extra lean-mass gains in pooled human training studies. The gap between plausible mechanism and disappointing outcome data is the key story of this edge.",
-      "summary": "The safest conclusion is that HMB mostly fails to deliver the extra muscle gain it promises. Modern meta-analyses in older adults, young lifters, and trained athletes all converge on little or no meaningful improvement in muscle mass beyond what resistance training already provides.",
-      "caveats": "Small subgroup benefits may still appear in undernourished, immobilized, or highly catabolic settings, but that is a different use case from general muscle-gain supplementation. This edge is about routine training populations, where the evidence is much less impressive.",
+      "mechanism": "If HMB meaningfully improved recovery or reduced muscle protein breakdown during training, extra strength gains might follow over time. The pooled trial evidence has not shown that pattern consistently, suggesting the theoretical recovery benefit is too small or too context-dependent to matter for most training populations.",
+      "summary": "The current evidence does not support HMB as a reliable strength enhancer. Across meta-analyses in older adults, young resistance-trained subjects, and competitive athletes, pooled strength outcomes stay close to null, making this a good example of a supplement with stronger marketing than data.",
+      "caveats": "The neutral conclusion here applies to routine training settings, not necessarily to hospital, cachectic, or highly catabolic contexts. Short interventions and heterogeneous training protocols may also obscure very small benefits, but nothing in the current pooled literature suggests a robust effect.",
       "evidence": [
         {
           "citation": "Wang G et al 2026 Age Ageing",
@@ -35,10 +44,10 @@
           "notes": "Efficacy of HMB supplementation as an adjunct to resistance training in older adults: a comprehensive meta-analysis.",
           "effect_quant": {
             "metric": "SMD",
-            "value": 0.05,
-            "ci_low": -0.1,
-            "ci_high": 0.2,
-            "comparator": "HMB plus resistance training versus resistance training alone for muscle mass"
+            "value": 0.04,
+            "ci_low": -0.72,
+            "ci_high": 0.63,
+            "comparator": "HMB plus resistance training versus resistance training alone for strength"
           }
         },
         {
@@ -46,7 +55,7 @@
           "pmid": "32456217",
           "year": 2020,
           "study_type": "meta_analysis",
-          "n_participants": 302,
+          "n_participants": 248,
           "direction": "neutral",
           "quality": "high",
           "notes": "Supplementation with the Leucine Metabolite β-hydroxy-β-methylbutyrate (HMB) does not Improve Resistance Exercise-Induced Changes in Body Composition or Strength in Young Subjects: A Systematic Review and Meta-Analysis."

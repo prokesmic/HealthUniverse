@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "night_shift",
+      "name": "Night-shift work",
+      "kind": "behavior",
+      "aliases": [
+        "night work",
+        "overnight shift work"
+      ],
+      "description": "Occupational exposure to regular night-shift schedules, including fixed or rotating overnight work."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "night_shift",
+      "outcome_slug": "cvd",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across recent pooled cohort evidence, night-shift work is associated with a modest increase in cardiovascular events and an even clearer rise in cardiovascular mortality.",
+      "population": "adult workers exposed to recurrent night-shift schedules",
+      "mechanism": "Night-shift work pushes sleep, feeding, blood-pressure regulation, and autonomic tone out of alignment with the circadian clock. Over years of exposure, that combination plausibly raises atherosclerotic and hemodynamic risk even if the average individual effect remains modest.",
+      "summary": "This is one of the cleaner occupational-health risk edges in the graph. The newest dose-response meta-analysis found higher cardiovascular incidence and mortality with night-shift work, and earlier shift-work syntheses point in the same direction rather than canceling it out.",
+      "caveats": "Exposure definitions vary widely across studies and often bundle fixed nights with rotating schedules. That makes the exact effect size less certain than the direction, and some of the observed risk probably travels with sleep loss, stress, and job patterning rather than night work alone.",
+      "evidence": [
+        {
+          "citation": "Liu LL et al 2025 Front Public Health",
+          "pmid": "41069800",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "n_participants": 23,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between night shift work and cardiovascular disease: a systematic review and dose-response meta-analysis.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.13,
+            "ci_low": 1.1,
+            "ci_high": 1.16,
+            "comparator": "night-shift work versus lower or no night-shift exposure for total cardiovascular events"
+          }
+        },
+        {
+          "citation": "Torquati L et al 2018 Scand J Work Environ Health",
+          "pmid": "29247501",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 173010,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Shift work and the risk of cardiovascular disease. A systematic review and meta-analysis including dose-response relationship."
+        },
+        {
+          "citation": "Erdem JS et al 2025 Environ Res",
+          "pmid": "40164421",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "n_participants": 81,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Night shift work and indicators of cardiovascular risk: A systematic review and meta-analysis."
+        }
+      ]
+    }
+  ]
+}

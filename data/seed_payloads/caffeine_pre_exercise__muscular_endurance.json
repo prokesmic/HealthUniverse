@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "caffeine_pre_exercise",
+      "name": "Pre-exercise caffeine intake",
+      "kind": "supplement",
+      "aliases": [
+        "acute caffeine supplementation before exercise"
+      ],
+      "description": "Caffeine consumed before resistance exercise in ergogenic doses."
+    },
+    {
+      "slug": "muscular_endurance",
+      "name": "Muscular endurance",
+      "kind": "process",
+      "aliases": [
+        "strength-endurance performance"
+      ],
+      "description": "Capacity to sustain repeated resistance-exercise repetitions before fatigue."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "caffeine_pre_exercise",
+      "outcome_slug": "muscular_endurance",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Acute caffeine before lifting consistently improves repetition-based resistance-exercise endurance, with small but reproducible pooled effects.",
+      "population": "healthy adults performing resistance exercise",
+      "mechanism": "By reducing perceived exertion and central fatigue, caffeine helps people tolerate more repetitions before voluntary stopping point. That makes it especially plausible for set-to-failure or repetition-based endurance tasks, which is exactly where the literature tends to find the cleanest benefit.",
+      "summary": "The evidence for caffeine on muscular endurance is stronger than a lot of gym folklore but smaller than supplement marketing suggests. Across direct meta-analyses, pre-exercise caffeine reliably improves repetition-based resistance performance, usually by a modest margin rather than by a dramatic jump.",
+      "caveats": "The size of benefit depends on dose, exercise selection, and habitual caffeine exposure. Lower-body endurance effects can be less consistent than upper-body findings in some subgroup analyses.",
+      "evidence": [
+        {
+          "citation": "Ferreira TT et al 2021 Crit Rev Food Sci Nutr",
+          "pmid": "32551869",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "n_participants": 19,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of caffeine supplementation on muscle endurance, maximum strength, and perceived exertion in adults submitted to strength training: a systematic review and meta-analyses.",
+          "effect_quant": {
+            "metric": "MD",
+            "value": 0.87,
+            "ci_low": 0.33,
+            "ci_high": 1.41,
+            "comparator": "caffeine versus placebo for bench-press repetitions"
+          }
+        },
+        {
+          "citation": "Grgic J et al 2022 Nutrition",
+          "pmid": "35203046",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "n_participants": 12,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Exploring the minimum ergogenic dose of caffeine on resistance exercise performance: A meta-analytic approach.",
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.21,
+            "ci_low": 0.07,
+            "ci_high": 0.35,
+            "comparator": "0.9-2 mg/kg caffeine versus placebo"
+          }
+        },
+        {
+          "citation": "Grgic J et al 2021 Int J Environ Res Public Health",
+          "pmid": "34072182",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "n_participants": 8,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Ergogenic Effects of Acute Caffeine Intake on Muscular Endurance and Muscular Strength in Women: A Meta-Analysis.",
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.25,
+            "ci_low": 0.03,
+            "ci_high": 0.47,
+            "comparator": "acute caffeine versus placebo in women"
+          }
+        }
+      ]
+    }
+  ]
+}

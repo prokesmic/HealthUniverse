@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vitamin_d_early_life",
+      "outcome_slug": "asthma",
+      "direction": "neutral",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Across current randomized and broader early-life pooled evidence, vitamin D exposure in pregnancy or infancy does not show a reliable overall reduction in later asthma risk.",
+      "population": "children with prenatal or infant vitamin D exposure",
+      "mechanism": "Vitamin D influences immune maturation, airway development, and inflammatory signaling, which makes early-life exposure a plausible asthma-prevention candidate. Even so, human intervention and pooled observational data have not shown a durable, consistent preventive effect, suggesting the real effect is small or heavily context dependent.",
+      "summary": "The strongest reading is neutral. Early-life vitamin D is biologically relevant, but the current evidence base does not support it as a dependable way to prevent childhood asthma.",
+      "caveats": "This edge combines prenatal supplementation, infant supplementation, and broader early-life status because that is how much of the higher-level evidence is organized. It should be read as evidence against a strong overall preventive effect, not as proof that vitamin D timing or deficiency never matters in specific subgroups.",
+      "evidence": [
+        {
+          "citation": "Yin S et al 2025 World Allergy Organ J",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "The effects of prenatal vitamin D supplementation on respiratory and allergy-related outcomes in children: A systematic review and meta-analysis of randomized controlled trials.",
+          "pmid": "40535465",
+          "n_participants": 3958,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.95,
+            "ci_low": 0.69,
+            "ci_high": 1.31,
+            "comparator": "prenatal vitamin D supplementation versus control for childhood asthma"
+          }
+        },
+        {
+          "citation": "Luo C et al 2022 Chin Med J (Engl)",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Vitamin D supplementation in pregnant women or infants for preventing allergic diseases: a systematic review and meta-analysis of randomized controlled trials.",
+          "pmid": "35108226",
+          "n_participants": 7,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.0,
+            "ci_low": 0.7,
+            "ci_high": 1.43,
+            "comparator": "infant vitamin D supplementation versus control for later asthma or wheeze"
+          }
+        },
+        {
+          "citation": "Shen SY et al 2018 BMC Pulm Med",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Early life vitamin D status and asthma and wheeze: a systematic review and meta-analysis.",
+          "pmid": "30029599",
+          "n_participants": 1619
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vitamin_d_early_life",
+      "name": "Vitamin D exposure in early life",
+      "kind": "supplement",
+      "aliases": [
+        "prenatal or infant vitamin D supplementation",
+        "early-life vitamin D"
+      ],
+      "description": "Vitamin D status or supplementation during pregnancy, infancy, or the broader early-life period."
+    }
+  ]
+}

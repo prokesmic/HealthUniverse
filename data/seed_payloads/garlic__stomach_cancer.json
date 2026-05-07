@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "garlic",
+      "outcome_slug": "stomach_cancer",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Garlic and broader allium intake are repeatedly associated with lower stomach-cancer risk, but heterogeneity and case-control dominance keep the evidence below the most confident tier.",
+      "population": "general adults",
+      "mechanism": "Garlic contains organosulfur compounds that may inhibit nitrosamine formation, reduce oxidative damage, and interfere with Helicobacter-related carcinogenic pathways in gastric tissue. The biology is plausible, but exposure measurement is messy and much of the epidemiology relies on retrospective diet reporting.",
+      "summary": "The literature leans protective, especially at higher intake levels, but it is not as clean as the coffee-endometrial story. Multiple meta-analyses report lower stomach-cancer risk with garlic or allium consumption, yet the evidence base is heterogeneous enough that the claim should stay cautious.",
+      "caveats": "A large share of this literature is case-control, which raises the risk of recall and selection bias. Garlic is also often grouped with broader allium intake, so the isolated effect of garlic itself is not always easy to pin down.",
+      "evidence": [
+        {
+          "citation": "Turati F et al 2000 Am J Clin Nutr",
+          "year": 2000,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Garlic consumption and cancer prevention: meta-analyses of colorectal and stomach cancers.",
+          "pmid": "11010950",
+          "n_participants": 18,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.53,
+            "ci_low": 0.31,
+            "ci_high": 0.92,
+            "comparator": "higher versus lower raw/cooked garlic intake for stomach cancer"
+          }
+        },
+        {
+          "citation": "Zhou Y et al 2011 Gastroenterology",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Consumption of large amounts of Allium vegetables reduces risk for gastric cancer in a meta-analysis.",
+          "pmid": "21473867",
+          "n_participants": 543220,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.54,
+            "ci_low": 0.43,
+            "ci_high": 0.65,
+            "comparator": "highest versus lowest allium-vegetable consumption"
+          }
+        },
+        {
+          "citation": "Zhou Y et al 2015 Nutr Cancer",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Meta-analysis: Does garlic intake reduce risk of gastric cancer?",
+          "pmid": "25411831",
+          "n_participants": 23510,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.49,
+            "ci_low": 0.38,
+            "ci_high": 0.62,
+            "comparator": "high garlic intake versus low intake"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "garlic",
+      "name": "Garlic intake",
+      "kind": "food",
+      "aliases": [
+        "garlic consumption"
+      ],
+      "description": "Dietary intake of garlic as a food exposure."
+    }
+  ]
+}

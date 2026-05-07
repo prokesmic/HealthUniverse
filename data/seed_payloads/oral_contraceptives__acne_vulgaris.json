@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "acne_vulgaris",
+      "name": "Acne vulgaris",
+      "kind": "condition",
+      "aliases": [
+        "common acne"
+      ],
+      "description": "Inflammatory and comedonal acne vulgaris of mild-to-moderate severity."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "oral_contraceptives",
+      "outcome_slug": "acne_vulgaris",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Combined oral contraceptives reliably improve facial acne in women, with placebo-controlled trials showing fewer lesions and better global clearance ratings over time.",
+      "population": "adolescent and adult women using combined oral contraceptives for acne treatment",
+      "mechanism": "Combined oral contraceptives lower free-androgen signaling and reduce sebaceous drive, which directly targets one of the core hormonal pathways that worsens acne in many women. That makes the benefit more mechanistically coherent than a generic anti-inflammatory effect.",
+      "summary": "This edge is sturdier than many people realize. The Cochrane review of randomized trials showed that multiple combined oral contraceptives outperform placebo for acne, and later comparative meta-analysis suggested they can close much of the gap with oral antibiotics by six months.",
+      "caveats": "This is a women-specific treatment edge, not a universal acne intervention. Different formulations do not all perform identically, and contraceptive risks and preferences matter when translating efficacy into actual treatment choice.",
+      "evidence": [
+        {
+          "citation": "Arowojolu AO et al 2012 Cochrane Database Syst Rev",
+          "pmid": "22786490",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "n_participants": 12579,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Combined oral contraceptive pills for treatment of acne.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 3.02,
+            "ci_low": 1.99,
+            "ci_high": 4.59,
+            "comparator": "clear or almost clear skin with drospirenone-containing combined oral contraceptives versus placebo"
+          }
+        },
+        {
+          "citation": "Koo EB et al 2014 J Am Acad Dermatol",
+          "pmid": "24880665",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "n_participants": 32,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Meta-analysis comparing efficacy of antibiotics versus oral contraceptives in acne vulgaris."
+        },
+        {
+          "citation": "Daly CH et al 2022 Br J Dermatol",
+          "pmid": "35789996",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "n_participants": 35000,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A systematic review and network meta-analysis of topical pharmacological, oral pharmacological, physical and combined treatments for acne vulgaris."
+        }
+      ]
+    }
+  ]
+}

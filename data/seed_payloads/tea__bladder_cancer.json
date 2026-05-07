@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tea",
+      "name": "Tea consumption",
+      "kind": "food",
+      "aliases": [
+        "black, green, oolong, or mate tea intake"
+      ],
+      "description": "Habitual consumption of non-herbal tea beverages."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tea",
+      "outcome_slug": "bladder_cancer",
+      "direction": "neutral",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The broad bladder-cancer literature on tea is mostly close to null, though some newer prospective syntheses suggest a very small downward dose-response signal.",
+      "population": "general adults",
+      "mechanism": "Tea polyphenols and catechins could plausibly affect urothelial oxidative stress and carcinogen metabolism, but any true effect appears weak at population level. The lack of a strong consistent epidemiologic signal suggests that beverage subtype, smoking, and other lifestyle confounding matter more than a simple universal tea effect.",
+      "summary": "The most boring conclusion is the right one here: tea does not show a robust bladder-cancer signal. A dose-response bladder-specific meta-analysis was essentially neutral, while broader prospective syntheses hint at a slight protective association that is too small and inconsistent to justify a stronger claim.",
+      "caveats": "This edge pools different tea subtypes and populations, which likely dilutes any beverage-specific effect. Smoking remains the dominant bladder-cancer confounder in this literature and makes tiny associations hard to interpret confidently.",
+      "evidence": [
+        {
+          "citation": "Weng H et al 2016 Front Physiol",
+          "pmid": "28167914",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "n_participants": 489514,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Tea Consumption and Risk of Bladder Cancer: A Dose-Response Meta-Analysis."
+        },
+        {
+          "citation": "Zhang YF et al 2015 Eur J Cancer Prev",
+          "pmid": "25370683",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "n_participants": 49812,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Tea consumption and the incidence of cancer: a systematic review and meta-analysis of prospective observational studies."
+        },
+        {
+          "citation": "Jin D et al 2023 Front Nutr",
+          "pmid": "37266130",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "n_participants": 73,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Food groups and urologic cancers risk: a systematic review and meta-analysis of prospective studies."
+        }
+      ]
+    }
+  ]
+}

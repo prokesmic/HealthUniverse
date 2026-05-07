@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "night_shift",
+      "outcome_slug": "breast_cancer",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The best pooled evidence suggests a small upward shift in breast-cancer risk with sustained night-shift exposure, with longer duration looking more concerning than short exposure.",
+      "population": "adult women exposed to night-shift work",
+      "mechanism": "Night-shift schedules can suppress melatonin, disrupt circadian regulation, and disturb sleep and metabolic timing in ways that plausibly affect hormone-responsive breast tissue. The biologic rationale is credible, but the observed epidemiologic effect is modest and not perfectly consistent across study designs.",
+      "summary": "The strongest evidence comes from the large prospective-cohort meta-analysis showing a small overall increase in breast-cancer incidence and a clearer signal after long-duration exposure. Other pooled studies generally point in the same direction, though not all subsets are equally convincing, so the best summary is modest harm rather than a large effect.",
+      "caveats": "Exposure definitions vary widely across this literature, from rotating shifts to cumulative years of night work. That heterogeneity, plus healthy-worker effects and confounding by occupation, makes the magnitude less certain than the direction.",
+      "evidence": [
+        {
+          "citation": "Wei F et al 2022 Sleep Breath",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Night-shift work, breast cancer incidence, and all-cause mortality: an updated meta-analysis of prospective cohort studies.",
+          "pmid": "34775538",
+          "n_participants": 9300000,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.029,
+            "ci_low": 1.003,
+            "ci_high": 1.055,
+            "comparator": "greater night-shift exposure versus standard day work"
+          }
+        },
+        {
+          "citation": "Van NTH et al 2021 Sleep Med Rev",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Night shift work and breast cancer risk: a meta-analysis of observational epidemiological studies.",
+          "pmid": "34409980",
+          "n_participants": 32,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.11,
+            "ci_low": 1.04,
+            "ci_high": 1.2,
+            "comparator": "night-shift work versus no night-shift work"
+          }
+        },
+        {
+          "citation": "Manouchehri E et al 2021 Sleep Med",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Night-shift work duration and breast cancer risk: an updated systematic review and meta-analysis.",
+          "pmid": "33653334",
+          "n_participants": 1313348,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.13,
+            "ci_low": 1.03,
+            "ci_high": 1.24,
+            "comparator": "short-term night-shift work versus no night-shift work"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "night_shift",
+      "name": "Night-shift work",
+      "kind": "behavior",
+      "aliases": [
+        "night work",
+        "overnight shift work"
+      ],
+      "description": "Occupational exposure to regular night-shift schedules, including fixed or rotating overnight work."
+    }
+  ]
+}
