@@ -11,10 +11,34 @@ EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 RATE_LIMIT_S = 0.4
 
 
-def search(term: str, *, days_back: int = 1, retmax: int = 50) -> list[str]:
-    """Search PubMed and return PMIDs (newest first). days_back=1 = today."""
+# PubMed publication-type filter applied to every search by default.
+# Drops opinion pieces, animal-only studies, in-vitro work, comments,
+# and letters at the source — Gemma never burns a call on noise.
+QUALITY_FILTER = (
+    "AND ("
+    "\"meta-analysis\"[Publication Type] OR "
+    "\"systematic review\"[Publication Type] OR "
+    "\"randomized controlled trial\"[Publication Type] OR "
+    "\"clinical trial\"[Publication Type] OR "
+    "\"observational study\"[Publication Type] OR "
+    "\"cohort studies\"[MeSH Terms] OR "
+    "\"case-control studies\"[MeSH Terms]"
+    ") AND humans[Filter] NOT (review[Publication Type] NOT "
+    "(\"meta-analysis\"[Publication Type] OR \"systematic review\"[Publication Type]))"
+)
+
+
+def search(term: str, *, days_back: int = 1, retmax: int = 50,
+           quality_filter: bool = True) -> list[str]:
+    """Search PubMed and return PMIDs (newest first).
+
+    `quality_filter=True` (default) applies QUALITY_FILTER so Gemma sees
+    only high-evidence publication types restricted to humans. Set False
+    for manual diagnostic searches that need raw breadth.
+    """
+    full_term = f"({term}) {QUALITY_FILTER}" if quality_filter else term
     params = {
-        "db": "pubmed", "term": term, "retmax": retmax, "retmode": "json",
+        "db": "pubmed", "term": full_term, "retmax": retmax, "retmode": "json",
         "sort": "date", "reldate": days_back, "datetype": "edat",
     }
     with httpx.Client(timeout=30.0) as c:
