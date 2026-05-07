@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "green_tea",
+      "outcome_slug": "breast_cancer",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The observational literature suggests a modest inverse association between green-tea intake and breast-cancer risk, but the effect is small and not perfectly consistent across study designs.",
+      "population": "adult women",
+      "mechanism": "Green tea contains catechins such as EGCG that may influence oxidative stress, estrogen-related signaling, and tumor-cell proliferation. Those mechanisms are biologically plausible, but the human evidence remains observational and can be confounded by broader dietary and lifestyle patterns.",
+      "summary": "The safest summary is that green tea may modestly lower breast-cancer risk, but this is not one of the strongest diet-cancer relationships in the graph. Meta-analyses usually lean protective, yet the effect is small and some broader dietary reviews do not find a clear standalone signal for green tea once other factors are considered.",
+      "caveats": "Most of this evidence is observational and a meaningful portion comes from case-control or region-specific studies, which can inflate apparent benefit. This edge should be read as a possible low-risk protective signal, not a high-certainty prevention strategy on its own.",
+      "evidence": [
+        {
+          "citation": "Wang Y et al 2020 Int J Food Sci Nutr",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A dose-response meta-analysis of green tea consumption and breast cancer risk.",
+          "pmid": "31959020",
+          "n_participants": 16,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.86,
+            "ci_low": 0.75,
+            "ci_high": 0.99,
+            "comparator": "highest versus lowest green-tea consumption"
+          }
+        },
+        {
+          "citation": "Gianfredi V et al 2018 Nutrients",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Green Tea Consumption and Risk of Breast Cancer and Recurrence-A Systematic Review and Meta-Analysis of Observational Studies.",
+          "pmid": "30513889",
+          "n_participants": 163810,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.85,
+            "ci_low": 0.8,
+            "ci_high": 0.92,
+            "comparator": "regular green-tea consumption versus lower or no consumption"
+          }
+        },
+        {
+          "citation": "Shin S et al 2023 Clin Nutr",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Association of food groups and dietary pattern with breast cancer risk: A systematic review and meta-analysis.",
+          "pmid": "36731160",
+          "n_participants": 49
+        }
+      ]
+    }
+  ]
+}

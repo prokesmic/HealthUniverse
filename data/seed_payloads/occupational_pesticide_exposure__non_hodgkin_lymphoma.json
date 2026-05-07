@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "occupational_pesticide_exposure",
+      "outcome_slug": "non_hodgkin_lymphoma",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The occupational pesticide literature generally points toward a modest increase in non-Hodgkin lymphoma risk, although the estimated size depends on which pesticides and exposure-assessment methods are used.",
+      "population": "occupationally exposed adults",
+      "mechanism": "Repeated pesticide exposure can plausibly influence lymphoid malignancy risk through genotoxic, immunotoxic, and chronic inflammatory pathways. The signal is not uniform across all compounds, but the broader occupational pattern is consistent enough to classify as harmful.",
+      "summary": "The broad occupational meta-analysis found increased lymphoma risk across several exposure categories, and pesticide-focused meta-analytic work keeps non-Hodgkin lymphoma on the concerning side of the ledger. Large agricultural pooled analyses do not make this a dramatic effect, but they do support treating occupational pesticide exposure as a real NHL risk factor rather than a null association.",
+      "caveats": "This edge bundles many pesticide classes together, and the risk is unlikely to be identical across herbicides, insecticides, and specific active ingredients. Exposure misclassification is still a major limitation in occupational cohorts and case-control studies.",
+      "evidence": [
+        {
+          "citation": "Francisco LFV et al 2023 Cancers",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Occupational Exposures and Risks of Non-Hodgkin Lymphoma: A Meta-Analysis.",
+          "pmid": "37174074",
+          "n_participants": 1
+        },
+        {
+          "citation": "Cherrie JW et al 2022 Occup Environ Med",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Impact of occupational pesticide exposure assessment method on risk estimates for prostate cancer, non-Hodgkin's lymphoma and Parkinson's disease: results of three meta-analyses.",
+          "pmid": "35393289",
+          "n_participants": 1
+        },
+        {
+          "citation": "Leon ME et al 2019 Int J Epidemiol",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Pesticide use and risk of non-Hodgkin lymphoid malignancies in agricultural cohorts from France, Norway and the USA: a pooled analysis from the AGRICOH consortium.",
+          "pmid": "30880337",
+          "n_participants": 316270
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "occupational_pesticide_exposure",
+      "name": "Occupational pesticide exposure",
+      "kind": "environmental",
+      "aliases": [
+        "workplace pesticide exposure"
+      ],
+      "description": "Repeated occupational exposure to pesticides during mixing, spraying, handling, or field work."
+    }
+  ]
+}

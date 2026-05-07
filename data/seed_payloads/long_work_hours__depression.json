@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "long_work_hours",
+      "name": "Long working hours",
+      "kind": "behavior",
+      "aliases": [
+        "overtime work",
+        "extended weekly work hours"
+      ],
+      "description": "Occupational exposure to persistently long work schedules or high overtime hours."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "long_work_hours",
+      "outcome_slug": "depression",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "The long-hours and depression literature is suggestive but not convincing: pooled odds ratios hover just above 1, and the best WHO/ILO review concluded the evidence is inadequate to infer harmfulness.",
+      "population": "working-age adults exposed to prolonged weekly work hours",
+      "mechanism": "Working very long hours can erode recovery time, worsen sleep, and intensify psychosocial strain, all of which plausibly push depression risk upward. The problem is that the measured effect is small and highly vulnerable to bias and confounding.",
+      "summary": "The most conservative reading is the correct one here. There are hints that long hours may increase depressive episodes, but the largest recent review concluded that the available evidence is insufficient to establish harmfulness, and the broader causal review reached the same skeptical bottom line.",
+      "caveats": "Depression measurement varies widely across this literature, and many studies are vulnerable to common-method bias, residual confounding, and missed episodes between assessments. This edge belongs in the 'uncertain but worth watching' bucket rather than the settled-harm bucket.",
+      "evidence": [
+        {
+          "citation": "Rugulies Reiner et al 2021 Environ Int",
+          "pmid": "34144478",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "n_participants": 91142,
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "The effect of exposure to long working hours on depression: A systematic review and meta-analysis from the WHO/ILO Joint Estimates of the Work-related Burden of Disease and Injury.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.08,
+            "ci_low": 0.94,
+            "ci_high": 1.24,
+            "comparator": "working at least 55 hours/week versus 35 to 40 hours/week for incident depression"
+          }
+        },
+        {
+          "citation": "Mikkelsen Sigurd et al 2021 Eur J Epidemiol",
+          "pmid": "33580479",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "n_participants": 54,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Are depressive disorders caused by psychosocial stressors at work? A systematic review with metaanalysis."
+        },
+        {
+          "citation": "Niedhammer Isabelle et al 2021 Scand J Work Environ Health",
+          "pmid": "34042163",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "n_participants": 72,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Psychosocial work exposures and health outcomes: a meta-review of 72 literature reviews with meta-analysis."
+        }
+      ]
+    }
+  ]
+}

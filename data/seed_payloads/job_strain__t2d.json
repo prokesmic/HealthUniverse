@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "job_strain",
+      "outcome_slug": "t2d",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Prospective occupational syntheses suggest that sustained job strain is associated with a modest increase in type 2 diabetes risk, with some analyses showing a stronger effect in women.",
+      "population": "working-age adults",
+      "mechanism": "Chronic job strain can disrupt sleep, increase stress-hormone signaling, worsen blood-pressure and glucose regulation, and reinforce adverse coping behaviors. That gives a plausible path from psychosocial work stress to long-term insulin resistance and diabetes risk.",
+      "summary": "The clearest evidence comes from the recent prospective meta-analyses, both of which found that workers with high job strain had a higher risk of developing type 2 diabetes than workers without that pattern. Cohort evidence on changing work stressors points in the same direction, so the conservative conclusion is modest harm rather than a null association.",
+      "caveats": "Work stress overlaps with socioeconomic status, shift schedules, sleep loss, and baseline adiposity, so the effect is not perfectly isolated. This edge should be interpreted as a risk amplifier, not as a stand-alone explanation for diabetes onset.",
+      "evidence": [
+        {
+          "citation": "Pena-Gralle APB et al 2022 Scand J Work Environ Health",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Job strain and effort-reward imbalance as risk factors for type 2 diabetes mellitus: A systematic review and meta-analysis of prospective studies.",
+          "pmid": "34582561",
+          "n_participants": 1
+        },
+        {
+          "citation": "Wang Dongming et al 2021 Scand J Work Environ Health",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Is job strain associated with a higher risk of type 2 diabetes mellitus? A systematic review and meta-analysis of prospective cohort studies.",
+          "pmid": "33404062",
+          "n_participants": 210939,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.16,
+            "ci_low": 1.03,
+            "ci_high": 1.31,
+            "comparator": "high job strain versus no job strain"
+          }
+        },
+        {
+          "citation": "Lian Yulong et al 2018 Diabetes Care",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Effect of Changing Work Stressors and Coping Resources on the Risk of Type 2 Diabetes: The OHSPIW Cohort Study.",
+          "pmid": "29255061",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "job_strain",
+      "name": "Job strain",
+      "kind": "behavior",
+      "aliases": [
+        "high-demand low-control work",
+        "occupational job strain"
+      ],
+      "description": "A psychosocial work pattern marked by high demands and low decision latitude."
+    }
+  ]
+}

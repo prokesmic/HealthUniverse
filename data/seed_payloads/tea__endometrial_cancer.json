@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "tea",
+      "outcome_slug": "endometrial_cancer",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Tea-related endometrial-cancer syntheses suggest a modest protective association, with the clearer signal appearing for green tea rather than black tea.",
+      "population": "adult women",
+      "mechanism": "Tea polyphenols, especially in green tea, may influence oxidative stress, insulin signaling, and estrogen-related pathways that are relevant to endometrial carcinogenesis. That biology fits a small protective effect, though not a large or universal one.",
+      "summary": "The best direct meta-analyses suggest that tea consumption is associated with slightly lower endometrial-cancer risk, with the green-tea signal appearing stronger than the black-tea signal. Broader gynecologic-cancer syntheses point in the same direction, so the most boring honest claim is modest possible benefit rather than strong certainty.",
+      "caveats": "Most evidence is observational and may be confounded by broader dietary and lifestyle patterns. Because the signal differs by tea type, this edge should not be read as proof that all tea drinking has the same endometrial-cancer effect.",
+      "evidence": [
+        {
+          "citation": "Zheng Fang et al 2023 Nutrients",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Association between Different Types of Tea Consumption and Risk of Gynecologic Cancer: A Meta-Analysis of Cohort Studies.",
+          "pmid": "36678274",
+          "n_participants": 1
+        },
+        {
+          "citation": "Zhou JG et al 2016 Arch Gynecol Obstet",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Green tea, black tea consumption and risk of endometrial cancer: a systematic review and meta-analysis.",
+          "pmid": "26138307",
+          "n_participants": 1,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.78,
+            "ci_low": 0.66,
+            "ci_high": 0.92,
+            "comparator": "highest versus lowest green tea consumption"
+          }
+        },
+        {
+          "citation": "Park Taeyoung et al 2015 Nutr Cancer",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Tea Consumption and Endometrial Cancer Risk: Meta-Analysis of Prospective Cohort Studies.",
+          "pmid": "25996185",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "tea",
+      "name": "Tea consumption",
+      "kind": "food",
+      "aliases": [
+        "tea intake"
+      ],
+      "description": "Habitual consumption of tea as a beverage across different tea types."
+    }
+  ]
+}

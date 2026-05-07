@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "vitamin_d_early_life",
+      "name": "Early-life vitamin D exposure",
+      "kind": "supplement",
+      "aliases": [
+        "prenatal or infant vitamin D supplementation",
+        "early vitamin D status"
+      ],
+      "description": "Vitamin D supplementation or status during pregnancy, infancy, or very early childhood."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "vitamin_d_early_life",
+      "outcome_slug": "allergic_disease",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The early-life vitamin D literature is mostly a null or selective-signal story: little consistent effect on the overall allergic-disease bundle, with some narrower hints for reduced wheeze or eczema in specific contexts.",
+      "population": "pregnant women, infants, and children exposed to higher vitamin D intake or status early in life",
+      "mechanism": "Vitamin D shapes epithelial barrier function and immune differentiation, so a prevention signal is biologically plausible. The problem is that human studies do not translate that plausibility into a strong, broad reduction in allergic outcomes.",
+      "summary": "This edge should not be oversold. The most current syntheses show little consistent effect of early-life vitamin D on the broad allergic-disease package, although some sub-analyses hint at lower wheeze or eczema risk in narrower settings.",
+      "caveats": "This is a heterogeneous literature mixing prenatal supplementation, infant supplementation, cord-blood status, and dietary intake. Those are not interchangeable exposures, so a broad null-to-mixed label is more defensible than a confident protective claim.",
+      "evidence": [
+        {
+          "citation": "Zeng R et al 2023 Clin Exp Allergy",
+          "pmid": "36648071",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "n_participants": 43,
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Is antenatal or early-life vitamin D associated with eczema or food allergy in childhood? A systematic review."
+        },
+        {
+          "citation": "Wang S et al 2024 Adv Nutr",
+          "pmid": "37827490",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "n_participants": 2000,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Effects of Early Diet on the Prevalence of Allergic Disease in Children: A Systematic Review and Meta-Analysis."
+        },
+        {
+          "citation": "Venter C et al 2020 Pediatr Allergy Immunol",
+          "pmid": "32524677",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "n_participants": 95,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Dietary factors during pregnancy and atopic outcomes in childhood: A systematic review from the European Academy of Allergy and Clinical Immunology.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.72,
+            "ci_low": 0.56,
+            "ci_high": 0.92,
+            "comparator": "prenatal vitamin D supplementation versus control for wheeze or asthma in offspring"
+          }
+        }
+      ]
+    }
+  ]
+}

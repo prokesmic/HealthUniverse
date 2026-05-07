@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "long_work_hours",
+      "name": "Long working hours",
+      "kind": "behavior",
+      "aliases": [
+        "overtime work",
+        "extended weekly work hours"
+      ],
+      "description": "Occupational exposure to persistently long work schedules or high overtime hours."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "long_work_hours",
+      "outcome_slug": "hypertension",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "The overall hypertension signal for long work hours is inconsistent: pooled data are near-null overall, though some subgroup analyses, especially in women, point upward.",
+      "population": "working adults exposed to extended work hours or overtime",
+      "mechanism": "Long work hours can worsen stress physiology, sleep, and recovery time in ways that plausibly raise blood pressure. At the same time, healthy-worker selection and occupation-specific differences can distort cross-sectional findings and even reverse the observed association.",
+      "summary": "This edge is a good example of why not every plausible occupational risk gets a clean directional label. The newest meta-analysis was near-null overall for hypertension, an umbrella review rated the broader evidence as unclear, and one large Japanese overtime study even found an inverse cross-sectional association.",
+      "caveats": "Cross-sectional designs and healthy-worker bias matter a lot here, because workers able to sustain the longest hours may differ systematically from those who cannot. The safest framing is mixed evidence with possible subgroup risk rather than a settled harmful effect.",
+      "evidence": [
+        {
+          "citation": "Song JH et al 2024 J Epidemiol Community Health",
+          "pmid": "38448227",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "n_participants": 15,
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Systematic review and meta-analysis of the association between long working hours and hypertension risk.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.09,
+            "ci_low": 0.88,
+            "ci_high": 1.35,
+            "comparator": "long working hours versus non-long working hours for hypertension"
+          }
+        },
+        {
+          "citation": "O'Dwyer LC et al 2020 PLoS One",
+          "pmid": "32240254",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "n_participants": 48,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Shift work and long work hours and their association with chronic health conditions: A systematic review of systematic reviews with meta-analyses."
+        },
+        {
+          "citation": "Imai Teppei et al 2014 Chronobiol Int",
+          "pmid": "25229210",
+          "year": 2014,
+          "study_type": "cross_sectional",
+          "n_participants": 52365,
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Association of overtime work and hypertension in a Japanese working population: a cross-sectional study.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.58,
+            "ci_low": 0.44,
+            "ci_high": 0.76,
+            "comparator": "at least 100 hours/month overtime versus less than 45 hours/month for prevalent hypertension"
+          }
+        }
+      ]
+    }
+  ]
+}

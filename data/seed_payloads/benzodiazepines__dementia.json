@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "benzodiazepines",
+      "outcome_slug": "dementia",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The dementia signal around chronic benzodiazepine use is real enough to keep resurfacing in meta-analyses, but the effect estimates are small and causality remains entangled with the insomnia, anxiety, and prodromal symptoms that often precede diagnosis.",
+      "population": "older adults with chronic or repeated benzodiazepine exposure",
+      "mechanism": "Benzodiazepines can impair memory consolidation and cognitive performance acutely, so a long-term harm hypothesis is biologically plausible. The central problem is that the same symptoms that trigger prescribing can also be early manifestations of dementia itself.",
+      "summary": "This is not a clean yes-or-no edge. A newer broad meta-analysis still found a statistically significant dementia association, but the dedicated chronic-use meta-analysis dropped below significance and the review-of-reviews literature keeps returning to the same warning: the association may be real, yet reverse causation is difficult to rule out.",
+      "caveats": "Confounding by indication is the heart of this literature. People prescribed benzodiazepines often already have sleep and anxiety symptoms that can be part of dementia's prodrome, so this edge should be interpreted as a live risk signal rather than settled causality.",
+      "evidence": [
+        {
+          "citation": "Ebrahimi MJ et al 2025 Mol Neurobiol",
+          "pmid": "40108057",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "n_participants": 2953980,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Use of Drugs Affecting GABAA Receptors and the Risk of Developing Alzheimer's Disease and Dementia: a Meta-Analysis and Literature Review.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.11,
+            "ci_low": 1.04,
+            "ci_high": 1.18,
+            "comparator": "benzodiazepine use versus non-use for dementia risk"
+          }
+        },
+        {
+          "citation": "Erazo JM et al 2025 Harv Rev Psychiatry",
+          "pmid": "39761441",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "n_participants": 5,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Chronic Use of Benzodiazepine in Older Adults and Its Relationship with Dementia: A Systematic Review and Meta-Analysis.",
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.17,
+            "ci_low": 0.96,
+            "ci_high": 1.43,
+            "comparator": "chronic benzodiazepine use versus non-use for dementia without specification of cause"
+          }
+        },
+        {
+          "citation": "Ferreira AR et al 2022 Eur Geriatr Med",
+          "pmid": "34403113",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "n_participants": 15,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Is there a link between the use of benzodiazepines and related drugs and dementia? A systematic review of reviews."
+        }
+      ]
+    }
+  ]
+}

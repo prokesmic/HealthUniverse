@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "coffee",
+      "outcome_slug": "prostate_cancer_mortality",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Coffee looks more promising for fatal prostate-cancer outcomes than for total prostate-cancer incidence, with dose-response syntheses suggesting a modest downward association.",
+      "population": "adult men with habitual coffee consumption",
+      "mechanism": "Coffee may influence insulin signaling, inflammation, and tumor-metabolic pathways in ways that matter more for progression and lethal disease than for initial diagnosis. That progression-focused mechanism fits the epidemiology better than a broad incidence-prevention story.",
+      "summary": "If coffee has a meaningful prostate-cancer signal, it probably shows up here rather than in total incidence. The strongest anchor is the dose-response meta-analysis linking higher intake to lower fatal prostate-cancer risk, and later cohort-only syntheses generally point the same way even when the overall disease picture stays mixed.",
+      "caveats": "Most of the evidence is observational and some analyses derive the mortality conclusion from subgroups rather than from a dedicated mortality-only literature. This is enough for a cautious protective edge, but not for a strong prevention claim.",
+      "evidence": [
+        {
+          "citation": "Discacciati A et al 2014 Ann Oncol",
+          "pmid": "24276028",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "n_participants": 8,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Coffee consumption and risk of nonaggressive, aggressive and fatal prostate cancer--a dose-response meta-analysis.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.89,
+            "ci_low": 0.82,
+            "ci_high": 0.97,
+            "comparator": "fatal prostate cancer risk per 3 cups/day increment in coffee consumption"
+          }
+        },
+        {
+          "citation": "Huang TB et al 2014 Int Urol Nephrol",
+          "pmid": "24677003",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "n_participants": 13,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Coffee consumption and urologic cancer risk: a meta-analysis of cohort studies."
+        },
+        {
+          "citation": "Huang TB et al 2015 Nutr Cancer",
+          "pmid": "25706900",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "n_participants": 539577,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Coffee consumption and prostate cancer risk: a meta-analysis of cohort studies.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.76,
+            "ci_low": 0.55,
+            "ci_high": 1.06,
+            "comparator": "fatal prostate cancer for highest versus lowest coffee intake"
+          }
+        }
+      ]
+    }
+  ]
+}

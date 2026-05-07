@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "dairy_milk",
+      "outcome_slug": "acne_vulgaris",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Milk intake is associated with higher odds of acne in pooled observational studies, especially for skim or low-fat milk, but the literature cannot cleanly separate biology from lifestyle clustering.",
+      "population": "children, adolescents, and young adults",
+      "mechanism": "Milk can increase insulin and IGF-1 signaling and may influence sebaceous activity and keratinocyte proliferation, which provides a plausible route to acne worsening. The skim-milk signal seen repeatedly in observational data may reflect processing, intake patterns, or residual confounding rather than a simple fat-content story.",
+      "summary": "This is an association worth knowing but not overreading. Across observational meta-analyses, milk intake tends to track with higher acne prevalence, yet the evidence remains non-randomized and vulnerable to confounding by broader Western dietary patterns.",
+      "caveats": "All major syntheses here are observational, so causality is not established. Recall bias, diet clustering, and reverse causality are all real possibilities, especially in self-reported acne cohorts.",
+      "evidence": [
+        {
+          "citation": "Juhl CR et al 2018 J Eur Acad Dermatol Venereol",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The effect of milk consumption on acne: a meta-analysis of observational studies.",
+          "pmid": "30079512",
+          "n_participants": 71819,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.16,
+            "ci_low": 1.09,
+            "ci_high": 1.24,
+            "comparator": "overall milk consumers versus non-consumers"
+          }
+        },
+        {
+          "citation": "Aghasi M et al 2019 Clin Nutr",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Dairy intake and acne development: A meta-analysis of observational studies.",
+          "pmid": "29778512",
+          "n_participants": 14,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.48,
+            "ci_low": 1.31,
+            "ci_high": 1.66,
+            "comparator": "total milk highest versus lowest intake"
+          }
+        },
+        {
+          "citation": "Ulvestad M et al 2018 Nutrients",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Dairy Intake and Acne Vulgaris: A Systematic Review and Meta-Analysis of 78,529 Children, Adolescents, and Young Adults.",
+          "pmid": "30096883",
+          "n_participants": 78529,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.28,
+            "ci_low": 1.13,
+            "ci_high": 1.44,
+            "comparator": "any milk versus no intake"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "acne_vulgaris",
+      "name": "Acne vulgaris",
+      "kind": "condition",
+      "aliases": [
+        "common acne"
+      ],
+      "description": "Inflammatory and comedonal acne vulgaris of mild-to-moderate severity."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "iron_deficiency",
+      "name": "Iron deficiency",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Low iron status with or without overt anaemia."
+    },
+    {
+      "slug": "fatigue",
+      "name": "Fatigue",
+      "kind": "condition",
+      "aliases": [
+        "tiredness",
+        "low energy"
+      ],
+      "description": "Subjective fatigue or reduced energy in daily life or physical functioning."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "iron_deficiency",
+      "outcome_slug": "fatigue",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across randomized evidence in non-anaemic iron deficiency, iron repletion improves fatigue scores, supporting iron deficiency itself as a real contributor to fatigue symptoms.",
+      "population": "iron-deficient adults, especially non-anaemic adults",
+      "mechanism": "Iron deficiency can impair oxygen handling, mitochondrial energy metabolism, and skeletal-muscle function even before frank anaemia develops. That makes fatigue one of the most plausible and clinically recognizable consequences of low iron status.",
+      "summary": "This edge is stronger than the common assumption that iron only matters once anaemia is obvious. Randomized and Cochrane-style evidence in non-anaemic iron deficiency shows that restoring iron can improve fatigue and related functional outcomes, which supports a genuine harmful link between low iron status and low-energy symptoms.",
+      "caveats": "The evidence is strongest in selected iron-deficient groups rather than in the general population with nonspecific tiredness. Fatigue is also multifactorial, so iron deficiency should be treated as one important contributor, not as the explanation for every low-energy presentation.",
+      "evidence": [
+        {
+          "citation": "Houston BL et al 2018 BMJ Open",
+          "pmid": "29626044",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 1170,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Efficacy of iron supplementation on fatigue and physical capacity in non-anaemic iron-deficient adults: a systematic review of randomised controlled trials."
+        },
+        {
+          "citation": "Miles LF et al 2019 Cochrane Database Syst Rev",
+          "pmid": "31860749",
+          "year": 2019,
+          "study_type": "systematic_review",
+          "n_participants": 11,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Intravenous iron therapy for non-anaemic, iron-deficient adults."
+        },
+        {
+          "citation": "Dugan C et al 2022 J Cachexia Sarcopenia Muscle",
+          "pmid": "36321348",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "n_participants": 3514,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Systematic review and meta-analysis of intravenous iron therapy for adults with non-anaemic iron deficiency: An abridged Cochrane review."
+        }
+      ]
+    }
+  ]
+}

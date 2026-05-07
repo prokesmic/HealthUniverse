@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "beetroot_nitrate",
+      "outcome_slug": "time_trial_performance",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The average gain in time-trial performance is small, but repeated meta-analyses show that nitrate-rich beetroot can nudge endurance outcomes in the right direction, particularly with chronic loading.",
+      "population": "healthy adults and trained athletes",
+      "mechanism": "Beetroot-derived nitrate boosts nitric-oxide availability, which can lower the oxygen cost of submaximal work and improve muscle perfusion under high demand. The edge is more about efficiency and fatigue resistance than about producing a large jump in maximal power.",
+      "summary": "The cleanest claim is that nitrate-rich beetroot offers a modest performance edge rather than a universal breakthrough. Reviews that isolate time-trial style outcomes usually find either a trivial positive effect overall or a clearer benefit when supplementation is repeated over several days instead of taken once.",
+      "caveats": "Effects are inconsistent in women and may shrink in highly trained athletes with already efficient nitrate handling. Mouthwash use, background diet, and whether the intervention is acute or chronic can all dilute the signal.",
+      "evidence": [
+        {
+          "citation": "Braakhuis AJ et al 2021 J Int Soc Sports Nutr",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of food sources of nitrate, polyphenols, L-arginine and L-citrulline on endurance exercise performance: a systematic review and meta-analysis of randomised controlled trials.",
+          "pmid": "34965876",
+          "n_participants": 56,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.15,
+            "ci_low": 0.08,
+            "ci_high": 0.22,
+            "comparator": "nitrate-rich food sources versus placebo"
+          }
+        },
+        {
+          "citation": "Senefeld JW et al 2022 J Exerc Sci Fit",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The effects of nitrate ingestion on high-intensity endurance time-trial performance: A systematic review and meta-analysis.",
+          "pmid": "35892115",
+          "n_participants": 24,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.15,
+            "ci_low": 0.00,
+            "ci_high": 0.31,
+            "comparator": "all nitrate interventions versus placebo in 5 to 30 min time trials"
+          }
+        },
+        {
+          "citation": "McMahon NF et al 2017 Sports Med",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "The Effect of Dietary Nitrate Supplementation on Endurance Exercise Performance in Healthy Adults: A Systematic Review and Meta-Analysis.",
+          "pmid": "27600147",
+          "n_participants": 76,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -0.10,
+            "ci_low": -0.27,
+            "ci_high": 0.06,
+            "comparator": "dietary nitrate supplementation versus placebo for pooled endurance performance"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "beetroot_nitrate",
+      "name": "Beetroot nitrate supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "beetroot juice nitrate"
+      ],
+      "description": "Dietary nitrate delivered through beetroot juice or related beetroot nitrate products."
+    },
+    {
+      "slug": "time_trial_performance",
+      "name": "Time-trial performance",
+      "kind": "process",
+      "aliases": [
+        "endurance time-trial performance"
+      ],
+      "description": "Performance in endurance time-trial tasks where finishing time or total work is measured."
+    }
+  ]
+}

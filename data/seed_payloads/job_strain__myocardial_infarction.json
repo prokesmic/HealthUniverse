@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "job_strain",
+      "outcome_slug": "myocardial_infarction",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Large pooled occupational datasets suggest a modest but fairly consistent increase in coronary-event risk under sustained job strain.",
+      "population": "working-age adults",
+      "mechanism": "Job strain combines high demands with low control, a pattern that can chronically elevate sympathetic tone, blood pressure, sleep disruption, and unhealthy coping behaviors. That makes a small increase in myocardial-infarction risk biologically plausible even when any one worker's absolute risk change is modest.",
+      "summary": "The strongest evidence comes from the individual-participant meta-analysis showing that workers exposed to job strain had a higher incidence of coronary events than those without that pattern. Later pooled analyses did not turn this into a dramatic effect, but they broadly support job strain as a real cardiovascular risk amplifier rather than a null finding.",
+      "caveats": "Exposure definitions vary across cohorts, and job strain overlaps with shift work, socioeconomic position, and smoking patterns. This edge is better read as a modest occupational risk factor than as a stand-alone cause of myocardial infarction.",
+      "evidence": [
+        {
+          "citation": "Kivimaki M et al 2012 Lancet",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Job strain as a risk factor for coronary heart disease: a collaborative meta-analysis of individual participant data.",
+          "pmid": "22981903",
+          "n_participants": 197473
+        },
+        {
+          "citation": "Kivimaki M et al 2013 CMAJ",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Associations of job strain and lifestyle risk factors with risk of coronary artery disease: a meta-analysis of individual participant data.",
+          "pmid": "23670152",
+          "n_participants": 102128
+        },
+        {
+          "citation": "Niedhammer I et al 2021 Scand J Work Environ Health",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Psychosocial work exposures and health outcomes: a meta-review of 72 literature reviews with meta-analysis.",
+          "pmid": "34042163",
+          "n_participants": 72
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "job_strain",
+      "name": "Job strain",
+      "kind": "behavior",
+      "aliases": [
+        "high-demand low-control work",
+        "occupational job strain"
+      ],
+      "description": "A psychosocial work pattern marked by high demands and low decision latitude."
+    }
+  ]
+}

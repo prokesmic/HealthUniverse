@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "microneedling_adjunct",
+      "name": "Microneedling adjunct to topical minoxidil",
+      "kind": "activity",
+      "aliases": [
+        "microneedling plus minoxidil"
+      ],
+      "description": "Scalp microneedling used alongside topical minoxidil for androgenetic alopecia."
+    },
+    {
+      "slug": "androgenetic_alopecia",
+      "name": "Androgenetic alopecia",
+      "kind": "condition",
+      "aliases": [
+        "pattern hair loss",
+        "male or female pattern hair loss"
+      ],
+      "description": "Progressive androgen-mediated scalp hair loss in men or women."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "microneedling_adjunct",
+      "outcome_slug": "androgenetic_alopecia",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "When microneedling is added to topical minoxidil, pooled trial data usually show better hair-density and global-response outcomes than minoxidil alone.",
+      "population": "adults with androgenetic alopecia",
+      "mechanism": "Microneedling may improve delivery of topical agents and trigger wound-healing pathways that stimulate follicular signaling and stem-cell activity in the scalp. The key point is that the best evidence is for adjunctive use with minoxidil, not for a proven standalone microneedling effect.",
+      "summary": "The evidence here is promising but more specific than it first sounds. Meta-analyses of randomized trials generally show that adding microneedling to topical minoxidil improves hair-related outcomes compared with minoxidil alone, which makes it a plausible adjunctive therapy rather than a universally proven monotherapy.",
+      "caveats": "Protocols differ widely across studies in needle depth, frequency, and accompanying topical regimens. Because most of the evidence is combination-based, this edge should not be stretched into a claim that microneedling alone is equally well supported.",
+      "evidence": [
+        {
+          "citation": "Abdi P et al 2023 Arch Dermatol Res",
+          "pmid": "37665358",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "n_participants": 6,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and safety of combinational therapy using topical minoxidil and microneedling for the treatment of androgenetic alopecia: a systematic review and meta-analysis."
+        },
+        {
+          "citation": "Zhou Y et al 2020 Dermatol Ther",
+          "pmid": "32478968",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "n_participants": 1172,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The effectiveness of combination therapies for androgenetic alopecia: A systematic review and meta-analysis."
+        },
+        {
+          "citation": "Xia Y et al 2025 Front Med",
+          "pmid": "41041440",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "n_participants": 20,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Relative efficacy of minoxidil in combination with other treatments for androgenic alopecia: a network meta-analysis based on randomized controlled trials."
+        }
+      ]
+    }
+  ]
+}

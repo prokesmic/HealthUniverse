@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "music_therapy",
+      "name": "Music therapy",
+      "kind": "activity",
+      "aliases": [
+        "music-based therapy"
+      ],
+      "description": "Structured music listening or therapist-guided music intervention used to improve symptoms or well-being."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "music_therapy",
+      "outcome_slug": "sleep_quality",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Across randomized-trial meta-analyses, passive or structured music interventions consistently improve sleep-quality scores, especially in older adults and chronic sleep problems.",
+      "population": "adults with poor sleep quality or sleep disorders",
+      "mechanism": "Music interventions likely help sleep by reducing presleep hyperarousal, easing autonomic activation, and creating a repeatable relaxation cue that supports sleep initiation and continuity. The effect is behavioral and regulatory rather than sedative, which is why benefits are usually measured on symptom scales rather than hard physiologic sleep architecture outcomes.",
+      "summary": "This is one of the cleaner non-pharmacologic sleep edges in the graph. A general 2014 meta-analysis and two later older-adult syntheses all found better sleep-quality scores with music-based interventions, making the overall signal more convincing than many wellness-style sleep claims.",
+      "caveats": "The interventions vary from passive listening to more structured therapeutic use, and most trials rely on subjective sleep scales such as PSQI. That makes the edge best suited to symptom-level improvement, not to claims about curing insomnia or changing deep sleep physiology.",
+      "evidence": [
+        {
+          "citation": "Wang CF et al 2014 Int J Nurs Stud",
+          "pmid": "23582682",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "n_participants": 557,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Music therapy improves sleep quality in acute and chronic sleep disorders: a meta-analysis of 10 randomized studies."
+        },
+        {
+          "citation": "Chen CT et al 2021 J Am Geriatr Soc",
+          "pmid": "33880759",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "n_participants": 5,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of music therapy on improving sleep quality in older adults: A systematic review and meta-analysis."
+        },
+        {
+          "citation": "Kumar AP et al 2025 PLoS One",
+          "pmid": "41187137",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "n_participants": 50,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of music therapy on sleep quality in elderly: A systematic review and meta-analysis."
+        }
+      ]
+    }
+  ]
+}

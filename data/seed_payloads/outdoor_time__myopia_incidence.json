@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "outdoor_time",
+      "outcome_slug": "myopia_incidence",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The clearest signal is a lower incidence of myopia when children spend substantially more time outdoors, with both trial and cohort data pointing the same way.",
+      "population": "school-aged children",
+      "mechanism": "Outdoor light exposure appears to slow the refractive drift toward myopia through retinal dopamine signaling and reduced hyperopic defocus during near-work-heavy childhood years. The effect seems strongest for preventing onset rather than reversing progression once a child is already myopic.",
+      "summary": "The strongest evidence comes from a 2017 meta-analysis and a later cluster-randomized school trial in China. Together they show that giving children more outdoor time lowers the odds of becoming myopic, even if the size of benefit depends on how much extra time is actually achieved.",
+      "caveats": "The preventive signal is stronger for onset than for progression in already-myopic children. Outdoor time also travels with lower near-work burden and broader lifestyle differences, so some observational estimates may overstate the isolated effect.",
+      "evidence": [
+        {
+          "citation": "Xiong S et al 2017 Acta Ophthalmol",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Time spent in outdoor activities in relation to myopia prevention and control: a meta-analysis and systematic review.",
+          "pmid": "28251836",
+          "n_participants": 25,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.574,
+            "ci_low": 0.395,
+            "ci_high": 0.834,
+            "comparator": "less time outdoors in longitudinal cohort studies"
+          }
+        },
+        {
+          "citation": "Jiang Y et al 2022 Ophthalmology",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Time Outdoors in Reducing Myopia: A School-Based Cluster Randomized Trial with Objective Monitoring of Outdoor Time and Light Intensity.",
+          "pmid": "35779695",
+          "n_participants": 6295,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.84,
+            "ci_low": 0.72,
+            "ci_high": 0.99,
+            "comparator": "usual school day without added outdoor time"
+          }
+        },
+        {
+          "citation": "YuM et al 2023 PLoS One",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Global risk factor analysis of myopia onset in children: A systematic review and meta-analysis.",
+          "pmid": "37729320",
+          "n_participants": 3578,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.97,
+            "ci_low": 0.95,
+            "ci_high": 0.98,
+            "comparator": "less outdoor activity time"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "outdoor_time",
+      "name": "Outdoor time",
+      "kind": "behavior",
+      "aliases": [
+        "time spent outdoors"
+      ],
+      "description": "Time spent outside in daylight during childhood."
+    },
+    {
+      "slug": "myopia_incidence",
+      "name": "Myopia incidence",
+      "kind": "condition",
+      "aliases": [
+        "new-onset myopia"
+      ],
+      "description": "Development of new myopia in previously non-myopic children."
+    }
+  ]
+}

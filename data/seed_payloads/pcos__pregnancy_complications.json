@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "pcos",
+      "outcome_slug": "pregnancy_complications",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Recent pooled evidence indicates that pregnancy in women with PCOS is associated with a higher burden of maternal complications, including gestational diabetes and hypertensive disorders.",
+      "population": "pregnant women with polycystic ovary syndrome",
+      "mechanism": "PCOS often brings insulin resistance, hyperandrogenism, inflammation, and higher baseline cardiometabolic risk into pregnancy. Those features provide a credible pathway to gestational diabetes, hypertensive disorders, and broader obstetric complications rather than a single isolated pregnancy effect.",
+      "summary": "The most informative recent synthesis found that women with PCOS experienced more pregnancy complications than women without PCOS, and newer meta-analyses of pregnancy and birth outcomes point in the same direction. The signal is not limited to one endpoint, which is why a broad pregnancy-complications edge fits the evidence better than pretending the risk sits in just one obstetric bucket.",
+      "caveats": "Some datasets are dominated by fertility-treatment populations, and obesity or assisted reproduction can amplify risk independently of PCOS itself. This edge should therefore be read as elevated baseline vulnerability, not as a deterministic pregnancy forecast.",
+      "evidence": [
+        {
+          "citation": "Bahri Khomami M et al 2024 Nat Commun",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Systematic review and meta-analysis of pregnancy outcomes in women with polycystic ovary syndrome.",
+          "pmid": "38965226",
+          "n_participants": 1
+        },
+        {
+          "citation": "Bahri Khomami M et al 2024 Nat Commun",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Systematic review and meta-analysis of birth outcomes in women with polycystic ovary syndrome.",
+          "pmid": "38965241",
+          "n_participants": 1
+        },
+        {
+          "citation": "Ban M et al 2024 J Ovarian Res",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association between maternal polycystic ovarian syndrome undergoing assisted reproductive technology and pregnancy complications and neonatal outcomes: a systematic review and meta-analysis.",
+          "pmid": "38184624",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "pcos",
+      "name": "Polycystic ovary syndrome",
+      "kind": "condition",
+      "aliases": [
+        "PCOS"
+      ],
+      "description": "A common endocrine disorder characterized by hyperandrogenism, ovulatory dysfunction, and polycystic ovarian morphology."
+    }
+  ]
+}

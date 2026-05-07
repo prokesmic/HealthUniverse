@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "long_hours_55plus",
+      "outcome_slug": "depression",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The literature points to at most a modest effect, and the best WHO/ILO synthesis judged the evidence for incident depression to be uncertain rather than decisively harmful.",
+      "population": "working-age adults",
+      "mechanism": "Long hours may erode mental health through reduced recovery time, chronic stress activation, sleep loss, and conflict with caregiving or social roles. The inconsistency across regions suggests the exposure interacts with job control, workplace culture, and baseline psychosocial safety climate.",
+      "summary": "The most credible starting point is the 2021 WHO/ILO depression review, which found that the pooled signal for 55-plus-hour weeks was weak and uncertain. That makes this edge more nuanced than the stroke signal: there may be harm in some contexts, but the evidence does not support a uniformly large effect.",
+      "caveats": "Many studies rely on symptom scales rather than clinician-diagnosed major depression, and cultural differences in reporting may matter. Weekend work, job strain, and low psychosocial safety climate often travel with long hours and can blur attribution.",
+      "evidence": [
+        {
+          "citation": "Rugulies R et al 2021 Environ Int",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "The effect of exposure to long working hours on depression: A systematic review and meta-analysis from the WHO/ILO Joint Estimates of the Work-related Burden of Disease and Injury.",
+          "pmid": "34144478",
+          "n_participants": 109906,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.08,
+            "ci_low": 0.94,
+            "ci_high": 1.24,
+            "comparator": "35 to 40 working hours per week"
+          }
+        },
+        {
+          "citation": "Virtanen M et al 2018 Scand J Work Environ Health",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Long working hours and depressive symptoms: systematic review and meta-analysis of published studies and unpublished individual participant data.",
+          "pmid": "29423526",
+          "n_participants": 189729,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.14,
+            "ci_low": 1.03,
+            "ci_high": 1.25,
+            "comparator": "standard working hours"
+          }
+        },
+        {
+          "citation": "Weston G et al 2019 J Epidemiol Community Health",
+          "year": 2019,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Long work hours, weekend working and depressive symptoms in men and women: findings from a UK population-based study.",
+          "pmid": "30804048",
+          "n_participants": 23403
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "long_hours_55plus",
+      "name": "Working 55 or more hours per week",
+      "kind": "behavior",
+      "aliases": [
+        "long working hours"
+      ],
+      "description": "Regular weekly working time at or above 55 hours."
+    }
+  ]
+}

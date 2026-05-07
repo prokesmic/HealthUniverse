@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "pet_ownership",
+      "outcome_slug": "cvd",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Pet ownership tracks with slightly better cardiovascular profiles in some pooled analyses, but the adjusted disease-level signal is weak and inconsistent.",
+      "population": "general adults",
+      "mechanism": "Living with a pet may increase daily movement, lower perceived loneliness, and blunt stress reactivity, all of which could nudge cardiovascular risk in a favorable direction. The main limitation is that these pathways are deeply confounded by baseline health, income, housing, and social support, so observational estimates can easily exaggerate a true causal effect.",
+      "summary": "The cleanest reading is that pet ownership may help cardiovascular health a little, but the case is far from decisive. Meta-analyses report small favorable shifts in blood pressure and cardiovascular mortality in some subgroups, yet the broader adjusted association with incident cardiovascular disease often shrinks toward null.",
+      "caveats": "This evidence is observational and highly vulnerable to healthy-owner bias. Effects may differ by species, baseline disease status, and whether the apparent benefit reflects dog walking rather than pet ownership itself.",
+      "evidence": [
+        {
+          "citation": "Krittanawong C et al 2020 J Cardiovasc Med",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Association between pet ownership and cardiovascular risks and mortality: a systematic review and meta-analysis.",
+          "pmid": "31815850",
+          "n_participants": 26,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.81,
+            "ci_low": 0.68,
+            "ci_high": 0.97,
+            "comparator": "adjusted cardiovascular mortality in pet owners versus nonowners"
+          }
+        },
+        {
+          "citation": "Kramer CK et al 2019 PLoS One",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A modest protective association between pet ownership and cardiovascular diseases: A systematic review and meta-analysis.",
+          "pmid": "31050670",
+          "n_participants": 488986,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.87,
+            "ci_low": 0.72,
+            "ci_high": 1.05,
+            "comparator": "adjusted cardiovascular disease risk in pet owners versus nonowners"
+          }
+        },
+        {
+          "citation": "Parslow RA et al 2007 Epidemiology",
+          "year": 2007,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Pet ownership and blood pressure in old age.",
+          "pmid": "17700250",
+          "n_participants": 1179
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "pet_ownership",
+      "name": "Pet ownership",
+      "kind": "behavior",
+      "aliases": [
+        "living with a household pet"
+      ],
+      "description": "Owning or living with companion animals such as dogs or cats."
+    }
+  ]
+}

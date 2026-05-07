@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cruciferous_vegetables",
+      "name": "Cruciferous vegetables",
+      "kind": "food",
+      "aliases": [
+        "broccoli and related brassica vegetables"
+      ],
+      "description": "Dietary intake of broccoli, cabbage, cauliflower, Brussels sprouts, and related cruciferous vegetables."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cruciferous_vegetables",
+      "outcome_slug": "kidney_cancer",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Most pooled observational studies suggest lower renal-cell-carcinoma risk with higher cruciferous-vegetable intake, though cohort-only estimates are weaker than case-control results.",
+      "population": "general adults",
+      "mechanism": "Cruciferous vegetables generate isothiocyanates and related compounds that can influence carcinogen detoxification and oxidative stress in renal tissue. The protective story is biologically plausible, but the evidence base still leans heavily on observational diet data with the usual measurement noise.",
+      "summary": "The overall literature leans protective, especially when all observational studies are pooled together. What keeps this edge from a higher tier is that the strongest reduction often comes from case-control datasets, while cohort-specific results are softer, so the most defensible claim is modest possible benefit rather than a settled prevention effect.",
+      "caveats": "Renal-cell-carcinoma studies are sensitive to confounding by smoking, adiposity, and broader dietary pattern quality. Because food-frequency questionnaires measure cruciferous intake imprecisely, the exact size of any benefit is less secure than the direction of the pooled signal.",
+      "evidence": [
+        {
+          "citation": "Zhao J et al 2013 PLoS One",
+          "pmid": "24204579",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "n_participants": 1228518,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cruciferous vegetables intake is associated with lower risk of renal cell carcinoma: evidence from a meta-analysis of observational studies."
+        },
+        {
+          "citation": "Liu B et al 2013 Nutr Cancer",
+          "pmid": "23859034",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "n_participants": 10,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cruciferous vegetables consumption and risk of renal cell carcinoma: a meta-analysis."
+        },
+        {
+          "citation": "Liao Z et al 2022 BMC Med",
+          "pmid": "35109847",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "n_participants": 22,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The role of diet in renal cell carcinoma incidence: an umbrella review of meta-analyses of observational studies."
+        }
+      ]
+    }
+  ]
+}

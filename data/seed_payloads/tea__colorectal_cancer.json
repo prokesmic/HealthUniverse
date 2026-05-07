@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tea",
+      "name": "Tea consumption",
+      "kind": "food",
+      "aliases": [
+        "black, green, oolong, or mate tea intake"
+      ],
+      "description": "Habitual consumption of non-herbal tea beverages."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tea",
+      "outcome_slug": "colorectal_cancer",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The colorectal-cancer literature on tea is mostly a near-null story in prospective data, with older case-control-heavy syntheses suggesting some benefit that has not held up cleanly in later cohorts.",
+      "population": "general adults with habitual tea consumption",
+      "mechanism": "Tea polyphenols can plausibly affect oxidative stress, bile-acid handling, and colonic inflammation, but any true population-level effect seems small enough to be swamped by study design differences and residual lifestyle confounding.",
+      "summary": "This is a good example of a hypothesis that looks stronger in older mixed-design literature than in newer prospective cohorts. The early green-tea-heavy meta-analysis leaned protective, but later cohort-based and broad population syntheses drift back toward no clear association.",
+      "caveats": "Subtype matters here: green tea, black tea, and total tea intake are often pooled even though their exposure patterns differ sharply by region. The cleanest current read is mixed to neutral rather than confidently protective.",
+      "evidence": [
+        {
+          "citation": "Sun CL et al 2006 Carcinogenesis",
+          "pmid": "16638787",
+          "year": 2006,
+          "study_type": "meta_analysis",
+          "n_participants": 25,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Green tea, black tea and colorectal cancer risk: a meta-analysis of epidemiologic studies.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.82,
+            "ci_low": 0.69,
+            "ci_high": 0.98,
+            "comparator": "highest versus lowest green tea consumption"
+          }
+        },
+        {
+          "citation": "Zhu JZ et al 2020 Eur J Nutr",
+          "pmid": "32078065",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "n_participants": 2068137,
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Tea consumption and colorectal cancer risk: a meta-analysis of prospective cohort studies.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.97,
+            "ci_low": 0.94,
+            "ci_high": 1.01,
+            "comparator": "highest versus lowest tea consumption"
+          }
+        },
+        {
+          "citation": "Huang J et al 2023 BMC Gastroenterol",
+          "pmid": "37653503",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "n_participants": 14,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Association between tea consumption and colorectal cancer: a systematic review and meta-analysis of a population-based study."
+        }
+      ]
+    }
+  ]
+}

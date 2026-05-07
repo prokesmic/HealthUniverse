@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "c_section_birth",
+      "outcome_slug": "childhood_obesity",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across pooled observational studies, caesarean birth is associated with a small increase in later overweight or obesity risk in offspring.",
+      "population": "children born by caesarean section",
+      "mechanism": "Caesarean delivery changes early microbial exposure, antibiotic patterns, and immediate neonatal physiology in ways that could nudge later metabolic programming. The effect seen in pooled studies is not large, but it is directionally consistent enough to treat as a plausible early-life risk signal.",
+      "summary": "The most recent meta-analysis found that children born by caesarean section had higher odds of early childhood overweight or obesity than those born vaginally. Earlier meta-analyses reported the same direction, which makes this look like a repeatable association even if residual confounding by maternal BMI and indication for surgery still matters.",
+      "caveats": "This literature is observational and heavily confounded by maternal adiposity, diabetes, and pregnancy complications that can themselves raise obesity risk in children. The edge should be treated as a modest association, not proof that caesarean delivery independently causes obesity.",
+      "evidence": [
+        {
+          "citation": "Zhou C et al 2025 Int J Gynaecol Obstet",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Risk of early childhood overweight/obesity following cesarean section: A systematic review and meta-analysis.",
+          "pmid": "40521792",
+          "n_participants": 1
+        },
+        {
+          "citation": "Zhang S et al 2021 Front Pediatr",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Effect of Elective Cesarean Section on Children's Obesity From Birth to Adolescence: A Systematic Review and Meta-Analysis.",
+          "pmid": "35155315",
+          "n_participants": 1
+        },
+        {
+          "citation": "Zhou YB et al 2013 Int J Obes",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The impact of cesarean section on offspring overweight and obesity: a systematic review and meta-analysis.",
+          "pmid": "23207407",
+          "n_participants": 1
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "childhood_obesity",
+      "name": "Childhood obesity",
+      "kind": "condition",
+      "aliases": [
+        "pediatric obesity"
+      ],
+      "description": "Overweight or obesity occurring during childhood."
+    }
+  ]
+}

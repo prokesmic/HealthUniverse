@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "maternal_stress_pregnancy",
+      "outcome_slug": "asthma",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The most consistent signal is a modest increase in childhood asthma or wheeze after significant maternal psychological stress during pregnancy, not a large deterministic effect.",
+      "population": "children exposed to prenatal maternal stress",
+      "mechanism": "Maternal stress during pregnancy can alter fetal glucocorticoid exposure, autonomic signaling, and early immune programming in ways that plausibly shift airway and atopic vulnerability upward. The biologic story is strongest for prenatal rather than later stress because the exposure window overlaps lung and immune development.",
+      "summary": "The strongest piece is the prenatal-stress meta-analysis, which found a fairly consistent upward association with childhood wheeze and asthma across observational cohorts. Later large-register and prospective studies support the same direction, but the magnitude in better-controlled cohorts is modest rather than dramatic.",
+      "caveats": "This literature is observational and stress exposure is measured in different ways across studies, so residual socioeconomic and behavioral confounding is hard to remove completely. The safest read is that prenatal maternal stress is a plausible small risk amplifier, not a stand-alone cause of asthma.",
+      "evidence": [
+        {
+          "citation": "van de Loo KF et al 2016 Early Hum Dev",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prenatal maternal psychological stress and childhood asthma and wheezing: a meta-analysis.",
+          "pmid": "26541526",
+          "n_participants": 10,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.56,
+            "ci_low": 1.36,
+            "ci_high": 1.8,
+            "comparator": "prenatal stress exposure versus lower or no stress"
+          }
+        },
+        {
+          "citation": "Lee A et al 2016 J Asthma",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Prenatal and postnatal stress and asthma in children: Temporal- and sex-specific associations.",
+          "pmid": "26953156",
+          "n_participants": 765,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.38,
+            "ci_low": 1.06,
+            "ci_high": 1.79,
+            "comparator": "higher prenatal stress in boys versus lower prenatal stress"
+          }
+        },
+        {
+          "citation": "Liu X et al 2015 Eur J Public Health",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prenatal stress and childhood asthma in the offspring: role of age at onset.",
+          "pmid": "26116689",
+          "n_participants": 750058,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.13,
+            "ci_low": 1.02,
+            "ci_high": 1.24,
+            "comparator": "maternal bereavement during pregnancy versus no bereavement"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "maternal_stress_pregnancy",
+      "name": "Maternal psychological stress during pregnancy",
+      "kind": "behavior",
+      "aliases": [
+        "prenatal maternal stress",
+        "maternal stress in pregnancy"
+      ],
+      "description": "Psychological stress exposure during pregnancy, including major life stressors and maternal distress."
+    }
+  ]
+}

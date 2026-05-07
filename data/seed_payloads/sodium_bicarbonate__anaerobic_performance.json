@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "sodium_bicarbonate",
+      "outcome_slug": "anaerobic_performance",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The performance benefit is usually small but repeatable in glycolytic tasks, especially when exercise lasts long enough for acid buffering to matter.",
+      "population": "trained and recreational athletes",
+      "mechanism": "Sodium bicarbonate raises extracellular bicarbonate and pH, which increases the gradient for hydrogen-ion efflux from heavily working muscle. That matters most in repeated or sustained high-intensity efforts where intracellular acidosis contributes to fatigue, not in very short maximal bursts where buffering has little time to help.",
+      "summary": "The literature does not support a miracle effect, but it does support a real one. Meta-analyses consistently show that sodium bicarbonate can improve anaerobic or muscular-endurance performance by a small-to-moderate amount, with the clearest gains in events lasting roughly half a minute to several minutes.",
+      "caveats": "Gastrointestinal intolerance is common and can erase any ergogenic benefit in practice. Effects also vary by event duration, training status, and whether the athlete achieves a meaningful bicarbonate rise before exercise.",
+      "evidence": [
+        {
+          "citation": "Matson LG et al 1993 Int J Sport Nutr",
+          "year": 1993,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of sodium bicarbonate ingestion on anaerobic performance: a meta-analytic review.",
+          "pmid": "8388767",
+          "n_participants": 29
+        },
+        {
+          "citation": "Grgic J et al 2020 Sports Med",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of Sodium Bicarbonate Supplementation on Muscular Strength and Endurance: A Systematic Review and Meta-analysis.",
+          "pmid": "32096113",
+          "n_participants": 13,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.37,
+            "ci_low": 0.15,
+            "ci_high": 0.59,
+            "comparator": "placebo for muscular endurance outcomes"
+          }
+        },
+        {
+          "citation": "Heibel AB et al 2022 Sports Med",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Extracellular Buffering Supplements to Improve Exercise Capacity and Performance: A Comprehensive Systematic Review and Meta-analysis.",
+          "pmid": "34687438",
+          "n_participants": 2019,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.17,
+            "ci_low": 0.12,
+            "ci_high": 0.21,
+            "comparator": "buffering supplementation versus placebo for exercise capacity and performance"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "sodium_bicarbonate",
+      "name": "Sodium bicarbonate supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "baking soda supplementation"
+      ],
+      "description": "Pre-exercise sodium bicarbonate used as an extracellular buffering supplement."
+    },
+    {
+      "slug": "anaerobic_performance",
+      "name": "Anaerobic performance",
+      "kind": "process",
+      "aliases": [
+        "high-intensity glycolytic performance"
+      ],
+      "description": "Performance in short, high-intensity exercise tasks that rely heavily on anaerobic glycolysis and buffering capacity."
+    }
+  ]
+}
