@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block og %}
+<meta property="og:site_name" content="Health Universe">
+<meta property="og:type" content="website">
+<meta property="og:title" content="My Stack Score · Health Universe">
+<meta property="og:description" content="Your evidence-grounded stack score — coverage of tracked conditions, stack quality, interaction conflicts.">
+<meta property="og:image" content="https://health-universe.vercel.app/og/score/{{ stats.score or 0 }}.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+{% block content %}
+
+<section class="score-page">
+  <header class="score-head">
+    <p class="hp-eyebrow">YOUR STACK SCORE · LIVE</p>
+    <h1 class="hp-title">How well-evidenced<br/>is what you're doing?<span class="dot">.</span></h1>
+    <p class="hp-lede">Coverage of tracked conditions × stack quality −
+      interaction conflicts. Computed live from the corpus, not stored.
+      Share or screenshot to compare with friends.</p>
+  </header>
+
+  {% if not stats.ok %}
+  <div class="score-empty">
+    <p>{{ stats.reason }}</p>
+    <a class="btn-primary inline" href="/start">Open guided setup →</a>
+  </div>
+  {% else %}
+  <article class="score-card score-band-{{ stats.band }}">
+    <div class="score-dial">
+      {# SVG arc — circumference 2πr, with stroke-dasharray for fill #}
+      {% set radius = 110 %}
+      {% set circ = (2 * 3.141592 * radius)|round(2) %}
+      {% set dash = (circ * stats.score / 100.0)|round(2) %}
+      <svg viewBox="-150 -150 300 300" width="240" height="240">
+        <circle cx="0" cy="0" r="{{ radius }}" fill="none" stroke="#e8d8b3" stroke-width="18"/>
+        <circle cx="0" cy="0" r="{{ radius }}" fill="none"
+                stroke="currentColor" stroke-width="18"
+                stroke-linecap="round"
+                stroke-dasharray="{{ dash }} {{ circ }}"
+                transform="rotate(-90)"/>
+        <text x="0" y="14" text-anchor="middle"
+              font-family="Fraunces, serif" font-weight="500"
+              font-size="64" fill="#1f3a2e">{{ stats.score }}</text>
+        <text x="0" y="48" text-anchor="middle"
+              font-family="Inter, sans-serif" font-weight="500"
+              font-size="14" fill="#7c6c4d">/ 100</text>
+      </svg>
+    </div>
+    <div class="score-body">
+      <h2 class="score-band-label">{{ {'low':'Low coverage','solid':'Solid stack','strong':'Strong stack'}[stats.band] }}</h2>
+      <ul class="score-breakdown">
+        <li><b>+{{ stats.coverage_pts }}</b> Coverage of tracked conditions ({{ stats.coverage }}/{{ stats.coverage_max }})</li>
+        <li><b>+{{ stats.stack_quality }}</b> Stack quality (tier weighting)</li>
+        {% if stats.interaction_penalty %}
+        <li><b>−{{ stats.interaction_penalty }}</b> Interaction conflicts ({{ stats.interactions|length }})</li>
+        {% endif %}
+      </ul>
+      <div class="score-actions">
+        <a class="btn-secondary inline" href="/og/score/{{ stats.score }}.svg" target="_blank" rel="noopener">⬇ Share card (SVG)</a>
+        <button class="btn-secondary inline" type="button" id="score-copy-link">Copy link</button>
+        <a class="btn-primary inline" href="/my-plan">Open my plan →</a>
+      </div>
+    </div>
+  </article>
+
+  {% if stats.interactions %}
+  <section class="warn-block">
+    <h2 class="warn-title">⚠ Interactions affecting your score</h2>
+    <ul class="warn-list">
+      {% for w in stats.interactions %}
+      <li class="warn-item warn-{{ w.severity }}">
+        <span class="warn-sev">{{ w.severity|upper }}</span>
+        <b>{{ w.label }}</b><br/>
+        <small class="muted">{{ w.pair | join(" + ") }}</small>
+        <p>{{ w.note }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <section class="meth-block">
+    <h2 class="meth-h2">How the score is computed</h2>
+    <ul class="meth-sources">
+      <li><b>Coverage (50 pts max).</b> For each tracked condition, do
+        you have at least one tier-A protective edge already covered by
+        your stack? %-of-conditions × 50.</li>
+      <li><b>Stack quality (40 pts max).</b> Sum of tier weights for
+        every protective/neutral factor in your stack
+        (A=4, B=3, C=2, X=1).</li>
+      <li><b>Interaction penalty.</b> Every active interaction warning
+        subtracts: high=15, moderate=7, low=2.</li>
+      <li><b>Bands.</b> 0–34 low coverage; 35–69 solid; 70+ strong.</li>
+    </ul>
+  </section>
+  {% endif %}
+</section>
+
+<script>
+(function(){
+  const btn = document.getElementById('score-copy-link');
+  if (!btn) return;
+  btn.onclick = async () => {
+    try {
+      await navigator.clipboard.writeText(location.href);
+      btn.textContent = '✓ Link copied';
+    } catch(_) { btn.textContent = '⚠ Copy failed'; }
+  };
+})();
+</script>
+
+{% endblock %}

@@ -43,6 +43,10 @@
     <div class="today-actions">
       <button id="today-done" class="onb-next" type="button">✓ I did it today</button>
       <a class="onb-back" href="/diary">Open diary →</a>
+      <button id="notif-toggle" class="btn-secondary inline" type="button"
+              title="Daily reminder + new-evidence pings on this device">
+        🔔 Enable notifications
+      </button>
     </div>
   </article>
   {% else %}
@@ -101,6 +105,61 @@
   };
 
   render();
+})();
+
+/* ── Notifications: client-side service-worker scheduling ── */
+(function(){
+  const btn = document.getElementById('notif-toggle');
+  if (!btn) return;
+  if (!('serviceWorker' in navigator) || !('Notification' in window)) {
+    btn.textContent = '🔕 Notifications not supported';
+    btn.disabled = true; return;
+  }
+  function refresh() {
+    if (Notification.permission === 'granted') {
+      btn.textContent = '🔔 Notifications on';
+      btn.disabled = false;
+    } else if (Notification.permission === 'denied') {
+      btn.textContent = '🔕 Blocked in browser settings';
+      btn.disabled = true;
+    } else {
+      btn.textContent = '🔔 Enable notifications';
+    }
+  }
+  refresh();
+  navigator.serviceWorker.register('/service-worker.js').catch(()=>{});
+
+  btn.onclick = async () => {
+    const perm = await Notification.requestPermission();
+    refresh();
+    if (perm === 'granted') {
+      const reg = await navigator.serviceWorker.ready;
+      reg.active.postMessage({
+        type: 'show-notification',
+        title: 'Health Universe',
+        body: 'You\'ll see a daily card here. Tap a notification to open it.',
+        url: '/today',
+      });
+      // schedule a daily reminder for tomorrow morning (local time)
+      const next = new Date(); next.setDate(next.getDate() + 1); next.setHours(8,0,0,0);
+      localStorage.setItem('hu_next_remind', next.toISOString());
+    }
+  };
+
+  // If we've been backgrounded past the daily reminder time, fire it on next open.
+  const next = localStorage.getItem('hu_next_remind');
+  if (next && Notification.permission === 'granted' && new Date() >= new Date(next)) {
+    navigator.serviceWorker.ready.then(reg => {
+      reg.active.postMessage({
+        type: 'show-notification',
+        title: 'Health Universe — your daily card',
+        body: 'A new anchor edge is waiting on /today.',
+        url: '/today',
+      });
+    });
+    const tmrw = new Date(); tmrw.setDate(tmrw.getDate() + 1); tmrw.setHours(8,0,0,0);
+    localStorage.setItem('hu_next_remind', tmrw.toISOString());
+  }
 })();
 </script>
 

@@ -4518,3 +4518,130 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   display: block; margin-top: 4px;
   color: var(--ink); font-weight: 600;
 }
+
+/* ============================================================
+   Stats dashboard, Score dial, Posts, /today notif button
+   ============================================================ */
+
+/* /stats — leaderboards + bar histogram */
+.stats-leader {
+  list-style: decimal inside; padding: 0; margin: 14px 0 0;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 22px;
+}
+.stats-leader li {
+  display: flex; align-items: baseline; gap: 8px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line); border-radius: 8px;
+  font: 500 14px "Inter";
+}
+.stats-leader a { color: var(--ink); text-decoration: none; }
+.stats-leader a:hover { text-decoration: underline; }
+.stats-leader .small { margin-left: auto; }
+.stats-bars {
+  display: flex; align-items: flex-end; gap: 8px;
+  padding: 18px 0 8px; height: 160px;
+  border-bottom: 1px solid var(--line);
+}
+.stats-bar {
+  flex: 1; min-width: 24px;
+  background: linear-gradient(180deg,#3b8e5a,#1f3a2e);
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  display: flex; justify-content: center; align-items: flex-end;
+}
+.stats-bar small {
+  position: absolute; bottom: -22px;
+  font: 600 10px "Inter"; color: var(--ink-soft);
+}
+
+/* /score — dial card */
+.score-page { max-width: 880px; margin: 28px auto 80px; padding: 0 28px; }
+.score-empty {
+  background: var(--surface); border: 1px dashed var(--line);
+  border-radius: 14px; padding: 32px; text-align: center;
+}
+.score-card {
+  display: grid; grid-template-columns: 240px 1fr; gap: 32px;
+  align-items: center;
+  padding: 36px 40px;
+  background: linear-gradient(135deg,#fbf3df 0%,#f5ead0 100%);
+  border-radius: 18px;
+  border: 1px solid #ebd9a9;
+  box-shadow: 0 14px 40px rgba(31,58,46,.10);
+  margin: 22px 0;
+}
+.score-band-low    { color: #a3552c; }
+.score-band-solid  { color: #c9a961; }
+.score-band-strong { color: #1f3a2e; }
+.score-band-low .score-card,
+.score-card.score-band-low { background: linear-gradient(135deg,#fbe2d6,#f5ead0); }
+.score-card.score-band-strong { background: linear-gradient(135deg,#e7f3ea,#fbf3df); }
+.score-band-label {
+  font-family: "Fraunces", serif; font-weight: 500;
+  font-size: 28px;
+  margin: 0 0 10px;
+}
+.score-breakdown {
+  list-style: none; padding: 0; margin: 0 0 16px;
+  display: flex; flex-direction: column; gap: 6px;
+  color: var(--ink);
+}
+.score-breakdown li b {
+  display: inline-block; min-width: 38px;
+  font-family: "Fraunces", serif; font-weight: 500;
+  font-size: 18px;
+  color: #1f3a2e;
+}
+.score-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Posts */
+.posts-index {
+  list-style: none; padding: 0; margin: 22px 0 0;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.posts-index li a {
+  display: block;
+  padding: 18px 22px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--ink);
+}
+.posts-index li a:hover { box-shadow: 0 6px 18px rgba(31,58,46,.08); }
+.posts-index h2 {
+  font-family: "Fraunces", serif; font-weight: 500;
+  font-size: 22px; margin: 4px 0 6px;
+}
+.post-page { max-width: 760px; margin: 28px auto 80px; padding: 0 28px; }
+.post-head { margin-bottom: 24px; }
+.post-prose {
+  font: 400 17px/1.7 "Fraunces", serif;
+  color: var(--ink);
+}
+.post-prose h2 {
+  font-family: "Fraunces", serif; font-weight: 500;
+  font-size: 26px; color: var(--ink);
+  margin: 32px 0 8px;
+}
+.post-prose h3 {
+  font-family: "Inter", sans-serif; font-weight: 600;
+  font-size: 18px; color: var(--ink); margin: 22px 0 6px;
+}
+.post-prose p { margin: 0 0 16px; }
+.post-prose a { color: #1f3a2e; text-decoration: underline; }
+.post-prose ul, .post-prose ol { padding-left: 22px; margin: 0 0 16px; }
+.post-prose li { margin-bottom: 6px; }
+.posts-edges { list-style: none; padding: 0; }
+.posts-edges li {
+  display: flex; gap: 12px; align-items: baseline;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.posts-edges li:last-child { border-bottom: 0; }
+.post-foot { text-align: center; margin-top: 28px; }
+
+/* notification toggle on /today fits the existing today-actions row */
+#notif-toggle:disabled { opacity: 0.5; cursor: not-allowed; }

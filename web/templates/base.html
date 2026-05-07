@@ -25,6 +25,23 @@
 <link rel="stylesheet" href="/static/style.css?v={{ asset_v }}" />
 </head>
 <body>
+{# ─── A/B test: half of new visitors hitting / are sent to /start ─── #}
+<script>
+(function(){
+  if (location.pathname !== '/') return;
+  var has = document.cookie.match(/(?:^|; )hu_variant=([AB])/);
+  if (!has) {
+    var v = (Math.random() < 0.5) ? 'A' : 'B';
+    document.cookie = 'hu_variant=' + v + '; max-age=' + (60*60*24*180) + '; path=/; samesite=lax';
+    if (v === 'B' && !location.search.includes('home=A')) {
+      location.replace('/start?from=ab');
+    }
+  } else if (has[1] === 'B' && !location.search.includes('home=A')) {
+    // Returning B-cohort visitors keep the onboarding-first treatment.
+    location.replace('/start?from=ab');
+  }
+})();
+</script>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="topnav" role="banner">
   <a class="brand" href="/">
@@ -94,6 +111,7 @@
 
       <nav class="account-section" aria-label="Tools">
         <span class="account-label">Tools</span>
+        <a href="/score" role="menuitem">📊 My Stack Score</a>
         <a href="/compare" role="menuitem">↔ Compare evidence</a>
         <a href="/explore" role="menuitem">🌐 Graph view</a>
         <a href="/risk" role="menuitem">🎯 Risk dial</a>
@@ -101,7 +119,10 @@
       </nav>
 
       <nav class="account-section" aria-label="About">
-        <span class="account-label">About</span>
+        <span class="account-label">Public</span>
+        <a href="/stats" role="menuitem">📈 Corpus dashboard</a>
+        <a href="/posts" role="menuitem">📝 Weekly cornerstone posts</a>
+        <a href="/feed.rss" role="menuitem">🎧 RSS feed</a>
         <a href="/methodology" role="menuitem">📐 Methodology &amp; tier rules</a>
         <a href="/privacy" role="menuitem">🔒 Privacy</a>
         <a href="/about" role="menuitem">ℹ About this project</a>

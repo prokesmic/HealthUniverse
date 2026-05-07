@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="meth-page">
+  <header class="meth-head">
+    <p class="hp-eyebrow">CORNERSTONE WRITING · WEEKLY</p>
+    <h1 class="hp-title">What changed in the<br/>evidence this week<span class="dot">.</span></h1>
+    <p class="hp-lede">Auto-synthesised from <code>edge_history</code>
+      every week. Tier promotions, new evidence, retractions — the
+      meaningful shifts only.</p>
+  </header>
+
+  {% if posts %}
+  <ul class="posts-index">
+    {% for p in posts %}
+    <li>
+      <a href="/posts/{{ p.slug }}">
+        <span class="muted small">{{ p.ending_at }} · {{ p.n_events }} event{{ "s" if p.n_events != 1 else "" }}</span>
+        <h2>{{ p.title }}</h2>
+        <p class="muted">{{ p.subtitle }}</p>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <div class="onb-form">
+    <h2 class="onb-h2">No posts yet</h2>
+    <p class="muted">Run <code>python posts_build.py</code> to generate
+      the first weekly cornerstone article from the past 7 days of
+      <code>edge_history</code>.</p>
+  </div>
+  {% endif %}
+</section>
+
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block og %}
+<meta property="og:site_name" content="Health Universe">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Health Universe — corpus stats">
+<meta property="og:description" content="{{ '{:,}'.format(n_edges) }} factor → outcome relationships, {{ '{:,}'.format(n_studies) }} PMID-verified studies, updated daily.">
+<meta property="og:image" content="https://health-universe.vercel.app/og.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+{% block content %}
+
+<section class="meth-page">
+  <header class="meth-head">
+    <p class="hp-eyebrow">CORPUS DASHBOARD · LIVE</p>
+    <h1 class="hp-title">{{ "{:,}".format(n_edges) }} relationships,<br/>{{ "{:,}".format(n_studies) }} verified studies<span class="dot">.</span></h1>
+    <p class="hp-lede">Every number on this page is read live from the
+      database at page load. The same query that powers
+      <a href="/methodology">/methodology</a>.</p>
+  </header>
+
+  {# ─ KPI grid ─ #}
+  <section class="meth-stats">
+    <div class="meth-stat-grid">
+      <div><dt>Edges</dt><dd>{{ "{:,}".format(n_edges) }}</dd><small>factor → outcome relationships</small></div>
+      <div><dt>Studies</dt><dd>{{ "{:,}".format(n_studies) }}</dd><small>evidence rows</small></div>
+      <div><dt>Distinct PMIDs</dt><dd>{{ "{:,}".format(n_pmids) }}</dd><small>verified against PubMed</small></div>
+      <div><dt>Meta-analyses + SRs</dt><dd>{{ "{:,}".format(n_meta) }}</dd><small>highest study tier</small></div>
+      <div><dt>RCTs</dt><dd>{{ "{:,}".format(n_rct) }}</dd><small>randomised trials</small></div>
+      <div><dt>Cohort studies</dt><dd>{{ "{:,}".format(n_cohort) }}</dd><small>longitudinal evidence</small></div>
+      <div><dt>New edges (30d)</dt><dd>{{ new_30 }}</dd><small>added this month</small></div>
+      <div><dt>New edges (90d)</dt><dd>{{ new_90 }}</dd><small>added this quarter</small></div>
+      <div><dt>Tier promotions (90d)</dt><dd>{{ n_breakthroughs_90d }}</dd><small>edges promoted to A or B</small></div>
+    </div>
+  </section>
+
+  {# ─ Tier distribution ─ #}
+  <section class="meth-block">
+    <h2 class="meth-h2">Tier distribution</h2>
+    {% set total = (tier_dist.values()|list|sum) or 1 %}
+    <div class="meth-tier-bars">
+      {% for code, label in [('A','Strong'),('B','Moderate'),('C','Emerging'),('X','Contested'),('D','Limited')] %}
+      {% set n = tier_dist.get(code, 0) %}
+      <div class="meth-tier-bar tier-bg-{{ code }}">
+        <span class="meth-tier-bar-label">{{ label }}<small>{{ code }}</small></span>
+        <span class="meth-tier-bar-bar"><i style="width: {{ ((n / total) * 100)|round(1) }}%"></i></span>
+        <span class="meth-tier-bar-count">{{ n }} <small>({{ ((n / total) * 100)|round(0) }}%)</small></span>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  {# ─ Direction distribution ─ #}
+  <section class="meth-block">
+    <h2 class="meth-h2">Direction distribution</h2>
+    {% set tot = (dir_dist.values()|list|sum) or 1 %}
+    <div class="meth-tier-bars">
+      {% for code, label, cls in [('protective','Beneficial','tier-bg-A'),('harmful','Harmful','tier-bg-X'),('u_shaped','U-shaped','tier-bg-C'),('mixed','Mixed','tier-bg-D'),('neutral','Neutral','tier-bg-D')] %}
+      {% set n = dir_dist.get(code, 0) %}
+      {% if n %}
+      <div class="meth-tier-bar {{ cls }}">
+        <span class="meth-tier-bar-label">{{ label }}</span>
+        <span class="meth-tier-bar-bar"><i style="width: {{ ((n / tot) * 100)|round(1) }}%"></i></span>
+        <span class="meth-tier-bar-count">{{ n }} <small>({{ ((n / tot) * 100)|round(0) }}%)</small></span>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">Most-studied factors</h2>
+    <ol class="stats-leader">
+      {% for f in top_factors %}
+      <li>
+        <a href="/explore?focus={{ f.slug }}"><b>{{ f.name }}</b></a>
+        <span class="muted small">{{ f.n_edges }} edges · {{ f.n_studies }} studies</span>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="meth-block">
+    <h2 class="meth-h2">Most-covered outcomes</h2>
+    <ol class="stats-leader">
+      {% for o in top_outcomes %}
+      <li>
+        <a href="/prevent?q={{ o.slug }}"><b>{{ o.name }}</b></a>
+        <span class="muted small">{{ o.n_edges }} edges</span>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  {% if recency_rows %}
+  <section class="meth-block">
+    <h2 class="meth-h2">Evidence rows added · last 12 months</h2>
+    {% set max_c = recency_rows | map(attribute='c') | max %}
+    <div class="stats-bars">
+      {% for r in recency_rows %}
+      <div class="stats-bar" style="height: {{ ((r.c / max_c) * 140)|round(0) }}px"
+           title="{{ r.ym }}: {{ r.c }} rows">
+        <small>{{ r.ym[-2:] }}</small>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="muted small">Hover any bar for the count.</p>
+  </section>
+  {% endif %}
+
+  <section class="meth-block">
+    <h2 class="meth-h2">Subscribe</h2>
+    <p>The corpus updates daily. Get the changes in your reader of choice:</p>
+    <ul class="meth-sources">
+      <li><b>RSS / Atom:</b> <a href="/feed.rss"><code>health-universe.vercel.app/feed.rss</code></a></li>
+      <li><b>Weekly email digest:</b> <a href="/digest">/digest</a> (Sunday morning briefing).</li>
+      <li><b>Per-edge alerts:</b> follow any edge from its dossier — your watchlist drives the digest.</li>
+    </ul>
+  </section>
+
+  <p class="muted small meth-disclaim">
+    Educational synthesis only — not medical advice.
+  </p>
+</section>
+
+{% endblock %}

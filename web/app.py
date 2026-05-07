@@ -995,6 +995,452 @@ def api_interactions_check(request: Request):
     return JSONResponse({"warnings": _interactions_for_stack(p.stack)})
 
 
+@app.get("/stats", response_class=HTMLResponse)
+def stats_page(request: Request):
+    """Public dashboard of corpus stats. Reuses the same numbers that
+    /methodology pulls but presents them as a journalist-friendly,
+    shareable single page."""
+    from datetime import timedelta as _td
+    today = datetime_now()
+    with connect() as conn:
+        n_edges = conn.execute("SELECT COUNT(*) c FROM edge").fetchone()["c"]
+        n_studies = conn.execute("SELECT COUNT(*) c FROM evidence").fetchone()["c"]
+        n_pmids = conn.execute(
+            "SELECT COUNT(DISTINCT pmid) c FROM evidence WHERE pmid IS NOT NULL AND pmid != ''"
+        ).fetchone()["c"]
+        n_meta = conn.execute(
+            "SELECT COUNT(*) c FROM evidence WHERE study_type IN ('meta_analysis','systematic_review')"
+        ).fetchone()["c"]
+        n_rct = conn.execute(
+            "SELECT COUNT(*) c FROM evidence WHERE study_type='rct'"
+        ).fetchone()["c"]
+        n_cohort = conn.execute(
+            "SELECT COUNT(*) c FROM evidence WHERE study_type='cohort'"
+        ).fetchone()["c"]
+        tier_dist = {r["tier"]: r["c"] for r in
+            conn.execute("SELECT tier, COUNT(*) c FROM edge GROUP BY tier").fetchall()}
+        dir_dist = {r["direction"]: r["c"] for r in
+            conn.execute("SELECT direction, COUNT(*) c FROM edge GROUP BY direction").fetchall()}
+        # Top factors and outcomes
+        top_factors = [dict(r) for r in conn.execute("""
+            SELECT f.slug, f.name, COUNT(e.id) AS n_edges,
+                   (SELECT COUNT(*) FROM evidence ev JOIN edge e2 ON ev.edge_id=e2.id
+                    WHERE e2.factor_id=f.id) AS n_studies
+            FROM entity f JOIN edge e ON e.factor_id=f.id
+            GROUP BY f.id ORDER BY n_edges DESC LIMIT 12""").fetchall()]
+        top_outcomes = [dict(r) for r in conn.execute("""
+            SELECT o.slug, o.name, COUNT(e.id) AS n_edges
+            FROM entity o JOIN edge e ON e.outcome_id=o.id
+            GROUP BY o.id ORDER BY n_edges DESC LIMIT 12""").fetchall()]
+        # Recency histogram (per-month counts of evidence rows in last 12 months)
+        cutoff = (today - _td(days=365)).strftime("%Y-%m-%d")
+        recency_rows = conn.execute("""
+            SELECT substr(created_at, 1, 7) AS ym, COUNT(*) c
+            FROM evidence WHERE created_at >= ?
+            GROUP BY ym ORDER BY ym ASC""", (cutoff,)).fetchall()
+        # New edges added in last 30/90 days
+        new_30 = conn.execute(
+            "SELECT COUNT(*) c FROM edge WHERE created_at >= ?",
+            ((today - _td(days=30)).strftime("%Y-%m-%d"),)).fetchone()["c"]
+        new_90 = conn.execute(
+            "SELECT COUNT(*) c FROM edge WHERE created_at >= ?",
+            ((today - _td(days=90)).strftime("%Y-%m-%d"),)).fetchone()["c"]
+        n_breakthroughs = 0
+        try:
+            n_breakthroughs = conn.execute("""
+                SELECT COUNT(*) c FROM edge_history h
+                WHERE h.field='tier' AND h.new_value IN ('A','B')
+                  AND h.changed_at >= ?
+                  AND (h.old_value IS NULL OR h.old_value NOT IN ('A','B'))""",
+                ((today - _td(days=90)).strftime("%Y-%m-%d"),)).fetchone()["c"]
+        except Exception:
+            pass
+    return render(request, "stats.html", {
+        "title": "Stats — Health Universe",
+        "n_edges": n_edges, "n_studies": n_studies,
+        "n_pmids": n_pmids, "n_meta": n_meta, "n_rct": n_rct, "n_cohort": n_cohort,
+        "tier_dist": tier_dist, "dir_dist": dir_dist,
+        "top_factors": top_factors, "top_outcomes": top_outcomes,
+        "recency_rows": [dict(r) for r in recency_rows],
+        "new_30": new_30, "new_90": new_90,
+        "n_breakthroughs_90d": n_breakthroughs,
+    })
+
+
+# ---- /feed.rss : public daily-breakthrough RSS feed ----------------------
+
+@app.get("/feed.rss")
+def feed_rss():
+    """RSS feed of meaningful evidence shifts in the last 30 days.
+    Emits one <item> per tier promotion / breakthrough. Anyone can
+    subscribe via Feedly, Reeder, NetNewsWire, etc. — free distribution."""
+    from datetime import timedelta as _td
+    today = datetime_now()
+    with connect() as conn:
+        rows = [dict(r) for r in conn.execute("""
+            SELECT h.changed_at, h.field, h.old_value, h.new_value, h.reason,
+                   h.actor,
+                   e.id AS edge_id, e.summary AS e_summary, e.tier AS e_tier,
+                   f.name AS f_name, o.name AS o_name
+            FROM edge_history h
+            JOIN edge e ON e.id = h.edge_id
+            JOIN entity f ON f.id = e.factor_id
+            JOIN entity o ON o.id = e.outcome_id
+            WHERE h.changed_at >= ?
+            ORDER BY h.changed_at DESC LIMIT 200""",
+            ((today - _td(days=30)).strftime("%Y-%m-%d"),)).fetchall()]
+    items: list[dict] = []
+    for r in rows:
+        ev = _classify_event(r)
+        if not ev["is_meaningful"]:
+            continue
+        items.append({
+            "edge_id": r["edge_id"],
+            "title": f'{ev["headline"]} — {r["f_name"]} → {r["o_name"]}',
+            "summary": (r.get("e_summary") or "")[:400],
+            "headline": ev["headline"],
+            "category": ev["category"],
+            "tier": r["e_tier"],
+            "changed_at": r["changed_at"],
+            "f_name": r["f_name"],
+            "o_name": r["o_name"],
+        })
+        if len(items) >= 30:
+            break
+    base = "https://health-universe.vercel.app"
+    def esc(s: str) -> str:
+        return (s or "").replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
+    item_xml = []
+    for it in items:
+        item_xml.append(f"""<item>
+  <title>{esc(it['title'])}</title>
+  <link>{base}/edge/{it['edge_id']}</link>
+  <guid isPermaLink="false">hu-edge-{it['edge_id']}-{it['changed_at'][:10]}-{it['category']}</guid>
+  <pubDate>{it['changed_at']}</pubDate>
+  <description>{esc(it['summary'])}</description>
+  <category>{esc(it['category'])}</category>
+</item>""")
+    rss = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Health Universe — Evidence shifts</title>
+<link>{base}/</link>
+<description>Tier promotions, new evidence, retractions across the Health Universe knowledge graph.</description>
+<language>en-us</language>
+<atom:link href="{base}/feed.rss" rel="self" type="application/rss+xml" />
+{''.join(item_xml)}
+</channel>
+</rss>"""
+    return Response(content=rss, media_type="application/rss+xml; charset=utf-8",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
+# ---- A/B routing : test /start as landing ---------------------------------
+
+@app.get("/_variant")
+def variant_assign(request: Request, target: str = "/"):
+    """Probe used by the homepage to randomly assign a 50/50 cookie
+    between editorial (A) and onboarding-first (B). Logs nothing
+    server-side; the variant is stored in a `hu_variant` cookie so the
+    user gets a stable experience and we can analyse later via Plausible
+    custom events."""
+    import secrets
+    existing = request.cookies.get("hu_variant")
+    variant = existing if existing in ("A", "B") else secrets.choice(("A","B"))
+    dest = "/" if variant == "A" else "/start"
+    if target and target.startswith("/"):
+        dest = target
+    resp = RedirectResponse(dest, status_code=303)
+    resp.set_cookie("hu_variant", variant, max_age=60*60*24*180,
+                    httponly=False, samesite="lax")
+    return resp
+
+
+# ---- /score : Stack Score dial -------------------------------------------
+
+def _compute_stack_score(profile: Profile, conn) -> dict:
+    """Stack Score 0–100 = coverage of tracked conditions × stack quality
+    minus interaction conflicts."""
+    if not (profile.conditions or profile.stack):
+        return {"score": 0, "ok": False, "reason": "Set up your stack to see your score."}
+    coverage = 0
+    coverage_max = max(1, len(profile.conditions))
+    for c in profile.conditions:
+        # Does any tier-A protective edge for this condition touch the user's stack?
+        row = conn.execute("""
+            SELECT COUNT(*) c FROM edge e
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE o.slug=? AND e.tier='A' AND e.direction='protective'
+              AND f.slug IN ({})""".format(",".join(["?"]*max(1,len(profile.stack)))) if profile.stack else """
+            SELECT 0 c""",
+            ([c] + list(profile.stack)) if profile.stack else []).fetchone()
+        if row and row["c"] > 0:
+            coverage += 1
+    stack_quality = 0
+    if profile.stack:
+        rows = conn.execute("""
+            SELECT e.tier, e.direction FROM edge e
+            JOIN entity f ON f.id=e.factor_id
+            WHERE f.slug IN ({})""".format(",".join(["?"]*len(profile.stack))),
+            profile.stack).fetchall()
+        n = max(1, len(rows))
+        weighted = sum({"A":4,"B":3,"C":2,"X":1,"D":0.5,"deprecated":0}.get(r["tier"],1)
+                       for r in rows if r["direction"] in ("protective","neutral"))
+        stack_quality = int(min(40, weighted))                 # cap at 40
+    interactions = _interactions_for_stack(profile.stack)
+    interaction_penalty = sum({"high":15,"moderate":7,"low":2}.get(i.get("severity","low"),2)
+                              for i in interactions)
+    coverage_pts = int((coverage / coverage_max) * 50) if coverage_max else 0
+    raw = coverage_pts + stack_quality - interaction_penalty
+    score = max(0, min(100, raw))
+    band = "low" if score < 35 else ("solid" if score < 70 else "strong")
+    return {
+        "score": score, "ok": True,
+        "coverage": coverage, "coverage_max": coverage_max,
+        "coverage_pts": coverage_pts,
+        "stack_quality": stack_quality,
+        "interactions": interactions,
+        "interaction_penalty": interaction_penalty,
+        "band": band,
+    }
+
+
+@app.get("/score", response_class=HTMLResponse)
+def score_page(request: Request):
+    p = decode(request.cookies.get(COOKIE))
+    with connect() as conn:
+        stats = _compute_stack_score(p, conn)
+    return render(request, "score.html", {
+        "title": "My Stack Score",
+        "profile": p, "stats": stats,
+    })
+
+
+@app.get("/og/score/{score}.svg")
+def og_score(score: int):
+    """Shareable OG card for a given numeric score."""
+    score = max(0, min(100, int(score)))
+    band = "Low coverage" if score < 35 else ("Solid stack" if score < 70 else "Strong stack")
+    color = "#a3552c" if score < 35 else ("#c9a961" if score < 70 else "#1f3a2e")
+    arc_pct = score / 100.0
+    # SVG arc — circumference fragments
+    radius = 180; circ = 2 * 3.141592 * radius
+    dash = circ * arc_pct
+    svg = f"""<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fffaf0"/>
+      <stop offset="100%" stop-color="#f5ead0"/>
+    </linearGradient>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#caa257"/>
+      <stop offset="50%" stop-color="#f0d990"/>
+      <stop offset="100%" stop-color="#caa257"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="60" y="80" font-family="Inter, sans-serif" font-weight="700"
+        font-size="22" letter-spacing="6" fill="#1f3a2e">HEALTH UNIVERSE</text>
+  <g transform="translate(820,310)">
+    <circle cx="0" cy="0" r="{radius}" fill="none" stroke="#e8d8b3" stroke-width="22"/>
+    <circle cx="0" cy="0" r="{radius}" fill="none" stroke="{color}"
+            stroke-width="22" stroke-linecap="round"
+            stroke-dasharray="{dash:.1f} {circ:.1f}"
+            transform="rotate(-90)"/>
+    <text x="0" y="20" text-anchor="middle"
+          font-family="Fraunces, serif" font-weight="500"
+          font-size="120" fill="#1f3a2e">{score}</text>
+    <text x="0" y="80" text-anchor="middle"
+          font-family="Inter, sans-serif" font-weight="500"
+          font-size="22" fill="#7c6c4d">/ 100</text>
+  </g>
+  <text x="60" y="200" font-family="Fraunces, serif" font-weight="500"
+        font-size="64" fill="#1f3a2e">My Stack Score</text>
+  <text x="60" y="270" font-family="Inter, sans-serif" font-weight="500"
+        font-size="28" fill="{color}">{band}</text>
+  <text x="60" y="330" font-family="Inter, sans-serif" font-weight="400"
+        font-size="20" fill="#4a5b51">Coverage of tracked conditions ×</text>
+  <text x="60" y="362" font-family="Inter, sans-serif" font-weight="400"
+        font-size="20" fill="#4a5b51">stack quality − interaction conflicts.</text>
+  <text x="60" y="595" font-family="Inter, sans-serif" font-weight="500"
+        font-size="16" fill="#7c6c4d">health-universe.vercel.app/score</text>
+  <rect x="0" y="610" width="1200" height="20" fill="url(#ribbon)"/>
+</svg>"""
+    return Response(content=svg, media_type="image/svg+xml",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
+# ---- /posts : auto-generated cornerstone articles ------------------------
+
+POSTS_DIR = Path(__file__).parent.parent / "data" / "posts"
+
+
+def _post_index() -> list[dict]:
+    if not POSTS_DIR.exists():
+        return []
+    out = []
+    for f in sorted(POSTS_DIR.glob("*.json"), reverse=True):
+        try:
+            import json as _json
+            d = _json.loads(f.read_text())
+            out.append({"slug": f.stem, **d})
+        except Exception:
+            pass
+    return out
+
+
+@app.get("/posts", response_class=HTMLResponse)
+def posts_index(request: Request):
+    return render(request, "posts_index.html", {
+        "title": "Posts — Health Universe",
+        "posts": _post_index(),
+    })
+
+
+@app.get("/posts/{slug}", response_class=HTMLResponse)
+def post_detail(request: Request, slug: str):
+    import json as _json
+    post_file = POSTS_DIR / f"{slug}.json"
+    if not post_file.exists():
+        return HTMLResponse("Not found", status_code=404)
+    try:
+        post = _json.loads(post_file.read_text())
+    except Exception:
+        return HTMLResponse("Could not load post", status_code=500)
+    # Render markdown body to HTML so the post reads as proper prose.
+    try:
+        import markdown as _md
+        html_body = _md.markdown(post.get("body_md", ""),
+                                 extensions=["fenced_code", "tables"])
+    except Exception:
+        html_body = "<pre>" + (post.get("body_md") or "") + "</pre>"
+    return render(request, "post_detail.html", {
+        "title": post.get("title", slug),
+        "post": {**post, "slug": slug, "body_html": html_body},
+    })
+
+
+# ---- /api/cron/social : daily broadcast hook -----------------------------
+
+@app.get("/api/cron/social")
+def cron_social(request: Request):
+    """Vercel cron entry: post the day's top breakthrough to social.
+    Reads the same RSS-feed query, picks the top item, dispatches via
+    configured services (Bluesky, Twitter/X). Returns JSON for the
+    cron log."""
+    import os
+    expected = os.environ.get("CRON_SECRET")
+    auth = request.headers.get("authorization", "")
+    if expected and auth != f"Bearer {expected}":
+        return JSONResponse({"error": "unauthorized"}, status_code=401)
+    from datetime import timedelta as _td
+    today = datetime_now()
+    with connect() as conn:
+        rows = [dict(r) for r in conn.execute("""
+            SELECT h.changed_at, h.field, h.old_value, h.new_value, h.reason,
+                   h.actor,
+                   e.id AS edge_id, e.summary, e.tier,
+                   f.name AS f_name, o.name AS o_name
+            FROM edge_history h
+            JOIN edge e ON e.id = h.edge_id
+            JOIN entity f ON f.id = e.factor_id
+            JOIN entity o ON o.id = e.outcome_id
+            WHERE h.changed_at >= ?
+            ORDER BY h.changed_at DESC LIMIT 50""",
+            ((today - _td(days=2)).strftime("%Y-%m-%d"),)).fetchall()]
+    pick = None
+    for r in rows:
+        ev = _classify_event(r)
+        if ev["category"] in ("tier_promotion", "evidence_added"):
+            pick = {**r, **ev}; break
+    if not pick:
+        return JSONResponse({"posted": 0, "note": "no breakthrough today"})
+    text = (f"📈 {pick['headline']}: {pick['f_name']} → {pick['o_name']}\n\n"
+            f"{(pick.get('summary') or '')[:160]}\n\n"
+            f"https://health-universe.vercel.app/edge/{pick['edge_id']}")
+    posted: list[str] = []
+    errors: list[dict] = []
+    if os.environ.get("BLUESKY_HANDLE") and os.environ.get("BLUESKY_PASSWORD"):
+        try:
+            _bluesky_post(text); posted.append("bluesky")
+        except Exception as exc:
+            errors.append({"target": "bluesky", "error": str(exc)[:200]})
+    if os.environ.get("TWITTER_BEARER_TOKEN"):
+        try:
+            _twitter_post(text); posted.append("twitter")
+        except Exception as exc:
+            errors.append({"target": "twitter", "error": str(exc)[:200]})
+    return JSONResponse({"posted": posted, "edge_id": pick["edge_id"],
+                         "errors": errors})
+
+
+def _bluesky_post(text: str) -> None:
+    import os, httpx, datetime as _dt
+    handle = os.environ["BLUESKY_HANDLE"]
+    pw = os.environ["BLUESKY_PASSWORD"]
+    base = "https://bsky.social/xrpc"
+    s = httpx.post(f"{base}/com.atproto.server.createSession",
+                   json={"identifier": handle, "password": pw}, timeout=10).json()
+    httpx.post(f"{base}/com.atproto.repo.createRecord",
+               headers={"Authorization": f"Bearer {s['accessJwt']}"},
+               json={"repo": s["did"], "collection": "app.bsky.feed.post",
+                     "record": {"$type": "app.bsky.feed.post", "text": text[:300],
+                                "createdAt": _dt.datetime.utcnow().isoformat() + "Z"}},
+               timeout=10).raise_for_status()
+
+
+def _twitter_post(text: str) -> None:
+    import os, httpx
+    httpx.post("https://api.twitter.com/2/tweets",
+               headers={"Authorization": f"Bearer {os.environ['TWITTER_BEARER_TOKEN']}"},
+               json={"text": text[:280]}, timeout=10).raise_for_status()
+
+
+# ---- service worker for PWA notifications --------------------------------
+
+@app.get("/service-worker.js")
+def service_worker():
+    """Tiny SW that handles 'show me a notification' messages from the
+    page. We don't use VAPID push (needs persistent subscription
+    storage); instead we use the Notification API client-side, with
+    the service worker as the dispatcher so notifications can fire
+    when the page is closed but the PWA is installed."""
+    js = """
+self.addEventListener('install', e => self.skipWaiting());
+self.addEventListener('activate', e => self.clients.claim());
+
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'show-notification') {
+    const { title, body, url } = event.data;
+    self.registration.showNotification(title, {
+      body: body || '',
+      icon: '/static/icon-192.png',
+      badge: '/static/icon-192.png',
+      data: { url: url || '/today' },
+      requireInteraction: false,
+    });
+  }
+});
+
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  const url = (event.notification.data && event.notification.data.url) || '/';
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window' }).then(list => {
+      for (const c of list) {
+        if (c.url.indexOf(url) !== -1) return c.focus();
+      }
+      return self.clients.openWindow(url);
+    })
+  );
+});
+"""
+    return Response(content=js, media_type="application/javascript",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
 @app.get("/methodology", response_class=HTMLResponse)
 def methodology(request: Request):
     """Trust page: how we tier evidence, sources we use, conflicts of
