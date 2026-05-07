@@ -186,12 +186,69 @@ def _record_paper(conn, p: dict, extraction: dict) -> int:
     return cur.lastrowid
 
 
+VALID_STUDY_TYPES = {
+    "meta_analysis", "systematic_review", "rct", "cohort", "case_control",
+    "cross_sectional", "mechanistic", "animal", "case_report", "expert_opinion",
+}
+VALID_DIRECTIONS = {"protective", "harmful", "neutral", "u_shaped", "mixed"}
+VALID_QUALITY    = {"high", "moderate", "low", "very_low"}
+
+# Map common Gemma drift values to the closest valid enum, so a single
+# CHECK-constraint violation doesn't abort the whole run.
+_STUDY_TYPE_ALIASES = {
+    "review": "systematic_review",
+    "narrative_review": "expert_opinion",
+    "scoping_review": "systematic_review",
+    "umbrella_review": "systematic_review",
+    "trial": "rct",
+    "randomised_controlled_trial": "rct",
+    "randomized_controlled_trial": "rct",
+    "controlled_trial": "rct",
+    "clinical_trial": "rct",
+    "observational": "cohort",
+    "longitudinal": "cohort",
+    "prospective_cohort": "cohort",
+    "retrospective_cohort": "cohort",
+    "case_series": "case_report",
+    "in_vitro": "mechanistic",
+    "in_vivo": "animal",
+    "preclinical": "mechanistic",
+    "ecological": "cross_sectional",
+    "survey": "cross_sectional",
+    "guideline": "expert_opinion",
+    "consensus": "expert_opinion",
+}
+
+
+def _coerce_study_type(raw: str | None) -> str | None:
+    """Return a valid study_type or None. Maps known aliases; otherwise
+    drops claims with unrecognised values rather than crashing on insert."""
+    if not raw:
+        return None
+    s = raw.strip().lower().replace("-", "_").replace(" ", "_")
+    if s in VALID_STUDY_TYPES:
+        return s
+    return _STUDY_TYPE_ALIASES.get(s)
+
+
 def _apply_claim(conn, paper: dict, claim: dict, fmap: dict, omap: dict) -> dict | None:
     """Insert/update an edge based on a Gemma-extracted claim. Returns
     {edge_id, old_tier, new_tier, escalate} for anything interesting."""
     fslug, oslug = claim.get("factor_slug"), claim.get("outcome_slug")
     if fslug not in fmap or oslug not in omap:
         return None  # invalid slugs, skip silently
+    # Coerce / validate Gemma-emitted enum fields BEFORE we hit the DB.
+    coerced_st = _coerce_study_type(claim.get("study_type"))
+    if not coerced_st:
+        return None       # drop the claim, don't crash the run
+    claim["study_type"] = coerced_st
+    direction = (claim.get("direction") or "").strip().lower()
+    if direction not in VALID_DIRECTIONS:
+        return None
+    quality = (claim.get("quality") or "low").strip().lower()
+    if quality not in VALID_QUALITY:
+        quality = "low"
+    claim["quality"] = quality
     f = conn.execute("SELECT id FROM entity WHERE slug=?", (fslug,)).fetchone()
     o = conn.execute("SELECT id FROM entity WHERE slug=?", (oslug,)).fetchone()
     if not f or not o:
