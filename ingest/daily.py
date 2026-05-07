@@ -357,8 +357,8 @@ def run(*, days_back: int = 2, per_entity: int = 6, dry_run: bool = False) -> di
     with connect() as conn:
         fact_lines, out_lines, fmap, omap = _entity_lists(conn)
 
-    print(f"[ingest] entities: {len(fmap)} factors, {len(omap)} outcomes")
-    print(f"[ingest] fetching abstracts (days_back={days_back}) ...")
+    print(f"[ingest] entities: {len(fmap)} factors, {len(omap)} outcomes", flush=True)
+    print(f"[ingest] fetching abstracts (days_back={days_back}) ...", flush=True)
     with connect() as conn:
         papers = _papers_for_today(conn, days_back=days_back, per_entity=per_entity)
     print(f"[ingest] {len(papers)} unique papers fetched")

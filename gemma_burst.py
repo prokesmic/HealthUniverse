@@ -39,6 +39,16 @@ os.environ.pop("READ_ONLY", None)
 
 from db import connect                                  # noqa: E402
 from ingest import daily                                # noqa: E402
+import ollama_client                                    # noqa: E402
+
+# Override the daily ingest's default model for burst runs. The .env
+# loader uses override=True so a shell export gets clobbered; setting
+# the module attribute directly is the only reliable lever.
+_burst_model = os.environ.get("OLLAMA_MODEL_BURST", "llama3:8b")
+if _burst_model and _burst_model != ollama_client.OLLAMA_MODEL:
+    print(f"[burst] switching Gemma model "
+          f"{ollama_client.OLLAMA_MODEL!r} → {_burst_model!r}", flush=True)
+    ollama_client.OLLAMA_MODEL = _burst_model
 
 AUDIT_DIR = ROOT / "data" / "audits"
 

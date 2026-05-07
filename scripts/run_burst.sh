@@ -26,10 +26,17 @@ LOG="data/audits/burst-night${NIGHT}-$(date +%Y%m%d-%H%M).log"
 echo "[$(date)] burst night ${NIGHT} starting · args=${ARGS[*]}" | tee "$LOG"
 echo "[$(date)] log → $LOG"
 
+# Use a smaller, faster model than the daily default.
+# gemma4:26b (18 GB) takes ~30-60s per abstract on a Mac mini under
+# memory pressure. llama3:8b (4.7 GB) handles structured-JSON
+# extraction equally well and is 3-5× faster, which matters when the
+# burst processes hundreds of abstracts.
+export OLLAMA_MODEL="${OLLAMA_MODEL_BURST:-llama3:8b}"
+
+# Python -u disables stdout/stderr buffering so the log file shows
+# progress in real time (the previous run sat silent for an hour).
 # caffeinate -i prevents idle sleep while the burst runs.
-# -t with no value would mean "indefinitely"; we don't want that.
-# Instead, caffeinate runs for the lifetime of its child (python).
-caffeinate -i "$PROJECT/.venv/bin/python" gemma_burst.py "${ARGS[@]}" \
+caffeinate -i "$PROJECT/.venv/bin/python" -u gemma_burst.py "${ARGS[@]}" \
   >> "$LOG" 2>&1 || {
     echo "[$(date)] burst night ${NIGHT} FAILED (exit=$?)" | tee -a "$LOG"
     exit 1
