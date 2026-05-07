@@ -80,10 +80,27 @@ def render(request: Request, template: str, ctx: dict) -> HTMLResponse:
         initials = "".join(p[0].upper() for p in parts[:2])
     elif nav_profile and (nav_profile.conditions or nav_profile.stack):
         initials = "ME"
+    # Cheap weekly-edges count for the avatar dropdown header. Best-
+    # effort — silently 0 on read-only DBs or when the table is missing.
+    edges_7d = 0
+    try:
+        from datetime import timedelta as _td2
+        with connect() as _c:
+            cutoff = (datetime_now() - _td2(days=7)).strftime("%Y-%m-%d")
+            total = _c.execute("SELECT COUNT(*) c FROM edge").fetchone()["c"]
+            edges_7d = _c.execute(
+                "SELECT COUNT(*) c FROM edge WHERE created_at >= ?",
+                (cutoff,)).fetchone()["c"]
+            # Same suppression as _stats(): hide on freshly-seeded corpus.
+            if total and edges_7d > total * 0.5:
+                edges_7d = 0
+    except Exception:
+        pass
     return templates.TemplateResponse(request, template, {
         **_TEMPLATE_GLOBALS, **ctx,
         "nav_profile": nav_profile,
         "nav_initials": initials,
+        "nav_edges_7d": edges_7d,
     })
 
 
@@ -117,10 +134,60 @@ def _category_count(conn, cat: dict) -> int:
 
 
 def _stats(conn) -> dict:
-    edges = conn.execute("SELECT COUNT(*) c FROM edge").fetchone()["c"]
+    """Live corpus stats with weekly + monthly deltas. Used on /, /stats,
+    /methodology, and the avatar dropdown header."""
+    from datetime import timedelta as _td
+    today = datetime_now()
+    cutoff_7  = (today - _td(days=7)).strftime("%Y-%m-%d")
+    cutoff_30 = (today - _td(days=30)).strftime("%Y-%m-%d")
+
+    edges   = conn.execute("SELECT COUNT(*) c FROM edge").fetchone()["c"]
     studies = conn.execute("SELECT COUNT(*) c FROM evidence").fetchone()["c"]
-    last = conn.execute("SELECT MAX(updated_at) m FROM edge").fetchone()["m"]
-    return {"edges": edges, "studies": studies, "updated": last or "—"}
+    pmids   = conn.execute(
+        "SELECT COUNT(DISTINCT pmid) c FROM evidence WHERE pmid IS NOT NULL AND pmid != ''"
+    ).fetchone()["c"]
+    last    = conn.execute("SELECT MAX(updated_at) m FROM edge").fetchone()["m"]
+
+    edges_7  = conn.execute(
+        "SELECT COUNT(*) c FROM edge WHERE created_at >= ?", (cutoff_7,)
+    ).fetchone()["c"]
+    edges_30 = conn.execute(
+        "SELECT COUNT(*) c FROM edge WHERE created_at >= ?", (cutoff_30,)
+    ).fetchone()["c"]
+    studies_7 = conn.execute(
+        "SELECT COUNT(*) c FROM evidence WHERE created_at >= ?", (cutoff_7,)
+    ).fetchone()["c"]
+    studies_30 = conn.execute(
+        "SELECT COUNT(*) c FROM evidence WHERE created_at >= ?", (cutoff_30,)
+    ).fetchone()["c"]
+    promotions_30 = 0
+    try:
+        promotions_30 = conn.execute("""
+            SELECT COUNT(*) c FROM edge_history
+            WHERE field='tier' AND new_value IN ('A','B')
+              AND (old_value IS NULL OR old_value NOT IN ('A','B'))
+              AND changed_at >= ?""", (cutoff_30,)).fetchone()["c"]
+    except Exception:
+        pass
+
+    # Suppress deltas during the freshly-seeded phase: if "this week"
+    # is >50 % of the total, every edge is < 7 days old → not a real
+    # weekly delta, just a fresh corpus. Same for studies.
+    if edges and edges_7  > edges  * 0.5: edges_7  = 0
+    if edges and edges_30 > edges  * 0.6: edges_30 = 0
+    if studies and studies_7  > studies  * 0.5: studies_7  = 0
+    if studies and studies_30 > studies  * 0.6: studies_30 = 0
+    return {
+        "edges": edges,
+        "studies": studies,
+        "pmids": pmids,
+        "updated": last or "—",
+        "edges_7d":   edges_7,
+        "edges_30d":  edges_30,
+        "studies_7d": studies_7,
+        "studies_30d": studies_30,
+        "promotions_30d": promotions_30,
+    }
 
 
 def _featured(conn, limit: int = 3) -> list[dict]:

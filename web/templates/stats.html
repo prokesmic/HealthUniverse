@@ -23,7 +23,7 @@
   {# ─ KPI grid ─ #}
   <section class="meth-stats">
     <div class="meth-stat-grid">
-      <div><dt>Edges</dt><dd>{{ "{:,}".format(n_edges) }}</dd><small>factor → outcome relationships</small></div>
+      <div><dt>Edges</dt><dd>{{ "{:,}".format(n_edges) }}</dd>{% if new_30 %}<span class="hp-stat-delta">↑ +{{ new_30 }} this month</span>{% endif %}<small>factor → outcome relationships</small></div>
       <div><dt>Studies</dt><dd>{{ "{:,}".format(n_studies) }}</dd><small>evidence rows</small></div>
       <div><dt>Distinct PMIDs</dt><dd>{{ "{:,}".format(n_pmids) }}</dd><small>verified against PubMed</small></div>
       <div><dt>Meta-analyses + SRs</dt><dd>{{ "{:,}".format(n_meta) }}</dd><small>highest study tier</small></div>

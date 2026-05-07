@@ -4645,3 +4645,31 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 
 /* notification toggle on /today fits the existing today-actions row */
 #notif-toggle:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ============================================================
+   Stat-delta chip (↑ +N this week) on home + stats + methodology
+   ============================================================ */
+.hp-stat-delta {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 2px 8px;
+  font: 600 10.5px/1.4 "Inter", sans-serif;
+  letter-spacing: 0.04em;
+  background: rgba(59, 142, 90, 0.14);
+  color: #1f3a2e;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.meth-stat-grid .hp-stat-delta { margin: 4px 0 6px; }
+
+.hp-since-visit {
+  display: inline-block;
+  margin: 12px 0 0;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, rgba(31,58,46,0.06), rgba(201,169,97,0.10));
+  border: 1px solid rgba(201,169,97,0.3);
+  border-radius: 999px;
+  font: 500 12.5px/1.4 "Inter", sans-serif;
+  color: #1f3a2e;
+  letter-spacing: 0.01em;
+}

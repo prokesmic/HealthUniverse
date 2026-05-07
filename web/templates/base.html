@@ -83,6 +83,9 @@
     </summary>
     <div class="account-panel" role="menu">
       <div class="account-head">
+        {% if nav_edges_7d %}
+        <span class="hp-stat-delta" style="margin-bottom:6px">↑ +{{ nav_edges_7d }} new edge{{ "s" if nav_edges_7d != 1 else "" }} this week</span>
+        {% endif %}
         {% if nav_profile and (nav_profile.conditions or nav_profile.stack or nav_profile.name) %}
           <b>{{ nav_profile.name or 'Your stack' }}</b>
           <small class="muted">
