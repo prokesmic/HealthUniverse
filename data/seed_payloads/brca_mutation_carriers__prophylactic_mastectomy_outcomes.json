@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "brca_mutation_carriers",
+      "outcome_slug": "prophylactic_mastectomy_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "large",
+      "effect_quant": "Among BRCA1 and BRCA2 carriers, risk-reducing bilateral mastectomy is associated with markedly lower breast cancer incidence and lower breast cancer mortality. A 2025 meta-analysis of 6,135 carriers found adjusted overall mortality HR 0.37 and breast cancer-specific mortality HR 0.14 for women who underwent risk-reducing bilateral mastectomy versus those who did not.",
+      "population": "women carrying pathogenic BRCA1 or BRCA2 variants who are considering or have undergone bilateral prophylactic mastectomy",
+      "mechanism": "BRCA1 and BRCA2 pathogenic variants confer high lifetime breast cancer risk because of impaired homologous recombination DNA repair. Removing most at-risk breast tissue before cancer develops substantially reduces the substrate for future primary tumors and likely lowers downstream mortality as a consequence.",
+      "summary": "For BRCA carriers, prophylactic bilateral mastectomy appears strongly protective as a risk-reduction strategy. The evidence base is observational rather than randomized, but large systematic reviews and pooled analyses consistently show major reductions in incident breast cancer and suggest lower breast cancer-specific mortality as well.",
+      "caveats": "This edge is about outcomes of the prophylactic surgery within BRCA carriers, not a claim that merely carrying BRCA variants is beneficial. The decision remains highly preference-sensitive because surgery has major physical, reconstructive, sexual, and psychosocial consequences, and mortality benefits are harder to estimate precisely than incidence reductions.",
+      "evidence": [
+        {
+          "citation": "O'Reilly et al 2025 JAMA Surg",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Risk-Reducing Bilateral Mastectomy and Mortality in Carriers of BRCA1 and BRCA2 Variants: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1001/jamasurg.2025.5929",
+          "pmid": "41499127",
+          "n_participants": 6135,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.37,
+            "ci_low": 0.23,
+            "ci_high": 0.60,
+            "comparator": "overall mortality in BRCA1/2 carriers undergoing risk-reducing bilateral mastectomy versus no mastectomy"
+          }
+        },
+        {
+          "citation": "Madan et al 2017 Ann Surg Oncol",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Differences Among a Modern Cohort of BRCA Mutation Carriers Choosing Bilateral Prophylactic Mastectomies Compared to Breast Surveillance.",
+          "pmid": "28766223",
+          "n_participants": 455
+        },
+        {
+          "citation": "Carbine et al 2018 Cochrane Database Syst Rev",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Risk-reducing mastectomy for the prevention of primary breast cancer.",
+          "doi": "10.1002/14651858.CD002748.pub4",
+          "pmid": "29620792",
+          "n_participants": 15077
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "brca_mutation_carriers",
+      "name": "BRCA mutation carriers",
+      "kind": "condition",
+      "aliases": [
+        "BRCA1 or BRCA2 pathogenic variant carriers",
+        "hereditary breast ovarian cancer carriers"
+      ],
+      "description": "People carrying pathogenic BRCA1 or BRCA2 variants associated with substantially increased hereditary breast and ovarian cancer risk."
+    },
+    {
+      "slug": "prophylactic_mastectomy_outcomes",
+      "name": "Prophylactic mastectomy outcomes",
+      "kind": "condition",
+      "aliases": [
+        "risk-reducing mastectomy outcomes",
+        "bilateral prophylactic mastectomy results"
+      ],
+      "description": "Clinical outcomes after bilateral prophylactic mastectomy, including cancer incidence and mortality."
+    }
+  ]
+}

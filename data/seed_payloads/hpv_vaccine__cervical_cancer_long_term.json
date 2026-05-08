@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hpv_vaccine",
+      "outcome_slug": "cervical_cancer_long_term",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "Long-term population follow-up now shows a major reduction in invasive cervical cancer after adolescent HPV vaccination. In Sweden, women vaccinated before age 17 had an adjusted incidence rate ratio of 0.12 for invasive cervical cancer versus unvaccinated women, and in Scotland vaccination at age 12 to 13 was associated with an 89% reduction in CIN3 or worse.",
+      "population": "girls and young women offered routine adolescent HPV vaccination and followed into cervical-screening ages",
+      "mechanism": "HPV vaccination prevents persistent infection with oncogenic types, especially HPV16 and HPV18, interrupting the pathway from HPV acquisition to cervical precancer and eventually invasive cervical cancer. The protective effect is strongest when vaccination occurs before sexual debut and before exposure to vaccine-type HPV.",
+      "summary": "The long-term signal is strongly protective and now extends beyond precancer into invasive cervical cancer. National linkage studies from the UK and other high-coverage settings show that adolescent HPV vaccination sharply reduces later CIN3 and cervical cancer incidence, with the largest benefit in cohorts vaccinated at ages 12 to 13.",
+      "caveats": "Follow-up is still concentrated in younger birth cohorts, so lifetime protection and the eventual influence of boosters, screening changes, and deprivation patterns continue to evolve. Even in vaccinated populations, screening remains important because vaccines do not eliminate all oncogenic HPV types.",
+      "evidence": [
+        {
+          "citation": "Falcaro et al 2024 BMJ",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of the HPV vaccination programme on incidence of cervical cancer and grade 3 cervical intraepithelial neoplasia by socioeconomic deprivation in England: population based observational study.",
+          "doi": "10.1136/bmj-2023-077341",
+          "pmid": "38749552",
+          "n_participants": 365502,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -0.839,
+            "ci_low": -0.928,
+            "ci_high": -0.638,
+            "comparator": "adjusted age-standardized invasive cervical cancer incidence in the routinely vaccinated English birth cohort versus the unvaccinated reference cohort"
+          }
+        },
+        {
+          "citation": "Palmer et al 2019 BMJ",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Prevalence of cervical disease at age 20 after immunisation with bivalent HPV vaccine at age 12-13 in Scotland: retrospective population study.",
+          "doi": "10.1136/bmj.l1161",
+          "pmid": "30944092",
+          "n_participants": 138692,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -0.89,
+            "ci_low": -0.94,
+            "ci_high": -0.81,
+            "comparator": "CIN3 or worse in women vaccinated at age 12 to 13 versus unvaccinated women born in 1988"
+          }
+        },
+        {
+          "citation": "Lei et al 2020 N Engl J Med",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "HPV Vaccination and the Risk of Invasive Cervical Cancer.",
+          "doi": "10.1056/NEJMoa1917338",
+          "pmid": "32997908",
+          "n_participants": 1672143,
+          "effect_quant": {
+            "metric": "IRR",
+            "value": 0.12,
+            "ci_low": 0.0,
+            "ci_high": 0.34,
+            "comparator": "invasive cervical cancer in women vaccinated before age 17 versus never vaccinated in Sweden"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hpv_vaccine",
+      "name": "HPV vaccine",
+      "kind": "drug",
+      "aliases": [
+        "human papillomavirus vaccine",
+        "HPV vaccination"
+      ],
+      "description": "Prophylactic human papillomavirus vaccination given before HPV exposure to prevent HPV-related disease."
+    },
+    {
+      "slug": "cervical_cancer_long_term",
+      "name": "Long-term cervical cancer risk",
+      "kind": "condition",
+      "aliases": [
+        "later invasive cervical cancer",
+        "long-term cervical cancer incidence"
+      ],
+      "description": "The later incidence of invasive cervical cancer after years of follow-up."
+    }
+  ]
+}
