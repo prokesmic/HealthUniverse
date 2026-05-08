@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vitamin_d_supplementation_children",
+      "outcome_slug": "respiratory_infections",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The pediatric signal is modest but directionally protective in several randomized trials. Vitamin D cut parent-reported respiratory infections roughly in half in deficient Mongolian schoolchildren and reduced sick days due to acute respiratory tract infection by 17% in a 2025 winter trial in Danish children.",
+      "population": "children receiving vitamin D supplementation for prevention of upper or lower respiratory infections, especially during winter or in low-vitamin-D settings",
+      "mechanism": "Vitamin D supports innate immune responses, including antimicrobial peptide signaling and epithelial defense. Any benefit seems most plausible in children with low baseline vitamin D levels or during low-sunlight months when deficiency is common.",
+      "summary": "The evidence leans protective, but the effect is not large or universal. Several pediatric randomized trials report fewer respiratory infections or sick days with supplementation, especially in deficient or wintertime populations, while broader pediatric syntheses suggest that benefits depend heavily on dosing schedule, baseline status, and outcome definition.",
+      "caveats": "Not every pediatric trial is positive, and the literature is heterogeneous across age, latitude, vitamin D dose, and whether the outcome is laboratory-confirmed viral infection, parent-reported respiratory illness, or total sick days. This is best read as a modest-context-dependent preventive edge rather than a broadly reliable infection shield.",
+      "evidence": [
+        {
+          "citation": "Camargo CA et al 2012 Pediatrics",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Randomized trial of vitamin D supplementation and risk of acute respiratory infection in Mongolia.",
+          "doi": "10.1542/peds.2011-3029",
+          "pmid": "22908115",
+          "n_participants": 247,
+          "effect_quant": {
+            "metric": "rate_ratio",
+            "value": 0.5,
+            "ci_low": 0.28,
+            "ci_high": 0.88,
+            "comparator": "parent-reported acute respiratory infections with fortified milk plus vitamin D versus unfortified milk in deficient Mongolian schoolchildren"
+          }
+        },
+        {
+          "citation": "Urashima M et al 2010 Am J Clin Nutr",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Randomized trial of vitamin D supplementation to prevent seasonal influenza A in schoolchildren.",
+          "doi": "10.3945/ajcn.2009.29094",
+          "pmid": "20219962",
+          "n_participants": 334,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.58,
+            "ci_low": 0.34,
+            "ci_high": 0.99,
+            "comparator": "influenza A incidence with vitamin D3 1200 IU daily versus placebo in schoolchildren"
+          }
+        },
+        {
+          "citation": "Clerico JW et al 2025 Eur J Nutr",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of vitamin D supplementation on acute respiratory tract infections in 6-8-year-old children: a randomized clinical trial.",
+          "doi": "10.1007/s00394-025-03674-1",
+          "pmid": "40310565",
+          "n_participants": 200,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.83,
+            "ci_low": 0.76,
+            "ci_high": 0.9,
+            "comparator": "sick days due to acute respiratory tract infection with 20 micrograms per day of vitamin D3 versus placebo during winter"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vitamin_d_supplementation_children",
+      "name": "Vitamin D supplementation in children",
+      "kind": "supplement",
+      "aliases": [
+        "pediatric vitamin D supplementation",
+        "child vitamin D supplementation"
+      ],
+      "description": "Oral vitamin D supplementation given to children to improve vitamin D status and potentially modify health outcomes."
+    },
+    {
+      "slug": "respiratory_infections",
+      "name": "Respiratory infections",
+      "kind": "condition",
+      "aliases": [
+        "acute respiratory infections",
+        "upper or lower respiratory tract infections"
+      ],
+      "description": "Acute respiratory infections in children, including viral upper respiratory tract infection and influenza-like illnesses."
+    }
+  ]
+}

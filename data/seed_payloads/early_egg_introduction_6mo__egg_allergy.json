@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "early_egg_introduction_6mo",
+      "outcome_slug": "egg_allergy",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The best pooled evidence suggests that introducing egg between 3 and 6 months lowers later egg allergy risk. A 2023 meta-analysis reported RR 0.60, and the PETIT trial found egg allergy in 8% of the early-introduction group versus 38% of placebo recipients in its primary analysis.",
+      "population": "infants, particularly those with eczema or other early atopic risk markers",
+      "mechanism": "Carefully timed oral exposure to cooked or heated egg proteins may induce immune tolerance during infancy. Delayed introduction, especially in eczema-prone infants, may allow sensitization to develop before regular dietary exposure occurs.",
+      "summary": "The overall direction is protective, though not as uniformly clean as the peanut literature. Meta-analyses and the strongest cooked-egg trial support early introduction as a way to reduce egg allergy, while adherence and the form of egg exposure appear to matter a great deal.",
+      "caveats": "Benefits are more convincing with cooked or heated egg than with raw egg powder strategies, and high-risk infants can react at first exposure. This is a prevention edge, not a recommendation to introduce egg in an unsafe form or without clinical planning when severe eczema or prior reactions are present.",
+      "evidence": [
+        {
+          "citation": "Scarpone R et al 2023 JAMA Pediatr",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Timing of Allergenic Food Introduction and Risk of Immunoglobulin E-Mediated Food Allergy: A Systematic Review and Meta-analysis.",
+          "doi": "10.1001/jamapediatrics.2023.0142",
+          "pmid": "36972063",
+          "n_participants": 4811,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.6,
+            "ci_low": 0.46,
+            "ci_high": 0.77,
+            "comparator": "egg allergy after egg introduction from 3 to 6 months versus later introduction or avoidance"
+          }
+        },
+        {
+          "citation": "Natsume O et al 2017 Lancet",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Two-step egg introduction for prevention of egg allergy in high-risk infants with eczema (PETIT): a randomised, double-blind, placebo-controlled trial.",
+          "doi": "10.1016/S0140-6736(16)31418-0",
+          "pmid": "27939035",
+          "n_participants": 121,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.221,
+            "ci_low": 0.09,
+            "ci_high": 0.543,
+            "comparator": "egg allergy at 12 months in the primary analysis population after stepwise heated egg introduction versus placebo"
+          }
+        },
+        {
+          "citation": "Perkin MR et al 2016 N Engl J Med",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Randomized Trial of Introduction of Allergenic Foods in Breast-Fed Infants.",
+          "doi": "10.1056/NEJMoa1514210",
+          "pmid": "26943128",
+          "n_participants": 1303,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -0.745,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "per-protocol egg allergy prevalence: 1.4% in the early-introduction group versus 5.5% in the standard-introduction group"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "early_egg_introduction_6mo",
+      "name": "Early egg introduction around 6 months",
+      "kind": "behavior",
+      "aliases": [
+        "early cooked egg introduction",
+        "egg introduction in infancy"
+      ],
+      "description": "Introducing egg during early complementary feeding, typically around 4 to 6 months of age, to promote tolerance."
+    },
+    {
+      "slug": "egg_allergy",
+      "name": "Egg allergy",
+      "kind": "condition",
+      "aliases": [
+        "hen's egg allergy",
+        "IgE-mediated egg allergy"
+      ],
+      "description": "Clinical hen's egg allergy in infancy or early childhood."
+    }
+  ]
+}
