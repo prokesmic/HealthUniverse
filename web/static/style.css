@@ -4692,3 +4692,81 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   border-bottom: 1px dotted rgba(108,79,31,0.35);
 }
 .handout-source a:hover { color: #1f3a2e; }
+
+/* ============================================================
+   Discoveries v2 — kind / tier chips reuse library v2 styling
+   ============================================================ */
+.disc-kind-row {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin: 22px 0 14px;
+}
+.disc-kind-chip {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 18px;
+  background: var(--surface, #fffaf0);
+  border: 1px solid var(--line, #e3d6b0);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--ink);
+  min-width: 130px;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.disc-kind-chip:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(31,58,46,.08); }
+.disc-kind-icon {
+  font: 600 12px/1 "Inter", sans-serif;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+.disc-kind-chip b {
+  font-family: "Fraunces", serif; font-weight: 500;
+  font-size: 22px; line-height: 1;
+  color: var(--ink);
+  margin-left: auto;
+}
+.disc-kind-chip.is-active {
+  background: #1f3a2e; color: #fffaf0; border-color: #1f3a2e;
+}
+.disc-kind-chip.is-active .disc-kind-icon,
+.disc-kind-chip.is-active b { color: #fffaf0; }
+.disc-kind-chip.kind-breakthrough.is-active {
+  background: linear-gradient(135deg, #caa257, #f0d990, #1f3a2e 70%, #caa257);
+  background-size: 200% 100%;
+  animation: hpShimmer 6s linear infinite;
+}
+.disc-kind-chip.kind-breakthrough.is-active .disc-kind-icon,
+.disc-kind-chip.kind-breakthrough.is-active b { color: #1f3a2e; }
+.disc-kind-chip.kind-promoted.is-active { background: #3b8e5a; border-color: #3b8e5a; }
+
+/* Tier chips — slimmer pill row beneath the kind row */
+.disc-tier-row {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 0 0 22px;
+}
+.disc-tier-chip {
+  padding: 8px 14px;
+  font: 500 13px "Inter", sans-serif;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.disc-tier-chip:hover { color: var(--ink); }
+.disc-tier-chip small {
+  font-size: 11px; opacity: 0.7;
+  background: rgba(0,0,0,0.06); padding: 1px 7px; border-radius: 999px;
+}
+.disc-tier-chip.is-active { color: #fffaf0; border-color: transparent; }
+.disc-tier-chip.tier-A.is-active { background: #1f3a2e; }
+.disc-tier-chip.tier-B.is-active { background: #3b8e5a; }
+.disc-tier-chip.tier-C.is-active { background: #c9a961; color: #2a2a2a; }
+.disc-tier-chip.tier-X.is-active { background: #a3552c; }
+.disc-tier-chip.is-active small { background: rgba(255,250,240,0.25); color: inherit; }
+
+/* When grouped, give each section its own scroll-target margin */
+.lib2-group { scroll-margin-top: 80px; }
+
+@media (max-width: 720px) {
+  .disc-kind-chip { flex: 1 1 calc(50% - 5px); min-width: 0; }
+}

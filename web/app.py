@@ -2016,28 +2016,90 @@ async def subscribe(request: Request, email: str = Form(...),
 
 
 @app.get("/discoveries", response_class=HTMLResponse)
-def discoveries(request: Request, days: int = 30, page: int = 1):
+def discoveries(request: Request, days: int = 30, page: int = 1,
+                tier: str = "", direction: str = "", q: str = "",
+                kind: str = "", sort: str = "latest", group: str = ""):
+    """Discoveries with full library-style navigation: tier chips,
+    direction filter, search-within, sort, and breakthrough-first
+    grouping. URL-driven so every filter combo is shareable."""
     with connect() as conn:
-        all_rows = _new_discoveries(conn, days=days, limit=200)
-        # Split into "promoted into A/B" vs "newly created at C+"
-        promoted = [r for r in all_rows if r.get("promoted_at")]
-        newly_created = [r for r in all_rows if not r.get("promoted_at")]
-        # Total over the last 7 days for a "this week" headline
-        week_count = sum(1 for r in all_rows if
-            (r.get("promoted_at") or r.get("updated_at"))[:10] >=
-            (datetime_now() - timedelta(days=7)).strftime("%Y-%m-%d"))
-        # Suppress the "this past week" stat when it equals the total —
-        # that just means everything in the window is freshly seeded.
-        if week_count and week_count == len(all_rows):
-            week_count = 0
-    pg = _paginate(len(all_rows), page)
-    rows = all_rows[pg["offset"]: pg["offset"] + PAGE_SIZE]
+        all_rows = _new_discoveries(conn, days=days, limit=400)
+    promoted_count = sum(1 for r in all_rows if r.get("promoted_at"))
+    newly_count    = sum(1 for r in all_rows if not r.get("promoted_at"))
+    breakthrough_count = sum(1 for r in all_rows if r.get("breakthrough"))
+    # 7d signal — suppress when entire window is freshly-seeded
+    week_count = sum(1 for r in all_rows if
+        (r.get("promoted_at") or r.get("updated_at"))[:10] >=
+        (datetime_now() - timedelta(days=7)).strftime("%Y-%m-%d"))
+    if week_count and week_count == len(all_rows):
+        week_count = 0
+    # Facets across the unfiltered set so the chip counts stay honest.
+    tier_counts: dict[str, int] = {}
+    dir_counts: dict[str, int] = {}
+    for r in all_rows:
+        tier_counts[r["tier"]] = tier_counts.get(r["tier"], 0) + 1
+        dir_counts[r["direction"]] = dir_counts.get(r["direction"], 0) + 1
+    # Apply filters
+    rows = all_rows
+    tier_set = {t for t in (tier or "").split(",") if t}
+    if tier_set:
+        rows = [r for r in rows if r["tier"] in tier_set]
+    if direction:
+        rows = [r for r in rows if r["direction"] == direction]
+    if kind == "promoted":
+        rows = [r for r in rows if r.get("promoted_at")]
+    elif kind == "newly":
+        rows = [r for r in rows if not r.get("promoted_at")]
+    elif kind == "breakthrough":
+        rows = [r for r in rows if r.get("breakthrough")]
+    if q:
+        ql = q.lower().strip()
+        rows = [r for r in rows
+                if ql in (r.get("f_name") or "").lower()
+                or ql in (r.get("o_name") or "").lower()
+                or ql in (r.get("summary") or "").lower()]
+    # Sort
+    if sort == "importance":
+        rows.sort(key=lambda r: (-(1 if r.get("breakthrough") else 0),
+                                  -(r.get("score") or 0)))
+    elif sort == "studies":
+        rows.sort(key=lambda r: -(r.get("n_studies") or 0))
+    elif sort == "az":
+        rows.sort(key=lambda r: ((r.get("f_name") or "").lower(),
+                                  (r.get("o_name") or "").lower()))
+    else:                                              # latest (default)
+        rows.sort(key=lambda r: r.get("promoted_at") or r.get("updated_at") or "",
+                  reverse=True)
+    # Group by promotion vs new, optionally
+    groups = None
+    if group == "kind":
+        bk = [r for r in rows if r.get("breakthrough")]
+        pr = [r for r in rows if r.get("promoted_at") and not r.get("breakthrough")]
+        nw = [r for r in rows if not r.get("promoted_at") and not r.get("breakthrough")]
+        groups = []
+        if bk: groups.append({"slug":"breakthrough","name":"Breakthrough","rows":bk})
+        if pr: groups.append({"slug":"promoted","name":"Promoted to A or B","rows":pr})
+        if nw: groups.append({"slug":"newly","name":"Newly published","rows":nw})
+    total = len(rows)
+    if groups:
+        page_rows = []
+        pg = {"page":1,"pages":1,"total":total,"has_prev":False,"has_next":False,"offset":0}
+    else:
+        pg = _paginate(total, page)
+        page_rows = rows[pg["offset"]: pg["offset"] + PAGE_SIZE]
     return render(request, "discoveries.html", {
-        "title": "Discoveries", "rows": rows, "days": days,
+        "title": "Discoveries", "rows": page_rows, "groups": groups,
+        "days": days,
         "pg": pg, "base_path": "/discoveries",
-        "promoted_count": len(promoted),
-        "new_count": len(newly_created),
+        "promoted_count": promoted_count,
+        "new_count": newly_count,
+        "breakthrough_count": breakthrough_count,
         "week_count": week_count,
+        "tier_counts": tier_counts,
+        "dir_counts": dir_counts,
+        "filters": {"tier": tier, "direction": direction, "q": q,
+                    "kind": kind, "sort": sort, "group": group, "days": days},
+        "sort_options": _LIB_SORTS,
     })
 
 

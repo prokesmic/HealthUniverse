@@ -1,6 +1,28 @@
 {% extends "base.html" %}
 {% block title %}Discoveries — Health Universe{% endblock %}
 {% block content %}
+{# QS macro — preserves filters, allows overrides #}
+{% macro qs(extra) -%}
+  {%- set merged = {} -%}
+  {%- for k,v in filters.items() -%}{%- if v -%}{%- set _ = merged.update({k: v}) -%}{%- endif -%}{%- endfor -%}
+  {%- set _ = merged.update(extra) -%}
+  {%- set parts = [] -%}
+  {%- for k,v in merged.items() -%}{%- if v -%}{%- set _ = parts.append(k ~ '=' ~ v) -%}{%- endif -%}{%- endfor -%}
+  {{- '?' ~ (parts | join('&')) if parts else '' -}}
+{%- endmacro %}
+
+{% set tier_chips = [
+  ('A', 'Strong', 'tier-A'),
+  ('B', 'Moderate', 'tier-B'),
+  ('C', 'Emerging', 'tier-C'),
+  ('X', 'Contested', 'tier-X'),
+] %}
+{% set kind_chips = [
+  ('breakthrough', 'Breakthroughs', breakthrough_count, '✨'),
+  ('promoted',     'Promoted',      promoted_count,    '⬆'),
+  ('newly',        'Newly published', new_count,       '★'),
+] %}
+
 <section class="disc-page">
   <a class="back" href="/">← Back to Health Universe</a>
 
@@ -16,8 +38,96 @@
     </dl>
   </header>
 
-  <div class="disc-grid">
-    {% for r in rows %}
+  {# ── Quick-pick kind chips ── #}
+  <div class="disc-kind-row">
+    <a class="disc-kind-chip {% if not filters.kind %}is-active{% endif %}"
+       href="{{ qs({'kind':''}) }}">
+      <span class="disc-kind-icon">All</span>
+      <b>{{ pg.total if pg else rows|length }}</b>
+    </a>
+    {% for slug, label, count, icon in kind_chips %}
+      {% if count %}
+      <a class="disc-kind-chip kind-{{ slug }}
+                {% if filters.kind == slug %}is-active{% endif %}"
+         href="{{ qs({'kind': slug if filters.kind != slug else ''}) }}">
+        <span class="disc-kind-icon">{{ icon }} {{ label }}</span>
+        <b>{{ count }}</b>
+      </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {# ── Filter / sort / search bar ── #}
+  <form class="lib2-controls" method="get" action="" autocomplete="off">
+    {% if filters.kind %}<input type="hidden" name="kind" value="{{ filters.kind }}">{% endif %}
+    {% if filters.tier %}<input type="hidden" name="tier" value="{{ filters.tier }}">{% endif %}
+    {% if filters.days != 30 %}<input type="hidden" name="days" value="{{ filters.days }}">{% endif %}
+
+    <div class="lib2-control lib2-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="text" name="q" value="{{ filters.q }}"
+             placeholder="Search this discovery list…">
+    </div>
+
+    <div class="lib2-control">
+      <label class="lib2-label">Direction</label>
+      <select name="direction" onchange="this.form.submit()">
+        <option value="">Any</option>
+        {% for slug, label in [('protective','Beneficial'),('harmful','Harmful'),('u_shaped','U-shaped'),('mixed','Mixed')] %}
+          {% if dir_counts.get(slug) %}
+          <option value="{{ slug }}" {% if filters.direction == slug %}selected{% endif %}>{{ label }} ({{ dir_counts.get(slug, 0) }})</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="lib2-control">
+      <label class="lib2-label">Sort</label>
+      <select name="sort" onchange="this.form.submit()">
+        {% for k, v in sort_options.items() %}
+        <option value="{{ k }}" {% if filters.sort == k %}selected{% endif %}>{{ v }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="lib2-control">
+      <label class="lib2-label">Group by</label>
+      <select name="group" onchange="this.form.submit()">
+        <option value="" {% if not filters.group %}selected{% endif %}>None</option>
+        <option value="kind" {% if filters.group == 'kind' %}selected{% endif %}>Kind</option>
+      </select>
+    </div>
+
+    <div class="lib2-control">
+      <label class="lib2-label">Window</label>
+      <select name="days" onchange="this.form.submit()">
+        {% for d in [7, 30, 90, 180] %}
+        <option value="{{ d }}" {% if filters.days == d %}selected{% endif %}>{{ d }} days</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button class="lib2-apply" type="submit">Apply</button>
+    {% if filters.q or filters.direction or filters.kind or filters.tier or filters.group or filters.days != 30 %}
+    <a class="lib2-reset" href="/discoveries">Clear all</a>
+    {% endif %}
+  </form>
+
+  {# ── Tier filter chips (click to filter, click active to clear) ── #}
+  <div class="disc-tier-row">
+    {% for tslug, tlabel, tcls in tier_chips %}
+      {% if tier_counts.get(tslug) %}
+      <a class="disc-tier-chip {{ tcls }}
+                {% if filters.tier == tslug %}is-active{% endif %}"
+         href="{{ qs({'tier': tslug if filters.tier != tslug else ''}) }}">
+        {{ tlabel }} <small>{{ tier_counts.get(tslug, 0) }}</small>
+      </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {# ── Card macro ── #}
+  {% macro disc_card(r) %}
     <a class="disc-card-v2 tier-bg-{{ r.tier }} {% if r.breakthrough %}is-breakthrough{% endif %}" href="/edge/{{ r.id }}">
       {% if r.breakthrough %}<span class="hp-breakthrough-ribbon">BREAKTHROUGH</span>{% endif %}
       <div class="disc-art-v2">{{ discovery_card_svg(factor_slug=r.f_slug, outcome_slug=r.o_slug, tier=r.tier, factor_kind=r.f_kind, outcome_kind=r.o_kind) | safe }}</div>
@@ -38,25 +148,50 @@
         </div>
       </div>
     </a>
-    {% else %}
-    <div class="disc-empty">
-      <div class="disc-empty-mark" aria-hidden="true">∅</div>
-      <h2>No new discoveries yet</h2>
-      <p class="muted">Nothing has been promoted into a new tier in the last {{ days }} days. The daily Gemma loop runs every morning at 05:15 — check back tomorrow, or browse the existing graph by tier or category.</p>
-      <div class="disc-empty-actions">
-        <a class="btn-secondary inline" href="/tier/A">View tier-A evidence →</a>
-        <a class="btn-secondary inline" href="/changes">Recent changes →</a>
-      </div>
-    </div>
-    {% endfor %}
-  </div>
+  {% endmacro %}
 
-  {% if pg and pg.pages > 1 %}
-  <nav class="pagination">
-    {% if pg.has_prev %}<a class="btn-secondary inline" href="{{ base_path }}?page={{ pg.page - 1 }}">← Prev</a>{% endif %}
-    <span class="muted">Page {{ pg.page }} / {{ pg.pages }}</span>
-    {% if pg.has_next %}<a class="btn-secondary inline" href="{{ base_path }}?page={{ pg.page + 1 }}">Next →</a>{% endif %}
-  </nav>
+  {# ── Body: grouped or flat ── #}
+  {% if groups %}
+    <nav class="lib2-jump" aria-label="Jump to group">
+      <span class="muted small">Jump to:</span>
+      {% for g in groups %}
+        <a href="#disc-{{ g.slug }}" class="lib2-jump-link">{{ g.name }}<small>{{ g.rows|length }}</small></a>
+      {% endfor %}
+    </nav>
+    {% for g in groups %}
+    <section class="lib2-group" id="disc-{{ g.slug }}">
+      <header class="lib2-group-head">
+        <h2 class="lib2-group-title">{{ g.name }}</h2>
+        <span class="lib2-group-count">{{ g.rows|length }} edge{{ g.rows|length != 1 and "s" or "" }}</span>
+      </header>
+      <div class="disc-grid">
+        {% for r in g.rows %}{{ disc_card(r) }}{% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  {% else %}
+    <div class="disc-grid">
+      {% for r in rows %}{{ disc_card(r) }}
+      {% else %}
+      <div class="disc-empty">
+        <div class="disc-empty-mark" aria-hidden="true">∅</div>
+        <h2>No discoveries match these filters</h2>
+        <p class="muted">Try clearing one of the filters or expanding the time window.</p>
+        <div class="disc-empty-actions">
+          <a class="btn-secondary inline" href="/discoveries">Reset filters</a>
+          <a class="btn-secondary inline" href="/tier/A">View tier-A evidence →</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if pg and pg.pages > 1 %}
+    <nav class="pagination">
+      {% if pg.has_prev %}<a class="btn-secondary inline" href="{{ qs({'page': pg.page - 1}) }}">← Prev</a>{% endif %}
+      <span class="muted">Page {{ pg.page }} / {{ pg.pages }}</span>
+      {% if pg.has_next %}<a class="btn-secondary inline" href="{{ qs({'page': pg.page + 1}) }}">Next →</a>{% endif %}
+    </nav>
+    {% endif %}
   {% endif %}
 </section>
 {% endblock %}
