@@ -1696,11 +1696,21 @@ def handout(request: Request, condition: str = "", patient: str = "",
         with connect() as conn:
             if targets:
                 ph = ",".join("?" * len(targets))
+                # Top 2 PMIDs per edge (meta-analyses + SRs first) as a
+                # comma-joined string so the handout can show inline refs.
                 base = f"""
                     SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
                            e.effect_quant,
                            f.name AS f_name, o.name AS o_name, o.slug AS o_slug,
-                           (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies
+                           (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies,
+                           (SELECT GROUP_CONCAT(pmid, ',') FROM (
+                               SELECT pmid FROM evidence ev2
+                               WHERE ev2.edge_id=e.id AND pmid IS NOT NULL AND pmid != ''
+                               ORDER BY CASE study_type
+                                 WHEN 'meta_analysis' THEN 1 WHEN 'systematic_review' THEN 2
+                                 WHEN 'rct' THEN 3 WHEN 'cohort' THEN 4 ELSE 5 END
+                               LIMIT 2)
+                           ) AS top_pmids
                     FROM edge e JOIN entity f ON f.id=e.factor_id
                     JOIN entity o ON o.id=e.outcome_id
                     WHERE o.slug IN ({ph}) AND e.tier IN ('A','B','C') AND e.direction = ?
@@ -1733,7 +1743,15 @@ def handout(request: Request, condition: str = "", patient: str = "",
         base = """
             SELECT e.id, e.tier, e.direction, e.summary, e.effect_size, e.effect_quant,
                    f.name AS f_name,
-                   (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies
+                   (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies,
+                   (SELECT GROUP_CONCAT(pmid, ',') FROM (
+                       SELECT pmid FROM evidence ev2
+                       WHERE ev2.edge_id=e.id AND pmid IS NOT NULL AND pmid != ''
+                       ORDER BY CASE study_type
+                         WHEN 'meta_analysis' THEN 1 WHEN 'systematic_review' THEN 2
+                         WHEN 'rct' THEN 3 WHEN 'cohort' THEN 4 ELSE 5 END
+                       LIMIT 2)
+                   ) AS top_pmids
             FROM edge e JOIN entity f ON f.id=e.factor_id
             JOIN entity o ON o.id=e.outcome_id
             WHERE o.slug=? AND e.tier IN ('A','B','C') AND e.direction=?

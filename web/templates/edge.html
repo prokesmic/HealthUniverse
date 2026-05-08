@@ -175,7 +175,13 @@
                    data-n="{{ ev.n_participants or 0 }}">
             <div class="evidence-row-main">
               <div class="evidence-citation">
-                <span>{{ ev.citation }}</span>
+                {% if ev.pmid %}
+                  <a href="https://pubmed.ncbi.nlm.nih.gov/{{ ev.pmid }}/" target="_blank" rel="noopener" class="evidence-cite-link" title="Open on PubMed">{{ ev.citation }}</a>
+                {% elif ev.doi %}
+                  <a href="https://doi.org/{{ ev.doi }}" target="_blank" rel="noopener" class="evidence-cite-link" title="Open via DOI">{{ ev.citation }}</a>
+                {% else %}
+                  <span>{{ ev.citation }}</span>
+                {% endif %}
                 {% if ev.is_retracted %}<span class="pill tier-D" title="Marked retracted on PubMed">RETRACTED</span>{% endif %}
               </div>
               {% if ev.notes %}<p class="evidence-notes">{{ ev.notes }}</p>{% endif %}
