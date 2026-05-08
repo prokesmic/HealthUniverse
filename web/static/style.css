@@ -4770,3 +4770,214 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
 @media (max-width: 720px) {
   .disc-kind-chip { flex: 1 1 calc(50% - 5px); min-width: 0; }
 }
+
+/* ─────────────────────────────────────────────────────────────────
+   Mobile audit fixes (May 2026)
+   Targeted breakpoints; no architectural changes.
+   ───────────────────────────────────────────────────────────────── */
+
+/* Fix #3 — evidence-rail (TOTAL STUDIES / PARTICIPANTS / META / RCTs)
+   On phones the 4-col grid collides numbers into adjacent labels.
+   Reflow to 2x2 below 720px, with tabular numerals so wide totals
+   ("3,308,530") align correctly inside each cell. */
+@media (max-width: 720px) {
+  .evidence-rail {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .evidence-rail-stat {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 10px 12px;
+  }
+  .evidence-rail-stat:nth-child(odd) { border-right: 1px solid var(--line); }
+  .evidence-rail-stat:nth-last-child(-n+2) { border-bottom: 0; }
+  .evidence-rail-stat dd {
+    font-size: 19px;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+  }
+  .evidence-rail-stat dt {
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+}
+
+/* Fix #5 — keep "Last reviewed" date intact on one line, but let the
+   seed_source label below it wrap so "claude_seed" doesn't get cut
+   off at 320px. The date is the first text node before the <br/>;
+   selecting it via the dd as a whole and giving the trailing span
+   permission to wrap fixes both. */
+.dossier-stats dd { white-space: nowrap; word-break: keep-all; }
+.dossier-stats dd .muted,
+.dossier-stats dd .small,
+.dossier-stats dd span { white-space: normal; word-break: break-word; }
+
+/* Fix #7 — long serif H2s wrap to 4 lines on mobile because the
+   default size + tracking is heavy. Cap at viewport-relative size. */
+@media (max-width: 720px) {
+  h1 { font-size: clamp(1.6rem, 7vw, 2.3rem); line-height: 1.15; }
+  h2 { font-size: clamp(1.25rem, 5.2vw, 1.8rem); line-height: 1.2; }
+  .dossier-h2 { font-size: clamp(1.2rem, 5vw, 1.6rem); }
+}
+
+/* Fix #8 — BREAKTHROUGH ribbon overlaps tier/direction pills on
+   narrow widths. Keep the ribbon absolute (so it stays out of the
+   grid) but shrink it and add a top-pad to .lib2-card-tags so the
+   first row of badges starts BELOW the ribbon instead of next to it. */
+@media (max-width: 720px) {
+  .hp-breakthrough-ribbon {
+    font-size: 9px;
+    padding: 2px 6px;
+    letter-spacing: 0.08em;
+    top: 8px;
+  }
+  .lib2-card.is-breakthrough .lib2-card-tags { padding-top: 18px; }
+  .lib2-card.is-breakthrough .lib2-card-body { padding-top: 8px; }
+}
+
+/* Fix #9 — tap targets ≥44px high for nav links and the breadcrumb. */
+@media (max-width: 720px) {
+  .topnav-links a,
+  .topnav-links a.topnav-cta {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 8px;
+  }
+  .breadcrumb,
+  a.back-link,
+  .dossier-back {
+    min-height: 36px;
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 0;
+  }
+}
+
+/* Fix #10 — evidence-row meta line on edge.html.
+   Year / n / PubMed-link sit in a side column that gets cramped on
+   mobile. Drop them under the citation as a horizontal meta row. */
+@media (max-width: 720px) {
+  .evidence-row {
+    grid-template-columns: 1fr !important;
+  }
+  .evidence-row-side {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+    margin-top: 8px;
+    text-align: left !important;
+  }
+  .evidence-row-side .evidence-year {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+  }
+  .evidence-row-side .evidence-n,
+  .evidence-row-side .evidence-link { font-size: 13px; }
+}
+
+/* Fix #4 — mobile hamburger nav.
+   Hide the inline link list below 640px and reveal a button that
+   toggles a panel. Plain CSS using :checked of an invisible checkbox
+   so this still works without JS. */
+.nav-toggle { display: none; }
+.nav-toggle-label { display: none; }
+@media (max-width: 640px) {
+  .topnav-links {
+    display: none !important;
+    grid-column: 1 / -1;
+    flex-direction: column;
+    gap: 4px;
+    padding: 6px 0 14px;
+    border-top: 1px solid var(--line);
+    margin-top: 8px;
+  }
+  .topnav-links a {
+    display: block;
+    padding: 12px 4px;
+    font-size: 16px;
+    border-bottom: 1px solid var(--line-soft, rgba(0,0,0,0.06));
+  }
+  .topnav-links a:last-child { border-bottom: 0; }
+  .nav-toggle:checked ~ .topnav-links { display: flex !important; }
+  .nav-toggle-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px; height: 44px;
+    margin-left: auto;
+    cursor: pointer;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--bg-soft, #fff);
+  }
+  .nav-toggle-label::before {
+    content: "☰";
+    font-size: 22px;
+    line-height: 1;
+    color: var(--ink, #222);
+  }
+  .nav-toggle:checked ~ .nav-toggle-label::before { content: "✕"; }
+}
+
+/* Fix #1 — Stack Brief edge cards collapse on mobile.
+   The desktop grid (70px 1fr auto) crushes the middle column to ~120px
+   below 640px. Restack vertically: tier+direction on top row, content
+   second, side-stats third. */
+@media (max-width: 640px) {
+  .stack-edge {
+    grid-template-columns: 1fr !important;
+    gap: 8px;
+  }
+  .stack-edge > div:first-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .stack-edge .right {
+    text-align: left !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px dashed var(--line);
+    padding-top: 8px;
+    min-width: 0 !important;
+  }
+}
+
+/* Fix #2 — Trust audit table: wrap in horizontal scroller below
+   640px so the 7-column table can't bleed off the edge. The table
+   itself stays full-fidelity; just gets a scroll affordance. */
+.trust-table-wrap { width: 100%; }
+@media (max-width: 640px) {
+  .trust-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+  .trust-table-wrap .trust-table { min-width: 540px; margin: 0; border: 0; }
+  .trust-table-wrap .trust-table th,
+  .trust-table-wrap .trust-table td {
+    padding: 8px 10px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+}
+
+/* Fix #6 — Trust headlines: 2-up grid on small screens.
+   Was repeat(auto-fit, 180px) which collapses to 1-up on phones; we
+   want 2-up to keep the dashboard scannable. */
+@media (max-width: 640px) {
+  .trust-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+  .trust-card .big { font-size: 22px; }
+  .trust-card .lbl { font-size: 12px; }
+}
