@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "breastfeeding_long_duration",
+      "outcome_slug": "maternal_breast_cancer",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The strongest pooled evidence suggests that longer breastfeeding modestly lowers later maternal breast cancer risk after accounting for childbearing patterns. In a collaborative reanalysis of 47 epidemiologic studies including 50,302 women with invasive breast cancer and 96,973 controls, breast cancer risk decreased by 4.3% (95% CI 2.9% to 5.8%) for every 12 months of breastfeeding.",
+      "population": "parous women with varying lifetime durations of breastfeeding followed or compared for later breast cancer risk",
+      "mechanism": "Longer lactation suppresses ovulation, alters cumulative estrogen exposure, and may drive more complete terminal differentiation and post-lactational remodeling of breast tissue. Those biologic changes could plausibly reduce susceptibility to malignant transformation, especially over repeated or prolonged breastfeeding episodes.",
+      "summary": "Overall, the literature leans protective, but the effect size appears modest and not perfectly uniform across cohorts or tumor subtypes. Very large pooled analyses and pooled case-control datasets support lower maternal breast cancer risk with longer breastfeeding, whereas some individual prospective cohorts have found little or no overall association.",
+      "caveats": "Associations vary by subtype, ancestry, and how breastfeeding duration is modeled, and parity is an important confounder. This edge should be framed as a modest population-level reduction in risk rather than a strong individual-level guarantee of protection.",
+      "evidence": [
+        {
+          "citation": "Collaborative Group on Hormonal Factors in Breast Cancer 2002 Lancet",
+          "year": 2002,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Breast cancer and breastfeeding: collaborative reanalysis of individual data from 47 epidemiological studies in 30 countries, including 50302 women with breast cancer and 96973 women without the disease.",
+          "doi": "10.1016/S0140-6736(02)09454-0",
+          "pmid": "12133652",
+          "n_participants": 147275,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.957,
+            "ci_low": 0.942,
+            "ci_high": 0.971,
+            "comparator": "breast cancer risk for each additional 12 months of breastfeeding among parous women"
+          }
+        },
+        {
+          "citation": "Sangaramoorthy et al 2019 Epidemiology",
+          "year": 2019,
+          "study_type": "case_control",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A Pooled Analysis of Breastfeeding and Breast Cancer Risk by Hormone Receptor Status in Parous Hispanic Women.",
+          "doi": "10.1097/EDE.0000000000000981",
+          "pmid": "30964816",
+          "n_participants": 7089,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.73,
+            "ci_low": 0.60,
+            "ci_high": 0.89,
+            "comparator": "breast cancer in parous Hispanic women with 25 months or more of breastfeeding versus none"
+          }
+        },
+        {
+          "citation": "Lambe et al 2014 BMC Res Notes",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Breastfeeding in relation to risk of different breast cancer characteristics.",
+          "doi": "10.1186/1756-0500-7-216",
+          "pmid": "24708573",
+          "n_participants": 14092
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "breastfeeding_long_duration",
+      "name": "Long-duration breastfeeding",
+      "kind": "behavior",
+      "aliases": [
+        "prolonged lactation",
+        "longer cumulative breastfeeding"
+      ],
+      "description": "Breastfeeding sustained for longer cumulative durations across one or more pregnancies."
+    },
+    {
+      "slug": "maternal_breast_cancer",
+      "name": "Maternal breast cancer",
+      "kind": "condition",
+      "aliases": [
+        "later maternal breast cancer",
+        "breast carcinoma in mothers"
+      ],
+      "description": "Breast cancer risk in women later in life after childbearing."
+    }
+  ]
+}

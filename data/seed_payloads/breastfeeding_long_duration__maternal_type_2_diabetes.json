@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "breastfeeding_long_duration",
+      "outcome_slug": "maternal_type_2_diabetes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Across cohort syntheses, longer lactation is associated with lower later maternal type 2 diabetes risk. A 2014 dose-response meta-analysis of six cohort studies involving 273,961 women found a pooled RR of 0.91 (95% CI 0.86 to 0.96) per additional year of total breastfeeding, and large US and Australian cohorts also found progressively lower diabetes risk with longer lactation.",
+      "population": "parous women followed for later type 2 diabetes after varying lifetime breastfeeding durations",
+      "mechanism": "Lactation increases energy expenditure and may improve postpartum glucose disposal, insulin sensitivity, beta-cell demand, and body-fat distribution. These physiologic changes offer a plausible pathway by which longer breastfeeding might reduce long-term diabetes risk, especially after pregnancies characterized by insulin resistance.",
+      "summary": "The observational evidence consistently leans protective. Longer breastfeeding duration is associated with lower maternal type 2 diabetes risk later in life, and the relationship appears graded across multiple cohort-based syntheses.",
+      "caveats": "Residual confounding remains possible because women who breastfeed longer may differ in metabolic health, adiposity, smoking, and social conditions. Some shorter-term studies in women with gestational diabetes have been mixed, but the longer follow-up literature is more consistently protective.",
+      "evidence": [
+        {
+          "citation": "Aune et al 2014 Nutr Metab Cardiovasc Dis",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Breastfeeding and the maternal risk of type 2 diabetes: a systematic review and dose-response meta-analysis of cohort studies.",
+          "doi": "10.1016/j.numecd.2013.10.028",
+          "pmid": "24439841",
+          "n_participants": 273961,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.91,
+            "ci_low": 0.86,
+            "ci_high": 0.96,
+            "comparator": "maternal type 2 diabetes risk per additional year of total breastfeeding"
+          }
+        },
+        {
+          "citation": "Stuebe et al 2005 JAMA",
+          "year": 2005,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Duration of lactation and incidence of type 2 diabetes.",
+          "doi": "10.1001/jama.294.20.2601",
+          "pmid": "16304074",
+          "n_participants": 157003,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -0.15,
+            "ci_low": -0.27,
+            "ci_high": -0.01,
+            "comparator": "type 2 diabetes risk per additional year of lactation among women with a birth in the prior 15 years in the Nurses' Health Study"
+          }
+        },
+        {
+          "citation": "Schwarz et al 2010 Diabetes Care",
+          "year": 2010,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Parity, breastfeeding, and the subsequent risk of maternal type 2 diabetes.",
+          "doi": "10.2337/dc10-0347",
+          "pmid": "20332359",
+          "n_participants": 52731,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.86,
+            "ci_low": 0.82,
+            "ci_high": 0.90,
+            "comparator": "maternal type 2 diabetes per additional year of breastfeeding among parous women"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "breastfeeding_long_duration",
+      "name": "Long-duration breastfeeding",
+      "kind": "behavior",
+      "aliases": [
+        "prolonged lactation",
+        "longer cumulative breastfeeding"
+      ],
+      "description": "Breastfeeding sustained for longer cumulative durations across one or more pregnancies."
+    },
+    {
+      "slug": "maternal_type_2_diabetes",
+      "name": "Maternal type 2 diabetes",
+      "kind": "condition",
+      "aliases": [
+        "later maternal T2D",
+        "maternal adult-onset diabetes"
+      ],
+      "description": "Type 2 diabetes developing in mothers later in life after pregnancy."
+    }
+  ]
+}
