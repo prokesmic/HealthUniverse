@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "antibiotics_under_1y",
+      "name": "Antibiotic exposure before age 1 year",
+      "kind": "drug"
+    },
+    {
+      "slug": "childhood_obesity_risk",
+      "name": "Childhood obesity risk",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "antibiotics_under_1y",
+      "outcome_slug": "childhood_obesity_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The best pooled estimate suggests about an 11% increase in later overweight or obesity after infant antibiotic exposure, with stronger associations for repeated treatment and exposure in the first 6 months of life. Recent population cohorts support the same direction and add dose-response evidence.",
+      "population": "children exposed to antibiotics during infancy, especially in the first year of life",
+      "mechanism": "Early antibiotics may shift gut microbial colonization during a developmental window when energy harvest, bile-acid signaling, and adiposity programming are unusually plastic. If the association is causal, repeated exposure rather than a single short course is likely the more relevant driver.",
+      "summary": "Infant antibiotic exposure is associated with a small but fairly consistent increase in later obesity risk. The signal is strongest for repeated courses and for exposures early in infancy, and newer large population cohorts continue to support that pattern rather than reversing it.",
+      "caveats": "The effect size is modest and observational, so confounding by illness burden, feeding patterns, and family lifestyle remains possible. This edge supports antibiotic restraint when clinically reasonable, not avoidance of clearly indicated treatment.",
+      "evidence": [
+        {
+          "citation": "RasmussenSH et al 2018 Diabetes Obes Metab",
+          "pmid": "29359849",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 527504,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Antibiotic exposure in early life and childhood overweight and obesity: A systematic review and meta-analysis.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.11,
+            "ci_low": 1.02,
+            "ci_high": 1.20,
+            "comparator": "infant antibiotic exposure versus no infant antibiotic exposure"
+          }
+        },
+        {
+          "citation": "AinonenS et al 2026 Pediatr Res",
+          "pmid": "41792341",
+          "year": 2026,
+          "study_type": "cohort",
+          "n_participants": 33095,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Early-life antibiotic exposure and the risk of overweight and obesity in children."
+        },
+        {
+          "citation": "CantaruttiA et al 2024 JMIR Public Health Surveill",
+          "pmid": "38820573",
+          "year": 2024,
+          "study_type": "cohort",
+          "n_participants": 64722,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association Between Early-Life Exposure to Antibiotics and Development of Child Obesity: Population-Based Study in Italy."
+        }
+      ]
+    }
+  ]
+}

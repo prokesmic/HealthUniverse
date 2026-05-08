@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "acetylcholinesterase_inhibitors",
+      "name": "Acetylcholinesterase inhibitors",
+      "kind": "drug"
+    },
+    {
+      "slug": "bradycardia",
+      "name": "Bradycardia",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "acetylcholinesterase_inhibitors",
+      "outcome_slug": "bradycardia",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "The most clinically relevant studies suggest roughly a 40% to twofold increase in bradycardia-related outcomes after cholinesterase inhibitor initiation, although pooled estimates vary depending on whether the endpoint is heart-rate change, coded bradycardia, or hospitalization.",
+      "population": "older adults with dementia treated with acetylcholinesterase inhibitors",
+      "mechanism": "Acetylcholinesterase inhibitors increase vagal tone and slow sinoatrial and atrioventricular conduction. That cholinergic mechanism is exactly the kind of physiology that can tip vulnerable older adults into symptomatic bradycardia, syncope, pacemaker implantation, or fall-related injury.",
+      "summary": "This is one of the cleaner geriatric drug-harm edges. The large Ontario bradycardia hospitalization study, the Veterans Affairs cohort, and the broader cardiovascular meta-analysis all point in the same practical direction: cholinesterase inhibitors can meaningfully slow heart rate and occasionally push frail older adults into clinically important bradycardia.",
+      "caveats": "Absolute event rates are still fairly low, and some pooled analyses do not show a statistically significant rise for every bradycardic endpoint. The signal matters most in patients with conduction disease, concurrent negative chronotropes, syncope history, or dose escalation.",
+      "evidence": [
+        {
+          "citation": "Park-WyllieLY et al 2009 PLoS Med",
+          "pmid": "19787032",
+          "year": 2009,
+          "study_type": "cohort",
+          "n_participants": 1009,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cholinesterase inhibitors and hospitalization for bradycardia: a population-based study."
+        },
+        {
+          "citation": "HernandezRK et al 2009 J Am Geriatr Soc",
+          "pmid": "19793162",
+          "year": 2009,
+          "study_type": "cohort",
+          "n_participants": 11328,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cholinesterase inhibitors and incidence of bradycardia in patients with dementia in the veterans affairs new England healthcare system."
+        },
+        {
+          "citation": "IsikAT et al 2018 J Am Geriatr Soc",
+          "pmid": "29851022",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 258540,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cardiovascular Outcomes of Cholinesterase Inhibitors in Individuals with Dementia: A Meta-Analysis and Systematic Review."
+        }
+      ]
+    }
+  ]
+}

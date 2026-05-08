@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "beta_blockers_chronic",
+      "name": "Chronic beta-blocker therapy",
+      "kind": "drug"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "beta_blockers_chronic",
+      "outcome_slug": "frailty_progression",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "The most concrete harm signal is the post-MI nursing-home cohort in which beta-blocker exposure was associated with more functional decline, but frailty-stratified heart-failure cohorts suggest that beta-blocker therapy can still travel with lower mortality or at least not lose prognostic value in frail patients.",
+      "population": "frail older adults with cardiovascular disease receiving chronic beta-blocker therapy",
+      "mechanism": "Beta-blockers can reduce chronotropic reserve, exercise tolerance, and orthostatic compensation, which can make fatigue or functional slowing more visible in already frail adults. At the same time, in heart failure or post-infarction care they also dampen sympathetic overdrive and may preserve survival, so the net effect on frailty progression is not one-directional.",
+      "summary": "This is a deliberately cautious mixed edge. The best directly relevant study found more functional decline among older nursing-home residents treated with beta-blockers after myocardial infarction, but newer frailty-stratified heart-failure cohorts suggest that beta-blocker therapy still retains clinical benefit or at least does not become uniformly harmful just because a patient is frail.",
+      "caveats": "Frailty progression is not identical to short-term functional decline, and much of the available evidence comes from high-risk cardiovascular cohorts rather than from trials designed around frailty as the primary outcome. This edge should therefore be read as a tradeoff signal that supports individualized dose and tolerance review, not as a blanket anti-beta-blocker conclusion.",
+      "evidence": [
+        {
+          "citation": "SteinmanMA et al 2017 JAMA Intern Med",
+          "pmid": "27942713",
+          "year": 2017,
+          "study_type": "cohort",
+          "n_participants": 10992,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of β-Blockers With Functional Outcomes, Death, and Rehospitalization in Older Nursing Home Residents After Acute Myocardial Infarction."
+        },
+        {
+          "citation": "AbeT et al 2023 ESC Heart Fail",
+          "pmid": "36824014",
+          "year": 2023,
+          "study_type": "cohort",
+          "n_participants": 1021,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The interaction between physical frailty and prognostic impact of heart failure medication in elderly patients."
+        },
+        {
+          "citation": "ZahirAnjumD et al 2024 Eur J Heart Fail",
+          "pmid": "38700461",
+          "year": 2024,
+          "study_type": "cohort",
+          "n_participants": 35999,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Use of medical therapy and risk of clinical events according to frailty in heart failure patients - A real-life cohort study."
+        }
+      ]
+    }
+  ]
+}

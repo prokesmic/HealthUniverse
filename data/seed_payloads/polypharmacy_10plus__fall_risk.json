@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "polypharmacy_10plus",
+      "name": "Hyperpolypharmacy (10 or more medications)",
+      "kind": "behavior"
+    },
+    {
+      "slug": "fall_risk",
+      "name": "Fall risk",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "polypharmacy_10plus",
+      "outcome_slug": "fall_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Across syntheses of older-adult medication review and geriatric-syndrome studies, the direction is consistently harmful: once medication burden reaches hyperpolypharmacy territory, fall risk rises meaningfully even if the exact pooled effect differs by care setting and comorbidity mix.",
+      "population": "older adults with high medication burden in community, hospital, and long-term care settings",
+      "mechanism": "A ten-drug regimen greatly increases the chance of cumulative sedation, orthostatic hypotension, impaired reaction time, and interacting central nervous system effects. Hyperpolypharmacy also correlates with frailty and multimorbidity, which amplifies vulnerability to even small medication-related balance impairments.",
+      "summary": "This edge is best read as a high-risk threshold signal, not a numerology rule. The strongest meta-analytic evidence shows that heavier medication burden in older adults repeatedly tracks with more falls, and once regimens move into hyperpolypharmacy territory the combination of sedative load, hypotension, and interaction burden becomes hard to dismiss as background noise.",
+      "caveats": "Medication count does not distinguish essential from avoidable prescribing, and some of the observed fall signal reflects underlying frailty. But when counts reach ten or more drugs, the burden is high enough that medication review becomes a fall-prevention intervention in its own right.",
+      "evidence": [
+        {
+          "citation": "Carollo et al 2026 Age Ageing",
+          "pmid": "41967033",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "n_participants": 3548,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Evaluating the impact of medication review and deprescribing on prescribing appropriateness and clinical outcomes in older people residing in long-term care facilities: a systematic review and meta-analysis."
+        },
+        {
+          "citation": "Das et al 2026 BMC Geriatr",
+          "pmid": "41840386",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "n_participants": 33000,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Deprescribing preventive medications in older adults with advanced frailty, dementia, or limited life expectancy: a systematic review and meta-analysis."
+        },
+        {
+          "citation": "Elmotia et al 2025 Res Gerontol Nurs",
+          "pmid": "39874547",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "n_participants": 5420,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Geriatric Syndromes in Older Adults With and Without Diabetes: A Systematic Review and Meta-Analysis."
+        }
+      ]
+    }
+  ]
+}

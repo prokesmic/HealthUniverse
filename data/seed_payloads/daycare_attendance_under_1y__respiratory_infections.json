@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "daycare_attendance_under_1y",
+      "name": "Daycare attendance during the first year of life",
+      "kind": "behavior"
+    },
+    {
+      "slug": "respiratory_infections",
+      "name": "Respiratory infections",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "daycare_attendance_under_1y",
+      "outcome_slug": "respiratory_infections",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Across birth cohorts, daycare attendance in the first year reliably shifts respiratory infections earlier and makes them more frequent during infancy. The best long prospective data show clear short-term excesses in upper respiratory infections, otitis, and other infectious morbidity among children who enter group care early.",
+      "population": "infants attending group daycare during the first 12 months of life compared with home-cared infants",
+      "mechanism": "Group childcare increases contact density with other children during a period of immunologic immaturity, which raises exposure to respiratory viruses and bacterial otopathogens. The tradeoff is not subtle: early clustering of infections is exactly what daycare changes most consistently in infancy.",
+      "summary": "Daycare attendance during the first year of life increases respiratory infectious burden in infancy. The signal is strongest for upper-respiratory and ear infections, but broader birth-cohort work also shows more general infectious morbidity around the period of early daycare entry.",
+      "caveats": "This edge is about infections during infancy, not whether early daycare is good or bad overall for development. Later childhood may show some catch-down in infection frequency, but that does not erase the higher burden in the first year of life.",
+      "evidence": [
+        {
+          "citation": "OliveiraPD et al 2019 J Pediatr (Rio J)",
+          "pmid": "31679611",
+          "year": 2019,
+          "study_type": "cohort",
+          "n_participants": 4018,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Day care attendance during the first 12 months of life and occurrence of infectious morbidities and symptoms."
+        },
+        {
+          "citation": "deHoogML et al 2014 BMC Med",
+          "pmid": "24965189",
+          "year": 2014,
+          "study_type": "cohort",
+          "n_participants": 2217,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Impact of early daycare on healthcare resource use related to upper respiratory tract infections during childhood: prospective WHISTLER cohort study."
+        },
+        {
+          "citation": "CôtéSM et al 2010 Arch Pediatr Adolesc Med",
+          "pmid": "21135342",
+          "year": 2010,
+          "study_type": "cohort",
+          "n_participants": 1238,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Short- and long-term risk of infections as a function of group child care attendance: an 8-year population-based study."
+        }
+      ]
+    }
+  ]
+}

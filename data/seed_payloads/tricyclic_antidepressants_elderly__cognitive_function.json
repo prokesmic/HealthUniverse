@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tricyclic_antidepressants_elderly",
+      "name": "Tricyclic antidepressant use in older adults",
+      "kind": "drug"
+    },
+    {
+      "slug": "cognitive_function",
+      "name": "Cognitive function",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tricyclic_antidepressants_elderly",
+      "outcome_slug": "cognitive_function",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The direct long-term signal is not uniformly catastrophic, but evidence across anticholinergic reviews, prospective cohorts, and older-adult medication studies points toward measurable cognitive harm or vulnerability rather than benefit.",
+      "population": "older adults exposed to tricyclic antidepressants or comparable strong anticholinergic burden",
+      "mechanism": "Tricyclic antidepressants impair cognition mainly through central anticholinergic effects that blunt attention, working memory, and processing speed. In older adults with lower cholinergic reserve, even modest anticholinergic exposure can unmask non-amnestic cognitive slowing and, over long cumulative exposure, may contribute to more durable impairment.",
+      "summary": "This edge should be read as a class-risk signal rather than a statement that every older person on a tricyclic will deteriorate. The best evidence shows that tricyclics consistently impair attention and information processing in older adults, and their inclusion among the strongest anticholinergic exposures helps explain why geriatric prescribing frameworks treat them as cognitively risky drugs.",
+      "caveats": "Longitudinal population data do not always show accelerated decline after adjustment, and some of the observed harm may reflect confounding by depression itself. Still, the anticholinergic mechanism and repeated short-term impairment findings are strong enough to keep the edge on the harmful side.",
+      "evidence": [
+        {
+          "citation": "TannenbaumC et al 2012 Drugs Aging",
+          "pmid": "22812538",
+          "year": 2012,
+          "study_type": "systematic_review",
+          "n_participants": 162,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "A systematic review of amnestic and non-amnestic mild cognitive impairment induced by anticholinergic, antihistamine, GABAergic and opioid drugs."
+        },
+        {
+          "citation": "GraySL et al 2015 JAMA Intern Med",
+          "pmid": "25621434",
+          "year": 2015,
+          "study_type": "cohort",
+          "n_participants": 3434,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cumulative use of strong anticholinergics and incident dementia: a prospective cohort study."
+        },
+        {
+          "citation": "CarriereI et al 2017 BMC Med",
+          "pmid": "28424070",
+          "year": 2017,
+          "study_type": "cohort",
+          "n_participants": 7381,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Antidepressant use and cognitive decline in community-dwelling elderly people - The Three-City Cohort."
+        }
+      ]
+    }
+  ]
+}

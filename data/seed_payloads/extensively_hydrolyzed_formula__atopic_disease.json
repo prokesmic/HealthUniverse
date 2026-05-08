@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "extensively_hydrolyzed_formula",
+      "name": "Extensively hydrolyzed infant formula",
+      "kind": "food",
+      "aliases": [
+        "EHF infant formula",
+        "extensively hydrolyzed casein or whey formula"
+      ],
+      "description": "Extensively hydrolyzed infant formula used during early infancy when breastfeeding is insufficient."
+    },
+    {
+      "slug": "atopic_disease",
+      "name": "Atopic disease",
+      "kind": "condition",
+      "aliases": [
+        "allergic disease",
+        "atopic manifestations"
+      ],
+      "description": "Allergic manifestations including atopic dermatitis, food allergy, asthma, wheeze, and rhinitis."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "extensively_hydrolyzed_formula",
+      "outcome_slug": "atopic_disease",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Among high-risk infants compared with standard cow's-milk formula, extensively hydrolyzed formulas show a modest but fairly durable reduction in atopic disease, driven mainly by eczema prevention rather than broad protection against every allergic endpoint.",
+      "population": "infants, especially those with family history of atopy, receiving extensively hydrolyzed formula instead of standard cow's-milk formula when breastfeeding is insufficient",
+      "mechanism": "Extensive hydrolysis reduces exposure to intact cow's-milk proteins during a period when immune sensitization can be established. The evidence pattern, strongest for eczema and cow's-milk allergy rather than later asthma or rhinitis, fits a partial early antigen-avoidance effect rather than a complete allergy-prevention strategy.",
+      "summary": "The best read is modest, endpoint-specific benefit rather than a universal allergy shield. The newer meta-analysis supports reduced eczema and some cow's-milk-allergy benefit compared with standard formula, and the long-running GINI cohort shows that extensively hydrolyzed casein formula produced a durable reduction in allergic manifestations, especially atopic dermatitis, in high-risk children.",
+      "caveats": "Most of the strongest evidence comes from high-risk infants and from comparison with standard cow's-milk formula, not with breastfeeding. Benefits also differ by hydrolysate type, with casein-based and whey-based products not performing identically.",
+      "evidence": [
+        {
+          "citation": "LiX et al 2024 Adv Nutr",
+          "pmid": "38579971",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "n_participants": 10950,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Infant Formulas With Partially or Extensively Hydrolyzed Milk Proteins for the Prevention of Allergic Diseases: A Systematic Review and Meta-Analysis of Clinical Trials.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.79,
+            "ci_low": 0.67,
+            "ci_high": 0.94,
+            "comparator": "eczema in children older than 2 years fed extensively hydrolyzed formula versus cow's-milk formula"
+          }
+        },
+        {
+          "citation": "vonBergA et al 2008 J Allergy Clin Immunol",
+          "pmid": "18539195",
+          "year": 2008,
+          "study_type": "rct",
+          "n_participants": 2252,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Preventive effect of hydrolyzed infant formulas persists until age 6 years: long-term results from the German Infant Nutritional Intervention Study (GINI).",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.8,
+            "ci_low": 0.69,
+            "ci_high": 0.93,
+            "comparator": "physician-diagnosed allergic manifestation with extensively hydrolyzed casein formula versus cow's-milk formula"
+          }
+        },
+        {
+          "citation": "vonBergA et al 2013 J Allergy Clin Immunol",
+          "pmid": "23506844",
+          "year": 2013,
+          "study_type": "rct",
+          "n_participants": 2252,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Allergies in high-risk schoolchildren after early intervention with cow's milk protein hydrolysates: 10-year results from the German Infant Nutritional Intervention (GINI) study.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.83,
+            "ci_low": 0.72,
+            "ci_high": 0.95,
+            "comparator": "cumulative incidence of any allergic disease with extensively hydrolyzed casein formula versus standard cow's-milk formula"
+          }
+        }
+      ]
+    }
+  ]
+}

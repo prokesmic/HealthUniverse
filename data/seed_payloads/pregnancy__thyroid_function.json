@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pregnancy",
+      "name": "Pregnancy",
+      "kind": "process"
+    },
+    {
+      "slug": "thyroid_function",
+      "name": "Thyroid function",
+      "kind": "biomarker"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pregnancy",
+      "outcome_slug": "thyroid_function",
+      "direction": "u_shaped",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across longitudinal pregnancy cohorts, thyroid physiology shifts in a distinctly non-linear way: TSH tends to be lowest in early gestation, then rises across later trimesters, while free T4 gradually declines from early pregnancy toward the third trimester. The point is physiologic recalibration rather than disease.",
+      "population": "women with uncomplicated singleton pregnancy and no baseline thyroid disease",
+      "mechanism": "Human chorionic gonadotropin transiently stimulates the thyroid early in pregnancy, which suppresses TSH and can raise thyroid hormone production. As gestation progresses, binding proteins and iodine demands change, so free thyroxine trends downward while TSH drifts upward toward postpartum values.",
+      "summary": "Pregnancy changes thyroid function in a patterned, trimester-specific way rather than pushing it in one simple direction. The early gestational state is relatively TSH-lowering, but later pregnancy looks progressively more like mild thyroid insufficiency if non-pregnant reference intervals are applied, which is why trimester-specific interpretation matters.",
+      "caveats": "This edge describes normal physiologic adaptation, not pathology, and the exact reference intervals depend on assay platform, iodine status, and thyroid antibody status. Values that look abnormal by non-pregnant standards may still be physiologic in pregnancy.",
+      "evidence": [
+        {
+          "citation": "EkinciEI et al 2013 Ann Clin Biochem",
+          "pmid": "23873872",
+          "year": 2013,
+          "study_type": "cohort",
+          "n_participants": 130,
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Longitudinal assessment of thyroid function in pregnancy."
+        },
+        {
+          "citation": "ZhangX et al 2016 Thyroid",
+          "pmid": "27733101",
+          "year": 2016,
+          "study_type": "cohort",
+          "n_participants": 99,
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Reference Intervals of Thyroid Function During Pregnancy: Self-Sequential Longitudinal Study Versus Cross-Sectional Study."
+        },
+        {
+          "citation": "WeekeJ et al 1982 Acta Endocrinol",
+          "pmid": "7158229",
+          "year": 1982,
+          "study_type": "cohort",
+          "n_participants": 20,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A longitudinal study of serum TSH, and total and free iodothyronines during normal pregnancy."
+        }
+      ]
+    }
+  ]
+}

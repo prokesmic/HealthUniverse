@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "donepezil",
+      "name": "Donepezil",
+      "kind": "drug"
+    },
+    {
+      "slug": "mild_cognitive_impairment",
+      "name": "Mild cognitive impairment",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "donepezil",
+      "outcome_slug": "mild_cognitive_impairment",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The evidence is mixed rather than null: pooled trial data show small short-term cognitive score gains, but the better long-run studies do not show durable prevention of progression to dementia and adverse effects are consistently more common.",
+      "population": "adults with amnestic or clinically defined mild cognitive impairment",
+      "mechanism": "Donepezil can temporarily amplify cholinergic signaling enough to improve test performance in some MCI patients, especially early in the course. But MCI is heterogeneous, and symptomatic neurotransmitter support does not appear to reliably alter the longer neurodegenerative trajectory, which is why short-term signal and long-term disappointment can coexist.",
+      "summary": "Donepezil is not a clean yes-or-no story in MCI. The newer meta-analysis and the older Cochrane review both show that some short-term cognitive measures improve, but durable prevention of progression to dementia remains unconvincing and gastrointestinal adverse effects are common enough that the overall clinical picture stays mixed.",
+      "caveats": "MCI definitions vary widely across trials, and some subgroup analyses suggest benefit only in narrower phenotypes such as patients with depressive symptoms. This edge should be read as symptomatic and uncertain, not disease-modifying.",
+      "evidence": [
+        {
+          "citation": "ZhangX et al 2022 Clin Neurol Neurosurg",
+          "pmid": "35078087",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "n_participants": 2847,
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Efficacy and safety of donepezil for mild cognitive impairment: A systematic review and meta-analysis."
+        },
+        {
+          "citation": "BirksJ and FlickerL 2006 Cochrane Database Syst Rev",
+          "pmid": "16856114",
+          "year": 2006,
+          "study_type": "systematic_review",
+          "n_participants": 782,
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Donepezil for mild cognitive impairment."
+        },
+        {
+          "citation": "LuPH et al 2009 Neurology",
+          "pmid": "19528519",
+          "year": 2009,
+          "study_type": "rct",
+          "n_participants": 756,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Donepezil delays progression to AD in MCI subjects with depressive symptoms."
+        }
+      ]
+    }
+  ]
+}

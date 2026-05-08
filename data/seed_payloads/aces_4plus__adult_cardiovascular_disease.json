@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "aces_4plus",
+      "name": "Four or more adverse childhood experiences",
+      "kind": "behavior",
+      "aliases": [
+        "ACE score 4 or more",
+        "high ACE burden"
+      ],
+      "description": "A high cumulative burden of adverse childhood experiences, commonly operationalized as four or more ACEs."
+    },
+    {
+      "slug": "adult_cardiovascular_disease",
+      "name": "Adult cardiovascular disease",
+      "kind": "condition",
+      "aliases": [
+        "adult CVD",
+        "adult cardiometabolic cardiovascular disease"
+      ],
+      "description": "Adult cardiovascular disease outcomes including hypertension, myocardial infarction, coronary disease, stroke, and related cardiometabolic endpoints."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "aces_4plus",
+      "outcome_slug": "adult_cardiovascular_disease",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Higher cumulative ACE burden is associated with meaningfully elevated adult cardiovascular and cardiometabolic disease risk, with especially consistent signals for hypertension and myocardial infarction.",
+      "population": "adults with high cumulative adversity exposure in childhood",
+      "mechanism": "High ACE exposure can promote lifelong sympathetic stress activation, inflammation, smoking, sleep disruption, and obesity, all of which help convert early psychosocial adversity into later cardiovascular disease. The persistence of the signal after adjustment for some conventional risk factors suggests partial mediation rather than full explanation.",
+      "summary": "The cardiovascular ACE literature is broad but directionally consistent. Meta-analyses show a modest but reliable increase in adult cardiometabolic disease overall, while focused reviews of myocardial infarction and blood-pressure outcomes show that cumulative adversity tracks with clinically important cardiovascular endpoints rather than only intermediate symptoms.",
+      "caveats": "The exact threshold of `4+` ACEs is not isolated in every source, and some studies pool different cumulative-adversity counts. The strongest practical conclusion is still clear: heavier childhood adversity burden maps onto higher adult cardiovascular risk.",
+      "evidence": [
+        {
+          "citation": "JakubowskiKP et al 2018 Health Psychol",
+          "pmid": "30024227",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 427005,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cumulative childhood adversity and adult cardiometabolic disease: A meta-analysis.",
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.42,
+            "ci_low": 1.2,
+            "ci_high": 1.67,
+            "comparator": "adult cardiometabolic disease with cumulative childhood adversity versus lower adversity"
+          }
+        },
+        {
+          "citation": "JacquetSmailovicM et al 2022 J Child Adolesc Trauma",
+          "pmid": "35958714",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "n_participants": 10,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Relationship Between Cumulative Adverse Childhood Experiences and Myocardial Infarction in Adulthood: a Systematic Review and Meta-analysis.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.78,
+            "ci_low": 1.24,
+            "ci_high": 2.57,
+            "comparator": "myocardial infarction in adults with cumulative ACE exposure after adjustment for cardiovascular risk factors"
+          }
+        },
+        {
+          "citation": "LiW et al 2025 J Glob Health",
+          "pmid": "40504762",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "n_participants": 754146,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Adverse childhood experiences contribute to blood pressure changes in adulthood: a meta-analysis of over 750,000 adults."
+        }
+      ]
+    }
+  ]
+}

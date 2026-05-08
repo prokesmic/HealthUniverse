@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "statins_long_term",
+      "name": "Long-term statin therapy",
+      "kind": "drug"
+    },
+    {
+      "slug": "cataract_risk",
+      "name": "Cataract risk",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "statins_long_term",
+      "outcome_slug": "cataract_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The observational signal, when present, is modest. The most concerning studies cluster around long follow-up and higher adherence, with effect sizes around a 10% to 20% relative increase, but randomized evidence has been less convincing and heterogeneity remains high.",
+      "population": "older adults exposed to long-term statin therapy in population cohorts and observational syntheses",
+      "mechanism": "If the association is real, it is likely small and mediated through chronic lens metabolism changes rather than acute toxicity. Cholesterol is integral to lens membrane structure, so long-term interference with sterol handling has remained biologically plausible even though the literature has never settled into a clean causal signal.",
+      "summary": "This edge deserves a restrained read: long-term statin use may slightly increase cataract risk, but the evidence is mostly observational and conflicted. The best reason to keep the edge on the harmful side is that multiple large long-follow-up cohorts and an observational meta-analysis all converge on a small excess of cataract surgery or cataract diagnosis, even while some earlier syntheses looked reassuring or neutral.",
+      "caveats": "Confounding by healthcare use, cardiometabolic disease, and surveillance intensity is hard to eliminate. Given the cardiovascular benefits of statins, this edge should influence monitoring and counseling more than prescribing decisions.",
+      "evidence": [
+        {
+          "citation": "AlvesC et al 2018 Cardiovasc Ther",
+          "pmid": "30597753",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 21,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Statins and risk of cataracts: A systematic review and meta-analysis of observational studies."
+        },
+        {
+          "citation": "LaiCL et al 2013 Drug Saf",
+          "pmid": "23771795",
+          "year": 2013,
+          "study_type": "cohort",
+          "n_participants": 50165,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Statin use and cataract surgery: a nationwide retrospective cohort study in elderly ethnic Chinese patients."
+        },
+        {
+          "citation": "CasulaM et al 2016 Atherosclerosis",
+          "pmid": "27323228",
+          "year": 2016,
+          "study_type": "case_control",
+          "n_participants": 134441,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Statin use and risk of cataract: A nested case-control study within a healthcare database."
+        }
+      ]
+    }
+  ]
+}

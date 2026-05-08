@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "loop_diuretics_elderly",
+      "name": "Loop diuretic use in older adults",
+      "kind": "drug"
+    },
+    {
+      "slug": "electrolyte_disturbance",
+      "name": "Electrolyte disturbance",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "loop_diuretics_elderly",
+      "outcome_slug": "electrolyte_disturbance",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The most consistent signal is not one single electrolyte but a cluster of sodium, potassium, magnesium, and volume-related abnormalities that becomes more common as loop-diuretic intensity rises. Older age and heart failure amplify that susceptibility.",
+      "population": "older adults and older heart-failure cohorts exposed to loop diuretics or loop-based sequential diuresis",
+      "mechanism": "Loop diuretics increase urinary sodium, potassium, chloride, calcium, and magnesium losses while also activating neurohormonal and volume-regulatory responses. In older adults with reduced renal reserve, poor intake, or combination diuretic therapy, those shifts can quickly become clinically relevant electrolyte disturbances.",
+      "summary": "This is a practical medication-safety edge rather than a debate about whether loops work. Across heart-failure cohorts and augmentation studies, electrolyte derangements remain a common cost of aggressive loop-diuretic therapy, particularly hyponatremia, hypokalemia, and hypomagnesemia in older or physiologically fragile patients.",
+      "caveats": "Some of the electrolyte signal reflects underlying heart failure severity and combination diuretic strategies rather than loop drugs alone. Even so, the association is strong enough that close biochemical monitoring is part of safe chronic loop-diuretic use in older adults.",
+      "evidence": [
+        {
+          "citation": "VelatI et al 2020 BMC Pharmacol Toxicol",
+          "pmid": "32746925",
+          "year": 2020,
+          "study_type": "cohort",
+          "n_participants": 565,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Furosemide and spironolactone doses and hyponatremia in patients with heart failure."
+        },
+        {
+          "citation": "MilionisHJ et al 2002 Eur J Heart Fail",
+          "pmid": "11959045",
+          "year": 2002,
+          "study_type": "cohort",
+          "n_participants": 86,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Hypomagnesemia and concurrent acid-base and electrolyte abnormalities in patients with congestive heart failure."
+        },
+        {
+          "citation": "MoranvilleMP et al 2015 Cardiovasc Ther",
+          "pmid": "25712736",
+          "year": 2015,
+          "study_type": "cohort",
+          "n_participants": 55,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Comparison of metolazone versus chlorothiazide in acute decompensated heart failure with diuretic resistance."
+        }
+      ]
+    }
+  ]
+}

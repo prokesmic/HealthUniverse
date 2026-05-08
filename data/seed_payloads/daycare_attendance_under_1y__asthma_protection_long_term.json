@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "daycare_attendance_under_1y",
+      "name": "Daycare attendance during the first year of life",
+      "kind": "behavior"
+    },
+    {
+      "slug": "asthma_protection_long_term",
+      "name": "Long-term asthma protection",
+      "kind": "process"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "daycare_attendance_under_1y",
+      "outcome_slug": "asthma_protection_long_term",
+      "direction": "u_shaped",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The most useful synthesis shows a clear biphasic pattern: daycare in the first years raises recurrent wheeze and asthma before age 6, but the pooled estimate after age 6 moves below 1 and no longer suggests harm. That makes this better described as an early cost with possible later catch-down rather than simple protection.",
+      "population": "children entering daycare in the first years of life and followed into later childhood",
+      "mechanism": "Repeated early microbial and viral exposure may transiently increase wheeze while also shaping mucosal and innate immune responses that can blunt later allergic-airway susceptibility in some children. The problem is that the same exposure window also produces more short-term respiratory morbidity, which is why the pattern looks biphasic instead of purely beneficial.",
+      "summary": "Early daycare is not a straightforward asthma-prevention strategy, but it may fit a biphasic hygiene-hypothesis pattern. The best systematic review shows more early wheeze and preschool asthma, with no excess later and a possible shift toward lower odds after age 6; cohort work supports the idea that daycare is linked more to transient wheeze than to persistent atopic airway disease.",
+      "caveats": "The long-term protective component is modest and inconsistent across studies, so this edge should not be framed as guaranteed protection. Socioeconomic context, infection burden, siblings, and baseline atopy all likely modify whether early daycare looks adaptive or simply burdensome.",
+      "evidence": [
+        {
+          "citation": "OchoaSangradorC et al 2018 Allergol Immunopathol (Madr)",
+          "pmid": "30318106",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "n_participants": 5538,
+          "direction": "u_shaped",
+          "quality": "high",
+          "notes": "Day-care center attendance and risk of Asthma-A systematic review."
+        },
+        {
+          "citation": "RöderS et al 2006 Cent Eur J Public Health",
+          "pmid": "16830612",
+          "year": 2006,
+          "study_type": "cohort",
+          "n_participants": 333,
+          "direction": "u_shaped",
+          "quality": "moderate",
+          "notes": "Entry age into day care and later development of allergic disorders--results from the city of Leipzig cohort of the LISA study."
+        },
+        {
+          "citation": "DaiR et al 2022 J Allergy Clin Immunol",
+          "pmid": "34974064",
+          "year": 2022,
+          "study_type": "cohort",
+          "n_participants": 3154,
+          "direction": "u_shaped",
+          "quality": "moderate",
+          "notes": "Wheeze trajectories: Determinants and outcomes in the CHILD Cohort Study."
+        }
+      ]
+    }
+  ]
+}

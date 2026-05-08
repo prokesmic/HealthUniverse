@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hepatitis_b_vaccine_birth",
+      "name": "Hepatitis B vaccination at birth",
+      "kind": "drug",
+      "aliases": [
+        "birth-dose hepatitis B vaccine",
+        "newborn hepatitis B immunization"
+      ],
+      "description": "Hepatitis B vaccination begun at birth as part of universal infant immunization."
+    },
+    {
+      "slug": "childhood_hepatocellular_carcinoma",
+      "name": "Childhood and young-adult hepatocellular carcinoma",
+      "kind": "condition",
+      "aliases": [
+        "early-life hepatocellular carcinoma",
+        "young-onset liver cancer"
+      ],
+      "description": "Hepatocellular carcinoma arising from childhood through young adulthood."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hepatitis_b_vaccine_birth",
+      "outcome_slug": "childhood_hepatocellular_carcinoma",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "The Taiwan registry data show a durable and substantial reduction in hepatocellular carcinoma after universal infant hepatitis B immunization, with relative risks around one-third to two-fifths of the unvaccinated rate through childhood and young adulthood.",
+      "population": "birth cohorts receiving universal hepatitis B vaccination beginning in infancy, including a birth dose",
+      "mechanism": "Birth-dose hepatitis B vaccination prevents perinatal and early-life HBV infection, which is the critical upstream driver of chronic hepatitis, cirrhosis, and later hepatocellular carcinoma in endemic settings. Because the vaccine blocks the carcinogenic infection itself, the cancer-prevention signal strengthens over time rather than disappearing.",
+      "summary": "This is a landmark prevention edge rather than a speculative association. The strongest Taiwan follow-up studies show that infant hepatitis B immunization sharply lowers hepatocellular carcinoma incidence from childhood into young adulthood, and the long-term cohort work makes clear that the residual failures occur disproportionately in incompletely immunized children and in those born to highly infectious mothers.",
+      "caveats": "The most dramatic evidence comes from Taiwan, where baseline HBV burden was high and nationwide follow-up was unusually strong, so absolute effect sizes may differ in lower-incidence settings. Even so, the causal chain is exceptionally coherent and the cancer-prevention effect is one of the best documented vaccine successes in chronic-disease prevention.",
+      "evidence": [
+        {
+          "citation": "ChangMH et al 2009 J Natl Cancer Inst",
+          "pmid": "19759364",
+          "year": 2009,
+          "study_type": "cohort",
+          "n_participants": 5524435,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Decreased incidence of hepatocellular carcinoma in hepatitis B vaccinees: a 20-year follow-up study.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.31,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "persons vaccinated at birth versus unvaccinated birth cohorts"
+          }
+        },
+        {
+          "citation": "ChangMH et al 2016 Gastroenterology",
+          "pmid": "27269245",
+          "year": 2016,
+          "study_type": "cohort",
+          "n_participants": 1509,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Long-term Effects of Hepatitis B Immunization of Infants in Preventing Liver Cancer.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.42,
+            "ci_low": 0.32,
+            "ci_high": 0.56,
+            "comparator": "vaccinated versus unvaccinated cohorts among 20- to 26-year-olds"
+          }
+        },
+        {
+          "citation": "ChienYC et al 2014 Hepatology",
+          "pmid": "24497203",
+          "year": 2014,
+          "study_type": "cohort",
+          "n_participants": 3836988,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Incomplete hepatitis B immunization, maternal carrier status, and increased risk of liver diseases: a 20-year cohort study of 3.8 million vaccinees."
+        }
+      ]
+    }
+  ]
+}

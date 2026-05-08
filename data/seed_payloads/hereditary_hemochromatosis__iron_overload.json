@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hereditary_hemochromatosis",
+      "name": "Hereditary hemochromatosis (HFE)",
+      "kind": "condition",
+      "aliases": [
+        "HFE C282Y-linked hemochromatosis"
+      ],
+      "description": "Inherited HFE-related hemochromatosis, classically driven by C282Y homozygosity and associated with progressive iron loading."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hereditary_hemochromatosis",
+      "outcome_slug": "iron_overload",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "Among previously undiagnosed C282Y homozygotes in the HEIRS screening study, ferritin was above conventional overload thresholds in 88% of men and 57% of women.",
+      "population": "adults with HFE C282Y-linked hereditary hemochromatosis",
+      "mechanism": "HFE-linked hemochromatosis reduces appropriate hepcidin signaling, allowing excessive intestinal iron absorption over many years. That creates the defining phenotype of progressive iron loading, with ferritin and transferrin saturation rising before organ damage appears.",
+      "summary": "Hereditary hemochromatosis is one of the clearest causal pathways to iron overload in clinical medicine. Modern reviews, family cohorts, and population screening studies all agree on the core relationship even though penetrance varies by sex, age, and background modifiers.",
+      "caveats": "Not every C282Y homozygote develops severe biochemical or clinical expression, and women are often less affected before menopause. The edge is nevertheless high-confidence because iron overload is the central disease mechanism, even if the degree of expression varies.",
+      "evidence": [
+        {
+          "citation": "Adams PC 2025 Adv Exp Med Biol",
+          "pmid": "40603788",
+          "year": 2025,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Diagnosis and Treatment of HFE(C282Y)-Linked Hemochromatosis."
+        },
+        {
+          "citation": "Lazarescu A et al 2005 Clin Gastroenterol Hepatol",
+          "pmid": "16234052",
+          "doi": "10.1016/S1542-3565(05)00413-1",
+          "year": 2005,
+          "study_type": "cohort",
+          "n_participants": 148,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Phenotype variation in C282Y homozygotes for the hemochromatosis gene."
+        },
+        {
+          "citation": "Adams PC et al 2005 N Engl J Med",
+          "pmid": "15858186",
+          "doi": "10.1056/NEJMoa041534",
+          "year": 2005,
+          "study_type": "cohort",
+          "n_participants": 99711,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Hemochromatosis and iron-overload screening in a racially diverse population."
+        }
+      ]
+    }
+  ]
+}

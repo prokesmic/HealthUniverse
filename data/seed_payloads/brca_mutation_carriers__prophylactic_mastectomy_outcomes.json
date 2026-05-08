@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "brca_mutation_carriers",
+      "name": "BRCA1 or BRCA2 pathogenic-variant carriers",
+      "kind": "gene"
+    },
+    {
+      "slug": "prophylactic_mastectomy_outcomes",
+      "name": "Risk-reducing mastectomy outcomes",
+      "kind": "process"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "brca_mutation_carriers",
+      "outcome_slug": "prophylactic_mastectomy_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "large",
+      "effect_quant": "Among BRCA1 or BRCA2 carriers, risk-reducing mastectomy is associated with very large reductions in subsequent breast-cancer events, and several cohorts report no incident breast cancers during follow-up after prophylactic surgery.",
+      "population": "women carrying BRCA1 or BRCA2 pathogenic variants considering or undergoing prophylactic mastectomy",
+      "mechanism": "Risk-reducing mastectomy removes the majority of breast epithelium at highest baseline genetic risk for malignant transformation. That direct tissue-removal mechanism explains why this edge behaves differently from chemoprevention or surveillance alone.",
+      "summary": "For BRCA1 and BRCA2 carriers, prophylactic mastectomy is one of the clearest risk-reduction interventions in hereditary breast oncology. The best prospective and multi-centre cohort data show extremely low subsequent breast-cancer incidence after surgery, often with zero observed events during available follow-up.",
+      "caveats": "This edge is about cancer-risk reduction, not the full lived tradeoff of surgery. Surgical morbidity, reconstruction burden, body-image effects, and the possibility of residual breast tissue all matter in decision-making even when the oncologic signal is very strong.",
+      "evidence": [
+        {
+          "citation": "DomchekSM et al 2010 JAMA",
+          "pmid": "20810374",
+          "year": 2010,
+          "study_type": "cohort",
+          "n_participants": 2482,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Association of risk-reducing surgery in BRCA1 or BRCA2 mutation carriers with cancer risk and mortality."
+        },
+        {
+          "citation": "EvansDG et al 2009 J Med Genet",
+          "pmid": "18996907",
+          "year": 2009,
+          "study_type": "cohort",
+          "n_participants": 550,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Risk reducing mastectomy: outcomes in 10 European centres."
+        },
+        {
+          "citation": "JakubJW et al 2018 JAMA Surg",
+          "pmid": "28903167",
+          "year": 2018,
+          "study_type": "cohort",
+          "n_participants": 346,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Oncologic Safety of Prophylactic Nipple-Sparing Mastectomy in a Population With BRCA Mutations: A Multi-institutional Study."
+        }
+      ]
+    }
+  ]
+}

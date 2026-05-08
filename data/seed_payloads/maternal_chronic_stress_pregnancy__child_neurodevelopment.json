@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "maternal_chronic_stress_pregnancy",
+      "name": "Chronic psychological stress during pregnancy",
+      "kind": "behavior",
+      "aliases": [
+        "prenatal chronic stress",
+        "maternal prenatal distress"
+      ],
+      "description": "Sustained maternal psychological distress during pregnancy, including anxiety, depression, perceived stress, and major bereavement-related stress."
+    },
+    {
+      "slug": "child_neurodevelopment",
+      "name": "Child neurodevelopment",
+      "kind": "process",
+      "aliases": [
+        "early neurodevelopment",
+        "offspring neurodevelopmental outcomes"
+      ],
+      "description": "Early cognitive, language, behavioral, and socioemotional developmental trajectories in infancy and childhood."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "maternal_chronic_stress_pregnancy",
+      "outcome_slug": "child_neurodevelopment",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The most consistent signal is a small but repeatable association between higher prenatal maternal distress and less favorable early neurodevelopmental trajectories, especially attention and behavioral regulation rather than a large global developmental decrement.",
+      "population": "children exposed to sustained maternal psychological distress during pregnancy",
+      "mechanism": "Chronic prenatal stress can increase fetal glucocorticoid exposure and alter placental stress signaling during sensitive windows of brain development. That makes later differences in attention, emotional regulation, and behavior more plausible than a dramatic uniform effect on every cognitive domain.",
+      "summary": "The strongest evidence is now the broad prenatal-distress review of the first 3 years, which found small, context-sensitive differences across cognitive, language, and behavioral domains rather than a single large impairment. Meta-analytic work on externalizing behaviors and large registry data on severe bereavement point in the same direction, so the safest claim is that chronic prenatal stress is a modest developmental risk amplifier.",
+      "caveats": "This literature is observational and heavily exposed to confounding by socioeconomic adversity, parental mental health, and postnatal environment. The direction looks more stable than the magnitude, and the effect is better read as a modest probabilistic shift than a deterministic cause of neurodevelopmental disorder.",
+      "evidence": [
+        {
+          "citation": "DeDomenicoC et al 2025 BMJ Open",
+          "pmid": "41218936",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "n_participants": 44,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prenatal psychological distress and neurodevelopmental trajectories in the first 3 years: a systematic review."
+        },
+        {
+          "citation": "TungI et al 2024 Psychol Bull",
+          "pmid": "37971856",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "n_participants": 55,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prenatal stress and externalizing behaviors in childhood and adolescence: A systematic review and meta-analysis.",
+          "effect_quant": {
+            "metric": "r",
+            "value": 0.16,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "higher prenatal psychological distress versus lower prenatal distress"
+          }
+        },
+        {
+          "citation": "LiJ et al 2010 Eur Child Adolesc Psychiatry",
+          "pmid": "20495989",
+          "year": 2010,
+          "study_type": "cohort",
+          "n_participants": 1015912,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Attention-deficit/hyperactivity disorder in the offspring following prenatal maternal bereavement: a nationwide follow-up study in Denmark.",
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.72,
+            "ci_low": 1.09,
+            "ci_high": 2.73,
+            "comparator": "boys exposed to unexpected maternal bereavement during pregnancy versus unexposed boys"
+          }
+        }
+      ]
+    }
+  ]
+}

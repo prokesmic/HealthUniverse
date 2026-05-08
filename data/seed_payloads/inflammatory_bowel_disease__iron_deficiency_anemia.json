@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "inflammatory_bowel_disease",
+      "name": "Inflammatory bowel disease",
+      "kind": "condition",
+      "aliases": [
+        "IBD"
+      ],
+      "description": "Chronic inflammatory intestinal disease including Crohn's disease and ulcerative colitis."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "inflammatory_bowel_disease",
+      "outcome_slug": "iron_deficiency_anemia",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a Swedish population-based cohort, anemia prevalence was 28.7% in Crohn's disease and 16.5% in ulcerative colitis, while iron-deficiency anemia affected 38.2% of anemic patients at diagnosis in a German cohort.",
+      "population": "children and adults with Crohn's disease or ulcerative colitis",
+      "mechanism": "Inflammatory bowel disease promotes iron-deficiency anemia through chronic intestinal blood loss, reduced dietary intake, impaired absorption, and inflammation-driven hepcidin effects that trap iron away from erythropoiesis. Active disease can therefore sustain both absolute iron deficiency and mixed anemia patterns over time.",
+      "summary": "Inflammatory bowel disease is a common setting for iron-deficiency anemia, and the link is strong enough that anemia surveillance is part of routine IBD care. Population cohorts and meta-analytic treatment literature consistently show that iron-deficiency anemia is frequent, clinically meaningful, and often undertreated in both Crohn's disease and ulcerative colitis.",
+      "caveats": "IBD-related anemia is not always purely iron deficiency; anemia of inflammation, B12 deficiency, and folate deficiency can coexist. The edge is strongest during active or extensive disease and should be interpreted as a common complication rather than an unavoidable outcome for every patient with IBD.",
+      "evidence": [
+        {
+          "citation": "Ott C et al 2012 Gastroenterol Res Pract",
+          "pmid": "22899905",
+          "doi": "10.1155/2012/595970",
+          "year": 2012,
+          "study_type": "cohort",
+          "n_participants": 279,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "High prevalence but insufficient treatment of iron-deficiency anemia in patients with inflammatory bowel disease: results of a population-based cohort."
+        },
+        {
+          "citation": "Eriksson C et al 2018 Aliment Pharmacol Ther",
+          "pmid": "30069892",
+          "doi": "10.1111/apt.14920",
+          "year": 2018,
+          "study_type": "cohort",
+          "n_participants": 342,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Incidence, prevalence and clinical outcome of anaemia in inflammatory bowel disease: a population-based cohort study."
+        },
+        {
+          "citation": "Abhyankar A et al 2015 Inflamm Bowel Dis",
+          "pmid": "25844962",
+          "doi": "10.1097/MIB.0000000000000386",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "n_participants": 694,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Iron Replacement in Patients with Inflammatory Bowel Disease: A Systematic Review and Meta-analysis."
+        }
+      ]
+    }
+  ]
+}

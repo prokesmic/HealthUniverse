@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "maternal_gestational_diabetes",
+      "name": "Maternal gestational diabetes",
+      "kind": "condition",
+      "aliases": [
+        "gestational diabetes mellitus",
+        "GDM in pregnancy"
+      ],
+      "description": "Hyperglycemia meeting gestational diabetes criteria during pregnancy."
+    },
+    {
+      "slug": "child_obesity_long_term",
+      "name": "Long-term child obesity",
+      "kind": "condition",
+      "aliases": [
+        "offspring long-term obesity risk",
+        "childhood and adolescent obesity after GDM exposure"
+      ],
+      "description": "Overweight or obesity risk in childhood through adolescence among offspring exposed to gestational diabetes in utero."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "maternal_gestational_diabetes",
+      "outcome_slug": "child_obesity_long_term",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In utero exposure to gestational diabetes is associated with higher obesity risk later in childhood and adolescence, and the risk appears lower when maternal glycemia is tightly controlled.",
+      "population": "children and adolescents exposed to gestational diabetes in utero",
+      "mechanism": "Fetal exposure to maternal hyperglycemia can promote higher insulin exposure, altered adiposity programming, and birth-size shifts that track into later obesity risk. The attenuation of risk with better maternal glycemic control supports a biologically meaningful intrauterine component rather than pure family confounding.",
+      "summary": "The most informative recent evidence shows that gestational diabetes is linked to higher offspring obesity risk well beyond infancy, with persistence into school age and adolescence. Large cohorts also suggest that prompt and sustained glucose control during pregnancy can narrow that excess risk, which makes this edge both predictive and actionable.",
+      "caveats": "Maternal prepregnancy BMI explains part of the signal and should not be ignored. The safest read is that gestational diabetes adds risk on top of underlying maternal metabolic vulnerability rather than acting as a completely separate pathway in every family.",
+      "evidence": [
+        {
+          "citation": "MayaJ et al 2025 J Clin Endocrinol Metab",
+          "pmid": "40512774",
+          "year": 2025,
+          "study_type": "cohort",
+          "n_participants": 27876,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Gestational Glucose Intolerance and Risk of Obesity in Childhood and Adolescence.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.28,
+            "ci_low": 1.03,
+            "ci_high": 1.59,
+            "comparator": "obesity in 11- to 18-year-olds exposed to GDM versus normal glucose tolerance, adjusted for maternal BMI"
+          }
+        },
+        {
+          "citation": "ChehabRF et al 2026 Diabetes Care",
+          "pmid": "41779453",
+          "year": 2026,
+          "study_type": "cohort",
+          "n_participants": 206464,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Gestational Diabetes Mellitus, Glycemic Management Trajectories, and Offspring Growth Patterns and Obesity Risk.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.62,
+            "ci_low": 1.33,
+            "ci_high": 1.98,
+            "comparator": "offspring obesity risk by age 10 in suboptimally controlled GDM versus offspring unexposed to GDM"
+          }
+        },
+        {
+          "citation": "LaiT et al 2025 BMJ Open",
+          "pmid": "40082003",
+          "year": 2025,
+          "study_type": "cohort",
+          "n_participants": 4492,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of maternal metabolic risk factors with offspring body mass index (BMI) trajectories in early childhood: a retrospective cohort study.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.47,
+            "ci_low": 1.097,
+            "ci_high": 1.97,
+            "comparator": "early-increase BMI trajectory in offspring exposed to GDM versus no GDM"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "antibiotics_under_2y",
+      "name": "Antibiotic exposure before age 2 years",
+      "kind": "drug"
+    },
+    {
+      "slug": "ibd_risk_long_term",
+      "name": "Long-term inflammatory bowel disease risk",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "antibiotics_under_2y",
+      "outcome_slug": "ibd_risk_long_term",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The newest childhood-focused meta-analysis found that antibiotic exposure before adulthood was associated with about 42% higher later IBD risk, and the signal persisted in Scandinavian birth cohorts even after adjustment for infection frequency. Direct cohort data also show dose-response patterns when repeated antibiotic courses occur in the first year.",
+      "population": "children exposed to systemic antibiotics in infancy or the first 2 years of life, followed into later childhood or early adulthood",
+      "mechanism": "Antibiotics can disrupt microbial colonization during a developmental window when immune tolerance and epithelial homeostasis are still maturing. Repeated perturbation of the gut microbiome may make later Crohn disease or broader IBD more likely in susceptible children.",
+      "summary": "Antibiotic exposure in the first years of life is associated with higher later IBD risk, and the association now looks more credible than it did a decade ago. The strongest support comes from recent meta-analyses and a pooled Scandinavian birth-cohort study that adjusted for infection frequency, making the signal harder to dismiss as just sicker children receiving more antibiotics.",
+      "caveats": "Residual confounding by infection burden, healthcare use, and genetic susceptibility still matters, and the signal is stronger for Crohn disease than for ulcerative colitis in some analyses. This edge is about repeated early exposure and later population risk, not about avoiding clearly indicated antibiotics in an acutely ill child.",
+      "evidence": [
+        {
+          "citation": "StørdalK et al 2026 Inflamm Bowel Dis",
+          "pmid": "41617205",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "n_participants": 2783,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Systematic review and meta-analysis of childhood exposure to antibiotics and the subsequent risk of IBD.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.42,
+            "ci_low": 1.16,
+            "ci_high": 1.74,
+            "comparator": "childhood antibiotic exposure versus no exposure for later IBD"
+          }
+        },
+        {
+          "citation": "MårildK et al 2025 Aliment Pharmacol Ther",
+          "pmid": "39450871",
+          "year": 2025,
+          "study_type": "cohort",
+          "n_participants": 103046,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Early-Life Infections, Antibiotics and Later Risk of Childhood and Early Adult-Onset Inflammatory Bowel Disease: Pooled Analysis of Two Scandinavian Birth Cohorts."
+        },
+        {
+          "citation": "CanovaC et al 2020 Int J Environ Res Public Health",
+          "pmid": "32252276",
+          "year": 2020,
+          "study_type": "cohort",
+          "n_participants": 213515,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Perinatal and Antibiotic Exposures and the Risk of Developing Childhood-Onset Inflammatory Bowel Disease: A Nested Case-Control Study Based on a Population-Based Birth Cohort."
+        }
+      ]
+    }
+  ]
+}

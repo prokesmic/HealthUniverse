@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "soy_formula",
+      "name": "Soy-based infant formula",
+      "kind": "food",
+      "aliases": [
+        "soy infant formula",
+        "soy protein-based formula"
+      ],
+      "description": "Modern soy protein isolate-based infant formula used as an alternative to cow's-milk formula."
+    },
+    {
+      "slug": "infant_outcomes",
+      "name": "General infant outcomes",
+      "kind": "process",
+      "aliases": [
+        "growth and developmental outcomes in infancy",
+        "infant health outcomes"
+      ],
+      "description": "Broad infant outcomes including growth, tolerance, hydration, and neurodevelopment-related safety endpoints."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "soy_formula",
+      "outcome_slug": "infant_outcomes",
+      "direction": "neutral",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The most consistent finding is neutrality: modern soy formulas generally support normal growth and short-term clinical outcomes comparable with other standard feeding options in infants who need them.",
+      "population": "term infants fed modern soy protein isolate-based infant formula",
+      "mechanism": "Modern soy formulas are nutritionally engineered to support growth despite lower intrinsic methionine and the presence of phytates and phytoestrogens. The key biologic concern has been endocrine or developmental disruption, but the better human safety literature has not shown a strong clinically important signal.",
+      "summary": "The literature is more reassuring than enthusiastic. Modern soy formula appears to support normal growth, gastrointestinal tolerance, and broad short-term safety outcomes, but it does not show clear superiority over cow's-milk formula or human milk for routine infant development, so the right framing is acceptable neutrality rather than benefit.",
+      "caveats": "Much of the soy-formula safety literature is observational, industry-linked, or not designed to detect subtle long-term endocrine outcomes. This edge should be read as 'generally acceptable when indicated,' not as a recommendation to prefer soy formula for most healthy infants.",
+      "evidence": [
+        {
+          "citation": "BhatiaJ et al 2008 Pediatrics",
+          "pmid": "18450914",
+          "year": 2008,
+          "study_type": "expert_opinion",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Use of soy protein-based formulas in infant feeding."
+        },
+        {
+          "citation": "LasekanJB et al 1999 Clin Pediatr",
+          "pmid": "10544862",
+          "year": 1999,
+          "study_type": "rct",
+          "n_participants": 213,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Growth of newborn, term infants fed soy formulas for 1 year."
+        },
+        {
+          "citation": "LasekanJ et al 2015 Nutrients",
+          "pmid": "25912040",
+          "year": 2015,
+          "study_type": "rct",
+          "n_participants": 188,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Soy protein-based infant formulas with supplemental fructooligosaccharides: gastrointestinal tolerance and hydration status in newborn infants."
+        }
+      ]
+    }
+  ]
+}

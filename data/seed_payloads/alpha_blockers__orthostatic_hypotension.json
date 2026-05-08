@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "alpha_blockers",
+      "name": "Alpha blockers",
+      "kind": "drug"
+    },
+    {
+      "slug": "orthostatic_hypotension",
+      "name": "Orthostatic hypotension",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "alpha_blockers",
+      "outcome_slug": "orthostatic_hypotension",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Across randomized and observational data, alpha blockers increase orthostatic hypotension risk, though the size of that increase depends on selectivity, dose, co-prescribed antihypertensives, and timing around treatment initiation.",
+      "population": "older adults and middle-aged men exposed to alpha-1 blockers for urinary or cardiovascular indications",
+      "mechanism": "Alpha blockers reduce peripheral vascular tone and blunt the reflex vasoconstriction needed to maintain standing blood pressure. In older adults with impaired baroreflexes or polypharmacy, that hemodynamic effect can readily translate into dizziness, hypotension, syncope, and falls.",
+      "summary": "This is a straightforward class-harm edge. The best randomized synthesis shows alpha blockers carry increased odds of orthostatic hypotension, and older observational cohorts make the clinical consequence concrete by showing more hypotension-related events around treatment initiation.",
+      "caveats": "Risk varies across agents and is highest at initiation, reinitiation, dose escalation, and in people already taking other blood-pressure-lowering drugs. Uroselective agents may be safer than nonselective ones, but they do not eliminate the problem.",
+      "evidence": [
+        {
+          "citation": "BhanuC et al 2021 PLoS Med",
+          "pmid": "34752479",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "n_participants": 27079,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Drug-induced orthostatic hypotension: A systematic review and meta-analysis of randomised controlled trials."
+        },
+        {
+          "citation": "ChrischillesE et al 2001 Clin Ther",
+          "pmid": "11394731",
+          "year": 2001,
+          "study_type": "cohort",
+          "n_participants": 10205,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Initiation of nonselective alpha1-antagonist therapy and occurrence of hypotension-related adverse events among men with benign prostatic hyperplasia: a retrospective cohort study."
+        },
+        {
+          "citation": "BirdST et al 2013 BMJ",
+          "pmid": "24192967",
+          "year": 2013,
+          "study_type": "cohort",
+          "n_participants": 383567,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Tamsulosin treatment for benign prostatic hyperplasia and risk of severe hypotension in men aged 40-85 years in the United States: risk window analyses using between and within patient methodology."
+        }
+      ]
+    }
+  ]
+}

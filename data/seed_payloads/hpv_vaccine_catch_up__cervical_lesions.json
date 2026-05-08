@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hpv_vaccine_catch_up",
+      "name": "Catch-up HPV vaccination",
+      "kind": "drug",
+      "aliases": [
+        "catch-up human papillomavirus vaccination",
+        "HPV vaccine after early adolescence"
+      ],
+      "description": "HPV vaccination delivered in catch-up cohorts after the earliest routine adolescent target ages."
+    },
+    {
+      "slug": "cervical_lesions",
+      "name": "Cervical precancerous lesions",
+      "kind": "condition",
+      "aliases": [
+        "CIN2+ and CIN3+",
+        "high-grade cervical lesions"
+      ],
+      "description": "High-grade cervical intraepithelial lesions and related precancerous cervical abnormalities."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hpv_vaccine_catch_up",
+      "outcome_slug": "cervical_lesions",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Catch-up HPV vaccination still lowers high-grade cervical lesion risk, but the benefit is smaller than vaccination before sexual debut because more participants have already encountered vaccine-type HPV.",
+      "population": "adolescents and young women vaccinated in catch-up HPV programs or late-adolescent trial cohorts",
+      "mechanism": "Even in catch-up settings, HPV vaccination can prevent persistent infection and progression to CIN2+ or CIN3+ for women not yet infected with the relevant oncogenic types. The effect attenuates with increasing prior exposure, which is why catch-up helps but does not match pre-exposure adolescent vaccination.",
+      "summary": "The strongest catch-up signal is that protection remains real but partial. Australian lesion-typing data show a falling share of HPV16/18-driven CIN3/AIS in vaccine-eligible young women, while the large PATRICIA trial confirms meaningful efficacy against cervical precancer in the total vaccinated cohort that approximates catch-up populations.",
+      "caveats": "Catch-up vaccination is intrinsically more heterogeneous than routine preadolescent vaccination because prior HPV exposure varies widely. This edge is about lesion reduction, not the larger long-term cancer-prevention effect seen when vaccination happens before sexual debut.",
+      "evidence": [
+        {
+          "citation": "CornallAM et al 2020 Vaccine",
+          "pmid": "32736938",
+          "year": 2020,
+          "study_type": "cohort",
+          "n_participants": 743,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "HPV16/18 prevalence in high-grade cervical lesions in an Australian population offered catch-up HPV vaccination."
+        },
+        {
+          "citation": "ApterD et al 2015 Clin Vaccine Immunol",
+          "pmid": "25651922",
+          "year": 2015,
+          "study_type": "rct",
+          "n_participants": 18644,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy of human papillomavirus 16 and 18 (HPV-16/18) AS04-adjuvanted vaccine against cervical infection and precancer in young women: final event-driven analysis of the randomized, double-blind PATRICIA trial.",
+          "effect_quant": {
+            "metric": "VE",
+            "value": 30.4,
+            "ci_low": 16.4,
+            "ci_high": 42.1,
+            "comparator": "CIN2+ irrespective of HPV DNA in the total vaccinated cohort versus control"
+          }
+        },
+        {
+          "citation": "LehtinenM et al 2012 Lancet Oncol",
+          "pmid": "22075171",
+          "year": 2012,
+          "study_type": "rct",
+          "n_participants": 18644,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Overall efficacy of HPV-16/18 AS04-adjuvanted vaccine against grade 3 or greater cervical intraepithelial neoplasia: 4-year end-of-study analysis of the randomised, double-blind PATRICIA trial.",
+          "effect_quant": {
+            "metric": "VE",
+            "value": 45.6,
+            "ci_low": 28.8,
+            "ci_high": 58.7,
+            "comparator": "all CIN3+ in the total vaccinated cohort versus control"
+          }
+        }
+      ]
+    }
+  ]
+}

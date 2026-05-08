@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "early_egg_introduction_6mo",
+      "name": "Egg introduction before 6 months",
+      "kind": "behavior"
+    },
+    {
+      "slug": "egg_allergy",
+      "name": "Egg allergy",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "early_egg_introduction_6mo",
+      "outcome_slug": "egg_allergy",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The best trial syntheses suggest introducing egg before 6 months lowers later egg-allergy risk, but the effect size is more modest and implementation-sensitive than the peanut story.",
+      "population": "infants exposed to egg in the first 6 months of life, often in higher-risk allergy cohorts",
+      "mechanism": "Early oral exposure may encourage tolerance to egg proteins before sensitization pathways are firmly established. The signal appears strongest when exposure is controlled and eczema is actively managed rather than when introduction is late or inconsistent.",
+      "summary": "Early egg introduction before 6 months appears to lower the risk of later egg allergy. Multiple randomized-trial syntheses now point in the same protective direction, although the evidence is not as clean or universal as for early peanut introduction and seems more sensitive to the form of egg used and the infant’s eczema status.",
+      "caveats": "Not every primary trial was positive, and heterogeneity in dosing, cooked versus raw egg, and baseline eczema complicates implementation. This edge is best read as credible but somewhat context-dependent protection rather than a one-size-fits-all guarantee.",
+      "evidence": [
+        {
+          "citation": "AlSaudB et al 2018 Int Arch Allergy Immunol",
+          "pmid": "30184525",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 3032,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Early Introduction of Egg and the Development of Egg Allergy in Children: A Systematic Review and Meta-Analysis.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.6,
+            "ci_low": 0.44,
+            "ci_high": 0.82,
+            "comparator": "early egg introduction between 3 and 6 months versus no early introduction"
+          }
+        },
+        {
+          "citation": "DaiNN et al 2021 Zhonghua Er Ke Za Zhi",
+          "pmid": "34405638",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "n_participants": 8,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Timing of food introduction to the infant diet and risk of food allergy: a systematic review and Meta-analysis.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.6,
+            "ci_low": 0.46,
+            "ci_high": 0.79,
+            "comparator": "egg introduction before 6 months versus after 6 months"
+          }
+        },
+        {
+          "citation": "IerodiakonouD et al 2016 JAMA",
+          "pmid": "27654604",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "n_participants": 1915,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Timing of Allergenic Food Introduction to the Infant Diet and Risk of Allergic or Autoimmune Disease: A Systematic Review and Meta-analysis.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.56,
+            "ci_low": 0.36,
+            "ci_high": 0.87,
+            "comparator": "egg introduction at 4 to 6 months versus later introduction"
+          }
+        }
+      ]
+    }
+  ]
+}

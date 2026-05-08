@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "early_peanut_introduction_4_11mo",
+      "name": "Peanut introduction at 4 to 11 months",
+      "kind": "behavior"
+    },
+    {
+      "slug": "peanut_allergy",
+      "name": "Peanut allergy",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "early_peanut_introduction_4_11mo",
+      "outcome_slug": "peanut_allergy",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "The strongest randomized evidence shows that introducing peanut during the 4-to-11-month window substantially lowers later peanut-allergy risk, and the protective effect persists into adolescence.",
+      "population": "infants, especially those at elevated allergic risk, introduced to peanut in the first year of life",
+      "mechanism": "Regular oral exposure during infancy appears to promote immune tolerance at a stage when strict avoidance leaves sensitization more likely. The timing signal fits the idea of a developmental window in which mucosal immune education is easier to establish.",
+      "summary": "Peanut introduction between 4 and 11 months is one of the clearest infant-feeding interventions for allergy prevention. The original pooled trial evidence was strong, later pooled causal analyses broadened that protection across risk groups, and long-term follow-up now shows that the benefit can endure into adolescence.",
+      "caveats": "Much of the strongest evidence comes from high-risk infants under structured protocols, so implementation in general populations still depends on context, baseline eczema, and family confidence with introduction. This edge is about allergy prevention, not the practical details of introducing peanut safely in every infant.",
+      "evidence": [
+        {
+          "citation": "IerodiakonouD et al 2016 JAMA",
+          "pmid": "27654604",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "n_participants": 1550,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Timing of Allergenic Food Introduction to the Infant Diet and Risk of Allergic or Autoimmune Disease: A Systematic Review and Meta-analysis.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.29,
+            "ci_low": 0.11,
+            "ci_high": 0.74,
+            "comparator": "early peanut introduction at 4 to 11 months versus later introduction"
+          }
+        },
+        {
+          "citation": "DuToitG et al 2024 NEJM Evid",
+          "pmid": "38804779",
+          "year": 2024,
+          "study_type": "rct",
+          "n_participants": 640,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Follow-up to Adolescence after Early Peanut Introduction for Allergy Prevention.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.29,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "peanut allergy at age 144 months in the original peanut consumption group versus the original avoidance group"
+          }
+        },
+        {
+          "citation": "LoganK et al 2023 Allergy",
+          "pmid": "36435990",
+          "year": 2023,
+          "study_type": "rct",
+          "n_participants": 1303,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Early introduction of peanut reduces peanut allergy across risk groups in pooled and causal inference analyses."
+        }
+      ]
+    }
+  ]
+}

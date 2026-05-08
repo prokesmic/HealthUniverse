@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "vitamin_d_supplementation_children",
+      "name": "Vitamin D supplementation in children",
+      "kind": "supplement"
+    },
+    {
+      "slug": "respiratory_infections",
+      "name": "Respiratory infections",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "vitamin_d_supplementation_children",
+      "outcome_slug": "respiratory_infections",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Pediatric vitamin D trials do not show a uniform reduction in respiratory infections, but newer child-specific evidence suggests supplementation may reduce respiratory-infection burden in some settings, especially during high-latitude winter or with higher daily-equivalent dosing.",
+      "population": "children receiving oral vitamin D supplementation in community or preventive settings",
+      "mechanism": "Vitamin D supports innate antimicrobial pathways in respiratory epithelium and immune cells. Any benefit is likely to depend on baseline deficiency, season, dose, and infection phenotype rather than acting as a universally strong anti-infective intervention.",
+      "summary": "The most boring reading is that vitamin D supplementation in children may offer a modest respiratory-infection benefit in selected settings, but the overall pediatric evidence is mixed rather than uniformly positive. One newer winter trial found fewer respiratory-infection sick days, while broader meta-analysis shows little or no effect on broad upper-respiratory endpoints unless dose and context are favorable.",
+      "caveats": "Results vary by age, latitude, baseline vitamin D status, and whether the outcome is total upper-respiratory infections versus narrower symptom clusters such as fever or influenza-like illness. This should be read as a possible low-cost supportive strategy in some pediatric contexts, not a reliably powerful infection-prevention tool.",
+      "evidence": [
+        {
+          "citation": "CarbooJA et al 2024 Nutr Rev",
+          "pmid": "37428896",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "n_participants": 5748,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "High-dose oral vitamin D supplementation for prevention of infections in children aged 0 to 59 months: a systematic review and meta-analysis."
+        },
+        {
+          "citation": "ClericoJW et al 2025 Eur J Nutr",
+          "pmid": "40310565",
+          "year": 2025,
+          "study_type": "rct",
+          "n_participants": 189,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of vitamin D supplementation on acute respiratory tract infections in 6-8-year-old children: a randomized clinical trial.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.83,
+            "ci_low": 0.76,
+            "ci_high": 0.9,
+            "comparator": "sick days due to acute respiratory tract infection in vitamin D versus placebo groups"
+          }
+        },
+        {
+          "citation": "ReyesML et al 2024 J Pediatr",
+          "pmid": "39181322",
+          "year": 2024,
+          "study_type": "rct",
+          "n_participants": 303,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Weekly Vitamin D Supplementation to Prevent Acute Respiratory Infections in Young Children at Different Latitudes: A Randomized Controlled Trial."
+        }
+      ]
+    }
+  ]
+}

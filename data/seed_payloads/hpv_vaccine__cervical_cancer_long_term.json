@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hpv_vaccine",
+      "name": "Human papillomavirus vaccination",
+      "kind": "drug"
+    },
+    {
+      "slug": "cervical_cancer_long_term",
+      "name": "Long-term cervical cancer incidence",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hpv_vaccine",
+      "outcome_slug": "cervical_cancer_long_term",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "The long-term signal is no longer limited to surrogate lesions: population-level follow-up now shows major reductions in cervical cancer itself, especially when vaccination is delivered before first HPV exposure.",
+      "population": "girls and young women in national HPV vaccination programs or long-term randomized follow-up cohorts",
+      "mechanism": "HPV vaccination prevents persistent infection with oncogenic HPV types that drive cervical carcinogenesis. Because cervical cancer sits at the far end of a long causal chain, long-term reductions in invasive disease are biologically expected once persistent infection and high-grade precursors fall at population scale.",
+      "summary": "HPV vaccination now has convincing long-term evidence for reducing cervical-cancer incidence, not just precancerous lesions. The strongest evidence comes from national program follow-up in England and from long-term trial-linked cohort follow-up in Finland, reinforced by a very large contemporary Cochrane review of population-level program effects.",
+      "caveats": "Absolute benefits depend on age at vaccination, program coverage, and screening policy, so effects are strongest when vaccination occurs before substantial HPV exposure. Some of the newest registry analyses still rely on ecological or quasi-experimental methods, but the direction of effect is now unusually consistent across designs.",
+      "evidence": [
+        {
+          "citation": "HenschkeN et al 2025 Cochrane Database Syst Rev",
+          "pmid": "41276264",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "n_participants": 132000000,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of human papillomavirus (HPV) vaccination programmes on community rates of HPV-related disease and harms from vaccination."
+        },
+        {
+          "citation": "WardIL et al 2025 Int J Epidemiol",
+          "pmid": "40990251",
+          "year": 2025,
+          "study_type": "cohort",
+          "n_participants": 53400000,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Evaluating the effectiveness of the human papillomavirus vaccination programme in England, using a regression discontinuity design.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.25,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "cervical cancer diagnoses in women offered catch-up vaccination at age 17-18 versus those just above the eligibility cutoff"
+          }
+        },
+        {
+          "citation": "LehtinenM et al 2021 BMJ Open",
+          "pmid": "35149535",
+          "year": 2021,
+          "study_type": "cohort",
+          "n_participants": 19867,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Human papillomavirus vaccine efficacy against invasive, HPV-positive cancers: population-based follow-up of a cluster-randomised trial."
+        }
+      ]
+    }
+  ]
+}

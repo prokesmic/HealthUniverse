@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hibiscus_tea",
+      "name": "Hibiscus tea",
+      "kind": "food"
+    },
+    {
+      "slug": "blood_pressure_women",
+      "name": "Blood pressure in women",
+      "kind": "biomarker"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hibiscus_tea",
+      "outcome_slug": "blood_pressure_women",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The strongest pooled randomized evidence shows that hibiscus lowers systolic blood pressure by roughly 6 to 8 mm Hg versus placebo in adults with mild-to-moderate hypertension. The evidence base is not women-only, but it is consistent enough to support a real antihypertensive signal in women as part of a broader adult population.",
+      "population": "adult women within mixed-sex cohorts of prehypertensive or mildly hypertensive adults consuming hibiscus preparations",
+      "mechanism": "Hibiscus appears to lower blood pressure through a combination of anthocyanin-rich antioxidant effects, mild natriuresis, and angiotensin-converting-enzyme inhibition. That mechanism fits the fact that the signal looks stronger in uncomplicated mild hypertension than in heavily medicated populations.",
+      "summary": "Hibiscus tea has enough randomized evidence behind it to be more than a folk remedy. Two meta-analyses and a placebo-controlled feeding trial point in the same direction: regular hibiscus intake lowers blood pressure modestly, although the supporting studies were not designed specifically for women alone.",
+      "caveats": "The underlying trials differ in dose, extract standardization, tea preparation, and comparator, so the exact effect size should not be overclaimed. This edge is about modest blood-pressure improvement, not cardiovascular-outcome reduction.",
+      "evidence": [
+        {
+          "citation": "AbdelmonemM et al 2022 J Cardiovasc Pharmacol",
+          "pmid": "34694241",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "n_participants": 1205,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy of Hibiscus sabdariffa on Reducing Blood Pressure in Patients With Mild-to-Moderate Hypertension: A Systematic Review and Meta-Analysis of Published Randomized Controlled Trials.",
+          "effect_quant": {
+            "metric": "MD mmHg",
+            "value": -6.67,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "hibiscus versus placebo for systolic blood pressure"
+          }
+        },
+        {
+          "citation": "SerbanC et al 2015 J Hypertens",
+          "pmid": "25875025",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "n_participants": 390,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of sour tea (Hibiscus sabdariffa L.) on arterial hypertension: a systematic review and meta-analysis of randomized controlled trials.",
+          "effect_quant": {
+            "metric": "WMD mmHg",
+            "value": -7.58,
+            "ci_low": -9.69,
+            "ci_high": -5.46,
+            "comparator": "hibiscus supplementation versus control for systolic blood pressure"
+          }
+        },
+        {
+          "citation": "McKayDL et al 2010 J Nutr",
+          "pmid": "20018807",
+          "year": 2010,
+          "study_type": "rct",
+          "n_participants": 65,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Hibiscus sabdariffa L. tea (tisane) lowers blood pressure in prehypertensive and mildly hypertensive adults."
+        }
+      ]
+    }
+  ]
+}

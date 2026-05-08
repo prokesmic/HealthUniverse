@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "nitrofurantoin_long_term_elderly",
+      "name": "Long-term nitrofurantoin use in older adults",
+      "kind": "drug"
+    },
+    {
+      "slug": "pulmonary_fibrosis",
+      "name": "Pulmonary fibrosis",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "nitrofurantoin_long_term_elderly",
+      "outcome_slug": "pulmonary_fibrosis",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The clearest quantitative signal comes from a large matched cohort of older adults in which chronic nitrofurantoin exposure was associated with a higher risk of lung injury than acute exposure, with an adjusted risk ratio of 1.53 (95% CI 1.04 to 2.24).",
+      "population": "older adults receiving repeated or prophylactic nitrofurantoin exposure",
+      "mechanism": "Chronic nitrofurantoin exposure can generate reactive intermediates within pulmonary tissue, driving interstitial inflammation and, in susceptible patients, a slow fibrotic pattern rather than just an acute hypersensitivity reaction. Older age and prolonged exposure matter because the lung has more time to accumulate injury before the drug is stopped.",
+      "summary": "This edge is anchored on the 2016 matched cohort from a large integrated health system, which showed that long-term nitrofurantoin use in older adults carries a higher risk of clinically recognized lung injury than short-course use. Later mechanistic and clinical reviews do not overturn that finding; they mainly reinforce that the chronic form is uncommon but real and can evolve toward interstitial fibrosis if it is missed.",
+      "caveats": "The absolute event rate is low, and most older adults on nitrofurantoin will never develop pulmonary fibrosis. But when nitrofurantoin is used as long-term prophylaxis, new cough or dyspnea should not be waved away because the chronic toxicity pattern can be subtle at onset and more consequential than the typical acute course.",
+      "evidence": [
+        {
+          "citation": "SantosJM et al 2016 J Am Geriatr Soc",
+          "pmid": "27100576",
+          "year": 2016,
+          "study_type": "cohort",
+          "n_participants": 13421,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Evaluation of the Risk of Nitrofurantoin Lung Injury and Its Efficacy in Diminished Kidney Function in Older Adults in a Large Integrated Healthcare System: A Matched Cohort Study."
+        },
+        {
+          "citation": "KayeAD et al 2025 Toxics",
+          "pmid": "40423461",
+          "year": 2025,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Nitrofurantoin-Induced Pulmonary Toxicity: Mechanisms, Diagnosis, and Management."
+        },
+        {
+          "citation": "HainerBL et al 1981 J Fam Pract",
+          "pmid": "7031172",
+          "year": 1981,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Nitrofurantoin pulmonary toxicity."
+        }
+      ]
+    }
+  ]
+}

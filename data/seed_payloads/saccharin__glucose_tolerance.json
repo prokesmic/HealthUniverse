@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "saccharin",
+      "outcome_slug": "glucose_tolerance",
+      "direction": "harmful",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "In a 2022 randomized trial, the saccharin arm showed impaired glycemic responses after 2 weeks of exposure, and an earlier 2014 pilot found glucose intolerance emerging in 4 of 7 healthy volunteers after 6 days of high-dose saccharin. A dedicated 2021 placebo-controlled saccharin trial in healthy lean adults, however, found no oral glucose tolerance effect, so the signal remains early and inconsistent.",
+      "population": "healthy adults exposed to short-term saccharin or other non-nutritive sweetener interventions that included saccharin",
+      "mechanism": "Saccharin may impair glucose tolerance in susceptible people through microbiome-mediated changes in carbohydrate handling and downstream glycemic responses rather than through a uniform direct endocrine effect. The conflicting trials suggest that baseline microbiome composition, co-exposures, and formulation details likely determine whether a measurable glucose signal appears.",
+      "summary": "Saccharin has an early harmful signal for glucose tolerance, but it is not a settled effect. Small human experiments and a later randomized sweetener trial suggest that saccharin can worsen glycemic responses in some people, while a placebo-controlled study using pure saccharin at the acceptable daily intake found no glucose intolerance. The fairest conclusion is a person-specific harmful possibility rather than a stable universal effect.",
+      "caveats": "The positive human signal is still based on short interventions with small samples, and one of the strongest null studies specifically tested pure saccharin under controlled conditions. This edge should be treated as an unresolved metabolic warning, not proof that ordinary saccharin exposure reliably harms everyone.",
+      "evidence": [
+        {
+          "citation": "Suez et al 2014 Nature",
+          "pmid": "25231862",
+          "year": 2014,
+          "study_type": "mechanistic",
+          "n_participants": 7,
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Artificial sweeteners induce glucose intolerance by altering the gut microbiota."
+        },
+        {
+          "citation": "Serrano et al 2021 Microbiome",
+          "pmid": "33431052",
+          "year": 2021,
+          "study_type": "rct",
+          "n_participants": 23,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "High-dose saccharin supplementation does not induce gut microbiota changes or glucose intolerance in healthy humans and mice."
+        },
+        {
+          "citation": "Suez et al 2022 Cell",
+          "pmid": "35987213",
+          "year": 2022,
+          "study_type": "rct",
+          "n_participants": 20,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Personalized microbiome-driven effects of non-nutritive sweeteners on human glucose tolerance."
+        }
+      ]
+    }
+  ]
+}
