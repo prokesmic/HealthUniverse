@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "endometriosis",
+      "name": "Endometriosis",
+      "kind": "condition"
+    },
+    {
+      "slug": "anti_inflammatory_diet_pain",
+      "name": "Pain response to anti-inflammatory dietary strategies",
+      "kind": "process"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "endometriosis",
+      "outcome_slug": "anti_inflammatory_diet_pain",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The strongest pooled trial signal suggests that dietary interventions can reduce endometriosis pain, but the apparent benefit comes from small heterogeneous studies with moderate or high risk of bias. The most defensible claim is that anti-inflammatory-style dietary strategies look promising, not settled.",
+      "population": "women with laparoscopically confirmed or clinically treated endometriosis, especially those with pelvic pain and bowel symptoms",
+      "mechanism": "An anti-inflammatory diet could reduce endometriosis pain by lowering prostaglandin-driven inflammation, improving oxidative-stress balance, and reducing bowel symptom amplification that can worsen visceral pain. The biologic story is plausible, but the intervention literature is still fragmented across low-FODMAP, antioxidant, Mediterranean-style, and other dietary patterns.",
+      "summary": "Dietary change should not yet be presented as a proven pain treatment for endometriosis, but the evidence is no longer empty. The clearest signal comes from a 2024 meta-analysis of randomized dietary trials showing pain improvement overall, with newer low-FODMAP and dietary-pattern studies suggesting that women with bowel-heavy symptom profiles may benefit the most.",
+      "caveats": "This edge is broader than any one named diet, and the studies mix supplements, elimination strategies, and full dietary patterns. Most trials are small, unblinded, and short, so this should be framed as a plausible adjunct rather than a replacement for hormonal or surgical management.",
+      "evidence": [
+        {
+          "citation": "MeneghettiJK et al 2024 Reprod Sci",
+          "pmid": "39358652",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "n_participants": 457,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of Dietary Interventions on Endometriosis: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -0.99,
+            "ci_low": -1.65,
+            "ci_high": -0.34,
+            "comparator": "dietary intervention versus placebo or usual care for endometriosis pain"
+          }
+        },
+        {
+          "citation": "KeukensA et al 2025 BMC Womens Health",
+          "pmid": "40221682",
+          "year": 2025,
+          "study_type": "cohort",
+          "n_participants": 35,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of a low-FODMAP diet on patients with endometriosis, a prospective cohort study."
+        },
+        {
+          "citation": "SpagnoloE et al 2025 BMC Womens Health",
+          "pmid": "41299584",
+          "year": 2025,
+          "study_type": "cross_sectional",
+          "n_participants": 40,
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Impact of dietary patterns on pain and quality of life in ovarian and deep endometriosis: observational study for nutritional interventions."
+        }
+      ]
+    }
+  ]
+}

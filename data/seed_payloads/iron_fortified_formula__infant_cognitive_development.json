@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "iron_fortified_formula",
+      "name": "Iron-fortified infant formula",
+      "kind": "food",
+      "aliases": [
+        "iron-fortified formula",
+        "high-iron infant formula"
+      ],
+      "description": "Formula feeding with added iron during infancy."
+    },
+    {
+      "slug": "infant_cognitive_development",
+      "name": "Infant cognitive development",
+      "kind": "process",
+      "aliases": [
+        "early infant neurodevelopment",
+        "infant developmental outcomes"
+      ],
+      "description": "Cognitive and psychomotor developmental performance across infancy and later follow-up of infant feeding exposures."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "iron_fortified_formula",
+      "outcome_slug": "infant_cognitive_development",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Iron-fortified formula reliably improves iron status, but direct cognitive benefit is inconsistent and seems most plausible when deficiency risk is high rather than in already iron-replete infants.",
+      "population": "formula-fed infants, especially those at risk of iron deficiency",
+      "mechanism": "Iron supports myelination, neurotransmitter synthesis, and hippocampal development, so deficiency in infancy can plausibly impair later learning and behavior. At the same time, the trial literature suggests that more iron is not automatically better once baseline stores are adequate.",
+      "summary": "The broad systematic review supports a modest cognitive benefit of iron mainly in anemic or deficient infants, not a universal developmental gain from more iron in every formula-fed baby. More recent formula trials show better iron status but little short-term neurodevelopmental improvement in well-nourished infants, while the long-term Chile follow-up even cautions that higher-iron formula may not help children who started out iron sufficient.",
+      "caveats": "This edge is highly baseline-dependent. Evidence from iron-deficient infants and evidence from healthy iron-replete infants should not be collapsed into the same practical recommendation, because the developmental tradeoff appears different across those groups.",
+      "evidence": [
+        {
+          "citation": "HermosoM et al 2011 Ann Nutr Metab",
+          "pmid": "22142898",
+          "year": 2011,
+          "study_type": "systematic_review",
+          "n_participants": 14,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The effect of iron on cognitive development and function in infants, children and adolescents: a systematic review."
+        },
+        {
+          "citation": "IglesiasVazquezL et al 2019 BMC Pediatr",
+          "pmid": "31488098",
+          "year": 2019,
+          "study_type": "rct",
+          "n_participants": 133,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Does the fortified milk with high iron dose improve the neurodevelopment of healthy infants? Randomized controlled trial."
+        },
+        {
+          "citation": "LozoffB et al 2012 Arch Pediatr Adolesc Med",
+          "pmid": "22064877",
+          "year": 2012,
+          "study_type": "rct",
+          "n_participants": 835,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Iron-fortified vs low-iron infant formula: developmental outcome at 10 years."
+        }
+      ]
+    }
+  ]
+}

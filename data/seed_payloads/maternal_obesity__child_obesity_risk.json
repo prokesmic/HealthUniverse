@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "maternal_obesity",
+      "name": "Maternal pre-pregnancy obesity",
+      "kind": "condition",
+      "aliases": [
+        "prepregnancy obesity",
+        "maternal obesity before pregnancy"
+      ],
+      "description": "Maternal obesity or overweight status before or at the beginning of pregnancy."
+    },
+    {
+      "slug": "child_obesity_risk",
+      "name": "Child obesity risk",
+      "kind": "condition",
+      "aliases": [
+        "offspring obesity",
+        "childhood overweight and obesity risk"
+      ],
+      "description": "Increased probability of overweight or obesity in childhood among offspring."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "maternal_obesity",
+      "outcome_slug": "child_obesity_risk",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Maternal obesity before pregnancy is one of the more consistent prenatal predictors of later offspring adiposity, with effects visible from early childhood and persisting into adulthood.",
+      "population": "children born to mothers with prepregnancy overweight or obesity",
+      "mechanism": "Maternal obesity can alter the intrauterine nutrient, inflammatory, and hormonal environment in ways that bias fetal metabolic programming toward higher adiposity. Shared postnatal diet and family environment likely strengthen the association, but they do not fully erase it in adjusted cohort analyses.",
+      "summary": "This is a robust intergenerational risk edge. The newer childhood-focused meta-analysis shows higher obesity risk among young children exposed to prepregnancy obesity, and both long-term meta-analysis and contemporary cohort work support the same direction across later offspring BMI trajectories.",
+      "caveats": "Maternal obesity is entangled with gestational weight gain, gestational diabetes, genetics, and shared household behavior, so the estimate should be read as a strong risk marker plus plausible causal contributor rather than a purely isolated intrauterine effect.",
+      "evidence": [
+        {
+          "citation": "SulistianingsihAR et al 2026 Osong Public Health Res Perspect",
+          "pmid": "41982163",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "n_participants": 39,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Evidence for a perinatal origin of childhood obesity: a systematic review and meta-analysis of risk and protective factors.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.82,
+            "ci_low": 1.21,
+            "ci_high": 2.73,
+            "comparator": "child obesity in offspring of mothers with prepregnancy obesity versus lower maternal weight"
+          }
+        },
+        {
+          "citation": "EitmannS et al 2026 Obes Rev",
+          "pmid": "42083880",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "n_participants": 430764,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maternal Overnutrition in Pregnancy Predicts Greater Body Mass Index Gains in Offspring by Early Midlife: A Systematic Review and Meta-Analysis.",
+          "effect_quant": {
+            "metric": "MD",
+            "value": 0.4,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "offspring BMI increase per 1 kg/m2 higher maternal prepregnancy BMI"
+          }
+        },
+        {
+          "citation": "HsiehCT et al 2026 BJOG",
+          "pmid": "41795166",
+          "year": 2026,
+          "study_type": "cohort",
+          "n_participants": 14508,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maternal Obesity, Gestational Diabetes Mellitus and Offspring's Body Mass Index Trajectories From Birth to Age 6 Years: Glucose in Relation to Women and Babies' Health (GrownB) Study."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "quetiapine_off_label",
+      "outcome_slug": "qt_prolongation",
+      "direction": "harmful",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "The most concrete clinical signal comes from a 2022 cardiac ICU cohort in which quetiapine users had QTc prolongation in 18% of cases versus 6% with olanzapine. Broader reviews describe quetiapine as a modest QT-prolonging antipsychotic rather than the worst-in-class agent, so the signal is real but context-sensitive.",
+      "population": "older or medically complex adults receiving low-dose or off-label quetiapine, often for insomnia or delirium-related behavioral management",
+      "mechanism": "Off-label quetiapine may prolong QT by blocking cardiac repolarization currents, with the practical risk amplified by age, electrolyte disturbance, interacting drugs, and underlying cardiovascular disease. The main problem is not that quetiapine always causes dangerous prolongation, but that it adds electrophysiologic drag in people who often already have little reserve.",
+      "summary": "Off-label quetiapine carries a real QT-prolongation risk, although the magnitude is usually modest and highly dependent on patient context. Reviews consistently list quetiapine among QT-active antipsychotics, and cohort data from medically fragile adults show a meaningful rate of QTc prolongation during use.",
+      "caveats": "Most direct evidence comes from mixed adult or intensive-care populations rather than clean insomnia-only geriatric cohorts, and case-level risk rises sharply when hypokalemia, interacting medications, or cardiac disease are present. This edge is best treated as a cautious prescribing warning rather than a claim that low-dose quetiapine is uniformly dangerous.",
+      "evidence": [
+        {
+          "citation": "Mohan et al 2022 Am J Cardiol",
+          "pmid": "34794647",
+          "year": 2022,
+          "study_type": "cohort",
+          "n_participants": 144,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Atypical Antipsychotic Safety in the CICU."
+        },
+        {
+          "citation": "Stollberger et al 2005 Int Clin Psychopharmacol",
+          "pmid": "16096514",
+          "year": 2005,
+          "study_type": "systematic_review",
+          "n_participants": 14,
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Antipsychotic drugs and QT prolongation."
+        },
+        {
+          "citation": "Parker et al 2011 J Pharm Pract",
+          "pmid": "21844216",
+          "year": 2011,
+          "study_type": "case_control",
+          "n_participants": 1,
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Probable quetiapine-mediated prolongation of the QT interval."
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "quetiapine_off_label",
+      "name": "Off-label quetiapine use",
+      "kind": "drug",
+      "aliases": [],
+      "description": "Quetiapine used off label, commonly for insomnia, agitation, or delirium-related symptoms."
+    },
+    {
+      "slug": "qt_prolongation",
+      "name": "QT prolongation",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Prolongation of the corrected QT interval, which can increase arrhythmia risk."
+    }
+  ]
+}

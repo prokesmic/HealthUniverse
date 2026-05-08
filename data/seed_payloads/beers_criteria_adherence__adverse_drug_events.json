@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "beers_criteria_adherence",
+      "name": "Beers criteria adherence",
+      "kind": "behavior"
+    },
+    {
+      "slug": "adverse_drug_events",
+      "name": "Adverse drug events",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "beers_criteria_adherence",
+      "outcome_slug": "adverse_drug_events",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The direct Beers signal is protective but modest. The largest U.S. claims cohort found that Beers-defined inappropriate prescribing predicted adverse drug events, while prospective community cohorts suggest the Beers signal is weaker than some STOPP-based measures but still points in the same safety direction.",
+      "population": "older adults exposed to potentially inappropriate prescribing tools in community and claims-based cohorts",
+      "mechanism": "Adhering to Beers criteria should reduce exposure to medications whose risk profile in older adults is dominated by delirium, orthostasis, bleeding, falls, or anticholinergic toxicity. The effect is not dramatic because the criteria are blunt and do not capture every unsafe regimen, but they do remove a recognizable cluster of preventable drug harms.",
+      "summary": "The strongest evidence for this edge comes from the large 2016 JAGS cohort evaluating Beers and STOPP criteria against real-world adverse drug events. It showed that Beers-defined inappropriate prescribing predicted ADEs, so the practical inverse is that better adherence to Beers-style prescribing should be protective, even if the criteria are not the sharpest tool in geriatric pharmacology.",
+      "caveats": "This is a tool-adherence edge, not a drug-class edge, so its effect size is inevitably diluted. Beers adherence appears directionally protective, but some cohorts suggest STOPP or broader medication-appropriateness tools discriminate ADE risk better than Beers alone.",
+      "evidence": [
+        {
+          "citation": "Brown et al 2016 J Am Geriatr Soc",
+          "pmid": "26782849",
+          "year": 2016,
+          "study_type": "cohort",
+          "n_participants": 174275,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Predictive Validity of the Beers and Screening Tool of Older Persons' Potentially Inappropriate Prescriptions (STOPP) Criteria to Detect Adverse Drug Events, Hospitalizations, and Emergency Department Visits in the United States."
+        },
+        {
+          "citation": "Wallace et al 2017 J Gerontol A Biol Sci Med Sci",
+          "pmid": "27466245",
+          "year": 2017,
+          "study_type": "cohort",
+          "n_participants": 904,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Impact of Potentially Inappropriate Prescribing on Adverse Drug Events, Health Related Quality of Life and Emergency Hospital Attendance in Older People Attending General Practice: A Prospective Cohort Study."
+        },
+        {
+          "citation": "Moriarty et al 2020 J Am Geriatr Soc",
+          "pmid": "31675114",
+          "year": 2020,
+          "study_type": "cohort",
+          "n_participants": 1753,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Comparing Potentially Inappropriate Prescribing Tools and Their Association With Patient Outcomes."
+        }
+      ]
+    }
+  ]
+}

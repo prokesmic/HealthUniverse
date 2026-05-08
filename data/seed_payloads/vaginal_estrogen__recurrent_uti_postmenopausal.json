@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "vaginal_estrogen",
+      "name": "Vaginal estrogen",
+      "kind": "drug"
+    },
+    {
+      "slug": "recurrent_uti_postmenopausal",
+      "name": "Recurrent urinary tract infection in postmenopausal women",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "vaginal_estrogen",
+      "outcome_slug": "recurrent_uti_postmenopausal",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The best quantitative synthesis shows that vaginal estrogen lowers recurrent UTI risk in postmenopausal women, whereas oral estrogen does not. The benefit is large enough to matter clinically and is directionally consistent with the older estriol trial literature.",
+      "population": "postmenopausal women with a history of recurrent urinary tract infection",
+      "mechanism": "Topical estrogen reverses postmenopausal urogenital atrophy, lowers vaginal pH, and helps restore lactobacillus-dominant flora that make periurethral colonization by uropathogens less likely. That local tissue effect fits the fact that vaginal preparations outperform oral estrogen for recurrence prevention.",
+      "summary": "Vaginal estrogen is one of the better-supported non-antibiotic strategies for preventing recurrent urinary tract infections in postmenopausal women. Meta-analytic evidence and the landmark estriol trial both point in the same direction: local estrogen reduces recurrence, while systemic oral estrogen does not show the same benefit.",
+      "caveats": "The literature mixes creams, pessaries, and rings, so exact effect size varies by formulation and duration. This edge applies to postmenopausal recurrence prevention and should not be generalized to premenopausal women or acute UTI treatment.",
+      "evidence": [
+        {
+          "citation": "Chen et al 2021 Int Urogynecol J",
+          "pmid": "32564121",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "n_participants": 4702,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Estrogen for the prevention of recurrent urinary tract infections in postmenopausal women: a meta-analysis of randomized controlled trials.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.42,
+            "ci_low": 0.30,
+            "ci_high": 0.59,
+            "comparator": "vaginal estrogen versus placebo in postmenopausal women with recurrent UTI"
+          }
+        },
+        {
+          "citation": "Perrotta et al 2008 Cochrane Database Syst Rev",
+          "pmid": "18425910",
+          "year": 2008,
+          "study_type": "systematic_review",
+          "n_participants": 3345,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Oestrogens for preventing recurrent urinary tract infection in postmenopausal women."
+        },
+        {
+          "citation": "Raz et al 1993 N Engl J Med",
+          "pmid": "8350884",
+          "year": 1993,
+          "study_type": "rct",
+          "n_participants": 93,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A controlled trial of intravaginal estriol in postmenopausal women with recurrent urinary tract infections."
+        }
+      ]
+    }
+  ]
+}

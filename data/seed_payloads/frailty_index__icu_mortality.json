@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "icu_mortality",
+      "name": "ICU mortality",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "frailty_index",
+      "outcome_slug": "icu_mortality",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The pooled evidence shows that frailty meaningfully raises the risk of death in critical care, with meta-analytic relative risks well above 1 and consistent signals across very old ICU cohorts and newer prospective recovery studies.",
+      "population": "critically ill older adults admitted to intensive care units",
+      "mechanism": "A high frailty index reflects low physiologic reserve across multiple systems. In the ICU that translates into poorer tolerance of shock, ventilation, infection, delirium, immobilization, and invasive procedures, so mortality rises even after accounting for the acute illness itself.",
+      "summary": "This is one of the stronger prognostic edges in the whole geriatric block. Frailty is common in ICU populations, and both older meta-analytic work and newer multicenter cohorts show that patients entering critical illness with higher frailty carry substantially worse mortality and recovery trajectories.",
+      "caveats": "Frailty measures differ across studies, and some cohorts use the Clinical Frailty Scale while others use more deficit-based indices. But whichever instrument is used, the direction is reliably harmful enough that frailty should be treated as baseline prognostic information, not a descriptive afterthought.",
+      "evidence": [
+        {
+          "citation": "MuscedereJ et al 2017 Intensive Care Med",
+          "pmid": "28676896",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "n_participants": 3030,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The impact of frailty on intensive care unit outcomes: a systematic review and meta-analysis."
+        },
+        {
+          "citation": "GuidetB et al 2020 Intensive Care Med",
+          "pmid": "31784798",
+          "year": 2020,
+          "study_type": "cohort",
+          "n_participants": 3920,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The contribution of frailty, cognition, activity of daily life and comorbidities on outcome in acutely admitted patients over 80 years in European ICUs: the VIP2 study."
+        },
+        {
+          "citation": "MuscedereJ et al 2024 Intensive Care Med",
+          "pmid": "38748266",
+          "year": 2024,
+          "study_type": "cohort",
+          "n_participants": 687,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Frailty, Outcomes, Recovery and Care Steps of Critically Ill Patients (FORECAST): a prospective, multi-centre, cohort study."
+        }
+      ]
+    }
+  ]
+}

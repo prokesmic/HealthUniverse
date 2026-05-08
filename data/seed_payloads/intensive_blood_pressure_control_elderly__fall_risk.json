@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "intensive_blood_pressure_control_elderly",
+      "name": "Intensive blood pressure control in older adults",
+      "kind": "process"
+    },
+    {
+      "slug": "fall_risk",
+      "name": "Fall risk",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "intensive_blood_pressure_control_elderly",
+      "outcome_slug": "fall_risk",
+      "direction": "u_shaped",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In the SPRINT subgroup aged 75 years and older, intensive treatment did not increase injurious falls (HR 0.91, 95% CI 0.65 to 1.29), yet hypotension, electrolyte abnormalities, and acute kidney injury all moved in the wrong direction. The broader SPRINT serious-adverse-event analysis likewise showed a higher composite adverse-event rate with intensive treatment, so the fall story is more threshold-sensitive than simply reassuring or harmful.",
+      "population": "ambulatory older adults with hypertension, especially those aged 75 years and older",
+      "mechanism": "Lowering systolic pressure more aggressively can reduce long-term vascular burden, but once cerebral and orthostatic reserve are limited, the same pressure reduction can make standing perfusion more fragile. That is why intensive control may help cardiovascular outcomes overall while still increasing the kind of dizziness, hypotension, or treatment burden that matters to fall-prone older adults.",
+      "summary": "This is not a simple harmful edge. The older-adult SPRINT subgroup showed major cardiovascular benefit without a clear rise in injurious falls, but the intensive strategy still carried more hypotension-related vulnerability and a broader serious-adverse-event penalty in subsequent analyses. The most accurate read is that aggressive blood-pressure lowering becomes risk-sensitive in older adults rather than uniformly safer or uniformly dangerous.",
+      "caveats": "SPRINT enrolled relatively healthy ambulatory participants and excluded some of the frailest groups seen in routine practice, so real-world fall vulnerability may be higher than the trial suggests. This edge is best interpreted as a reminder that cardiovascular benefit does not erase the need to monitor orthostasis, medications, and symptoms when targets are pushed lower.",
+      "evidence": [
+        {
+          "citation": "WrightJT et al 2015 N Engl J Med",
+          "pmid": "26551272",
+          "year": 2015,
+          "study_type": "rct",
+          "n_participants": 9361,
+          "direction": "u_shaped",
+          "quality": "high",
+          "notes": "A Randomized Trial of Intensive versus Standard Blood-Pressure Control."
+        },
+        {
+          "citation": "WilliamsonJD et al 2016 JAMA",
+          "pmid": "27195814",
+          "year": 2016,
+          "study_type": "rct",
+          "n_participants": 2636,
+          "direction": "u_shaped",
+          "quality": "high",
+          "notes": "Intensive vs Standard Blood Pressure Control and Cardiovascular Disease Outcomes in Adults Aged ≥75 Years: A Randomized Clinical Trial."
+        },
+        {
+          "citation": "KrishnaswamiA et al 2018 Am J Med",
+          "pmid": "29940151",
+          "year": 2018,
+          "study_type": "rct",
+          "n_participants": 9361,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Individual and Joint Effects of Pulse Pressure and Blood Pressure Treatment Intensity on Serious Adverse Events in the SPRINT Trial."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "antibiotics_under_1y",
+      "name": "Antibiotic exposure before age 1 year",
+      "kind": "drug"
+    },
+    {
+      "slug": "asthma_risk_long_term",
+      "name": "Long-term asthma risk",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "antibiotics_under_1y",
+      "outcome_slug": "asthma_risk_long_term",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The strongest synthesis links antibiotic exposure during infancy to a modest increase in later asthma risk, with repeated courses and the earliest exposures looking more concerning than one-off later exposures. The signal is not huge, but it has been reproduced often enough to matter.",
+      "population": "children exposed to systemic antibiotics during infancy and followed into later childhood",
+      "mechanism": "Antibiotics can disrupt gut and airway microbial succession during a period when immune tolerance and Th1-Th2 balance are still forming. That microbiome perturbation, combined with confounding by infection severity, likely explains why the association looks modest but persistent in long-term follow-up.",
+      "summary": "Antibiotic exposure in the first year of life is associated with somewhat higher later asthma risk. The best observational literature suggests a small but recurring harmful signal, strongest with earlier and repeated exposure, making this more than a spurious one-study finding even though confounding cannot be eliminated.",
+      "caveats": "Respiratory infections themselves can predict later wheeze and asthma, so confounding by indication remains a major limitation. This edge should be read as a population-risk association, not as proof that every indicated infant antibiotic course causes asthma.",
+      "evidence": [
+        {
+          "citation": "ZhangZ et al 2021 World Allergy Organ J",
+          "pmid": "34934469",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "n_participants": 52,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of infant antibiotic exposure and risk of childhood asthma: A meta-analysis.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.19,
+            "ci_low": 1.11,
+            "ci_high": 1.28,
+            "comparator": "infant antibiotic exposure versus no infant antibiotic exposure after addressing reverse causation and confounding by indication"
+          }
+        },
+        {
+          "citation": "AhmadizarF et al 2017 Pediatr Allergy Immunol",
+          "pmid": "28423467",
+          "year": 2017,
+          "study_type": "cohort",
+          "n_participants": 8284,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Early life antibiotic use and the risk of asthma and asthma exacerbations in children."
+        },
+        {
+          "citation": "BoracchiniR et al 2026 BMJ Public Health",
+          "pmid": "41710083",
+          "year": 2026,
+          "study_type": "cohort",
+          "n_participants": 121255,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Recurrent wheezing as a mediator between early-life exposures and childhood asthma: a mediation analysis in an Italian primary care paediatric cohort."
+        }
+      ]
+    }
+  ]
+}

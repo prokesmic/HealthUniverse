@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "allopurinol_initiation",
+      "name": "Allopurinol initiation",
+      "kind": "drug"
+    },
+    {
+      "slug": "kidney_function_decline",
+      "name": "Kidney function decline",
+      "kind": "process"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "allopurinol_initiation",
+      "outcome_slug": "kidney_function_decline",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The most useful large-cohort estimate found that allopurinol initiation at 300 mg per day or more was associated with a lower risk of incident CKD stage 3 or higher, with a hazard ratio of 0.87 (95% CI 0.77 to 0.97). Later CKD cohorts generally suggest renal neutrality or modest benefit rather than harm.",
+      "population": "adults with gout, hyperuricemia, or non-dialysis chronic kidney disease initiating urate-lowering therapy",
+      "mechanism": "Allopurinol inhibits xanthine oxidase, lowering urate and reducing oxidative stress linked to endothelial and tubular injury. In people with hyperuricemia, slow titration can preserve that urate-lowering effect without turning renal caution into automatic undertreatment, which is why the practical question is often whether allopurinol is neutral-to-helpful rather than nephrotoxic.",
+      "summary": "This edge should be read conservatively but favorably. The anchor study is the large 2018 propensity-matched cohort showing that higher-dose allopurinol initiation was associated with less progression to clinically important CKD, and later real-world CKD cohorts mostly support the narrower conclusion that allopurinol does not appear to accelerate renal decline and may modestly slow it in selected patients.",
+      "caveats": "These data are mostly observational, so healthier-user bias and residual confounding remain possible. The literature is stronger for 'not clearly harmful to kidney function' than for a large renoprotective effect, and this edge should not be used to justify careless dosing or ignore rare hypersensitivity risk.",
+      "evidence": [
+        {
+          "citation": "VargasSantosAB et al 2018 JAMA Intern Med",
+          "pmid": "30304329",
+          "year": 2018,
+          "study_type": "cohort",
+          "n_participants": 9520,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Association of Chronic Kidney Disease With Allopurinol Use in Gout Treatment."
+        },
+        {
+          "citation": "PengYL et al 2020 Sci Rep",
+          "pmid": "32612180",
+          "year": 2020,
+          "study_type": "cohort",
+          "n_participants": 1050,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Comparison of uric acid reduction and renal outcomes of febuxostat vs allopurinol in patients with chronic kidney disease."
+        },
+        {
+          "citation": "WaheedYA et al 2025 Front Endocrinol (Lausanne)",
+          "pmid": "40995597",
+          "year": 2025,
+          "study_type": "cohort",
+          "n_participants": 200,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Assessment of urate-lowering therapies on lipid metabolism and kidney function in non-dialysis chronic kidney disease patients: 12 months multicenter cohort study."
+        }
+      ]
+    }
+  ]
+}

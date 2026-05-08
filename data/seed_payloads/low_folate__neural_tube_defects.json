@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "low_folate",
+      "name": "Low folate",
+      "kind": "biomarker",
+      "aliases": [
+        "folate deficiency",
+        "low red-cell folate"
+      ],
+      "description": "Suboptimal maternal folate status during the periconceptional period or early pregnancy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "low_folate",
+      "outcome_slug": "neural_tube_defects",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Maternal folate status shows a clear dose-response relationship with neural tube defect risk; Daly and colleagues estimated that raising folate intake to 0.4 mg/day would reduce NTDs by about 48%.",
+      "population": "women in the periconceptional and early-pregnancy period",
+      "mechanism": "Neural tube closure depends on adequate one-carbon metabolism during a very narrow developmental window, so low maternal folate can disrupt DNA synthesis and methylation at precisely the wrong time. This is one of the better-established micronutrient birth-defect pathways in all of preventive medicine.",
+      "summary": "Low folate status is a well-supported risk factor for neural tube defects. The classic maternal biomarker studies showed lower plasma and red-cell folate in pregnancies affected by NTDs, and modern evidence reviews continue to support folic-acid supplementation as a genuinely effective prevention strategy rather than a speculative nutritional add-on.",
+      "caveats": "Not all NTDs are folate-sensitive, and some risk persists despite supplementation because genetics, diabetes, medications, and other factors also matter. Even so, the folate relationship is strong enough that this remains one of the least controversial protective nutrition stories in the literature.",
+      "evidence": [
+        {
+          "citation": "Kirke PN et al 1993 Q J Med",
+          "pmid": "8265769",
+          "year": 1993,
+          "study_type": "case_control",
+          "n_participants": 328,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maternal plasma folate and vitamin B12 are independent risk factors for neural tube defects."
+        },
+        {
+          "citation": "Daly LE et al 1995 JAMA",
+          "pmid": "7474275",
+          "doi": "10.1001/jama.1995.03530210052030",
+          "year": 1995,
+          "study_type": "case_control",
+          "n_participants": 328,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Folate levels and neural tube defects. Implications for prevention."
+        },
+        {
+          "citation": "Viswanathan M et al 2023 JAMA",
+          "pmid": "37526714",
+          "doi": "10.1001/jama.2023.9864",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "n_participants": 1244072,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Folic Acid Supplementation to Prevent Neural Tube Defects: Updated Evidence Report and Systematic Review for the US Preventive Services Task Force."
+        }
+      ]
+    }
+  ]
+}

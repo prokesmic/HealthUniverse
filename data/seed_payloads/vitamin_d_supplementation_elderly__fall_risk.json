@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "vitamin_d_supplementation_elderly",
+      "name": "Vitamin D supplementation in older adults",
+      "kind": "supplement"
+    },
+    {
+      "slug": "fall_risk",
+      "name": "Fall risk",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "vitamin_d_supplementation_elderly",
+      "outcome_slug": "fall_risk",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The pooled signal is protective but not dramatic. Updated meta-analyses suggest fall reduction is most plausible in older adults with low vitamin D status, while indiscriminate high-dose use does not look uniformly helpful.",
+      "population": "older adults in community and residential care settings",
+      "mechanism": "Vitamin D may reduce falls by improving proximal muscle strength, neuromuscular coordination, and postural stability, especially in deficient older adults. The effect weakens when baseline deficiency is absent or dosing becomes intermittent and excessive rather than physiologic.",
+      "summary": "This is a cautious protective edge rather than a blanket endorsement of vitamin D for everyone. The better recent syntheses still support a modest fall benefit in older adults, but the pattern is most convincing when vitamin D deficiency is part of the story and much less convincing when supplementation is untargeted.",
+      "caveats": "Dose, dosing schedule, baseline vitamin D status, calcium co-administration, and living setting all influence the results. This should not be read as proof that every vitamin D regimen lowers falls to the same degree.",
+      "evidence": [
+        {
+          "citation": "ShuangLi et al 2024 BMC Geriatr",
+          "pmid": "38698349",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "n_participants": 58937,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of vitamin D, calcium, or combined supplementation on fall prevention: a systematic review and updated network meta-analysis."
+        },
+        {
+          "citation": "BollandMJ et al 2021 Clin Nutr",
+          "pmid": "34656949",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "n_participants": 57867,
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Vitamin D supplementation reduces the risk of fall in the vitamin D deficient elderly: An updated meta-analysis."
+        },
+        {
+          "citation": "KalyaniRR et al 2010 J Am Geriatr Soc",
+          "pmid": "20579169",
+          "year": 2010,
+          "study_type": "meta_analysis",
+          "n_participants": 2945,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Vitamin D treatment for the prevention of falls in older adults: systematic review and meta-analysis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "direct_oral_anticoagulants_falls_paradox",
+      "name": "Direct oral anticoagulant use despite falls risk",
+      "kind": "process"
+    },
+    {
+      "slug": "outcomes",
+      "name": "Clinical outcomes",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "direct_oral_anticoagulants_falls_paradox",
+      "outcome_slug": "outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The strongest prospective evidence found no excess major bleeding, intracranial hemorrhage, or death among older DOAC users who fell during follow-up, and emergency-department cohorts suggest lower bleeding odds with DOACs than with vitamin K antagonists after falls. The protective signal is therefore relative rather than absolute: falls do not erase net treatment value as often as clinicians fear.",
+      "population": "older adults with atrial fibrillation or fall-related head injury who are treated with direct oral anticoagulants",
+      "mechanism": "DOACs produce more predictable anticoagulation and a lower intracranial-bleeding burden than vitamin K antagonists, so a history of falling does not automatically translate into catastrophically worse outcomes. The paradox is that clinicians often overweigh falls risk while underweighting stroke prevention and the comparatively safer bleeding profile of DOACs.",
+      "summary": "The anchor paper here is the prospective 2024 DOAFF study, which found that falls during follow-up did not worsen major bleeding or mortality among older adults starting DOACs for atrial fibrillation. Trauma and head-injury cohorts point the same way by showing lower bleeding or low adverse-outcome rates compared with the warfarin-era alternative, so this edge supports the idea that falls alone should not usually block DOAC use.",
+      "caveats": "This does not mean DOACs are harmless in people who fall, and acute head trauma still deserves clinical assessment. The point is narrower: a fall history by itself is a poor reason to deny anticoagulation when stroke prevention is otherwise indicated.",
+      "evidence": [
+        {
+          "citation": "CatalaniF et al 2024 Thromb Res",
+          "pmid": "38678866",
+          "year": 2024,
+          "study_type": "cohort",
+          "n_participants": 524,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "DOACs for Older adults with Atrial Fibrillation and Falls: Results from the prospective single-centre DOAFF study."
+        },
+        {
+          "citation": "MullerM et al 2021 Scand J Trauma Resusc Emerg Med",
+          "pmid": "33823884",
+          "year": 2021,
+          "study_type": "cohort",
+          "n_participants": 1447,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Falls in ED patients: do elderly patients on direct oral anticoagulants bleed less than those on vitamin K antagonists?"
+        },
+        {
+          "citation": "FullerG et al 2020 Emerg Med J",
+          "pmid": "32900858",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "n_participants": 787,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Risk of significant traumatic brain injury in adults with minor head injury taking direct oral anticoagulants: a cohort study and updated meta-analysis."
+        }
+      ]
+    }
+  ]
+}

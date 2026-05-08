@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tamoxifen_long_term",
+      "name": "Extended tamoxifen therapy",
+      "kind": "drug"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tamoxifen_long_term",
+      "outcome_slug": "endometrial_cancer",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The most reliable evidence shows that extending tamoxifen beyond 5 years increases endometrial-cancer risk, roughly doubling cumulative malignancy risk in pooled randomized data.",
+      "population": "women receiving adjuvant tamoxifen for hormone-receptor-positive breast cancer",
+      "mechanism": "Tamoxifen acts as an anti-estrogen in breast tissue but has partial estrogen-agonist effects on the endometrium. With longer exposure, that proliferative endometrial signaling can promote hyperplasia and malignant transformation.",
+      "summary": "Extended tamoxifen therapy clearly trades some breast-cancer benefit for higher endometrial-cancer risk. The strongest support comes from pooled randomized evidence and the ATLAS trial, both of which show that longer-duration treatment raises endometrial malignancy compared with stopping earlier.",
+      "caveats": "This is a genuine harm signal, but it has to be weighed against tamoxifen's substantial reduction in breast-cancer recurrence and mortality. The relevant clinical question is usually not whether the risk exists, but whether the extra breast-cancer benefit justifies surveillance and that additional gynecologic risk in a given patient.",
+      "evidence": [
+        {
+          "citation": "FlemingCA et al 2018 Br J Surg",
+          "pmid": "29974455",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 4,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Meta-analysis of the cumulative risk of endometrial malignancy and systematic review of endometrial surveillance in extended tamoxifen therapy.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 2.29,
+            "ci_low": 1.6,
+            "ci_high": 3.28,
+            "comparator": "extended tamoxifen therapy versus standard-duration therapy"
+          }
+        },
+        {
+          "citation": "BraithwaiteRS et al 2003 J Gen Intern Med",
+          "pmid": "14687281",
+          "year": 2003,
+          "study_type": "meta_analysis",
+          "n_participants": 52929,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Meta-analysis of vascular and neoplastic events associated with tamoxifen.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 2.7,
+            "ci_low": 1.94,
+            "ci_high": 3.75,
+            "comparator": "tamoxifen exposure versus control for endometrial cancer"
+          }
+        },
+        {
+          "citation": "DaviesC et al 2013 Lancet",
+          "pmid": "23219286",
+          "year": 2013,
+          "study_type": "rct",
+          "n_participants": 12894,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Long-term effects of continuing adjuvant tamoxifen to 10 years versus stopping at 5 years after diagnosis of oestrogen receptor-positive breast cancer: ATLAS, a randomised trial.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.74,
+            "ci_low": 1.3,
+            "ci_high": 2.34,
+            "comparator": "continuing tamoxifen to 10 years versus stopping at 5 years for endometrial cancer"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "z_drugs_zolpidem",
+      "outcome_slug": "fall_risk_elderly",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The strongest pooled estimate comes from a 2018 meta-analysis where Z-drug exposure was linked to higher fracture risk with odds ratio 1.63 and showed a near two-fold fall signal in the studies reporting falls. In nursing-home and inpatient cohorts, regular zolpidem or other non-benzodiazepine hypnotic use was associated with materially higher odds of serious falls.",
+      "population": "older adults receiving zolpidem or related Z-drug hypnotics in community, nursing-home, dialysis, or inpatient settings",
+      "mechanism": "Z-drugs such as zolpidem likely increase fall risk in older adults through nighttime sedation, impaired balance, slowed reaction time, and residual cognitive or motor effects that outlast the intended sleep window. The risk becomes most visible in frail elders because the same sedative effect that promotes sleep can destabilize gait and transfers.",
+      "summary": "Z-drugs, including zolpidem, are associated with higher fall-related harm in older adults. Meta-analytic evidence shows more fractures and a likely fall signal overall, while cohort studies in nursing homes and hospitals suggest these hypnotics behave like genuine fall-risk drugs rather than safer replacements for benzodiazepines.",
+      "caveats": "Some of the observed risk may still reflect the insomnia, frailty, or acute illness that prompted prescribing, not just the drug itself. Even so, the consistency across different older populations makes it hard to dismiss the association as pure confounding.",
+      "evidence": [
+        {
+          "citation": "Treves et al 2018 Age Ageing",
+          "pmid": "29077902",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 830877,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Z-drugs and risk for falls and fractures in older adults-a systematic review and meta-analysis."
+        },
+        {
+          "citation": "Lindholm et al 2019 Aging Clin Exp Res",
+          "pmid": "30341643",
+          "year": 2019,
+          "study_type": "cohort",
+          "n_participants": 331,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Use of non-benzodiazepine hypnotics is associated with falls in nursing home residents: a longitudinal cohort study."
+        },
+        {
+          "citation": "Kolla et al 2013 J Hosp Med",
+          "pmid": "23165956",
+          "year": 2013,
+          "study_type": "cohort",
+          "n_participants": 16320,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Zolpidem is independently associated with increased risk of inpatient falls."
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "z_drugs_zolpidem",
+      "name": "Z-drugs including zolpidem",
+      "kind": "drug",
+      "aliases": [],
+      "description": "Non-benzodiazepine hypnotics such as zolpidem or zopiclone used for insomnia."
+    },
+    {
+      "slug": "fall_risk_elderly",
+      "name": "Fall risk in older adults",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Risk of falls or fall-related injuries in older adults."
+    }
+  ]
+}

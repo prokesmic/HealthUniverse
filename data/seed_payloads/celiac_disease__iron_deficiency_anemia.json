@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "celiac_disease",
+      "name": "Celiac disease",
+      "kind": "condition",
+      "aliases": [
+        "coeliac disease"
+      ],
+      "description": "Immune-mediated enteropathy triggered by gluten exposure in genetically susceptible individuals."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "celiac_disease",
+      "outcome_slug": "iron_deficiency_anemia",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a prospective adult celiac cohort, anemia was present in 93.2% of patients at diagnosis and iron deficiency in 81.5%.",
+      "population": "children and adults with untreated or newly diagnosed celiac disease",
+      "mechanism": "Celiac disease damages the proximal small bowel where iron absorption is concentrated, reducing uptake even before classic gastrointestinal symptoms are obvious. Ongoing villous atrophy can therefore produce iron deficiency and eventually frank iron-deficiency anemia as one of the most common extraintestinal presentations.",
+      "summary": "Untreated celiac disease is a well-established cause of iron-deficiency anemia. Prospective cohorts and clinical reviews consistently describe iron-deficiency anemia as one of the most common extraintestinal manifestations, and improvement after gluten withdrawal reinforces that the relationship is not just coincidental screening overlap.",
+      "caveats": "Not every patient with celiac disease is anemic, and iron deficiency can persist for months after starting a gluten-free diet while mucosal recovery and iron-store repletion catch up. The edge is strongest for untreated or newly diagnosed disease rather than stable treated celiac disease with healed mucosa.",
+      "evidence": [
+        {
+          "citation": "Annibale B et al 2001 Am J Gastroenterol",
+          "pmid": "11197242",
+          "doi": "10.1111/j.1572-0241.2001.03463.x",
+          "year": 2001,
+          "study_type": "cohort",
+          "n_participants": 26,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Efficacy of gluten-free diet alone on recovery from iron deficiency anemia in adult celiac patients."
+        },
+        {
+          "citation": "Berry N et al 2018 JGH Open",
+          "pmid": "30483589",
+          "doi": "10.1002/jgh3.12073",
+          "year": 2018,
+          "study_type": "cohort",
+          "n_participants": 103,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Anemia in celiac disease is multifactorial in etiology: A prospective study from India."
+        },
+        {
+          "citation": "Talarico V et al 2021 Nutrients",
+          "pmid": "34067622",
+          "doi": "10.3390/nu13051695",
+          "year": 2021,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Iron Deficiency Anemia in Celiac Disease."
+        }
+      ]
+    }
+  ]
+}

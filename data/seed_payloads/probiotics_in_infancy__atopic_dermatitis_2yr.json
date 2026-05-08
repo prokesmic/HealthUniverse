@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "probiotics_in_infancy",
+      "name": "Probiotic supplementation in infancy",
+      "kind": "supplement",
+      "aliases": [
+        "early-life probiotics",
+        "probiotics during infancy"
+      ],
+      "description": "Probiotic supplementation given during infancy, often alongside maternal prenatal or lactation supplementation."
+    },
+    {
+      "slug": "atopic_dermatitis_2yr",
+      "name": "Atopic dermatitis by 2 years of age",
+      "kind": "condition",
+      "aliases": [
+        "eczema by age 2",
+        "early childhood atopic dermatitis"
+      ],
+      "description": "Atopic dermatitis or eczema occurring during infancy and the first two years of life."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "probiotics_in_infancy",
+      "outcome_slug": "atopic_dermatitis_2yr",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The most reproducible benefit of early-life probiotics is a modest reduction in eczema within the first 2 years, with much less confidence that protection persists later or generalizes across every strain strategy.",
+      "population": "infants receiving probiotics directly and/or through paired maternal-plus-infant supplementation",
+      "mechanism": "Early probiotic exposure may shift gut microbial colonization and immune education toward a less pro-atopic phenotype during the first months of life. The strain-specific and time-limited nature of the signal suggests this is a narrow early-window effect rather than a universal allergy reset.",
+      "summary": "The pooled literature supports a small early-eczema benefit, but not a sweeping allergy-prevention claim. Meta-analyses repeatedly show lower atopic dermatitis incidence up to about age 2, especially when mixed lactobacillus-bifidobacterium strategies and maternal-plus-infant exposure are used, yet the durability and strain generalizability remain uneven.",
+      "caveats": "This edge is sensitive to strain, timing, and whether mothers were supplemented during pregnancy as well. It should not be read as proof that any probiotic product prevents eczema, only that the broader intervention class has shown a modest early signal in pooled trials.",
+      "evidence": [
+        {
+          "citation": "SunS et al 2022 J Dermatolog Treat",
+          "pmid": "34006167",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "n_participants": 21,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The prevention effect of probiotics against eczema in children: an update systematic review and meta-analysis."
+        },
+        {
+          "citation": "YinDG et al 2019 Zhongguo Dang Dai Er Ke Za Zhi",
+          "pmid": "30675869",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "n_participants": 6561,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of probiotic supplementation during pregnancy and infancy in preventing atopic dermatitis in children: a Meta analysis.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.74,
+            "ci_low": 0.61,
+            "ci_high": 0.9,
+            "comparator": "atopic dermatitis at age 2 years or younger in probiotic versus control groups"
+          }
+        },
+        {
+          "citation": "MansfieldJA et al 2014 Mil Med",
+          "pmid": "24902123",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "n_participants": 2797,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Comparative probiotic strain efficacy in the prevention of eczema in infants and children: a systematic review and meta-analysis.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.74,
+            "ci_low": 0.67,
+            "ci_high": 0.82,
+            "comparator": "eczema incidence in probiotic-exposed versus control children"
+          }
+        }
+      ]
+    }
+  ]
+}

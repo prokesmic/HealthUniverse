@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "small_intestinal_bacterial_overgrowth",
+      "outcome_slug": "ibs_symptoms",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "A 2020 meta-analysis of 25 case-control studies found that patients with IBS had higher odds of small intestinal bacterial overgrowth than controls (OR 3.7), and an 80-patient randomized trial reported stronger symptom improvement from norfloxacin in IBS patients with SIBO than in those without it. Smaller observational work also found SIBO in about one quarter of IBS patients and linked it to intestinal inflammation.",
+      "population": "adults with irritable bowel syndrome assessed for small intestinal bacterial overgrowth by breath testing or aspirate culture",
+      "mechanism": "SIBO may worsen IBS symptoms through excess fermentation, gas production, bile acid disturbance, and low-grade mucosal inflammation, all of which can amplify bloating, discomfort, and altered bowel habits. The relationship is real enough to matter clinically, but imperfect diagnostics and overlap between IBS phenotypes mean SIBO is better viewed as one aggravating pathway than the single cause of IBS.",
+      "summary": "Small intestinal bacterial overgrowth is associated with worse IBS symptom burden and appears to identify a subset of patients who respond better to antibiotic therapy. The overall association is consistent but not clean, because SIBO testing is imperfect and prevalence estimates vary by diagnostic method.",
+      "caveats": "Breath tests and aspirate culture do not define the same patient groups, and some of the strongest prevalence estimates come from more permissive test methods. This edge supports SIBO as a clinically relevant aggravator of IBS symptoms, not as a universal explanation for IBS itself.",
+      "evidence": [
+        {
+          "citation": "Shah et al 2020 Am J Gastroenterol",
+          "pmid": "31913194",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "n_participants": 6512,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Small Intestinal Bacterial Overgrowth in Irritable Bowel Syndrome: A Systematic Review and Meta-Analysis of Case-Control Studies."
+        },
+        {
+          "citation": "Pimentel et al 2016 Eur J Gastroenterol Hepatol",
+          "pmid": "26731696",
+          "year": 2016,
+          "study_type": "rct",
+          "n_participants": 80,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "A proof-of-concept study showing antibiotics to be more effective in irritable bowel syndrome with than without small-intestinal bacterial overgrowth: a randomized, double-blind, placebo-controlled trial."
+        },
+        {
+          "citation": "Pascu et al 2014 Clujul Med",
+          "pmid": "26528017",
+          "year": 2014,
+          "study_type": "cross_sectional",
+          "n_participants": 90,
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Small Intestinal Bacterial Overgrowth is Associated with Intestinal Inflammation in the Irritable Bowel Syndrome."
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "small_intestinal_bacterial_overgrowth",
+      "name": "Small intestinal bacterial overgrowth",
+      "kind": "condition",
+      "aliases": [
+        "SIBO",
+        "small bowel bacterial overgrowth"
+      ]
+    }
+  ]
+}

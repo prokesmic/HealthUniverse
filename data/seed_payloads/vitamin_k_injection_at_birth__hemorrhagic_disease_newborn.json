@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "vitamin_k_injection_at_birth",
+      "name": "Intramuscular vitamin K at birth",
+      "kind": "drug",
+      "aliases": [
+        "newborn IM vitamin K prophylaxis",
+        "vitamin K injection after birth"
+      ],
+      "description": "Routine intramuscular vitamin K prophylaxis administered to newborns shortly after birth."
+    },
+    {
+      "slug": "hemorrhagic_disease_newborn",
+      "name": "Vitamin K deficiency bleeding in newborns",
+      "kind": "condition",
+      "aliases": [
+        "hemorrhagic disease of the newborn",
+        "VKDB"
+      ],
+      "description": "Early, classic, or late vitamin K deficiency bleeding during infancy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "vitamin_k_injection_at_birth",
+      "outcome_slug": "hemorrhagic_disease_newborn",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "The most convincing pooled surveillance evidence shows that intramuscular vitamin K at birth reduces late vitamin K deficiency bleeding by roughly two orders of magnitude compared with no prophylaxis.",
+      "population": "newborn infants receiving routine intramuscular vitamin K prophylaxis at birth",
+      "mechanism": "Newborn hepatic vitamin K stores are low, placental transfer is limited, and exclusive breastfeeding does not rapidly correct the deficit. A single intramuscular dose bridges that vulnerable early period and prevents spontaneous bleeding from emerging before feeding and gut microbial synthesis can stabilize vitamin K status.",
+      "summary": "This is one of the clearer prophylaxis edges in pediatrics. The systematic review found an extremely large reduction in late vitamin K deficiency bleeding with intramuscular prophylaxis versus no prophylaxis, and national surveillance data repeatedly show that the remaining cases cluster in babies who received no dose, incomplete oral dosing, or who had special risk factors such as cholestatic disease.",
+      "caveats": "Direct randomized evidence for late VKDB is limited because the event is rare and it would now be ethically difficult to randomize newborns to no prophylaxis. The practical uncertainty is mainly about oral alternatives and special populations, not about whether routine intramuscular prophylaxis works in general.",
+      "evidence": [
+        {
+          "citation": "SankarMJ et al 2016 J Perinatol",
+          "pmid": "27109090",
+          "year": 2016,
+          "study_type": "systematic_review",
+          "n_participants": 4,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Vitamin K prophylaxis for prevention of vitamin K deficiency bleeding: a systematic review.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.02,
+            "ci_low": 0.0,
+            "ci_high": 0.1,
+            "comparator": "intramuscular or subcutaneous prophylaxis versus no prophylaxis for late VKDB"
+          }
+        },
+        {
+          "citation": "ZurynskiY et al 2020 Arch Dis Child",
+          "pmid": "31519552",
+          "year": 2020,
+          "study_type": "cohort",
+          "n_participants": 58,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Vitamin K deficiency bleeding in Australian infants 1993-2017: an Australian Paediatric Surveillance Unit study."
+        },
+        {
+          "citation": "BusfieldA et al 2013 Arch Dis Child",
+          "pmid": "23148314",
+          "year": 2013,
+          "study_type": "cohort",
+          "n_participants": 11,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Vitamin K deficiency bleeding after NICE guidance and withdrawal of Konakion Neonatal: British Paediatric Surveillance Unit study, 2006-2008."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hospital_admission",
+      "name": "Hospital admission",
+      "kind": "process"
+    },
+    {
+      "slug": "functional_status_decline",
+      "name": "Functional status decline",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hospital_admission",
+      "outcome_slug": "functional_status_decline",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The pooled prevalence of hospital-associated disability in older adults is around 30%, and contemporary inpatient cohorts still show substantial functional loss between admission and discharge despite shorter lengths of stay and more protocolized care.",
+      "population": "older adults admitted to acute-care hospitals",
+      "mechanism": "Hospital admission exposes older adults to bed rest, delirium, sleep disruption, undernutrition, deconditioning, iatrogenic complications, and abrupt environmental change. Functional reserve can fall quickly even when the admitting illness improves, which is why discharge mobility and activities of daily living often lag behind physiologic recovery.",
+      "summary": "This is one of the clearest harmful geriatric process edges in the graph. Meta-analytic data show that hospital-associated disability is common after acute admission, and newer cohorts confirm that meaningful functional decline remains a frequent consequence of hospitalization rather than a rare side effect of severe illness alone.",
+      "caveats": "The size of decline varies by baseline frailty, illness severity, delirium burden, rehabilitation intensity, and diagnosis. Still, even potentially avoidable hospitalizations carry enough functional downside that prevention and early mobilization matter as much as treatment of the index disease.",
+      "evidence": [
+        {
+          "citation": "LoydC et al 2020 J Am Med Dir Assoc",
+          "pmid": "31734122",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "n_participants": 7375,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prevalence of Hospital-Associated Disability in Older Adults: A Meta-analysis."
+        },
+        {
+          "citation": "SkainsRM et al 2023 J Am Geriatr Soc",
+          "pmid": "36661192",
+          "year": 2023,
+          "study_type": "cohort",
+          "n_participants": 38960,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Hospital-associated disability due to avoidable hospitalizations among older adults."
+        },
+        {
+          "citation": "HosodaT and HamadaS 2021 BMC Geriatr",
+          "pmid": "34772350",
+          "year": 2021,
+          "study_type": "cohort",
+          "n_participants": 132,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Functional decline in hospitalized older patients with coronavirus disease 2019: a retrospective cohort study."
+        }
+      ]
+    }
+  ]
+}

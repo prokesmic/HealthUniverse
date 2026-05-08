@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "maternal_omega3_in_pregnancy",
+      "name": "Maternal omega-3 supplementation during pregnancy",
+      "kind": "supplement",
+      "aliases": [
+        "prenatal DHA supplementation",
+        "omega-3 LCPUFA in pregnancy"
+      ],
+      "description": "Supplemental omega-3 long-chain polyunsaturated fatty acids, usually DHA with or without EPA, taken during pregnancy."
+    },
+    {
+      "slug": "child_cognitive_function",
+      "name": "Child cognitive function",
+      "kind": "process",
+      "aliases": [
+        "offspring cognition",
+        "child cognitive performance"
+      ],
+      "description": "Cognitive, language, executive, and related developmental performance in childhood."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "maternal_omega3_in_pregnancy",
+      "outcome_slug": "child_cognitive_function",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Across randomized trials, prenatal omega-3 supplementation has not shown a robust, consistent lift in child cognition, although some follow-up studies report small advantages in selected domains or subgroups.",
+      "population": "children born to mothers supplemented with omega-3 fatty acids during pregnancy",
+      "mechanism": "DHA is a structural lipid in the developing fetal brain and retina, so a cognitive benefit is biologically plausible if maternal intake is limiting. The inconsistency in trials suggests that baseline nutrition, dose, timing, and social environment matter more than a universal treatment effect.",
+      "summary": "The most useful summary is that prenatal omega-3 supplementation remains biologically appealing but empirically modest for cognition. The early RCT meta-analysis found no consistent overall cognitive gain, the larger Cochrane review reported very few longer-term child differences, and a careful U.S. follow-up trial found only scattered benefits that disappeared after stronger adjustment.",
+      "caveats": "This edge is about cognition, not the better-supported preterm-birth outcomes of prenatal omega-3. Trial populations, doses, and developmental tests vary a lot, so null or weak results do not prove there is never benefit, only that the average cognitive payoff has been hard to show reliably.",
+      "evidence": [
+        {
+          "citation": "GouldJF et al 2013 Am J Clin Nutr",
+          "pmid": "23364006",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "n_participants": 5272,
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "The effect of maternal omega-3 (n-3) LCPUFA supplementation during pregnancy on early childhood cognitive and visual development: a systematic review and meta-analysis of randomized controlled trials."
+        },
+        {
+          "citation": "MiddletonP et al 2018 Cochrane Database Syst Rev",
+          "pmid": "30480773",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "n_participants": 19927,
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Omega-3 fatty acid addition during pregnancy."
+        },
+        {
+          "citation": "ColomboJ et al 2019 Am J Clin Nutr",
+          "pmid": "31004139",
+          "year": 2019,
+          "study_type": "rct",
+          "n_participants": 301,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The Kansas University DHA Outcomes Study (KUDOS) clinical trial: long-term behavioral follow-up of the effects of prenatal DHA supplementation."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pcos",
+      "name": "Polycystic ovary syndrome",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pcos",
+      "outcome_slug": "insulin_resistance",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The strongest synthesis using gold-standard clamp studies found that women with PCOS had about 27% lower insulin sensitivity than controls, and that deficit persisted independent of BMI. Later metabolic studies in lean PCOS and obesity-focused meta-analyses support the same direction, showing that insulin resistance is not just a by-product of weight alone.",
+      "population": "premenopausal women with polycystic ovary syndrome across lean and overweight phenotypes",
+      "mechanism": "PCOS appears tightly linked to insulin resistance through a combination of post-receptor insulin signaling abnormalities, lipid accumulation in muscle, hyperandrogenism, and adipokine disruption. Obesity often worsens the problem, but the metabolic defect is present even in some lean women with PCOS, which is why the association looks intrinsic rather than incidental.",
+      "summary": "Insulin resistance is one of the most reproducible metabolic features of PCOS. The best clamp-based meta-analysis shows a substantial reduction in insulin sensitivity even after accounting for body size, and newer mechanistic work in lean women confirms that the signal is not confined to obesity-associated PCOS alone.",
+      "caveats": "The degree of insulin resistance varies by phenotype, adiposity, ethnicity, and diagnostic criteria, so not every woman with PCOS shows the same metabolic burden. But at the group level, the relationship is strong enough that PCOS should be treated as a cardiometabolic risk flag, not just a reproductive diagnosis.",
+      "evidence": [
+        {
+          "citation": "Stepto et al 2016 Hum Reprod",
+          "pmid": "27907900",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "n_participants": 28,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Insulin resistance in polycystic ovary syndrome: a systematic review and meta-analysis of euglycaemic-hyperinsulinaemic clamp studies."
+        },
+        {
+          "citation": "Joham et al 2019 Obes Rev",
+          "pmid": "30339316",
+          "year": 2019,
+          "study_type": "systematic_review",
+          "n_participants": 59,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Metabolic syndrome in polycystic ovary syndrome: a systematic review, meta-analysis and meta-regression."
+        },
+        {
+          "citation": "Skov et al 2019 J Clin Endocrinol Metab",
+          "pmid": "30544235",
+          "year": 2019,
+          "study_type": "case_control",
+          "n_participants": 20,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Molecular Mechanisms in Skeletal Muscle Underlying Insulin Resistance in Women Who Are Lean With Polycystic Ovary Syndrome."
+        }
+      ]
+    }
+  ]
+}

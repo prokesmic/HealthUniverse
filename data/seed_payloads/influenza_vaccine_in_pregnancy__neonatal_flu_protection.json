@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "influenza_vaccine_in_pregnancy",
+      "name": "Influenza vaccination during pregnancy",
+      "kind": "drug",
+      "aliases": [
+        "maternal flu vaccination",
+        "antenatal influenza immunization"
+      ],
+      "description": "Seasonal influenza vaccination administered during pregnancy."
+    },
+    {
+      "slug": "neonatal_flu_protection",
+      "name": "Protection against infant influenza",
+      "kind": "condition",
+      "aliases": [
+        "reduced infant influenza",
+        "laboratory-confirmed influenza under 6 months"
+      ],
+      "description": "Reduced laboratory-confirmed influenza infection, hospitalization, or acute-care use among infants too young to be vaccinated."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "influenza_vaccine_in_pregnancy",
+      "outcome_slug": "neonatal_flu_protection",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Maternal influenza vaccination consistently lowers laboratory-confirmed influenza in infants under 6 months, with the strongest protection seen against hospitalization and in the earliest postnatal months.",
+      "population": "infants younger than 6 months born to women vaccinated against influenza during pregnancy",
+      "mechanism": "Maternal vaccination raises transplacental influenza-specific antibodies during late gestation, giving infants passive protection before they are old enough to receive their own vaccine. The protection is strongest early because transferred antibody titers wane over the first months of life.",
+      "summary": "This is one of the clearer maternal-immunization success stories. Randomized evidence and newer North American effectiveness studies all point in the same direction: vaccinating during pregnancy reduces laboratory-confirmed influenza in early infancy, with the clearest gains against more severe outcomes like hospitalization.",
+      "caveats": "Effectiveness varies by season, infant age, and timing of maternal vaccination, so exact point estimates move around. This edge is about influenza protection in early infancy, not broader respiratory protection against unrelated viruses.",
+      "evidence": [
+        {
+          "citation": "deBruinO et al 2023 BMJ Glob Health",
+          "pmid": "37899087",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "n_participants": 5883,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Are maternal vaccines effective and safe for mothers and infants? A systematic review and meta-analysis of randomised controlled trials.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.66,
+            "ci_low": 0.52,
+            "ci_high": 0.85,
+            "comparator": "laboratory-confirmed influenza in infants of vaccinated versus unvaccinated mothers"
+          }
+        },
+        {
+          "citation": "FellDB et al 2024 J Infect Dis",
+          "pmid": "39052720",
+          "year": 2024,
+          "study_type": "cohort",
+          "n_participants": 23806,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effectiveness of Influenza Vaccination During Pregnancy Against Laboratory-Confirmed Seasonal Influenza Among Infants Under 6 Months of Age in Ontario, Canada.",
+          "effect_quant": {
+            "metric": "VE",
+            "value": 64,
+            "ci_low": 50,
+            "ci_high": 74,
+            "comparator": "laboratory-confirmed infant influenza in offspring of vaccinated versus unvaccinated mothers"
+          }
+        },
+        {
+          "citation": "SahniLC et al 2024 JAMA Pediatr",
+          "pmid": "38109102",
+          "year": 2024,
+          "study_type": "case_control",
+          "n_participants": 3764,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Maternal Vaccine Effectiveness Against Influenza-Associated Hospitalizations and Emergency Department Visits in Infants.",
+          "effect_quant": {
+            "metric": "VE",
+            "value": 39,
+            "ci_low": 12,
+            "ci_high": 58,
+            "comparator": "influenza-associated hospitalization in infants of vaccinated versus unvaccinated mothers"
+          }
+        }
+      ]
+    }
+  ]
+}

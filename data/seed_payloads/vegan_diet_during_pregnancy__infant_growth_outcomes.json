@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "vegan_diet_during_pregnancy",
+      "name": "Vegan diet during pregnancy",
+      "kind": "behavior",
+      "aliases": [
+        "maternal vegan diet in pregnancy",
+        "plant-only diet during pregnancy"
+      ],
+      "description": "A fully plant-based maternal diet maintained during pregnancy."
+    },
+    {
+      "slug": "infant_growth_outcomes",
+      "name": "Infant growth outcomes",
+      "kind": "process",
+      "aliases": [
+        "early infant growth",
+        "birthweight and infant growth trajectories"
+      ],
+      "description": "Birthweight, early growth, underweight risk, and related infant anthropometric outcomes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "vegan_diet_during_pregnancy",
+      "outcome_slug": "infant_growth_outcomes",
+      "direction": "u_shaped",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The most cautious read is mixed: restrictive plant-based pregnancy diets can be associated with smaller neonatal size or early underweight when poorly balanced, but large contemporary cohorts also show broadly similar longer growth trajectories when families are living in well-resourced settings.",
+      "population": "infants born to mothers or families adhering to vegan diets during pregnancy and early infancy",
+      "mechanism": "A vegan pregnancy diet can lower protein, iron, vitamin B12, iodine, and other micronutrient exposure unless supplementation and diet quality are carefully maintained. That creates a plausible route to smaller fetal size early on, while adequate supplementation and follow-up may blunt longer-term growth differences.",
+      "summary": "The best available evidence does not justify either a blanket reassurance or a blanket warning. Smaller studies and cohort analyses suggest that more restrictive vegetarian or vegan patterns can be linked to lower birthweight or small-for-gestational-age risk, while newer large-scale infant follow-up shows that most growth differences can become clinically minor over time in high-resource settings.",
+      "caveats": "This literature is dominated by observational cohorts with very small vegan subgroups and variable supplement use. The effect likely depends less on the label 'vegan' itself than on protein adequacy, B12 and iron coverage, and access to nutrition counseling.",
+      "evidence": [
+        {
+          "citation": "AvitalK et al 2026 JAMA Netw Open",
+          "pmid": "41642623",
+          "year": 2026,
+          "study_type": "cohort",
+          "n_participants": 1198818,
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Growth Trajectories in Infants From Families With Plant-Based or Omnivorous Dietary Patterns.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.37,
+            "ci_low": 1.15,
+            "ci_high": 1.63,
+            "comparator": "early underweight in infants from vegan versus omnivorous households"
+          }
+        },
+        {
+          "citation": "HedegaardS et al 2024 Acta Obstet Gynecol Scand",
+          "pmid": "38263894",
+          "year": 2024,
+          "study_type": "cohort",
+          "n_participants": 66738,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Adherence to different forms of plant-based diets and pregnancy outcomes in the Danish National Birth Cohort.",
+          "effect_quant": {
+            "metric": "MD",
+            "value": -240,
+            "ci_low": -450,
+            "ci_high": -30,
+            "comparator": "birthweight difference for offspring of vegan versus omnivorous mothers, in grams"
+          }
+        },
+        {
+          "citation": "YisahakSF et al 2021 Int J Epidemiol",
+          "pmid": "33232446",
+          "year": 2021,
+          "study_type": "cohort",
+          "n_participants": 1948,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Vegetarian diets during pregnancy, and maternal and neonatal outcomes.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 2.51,
+            "ci_low": 1.01,
+            "ci_high": 6.21,
+            "comparator": "small-for-gestational-age odds in diet-defined full vegetarians versus nonvegetarians"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tamsulosin",
+      "name": "Tamsulosin",
+      "kind": "drug"
+    },
+    {
+      "slug": "fall_risk_men",
+      "name": "Fall risk in men",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tamsulosin",
+      "outcome_slug": "fall_risk_men",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "The strongest cohort data show a small but measurable rise in falls after starting prostate-selective alpha blockers, and the related hypotension signal is stronger than the fall signal itself. The practical effect is most concentrated in the first weeks after initiation or restart.",
+      "population": "middle-aged and older men treated with tamsulosin or other alpha blockers for benign prostatic hyperplasia",
+      "mechanism": "Tamsulosin is uroselective, but it still lowers vascular tone enough in some men to cause dizziness, orthostatic hypotension, and a first-dose phenomenon. In older adults, even a brief period of blood-pressure instability can translate into real-world falls, head trauma, or fractures.",
+      "summary": "The most useful anchor here is the 2015 BMJ population cohort, which showed that men starting prostate-selective alpha antagonists had a small but statistically significant increase in falls and fractures. The earlier severe-hypotension study makes the story easier to believe, and older prescription-event monitoring suggests that dizziness and hypotension are not rare background complaints with tamsulosin.",
+      "caveats": "Absolute risk increases are modest, and this edge is most relevant around initiation, dose changes, restarting therapy, and co-prescription with other blood-pressure-lowering drugs. It should drive counseling and orthostatic caution rather than automatic avoidance in every man with BPH.",
+      "evidence": [
+        {
+          "citation": "WelkB et al 2015 BMJ",
+          "pmid": "26502947",
+          "year": 2015,
+          "study_type": "cohort",
+          "n_participants": 294168,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The risk of fall and fracture with the initiation of a prostate-selective α antagonist: a population based cohort study."
+        },
+        {
+          "citation": "BirdST et al 2013 BMJ",
+          "pmid": "24192967",
+          "year": 2013,
+          "study_type": "cohort",
+          "n_participants": 383567,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Tamsulosin treatment for benign prostatic hyperplasia and risk of severe hypotension in men aged 40-85 years in the United States: risk window analyses using between and within patient methodology."
+        },
+        {
+          "citation": "ShakirS et al 2001 BJU Int",
+          "pmid": "11412215",
+          "year": 2001,
+          "study_type": "cohort",
+          "n_participants": 12484,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Finasteride and tamsulosin used in benign prostatic hypertrophy: a review of the prescription-event monitoring data."
+        }
+      ]
+    }
+  ]
+}

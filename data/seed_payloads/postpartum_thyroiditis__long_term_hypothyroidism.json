@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "postpartum_thyroiditis",
+      "name": "Postpartum thyroiditis",
+      "kind": "condition"
+    },
+    {
+      "slug": "long_term_hypothyroidism",
+      "name": "Long-term hypothyroidism",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "postpartum_thyroiditis",
+      "outcome_slug": "long_term_hypothyroidism",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Long-term follow-up studies consistently show that postpartum thyroiditis is not always transient. The strongest controlled cohort found roughly a fivefold increase in later hypothyroidism, and women who pass through a hypothyroid postpartum phase carry the highest long-run risk.",
+      "population": "women who develop postpartum thyroiditis after pregnancy",
+      "mechanism": "Postpartum thyroiditis reflects autoimmune thyroid injury that can recover partially, but in a meaningful subset the gland never fully returns to baseline reserve. High TSH peaks and strong thyroid autoantibody positivity mark women most likely to progress from transient postpartum dysfunction to persistent hypothyroidism.",
+      "summary": "Postpartum thyroiditis is a genuine long-term hypothyroidism risk marker, not just a short-lived postpartum nuisance. Multiple follow-up cohorts show that later permanent hypothyroidism is common enough to justify ongoing surveillance, especially after the hypothyroid phase of postpartum thyroiditis or in antibody-positive women.",
+      "caveats": "Absolute risk varies by case definition, follow-up duration, and whether studies enrolled screened community cases or referred patients. Risk is much higher after the hypothyroid form of postpartum thyroiditis than after isolated postpartum hyperthyroidism.",
+      "evidence": [
+        {
+          "citation": "StuckeyBG et al 2010 Clin Endocrinol",
+          "pmid": "20184598",
+          "year": 2010,
+          "study_type": "cohort",
+          "n_participants": 409,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Postpartum thyroid dysfunction and the long-term risk of hypothyroidism: results from a 12-year follow-up study of women with and without postpartum thyroid dysfunction.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 4.8,
+            "ci_low": 1.6,
+            "ci_high": 14.1,
+            "comparator": "women with postpartum thyroid dysfunction versus women without postpartum thyroid dysfunction"
+          }
+        },
+        {
+          "citation": "SarvghadiF et al 2005 Endocrine",
+          "pmid": "16230784",
+          "year": 2005,
+          "study_type": "cohort",
+          "n_participants": 104,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Follow up of patients with postpartum thyroiditis: a population-based study."
+        },
+        {
+          "citation": "LucasA et al 2005 Thyroid",
+          "pmid": "16279852",
+          "year": 2005,
+          "study_type": "cohort",
+          "n_participants": 45,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Postpartum thyroiditis: long-term follow-up."
+        }
+      ]
+    }
+  ]
+}

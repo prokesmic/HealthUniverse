@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ssri_elderly",
+      "name": "SSRI use in older adults",
+      "kind": "drug"
+    },
+    {
+      "slug": "hyponatremia_risk",
+      "name": "Hyponatremia risk",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ssri_elderly",
+      "outcome_slug": "hyponatremia_risk",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The association is not subtle in older adults. The newest multi-hospital cohort found a significant increase in incident hyponatremia after SSRI initiation, and older geriatric cohorts show that sodium can drift quickly downward even when only a subgroup crosses the diagnostic threshold.",
+      "population": "older adults initiating SSRIs or closely related serotonergic antidepressants",
+      "mechanism": "SSRIs can trigger inappropriate antidiuretic hormone release and impair free-water excretion. Older age, female sex, low baseline sodium, concomitant diuretics, and medical comorbidity all magnify that SIADH-like vulnerability, which is why the edge is much more clinically important in geriatric practice than in younger adults.",
+      "summary": "This is a strong geriatric medication-safety edge. The best current cohort data show that older adults starting SSRIs are at increased risk of clinically meaningful hyponatremia, and earlier age-psychiatry audits support the same pattern by showing faster sodium decline after SSRI or SNRI initiation.",
+      "caveats": "Not every older SSRI user will become hyponatremic, and the risk differs across specific agents and baseline frailty. But the first weeks to months after initiation are important enough that electrolyte awareness should be built into routine prescribing.",
+      "evidence": [
+        {
+          "citation": "JungK et al 2026 Br J Clin Pharmacol",
+          "pmid": "41531184",
+          "year": 2026,
+          "study_type": "cohort",
+          "n_participants": 42036,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Antidepressants and the risk of hyponatremia: A multi-institutional cohort study using observational medical outcomes partnership-Common Data Model."
+        },
+        {
+          "citation": "LaneNE et al 2024 J Am Geriatr Soc",
+          "pmid": "38662854",
+          "year": 2024,
+          "study_type": "cohort",
+          "n_participants": 420085,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Hyponatremia-associated hospital visits are not reduced by early electrolyte testing in older adults starting antidepressants."
+        },
+        {
+          "citation": "GiorlandoF et al 2013 Curr Drug Saf",
+          "pmid": "23841535",
+          "year": 2013,
+          "study_type": "cohort",
+          "n_participants": 259,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Hyponatraemia: an audit of aged psychiatry patients taking SSRIs and SNRIs."
+        }
+      ]
+    }
+  ]
+}

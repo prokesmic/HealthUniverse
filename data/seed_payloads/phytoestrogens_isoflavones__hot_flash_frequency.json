@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "phytoestrogens_isoflavones",
+      "name": "Phytoestrogen isoflavones",
+      "kind": "supplement"
+    },
+    {
+      "slug": "hot_flash_frequency",
+      "name": "Hot flash frequency",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "phytoestrogens_isoflavones",
+      "outcome_slug": "hot_flash_frequency",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Isoflavone-based phytoestrogens appear to reduce hot flash frequency modestly, but the benefit is slow, heterogeneous, and clearly weaker than estradiol. The evidence leans favorable overall, yet not strongly enough to call the effect robust across formulations.",
+      "population": "peri- and postmenopausal women with vasomotor menopausal symptoms",
+      "mechanism": "Isoflavones such as genistein and daidzein have weak estrogen-receptor activity, particularly at estrogen receptor beta, which may modestly reduce vasomotor instability. Their effects are smaller and slower than standard hormone therapy because receptor potency and bioavailability are much lower.",
+      "summary": "Phytoestrogen isoflavones probably help some women with hot flashes, but the effect is modest and inconsistent across products. Meta-analyses generally show some reduction in hot flash frequency, yet the size of benefit is small enough that the overall evidence still feels mixed rather than unequivocally positive.",
+      "caveats": "Different soy, red clover, and isolated-isoflavone preparations are often pooled together, which adds heterogeneity. Response may depend on dose, duration, gut metabolism, and whether the product is genistein-rich or not.",
+      "evidence": [
+        {
+          "citation": "Chen et al 2015 Climacteric",
+          "pmid": "25263312",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "n_participants": 15,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of phytoestrogens for menopausal symptoms: a meta-analysis and systematic review."
+        },
+        {
+          "citation": "Franco et al 2016 JAMA",
+          "pmid": "27327802",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "n_participants": 6653,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Use of Plant-Based Therapies and Menopausal Symptoms: A Systematic Review and Meta-analysis.",
+          "effect_quant": {
+            "metric": "MD",
+            "value": -1.31,
+            "ci_low": -2.02,
+            "ci_high": -0.61,
+            "comparator": "phytoestrogen supplementation versus placebo or control for daily hot flashes"
+          }
+        },
+        {
+          "citation": "LiL et al 2015 Br J Clin Pharmacol",
+          "pmid": "25316502",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "n_participants": 1710,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Quantitative efficacy of soy isoflavones on menopausal hot flashes."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "high_ferritin",
+      "name": "High ferritin",
+      "kind": "biomarker",
+      "aliases": [
+        "elevated ferritin",
+        "high serum ferritin"
+      ],
+      "description": "Serum ferritin levels above the person's lower-risk baseline range, often reflecting higher iron stores or inflammation."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "high_ferritin",
+      "outcome_slug": "insulin_resistance",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Across a 3-year cohort of 575 normoglycemic men, higher baseline ferritin tertiles predicted significantly higher HOMA-IR at follow-up.",
+      "population": "adults without overt iron-overload disorders, especially men and postmenopausal women",
+      "mechanism": "Higher ferritin may reflect greater stored iron, which can intensify oxidative stress, lipid peroxidation, and hepatic or adipose insulin-signaling dysfunction. The biology is not purely causal because ferritin also tracks inflammation, but the association is repeatedly observed in metabolic cohorts.",
+      "summary": "Elevated ferritin is repeatedly associated with worse insulin sensitivity, although the relationship is not as clean as a direct toxic exposure because ferritin can also move with inflammation and liver injury. The best evidence supports a cautious harmful or risk-marker interpretation rather than claiming ferritin alone causes insulin resistance in every setting.",
+      "caveats": "Ferritin is an imperfect proxy for total-body iron and rises with inflammation, alcohol use, fatty liver, and metabolic syndrome itself. This edge should be read as a modest adverse signal or marker-level association, not as proof that ferritin lowering alone will reverse insulin resistance.",
+      "evidence": [
+        {
+          "citation": "Nakamura K et al 2017 Exp Clin Endocrinol Diabetes",
+          "pmid": "27750351",
+          "doi": "10.1055/s-0042-118175",
+          "year": 2017,
+          "study_type": "cohort",
+          "n_participants": 575,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Serum Ferritin, Insulin Resistance, and beta-cell Dysfunction: A Prospective Study in Normoglycemic Japanese Men."
+        },
+        {
+          "citation": "Fumeron F et al 2006 Diabetes Care",
+          "pmid": "16936158",
+          "doi": "10.2337/dc06-0093",
+          "year": 2006,
+          "study_type": "cohort",
+          "n_participants": 1277,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Ferritin and transferrin are both predictive of the onset of hyperglycemia in men and women over 3 years: the data from an epidemiological study on the Insulin Resistance Syndrome (DESIR) study."
+        },
+        {
+          "citation": "Gao X et al 2018 Br J Nutr",
+          "pmid": "30189905",
+          "doi": "10.1017/S0007114518002167",
+          "year": 2018,
+          "study_type": "cross_sectional",
+          "n_participants": 2518,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Serum ferritin levels are associated with insulin resistance in Chinese men and post-menopausal women: the Shanghai Changfeng study."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "memantine",
+      "name": "Memantine",
+      "kind": "drug"
+    },
+    {
+      "slug": "moderate_severe_dementia",
+      "name": "Moderate to severe dementia",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "memantine",
+      "outcome_slug": "moderate_severe_dementia",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "The best evidence shows a small but consistent symptomatic benefit. The 2019 Cochrane update found clinically modest improvement across cognition, global status, function, and behavior in roughly 3,700 participants with moderate-to-severe Alzheimer disease, and older trial-level syntheses point the same way.",
+      "population": "adults with moderate to severe Alzheimer disease and related dementia syndromes",
+      "mechanism": "Memantine dampens pathological NMDA receptor overactivation without fully shutting down physiologic glutamatergic signaling. In later-stage dementia that can modestly reduce excitotoxic stress and slow symptomatic decline, especially in cognition, function, and agitation-heavy behavioral domains.",
+      "summary": "Memantine is one of the more stable late-stage dementia edges in the graph. It does not reverse disease, but across placebo-controlled trials and the updated Cochrane review it repeatedly shows a small symptomatic benefit in moderate-to-severe disease, with tolerability that is usually acceptable compared with many alternatives.",
+      "caveats": "The benefit is clinically modest, and the evidence is strongest for Alzheimer disease rather than every dementia subtype. This should be framed as slowing symptomatic decline, not restoring premorbid cognition or independence.",
+      "evidence": [
+        {
+          "citation": "McShaneR et al 2019 Cochrane Database Syst Rev",
+          "pmid": "30891742",
+          "year": 2019,
+          "study_type": "systematic_review",
+          "n_participants": 3700,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Memantine for dementia."
+        },
+        {
+          "citation": "WinbladB et al 2007 Dement Geriatr Cogn Disord",
+          "pmid": "17496417",
+          "year": 2007,
+          "study_type": "meta_analysis",
+          "n_participants": 1826,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Memantine in moderate to severe Alzheimer's disease: a meta-analysis of randomised clinical trials."
+        },
+        {
+          "citation": "ReisbergB et al 2003 N Engl J Med",
+          "pmid": "12672860",
+          "year": 2003,
+          "study_type": "rct",
+          "n_participants": 252,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Memantine in moderate-to-severe Alzheimer's disease."
+        }
+      ]
+    }
+  ]
+}

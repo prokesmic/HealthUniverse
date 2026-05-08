@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "breastfeeding_long_duration",
+      "name": "Long-duration breastfeeding",
+      "kind": "behavior"
+    },
+    {
+      "slug": "maternal_breast_cancer",
+      "name": "Maternal breast cancer",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "breastfeeding_long_duration",
+      "outcome_slug": "maternal_breast_cancer",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The clearest synthesis shows a modest inverse association between breastfeeding and later maternal breast-cancer risk, with stronger protection in dose-response analyses than in every single cohort.",
+      "population": "parous women followed after breastfeeding exposure into later adult life",
+      "mechanism": "Longer lactation reduces cumulative ovulatory cycling and promotes terminal differentiation of breast tissue after pregnancy. That combination offers a more factor-specific explanation for reduced hormone-sensitive carcinogenesis than a generic healthy-mother effect.",
+      "summary": "Longer breastfeeding is associated with lower later maternal breast-cancer risk, and the strongest dose-response meta-analysis suggests the benefit is real even if not large. Cohort and case-control studies are not uniform in magnitude, but they broadly fit a modest protective pattern rather than a null one.",
+      "caveats": "This is still observational evidence and is vulnerable to confounding by parity pattern, age at first birth, and broader lifestyle differences. The signal also seems more consistent for certain subgroups and longer durations than for any breastfeeding of short duration.",
+      "evidence": [
+        {
+          "citation": "UnarMunguiaM et al 2017 J Hum Lact",
+          "pmid": "28196329",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "n_participants": 65,
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Breastfeeding Mode and Risk of Breast Cancer: A Dose-Response Meta-Analysis.",
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.72,
+            "ci_low": 0.58,
+            "ci_high": 0.9,
+            "comparator": "exclusive breastfeeding versus no exclusive breastfeeding"
+          }
+        },
+        {
+          "citation": "ButtS et al 2014 BMC Res Notes",
+          "pmid": "24708573",
+          "year": 2014,
+          "study_type": "cohort",
+          "n_participants": 14092,
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Breastfeeding in relation to risk of different breast cancer characteristics."
+        },
+        {
+          "citation": "ZhengT et al 2001 Br J Cancer",
+          "pmid": "11384096",
+          "year": 2001,
+          "study_type": "case_control",
+          "n_participants": 1217,
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Lactation and breast cancer risk: a case-control study in Connecticut.",
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.47,
+            "ci_low": 0.23,
+            "ci_high": 0.94,
+            "comparator": "first child breastfed for more than 13 months versus never breastfeeding"
+          }
+        }
+      ]
+    }
+  ]
+}

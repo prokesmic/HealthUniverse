@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "polypharmacy_5plus",
+      "name": "Polypharmacy (5 or more medications)",
+      "kind": "behavior"
+    },
+    {
+      "slug": "hospitalization_risk",
+      "name": "Hospitalization risk",
+      "kind": "condition"
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "polypharmacy_5plus",
+      "outcome_slug": "hospitalization_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The clearest signal is that a medication count at or above the usual polypharmacy threshold tracks with more hospital use, but the size of that signal varies with setting and whether deprescribing studies or observational cohorts are being pooled.",
+      "population": "older adults in inpatient, outpatient, and post-acute care settings",
+      "mechanism": "Once medication burden reaches five or more long-term drugs, the chance of drug-drug interactions, prescribing cascades, orthostasis, and adherence failure rises enough to make hospitalization more likely. The count threshold is imperfect, but it captures a clinically meaningful jump in complexity and exposure to preventable adverse events.",
+      "summary": "The most grounded starting point for this edge is the 2024 JAGS meta-analysis of medication review and deprescribing in older inpatients. It does not prove that every fifth medication causes harm, but across older-adult settings the standard polypharmacy threshold consistently identifies people with higher downstream hospitalization risk and a bigger opportunity for medication optimization.",
+      "caveats": "Medication count is partly a marker of multimorbidity, so confounding is unavoidable in observational work. This edge is most useful as a risk-stratification signal and a prompt for medication review rather than as proof that all five-drug regimens are inappropriate.",
+      "evidence": [
+        {
+          "citation": "Carollo et al 2024 J Am Geriatr Soc",
+          "pmid": "38822740",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "n_participants": 99,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Clinical impact of medication review and deprescribing in older inpatients: A systematic review and meta-analysis."
+        },
+        {
+          "citation": "Eriksen et al 2022 Eur Geriatr Med",
+          "pmid": "35900651",
+          "year": 2022,
+          "study_type": "cohort",
+          "n_participants": 49,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Older patients acutely admitted and readmitted to the same geriatric department: a descriptive cohort study of primary diagnoses and health characteristics."
+        },
+        {
+          "citation": "Ucarer et al 2026 Drugs Aging",
+          "pmid": "42047996",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "n_participants": 2025,
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Hospitalisation as an Opportunity to Optimise Quality Use of Medicines in Older Adults: A Systematic Review."
+        }
+      ]
+    }
+  ]
+}
