@@ -2374,6 +2374,245 @@ def about(request: Request):
     })
 
 
+# ────────────────────────────────────────────────────────────────────
+# Trust center — public audit metrics
+# ────────────────────────────────────────────────────────────────────
+
+@app.get("/trust", response_class=HTMLResponse)
+def trust_page(request: Request):
+    """Public audit dashboard. Shows verifier coverage, error rate,
+    flagged-card count, reviewer roster, and how to report issues."""
+    with connect() as conn:
+        # Per-tier coverage of evidence verification.
+        ev_rows = conn.execute("""
+            SELECT e.tier,
+                   SUM(CASE WHEN ev.relevance_status='verified' THEN 1 ELSE 0 END) AS v,
+                   SUM(CASE WHEN ev.relevance_status='weak'     THEN 1 ELSE 0 END) AS w,
+                   SUM(CASE WHEN ev.relevance_status='flagged'  THEN 1 ELSE 0 END) AS f,
+                   SUM(CASE WHEN ev.relevance_status='missing'  THEN 1 ELSE 0 END) AS m,
+                   SUM(CASE WHEN ev.relevance_status IS NULL    THEN 1 ELSE 0 END) AS u,
+                   COUNT(*) AS total
+            FROM evidence ev
+            JOIN edge e ON e.id=ev.edge_id
+            GROUP BY e.tier
+            ORDER BY e.tier""").fetchall()
+        ev_by_tier = []
+        totals = {"v":0,"w":0,"f":0,"m":0,"u":0,"total":0}
+        for r in ev_rows:
+            d = dict(r)
+            d["audited"] = (d["v"] or 0) + (d["w"] or 0) + (d["f"] or 0) + (d["m"] or 0)
+            d["coverage_pct"] = round(100 * d["audited"] / d["total"], 1) if d["total"] else 0
+            d["mismatch_pct"] = round(100 * (d["f"] or 0) / d["audited"], 1) if d["audited"] else 0
+            ev_by_tier.append(d)
+            for k in ("v","w","f","m","u","total"):
+                totals[k] += d[k] or 0
+        totals["audited"] = totals["v"] + totals["w"] + totals["f"] + totals["m"]
+        totals["coverage_pct"] = round(100 * totals["audited"] / totals["total"], 1) if totals["total"] else 0
+        totals["mismatch_pct"] = round(100 * totals["f"] / totals["audited"], 1) if totals["audited"] else 0
+
+        # Per-tier edge review status.
+        edge_rows = conn.execute("""
+            SELECT e.tier, COALESCE(e.review_status,'unreviewed') AS status,
+                   COUNT(*) AS n
+            FROM edge e
+            GROUP BY e.tier, status
+            ORDER BY e.tier, n DESC""").fetchall()
+        # Recent flagged samples (most damning).
+        flagged_samples = conn.execute("""
+            SELECT ev.relevance_score, ev.real_title, ev.citation,
+                   f.name AS f_name, o.name AS o_name, e.id AS eid, e.tier
+            FROM evidence ev
+            JOIN edge e ON e.id=ev.edge_id
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE ev.relevance_status='flagged' AND e.tier IN ('A','B')
+            ORDER BY ev.relevance_score ASC
+            LIMIT 8""").fetchall()
+        # Recent issue reports (count + recent).
+        try:
+            n_reports_open = conn.execute(
+                "SELECT COUNT(*) FROM card_reports WHERE resolved=0"
+            ).fetchone()[0]
+            n_reports_total = conn.execute(
+                "SELECT COUNT(*) FROM card_reports").fetchone()[0]
+        except Exception:
+            n_reports_open = n_reports_total = 0
+
+    return render(request, "trust.html", {
+        "title": "Trust & audit",
+        "ev_by_tier": ev_by_tier,
+        "totals": totals,
+        "edge_rows": [dict(r) for r in edge_rows],
+        "flagged_samples": [dict(r) for r in flagged_samples],
+        "n_reports_open": n_reports_open,
+        "n_reports_total": n_reports_total,
+    })
+
+
+@app.post("/api/report-card")
+def api_report_card(request: Request,
+                    edge_id: int = Form(...),
+                    reason: str = Form(...),
+                    note: str = Form("")):
+    """Capture a user-reported problem with a card. Lightweight: writes
+    to card_reports table. A maintainer reviews via /trust."""
+    reason = (reason or "").strip()[:60]
+    note = (note or "").strip()[:2000]
+    if not reason:
+        return RedirectResponse(f"/edge/{edge_id}?reported=invalid", status_code=303)
+    with connect() as conn:
+        conn.execute(
+            "INSERT INTO card_reports (edge_id, reason, note, reported_at) "
+            "VALUES (?, ?, ?, ?)",
+            (edge_id, reason, note,
+             datetime_now().isoformat(timespec="seconds")))
+        conn.commit()
+    return RedirectResponse(f"/edge/{edge_id}?reported=ok", status_code=303)
+
+
+# ────────────────────────────────────────────────────────────────────
+# Stack Brief — paste your stack, get an evidence digest (Milestone 2)
+# ────────────────────────────────────────────────────────────────────
+
+import re as _re_stack
+_STACK_TOKEN_RE = _re_stack.compile(r"[a-zA-Z][a-zA-Z0-9 _-]{2,}")
+
+
+def _stack_match_factors(conn, raw_items: list[str]) -> list[dict]:
+    """Match each free-text item to the closest factor/lifestyle entity.
+    Strategy: normalize → exact slug → exact name match → token contains
+    → fuzzy SequenceMatcher on names. Returns one row per input item."""
+    from difflib import SequenceMatcher
+    entities = [dict(r) for r in conn.execute(
+        "SELECT id, slug, name, kind FROM entity "
+        "WHERE kind IN ('factor','lifestyle','supplement','food','medication') "
+        "OR kind IS NULL"
+    ).fetchall()]
+    name_index = {(e["name"] or "").lower(): e for e in entities}
+    slug_index = {(e["slug"] or "").lower(): e for e in entities}
+    out = []
+    for raw in raw_items:
+        item = (raw or "").strip()
+        if not item:
+            continue
+        norm = item.lower().strip(" .,;:")
+        slug_hint = norm.replace(" ", "_").replace("-", "_")
+        match = slug_index.get(slug_hint) or name_index.get(norm)
+        score = 1.0 if match else 0.0
+        if not match:
+            best, best_s = None, 0.0
+            for e in entities:
+                nm = (e["name"] or "").lower()
+                if not nm or len(nm) < 3:
+                    continue
+                if norm in nm or nm in norm:
+                    s = 0.8 + 0.2 * min(len(norm), len(nm)) / max(len(norm), len(nm))
+                    if s > best_s:
+                        best, best_s = e, s
+                else:
+                    s = SequenceMatcher(None, norm, nm).ratio()
+                    if s > best_s:
+                        best, best_s = e, s
+            if best and best_s >= 0.62:
+                match = best
+                score = best_s
+        out.append({"input": item, "match": match, "match_score": round(score, 2)})
+    return out
+
+
+def _stack_brief_for_factor(conn, factor_id: int, *, max_outcomes: int = 6) -> list[dict]:
+    """Pull the strongest edges for a given factor, with one top
+    citation each. Filters out 'flagged' tier-A/B/C rows so the brief
+    never shows a known-bad citation."""
+    rows = conn.execute("""
+        SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
+               COALESCE(e.review_status,'unreviewed') AS review_status,
+               o.name AS o_name, o.slug AS o_slug
+        FROM edge e
+        JOIN entity o ON o.id=e.outcome_id
+        WHERE e.factor_id=? AND e.tier IN ('A','B','C')
+        ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 ELSE 3 END,
+                 e.updated_at DESC
+        LIMIT ?""", (factor_id, max_outcomes)).fetchall()
+    out = []
+    for r in rows:
+        d = dict(r)
+        cite = conn.execute("""
+            SELECT pmid, citation, year, study_type, real_title,
+                   relevance_status
+            FROM evidence
+            WHERE edge_id=?
+              AND COALESCE(is_counter,0)=0
+              AND (relevance_status IS NULL OR relevance_status != 'flagged')
+            ORDER BY CASE study_type
+                       WHEN 'meta_analysis' THEN 1
+                       WHEN 'systematic_review' THEN 2
+                       WHEN 'rct' THEN 3
+                       WHEN 'cohort' THEN 4 ELSE 5 END,
+                     year DESC
+            LIMIT 1""", (d["id"],)).fetchone()
+        d["top_cite"] = dict(cite) if cite else None
+        d["n_studies"] = conn.execute(
+            "SELECT COUNT(*) FROM evidence WHERE edge_id=? AND COALESCE(is_counter,0)=0",
+            (d["id"],)).fetchone()[0]
+        out.append(d)
+    return out
+
+
+@app.get("/stack", response_class=HTMLResponse)
+def stack_form(request: Request, items: str = ""):
+    """Free input → evidence brief. Paste a stack (comma- or
+    line-separated supplements / foods / habits / meds), get back what
+    the corpus says. First three items are free; more requires Pro."""
+    raw_items: list[str] = []
+    if items:
+        for part in _re_stack.split(r"[,\n]+", items):
+            part = part.strip()
+            if not part:
+                continue
+            raw_items.append(part[:60])
+    matches: list[dict] = []
+    pro_locked = False
+    if raw_items:
+        with connect() as conn:
+            FREE_LIMIT = 3
+            visible = raw_items[:FREE_LIMIT]
+            if len(raw_items) > FREE_LIMIT:
+                pro_locked = True
+            matched = _stack_match_factors(conn, visible)
+            for m in matched:
+                if m["match"]:
+                    m["edges"] = _stack_brief_for_factor(conn, m["match"]["id"])
+                else:
+                    m["edges"] = []
+                matches.append(m)
+    return render(request, "stack.html", {
+        "title": "Stack Brief",
+        "raw": items,
+        "raw_items": raw_items,
+        "matches": matches,
+        "pro_locked": pro_locked,
+    })
+
+
+@app.post("/api/pro-waitlist")
+def api_pro_waitlist(request: Request,
+                     email: str = Form(...),
+                     source: str = Form("")):
+    """Capture an email for the Pro waitlist. Cheap signup, no
+    payments yet — that's Milestone 3."""
+    em = (email or "").strip().lower()
+    if "@" not in em or len(em) > 200:
+        return RedirectResponse("/stack?waitlist=invalid", status_code=303)
+    with connect() as conn:
+        conn.execute(
+            "INSERT INTO pro_waitlist (email, source, signed_up_at) "
+            "VALUES (?, ?, ?)",
+            (em, source[:40], datetime_now().isoformat(timespec="seconds")))
+        conn.commit()
+    return RedirectResponse("/stack?waitlist=ok", status_code=303)
+
+
 @app.get("/robots.txt")
 def robots():
     return Response(

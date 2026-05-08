@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+{% block title %}Trust & audit — Health Universe{% endblock %}
+{% block content %}
+<style>
+  .trust-hero { padding: 28px 0 14px; }
+  .trust-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin: 16px 0; }
+  .trust-card { padding: 16px; border: 1px solid #e6e6e6; border-radius: 10px; background: #fff; }
+  .trust-card .big { font-size: 28px; font-weight: 700; color: #1f3a2e; }
+  .trust-card .lbl { color: #666; font-size: 13px; margin-top: 4px; }
+  .trust-table { width:100%; border-collapse: collapse; margin: 12px 0 18px; }
+  .trust-table th, .trust-table td { padding: 8px 10px; border-bottom: 1px solid #eee; text-align: left; font-size: 14px; }
+  .trust-table th { background: #fafafa; font-weight: 600; }
+  .trust-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .pill-mini { display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600 }
+  .pm-good { background:#e7f5ec;color:#1b5e20 }
+  .pm-warn { background:#fff7e0;color:#7a5c00 }
+  .pm-bad  { background:#fdecea;color:#9b1c1c }
+  .pm-mute { background:#f0f0f0;color:#555 }
+  .flagged-row { padding: 10px 12px; border: 1px solid #f3b3ad; border-radius:8px; margin-bottom:8px; background:#fff8f7; }
+</style>
+
+<header class="trust-hero">
+  <h1>Trust &amp; audit</h1>
+  <p class="lede" style="max-width:780px">
+    This is the public audit dashboard. Health Universe is built by an
+    automated pipeline that ingests biomedical literature, classifies
+    studies, and assigns evidence tiers. <b>Every claim must be
+    auditable down to the paper.</b> This page shows where we currently
+    fall short, in numbers we update with each verifier run.
+  </p>
+</header>
+
+<section>
+  <h2>Headline numbers</h2>
+  <div class="trust-grid">
+    <div class="trust-card">
+      <div class="big">{{ totals.total }}</div>
+      <div class="lbl">total evidence rows</div>
+    </div>
+    <div class="trust-card">
+      <div class="big">{{ totals.coverage_pct }}%</div>
+      <div class="lbl">audited by semantic verifier</div>
+    </div>
+    <div class="trust-card">
+      <div class="big">{{ totals.v }}</div>
+      <div class="lbl">PMID title strongly matches</div>
+    </div>
+    <div class="trust-card">
+      <div class="big" style="color:#9b1c1c">{{ totals.f }}</div>
+      <div class="lbl">flagged mismatches ({{ totals.mismatch_pct }}% of audited)</div>
+    </div>
+    <div class="trust-card">
+      <div class="big">{{ n_reports_open }}</div>
+      <div class="lbl">open user reports / {{ n_reports_total }} total</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Evidence audit by tier</h2>
+  <p class="muted small" style="max-width:780px">
+    Every evidence row with a PMID is checked: we fetch the real title
+    from PubMed and compare it against the edge's
+    <i>factor → outcome</i> with a local embedding model
+    (nomic-embed-text). Cosine similarity ≥ 0.65 = <b>verified</b>;
+    0.45–0.65 = <b>weak</b>; below 0.45 = <b>flagged</b>. Flagged rows
+    are excluded from the public stack-brief and from tier-aggregation.
+  </p>
+  <table class="trust-table">
+    <thead>
+      <tr><th>Tier</th>
+          <th class="num">Total</th>
+          <th class="num">Audited</th>
+          <th class="num">Verified</th>
+          <th class="num">Weak</th>
+          <th class="num">Flagged</th>
+          <th class="num">Mismatch %</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in ev_by_tier %}
+      <tr>
+        <td><span class="pill tier-{{ r.tier }}">{{ r.tier }}</span></td>
+        <td class="num">{{ r.total }}</td>
+        <td class="num">{{ r.audited }} <span class="muted small">({{ r.coverage_pct }}%)</span></td>
+        <td class="num"><span class="pill-mini pm-good">{{ r.v }}</span></td>
+        <td class="num"><span class="pill-mini pm-warn">{{ r.w }}</span></td>
+        <td class="num"><span class="pill-mini pm-bad">{{ r.f }}</span></td>
+        <td class="num">{{ r.mismatch_pct }}%</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>Edge review status</h2>
+  <p class="muted small" style="max-width:780px">
+    Each edge inherits a status from its evidence rows. Edges with
+    zero verified-or-weak rows are demoted to <i>needs recheck</i> and
+    visually flagged on their detail page until a human reviewer
+    re-examines them.
+  </p>
+  <table class="trust-table">
+    <thead>
+      <tr><th>Tier</th><th>Status</th><th class="num">Count</th></tr>
+    </thead>
+    <tbody>
+      {% for r in edge_rows %}
+      <tr>
+        <td><span class="pill tier-{{ r.tier }}">{{ r.tier }}</span></td>
+        <td>
+          {% if r.status == 'verified_evidence' %}<span class="pill-mini pm-good">✓ verified</span>
+          {% elif r.status == 'weak_evidence' %}<span class="pill-mini pm-warn">~ weak</span>
+          {% elif r.status == 'needs_recheck' %}<span class="pill-mini pm-bad">! needs recheck</span>
+          {% elif r.status == 'human_reviewed' %}<span class="pill-mini pm-good">✓ human-reviewed</span>
+          {% elif r.status == 'clinician_reviewed' %}<span class="pill-mini pm-good">✓ clinician-reviewed</span>
+          {% else %}<span class="pill-mini pm-mute">⚙ unaudited</span>{% endif %}
+        </td>
+        <td class="num">{{ r.n }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+{% if flagged_samples %}
+<section>
+  <h2>Recent flagged samples (worst tier-A/B mismatches)</h2>
+  <p class="muted small" style="max-width:780px">
+    These rows have a PMID whose actual PubMed title doesn't match the
+    edge's factor and outcome. We show them publicly because hiding
+    them would be the worse option. Each is excluded from the live site
+    until re-reviewed.
+  </p>
+  {% for r in flagged_samples %}
+  <div class="flagged-row">
+    <div style="margin-bottom:4px">
+      <span class="pill tier-{{ r.tier }}">{{ r.tier }}</span>
+      <a href="/edge/{{ r.eid }}"><b>{{ r.f_name }} → {{ r.o_name }}</b></a>
+      <span class="muted small">score: {{ "%.2f"|format(r.relevance_score or 0) }}</span>
+    </div>
+    <div style="font-size:13px"><b>Real PubMed title:</b> {{ r.real_title or "(no title fetched)" }}</div>
+    <div style="font-size:13px;color:#666"><b>Stored citation:</b> {{ r.citation or "—" }}</div>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+
+<section>
+  <h2>Reviewer roster</h2>
+  <p class="muted small" style="max-width:780px">
+    We do <b>not yet</b> have a named clinician reviewer. Until at
+    least one MD or PharmD is publicly listed here, every claim on
+    Health Universe should be treated as <b>educational synthesis</b>,
+    not vetted clinical guidance. If you are an MD, PharmD, or PhD in
+    a relevant field and want to review, write to
+    <a href="mailto:hello@health-universe.app">hello@health-universe.app</a>.
+  </p>
+  <ul>
+    <li><span class="pill-mini pm-mute">Pending</span> Clinician reviewer (MD or PharmD)</li>
+    <li><span class="pill-mini pm-mute">Pending</span> Public methodology audit</li>
+    <li><span class="pill-mini pm-good">Live</span> Automated semantic verifier (nomic-embed-text)</li>
+    <li><span class="pill-mini pm-good">Live</span> Open-source corpus &amp; pipeline (<a href="https://github.com/prokesmic/HealthUniverse">github</a>)</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Found a mistake?</h2>
+  <p style="max-width:780px">
+    Every edge page has a <b>Report issue with this card</b> button.
+    Reports go straight into the open queue you see at the top of
+    this page. We&rsquo;d rather hear from you than ship something
+    wrong.
+  </p>
+</section>
+{% endblock %}

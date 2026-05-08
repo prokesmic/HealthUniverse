@@ -33,6 +33,20 @@
       <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
       <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
       {% if e.population %}<span class="badge ghost">Population: {{ e.population }}</span>{% endif %}
+      {% set rs = e.review_status or 'unreviewed' %}
+      {% if rs == 'verified_evidence' %}
+        <span class="badge" style="background:#e7f5ec;color:#1b5e20;border:1px solid #b7e0c4" title="At least one cited PMID's title semantically matches this edge's factor and outcome.">✓ Evidence verified</span>
+      {% elif rs == 'weak_evidence' %}
+        <span class="badge" style="background:#fff7e0;color:#7a5c00;border:1px solid #f0d68a" title="Cited PMID titles only weakly match this claim. Read carefully.">~ Weak evidence match</span>
+      {% elif rs == 'needs_recheck' %}
+        <span class="badge" style="background:#fdecea;color:#9b1c1c;border:1px solid #f3b3ad" title="No cited PMID title matches this edge's factor and outcome. Pending re-review.">! Needs recheck</span>
+      {% elif rs == 'human_reviewed' %}
+        <span class="badge" style="background:#eaf3ff;color:#1f3a7e;border:1px solid #b8cdf2" title="Reviewed by a human curator.">✓ Human-reviewed</span>
+      {% elif rs == 'clinician_reviewed' %}
+        <span class="badge" style="background:#e0f2f1;color:#004d40;border:1px solid #99cfca" title="Reviewed by a named clinician (see /trust).">✓ Clinician-reviewed</span>
+      {% else %}
+        <span class="badge ghost" title="Generated and tier-classified by automated pipeline; not yet semantically audited. See /trust.">⚙ Machine-generated, unaudited</span>
+      {% endif %}
     </div>
     <h1 class="dossier-title">
       {{ e.f_name }} <span class="dossier-arrow" aria-hidden="true">→</span> {{ e.o_name }}
@@ -74,7 +88,42 @@
       <a class="btn-secondary inline" href="/edge/{{ e.id }}.png" target="_blank" rel="noopener">⤓ Share card (PNG)</a>
       <a class="btn-secondary inline" href="/explore?focus={{ e.f_slug }}">↗ Explore {{ e.f_name }}</a>
       <a class="btn-secondary inline" href="/explore?focus={{ e.o_slug }}">↗ Explore {{ e.o_name }}</a>
+      <button type="button" class="btn-secondary inline" id="report-card-btn"
+              style="border-color:#f3b3ad;color:#9b1c1c"
+              onclick="document.getElementById('report-card-form').style.display='block';this.style.display='none'">
+        ⚠ Report issue with this card
+      </button>
     </div>
+
+    <form id="report-card-form" method="post" action="/api/report-card"
+          style="display:none;margin-top:14px;padding:14px;border:1px solid #f3b3ad;
+                 border-radius:8px;background:#fff8f7;max-width:560px">
+      <input type="hidden" name="edge_id" value="{{ e.id }}">
+      <div style="margin-bottom:8px;font-weight:600;color:#9b1c1c">Report a problem with this card</div>
+      <label style="display:block;margin-bottom:6px;font-size:13px">
+        What looks wrong?
+        <select name="reason" required style="width:100%;margin-top:4px">
+          <option value="">— pick one —</option>
+          <option value="citation_mismatch">A cited PMID is not actually about this topic</option>
+          <option value="wrong_direction">Direction (protective/harmful) seems wrong</option>
+          <option value="wrong_tier">Tier rating seems wrong</option>
+          <option value="duplicate">Duplicate of another card</option>
+          <option value="outdated">Out of date / superseded</option>
+          <option value="unsafe">Could be unsafe medical advice</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+      <label style="display:block;margin-bottom:8px;font-size:13px">
+        Optional note
+        <textarea name="note" rows="3" style="width:100%;margin-top:4px"
+                  placeholder="What did you find? PMID, study, source if known."></textarea>
+      </label>
+      <button type="submit" class="btn-primary" style="background:#9b1c1c;border-color:#9b1c1c">Send report</button>
+      <button type="button" class="btn-secondary inline" style="margin-left:6px"
+              onclick="document.getElementById('report-card-form').style.display='none';document.getElementById('report-card-btn').style.display=''">
+        Cancel
+      </button>
+    </form>
   </header>
 
   {# ── Body ───────────────────────────────────────────────────────── #}
@@ -168,14 +217,17 @@
 
         <div class="evidence-list" id="evidence-list">
           {% for ev in evidence %}
-          <article class="evidence-row {% if ev.is_retracted %}is-retracted{% endif %}"
+          <article class="evidence-row {% if ev.is_retracted %}is-retracted{% endif %}{% if ev.relevance_status == 'flagged' %} is-flagged{% endif %}"
                    data-study-type="{{ ev.study_type or 'other' }}"
                    data-year="{{ ev.year or 0 }}"
                    data-quality="{% if ev.quality == 'high' %}4{% elif ev.quality == 'moderate' %}3{% elif ev.quality == 'low' %}2{% elif ev.quality == 'very_low' %}1{% else %}0{% endif %}"
                    data-n="{{ ev.n_participants or 0 }}">
             <div class="evidence-row-main">
               <div class="evidence-citation">
-                {% if ev.pmid %}
+                {% if ev.relevance_status == 'flagged' %}
+                  <span style="opacity:.6;text-decoration:line-through" title="Cited PMID's actual title does not match this edge. Link suppressed.">{{ ev.citation }}</span>
+                  <span class="pill" style="background:#fdecea;color:#9b1c1c;font-size:11px" title="The PMID's PubMed title was '{{ ev.real_title or '—' }}', which does not match {{ e.f_name }} → {{ e.o_name }}.">CITATION FLAGGED</span>
+                {% elif ev.pmid %}
                   <a href="https://pubmed.ncbi.nlm.nih.gov/{{ ev.pmid }}/" target="_blank" rel="noopener" class="evidence-cite-link" title="Open on PubMed">{{ ev.citation }}</a>
                 {% elif ev.doi %}
                   <a href="https://doi.org/{{ ev.doi }}" target="_blank" rel="noopener" class="evidence-cite-link" title="Open via DOI">{{ ev.citation }}</a>
@@ -183,6 +235,7 @@
                   <span>{{ ev.citation }}</span>
                 {% endif %}
                 {% if ev.is_retracted %}<span class="pill tier-D" title="Marked retracted on PubMed">RETRACTED</span>{% endif %}
+                {% if ev.relevance_status == 'weak' %}<span class="badge ghost" title="PubMed title only weakly matches this edge. Read the source carefully.">~ weak match</span>{% endif %}
               </div>
               {% if ev.notes %}<p class="evidence-notes">{{ ev.notes }}</p>{% endif %}
               {% if ev.is_retracted and ev.retraction_note %}
@@ -197,7 +250,9 @@
             <div class="evidence-row-side">
               <div class="evidence-year">{{ ev.year or "—" }}</div>
               {% if ev.n_participants %}<div class="evidence-n">n={{ "{:,}".format(ev.n_participants) }}</div>{% endif %}
-              {% if ev.pmid %}<a class="evidence-link" href="https://pubmed.ncbi.nlm.nih.gov/{{ ev.pmid }}/" target="_blank" rel="noopener">PubMed ↗</a>
+              {% if ev.relevance_status == 'flagged' %}
+                <span class="muted small" title="Link suppressed because the PMID's actual title doesn't match this claim.">link suppressed</span>
+              {% elif ev.pmid %}<a class="evidence-link" href="https://pubmed.ncbi.nlm.nih.gov/{{ ev.pmid }}/" target="_blank" rel="noopener">PubMed ↗</a>
               {% elif ev.doi %}<a class="evidence-link" href="https://doi.org/{{ ev.doi }}" target="_blank" rel="noopener">DOI ↗</a>{% endif %}
             </div>
           </article>

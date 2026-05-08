@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% block title %}Stack Brief — Health Universe{% endblock %}
+{% block content %}
+<style>
+  .stack-hero { padding: 28px 0 12px; }
+  .stack-form textarea {
+    width: 100%; min-height: 96px; padding: 12px; font-size: 16px;
+    border: 1px solid #d4d4d4; border-radius: 10px; line-height: 1.5;
+    font-family: inherit; resize: vertical;
+  }
+  .stack-form button { margin-top: 10px; }
+  .stack-result { margin: 24px 0; }
+  .stack-item {
+    border: 1px solid #e6e6e6; border-radius: 12px; padding: 18px;
+    margin-bottom: 16px; background: #fff;
+  }
+  .stack-item h3 { margin: 0 0 4px; }
+  .stack-item .input-tag { color: #888; font-size: 13px; margin-bottom: 12px; }
+  .stack-edges { margin-top: 12px; display: grid; gap: 10px; }
+  .stack-edge {
+    display: grid; grid-template-columns: 70px 1fr auto; gap: 12px;
+    align-items: start; padding: 10px 12px; border-radius: 8px;
+    background: #fafafa; border: 1px solid #ececec;
+  }
+  .stack-edge .o-name { font-weight: 600; }
+  .stack-edge .o-detail { font-size: 13px; color: #555; margin-top: 3px; }
+  .stack-edge .top-cite { font-size: 12px; color: #666; margin-top: 6px; }
+  .stack-edge .right { text-align: right; font-size: 12px; color: #666; min-width:90px }
+  .pro-lock {
+    margin: 18px 0; padding: 18px 22px; background: linear-gradient(180deg,#fffbe7,#fff5d6);
+    border: 1px solid #f0d68a; border-radius: 12px;
+  }
+  .pro-lock h3 { margin: 0 0 6px; color: #7a5c00; }
+  .no-match { padding:10px 12px; background:#fdecea; border:1px solid #f3b3ad; border-radius:8px; }
+  .pill-dir-protective { background:#e7f5ec; color:#1b5e20; }
+  .pill-dir-harmful    { background:#fdecea; color:#9b1c1c; }
+  .pill-dir-neutral    { background:#f0f0f0; color:#444; }
+  .pill-dir-u_shaped   { background:#fff7e0; color:#7a5c00; }
+  .pill-dir-mixed      { background:#eaf3ff; color:#1f3a7e; }
+  .stack-disclaimer { margin-top: 28px; padding: 14px; background:#f7f7f7;
+                      border-radius:8px; font-size: 13px; color: #555; }
+</style>
+
+<header class="stack-hero">
+  <h1>Stack Brief</h1>
+  <p class="lede" style="max-width:780px">
+    Paste your supplements, foods, habits, or medications. We'll show
+    what the corpus says — strong, weak, harmful, contested — with
+    one top citation per outcome. <b>This is an evidence brief, not
+    medical advice.</b> See <a href="/trust">trust &amp; audit</a>
+    for how the evidence is verified.
+  </p>
+</header>
+
+<section class="stack-form">
+  <form method="get" action="/stack">
+    <label for="items" style="font-weight:600;margin-bottom:6px;display:block">
+      Your stack (one per line, or comma-separated)
+    </label>
+    <textarea id="items" name="items" placeholder="creatine&#10;magnesium glycinate&#10;omega-3&#10;walking&#10;late dinner">{{ raw }}</textarea>
+    <button type="submit" class="btn-primary">Show evidence</button>
+    <span class="muted small" style="margin-left:10px">
+      Free preview shows the first 3 items. Full briefs require Pro.
+    </span>
+  </form>
+</section>
+
+{% if matches %}
+<section class="stack-result">
+  <h2>Your evidence brief</h2>
+  {% for m in matches %}
+  <div class="stack-item">
+    <div class="input-tag">You wrote: <code>{{ m.input }}</code></div>
+    {% if m.match %}
+      <h3>{{ m.match.name }} <span class="muted small">({{ m.match.kind or "factor" }})</span></h3>
+      {% if m.edges %}
+      <div class="stack-edges">
+        {% for e in m.edges %}
+        <div class="stack-edge">
+          <div>
+            <span class="pill tier-{{ e.tier }}">{{ e.tier }}</span><br>
+            <span class="badge pill-dir-{{ e.direction }}" style="font-size:11px;margin-top:4px;display:inline-block">
+              {{ e.direction|replace('_',' ') }}
+            </span>
+          </div>
+          <div>
+            <a href="/edge/{{ e.id }}"><span class="o-name">{{ e.o_name }}</span></a>
+            {% if e.summary %}<div class="o-detail">{{ e.summary[:160] }}{% if e.summary|length > 160 %}…{% endif %}</div>{% endif %}
+            {% if e.top_cite %}
+              <div class="top-cite">
+                {% if e.top_cite.pmid %}
+                  <a href="https://pubmed.ncbi.nlm.nih.gov/{{ e.top_cite.pmid }}/" target="_blank" rel="noopener">
+                    PMID {{ e.top_cite.pmid }}
+                  </a>
+                {% else %}
+                  <span>{{ e.top_cite.citation or "" }}</span>
+                {% endif %}
+                {% if e.top_cite.study_type %} · {{ e.top_cite.study_type|replace('_',' ') }}{% endif %}
+                {% if e.top_cite.year %} · {{ e.top_cite.year }}{% endif %}
+                {% if e.top_cite.relevance_status == 'weak' %}
+                  <span class="pill-mini pm-warn" style="margin-left:6px">~ weak match</span>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+          <div class="right">
+            <div>{{ e.n_studies }} stud{{ "y" if e.n_studies==1 else "ies" }}</div>
+            {% if e.review_status == 'verified_evidence' %}
+              <div class="pill-mini pm-good" style="margin-top:4px">✓ verified</div>
+            {% elif e.review_status == 'weak_evidence' %}
+              <div class="pill-mini pm-warn" style="margin-top:4px">~ weak</div>
+            {% elif e.review_status == 'needs_recheck' %}
+              <div class="pill-mini pm-bad" style="margin-top:4px">! recheck</div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+        <p class="muted">No tier-A/B/C edges yet for this item.</p>
+      {% endif %}
+    {% else %}
+      <div class="no-match">
+        We couldn't match <b>{{ m.input }}</b> to a known factor. Try a
+        canonical name (e.g. "creatine monohydrate" → "creatine",
+        "vit D" → "vitamin D"), or
+        <a href="/api/report-card" onclick="alert('Tell us via hello@health-universe.app — we\'ll add it.');return false">
+          tell us to add it</a>.
+      </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  {% if pro_locked %}
+  <div class="pro-lock">
+    <h3>Unlock the rest of your stack with Pro</h3>
+    <p style="margin:6px 0 12px">
+      Free briefs cover the first 3 items. <b>Pro</b> covers your full
+      stack with exportable PDF briefs, watchlist alerts when evidence
+      changes, and shareable client-safe handouts (no medical advice).
+    </p>
+    <p style="margin:6px 0 12px"><b>Founder pricing — $29/month</b> while we collect feedback from the first 30 paid users.</p>
+    <form method="post" action="/api/pro-waitlist" style="display:flex;gap:8px;flex-wrap:wrap">
+      <input type="email" name="email" required placeholder="you@example.com"
+             style="flex:1;min-width:220px;padding:8px;border-radius:6px;border:1px solid #d4d4d4">
+      <input type="hidden" name="source" value="stack">
+      <button type="submit" class="btn-primary">Join the Pro waitlist</button>
+    </form>
+  </div>
+  {% endif %}
+
+  <div class="stack-disclaimer">
+    <b>Reminder.</b> Health Universe is an evidence brief, not medical
+    advice. Effect sizes vary by population. Always discuss
+    medication, supplement, or major lifestyle changes with a clinician
+    who knows your full picture. See <a href="/about">/about</a> and
+    <a href="/trust">/trust</a> for methodology.
+  </div>
+</section>
+{% endif %}
+
+{% if not raw_items %}
+<section style="margin-top:24px">
+  <h2>Examples to try</h2>
+  <ul>
+    <li><a href="/stack?items=creatine%2C+magnesium+glycinate%2C+omega-3">creatine, magnesium glycinate, omega-3</a></li>
+    <li><a href="/stack?items=vitamin+D%2C+vitamin+B12%2C+coffee">vitamin D, vitamin B12, coffee</a></li>
+    <li><a href="/stack?items=walking%2C+resistance+training%2C+late+dinner">walking, resistance training, late dinner</a></li>
+    <li><a href="/stack?items=alcohol%2C+smoking%2C+pm25">alcohol, smoking, PM2.5</a></li>
+  </ul>
+</section>
+{% endif %}
+{% endblock %}
