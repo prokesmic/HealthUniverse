@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "small_intestinal_bacterial_overgrowth",
+      "outcome_slug": "ibs_symptoms",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A 2018 meta-analysis of 50 studies including 8,398 IBS patients and 1,432 controls found a pooled SIBO prevalence of 38% in IBS and an odds ratio of 4.7 (95% CI 3.1-7.2) versus controls; methane-positive overgrowth was not elevated across all IBS cases in a 2021 meta-analysis, but was more common in constipation-predominant IBS than diarrhea-predominant IBS (OR 3.1, 95% CI 1.7-5.6).",
+      "population": "adults with irritable bowel syndrome evaluated for bacterial overgrowth using breath testing or small-bowel aspirate culture, including subtype analyses",
+      "mechanism": "Small-intestinal bacterial overgrowth can increase gas production, bile acid deconjugation, low-grade inflammation, and altered fermentation patterns that plausibly worsen bloating, pain, stool urgency, or constipation depending on the dominant microbial profile.",
+      "summary": "The overlap between SIBO and IBS symptoms is one of the stronger microbiome-gut disorder associations in the literature, especially when breath-test-defined overgrowth is compared against healthy controls. What remains less certain is how much of the signal reflects a direct causal driver of IBS symptoms versus a marker of subgroup biology, particularly in constipation-predominant disease.",
+      "caveats": "Diagnostic methods vary widely, breath tests are imperfect, and prevalence estimates change materially by substrate and cutoff. Treatment-response data support the general bacterial-overgrowth hypothesis, but they do not prove that every positive breath test is the main cause of a given patient's symptoms.",
+      "evidence": [
+        {
+          "citation": "Chen B et al 2018 J Gastroenterol",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prevalence and predictors of small intestinal bacterial overgrowth in irritable bowel syndrome: a systematic review and meta-analysis.",
+          "doi": "10.1007/s00535-018-1476-9",
+          "pmid": "29761234",
+          "n_participants": 9830
+        },
+        {
+          "citation": "Gandhi A et al 2021 Gut Microbes",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Methane positive small intestinal bacterial overgrowth in inflammatory bowel disease and irritable bowel syndrome: A systematic review and meta-analysis.",
+          "doi": "10.1080/19490976.2021.1933313",
+          "pmid": "34190027",
+          "n_participants": 2366
+        },
+        {
+          "citation": "Rezaie A et al 2010 Arch Med Sci",
+          "year": 2010,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The place of antibiotics in management of irritable bowel syndrome: a systematic review and meta-analysis.",
+          "doi": "10.5114/aoms.2010.13507",
+          "pmid": "22371720",
+          "n_participants": 234
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "small_intestinal_bacterial_overgrowth",
+      "name": "Small intestinal bacterial overgrowth",
+      "kind": "condition",
+      "aliases": [
+        "SIBO"
+      ],
+      "description": "Excess bacterial colonization of the small intestine, typically inferred by breath testing or aspirate culture."
+    },
+    {
+      "slug": "ibs_symptoms",
+      "name": "IBS symptoms",
+      "kind": "condition",
+      "aliases": [
+        "irritable bowel syndrome symptoms"
+      ],
+      "description": "The abdominal pain, bloating, and bowel-habit symptoms associated with irritable bowel syndrome."
+    }
+  ]
+}
