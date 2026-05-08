@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "combined_oral_contraceptives",
+      "outcome_slug": "endometrial_cancer",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Long-term protection against endometrial cancer is one of the most durable non-contraceptive benefits of combined oral contraceptives. In a 2015 individual-participant meta-analysis of 143,019 women, every 5 years of use was associated with a risk ratio of 0.76 (95% CI 0.73 to 0.78), and older case-control data also showed risk reduction after at least a year of use.",
+      "population": "women using combined oral contraceptives in the general population",
+      "mechanism": "Combined oral contraceptives reduce endometrial proliferation by supplying progestogenic opposition to estrogen-driven growth and by suppressing ovulation-related hormonal cycling. That repeated antiproliferative effect gives a biologically plausible explanation for the persistent reduction in endometrial-cancer risk seen years after discontinuation.",
+      "summary": "The evidence for protection against endometrial cancer is strong and consistent overall. Very large pooled analyses and older case-control studies both indicate that combined oral contraceptive use lowers risk, with greater benefit after longer use and persistence of protection long after the pills are stopped.",
+      "caveats": "Not every older study was fully consistent, and formulation eras differed substantially. This edge is best read as a robust population-level protective association, not as a guarantee that every formulation or every short course will meaningfully change an individual patient’s absolute risk.",
+      "evidence": [
+        {
+          "citation": "Collaborative Group on Epidemiological Studies on Endometrial Cancer 2015 Lancet Oncol",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Endometrial cancer and oral contraceptives: an individual participant meta-analysis of 27 276 women with endometrial cancer from 36 epidemiological studies.",
+          "doi": "10.1016/S1470-2045(15)00212-0",
+          "pmid": "26254030",
+          "n_participants": 143019,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.76,
+            "ci_low": 0.73,
+            "ci_high": 0.78,
+            "comparator": "endometrial-cancer risk per 5 years of oral-contraceptive use"
+          }
+        },
+        {
+          "citation": "Cancer and Steroid Hormone Study 1987 JAMA",
+          "year": 1987,
+          "study_type": "case_control",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Combination oral contraceptive use and the risk of endometrial cancer. The Cancer and Steroid Hormone Study of the Centers for Disease Control and the National Institute of Child Health and Human Development.",
+          "pmid": "3027423",
+          "n_participants": 3624,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.6,
+            "ci_low": 0.3,
+            "ci_high": 0.9,
+            "comparator": "at least 12 months of combination oral-contraceptive use versus never use"
+          }
+        },
+        {
+          "citation": "Trapido EJ 1983 Int J Epidemiol",
+          "year": 1983,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "A prospective cohort study of oral contraceptives and cancer of the endometrium.",
+          "doi": "10.1093/ije/12.3.297",
+          "pmid": "6629618",
+          "n_participants": 97300,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.4,
+            "ci_low": 0.9,
+            "ci_high": 2.4,
+            "comparator": "oral-contraceptive use versus nonuse in a prospective cohort of women in eastern Massachusetts"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "combined_oral_contraceptives",
+      "name": "Combined oral contraceptives",
+      "kind": "drug",
+      "aliases": [
+        "the pill",
+        "estrogen-progestin oral contraceptives"
+      ],
+      "description": "Oral contraceptive pills that contain both estrogen and progestin and are used for contraception or cycle control."
+    },
+    {
+      "slug": "endometrial_cancer",
+      "name": "Endometrial cancer",
+      "kind": "condition",
+      "aliases": [
+        "uterine lining cancer",
+        "endometrial neoplasm"
+      ],
+      "description": "Malignant neoplasms arising from the endometrium."
+    }
+  ]
+}

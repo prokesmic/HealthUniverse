@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hormonal_iud_endometriosis",
+      "outcome_slug": "pelvic_pain",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The strongest pooled postoperative evidence supports a clinically meaningful pain benefit from levonorgestrel-releasing intrauterine systems in endometriosis. A 2018 meta-analysis of 491 patients found greater pain reduction after surgery (MD 12.97, 95% CI 5.55 to 20.39), while two randomized trials also reported significant improvement in chronic pelvic pain and dysmenorrhea over six months.",
+      "population": "women with confirmed endometriosis using a levonorgestrel-releasing intrauterine system for postoperative maintenance or pain control",
+      "mechanism": "Levonorgestrel-releasing intrauterine systems suppress endometrial proliferation, reduce menstrual bleeding, and create a more progestogenic local hormonal environment. In endometriosis, that combination can dampen cyclic inflammatory stimulation of ectopic lesions and reduce dysmenorrhea and chronic pelvic pain.",
+      "summary": "For endometriosis-associated pelvic pain, the literature leans clearly protective. Randomized comparisons and pooled postoperative analyses suggest LNG-IUS meaningfully improves pelvic pain and dysmenorrhea, although the effect size varies by comparator and the best evidence is strongest for postoperative maintenance rather than every endometriosis phenotype.",
+      "caveats": "This edge should be interpreted as a treatment-signal for selected patients, not proof that every hormonal IUD works equally well for every endometriosis presentation. Bleeding-pattern changes and comparator choice matter, and some trials show similar improvement to active hormonal alternatives rather than a uniquely superior effect.",
+      "evidence": [
+        {
+          "citation": "Song SY et al 2018 Eur J Obstet Gynecol Reprod Biol",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy of levonorgestrel releasing intrauterine system as a postoperative maintenance therapy of endometriosis: A meta-analysis.",
+          "doi": "10.1016/j.ejogrb.2018.10.014",
+          "pmid": "30336309",
+          "n_participants": 491,
+          "effect_quant": {
+            "metric": "MD",
+            "value": 12.97,
+            "ci_low": 5.55,
+            "ci_high": 20.39,
+            "comparator": "postoperative pain reduction with levonorgestrel-releasing intrauterine system versus comparator therapies in endometriosis studies"
+          }
+        },
+        {
+          "citation": "Petta CA et al 2005 Hum Reprod",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Randomized clinical trial of a levonorgestrel-releasing intrauterine system and a depot GnRH analogue for the treatment of chronic pelvic pain in women with endometriosis.",
+          "doi": "10.1093/humrep/deh869",
+          "pmid": "15790607",
+          "n_participants": 82
+        },
+        {
+          "citation": "Carvalho N et al 2018 Fertil Steril",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Control of endometriosis-associated pain with etonogestrel-releasing contraceptive implant and 52-mg levonorgestrel-releasing intrauterine system: randomized clinical trial.",
+          "doi": "10.1016/j.fertnstert.2018.07.003",
+          "pmid": "30396557",
+          "n_participants": 103
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hormonal_iud_endometriosis",
+      "name": "Hormonal IUD for endometriosis",
+      "kind": "drug",
+      "aliases": [
+        "levonorgestrel IUD for endometriosis",
+        "LNG-IUS in endometriosis"
+      ],
+      "description": "Use of a levonorgestrel-releasing intrauterine system as postoperative maintenance therapy or symptom control in endometriosis."
+    },
+    {
+      "slug": "pelvic_pain",
+      "name": "Pelvic pain",
+      "kind": "condition",
+      "aliases": [
+        "chronic pelvic pain",
+        "endometriosis-associated pain"
+      ],
+      "description": "Pelvic pain outcomes including chronic pelvic pain and dysmenorrhea, especially in women with endometriosis."
+    }
+  ]
+}

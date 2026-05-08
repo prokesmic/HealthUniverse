@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "combined_oral_contraceptives",
+      "outcome_slug": "cervical_cancer",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The cervical-cancer literature points toward a modest harmful signal, but it is much less settled than the ovarian or endometrial findings because HPV, sexual behavior, and screening intensity complicate interpretation. A 2024 NHANES-based case-control analysis found an adjusted OR of 1.93 (95% CI 1.16 to 3.44), while a 2017 meta-analysis of case-control studies was closer to null overall (OR 1.12, 95% CI 0.90 to 1.38).",
+      "population": "women using combined oral contraceptives, especially long-term or current users",
+      "mechanism": "Exogenous sex steroids may influence cervical epithelial biology and could promote persistence or progression of HPV-related lesions rather than initiate disease independently. That biologic story is plausible, but much of the apparent risk can also be distorted by differences in HPV exposure, sexual behavior, and cervical-screening practices.",
+      "summary": "For cervical cancer, the most defensible reading is a modest harmful signal with substantial uncertainty. Some studies, especially those focused on longer-term or current use, suggest higher risk, but pooled case-control evidence is closer to neutral and confounding by HPV remains a central limitation.",
+      "caveats": "This edge should not be interpreted as proof that oral contraceptives independently cause cervical cancer in all settings. HPV status, duration of use, screening access, and residual confounding all matter here much more than in the ovarian or endometrial cancer associations.",
+      "evidence": [
+        {
+          "citation": "Peng Y et al 2017 J Obstet Gynaecol Res",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Is oral contraceptive use associated with an increased risk of cervical cancer? An evidence-based meta-analysis.",
+          "doi": "10.1111/jog.13291",
+          "pmid": "28759170",
+          "n_participants": 15619,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.12,
+            "ci_low": 0.9,
+            "ci_high": 1.38,
+            "comparator": "oral-contraceptive users versus nonusers across case-control studies of cervical cancer"
+          }
+        },
+        {
+          "citation": "Guo C et al 2024 Front Pharmacol",
+          "year": 2024,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association between oral contraceptives and cervical cancer: A retrospective case-control study based on the National Health and Nutrition Examination Survey.",
+          "doi": "10.3389/fphar.2024.1400667",
+          "pmid": "39086392",
+          "n_participants": 7496,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.93,
+            "ci_low": 1.16,
+            "ci_high": 3.44,
+            "comparator": "oral-contraceptive use versus nonuse after multivariable adjustment in NHANES women"
+          }
+        },
+        {
+          "citation": "Zondervan KT et al 1996 Br J Cancer",
+          "year": 1996,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Oral contraceptives and cervical cancer--further findings from the Oxford Family Planning Association contraceptive study.",
+          "doi": "10.1038/bjc.1996.247",
+          "pmid": "8630295",
+          "n_participants": 17000,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.4,
+            "ci_low": 1.0,
+            "ci_high": 1.96,
+            "comparator": "ever oral-contraceptive use versus never use for all cervical neoplasia types combined in the Oxford Family Planning Association study"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "combined_oral_contraceptives",
+      "name": "Combined oral contraceptives",
+      "kind": "drug",
+      "aliases": [
+        "the pill",
+        "estrogen-progestin oral contraceptives"
+      ],
+      "description": "Oral contraceptive pills that contain both estrogen and progestin and are used for contraception or cycle control."
+    },
+    {
+      "slug": "cervical_cancer",
+      "name": "Cervical cancer",
+      "kind": "condition",
+      "aliases": [
+        "cervix cancer",
+        "cervical neoplasia"
+      ],
+      "description": "Cervical cancer and related cervical neoplastic disease, strongly shaped by persistent high-risk HPV infection."
+    }
+  ]
+}
