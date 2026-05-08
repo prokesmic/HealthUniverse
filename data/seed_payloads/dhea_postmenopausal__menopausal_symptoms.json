@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "dhea_postmenopausal",
+      "outcome_slug": "menopausal_symptoms",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The best synthesis does not support a broad, reliable improvement in menopausal symptoms. A 2015 Cochrane review of 28 trials involving 1,273 women found no quality-of-life improvement versus placebo (SMD 0.16, 95% CI -0.03 to 0.34), inconsistent symptom results overall, and slightly improved sexual function (SMD 0.31, 95% CI 0.07 to 0.55). Meanwhile, oral DHEA failed to improve menopausal quality-of-life scores in a 93-woman trial, whereas intravaginal prasterone improved dyspareunia and vaginal dryness in vulvovaginal atrophy studies.",
+      "population": "peri- or postmenopausal women using oral or intravaginal dehydroepiandrosterone to relieve menopausal symptoms",
+      "mechanism": "DHEA is an adrenal precursor that can be converted locally into estrogens and androgens, so any benefit depends strongly on route of administration and target tissue. That biology fits the literature: broad systemic symptom relief is inconsistent, while local intravaginal administration can improve vulvovaginal symptoms more convincingly than oral supplementation improves overall wellbeing.",
+      "summary": "For menopausal symptoms overall, DHEA is best read as mixed rather than clearly beneficial. Broad oral supplementation has not consistently improved quality of life or menopausal symptom scores, but intravaginal prasterone shows more convincing benefits for selected genitourinary and sexual symptoms of menopause.",
+      "caveats": "This edge bundles different routes and goals under one umbrella, which is part of why the evidence looks uneven. Oral DHEA, transdermal use, and intravaginal prasterone should not be assumed equivalent, and androgenic side effects remain a real consideration with systemic exposure.",
+      "evidence": [
+        {
+          "citation": "Scheffers CS et al 2015 Cochrane Database Syst Rev",
+          "year": 2015,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Dehydroepiandrosterone for women in the peri- or postmenopausal phase.",
+          "doi": "10.1002/14651858.CD011066.pub2",
+          "pmid": "25879093",
+          "n_participants": 1273,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.16,
+            "ci_low": -0.03,
+            "ci_high": 0.34,
+            "comparator": "quality-of-life improvement with DHEA versus placebo"
+          }
+        },
+        {
+          "citation": "Panjari M et al 2009 J Sex Med",
+          "year": 2009,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "A randomized trial of oral DHEA treatment for sexual function, well-being, and menopausal symptoms in postmenopausal women with low libido.",
+          "doi": "10.1111/j.1743-6109.2009.01381.x",
+          "pmid": "19619146",
+          "n_participants": 93
+        },
+        {
+          "citation": "Labrie F et al 2017 Menopause",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Combined data of intravaginal prasterone against vulvovaginal atrophy of menopause.",
+          "doi": "10.1097/GME.0000000000000910",
+          "pmid": "28640161",
+          "n_participants": 696,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -0.46,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "change in most bothersome symptom dyspareunia severity with intravaginal prasterone versus placebo"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "dhea_postmenopausal",
+      "name": "DHEA in postmenopausal women",
+      "kind": "supplement",
+      "aliases": [
+        "postmenopausal DHEA",
+        "prasterone or DHEA supplementation after menopause"
+      ],
+      "description": "Use of oral or intravaginal dehydroepiandrosterone in peri- or postmenopausal women."
+    },
+    {
+      "slug": "menopausal_symptoms",
+      "name": "Menopausal symptoms",
+      "kind": "condition",
+      "aliases": [
+        "climacteric symptoms",
+        "vasomotor and genitourinary menopausal symptoms"
+      ],
+      "description": "Menopause-related symptoms including hot flashes, night sweats, sexual symptoms, and quality-of-life burden."
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vaginal_estrogen",
+      "outcome_slug": "recurrent_uti_postmenopausal",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Low-dose vaginal estrogen has one of the cleaner urinary benefits in postmenopausal care. A Cochrane review found that vaginal estrogen reduced recurrent UTI versus placebo in two trials, with risk ratios of 0.25 and 0.64 depending on formulation. The classic estriol trial also reduced UTI episodes from 5.9 to 0.5 per patient-year, and a 2024 trial reported a 26% lower UTI incidence rate with ultra-low-dose estriol gel.",
+      "population": "postmenopausal women with recurrent urinary tract infections, especially those with urogenital atrophy or genitourinary syndrome of menopause",
+      "mechanism": "Vaginal estrogen restores the hypoestrogenic mucosa toward a premenopausal state, lowers vaginal pH, and supports lactobacillus recolonization. Those local changes reduce enteric colonization and likely lower susceptibility to ascending urinary infection.",
+      "summary": "The evidence leans clearly protective for postmenopausal recurrent UTI prevention when estrogen is delivered vaginally rather than systemically. Older and newer randomized trials consistently show fewer recurrences and biologic improvement in the vaginal environment, even though formulation-specific results are not identical.",
+      "caveats": "This edge does not apply to systemic estrogen, which has not shown the same preventive effect. Benefit also depends on adherence, formulation, and whether recurrent UTI is being driven mainly by hypoestrogenic urogenital change rather than other structural or behavioral factors.",
+      "evidence": [
+        {
+          "citation": "Perrotta C et al 2008 Cochrane Database Syst Rev",
+          "year": 2008,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Oestrogens for preventing recurrent urinary tract infection in postmenopausal women.",
+          "doi": "10.1002/14651858.CD005131.pub2",
+          "pmid": "18425910",
+          "n_participants": 3345,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.25,
+            "ci_low": 0.13,
+            "ci_high": 0.50,
+            "comparator": "one vaginal estrogen regimen versus placebo for recurrent urinary tract infection prevention in postmenopausal women"
+          }
+        },
+        {
+          "citation": "Raz R et al 1993 N Engl J Med",
+          "year": 1993,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A controlled trial of intravaginal estriol in postmenopausal women with recurrent urinary tract infections.",
+          "doi": "10.1056/NEJM199309093291102",
+          "pmid": "8350884",
+          "n_participants": 93,
+          "effect_quant": {
+            "metric": "rate_ratio",
+            "value": 0.08,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "urinary tract infection episodes per patient-year with intravaginal estriol versus placebo (0.5 vs 5.9)"
+          }
+        },
+        {
+          "citation": "Muiños Fernández N et al 2024 Maturitas",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and safety of an ultra-low-dose 0.005 % estriol vaginal gel in the prevention of urinary tract infections in postmenopausal women with genitourinary syndrome of menopause: A randomized double-blind placebo-controlled trial.",
+          "doi": "10.1016/j.maturitas.2024.108128",
+          "pmid": "39388913",
+          "n_participants": 108,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.74,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "urinary tract infection incidence rate with estriol vaginal gel versus placebo over 24 weeks"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vaginal_estrogen",
+      "name": "Vaginal estrogen therapy",
+      "kind": "drug",
+      "aliases": [
+        "topical vaginal estrogen",
+        "local estrogen therapy"
+      ],
+      "description": "Low-dose estrogen delivered locally to the vagina as cream, gel, tablet, or ring."
+    },
+    {
+      "slug": "recurrent_uti_postmenopausal",
+      "name": "Recurrent urinary tract infection after menopause",
+      "kind": "condition",
+      "aliases": [
+        "recurrent UTI in postmenopausal women",
+        "postmenopausal recurrent cystitis"
+      ],
+      "description": "Repeated urinary tract infection episodes in postmenopausal women."
+    }
+  ]
+}

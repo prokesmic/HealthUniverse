@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "phytoestrogens_isoflavones",
+      "outcome_slug": "hot_flash_frequency",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The pooled literature suggests a small benefit for some women, but the signal is inconsistent across formulations and newer reviews. An equol-focused meta-analysis found significant hot-flash score improvement in 728 women, and a recent soy-based randomized trial reduced severe hot flashes by 92% in the intervention arm, yet a 2025 review of 533 participants found no significant effect on hot flushes or vasomotor symptoms overall.",
+      "population": "peri- or postmenopausal women using soy or red-clover isoflavones to manage vasomotor symptoms",
+      "mechanism": "Isoflavones are weak phytoestrogens that can bind estrogen receptors and may partially offset vasomotor instability after menopause. Their clinical effect likely depends on dose, formulation, equol-producer status, baseline symptom severity, and whether the supplement contains isolated compounds or whole-food soy fractions.",
+      "summary": "The overall evidence is mixed but leans toward a small benefit for some women, especially with certain soy or equol-rich interventions. Meta-analyses and newer trials show that hot-flash burden can improve, but the heterogeneity is high enough that the benefit does not look uniform across all isoflavone preparations or all vasomotor endpoints.",
+      "caveats": "This should not be framed as a reliable substitute for systemic estrogen in women with severe vasomotor symptoms. Formulation differences, placebo response, variable equol production, and generally modest effect sizes make the results uneven across studies.",
+      "evidence": [
+        {
+          "citation": "Daily JW et al 2019 J Med Food",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Equol Decreases Hot Flashes in Postmenopausal Women: A Systematic Review and Meta-Analysis of Randomized Clinical Trials.",
+          "doi": "10.1089/jmf.2018.4265",
+          "pmid": "30592686",
+          "n_participants": 728
+        },
+        {
+          "citation": "Kahleova H et al 2025 Maturitas",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Isoflavones and changes in body weight and severe hot flashes in postmenopausal women: A secondary analysis of a randomized clinical trial.",
+          "doi": "10.1016/j.maturitas.2025.108661",
+          "pmid": "40663878",
+          "n_participants": 84,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -0.92,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "severe hot flash frequency in the soy-supplemented intervention group over 12 weeks"
+          }
+        },
+        {
+          "citation": "Luan H et al 2025 PeerJ",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effects of soy isoflavones on menopausal symptoms in perimenopausal women: a systematic review and meta-analysis.",
+          "doi": "10.7717/peerj.19715",
+          "pmid": "40718787",
+          "n_participants": 533
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "phytoestrogens_isoflavones",
+      "name": "Phytoestrogen isoflavones",
+      "kind": "nutrient",
+      "aliases": [
+        "soy isoflavones",
+        "red clover isoflavones"
+      ],
+      "description": "Isoflavone phytoestrogens from soy, red clover, or related supplements used to manage menopausal symptoms."
+    },
+    {
+      "slug": "hot_flash_frequency",
+      "name": "Hot flash frequency",
+      "kind": "condition",
+      "aliases": [
+        "vasomotor symptom frequency",
+        "number of hot flashes"
+      ],
+      "description": "The frequency of menopausal hot flashes or vasomotor episodes."
+    }
+  ]
+}
