@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "pcos",
+      "outcome_slug": "insulin_resistance",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Insulin resistance is a core metabolic feature of PCOS rather than a peripheral association. In a large clamp-based cohort, 74.9% of women with PCOS were insulin resistant, including 59.3% of normal-weight women, 77.5% of overweight women, and 93.9% of obese women. Earlier mechanistic case-control clamp studies also found significantly reduced insulin sensitivity in PCOS independent of obesity.",
+      "population": "women of reproductive age with polycystic ovary syndrome, including both lean and overweight phenotypes",
+      "mechanism": "PCOS is linked to intrinsic post-receptor defects in insulin signaling and reduced insulin-mediated glucose disposal, with obesity adding an additional acquired burden. The result is compensatory hyperinsulinemia that amplifies ovarian androgen production, ovulatory dysfunction, and broader metabolic risk.",
+      "summary": "This is one of the strongest edges in the map. Gold-standard clamp studies and larger metabolic cohorts consistently show that insulin resistance is common in PCOS, including among women who are not obese, which is why the relationship is best treated as a central pathogenic feature rather than a coincidental comorbidity.",
+      "caveats": "The degree of insulin resistance varies across PCOS phenotypes and is worsened by adiposity, so not every patient has the same metabolic burden. Even so, the evidence is strong enough that a harmful direction is much more defensible than a neutral reading.",
+      "evidence": [
+        {
+          "citation": "TosiF et al 2017 Hum Reprod",
+          "year": 2017,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Insulin resistance in a large cohort of women with polycystic ovary syndrome: a comparison between euglycaemic-hyperinsulinaemic clamp and surrogate indexes.",
+          "doi": "10.1093/humrep/dex308",
+          "pmid": "29040529",
+          "n_participants": 375,
+          "effect_quant": {
+            "metric": "prevalence",
+            "value": 0.749,
+            "comparator": "prevalence of insulin resistance by euglycaemic-hyperinsulinaemic clamp among women with PCOS in a large metabolic cohort"
+          }
+        },
+        {
+          "citation": "DunaifA et al 1992 Diabetes",
+          "year": 1992,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Evidence for distinctive and intrinsic defects in insulin action in polycystic ovary syndrome.",
+          "doi": "10.2337/diab.41.10.1257",
+          "pmid": "1397698",
+          "n_participants": 62
+        },
+        {
+          "citation": "DunaifA et al 1993 Diabetes",
+          "year": 1993,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Ethnicity and polycystic ovary syndrome are associated with independent and additive decreases in insulin action in Caribbean-Hispanic women.",
+          "doi": "10.2337/diab.42.10.1462",
+          "pmid": "8375585",
+          "n_participants": 36
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "pcos",
+      "name": "Polycystic ovary syndrome",
+      "kind": "condition",
+      "aliases": [
+        "PCOS"
+      ],
+      "description": "A common endocrine disorder characterized by hyperandrogenism, ovulatory dysfunction, and polycystic ovarian morphology."
+    },
+    {
+      "slug": "insulin_resistance",
+      "name": "Insulin resistance",
+      "kind": "condition",
+      "aliases": [
+        "reduced insulin sensitivity",
+        "hyperinsulinemic insulin resistance"
+      ],
+      "description": "Reduced biological response to insulin, often associated with compensatory hyperinsulinemia and adverse metabolic outcomes."
+    }
+  ]
+}

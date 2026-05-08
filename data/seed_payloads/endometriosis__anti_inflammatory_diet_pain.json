@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "endometriosis",
+      "outcome_slug": "anti_inflammatory_diet_pain",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Dietary strategies aimed at lowering inflammation may reduce some forms of endometriosis pain, but the evidence is mixed and intervention-specific. A 2024 meta-analysis of randomized dietary trials found antioxidant supplementation reduced dysmenorrhea (MD -1.95, 95% CI -3.78 to -0.13) but did not clearly improve chronic pelvic pain. A recent omega-3 cohort also reported greater odds of clinically meaningful pain reduction (OR 3.06, 95% CI 1.85 to 5.06), while a 2025 omega-3 meta-analysis found no clear pooled pain effect.",
+      "population": "women with confirmed endometriosis using anti-inflammatory or exclusion-style dietary interventions as adjunctive symptom management",
+      "mechanism": "Endometriosis is a chronic inflammatory condition, so diets or supplements that lower pro-inflammatory signaling could plausibly reduce cytokine-driven nociception and pelvic pain. Benefits may vary by nutrient composition, adherence, gut sensitivity, and baseline inflammatory phenotype.",
+      "summary": "The evidence leans protective but is still early and uneven. Some dietary interventions, especially selected supplements or targeted exclusion diets, appear to improve dysmenorrhea or global pain in subsets of patients, yet pooled trial evidence remains heterogeneous enough that a modest, cautious interpretation is the most defensible.",
+      "caveats": "This edge should not be read as proof that one universal anti-inflammatory diet reliably treats endometriosis pain. Trials are small, heterogeneous, and often combine supplements with broader dietary advice, so the current signal is promising but not definitive.",
+      "evidence": [
+        {
+          "citation": "MeneghettiJK et al 2024 Arch Gynecol Obstet",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of Dietary Interventions on Endometriosis: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+          "doi": "10.1007/s43032-024-01701-w",
+          "pmid": "39358652",
+          "n_participants": 716,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -1.95,
+            "ci_low": -3.78,
+            "ci_high": -0.13,
+            "comparator": "dysmenorrhea score with antioxidant dietary supplementation versus placebo in randomized endometriosis trials"
+          }
+        },
+        {
+          "citation": "HuangY et al 2026 Front Nutr",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Omega-3 polyunsaturated fatty acid intake and pain, inflammatory cytokines, and quality of life in endometriosis.",
+          "doi": "10.3389/fnut.2026.1768244",
+          "pmid": "41859665",
+          "n_participants": 289,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 3.06,
+            "ci_low": 1.85,
+            "ci_high": 5.06,
+            "comparator": "clinically meaningful pain improvement with adjunctive omega-3 supplementation versus conventional therapy alone in endometriosis"
+          }
+        },
+        {
+          "citation": "LiuE et al 2025 Clinics (Sao Paulo)",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of omega-3 polyunsaturated fatty acid on endometriosis.",
+          "doi": "10.1016/j.clinsp.2025.100654",
+          "pmid": "40273491",
+          "n_participants": 424,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -0.387,
+            "ci_low": -1.742,
+            "ci_high": 0.967,
+            "comparator": "pain score with omega-3 polyunsaturated fatty acids versus control across randomized endometriosis trials"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "endometriosis",
+      "name": "Endometriosis",
+      "kind": "condition",
+      "aliases": [],
+      "description": "A chronic inflammatory gynecologic condition characterized by endometrium-like tissue outside the uterus and often associated with pelvic pain."
+    },
+    {
+      "slug": "anti_inflammatory_diet_pain",
+      "name": "Pain response to anti-inflammatory diet",
+      "kind": "condition",
+      "aliases": [
+        "diet-related pain reduction",
+        "anti-inflammatory diet effect on pain"
+      ],
+      "description": "Change in endometriosis-related pain outcomes in response to anti-inflammatory or targeted dietary interventions."
+    }
+  ]
+}

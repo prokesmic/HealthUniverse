@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "metformin_pcos",
+      "outcome_slug": "ovulation_rate",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across randomized evidence, metformin improves ovulation compared with placebo and can improve ovulation when added to clomiphene in selected PCOS populations. A 2019 Cochrane review found higher ovulation rates versus placebo (OR 2.64, 95% CI 1.85 to 3.75) and higher ovulation rates for metformin plus clomiphene versus clomiphene alone (OR 1.65, 95% CI 1.35 to 2.03).",
+      "population": "women with polycystic ovary syndrome and oligo-ovulation or anovulatory infertility, especially those with insulin resistance or obesity",
+      "mechanism": "Metformin lowers hepatic glucose output and improves insulin sensitivity, which can reduce compensatory hyperinsulinemia and downstream ovarian androgen excess. That metabolic shift can help restore follicular maturation and ovulation in some women with PCOS.",
+      "summary": "The protective effect is real but not universal. Metformin tends to work better as an adjunct or in selected metabolic phenotypes than as a magic standalone fertility drug, which is why pooled reproductive evidence is positive overall but individual trials can look neutral depending on comparator and patient subgroup.",
+      "caveats": "The ovulatory benefit is heterogeneous by body mass index, comparator, and treatment context. In particular, some clomiphene-combination trials found little added value, so this edge should be read as a probabilistic fertility aid rather than a guaranteed ovulation inducer.",
+      "evidence": [
+        {
+          "citation": "SharpeA et al 2019 Cochrane Database Syst Rev",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Metformin for ovulation induction (excluding gonadotrophins) in women with polycystic ovary syndrome.",
+          "doi": "10.1002/14651858.CD013505",
+          "pmid": "31845767",
+          "n_participants": 4552,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 2.64,
+            "ci_low": 1.85,
+            "ci_high": 3.75,
+            "comparator": "ovulation with metformin versus placebo or no treatment in women with PCOS"
+          }
+        },
+        {
+          "citation": "MorinPapunenL et al 2012 J Clin Endocrinol Metab",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Metformin improves pregnancy and live-birth rates in women with polycystic ovary syndrome (PCOS): a multicenter, double-blind, placebo-controlled randomized trial.",
+          "doi": "10.1210/jc.2011-3061",
+          "pmid": "22419702",
+          "n_participants": 320,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.6,
+            "ci_low": 1.13,
+            "ci_high": 2.27,
+            "comparator": "chance of pregnancy with metformin plus standard infertility treatment versus placebo-based care in anovulatory PCOS"
+          }
+        },
+        {
+          "citation": "MollE et al 2006 BMJ",
+          "year": 2006,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Effect of clomifene citrate plus metformin and clomifene citrate plus placebo on induction of ovulation in women with newly diagnosed polycystic ovary syndrome: randomised double blind clinical trial.",
+          "doi": "10.1136/bmj.38867.631551.55",
+          "pmid": "16769748",
+          "n_participants": 225,
+          "effect_quant": {
+            "metric": "risk_difference",
+            "value": -0.08,
+            "ci_low": -0.2,
+            "ci_high": 0.04,
+            "comparator": "ovulation rate with clomifene citrate plus metformin versus clomifene citrate plus placebo in newly diagnosed PCOS"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "metformin_pcos",
+      "name": "Metformin for PCOS",
+      "kind": "drug",
+      "aliases": [
+        "metformin in polycystic ovary syndrome",
+        "insulin-sensitizing therapy for PCOS"
+      ],
+      "description": "Use of metformin in women with polycystic ovary syndrome to improve metabolic or reproductive outcomes."
+    },
+    {
+      "slug": "ovulation_rate",
+      "name": "Ovulation rate",
+      "kind": "process",
+      "aliases": [
+        "frequency of ovulation",
+        "anovulation reversal"
+      ],
+      "description": "The proportion or frequency of cycles in which ovulation occurs during treatment or follow-up."
+    }
+  ]
+}
