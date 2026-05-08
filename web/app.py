@@ -20,7 +20,10 @@ def datetime_now():
     return datetime.now()
 from profile import (COOKIE, Profile, decode, encode, relevance_score,  # noqa
                      make_sync_token, verify_sync_token, _PROFILE_FIELDS)
-from web.illustrations import (   # noqa: E402
+# Cached-art adapter: looks up data/art_manifest.json and returns either
+# the cached <img> snippet or the procedural SVG fallback. Same call
+# signatures as the originals in web/illustrations.py.
+from web.generated_art import (   # noqa: E402
     edge_svg, hero_svg, featured_card_svg, discovery_card_svg, strength_wave_svg,
 )
 
