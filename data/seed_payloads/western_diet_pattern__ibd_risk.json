@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "western_diet_pattern",
+      "outcome_slug": "ibd_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2020 meta-analysis of 9 studies with 1491 IBD cases and 53,089 controls found a Western dietary pattern associated with all IBD (RR 1.92, 95% CI 1.37-2.68); in 208,834 participants from 3 US prospective cohorts, the highest quartile of dietary inflammatory potential carried a 51% higher risk of Crohn disease (HR 1.51, 95% CI 1.10-2.07).",
+      "population": "adults and adolescents in observational cohorts and case-control studies evaluating pre-illness dietary patterns before Crohn disease or ulcerative colitis diagnosis",
+      "mechanism": "A Western dietary pattern combines refined grains, processed meat, animal fat, and low fiber, which may promote dysbiosis, reduce SCFA generation, increase intestinal permeability, and bias mucosal immunity toward chronic intestinal inflammation.",
+      "summary": "The overall literature leans toward a harmful association between Western-style eating patterns and later IBD, particularly Crohn disease. The signal is not perfectly uniform across all pooled analyses, but the higher-quality syntheses and large prospective inflammatory-pattern data point in an unfavorable direction.",
+      "caveats": "Most evidence is observational and dietary-pattern definitions vary between studies. Associations appear stronger for Crohn disease than for ulcerative colitis, and Western-pattern scores can overlap with other pro-inflammatory lifestyle factors.",
+      "evidence": [
+        {
+          "citation": "Zhang YZ et al 2020 J Gastroenterol Hepatol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Systematic review and meta-analysis: Association of a pre-illness Western dietary pattern with the risk of developing inflammatory bowel disease.",
+          "doi": "10.1111/1751-2980.12910",
+          "pmid": "32463159",
+          "n_participants": 54580
+        },
+        {
+          "citation": "Rashvand S et al 2020 Z Gastroenterol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "A posteriori dietary patterns and risk of inflammatory bowel disease: a meta-analysis of observational studies.",
+          "doi": "10.1024/0300-9831/a000508",
+          "pmid": "31711373",
+          "n_participants": 264211
+        },
+        {
+          "citation": "LoCH et al 2020 Gastroenterology",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Dietary Inflammatory Potential and Risk of Crohn's Disease and Ulcerative Colitis.",
+          "doi": "10.1053/j.gastro.2020.05.011",
+          "pmid": "32389666",
+          "n_participants": 208834
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "western_diet_pattern",
+      "name": "Western dietary pattern",
+      "kind": "behavior",
+      "aliases": [
+        "Western diet",
+        "Western-style eating pattern"
+      ],
+      "description": "A dietary pattern typically high in refined grains, processed meat, animal fat, sugar, and low in fruit, vegetables, and fiber."
+    },
+    {
+      "slug": "ibd_risk",
+      "name": "Inflammatory bowel disease risk",
+      "kind": "condition",
+      "aliases": [
+        "risk of Crohn disease or ulcerative colitis"
+      ],
+      "description": "Likelihood of later developing inflammatory bowel disease, including Crohn disease or ulcerative colitis."
+    }
+  ]
+}
