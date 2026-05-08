@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "donepezil",
+      "outcome_slug": "mild_cognitive_impairment",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Donepezil shows modest short-term symptomatic effects in mild cognitive impairment but no durable prevention signal. In the landmark 3-year trial, donepezil did not significantly reduce progression to Alzheimer disease overall (HR 0.80, 95% CI 0.57 to 1.13), although benefit was seen during the first 12 months. A 2022 meta-analysis of 17 controlled studies found improved MMSE scores (SMD 0.85, 95% CI 0.40 to 1.31) but no significant delay in disease progression and more gastrointestinal adverse effects.",
+      "population": "adults with amnestic or otherwise defined mild cognitive impairment and no dementia diagnosis at baseline",
+      "mechanism": "Donepezil augments synaptic acetylcholine and can temporarily improve attention or memory test performance in prodromal Alzheimer-spectrum states. The problem is that symptomatic cholinergic support does not appear to reliably alter the underlying neurodegenerative trajectory in most mild cognitive impairment populations.",
+      "summary": "This edge is best described as mixed rather than clearly protective. Donepezil can modestly improve some cognitive test scores in mild cognitive impairment, especially over shorter follow-up, but the higher-quality long-term trial and the Cochrane review do not support a durable reduction in progression to Alzheimer disease, and adverse effects are common.",
+      "caveats": "The MCI label is heterogeneous, so some subgroups may be closer to prodromal Alzheimer disease and more likely to show transient benefit than others. That heterogeneity helps explain why symptomatic measures can move while hard progression outcomes remain largely unchanged.",
+      "evidence": [
+        {
+          "citation": "BirksJ et al 2006 Cochrane Database Syst Rev",
+          "year": 2006,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Donepezil for mild cognitive impairment.",
+          "doi": "10.1002/14651858.CD006104",
+          "pmid": "16856114",
+          "n_participants": 782,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.84,
+            "ci_low": 0.57,
+            "ci_high": 1.25,
+            "comparator": "diagnosis of Alzheimer disease or another dementia after 3 years with donepezil versus placebo"
+          }
+        },
+        {
+          "citation": "PetersenRC et al 2005 N Engl J Med",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Vitamin E and donepezil for the treatment of mild cognitive impairment.",
+          "doi": "10.1056/NEJMoa050151",
+          "pmid": "15829527",
+          "n_participants": 769,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.8,
+            "ci_low": 0.57,
+            "ci_high": 1.13,
+            "comparator": "progression from mild cognitive impairment to Alzheimer disease with donepezil versus placebo over 3 years"
+          }
+        },
+        {
+          "citation": "ZhangX et al 2022 Clin Neurol Neurosurg",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Efficacy and safety of donepezil for mild cognitive impairment: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.clineuro.2022.107134",
+          "pmid": "35078087",
+          "n_participants": 2847,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.85,
+            "ci_low": 0.4,
+            "ci_high": 1.31,
+            "comparator": "MMSE score with donepezil versus control in patients with mild cognitive impairment"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "donepezil",
+      "name": "Donepezil",
+      "kind": "drug",
+      "aliases": [
+        "Aricept",
+        "acetylcholinesterase inhibitor donepezil"
+      ],
+      "description": "An acetylcholinesterase inhibitor used mainly for symptomatic treatment of Alzheimer disease and studied in prodromal cognitive states."
+    },
+    {
+      "slug": "mild_cognitive_impairment",
+      "name": "Mild cognitive impairment",
+      "kind": "condition",
+      "aliases": [
+        "MCI",
+        "amnestic mild cognitive impairment"
+      ],
+      "description": "A clinical state of measurable cognitive impairment without established dementia, often considered a risk state for progression to Alzheimer disease."
+    }
+  ]
+}

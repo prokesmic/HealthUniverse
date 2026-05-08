@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "dementia_with_antipsychotics",
+      "outcome_slug": "mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The most policy-relevant cohorts show meaningfully higher death risk among people with dementia treated with antipsychotics. In U.S. nursing-home residents, conventional antipsychotics carried a 26% higher mortality hazard than atypicals, and in Finnish community-dwelling Alzheimer disease patients any antipsychotic use was associated with an adjusted hazard ratio of 1.61 for mortality. A newer 2026 meta-analysis restricted to community-dwelling adults with dementia and neuropsychiatric symptoms was more equivocal overall, with pooled aHR 1.06, but still found class differences and persistent uncertainty rather than reassurance.",
+      "population": "older adults with dementia, especially those treated with antipsychotics for behavioral or neuropsychiatric symptoms in community or nursing-home settings",
+      "mechanism": "Antipsychotics can increase mortality through sedation, aspiration, pneumonia, falls, stroke, arrhythmia, and worsening frailty in already vulnerable patients with dementia. The hazard is not identical across agents, but the class sits on a biologically plausible pathway to short-term decompensation and death.",
+      "summary": "The overall signal still leans harmful. The strongest older cohort studies consistently show excess mortality with antipsychotic treatment in dementia, especially early after initiation and with higher-risk agents such as haloperidol, while the more recent community-only meta-analysis narrows but does not erase the concern.",
+      "caveats": "These data are mostly observational and vulnerable to confounding by indication because the sickest or most behaviorally disturbed patients are often the ones prescribed antipsychotics. That said, the black-box warning did not arise from a single noisy study, and the repeated short-term mortality signal across settings keeps the harm interpretation credible.",
+      "evidence": [
+        {
+          "citation": "LiperotiR et al 2009 J Clin Psychiatry",
+          "year": 2009,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "All-cause mortality associated with atypical and conventional antipsychotics among nursing home residents with dementia: a retrospective cohort study.",
+          "doi": "10.4088/JCP.08m04597yel",
+          "pmid": "19906339",
+          "n_participants": 9729,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.26,
+            "ci_low": 1.13,
+            "ci_high": 1.42,
+            "comparator": "conventional versus atypical antipsychotic use for all-cause mortality in nursing-home residents with dementia"
+          }
+        },
+        {
+          "citation": "KoponenM et al 2017 J Alzheimers Dis",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Risk of Mortality Associated with Antipsychotic Monotherapy and Polypharmacy Among Community-Dwelling Persons with Alzheimer's Disease.",
+          "doi": "10.3233/JAD-160671",
+          "pmid": "27935554",
+          "n_participants": 70718,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.61,
+            "ci_low": 1.53,
+            "ci_high": 1.7,
+            "comparator": "incident antipsychotic use versus nonuse for non-cancer mortality among community-dwelling persons with Alzheimer's disease"
+          }
+        },
+        {
+          "citation": "O'Hara-VeintimillaK et al 2026 Dement Geriatr Cogn Disord",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "All-Cause Mortality Associated with Antipsychotic Use in People Living with Dementia and Neuropsychiatric Symptoms: Secondary Analysis of a Systematic Review and Meta-Analysis.",
+          "doi": "10.1159/000550953",
+          "pmid": "41666145",
+          "n_participants": 14183,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.06,
+            "ci_low": 0.97,
+            "ci_high": 1.16,
+            "comparator": "pooled adjusted hazard ratio for antipsychotic use versus nonuse in community-dwelling older adults with dementia and neuropsychiatric symptoms"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "dementia_with_antipsychotics",
+      "name": "Antipsychotic treatment in dementia",
+      "kind": "drug",
+      "aliases": [
+        "antipsychotic use in dementia",
+        "antipsychotics for behavioral symptoms of dementia"
+      ],
+      "description": "Exposure to antipsychotic medications in people living with dementia, typically for agitation, psychosis, or other neuropsychiatric symptoms."
+    },
+    {
+      "slug": "mortality",
+      "name": "Mortality",
+      "kind": "condition",
+      "aliases": [
+        "all-cause mortality",
+        "death risk"
+      ],
+      "description": "Risk of death from any cause over a defined follow-up period."
+    }
+  ]
+}
