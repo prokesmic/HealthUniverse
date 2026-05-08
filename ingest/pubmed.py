@@ -106,7 +106,11 @@ def _parse(art: ET.Element) -> dict:
     pmid_el = art.find(".//PMID")
     title_el = art.find(".//ArticleTitle")
     journal_el = art.find(".//Journal/Title")
-    year_el = art.find(".//PubDate/Year") or art.find(".//PubDate/MedlineDate")
+    # Note: ElementTree elements with no children are falsy, so an `or`
+    # chain doesn't work for Year (which is a leaf element).
+    year_el = art.find(".//PubDate/Year")
+    if year_el is None:
+        year_el = art.find(".//PubDate/MedlineDate")
     doi_el = art.find(".//ArticleId[@IdType='doi']")
     abstract_parts = [
         ((seg.attrib.get("Label", "") + ": ") if seg.attrib.get("Label") else "")
