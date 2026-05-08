@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "high_homocysteine",
+      "outcome_slug": "cvd",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In pooled prospective data, each 5 micromol/L higher homocysteine was associated with OR 1.32 (95% CI 1.19 to 1.45) for ischemic heart disease and 1.59 (1.29 to 1.96) for stroke; in Hordaland, the highest category had a 1.94-fold CVD hospitalization rate ratio.",
+      "population": "general adult",
+      "mechanism": "Homocysteine is linked to endothelial dysfunction, oxidative stress, thrombogenicity, and impaired nitric-oxide signaling, which together provide a plausible route from higher circulating levels to vascular events in susceptible adults.",
+      "summary": "Prospective cohorts and older meta-analyses consistently associate higher homocysteine with more cardiovascular events, although the average effect size is moderate rather than massive and later causal interpretation has remained debated. Overall the literature supports high homocysteine as a harmful vascular risk marker, especially for stroke-prone outcomes.",
+      "caveats": "Homocysteine is also a marker of folate, B12, renal, and broader metabolic status, so confounding and mediation are difficult to separate fully. The edge is stronger as a risk signal than as proof that lowering homocysteine alone will always translate into proportional event reduction.",
+      "evidence": [
+        {
+          "citation": "Wald DS et al 2002 BMJ",
+          "year": 2002,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Homocysteine and cardiovascular disease: evidence on causality from a meta-analysis.",
+          "doi": "10.1136/bmj.325.7374.1202",
+          "pmid": "12446535",
+          "n_participants": 20669
+        },
+        {
+          "citation": "Nurk E et al 2002 Arch Intern Med",
+          "year": 2002,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Plasma total homocysteine and hospitalizations for cardiovascular disease: the Hordaland Homocysteine Study.",
+          "doi": "10.1001/archinte.162.12.1374",
+          "pmid": "12076236",
+          "n_participants": 17361
+        },
+        {
+          "citation": "Schnabel R et al 2005 J Am Coll Cardiol",
+          "year": 2005,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Glutathione peroxidase-1 and homocysteine for cardiovascular risk prediction: results from the AtheroGene study.",
+          "doi": "10.1016/j.jacc.2005.02.070",
+          "pmid": "15893179",
+          "n_participants": 643
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "high_homocysteine",
+      "name": "High homocysteine",
+      "kind": "biomarker",
+      "aliases": [],
+      "description": "High circulating homocysteine as a clinically relevant biomarker."
+    }
+  ]
+}
