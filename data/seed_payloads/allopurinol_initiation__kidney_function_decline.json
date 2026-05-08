@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "allopurinol_initiation",
+      "outcome_slug": "kidney_function_decline",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The older renal-protection literature favored allopurinol, with one long-term randomized follow-up showing fewer renal events with treatment (HR 0.32, 95% CI 0.15 to 0.69). More recent placebo-controlled trials in CKD and type 1 diabetes did not confirm slower eGFR decline, so the present signal is best read as modest and context-dependent rather than settled.",
+      "population": "adults with hyperuricemia, gout, or chronic kidney disease who are initiating allopurinol, especially those with mild to moderate CKD",
+      "mechanism": "Allopurinol lowers urate and reduces xanthine-oxidase-related oxidative stress, which may lessen intrarenal inflammation and endothelial injury. In CKD, careful low-dose initiation and titration can also avoid abrupt adverse effects while still achieving serum urate reduction.",
+      "summary": "The protective readout is plausible but not uniform. Earlier small randomized studies suggested allopurinol initiation could preserve kidney function, whereas larger modern placebo-controlled trials found no meaningful slowing of eGFR decline, leaving a residual possibility that benefit is confined to selected hyperuricemic CKD phenotypes rather than being universal.",
+      "caveats": "This edge should not be read as proof that allopurinol broadly prevents CKD progression in every setting. The evidence is heterogeneous across gout, diabetic kidney disease, and non-gout CKD populations, and the 'slow titration' part is more of a safety-and-implementation principle than a directly tested renal endpoint.",
+      "evidence": [
+        {
+          "citation": "GoicoecheaM et al 2015 Am J Kidney Dis",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Allopurinol and progression of CKD and cardiovascular events: long-term follow-up of a randomized clinical trial.",
+          "doi": "10.1053/j.ajkd.2014.11.016",
+          "pmid": "25595565",
+          "n_participants": 113,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.32,
+            "ci_low": 0.15,
+            "ci_high": 0.69,
+            "comparator": "renal events with allopurinol versus standard treatment during initial and long-term follow-up in CKD"
+          }
+        },
+        {
+          "citation": "SharbafFG et al 2024 J Pediatr Pharmacol Ther",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and Safety of Allopurinol on Chronic Kidney Disease Progression: A Systematic Review and Meta-Analysis.",
+          "doi": "10.5863/1551-6776-29.4.359",
+          "pmid": "39144382",
+          "n_participants": 698,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 2.04,
+            "ci_low": 0.6,
+            "ci_high": 3.49,
+            "comparator": "estimated glomerular filtration rate with allopurinol versus control across randomized CKD trials"
+          }
+        },
+        {
+          "citation": "BadveSV et al 2020 N Engl J Med",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Effects of Allopurinol on the Progression of Chronic Kidney Disease.",
+          "doi": "10.1056/NEJMoa1915833",
+          "pmid": "32579811",
+          "n_participants": 369,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -0.1,
+            "ci_low": -1.18,
+            "ci_high": 0.97,
+            "comparator": "difference in annual eGFR change with allopurinol versus placebo in CKD-FIX"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "allopurinol_initiation",
+      "name": "Allopurinol initiation",
+      "kind": "drug",
+      "aliases": [
+        "starting allopurinol",
+        "new allopurinol therapy"
+      ],
+      "description": "Initiation and early titration of allopurinol therapy, usually for hyperuricemia or gout, including in patients with chronic kidney disease."
+    },
+    {
+      "slug": "kidney_function_decline",
+      "name": "Kidney function decline",
+      "kind": "condition",
+      "aliases": [
+        "eGFR decline",
+        "progressive renal impairment"
+      ],
+      "description": "Worsening kidney function over time, often reflected by declining estimated glomerular filtration rate or renal event progression."
+    }
+  ]
+}

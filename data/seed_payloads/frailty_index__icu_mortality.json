@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "frailty_index",
+      "outcome_slug": "icu_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Across ICU studies, higher frailty consistently predicts greater mortality. A meta-analysis of 13 observational studies with 64,279 participants found frailty associated with increased short-term mortality (RR 1.70, 95% CI 1.45 to 1.98) and in-hospital mortality (RR 1.73, 95% CI 1.55 to 1.93). In a geriatric ICU cohort using a deficit-accumulation frailty index, each 1% increase in the index was associated with an 11% increase in 30-day mortality risk.",
+      "population": "older adults admitted to intensive care units, especially patients aged 65 years or older evaluated for frailty before or at ICU admission",
+      "mechanism": "A higher frailty index represents multisystem deficit accumulation and reduced physiologic reserve. Under the stress of critical illness, frail patients are less able to tolerate organ dysfunction, invasive support, and prolonged recovery, making early mortality more likely.",
+      "summary": "This is a strong harmful prognostic edge. Whether measured directly with a frailty index or pooled across closely related frailty tools, baseline frailty in older ICU patients consistently identifies a group with substantially higher short-term mortality and poorer downstream outcomes.",
+      "caveats": "Not every ICU study uses the exact same frailty instrument, so the pooled literature blends deficit-accumulation indices with other validated frailty measures. That means the edge is best interpreted as support for frailty-index-like vulnerability as a mortality predictor, rather than as a claim about one single scoring format only.",
+      "evidence": [
+        {
+          "citation": "XiaF et al 2021 Front Med (Lausanne)",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of Frailty With the Risk of Mortality and Resource Utilization in Elderly Patients in Intensive Care Units: A Meta-Analysis.",
+          "doi": "10.3389/fmed.2021.637446",
+          "pmid": "34671610",
+          "n_participants": 64279,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.7,
+            "ci_low": 1.45,
+            "ci_high": 1.98,
+            "comparator": "short-term mortality in frail versus non-frail older adults admitted to intensive care units"
+          }
+        },
+        {
+          "citation": "ZengA et al 2015 J Gerontol A Biol Sci Med Sci",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Mortality in Relation to Frailty in Patients Admitted to a Specialized Geriatric Intensive Care Unit.",
+          "doi": "10.1093/gerona/glv084",
+          "pmid": "26400736",
+          "n_participants": 155,
+          "effect_quant": {
+            "metric": "relative_risk_increase",
+            "value": 0.11,
+            "ci_low": 0.07,
+            "ci_high": 0.15,
+            "comparator": "increase in 30-day mortality risk for each 1% increase in frailty index at ICU admission"
+          }
+        },
+        {
+          "citation": "LauneyY et al 2019 Ann Intensive Care",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Risk factors of frailty and death or only frailty after intensive care in non-frail elderly patients: a prospective non-interventional study.",
+          "doi": "10.1186/s40560-019-0403-3",
+          "pmid": "31687161",
+          "n_participants": 136,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.11,
+            "ci_low": 1.04,
+            "ci_high": 1.19,
+            "comparator": "frailty or death at 6 months per additional day of mechanical ventilation among initially non-frail elderly ICU patients"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "icu_mortality",
+      "name": "ICU mortality",
+      "kind": "condition",
+      "aliases": [
+        "intensive care mortality",
+        "critical care death risk"
+      ],
+      "description": "Death during intensive care admission or closely related short-term mortality outcomes after ICU care."
+    }
+  ]
+}
