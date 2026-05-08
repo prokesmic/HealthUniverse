@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "low_dose_aspirin",
+      "outcome_slug": "gi_bleeding_elderly",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In ASPREE, 19,114 adults aged 70 years or older had a 60% increase in major gastrointestinal bleeding overall on aspirin, including an upper-GI bleed hazard ratio of 1.87 (95% CI 1.32 to 2.66); in the JPPP trial of 14,464 adults aged 60 to 85 years, low-dose aspirin increased extracranial hemorrhage requiring transfusion or hospitalization (HR 1.85, 95% CI 1.22 to 2.81).",
+      "population": "older adults taking low-dose aspirin for primary prevention",
+      "mechanism": "Aspirin irreversibly inhibits platelet cyclooxygenase-1 and also weakens gastroduodenal mucosal defenses, making clinically important upper-GI bleeding more likely in older adults. Age, comorbidity burden, chronic kidney disease, hypertension, smoking, and concomitant antithrombotics amplify that baseline hazard.",
+      "summary": "Low-dose aspirin meaningfully increases gastrointestinal bleeding risk in older adults, especially in primary-prevention settings where cardiovascular benefit is limited or absent. The age dependence is strong enough that serious GI bleeding becomes one of the central reasons many guidelines now avoid routine aspirin initiation in the elderly.",
+      "caveats": "This edge is most relevant to primary prevention and does not automatically override clear secondary-prevention indications. Absolute risk varies sharply with age, kidney function, blood pressure, ulcer history, and use of other antithrombotic or ulcerogenic drugs.",
+      "evidence": [
+        {
+          "citation": "Mahady SE et al 2021 Gut",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Major GI bleeding in older persons using aspirin: incidence and risk factors in the ASPREE randomised controlled trial.",
+          "doi": "10.1136/gutjnl-2020-321585",
+          "pmid": "32747412",
+          "n_participants": 19114
+        },
+        {
+          "citation": "Ikeda Y et al 2014 JAMA",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Low-dose aspirin for primary prevention of cardiovascular events in Japanese patients 60 years or older with atherosclerotic risk factors: a randomized clinical trial.",
+          "doi": "10.1001/jama.2014.15690",
+          "pmid": "25401325",
+          "n_participants": 14464
+        },
+        {
+          "citation": "Fukushi K et al 2018 World J Gastroenterol",
+          "year": 2018,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Gastroduodenal ulcer bleeding in elderly patients on low dose aspirin therapy.",
+          "doi": "10.3748/wjg.v24.i34.3908",
+          "pmid": "30228784",
+          "n_participants": 1105
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "gi_bleeding_elderly",
+      "name": "GI bleeding in older adults",
+      "kind": "condition",
+      "aliases": [
+        "elderly gastrointestinal bleeding"
+      ],
+      "description": "Clinically significant gastrointestinal bleeding risk in older adults."
+    }
+  ]
+}

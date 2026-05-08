@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "proton_pump_inhibitors",
+      "outcome_slug": "b12_deficiency",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2023 meta-analysis found vitamin B12 deficiency was modestly more common in PPI users than non-users (OR 1.42, 95% CI 1.16 to 1.73), while a 2025 biomarker-focused meta-analysis of 3859 participants found no clear difference in total serum B12 or homocysteine between chronic PPI users and controls.",
+      "population": "adults on long-term proton pump inhibitor therapy, especially older adults",
+      "mechanism": "Gastric acid helps liberate food-bound vitamin B12 from dietary proteins, so long-term acid suppression may gradually reduce absorption of native dietary cobalamin. The effect is likely small and more apparent in people with polypharmacy, poor intake, older age, or already marginal stores.",
+      "summary": "The long-term PPI and B12 literature points toward a small harmful signal, but it is not one of the most settled medication-nutrient relationships in the dataset. Risk appears real enough to justify monitoring in higher-risk chronic users, while newer biomarker-focused syntheses suggest the average effect may be weaker than older observational analyses implied.",
+      "caveats": "Evidence is heterogeneous because studies use different B12 biomarkers, exposure windows, and populations. This edge should be interpreted as a modest risk modifier rather than a reason to abandon an otherwise necessary PPI automatically.",
+      "evidence": [
+        {
+          "citation": "Choudhury A et al 2023 Expert Rev Gastroenterol Hepatol",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Vitamin B12 deficiency and use of proton pump inhibitors: a systematic review and meta-analysis.",
+          "doi": "10.1080/17474124.2023.2204229",
+          "pmid": "37060552",
+          "n_participants": 30922
+        },
+        {
+          "citation": "Hamad S et al 2025 Cureus",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "A Systematic Review of Long-Term Use of Proton Pump Inhibitors (PPIs) in Older Adults on Polypharmacy: Do PPIs Deplete Nutrients?",
+          "doi": "10.7759/cureus.90888",
+          "pmid": "40995253",
+          "n_participants": 693
+        },
+        {
+          "citation": "Parnham O et al 2025 Cureus",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Association Between Long-Term Proton Pump Inhibitor Therapy and Vitamin B12 Status: A Systematic Review and Meta-Analysis.",
+          "doi": "10.7759/cureus.90038",
+          "pmid": "40823471",
+          "n_participants": 3859
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "b12_deficiency",
+      "name": "B12 deficiency",
+      "kind": "condition",
+      "aliases": [
+        "vitamin B12 deficiency",
+        "cobalamin deficiency"
+      ],
+      "description": "Clinically or biochemically meaningful vitamin B12 deficiency."
+    }
+  ]
+}
