@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "acetylcholinesterase_inhibitors",
+      "outcome_slug": "bradycardia",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Acetylcholinesterase inhibitors have a reproducible negative chronotropic signal in dementia populations. In a Veterans Affairs cohort, cholinesterase inhibitor use was associated with a 40% higher bradycardia risk overall and a dose-response signal for donepezil, with high-dose users showing HR 2.10 (95% CI 1.5 to 2.9). A large Ontario cohort also found more hospital visits for bradycardia (HR 1.69, 95% CI 1.32 to 2.15) alongside higher syncope and pacemaker rates among treated patients.",
+      "population": "older adults with dementia treated with acetylcholinesterase inhibitors such as donepezil, rivastigmine, or galantamine",
+      "mechanism": "Acetylcholinesterase inhibitors enhance parasympathetic cholinergic signaling, which can slow sinus-node firing and atrioventricular conduction. In older adults with conduction disease, concomitant rate-slowing drugs, or limited physiologic reserve, that vagotonic effect can become clinically relevant as bradycardia, syncope, or pacemaker need.",
+      "summary": "This is a credible harmful safety edge rather than an isolated case concern. Large observational cohorts consistently show higher rates of bradycardia and related syncopal outcomes among dementia patients taking acetylcholinesterase inhibitors, particularly at higher donepezil doses.",
+      "caveats": "The absolute event rate remains modest, and randomized trials often under-detect these harms because participants are healthier and follow-up is shorter than in real-world dementia care. The practical takeaway is not that these drugs are never usable, but that baseline conduction risk and concurrent rate-slowing medications matter.",
+      "evidence": [
+        {
+          "citation": "HernandezRK et al 2009 J Am Geriatr Soc",
+          "year": 2009,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cholinesterase inhibitors and incidence of bradycardia in patients with dementia in the veterans affairs new England healthcare system.",
+          "doi": "10.1111/j.1532-5415.2009.02488.x",
+          "pmid": "19793162",
+          "n_participants": 11328,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.4,
+            "ci_low": 1.1,
+            "ci_high": 1.6,
+            "comparator": "incident bradycardia with any cholinesterase inhibitor use versus no treatment in dementia"
+          }
+        },
+        {
+          "citation": "GillSS et al 2009 Arch Intern Med",
+          "year": 2009,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Syncope and its consequences in patients with dementia receiving cholinesterase inhibitors: a population-based cohort study.",
+          "doi": "10.1001/archinternmed.2009.43",
+          "pmid": "19433698",
+          "n_participants": 81302,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.69,
+            "ci_low": 1.32,
+            "ci_high": 2.15,
+            "comparator": "hospital visits for bradycardia with cholinesterase inhibitor use versus no cholinesterase inhibitor use in older adults with dementia"
+          }
+        },
+        {
+          "citation": "IsikAT et al 2018 J Am Geriatr Soc",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Cardiovascular Outcomes of Cholinesterase Inhibitors in Individuals with Dementia: A Meta-Analysis and Systematic Review.",
+          "doi": "10.1111/jgs.15415",
+          "pmid": "29851022",
+          "n_participants": 2505132,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.4,
+            "ci_low": 0.76,
+            "ci_high": 2.59,
+            "comparator": "bradycardic events in cholinesterase inhibitor users versus controls across pooled analyses"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "acetylcholinesterase_inhibitors",
+      "name": "Acetylcholinesterase inhibitors",
+      "kind": "drug",
+      "aliases": [
+        "cholinesterase inhibitors",
+        "donepezil, rivastigmine, galantamine"
+      ],
+      "description": "Drugs that inhibit acetylcholinesterase and are used for symptomatic treatment of Alzheimer disease and related dementias."
+    },
+    {
+      "slug": "bradycardia",
+      "name": "Bradycardia",
+      "kind": "condition",
+      "aliases": [
+        "slow heart rate",
+        "symptomatic bradycardia"
+      ],
+      "description": "Abnormally slow heart rate, sometimes causing dizziness, syncope, conduction abnormalities, or pacemaker need."
+    }
+  ]
+}
