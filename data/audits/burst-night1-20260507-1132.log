@@ -1,0 +1,77 @@
+[Thu May  7 11:32:20 CEST 2026] burst night 1 starting · args=--max-edges 50 --days-back 14 --per-entity 12
+[burst] switching Gemma model 'gemma4:26b' → 'llama3:8b'
+[burst] start_id=911 max_edges=50 days_back=14 per_entity=12 cap_tier=C
+[burst] pass 1/1  days_back=14
+[ingest] entities: 364 factors, 299 outcomes
+[ingest] fetching abstracts (days_back=14) ...
+[ingest] 776 unique papers fetched
+  ... 60/776
+  ... 70/776
+  ... 80/776
+  ... 90/776
+  ... 120/776
+  ... 130/776
+  ... 150/776
+  ... 170/776
+  ... 180/776
+  ... 190/776
+  ... 200/776
+  ... 210/776
+  ... 220/776
+  ... 240/776
+  ... 260/776
+  ... 270/776
+  ... 280/776
+  ... 290/776
+  ... 300/776
+  ... 310/776
+  ... 320/776
+  ... 330/776
+  ... 340/776
+  ... 350/776
+  ... 360/776
+  ... 370/776
+  ... 380/776
+  ... 390/776
+  ... 400/776
+  ... 410/776
+  ... 450/776
+  ... 460/776
+  ... 470/776
+  ... 480/776
+  ... 500/776
+  ... 510/776
+  ... 520/776
+  ... 540/776
+  ... 550/776
+  ... 560/776
+  ... 570/776
+  ... 580/776
+  ... 610/776
+  ... 620/776
+  ... 630/776
+  ... 640/776
+  ... 660/776
+  ... 690/776
+  ... 700/776
+  ... 710/776
+  ... 730/776
+  ... 740/776
+  ... 750/776
+  ... 760/776
+  ... 770/776
+[ingest] done: {'papers': 776, 'claims': 1470, 'new_edges': 88, 'tier_changes': 45, 'escalations': [{'edge_id': 912, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'aerobic_exercise', 'outcome': 'cvd_risk_reclassification'}, {'edge_id': 913, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'resistance_training', 'outcome': 'muscular_strength'}, {'edge_id': 914, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'vitamin_d', 'outcome': 'bone_density'}, {'edge_id': 929, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'omega3', 'outcome': 'cvd_risk_reclassification'}, {'edge_id': 925, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'coffee_with_meal', 'outcome': 'cognitive_function'}, {'edge_id': 933, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'exercise_dose_high', 'outcome': 'cvd_risk_reclassification'}, {'edge_id': 920, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'vitamin_d', 'outcome': 'cvd_risk_reclassification'}, {'edge_id': 931, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'vitamin_d', 'outcome': 'osteoporosis_postmenopausal'}, {'edge_id': 916, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'coffee_with_meal', 'outcome': 'cognitive_function_older'}, {'edge_id': 930, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'aerobic_exercise', 'outcome': 'cognitive_function'}, {'edge_id': 923, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'vitamin_d', 'outcome': 'cognitive_function'}, {'edge_id': 915, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'mediterranean_diet', 'outcome': 'cvd_risk_reclassification'}, {'edge_id': 965, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'alcohol_evening', 'outcome': 'cvd_risk_reclassification'}, {'edge_id': 921, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'alcohol', 'outcome': 'cvd_risk_reclassification'}, {'edge_id': 964, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'alcohol_evening', 'outcome': 'depression_remission'}, {'edge_id': 966, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'coffee_with_meal', 'outcome': 'cvd_risk_reclassification'}, {'edge_id': 974, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'vitamin_b12', 'outcome': 'cognitive_function'}, {'edge_id': 919, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'vitamin_d', 'outcome': 'osteoporosis'}, {'edge_id': 956, 'old_tier': 'C', 'new_tier': 'B', 'escalate': True, 'factor': 'iron_supplementation', 'outcome': 'cognitive_function'}, {'edge_id': 123, 'old_tier': 'C', 'new_tier': 'A', 'escalate': True, 'factor': 'aerobic_exercise', 'outcome': 'depression'}]}
+[burst] new edges so far: 88 / 50
+[burst] cap hit, stopping
+
+[burst] done in 548.4 min
+  new edges:   88
+  new studies: 244
+  capped tiers: 19
+  log: /Users/michalai/HealthUniverse/data/audits/burst-20260507-1132.json
+
+Next steps:
+  1. python seed_from_payloads.py validate --verify   # validate any new payloads
+  2. python audit_tiers.py --since 1 --max 50         # Claude audit on burst additions
+  3. git add -A && git commit && git push             # ship the additions
+[Thu May  7 20:40:46 CEST 2026] burst night 1 complete

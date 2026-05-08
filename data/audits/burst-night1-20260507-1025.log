@@ -1,0 +1,19 @@
+[Thu May  7 10:25:23 CEST 2026] burst night 1 starting · args=--max-edges 50 --days-back 14 --per-entity 12
+[burst] start_id=905 max_edges=50 days_back=14 per_entity=12 cap_tier=C
+[burst] pass 1/1  days_back=14
+[ingest] entities: 364 factors, 299 outcomes
+[ingest] fetching abstracts (days_back=14) ...
+[burst] pass aborted: Client error '429 Too Many Requests' for url 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=42074056&rettype=abstract&retmode=xml'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429
+
+[burst] done in 0.6 min
+  new edges:   0
+  new studies: 0
+  capped tiers: 0
+  log: /Users/michalai/HealthUniverse/data/audits/burst-20260507-1025.json
+
+Next steps:
+  1. python seed_from_payloads.py validate --verify   # validate any new payloads
+  2. python audit_tiers.py --since 1 --max 50         # Claude audit on burst additions
+  3. git add -A && git commit && git push             # ship the additions
+[Thu May  7 10:26:01 CEST 2026] burst night 1 complete
