@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "beta_blockers_chronic",
+      "outcome_slug": "frailty_progression",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "Direct evidence that chronic beta-blockers accelerate frailty progression is weak. The clearest class-specific cohort found a slightly lower risk of worsening frailty among people with diabetes using beta-blockers (HR 0.93, 95% CI 0.88 to 0.98), while heart-failure cohorts mostly show that frailer patients are less likely to receive or continue beta-blockers rather than showing that beta-blockers themselves worsen frailty. In elderly heart-failure cohorts, beta-blocker-based guideline therapy retained outcome benefits even in physically frail patients.",
+      "population": "older adults with chronic cardiometabolic disease, especially diabetes or heart failure, who are exposed to long-term beta-blocker therapy",
+      "mechanism": "Beta-blockers can theoretically worsen fatigue, exercise tolerance, and orthostatic symptoms, which could contribute to frailty features in susceptible patients. At the same time, in conditions such as heart failure or ischemic disease they may preserve reserve by preventing decompensation, arrhythmia, and recurrent hospitalization, making the net effect on frailty progression plausibly heterogeneous.",
+      "summary": "This edge is best treated as mixed and low-certainty. One large cohort suggests beta-blockers may modestly lower the risk of frailty worsening, but most of the surrounding literature is indirect and reflects confounding by indication and selective underprescribing in people who are already frail.",
+      "caveats": "The biggest limitation is that the literature is not built around a clean randomized question of beta-blocker exposure causing or preventing frailty progression. Much of the evidence instead comes from observational studies in heart failure where frailty changes prescribing patterns, so causality remains unsettled.",
+      "evidence": [
+        {
+          "citation": "WangJ et al 2024 NPJ Aging",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The impact of blood pressure lowering agents on the risk of worsening frailty among patients with diabetes mellitus: a cohort study.",
+          "doi": "10.1038/s41514-024-00173-1",
+          "pmid": "39375355",
+          "n_participants": 41440,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.93,
+            "ci_low": 0.88,
+            "ci_high": 0.98,
+            "comparator": "worsening frailty among β-blocker users versus nonusers with diabetes mellitus"
+          }
+        },
+        {
+          "citation": "LiuP et al 2021 Qual Life Res",
+          "year": 2021,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Association of frailty with quality of life in older hypertensive adults: a cross-sectional study.",
+          "doi": "10.1007/s11136-021-02816-2",
+          "pmid": "33728552",
+          "n_participants": 291
+        },
+        {
+          "citation": "AbeT et al 2023 ESC Heart Fail",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The interaction between physical frailty and prognostic impact of heart failure medication in elderly patients.",
+          "doi": "10.1002/ehf2.14114",
+          "pmid": "36824014",
+          "n_participants": 1021,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.5,
+            "ci_low": 0.34,
+            "ci_high": 0.75,
+            "comparator": "1-year mortality with combined RAAS inhibitor and β-blocker therapy versus neither drug in elderly patients with HFr/mrEF"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "beta_blockers_chronic",
+      "name": "Chronic beta-blocker use",
+      "kind": "drug",
+      "aliases": [
+        "long-term beta blocker therapy",
+        "β-blocker maintenance treatment"
+      ],
+      "description": "Sustained treatment with beta-adrenergic antagonists for hypertension, heart failure, ischemic heart disease, or related conditions."
+    },
+    {
+      "slug": "frailty_progression",
+      "name": "Frailty progression",
+      "kind": "condition",
+      "aliases": [
+        "worsening frailty",
+        "frailty deterioration"
+      ],
+      "description": "Worsening of frailty status over time, including transition from robust or prefrail states toward greater physical vulnerability."
+    }
+  ]
+}

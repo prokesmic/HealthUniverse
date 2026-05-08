@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "statins_long_term",
+      "outcome_slug": "cataract_risk",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The cataract literature around long-term statin use is mixed rather than settled. A 2017 meta-analysis involving more than 313,200 participants found a modest increase in cataract risk in pooled cohort studies (RR 1.13, 95% CI 1.01 to 1.25), but no significant signal in case-control studies or randomized trials. Large observational datasets have reported slightly higher cataract or cataract-surgery risk with statin use, while an older population-based eye cohort found lower incident cataract risk among statin users.",
+      "population": "middle-aged and older adults receiving long-term statin therapy for primary or secondary cardiovascular prevention",
+      "mechanism": "A harm hypothesis argues that prolonged cholesterol-lowering could alter lens membrane biology or oxidative balance, whereas a benefit hypothesis points to statins' anti-inflammatory and endothelial effects. The conflicting observational literature suggests that confounding by healthcare use, cardiometabolic risk, and surveillance intensity may be at least as important as any direct lens effect.",
+      "summary": "This edge is best kept mixed. Some large observational cohorts show a small increase in cataract or cataract-surgery risk with sustained statin use, but pooled randomized evidence does not confirm a clear causal effect and at least one long-term eye cohort suggested lower cataract incidence among statin users.",
+      "caveats": "Cataract diagnosis and cataract surgery are vulnerable to detection bias because people taking statins often have more healthcare contact. Given the weak and inconsistent magnitude of effect relative to the cardiovascular benefits of statins, this signal should be interpreted cautiously and not as a reason to avoid otherwise indicated treatment.",
+      "evidence": [
+        {
+          "citation": "YuS et al 2017 J Am Heart Assoc",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Statin Use and the Risk of Cataracts: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1161/JAHA.116.004180",
+          "pmid": "28320745",
+          "n_participants": 313200,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.13,
+            "ci_low": 1.01,
+            "ci_high": 1.25,
+            "comparator": "pooled cohort-study cataract risk with statin use versus nonuse"
+          }
+        },
+        {
+          "citation": "WiseSJ et al 2014 Can J Cardiol",
+          "year": 2014,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Statin use and risk for cataract: a nested case-control study of 2 populations in Canada and the United States.",
+          "doi": "10.1016/j.cjca.2014.08.020",
+          "pmid": "25475465",
+          "n_participants": 1308220,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.27,
+            "ci_low": 1.24,
+            "ci_high": 1.3,
+            "comparator": "adjusted cataract risk with any statin use versus nonuse in the British Columbia cohort"
+          }
+        },
+        {
+          "citation": "TanJS et al 2007 Am J Ophthalmol",
+          "year": 2007,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Statin use and the long-term risk of incident cataract: the Blue Mountains Eye Study.",
+          "doi": "10.1016/j.ajo.2006.11.027",
+          "pmid": "17386279",
+          "n_participants": 3654,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.52,
+            "ci_low": 0.29,
+            "ci_high": 0.93,
+            "comparator": "incident any cataract with statin use versus nonuse over long-term follow-up"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "statins_long_term",
+      "name": "Long-term statin use",
+      "kind": "drug",
+      "aliases": [
+        "chronic statin therapy",
+        "sustained HMG-CoA reductase inhibitor use"
+      ],
+      "description": "Ongoing statin treatment used over extended periods for lipid lowering and cardiovascular prevention."
+    },
+    {
+      "slug": "cataract_risk",
+      "name": "Cataract risk",
+      "kind": "condition",
+      "aliases": [
+        "incident cataract",
+        "cataract surgery risk"
+      ],
+      "description": "Risk of developing clinically significant cataract or requiring cataract surgery."
+    }
+  ]
+}
