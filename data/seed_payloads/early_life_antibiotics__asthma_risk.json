@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "early_life_antibiotics",
+      "outcome_slug": "asthma_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In 152,622 Tennessee children, each additional infant antibiotic prescription was associated with 20% higher odds of childhood asthma (aOR 1.20, 95% CI 1.19-1.20); in a Swedish nationwide cohort of 493,785 children, prenatal exposure showed HR 1.28 in the cohort analysis but 0.99 in sibling analysis, while respiratory-indication antibiotics in childhood were linked to HR 4.12 in the cohort and 2.36 in sibling analysis.",
+      "population": "children exposed to antibiotics during fetal life or infancy in large observational cohorts and birth cohorts",
+      "mechanism": "Antibiotics may alter early microbial colonization and immune training in ways that could promote later airway inflammation, but the same association can also be inflated by respiratory infections or family-level susceptibility that drive both antibiotic prescribing and asthma risk.",
+      "summary": "Early-life antibiotic exposure is repeatedly associated with a higher later risk of childhood asthma, especially in large administrative and cohort datasets. The relationship survives some adjustments and dose-response analyses, but it weakens meaningfully once sibling comparisons and confounding-by-indication are considered.",
+      "caveats": "This is one of the clearest examples where a real observational signal does not automatically mean a clean causal effect. Respiratory infections, clinician prescribing behavior, and shared family factors explain part of the association, so the safest interpretation is harmful association with substantial residual confounding.",
+      "evidence": [
+        {
+          "citation": "Donovan BM et al 2020 Clin Infect Dis",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Dose, Timing, and Type of Infant Antibiotic Use and the Risk of Childhood Asthma.",
+          "doi": "10.1093/cid/ciz448",
+          "pmid": "31149702",
+          "n_participants": 152622
+        },
+        {
+          "citation": "Ortqvist AK et al 2014 BMJ",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Antibiotics in fetal and early life and subsequent childhood asthma: nationwide population based study with sibling analysis.",
+          "doi": "10.1136/bmj.g6979",
+          "pmid": "25432937",
+          "n_participants": 493785
+        },
+        {
+          "citation": "Kozyrskyj AL et al 2004 Clin Exp Allergy",
+          "year": 2004,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Antibiotic use in the first year of life and asthma in early childhood.",
+          "doi": "10.1111/j.1365-2222.2004.01994.x",
+          "pmid": "15248843",
+          "n_participants": 4408
+        },
+        {
+          "citation": "Kusel MMH et al 2010 Clin Exp Allergy",
+          "year": 2010,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Relation of early antibiotic use to childhood asthma: confounding by indication?",
+          "doi": "10.1111/j.1365-2222.2010.03539.x",
+          "pmid": "20545705",
+          "n_participants": 424
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "early_life_antibiotics",
+      "name": "Early-life antibiotics",
+      "kind": "activity",
+      "aliases": [
+        "infant antibiotic exposure",
+        "childhood antibiotic exposure",
+        "antibiotics in infancy"
+      ],
+      "description": "Systemic antibiotic exposure during pregnancy, infancy, or early childhood."
+    },
+    {
+      "slug": "asthma_risk",
+      "name": "Asthma risk",
+      "kind": "condition",
+      "aliases": [
+        "childhood asthma risk",
+        "later asthma incidence"
+      ],
+      "description": "Likelihood of later developing childhood asthma."
+    }
+  ]
+}
