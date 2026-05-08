@@ -38,6 +38,10 @@ import argparse
 import json
 import shutil
 import sys
+import time
+import urllib.parse
+import urllib.request
+import urllib.error
 from datetime import datetime
 from pathlib import Path
 
@@ -145,6 +149,159 @@ def cmd_export(args: argparse.Namespace) -> None:
     print("         Ship the prompts/ or renders/pending/ directory to your")
     print("         rendering machine. Each job's output_filename tells you")
     print("         the exact name to save the rendered image as in done/.")
+
+
+# ─────────────────────────────────────────────────────────────────────
+# render — call a free image-gen API for each pending job (no GPU needed)
+# ─────────────────────────────────────────────────────────────────────
+
+POLLINATIONS_URL = "https://image.pollinations.ai/prompt/{prompt}"
+
+# Pollinations free tier sometimes leaks a thin watermark band along the
+# lower-left, despite nologo=true. We render a few extra pixels of height,
+# then crop the bottom band back off to the requested size. Net effect:
+# clean output at the size the caller asked for.
+_WATERMARK_PAD_PX = 48
+
+
+def _strip_watermark(raw: bytes, target_w: int, target_h: int) -> bytes:
+    """Crop the bottom watermark band off a Pollinations JPEG and return
+    a JPEG at exactly target_w × target_h. Falls back to the original
+    bytes on any error so we never lose a render."""
+    try:
+        from io import BytesIO
+        from PIL import Image
+        im = Image.open(BytesIO(raw))
+        w, h = im.size
+        # If the API delivered the padded size, crop the bottom strip.
+        if h > target_h:
+            im = im.crop((0, 0, w, target_h))
+        elif h == target_h and h > 80:
+            # Same size came back — chop a thin bottom band proportional
+            # to the requested padding, then resize back up to target_h.
+            im = im.crop((0, 0, w, h - _WATERMARK_PAD_PX))
+            im = im.resize((target_w, target_h), Image.LANCZOS)
+        # If width drifted, resize.
+        if im.size != (target_w, target_h):
+            im = im.resize((target_w, target_h), Image.LANCZOS)
+        out = BytesIO()
+        im.convert("RGB").save(out, format="JPEG", quality=88, optimize=True)
+        return out.getvalue()
+    except Exception:
+        return raw
+
+
+def _render_one(job: dict, out_dir: Path, *, model: str, timeout: int,
+                retries: int, retry_sleep: float) -> tuple[bool, str]:
+    """Render a single job via Pollinations.ai. Saves the image as .jpg
+    (the API returns JPEG) and writes a sidecar JSON next to it whose
+    output_filename matches. Returns (ok, message)."""
+    prompt = job.get("prompt") or ""
+    if not prompt:
+        return False, "empty prompt"
+    seed = int(job.get("seed") or 0)
+    size = job.get("size") or [800, 520]
+    width, height = int(size[0]), int(size[1])
+
+    base_name = job.get("output_filename") or f"{job['factor_slug']}__{job['outcome_slug']}__{job.get('kind','featured')}.webp"
+    # Pollinations returns JPEG — switch the extension so the file on
+    # disk matches its real format. The sidecar carries this name so
+    # `import` writes the right manifest entry.
+    img_name = Path(base_name).stem + ".jpg"
+    img_path = out_dir / img_name
+    if img_path.exists() and img_path.stat().st_size > 5_000:
+        return True, f"skip (already rendered): {img_name}"
+
+    # Render a slightly taller image so we can crop the watermark band.
+    api_height = height + _WATERMARK_PAD_PX
+    qs = urllib.parse.urlencode({
+        "width":   width,
+        "height":  api_height,
+        "seed":    seed,
+        "model":   model,
+        "nologo":  "true",
+        "private": "true",
+        "enhance": "true",
+        "safe":    "true",
+    })
+    url = POLLINATIONS_URL.format(prompt=urllib.parse.quote(prompt, safe="")) + "?" + qs
+
+    last_err = ""
+    for attempt in range(1, retries + 1):
+        try:
+            req = urllib.request.Request(url, headers={
+                "User-Agent": "HealthUniverse-art-pipeline/1.0",
+                "Accept": "image/*",
+            })
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                data = resp.read()
+            if len(data) < 5_000:
+                last_err = f"tiny response ({len(data)} bytes)"
+            else:
+                cleaned = _strip_watermark(data, width, height)
+                tmp = img_path.with_suffix(".part")
+                tmp.write_bytes(cleaned)
+                tmp.replace(img_path)
+                # Sidecar so `import` picks up the right output_filename
+                # (with the corrected .jpg extension) without touching prompts/.
+                sidecar = img_path.with_suffix(".json")
+                sidecar_job = {**job, "output_filename": img_name,
+                               "rendered_at": datetime.now().isoformat(timespec="seconds"),
+                               "renderer": "pollinations",
+                               "model": model}
+                sidecar.write_text(json.dumps(sidecar_job, indent=2, sort_keys=True))
+                return True, f"ok: {img_name} ({len(data)//1024} KB)"
+        except urllib.error.HTTPError as e:
+            last_err = f"HTTP {e.code}"
+        except urllib.error.URLError as e:
+            last_err = f"URL error: {e.reason}"
+        except Exception as e:
+            last_err = f"{type(e).__name__}: {e}"
+        if attempt < retries:
+            time.sleep(retry_sleep * attempt)  # linear backoff
+    return False, last_err or "unknown error"
+
+
+def cmd_render(args: argparse.Namespace) -> None:
+    """Call a free image-gen API for every job in renders/pending/ (or
+    prompts/ if pending is empty), saving outputs into renders/done/.
+
+    Default provider is Pollinations.ai — free, no auth, ~3-5 sec/image.
+    Re-running is safe: existing images in done/ are skipped."""
+    src_dir = PENDING_DIR if any(PENDING_DIR.glob("*.json")) else PROMPTS_DIR
+    DONE_DIR.mkdir(parents=True, exist_ok=True)
+    jobs = sorted(src_dir.glob("*.json"))
+    if args.limit:
+        jobs = jobs[: args.limit]
+    if not jobs:
+        print(f"[render] no jobs found in {src_dir}")
+        return
+    print(f"[render] {len(jobs)} job(s) from {src_dir.name}/ → {DONE_DIR}")
+    print(f"         provider=pollinations model={args.model} "
+          f"timeout={args.timeout}s retries={args.retries}")
+    ok = skipped = failed = 0
+    t0 = time.time()
+    for i, jf in enumerate(jobs, 1):
+        try:
+            job = json.loads(jf.read_text())
+        except Exception as e:
+            print(f"  [{i}/{len(jobs)}] ! parse {jf.name}: {e}")
+            failed += 1
+            continue
+        good, msg = _render_one(
+            job, DONE_DIR, model=args.model, timeout=args.timeout,
+            retries=args.retries, retry_sleep=args.retry_sleep)
+        tag = "✓" if good else "✗"
+        print(f"  [{i:>3}/{len(jobs)}] {tag} {jf.stem[:50]:50s} {msg}")
+        if good:
+            if msg.startswith("skip"): skipped += 1
+            else: ok += 1
+        else:
+            failed += 1
+        if args.sleep > 0 and i < len(jobs):
+            time.sleep(args.sleep)
+    dt = time.time() - t0
+    print(f"[render] done in {dt:.1f}s — {ok} ok, {skipped} skipped, {failed} failed")
 
 
 # ─────────────────────────────────────────────────────────────────────
@@ -278,6 +435,21 @@ def main():
 
     p = sub.add_parser("export", help="Mirror prompts/ to renders/pending/")
     p.set_defaults(func=cmd_export)
+
+    p = sub.add_parser("render", help="Call free image-gen API for each pending job")
+    p.add_argument("--model", default="flux",
+                   help="Pollinations model (flux, flux-realism, turbo, etc.)")
+    p.add_argument("--timeout", type=int, default=120,
+                   help="Per-request timeout in seconds (default 120)")
+    p.add_argument("--retries", type=int, default=3,
+                   help="Retry attempts per job on failure (default 3)")
+    p.add_argument("--retry-sleep", type=float, default=4.0,
+                   help="Base seconds between retries — multiplied by attempt #")
+    p.add_argument("--sleep", type=float, default=0.5,
+                   help="Seconds to wait between successful jobs (default 0.5)")
+    p.add_argument("--limit", type=int, default=0,
+                   help="Render only the first N jobs (0 = all)")
+    p.set_defaults(func=cmd_render)
 
     p = sub.add_parser("import", help="Pull rendered images into the manifest")
     p.set_defaults(func=cmd_import)

@@ -88,6 +88,44 @@ def _pick_composition(scene: str) -> str:
     }.get(scene, "centred subject, soft horizon")
 
 
+def _subject_phrase(scene: str, factor_name: str, outcome_name: str) -> str:
+    """Render the factor/outcome reference in a way that doesn't push
+    the model toward portraits. Each scene gets its own framing."""
+    f, o = factor_name.lower(), outcome_name.lower()
+    if scene == "heart-currents":
+        return (f"Anatomical heart sculpture in still water, faint ripples "
+                f"suggesting {f}'s effect on {o}.")
+    if scene == "cellular-tides":
+        return (f"Microscopic abstract cellular pattern evoking {o}, "
+                f"with a small motif of {f} hidden in the negative space.")
+    if scene == "brain-constellation":
+        return (f"Stylised constellation of soft golden dots forming a brain "
+                f"silhouette, hinting at {f} and {o}. No human figure.")
+    if scene == "moonlit-stillness":
+        return (f"Empty bedroom window at twilight, single moon, suggesting "
+                f"{f} and {o}. Interior architecture only, no people.")
+    if scene == "soft-horizon-figure":
+        return (f"Distant minimalist landscape at dawn, soft fog, suggesting "
+                f"the quiet of {o}. No visible humans.")
+    if scene == "ocean-currents":
+        return (f"Top-down ocean ribbon waves, single ingredient hero "
+                f"({f}) afloat. No people, no boats.")
+    if scene == "still-life-botanical":
+        return (f"Vermeer-style still life of {f} on a sunlit kitchen counter. "
+                f"Single ingredient hero. No people.")
+    if scene == "supplement-line-art":
+        return (f"Isometric still life of a single {f} pill or capsule on "
+                f"warm cream backdrop. No hands, no people.")
+    if scene == "motion-light-trail":
+        return (f"Long-exposure light trails on an empty path at dusk, "
+                f"suggesting {f}. No visible runner, no body.")
+    if scene == "smoke-and-glass":
+        return (f"Single empty glass with a wisp of smoke on a dark wood "
+                f"surface, suggesting {f}. No people.")
+    return (f"Abstract flowing wave-form across a soft horizon, "
+            f"suggesting the relationship between {f} and {o}. No people.")
+
+
 def build_heuristic_prompt(*, edge_id: int, factor_slug: str, factor_name: str,
                            factor_kind: str | None, outcome_slug: str,
                            outcome_name: str, outcome_kind: str | None,
@@ -101,13 +139,19 @@ def build_heuristic_prompt(*, edge_id: int, factor_slug: str, factor_name: str,
     tone = TONE_BY_DIRECTION.get(direction, "quiet-factual")
     composition = _pick_composition(scene)
     aspect = "16:9 (800x520)" if kind == "featured" else "1:1 (480x480)"
+    # Steer toward editorial still-life / abstract scenes. The corpus is
+    # health-evidence card art — humans look uncanny and confuse the
+    # viewer about who the subject of the study was, so we exclude them.
+    subject = _subject_phrase(scene, factor_name, outcome_name)
     text = (
-        f"Editorial photograph in the style of a 2026 Atlantic Health "
-        f"feature: {scene.replace('-', ' ')}. {composition}. "
-        f"Subject hints: {factor_name} and {outcome_name}. "
-        f"Palette: {palette}. Tone: {tone}. Soft natural light, "
-        f"shallow depth of field, no text overlay, no watermark, "
-        f"no logos, no celebrity faces. Aspect {aspect}."
+        f"Editorial magazine cover photograph, fine-art still life: "
+        f"{scene.replace('-', ' ')}. {composition}. "
+        f"{subject} "
+        f"Palette: {palette}. Mood: {tone}. Soft natural window light, "
+        f"shallow depth of field, muted film grain, museum-quality print. "
+        f"Strictly no humans, no people, no faces, no portraits, no figures, "
+        f"no body parts, no hands, no text, no captions, no watermarks, "
+        f"no logos, no signatures. Aspect {aspect}."
     )
     return {
         "scene":       scene,
