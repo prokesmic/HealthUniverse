@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "trazodone_low_dose",
+      "outcome_slug": "fall_risk_elderly",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a 2022 Medicare cohort of 1,699,913 adults aged 65 and older treated for insomnia, trazodone and benzodiazepines carried the greatest fall risk versus matched controls, with the insomnia-medication group overall showing an OR of 2.34 (95% CI 2.31 to 2.36). A 2015 systematic review and meta-analysis reported trazodone was associated with increased falls risk (RR 1.79, 95% CI 1.60 to 1.97), and a psychotropic hip-fracture meta-analysis found second-generation antidepressants including trazodone were associated with hip fracture (OR 1.94, 95% CI 1.37 to 2.76).",
+      "population": "older adults using low-dose trazodone or trazodone-containing insomnia regimens, especially Medicare-aged or otherwise fall-prone populations",
+      "mechanism": "Even at low doses, trazodone can cause sedation, dizziness, slowed reaction time, and orthostatic blood-pressure drops. In older adults those effects interact with baseline gait instability, nighttime awakening, polypharmacy, and frailty to raise the chance of falls and fractures.",
+      "summary": "Low-dose trazodone should not be treated as a fall-neutral sleep workaround in older adults. Across large claims data and pooled observational evidence, the direction is consistently harmful for falls or closely related fracture outcomes, even if the exact excess risk varies by population and comparator.",
+      "caveats": "The largest studies are observational and may still reflect some confounding from insomnia severity, depression, or comorbidity burden. Risk may be particularly high during initiation, with other sedatives on board, or in patients prone to orthostasis or nocturnal instability.",
+      "evidence": [
+        {
+          "citation": "AmariDT et al 2022 BMC Geriatr",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Falls, healthcare resources and costs in older adults with insomnia treated with zolpidem, trazodone, or benzodiazepines.",
+          "doi": "10.1186/s12877-022-03165-6",
+          "pmid": "35658904",
+          "n_participants": 1699913
+        },
+        {
+          "citation": "RuxtonK et al 2015 Br J Clin Pharmacol",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Drugs with anticholinergic effects and cognitive impairment, falls and all-cause mortality in older adults: A systematic review and meta-analysis.",
+          "doi": "10.1111/bcp.12617",
+          "pmid": "25735839",
+          "n_participants": 124286
+        },
+        {
+          "citation": "OderdaLH et al 2012 Ann Pharmacother",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Psychotropic-related hip fractures: meta-analysis of first-generation and second-generation antidepressant and antipsychotic drugs.",
+          "doi": "10.1345/aph.1Q589",
+          "pmid": "22811347",
+          "n_participants": 340000
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "trazodone_low_dose",
+      "name": "Low-dose trazodone",
+      "kind": "drug",
+      "aliases": [
+        "trazodone for sleep",
+        "sedative trazodone"
+      ],
+      "description": "Low-dose trazodone used primarily as a sedating medication for insomnia or sleep maintenance."
+    },
+    {
+      "slug": "fall_risk_elderly",
+      "name": "Fall risk in older adults",
+      "kind": "condition",
+      "aliases": [
+        "elderly fall risk",
+        "falls in seniors"
+      ],
+      "description": "Risk of falls or fall-related injuries in older adults."
+    }
+  ]
+}
