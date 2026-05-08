@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "deprescribing_ppis_long_term",
+      "outcome_slug": "outcomes",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2017 Cochrane review of six trials in 1,758 chronic PPI users found that on-demand deprescribing reduced pill burden by 3.79 tablets per week (95% CI 2.84 to 4.73 fewer) but increased the risk of inadequate symptom control compared with continuous therapy (RR 1.71, 95% CI 1.31 to 2.21). A 2018 meta-analysis of 10 randomized trials involving 4,574 patients found on-demand PPI therapy was at least as acceptable as daily therapy, while a 2016 randomized maintenance trial in 598 adults reduced average use from 0.91 to 0.41 tablets per day with non-inferior willingness to continue treatment.",
+      "population": "adults on long-term proton pump inhibitors for mild or nonerosive reflux-type conditions who are candidates for dose reduction, on-demand use, or discontinuation",
+      "mechanism": "Deprescribing long-term PPIs can lower medication burden, reduce exposure to rebound concerns and long-term adverse-effect hypotheses, and simplify regimens. The tradeoff is that some patients lose symptom control or redevelop esophagitis if acid suppression is withdrawn too aggressively.",
+      "summary": "For appropriately selected long-term PPI users, deprescribing is usually beneficial overall because it cuts chronic drug exposure and often preserves acceptable symptom control with on-demand therapy. The literature does not support indiscriminate stopping, though: the main gains are lower pill burden and less overtreatment, while the main cost is somewhat worse reflux control in a subset of patients.",
+      "caveats": "This edge applies best to mild GERD, nonerosive reflux disease, or patients without a firm long-term indication. It should not be generalized to Barrett esophagus, severe erosive esophagitis, high bleeding-risk patients needing gastroprotection, or others with strong indications for maintenance therapy.",
+      "evidence": [
+        {
+          "citation": "BoghossianTA et al 2017 Cochrane Database Syst Rev",
+          "year": 2017,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Deprescribing versus continuation of chronic proton pump inhibitor use in adults.",
+          "doi": "10.1002/14651858.CD011969.pub2",
+          "pmid": "28301676",
+          "n_participants": 1758
+        },
+        {
+          "citation": "KhanZ et al 2018 Gastroenterol Res Pract",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "On-Demand Therapy with Proton Pump Inhibitors for Maintenance Treatment of Nonerosive Reflux Disease or Mild Erosive Esophagitis: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1155/2018/6417526",
+          "pmid": "30158966",
+          "n_participants": 4574
+        },
+        {
+          "citation": "BayerdorfferE et al 2016 BMC Gastroenterol",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Randomized, multicenter study: on-demand versus continuous maintenance treatment with esomeprazole in patients with non-erosive gastroesophageal reflux disease.",
+          "doi": "10.1186/s12876-016-0448-x",
+          "pmid": "27080034",
+          "n_participants": 598
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "deprescribing_ppis_long_term",
+      "name": "Deprescribing long-term proton pump inhibitors",
+      "kind": "process",
+      "aliases": [
+        "stopping chronic PPIs",
+        "long-term PPI deprescribing"
+      ],
+      "description": "Reducing dose, switching to on-demand use, or stopping chronic proton pump inhibitor therapy when long-term indication is weak or absent."
+    },
+    {
+      "slug": "outcomes",
+      "name": "Clinical outcomes",
+      "kind": "condition",
+      "aliases": [
+        "overall outcomes",
+        "treatment outcomes"
+      ],
+      "description": "Aggregate patient outcomes relevant to deprescribing, including symptom control, pill burden, satisfaction, and related clinical consequences."
+    }
+  ]
+}

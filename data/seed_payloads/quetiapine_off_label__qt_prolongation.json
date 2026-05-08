@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "quetiapine_off_label",
+      "outcome_slug": "qt_prolongation",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In a cardiac ICU cohort of 144 adults treated off-label with atypical antipsychotics for delirium or agitation, adverse events occurred in 25% of quetiapine recipients versus 6% of olanzapine recipients, with QTc prolongation in 18% versus 6%. A 12-case review of quetiapine-associated QTc prolongation found torsades de pointes in 4 cases, almost always in the presence of additional risk factors.",
+      "population": "older or medically complex adults receiving off-label quetiapine for delirium, agitation, insomnia, or other non-psychotic indications in acute-care settings",
+      "mechanism": "Quetiapine can inhibit cardiac repolarization through hERG-related effects, especially when combined with electrolyte abnormalities, CYP3A4 interactions, structural heart disease, or other QT-prolonging drugs. Off-label use often occurs in medically fragile settings where those cofactors cluster.",
+      "summary": "Off-label low-dose quetiapine is not a high-frequency torsades drug in the way ziprasidone is, but it does carry a real QT-prolongation signal that becomes clinically relevant in frail or cardiac patients. The most defensible interpretation is that the average absolute risk is modest, yet clearly non-zero and amplified by comorbidity and co-prescribing.",
+      "caveats": "Much of the evidence comes from observational or case-based data rather than dose-finding randomized trials in older adults. Apparent harm often depends on baseline QT risk, concurrent QT-prolonging drugs, overdose, or metabolic interactions, so this edge should not be read as a uniform large effect in all low-dose users.",
+      "evidence": [
+        {
+          "citation": "HasnainM et al 2014 Ther Adv Psychopharmacol",
+          "year": 2014,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Quetiapine, QTc interval prolongation, and torsade de pointes: a review of case reports.",
+          "doi": "10.1177/2045125313510194",
+          "pmid": "25057346",
+          "n_participants": 12
+        },
+        {
+          "citation": "HannaMP et al 2022 Am J Cardiol",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Atypical Antipsychotic Safety in the CICU.",
+          "doi": "10.1016/j.amjcard.2021.09.052",
+          "pmid": "34794647",
+          "n_participants": 144
+        },
+        {
+          "citation": "CaballeroA et al 2023 Ann Pharmacother",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Quetiapine for the Treatment of Pediatric Delirium.",
+          "doi": "10.1177/10600280231154022",
+          "pmid": "36802820",
+          "n_participants": 37
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "quetiapine_off_label",
+      "name": "Off-label quetiapine use",
+      "kind": "drug",
+      "aliases": [
+        "low-dose quetiapine",
+        "quetiapine for delirium or sleep"
+      ],
+      "description": "Quetiapine prescribed outside core psychotic-disorder indications, often at low doses for delirium, agitation, or insomnia."
+    },
+    {
+      "slug": "qt_prolongation",
+      "name": "QT prolongation",
+      "kind": "condition",
+      "aliases": [
+        "QTc prolongation",
+        "prolonged QT interval"
+      ],
+      "description": "Electrocardiographic prolongation of ventricular repolarization associated with risk of torsades de pointes and related arrhythmias."
+    }
+  ]
+}

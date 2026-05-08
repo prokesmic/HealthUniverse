@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "beers_criteria_adherence",
+      "outcome_slug": "adverse_drug_events",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In a prospective UK cohort of 1,280 older adults discharged from hospital, having multiple Beers-listed potentially inappropriate medications was independently associated with adverse drug reactions (OR 2.32, 95% CI 1.03 to 5.23). In a Ugandan prospective cohort of 523 hospitalized older adults, exposure to a potentially inappropriate medication identified using Beers criteria was associated with hospital-acquired adverse drug reactions (AOR 4.56, 95% CI 2.70 to 7.70).",
+      "population": "older adults whose prescribing either follows or deviates from Beers-style explicit criteria for potentially inappropriate medications",
+      "mechanism": "Beers criteria aim to reduce exposure to drug classes that more often cause sedation, delirium, bleeding, orthostasis, kidney injury, or other medication-related harms in older bodies with lower physiologic reserve. Better adherence should therefore lower the burden of preventable adverse drug events, even if it does not capture every source of medication-related harm.",
+      "summary": "The most balanced reading is that adherence to Beers-type inappropriate-prescribing criteria is directionally protective against adverse drug events, but the size of that protection is modest and context-dependent. Direct Beers-only prediction studies are mixed, yet cohorts consistently show that Beers-listed PIM exposure marks higher medication-related harm, and deprescribing interventions that reduce PIMs also reduce ADR incidence overall.",
+      "caveats": "Beers adherence is an imperfect proxy for medication safety because many adverse events arise from interactions, omissions, monitoring failures, or clinically necessary high-risk drugs. This edge should be read as a useful risk-reduction principle rather than a guarantee that following Beers criteria alone will eliminate medication-related harm.",
+      "evidence": [
+        {
+          "citation": "ZhouD et al 2023 J Am Med Dir Assoc",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Deprescribing Interventions for Older Patients: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1016/j.jamda.2023.07.016",
+          "pmid": "37582482",
+          "n_participants": 18670
+        },
+        {
+          "citation": "YadesaTM et al 2022 BMC Geriatr",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Predictors of hospital-acquired adverse drug reactions: a cohort of Ugandan older adults.",
+          "doi": "10.1186/s12877-022-03003-9",
+          "pmid": "35461224",
+          "n_participants": 523
+        },
+        {
+          "citation": "ParekhN et al 2019 Pharmacoepidemiol Drug Saf",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Do the 2015 Beers Criteria predict medication-related harm in older adults? Analysis from a multicentre prospective study in the United Kingdom.",
+          "doi": "10.1002/pds.4849",
+          "pmid": "31338909",
+          "n_participants": 1280
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "beers_criteria_adherence",
+      "name": "Adherence to Beers criteria",
+      "kind": "process",
+      "aliases": [
+        "Beers-guided prescribing",
+        "avoiding Beers-listed PIMs"
+      ],
+      "description": "Prescribing practice that avoids or minimizes potentially inappropriate medications flagged by the American Geriatrics Society Beers criteria."
+    },
+    {
+      "slug": "adverse_drug_events",
+      "name": "Adverse drug events",
+      "kind": "condition",
+      "aliases": [
+        "medication-related harm",
+        "adverse drug reactions"
+      ],
+      "description": "Clinically meaningful harm caused by medication use, including adverse drug reactions, medication-related injury, and related complications."
+    }
+  ]
+}
