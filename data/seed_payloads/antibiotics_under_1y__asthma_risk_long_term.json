@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "antibiotics_under_1y",
+      "outcome_slug": "asthma_risk_long_term",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Large observational datasets generally place the association between antibiotic exposure in the first year of life and later childhood asthma around OR 1.5 to 1.7, although sibling and infection-adjusted analyses attenuate some of the signal.",
+      "population": "children exposed to systemic antibiotics during the first year of life",
+      "mechanism": "Infancy is a sensitive window for airway immune programming and gut microbiome assembly, so antibiotic exposure may alter microbial metabolites, barrier signaling, and infection patterns in ways that modestly shift later asthma susceptibility.",
+      "summary": "Across cohorts, case-control analyses, and large cross-sectional datasets, antibiotic exposure in the first year of life is repeatedly linked to a higher long-term risk of childhood asthma. The association is consistent enough to treat as directionally harmful, but confounding by indication and shared family risk factors keep the edge out of the strongest tier.",
+      "caveats": "Respiratory infections that prompt antibiotic prescribing can mimic early asthma or independently raise later asthma risk. Sibling analyses and tighter infection adjustment usually shrink the effect, so this edge should be read as a cautious risk marker rather than a settled causal estimate.",
+      "evidence": [
+        {
+          "citation": "Ortqvist AK et al 2014 BMJ",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Antibiotics in fetal and early life and subsequent childhood asthma: nationwide population based study with sibling analysis.",
+          "doi": "10.1136/bmj.g6979",
+          "pmid": "25432937",
+          "n_participants": 493785
+        },
+        {
+          "citation": "Risnes KR et al 2011 Am J Epidemiol",
+          "year": 2011,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Antibiotic exposure by 6 months and asthma and allergy at 6 years: Findings in a cohort of 1,401 US children.",
+          "doi": "10.1093/aje/kwq400",
+          "pmid": "21190986",
+          "n_participants": 1401
+        },
+        {
+          "citation": "Metsala J et al 2015 Clin Exp Allergy",
+          "year": 2015,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Prenatal and post-natal exposure to antibiotics and risk of asthma in childhood.",
+          "doi": "10.1111/cea.12356",
+          "pmid": "24943808",
+          "n_participants": 13380
+        },
+        {
+          "citation": "Foliaki S et al 2009 J Allergy Clin Immunol",
+          "year": 2009,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Antibiotic use in infancy and symptoms of asthma, rhinoconjunctivitis, and eczema in children 6 and 7 years old: International Study of Asthma and Allergies in Childhood Phase III.",
+          "doi": "10.1016/j.jaci.2009.08.017",
+          "pmid": "19895986",
+          "n_participants": 193412
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "antibiotics_under_1y",
+      "name": "Antibiotic exposure under age 1 year",
+      "kind": "drug",
+      "aliases": [
+        "antibiotics in the first year of life",
+        "infant antibiotic exposure"
+      ],
+      "description": "Systemic antibiotic exposure during the first year of life."
+    },
+    {
+      "slug": "asthma_risk_long_term",
+      "name": "Long-term childhood asthma risk",
+      "kind": "condition",
+      "aliases": [
+        "later childhood asthma",
+        "long-term asthma risk"
+      ],
+      "description": "Asthma diagnosed later in childhood after early-life exposure."
+    }
+  ]
+}
