@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "endocrine_disrupting_phthalates",
+      "name": "Endocrine-disrupting phthalate exposure",
+      "kind": "environmental",
+      "aliases": [
+        "phthalate plasticizer exposure",
+        "phthalate endocrine disruptors"
+      ],
+      "description": "Exposure to phthalate compounds that may interfere with endocrine signaling."
+    },
+    {
+      "slug": "testosterone_men",
+      "name": "Testosterone in men",
+      "kind": "process",
+      "aliases": [
+        "male testosterone status",
+        "circulating testosterone in men"
+      ],
+      "description": "Circulating testosterone concentrations and related androgen status in men."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "endocrine_disrupting_phthalates",
+      "outcome_slug": "testosterone_men",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "Human data are inconsistent rather than cleanly testosterone-lowering: a 295-man cross-sectional study did not show the expected testosterone pattern, a 100-son prenatal cohort found higher luteinizing hormone with unchanged testosterone, and another antenatal cohort reported positive associations between some maternal phthalate metabolites and adult sons' total testosterone.",
+      "population": "adult men or adult male offspring with measured environmental phthalate exposure",
+      "mechanism": "Phthalates can interfere with steroidogenesis, Leydig-cell signaling, and developmental androgen action, especially during fetal life. Human observational work suggests those pathways matter biologically, but the measured testosterone response is noisy and may differ by phthalate species, timing of exposure, and life stage.",
+      "summary": "Phthalate exposure is a biologically plausible androgen disruptor, but the direct human testosterone signal is inconsistent. The current literature supports concern about endocrine perturbation, yet it does not justify a simple claim that phthalates uniformly lower testosterone in men.",
+      "caveats": "This evidence is observational and highly dependent on which metabolites were measured and when. Prenatal-exposure cohorts and adult exposure studies do not necessarily reflect the same biology, so the edge is better treated as contested rather than one-directional.",
+      "evidence": [
+        {
+          "citation": "Duty SM et al 2005 Hum Reprod",
+          "year": 2005,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Phthalate exposure and reproductive hormones in adult men.",
+          "pmid": "15591081",
+          "n_participants": 295
+        },
+        {
+          "citation": "Main KM et al 2023 Sci Total Environ",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Maternal phthalate exposure during pregnancy and testis function of young adult sons.",
+          "pmid": "36736395",
+          "n_participants": 100
+        },
+        {
+          "citation": "Dziewirska E et al 2018 Int J Occup Med Environ Health",
+          "year": 2018,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Environmental non-persistent endocrine-disrupting chemicals exposure and reproductive hormones levels in adult men.",
+          "pmid": "30228382"
+        }
+      ]
+    }
+  ]
+}

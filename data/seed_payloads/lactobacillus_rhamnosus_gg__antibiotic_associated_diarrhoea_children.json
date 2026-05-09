@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "lactobacillus_rhamnosus_gg",
+      "name": "Lactobacillus rhamnosus GG",
+      "kind": "supplement",
+      "aliases": [
+        "LGG",
+        "Lacticaseibacillus rhamnosus GG"
+      ],
+      "description": "A specific probiotic strain used in gastrointestinal prevention and treatment studies."
+    },
+    {
+      "slug": "antibiotic_associated_diarrhoea_children",
+      "name": "Antibiotic-associated diarrhoea in children",
+      "kind": "condition",
+      "aliases": [
+        "pediatric antibiotic-associated diarrhea",
+        "AAD in children"
+      ],
+      "description": "Loose or watery stools arising during or shortly after antibiotic treatment in children."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "lactobacillus_rhamnosus_gg",
+      "outcome_slug": "antibiotic_associated_diarrhoea_children",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A strain-specific meta-analysis found that LGG reduced pediatric antibiotic-associated diarrhoea risk with a pooled relative risk of 0.48 (95% CI 0.26 to 0.89) across five randomized trials including 445 children.",
+      "population": "children receiving outpatient or inpatient antibiotic therapy",
+      "mechanism": "LGG may help preserve colonization resistance and metabolic activity of the gut microbiota during antibiotic exposure. That does not sterilize away all diarrhoeal risk, but it can reduce the chance that antibiotic-driven dysbiosis progresses to clinically apparent loose stools.",
+      "summary": "Lactobacillus rhamnosus GG is one of the better-supported strain-specific options for preventing antibiotic-associated diarrhoea in children. The evidence is not perfect, but the pediatric signal is reasonably consistent across placebo-controlled trials and meta-analysis.",
+      "caveats": "The benefit is strain-specific and should not be generalized to all probiotics. Absolute benefit varies with antibiotic type, age, baseline diarrhoeal risk, and whether the child is being treated in the community or the hospital.",
+      "evidence": [
+        {
+          "citation": "Szajewska H et al 2015 Aliment Pharmacol Ther",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Systematic review with meta-analysis: Lactobacillus rhamnosus GG in the prevention of antibiotic-associated diarrhoea in children and adults.",
+          "pmid": "26365389",
+          "n_participants": 445,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.48,
+            "ci_low": 0.26,
+            "ci_high": 0.89,
+            "comparator": "LGG versus placebo or no treatment in children receiving antibiotics"
+          }
+        },
+        {
+          "citation": "Arvola T et al 1999 Pediatrics",
+          "year": 1999,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Prophylactic Lactobacillus GG reduces antibiotic-associated diarrhea in children with respiratory infections: a randomized study.",
+          "pmid": "10545590",
+          "n_participants": 119
+        },
+        {
+          "citation": "Hawrelak JA et al 2005 Digestion",
+          "year": 2005,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Is Lactobacillus rhamnosus GG effective in preventing the onset of antibiotic-associated diarrhoea: a systematic review.",
+          "pmid": "16113542",
+          "n_participants": 766
+        }
+      ]
+    }
+  ]
+}
