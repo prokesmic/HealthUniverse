@@ -2483,10 +2483,13 @@ def _stack_match_factors(conn, raw_items: list[str]) -> list[dict]:
     Strategy: normalize → exact slug → exact name match → token contains
     → fuzzy SequenceMatcher on names. Returns one row per input item."""
     from difflib import SequenceMatcher
+    # All factor-side kinds in the corpus today: activity / behavior /
+    # food / nutrient / supplement / drug / environmental / process /
+    # pathogen / gene / biomarker. We exclude 'condition' so symptoms
+    # don't get matched as inputs.
     entities = [dict(r) for r in conn.execute(
         "SELECT id, slug, name, kind FROM entity "
-        "WHERE kind IN ('factor','lifestyle','supplement','food','medication') "
-        "OR kind IS NULL"
+        "WHERE kind IS NULL OR kind != 'condition'"
     ).fetchall()]
     name_index = {(e["name"] or "").lower(): e for e in entities}
     slug_index = {(e["slug"] or "").lower(): e for e in entities}
@@ -2520,29 +2523,44 @@ def _stack_match_factors(conn, raw_items: list[str]) -> list[dict]:
     return out
 
 
-def _stack_brief_for_factor(conn, factor_id: int, *, max_outcomes: int = 6) -> list[dict]:
+def _stack_brief_for_factor(conn, factor_id: int, *,
+                            max_outcomes: int = 6,
+                            skeptic: bool = False) -> list[dict]:
     """Pull the strongest edges for a given factor, with one top
-    citation each. Filters out 'flagged' tier-A/B/C rows so the brief
-    never shows a known-bad citation."""
-    rows = conn.execute("""
+    citation each. Filters out 'flagged' rows so the brief never shows
+    a known-bad citation.
+
+    Skeptic mode reorders so contested / counter-evidence-heavy edges
+    surface first, and uses a counter citation when available — the
+    "show me the catch" view."""
+    if skeptic:
+        order_sql = ("ORDER BY CASE WHEN e.tier='X' THEN 0 "
+                     "WHEN e.tier='D' THEN 1 ELSE 2 END, "
+                     "e.tier ASC, e.updated_at DESC")
+    else:
+        order_sql = ("ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 "
+                     "ELSE 3 END, e.updated_at DESC")
+    rows = conn.execute(f"""
         SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
                COALESCE(e.review_status,'unreviewed') AS review_status,
                o.name AS o_name, o.slug AS o_slug
         FROM edge e
         JOIN entity o ON o.id=e.outcome_id
-        WHERE e.factor_id=? AND e.tier IN ('A','B','C')
-        ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 ELSE 3 END,
-                 e.updated_at DESC
+        WHERE e.factor_id=? AND e.tier IN ('A','B','C','X')
+        {order_sql}
         LIMIT ?""", (factor_id, max_outcomes)).fetchall()
     out = []
     for r in rows:
         d = dict(r)
-        cite = conn.execute("""
+        # In skeptic mode, prefer a counter-evidence citation if any;
+        # fall back to top supporting citation. Either way, exclude
+        # semantically-flagged PMIDs.
+        cite_sql = """
             SELECT pmid, citation, year, study_type, real_title,
-                   relevance_status
+                   relevance_status, is_counter
             FROM evidence
             WHERE edge_id=?
-              AND COALESCE(is_counter,0)=0
+              {counter_clause}
               AND (relevance_status IS NULL OR relevance_status != 'flagged')
             ORDER BY CASE study_type
                        WHEN 'meta_analysis' THEN 1
@@ -2550,20 +2568,98 @@ def _stack_brief_for_factor(conn, factor_id: int, *, max_outcomes: int = 6) -> l
                        WHEN 'rct' THEN 3
                        WHEN 'cohort' THEN 4 ELSE 5 END,
                      year DESC
-            LIMIT 1""", (d["id"],)).fetchone()
+            LIMIT 1"""
+        if skeptic:
+            cite = conn.execute(
+                cite_sql.format(counter_clause="AND COALESCE(is_counter,0)=1"),
+                (d["id"],)).fetchone()
+            if not cite:
+                cite = conn.execute(
+                    cite_sql.format(counter_clause="AND COALESCE(is_counter,0)=0"),
+                    (d["id"],)).fetchone()
+        else:
+            cite = conn.execute(
+                cite_sql.format(counter_clause="AND COALESCE(is_counter,0)=0"),
+                (d["id"],)).fetchone()
         d["top_cite"] = dict(cite) if cite else None
         d["n_studies"] = conn.execute(
             "SELECT COUNT(*) FROM evidence WHERE edge_id=? AND COALESCE(is_counter,0)=0",
+            (d["id"],)).fetchone()[0]
+        d["n_counter"] = conn.execute(
+            "SELECT COUNT(*) FROM evidence WHERE edge_id=? AND COALESCE(is_counter,0)=1",
             (d["id"],)).fetchone()[0]
         out.append(d)
     return out
 
 
+_BRIEF_TOKEN_ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789"  # no 0/o/1/l/i
+
+
+def _make_brief_token() -> str:
+    import secrets
+    return "".join(secrets.choice(_BRIEF_TOKEN_ALPHABET) for _ in range(8))
+
+
+def _summarize_brief(matches: list[dict]) -> dict:
+    """Tweet-sized summary stats for a brief (counts per direction
+    across the strongest edge per matched item)."""
+    counts = {"protective": 0, "harmful": 0, "u_shaped": 0,
+              "mixed": 0, "neutral": 0, "no_match": 0}
+    n_a_tier = 0
+    for m in matches:
+        if not m.get("match"):
+            counts["no_match"] += 1
+            continue
+        edges = m.get("edges") or []
+        if not edges:
+            continue
+        top = edges[0]
+        d = top.get("direction") or "neutral"
+        counts[d] = counts.get(d, 0) + 1
+        if top.get("tier") == "A":
+            n_a_tier += 1
+    return {
+        "n_items":      sum(1 for m in matches if m.get("match")),
+        "n_protective": counts["protective"],
+        "n_harmful":    counts["harmful"],
+        "n_a_tier":     n_a_tier,
+        "n_no_match":   counts["no_match"],
+    }
+
+
+def _build_brief_payload(conn, raw_items: list[str], skeptic: bool):
+    """Run the matcher + per-factor edge lookup. Returns the matches
+    list plus the cross-stack interaction warnings.
+
+    Interaction check runs against BOTH the matched factor slugs AND
+    a normalized form of each raw input — so warnings still fire for
+    items that aren't in our entity table (e.g. warfarin, which lives
+    in the interactions list but isn't yet a graph node)."""
+    matched = _stack_match_factors(conn, raw_items)
+    interaction_slugs: set[str] = set()
+    for m in matched:
+        # Normalised form of the raw input itself.
+        raw = (m["input"] or "").lower().strip(" .,;:")
+        for slug_form in (raw.replace(" ", "_").replace("-", "_"),
+                          raw.replace(" ", "")):
+            if slug_form:
+                interaction_slugs.add(slug_form)
+        if m["match"]:
+            m["edges"] = _stack_brief_for_factor(
+                conn, m["match"]["id"], skeptic=skeptic)
+            interaction_slugs.add(m["match"]["slug"])
+        else:
+            m["edges"] = []
+    warnings = _interactions_for_stack(list(interaction_slugs))
+    return matched, warnings
+
+
 @app.get("/stack", response_class=HTMLResponse)
-def stack_form(request: Request, items: str = ""):
+def stack_form(request: Request, items: str = "", skeptic: int = 0):
     """Free input → evidence brief. Paste a stack (comma- or
     line-separated supplements / foods / habits / meds), get back what
-    the corpus says. First three items are free; more requires Pro."""
+    the corpus says. First three items are free; more requires Pro.
+    POST-redirects to /stack/s/<token> so every brief is shareable."""
     raw_items: list[str] = []
     if items:
         for part in _re_stack.split(r"[,\n]+", items):
@@ -2571,27 +2667,112 @@ def stack_form(request: Request, items: str = ""):
             if not part:
                 continue
             raw_items.append(part[:60])
-    matches: list[dict] = []
-    pro_locked = False
     if raw_items:
+        # Persist the brief so it has a stable URL we can render
+        # (and let users share it). Re-use the same token if the same
+        # canonical input string was just saved by anyone — keeps the
+        # table tidy and means re-submitting an identical stack
+        # doesn't generate token churn.
+        canonical = ",".join(raw_items).lower()
         with connect() as conn:
-            FREE_LIMIT = 3
-            visible = raw_items[:FREE_LIMIT]
-            if len(raw_items) > FREE_LIMIT:
-                pro_locked = True
-            matched = _stack_match_factors(conn, visible)
-            for m in matched:
-                if m["match"]:
-                    m["edges"] = _stack_brief_for_factor(conn, m["match"]["id"])
-                else:
-                    m["edges"] = []
-                matches.append(m)
+            existing = conn.execute(
+                "SELECT token FROM saved_briefs WHERE LOWER(items)=? "
+                "AND skeptic=? ORDER BY created_at DESC LIMIT 1",
+                (canonical, 1 if skeptic else 0)).fetchone()
+            if existing:
+                token = existing["token"]
+            else:
+                token = _make_brief_token()
+                conn.execute(
+                    "INSERT INTO saved_briefs "
+                    "(token, items, skeptic, created_at) VALUES (?,?,?,?)",
+                    (token, ",".join(raw_items), 1 if skeptic else 0,
+                     datetime_now().isoformat(timespec="seconds")))
+                conn.commit()
+        qs = "?skeptic=1" if skeptic else ""
+        return RedirectResponse(f"/stack/s/{token}{qs}", status_code=303)
+    return render(request, "stack.html", {
+        "title": "Stack Brief",
+        "raw": "",
+        "raw_items": [],
+        "matches": [],
+        "warnings": [],
+        "summary": None,
+        "pro_locked": False,
+        "share_url": None,
+        "skeptic": False,
+        "is_print": False,
+    })
+
+
+@app.get("/stack/s/{token}", response_class=HTMLResponse)
+def stack_brief_saved(request: Request, token: str, skeptic: int = 0):
+    """Render a saved brief. Public, shareable. Same paywall rules as
+    the live submission page (first 3 items free)."""
+    with connect() as conn:
+        row = conn.execute(
+            "SELECT * FROM saved_briefs WHERE token=?", (token,)).fetchone()
+        if not row:
+            return RedirectResponse("/stack", status_code=303)
+        # Bump view counter (best-effort, no error).
+        try:
+            conn.execute(
+                "UPDATE saved_briefs SET views=views+1 WHERE token=?",
+                (token,))
+            conn.commit()
+        except Exception:
+            pass
+        items = (row["items"] or "")
+        skeptic_flag = bool(skeptic) or bool(row["skeptic"])
+        raw_items = [s.strip()[:60] for s in items.split(",") if s.strip()]
+        FREE_LIMIT = 3
+        pro_locked = len(raw_items) > FREE_LIMIT
+        visible = raw_items[:FREE_LIMIT]
+        matches, warnings = _build_brief_payload(conn, visible, skeptic_flag)
+    summary = _summarize_brief(matches)
+    base = str(request.base_url).rstrip("/")
+    share_url = f"{base}/stack/s/{token}" + ("?skeptic=1" if skeptic_flag else "")
     return render(request, "stack.html", {
         "title": "Stack Brief",
         "raw": items,
         "raw_items": raw_items,
         "matches": matches,
+        "warnings": warnings,
+        "summary": summary,
         "pro_locked": pro_locked,
+        "share_url": share_url,
+        "skeptic": skeptic_flag,
+        "is_print": False,
+        "token": token,
+    })
+
+
+@app.get("/stack/print/{token}", response_class=HTMLResponse)
+def stack_brief_print(request: Request, token: str, skeptic: int = 0):
+    """Print-styled view of a brief. Browsers' Save-as-PDF gives a
+    clean PDF without server deps. The 'Pro PDF export' button on the
+    main brief opens this URL in a new tab and triggers print()."""
+    with connect() as conn:
+        row = conn.execute(
+            "SELECT * FROM saved_briefs WHERE token=?", (token,)).fetchone()
+        if not row:
+            return RedirectResponse("/stack", status_code=303)
+        items = (row["items"] or "")
+        skeptic_flag = bool(skeptic) or bool(row["skeptic"])
+        raw_items = [s.strip()[:60] for s in items.split(",") if s.strip()]
+        # Print view shows ALL items (no paywall on PDF — user already
+        # paid OR it's the founder's marketing material).
+        matches, warnings = _build_brief_payload(conn, raw_items, skeptic_flag)
+    summary = _summarize_brief(matches)
+    return render(request, "stack_print.html", {
+        "title": "Stack Brief — print",
+        "raw_items": raw_items,
+        "matches": matches,
+        "warnings": warnings,
+        "summary": summary,
+        "skeptic": skeptic_flag,
+        "token": token,
+        "generated_at": datetime_now().isoformat(timespec="minutes"),
     })
 
 

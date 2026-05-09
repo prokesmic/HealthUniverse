@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stack Brief — Health Universe</title>
+<style>
+  body {
+    font: 14px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", sans-serif;
+    color: #1a1a1a; max-width: 720px; margin: 28px auto; padding: 0 24px;
+    background: #fff;
+  }
+  h1 { font-family: 'Fraunces', Georgia, serif; font-size: 26px; margin: 0 0 4px; }
+  h2 { font-size: 18px; margin: 28px 0 8px; padding-bottom: 4px; border-bottom: 1px solid #ddd; }
+  h3 { font-size: 15px; margin: 14px 0 4px; }
+  .meta { font-size: 12px; color: #666; margin-bottom: 18px; }
+  .summary {
+    margin: 14px 0; padding: 12px 14px; border: 1px solid #c5e0cc;
+    background: #f4faf6; border-radius: 8px; font-size: 13px;
+  }
+  .summary b { font-family: 'Fraunces', serif; font-size: 18px; }
+  .summary .stats { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
+  .summary .stat { font-size: 13px; }
+  .summary .stat b { display: block; line-height: 1; margin-bottom: 2px; }
+
+  .warning-box {
+    border: 1px solid #f3b3ad; background: #fff8f7; padding: 10px 14px;
+    border-radius: 6px; margin: 14px 0;
+  }
+  .warning-box h3 { margin: 0 0 6px; color: #9b1c1c; font-size: 14px; }
+  .warning { font-size: 13px; padding: 6px 0; border-top: 1px solid #f3d4d0; }
+  .warning:first-of-type { border-top: 0; padding-top: 0; }
+  .warning .sev {
+    font-size: 10px; padding: 1px 6px; border-radius: 3px;
+    font-weight: 600; margin-right: 4px;
+  }
+  .sev-high { background:#9b1c1c; color:#fff; }
+  .sev-moderate { background:#d97706; color:#fff; }
+  .sev-low { background:#a3a3a3; color:#fff; }
+
+  .item {
+    margin: 14px 0; padding: 12px 14px; border: 1px solid #ddd;
+    border-radius: 6px; page-break-inside: avoid;
+  }
+  .item .input { font-size: 11px; color: #888; }
+  .edge {
+    display: grid; grid-template-columns: 50px 1fr;
+    gap: 10px; padding: 6px 0; border-top: 1px dashed #eee;
+  }
+  .edge:first-of-type { border-top: 0; }
+  .pill {
+    display: inline-block; padding: 1px 7px; border-radius: 3px;
+    font-size: 10px; font-weight: 600;
+  }
+  .pill.tier-A { background: #1f3a2e; color: #fff; }
+  .pill.tier-B { background: #3b8e5a; color: #fff; }
+  .pill.tier-C { background: #c9a961; color: #1a1a1a; }
+  .pill.tier-X { background: #a3552c; color: #fff; }
+  .pill.tier-D { background: #7c6c4d; color: #fff; }
+  .dir {
+    font-size: 11px; padding: 1px 6px; border-radius: 3px; margin-left: 4px;
+  }
+  .dir-protective { background:#e7f5ec; color:#1b5e20; }
+  .dir-harmful    { background:#fdecea; color:#9b1c1c; }
+  .dir-neutral    { background:#f0f0f0; color:#444; }
+  .dir-u_shaped   { background:#fff7e0; color:#7a5c00; }
+  .dir-mixed      { background:#eaf3ff; color:#1f3a7e; }
+  .o-name { font-weight: 600; }
+  .cite { font-size: 11px; color: #666; margin-top: 3px; }
+  .footer {
+    margin-top: 36px; font-size: 11px; color: #888;
+    border-top: 1px solid #ddd; padding-top: 12px;
+  }
+  .print-cta {
+    position: fixed; top: 12px; right: 12px;
+    background: #1f3a2e; color: #fff; border: 0;
+    padding: 8px 14px; border-radius: 6px;
+    font-size: 13px; cursor: pointer; font-family: inherit;
+  }
+  @media print {
+    .print-cta { display: none; }
+    body { margin: 0; max-width: none; padding: 0 0.5in; }
+    .item, .summary, .warning-box { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<button class="print-cta" onclick="window.print()">Save as PDF</button>
+
+<header>
+  <h1>Stack Brief</h1>
+  <div class="meta">
+    Generated {{ generated_at }} · Health Universe ·
+    {% if skeptic %}skeptic view · {% endif %}
+    health-universe.vercel.app/stack/s/{{ token }}
+  </div>
+</header>
+
+{% if summary %}
+<div class="summary">
+  <div class="stats">
+    <span class="stat"><b>{{ summary.n_items }}</b>matched</span>
+    <span class="stat"><b>{{ summary.n_a_tier }}</b>A-tier</span>
+    <span class="stat"><b style="color:#1b5e20">{{ summary.n_protective }}</b>protective</span>
+    <span class="stat"><b style="color:#9b1c1c">{{ summary.n_harmful }}</b>harmful</span>
+    {% if summary.n_no_match %}<span class="stat"><b>{{ summary.n_no_match }}</b>not matched</span>{% endif %}
+  </div>
+</div>
+{% endif %}
+
+{% if warnings %}
+<div class="warning-box">
+  <h3>⚠ Possible interactions ({{ warnings|length }})</h3>
+  {% for w in warnings %}
+  <div class="warning">
+    <span class="sev sev-{{ w.severity }}">{{ w.severity|upper }}</span>
+    <b>{{ w.label }}:</b> {{ w.pair[0]|replace('_',' ') }} + {{ w.pair[1]|replace('_',' ') }} —
+    {{ w.note }}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<h2>Items in your stack</h2>
+{% for m in matches %}
+<div class="item">
+  <div class="input">You wrote: <code>{{ m.input }}</code></div>
+  {% if m.match %}
+    <h3>{{ m.match.name }}</h3>
+    {% for e in m.edges %}
+    <div class="edge">
+      <div>
+        <span class="pill tier-{{ e.tier }}">{{ e.tier }}</span>
+      </div>
+      <div>
+        <span class="o-name">{{ e.o_name }}</span>
+        <span class="dir dir-{{ e.direction }}">{{ e.direction|replace('_',' ') }}</span>
+        {% if e.summary %}
+          <div style="font-size:12px;color:#444;margin-top:2px">{{ e.summary[:200] }}{% if e.summary|length > 200 %}…{% endif %}</div>
+        {% endif %}
+        {% if e.top_cite %}
+        <div class="cite">
+          {% if e.top_cite.is_counter %}[counter] {% endif %}
+          {% if e.top_cite.pmid %}PMID {{ e.top_cite.pmid }}{% else %}{{ e.top_cite.citation or "" }}{% endif %}
+          {% if e.top_cite.study_type %} · {{ e.top_cite.study_type|replace('_',' ') }}{% endif %}
+          {% if e.top_cite.year %} · {{ e.top_cite.year }}{% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <div style="font-size:13px;color:#9b1c1c;margin-top:6px">Could not match "{{ m.input }}" to a known factor.</div>
+  {% endif %}
+</div>
+{% endfor %}
+
+<div class="footer">
+  <b>Reminder.</b> This is an evidence brief, not medical advice.
+  Effect sizes vary by population. Always discuss medication,
+  supplement, or major lifestyle changes with a clinician who knows
+  your full picture. Verification methodology and audit at
+  health-universe.vercel.app/trust.
+</div>
+
+<script>
+  // Auto-trigger print on first load if ?autoprint=1
+  if (location.search.includes('autoprint=1')) {
+    setTimeout(() => window.print(), 600);
+  }
+</script>
+</body>
+</html>

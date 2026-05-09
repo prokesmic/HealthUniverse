@@ -1,5 +1,12 @@
 {% extends "base.html" %}
-{% block title %}Stack Brief — Health Universe{% endblock %}
+{% block title %}Stack Brief{% if raw_items %} — {{ raw_items[:3]|join(", ") }}{% endif %} — Health Universe{% endblock %}
+{% block og %}
+{% if raw_items %}
+<meta property="og:title" content="Stack Brief: {{ raw_items[:3]|join(', ') }}">
+<meta property="og:description" content="{{ summary.n_a_tier or 0 }} A-tier edges. {{ summary.n_protective or 0 }} protective, {{ summary.n_harmful or 0 }} harmful — pulled from PubMed-backed evidence.">
+<meta property="og:type" content="article">
+{% endif %}
+{% endblock %}
 {% block content %}
 <style>
   .stack-hero { padding: 28px 0 12px; }
@@ -9,7 +16,41 @@
     font-family: inherit; resize: vertical;
   }
   .stack-form button { margin-top: 10px; }
-  .stack-result { margin: 24px 0; }
+  .stack-form .skeptic-row {
+    display:flex; align-items:center; gap:8px; margin-top:10px; font-size:14px;
+  }
+  .stack-result { margin: 20px 0; }
+  .stack-summary {
+    margin: 14px 0 18px; padding: 14px 16px;
+    border: 1px solid #d4e9d8; background: #f4faf6; border-radius: 12px;
+  }
+  .stack-summary .head { display:flex; justify-content:space-between; align-items:flex-start; gap:12px; flex-wrap:wrap; }
+  .stack-summary .stats { display:flex; gap:14px; flex-wrap:wrap; margin-top:6px; }
+  .stack-summary .stat { font-size: 14px; }
+  .stack-summary .stat b { font-family: 'Fraunces', serif; font-size: 22px; display:block; line-height:1; margin-bottom:2px; }
+  .share-box {
+    display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;
+  }
+  .share-box input {
+    flex: 1; min-width: 200px; padding: 8px 10px; border: 1px solid #d4d4d4;
+    border-radius: 6px; font-size: 13px; font-family: ui-monospace, monospace;
+  }
+  .share-box button { font-size: 13px; padding: 8px 12px; }
+  .stack-warnings {
+    margin: 14px 0; padding: 14px 16px; border-radius: 12px;
+    background: #fff8f7; border: 1px solid #f3b3ad;
+  }
+  .stack-warnings h3 { margin: 0 0 8px; color: #9b1c1c; font-size: 16px; }
+  .stack-warning { font-size: 14px; padding: 8px 0; border-top: 1px solid #f3d4d0; }
+  .stack-warning:first-of-type { border-top: 0; padding-top: 4px; }
+  .stack-warning b { color: #9b1c1c; }
+  .stack-warning .sev {
+    display:inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; font-weight: 600; margin-right: 6px; vertical-align: middle;
+  }
+  .stack-warning .sev-high     { background:#9b1c1c; color:#fff; }
+  .stack-warning .sev-moderate { background:#d97706; color:#fff; }
+  .stack-warning .sev-low      { background:#a3a3a3; color:#fff; }
   .stack-item {
     border: 1px solid #e6e6e6; border-radius: 12px; padding: 18px;
     margin-bottom: 16px; background: #fff;
@@ -39,6 +80,15 @@
   .pill-dir-mixed      { background:#eaf3ff; color:#1f3a7e; }
   .stack-disclaimer { margin-top: 28px; padding: 14px; background:#f7f7f7;
                       border-radius:8px; font-size: 13px; color: #555; }
+  .pdf-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 8px;
+    background: #1f3a2e; color: #fffaf0; font-weight: 600;
+    text-decoration: none; font-size: 13px;
+  }
+  .pdf-cta.locked {
+    background: #f0f0f0; color: #666; cursor: not-allowed;
+  }
 </style>
 
 <header class="stack-hero">
@@ -58,6 +108,9 @@
       Your stack (one per line, or comma-separated)
     </label>
     <textarea id="items" name="items" placeholder="creatine&#10;magnesium glycinate&#10;omega-3&#10;walking&#10;late dinner">{{ raw }}</textarea>
+    <div class="skeptic-row">
+      <label><input type="checkbox" name="skeptic" value="1" {% if skeptic %}checked{% endif %}> Skeptic mode — surface counter-evidence first</label>
+    </div>
     <button type="submit" class="btn-primary">Show evidence</button>
     <span class="muted small" style="margin-left:10px">
       Free preview shows the first 3 items. Full briefs require Pro.
@@ -67,6 +120,70 @@
 
 {% if matches %}
 <section class="stack-result">
+  {% if summary %}
+  <div class="stack-summary">
+    <div class="head">
+      <div>
+        <div style="font-weight:600;font-size:14px;color:#1b5e20">
+          {% if skeptic %}Skeptic view{% else %}Stack overview{% endif %}
+        </div>
+        <div class="stats">
+          <span class="stat"><b>{{ summary.n_items }}</b>matched</span>
+          <span class="stat"><b>{{ summary.n_a_tier }}</b>A-tier edges</span>
+          <span class="stat"><b style="color:#1b5e20">{{ summary.n_protective }}</b>protective</span>
+          <span class="stat"><b style="color:#9b1c1c">{{ summary.n_harmful }}</b>harmful</span>
+          {% if summary.n_no_match %}<span class="stat"><b style="color:#888">{{ summary.n_no_match }}</b>not matched</span>{% endif %}
+        </div>
+      </div>
+      {% if share_url %}
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
+        <a href="/stack/print/{{ token }}{% if skeptic %}?skeptic=1{% endif %}"
+           target="_blank" rel="noopener"
+           class="pdf-cta"
+           onclick="setTimeout(()=>window.open(this.href,'_blank'),0);return false">
+          ⤓ Save as PDF
+        </a>
+        <span class="muted small">Pro feature · free preview</span>
+      </div>
+      {% endif %}
+    </div>
+    {% if share_url %}
+    <div class="share-box">
+      <input id="share-url-input" type="text" readonly value="{{ share_url }}" onclick="this.select()">
+      <button type="button" class="btn-secondary inline" onclick="(function(b){const i=document.getElementById('share-url-input');i.select();navigator.clipboard.writeText(i.value);b.textContent='✓ Copied';setTimeout(()=>b.textContent='Copy link',1400);})(this)">Copy link</button>
+      <a class="btn-secondary inline"
+         href="https://twitter.com/intent/tweet?text={{ ('My evidence brief: ' ~ (summary.n_a_tier|string) ~ ' A-tier edges, ' ~ (summary.n_protective|string) ~ ' protective, ' ~ (summary.n_harmful|string) ~ ' harmful. ' ~ share_url)|urlencode }}"
+         target="_blank" rel="noopener">Share on X</a>
+      <a class="btn-secondary inline"
+         href="/stack/s/{{ token }}{% if skeptic %}{% else %}?skeptic=1{% endif %}">
+         {% if skeptic %}↩ Standard view{% else %}🔍 Skeptic view{% endif %}
+      </a>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if warnings %}
+  <div class="stack-warnings">
+    <h3>⚠ Possible interactions in your stack ({{ warnings|length }})</h3>
+    {% for w in warnings %}
+    <div class="stack-warning">
+      <span class="sev sev-{{ w.severity }}">{{ w.severity|upper }}</span>
+      <b>{{ w.label }}:</b> {{ w.pair[0]|replace('_',' ') }} + {{ w.pair[1]|replace('_',' ') }} —
+      {{ w.note }}
+      {% if w.sources %}
+        <div style="font-size:12px;color:#666;margin-top:4px">
+          {% for s in w.sources %}
+            {% if s.startswith('PMID:') %}<a href="https://pubmed.ncbi.nlm.nih.gov/{{ s[5:] }}/" target="_blank" rel="noopener">{{ s }}</a>{% if not loop.last %} · {% endif %}{% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+    <p class="muted small" style="margin-top:8px">Cross-checked against the curated interaction list. Not exhaustive — discuss anything serious with a clinician who knows your full picture.</p>
+  </div>
+  {% endif %}
+
   <h2>Your evidence brief</h2>
   {% for m in matches %}
   <div class="stack-item">
@@ -88,6 +205,7 @@
             {% if e.summary %}<div class="o-detail">{{ e.summary[:160] }}{% if e.summary|length > 160 %}…{% endif %}</div>{% endif %}
             {% if e.top_cite %}
               <div class="top-cite">
+                {% if e.top_cite.is_counter %}<span class="pill" style="background:#fdecea;color:#9b1c1c;font-size:10px;margin-right:4px">COUNTER</span>{% endif %}
                 {% if e.top_cite.pmid %}
                   <a href="https://pubmed.ncbi.nlm.nih.gov/{{ e.top_cite.pmid }}/" target="_blank" rel="noopener">
                     PMID {{ e.top_cite.pmid }}
@@ -100,6 +218,11 @@
                 {% if e.top_cite.relevance_status == 'weak' %}
                   <span class="pill-mini pm-warn" style="margin-left:6px">~ weak match</span>
                 {% endif %}
+              </div>
+            {% endif %}
+            {% if e.n_counter and e.n_counter > 0 %}
+              <div class="muted small" style="margin-top:4px">
+                {{ e.n_counter }} counter-evidence stud{{ "y" if e.n_counter==1 else "ies" }}
               </div>
             {% endif %}
           </div>
@@ -124,8 +247,7 @@
         We couldn't match <b>{{ m.input }}</b> to a known factor. Try a
         canonical name (e.g. "creatine monohydrate" → "creatine",
         "vit D" → "vitamin D"), or
-        <a href="/api/report-card" onclick="alert('Tell us via hello@health-universe.app — we\'ll add it.');return false">
-          tell us to add it</a>.
+        <a href="mailto:hello@health-universe.app?subject=Add%20factor:%20{{ m.input|urlencode }}">tell us to add it</a>.
       </div>
     {% endif %}
   </div>
