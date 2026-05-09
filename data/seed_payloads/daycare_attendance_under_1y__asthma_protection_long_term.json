@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "daycare_attendance_under_1y",
+      "outcome_slug": "asthma_protection_long_term",
+      "direction": "u_shaped",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The daycare signal is biphasic rather than simply good or bad. Early attendance increases infectious and wheezy morbidity in infancy, yet several cohorts later found lower current wheeze or asthma at school age, including odds ratios of 0.3 for asthma at age 6 and 0.25 for current wheeze at age 5 in selected analyses.",
+      "population": "children entering daycare during the first year of life",
+      "mechanism": "Repeated microbial exposure in infancy may transiently increase respiratory illness and wheeze but also shape immune maturation away from later atopy or persistent wheezing in some children. This potential long-term protection appears modified by maternal asthma history, age at daycare entry, and the child’s atopic background.",
+      "summary": "The most accurate interpretation is biphasic. Daycare attendance during infancy tends to worsen short-term respiratory illness and early wheeze, but some cohorts report less current wheeze or asthma by age 5 to 6, particularly in children without strong maternal asthma predisposition and with entry after the first few months of life.",
+      "caveats": "The apparent long-term protection is not universal and may reflect heterogeneity by maternal asthma, timing of daycare entry, and selective withdrawal or avoidance patterns. This edge should not be read as a recommendation to seek infections as a preventive strategy.",
+      "evidence": [
+        {
+          "citation": "Celedon JC et al 2003 Am J Respir Crit Care Med",
+          "year": 2003,
+          "study_type": "cohort",
+          "direction": "u_shaped",
+          "quality": "high",
+          "notes": "Day care attendance in early life, maternal history of asthma, and asthma at the age of 6 years.",
+          "doi": "10.1164/rccm.200209-1063OC",
+          "pmid": "12446273",
+          "n_participants": 453,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.3,
+            "ci_low": 0.1,
+            "ci_high": 0.7,
+            "comparator": "asthma at age 6 in children attending day care in the first year of life versus no early day care, among the overall cohort with effect modification by maternal asthma"
+          }
+        },
+        {
+          "citation": "Nicolaou NC et al 2008 J Allergy Clin Immunol",
+          "year": 2008,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Day-care attendance, position in sibship, and early childhood wheezing: a population-based birth cohort study.",
+          "doi": "10.1016/j.jaci.2008.06.033",
+          "pmid": "18774386",
+          "n_participants": 922,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.25,
+            "ci_low": 0.11,
+            "ci_high": 0.6,
+            "comparator": "current wheeze at age 5 in children entering day care between 6 and 12 months versus no day-care attendance"
+          }
+        },
+        {
+          "citation": "Celedon JC et al 2002 Arch Pediatr Adolesc Med",
+          "year": 2002,
+          "study_type": "cohort",
+          "direction": "u_shaped",
+          "quality": "moderate",
+          "notes": "Day care attendance, respiratory tract illnesses, wheezing, asthma, and total serum IgE level in early childhood.",
+          "doi": "10.1001/archpedi.156.3.241",
+          "pmid": "11876667",
+          "n_participants": 498,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 2.5,
+            "ci_low": 1.1,
+            "ci_high": 5.5,
+            "comparator": "asthma at age 4 after at least one physician-diagnosed lower respiratory tract illness in the first year; the same cohort reported that any protective effect of early day care on wheezing was not apparent until after age 4"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "daycare_attendance_under_1y",
+      "name": "Daycare attendance under 1 year",
+      "kind": "behavior",
+      "aliases": [
+        "child care attendance in infancy",
+        "daycare in the first year of life"
+      ],
+      "description": "Regular daycare or child-care attendance during the first year of life."
+    },
+    {
+      "slug": "asthma_protection_long_term",
+      "name": "Long-term asthma protection",
+      "kind": "condition",
+      "aliases": [
+        "later asthma risk",
+        "school-age asthma protection"
+      ],
+      "description": "Longer-term risk of asthma or persistent wheeze beyond infancy after an early-life exposure."
+    }
+  ]
+}
