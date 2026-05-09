@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "liothyronine_t3_addition",
+      "name": "Liothyronine (T3) addition",
+      "kind": "drug",
+      "aliases": [
+        "T3 add-on therapy",
+        "levothyroxine plus liothyronine combination therapy"
+      ],
+      "description": "Addition of liothyronine to background levothyroxine in patients with treated hypothyroidism."
+    },
+    {
+      "slug": "quality_of_life_hypothyroid_on_t4",
+      "name": "Quality of life in hypothyroid patients already on T4",
+      "kind": "process",
+      "aliases": [
+        "persistent symptoms on levothyroxine",
+        "quality of life during T4-treated hypothyroidism"
+      ],
+      "description": "Patient-reported quality of life, mood, and symptom burden among hypothyroid patients already treated with levothyroxine."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "liothyronine_t3_addition",
+      "outcome_slug": "quality_of_life_hypothyroid_on_t4",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A meta-analysis of 11 randomized trials in 1,216 patients found no meaningful quality-of-life advantage for T4/T3 combination therapy over T4 alone (SMD 0.03, 95% CI -0.09 to 0.15), although some individual studies reported isolated psychometric or preference signals.",
+      "population": "adults with treated primary hypothyroidism who remained symptomatic or were evaluated for combination thyroid hormone replacement",
+      "mechanism": "Adding liothyronine may better mimic physiological T3 exposure in some patients, but rapid absorption and serum peaks can also create instability without consistent tissue-level benefit. That helps explain why anecdotal preference exists while pooled quality-of-life gains remain hard to demonstrate.",
+      "summary": "Liothyronine added to levothyroxine has mixed evidence for improving quality of life in hypothyroid patients already on T4. A few trials suggest selective psychometric or preference benefits, but pooled randomized evidence does not show a reliable broad improvement in fatigue, mood, or overall quality of life.",
+      "caveats": "Most trials are small, heterogeneous, and use different T4:T3 substitution ratios, so a true responder subgroup may still exist without showing up clearly in averages. This edge should not be read as proof that combination therapy never helps, only that routine add-on use has not demonstrated consistent population-level quality-of-life benefit.",
+      "evidence": [
+        {
+          "citation": "Grozinsky-Glasberg S 2006 J Clin Endocrinol Metab",
+          "year": 2006,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Thyroxine-triiodothyronine combination therapy versus thyroxine monotherapy for clinical hypothyroidism: meta-analysis of randomized controlled trials.",
+          "pmid": "16670166",
+          "n_participants": 1216,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.03,
+            "ci_low": -0.09,
+            "ci_high": 0.15,
+            "comparator": "quality of life with combination therapy versus levothyroxine alone"
+          }
+        },
+        {
+          "citation": "Escobar-Morreale HF 2005 Ann Intern Med",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Thyroid hormone replacement therapy in primary hypothyroidism: a randomized trial comparing L-thyroxine plus liothyronine with L-thyroxine alone.",
+          "pmid": "15767619",
+          "n_participants": 28
+        },
+        {
+          "citation": "Escobar-Morreale HF 2005 J Clin Endocrinol Metab",
+          "year": 2005,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "REVIEW: Treatment of hypothyroidism with combinations of levothyroxine plus liothyronine.",
+          "pmid": "15928247"
+        }
+      ]
+    }
+  ]
+}

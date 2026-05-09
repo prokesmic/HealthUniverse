@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "transdermal_estradiol",
+      "name": "Transdermal estradiol",
+      "kind": "drug",
+      "aliases": [
+        "estradiol patch therapy",
+        "transdermal estrogen replacement"
+      ],
+      "description": "Estradiol delivered through the skin, typically by patch, for menopausal hormone therapy."
+    },
+    {
+      "slug": "vasomotor_symptoms",
+      "name": "Vasomotor symptoms",
+      "kind": "condition",
+      "aliases": [
+        "hot flashes",
+        "night sweats"
+      ],
+      "description": "Menopausal hot flashes and night sweats."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "transdermal_estradiol",
+      "outcome_slug": "vasomotor_symptoms",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A network meta-analysis of 47 randomized trials found transdermal estradiol plus progestogen to be among the most effective menopausal treatments for vasomotor symptom relief versus placebo (mean ratio 0.23, 95% CrI 0.09 to 0.57).",
+      "population": "peri- and postmenopausal women with moderate to severe hot flashes or night sweats",
+      "mechanism": "Transdermal estradiol restores estrogen signaling in thermoregulatory centers that narrow the hypothalamic thermoneutral zone during menopause. This reduces the abrupt heat-dissipation responses that drive hot flashes and night sweats.",
+      "summary": "Transdermal estradiol is strongly protective against menopausal vasomotor symptoms. Across randomized trials and direct patch studies, it consistently reduces hot flashes and night sweats more than placebo and ranks near the top of pharmacologic options.",
+      "caveats": "Many trials study transdermal estradiol alongside a progestogen in women with a uterus, so some estimates reflect the combined regimen rather than estradiol alone. The symptom benefit is strong, but route- and dose-specific safety decisions still depend on uterine status, vascular risk, and treatment goals.",
+      "evidence": [
+        {
+          "citation": "Sarri G 2017 BJOG",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Vasomotor symptoms resulting from natural menopause: a systematic review and network meta-analysis of treatment effects from the National Institute for Health and Care Excellence guideline on menopause.",
+          "pmid": "28276200",
+          "n_participants": 8326,
+          "effect_quant": {
+            "metric": "MR",
+            "value": 0.23,
+            "ci_low": 0.09,
+            "ci_high": 0.57,
+            "comparator": "transdermal estradiol plus progestogen versus placebo for vasomotor symptom frequency"
+          }
+        },
+        {
+          "citation": "Santoro N 2017 Menopause",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Longitudinal changes in menopausal symptoms comparing women randomized to low-dose oral conjugated estrogens or transdermal estradiol plus micronized progesterone versus placebo: the Kronos Early Estrogen Prevention Study.",
+          "pmid": "27779568",
+          "n_participants": 727
+        },
+        {
+          "citation": "Bacchi-Modena A 1997 Maturitas",
+          "year": 1997,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and tolerability of Estraderm MX, a new estradiol matrix patch.",
+          "pmid": "9288701",
+          "n_participants": 109,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -4.2,
+            "ci_low": -5.8,
+            "ci_high": -2.6,
+            "unit": "moderate-to-severe hot flushes per 24 h",
+            "comparator": "Estraderm MX versus placebo after 12 weeks"
+          }
+        }
+      ]
+    }
+  ]
+}
