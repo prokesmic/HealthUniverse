@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "topical_benzoyl_peroxide",
+      "name": "Topical benzoyl peroxide",
+      "kind": "drug",
+      "aliases": [
+        "benzoyl peroxide gel",
+        "BPO topical therapy"
+      ],
+      "description": "Topically applied benzoyl peroxide formulations used to treat acne vulgaris."
+    },
+    {
+      "slug": "moderate_acne_clinical",
+      "name": "Clinical moderate acne",
+      "kind": "condition",
+      "aliases": [
+        "moderate acne vulgaris",
+        "clinically assessed moderate acne"
+      ],
+      "description": "Clinically assessed mild-to-moderate or moderate acne vulgaris severity and lesion burden."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "topical_benzoyl_peroxide",
+      "outcome_slug": "moderate_acne_clinical",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A 2021 network meta-analysis found benzoyl peroxide improved self-reported acne outcomes in about 35% of patients versus 26% with vehicle, and broader 2022 acne network evidence across roughly 35,000 observations continued to rank benzoyl peroxide-containing topical therapy as clinically effective.",
+      "population": "adolescents and adults with mild-to-moderate or moderate acne vulgaris treated with topical benzoyl peroxide formulations",
+      "mechanism": "Benzoyl peroxide reduces Cutibacterium acnes burden and exerts comedolytic and anti-inflammatory effects, which is why it remains a basic first-line topical therapy despite irritation tradeoffs.",
+      "summary": "Topical benzoyl peroxide remains one of the most evidence-backed acne treatments. It is not the most glamorous option, but large review-level evidence still shows real clinical improvement for mild-to-moderate inflammatory acne.",
+      "caveats": "Irritation, bleaching, and tolerability issues matter, and combination regimens often outperform benzoyl peroxide alone. This edge is about clinical acne improvement, not perfect clearance.",
+      "evidence": [
+        {
+          "citation": "ZaengleinAL et al 2020 Cochrane Database Syst Rev",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Topical benzoyl peroxide for acne.",
+          "pmid": "32175593",
+          "n_participants": 29592
+        },
+        {
+          "citation": "StuartB et al 2021 Br J Dermatol",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Topical preparations for the treatment of mild-to-moderate acne vulgaris: systematic review and network meta-analysis.",
+          "pmid": "33825196",
+          "n_participants": 18089,
+          "effect_quant": {
+            "metric": "response_rate",
+            "value": 35,
+            "unit": "percent",
+            "comparator": "self-reported acne improvement with benzoyl peroxide versus 26% with vehicle"
+          }
+        },
+        {
+          "citation": "SutariaAH et al 2022 Br J Dermatol",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A systematic review and network meta-analysis of topical pharmacological, oral pharmacological, physical and combined treatments for acne vulgaris.",
+          "pmid": "35789996",
+          "n_participants": 35000
+        }
+      ]
+    }
+  ]
+}
