@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "american_ginseng",
+      "name": "American ginseng (Panax quinquefolius)",
+      "kind": "supplement",
+      "aliases": [
+        "Panax quinquefolius",
+        "Cereboost"
+      ],
+      "description": "Standardized American ginseng extract used acutely or chronically for cognitive enhancement."
+    },
+    {
+      "slug": "working_memory_acute",
+      "name": "Acute working memory performance",
+      "kind": "process",
+      "aliases": [
+        "short-term working memory after dosing",
+        "post-dose working memory"
+      ],
+      "description": "Working-memory task performance measured within hours of a single intervention dose."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "american_ginseng",
+      "outcome_slug": "working_memory_acute",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "population": "healthy young and middle-aged adults receiving standardized Panax quinquefolius extracts",
+      "mechanism": "American ginseng may support acute working memory through cholinergic modulation, ginsenoside-driven frontoparietal activation, and possibly later microbiome-mediated effects with repeated intake. Across human trials, the signal is most consistent for working-memory tasks rather than broad global cognition.",
+      "summary": "American ginseng has one of the cleaner acute cognitive signals among botanicals in this brief: small randomized crossover trials repeatedly report working-memory benefits within hours of dosing. The evidence is still based on modest sample sizes and a fairly narrow extract literature, but the consistency is better than for many other nootropics.",
+      "caveats": "Most of the literature comes from a small cluster of related Cereboost trials, so independent replication is still thinner than ideal. Effects are task-specific and do not imply a broad enhancement of every cognitive domain.",
+      "evidence": [
+        {
+          "citation": "Scholey AB et al 2010 Psychopharmacology (Berl)",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of American ginseng (Panax quinquefolius) on neurocognitive function: an acute, randomised, double-blind, placebo-controlled, crossover study.",
+          "pmid": "20676609",
+          "n_participants": 32
+        },
+        {
+          "citation": "Reay JL et al 2015 Hum Psychopharmacol",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Improved working memory performance following administration of a single dose of American ginseng (Panax quinquefolius L.) to healthy middle-age adults.",
+          "pmid": "25778987",
+          "n_participants": 52
+        },
+        {
+          "citation": "Lee J et al 2022 Eur J Nutr",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A randomized, placebo-controlled trial investigating the acute and chronic benefits of American Ginseng (Cereboost®) on mood and cognition in healthy young adults, including in vitro investigation of gut microbiota changes as a possible mechanism of action.",
+          "pmid": "34396468",
+          "n_participants": 61
+        }
+      ]
+    }
+  ]
+}
