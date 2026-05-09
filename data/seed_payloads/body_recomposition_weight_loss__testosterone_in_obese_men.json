@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "body_recomposition_weight_loss",
+      "name": "Body recomposition and weight loss",
+      "kind": "behavior",
+      "aliases": [
+        "intentional weight loss",
+        "fat-mass reduction",
+        "weight-loss intervention"
+      ],
+      "description": "Intentional reduction of body weight and fat mass through caloric restriction or bariatric weight-loss strategies."
+    },
+    {
+      "slug": "testosterone_in_obese_men",
+      "name": "Testosterone in obese men",
+      "kind": "process",
+      "aliases": [
+        "testosterone response in obesity",
+        "male testosterone with obesity-related hypogonadism"
+      ],
+      "description": "Changes in testosterone concentrations among men with obesity."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "body_recomposition_weight_loss",
+      "outcome_slug": "testosterone_in_obese_men",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "A 2019 meta-analysis of bariatric surgery studies involving 1,022 men found significant post-weight-loss increases in both free and calculated testosterone, and a smaller dietary study doubled mean total testosterone from 6.97 to 13.21 nmol/L after 12 weeks of caloric restriction.",
+      "population": "adult men with obesity, including men with obesity-related hypogonadism and men undergoing bariatric surgery or intensive caloric restriction",
+      "mechanism": "Losing fat mass reduces aromatase-driven conversion of testosterone to estradiol and can improve insulin resistance and hypothalamic-pituitary-gonadal signaling. That makes the endocrine benefit of weight loss more pathophysiologic than supplement-like: it removes a driver of suppression rather than forcing testosterone upward directly.",
+      "summary": "Weight loss is one of the more believable non-drug ways to improve testosterone in obese men. The evidence is not just associative: both caloric restriction and bariatric surgery studies show that substantial fat loss often lifts testosterone, particularly when obesity-related hypogonadism is present.",
+      "caveats": "Not every man normalizes testosterone with weight loss, and the biggest hormonal gains tend to come with large or sustained weight reduction. This edge is strongest for men with genuine obesity-related suppression, not for already-lean men chasing marginal optimization.",
+      "evidence": [
+        {
+          "citation": "Lee Y et al 2019 Obes Surg",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Impact of Bariatric Surgery on Male Sex Hormones and Sperm Quality: a Systematic Review and Meta-Analysis.",
+          "pmid": "30382463",
+          "n_participants": 1022,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -0.05,
+            "ci_low": -0.07,
+            "ci_high": -0.02,
+            "comparator": "pre- versus post-bariatric surgery calculated free testosterone"
+          }
+        },
+        {
+          "citation": "Aarts E et al 2014 Clin Endocrinol (Oxf)",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Gonadal status and outcome of bariatric surgery in obese men.",
+          "pmid": "24237302",
+          "n_participants": 24
+        },
+        {
+          "citation": "Schulte DM et al 2014 Horm Metab Res",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Caloric restriction increases serum testosterone concentrations in obese male subjects by two distinct mechanisms.",
+          "pmid": "24198220",
+          "n_participants": 13,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 6.24,
+            "comparator": "serum testosterone rise after 12 weeks of caloric restriction, nmol/L"
+          }
+        }
+      ]
+    }
+  ]
+}

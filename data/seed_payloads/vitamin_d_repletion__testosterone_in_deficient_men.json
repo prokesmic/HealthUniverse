@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "vitamin_d_repletion",
+      "name": "Vitamin D repletion",
+      "kind": "supplement",
+      "aliases": [
+        "vitamin D supplementation in deficient men",
+        "vitamin D correction"
+      ],
+      "description": "Vitamin D supplementation used to correct low 25-hydroxyvitamin D status in men."
+    },
+    {
+      "slug": "testosterone_in_deficient_men",
+      "name": "Testosterone in deficient men",
+      "kind": "process",
+      "aliases": [
+        "testosterone response in low-vitamin-D men",
+        "male testosterone under vitamin D deficiency"
+      ],
+      "description": "Changes in testosterone concentrations among men starting with low vitamin D status."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "vitamin_d_repletion",
+      "outcome_slug": "testosterone_in_deficient_men",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2024 meta-analysis found a small increase in total testosterone with vitamin D supplementation in adult men (WMD 0.38, 95% CI 0.06 to 0.70), but individual randomized trials remain inconsistent and some clinically relevant low-vitamin-D groups show no benefit.",
+      "population": "adult men with low 25-hydroxyvitamin D, including overweight men, infertile men, and men with advanced heart failure",
+      "mechanism": "Vitamin D receptors are present in the male reproductive axis, so endocrine effects are biologically plausible. The pattern in humans suggests that any benefit is modest and context-sensitive, with the cleanest signal appearing in deficient or subfertile populations rather than as a universal testosterone-optimization tool.",
+      "summary": "Vitamin D repletion may modestly increase testosterone in some men with low vitamin D, but this is not a uniform or high-certainty effect. The evidence reads more like a small supportive correction signal than a reliable hormone-boosting intervention.",
+      "caveats": "Results differ substantially by population and trial design, and a positive pooled average does not erase several null randomized findings. This edge should be used conservatively, especially when deficiency correction is being sold as a straightforward testosterone hack.",
+      "evidence": [
+        {
+          "citation": "Giribabu N et al 2025 PeerJ",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Vitamin D supplementation in infertile men: a systematic review and meta-analysis of effects on semen quality and endocrine function.",
+          "pmid": "42004696",
+          "n_participants": 1168
+        },
+        {
+          "citation": "Pilz S et al 2011 Horm Metab Res",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of vitamin D supplementation on testosterone levels in men.",
+          "pmid": "21154195",
+          "n_participants": 54
+        },
+        {
+          "citation": "Zittermann A et al 2019 Eur J Nutr",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Vitamin D supplementation does not prevent the testosterone decline in males with advanced heart failure: the EVITA trial.",
+          "pmid": "29546692",
+          "n_participants": 133
+        }
+      ]
+    }
+  ]
+}

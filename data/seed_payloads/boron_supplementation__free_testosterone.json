@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "boron_supplementation",
+      "name": "Boron supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "oral boron",
+        "boron supplement"
+      ],
+      "description": "Supplemental boron taken orally with the aim of changing hormone or inflammatory markers."
+    },
+    {
+      "slug": "free_testosterone",
+      "name": "Free testosterone",
+      "kind": "process",
+      "aliases": [
+        "circulating free testosterone",
+        "bioavailable free testosterone signal"
+      ],
+      "description": "The unbound testosterone fraction available in circulation."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "boron_supplementation",
+      "outcome_slug": "free_testosterone",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "A tiny 2011 human trial reported higher morning free testosterone after one week of 10 mg/day boron, but an older placebo-controlled bodybuilding study found no meaningful testosterone effect over seven weeks.",
+      "population": "healthy adult men, including recreationally trained bodybuilders and healthy volunteers",
+      "mechanism": "Boron may transiently shift steroid binding or metabolism rather than acting as a robust androgen stimulator. The short-term signal most often cited comes alongside lower SHBG and inflammatory markers, which makes a small free-testosterone bump biologically plausible without proving a durable testosterone-boosting effect.",
+      "summary": "Human evidence for boron as a free-testosterone booster is thin and internally inconsistent. One very small acute-to-short-term study reported an increase in free testosterone, while the better-known placebo-controlled bodybuilding trial found no meaningful hormonal benefit, so this remains a noisy supplement claim rather than a dependable endocrine strategy.",
+      "caveats": "The direct human literature is extremely sparse, underpowered, and old. The most positive signal comes from eight volunteers studied over only a week, which is not enough to justify confident marketing claims or broad hormonal-optimization advice.",
+      "evidence": [
+        {
+          "citation": "Naghii MR et al 2011 J Trace Elem Med Biol",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Comparative effects of daily and weekly boron supplementation on plasma steroid hormones and proinflammatory cytokines.",
+          "pmid": "21129941",
+          "n_participants": 8
+        },
+        {
+          "citation": "Green NR et al 1994 Environ Health Perspect",
+          "year": 1994,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Plasma boron and the effects of boron supplementation in males.",
+          "pmid": "7889885",
+          "n_participants": 19
+        },
+        {
+          "citation": "Natural Standard 2008 J Diet Suppl",
+          "year": 2008,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Boron.",
+          "pmid": "22433045"
+        }
+      ]
+    }
+  ]
+}
