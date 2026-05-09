@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "rhodiola_rosea",
+      "name": "Rhodiola rosea extract",
+      "kind": "supplement",
+      "aliases": [
+        "Rhodiola rosea",
+        "SHR-5 rhodiola extract"
+      ],
+      "description": "Standardized Rhodiola rosea extract marketed as an adaptogenic supplement for stress and fatigue."
+    },
+    {
+      "slug": "mental_fatigue",
+      "name": "Mental fatigue",
+      "kind": "process",
+      "aliases": [
+        "cognitive fatigue",
+        "fatigue-related decline in mental performance"
+      ],
+      "description": "Subjective and task-based cognitive fatigue during sustained work, stress, or shift-related exertion."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "rhodiola_rosea",
+      "outcome_slug": "mental_fatigue",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "healthy but stressed or shift-working adults",
+      "mechanism": "Rhodiola is proposed to alter monoaminergic signaling and stress-system reactivity in ways that might preserve attention and reduce perceived fatigue under load. Human data remain inconsistent, suggesting any anti-fatigue effect is contingent on context, extract, and study design rather than robustly reproducible across populations.",
+      "summary": "Rhodiola rosea does not support a clean pro-performance or anti-fatigue claim. Early physician and stress-related-fatigue trials reported benefits, but a later randomized study in shift-working nursing students found worse fatigue outcomes than placebo, leaving the overall evidence mixed and low confidence.",
+      "caveats": "The literature is small, uses different fatigue constructs, and often centers on one proprietary extract family. This is a classic case where the marketing narrative is much simpler than the actual trial record.",
+      "evidence": [
+        {
+          "citation": "Darbinyan V et al 2000 Phytomedicine",
+          "year": 2000,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Rhodiola rosea in stress induced fatigue--a double blind cross-over study of a standardized extract SHR-5 with a repeated low-dose regimen on the mental performance of healthy physicians during night duty.",
+          "pmid": "11081987",
+          "n_participants": 56
+        },
+        {
+          "citation": "Olsson EM et al 2009 Planta Med",
+          "year": 2009,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A randomised, double-blind, placebo-controlled, parallel-group study of the standardised extract shr-5 of the roots of Rhodiola rosea in the treatment of subjects with stress-related fatigue.",
+          "pmid": "19016404",
+          "n_participants": 60
+        },
+        {
+          "citation": "Punja S et al 2014 PLoS One",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Rhodiola rosea for mental and physical fatigue in nursing students: a randomized controlled trial.",
+          "pmid": "25268730",
+          "n_participants": 48
+        }
+      ]
+    }
+  ]
+}

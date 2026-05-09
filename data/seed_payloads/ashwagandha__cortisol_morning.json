@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cortisol_morning",
+      "name": "Morning cortisol",
+      "kind": "biomarker",
+      "aliases": [
+        "AM cortisol",
+        "waking cortisol level"
+      ],
+      "description": "Morning or baseline cortisol concentrations measured in saliva or serum."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ashwagandha",
+      "outcome_slug": "cortisol_morning",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2024 meta-analysis reported a significant pooled reduction in serum cortisol with ashwagandha versus placebo (MD -2.58, 95% CI -4.99 to -0.16), but individual trials remain heterogeneous.",
+      "population": "stressed healthy adults or overweight middle-aged adults using standardized extracts",
+      "mechanism": "Ashwagandha is often framed as an HPA-axis modulator, potentially lowering cortisol output in chronically stressed states. The biomarker evidence partly supports that story, but between-trial differences in extract, matrix, and baseline stress mean the cortisol effect is less uniform than supplement advertising implies.",
+      "summary": "Ashwagandha probably lowers morning or baseline cortisol in at least some stressed adults, but the biomarker evidence is not completely uniform. The pooled literature is directionally positive, while individual randomized trials range from clearly favorable to essentially null on cortisol despite improvements in some subjective outcomes.",
+      "caveats": "Cortisol is highly variable and sensitive to timing, sampling method, and baseline stress state. A lower cortisol number is also not automatically better for every person, especially if the change is small and the broader clinical context is ignored.",
+      "evidence": [
+        {
+          "citation": "Salve J et al 2024 Explore (NY)",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of Ashwagandha (Withania Somnifera) on stress and anxiety: A systematic review and meta-analysis.",
+          "pmid": "39348746",
+          "n_participants": 558,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -2.58,
+            "ci_low": -4.99,
+            "ci_high": -0.16,
+            "comparator": "ashwagandha versus placebo for serum cortisol"
+          }
+        },
+        {
+          "citation": "Lopresti AL et al 2019 Medicine (Baltimore)",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "An investigation into the stress-relieving and pharmacological actions of an ashwagandha (Withania somnifera) extract: A randomized, double-blind, placebo-controlled study.",
+          "pmid": "31517876",
+          "n_participants": 60
+        },
+        {
+          "citation": "Lopresti AL et al 2019 Am J Mens Health",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A Randomized, Double-Blind, Placebo-Controlled, Crossover Study Examining the Hormonal and Vitality Effects of Ashwagandha ( Withania somnifera) in Aging, Overweight Males.",
+          "pmid": "30854916",
+          "n_participants": 57
+        }
+      ]
+    }
+  ]
+}
