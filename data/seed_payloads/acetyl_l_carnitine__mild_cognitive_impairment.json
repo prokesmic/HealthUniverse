@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "acetyl_l_carnitine",
+      "name": "Acetyl-L-carnitine",
+      "kind": "supplement",
+      "aliases": [
+        "ALCAR",
+        "L-acetylcarnitine"
+      ],
+      "description": "An acetylated carnitine compound used as a nutritional supplement for mitochondrial and cognitive support."
+    },
+    {
+      "slug": "mild_cognitive_impairment",
+      "name": "Mild cognitive impairment",
+      "kind": "condition",
+      "aliases": [
+        "MCI",
+        "early cognitive impairment"
+      ],
+      "description": "Mild measurable cognitive decline greater than expected for age, without established dementia-level functional loss."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "acetyl_l_carnitine",
+      "outcome_slug": "mild_cognitive_impairment",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "A 2003 meta-analysis of placebo-controlled trials in mild cognitive impairment and mild Alzheimer's disease found a small but significant pooled advantage for acetyl-L-carnitine over placebo (summary effect size 0.20, p = 0.006).",
+      "population": "older adults with mild cognitive impairment or mild early dementia",
+      "mechanism": "Acetyl-L-carnitine may support mitochondrial energy handling, acetyl-group donation, and neuronal membrane function, which could plausibly slow aspects of cognitive decline in vulnerable brains. Human results have been heterogeneous, however, and appear more suggestive in older impairment cohorts than in broader cognition claims.",
+      "summary": "Acetyl-L-carnitine has a long but uneven clinical literature in early cognitive decline. Older pooled evidence suggests a modest benefit, yet the underlying trials are dated, variably designed, and not strong enough to support a confident modern nootropic claim.",
+      "caveats": "Much of the evidence predates current trial standards and often mixes MCI with mild Alzheimer's disease. This makes the overall signal difficult to generalize to present-day supplement use in otherwise healthy adults with only mild forgetfulness.",
+      "evidence": [
+        {
+          "citation": "Montgomery SA et al 2003 Int Clin Psychopharmacol",
+          "year": 2003,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Meta-analysis of double blind randomized controlled clinical trials of acetyl-L-carnitine versus placebo in the treatment of mild cognitive impairment and mild Alzheimer's disease.",
+          "pmid": "12598816",
+          "n_participants": 21,
+          "effect_quant": {
+            "metric": "effect_size",
+            "value": 0.2,
+            "comparator": "acetyl-L-carnitine versus placebo for integrated cognitive outcomes"
+          }
+        },
+        {
+          "citation": "Thal LJ et al 1991 Neurology",
+          "year": 1991,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Long-term acetyl-L-carnitine treatment in Alzheimer's disease.",
+          "pmid": "1944900",
+          "n_participants": 130
+        },
+        {
+          "citation": "Park JH et al 2024 Medicine (Baltimore)",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Comparative study of choline alfoscerate as a combination therapy with donepezil: A mixed double-blind randomized controlled and open-label observation trial.",
+          "pmid": "38875437",
+          "n_participants": 119
+        }
+      ]
+    }
+  ]
+}

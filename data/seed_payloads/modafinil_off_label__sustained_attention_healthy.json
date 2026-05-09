@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "modafinil_off_label",
+      "name": "Modafinil used off-label",
+      "kind": "drug",
+      "aliases": [
+        "modafinil",
+        "off-label modafinil"
+      ],
+      "description": "Wake-promoting medication used by healthy people off-label for alertness and cognitive enhancement."
+    },
+    {
+      "slug": "sustained_attention_healthy",
+      "name": "Sustained attention in healthy adults",
+      "kind": "process",
+      "aliases": [
+        "healthy-adult vigilance",
+        "attention maintenance in nonclinical adults"
+      ],
+      "description": "Sustained attention or vigilance performance measured in healthy adults without a clinical sleep or attention disorder."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "modafinil_off_label",
+      "outcome_slug": "sustained_attention_healthy",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "population": "healthy adults, especially under sleep loss or high cognitive demand",
+      "mechanism": "Modafinil promotes wakefulness through catecholaminergic and other arousal-related circuits that can stabilize vigilance and response control. In healthy adults, the clearest benefits appear in attention-demanding settings or under sleep-pressure, while broader claims of generalized enhancement remain more controversial.",
+      "summary": "Modafinil likely does improve sustained attention in healthy adults, but the effect is context-dependent and not as universally impressive as its reputation suggests. Evidence is strongest under sleep deprivation or high-load tasks, while benefits in fully rested healthy users are more modest and selective.",
+      "caveats": "This is a prescription drug with real side-effect, sleep, and misuse considerations, not a benign supplement. Positive attention effects do not automatically imply that healthy off-label use is worth the risk or appropriate outside medical supervision.",
+      "evidence": [
+        {
+          "citation": "Repantis D et al 2021 Psychopharmacology (Berl)",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cognitive enhancement effects of stimulants: a randomized controlled trial testing methylphenidate, modafinil, and caffeine.",
+          "pmid": "33201262",
+          "n_participants": 16
+        },
+        {
+          "citation": "Caldwell JA et al 2010 Neuropsychopharmacology",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of modafinil on impairments in neurobehavioral performance and learning associated with extended wakefulness and circadian misalignment.",
+          "pmid": "20505660",
+          "n_participants": 18
+        },
+        {
+          "citation": "Minzenberg MJ et al 2010 Neuropsychopharmacology",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Modulatory effects of modafinil on neural circuits regulating emotion and cognition.",
+          "pmid": "20555311",
+          "n_participants": 26
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "nicotine_gum_acute",
+      "name": "Acute nicotine gum",
+      "kind": "drug",
+      "aliases": [
+        "nicotine chewing gum",
+        "single-dose nicotine gum"
+      ],
+      "description": "Acute administration of nicotine gum used to test short-term psychostimulant and cognitive effects."
+    },
+    {
+      "slug": "working_memory",
+      "name": "Working memory",
+      "kind": "process",
+      "aliases": [
+        "short-term working memory",
+        "online memory manipulation"
+      ],
+      "description": "The ability to temporarily hold and manipulate information over short time periods."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "nicotine_gum_acute",
+      "outcome_slug": "working_memory",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "healthy non-smokers, never-smokers, or abstinent smokers receiving acute nicotine gum doses",
+      "mechanism": "Nicotine stimulates nicotinic acetylcholine receptors and can sharpen attentional signaling, which may indirectly help some working-memory tasks. Across human gum studies, though, the clearest and most reproducible effects are on vigilance or attention, while working-memory gains are inconsistent and often absent.",
+      "summary": "Acute nicotine gum does not show a reliable broad working-memory benefit in humans. Some studies report task-specific improvements, but others find no meaningful working-memory change despite clear physiological or attentional effects, so the most honest read is mixed.",
+      "caveats": "Any cognitive effect has to be weighed against nicotine's obvious dependence liability and cardiovascular stimulation. This is not a clean lifestyle nootropic edge even where small task benefits appear.",
+      "evidence": [
+        {
+          "citation": "Trimmel M et al 2005 Psychol Addict Behav",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The effects of nicotine on attention and working memory in never-smokers.",
+          "pmid": "16366815",
+          "n_participants": 20
+        },
+        {
+          "citation": "Perkins KA et al 2017 Psychopharmacology (Berl)",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Validation of the human odor span task: effects of nicotine.",
+          "pmid": "28710519",
+          "n_participants": 30
+        },
+        {
+          "citation": "Heishman SJ et al 2001 Neuropsychopharmacology",
+          "year": 2001,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Smoking history and nicotine effects on cognitive performance.",
+          "pmid": "11522460",
+          "n_participants": 38
+        }
+      ]
+    }
+  ]
+}
