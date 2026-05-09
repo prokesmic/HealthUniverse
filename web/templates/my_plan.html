@@ -1,5 +1,104 @@
 {% extends "base.html" %}
 {% block content %}
+<style>
+  /* My-plan v2: kind-grouped sections, three-column action layout,
+     line-clamped evidence, in-stack flag, review badge. */
+  .plan-meta {
+    display: flex; flex-wrap: wrap; gap: 8px 16px;
+    color: var(--ink-soft); font-size: 13px; margin-top: 4px;
+  }
+  .plan-meta b { color: var(--ink); font-weight: 600; }
+  .starters {
+    margin: 16px 0 24px; padding: 16px 18px;
+    border: 1px solid #c5e0cc; background: #f4faf6;
+    border-radius: 12px;
+  }
+  .starters h2 {
+    margin: 0 0 4px; font-size: 16px; color: #1b5e20;
+    font-family: 'Inter', sans-serif; letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .starters .lede { margin: 0 0 12px; font-size: 14px; color: #2a4a36; }
+  .starters .starter-grid {
+    display: grid; gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .starter-card {
+    border: 1px solid #b7e0c4; background: #fff; border-radius: 10px;
+    padding: 12px 14px; text-decoration: none; color: var(--ink);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .starter-card:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.05); }
+  .starter-num {
+    font: 700 12px 'Inter'; color: #1b5e20; letter-spacing: 0.06em;
+  }
+  .starter-name { font-weight: 600; font-size: 16px; }
+  .starter-axes { font-size: 12px; color: #4a5d52; }
+
+  /* Three-column action grid at desktop, stacks at <960. */
+  .plan-grid {
+    display: grid; gap: 18px;
+    grid-template-columns: 1.1fr 0.9fr 0.9fr;
+    margin-top: 16px;
+  }
+  @media (max-width: 960px) { .plan-grid { grid-template-columns: 1fr; } }
+  .plan-col h3 {
+    margin: 0 0 6px; font-size: 18px;
+    font-family: 'Inter', sans-serif;
+  }
+  .plan-col header { margin-bottom: 10px; }
+  .plan-col header small { color: var(--ink-soft); }
+  .plan-bucket-head {
+    margin: 18px 0 8px; font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft);
+    border-bottom: 1px solid var(--line); padding-bottom: 4px;
+  }
+  .plan-bucket-head:first-child { margin-top: 0; }
+  .plan-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+
+  .plan-card {
+    position: relative;
+    border: 1px solid var(--line); background: #fff;
+    border-radius: 10px; padding: 12px 14px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .plan-card.is-in-stack { border-color: #b7e0c4; background: #f8fcf9; }
+  .plan-card-head {
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  }
+  .plan-card-title {
+    font-weight: 600; color: var(--ink); text-decoration: none;
+    font-size: 15px;
+  }
+  .plan-card-title:hover { text-decoration: underline; }
+  .plan-axes {
+    display: flex; flex-wrap: wrap; gap: 6px 10px;
+    font-size: 12px; color: var(--ink-soft);
+  }
+  .plan-axes .ax-tier { font-weight: 600; color: var(--ink); }
+  .plan-axes .ax-overlap { color: #1b5e20; font-weight: 600; }
+  .plan-card-effect {
+    margin: 0; font-size: 13px; color: #4a5d52;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  }
+  .plan-card-effect:hover { -webkit-line-clamp: unset; }
+  .plan-card-for { margin: 0; font-size: 12px; color: var(--ink-soft); }
+  .plan-card-for b { color: var(--ink); font-weight: 600; }
+  .plan-card-doses { font-size: 11px; color: var(--ink-soft); font-style: italic; }
+  .plan-pill-row { display: flex; gap: 6px; flex-wrap: wrap; }
+  .pill-mini {
+    display: inline-block; padding: 2px 7px; border-radius: 4px;
+    font-size: 11px; font-weight: 600;
+  }
+  .pm-good { background:#e7f5ec; color:#1b5e20; }
+  .pm-warn { background:#fff7e0; color:#7a5c00; }
+  .pm-bad  { background:#fdecea; color:#9b1c1c; }
+  .pm-info { background:#eaf3ff; color:#1f3a7e; }
+  .pm-mute { background:#f0f0f0; color:#555; }
+  .pm-instack { background:#1f3a2e; color:#fffaf0; }
+</style>
 
 <section class="prv-hero">
   <p class="hp-eyebrow">YOUR PERSONAL PLAN</p>
@@ -9,7 +108,14 @@
     condition{{ matched_outcomes|length != 1 and "s" or "" }} you're tracking
     on <a class="hp-link" href="/me">your stack</a> — overlap means a single
     move addresses multiple goals.</p>
-  <div class="prv-conditions-pills">
+  <div class="plan-meta">
+    {% if profile.name %}<span><b>For:</b> {{ profile.name }}</span>{% endif %}
+    {% if profile.age %}<span><b>Age:</b> {{ profile.age }}</span>{% endif %}
+    {% if profile.sex %}<span><b>Sex:</b> {{ profile.sex }}</span>{% endif %}
+    <span><b>Tracking:</b> {{ matched_outcomes|length }} condition{{ matched_outcomes|length != 1 and "s" or "" }}</span>
+    <span><b>In your stack:</b> {{ n_stack }} item{{ n_stack != 1 and "s" or "" }}</span>
+  </div>
+  <div class="prv-conditions-pills" style="margin-top:10px">
     {% for o in matched_outcomes %}
       <a class="hp-badge hp-badge-ghost" href="/prevent?q={{ o.slug }}">{{ o.name }}</a>
     {% endfor %}
@@ -22,21 +128,36 @@
   {% endif %}
 </section>
 
-{% macro plan_card(e, kind) %}
-<li class="prv-card {% if e.breakthrough %}is-breakthrough{% endif %}">
-  {% if e.breakthrough %}<span class="hp-breakthrough-ribbon">BREAKTHROUGH</span>{% endif %}
-  {% if e.n_overlap > 1 %}
-    <span class="prv-overlap" title="Helps {{ e.n_overlap }} of your conditions">×{{ e.n_overlap }}</span>
-  {% endif %}
-  <div class="prv-card-head">
-    <a class="prv-card-title" href="/edge/{{ e.id }}">{{ e.f_name }}</a>
-    <span class="hp-badge hp-badge-tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] }}</span>
-    {% if e.effect_size and e.effect_size not in ('unknown', 'trivial') %}<span class="prv-effect prv-effect-{{ e.effect_size }}">{{ e.effect_size|upper }} EFFECT</span>{% endif %}
+{% macro plan_card(e) %}
+<li class="plan-card {% if e.in_stack %}is-in-stack{% endif %} {% if e.breakthrough %}is-breakthrough{% endif %}">
+  <div class="plan-card-head">
+    <a class="plan-card-title" href="/edge/{{ e.id }}">{{ e.f_name }}</a>
+    {% if e.in_stack %}<span class="pill-mini pm-instack" title="Already in your saved stack">✓ in your stack</span>{% endif %}
+    {% if e.breakthrough %}<span class="pill-mini pm-info">★ Breakthrough</span>{% endif %}
   </div>
-  <p class="prv-card-summary"><b>For:</b> {{ e.for_condition_names | join(", ") }}</p>
-  {% if e.effect_quant %}<p class="prv-card-effect">📊 {{ e.effect_quant[:160] }}{% if e.effect_quant|length > 160 %}…{% endif %}</p>{% endif %}
-  <div class="prv-card-foot">
-    <span class="muted small prv-score" title="Importance score">★ {{ "%.1f"|format(e.best_score) }}</span>
+  <div class="plan-axes">
+    <span class="ax-tier">{{ e.axes.tier_label }}</span>
+    <span class="ax-overlap">{{ e.axes.overlap_label }}</span>
+    {% if e.axes.effect_label %}<span>{{ e.axes.effect_label }}</span>{% endif %}
+  </div>
+  {% if e.effect_quant %}<p class="plan-card-effect" title="Tap to expand">📊 {{ e.effect_quant }}</p>{% endif %}
+  <p class="plan-card-for"><b>For:</b> {{ e.for_condition_names | join(", ") }}</p>
+  {% if e.dose_variants %}
+    <div class="plan-card-doses">
+      Dose-response: {{ e.dose_variants | length }} variants in the corpus
+      ({{ e.dose_variants | join(", ") | replace('_',' ') }})
+    </div>
+  {% endif %}
+  <div class="plan-pill-row">
+    {% if e.review_status == 'verified_evidence' %}
+      <span class="pill-mini pm-good" title="At least one cited PMID semantically matches this edge.">✓ verified</span>
+    {% elif e.review_status == 'weak_evidence' %}
+      <span class="pill-mini pm-warn" title="PMID titles only weakly match. Read carefully.">~ weak match</span>
+    {% elif e.review_status == 'needs_recheck' %}
+      <span class="pill-mini pm-bad" title="No cited PMID matches this edge. Pending review.">! recheck</span>
+    {% else %}
+      <span class="pill-mini pm-mute" title="Auto-classified, not yet semantically audited.">⚙ unaudited</span>
+    {% endif %}
   </div>
 </li>
 {% endmacro %}
@@ -58,54 +179,86 @@
 {% endif %}
 
 {% if matched_outcomes %}
-<section class="prv-result">
-  <div class="prv-grid">
-    <div class="prv-col prv-do">
-      <header>
-        <span class="prv-col-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>
+  {% if starters %}
+  <section class="starters" aria-label="Top 3 to start with">
+    <h2>Top 3 to start with</h2>
+    <p class="lede">Highest-leverage moves you're not already doing — sorted by overlap × evidence × effect size.</p>
+    <div class="starter-grid">
+      {% for s in starters %}
+      <a class="starter-card" href="/edge/{{ s.id }}">
+        <span class="starter-num">START #{{ loop.index }}</span>
+        <span class="starter-name">{{ s.f_name }}</span>
+        <span class="starter-axes">
+          {{ s.axes.tier_label }} · {{ s.axes.overlap_label }}{% if s.axes.effect_label %} · {{ s.axes.effect_label }}{% endif %}
         </span>
-        <h3>Do this</h3>
-        <small>Protective across one or more of your conditions</small>
-      </header>
-      {% if do_rows %}
-      <ol class="prv-list">{% for e in do_rows %}{{ plan_card(e, 'do') }}{% endfor %}</ol>
-      {% else %}<p class="empty">Nothing protective in our corpus for the conditions you're tracking yet.</p>{% endif %}
+      </a>
+      {% endfor %}
     </div>
-    <div class="prv-col prv-avoid">
-      <header>
-        <span class="prv-col-icon" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5 5l14 14"/></svg>
-        </span>
-        <h3>Hard avoid</h3>
-        <small>Clearly harmful for one or more conditions</small>
-      </header>
-      {% if hard_rows %}
-      <ol class="prv-list">{% for e in hard_rows %}{{ plan_card(e, 'hard') }}{% endfor %}</ol>
-      {% else %}<p class="empty">No clear-harm evidence in our corpus for the conditions you're tracking.</p>{% endif %}
+  </section>
+  {% endif %}
 
-      <header class="prv-subhead">
-        <span class="prv-col-icon prv-col-icon-caution" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 1 21h22z"/><path d="M12 9v6"/><circle cx="12" cy="18" r=".7"/></svg>
-        </span>
-        <h3>Use caution</h3>
-        <small>U-shaped or mixed</small>
-      </header>
-      {% if caution_rows %}
-      <ol class="prv-list">{% for e in caution_rows %}{{ plan_card(e, 'caution') }}{% endfor %}</ol>
-      {% else %}<p class="empty">No U-shaped or mixed evidence yet.</p>{% endif %}
+  <section class="prv-result">
+    <div class="plan-grid">
+      <div class="plan-col plan-do">
+        <header>
+          <h3>✓ Do this</h3>
+          <small>Protective across one or more of your conditions</small>
+        </header>
+        {% if do_buckets %}
+          {% for key, label, rows in do_buckets %}
+            {% if rows %}
+              <div class="plan-bucket-head">{{ label }} <span class="muted small">({{ rows|length }})</span></div>
+              <ol class="plan-list">{% for e in rows[:8] %}{{ plan_card(e) }}{% endfor %}</ol>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <p class="empty">Nothing protective in our corpus for the conditions you're tracking yet.</p>
+        {% endif %}
+      </div>
+
+      <div class="plan-col plan-avoid">
+        <header>
+          <h3>✗ Hard avoid / address</h3>
+          <small>Clearly harmful or worth treating</small>
+        </header>
+        {% if hard_buckets %}
+          {% for key, label, rows in hard_buckets %}
+            {% if rows %}
+              <div class="plan-bucket-head">{{ label }} <span class="muted small">({{ rows|length }})</span></div>
+              <ol class="plan-list">{% for e in rows[:8] %}{{ plan_card(e) }}{% endfor %}</ol>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <p class="empty">No clear-harm evidence in our corpus for the conditions you're tracking.</p>
+        {% endif %}
+      </div>
+
+      <div class="plan-col plan-caution">
+        <header>
+          <h3>⚠ Use caution</h3>
+          <small>U-shaped or mixed evidence — dose / context matters</small>
+        </header>
+        {% if caution_rows %}
+          <ol class="plan-list">{% for e in caution_rows %}{{ plan_card(e) }}{% endfor %}</ol>
+        {% else %}
+          <p class="empty">No U-shaped or mixed evidence yet.</p>
+        {% endif %}
+      </div>
     </div>
-  </div>
-  <div class="prv-actions">
-    <a class="prv-print-btn" href="/handout?kind=plan">🖨 Clinician handout</a>
-  </div>
-  <p class="muted small prv-disclaimer">Educational synthesis only — not
-    medical advice. Talk to a clinician before changing treatment.</p>
-</section>
+
+    <div class="prv-actions" style="margin-top:18px">
+      <a class="prv-print-btn" href="/handout?kind=plan">🖨 Clinician handout</a>
+    </div>
+    <p class="muted small prv-disclaimer">
+      Educational synthesis only — not medical advice. Talk to a clinician before
+      changing treatment. Each card's evidence is auditable on its
+      <a href="/trust">trust page</a>.
+    </p>
+  </section>
 {% else %}
-<section class="prv-suggest">
-  <a class="hp-bucket-arrow inline-cta" href="/me">Set up your stack →</a>
-</section>
+  <section class="prv-suggest">
+    <a class="hp-bucket-arrow inline-cta" href="/me">Set up your stack →</a>
+  </section>
 {% endif %}
 
 {% endblock %}

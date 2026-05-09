@@ -779,16 +779,85 @@ def og_edge_svg(edge_id: int):
                     headers={"Cache-Control": "public, max-age=3600"})
 
 
+# Dose-suffix patterns to collapse N versions of the same factor (e.g.
+# walking_4000_steps / 7000_steps / 10000_steps) into one card with a
+# "dose-response" microline.
+import re as _re_plan
+_DOSE_SUFFIX_RE = _re_plan.compile(
+    r"_(\d{1,5})_?(?:steps|min(?:utes?)?|mg|g|ml|iu|hours?|servings?|cups?|caps?)$"
+)
+
+# Map from entity.kind → display bucket on the plan page. Buckets are
+# ordered so the page reads top-down: lifestyle first (highest leverage,
+# zero cost), diet next, then supplements, then drugs, then a catch-all.
+_DO_BUCKETS = [
+    ("lifestyle", "Lifestyle & habits", ("activity", "behavior")),
+    ("diet",      "Diet & food",        ("food", "nutrient")),
+    ("supplement","Supplements",        ("supplement",)),
+    ("drug",      "Medications",        ("drug",)),
+    ("other",     "Other",              ("environmental", "process", "biomarker", "condition", "gene", "pathogen", None)),
+]
+# Hard-avoid buckets: behaviors/exposures vs biomarkers vs conditions.
+_HARD_BUCKETS = [
+    ("behaviors",  "Behaviors & exposures", ("activity", "behavior", "food", "drug", "supplement", "environmental")),
+    ("biomarkers", "Biomarkers to monitor", ("biomarker", "nutrient")),
+    ("conditions", "Conditions to manage",  ("condition", "process", "gene", "pathogen", None)),
+]
+
+
+def _kind_bucket(kind: str | None, buckets: list[tuple]) -> str:
+    """Return the bucket key for a given entity.kind."""
+    for key, _label, kinds in buckets:
+        if kind in kinds:
+            return key
+    return buckets[-1][0]
+
+
+def _dose_root(slug: str) -> str:
+    """Strip a trailing dose suffix so dose-response variants collapse.
+    Example: walking_4000_steps → walking, vitamin_d_2000_iu → vitamin_d."""
+    return _DOSE_SUFFIX_RE.sub("", slug or "")
+
+
+def _three_axis_labels(e: dict) -> dict:
+    """Replace the magic-number ★ score with three plain-text axes a
+    user can actually compare. Returns the labels the template renders."""
+    tier = e.get("tier") or "C"
+    overlap = e.get("n_overlap") or 1
+    eff = (e.get("effect_size") or "").lower()
+    if eff in ("large", "very_large"):
+        eff_label = "large effect"
+    elif eff == "moderate":
+        eff_label = "moderate effect"
+    elif eff == "small":
+        eff_label = "small effect"
+    else:
+        eff_label = ""
+    return {
+        "tier_label":   {"A":"Strong evidence","B":"Moderate evidence",
+                         "C":"Emerging","D":"Weak","X":"Contested"}.get(tier, tier),
+        "overlap_label": (f"helps {overlap} of your conditions"
+                          if overlap > 1 else "helps 1 condition"),
+        "effect_label": eff_label,
+    }
+
+
 @app.get("/my-plan", response_class=HTMLResponse)
 def my_plan(request: Request):
     """Aggregate /prevent across every condition the user is tracking.
     Dedupe protective and harmful factors across conditions, count overlap
-    so the highest-leverage moves bubble up."""
+    so the highest-leverage moves bubble up. Group by entity.kind so a
+    user sees lifestyle / diet / supplements / drugs as separate sections
+    instead of one flat list. Collapse dose-response variants into a
+    single card. Mark items already in the user's stack."""
     p = decode(request.cookies.get(COOKIE))
     targets = list(p.conditions or [])
-    do_map: dict[str, dict] = {}
-    avoid_map: dict[str, dict] = {}
+    stack_set = set(p.stack or [])
     matched_outcomes: list[dict] = []
+    do_buckets = {b[0]: [] for b in _DO_BUCKETS}
+    hard_buckets = {b[0]: [] for b in _HARD_BUCKETS}
+    caution_list: list[dict] = []
+    starters: list[dict] = []
     if targets:
         with connect() as conn:
             placeholders = ",".join("?" * len(targets))
@@ -799,6 +868,7 @@ def my_plan(request: Request):
             base_sel = """
                 SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
                        e.created_at, e.effect_size, e.effect_quant,
+                       COALESCE(e.review_status,'unreviewed') AS review_status,
                        f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
                        o.slug AS o_slug, o.name AS o_name,
                        (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies,
@@ -826,23 +896,37 @@ def my_plan(request: Request):
                 base_sel.format(ph=ph), targets + ["u_shaped"]).fetchall()]
             mixed_rows = [dict(r) for r in conn.execute(
                 base_sel.format(ph=ph), targets + ["mixed"]).fetchall()]
-        # Aggregate by factor: factor that helps THREE conditions ranks higher.
         for e in do_rows + harm_rows + ushape_rows + mixed_rows:
             e["score"] = _importance_score(e)
             e["breakthrough"] = _is_breakthrough(e)
+
+        # Aggregate per-factor, AND collapse dose-response variants. Group
+        # key is (dose_root, kind) so walking_4000/7000/10000 share one
+        # card but legumes vs nuts stay separate.
         def _agg(rows: list[dict]) -> dict[str, dict]:
             out: dict[str, dict] = {}
             for e in rows:
-                k = e["f_slug"]
-                if k not in out:
-                    out[k] = {**e, "for_conditions": [],
-                              "for_condition_names": [], "n_overlap": 0,
-                              "best_score": e["score"]}
-                rec = out[k]
+                root = _dose_root(e["f_slug"])
+                key = root  # one card per root factor
+                if key not in out:
+                    rec = {**e, "for_conditions": [],
+                           "for_condition_names": [], "n_overlap": 0,
+                           "best_score": e["score"],
+                           "f_slug_root": root,
+                           "dose_variants": [],
+                           "in_stack": False}
+                    # If the slug was a dose variant, prefer the canonical
+                    # name without the dose suffix when displaying.
+                    if root != e["f_slug"]:
+                        rec["f_name"] = e["f_name"].split("(")[0].strip()
+                    out[key] = rec
+                rec = out[key]
                 if e["o_slug"] not in rec["for_conditions"]:
                     rec["for_conditions"].append(e["o_slug"])
                     rec["for_condition_names"].append(e["o_name"])
                 rec["n_overlap"] = len(rec["for_conditions"])
+                if root != e["f_slug"] and e["f_slug"] not in rec["dose_variants"]:
+                    rec["dose_variants"].append(e["f_slug"])
                 if e["score"] > rec["best_score"]:
                     rec["best_score"] = e["score"]
                     rec["tier"] = e["tier"]
@@ -850,26 +934,57 @@ def my_plan(request: Request):
                     rec["effect_quant"] = e["effect_quant"]
                     rec["id"] = e["id"]
                     rec["summary"] = e["summary"]
+                    rec["review_status"] = e["review_status"]
+                # In-stack flag: set if any of the constituent slugs is
+                # in the user's saved stack.
+                if e["f_slug"] in stack_set or root in stack_set:
+                    rec["in_stack"] = True
             return out
+
         do_map = _agg(do_rows)
         hard_map = _agg(harm_rows)
         cau_map = _agg(ushape_rows + mixed_rows)
-        # Sort: overlap desc, then importance score desc.
+        for rec in list(do_map.values()) + list(hard_map.values()) + list(cau_map.values()):
+            rec["axes"] = _three_axis_labels(rec)
+
         def _sortkey(e: dict):
             return (-(e["n_overlap"]), -(1 if e["breakthrough"] else 0), -e["best_score"])
+
         do_list = sorted(do_map.values(), key=_sortkey)
         hard_list = sorted(hard_map.values(), key=_sortkey)
-        caution_list = sorted(cau_map.values(), key=_sortkey)
-    else:
-        do_list = hard_list = caution_list = []
+        caution_list = sorted(cau_map.values(), key=_sortkey)[:12]
+
+        # Bucket Do-this by entity.kind so the page reads as Lifestyle →
+        # Diet → Supplements → Drugs instead of one flat 24-card list.
+        for rec in do_list:
+            do_buckets[_kind_bucket(rec.get("f_kind"), _DO_BUCKETS)].append(rec)
+        for rec in hard_list:
+            hard_buckets[_kind_bucket(rec.get("f_kind"), _HARD_BUCKETS)].append(rec)
+
+        # Top-3 starters: pick from Do-this regardless of bucket. Score
+        # = overlap × 2 + tier_weight + effect_weight − stack_penalty.
+        # Items already in the user's stack drop down so the cluster
+        # recommends genuinely new actions.
+        TIER_W = {"A": 4, "B": 3, "C": 1}
+        EFF_W  = {"large": 3, "very_large": 4, "moderate": 2, "small": 1}
+        def _starter_score(r):
+            base = (r.get("n_overlap", 1) * 2
+                    + TIER_W.get(r.get("tier"), 0)
+                    + EFF_W.get((r.get("effect_size") or "").lower(), 0))
+            if r.get("in_stack"):
+                base -= 5
+            return base
+        starters = sorted(do_list, key=lambda r: -_starter_score(r))[:3]
     return render(request, "my_plan.html", {
         "title": "My plan",
         "profile": p,
         "matched_outcomes": matched_outcomes,
-        "do_rows": do_list[:24],
-        "hard_rows": hard_list[:18],
-        "caution_rows": caution_list[:12],
+        "do_buckets": [(b[0], b[1], do_buckets[b[0]]) for b in _DO_BUCKETS if do_buckets[b[0]]],
+        "hard_buckets": [(b[0], b[1], hard_buckets[b[0]]) for b in _HARD_BUCKETS if hard_buckets[b[0]]],
+        "caution_rows": caution_list,
+        "starters": starters,
         "warnings": _interactions_for_stack(p.stack),
+        "n_stack": len(stack_set),
     })
 
 
