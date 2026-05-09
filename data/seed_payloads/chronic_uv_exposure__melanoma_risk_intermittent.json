@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "chronic_uv_exposure",
+      "name": "Ultraviolet exposure pattern",
+      "kind": "behavior",
+      "aliases": [
+        "sun exposure pattern",
+        "ultraviolet exposure"
+      ],
+      "description": "Patterns of ultraviolet exposure, especially intermittent recreational or holiday exposure versus steadier habitual exposure."
+    },
+    {
+      "slug": "melanoma_risk_intermittent",
+      "name": "Intermittent melanoma risk",
+      "kind": "condition",
+      "aliases": [
+        "melanoma risk from intermittent sun exposure",
+        "cutaneous melanoma risk with intermittent UV"
+      ],
+      "description": "Risk of cutaneous melanoma associated with intermittent or intense ultraviolet exposure patterns."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "chronic_uv_exposure",
+      "outcome_slug": "melanoma_risk_intermittent",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The classic meta-analysis reported a summary relative risk of 1.61 for intermittent sun exposure and melanoma, while a large later case-control study still found sunburn-prone phenotypes and intense episodic exposure patterns moving risk upward even though steadier weekend exposure looked less harmful. That pattern keeps the intermittent-exposure signal directionally harmful rather than simply 'more sun is always worse' in a linear way.",
+      "population": "children through adults with intermittent recreational, holiday, or otherwise intense ultraviolet exposure patterns relevant to cutaneous melanoma risk",
+      "mechanism": "Intermittent high-intensity UV exposure drives DNA damage and sunburn on skin that is not consistently photoadapted, which is a different biological pattern from steadier lower-dose exposure.",
+      "summary": "Melanoma risk is most consistently linked to intermittent and sunburning exposure patterns, not just a crude total-hour count. The literature is more nuanced than a simple cumulative-dose story, but that nuance still points toward episodic intense UV exposure as the harmful pattern to avoid.",
+      "caveats": "This edge is specifically about intermittent exposure and melanoma risk, not every form of chronic outdoor exposure. Some studies suggest regular lower-dose exposure behaves differently, so this should not be flattened into a universal sun-avoidance claim.",
+      "evidence": [
+        {
+          "citation": "GandiniS et al 2005 Eur J Cancer",
+          "year": 2005,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Meta-analysis of risk factors for cutaneous melanoma: II. Sun exposure.",
+          "pmid": "15617990"
+        },
+        {
+          "citation": "OliveriaSA et al 2006 Arch Dis Child",
+          "year": 2006,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Sun exposure and risk of melanoma.",
+          "pmid": "16326797"
+        },
+        {
+          "citation": "NewtonBishopJA et al 2011 Eur J Cancer",
+          "year": 2011,
+          "study_type": "case_control",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Relationship between sun exposure and melanoma risk for tumours in different body sites in a large case-control study in a temperate climate.",
+          "pmid": "21084183",
+          "n_participants": 1647
+        }
+      ]
+    }
+  ]
+}

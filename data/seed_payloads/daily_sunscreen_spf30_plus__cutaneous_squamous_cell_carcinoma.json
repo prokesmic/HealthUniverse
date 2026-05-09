@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "daily_sunscreen_spf30_plus",
+      "name": "Daily sunscreen SPF 30+",
+      "kind": "behavior",
+      "aliases": [
+        "daily broad-spectrum sunscreen use",
+        "habitual SPF 30 or higher sunscreen use"
+      ],
+      "description": "Routine near-daily use of broad-spectrum sunscreen at SPF 30 or higher on sun-exposed skin."
+    },
+    {
+      "slug": "cutaneous_squamous_cell_carcinoma",
+      "name": "Cutaneous squamous cell carcinoma",
+      "kind": "condition",
+      "aliases": [
+        "skin squamous cell carcinoma",
+        "cutaneous SCC"
+      ],
+      "description": "Keratinocyte skin cancer arising from squamous cells of chronically sun-exposed skin."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "daily_sunscreen_spf30_plus",
+      "outcome_slug": "cutaneous_squamous_cell_carcinoma",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The original randomized trial found no clear effect on first SCC diagnosis but did find a significantly lower SCC tumour rate with daily sunscreen use, with a rate ratio of 0.61 (95% CI 0.46 to 0.81). Extended follow-up then showed about a 40% lower SCC tumour rate overall, with a rate ratio of 0.62 (95% CI 0.38 to 0.99).",
+      "population": "adults in sunny community settings using daily sunscreen on chronically exposed skin sites",
+      "mechanism": "Consistent sunscreen use reduces cumulative ultraviolet damage and mutational burden in keratinocytes, which matters more for long-latency SCC burden than for a single short-term first-event analysis.",
+      "summary": "This is one of the stronger prevention edges in dermatology because randomized and extended follow-up data both point the same way: daily sunscreen lowers squamous-cell-carcinoma burden over time. The cleanest benefit shows up in tumour counts and longer-term follow-up rather than a dramatic short-term drop in first-event incidence.",
+      "caveats": "This edge is stronger for cutaneous SCC than for basal cell carcinoma, and the data come from regular habitual use in a high-UV environment. It should not be oversold as absolute protection against all skin cancer.",
+      "evidence": [
+        {
+          "citation": "GreenA et al 1999 Lancet",
+          "year": 1999,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Daily sunscreen application and betacarotene supplementation in prevention of basal-cell and squamous-cell carcinomas of the skin: a randomised controlled trial.",
+          "pmid": "10475183",
+          "n_participants": 1621,
+          "effect_quant": {
+            "metric": "rate_ratio",
+            "value": 0.61,
+            "unit": "ratio",
+            "comparator": "squamous-cell carcinoma tumour incidence with daily sunscreen versus no daily sunscreen"
+          }
+        },
+        {
+          "citation": "vanderPolsJC et al 2006 Cancer Epidemiol Biomarkers Prev",
+          "year": 2006,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Prolonged prevention of squamous cell carcinoma of the skin by regular sunscreen use.",
+          "pmid": "17132769",
+          "n_participants": 1621,
+          "effect_quant": {
+            "metric": "rate_ratio",
+            "value": 0.62,
+            "unit": "ratio",
+            "comparator": "long-term SCC tumour rate after former daily sunscreen assignment versus no daily sunscreen"
+          }
+        },
+        {
+          "citation": "RonschH et al 2021 Curr Probl Dermatol",
+          "year": 2021,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The Preventive Value of Sun Protection.",
+          "pmid": "34698024"
+        }
+      ]
+    }
+  ]
+}
