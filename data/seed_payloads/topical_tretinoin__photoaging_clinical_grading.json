@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "topical_tretinoin",
+      "name": "Topical tretinoin",
+      "kind": "drug",
+      "aliases": [
+        "all-trans retinoic acid cream",
+        "prescription tretinoin"
+      ],
+      "description": "Topically applied tretinoin formulations used for acne or photoaging."
+    },
+    {
+      "slug": "photoaging_clinical_grading",
+      "name": "Clinical photoaging grading",
+      "kind": "condition",
+      "aliases": [
+        "photoaged skin appearance",
+        "clinical grading of facial photoaging"
+      ],
+      "description": "Clinician-graded or trial-graded signs of photodamaged skin such as fine wrinkling, lentigines, roughness, and overall photoaging severity."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "topical_tretinoin",
+      "outcome_slug": "photoaging_clinical_grading",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A 48-week randomized placebo-controlled trial of tretinoin emollient cream in 40 patients found significant improvement in global photoaging evaluation and fine wrinkling by 24 weeks. Two modern systematic reviews then concluded that randomized trial evidence consistently shows clinical photoaging benefit, even though formulations and comparators vary.",
+      "population": "adults with photodamaged facial or forearm skin treated with topical tretinoin over months rather than days",
+      "mechanism": "Topical tretinoin promotes epidermal turnover and new collagen formation while reducing features of extrinsic photoaging such as fine wrinkling and mottled pigmentation.",
+      "summary": "Topical tretinoin remains one of the more defensible photoaging interventions. The evidence is not hype-free because trials use varied concentrations and comparators, but the overall direction toward clinical improvement is consistent enough to support a beneficial classification.",
+      "caveats": "The benefit comes with irritation tradeoffs and requires sustained use, so this is not a quick cosmetic fix. It is also a prescription-strength edge, not proof that over-the-counter vitamin A products behave the same way.",
+      "evidence": [
+        {
+          "citation": "WeissJS et al 1993 Cleve Clin J Med",
+          "year": 1993,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Tretinoin emollient cream 0.01% for the treatment of photoaged skin.",
+          "pmid": "8443935",
+          "n_participants": 40
+        },
+        {
+          "citation": "MokayaJ et al 2022 Int J Womens Dermatol",
+          "year": 2022,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Topical tretinoin for treating photoaging: A systematic review of randomized controlled trials.",
+          "pmid": "35620028"
+        },
+        {
+          "citation": "MorrisonB et al 2024 Am J Clin Dermatol",
+          "year": 2024,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Comparing Tretinoin to Other Topical Therapies in the Treatment of Skin Photoaging: A Systematic Review.",
+          "pmid": "39348007"
+        }
+      ]
+    }
+  ]
+}
