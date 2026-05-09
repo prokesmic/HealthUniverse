@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "testosterone_replacement_hypogonadal",
+      "name": "Testosterone replacement in hypogonadal men",
+      "kind": "drug",
+      "aliases": [
+        "TRT for hypogonadism",
+        "testosterone therapy in low-testosterone men"
+      ],
+      "description": "Exogenous testosterone therapy given to symptomatic men with documented low testosterone."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "testosterone_replacement_hypogonadal",
+      "outcome_slug": "bone_mineral_density",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "In the Testosterone Trials bone substudy, testosterone increased spine trabecular volumetric bone density by 7.5% versus 0.8% with placebo over one year, for a treatment effect of 6.8% (95% CI 4.8% to 8.7%).",
+      "population": "older or middle-aged hypogonadal men with low testosterone, including men at risk of frailty or bone loss",
+      "mechanism": "This is classic hormone replacement physiology: restoring testosterone improves bone remodeling partly through direct androgen effects and partly through aromatization to estradiol. The bone-density signal is more convincing than many lifestyle-facing testosterone claims because it is supported by objective imaging outcomes rather than subjective symptom scales alone.",
+      "summary": "Testosterone replacement improves bone mineral density in hypogonadal men, especially at the spine and in trabecular-rich compartments. The evidence is stronger for density and estimated strength than for actual fracture prevention, but the bone response itself is one of the more solid benefits of treatment.",
+      "caveats": "Higher bone density does not automatically prove lower long-term fracture risk, particularly over short follow-up. The benefit also needs to be weighed against other treatment risks and should not be confused with a general anti-aging indication in men without documented hypogonadism.",
+      "evidence": [
+        {
+          "citation": "Snyder PJ et al 2017 JAMA Intern Med",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of Testosterone Treatment on Volumetric Bone Density and Strength in Older Men With Low Testosterone: A Controlled Clinical Trial.",
+          "pmid": "28241231",
+          "n_participants": 211,
+          "effect_quant": {
+            "metric": "treatment_effect_percent",
+            "value": 6.8,
+            "ci_low": 4.8,
+            "ci_high": 8.7,
+            "comparator": "testosterone versus placebo for change in spine trabecular volumetric bone mineral density"
+          }
+        },
+        {
+          "citation": "Grossmann M et al 2021 J Clin Endocrinol Metab",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Testosterone Replacement Therapy Added to Intensive Lifestyle Intervention in Older Men With Obesity and Hypogonadism.",
+          "pmid": "33351921",
+          "n_participants": 83
+        },
+        {
+          "citation": "Burnett-Bowie SM et al 2016 Andrology",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of aromatase inhibition vs. testosterone in older men with low testosterone: randomized-controlled trial.",
+          "pmid": "26588809",
+          "n_participants": 43
+        }
+      ]
+    }
+  ]
+}

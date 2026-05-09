@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "clomiphene_citrate_men",
+      "name": "Clomiphene citrate in men",
+      "kind": "drug",
+      "aliases": [
+        "male clomiphene citrate",
+        "CC in men"
+      ],
+      "description": "Selective estrogen receptor modulator therapy used off-label to raise endogenous testosterone in men."
+    },
+    {
+      "slug": "secondary_hypogonadism",
+      "name": "Secondary hypogonadism",
+      "kind": "condition",
+      "aliases": [
+        "functional hypogonadism",
+        "hypogonadotropic hypogonadism in men"
+      ],
+      "description": "Low testosterone with low or inappropriately normal gonadotropins, often linked to obesity or metabolic dysfunction."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "clomiphene_citrate_men",
+      "outcome_slug": "secondary_hypogonadism",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "A 2025 meta-analysis of randomized trials found SERM therapy significantly increased total testosterone compared with placebo (MD 273.76 ng/dL, 95% CI 191.87 to 355.66), with higher LH and FSH as expected for endogenous axis stimulation.",
+      "population": "men with functional or obesity-associated secondary hypogonadism who may wish to preserve fertility",
+      "mechanism": "Clomiphene blocks estrogen feedback at the hypothalamic-pituitary level, increasing LH and FSH and thereby stimulating endogenous testosterone production rather than replacing it exogenously. That makes it especially appealing when fertility preservation matters, because it raises testosterone without the same degree of gonadotropin suppression seen with TRT.",
+      "summary": "Clomiphene citrate appears to improve biochemical secondary hypogonadism in men by reliably raising testosterone and gonadotropins. The evidence is still more disease-oriented than symptom-rich, but the hormonal response is consistent enough that this is one of the more credible non-testosterone options in functional hypogonadism.",
+      "caveats": "Much of the evidence focuses on hormone restoration rather than hard outcomes such as fertility, fracture risk, or long-term symptom remission. Off-label use still requires careful selection because not every man with low testosterone has a reversible hypothalamic-pituitary pattern that will respond the same way.",
+      "evidence": [
+        {
+          "citation": "Ribeiro de Oliveira A et al 2025 Arch Endocrinol Metab",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Clomiphene or enclomiphene citrate for the treatment of male hypogonadism: a systematic review and meta-analysis of randomized controlled trials.",
+          "pmid": "41066380",
+          "n_participants": 461,
+          "effect_quant": {
+            "metric": "MD",
+            "value": 273.76,
+            "ci_low": 191.87,
+            "ci_high": 355.66,
+            "comparator": "SERM therapy versus placebo for total testosterone"
+          }
+        },
+        {
+          "citation": "Dias JP et al 2018 Int J Obes (Lond)",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of clomiphene citrate on male obesity-associated hypogonadism: a randomized, double-blind, placebo-controlled study.",
+          "pmid": "29777228",
+          "n_participants": 78
+        },
+        {
+          "citation": "Pelusi C et al 2022 Endocr Metab Immune Disord Drug Targets",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Overall Sexual Function in Dysmetabolic Obese Men with Low Testosterone Levels Treated with Clomiphene Citrate.",
+          "pmid": "35249510",
+          "n_participants": 24
+        }
+      ]
+    }
+  ]
+}
