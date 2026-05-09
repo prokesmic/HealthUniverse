@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "caffeine_l_theanine_combo",
+      "name": "Caffeine plus L-theanine combination",
+      "kind": "supplement",
+      "aliases": [
+        "caffeine and theanine stack",
+        "L-theanine with caffeine"
+      ],
+      "description": "Combined oral caffeine and L-theanine supplementation used acutely to modulate alertness, attention, and task performance."
+    },
+    {
+      "slug": "sustained_attention",
+      "name": "Sustained attention",
+      "kind": "process",
+      "aliases": [
+        "vigilance",
+        "maintained attention over time"
+      ],
+      "description": "The ability to maintain focus and accurate task performance during prolonged or monotonous cognitive tasks."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "caffeine_l_theanine_combo",
+      "outcome_slug": "sustained_attention",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2025 meta-analysis of randomized trials found small advantages for theanine plus caffeine over placebo on attention-related outcomes, including digit vigilance accuracy at two hours (SMD 0.20, 95% CI 0.02 to 0.38) and attention-switching accuracy at two hours (SMD 0.33, 95% CI 0.13 to 0.54).",
+      "population": "healthy children and adults exposed to acute laboratory attention tasks",
+      "mechanism": "L-theanine may smooth caffeine's stimulatory profile by modulating glutamatergic signaling and reducing distractibility, while caffeine increases alertness through adenosine antagonism. In combination, the pair seems most likely to help on demanding vigilance or switching tasks rather than producing a large broad-spectrum cognitive boost.",
+      "summary": "The best human evidence suggests that caffeine plus L-theanine can modestly improve sustained attention and related vigilance measures in the short term. The effect is real enough to show up in pooled randomized evidence, but it is small, task-dependent, and mostly supported by acute crossover experiments rather than long-term real-world studies.",
+      "caveats": "Most trials are short laboratory studies using one-off doses and narrow cognitive batteries. Benefits are not uniform across every attention endpoint, and the literature does not show that the combination clearly outperforms caffeine alone on all sustained-attention tasks.",
+      "evidence": [
+        {
+          "citation": "Dodd GF et al 2025 Nutr Rev",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of Tea (Camellia sinensis) or its Bioactive Compounds l-Theanine or l-Theanine plus Caffeine on Cognition, Sleep, and Mood in Healthy Participants: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+          "pmid": "40314930",
+          "n_participants": 50,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.2,
+            "ci_low": 0.02,
+            "ci_high": 0.38,
+            "comparator": "theanine plus caffeine versus placebo for digit vigilance task accuracy at 2 hours"
+          }
+        },
+        {
+          "citation": "Foxe JJ et al 2012 Neuropharmacology",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Assessing the effects of caffeine and theanine on the maintenance of vigilance during a sustained attention task.",
+          "pmid": "22326943",
+          "n_participants": 27
+        },
+        {
+          "citation": "Owen GN et al 2008 Nutr Neurosci",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The combined effects of L-theanine and caffeine on cognitive performance and mood.",
+          "pmid": "18681988",
+          "n_participants": 27
+        }
+      ]
+    }
+  ]
+}

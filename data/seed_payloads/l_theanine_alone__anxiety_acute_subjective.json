@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "l_theanine_alone",
+      "name": "L-theanine alone",
+      "kind": "supplement",
+      "aliases": [
+        "pure L-theanine",
+        "theanine monotherapy"
+      ],
+      "description": "Oral L-theanine supplementation taken without caffeine or other active compounds."
+    },
+    {
+      "slug": "anxiety_acute_subjective",
+      "name": "Acute subjective anxiety",
+      "kind": "process",
+      "aliases": [
+        "short-term self-reported anxiety",
+        "acute anxious distress"
+      ],
+      "description": "Self-reported anxiety or stress symptoms measured over minutes to weeks after an intervention."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "l_theanine_alone",
+      "outcome_slug": "anxiety_acute_subjective",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "population": "healthy adults or stressed but non-psychiatric adult populations",
+      "mechanism": "L-theanine is proposed to modulate glutamatergic signaling and sympathetic arousal, which could reduce perceived tension in some settings. In human trials, however, that theoretical calming effect appears context-sensitive, with more consistent signals in stressed participants over days to weeks than in strong laboratory anxiety provocations.",
+      "summary": "L-theanine has a plausible but still modest human signal for reducing subjective stress and anxiety-related symptoms. The overall literature leans positive, especially in stressed populations, but the effect is not large and the evidence base is much thinner than supplement marketing often implies.",
+      "caveats": "The literature mixes short laboratory stress paradigms with multi-week supplementation studies, so not every trial is testing the same thing. Sample sizes are small, subjective scales vary between studies, and the real-world effect size is likely modest rather than dramatic.",
+      "evidence": [
+        {
+          "citation": "Williams JL et al 2020 Plant Foods Hum Nutr",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The Effects of Green Tea Amino Acid L-Theanine Consumption on the Ability to Manage Stress and Anxiety Levels: a Systematic Review.",
+          "pmid": "31758301",
+          "n_participants": 9
+        },
+        {
+          "citation": "Hidese S et al 2019 Nutrients",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of L-Theanine Administration on Stress-Related Symptoms and Cognitive Functions in Healthy Adults: A Randomized Controlled Trial.",
+          "pmid": "31623400",
+          "n_participants": 30
+        },
+        {
+          "citation": "Moulin M et al 2024 Neurol Ther",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Safety and Efficacy of AlphaWave® L-Theanine Supplementation for 28 Days in Healthy Adults with Moderate Stress: A Randomized, Double-Blind, Placebo-Controlled Trial.",
+          "pmid": "38758503",
+          "n_participants": 30
+        }
+      ]
+    }
+  ]
+}

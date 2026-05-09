@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "caffeine_acute",
+      "name": "Acute caffeine ingestion",
+      "kind": "supplement",
+      "aliases": [
+        "single-dose caffeine",
+        "acute caffeine supplementation"
+      ],
+      "description": "One-off caffeine intake used to acutely alter alertness, attention, or performance."
+    },
+    {
+      "slug": "reaction_time",
+      "name": "Reaction time",
+      "kind": "process",
+      "aliases": [
+        "response speed",
+        "psychomotor reaction speed"
+      ],
+      "description": "Speed of responding to a simple or choice stimulus in laboratory or performance tasks."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "caffeine_acute",
+      "outcome_slug": "reaction_time",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2025 meta-analysis of 31 placebo-controlled trials found that acute caffeine improved reaction-time performance with a pooled Hedges g of 0.28, with stronger gains at doses of 200 mg or more.",
+      "population": "healthy adolescents and adults exposed to acute attention or psychomotor tasks",
+      "mechanism": "Caffeine blocks adenosine receptors and increases alerting-network activity, which tends to speed stimulus detection and response preparation. The benefit is usually modest rather than transformative, but it is one of the more reproducible acute cognitive effects of caffeine in controlled trials.",
+      "summary": "This is one of the more dependable acute nootropic effects in healthy humans: caffeine modestly improves reaction time. The pooled literature is broad enough to support a real signal, although the size of the gain is small and varies with dose, task, and habitual caffeine exposure.",
+      "caveats": "Faster reaction time does not always translate into better higher-order judgment or broad cognitive improvement. Higher doses may strengthen response speed while increasing jitteriness or other adverse effects that the reaction-time metric alone does not capture.",
+      "evidence": [
+        {
+          "citation": "Larsen EG et al 2025 Psychopharmacology (Berl)",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A systematic review and meta-analysis of the acute effect of caffeine on attention.",
+          "pmid": "40335666",
+          "n_participants": 1455,
+          "effect_quant": {
+            "metric": "Hedges g",
+            "value": 0.28,
+            "comparator": "acute caffeine versus placebo for reaction time"
+          }
+        },
+        {
+          "citation": "Smit HJ et al 2016 Hum Psychopharmacol",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Acute personalized habitual caffeine doses improve attention and have selective effects when considering the fractionation of executive functions.",
+          "pmid": "26621326",
+          "n_participants": 60
+        },
+        {
+          "citation": "Lara B et al 2020 Physiol Behav",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of acute caffeine intake on hit accuracy and reaction time in professional e-sports players.",
+          "pmid": "32593750",
+          "n_participants": 15
+        }
+      ]
+    }
+  ]
+}
