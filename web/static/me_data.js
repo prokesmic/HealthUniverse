@@ -167,6 +167,82 @@
     ev.target.reset();
   });
 
+  // Lab image / PDF upload → AI parse → user review → save.
+  document.getElementById("lab-image-upload").addEventListener("change", async (ev) => {
+    const f = ev.target.files[0];
+    if (!f) return;
+    const results = document.getElementById("lab-parse-results");
+    const tbody = document.getElementById("lab-parse-tbody");
+    const summary = document.getElementById("lab-parse-summary");
+    const saveBtn = document.getElementById("lab-parse-save");
+    saveBtn.disabled = true;
+    results.style.display = "block";
+    tbody.innerHTML = "";
+    summary.textContent = `Parsing ${f.name}… (typically 10-25 seconds)`;
+    const fd = new FormData();
+    fd.append("file", f);
+    try {
+      const r = await fetch("/api/me/parse-lab-image", { method: "POST", body: fd });
+      if (!r.ok) {
+        const j = await r.json().catch(() => ({}));
+        summary.innerHTML = `<span style="color:#9b1c1c">Parse failed (${r.status}): ${escapeHTML(j.message || j.error || "unknown error")}</span>`;
+        return;
+      }
+      const j = await r.json();
+      const labs = j.labs || [];
+      if (labs.length === 0) {
+        summary.innerHTML = `<span style="color:#9b1c1c">No lab values found in this file.</span>`;
+        return;
+      }
+      summary.innerHTML = `Found <b>${labs.length}</b> value${labs.length === 1 ? "" : "s"} via <code>${escapeHTML(j.backend)}</code>. Uncheck anything wrong, edit fields inline, then save.`;
+      labs.forEach((lab, i) => {
+        const tr = document.createElement("tr");
+        tr.style.borderBottom = "1px solid var(--line)";
+        tr.innerHTML = `
+          <td style="padding:4px"><input type="checkbox" data-i="${i}" checked></td>
+          <td style="padding:4px"><input data-i="${i}" data-k="name" value="${escapeHTML(lab.name || "")}" style="width:100%; padding:4px; border:1px solid var(--line); border-radius:4px"></td>
+          <td style="padding:4px"><input data-i="${i}" data-k="value" type="number" step="0.01" value="${lab.value != null ? lab.value : ""}" style="width:80px; padding:4px; border:1px solid var(--line); border-radius:4px"></td>
+          <td style="padding:4px"><input data-i="${i}" data-k="unit" value="${escapeHTML(lab.unit || "")}" style="width:80px; padding:4px; border:1px solid var(--line); border-radius:4px"></td>
+          <td style="padding:4px"><input data-i="${i}" data-k="date" type="date" value="${escapeHTML(lab.date || "")}" style="padding:4px; border:1px solid var(--line); border-radius:4px"></td>
+        `;
+        tbody.appendChild(tr);
+      });
+      saveBtn.disabled = false;
+    } catch (e) {
+      summary.innerHTML = `<span style="color:#9b1c1c">Network error: ${escapeHTML(String(e))}</span>`;
+    }
+    ev.target.value = "";
+  });
+
+  // Select-all / save / cancel handlers for the parse-results table.
+  document.getElementById("lab-parse-all").addEventListener("change", (ev) => {
+    document.querySelectorAll("#lab-parse-tbody input[type=checkbox]")
+      .forEach((cb) => { cb.checked = ev.target.checked; });
+  });
+  document.getElementById("lab-parse-cancel").addEventListener("click", () => {
+    document.getElementById("lab-parse-results").style.display = "none";
+    document.getElementById("lab-parse-tbody").innerHTML = "";
+  });
+  document.getElementById("lab-parse-save").addEventListener("click", () => {
+    const rows = document.querySelectorAll("#lab-parse-tbody tr");
+    let saved = 0;
+    rows.forEach((tr) => {
+      const cb = tr.querySelector('input[type="checkbox"]');
+      if (!cb || !cb.checked) return;
+      const name = tr.querySelector('input[data-k=name]').value.trim();
+      const value = tr.querySelector('input[data-k=value]').value;
+      const unit = tr.querySelector('input[data-k=unit]').value.trim();
+      const date = tr.querySelector('input[data-k=date]').value || undefined;
+      if (name && value && !isNaN(Number(value))) {
+        HU.addLab({ name, value, unit, date, source: "ai-parsed" });
+        saved++;
+      }
+    });
+    document.getElementById("lab-parse-results").style.display = "none";
+    document.getElementById("lab-parse-tbody").innerHTML = "";
+    if (saved) document.querySelector('[data-tab=labs]').click();
+  });
+
   document.getElementById("lab-csv-upload").addEventListener("change", (ev) => {
     const f = ev.target.files[0];
     if (!f) return;

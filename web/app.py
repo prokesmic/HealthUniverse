@@ -3118,6 +3118,159 @@ def api_snp_evidence(rsid: str = "", genotype: str = ""):
     })
 
 
+@app.post("/api/me/parse-lab-image")
+async def api_parse_lab_image(request: Request):
+    """Parse a lab PDF or image into structured {name,value,unit,date}
+    rows. Configurable backend:
+
+      1) HU_VISION_MODEL env set + Ollama reachable → local vision
+         model (no data leaves the user's machine). Set this for
+         maximally-private local use.
+      2) ANTHROPIC_API_KEY env set → Claude Haiku with vision
+         (image transits Anthropic once, not stored, ~$0.01/image).
+      3) Neither → returns 503 with a helpful explainer.
+
+    The endpoint NEVER stores the uploaded image. The browser holds the
+    image, posts it once, gets parsed text back, throws the bytes away."""
+    import base64
+    import os
+    import json as _json
+
+    form = await request.form()
+    upload = form.get("file")
+    if not upload or not hasattr(upload, "read"):
+        return JSONResponse({"error": "no file"}, status_code=400)
+
+    raw = await upload.read()
+    if not raw:
+        return JSONResponse({"error": "empty file"}, status_code=400)
+    if len(raw) > 8 * 1024 * 1024:
+        return JSONResponse({"error": "file too large (max 8 MB)"}, status_code=413)
+
+    mime = upload.content_type or "application/octet-stream"
+    is_pdf = mime == "application/pdf" or upload.filename.lower().endswith(".pdf")
+
+    instruction = (
+        "You are a lab-report parser. Extract every laboratory test "
+        "result from this document. Return JSON ONLY, of the form:\n"
+        '{"labs":[{"name":"TSH","value":3.8,"unit":"mIU/L","date":"2024-09-12"}]}\n'
+        "Rules:\n"
+        "- 'name' is the canonical short test name (TSH, Free T4, ApoB, "
+        "  HbA1c, Vitamin D 25-OH, etc.). If the report uses a long "
+        "  name, normalize.\n"
+        "- 'value' is a number. If the report shows '<5' use 5; if '>200' "
+        "  use 200. If a range like '90-110' is given as a single value, "
+        "  pick the midpoint.\n"
+        "- 'unit' is the lab's unit string (mg/dL, mIU/L, ng/mL, %, etc.).\n"
+        "- 'date' is the collection date in YYYY-MM-DD if you can find it.\n"
+        "- IGNORE reference ranges, comments, and any non-numeric tests.\n"
+        "- Skip rows where the value is missing or unparseable.\n"
+        "- Return ONLY the JSON object, no prose, no markdown fence."
+    )
+
+    backend = "unconfigured"
+    parsed: dict | None = None
+
+    # ── (1) Local Ollama vision route ──────────────────────────────
+    vision_model = os.environ.get("HU_VISION_MODEL")
+    if vision_model:
+        import urllib.request
+        ollama_url = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434")
+        try:
+            body = _json.dumps({
+                "model": vision_model,
+                "prompt": instruction,
+                "images": [base64.b64encode(raw).decode()],
+                "stream": False,
+                "format": "json",
+            }).encode()
+            req = urllib.request.Request(
+                f"{ollama_url}/api/generate", data=body,
+                headers={"Content-Type": "application/json"})
+            with urllib.request.urlopen(req, timeout=90) as resp:
+                ollama_resp = _json.loads(resp.read())
+            text = ollama_resp.get("response", "")
+            try:
+                parsed = _json.loads(text)
+                backend = f"ollama:{vision_model}"
+            except Exception:
+                # Try to find the JSON in mixed output.
+                import re as _re
+                m = _re.search(r"\{[\s\S]*\}", text)
+                if m:
+                    parsed = _json.loads(m.group(0))
+                    backend = f"ollama:{vision_model}"
+        except Exception as exc:
+            print(f"[parse-lab] ollama path failed: {exc}", flush=True)
+
+    # ── (2) Cloud fallback via Anthropic Claude vision ─────────────
+    if parsed is None and os.environ.get("ANTHROPIC_API_KEY"):
+        try:
+            from anthropic import Anthropic
+            client = Anthropic()
+            content = []
+            if is_pdf:
+                content.append({
+                    "type": "document",
+                    "source": {"type": "base64", "media_type": "application/pdf",
+                               "data": base64.b64encode(raw).decode()},
+                })
+            else:
+                # Default to JPEG; Anthropic also accepts png/gif/webp.
+                content.append({
+                    "type": "image",
+                    "source": {"type": "base64",
+                               "media_type": mime if mime.startswith("image/") else "image/jpeg",
+                               "data": base64.b64encode(raw).decode()},
+                })
+            content.append({"type": "text", "text": instruction})
+            resp = client.messages.create(
+                model=os.environ.get("HU_PARSE_MODEL", "claude-haiku-4-5"),
+                max_tokens=2048,
+                messages=[{"role": "user", "content": content}],
+            )
+            text = "".join(b.text for b in resp.content if getattr(b, "type", None) == "text")
+            try:
+                parsed = _json.loads(text)
+            except Exception:
+                import re as _re
+                m = _re.search(r"\{[\s\S]*\}", text)
+                if m:
+                    parsed = _json.loads(m.group(0))
+            backend = "anthropic-haiku"
+            # Best-effort cost record.
+            try:
+                from claude_client import cost_of, MODEL as _M
+                from db import record_cost
+                with connect() as conn:
+                    record_cost(conn, provider="anthropic",
+                                model=os.environ.get("HU_PARSE_MODEL", "claude-haiku-4-5"),
+                                operation="parse_lab_image",
+                                input_tokens=resp.usage.input_tokens,
+                                output_tokens=resp.usage.output_tokens,
+                                usd=0.0,  # Haiku pricing not in PRICE_PER_MTOK; logged as 0
+                                ref="me-data")
+            except Exception:
+                pass
+        except Exception as exc:
+            print(f"[parse-lab] anthropic path failed: {exc}", flush=True)
+
+    if parsed is None:
+        return JSONResponse({
+            "error": "parser-unavailable",
+            "message": (
+                "Neither local Ollama nor Claude is configured on this "
+                "server. Set HU_VISION_MODEL=llava:7b for local parsing, "
+                "or ANTHROPIC_API_KEY for cloud."
+            ),
+        }, status_code=503)
+
+    labs = parsed.get("labs") if isinstance(parsed, dict) else None
+    if not isinstance(labs, list):
+        return JSONResponse({"error": "no labs found", "raw": parsed}, status_code=200)
+    return JSONResponse({"labs": labs, "backend": backend, "count": len(labs)})
+
+
 @app.get("/api/me/finding-evidence")
 def api_finding_evidence(slug: str = ""):
     """Stateless: given a medical-record finding slug (e.g.

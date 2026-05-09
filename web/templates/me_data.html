@@ -241,9 +241,38 @@
   </form>
 
   <div class="upload-row">
+    <label for="lab-image-upload" class="btn-primary inline" style="cursor:pointer">📷 Upload lab PDF or image</label>
+    <input type="file" id="lab-image-upload" accept="image/*,application/pdf" style="display:none">
     <label for="lab-csv-upload" class="btn-secondary inline" style="cursor:pointer">📂 Upload CSV</label>
     <input type="file" id="lab-csv-upload" accept=".csv,.txt" style="display:none">
-    <span class="muted small">CSV columns: name, value, unit, date</span>
+    <span class="muted small">PDF / photo of a lab report parses with AI, preview before saving.</span>
+  </div>
+
+  <div id="lab-parse-disclosure" class="muted small" style="margin: 6px 2px;">
+    🔒 Parsing privacy: the image is read by a vision model (local Ollama if you've configured it, or Anthropic Claude as the cloud fallback) and discarded. We never store the original image; only the values you confirm get saved — and they live in this browser only.
+  </div>
+
+  <div id="lab-parse-results" style="display:none; margin-top: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: #f7faf8;">
+    <header style="display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; margin-bottom: 10px;">
+      <h3 style="margin:0; font-size: 16px;">Parsed values — review before saving</h3>
+      <span class="muted small" id="lab-parse-summary"></span>
+    </header>
+    <table id="lab-parse-table" style="width:100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="text-align: left; background: #fff; border-bottom: 1px solid var(--line);">
+          <th style="padding: 6px 4px; width:30px;"><input type="checkbox" id="lab-parse-all" checked></th>
+          <th style="padding: 6px 4px;">Name</th>
+          <th style="padding: 6px 4px;">Value</th>
+          <th style="padding: 6px 4px;">Unit</th>
+          <th style="padding: 6px 4px;">Date</th>
+        </tr>
+      </thead>
+      <tbody id="lab-parse-tbody"></tbody>
+    </table>
+    <div style="margin-top: 10px; display:flex; gap:8px; flex-wrap:wrap;">
+      <button id="lab-parse-save" class="btn-primary">Save checked values</button>
+      <button id="lab-parse-cancel" class="btn-secondary inline">Cancel</button>
+    </div>
   </div>
 
   <ul class="data-list" id="lab-list"></ul>
