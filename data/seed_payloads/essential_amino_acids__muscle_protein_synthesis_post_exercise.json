@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "essential_amino_acids",
+      "name": "Essential amino acid supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "EAA supplementation"
+      ],
+      "description": "Supplementation with all essential amino acids around or after exercise."
+    },
+    {
+      "slug": "muscle_protein_synthesis_post_exercise",
+      "name": "Post-exercise muscle protein synthesis",
+      "kind": "process",
+      "aliases": [
+        "MPS after exercise",
+        "post-workout muscle protein synthesis"
+      ],
+      "description": "The rate of skeletal muscle protein synthesis during recovery after exercise."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "essential_amino_acids",
+      "outcome_slug": "muscle_protein_synthesis_post_exercise",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Leucine-enriched EAA increased post-exercise muscle protein synthesis by about 33% compared with a lower-leucine EAA formulation, but newer energy-deficit trials suggest that very high EAA doses improve whole-body protein balance more reliably than they further increase mixed-muscle protein synthesis.",
+      "population": "healthy adults recovering from resistance or endurance exercise",
+      "mechanism": "Essential amino acids, especially leucine, provide both the substrate and anabolic signaling needed to activate post-exercise muscle protein synthesis. The response seems real, but once a sufficient dose threshold is reached, adding still more EAA may help whole-body balance more than it boosts measured muscle protein synthesis itself.",
+      "summary": "This is a solid anabolic edge, but the nuance matters. EAA ingestion after exercise supports muscle protein synthesis, particularly when leucine content is sufficient, yet newer dose-comparison work suggests that more EAA is not always better for mixed-muscle synthesis once the response is already near maximal.",
+      "caveats": "The exact benefit depends on exercise mode, baseline protein intake, energy balance, and the comparison drink. Some recent studies show stronger whole-body protein-balance effects than direct mixed-muscle MPS differences.",
+      "evidence": [
+        {
+          "citation": "PasiakosSM et al 2011 Am J Clin Nutr",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Leucine-enriched essential amino acid supplementation during moderate steady state exercise enhances postexercise muscle protein synthesis.",
+          "pmid": "21775557",
+          "n_participants": 8,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 33.0,
+            "comparator": "leucine-enriched versus standard EAA for postexercise muscle protein synthesis"
+          }
+        },
+        {
+          "citation": "PasiakosSM et al 2020 Clin Nutr",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of high versus standard essential amino acid intakes on whole-body protein turnover and mixed muscle protein synthesis during energy deficit: A randomized, crossover study.",
+          "pmid": "32768315",
+          "n_participants": 19
+        },
+        {
+          "citation": "McAdamJS et al 2021 J Int Soc Sports Nutr",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Essential amino acid-enriched whey enhances post-exercise whole-body protein balance during energy deficit more than iso-nitrogenous whey or a mixed-macronutrient meal: a randomized, crossover study.",
+          "pmid": "33413462",
+          "n_participants": 10
+        }
+      ]
+    }
+  ]
+}

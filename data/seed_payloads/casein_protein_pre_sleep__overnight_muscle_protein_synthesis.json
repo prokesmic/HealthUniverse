@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "casein_protein_pre_sleep",
+      "name": "Pre-sleep casein protein intake",
+      "kind": "supplement",
+      "aliases": [
+        "casein before bed",
+        "pre-sleep protein"
+      ],
+      "description": "Casein protein consumed before sleep to support overnight recovery."
+    },
+    {
+      "slug": "overnight_muscle_protein_synthesis",
+      "name": "Overnight muscle protein synthesis",
+      "kind": "process",
+      "aliases": [
+        "overnight MPS",
+        "muscle protein synthesis during sleep"
+      ],
+      "description": "The rate of muscle protein synthesis during overnight sleep."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "casein_protein_pre_sleep",
+      "outcome_slug": "overnight_muscle_protein_synthesis",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "After endurance exercise, pre-sleep protein ingestion increased overnight myofibrillar protein synthesis from 0.047 ± 0.011 to 0.060 ± 0.014 %·h compared with placebo, and earlier resistance-exercise work showed a 31 to 37% higher overnight myofibrillar synthesis rate when exercise preceded pre-sleep casein.",
+      "population": "healthy young men recovering overnight from resistance or endurance exercise",
+      "mechanism": "Casein digests slowly and maintains amino acid availability during sleep, a period when overnight muscle protein synthesis is otherwise limited by falling substrate supply. When evening exercise has already sensitized muscle to feeding, that prolonged amino acid delivery seems especially effective.",
+      "summary": "This is one of the cleaner timing-specific protein edges. The mechanistic literature consistently shows that pre-sleep casein or protein feeding can raise overnight muscle protein synthesis, especially when an evening exercise bout precedes the feeding.",
+      "caveats": "Most direct evidence comes from short-term mechanistic studies in young men and uses relatively large protein doses. The edge is strong for overnight synthesis itself, but long-term hypertrophy still depends on total daily training and protein intake.",
+      "evidence": [
+        {
+          "citation": "SnijdersT et al 2016 Med Sci Sports Exerc",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Resistance Exercise Augments Postprandial Overnight Muscle Protein Synthesis Rates.",
+          "pmid": "27643743",
+          "n_participants": 24,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 37.0,
+            "comparator": "evening resistance exercise plus pre-sleep casein versus pre-sleep casein alone for overnight myofibrillar protein synthesis"
+          }
+        },
+        {
+          "citation": "TrommelenJ et al 2023 Sports Med",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Pre-sleep Protein Ingestion Increases Mitochondrial Protein Synthesis Rates During Overnight Recovery from Endurance Exercise: A Randomized Controlled Trial.",
+          "pmid": "36857005",
+          "n_participants": 36,
+          "effect_quant": {
+            "metric": "difference_in_rate",
+            "value": 0.013,
+            "comparator": "protein before sleep versus placebo for overnight myofibrillar protein synthesis (%·h)"
+          }
+        },
+        {
+          "citation": "TrommelenJ et al 2016 Nutrients",
+          "year": 2016,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Pre-Sleep Protein Ingestion to Improve the Skeletal Muscle Adaptive Response to Exercise Training.",
+          "pmid": "27916799"
+        }
+      ]
+    }
+  ]
+}
