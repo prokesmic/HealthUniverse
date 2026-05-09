@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "zinc_carnosine",
+      "outcome_slug": "gastric_ulcer_h_pylori_eradication",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The strongest pooled estimate comes from a 2022 meta-analysis of 3 randomized trials and 396 participants, where polaprezinc-based therapy improved intention-to-treat eradication with an odds ratio of 2.01 and per-protocol eradication with an odds ratio of 2.65 versus triple therapy alone.",
+      "population": "adults with Helicobacter pylori-associated gastritis or peptic-ulcer disease receiving zinc carnosine (polaprezinc) alongside triple therapy",
+      "mechanism": "Zinc carnosine may improve H. pylori eradication by stabilizing the gastric mucosal barrier, reducing oxidative injury, and creating a local environment that helps standard antibiotic therapy work more effectively.",
+      "summary": "The evidence supports zinc carnosine as an adjunct, not a stand-alone eradication therapy. When combined with standard triple therapy it tends to raise eradication rates modestly, which is useful in a space where antibiotic resistance steadily erodes margins.",
+      "caveats": "The evidence base is still small and comes mainly from East Asian trials using older triple-therapy backbones. Results may not translate perfectly to modern resistance patterns or to every eradication regimen.",
+      "evidence": [
+        {
+          "citation": "MahmoudA et al 2022 Nutrients",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy and Safety of Polaprezinc-Based Therapy versus the Standard Triple Therapy for Helicobacter pylori Eradication: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+          "doi": "10.3390/nu14194126",
+          "pmid": "36235778",
+          "n_participants": 396
+        },
+        {
+          "citation": "TanB et al 2017 PLoS One",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Polaprezinc combined with clarithromycin-based triple therapy for Helicobacter pylori-associated gastritis: A prospective, multicenter, randomized clinical trial.",
+          "doi": "10.1371/journal.pone.0175625",
+          "pmid": "28407007",
+          "n_participants": 303
+        },
+        {
+          "citation": "KashimuraH et al 1999 Aliment Pharmacol Ther",
+          "year": 1999,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Polaprezinc, a mucosal protective agent, in combination with lansoprazole, amoxycillin and clarithromycin increases the cure rate of Helicobacter pylori infection.",
+          "doi": "10.1046/j.1365-2036.1999.00510.x",
+          "pmid": "10215732",
+          "n_participants": 66
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "zinc_carnosine",
+      "name": "Zinc carnosine",
+      "kind": "supplement",
+      "aliases": [
+        "polaprezinc"
+      ],
+      "description": "The zinc-L-carnosine complex used for gastric mucosal protection."
+    },
+    {
+      "slug": "gastric_ulcer_h_pylori_eradication",
+      "name": "Helicobacter pylori eradication in peptic disease",
+      "kind": "condition",
+      "aliases": [
+        "H. pylori eradication"
+      ],
+      "description": "Successful eradication of Helicobacter pylori in patients with gastritis or peptic-ulcer disease."
+    }
+  ]
+}
