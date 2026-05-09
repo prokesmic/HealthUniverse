@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "creatine_monohydrate",
+      "name": "Creatine monohydrate supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "creatine",
+        "oral creatine monohydrate"
+      ],
+      "description": "Oral creatine monohydrate supplementation used to support training adaptations and high-intensity exercise performance."
+    },
+    {
+      "slug": "cognitive_performance_under_sleep_deprivation",
+      "name": "Cognitive performance under sleep deprivation",
+      "kind": "process",
+      "aliases": [
+        "sleep-loss cognitive resilience",
+        "thinking performance during sleep deprivation"
+      ],
+      "description": "Attention, memory, processing speed, or related cognitive performance measured during acute sleep deprivation."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "creatine_monohydrate",
+      "outcome_slug": "cognitive_performance_under_sleep_deprivation",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Small controlled trials suggest creatine can blunt the usual decline in vigilance, memory, or processing speed during acute sleep deprivation, but the evidence base remains tiny.",
+      "population": "healthy adults undergoing acute partial or total sleep deprivation",
+      "mechanism": "Sleep deprivation impairs cognitive performance partly through energetic stress in the brain. Creatine may buffer some of that deficit by increasing high-energy phosphate availability, which fits both the psychomotor findings and the spectroscopy studies showing altered phosphocreatine and ATP-related measures after dosing.",
+      "summary": "There is a plausible and repeatedly positive signal here, but it is early-stage rather than settled. Small placebo-controlled studies suggest creatine can partially preserve cognition during sleep deprivation, yet the evidence is not broad enough to rate at the same confidence level as its exercise-performance uses.",
+      "caveats": "The literature is limited to small short-term experiments, with one later paper reanalyzing a previously published cohort. Effects may depend on the dosing strategy, the type of sleep loss, and the specific cognitive task measured.",
+      "evidence": [
+        {
+          "citation": "GordjiNejadA et al 2024 Sci Rep",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Single dose creatine improves cognitive performance and induces changes in cerebral high energy phosphates during sleep deprivation.",
+          "pmid": "38418482",
+          "n_participants": 15
+        },
+        {
+          "citation": "McMorrisT et al 2006 Psychopharmacology (Berl)",
+          "year": 2006,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of creatine supplementation and sleep deprivation, with mild exercise, on cognitive and psychomotor performance, mood state, and plasma concentrations of catecholamines and cortisol.",
+          "pmid": "16416332",
+          "n_participants": 19
+        },
+        {
+          "citation": "GordjiNejadA et al 2025 Front Neurosci",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Hemispheric asymmetry in high-energy phosphate consumption during sleep-deprivation is balanced by creatine.",
+          "pmid": "40520504",
+          "n_participants": 15
+        }
+      ]
+    }
+  ]
+}

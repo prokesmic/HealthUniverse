@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "creatine_monohydrate",
+      "name": "Creatine monohydrate supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "creatine",
+        "oral creatine monohydrate"
+      ],
+      "description": "Oral creatine monohydrate supplementation used to support training adaptations and high-intensity exercise performance."
+    },
+    {
+      "slug": "strength_gains_resistance_training",
+      "name": "Strength gains during resistance training",
+      "kind": "process",
+      "aliases": [
+        "1RM strength gains with lifting",
+        "resistance-training strength adaptation"
+      ],
+      "description": "Longitudinal improvements in maximal strength during a structured resistance-training program."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "creatine_monohydrate",
+      "outcome_slug": "strength_gains_resistance_training",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across pooled resistance-training trials in young men, creatine increases squat 1RM by about 11.9 kg versus control, with smaller or less consistent effects for some other lifts.",
+      "population": "healthy adults, especially young men undertaking structured resistance training",
+      "mechanism": "Creatine raises intramuscular phosphocreatine availability, helping sustain repeated high-force efforts and training quality. Over weeks of resistance training, that extra work capacity appears to translate into somewhat larger strength gains, especially in lower-body compound lifts.",
+      "summary": "This is one of the more reliable sports-supplement edges. Pooled and trial-level evidence consistently show that adding creatine monohydrate to resistance training modestly increases maximal strength gains compared with training alone.",
+      "caveats": "The benefit is not uniform across every lift, population, or dosing protocol. Much of the strongest evidence comes from young male trainees, so the average effect is less certain in women, older adults, or people not doing structured resistance training.",
+      "evidence": [
+        {
+          "citation": "GuJ et al 2026 Front Nutr",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Creatine supplementation in young men under resistance versus non-resistance training: a systematic review and meta-analysis of strength, performance, and lean mass.",
+          "pmid": "42027564",
+          "n_participants": 300,
+          "effect_quant": {
+            "metric": "MD",
+            "value": 11.9,
+            "ci_low": 7.6,
+            "ci_high": 16.2,
+            "comparator": "creatine plus training versus control for squat 1RM"
+          }
+        },
+        {
+          "citation": "KavianiM et al 2019 J Sports Med Phys Fitness",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Creatine monohydrate supplementation during eight weeks of progressive resistance training increases strength in as little as two weeks without reducing markers of muscle damage.",
+          "pmid": "29722252",
+          "n_participants": 18
+        },
+        {
+          "citation": "BecqueMD et al 2000 Med Sci Sports Exerc",
+          "year": 2000,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of oral creatine supplementation on muscular strength and body composition.",
+          "pmid": "10731009",
+          "n_participants": 23
+        }
+      ]
+    }
+  ]
+}
