@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ginkgo_biloba_240mg",
+      "name": "Ginkgo biloba extract 240 mg",
+      "kind": "supplement",
+      "aliases": [
+        "EGb 761 240 mg",
+        "ginkgo 240 mg daily"
+      ],
+      "description": "A standardized 240 mg daily Ginkgo biloba extract regimen used in dementia and prevention trials."
+    },
+    {
+      "slug": "cognitive_decline_dementia_prevention",
+      "name": "Cognitive decline and dementia prevention",
+      "kind": "condition",
+      "aliases": [
+        "prevention of dementia",
+        "slowing age-related cognitive decline"
+      ],
+      "description": "Longitudinal cognitive decline or progression to dementia in older adults."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ginkgo_biloba_240mg",
+      "outcome_slug": "cognitive_decline_dementia_prevention",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "population": "older adults with memory complaints, normal cognition, mild cognitive impairment, or established dementia",
+      "mechanism": "Ginkgo is proposed to combine mild vascular, antioxidant, and platelet-related effects that could theoretically support cerebral perfusion and neuronal resilience. In prevention settings, that broad mechanism has not translated into convincing long-term reduction in incident dementia, even though some shorter treatment trials in symptomatic dementia populations have shown modest cognitive benefits.",
+      "summary": "Ginkgo biloba at 240 mg daily does not have strong evidence as a dementia-prevention strategy, despite some positive treatment-era dementia trials. The cleanest long-term randomized studies are largely null for preventing Alzheimer disease or slowing cognitive decline, which is why the overall edge stays mixed rather than clearly beneficial.",
+      "caveats": "This edge blends two related but different questions: symptom treatment in established dementia and true prevention in at-risk elders. A short-term benefit on dementia scales should not be confused with proof that ginkgo prevents future decline or incident Alzheimer disease.",
+      "evidence": [
+        {
+          "citation": "Hashiguchi M et al 2015 J Pharm Health Care Sci",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Meta-analysis of the efficacy and safety of Ginkgo biloba extract for the treatment of dementia.",
+          "pmid": "26819725",
+          "n_participants": 2381,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -0.71,
+            "ci_low": -1.28,
+            "ci_high": -0.14,
+            "comparator": "240 mg daily Ginkgo biloba versus placebo for SKT change in combined AD and vascular dementia subgroup"
+          }
+        },
+        {
+          "citation": "Snitz BE et al 2009 JAMA",
+          "year": 2009,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Ginkgo biloba for preventing cognitive decline in older adults: a randomized trial.",
+          "pmid": "20040554",
+          "n_participants": 3069
+        },
+        {
+          "citation": "Vellas B et al 2012 Lancet Neurol",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Long-term use of standardised Ginkgo biloba extract for the prevention of Alzheimer's disease (GuidAge): a randomised placebo-controlled trial.",
+          "pmid": "22959217",
+          "n_participants": 2854,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.84,
+            "ci_low": 0.60,
+            "ci_high": 1.18,
+            "comparator": "Ginkgo biloba versus placebo for probable Alzheimer disease incidence"
+          }
+        }
+      ]
+    }
+  ]
+}
