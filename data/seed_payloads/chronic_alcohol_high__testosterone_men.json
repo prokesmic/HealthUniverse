@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "chronic_alcohol_high",
+      "name": "Chronic high alcohol intake",
+      "kind": "behavior",
+      "aliases": [
+        "heavy chronic drinking",
+        "long-term high alcohol consumption"
+      ],
+      "description": "Sustained alcohol consumption at levels high enough to alter endocrine or reproductive physiology."
+    },
+    {
+      "slug": "testosterone_men",
+      "name": "Testosterone in men",
+      "kind": "process",
+      "aliases": [
+        "male testosterone status",
+        "circulating testosterone in men"
+      ],
+      "description": "Circulating testosterone concentrations and related androgen status in men."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "chronic_alcohol_high",
+      "outcome_slug": "testosterone_men",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "moderate",
+      "population": "adult men with chronic heavy alcohol exposure, alcohol use disorder, or repeated alcohol administration",
+      "effect_quant": "A 2024 meta-analysis of 30 trials in 10,199 men found lower total testosterone with alcohol exposure overall (MD -4.02, 95% CI -6.30 to -1.73), although one abstinence cohort reported paradoxically elevated testosterone during early recovery.",
+      "mechanism": "Heavy alcohol exposure can suppress hypothalamic-pituitary signaling, impair Leydig-cell steroidogenesis, and shift estradiol-androgen balance. During abstinence, rebound neuroendocrine disruption may transiently produce atypical hormone patterns rather than immediate normalization.",
+      "summary": "The best modern synthesis supports chronic high alcohol intake as harmful for testosterone in men overall. The signal is not perfectly linear, because endocrine measurements during withdrawal or prolonged abstinence can look paradoxical, but the dominant long-run pattern with heavy alcohol exposure is lower androgen status.",
+      "caveats": "Studies mix active heavy drinking, medically supervised alcohol administration, and abstinent alcohol-dependent men, so physiology differs across contexts. This edge should be interpreted as a chronic exposure signal, not as evidence that every single episode of alcohol use meaningfully lowers testosterone.",
+      "evidence": [
+        {
+          "citation": "Santi D et al 2024 Andrology",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The chronic alcohol consumption influences the gonadal axis in men: Results from a meta-analysis.",
+          "pmid": "37705506",
+          "n_participants": 10199,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -4.02,
+            "ci_low": -6.30,
+            "ci_high": -1.73,
+            "unit": "nmol/L",
+            "comparator": "alcohol-exposed men versus controls for total testosterone"
+          }
+        },
+        {
+          "citation": "Van Thiel DH et al 1978 J Clin Endocrinol Metab",
+          "year": 1978,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Evidence for a defect in pituitary secretion of luteinizing hormone in chronic alcoholic men.",
+          "pmid": "400723",
+          "n_participants": 36
+        },
+        {
+          "citation": "Hasselblatt M et al 2003 Alcohol Alcohol",
+          "year": 2003,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Persistent disturbance of the hypothalamic-pituitary-gonadal axis in abstinent alcoholic men.",
+          "pmid": "12711658",
+          "n_participants": 38
+        }
+      ]
+    }
+  ]
+}

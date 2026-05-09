@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "levothyroxine",
+      "name": "Levothyroxine",
+      "kind": "drug",
+      "aliases": [
+        "L-thyroxine",
+        "thyroxine replacement therapy"
+      ],
+      "description": "Synthetic thyroxine used as thyroid hormone replacement therapy."
+    },
+    {
+      "slug": "quality_of_life_subclinical_hypothyroid",
+      "name": "Quality of life in subclinical hypothyroidism",
+      "kind": "process",
+      "aliases": [
+        "thyroid-related quality of life in SCH",
+        "symptom burden in mild subclinical hypothyroidism"
+      ],
+      "description": "Patient-reported tiredness, thyroid symptom burden, and general quality of life among adults with subclinical hypothyroidism."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "levothyroxine",
+      "outcome_slug": "quality_of_life_subclinical_hypothyroid",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The TRUST trial in 737 older adults found no clinically important improvement in thyroid-related symptom or tiredness scores at one year, whereas a smaller crossover trial in 100 patients reported better tiredness and quality-of-life measures after 12 weeks.",
+      "population": "adults with subclinical hypothyroidism, especially older community-dwelling adults with mildly elevated TSH",
+      "mechanism": "Levothyroxine reliably normalizes biochemical thyroid status, but mild subclinical disease often causes only small symptom burdens to begin with, leaving limited room for quality-of-life gains. Benefits may be easier to detect in more symptomatic or younger subgroups than in broad older screening populations.",
+      "summary": "Levothyroxine does not consistently improve quality of life in subclinical hypothyroidism. Larger modern trials in older adults show little or no meaningful symptom benefit on average, while smaller earlier studies suggest some improvement in tiredness or selected patient-reported outcomes.",
+      "caveats": "Most high-quality null data come from older adults with mild biochemical abnormalities, so the result may not fully generalize to younger or more symptomatic patients. This edge is mixed because symptom response appears heterogeneous rather than uniformly absent.",
+      "evidence": [
+        {
+          "citation": "Stott DJ et al 2017 N Engl J Med",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Thyroid Hormone Therapy for Older Adults with Subclinical Hypothyroidism.",
+          "pmid": "28402245",
+          "n_participants": 737
+        },
+        {
+          "citation": "Mooijaart SP et al 2019 JAMA",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Association Between Levothyroxine Treatment and Thyroid-Related Symptoms Among Adults Aged 80 Years and Older With Subclinical Hypothyroidism.",
+          "pmid": "31664429",
+          "n_participants": 251
+        },
+        {
+          "citation": "Razvi S et al 2007 J Clin Endocrinol Metab",
+          "year": 2007,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The beneficial effect of L-thyroxine on cardiovascular risk factors, endothelial function, and quality of life in subclinical hypothyroidism: randomized, crossover trial.",
+          "pmid": "17299073",
+          "n_participants": 100
+        }
+      ]
+    }
+  ]
+}
