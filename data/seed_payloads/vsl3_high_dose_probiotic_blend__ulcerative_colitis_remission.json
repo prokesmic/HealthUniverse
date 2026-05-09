@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "vsl3_high_dose_probiotic_blend",
+      "name": "High-dose VSL#3 probiotic blend",
+      "kind": "supplement",
+      "aliases": [
+        "VSL#3 high-potency probiotic",
+        "high-dose VSL#3"
+      ],
+      "description": "A multi-strain high-potency probiotic mixture marketed as VSL#3."
+    },
+    {
+      "slug": "ulcerative_colitis_remission",
+      "name": "Ulcerative colitis remission",
+      "kind": "condition",
+      "aliases": [
+        "remission of ulcerative colitis",
+        "clinical remission in UC"
+      ],
+      "description": "Clinical or endoscopic remission in ulcerative colitis or closely related post-colectomy UC inflammatory states."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "vsl3_high_dose_probiotic_blend",
+      "outcome_slug": "ulcerative_colitis_remission",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 147-patient placebo-controlled trial found week-12 remission in 42.9% of mild-to-moderately active ulcerative colitis patients receiving VSL#3 versus 15.7% with placebo, while an earlier 34-patient open-label study reported a 53% remission rate and chronic pouchitis maintenance data after colectomy for UC also favored VSL#3 over placebo.",
+      "population": "adults with mild-to-moderately active ulcerative colitis or chronic pouchitis after colectomy for ulcerative colitis",
+      "mechanism": "VSL#3 is intended to shift luminal and mucosal microbial signaling toward a less inflammatory state and to support barrier function. Human data suggest that the blend can help some patients achieve or maintain remission, although the evidence is still more adjunctive than transformational.",
+      "summary": "High-dose VSL#3 probably helps some ulcerative colitis patients achieve remission, particularly in mild-to-moderately active disease and in post-surgical pouchitis settings. The evidence is encouraging but still best interpreted as supportive adjunctive therapy rather than a replacement for standard anti-inflammatory treatment.",
+      "caveats": "Not all supportive studies are placebo-controlled, and some of the strongest maintenance data come from chronic pouchitis after surgery for UC rather than intact-colon ulcerative colitis. This edge is directionally positive, but the certainty is lower than for modern approved UC drug therapies.",
+      "evidence": [
+        {
+          "citation": "Sood A et al 2009 Clin Gastroenterol Hepatol",
+          "year": 2009,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The probiotic preparation, VSL#3 induces remission in patients with mild-to-moderately active ulcerative colitis.",
+          "pmid": "19631292",
+          "n_participants": 147,
+          "effect_quant": {
+            "metric": "remission_rate",
+            "value": 42.9,
+            "unit": "%",
+            "comparator": "VSL#3 versus placebo at 12 weeks in mild-to-moderately active ulcerative colitis"
+          }
+        },
+        {
+          "citation": "Bibiloni R et al 2005 Am J Gastroenterol",
+          "year": 2005,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "VSL#3 probiotic-mixture induces remission in patients with active ulcerative colitis.",
+          "pmid": "15984978",
+          "n_participants": 34
+        },
+        {
+          "citation": "Gionchetti P et al 2000 Gastroenterology",
+          "year": 2000,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Oral bacteriotherapy as maintenance treatment in patients with chronic pouchitis: a double-blind, placebo-controlled trial.",
+          "pmid": "10930365",
+          "n_participants": 40
+        }
+      ]
+    }
+  ]
+}

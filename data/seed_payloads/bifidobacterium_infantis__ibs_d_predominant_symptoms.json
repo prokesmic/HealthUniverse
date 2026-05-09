@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "bifidobacterium_infantis",
+      "name": "Bifidobacterium infantis",
+      "kind": "supplement",
+      "aliases": [
+        "B. infantis 35624",
+        "Bifidobacterium longum subsp. infantis"
+      ],
+      "description": "A probiotic strain studied for irritable bowel syndrome and related gastrointestinal symptoms."
+    },
+    {
+      "slug": "ibs_d_predominant_symptoms",
+      "name": "Diarrhea-predominant IBS symptoms",
+      "kind": "condition",
+      "aliases": [
+        "IBS-D symptom burden",
+        "diarrhea-predominant irritable bowel symptoms"
+      ],
+      "description": "Abdominal pain, bloating, urgency, loose stools, and related symptom burden in diarrhea-predominant irritable bowel syndrome."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "bifidobacterium_infantis",
+      "outcome_slug": "ibs_d_predominant_symptoms",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 362-patient randomized trial found that B. infantis 35624 at 1 × 10^8 CFU was superior to placebo for abdominal pain and composite IBS symptoms, but later microbiota follow-up data did not show parallel symptom improvement and the strongest published clinical support is mostly IBS-wide rather than strictly IBS-D-specific.",
+      "population": "adults with irritable bowel syndrome, including mixed bowel-habit cohorts with potential applicability to diarrhea-predominant symptoms",
+      "mechanism": "B. infantis is thought to modify immune signaling and gut microbial interactions that contribute to pain, bloating, and bowel instability. In practice, however, the symptom benefit appears strain- and dose-specific and may not map neatly onto IBS-D alone.",
+      "summary": "Bifidobacterium infantis may improve diarrhea-predominant IBS symptoms, but the evidence is more convincing for broader IBS symptom reduction than for a pure IBS-D-specific effect. This is a plausible and relatively consumer-relevant probiotic signal, but not a settled one.",
+      "caveats": "Much of the best evidence comes from IBS cohorts that include multiple bowel-habit subtypes rather than only IBS-D patients. This edge should therefore stay modest and subtype-aware rather than claiming a highly specific anti-diarrheal effect.",
+      "evidence": [
+        {
+          "citation": "Whorwell PJ et al 2006 Am J Gastroenterol",
+          "year": 2006,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of an encapsulated probiotic Bifidobacterium infantis 35624 in women with irritable bowel syndrome.",
+          "pmid": "16863564",
+          "n_participants": 362
+        },
+        {
+          "citation": "Charbonneau D et al 2013 Gut Microbes",
+          "year": 2013,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "low",
+          "notes": "Fecal excretion of Bifidobacterium infantis 35624 and changes in fecal microbiota after eight weeks of oral supplementation with encapsulated probiotic.",
+          "pmid": "23549409",
+          "n_participants": 76
+        },
+        {
+          "citation": "Brenner DM et al 2009 Rev Gastroenterol Disord",
+          "year": 2009,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Bifidobacterium infantis 35624: a novel probiotic for the treatment of irritable bowel syndrome.",
+          "pmid": "19367213"
+        }
+      ]
+    }
+  ]
+}

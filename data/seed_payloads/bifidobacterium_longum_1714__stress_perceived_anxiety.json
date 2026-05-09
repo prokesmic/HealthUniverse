@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "bifidobacterium_longum_1714",
+      "name": "Bifidobacterium longum 1714",
+      "kind": "supplement",
+      "aliases": [
+        "B. longum 1714",
+        "1714 psychobiotic strain"
+      ],
+      "description": "A specific probiotic strain studied for stress, sleep, and mood-related outcomes."
+    },
+    {
+      "slug": "stress_perceived_anxiety",
+      "name": "Perceived stress and anxiety",
+      "kind": "condition",
+      "aliases": [
+        "subjective stress burden",
+        "state anxiety under stress"
+      ],
+      "description": "Self-reported stress and anxiety symptoms, especially during acute or chronic psychosocial stress."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "bifidobacterium_longum_1714",
+      "outcome_slug": "stress_perceived_anxiety",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In a within-participant human stress study, B. longum 1714 attenuated cortisol output and the increase in subjective anxiety during a socially evaluated cold pressor test, while a later 168-participant depression trial found a short-lived week-4 improvement in perceived stress-related wellness measures but no durable primary mood benefit by week 8.",
+      "population": "healthy adults under laboratory or exam stress, and adults with mild to moderate depressive symptoms",
+      "mechanism": "This strain is positioned as a psychobiotic that may alter stress responsivity through gut-brain signaling, including neuroendocrine and vagal pathways. In humans, the clearest benefit seems to be stress-reactivity dampening rather than a large or durable antidepressant effect.",
+      "summary": "Bifidobacterium longum 1714 probably reduces perceived stress and anxiety in at least some stressed adults, but the effect is modest and not universal. The best evidence is for stress reactivity and short-term wellness rather than for a broad, sustained mood treatment effect.",
+      "caveats": "The human studies are still small or context-specific, and several benefits are transient or secondary rather than primary-endpoint wins. This edge should be treated as a plausible low-risk stress modulator, not as a reliable replacement for established anxiety or mood care.",
+      "evidence": [
+        {
+          "citation": "Allen AP et al 2016 Transl Psychiatry",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Bifidobacterium longum 1714 as a translational psychobiotic: modulation of stress, electrophysiology and neurocognition in healthy volunteers.",
+          "pmid": "27801892",
+          "n_participants": 22
+        },
+        {
+          "citation": "Wang H et al 2019 Am J Gastroenterol",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Bifidobacterium longum 1714™ Strain Modulates Brain Activity of Healthy Volunteers During Social Stress.",
+          "pmid": "30998517",
+          "n_participants": 40
+        },
+        {
+          "citation": "Seamans KM et al 2026 Exp Clin Psychopharmacol",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effects of Bifidobacterium longum 1714 on low mood and related symptoms: A randomized, double-blind, placebo-controlled trial.",
+          "pmid": "42060410",
+          "n_participants": 168
+        }
+      ]
+    }
+  ]
+}
