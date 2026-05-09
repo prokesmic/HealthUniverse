@@ -47,6 +47,15 @@
       genetics: [],
       records: [],
       protocols: [],
+      // Recommendations the system has surfaced to the user. Each row is
+      // logged with timestamp + status so we can close the loop later
+      // ('I told you to try X 8 weeks ago — here's whether it worked').
+      recommendations: [],
+      // Upcoming clinical visits — input for /me/checkup pre-visit prep.
+      visits: [],
+      // Email opt-in for proactive emails (Sunday briefing, protocol
+      // reminders). Set on /me/briefing's 'subscribe' button.
+      email: null,
       created_at: _now(),
       updated_at: _now(),
     };
@@ -63,6 +72,9 @@
     state.genetics = state.genetics || [];
     state.records = state.records || [];
     state.protocols = state.protocols || [];
+    state.recommendations = state.recommendations || [];
+    state.visits = state.visits || [];
+    if (state.email === undefined) state.email = null;
     return state;
   }
 
@@ -191,6 +203,181 @@
     save(s);
   }
 
+  // ─── Recommendations log (loop closure) ─────────────────────────
+  function addRecommendation({ edge_id, edge_label, source, target_metric, baseline_value }) {
+    const s = load();
+    const key = `${source || "system"}:${edge_id}`;
+    // Don't double-log: same source + edge in last 14 days is a no-op.
+    const recent = s.recommendations.find((r) =>
+      `${r.source}:${r.edge_id}` === key &&
+      (Date.now() - new Date(r.suggested_at).getTime()) < 14 * 86400000);
+    if (recent) return;
+    s.recommendations.push({
+      id: _rand(),
+      edge_id, edge_label,
+      source: source || "system",
+      target_metric: target_metric || null,
+      baseline_value: baseline_value != null ? Number(baseline_value) : null,
+      suggested_at: _now(),
+      status: "open",
+      closed_at: null,
+      verdict: null,
+      followup_value: null,
+    });
+    save(s);
+  }
+  function closeRecommendation(id, { verdict, followup_value }) {
+    const s = load();
+    const r = s.recommendations.find((x) => x.id === id);
+    if (!r) return;
+    r.status = "closed";
+    r.closed_at = _now();
+    r.verdict = verdict || "uncertain";
+    if (followup_value != null) r.followup_value = Number(followup_value);
+    save(s);
+  }
+  function deleteRecommendation(id) {
+    const s = load();
+    s.recommendations = s.recommendations.filter((r) => r.id !== id);
+    save(s);
+  }
+
+  // ─── Visits / appointments ──────────────────────────────────────
+  function addVisit({ date, clinician, notes }) {
+    const s = load();
+    s.visits.push({
+      id: _rand(),
+      date: date || _today(),
+      clinician: (clinician || "").trim(),
+      notes: (notes || "").trim(),
+      added_at: _now(),
+    });
+    s.visits.sort((a, b) => a.date.localeCompare(b.date));
+    save(s);
+  }
+  function deleteVisit(id) {
+    const s = load();
+    s.visits = s.visits.filter((v) => v.id !== id);
+    save(s);
+  }
+
+  // ─── Email opt-in ───────────────────────────────────────────────
+  function setEmail(email) {
+    const s = load();
+    s.email = (email || "").trim().toLowerCase() || null;
+    save(s);
+  }
+
+  // ─── Anomaly detection on wearable streams ──────────────────────
+  // For each stream with ≥14 points, compute a z-score of the last 7
+  // days vs the prior 60 (or however much we have). Flag anomalies
+  // with |z| ≥ 1.5 — strong enough to be worth surfacing without
+  // being so trigger-happy we cry wolf.
+  const _BETTER_DIRECTION = {
+    rhr: "down", sleep_hours: "up", weight: null,
+    hrv: "up", steps: "up", glucose: "down",
+  };
+  function detectAnomalies(threshold = 1.5) {
+    const s = load();
+    const out = [];
+    Object.entries(s.wearables || {}).forEach(([stream, pts]) => {
+      if (!Array.isArray(pts) || pts.length < 10) return;
+      const sorted = [...pts].sort((a, b) => a.date.localeCompare(b.date));
+      const recent = sorted.slice(-7);
+      const baseline = sorted.slice(0, -7).slice(-60);
+      if (recent.length < 4 || baseline.length < 5) return;
+      const mean = (a) => a.reduce((x, y) => x + y, 0) / a.length;
+      const stdev = (a, m) => Math.sqrt(a.reduce((x, y) => x + (y - m) ** 2, 0) / a.length) || 1;
+      const bvals = baseline.map((p) => p.value);
+      const rvals = recent.map((p) => p.value);
+      const bm = mean(bvals);
+      const bs = stdev(bvals, bm);
+      const rm = mean(rvals);
+      const z = (rm - bm) / bs;
+      if (Math.abs(z) >= threshold) {
+        const better = _BETTER_DIRECTION[stream];
+        let direction = z > 0 ? "up" : "down";
+        let isBad = better && direction !== better;
+        out.push({
+          stream, z: Number(z.toFixed(2)),
+          recent_mean: Number(rm.toFixed(2)), baseline_mean: Number(bm.toFixed(2)),
+          delta: Number((rm - bm).toFixed(2)),
+          n_recent: recent.length, n_baseline: baseline.length,
+          direction, severity: Math.abs(z) >= 2.5 ? "high" : "moderate",
+          is_bad: isBad,
+        });
+      }
+    });
+    return out.sort((a, b) => Math.abs(b.z) - Math.abs(a.z));
+  }
+
+  // ─── Cross-stream correlation (weekly) ──────────────────────────
+  // Daily-aligned Pearson between every pair of wearable streams that
+  // have ≥14 overlapping daily points. Returns the strongest 3 by |r|.
+  function computeCorrelations() {
+    const s = load();
+    const dailyMap = {}; // stream → date → averaged value
+    Object.entries(s.wearables || {}).forEach(([stream, pts]) => {
+      const m = {};
+      (pts || []).forEach((p) => {
+        const d = p.date;
+        m[d] = (m[d] != null) ? (m[d] + p.value) / 2 : p.value;
+      });
+      if (Object.keys(m).length >= 14) dailyMap[stream] = m;
+    });
+    const streams = Object.keys(dailyMap);
+    const pairs = [];
+    for (let i = 0; i < streams.length; i++) {
+      for (let j = i + 1; j < streams.length; j++) {
+        const a = dailyMap[streams[i]], b = dailyMap[streams[j]];
+        const dates = Object.keys(a).filter((d) => d in b).sort();
+        if (dates.length < 14) continue;
+        const xs = dates.map((d) => a[d]);
+        const ys = dates.map((d) => b[d]);
+        const n = xs.length;
+        const mean = (arr) => arr.reduce((x, y) => x + y, 0) / n;
+        const mx = mean(xs), my = mean(ys);
+        let num = 0, dx = 0, dy = 0;
+        for (let k = 0; k < n; k++) {
+          num += (xs[k] - mx) * (ys[k] - my);
+          dx += (xs[k] - mx) ** 2;
+          dy += (ys[k] - my) ** 2;
+        }
+        const denom = Math.sqrt(dx * dy) || 1;
+        const r = num / denom;
+        if (Math.abs(r) >= 0.35) {
+          pairs.push({
+            a: streams[i], b: streams[j], r: Number(r.toFixed(2)),
+            n, sign: r > 0 ? "co_move" : "anti_move",
+          });
+        }
+      }
+    }
+    return pairs.sort((a, b) => Math.abs(b.r) - Math.abs(a.r)).slice(0, 5);
+  }
+
+  // ─── Protocol nudge state ───────────────────────────────────────
+  // Returns a list of protocols where the user hasn't logged in 3+
+  // days, or where the duration has elapsed and we should offer to
+  // close out and compute the personal-effect estimate.
+  function protocolNudges() {
+    const s = load();
+    const today = _today();
+    const out = [];
+    (s.protocols || []).forEach((p) => {
+      const lastLog = p.logs && p.logs.length ? p.logs[p.logs.length - 1].date : p.started_at;
+      const daysSinceLog = (new Date(today) - new Date(lastLog)) / 86400000;
+      const isComplete = today >= p.ends_at;
+      const isStale = daysSinceLog >= 3 && !isComplete;
+      if (isComplete && p.logs.length >= 4) {
+        out.push({ id: p.id, kind: "ready_to_close", protocol: p });
+      } else if (isStale) {
+        out.push({ id: p.id, kind: "stale", days_since_log: Math.floor(daysSinceLog), protocol: p });
+      }
+    });
+    return out;
+  }
+
   // ─── Reset / export ──────────────────────────────────────────────
   function exportJSON() {
     const s = load();
@@ -234,6 +421,10 @@
     addVariant, deleteVariant, bulkAddVariants,
     addRecord, deleteRecord,
     addProtocol, logProtocol, deleteProtocol,
+    addRecommendation, closeRecommendation, deleteRecommendation,
+    addVisit, deleteVisit,
+    setEmail,
+    detectAnomalies, computeCorrelations, protocolNudges,
     exportJSON, importJSON, clearAll,
   };
 })(window);

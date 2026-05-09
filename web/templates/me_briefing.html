@@ -1,0 +1,405 @@
+{% extends "base.html" %}
+{% block title %}Weekly briefing — Health Universe{% endblock %}
+{% block content %}
+<style>
+  .br-hero { padding: 24px 0 12px; }
+  .br-hero h1 { margin: 0; }
+  .br-hero .sub { color: var(--ink-soft); margin: 4px 0 0; }
+  .br-section {
+    border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 20px; margin-bottom: 18px; background: #fff;
+  }
+  .br-section h2 { margin: 0 0 4px; font-size: 18px; }
+  .br-section .head-meta { color: var(--ink-soft); font-size: 13px; }
+  .br-empty {
+    padding: 14px 16px; background: #fafafa;
+    border: 1px dashed var(--line); border-radius: 10px;
+    color: var(--ink-soft); font-size: 14px;
+  }
+  .br-card {
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; margin-top: 10px; background: #fff;
+  }
+  .br-card .head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .br-card .name { font-weight: 600; }
+  .br-card .meta { color: var(--ink-soft); font-size: 12px; }
+  .br-card.is-bad { border-color: #f3b3ad; background: #fff8f7; }
+  .br-card.is-good { border-color: #b7e0c4; background: #f8fcf9; }
+  .br-card.is-info { border-color: #b8cdf2; background: #f7faff; }
+  .br-card.is-warn { border-color: #f0d68a; background: #fffbe7; }
+
+  .pill {
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 600;
+  }
+  .pill-good { background:#e7f5ec; color:#1b5e20; }
+  .pill-warn { background:#fff7e0; color:#7a5c00; }
+  .pill-bad  { background:#fdecea; color:#9b1c1c; }
+  .pill-info { background:#eaf3ff; color:#1f3a7e; }
+
+  .actions-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+
+  .br-summary-strip {
+    display: grid; gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    margin: 14px 0 22px;
+  }
+  .br-stat {
+    padding: 12px 14px; border: 1px solid var(--line);
+    border-radius: 10px; background: #fff;
+  }
+  .br-stat .n { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; line-height: 1; }
+  .br-stat .lbl { font-size: 12px; color: var(--ink-soft); margin-top: 4px; }
+  .br-stat.is-zero .n { color: #999; }
+
+  .br-trail {
+    margin-top: 24px; padding: 16px; border-radius: 12px;
+    background: #f7f7f7; font-size: 13px; color: var(--ink-soft);
+  }
+  .br-subscribe {
+    background: linear-gradient(180deg,#1f3a2e,#2b5341);
+    color: #fffaf0; border-radius: 12px;
+    padding: 18px 22px; margin-bottom: 18px;
+  }
+  .br-subscribe h2 { color: #fffaf0; margin: 0 0 6px; font-size: 18px; }
+  .br-subscribe input { padding: 8px 10px; border-radius: 6px; border: 1px solid #d4d4d4; min-width: 220px; }
+  .br-subscribe button {
+    background: #fffaf0; color: #1f3a2e; border: 0;
+    padding: 8px 16px; border-radius: 6px; font-weight: 600; cursor: pointer;
+  }
+</style>
+
+<header class="br-hero">
+  <p class="hp-eyebrow">YOUR WEEKLY BRIEFING</p>
+  <h1>What changed for you<span class="dot">.</span></h1>
+  <p class="sub">A scan across your data, your watchlist, and the corpus — refreshed every time you visit.
+    <span id="br-render-time" class="muted small"></span></p>
+</header>
+
+<section class="br-summary-strip" id="br-summary"></section>
+
+<!-- Anomalies (Feature 3) -->
+<section class="br-section" id="br-anomalies">
+  <h2>📈 Anomalies in your wearable trends</h2>
+  <p class="head-meta">Z-score of last 7 days vs your prior 60. Flagged when |z| ≥ 1.5.</p>
+  <div id="br-anomalies-body"></div>
+</section>
+
+<!-- Evidence shifts (Feature 2) -->
+<section class="br-section" id="br-shifts">
+  <h2>🆕 What changed in the corpus for your watchlist</h2>
+  <p class="head-meta" id="br-shifts-meta">Tier promotions, demotions, retractions, prose refreshes — last 14 days.</p>
+  <div id="br-shifts-body"></div>
+</section>
+
+<!-- Loop closure (Feature 4) -->
+<section class="br-section" id="br-loops">
+  <h2>🔄 Loops to close</h2>
+  <p class="head-meta">Recommendations the system surfaced 4+ weeks ago that we haven't asked you to verdict yet.</p>
+  <div id="br-loops-body"></div>
+</section>
+
+<!-- Protocols (Feature 6) -->
+<section class="br-section" id="br-protocols">
+  <h2>🔬 Protocol status</h2>
+  <p class="head-meta">N-of-1 self-experiments — what's stale, what's ready to close out.</p>
+  <div id="br-protocols-body"></div>
+</section>
+
+<!-- Cross-data correlations (Feature 7) -->
+<section class="br-section" id="br-corr">
+  <h2>↔ Cross-data correlations</h2>
+  <p class="head-meta">Daily-aligned Pearson between your wearable streams. Strong (|r| ≥ 0.35) only.</p>
+  <div id="br-corr-body"></div>
+</section>
+
+<!-- Sunday email opt-in -->
+<section class="br-subscribe" id="br-subscribe">
+  <h2>Get this every Sunday morning</h2>
+  <p style="margin:0 0 10px">Opt in to a Sunday-morning email with the corpus changes that affect your watchlist + a link to your fresh briefing. We send it via Resend; you can unsubscribe anytime.</p>
+  <form id="br-subscribe-form" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+    <input id="br-email" type="email" placeholder="you@example.com" required>
+    <button type="submit">Subscribe</button>
+    <span id="br-subscribe-msg" style="font-size:13px"></span>
+  </form>
+</section>
+
+<div class="br-trail">
+  This briefing is generated locally in your browser at every visit — your personal data never transits our
+  servers. The corpus shifts come from a stateless query to <code>/api/me/evidence-shifts</code> with only your
+  watchlist edge IDs. Email opt-in stores just your address (with Resend) so we can send you the Sunday digest;
+  you can clear it anytime in Tools.
+</div>
+
+<script src="/static/personal.js"></script>
+<script>
+(function () {
+  "use strict";
+  const HU = window.HUPersonal;
+  if (!HU) return;
+
+  function escapeHTML(s) {
+    return String(s || "").replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  }
+
+  // ─── 1. Headline summary ───────────────────────────────────────
+  function renderSummary({ anomalies, shifts, openLoops, staleProtocols, ready, corrs }) {
+    const sum = document.getElementById("br-summary");
+    sum.innerHTML = "";
+    const items = [
+      { n: anomalies, lbl: "anomaly" + (anomalies === 1 ? "" : "ies") },
+      { n: shifts, lbl: "evidence shift" + (shifts === 1 ? "" : "s") },
+      { n: openLoops, lbl: "loop" + (openLoops === 1 ? "" : "s") + " open" },
+      { n: staleProtocols, lbl: "protocol" + (staleProtocols === 1 ? "" : "s") + " stale" },
+      { n: ready, lbl: "ready to close" },
+      { n: corrs, lbl: "correlation" + (corrs === 1 ? "" : "s") },
+    ];
+    items.forEach((s) => {
+      const div = document.createElement("div");
+      div.className = "br-stat" + (s.n === 0 ? " is-zero" : "");
+      div.innerHTML = `<div class="n">${s.n}</div><div class="lbl">${s.lbl}</div>`;
+      sum.appendChild(div);
+    });
+    document.getElementById("br-render-time").textContent = "· generated " + new Date().toLocaleString();
+  }
+
+  // ─── 2. Anomalies ──────────────────────────────────────────────
+  function renderAnomalies(out) {
+    const target = document.getElementById("br-anomalies-body");
+    if (!out.length) {
+      target.innerHTML = `<div class="br-empty">No wearable streams have crossed the anomaly threshold. Either your trends are stable, or you don't yet have ≥10 data points in any stream — log a few weeks of one number (e.g. RHR or sleep) to unlock this.</div>`;
+      return;
+    }
+    target.innerHTML = "";
+    const STREAM_LABELS = {
+      rhr: "Resting heart rate", sleep_hours: "Sleep duration",
+      weight: "Weight", hrv: "HRV", steps: "Daily steps", glucose: "Glucose",
+    };
+    const STREAM_UNITS = {
+      rhr: "bpm", sleep_hours: "h", weight: "", hrv: "ms", steps: "/day", glucose: "mg/dL",
+    };
+    out.forEach((a) => {
+      const card = document.createElement("div");
+      card.className = "br-card " + (a.is_bad ? "is-bad" : "is-good");
+      const arrow = a.direction === "up" ? "↑" : "↓";
+      card.innerHTML = `
+        <div class="head">
+          <span class="name">${escapeHTML(STREAM_LABELS[a.stream] || a.stream)}</span>
+          <span class="pill ${a.is_bad ? "pill-bad" : "pill-good"}">${a.severity} · z=${a.z}</span>
+          <span class="meta">${arrow} from ${a.baseline_mean} to ${a.recent_mean} ${STREAM_UNITS[a.stream]} (${a.n_recent}-day vs ${a.n_baseline}-day baseline)</span>
+        </div>
+        <div style="font-size:13px;margin-top:6px">
+          ${a.is_bad
+            ? "Worth thinking about what changed in the last week — diet, training load, sleep schedule, stress, alcohol. Anomalies often have a single dominant cause."
+            : "This is a positive shift — whatever you changed is working. Worth keeping going."}
+        </div>
+      `;
+      target.appendChild(card);
+    });
+  }
+
+  // ─── 3. Evidence shifts ───────────────────────────────────────
+  async function renderShifts(profile) {
+    const target = document.getElementById("br-shifts-body");
+    const watchEdges = (profile && profile.watch_edges) || [];
+    if (!watchEdges.length) {
+      target.innerHTML = `<div class="br-empty">No edges on your watchlist yet. Click "Follow this edge" on any edge page to start watching it — we'll surface every tier change, retraction, or prose refresh here.</div>`;
+      return;
+    }
+    target.innerHTML = `<div class="muted small">Checking ${watchEdges.length} watched edge${watchEdges.length === 1 ? "" : "s"}...</div>`;
+    try {
+      const r = await fetch(`/api/me/evidence-shifts?edges=${watchEdges.join(",")}`);
+      const j = await r.json();
+      const shifts = j.shifts || [];
+      if (!shifts.length) {
+        target.innerHTML = `<div class="br-empty">No changes in your watchlist edges in the last 14 days. The corpus is quiet for you this week.</div>`;
+        return;
+      }
+      target.innerHTML = "";
+      shifts.forEach((s) => {
+        const isBad = s.kind === "demoted" || s.kind === "retraction";
+        const card = document.createElement("div");
+        card.className = "br-card " + (isBad ? "is-bad" : "is-info");
+        const verb = {
+          promoted: "PROMOTED to",
+          demoted: "DEMOTED to",
+          tier_changed: "tier changed to",
+          retraction: "RETRACTED",
+          prose_refresh: "prose refreshed",
+          direction_flipped: "direction changed",
+        }[s.kind] || "changed";
+        card.innerHTML = `
+          <div class="head">
+            <span class="pill ${isBad ? "pill-bad" : "pill-good"}">${escapeHTML(s.kind.replace("_", " "))}</span>
+            <a href="/edge/${s.edge_id}" class="name">${escapeHTML(s.f_name)} → ${escapeHTML(s.o_name)}</a>
+          </div>
+          <div class="meta">${verb} ${escapeHTML(s.new_value || "")} from ${escapeHTML(s.old_value || "—")} · ${(s.changed_at || "").slice(0, 10)}</div>
+          ${s.summary ? `<div style="font-size:13px;margin-top:6px">${escapeHTML(s.summary).slice(0, 280)}</div>` : ""}
+        `;
+        target.appendChild(card);
+      });
+    } catch (e) {
+      target.innerHTML = `<div class="br-empty">Couldn't fetch evidence shifts. Check your connection and refresh.</div>`;
+    }
+  }
+
+  // ─── 4. Loops to close ────────────────────────────────────────
+  function renderLoops() {
+    const target = document.getElementById("br-loops-body");
+    const s = HU.load();
+    const FOUR_WK = 28 * 86400000;
+    const open = (s.recommendations || []).filter((r) => {
+      if (r.status !== "open") return false;
+      const age = Date.now() - new Date(r.suggested_at).getTime();
+      return age >= FOUR_WK;
+    }).sort((a, b) => a.suggested_at.localeCompare(b.suggested_at));
+    if (!open.length) {
+      target.innerHTML = `<div class="br-empty">No open loops to close right now. New recommendations from your Stack Brief or My Plan get logged here automatically; we'll ask you to verdict them after 4 weeks.</div>`;
+      return;
+    }
+    target.innerHTML = "";
+    open.forEach((r) => {
+      const ageDays = Math.floor((Date.now() - new Date(r.suggested_at).getTime()) / 86400000);
+      const card = document.createElement("div");
+      card.className = "br-card is-warn";
+      card.innerHTML = `
+        <div class="head">
+          <span class="name">${escapeHTML(r.edge_label || r.edge_id)}</span>
+          <span class="pill pill-warn">${ageDays} days</span>
+          <span class="meta">surfaced via ${escapeHTML(r.source)}</span>
+        </div>
+        <div style="font-size:13px;margin-top:6px">Did you try this? Did it help?</div>
+        <div class="actions-row">
+          <button class="btn-secondary inline" data-close="${r.id}" data-verdict="helped">✓ Helped me</button>
+          <button class="btn-secondary inline" data-close="${r.id}" data-verdict="no_change">– No change</button>
+          <button class="btn-secondary inline" data-close="${r.id}" data-verdict="harmed">✗ Made it worse</button>
+          <button class="btn-secondary inline" data-close="${r.id}" data-verdict="never_tried">⨯ Never tried</button>
+        </div>
+      `;
+      target.appendChild(card);
+    });
+    target.querySelectorAll("[data-close]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        HU.closeRecommendation(btn.dataset.close, { verdict: btn.dataset.verdict });
+      });
+    });
+  }
+
+  // ─── 5. Protocols ─────────────────────────────────────────────
+  function renderProtocols() {
+    const target = document.getElementById("br-protocols-body");
+    const nudges = HU.protocolNudges();
+    if (!nudges.length) {
+      const s = HU.load();
+      const n = (s.protocols || []).length;
+      target.innerHTML = n
+        ? `<div class="br-empty">${n} protocol${n === 1 ? "" : "s"} active and on track. No nudges needed.</div>`
+        : `<div class="br-empty">No active protocols. Start one on <a href="/me/data">Your data</a> → Protocols.</div>`;
+      return;
+    }
+    target.innerHTML = "";
+    nudges.forEach((nu) => {
+      const card = document.createElement("div");
+      const isReady = nu.kind === "ready_to_close";
+      card.className = "br-card " + (isReady ? "is-good" : "is-warn");
+      card.innerHTML = `
+        <div class="head">
+          <span class="name">${escapeHTML(nu.protocol.factor_name)} → ${escapeHTML(nu.protocol.outcome_name)}</span>
+          <span class="pill ${isReady ? "pill-good" : "pill-warn"}">${isReady ? "ready to close" : "stale (" + nu.days_since_log + " days)"}</span>
+        </div>
+        <div style="font-size:13px;margin-top:6px">
+          ${isReady
+            ? "Window complete and you have ≥4 logs. Open Your data → Protocols to see the personal-effect estimate."
+            : "Hasn't been logged in " + nu.days_since_log + " days. The personal-effect estimate gets stronger with consistent logs."}
+        </div>
+        <div class="actions-row">
+          <a href="/me/data" class="btn-secondary inline">Open protocol</a>
+        </div>
+      `;
+      target.appendChild(card);
+    });
+  }
+
+  // ─── 6. Correlations ──────────────────────────────────────────
+  function renderCorrelations() {
+    const target = document.getElementById("br-corr-body");
+    const corrs = HU.computeCorrelations();
+    if (!corrs.length) {
+      target.innerHTML = `<div class="br-empty">No strong correlations yet — need at least two streams with ≥14 daily-aligned points to compute. Log RHR + sleep for a few weeks to unlock this.</div>`;
+      return;
+    }
+    target.innerHTML = "";
+    const STREAM_LABELS = {
+      rhr: "RHR", sleep_hours: "sleep", weight: "weight",
+      hrv: "HRV", steps: "steps", glucose: "glucose",
+    };
+    corrs.forEach((c) => {
+      const card = document.createElement("div");
+      card.className = "br-card is-info";
+      card.innerHTML = `
+        <div class="head">
+          <span class="name">${escapeHTML(STREAM_LABELS[c.a] || c.a)} ↔ ${escapeHTML(STREAM_LABELS[c.b] || c.b)}</span>
+          <span class="pill pill-info">${c.sign === "co_move" ? "co-move" : "anti-move"} · r=${c.r}</span>
+          <span class="meta">${c.n} days overlapping</span>
+        </div>
+        <div style="font-size:13px;margin-top:6px">
+          On days when ${escapeHTML(STREAM_LABELS[c.a] || c.a)} ${c.sign === "co_move" ? "is high" : "is high"},
+          ${escapeHTML(STREAM_LABELS[c.b] || c.b)} ${c.sign === "co_move" ? "tends to be high too" : "tends to be low"}.
+          This is a daily association, not causation — but worth noticing.
+        </div>
+      `;
+      target.appendChild(card);
+    });
+    return corrs;
+  }
+
+  // ─── Subscribe handler ────────────────────────────────────────
+  document.getElementById("br-subscribe-form").addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const email = document.getElementById("br-email").value.trim();
+    const msg = document.getElementById("br-subscribe-msg");
+    if (!email.includes("@")) { msg.textContent = "Please enter a valid email."; return; }
+    HU.setEmail(email);
+    msg.textContent = "Saving…";
+    try {
+      const fd = new FormData();
+      fd.append("email", email);
+      fd.append("source", "briefing");
+      await fetch("/api/pro-waitlist", { method: "POST", body: fd });
+    } catch (_) {}
+    msg.innerHTML = "<span style=\"color:#b7e0c4\">✓ Subscribed. You'll get the Sunday briefing.</span>";
+  });
+
+  // ─── Bootstrap ────────────────────────────────────────────────
+  async function renderAll() {
+    const profileWatchEdges = {{ (profile.watch_edges or [])|tojson }};
+    const profile = { watch_edges: profileWatchEdges };
+    const anomalies = HU.detectAnomalies();
+    renderAnomalies(anomalies);
+    await renderShifts(profile);
+    renderLoops();
+    renderProtocols();
+    const corrs = renderCorrelations() || [];
+    const s = HU.load();
+    const FOUR_WK = 28 * 86400000;
+    const openLoops = (s.recommendations || []).filter(
+      (r) => r.status === "open" && (Date.now() - new Date(r.suggested_at).getTime()) >= FOUR_WK
+    ).length;
+    const nudges = HU.protocolNudges();
+    const stale = nudges.filter((n) => n.kind === "stale").length;
+    const ready = nudges.filter((n) => n.kind === "ready_to_close").length;
+    // Approximate shift count from current DOM after render.
+    const shiftCount = document.querySelectorAll("#br-shifts-body .br-card").length;
+    renderSummary({
+      anomalies: anomalies.length,
+      shifts: shiftCount,
+      openLoops, staleProtocols: stale, ready,
+      corrs: corrs.length,
+    });
+    // Pre-fill saved email if any.
+    if (s.email) document.getElementById("br-email").value = s.email;
+  }
+  renderAll();
+})();
+</script>
+{% endblock %}

@@ -571,6 +571,128 @@ def cron_digest(request: Request):
     return JSONResponse({"sent": sent, "errors": errors})
 
 
+@app.get("/api/cron/proactive-weekly")
+def cron_proactive_weekly(request: Request):
+    """Sunday-morning briefing email. Cron runs us at 0 7 * * SUN.
+    For each subscriber on the Pro waitlist (or the existing
+    subscribers list), send a teaser email with this week's corpus
+    deltas + a deep link to /me/briefing where the personal section
+    renders client-side from their localStorage.
+
+    Personal data NEVER transits this endpoint or the email body —
+    only public corpus news goes in. The personal half is generated
+    when the user clicks through to the briefing page.
+    """
+    import os
+    expected = os.environ.get("CRON_SECRET")
+    auth = request.headers.get("authorization", "")
+    if expected and auth != f"Bearer {expected}":
+        return JSONResponse({"error": "unauthorized"}, status_code=401)
+
+    # Pull this week's corpus deltas once (same content for every email).
+    since = (datetime_now() - timedelta(days=7)).isoformat(timespec="seconds")
+    with connect() as conn:
+        promotions = conn.execute("""
+            SELECT h.edge_id, h.old_value, h.new_value, h.changed_at,
+                   f.name AS f_name, o.name AS o_name
+            FROM edge_history h
+            JOIN edge e ON e.id=h.edge_id
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE h.field='tier' AND h.new_value IN ('A','B')
+              AND (h.old_value IS NULL OR h.old_value NOT IN ('A','B'))
+              AND h.changed_at >= ?
+            ORDER BY h.changed_at DESC
+            LIMIT 8""", (since,)).fetchall()
+        retractions = conn.execute("""
+            SELECT h.edge_id, h.changed_at,
+                   f.name AS f_name, o.name AS o_name
+            FROM edge_history h
+            JOIN edge e ON e.id=h.edge_id
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE h.field='is_retracted' AND h.new_value='1'
+              AND h.changed_at >= ?
+            ORDER BY h.changed_at DESC
+            LIMIT 4""", (since,)).fetchall()
+    promotions = [dict(r) for r in promotions]
+    retractions = [dict(r) for r in retractions]
+
+    base = os.environ.get("HU_BASE_URL", "https://health-universe.vercel.app")
+    body_lines = [
+        f"<h1 style='font-family:Georgia,serif'>Your weekly briefing</h1>",
+        f"<p>Open your personalised briefing — anomalies, watchlist shifts, "
+        f"loops to close, protocol nudges, and cross-data correlations all "
+        f"render in your browser from your local data.</p>",
+        f"<p><a href='{base}/me/briefing' "
+        f"style='display:inline-block;padding:10px 18px;background:#1f3a2e;color:#fffaf0;"
+        f"border-radius:8px;text-decoration:none;font-weight:600'>"
+        f"Open my briefing →</a></p>",
+        f"<hr style='margin:24px 0;border:none;border-top:1px solid #ddd'>",
+        f"<h2 style='font-family:Georgia,serif;font-size:18px'>What changed in the corpus this week</h2>",
+    ]
+    if promotions:
+        body_lines.append("<h3 style='font-size:14px;margin:18px 0 6px'>↑ Promoted to tier A or B</h3><ul>")
+        for p in promotions:
+            body_lines.append(f"<li><a href='{base}/edge/{p['edge_id']}'>"
+                              f"{p['f_name']} → {p['o_name']}</a> "
+                              f"(now <b>{p['new_value']}</b>; was {p['old_value'] or '—'})</li>")
+        body_lines.append("</ul>")
+    if retractions:
+        body_lines.append("<h3 style='font-size:14px;margin:18px 0 6px'>⚠ Retractions</h3><ul>")
+        for r in retractions:
+            body_lines.append(f"<li><a href='{base}/edge/{r['edge_id']}'>"
+                              f"{r['f_name']} → {r['o_name']}</a></li>")
+        body_lines.append("</ul>")
+    if not promotions and not retractions:
+        body_lines.append("<p>The corpus was quiet this week — no tier promotions or retractions.</p>")
+    body_lines.append(
+        "<p style='font-size:12px;color:#666;margin-top:24px'>"
+        "You're receiving this because you opted in on the Stack Brief or briefing page. "
+        f"<a href='{base}/me/briefing'>Manage email</a>."
+        "</p>"
+    )
+    html = "\n".join(body_lines)
+
+    sub_file = Path(__file__).parent.parent / "data" / "subscribers.json"
+    subs: list = []
+    if sub_file.exists():
+        try:
+            import json as _json
+            subs = _json.loads(sub_file.read_text())
+        except Exception:
+            pass
+    # Also include rows from pro_waitlist (best-effort; may not exist on a
+    # cold Vercel deploy because the table is in the read-only DB).
+    try:
+        with connect() as conn:
+            rows = conn.execute(
+                "SELECT email FROM pro_waitlist ORDER BY signed_up_at DESC"
+            ).fetchall()
+        for r in rows:
+            if r["email"] and r["email"] not in (s.get("email") for s in subs):
+                subs.append({"email": r["email"]})
+    except Exception:
+        pass
+
+    sent = 0
+    errors: list[dict] = []
+    if not os.environ.get("RESEND_API_KEY"):
+        return JSONResponse({"sent": 0, "note": "RESEND_API_KEY not set"})
+    for s in subs:
+        try:
+            _resend_send(s["email"], "Health Universe — your weekly briefing", html)
+            sent += 1
+        except Exception as exc:
+            errors.append({"email": s.get("email"), "error": str(exc)[:200]})
+    return JSONResponse({
+        "sent": sent,
+        "promotions": len(promotions),
+        "retractions": len(retractions),
+        "errors": errors,
+    })
+
+
 def _resend_send(to_addr: str, subject: str, html: str) -> None:
     import os
     import httpx
@@ -985,6 +1107,30 @@ def my_plan(request: Request):
         "starters": starters,
         "warnings": _interactions_for_stack(p.stack),
         "n_stack": len(stack_set),
+    })
+
+
+@app.get("/me/briefing", response_class=HTMLResponse)
+def me_briefing(request: Request):
+    """The proactive weekly briefing — anomalies, evidence shifts,
+    closure cards, correlations, protocol status. Server returns
+    corpus-side data; the rest is rendered client-side from the
+    user's local graph."""
+    p = decode(request.cookies.get(COOKIE))
+    return render(request, "me_briefing.html", {
+        "title": "Weekly briefing",
+        "profile": p,
+    })
+
+
+@app.get("/me/checkup", response_class=HTMLResponse)
+def me_checkup(request: Request):
+    """Pre-visit prep — given an upcoming appointment, surface anomalies,
+    new evidence, and 4 evidence-backed questions to bring up."""
+    p = decode(request.cookies.get(COOKIE))
+    return render(request, "me_checkup.html", {
+        "title": "Pre-visit prep",
+        "profile": p,
     })
 
 
@@ -3115,6 +3261,98 @@ def api_snp_evidence(rsid: str = "", genotype: str = ""):
         "amplify_factor": interp.get("amplify_factor"),
         "amplify_edges":  amplify,
         "edges":    edges,
+    })
+
+
+@app.get("/api/me/evidence-shifts")
+def api_evidence_shifts(edges: str = "", since: str = "", limit: int = 30):
+    """Return recent edge_history rows for the user's watchlist edges.
+    Stateless: client sends the comma-list of edge IDs they care about,
+    server checks edge_history for changes since `since` (default 14 days).
+
+    This is the proactive heartbeat: when an edge in your watchlist
+    changes tier, gets new evidence, or gets demoted, the briefing page
+    surfaces it without waiting for you to ask."""
+    if not edges.strip():
+        return JSONResponse({"shifts": []})
+    try:
+        ids = [int(x) for x in edges.split(",") if x.strip()][:200]
+    except Exception:
+        return JSONResponse({"error": "bad edge ids"}, status_code=400)
+    since_iso = since or (datetime_now() - timedelta(days=14)).isoformat(timespec="seconds")
+    if not ids:
+        return JSONResponse({"shifts": []})
+    with connect() as conn:
+        ph = ",".join("?" * len(ids))
+        rows = conn.execute(f"""
+            SELECT h.edge_id, h.field, h.old_value, h.new_value, h.changed_at,
+                   e.tier, e.direction, e.summary,
+                   f.name AS f_name, o.name AS o_name
+            FROM edge_history h
+            JOIN edge e ON e.id=h.edge_id
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE h.edge_id IN ({ph}) AND h.changed_at >= ?
+            ORDER BY h.changed_at DESC
+            LIMIT ?
+        """, [*ids, since_iso, limit]).fetchall()
+    shifts = [dict(r) for r in rows]
+    # Classify each shift so the client doesn't have to.
+    for s in shifts:
+        s["kind"] = _classify_shift(s)
+    return JSONResponse({"shifts": shifts, "since": since_iso})
+
+
+def _classify_shift(s: dict) -> str:
+    """Turn a raw edge_history row into a human-readable category."""
+    f, ov, nv = s.get("field"), s.get("old_value"), s.get("new_value")
+    if f == "tier":
+        ord_map = {"A": 0, "B": 1, "C": 2, "D": 3, "X": 4}
+        if ov in ord_map and nv in ord_map:
+            return "promoted" if ord_map[nv] < ord_map[ov] else "demoted"
+        return "tier_changed"
+    if f == "direction":
+        return "direction_flipped"
+    if f == "is_retracted":
+        return "retraction"
+    if f == "summary":
+        return "prose_refresh"
+    return "other"
+
+
+@app.get("/api/me/corpus-deltas")
+def api_corpus_deltas(days: int = 7, limit: int = 8):
+    """What changed in the corpus this week — for the Sunday briefing
+    email body (which can't include personal data, only public news)."""
+    since = (datetime_now() - timedelta(days=int(days))).isoformat(timespec="seconds")
+    with connect() as conn:
+        promotions = conn.execute("""
+            SELECT h.edge_id, h.old_value, h.new_value, h.changed_at,
+                   f.name AS f_name, o.name AS o_name
+            FROM edge_history h
+            JOIN edge e ON e.id=h.edge_id
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE h.field='tier' AND h.new_value IN ('A','B')
+              AND (h.old_value IS NULL OR h.old_value NOT IN ('A','B'))
+              AND h.changed_at >= ?
+            ORDER BY h.changed_at DESC
+            LIMIT ?""", (since, limit)).fetchall()
+        retractions = conn.execute("""
+            SELECT h.edge_id, h.changed_at,
+                   f.name AS f_name, o.name AS o_name
+            FROM edge_history h
+            JOIN edge e ON e.id=h.edge_id
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE h.field='is_retracted' AND h.new_value='1'
+              AND h.changed_at >= ?
+            ORDER BY h.changed_at DESC
+            LIMIT ?""", (since, max(2, limit // 2))).fetchall()
+    return JSONResponse({
+        "since": since,
+        "promotions": [dict(r) for r in promotions],
+        "retractions": [dict(r) for r in retractions],
     })
 
 

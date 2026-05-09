@@ -1,0 +1,308 @@
+{% extends "base.html" %}
+{% block title %}Pre-visit prep — Health Universe{% endblock %}
+{% block content %}
+<style>
+  .ck-hero { padding: 24px 0 12px; }
+  .ck-hero h1 { margin: 0; }
+  .ck-hero .lede { color: var(--ink-soft); margin: 6px 0 0; max-width: 720px; }
+  .ck-form {
+    margin: 18px 0; padding: 16px 18px;
+    background: #f7faf8; border: 1px solid #d4e9d8;
+    border-radius: 12px; display: flex; gap: 10px;
+    flex-wrap: wrap; align-items: end;
+  }
+  .ck-form label { font-size: 12px; font-weight: 600; color: var(--ink-soft); display: block; }
+  .ck-form input, .ck-form select {
+    padding: 8px 10px; border: 1px solid var(--line);
+    border-radius: 6px; font-size: 14px; font-family: inherit;
+  }
+  .ck-section {
+    border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 20px; margin-bottom: 16px; background: #fff;
+  }
+  .ck-section h2 { margin: 0 0 4px; font-size: 18px; }
+  .ck-section .meta { color: var(--ink-soft); font-size: 13px; margin-bottom: 8px; }
+  .ck-card {
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; margin-top: 10px; background: #fff;
+  }
+  .ck-card.is-bad { border-color: #f3b3ad; background: #fff8f7; }
+  .ck-card.is-good { border-color: #b7e0c4; background: #f8fcf9; }
+  .ck-question {
+    border-left: 3px solid #1f3a2e; padding: 8px 14px;
+    margin-top: 10px; background: #f7faf8;
+    font-size: 14px;
+  }
+  .ck-question b { color: #1f3a2e; }
+  .ck-empty {
+    padding: 14px; background: #fafafa;
+    border: 1px dashed var(--line); border-radius: 10px;
+    color: var(--ink-soft); font-size: 14px;
+  }
+  .pill {
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 600;
+  }
+  .pill-bad { background:#fdecea; color:#9b1c1c; }
+  .pill-good { background:#e7f5ec; color:#1b5e20; }
+  .pill-info { background:#eaf3ff; color:#1f3a7e; }
+  .ck-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .ck-actions a { padding: 8px 14px; border-radius: 6px; }
+  .visits-list { display: grid; gap: 8px; margin: 12px 0; }
+  .visit-row {
+    display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+    border: 1px solid var(--line); border-radius: 8px; background: #fff;
+  }
+  .visit-row .when { font-weight: 600; min-width: 100px; }
+  .visit-row .countdown { font-size: 12px; color: var(--ink-soft); }
+  .visit-row button {
+    margin-left: auto; background: none; border: 0; color: #9b1c1c;
+    cursor: pointer; font-size: 12px;
+  }
+</style>
+
+<header class="ck-hero">
+  <p class="hp-eyebrow">PRE-VISIT PREP</p>
+  <h1>Walk in prepared<span class="dot">.</span></h1>
+  <p class="lede">Add an upcoming appointment. We'll generate a brief at T-7 days: anomalies in your trends,
+    new evidence the clinician probably hasn't seen, evidence-backed questions to ask, and a printable handout.
+    Your data stays in your browser; only the corpus side is queried server-side.</p>
+</header>
+
+<form class="ck-form" id="ck-add-form" autocomplete="off">
+  <div>
+    <label>Appointment date</label>
+    <input id="ck-date" type="date" required>
+  </div>
+  <div style="flex:1; min-width:200px">
+    <label>Clinician / type</label>
+    <input id="ck-clinician" placeholder="e.g. GP — annual physical">
+  </div>
+  <div style="flex:2; min-width:240px">
+    <label>What's it about? (optional)</label>
+    <input id="ck-notes" placeholder="e.g. lipid follow-up, sleep concerns">
+  </div>
+  <button type="submit" class="btn-primary">Add appointment</button>
+</form>
+
+<div class="visits-list" id="ck-visits"></div>
+
+<div id="ck-prep" style="display:none">
+  <section class="ck-section">
+    <h2>📈 Anomalies worth raising</h2>
+    <p class="meta">Recent shifts in your wearable streams the clinician hasn't seen.</p>
+    <div id="ck-anomalies-body"></div>
+  </section>
+
+  <section class="ck-section">
+    <h2>🆕 New evidence relevant to your stack</h2>
+    <p class="meta">Tier promotions/demotions in the last 90 days that touch the conditions you track.</p>
+    <div id="ck-shifts-body"></div>
+  </section>
+
+  <section class="ck-section">
+    <h2>🧪 Recent labs</h2>
+    <p class="meta">Out-of-range values from the last 6 months — bring the full lab report.</p>
+    <div id="ck-labs-body"></div>
+  </section>
+
+  <section class="ck-section">
+    <h2>❓ Questions to ask</h2>
+    <p class="meta">Generated from your specific anomalies, recent labs, and recent corpus changes.</p>
+    <div id="ck-questions-body"></div>
+  </section>
+
+  <div class="ck-actions">
+    <a href="/handout?kind=plan" target="_blank" rel="noopener" class="btn-secondary inline">🖨 Printable handout</a>
+    <button type="button" class="btn-secondary inline" onclick="window.print()">🖨 Print this prep page</button>
+  </div>
+</div>
+
+<script src="/static/personal.js"></script>
+<script>
+(function () {
+  "use strict";
+  const HU = window.HUPersonal;
+  if (!HU) return;
+  function esc(s) { return String(s||"").replace(/[&<>"']/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+  function todayISO() { return new Date().toISOString().slice(0,10); }
+  function daysFrom(date) { return Math.ceil((new Date(date) - new Date(todayISO())) / 86400000); }
+
+  document.getElementById("ck-add-form").addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    const date = document.getElementById("ck-date").value;
+    if (!date) return;
+    HU.addVisit({
+      date,
+      clinician: document.getElementById("ck-clinician").value,
+      notes: document.getElementById("ck-notes").value,
+    });
+    ev.target.reset();
+    render();
+  });
+
+  function renderVisits() {
+    const visits = HU.load().visits || [];
+    const target = document.getElementById("ck-visits");
+    target.innerHTML = "";
+    if (!visits.length) {
+      target.innerHTML = `<div class="ck-empty">No upcoming appointments. Add one above to generate prep.</div>`;
+      document.getElementById("ck-prep").style.display = "none";
+      return null;
+    }
+    // Show all, but the soonest future one drives the prep.
+    let activeVisit = null;
+    visits.forEach((v) => {
+      const d = daysFrom(v.date);
+      const row = document.createElement("div");
+      row.className = "visit-row";
+      const isFuture = d >= 0;
+      const tag = isFuture
+        ? (d === 0 ? "today" : `in ${d} days`)
+        : `${-d} days ago`;
+      row.innerHTML = `
+        <span class="when">${esc(v.date)}</span>
+        <span>${esc(v.clinician || "—")}</span>
+        <span class="countdown">${tag}${v.notes ? " · " + esc(v.notes) : ""}</span>
+        <button data-del="${v.id}">Remove</button>
+      `;
+      target.appendChild(row);
+      if (isFuture && (!activeVisit || d < daysFrom(activeVisit.date))) activeVisit = v;
+    });
+    target.querySelectorAll("[data-del]").forEach((b) =>
+      b.addEventListener("click", () => { HU.deleteVisit(b.dataset.del); render(); }));
+    return activeVisit;
+  }
+
+  async function renderPrep(visit) {
+    if (!visit) return;
+    document.getElementById("ck-prep").style.display = "block";
+
+    const anomalies = HU.detectAnomalies();
+    const anBody = document.getElementById("ck-anomalies-body");
+    if (!anomalies.length) {
+      anBody.innerHTML = `<div class="ck-empty">No anomalies in your wearable trends. Bring whatever data you've been tracking anyway — clinicians appreciate context.</div>`;
+    } else {
+      anBody.innerHTML = "";
+      const STREAM_LABELS = { rhr: "Resting HR", sleep_hours: "Sleep", weight: "Weight", hrv: "HRV", steps: "Steps", glucose: "Glucose" };
+      anomalies.slice(0, 5).forEach((a) => {
+        const div = document.createElement("div");
+        div.className = "ck-card " + (a.is_bad ? "is-bad" : "is-good");
+        const arrow = a.direction === "up" ? "↑" : "↓";
+        div.innerHTML = `<b>${esc(STREAM_LABELS[a.stream] || a.stream)}</b>:
+          ${arrow} from ${a.baseline_mean} to ${a.recent_mean} (z=${a.z}, ${a.severity}).
+          <span class="pill ${a.is_bad ? "pill-bad" : "pill-good"}">${a.is_bad ? "concern" : "improvement"}</span>`;
+        anBody.appendChild(div);
+      });
+    }
+
+    // Recent out-of-range labs in last 6 months.
+    const s = HU.load();
+    const SIX_MONTHS = 180 * 86400000;
+    const recentLabs = (s.labs || []).filter((l) =>
+      Date.now() - new Date(l.date).getTime() < SIX_MONTHS
+    ).sort((a, b) => b.date.localeCompare(a.date));
+    const labBody = document.getElementById("ck-labs-body");
+    if (!recentLabs.length) {
+      labBody.innerHTML = `<div class="ck-empty">No labs in the last 6 months in your local store. Add them on <a href="/me/data">Your data</a> for a stronger pre-visit brief.</div>`;
+    } else {
+      labBody.innerHTML = "";
+      // Look up evidence per lab (out-of-range only)
+      let outCount = 0;
+      for (const lab of recentLabs.slice(0, 12)) {
+        try {
+          const r = await fetch(`/api/me/lab-evidence?name=${encodeURIComponent(lab.name)}&value=${encodeURIComponent(lab.value)}&unit=${encodeURIComponent(lab.unit || "")}`);
+          const j = await r.json();
+          if (!j.matched || !j.out_of_range) continue;
+          outCount++;
+          const div = document.createElement("div");
+          div.className = "ck-card is-bad";
+          div.innerHTML = `<b>${esc(lab.name)}</b> = ${lab.value} ${esc(lab.unit || "")} <span class="pill pill-bad">${j.direction}</span>
+            <span class="pill pill-info">range ${j.ref_low}–${j.ref_high}</span>
+            <div style="margin-top:4px;font-size:13px">Activates ${j.edges.length} edge${j.edges.length === 1 ? "" : "s"}; ${j.interventions.length} protective intervention${j.interventions.length === 1 ? "" : "s"} in our corpus.</div>`;
+          labBody.appendChild(div);
+        } catch (_) {}
+      }
+      if (outCount === 0) {
+        labBody.innerHTML = `<div class="ck-empty">All ${recentLabs.length} recent labs in range. Bring them anyway as a baseline.</div>`;
+      }
+    }
+
+    // Evidence shifts: pull watchlist + condition-related edges.
+    const watchEdges = {{ (profile.watch_edges or [])|tojson }};
+    const shBody = document.getElementById("ck-shifts-body");
+    if (watchEdges.length) {
+      try {
+        const r = await fetch(`/api/me/evidence-shifts?edges=${watchEdges.join(",")}&since=${new Date(Date.now() - 90 * 86400000).toISOString().slice(0,10)}`);
+        const j = await r.json();
+        if (!j.shifts.length) {
+          shBody.innerHTML = `<div class="ck-empty">No tier shifts in the last 90 days for your watchlist edges.</div>`;
+        } else {
+          shBody.innerHTML = "";
+          j.shifts.slice(0, 6).forEach((sh) => {
+            const div = document.createElement("div");
+            div.className = "ck-card";
+            div.innerHTML = `<b><a href="/edge/${sh.edge_id}">${esc(sh.f_name)} → ${esc(sh.o_name)}</a></b>
+              <span class="pill pill-info">${esc(sh.kind)}</span>
+              <span class="muted small">${(sh.changed_at||"").slice(0,10)}</span>`;
+            shBody.appendChild(div);
+          });
+        }
+      } catch (_) {
+        shBody.innerHTML = `<div class="ck-empty">Couldn't fetch shifts.</div>`;
+      }
+    } else {
+      shBody.innerHTML = `<div class="ck-empty">No edges on your watchlist. Click "Follow this edge" on any edge page to start watching it.</div>`;
+    }
+
+    // Generate questions deterministically from the data above.
+    const qBody = document.getElementById("ck-questions-body");
+    qBody.innerHTML = "";
+    const qs = [];
+    if (anomalies.find((a) => a.stream === "rhr" && a.is_bad)) {
+      qs.push(["My resting heart rate has trended up", "Could this reflect overtraining, alcohol, sleep debt, or thyroid? Worth a TSH and resting ECG?"]);
+    }
+    if (anomalies.find((a) => a.stream === "sleep_hours" && a.is_bad)) {
+      qs.push(["My sleep duration has dropped", "Should I be screened for sleep apnea (especially if RHR or BP have shifted)? Any non-pharmacological options to try first?"]);
+    }
+    if (anomalies.find((a) => a.stream === "weight" && Math.abs(a.z) >= 1.5)) {
+      qs.push(["My weight has shifted", "Could this be metabolic, thyroid, or medication-related? Worth a metabolic panel + TSH if not done recently?"]);
+    }
+    if ((s.labs || []).some((l) => /apob/i.test(l.name) && Number(l.value) > 90)) {
+      qs.push(["My ApoB is elevated", "Given my overall risk profile, do I meet criteria for a statin (or statin escalation)? Should we check Lp(a) once if not done?"]);
+    }
+    if ((s.labs || []).some((l) => /lp.?a/i.test(l.name) && Number(l.value) > 75)) {
+      qs.push(["I have elevated Lp(a)", "How should this change my LDL-C / ApoB targets? Should family members be screened?"]);
+    }
+    if ((s.labs || []).some((l) => /hba1c/i.test(l.name) && Number(l.value) >= 5.7 && Number(l.value) < 6.5)) {
+      qs.push(["My HbA1c is in the prediabetes range", "What's the case for early metformin vs a 6-month lifestyle trial first? CGM for context?"]);
+    }
+    if ((s.labs || []).some((l) => /vitamin d/i.test(l.name) && Number(l.value) < 30)) {
+      qs.push(["My vitamin D is low", "Repletion dose and rechecking interval? Magnesium or K2 considerations?"]);
+    }
+    if ((s.genetics || []).some((v) => v.rsid === "rs429358" && (v.genotype === "CT" || v.genotype === "CC"))) {
+      qs.push(["I'm an APOE-ε4 carrier", "Should this change my targets for blood pressure, ApoB, glucose, or screening thresholds for cognitive decline?"]);
+    }
+    if ((s.protocols || []).some((p) => p.logs && p.logs.length >= 4 && new Date(p.ends_at) <= new Date())) {
+      qs.push(["I ran a self-experiment recently", "Here's the data — does it change anything you'd recommend?"]);
+    }
+    if (!qs.length) {
+      qs.push(["What should I be tracking this year?", "Given my profile, what biomarkers, screenings, or trends are worth monitoring more closely?"]);
+      qs.push(["What's most important to focus on?", "Of the things I've been working on, which has the highest expected impact for me specifically?"]);
+    }
+    qs.slice(0, 6).forEach((q, i) => {
+      const div = document.createElement("div");
+      div.className = "ck-question";
+      div.innerHTML = `<b>${i + 1}. ${esc(q[0])}</b><br>${esc(q[1])}`;
+      qBody.appendChild(div);
+    });
+  }
+
+  function render() {
+    const v = renderVisits();
+    if (v) renderPrep(v);
+  }
+  render();
+})();
+</script>
+{% endblock %}

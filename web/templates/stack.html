@@ -281,6 +281,31 @@
 </section>
 {% endif %}
 
+{% if matches and token %}
+<script src="/static/personal.js"></script>
+<script>
+(function () {
+  // Log every protective tier-A/B edge in this brief as an open
+  // recommendation, so the weekly briefing can ask the user to close
+  // the loop later ("did you try X? did it help?").
+  if (!window.HUPersonal) return;
+  const edges = {{ matches|tojson }};
+  for (const m of edges) {
+    if (!m.match || !m.edges) continue;
+    for (const e of m.edges) {
+      if (e.direction === "protective" && (e.tier === "A" || e.tier === "B")) {
+        HUPersonal.addRecommendation({
+          edge_id: e.id,
+          edge_label: m.match.name + " for " + e.o_name,
+          source: "stack_brief",
+        });
+      }
+    }
+  }
+})();
+</script>
+{% endif %}
+
 {% if not raw_items %}
 <section style="margin-top:24px">
   <h2>Examples to try</h2>
