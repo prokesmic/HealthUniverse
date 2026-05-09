@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "prebiotic_inulin_long_chain",
+      "outcome_slug": "bifidobacterium_abundance",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "The best pooled estimate comes from a 2023 meta-analysis of 50 randomized trials and 2,525 participants, where chicory-derived inulin-type fructans raised Bifidobacterium abundance with a standardized mean difference of 0.83 (95% CI 0.58-1.08).",
+      "population": "adults or older adults receiving chicory-derived or other inulin-type prebiotic supplementation",
+      "mechanism": "Long-chain inulin reaches the colon intact and selectively feeds saccharolytic bacteria, especially bifidobacteria, which can outcompete less favorable taxa when fermentable substrate delivery is sustained over days to weeks.",
+      "summary": "This is one of the cleaner microbiome edges in the whole consumer stack. Direct long-chain inulin trials and broader inulin-type fructan syntheses both point in the same direction: bifidobacteria usually rise when people take enough inulin for long enough.",
+      "caveats": "The size of the bifidogenic shift depends on baseline microbiota, gastrointestinal health, and the exact fructan chemistry. Studies in IBS or other GI disorders are less uniformly positive than studies in otherwise healthy adults.",
+      "evidence": [
+        {
+          "citation": "NagyDU et al 2023 Crit Rev Food Sci Nutr",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of chicory-derived inulin-type fructans on abundance of Bifidobacterium and on bowel function: a systematic review with meta-analyses.",
+          "doi": "10.1080/10408398.2022.2098246",
+          "pmid": "35833477",
+          "n_participants": 2525
+        },
+        {
+          "citation": "KiewietMBG et al 2021 Mol Nutr Food Res",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Flexibility of Gut Microbiota in Ageing Individuals during Dietary Fiber Long-Chain Inulin Intake.",
+          "doi": "10.1002/mnfr.202000390",
+          "pmid": "33369019",
+          "n_participants": 28
+        },
+        {
+          "citation": "HolscherHD et al 2015 J Nutr",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Agave Inulin Supplementation Affects the Fecal Microbiota of Healthy Adults Participating in a Randomized, Double-Blind, Placebo-Controlled, Crossover Trial.",
+          "doi": "10.3945/jn.115.217331",
+          "pmid": "26203099",
+          "n_participants": 29
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "prebiotic_inulin_long_chain",
+      "name": "Long-chain inulin",
+      "kind": "supplement",
+      "aliases": [
+        "long-chain inulin",
+        "chicory long-chain inulin"
+      ],
+      "description": "Long-chain or inulin-type fructan prebiotic supplementation."
+    },
+    {
+      "slug": "bifidobacterium_abundance",
+      "name": "Bifidobacterium abundance",
+      "kind": "process",
+      "aliases": [
+        "fecal bifidobacteria abundance"
+      ],
+      "description": "Relative or absolute abundance of Bifidobacterium species in the gut microbiome."
+    }
+  ]
+}
