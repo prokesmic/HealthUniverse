@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "aces_4plus",
+      "outcome_slug": "adult_cardiovascular_disease",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The broader pooled literature suggests a modest but real cardiometabolic signal, while the highest ACE burden carries larger risk in individual cohorts. A 2018 meta-analysis found OR 1.36 and HR 1.42 for adult cardiometabolic disease, and the ACE Study reported an adjusted OR of 3.6 for ischemic heart disease among people with seven or more ACEs.",
+      "population": "adults with high cumulative adverse childhood experience exposure, especially four or more ACEs",
+      "mechanism": "Early adversity can increase later cardiovascular risk through chronic stress activation, depression, smoking, obesity, inflammation, and other behavioral and physiologic pathways that accumulate across the life course.",
+      "summary": "The evidence supports a harmful association between high ACE burden and adult cardiovascular disease. Large meta-analytic synthesis, the original ACE cohort, and representative U.S. survey data all point in the same direction, although the magnitude varies by outcome definition and adversity threshold.",
+      "caveats": "Some of the observed risk is mediated through downstream adult behaviors and mental health rather than direct biologic embedding alone. This edge should therefore be interpreted as cumulative life-course cardiovascular vulnerability, not as a single-pathway deterministic effect.",
+      "evidence": [
+        {
+          "citation": "Jakubowski KP et al 2018 Health Psychol",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cumulative childhood adversity and adult cardiometabolic disease: A meta-analysis.",
+          "doi": "10.1037/hea0000637",
+          "pmid": "30024227",
+          "n_participants": 247393,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.36,
+            "ci_low": 1.27,
+            "ci_high": 1.46,
+            "comparator": "adult cardiometabolic disease in participants with greater cumulative childhood adversity versus lower-adversity comparison groups across pooled OR studies"
+          }
+        },
+        {
+          "citation": "Dong M et al 2004 Circulation",
+          "year": 2004,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Insights into causal pathways for ischemic heart disease: adverse childhood experiences study.",
+          "doi": "10.1161/01.CIR.0000143074.54995.7F",
+          "pmid": "15381652",
+          "n_participants": 17337,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 3.6,
+            "ci_low": 2.4,
+            "ci_high": 5.3,
+            "comparator": "ischemic heart disease in adults with seven or more ACEs versus no ACEs"
+          }
+        },
+        {
+          "citation": "Gilbert LK et al 2015 Am J Prev Med",
+          "year": 2015,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Childhood adversity and adult chronic disease: an update from ten states and the District of Columbia, 2010.",
+          "doi": "10.1016/j.amepre.2014.09.006",
+          "pmid": "25300735",
+          "n_participants": 53998
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "aces_4plus",
+      "name": "Four or more adverse childhood experiences",
+      "kind": "behavior",
+      "aliases": [
+        "ACE score four or more",
+        "high cumulative childhood adversity"
+      ],
+      "description": "Exposure to four or more categories of adverse childhood experiences before age 18."
+    },
+    {
+      "slug": "adult_cardiovascular_disease",
+      "name": "Adult cardiovascular disease",
+      "kind": "condition",
+      "aliases": [
+        "adult CVD",
+        "ischemic heart disease and related cardiovascular outcomes"
+      ],
+      "description": "Adult cardiovascular disease outcomes such as ischemic heart disease, coronary heart disease, myocardial infarction, or stroke."
+    }
+  ]
+}

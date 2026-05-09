@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "maternal_obesity",
+      "outcome_slug": "child_obesity_risk",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "This is one of the stronger intergenerational obesity signals in the literature. A 2019 individual participant data meta-analysis found maternal obesity associated with an OR of 4.47 for overweight or obesity in late childhood, and a 2013 meta-analysis reported an OR of 3.06 for subsequent offspring overweight or obesity compared with normal-weight mothers.",
+      "population": "children born to mothers who were obese before or in early pregnancy",
+      "mechanism": "Maternal obesity can alter the in utero metabolic environment through hyperglycemia, inflammation, insulin resistance, and excess nutrient delivery, while also clustering with postnatal behavioral and genetic influences that reinforce later adiposity in the child.",
+      "summary": "The literature consistently points toward higher childhood obesity risk after maternal obesity. Across large meta-analyses and cohort data, the association is graded by maternal BMI severity and appears strongest as children age into later childhood.",
+      "caveats": "Some of the observed effect probably reflects shared family genetics, feeding patterns, and home environment rather than a purely intrauterine mechanism. Even so, the association is strong enough across designs that the overall harmful direction is difficult to dismiss.",
+      "evidence": [
+        {
+          "citation": "Voerman E et al 2019 PLoS Med",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maternal body mass index, gestational weight gain, and the risk of overweight and obesity across childhood: An individual participant data meta-analysis.",
+          "doi": "10.1371/journal.pmed.1002744",
+          "pmid": "30742624",
+          "n_participants": 162129,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 4.47,
+            "ci_low": 3.99,
+            "ci_high": 5.23,
+            "comparator": "late-childhood overweight or obesity in offspring of mothers with obesity versus normal-weight mothers"
+          }
+        },
+        {
+          "citation": "YuZ et al 2013 PLoS One",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Pre-pregnancy body mass index in relation to infant birth weight and offspring overweight/obesity: a systematic review and meta-analysis.",
+          "doi": "10.1371/journal.pone.0061627",
+          "pmid": "23613888",
+          "n_participants": 45,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 3.06,
+            "ci_low": 2.68,
+            "ci_high": 3.49,
+            "comparator": "subsequent offspring overweight or obesity in children of mothers with pre-pregnancy obesity versus normal-weight mothers"
+          }
+        },
+        {
+          "citation": "Chang R et al 2022 Eur J Clin Nutr",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Early childhood body mass index trajectory and overweight/obesity risk differed by maternal weight status.",
+          "doi": "10.1038/s41430-021-00975-6",
+          "pmid": "34535773",
+          "n_participants": 23617,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.36,
+            "ci_low": 1.22,
+            "ci_high": 1.53,
+            "comparator": "overweight or obesity at age 2 in offspring of mothers with prepregnancy overweight or obesity versus normal-weight mothers"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "maternal_obesity",
+      "name": "Maternal obesity",
+      "kind": "condition",
+      "aliases": [
+        "prepregnancy obesity",
+        "obesity in early pregnancy"
+      ],
+      "description": "Obesity present before conception or in early pregnancy, usually defined by elevated maternal BMI."
+    },
+    {
+      "slug": "child_obesity_risk",
+      "name": "Child obesity risk",
+      "kind": "condition",
+      "aliases": [
+        "offspring obesity risk",
+        "childhood overweight or obesity"
+      ],
+      "description": "Later risk that the child develops overweight or obesity during infancy, childhood, or adolescence."
+    }
+  ]
+}

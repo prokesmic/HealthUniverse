@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "maternal_gestational_diabetes",
+      "outcome_slug": "child_obesity_long_term",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The HAPO follow-up data suggest that gestational diabetes shifts later offspring adiposity upward, especially for direct adiposity measures. In JAMA, gestational diabetes was associated with an adjusted OR of 1.58 for childhood obesity at 10 to 14 years, and HAPO glycemia analyses found ORs of roughly 1.05 to 1.21 per SD increase in maternal glucose predictors for later child adiposity outcomes.",
+      "population": "children and adolescents exposed in utero to maternal gestational diabetes or higher maternal pregnancy glucose levels",
+      "mechanism": "Fetal exposure to maternal hyperglycemia can increase insulin secretion, fat deposition, and metabolic programming toward later adiposity, especially when combined with maternal adiposity and other shared familial risk factors.",
+      "summary": "The long-term signal is harmful but not uniform across every obesity definition. HAPO follow-up data show clearer associations for childhood obesity and direct adiposity measures than for the broad combined overweight-or-obesity category after maternal BMI adjustment.",
+      "caveats": "Maternal BMI attenuates some associations, which means gestational diabetes is not acting in isolation. This edge should be read as excess long-term adiposity risk rather than proof that every child exposed to gestational diabetes will become obese.",
+      "evidence": [
+        {
+          "citation": "Lowe WL Jr et al 2018 JAMA",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of Gestational Diabetes With Maternal Disorders of Glucose Metabolism and Childhood Adiposity.",
+          "doi": "10.1001/jama.2018.11628",
+          "pmid": "30208453",
+          "n_participants": 4832,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.58,
+            "ci_low": 1.24,
+            "ci_high": 2.01,
+            "comparator": "childhood obesity at 10 to 14 years in offspring of mothers with gestational diabetes versus mothers without gestational diabetes, adjusted for maternal BMI during pregnancy"
+          }
+        },
+        {
+          "citation": "Lowe WL Jr et al 2019 Diabetologia",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maternal glucose levels during pregnancy and childhood adiposity in the Hyperglycemia and Adverse Pregnancy Outcome Follow-up Study.",
+          "doi": "10.1007/s00125-018-4809-6",
+          "pmid": "30648193",
+          "n_participants": 4832,
+          "effect_quant": {
+            "metric": "OR_range",
+            "value": 1.21,
+            "ci_low": 1.05,
+            "ci_high": 1.21,
+            "comparator": "child adiposity outcomes per 1 SD higher maternal pregnancy glucose or HbA1c predictors in HAPO follow-up"
+          }
+        },
+        {
+          "citation": "Wang J et al 2018 Endocr Connect",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Maternal gestational diabetes and different indicators of childhood obesity: a large study.",
+          "doi": "10.1530/EC-18-0449",
+          "pmid": "30508416",
+          "n_participants": 1156,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.42,
+            "ci_low": 1.02,
+            "ci_high": 1.97,
+            "comparator": "childhood overweight in offspring of mothers with gestational diabetes versus mothers without gestational diabetes"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "maternal_gestational_diabetes",
+      "name": "Maternal gestational diabetes",
+      "kind": "condition",
+      "aliases": [
+        "gestational diabetes mellitus in pregnancy",
+        "maternal GDM"
+      ],
+      "description": "Hyperglycemia first recognized during pregnancy meeting gestational diabetes diagnostic criteria."
+    },
+    {
+      "slug": "child_obesity_long_term",
+      "name": "Long-term child obesity",
+      "kind": "condition",
+      "aliases": [
+        "later childhood adiposity",
+        "offspring long-term obesity risk"
+      ],
+      "description": "Overweight, obesity, or elevated adiposity in children years after prenatal exposure."
+    }
+  ]
+}

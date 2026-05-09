@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vegan_diet_during_pregnancy",
+      "outcome_slug": "infant_growth_outcomes",
+      "direction": "u_shaped",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The current literature suggests a mixed fetal-growth pattern rather than a simple benefit or harm. A 2020 cohort found that maternal vegan diet was associated with a higher adjusted odds of small-for-gestational-age birth (aOR 1.74) but a lower adjusted odds of large-for-gestational-age birth (aOR 0.55), while a 2024 meta-analysis of strict vegetarian diets reported a pooled OR of 2.71 for SGA.",
+      "population": "pregnant women following vegan or strict vegetarian diets and their newborn infants",
+      "mechanism": "Plant-only diets can lower maternal BMI and reduce excessive gestational weight gain, which may lessen excessive fetal growth, but inadequate intake of protein, vitamin B12, iron, iodine, DHA, or other key nutrients can also shift fetal growth downward if diet planning and supplementation are suboptimal.",
+      "summary": "The fairest read is mixed and context-dependent. Vegan or strict vegetarian pregnancy diets can be associated with lower birth weight or higher SGA risk, yet some of that pattern may be mediated by lower maternal BMI and reduced gestational weight gain rather than by a uniformly harmful fetal effect.",
+      "caveats": "Most studies are observational, relatively small, and heterogeneous in supplement use, baseline BMI, and how strictly vegan diets are defined. This edge should be read as a nutritional-planning signal, not as proof that well-supplemented vegan pregnancy diets inevitably impair fetal growth.",
+      "evidence": [
+        {
+          "citation": "Kesary Y et al 2020 Arch Gynecol Obstet",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "u_shaped",
+          "quality": "moderate",
+          "notes": "Maternal plant-based diet during gestation and pregnancy outcomes.",
+          "doi": "10.1007/s00404-020-05689-x",
+          "pmid": "32776295",
+          "n_participants": 1419,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.74,
+            "ci_low": 1.05,
+            "ci_high": 2.86,
+            "comparator": "small-for-gestational-age birth in vegan versus omnivorous pregnancies; the same study also reported lower odds of large-for-gestational-age birth with vegan diet"
+          }
+        },
+        {
+          "citation": "Meulenbroeks D et al 2024 Nutrients",
+          "year": 2024,
+          "study_type": "systematic_review",
+          "direction": "u_shaped",
+          "quality": "moderate",
+          "notes": "The Association of a Vegan Diet during Pregnancy with Maternal and Child Outcomes: A Systematic Review.",
+          "doi": "10.3390/nu16193329",
+          "pmid": "39408296",
+          "n_participants": 6
+        },
+        {
+          "citation": "Papadopoulou T et al 2024 Metabol Open",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Strict vegetarian diet and pregnancy outcomes: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.metop.2024.100338",
+          "pmid": "39758872",
+          "n_participants": 72284,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 2.71,
+            "ci_low": 1.24,
+            "ci_high": 5.95,
+            "comparator": "small-for-gestational-age infants in strict vegetarian versus omnivorous pregnancies"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vegan_diet_during_pregnancy",
+      "name": "Vegan diet during pregnancy",
+      "kind": "behavior",
+      "aliases": [
+        "strict plant-based diet in pregnancy",
+        "maternal vegan diet"
+      ],
+      "description": "A pregnancy dietary pattern excluding animal-source foods, often with reliance on plant foods and supplements."
+    },
+    {
+      "slug": "infant_growth_outcomes",
+      "name": "Infant growth outcomes",
+      "kind": "condition",
+      "aliases": [
+        "birth anthropometric outcomes",
+        "fetal growth measures"
+      ],
+      "description": "Birth weight, growth percentile, small- or large-for-gestational-age status, and related newborn growth measures."
+    }
+  ]
+}
