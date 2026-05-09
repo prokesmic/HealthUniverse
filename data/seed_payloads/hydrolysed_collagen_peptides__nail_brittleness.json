@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hydrolysed_collagen_peptides",
+      "name": "Hydrolysed collagen peptides",
+      "kind": "supplement",
+      "aliases": [
+        "collagen peptides",
+        "oral collagen supplement"
+      ],
+      "description": "Ingested hydrolysed collagen peptide supplements marketed for skin, nail, joint, or hair support."
+    },
+    {
+      "slug": "nail_brittleness",
+      "name": "Nail brittleness",
+      "kind": "condition",
+      "aliases": [
+        "brittle nails",
+        "fragile splitting nails"
+      ],
+      "description": "Clinical brittleness of nails including cracking, chipping, roughness, and poor nail integrity."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hydrolysed_collagen_peptides",
+      "outcome_slug": "nail_brittleness",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The direct nail-specific signal comes from a 25-participant open-label brittle-nail trial where collagen peptides increased nail growth rate by 12% and lowered broken-nail frequency by 42% over 24 weeks. A later placebo-controlled 85-woman study also found improved nail color and broader visible nail-aging markers, but the total evidence base is still small and beauty-supplement oriented.",
+      "population": "adult women using daily oral collagen peptide supplements for weeks to months to improve brittle or cosmetically aged nails",
+      "mechanism": "Collagen peptides may supply amino acid substrates and bioactive peptides that modestly support nail-plate structure and periungual matrix quality over time.",
+      "summary": "Hydrolysed collagen peptides have some human signal for brittle nails, but the evidence is still mostly cosmeceutical rather than mainstream dermatology-grade. The direction is favorable, yet confidence should stay moderate because trials are small and often industry-linked.",
+      "caveats": "Most studies evaluate composite beauty outcomes rather than isolated brittle-nail pathology. Effects are gradual and may partly reflect overall nail aging or cosmetic appearance rather than structural cure.",
+      "evidence": [
+        {
+          "citation": "HexselD et al 2017 J Cosmet Dermatol",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Oral supplementation with specific bioactive collagen peptides improves nail growth and reduces symptoms of brittle nails.",
+          "pmid": "28786550",
+          "n_participants": 25,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 12,
+            "unit": "percent",
+            "comparator": "increase in nail growth rate over 24 weeks"
+          }
+        },
+        {
+          "citation": "VleminckxS et al 2024 J Cosmet Dermatol",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Influence of collagen peptide supplementation on visible signs of skin and nail health and -aging in an East Asian population: A double blind, randomized, placebo-controlled trial.",
+          "pmid": "39143887",
+          "n_participants": 85
+        },
+        {
+          "citation": "RustadAM et al 2022 J Cosmet Dermatol",
+          "year": 2022,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Myths and media in oral collagen supplementation for the skin, nails, and hair: A review.",
+          "pmid": "34694676"
+        }
+      ]
+    }
+  ]
+}

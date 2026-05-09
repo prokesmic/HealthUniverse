@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "oral_biotin_high_dose",
+      "name": "Oral biotin high dose",
+      "kind": "supplement",
+      "aliases": [
+        "5 mg oral biotin",
+        "high-dose vitamin B7"
+      ],
+      "description": "High-dose oral biotin supplementation used with the aim of improving hair growth in people without documented baseline biotin deficiency."
+    },
+    {
+      "slug": "hair_growth_in_non_deficient",
+      "name": "Hair growth in non-deficient adults",
+      "kind": "condition",
+      "aliases": [
+        "hair growth without biotin deficiency",
+        "alopecia outcomes in biotin-replete adults"
+      ],
+      "description": "Clinical or measured hair-growth outcomes in adults receiving biotin despite no established baseline biotin deficiency."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "oral_biotin_high_dose",
+      "outcome_slug": "hair_growth_in_non_deficient",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The cleanest direct crossover trial in 10 healthy men found no significant increase in hair-growth rate from oral biotin alone over 14 days, while the only signal emerged when biotin was combined with topical minoxidil. Separate injectable biotin-plus-dexpanthenol data suggest possible benefit in diffuse hair loss, but overall the literature remains sparse and does not justify a strong pro-growth claim for oral biotin in biotin-replete adults.",
+      "population": "adults using high-dose biotin for hair concerns without established biochemical biotin deficiency",
+      "mechanism": "Biotin is a cofactor for carboxylase enzymes, but in people who are not biotin deficient there is no clear biological reason to expect large incremental hair-growth effects from supplementation alone.",
+      "summary": "High-dose oral biotin is one of the clearest examples where supplement popularity outran evidence. Human data do not support a reliable standalone hair-growth benefit in non-deficient adults, though mixed small studies leave room for weak or context-specific effects.",
+      "caveats": "Some positive studies combine biotin with other active ingredients or use injectable regimens rather than oral monotherapy. This edge is specifically about people without documented baseline deficiency, where evidence is notably thin.",
+      "evidence": [
+        {
+          "citation": "ValentimFO et al 2024 An Bras Dermatol",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Efficacy of 5% topical minoxidil versus 5 mg oral biotin versus topical minoxidil and oral biotin on hair growth in men: randomized, crossover, clinical trial.",
+          "pmid": "38688776",
+          "n_participants": 10
+        },
+        {
+          "citation": "SamadiA et al 2022 Dermatol Ther",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Efficacy of intramuscular injections of biotin and dexpanthenol in the treatment of diffuse hair loss: A randomized, double-blind controlled study comparing two brands.",
+          "pmid": "35791704",
+          "n_participants": 50
+        },
+        {
+          "citation": "SoleymaniT et al 2017 J Drugs Dermatol",
+          "year": 2017,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The Infatuation With Biotin Supplementation: Is There Truth Behind Its Rising Popularity? A Comparative Analysis of Clinical Efficacy versus Social Popularity.",
+          "pmid": "28628687"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "topical_alpha_hydroxy_acids",
+      "name": "Topical alpha hydroxy acids",
+      "kind": "drug",
+      "aliases": [
+        "glycolic acid creams or peels",
+        "AHA topical exfoliants"
+      ],
+      "description": "Topical alpha hydroxy acid formulations, especially glycolic-acid-based creams or peels, used to improve photoaged skin texture."
+    },
+    {
+      "slug": "skin_texture_clinical",
+      "name": "Clinical skin texture",
+      "kind": "condition",
+      "aliases": [
+        "surface skin texture grading",
+        "clinical skin roughness and fine-line appearance"
+      ],
+      "description": "Clinically assessed skin texture, roughness, fine lines, and related visible surface features used in cosmetic dermatology trials."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "topical_alpha_hydroxy_acids",
+      "outcome_slug": "skin_texture_clinical",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 75-volunteer placebo-controlled trial of 5% glycolic acid improved general skin texture over 3 months, and a 30-woman prospective randomized study found glycolic acid reduced microsulcus number and width in the crow's-feet area. Later photodamage trials continued to show texture and fine-line benefits, although irritation rises with stronger acid regimens.",
+      "population": "adults with mild to moderate facial photoaging using low-strength glycolic-acid creams or professionally administered glycolic-acid regimens for weeks to months",
+      "mechanism": "Alpha hydroxy acids loosen corneocyte adhesion, increase epidermal turnover, and can smooth the stratum corneum enough to improve visible roughness and fine lines.",
+      "summary": "Topical alpha hydroxy acids do improve skin texture, but the effect is mostly surface-level and comes with a real irritation tradeoff. The evidence is consistent enough to rate the direction as beneficial, while keeping effect size modest.",
+      "caveats": "Texture gains are usually stronger than wrinkle-depth gains, and tolerance worsens as acid concentration or peel intensity rises. Trial endpoints vary widely between creams, peels, and mixed regimens.",
+      "evidence": [
+        {
+          "citation": "ThibaultPK et al 1998 Dermatol Surg",
+          "year": 1998,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A double-blind randomized clinical trial on the effectiveness of a daily glycolic acid 5% formulation in the treatment of photoaging.",
+          "pmid": "9598014",
+          "n_participants": 75
+        },
+        {
+          "citation": "RubinoC et al 2005 Plast Reconstr Surg",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A prospective study of anti-aging topical therapies using a quantitative method of assessment.",
+          "pmid": "15793459",
+          "n_participants": 30
+        },
+        {
+          "citation": "RouvraisC et al 2018 J Cosmet Dermatol",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Antiaging efficacy of a retinaldehyde-based cream compared with glycolic acid peel sessions: A randomized controlled study.",
+          "pmid": "30027612",
+          "n_participants": 55,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": -4.34,
+            "unit": "percent",
+            "comparator": "crow's-feet wrinkle depth after glycolic-acid peel sessions"
+          }
+        }
+      ]
+    }
+  ]
+}
