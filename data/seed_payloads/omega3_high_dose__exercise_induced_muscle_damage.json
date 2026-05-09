@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "omega3_high_dose",
+      "name": "High-dose omega-3 supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "high-dose fish oil",
+        "EPA DHA supplementation"
+      ],
+      "description": "Omega-3 fatty acid supplementation at doses high enough to materially increase EPA and DHA exposure before hard training or competition."
+    },
+    {
+      "slug": "exercise_induced_muscle_damage",
+      "name": "Exercise-induced muscle damage",
+      "kind": "process",
+      "aliases": [
+        "EIMD",
+        "post-exercise muscle damage"
+      ],
+      "description": "The structural and biochemical muscle disruption that follows strenuous or unaccustomed exercise."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "omega3_high_dose",
+      "outcome_slug": "exercise_induced_muscle_damage",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2021 meta-analysis found that omega-3 supplementation lowered indirect blood markers of muscle damage such as creatine kinase, lactate dehydrogenase, and myoglobin, but individual trials still show uneven effects on soreness, function, and performance. Newer RCTs suggest the signal is real enough to explore, but not stable enough to treat as a guaranteed recovery fix.",
+      "population": "healthy active adults and athletes exposed to eccentric or repeated high-intensity exercise",
+      "mechanism": "EPA and DHA may alter membrane composition and inflammatory signaling in ways that reduce secondary damage after hard exercise. In practice, though, biomarker improvements do not always translate neatly into better subjective recovery or preserved performance.",
+      "summary": "Omega-3 is one of the more defensible recovery supplements, but the cleanest interpretation is still mixed rather than strongly protective. Pooled biomarker data look encouraging, while direct trial outcomes on soreness and function remain patchier and depend on dose, timing, and the damage model used.",
+      "caveats": "The literature mixes acute and chronic protocols, trained and untrained participants, and different outcome priorities. A favorable creatine kinase result is not the same thing as a meaningful improvement in next-day performance.",
+      "evidence": [
+        {
+          "citation": "OchiE et al 2021 Food Sci Nutr",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of omega-3 fatty acids supplementation on indirect blood markers of exercise-induced muscle damage: Systematic review and meta-analysis of randomized controlled trials.",
+          "pmid": "34760272",
+          "n_participants": 10
+        },
+        {
+          "citation": "MickleboroughTD et al 2025 Nutrients",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of Acute Fish Oil Supplementation on Muscle Function and Soreness After Eccentric Contraction-Induced Muscle Damage.",
+          "pmid": "41228481",
+          "n_participants": 22
+        },
+        {
+          "citation": "SzewczykM et al 2026 Nutrients",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of 21-Day Omega-3 Polyunsaturated Fatty Acid Supplementation on Exercise-Induced Secretory Factors and Inflammation Status in Young Men: A Randomized Double-Blind Trial.",
+          "pmid": "41683362",
+          "n_participants": 24
+        }
+      ]
+    }
+  ]
+}

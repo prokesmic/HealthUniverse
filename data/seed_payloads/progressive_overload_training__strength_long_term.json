@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "progressive_overload_training",
+      "name": "Progressive overload resistance training",
+      "kind": "behavior",
+      "aliases": [
+        "progressive resistance training",
+        "planned overload training",
+        "progressively loaded strength training"
+      ],
+      "description": "Resistance training that systematically increases load, volume, or other overload variables over time to sustain adaptation."
+    },
+    {
+      "slug": "strength_long_term",
+      "name": "Long-term strength gain",
+      "kind": "process",
+      "aliases": [
+        "chronic strength adaptation",
+        "long-run muscular strength improvement"
+      ],
+      "description": "The increase in maximal muscular strength achieved over weeks to months of training."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "progressive_overload_training",
+      "outcome_slug": "strength_long_term",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The current evidence base supports progressive resistance training as one of the most reliable ways to improve strength over time. A 2004 meta-analysis of 621 healthy participants found that multiple-set progression becomes superior to single-set work as training continues, while a 2013 review reported that high-intensity progressive resistance training improved lower-limb strength more than lower intensities in older adults (SMD 0.79, 95% CI 0.40 to 1.17).",
+      "population": "healthy adults performing resistance training over at least several weeks",
+      "mechanism": "When training stress is increased progressively, muscles and the nervous system continue receiving a stimulus large enough to drive further adaptation rather than plateauing after the beginner phase.",
+      "summary": "This is a foundational training edge rather than a trendy intervention, and the evidence is correspondingly strong. If the goal is long-term strength, some form of progressive overload is not optional; it is the basic mechanism that keeps adaptation moving.",
+      "caveats": "The exact way overload is progressed can vary. More load is not always better every session, and factors such as recovery, exercise selection, and total weekly volume still shape the final result.",
+      "evidence": [
+        {
+          "citation": "CurrierBS et al 2026 Med Sci Sports Exerc",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "American College of Sports Medicine Position Stand. Resistance Training Prescription for Muscle Function, Hypertrophy, and Physical Performance in Healthy Adults: An Overview of Reviews.",
+          "pmid": "41843416",
+          "n_participants": 30000
+        },
+        {
+          "citation": "WolfeBL et al 2004 J Strength Cond Res",
+          "year": 2004,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Quantitative analysis of single- vs. multiple-set programs in resistance training.",
+          "pmid": "14971985",
+          "n_participants": 621
+        },
+        {
+          "citation": "ColquhounRJ et al 2018 J Strength Cond Res",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Training Volume, Not Frequency, Indicative of Maximal Strength Adaptations to Resistance Training.",
+          "pmid": "29324578",
+          "n_participants": 28
+        }
+      ]
+    }
+  ]
+}

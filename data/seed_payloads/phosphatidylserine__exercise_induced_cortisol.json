@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "phosphatidylserine",
+      "name": "Phosphatidylserine supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "PS supplement",
+        "soy-derived phosphatidylserine"
+      ],
+      "description": "Oral phosphatidylserine supplementation used to support membrane function and stress resilience."
+    },
+    {
+      "slug": "exercise_induced_cortisol",
+      "name": "Exercise-induced cortisol response",
+      "kind": "biomarker",
+      "aliases": [
+        "cortisol rise during exercise stress",
+        "exercise stress cortisol"
+      ],
+      "description": "Acute cortisol response to physical or exercise-related stress."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "phosphatidylserine",
+      "outcome_slug": "exercise_induced_cortisol",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "healthy active men exposed to exercise or stress-testing protocols",
+      "mechanism": "Phosphatidylserine has been proposed to damp hypothalamic-pituitary-adrenal activation during repeated physical stress, possibly by altering cell-signaling dynamics or membrane-related neuroendocrine responses. The small human dataset is inconsistent, however, with one direct exercise study showing a lower cortisol area-under-the-curve and other related phospholipid stress studies showing no meaningful cortisol attenuation.",
+      "summary": "Claims that phosphatidylserine reliably blunts exercise-induced cortisol are not settled. One small crossover trial reported a substantially lower cortisol response during moderate-intensity exercise, but another exercise study found no significant effect on serum cortisol, and a phospholipid stress trial outside the exercise setting also failed to show salivary-cortisol attenuation.",
+      "caveats": "This edge rests on very small human studies with different formulations, exercise protocols, and stress paradigms. It is better treated as an unsettled sports-endocrine hypothesis than a dependable cortisol-lowering strategy.",
+      "evidence": [
+        {
+          "citation": "Starks MA et al 2008 J Int Soc Sports Nutr",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "The effects of phosphatidylserine on endocrine response to moderate intensity exercise.",
+          "pmid": "18662395",
+          "n_participants": 10,
+          "effect_quant": {
+            "metric": "relative change",
+            "value": -35.0,
+            "comparator": "phosphatidylserine versus placebo for cortisol area under the curve during exercise testing"
+          }
+        },
+        {
+          "citation": "Kingsley M et al 2006 Med Sci Sports Exerc",
+          "year": 2006,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Effects of phosphatidylserine on exercise capacity during cycling in active males.",
+          "pmid": "16394955",
+          "n_participants": 14
+        },
+        {
+          "citation": "Boyle NB et al 2019 Nutrition",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Effects of milk-based phospholipids on cognitive performance and subjective responses to psychosocial stress: A randomized, double-blind, placebo-controlled trial in high-perfectionist men.",
+          "pmid": "30172995",
+          "n_participants": 54
+        }
+      ]
+    }
+  ]
+}

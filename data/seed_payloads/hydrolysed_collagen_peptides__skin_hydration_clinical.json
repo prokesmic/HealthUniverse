@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hydrolysed_collagen_peptides",
+      "name": "Hydrolysed collagen peptides",
+      "kind": "supplement",
+      "aliases": [
+        "oral collagen peptides",
+        "collagen hydrolysate"
+      ],
+      "description": "Orally consumed hydrolysed collagen peptide supplements marketed for skin, joint, and connective tissue support."
+    },
+    {
+      "slug": "skin_hydration_clinical",
+      "name": "Clinical skin hydration",
+      "kind": "process",
+      "aliases": [
+        "skin moisture",
+        "cutaneous hydration"
+      ],
+      "description": "Clinically measured or instrument-measured skin hydration in human trials."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hydrolysed_collagen_peptides",
+      "outcome_slug": "skin_hydration_clinical",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The 2023 meta-analysis of 26 randomized trials reported a strong overall hydration signal in favor of hydrolysed collagen (Z = 4.94, p < 0.00001). Two additional meta-analyses of 14 and 19 trial sets also found hydration improved relative to placebo.",
+      "population": "mostly adult women with dry or photoaged skin taking oral hydrolysed collagen for several weeks to months",
+      "mechanism": "Collagen-derived peptides may improve dermal matrix support and water retention, which can modestly raise skin moisture measurements during supplementation.",
+      "summary": "The skin-hydration signal for oral hydrolysed collagen is fairly consistent across pooled randomized trials. Compared with many cosmetic-supplement claims, this one has a comparatively real evidence base, although the benefit is still modest and cosmetic rather than medical.",
+      "caveats": "Hydration improvements do not automatically imply wrinkle reversal or long-term structural change. The underlying trials remain heterogeneous in product formulation, duration, and sponsorship.",
+      "evidence": [
+        {
+          "citation": "PuSY et al 2023 Nutrients",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of Oral Collagen for Skin Anti-Aging: A Systematic Review and Meta-Analysis.",
+          "pmid": "37432180",
+          "n_participants": 1721
+        },
+        {
+          "citation": "deMirandaRB et al 2021 Int J Dermatol",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of hydrolyzed collagen supplementation on skin aging: a systematic review and meta-analysis.",
+          "pmid": "33742704",
+          "n_participants": 1125
+        },
+        {
+          "citation": "ShahPS et al 2023 Cureus",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Exploring the Impact of Hydrolyzed Collagen Oral Supplementation on Skin Rejuvenation: A Systematic Review and Meta-Analysis.",
+          "pmid": "38192916",
+          "n_participants": 967
+        }
+      ]
+    }
+  ]
+}

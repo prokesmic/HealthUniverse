@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "beta_alanine",
+      "name": "Beta-alanine supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "beta alanine"
+      ],
+      "description": "Chronic beta-alanine supplementation intended to raise muscle carnosine and improve buffering during high-intensity exercise."
+    },
+    {
+      "slug": "muscular_endurance_1to4_minutes",
+      "name": "Muscular endurance over 1 to 4 minutes",
+      "kind": "process",
+      "aliases": [
+        "high-intensity endurance over 60 to 240 seconds",
+        "middle-duration anaerobic endurance"
+      ],
+      "description": "Ability to sustain high-intensity muscular work in efforts lasting roughly one to four minutes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "beta_alanine",
+      "outcome_slug": "muscular_endurance_1to4_minutes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Meta-analytic evidence shows the clearest beta-alanine benefit in exercise lasting about 60 to 240 seconds, with pooled effect sizes small overall but larger for exercise-capacity tasks in that window.",
+      "population": "healthy adults and athletes performing sustained high-intensity exercise",
+      "mechanism": "Beta-alanine increases muscle carnosine, which improves intracellular buffering and should matter most when exercise acidosis becomes limiting. That makes the 1- to 4-minute duration window especially plausible biologically, and the pooled literature generally follows that prediction.",
+      "summary": "Beta-alanine is one of the better-supported buffering supplements, but its benefit is targeted rather than universal. The strongest signal is in high-intensity efforts lasting around one to several minutes, where a small average advantage appears reproducible across pooled studies.",
+      "caveats": "Not every sport-specific test improves, and some direct running protocols are null despite favorable meta-analytic trends. The literature is stronger for exercise-capacity style outcomes than for every real-world race or field-performance measure.",
+      "evidence": [
+        {
+          "citation": "SaundersB et al 2017 Br J Sports Med",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "β-alanine supplementation to improve exercise capacity and performance: a systematic review and meta-analysis.",
+          "pmid": "27797728",
+          "n_participants": 1461,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.5,
+            "ci_low": 0.246,
+            "ci_high": 0.753,
+            "comparator": "beta-alanine versus placebo for exercise-capacity outcomes within 0.5 to 10 minutes"
+          }
+        },
+        {
+          "citation": "HobsonRM et al 2012 Amino Acids",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of β-alanine supplementation on exercise performance: a meta-analysis.",
+          "pmid": "22270875",
+          "n_participants": 360
+        },
+        {
+          "citation": "DuckerKJ et al 2013 Int J Sport Nutr Exerc Metab",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of beta-alanine supplementation on 800-m running performance.",
+          "pmid": "23630039",
+          "n_participants": 18
+        },
+        {
+          "citation": "SmithRyanAE et al 2012 J Strength Cond Res",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "High-velocity intermittent running: effects of beta-alanine supplementation.",
+          "pmid": "22797003",
+          "n_participants": 50
+        }
+      ]
+    }
+  ]
+}

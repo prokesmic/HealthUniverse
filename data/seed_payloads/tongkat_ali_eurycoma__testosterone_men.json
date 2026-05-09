@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tongkat_ali_eurycoma",
+      "name": "Tongkat ali (Eurycoma longifolia)",
+      "kind": "supplement",
+      "aliases": [
+        "Eurycoma longifolia",
+        "longjack",
+        "tongkat ali extract"
+      ],
+      "description": "Root extract of Eurycoma longifolia used as a testosterone-oriented herbal supplement."
+    },
+    {
+      "slug": "testosterone_men",
+      "name": "Testosterone in men",
+      "kind": "process",
+      "aliases": [
+        "male testosterone level",
+        "serum testosterone in adult men"
+      ],
+      "description": "Changes in circulating testosterone concentrations in male participants."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tongkat_ali_eurycoma",
+      "outcome_slug": "testosterone_men",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2022 systematic review and meta-analysis reported higher total testosterone with Eurycoma longifolia versus control (SMD 1.352, 95% CI 0.565 to 2.138), but individual trials vary from clearly positive to null depending on outcome definition and population.",
+      "population": "adult men, especially ageing or hypogonadal men and recreational athletes",
+      "mechanism": "Tongkat ali is often framed as a stress-adaptation or hypothalamic-pituitary-gonadal support herb rather than a direct androgen replacement. The human signal is strongest in men starting with low testosterone or symptomatic ageing, while null or indirect findings in athletic settings keep the overall edge in the mixed rather than clearly reliable bucket.",
+      "summary": "Tongkat ali probably can increase testosterone in some men, but the evidence is still too heterogeneous to treat it like a dependable hormonal intervention. The pooled signal is positive, yet the individual studies range from meaningful improvement in ageing low-testosterone men to null findings in recreational athletes.",
+      "caveats": "This literature has brand-specific extracts, small sample sizes, and uneven trial quality. The best interpretation is that tongkat ali is plausible and promising, especially in low-testosterone settings, but still much less predictable than prescription endocrine therapies.",
+      "evidence": [
+        {
+          "citation": "Tambi MI et al 2012 Andrologia",
+          "year": 2012,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Standardised water-soluble extract of Eurycoma longifolia, Tongkat ali, as testosterone booster for managing men with late-onset hypogonadism?",
+          "pmid": "21671978",
+          "n_participants": 76
+        },
+        {
+          "citation": "Chinnappan SM et al 2021 Food Nutr Res",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of Eurycoma longifolia standardised aqueous root extract-Physta(®) on testosterone levels and quality of life in ageing male subjects: a randomised, double-blind, placebo-controlled multicentre study.",
+          "pmid": "34262417",
+          "n_participants": 105
+        },
+        {
+          "citation": "Leitao AE et al 2021 Maturitas",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A 6-month, double-blind, placebo-controlled, randomized trial to evaluate the effect of Eurycoma longifolia (Tongkat Ali) and concurrent training on erectile function and testosterone levels in androgen deficiency of aging males (ADAM).",
+          "pmid": "33541567",
+          "n_participants": 45
+        }
+      ]
+    }
+  ]
+}

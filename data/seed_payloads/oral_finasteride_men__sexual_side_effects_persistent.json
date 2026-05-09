@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "oral_finasteride_men",
+      "name": "Oral finasteride in men",
+      "kind": "drug",
+      "aliases": [
+        "finasteride 1 mg oral",
+        "oral finasteride for androgenetic alopecia"
+      ],
+      "description": "Oral finasteride used by men, especially for androgenetic alopecia."
+    },
+    {
+      "slug": "sexual_side_effects_persistent",
+      "name": "Persistent sexual side effects",
+      "kind": "condition",
+      "aliases": [
+        "persistent sexual dysfunction",
+        "post-treatment sexual adverse effects"
+      ],
+      "description": "Sexual adverse effects that continue after drug discontinuation or remain clinically significant beyond the acute treatment window."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "oral_finasteride_men",
+      "outcome_slug": "sexual_side_effects_persistent",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 15-trial meta-analysis found 5-alpha-reductase inhibitors carried a 1.57-fold higher risk of sexual dysfunction overall, and a large claims-based study reported an adjusted hazard ratio of 1.62 for persistent sexual dysfunction after finasteride 1 mg discontinuation. But a later controlled survey in men with androgenetic alopecia did not find higher sexual dysfunction scores in finasteride users than controls, so the literature stays contested rather than one-directional.",
+      "population": "men using oral finasteride for androgenetic alopecia, especially younger users and those treated for months rather than days",
+      "mechanism": "Finasteride lowers dihydrotestosterone signalling, which can plausibly affect libido and erectile function in susceptible users, but persistence after discontinuation appears heterogeneous and may be influenced by selection, ascertainment, and background sexual-health risk.",
+      "summary": "This edge should be treated as mixed rather than casually dismissed or catastrophized. There is real evidence of a higher sexual-side-effect signal, including persistent dysfunction in some observational cohorts, but the magnitude and generalizability of that persistence remain contested.",
+      "caveats": "Most clean randomized evidence is about sexual dysfunction during treatment, not guaranteed persistence after stopping. Persistent-side-effect studies also face selection and ascertainment limitations, so this is a cautionary edge, not proof that long-lasting dysfunction is common in every user.",
+      "evidence": [
+        {
+          "citation": "LeeS et al 2019 Acta Derm Venereol",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Adverse Sexual Effects of Treatment with Finasteride or Dutasteride for Male Androgenetic Alopecia: A Systematic Review and Meta-analysis.",
+          "pmid": "30206635",
+          "n_participants": 4495,
+          "effect_quant": {
+            "metric": "relative_risk",
+            "value": 1.57,
+            "unit": "ratio",
+            "comparator": "5-alpha-reductase inhibitor use versus placebo for sexual dysfunction"
+          }
+        },
+        {
+          "citation": "GuoM et al 2016 Pharmacotherapy",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Persistent Sexual Dysfunction with Finasteride 1 mg Taken for Hair Loss.",
+          "pmid": "27644029",
+          "n_participants": 21390,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 1.62,
+            "unit": "ratio",
+            "comparator": "finasteride 1 mg users versus omeprazole users for persistent sexual dysfunction"
+          }
+        },
+        {
+          "citation": "HaberRS et al 2019 J Eur Acad Dermatol Venereol",
+          "year": 2019,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Finasteride for androgenetic alopecia is not associated with sexual dysfunction: a survey-based, single-centre, controlled study.",
+          "pmid": "30835851",
+          "n_participants": 762
+        }
+      ]
+    }
+  ]
+}

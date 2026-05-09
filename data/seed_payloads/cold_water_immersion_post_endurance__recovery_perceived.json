@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cold_water_immersion_post_endurance",
+      "name": "Cold-water immersion after endurance exercise",
+      "kind": "behavior",
+      "aliases": [
+        "CWI after endurance training",
+        "post-endurance ice bath"
+      ],
+      "description": "Short cold-water immersion used after endurance or mixed metabolic exercise to improve next-day recovery."
+    },
+    {
+      "slug": "recovery_perceived",
+      "name": "Perceived recovery",
+      "kind": "process",
+      "aliases": [
+        "subjective recovery",
+        "recovery as felt by the athlete"
+      ],
+      "description": "How recovered or sore an athlete feels after training or competition."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cold_water_immersion_post_endurance",
+      "outcome_slug": "recovery_perceived",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Recent meta-analyses consistently show that post-exercise cold-water immersion reduces delayed-onset muscle soreness, with one 2026 review reporting g = -0.40 versus passive control and a 2025 network meta-analysis finding the most effective soreness protocols were 10-15 minutes at 11-15 C or 5-10 C. Direct trials on broader perceived recovery are less uniform, but the subjective soreness signal is strong enough to support a protective label for how recovery feels.",
+      "population": "healthy active adults and athletes recovering from endurance, repeated-sprint, or mixed metabolic exercise",
+      "mechanism": "Cold immersion likely changes nociception and post-exercise inflammatory signaling enough to make recovery feel easier over the next day. That subjective benefit can appear even when objective power or strength recovery is unchanged.",
+      "summary": "Cold-water immersion is not magic for every recovery endpoint, but it does have one of the cleaner subjective-recovery signals in sports nutrition and recovery research. The strongest consistent benefit is that athletes often feel less sore over the following 24 to 48 hours.",
+      "caveats": "Subjective recovery is easier to improve than true performance restoration, so users should not assume faster sprint or jump recovery just because soreness is lower. Very cold protocols may also transiently impair immediate explosive output.",
+      "evidence": [
+        {
+          "citation": "ZhangY et al 2026 Front Sports Act Living",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of cold-water immersion at different body regions on post-exercise muscle damage recovery: a systematic review and meta-analysis.",
+          "pmid": "41716304",
+          "n_participants": 30,
+          "effect_quant": {
+            "metric": "hedges_g",
+            "value": -0.4,
+            "comparator": "cold-water immersion versus passive control for delayed-onset muscle soreness after exercise"
+          }
+        },
+        {
+          "citation": "LiY et al 2025 Front Physiol",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Impact of different doses of cold water immersion (duration and temperature variations) on recovery from acute exercise-induced muscle damage: a network meta-analysis.",
+          "pmid": "40078372",
+          "n_participants": 55,
+          "effect_quant": {
+            "metric": "standardized_mean_difference",
+            "value": -1.45,
+            "comparator": "10-15 min at 11-15 C versus control for delayed-onset muscle soreness"
+          }
+        },
+        {
+          "citation": "FuchsR et al 2025 PLoS One",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effectiveness of cold-water immersion vs. massage in reducing delayed-onset muscle soreness and enhancing recovery following CrossFit Murph Workout: Randomized trial.",
+          "pmid": "40802667",
+          "n_participants": 30
+        }
+      ]
+    }
+  ]
+}

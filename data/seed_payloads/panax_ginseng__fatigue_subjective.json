@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "panax_ginseng",
+      "name": "Panax ginseng supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "Asian ginseng",
+        "Korean red ginseng"
+      ],
+      "description": "Supplementation with Panax ginseng root preparations, including standardized Korean red ginseng extracts."
+    },
+    {
+      "slug": "fatigue_subjective",
+      "name": "Subjective fatigue",
+      "kind": "process",
+      "aliases": [
+        "self-reported fatigue",
+        "fatigue symptom burden"
+      ],
+      "description": "Patient-reported fatigue severity assessed with validated subjective fatigue scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "panax_ginseng",
+      "outcome_slug": "fatigue_subjective",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "A 2016 meta-analysis found a modest pooled fatigue benefit from ginseng supplements overall (SMD 0.34, 95% CI 0.16 to 0.52), but later Panax ginseng trials in chronic fatigue and advanced cancer have produced null or equivocal results.",
+      "population": "adults with chronic fatigue, rheumatic disease, or cancer-related fatigue",
+      "mechanism": "Panax ginseng is thought to affect fatigue through adaptogenic, anti-inflammatory, and neuroendocrine pathways that might modestly improve energy perception or recovery from stress. In practice, subjective fatigue is highly placebo-sensitive, and the human trial record shows heterogeneity across disease context, dose, and formulation.",
+      "summary": "Panax ginseng for subjective fatigue is better described as mixed than clearly effective. Pooled evidence suggests a small average anti-fatigue signal, but several modern placebo-controlled trials have found little or no meaningful advantage over placebo in the populations that most want this benefit.",
+      "caveats": "This literature mixes different ginseng species, doses, extracts, and fatigue syndromes, which makes the headline claim easy to oversimplify. Where benefit exists, it appears modest and context-dependent rather than uniformly reliable.",
+      "evidence": [
+        {
+          "citation": "Bae SM et al 2016 J Korean Med Sci",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of Ginseng Supplements on Fatigue and Physical Performance: a Meta-analysis.",
+          "pmid": "27822924",
+          "n_participants": 630,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.34,
+            "ci_low": 0.16,
+            "ci_high": 0.52,
+            "comparator": "ginseng supplements versus placebo for fatigue reduction"
+          }
+        },
+        {
+          "citation": "Yennurajalingam S et al 2017 J Natl Compr Canc Netw",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A Double-Blind, Randomized, Placebo-Controlled Trial of Panax Ginseng for Cancer-Related Fatigue in Patients With Advanced Cancer.",
+          "pmid": "28874596",
+          "n_participants": 127
+        },
+        {
+          "citation": "Kim HA et al 2024 Korean J Intern Med",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effectiveness of Korean Red Ginseng on fatigue in patients with rheumatic diseases: a randomized, double-blind, placebo-controlled study.",
+          "pmid": "38576235",
+          "n_participants": 120
+        }
+      ]
+    }
+  ]
+}

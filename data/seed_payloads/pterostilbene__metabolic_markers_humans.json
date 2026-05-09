@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pterostilbene",
+      "name": "Pterostilbene",
+      "kind": "supplement",
+      "aliases": [
+        "trans-pterostilbene",
+        "pterostilbene supplement"
+      ],
+      "description": "A dimethylated stilbene related to resveratrol and marketed for metabolic, longevity, and antioxidant effects."
+    },
+    {
+      "slug": "metabolic_markers_humans",
+      "name": "Human metabolic markers",
+      "kind": "process",
+      "aliases": [
+        "metabolic risk markers in humans",
+        "lipid and glucose-related human biomarkers"
+      ],
+      "description": "Human metabolic biomarkers including lipids, blood pressure, body composition, glucose, or related laboratory measures."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pterostilbene",
+      "outcome_slug": "metabolic_markers_humans",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "adults with hypercholesterolemia or healthy adults receiving supplemental pterostilbene-containing products",
+      "mechanism": "Pterostilbene may influence metabolic signaling through pathways related to antioxidant stress responses, lipid handling, and insulin sensitivity. In humans, however, the most direct evidence shows a conflicted profile, with some improvements in blood pressure or minor body-composition signals offset by an increase in LDL cholesterol and many null laboratory findings.",
+      "summary": "Pterostilbene should be treated as a mixed metabolic edge, not a straightforward metabolic-support supplement. The cleanest placebo-controlled human trial found reduced blood pressure but also an increase in LDL cholesterol, and later human studies have been mostly small, combination-based, or safety-oriented rather than strongly efficacy-driven.",
+      "caveats": "The clinical evidence is still thin and much of it does not isolate pterostilbene cleanly from co-ingredients. This is exactly the kind of supplement where mechanistic hype has run ahead of reliable human outcome data.",
+      "evidence": [
+        {
+          "citation": "Riche DM et al 2014 Evid Based Complement Alternat Med",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Pterostilbene on metabolic parameters: a randomized, double-blind, and placebo-controlled trial.",
+          "pmid": "25057276",
+          "n_participants": 80,
+          "effect_quant": {
+            "metric": "MD",
+            "value": 17.1,
+            "comparator": "pterostilbene monotherapy versus placebo for LDL cholesterol change"
+          }
+        },
+        {
+          "citation": "Riche DM et al 2013 J Toxicol",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Analysis of safety from a human clinical trial with pterostilbene.",
+          "pmid": "23431291",
+          "n_participants": 80
+        },
+        {
+          "citation": "Hodate K et al 2025 J Nutr Sci Vitaminol (Tokyo)",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Analysis of the Effects of Short-Term Pterostilbene Intake on Healthy Participants: A Pilot Study.",
+          "pmid": "40024751",
+          "n_participants": 30
+        }
+      ]
+    }
+  ]
+}

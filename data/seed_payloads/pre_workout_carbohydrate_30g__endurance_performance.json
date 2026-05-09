@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pre_workout_carbohydrate_30g",
+      "name": "Thirty grams of pre-workout carbohydrate",
+      "kind": "supplement",
+      "aliases": [
+        "30 g carbohydrate before exercise",
+        "pre-exercise glucose polymer"
+      ],
+      "description": "A modest carbohydrate dose consumed before endurance exercise."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pre_workout_carbohydrate_30g",
+      "outcome_slug": "endurance_performance",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "One direct high-intensity study found that ingesting 30 g carbohydrate immediately before exercise increased total work by about 14.5 to 17.3% versus placebo, but other fed-state endurance trials found no improvement in time trial distance or completion time when carbohydrate was already consumed in the hours before exercise.",
+      "population": "healthy and endurance-trained adults performing endurance or prolonged high-intensity exercise",
+      "mechanism": "A small pre-exercise carbohydrate dose can support blood glucose and help preserve power late in a session, especially when glycogen availability is not already saturated. But if athletes are already fed, or if event duration is short enough that substrate supply is not the main limiter, the extra carbohydrate may add little.",
+      "summary": "This edge is best treated as context-dependent rather than broadly ergogenic. Pre-workout carbohydrate can help some endurance efforts, particularly when exercise is hard and carbohydrate availability is otherwise limited, but the direct literature does not support a universal benefit from a small 30 g dose in already fed athletes.",
+      "caveats": "Meal timing, background glycogen status, beverage concentration, and whether carbohydrate is also consumed during exercise all matter. This is not a no-regret supplement edge in the same way as caffeine or whey.",
+      "evidence": [
+        {
+          "citation": "WrightDA et al 1995 Int J Sports Med",
+          "year": 1995,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of carbohydrate supplementation on performance during 1 hour of high-intensity exercise.",
+          "pmid": "8550255",
+          "n_participants": 5,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 14.5,
+            "comparator": "30 g pre-exercise glucose polymer versus placebo for total work during 1 hour of high-intensity exercise"
+          }
+        },
+        {
+          "citation": "RolloI et al 2010 J Sports Sci",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Influence of ingesting a carbohydrate-electrolyte solution before and during a 1-hour run in fed endurance-trained runners.",
+          "pmid": "20391081",
+          "n_participants": 10
+        },
+        {
+          "citation": "CoyleEF et al 2003 Int J Sport Nutr Exerc Metab",
+          "year": 2003,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "No effect of pre-exercise meal on substrate metabolism and time trial performance during intense endurance exercise.",
+          "pmid": "14967872",
+          "n_participants": 8
+        }
+      ]
+    }
+  ]
+}

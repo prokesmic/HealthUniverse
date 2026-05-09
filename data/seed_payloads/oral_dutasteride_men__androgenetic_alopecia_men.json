@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "oral_dutasteride_men",
+      "name": "Oral dutasteride in men",
+      "kind": "drug",
+      "aliases": [
+        "dutasteride for male pattern hair loss",
+        "oral dutasteride for AGA"
+      ],
+      "description": "Oral dutasteride therapy used in male androgenetic alopecia."
+    },
+    {
+      "slug": "androgenetic_alopecia_men",
+      "name": "Male androgenetic alopecia",
+      "kind": "condition",
+      "aliases": [
+        "male pattern hair loss",
+        "AGA in men"
+      ],
+      "description": "Androgenetic alopecia affecting male patients."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "oral_dutasteride_men",
+      "outcome_slug": "androgenetic_alopecia_men",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a 917-man randomized trial, dutasteride 0.5 mg/day improved hair count and width more than placebo and also outperformed finasteride 1 mg/day at 24 weeks. Later network meta-analyses consistently rank dutasteride at or near the top of non-surgical monotherapies for male AGA.",
+      "population": "adult men with androgenetic alopecia treated with oral dutasteride monotherapy",
+      "mechanism": "Dutasteride inhibits both type I and type II 5-alpha reductase, suppressing scalp dihydrotestosterone more strongly than finasteride and thereby slowing follicular miniaturization.",
+      "summary": "Oral dutasteride is one of the strongest pharmacologic hair-regrowth signals in the male AGA literature. The direct trial and network-level evidence both point to meaningful efficacy, although the tradeoff profile is also why it remains more debated than standard topical minoxidil.",
+      "caveats": "This payload covers efficacy, not sexual or fertility concerns, which belong on separate harms edges. Stronger efficacy does not automatically mean better real-world acceptability for every patient.",
+      "evidence": [
+        {
+          "citation": "OlsenEA et al 2014 J Am Acad Dermatol",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A randomized, active- and placebo-controlled study of the efficacy and safety of different doses of dutasteride versus placebo and finasteride in the treatment of male subjects with androgenetic alopecia.",
+          "pmid": "24411083",
+          "n_participants": 917
+        },
+        {
+          "citation": "GuA et al 2022 JAMA Dermatol",
+          "year": 2022,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Relative Efficacy of Minoxidil and the 5-α Reductase Inhibitors in Androgenetic Alopecia Treatment of Male Patients: A Network Meta-analysis.",
+          "pmid": "35107565"
+        },
+        {
+          "citation": "GuA et al 2025 J Cosmet Dermatol",
+          "year": 2025,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Relative Efficacy of Conventional Monotherapies and Select Nonconventional, Over-the-Counter Products for Male Androgenetic Alopecia: A Network Meta-Analysis Study.",
+          "pmid": "41051009"
+        }
+      ]
+    }
+  ]
+}

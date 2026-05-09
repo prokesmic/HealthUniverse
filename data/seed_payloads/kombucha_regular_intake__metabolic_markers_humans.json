@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "kombucha_regular_intake",
+      "name": "Regular kombucha intake",
+      "kind": "behavior",
+      "aliases": [
+        "daily kombucha consumption",
+        "habitual kombucha drinking"
+      ],
+      "description": "Repeated consumption of kombucha beverages over weeks in free-living adults."
+    },
+    {
+      "slug": "metabolic_markers_humans",
+      "name": "Human metabolic markers",
+      "kind": "biomarker",
+      "aliases": [
+        "cardiometabolic markers",
+        "human metabolic risk markers"
+      ],
+      "description": "Human clinical markers such as lipids, insulin resistance, glycaemia, inflammatory markers, and related cardiometabolic risk indicators."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "kombucha_regular_intake",
+      "outcome_slug": "metabolic_markers_humans",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Two recent kombucha clinical programmes in adults with excess weight found within-group improvements in lipids, oxidative stress, and some insulin-resistance markers, but the strongest randomized trial still reported no significant between-group difference across the total marker set after 10 weeks. That leaves the metabolic signal interesting but not yet decisive.",
+      "population": "adults consuming black-tea or green-tea kombucha for 4 to 10 weeks, usually with overweight or obesity",
+      "mechanism": "Kombucha delivers tea polyphenols, fermentation-derived organic acids, and microbial metabolites that may modestly influence oxidative stress handling, adipokine signalling, and insulin sensitivity, but the human signal still looks small and context-dependent.",
+      "summary": "Human kombucha evidence is still in the promising-but-noisy zone. The better recent trials suggest small cardiometabolic improvements in some settings, yet the clearest randomized data still stop short of showing broad between-group superiority across the whole biomarker panel.",
+      "caveats": "Most human studies are small, short, and concentrated in a few research groups. This edge is about measurable metabolic markers in humans, not marketing claims about detoxification or dramatic weight loss.",
+      "evidence": [
+        {
+          "citation": "BonifacioDB et al 2026 J Food Sci",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of Green Tea Kombucha Within an Energy-Restricted Diet on Cardiometabolic Risk Markers in Individuals With Excess Body Weight: A Randomized Controlled Trial.",
+          "pmid": "41957662",
+          "n_participants": 59
+        },
+        {
+          "citation": "deCamposCostaMA et al 2026 Food Funct",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Regular black tea kombucha consumption is associated with improved insulin resistance and increased ADIPOQ expression in adults with obesity: a pre-post clinical trial.",
+          "pmid": "41870392",
+          "n_participants": 36
+        },
+        {
+          "citation": "BonifacioDB et al 2025 Br J Nutr",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of regular green tea (Camellia sinensis) kombucha consumption on oxidative stress and endothelial health in individuals with excess body weight: a randomized controlled trial.",
+          "pmid": "40637142",
+          "n_participants": 59
+        },
+        {
+          "citation": "EckluMensahG et al 2024 Sci Rep",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Modulating the human gut microbiome and health markers through kombucha consumption: a controlled clinical study.",
+          "pmid": "39738315",
+          "n_participants": 24
+        }
+      ]
+    }
+  ]
+}

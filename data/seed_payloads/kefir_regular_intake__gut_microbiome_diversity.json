@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "kefir_regular_intake",
+      "name": "Regular kefir intake",
+      "kind": "food",
+      "aliases": [
+        "daily kefir consumption",
+        "kefir drinking"
+      ],
+      "description": "Habitual kefir consumption over several weeks."
+    },
+    {
+      "slug": "gut_microbiome_diversity",
+      "name": "Gut microbiome diversity",
+      "kind": "process",
+      "aliases": [
+        "microbial diversity of the gut",
+        "alpha diversity of gut microbiota"
+      ],
+      "description": "Diversity and richness of the gut microbial community."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "kefir_regular_intake",
+      "outcome_slug": "gut_microbiome_diversity",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2025 soccer-player randomized trial found kefir increased Shannon and Chao1 diversity over 28 days, but a separate placebo-controlled ADHD trial found no significant overall alpha- or beta-diversity effect after six weeks. The broader dairy microbiome review also concluded diversity changes are inconsistent across kefir and related interventions.",
+      "population": "children or adults consuming kefir daily for several weeks in free-living or trial settings",
+      "mechanism": "Kefir supplies live microbes and fermentation products that can shift gut community structure, but effects appear context-dependent and may influence specific taxa more consistently than broad diversity metrics.",
+      "summary": "Kefir is better framed as microbiome-mixed than as a guaranteed diversity booster. Some trials show richer microbial profiles, but others find little change in alpha diversity despite shifts in individual taxa and symptoms.",
+      "caveats": "The evidence base is still small and population-specific. Positive findings in athletes or symptomatic children should not be generalized into a universal claim that kefir reliably increases diversity in everyone.",
+      "evidence": [
+        {
+          "citation": "KurbanovA et al 2025 Nutrients",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of Kefir Consumption on Gut Microbiota and Athletic Performance in Professional Female Soccer Players: A Randomized Controlled Trial.",
+          "pmid": "39940370",
+          "n_participants": 21
+        },
+        {
+          "citation": "DimsdaleA et al 2025 BMC Psychiatry",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effects of kefir on symptoms, sleep, and gut microbiota in children with ADHD: a randomised controlled trial.",
+          "pmid": "41286799",
+          "n_participants": 53
+        },
+        {
+          "citation": "CompanysJ et al 2020 Gut Microbes",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The effects of dairy and dairy derivatives on the gut microbiota: a systematic literature review.",
+          "pmid": "32835617",
+          "n_participants": 468
+        }
+      ]
+    }
+  ]
+}

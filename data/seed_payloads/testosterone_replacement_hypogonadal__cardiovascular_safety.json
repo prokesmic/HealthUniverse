@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "testosterone_replacement_hypogonadal",
+      "name": "Testosterone replacement in hypogonadal men",
+      "kind": "drug",
+      "aliases": [
+        "TRT for hypogonadism",
+        "testosterone therapy in low-testosterone men"
+      ],
+      "description": "Exogenous testosterone therapy given to symptomatic men with documented low testosterone."
+    },
+    {
+      "slug": "cardiovascular_safety",
+      "name": "Cardiovascular safety",
+      "kind": "condition",
+      "aliases": [
+        "major cardiovascular event risk",
+        "CV event safety profile"
+      ],
+      "description": "The risk of cardiovascular events or thromboembolic harm during treatment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "testosterone_replacement_hypogonadal",
+      "outcome_slug": "cardiovascular_safety",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "A 2024 meta-analysis of 30 randomized trials found no excess overall cardiovascular event risk with testosterone replacement (OR 1.12, 95% CI 0.77 to 1.62), but TRAVERSE-linked analyses still raise concern about thromboembolic biology in some men.",
+      "population": "middle-aged and older men with hypogonadism, often with pre-existing cardiovascular disease or elevated baseline risk",
+      "mechanism": "Testosterone can improve body composition and anemia while also increasing hematocrit and altering leukocyte or thrombotic biology, which is why the cardiovascular story remains mixed instead of simply safe or unsafe. The best current read is that major event rates may be broadly neutral on average, while specific thrombosis-related sub-signals still deserve attention.",
+      "summary": "Cardiovascular safety of testosterone replacement in hypogonadal men remains mixed rather than clearly harmful or clearly reassuring. Modern pooled data do not show a broad increase in major cardiovascular events, but the controversy persists because mechanistic and subgroup findings continue to suggest that some adverse vascular pathways may still matter in selected patients.",
+      "caveats": "Absence of a clear overall MACE signal does not mean every cardiovascular outcome is settled, especially for venous thromboembolism, erythrocytosis-prone men, or high-risk subgroups. This edge should be interpreted as cautious neutrality, not blanket proof of long-term safety in all users.",
+      "evidence": [
+        {
+          "citation": "Jaiswal V et al 2024 Prog Cardiovasc Dis",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Association between testosterone replacement therapy and cardiovascular outcomes: A meta-analysis of 30 randomized controlled trials.",
+          "pmid": "38589271",
+          "n_participants": 11502,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.12,
+            "ci_low": 0.77,
+            "ci_high": 1.62,
+            "comparator": "testosterone replacement versus placebo for any cardiovascular event"
+          }
+        },
+        {
+          "citation": "Elliott J et al 2017 BMJ Open",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Testosterone therapy in hypogonadal men: a systematic review and network meta-analysis.",
+          "pmid": "29150464",
+          "n_participants": 10000
+        },
+        {
+          "citation": "Gagliano-Juca T et al 2025 Am Heart J",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Association of testosterone-induced increase in neutrophil and monocyte counts with thromboembolic events: The TRAVERSE trial.",
+          "pmid": "40246046",
+          "n_participants": 5204
+        }
+      ]
+    }
+  ]
+}

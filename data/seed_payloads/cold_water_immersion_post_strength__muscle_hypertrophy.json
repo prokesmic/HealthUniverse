@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cold_water_immersion_post_strength",
+      "name": "Post-strength-training cold-water immersion",
+      "kind": "behavior",
+      "aliases": [
+        "post-lifting cold plunge",
+        "cold-water immersion after resistance training",
+        "CWI after strength work"
+      ],
+      "description": "Cold-water immersion used immediately after resistance-training sessions as a routine recovery method."
+    },
+    {
+      "slug": "muscle_hypertrophy",
+      "name": "Muscle hypertrophy",
+      "kind": "process",
+      "aliases": [
+        "muscle growth",
+        "skeletal muscle hypertrophy"
+      ],
+      "description": "The increase in muscle fiber size and lean muscle mass that occurs with training."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cold_water_immersion_post_strength",
+      "outcome_slug": "muscle_hypertrophy",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The most direct long-term trials show that regularly using post-exercise cold-water immersion after lifting blunts muscle fiber hypertrophy, and one strength-focused meta-analysis also found an overall attenuation of training gains (ES -0.23, 95% CI -0.45 to -0.01). The hypertrophy signal is stronger than the strength signal, which is why this edge is better framed as harmful for muscle growth specifically rather than universally harmful for all recovery goals.",
+      "population": "physically active men and other athletes using repeated cold-water immersion after resistance training",
+      "mechanism": "Cold exposure appears to reduce post-exercise anabolic signaling, satellite-cell responses, and later accretion of muscle fiber size after resistance exercise. In other words, the same cooling that may feel good for soreness can also mute part of the muscle-building signal the session was meant to create.",
+      "summary": "This is one of the clearer cases where a popular recovery ritual conflicts with a physique or hypertrophy goal. If muscle growth is the priority, the literature supports avoiding routine post-lifting cold-water immersion.",
+      "caveats": "The negative effect is most convincing for frequent use after resistance training, not for occasional cold exposure in other contexts. Strength changes are less consistently impaired than hypertrophy, and some sport settings may still value short-term recovery enough to accept that tradeoff.",
+      "evidence": [
+        {
+          "citation": "IhsanM et al 2021 Front Sports Act Living",
+          "year": 2021,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Post-exercise Cold Water Immersion Effects on Physiological Adaptations to Resistance Training and the Underlying Mechanisms in Skeletal Muscle.",
+          "pmid": "33898988"
+        },
+        {
+          "citation": "RobertsLA et al 2015 J Physiol",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Post-exercise cold water immersion attenuates acute anabolic signalling and long-term adaptations in muscle to strength training.",
+          "pmid": "26174323",
+          "n_participants": 21
+        },
+        {
+          "citation": "FuchsCJ et al 2019 J Appl Physiol (1985)",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cold water immersion attenuates anabolic signaling and skeletal muscle fiber hypertrophy, but not strength gain, following whole-body resistance training.",
+          "pmid": "31513450",
+          "n_participants": 16
+        }
+      ]
+    }
+  ]
+}

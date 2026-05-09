@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "phosphatidylserine",
+      "name": "Phosphatidylserine supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "PS supplement",
+        "soy-derived phosphatidylserine"
+      ],
+      "description": "Oral phosphatidylserine supplementation used to support membrane function and age-related cognition."
+    },
+    {
+      "slug": "cognition_age_related_decline",
+      "name": "Cognition in age-related decline",
+      "kind": "process",
+      "aliases": [
+        "age-related cognitive decline",
+        "cognition in elderly memory complaints"
+      ],
+      "description": "Cognitive performance in older adults with age-related memory complaints or age-associated cognitive decline."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "phosphatidylserine",
+      "outcome_slug": "cognition_age_related_decline",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "older adults with memory complaints, age-associated impairment, or geriatric cognitive decline",
+      "mechanism": "Phosphatidylserine is a membrane phospholipid concentrated in neural tissue and is thought to support synaptic signaling and membrane fluidity. Human results suggest possible benefit in some older adults with baseline impairment, but the evidence is inconsistent across formulations and trial eras.",
+      "summary": "Phosphatidylserine for age-related cognitive decline remains mixed rather than settled. Older bovine-cortex phosphatidylserine studies and a later pilot in elderly adults with memory complaints reported improvement, but a larger soy-derived trial found no significant cognitive benefit, which limits confidence in a generalized claim.",
+      "caveats": "This literature is old, formulation-sensitive, and not always aligned with current supplement products. Positive results from bovine-derived or mixed phospholipid preparations should not be assumed to translate directly to every modern over-the-counter phosphatidylserine product.",
+      "evidence": [
+        {
+          "citation": "Cenacchi T et al 1993 Aging (Milano)",
+          "year": 1993,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cognitive decline in the elderly: a double-blind, placebo-controlled multicenter study on efficacy of phosphatidylserine administration.",
+          "pmid": "8323999",
+          "n_participants": 494
+        },
+        {
+          "citation": "Jorissen BL et al 2001 Nutr Neurosci",
+          "year": 2001,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The influence of soy-derived phosphatidylserine on cognition in age-associated memory impairment.",
+          "pmid": "11842880",
+          "n_participants": 120
+        },
+        {
+          "citation": "Richter Y et al 2013 Clin Interv Aging",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "The effect of soybean-derived phosphatidylserine on cognitive performance in elderly with subjective memory complaints: a pilot study.",
+          "pmid": "23723695",
+          "n_participants": 30
+        }
+      ]
+    }
+  ]
+}

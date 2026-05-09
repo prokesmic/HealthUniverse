@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "whey_protein_post_workout",
+      "name": "Post-workout whey protein intake",
+      "kind": "supplement",
+      "aliases": [
+        "whey after training",
+        "post-exercise whey protein"
+      ],
+      "description": "Whey protein consumed after resistance exercise."
+    },
+    {
+      "slug": "muscle_protein_synthesis",
+      "name": "Muscle protein synthesis",
+      "kind": "process",
+      "aliases": [
+        "MPS",
+        "skeletal muscle protein synthesis"
+      ],
+      "description": "The rate at which skeletal muscle builds new protein."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "whey_protein_post_workout",
+      "outcome_slug": "muscle_protein_synthesis",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Direct post-exercise studies show that even 10 g of whey plus carbohydrate increases muscle protein synthesis relative to carbohydrate alone, while 20 g activates mTOR signaling more strongly than 10 g, indicating a clear dose response within practical post-workout ranges.",
+      "population": "healthy young men, especially after resistance exercise",
+      "mechanism": "Whey is rapidly digested and delivers a leucine-rich amino acid pulse that activates anabolic signaling and provides substrate for muscle repair. That makes it particularly effective immediately after exercise, when muscle is sensitized to amino acid availability.",
+      "summary": "This is one of the stronger practical sports-nutrition edges. Post-workout whey reliably stimulates muscle protein synthesis, and the trial literature supports both the basic effect and a plausible dose response, even if the exact optimal dose varies by body size and training context.",
+      "caveats": "Most direct mechanistic studies are small and conducted in young men. The immediate muscle protein synthesis response is not the same as long-term hypertrophy, but it is one of the more robust short-term signals available for a protein supplement.",
+      "evidence": [
+        {
+          "citation": "TangJE et al 2007 Br J Nutr",
+          "year": 2007,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Minimal whey protein with carbohydrate stimulates muscle protein synthesis following resistance exercise in trained young men.",
+          "pmid": "18059587",
+          "n_participants": 8
+        },
+        {
+          "citation": "KandaA et al 2014 Eur J Appl Physiol",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Whey protein intake after resistance exercise activates mTOR signaling in a dose-dependent manner in human skeletal muscle.",
+          "pmid": "24384983",
+          "n_participants": 15
+        },
+        {
+          "citation": "WestDWD et al 2017 Nutrients",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Whey Protein Supplementation Enhances Whole Body Protein Metabolism and Performance Recovery after Resistance Exercise: A Double-Blind Crossover Study.",
+          "pmid": "28696380",
+          "n_participants": 12
+        }
+      ]
+    }
+  ]
+}

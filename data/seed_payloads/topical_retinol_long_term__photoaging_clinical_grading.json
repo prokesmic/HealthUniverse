@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "topical_retinol_long_term",
+      "name": "Long-term topical retinol",
+      "kind": "drug",
+      "aliases": [
+        "retinol cream use over months",
+        "sustained topical retinol"
+      ],
+      "description": "Repeated application of retinol-containing topical products over weeks to months for photoaging management."
+    },
+    {
+      "slug": "photoaging_clinical_grading",
+      "name": "Clinical photoaging grading",
+      "kind": "condition",
+      "aliases": [
+        "photoaged skin appearance",
+        "clinical grading of facial photoaging"
+      ],
+      "description": "Clinician-graded or trial-graded signs of photodamaged skin such as fine wrinkling, lentigines, roughness, and overall photoaging severity."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "topical_retinol_long_term",
+      "outcome_slug": "photoaging_clinical_grading",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A randomized 12-week head-to-head study found retinol 0.5% significantly reduced wrinkle surface area and hyperpigmentation from baseline, while a 120-woman trial found a retinol 0.2% combination improved wrinkles, pores, pigmentation, and global photodamage comparably to tretinoin 0.025%. The direction is favorable, but the evidence base is still thinner and more formulation-specific than for prescription tretinoin.",
+      "population": "adults with facial photoaging using cosmetic retinol formulations for 8 to 12 weeks or longer",
+      "mechanism": "Retinol is converted in skin toward active retinoid metabolites that can increase epidermal turnover and support collagen-related remodeling, but the effect is typically gentler and more formulation-dependent than tretinoin.",
+      "summary": "Long-term topical retinol looks genuinely helpful for mild clinical photoaging, especially fine wrinkles and uneven pigmentation, but it is still a step below the evidence standard for prescription retinoids. This is a reasonable beneficial edge, just not one to oversell as equivalent to tretinoin across all outcomes.",
+      "caveats": "Most trials are small, cosmetic-industry linked, or test retinol within multi-ingredient formulations. The benefit is real enough to classify as positive, but certainty is still modest.",
+      "evidence": [
+        {
+          "citation": "DhaliwalS et al 2019 Br J Dermatol",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Prospective, randomized, double-blind assessment of topical bakuchiol and retinol for facial photoageing.",
+          "pmid": "29947134",
+          "n_participants": 44
+        },
+        {
+          "citation": "BoulocA et al 2015 J Cosmet Dermatol",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A double-blind randomized study comparing the association of Retinol and LR2412 with tretinoin 0.025% in photoaged skin.",
+          "pmid": "25603890",
+          "n_participants": 120
+        },
+        {
+          "citation": "CookB et al 2025 Dermatol Ther (Heidelb)",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Effects of Retinol, Natural Pea Peptide and Antioxidant Blend in a Topical Formulation: In Vitro and Clinical Evidence.",
+          "pmid": "39720967",
+          "n_participants": 30
+        }
+      ]
+    }
+  ]
+}

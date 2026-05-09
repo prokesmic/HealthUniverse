@@ -1,36 +1,37 @@
-# Claude Handoff: Track 5 Complete
+# Claude Handoff: Track 6 Complete
 
 Repo: `https://github.com/prokesmic/HealthUniverse`
 
 Primary branch to inspect:
-- `feat/codex-seed-batch-7`
+- `feat/codex-seed-batch-8`
 
 Latest completion commit:
-- `a6a1eed` — `Track 5: 150/150 — maternal programming and ACE burden finale`
+- `25b2b57` — `Track 6: 150/150 — reflux, hair, gut-barrier, and evidence-gap finale`
 
 ## Status
 
-Track 5 is fully complete on `feat/codex-seed-batch-7`.
+Track 6 is fully complete on `feat/codex-seed-batch-8`.
 
 Completed scope versus `origin/main`:
 - `150` new payload files under `data/seed_payloads`
-- all manifest pairs from `CODEX_BRIEF_V6_AUTONOMOUS.md` are covered
+- all `150/150` manifest pairs from `CODEX_BRIEF_V8_AUTONOMOUS.md` are covered
+- topic coverage is balanced at `30` pairs each across blocks `A` through `E`
 
 Latest known clean state:
-- per-file PMID verification was run for every newly added payload
+- `python3 seed_from_payloads.py --verify validate` -> `1520 ok, 0 failed, 1520 total`
 - `python3 seed_from_payloads.py ingest --dry-run` -> `errors: []`
 
 ## What Claude should ingest
 
-Use this branch as the authoritative finished Track 5 seed set.
+Use this branch as the authoritative finished Track 6 seed set.
 
 Main content to ingest:
-- every file in `data/seed_payloads` that exists on `feat/codex-seed-batch-7` but not on `origin/main`
+- every file in `data/seed_payloads` that exists on `feat/codex-seed-batch-8` but not on `origin/main`
 
 Quick way to confirm the count locally:
 
 ```bash
-git diff --name-only origin/main...feat/codex-seed-batch-7 -- data/seed_payloads | wc -l
+git diff --name-only origin/main...feat/codex-seed-batch-8 -- data/seed_payloads | wc -l
 ```
 
 Expected result:
@@ -41,14 +42,14 @@ Expected result:
 
 ## Validation and quality rules used
 
-These rules were enforced throughout the batch and are important context if you continue adjacent work:
+These rules were enforced throughout the batch and remain important if you continue adjacent work:
 
 - Do not run `seed.py`
 - Do not run `adjudicate.py`
 - Never fabricate PMIDs
-- Every `meta_analysis`, `systematic_review`, `rct`, `cohort`, `case_control`, and `cross_sectional` evidence row must include `n_participants`
+- Every `meta_analysis`, `systematic_review`, `rct`, `cohort`, `case_control`, and `cross_sectional` evidence row includes `n_participants`
 - Include `effect_quant` whenever the source paper reports a pooled estimate
-- Keep `python3 seed_from_payloads.py validate <path> --verify` passing
+- Keep `python3 seed_from_payloads.py --verify validate` passing
 - Keep `python3 seed_from_payloads.py ingest --dry-run` clean
 - Do not stage or remove `data/health.db`
 
@@ -61,37 +62,43 @@ These rules were enforced throughout the batch and are important context if you 
 
 ## Final batch added at 150/150
 
-These five files were added in the completion commit:
+These ten files were added in the completion commit:
 
-- `data/seed_payloads/vegan_diet_during_pregnancy__infant_growth_outcomes.json`
-- `data/seed_payloads/maternal_obesity__child_obesity_risk.json`
-- `data/seed_payloads/maternal_gestational_diabetes__child_obesity_long_term.json`
-- `data/seed_payloads/aces_4plus__adult_mental_health_outcomes.json`
-- `data/seed_payloads/aces_4plus__adult_cardiovascular_disease.json`
+- `data/seed_payloads/betaine_hcl_supplementation__hypochlorhydria_symptoms.json`
+- `data/seed_payloads/dairy_elimination__eczema_severity_children.json`
+- `data/seed_payloads/dgl_licorice__reflux_symptoms.json`
+- `data/seed_payloads/digestive_enzymes_pancreatic__bloating_chronic_dyspepsia.json`
+- `data/seed_payloads/fadogia_agrestis__testosterone_humans.json`
+- `data/seed_payloads/intestinal_alkaline_phosphatase_oral__endotoxaemia.json`
+- `data/seed_payloads/lactobacillus_reuteri_breastfed__maternal_iron_status.json`
+- `data/seed_payloads/oral_marine_collagen_with_vitamins__hair_density_in_thinning_women.json`
+- `data/seed_payloads/slippery_elm_marshmallow_root__reflux_symptoms.json`
+- `data/seed_payloads/topical_caffeine__hair_shaft_thickness.json`
 
 ## Commands to verify locally
 
 From repo root:
 
 ```bash
-git checkout feat/codex-seed-batch-7
+git checkout feat/codex-seed-batch-8
+python3 seed_from_payloads.py --verify validate
 python3 seed_from_payloads.py ingest --dry-run
 ```
 
 Validate one file:
 
 ```bash
-python3 seed_from_payloads.py validate data/seed_payloads/<file>.json --verify
+python3 seed_from_payloads.py --verify validate data/seed_payloads/<file>.json
 ```
 
 ## Paste-ready prompt for Claude
 
 ```text
-Inspect https://github.com/prokesmic/HealthUniverse on branch feat/codex-seed-batch-7.
+Inspect https://github.com/prokesmic/HealthUniverse on branch feat/codex-seed-batch-8.
 
 Read CLAUDE_TRACK_HANDOFF.md first.
 
-Treat feat/codex-seed-batch-7 as the authoritative completed Track 5 branch.
+Treat feat/codex-seed-batch-8 as the authoritative completed Track 6 branch.
 Ingest all 150 payload files added under data/seed_payloads versus origin/main.
 
 Important constraints that governed this branch:
@@ -102,7 +109,8 @@ Important constraints that governed this branch:
 - include effect_quant whenever the cited source reports a pooled estimate
 - data/health.db is scratch and should be ignored
 
-Latest completion commit: a6a1eed
+Latest completion commit: 25b2b57
 Expected diff count versus main under data/seed_payloads: 150
+Latest validator state: python3 seed_from_payloads.py --verify validate -> 1520 ok, 0 failed, 1520 total
 Latest dry-run state: python3 seed_from_payloads.py ingest --dry-run -> errors: []
 ```

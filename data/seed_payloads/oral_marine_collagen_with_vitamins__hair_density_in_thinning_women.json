@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "oral_marine_collagen_with_vitamins",
+      "name": "Oral marine collagen with vitamins",
+      "kind": "supplement",
+      "aliases": [
+        "marine protein supplement for thinning hair",
+        "Viviscal-style oral marine extract"
+      ],
+      "description": "Oral marine protein or collagen-based hair supplements often combined with micronutrients such as iron, selenium, vitamin C, or related cofactors."
+    },
+    {
+      "slug": "hair_density_in_thinning_women",
+      "name": "Hair density in thinning women",
+      "kind": "condition",
+      "aliases": [
+        "female thinning-hair density",
+        "hair growth metrics in women with temporary thinning"
+      ],
+      "description": "Measured terminal hair counts, shedding, or density outcomes in women reporting thinning hair or subclinical hair loss."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "oral_marine_collagen_with_vitamins",
+      "outcome_slug": "hair_density_in_thinning_women",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "population": "adult women with self-perceived thinning hair or subclinical hair loss using marine protein or collagen-based multi-ingredient supplements",
+      "mechanism": "Marine protein or collagen-based supplements are proposed to supply amino acids and micronutrient cofactors that support hair-fiber synthesis, but the effect is difficult to separate from concurrent vitamins, minerals, and regression to the mean in self-perceived thinning.",
+      "summary": "Marine collagen-style hair supplements have some positive trial signals in women with thinning hair, especially for shedding and hair counts, but the literature is product-specific and heavily confounded by bundled vitamins and minerals. The fairest classification is mixed rather than strongly pro-growth.",
+      "caveats": "Most evidence comes from branded multi-ingredient supplements rather than marine collagen alone. That means any benefit cannot be attributed cleanly to collagen itself, and independent replication is limited.",
+      "evidence": [
+        {
+          "citation": "AblonG et al 2015 Dermatol Res Pract",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A 3-month, randomized, double-blind, placebo-controlled study evaluating the ability of an extra-strength marine protein supplement to promote hair growth and decrease shedding in women with self-perceived thinning hair.",
+          "pmid": "25883641",
+          "n_participants": 60
+        },
+        {
+          "citation": "RizerRL et al 2015 Int J Trichology",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A Marine Protein-based Dietary Supplement for Subclinical Hair Thinning/Loss: Results of a Multisite, Double-blind, Placebo-controlled Clinical Trial.",
+          "pmid": "26903744",
+          "n_participants": 96
+        },
+        {
+          "citation": "AblonG et al 2021 J Cosmet Dermatol",
+          "year": 2021,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Treatment options for androgenetic alopecia: Efficacy, side effects, compliance, financial considerations, and ethics.",
+          "pmid": "34741573"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "chronic_sleep_restriction",
+      "name": "Chronic sleep restriction",
+      "kind": "behavior",
+      "aliases": [
+        "repeated short sleep",
+        "ongoing insufficient sleep duration"
+      ],
+      "description": "Sustained or repeated sleep curtailment below usual physiological need."
+    },
+    {
+      "slug": "testosterone_morning",
+      "name": "Morning testosterone",
+      "kind": "process",
+      "aliases": [
+        "early-day testosterone levels",
+        "waking testosterone status"
+      ],
+      "description": "Morning circulating testosterone concentrations, which are commonly used in male endocrine assessment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "chronic_sleep_restriction",
+      "outcome_slug": "testosterone_morning",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "population": "adolescent and adult men exposed to repeated sleep curtailment, restless nights, or habitual short sleep",
+      "effect_quant": "A crossover laboratory study found lower morning testosterone after two nights of three-hour sleep opportunities, and NHANES data linked each hour of sleep loss to about 5.85 ng/dL lower serum testosterone.",
+      "mechanism": "Short sleep suppresses the normal nocturnal rise in androgen production and pushes the neuroendocrine environment toward higher physiological strain. Repeated restriction appears to flatten the usual morning androgen advantage rather than causing a large one-time collapse.",
+      "summary": "Human studies consistently suggest that chronic or repeated sleep restriction lowers morning testosterone in men, although the effect is usually modest rather than catastrophic. The overall pattern is most convincing when sleep loss is sustained across nights or becomes habitual.",
+      "caveats": "The literature mixes acute deprivation experiments, short multi-night laboratory restriction, and population-level self-reported sleep duration. That means the edge is strongest for a directional warning and weaker for precise dose-response claims in everyday life.",
+      "evidence": [
+        {
+          "citation": "Gonzalez-Santos MR et al 1989 Arch Androl",
+          "year": 1989,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Sleep deprivation and adaptive hormonal responses of healthy men.",
+          "pmid": "2757458",
+          "n_participants": 8
+        },
+        {
+          "citation": "Faraut B et al 2020 Front Neurosci",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Daytime Exposure to Blue-Enriched Light Counters the Effects of Sleep Restriction on Cortisol, Testosterone, Alpha-Amylase and Executive Processes.",
+          "pmid": "31998056",
+          "n_participants": 17
+        },
+        {
+          "citation": "Patel P et al 2019 World J Urol",
+          "year": 2019,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Impaired sleep is associated with low testosterone in US adult males: results from the National Health and Nutrition Examination Survey.",
+          "pmid": "30225799",
+          "n_participants": 2295,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -5.85,
+            "unit": "ng/dL per hour of sleep lost",
+            "comparator": "serum testosterone associated with shorter sleep duration"
+          }
+        }
+      ]
+    }
+  ]
+}

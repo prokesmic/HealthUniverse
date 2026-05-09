@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "dhea_supplementation_postmenopausal",
+      "name": "DHEA supplementation in postmenopausal women",
+      "kind": "supplement",
+      "aliases": [
+        "postmenopausal DHEA",
+        "dehydroepiandrosterone after menopause"
+      ],
+      "description": "Systemic DHEA supplementation used by peri- or postmenopausal women."
+    },
+    {
+      "slug": "libido",
+      "name": "Libido",
+      "kind": "process",
+      "aliases": [
+        "sexual desire",
+        "sex drive"
+      ],
+      "description": "Subjective sexual desire or libido."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "dhea_supplementation_postmenopausal",
+      "outcome_slug": "libido",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "peri- and postmenopausal women with low libido, menopausal symptoms, or normal adrenal function",
+      "mechanism": "DHEA can serve as a precursor for downstream androgens and estrogens, which is why it is often promoted for female sexual desire after menopause. The problem is that the endocrine conversion is not enough by itself to guarantee better libido, and clinical trials have generally found that the promise outpaces the measurable benefit.",
+      "summary": "Systemic DHEA has not shown a dependable libido benefit in postmenopausal women despite persistent marketing around sexual vitality. The highest-level evidence is mostly neutral, with a few individual trials suggesting possible subgroup benefit but not enough consistency to make the edge clearly positive.",
+      "caveats": "This edge is about systemic oral DHEA, not vaginal DHEA preparations used for genitourinary symptoms. A neutral average effect on libido does not rule out individual responders, but it does mean the intervention should not be sold as a broadly proven sexual-rejuvenation strategy.",
+      "evidence": [
+        {
+          "citation": "Scheffers CS et al 2015 Cochrane Database Syst Rev",
+          "year": 2015,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Dehydroepiandrosterone for women in the peri- or postmenopausal phase.",
+          "pmid": "25879093",
+          "n_participants": 2800
+        },
+        {
+          "citation": "Elraiyah T et al 2014 J Clin Endocrinol Metab",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Clinical review: The benefits and harms of systemic dehydroepiandrosterone (DHEA) in postmenopausal women with normal adrenal function: a systematic review and meta-analysis.",
+          "pmid": "25279571",
+          "n_participants": 1188
+        },
+        {
+          "citation": "Davis SR et al 2009 J Sex Med",
+          "year": 2009,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "A randomized trial of oral DHEA treatment for sexual function, well-being, and menopausal symptoms in postmenopausal women with low libido.",
+          "pmid": "19619146",
+          "n_participants": 93
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cocoa_flavanols_high_dose",
+      "name": "High-dose cocoa flavanols",
+      "kind": "supplement",
+      "aliases": [
+        "cocoa extract high flavanol",
+        "high-flavanol cocoa"
+      ],
+      "description": "High-flavanol cocoa or cocoa extract interventions typically delivering several hundred milligrams of flavanols per day."
+    },
+    {
+      "slug": "cognitive_function_aged",
+      "name": "Cognitive function in older adults",
+      "kind": "process",
+      "aliases": [
+        "late-life cognition",
+        "cognitive performance in aging"
+      ],
+      "description": "Memory, executive function, attention, and related cognitive performance in middle-aged and older adults."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cocoa_flavanols_high_dose",
+      "outcome_slug": "cognitive_function_aged",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2022 meta-analysis of dietary flavonoids found a significant subgroup benefit for cocoa interventions on cognition (g 0.224, p = 0.036), with stronger signals in middle-aged and older adults from chronic studies.",
+      "population": "middle-aged and older adults without overt dementia, sometimes with lower baseline diet quality or subjective memory concerns",
+      "mechanism": "Cocoa flavanols are usually framed as endothelial and neurovascular modulators that may improve cerebral blood flow and support hippocampal function. The human data fit that story only partially: benefits appear more likely in older adults, chronic dosing, or nutritionally weaker subgroups than in universally healthy high-functioning samples.",
+      "summary": "High-dose cocoa flavanols probably provide modest cognitive benefit in some older adults, but the effect is uneven rather than robustly universal. The most persuasive evidence comes from subgroup-level and domain-specific gains, while several respectable trials remain neutral on broad cognitive batteries.",
+      "caveats": "This edge is sensitive to baseline health, diet quality, dose, and the specific cognitive task used. A small average benefit should not be oversold as a reliable anti-aging cognitive intervention for every older adult.",
+      "evidence": [
+        {
+          "citation": "Lamport DJ et al 2022 Mol Nutr Food Res",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Dietary Flavonoids and Human Cognition: A Meta-Analysis.",
+          "pmid": "35333451",
+          "n_participants": 5519,
+          "effect_quant": {
+            "metric": "g",
+            "value": 0.224,
+            "comparator": "cocoa intervention subgroup effect on cognition across randomized trials"
+          }
+        },
+        {
+          "citation": "Mastroiacovo D et al 2015 Am J Clin Nutr",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cocoa flavanol consumption improves cognitive function, blood pressure control, and metabolic profile in elderly subjects: the Cocoa, Cognition, and Aging (CoCoA) Study--a randomized controlled trial.",
+          "pmid": "25733639",
+          "n_participants": 90
+        },
+        {
+          "citation": "Sloan RP et al 2021 Sci Rep",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Insights into the role of diet and dietary flavanols in cognitive aging: results of a randomized controlled trial.",
+          "pmid": "33589674",
+          "n_participants": 211
+        }
+      ]
+    }
+  ]
+}

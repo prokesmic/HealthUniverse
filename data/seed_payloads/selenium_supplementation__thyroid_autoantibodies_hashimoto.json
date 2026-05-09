@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "selenium_supplementation",
+      "name": "Selenium supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "selenomethionine",
+        "selenite supplementation"
+      ],
+      "description": "Supplemental selenium given to raise selenium status or support thyroid-related antioxidant pathways."
+    },
+    {
+      "slug": "thyroid_autoantibodies_hashimoto",
+      "name": "Thyroid autoantibodies in Hashimoto thyroiditis",
+      "kind": "biomarker",
+      "aliases": [
+        "TPO antibodies in Hashimoto disease",
+        "thyroglobulin and thyroid peroxidase antibodies"
+      ],
+      "description": "Circulating thyroid autoantibody titers, especially TPOAb and TgAb, in autoimmune Hashimoto thyroiditis."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "selenium_supplementation",
+      "outcome_slug": "thyroid_autoantibodies_hashimoto",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "A 2025 meta-analysis of 1,610 participants found lower TPOAb at 3 months (SMD -0.46, 95% CI -0.74 to -0.18) and 6 months (SMD -0.80, 95% CI -1.38 to -0.21), but clinical relevance remains less certain than the biomarker change.",
+      "population": "adults with autoimmune Hashimoto thyroiditis, with and without levothyroxine background therapy",
+      "mechanism": "Selenium supports glutathione peroxidase and other selenoproteins that buffer oxidative stress in thyroid tissue, which may dampen autoimmune signaling and reduce antibody production. The antibody effect appears biologically plausible, but that biomarker shift does not always translate into clear symptom or hard-outcome gains.",
+      "summary": "Selenium supplementation often lowers thyroid autoantibody titers in Hashimoto thyroiditis, but the evidence is still mixed because biomarker improvements are more consistent than patient-centered clinical benefits. The strongest signal is for short-term TPOAb reduction rather than decisive disease modification.",
+      "caveats": "Studies vary by baseline selenium status, dose form, levothyroxine co-treatment, and trial duration. This edge should not be read as proof that selenium reverses Hashimoto disease, only that it can shift antibody markers in many cohorts.",
+      "evidence": [
+        {
+          "citation": "Zhang H et al 2025 Medicine (Baltimore)",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Clinical efficacy of selenium supplementation in patients with Hashimoto thyroiditis: A systematic review and meta-analysis.",
+          "pmid": "40898469",
+          "n_participants": 1610,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -0.46,
+            "ci_low": -0.74,
+            "ci_high": -0.18,
+            "comparator": "selenium versus control for TPOAb after 3 months"
+          }
+        },
+        {
+          "citation": "HuYan 2021 Clin Transl Sci",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of selenium on thyroid autoimmunity and regulatory T cells in patients with Hashimoto's thyroiditis: A prospective randomized-controlled trial.",
+          "pmid": "33650299",
+          "n_participants": 90
+        },
+        {
+          "citation": "Gartner R et al 2003 Biofactors",
+          "year": 2003,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Selenium in the treatment of autoimmune thyroiditis.",
+          "pmid": "14757967",
+          "n_participants": 70
+        }
+      ]
+    }
+  ]
+}

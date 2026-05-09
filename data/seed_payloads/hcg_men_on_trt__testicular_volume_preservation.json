@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hcg_men_on_trt",
+      "name": "hCG co-therapy in men on testosterone replacement",
+      "kind": "drug",
+      "aliases": [
+        "concurrent hCG with TRT",
+        "hCG added to testosterone therapy"
+      ],
+      "description": "Human chorionic gonadotropin used alongside exogenous testosterone in men receiving TRT."
+    },
+    {
+      "slug": "testicular_volume_preservation",
+      "name": "Testicular volume preservation",
+      "kind": "process",
+      "aliases": [
+        "prevention of testicular atrophy",
+        "maintenance of testis size"
+      ],
+      "description": "Preservation of testicular size and related intratesticular function during treatment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hcg_men_on_trt",
+      "outcome_slug": "testicular_volume_preservation",
+      "direction": "protective",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "men receiving exogenous testosterone who wish to preserve testicular function or fertility potential",
+      "mechanism": "hCG acts like luteinizing hormone at the testis, stimulating intratesticular testosterone production even when exogenous testosterone suppresses endogenous gonadotropins. That makes the biological case for preserving testicular size and function quite strong, but the direct human literature on actual volume preservation during TRT is still thinner than the enthusiasm around the practice.",
+      "summary": "Concurrent hCG probably helps preserve testicular function during testosterone therapy and may reduce the tendency toward testicular atrophy. The strongest direct human evidence is still surrogate-heavy, focusing on intratesticular testosterone and semen preservation more than formal serial testicular-volume trials, so this edge stays promising but not fully proven.",
+      "caveats": "This is an honest extrapolation edge: the biology and related fertility data are supportive, but direct randomized evidence on testicular volume itself during TRT is limited. Men should not confuse preservation of intratesticular testosterone or semen parameters with guaranteed prevention of visible testicular shrinkage in every dosing scheme.",
+      "evidence": [
+        {
+          "citation": "Roth MY et al 2010 J Clin Endocrinol Metab",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Dose-dependent increase in intratesticular testosterone by very low-dose human chorionic gonadotropin in normal men with experimental gonadotropin deficiency.",
+          "pmid": "20484472",
+          "n_participants": 37
+        },
+        {
+          "citation": "Amory JK et al 2008 Fertil Steril",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Serum 17-hydroxyprogesterone strongly correlates with intratesticular testosterone in gonadotropin-suppressed normal men receiving various dosages of human chorionic gonadotropin.",
+          "pmid": "17462643",
+          "n_participants": 29
+        },
+        {
+          "citation": "Ramasamy R et al 2018 Transl Androl Urol",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Indications for the use of human chorionic gonadotropic hormone for the management of infertility in hypogonadal men.",
+          "pmid": "30159241",
+          "n_participants": 26
+        }
+      ]
+    }
+  ]
+}

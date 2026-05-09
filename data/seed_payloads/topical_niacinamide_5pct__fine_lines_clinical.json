@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "topical_niacinamide_5pct",
+      "name": "Topical niacinamide 5%",
+      "kind": "drug",
+      "aliases": [
+        "5% niacinamide cream",
+        "topical vitamin B3 5 percent"
+      ],
+      "description": "Topical 5% niacinamide formulations used for skin-aging or barrier-related cosmetic effects."
+    },
+    {
+      "slug": "fine_lines_clinical",
+      "name": "Clinical fine lines",
+      "kind": "condition",
+      "aliases": [
+        "fine facial lines",
+        "clinically graded fine wrinkles"
+      ],
+      "description": "Clinician-graded or study-graded fine lines and early facial wrinkles."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "topical_niacinamide_5pct",
+      "outcome_slug": "fine_lines_clinical",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In a split-face 12-week trial of 50 women with facial photoaging, 5% niacinamide significantly reduced fine lines and wrinkles relative to vehicle. A larger 196-woman comparative study then found a niacinamide-based cosmetic regimen achieved wrinkle reduction benefits comparable to a 0.02% tretinoin regimen over 8 weeks.",
+      "population": "adult women with mild to moderate facial photoaging, fine lines, or wrinkle concerns using topical niacinamide-containing products",
+      "mechanism": "Niacinamide can improve barrier function, reduce transepidermal water loss, and alter skin texture and sallowness in ways that modestly soften the appearance of fine wrinkles over time.",
+      "summary": "Topical 5% niacinamide has a credible but modest anti-aging signal for fine lines. The benefit is smaller than the most aggressive retinoid claims, yet the evidence is decent and the tolerability profile is usually better than prescription tretinoin.",
+      "caveats": "This edge is about mild-to-moderate cosmetic improvement, not dramatic wrinkle reversal. Some supportive studies evaluate niacinamide as part of a broader regimen rather than as the only active ingredient.",
+      "evidence": [
+        {
+          "citation": "BissettDL et al 2005 Dermatol Surg",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Niacinamide: A B vitamin that improves aging facial skin appearance.",
+          "pmid": "16029679",
+          "n_participants": 50
+        },
+        {
+          "citation": "RobinsonLR et al 2010 Br J Dermatol",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A randomized, controlled comparative study of the wrinkle reduction benefits of a cosmetic niacinamide/peptide/retinyl propionate product regimen vs. a prescription 0.02% tretinoin product regimen.",
+          "pmid": "20374604",
+          "n_participants": 196
+        },
+        {
+          "citation": "CostaA et al 2025 Curr Med Chem",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Topical Formulation with Niacinamide Combined with 5 MHz Ultrasound for Improving Skin Ageing: A Double-blind, Randomised, Placebo-controlled Clinical Study.",
+          "pmid": "39171587",
+          "n_participants": 67
+        }
+      ]
+    }
+  ]
+}

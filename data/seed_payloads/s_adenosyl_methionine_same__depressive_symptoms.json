@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "s_adenosyl_methionine_same",
+      "name": "S-adenosyl-L-methionine (SAMe)",
+      "kind": "supplement",
+      "aliases": [
+        "SAMe",
+        "S-adenosyl methionine"
+      ],
+      "description": "An endogenous methyl donor sold as a supplement and studied as monotherapy or augmentation for depression."
+    },
+    {
+      "slug": "depressive_symptoms",
+      "name": "Depressive symptoms",
+      "kind": "condition",
+      "aliases": [
+        "symptom severity in depression",
+        "depression score burden"
+      ],
+      "description": "The severity of depressive symptoms measured on standardized psychiatric rating scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "s_adenosyl_methionine_same",
+      "outcome_slug": "depressive_symptoms",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2024 meta-analysis found SAMe superior to placebo for depressive symptoms overall (SMD -0.58, 95% CI -0.93 to -0.23), but modern adjunctive trials remain inconsistent.",
+      "population": "adults with major depressive disorder treated with SAMe as monotherapy or adjunctive therapy",
+      "mechanism": "SAMe sits inside one-carbon metabolism and monoamine synthesis pathways, so the mechanistic rationale for antidepressant effects is plausible. The clinical picture is less tidy: older and pooled analyses look encouraging, but several better-characterized contemporary augmentation trials are effectively null, which keeps the edge mixed.",
+      "summary": "SAMe may reduce depressive symptoms for some adults, but the literature is contested rather than cleanly positive. Recent pooled evidence still favors benefit over placebo on average, yet modern adjunctive trials repeatedly fail to show a strong reliable advantage, so this is better read as possible help than dependable antidepressant efficacy.",
+      "caveats": "The evidence mixes monotherapy and augmentation designs, oral and parenteral use, and widely different dosing strategies. A positive pooled effect does not erase the fact that more contemporary placebo-controlled trials have produced disappointing or borderline results.",
+      "evidence": [
+        {
+          "citation": "Chen SL et al 2024 Prog Neuropsychopharmacol Biol Psychiatry",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and acceptability of S-adenosyl-L-methionine (SAMe) for depressed patients: A systematic review and meta- analysis.",
+          "pmid": "38423354",
+          "n_participants": 2183,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -0.58,
+            "ci_low": -0.93,
+            "ci_high": -0.23,
+            "comparator": "SAMe versus placebo for depressive symptom reduction"
+          }
+        },
+        {
+          "citation": "Papakostas GI et al 2018 J Psychiatr Res",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "An augmentation study of MSI-195 (S-adenosylmethionine) in Major Depressive Disorder.",
+          "pmid": "30368163",
+          "n_participants": 234
+        },
+        {
+          "citation": "Sarris J et al 2018 Eur Neuropsychopharmacol",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Adjunctive S-adenosylmethionine (SAMe) in treating non-remittent major depressive disorder: An 8-week double-blind, randomized, controlled trial.",
+          "pmid": "30115553",
+          "n_participants": 107
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "testosterone_replacement_hypogonadal",
+      "name": "Testosterone replacement in hypogonadal men",
+      "kind": "drug",
+      "aliases": [
+        "TRT for hypogonadism",
+        "testosterone therapy in low-testosterone men"
+      ],
+      "description": "Exogenous testosterone therapy given to symptomatic men with documented low testosterone."
+    },
+    {
+      "slug": "libido_recovery",
+      "name": "Libido recovery",
+      "kind": "process",
+      "aliases": [
+        "restoration of sexual desire",
+        "recovery of sex drive"
+      ],
+      "description": "Improvement in sexual desire or libido in men with hypogonadism."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "testosterone_replacement_hypogonadal",
+      "outcome_slug": "libido_recovery",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "A 2018 placebo-controlled meta-analysis found testosterone therapy improved sexual desire/libido in hypogonadal men (SMD 0.17, 95% CI 0.01 to 0.34), with somewhat larger class-level effects in a 2017 network meta-analysis.",
+      "population": "adult men with symptomatic hypogonadism and consistently low morning testosterone",
+      "mechanism": "Libido is one of the most testosterone-sensitive symptoms in male hypogonadism, so this is one of the cleanest endocrine replacement signals in the entire brief. Restoring testosterone toward the physiologic range appears to improve sexual desire more reliably than it changes mood or broad vitality endpoints.",
+      "summary": "Testosterone replacement probably improves libido in hypogonadal men, although the average effect is modest rather than dramatic. The literature is fairly consistent that men with documented low testosterone and sexual symptoms are the subgroup most likely to notice a real benefit.",
+      "caveats": "This is replacement therapy in true hypogonadal states, not evidence that testosterone boosts sex drive in eugonadal men. Benefit size varies by baseline symptom burden, partner context, age, and how strictly low testosterone is confirmed before treatment.",
+      "evidence": [
+        {
+          "citation": "Corona G et al 2018 J Clin Endocrinol Metab",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The efficacy and adverse events of testosterone replacement therapy in hypogonadal men: A systematic review and meta-analysis of randomized, placebo-controlled trials.",
+          "pmid": "29562341",
+          "n_participants": 1779,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.17,
+            "ci_low": 0.01,
+            "ci_high": 0.34,
+            "comparator": "testosterone replacement versus placebo for sexual desire/libido"
+          }
+        },
+        {
+          "citation": "Elliott J et al 2017 BMJ Open",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Testosterone therapy in hypogonadal men: a systematic review and network meta-analysis.",
+          "pmid": "29150464",
+          "n_participants": 10000,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.33,
+            "ci_low": 0.16,
+            "ci_high": 0.50,
+            "comparator": "testosterone replacement class effect versus placebo for libido"
+          }
+        },
+        {
+          "citation": "Snyder PJ et al 2016 J Clin Endocrinol Metab",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Testosterone Treatment and Sexual Function in Older Men With Low Testosterone Levels.",
+          "pmid": "27355400",
+          "n_participants": 470
+        }
+      ]
+    }
+  ]
+}

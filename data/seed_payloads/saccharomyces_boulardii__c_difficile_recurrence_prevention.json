@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "saccharomyces_boulardii",
+      "name": "Saccharomyces boulardii",
+      "kind": "supplement",
+      "aliases": [
+        "S. boulardii",
+        "probiotic yeast S. boulardii"
+      ],
+      "description": "A probiotic yeast studied for antibiotic-associated and recurrent gastrointestinal disorders."
+    },
+    {
+      "slug": "c_difficile_recurrence_prevention",
+      "name": "Prevention of recurrent C. difficile infection",
+      "kind": "condition",
+      "aliases": [
+        "recurrent CDI prevention",
+        "prevention of C. difficile relapse"
+      ],
+      "description": "Reducing the risk of recurrent Clostridioides difficile infection after initial treatment response."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "saccharomyces_boulardii",
+      "outcome_slug": "c_difficile_recurrence_prevention",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "Randomized and adjunctive adult data suggest Saccharomyces boulardii may lower recurrence risk in some recurrent C. difficile settings, but the evidence base is old, methodologically uneven, and review-level conclusions remain cautious rather than definitive.",
+      "population": "adults with recurrent C. difficile disease or hospital populations exposed to broad-spectrum antibiotics",
+      "mechanism": "S. boulardii may help oppose recurrence by supporting microbiome recovery and by producing factors that interfere with C. difficile toxin activity. Even so, the clinical recurrence-prevention signal remains less secure than the mechanistic rationale.",
+      "summary": "Saccharomyces boulardii may help prevent recurrent C. difficile in some adjunctive settings, but the evidence is still not strong enough to treat it as a dependable stand-alone recurrence strategy. The literature reads as promising but old, limited, and distinctly lower-certainty than current microbiome-restoration approaches.",
+      "caveats": "Most studies predate modern CDI diagnostics and treatment pathways, and the strongest modern reviews still frame the recurrence benefit as tentative. This edge should therefore stay conservative and adjunctive in tone.",
+      "evidence": [
+        {
+          "citation": "Elmer GW et al 1999 Aliment Pharmacol Ther",
+          "year": 1999,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Behaviour of Saccharomyces boulardii in recurrent Clostridium difficile disease patients.",
+          "pmid": "10594402",
+          "n_participants": 50
+        },
+        {
+          "citation": "McFarland LV 2010 World J Gastroenterol",
+          "year": 2010,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Systematic review and meta-analysis of Saccharomyces boulardii in adult patients.",
+          "pmid": "20458757",
+          "n_participants": 5029
+        },
+        {
+          "citation": "O'Horo JC et al 2014 PLoS One",
+          "year": 2014,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Treatment of recurrent Clostridium difficile infection: a systematic review.",
+          "pmid": "23839210",
+          "n_participants": 11886
+        }
+      ]
+    }
+  ]
+}

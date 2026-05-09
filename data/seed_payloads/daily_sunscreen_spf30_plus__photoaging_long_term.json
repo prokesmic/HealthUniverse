@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "daily_sunscreen_spf30_plus",
+      "name": "Daily sunscreen SPF 30+",
+      "kind": "behavior",
+      "aliases": [
+        "daily broad-spectrum sunscreen use",
+        "habitual SPF 30 or higher sunscreen use"
+      ],
+      "description": "Routine near-daily use of broad-spectrum sunscreen at SPF 30 or higher on sun-exposed skin."
+    },
+    {
+      "slug": "photoaging_long_term",
+      "name": "Long-term photoaging",
+      "kind": "condition",
+      "aliases": [
+        "chronic UV skin aging",
+        "long-term visible photodamage"
+      ],
+      "description": "Gradual visible skin aging from chronic ultraviolet exposure, including wrinkling, roughness, and altered skin texture."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "daily_sunscreen_spf30_plus",
+      "outcome_slug": "photoaging_long_term",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In the landmark community randomized trial, daily sunscreen users had 24% less photoaging progression over 4.5 years than discretionary users, with a relative odds of 0.76 (95% CI 0.59 to 0.98). Later reviews concluded that the small randomized evidence base consistently points in the same protective direction.",
+      "population": "healthy adults using broad-spectrum sunscreen over years rather than short cosmetic testing windows",
+      "mechanism": "Daily broad-spectrum sunscreen reduces cumulative UV-driven collagen damage, dyspigmentation, and surface microtopography change, which is why the long-run signal is more convincing than short vanity metrics.",
+      "summary": "Daily sunscreen is one of the least controversial long-term skin-aging interventions because the best randomized evidence actually followed people for years and showed slower visible photoaging. It is not glamorous, but the evidence here is stronger than for many expensive anti-aging products.",
+      "caveats": "This edge is about consistent long-term use, not occasional beach-day application. It also does not imply sunscreen reverses existing damage to the same degree that prescription retinoids can improve it.",
+      "evidence": [
+        {
+          "citation": "HughesMC et al 2013 Ann Intern Med",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Sunscreen and prevention of skin aging: a randomized trial.",
+          "pmid": "23732711",
+          "n_participants": 903,
+          "effect_quant": {
+            "metric": "relative_odds",
+            "value": 0.76,
+            "unit": "ratio",
+            "comparator": "daily sunscreen versus discretionary sunscreen for photoaging progression"
+          }
+        },
+        {
+          "citation": "RonschH et al 2021 Curr Probl Dermatol",
+          "year": 2021,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The Preventive Value of Sun Protection.",
+          "pmid": "34698024"
+        },
+        {
+          "citation": "IannaconeMR et al 2014 Photodermatol Photoimmunol Photomed",
+          "year": 2014,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of sunscreen on skin cancer and photoaging.",
+          "pmid": "24417448"
+        }
+      ]
+    }
+  ]
+}

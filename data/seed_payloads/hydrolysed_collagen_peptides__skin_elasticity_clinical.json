@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hydrolysed_collagen_peptides",
+      "name": "Hydrolysed collagen peptides",
+      "kind": "supplement",
+      "aliases": [
+        "oral collagen peptides",
+        "collagen hydrolysate"
+      ],
+      "description": "Orally consumed hydrolysed collagen peptide supplements marketed for skin, joint, and connective tissue support."
+    },
+    {
+      "slug": "skin_elasticity_clinical",
+      "name": "Clinical skin elasticity",
+      "kind": "process",
+      "aliases": [
+        "skin elasticity",
+        "cutaneous elasticity"
+      ],
+      "description": "Clinically measured or instrument-measured skin elasticity in human trials."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hydrolysed_collagen_peptides",
+      "outcome_slug": "skin_elasticity_clinical",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Across 26 randomized trials involving 1,721 participants, oral hydrolysed collagen significantly improved skin elasticity versus placebo, and two additional meta-analyses reached the same directional conclusion in pooled cohorts of 967 and 1,125 participants.",
+      "population": "mostly adult women with visible skin aging or cosmetic concerns taking oral hydrolysed collagen for roughly 8 to 24 weeks",
+      "mechanism": "Hydrolysed collagen peptides may support dermal extracellular matrix turnover and water-binding properties, with downstream effects on collagen density and elastic behavior of the skin.",
+      "summary": "This is one of the cleaner consumer-aesthetic supplement edges. Multiple modern meta-analyses converge on modest but repeatable improvement in skin elasticity after a few months of oral hydrolysed collagen supplementation.",
+      "caveats": "Most trials are industry-adjacent and concentrate on women seeking anti-aging benefits, so the effect is better interpreted as cosmetic improvement rather than structural reversal of aging. The absolute effect size is usually modest, not transformative.",
+      "evidence": [
+        {
+          "citation": "PuSY et al 2023 Nutrients",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of Oral Collagen for Skin Anti-Aging: A Systematic Review and Meta-Analysis.",
+          "pmid": "37432180",
+          "n_participants": 1721
+        },
+        {
+          "citation": "deMirandaRB et al 2021 Int J Dermatol",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of hydrolyzed collagen supplementation on skin aging: a systematic review and meta-analysis.",
+          "pmid": "33742704",
+          "n_participants": 1125
+        },
+        {
+          "citation": "ShahPS et al 2023 Cureus",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Exploring the Impact of Hydrolyzed Collagen Oral Supplementation on Skin Rejuvenation: A Systematic Review and Meta-Analysis.",
+          "pmid": "38192916",
+          "n_participants": 967
+        }
+      ]
+    }
+  ]
+}

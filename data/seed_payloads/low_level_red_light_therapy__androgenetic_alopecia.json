@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "low_level_red_light_therapy",
+      "name": "Low-level red light therapy",
+      "kind": "process",
+      "aliases": [
+        "low-level laser therapy",
+        "photobiomodulation for hair loss",
+        "LLLT"
+      ],
+      "description": "Low-level red light or laser-based photobiomodulation used for patterned hair loss."
+    },
+    {
+      "slug": "androgenetic_alopecia",
+      "name": "Androgenetic alopecia",
+      "kind": "condition",
+      "aliases": [
+        "pattern hair loss",
+        "male or female pattern baldness"
+      ],
+      "description": "Pattern hair loss in men or women."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "low_level_red_light_therapy",
+      "outcome_slug": "androgenetic_alopecia",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2025 alopecia meta-analysis covering 3,098 patients found significant hair-density improvement in androgenetic alopecia after low-level light therapy versus placebo. Smaller controlled trials and earlier network reviews point in the same direction, but the evidence quality remains uneven and device-specific.",
+      "population": "men and women with androgenetic alopecia using home-use or clinic-based low-level red light or laser devices",
+      "mechanism": "Photobiomodulation may alter follicular energy signaling and anagen maintenance, but device design, wavelength, and treatment schedule vary enough that the intervention behaves more like a class of related tools than a single standardized treatment.",
+      "summary": "Low-level red light therapy for androgenetic alopecia looks promising rather than definitive. Across pooled trials, the direction is generally favorable, but the literature is heterogeneous and heavily dependent on device type and protocol.",
+      "caveats": "This is not a slam-dunk substitute for established drug therapy. The effect size is modest, sham-controlled data are still limited, and the market has moved faster than the evidence base.",
+      "evidence": [
+        {
+          "citation": "WuH et al 2025 Dermatol Surg",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Low-Level Laser and LED Therapy in Alopecia: A Systematic Review and Meta-Analysis.",
+          "pmid": "39404126",
+          "n_participants": 3098
+        },
+        {
+          "citation": "EsmatSM et al 2018 Indian J Dermatol Venereol Leprol",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "The effectiveness of adding low-level light therapy to minoxidil 5% solution in the treatment of patients with androgenetic alopecia.",
+          "pmid": "30027912",
+          "n_participants": 50
+        },
+        {
+          "citation": "GuptaAK et al 2018 J Eur Acad Dermatol Venereol",
+          "year": 2018,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Efficacy of non-surgical treatments for androgenetic alopecia: a systematic review and network meta-analysis.",
+          "pmid": "29797431"
+        }
+      ]
+    }
+  ]
+}

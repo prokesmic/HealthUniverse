@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "saffron_extract",
+      "name": "Saffron extract",
+      "kind": "supplement",
+      "aliases": [
+        "Crocus sativus extract",
+        "saffron stigma extract"
+      ],
+      "description": "Extracts or encapsulated stigma preparations from Crocus sativus used in depression trials."
+    },
+    {
+      "slug": "mild_to_moderate_depression",
+      "name": "Mild to moderate depression",
+      "kind": "condition",
+      "aliases": [
+        "mild depressive disorder",
+        "moderate depressive symptoms"
+      ],
+      "description": "Clinical depression of mild to moderate severity, usually measured on Hamilton or Beck scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "saffron_extract",
+      "outcome_slug": "mild_to_moderate_depression",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "A 2013 meta-analysis of randomized trials found a large pooled benefit for saffron versus placebo in major depressive disorder (mean effect size 1.62, P < 0.001).",
+      "population": "adults with mild to moderate major depressive disorder, mostly from short Iranian randomized trials",
+      "mechanism": "Saffron is hypothesized to affect serotonergic signaling alongside antioxidant and anti-inflammatory pathways, which is at least directionally consistent with its antidepressant signal. The bigger issue is not plausibility but external validity: the clinical literature is positive yet concentrated in small, short trials from a limited set of research groups.",
+      "summary": "Saffron extract probably improves depressive symptoms in mild to moderate depression over short treatment windows. The pooled evidence is favorable, but confidence should stay tempered because the trial base is geographically concentrated, relatively small, and not yet as independently replicated as standard pharmacologic treatments.",
+      "caveats": "Most studies are brief and come from a small number of centers, which raises the risk of overstating consistency. This edge supports saffron as a plausible adjunct or alternative in selected mild-to-moderate cases, not as a universally proven replacement for standard depression care.",
+      "evidence": [
+        {
+          "citation": "Hausenblas HA et al 2013 J Integr Med",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Saffron (Crocus sativus L.) and major depressive disorder: a meta-analysis of randomized clinical trials.",
+          "pmid": "24299602",
+          "n_participants": 107,
+          "effect_quant": {
+            "metric": "mean_effect_size",
+            "value": 1.62,
+            "comparator": "saffron supplementation versus placebo for depressive symptoms in MDD"
+          }
+        },
+        {
+          "citation": "Toth B et al 2020 J Nerv Ment Dis",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Safety and Efficacy of Saffron (Crocus sativus L.) for Treating Mild to Moderate Depression: A Systematic Review and Meta-analysis.",
+          "pmid": "32221179",
+          "n_participants": 655
+        },
+        {
+          "citation": "Akhondzadeh S et al 2005 Phytother Res",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Crocus sativus L. in the treatment of mild to moderate depression: a double-blind, randomized and placebo-controlled trial.",
+          "pmid": "15852492",
+          "n_participants": 40
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "low_load_blood_flow_restriction",
+      "name": "Low-load blood-flow-restriction training",
+      "kind": "behavior",
+      "aliases": [
+        "LL-BFR training",
+        "low-load BFR resistance training",
+        "occlusion-assisted low-load training"
+      ],
+      "description": "Low-load resistance exercise performed with blood-flow restriction to preserve or rebuild muscle when heavy loading is difficult."
+    },
+    {
+      "slug": "muscle_hypertrophy_rehab",
+      "name": "Muscle hypertrophy during rehabilitation",
+      "kind": "process",
+      "aliases": [
+        "rehabilitation muscle growth",
+        "muscle size recovery in rehab"
+      ],
+      "description": "Restoration or increase of muscle size during rehabilitation after injury or surgery."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "low_load_blood_flow_restriction",
+      "outcome_slug": "muscle_hypertrophy_rehab",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Rehabilitation-focused evidence suggests low-load BFR can preserve or rebuild muscle size without requiring heavy loads. In ACL reconstruction rehabilitation, a 2025 meta-analysis of 245 patients found better strength and symptoms with BFR but variable effects on quadriceps muscle volume (SMD 0.28, P = 0.43). Direct trials still show clinically useful hypertrophy signals: after arthroscopic partial meniscectomy and ACL reconstruction, BFR groups improved quadriceps thickness more than routine rehabilitation alone, while matching heavy-load training for muscle-thickness gains in a National Health Service ACL cohort.",
+      "population": "patients in musculoskeletal rehabilitation, especially after knee surgery when heavy resistance loading is limited",
+      "mechanism": "Blood-flow restriction allows low mechanical loads to create a stronger hypertrophic stimulus, helping offset disuse atrophy when pain, healing tissue, or joint tolerance limits conventional high-load training.",
+      "summary": "This is one of the better-supported niche rehab tools in the batch. Low-load BFR is not magic, but it gives clinicians and athletes a credible way to chase hypertrophy and strength when standard heavy loading is too provocative or too early.",
+      "caveats": "The muscle-size effect is not uniformly superior in every review, and protocols differ widely in cuff pressure, frequency, and exercise selection. It is best framed as a useful substitute or bridge, not a universal replacement for later-stage heavy loading.",
+      "evidence": [
+        {
+          "citation": "GopinatthV et al 2025 Arthroscopy",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Blood Flow Restriction Enhances Recovery After Anterior Cruciate Ligament Reconstruction: A Systematic Review and Meta-analysis of Randomized Controlled Trials.",
+          "pmid": "38889851",
+          "n_participants": 245
+        },
+        {
+          "citation": "HughesL et al 2019 Sports Med",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Comparing the Effectiveness of Blood Flow Restriction and Traditional Heavy Load Resistance Training in the Post-Surgery Rehabilitation of Anterior Cruciate Ligament Reconstruction Patients: A UK National Health Service Randomised Controlled Trial.",
+          "pmid": "31301034",
+          "n_participants": 28
+        },
+        {
+          "citation": "LiX et al 2023 BMC Musculoskelet Disord",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of quadriceps training at different levels of blood flow restriction on quadriceps strength and thickness in the mid-term postoperative period after anterior cruciate ligament reconstruction: a randomized controlled external pilot study.",
+          "pmid": "37158913",
+          "n_participants": 30
+        }
+      ]
+    }
+  ]
+}

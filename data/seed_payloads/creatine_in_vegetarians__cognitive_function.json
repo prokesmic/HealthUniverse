@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "creatine_in_vegetarians",
+      "name": "Creatine supplementation in vegetarians",
+      "kind": "supplement",
+      "aliases": [
+        "creatine in vegetarian adults",
+        "vegetarian creatine loading"
+      ],
+      "description": "Creatine monohydrate supplementation used in people who avoid meat and therefore may have lower baseline creatine stores."
+    },
+    {
+      "slug": "cognitive_function",
+      "name": "Cognitive function",
+      "kind": "process",
+      "aliases": [
+        "overall cognition",
+        "cognitive performance"
+      ],
+      "description": "General cognitive performance including memory, reasoning, attention, and related neuropsychological tasks."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "creatine_in_vegetarians",
+      "outcome_slug": "cognitive_function",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "population": "healthy vegetarian adults, mostly young women or mixed-diet cohorts with vegetarian subgroups",
+      "mechanism": "Creatine helps buffer cellular ATP turnover, and vegetarians generally start with lower dietary creatine intake than omnivores. That makes this one of the cleaner nootropic mechanisms in the supplement space: the people with the lowest baseline substrate availability are the ones most likely to show modest gains in working memory or reasoning after repletion.",
+      "summary": "Creatine supplementation appears to modestly improve selected cognitive outcomes in vegetarians, especially working memory and reasoning tasks. The effect is not universal across all cognitive domains, but this is one of the more believable nutrition-to-cognition signals because the benefit tracks a biologically plausible low-intake subgroup.",
+      "caveats": "The data are still built from relatively small trials and task-specific outcomes rather than broad real-world cognition. This should be read as targeted support for select mental performance measures in low-creatine consumers, not proof of a dramatic nootropic effect for everyone.",
+      "evidence": [
+        {
+          "citation": "Avgerinos KI et al 2018 Exp Gerontol",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of creatine supplementation on cognitive function of healthy individuals: A systematic review of randomized controlled trials.",
+          "pmid": "29704637",
+          "n_participants": 281
+        },
+        {
+          "citation": "Rae C et al 2003 Proc Biol Sci",
+          "year": 2003,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Oral creatine monohydrate supplementation improves brain performance: a double-blind, placebo-controlled, cross-over trial.",
+          "pmid": "14561278",
+          "n_participants": 45
+        },
+        {
+          "citation": "Benton D and Donohoe R 2011 Br J Nutr",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The influence of creatine supplementation on the cognitive functioning of vegetarians and omnivores.",
+          "pmid": "21118604",
+          "n_participants": 128
+        }
+      ]
+    }
+  ]
+}

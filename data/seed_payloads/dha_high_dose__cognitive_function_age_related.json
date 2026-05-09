@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "dha_high_dose",
+      "name": "High-dose docosahexaenoic acid (DHA)",
+      "kind": "supplement",
+      "aliases": [
+        "high-dose DHA",
+        "DHA-rich fish oil"
+      ],
+      "description": "DHA-dominant omega-3 supplementation at gram-level doses used in aging and cognition trials."
+    },
+    {
+      "slug": "cognitive_function_age_related",
+      "name": "Age-related cognitive function",
+      "kind": "process",
+      "aliases": [
+        "cognition in older adults",
+        "age-related cognitive performance"
+      ],
+      "description": "Memory, attention, executive function, and related cognitive outcomes in older adults with normal cognition or mild impairment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "dha_high_dose",
+      "outcome_slug": "cognitive_function_age_related",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2020 systematic review and meta-analysis found little pooled evidence that DHA supplementation prevents age-related decline across memory, executive function, attention, or working memory.",
+      "population": "older adults with normal cognition, subjective decline, or mild cognitive impairment",
+      "mechanism": "DHA is a major structural fatty acid in neuronal membranes, so the biological case for supplementation is strong on paper. Human trials suggest that simply raising DHA intake in later life is not enough to produce consistent cognitive gains, though selected mildly impaired subgroups may still derive modest benefit.",
+      "summary": "High-dose DHA has not shown a dependable broad benefit for age-related cognition overall. Meta-analysis and larger prevention-style trials are mostly null, but a few longer studies in mild cognitive impairment still report selective improvements, leaving the edge mixed rather than conclusively ineffective.",
+      "caveats": "This literature mixes cognitively normal elders with MCI cohorts, which likely dilutes subgroup effects. Positive findings in specific impaired populations should not be generalized to universal brain optimization in otherwise healthy older adults.",
+      "evidence": [
+        {
+          "citation": "Balachandar R et al 2020 Eur J Clin Pharmacol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Docosahexaenoic acid supplementation in age-related cognitive decline: a systematic review and meta-analysis.",
+          "pmid": "32060571",
+          "n_participants": 2327
+        },
+        {
+          "citation": "Danthiir V et al 2018 Am J Clin Nutr",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "An 18-mo randomized, double-blind, placebo-controlled trial of DHA-rich fish oil to prevent age-related cognitive decline in cognitively normal older adults.",
+          "pmid": "29722833",
+          "n_participants": 391
+        },
+        {
+          "citation": "Zhang YP et al 2018 J Neurol Neurosurg Psychiatry",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "DHA supplementation improves cognitive function via enhancing Aβ-mediated autophagy in Chinese elderly with mild cognitive impairment: a randomised placebo-controlled trial.",
+          "pmid": "29142143",
+          "n_participants": 240
+        }
+      ]
+    }
+  ]
+}

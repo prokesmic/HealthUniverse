@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "apple_cider_vinegar",
+      "name": "Apple cider vinegar",
+      "kind": "food",
+      "aliases": [
+        "ACV",
+        "vinegar with meals"
+      ],
+      "description": "Apple cider vinegar or closely related meal-time vinegar interventions used to blunt glycaemic response to carbohydrate-rich meals."
+    },
+    {
+      "slug": "postprandial_glycaemia",
+      "name": "Postprandial glycaemia",
+      "kind": "biomarker",
+      "aliases": [
+        "post-meal glucose response",
+        "postprandial blood glucose"
+      ],
+      "description": "Short-term blood glucose excursion, peak glucose, or glucose area under the curve after a meal."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "apple_cider_vinegar",
+      "outcome_slug": "postprandial_glycaemia",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A 2017 meta-analysis of meal-time vinegar trials found lower postprandial glucose AUC with vinegar than control, and a 2020 crossover rice-meal study in 15 healthy women cut 0-120 minute incremental glucose AUC by 42.4% when vinegar-soaked dried apple was co-ingested. Chronic vinegar trials also improve fasting glycaemia, but the cleanest evidence is still the acute post-meal signal.",
+      "population": "healthy adults or adults with impaired glycaemic control consuming vinegar with carbohydrate-containing meals or daily over weeks",
+      "mechanism": "Acetic acid likely slows gastric emptying and dampens early starch digestion, reducing the speed at which glucose from a meal reaches the bloodstream.",
+      "summary": "Apple cider vinegar has a real acute glycaemic edge, but it is narrower than supplement marketing suggests. The literature supports a modest reduction in post-meal glucose excursions when vinegar is taken with starchy meals, while chronic benefits are less uniform and depend on the population studied.",
+      "caveats": "Most trials use small samples, mixed vinegar types, and controlled test meals rather than everyday eating patterns. This edge is about short-term glycaemic response, not proof that vinegar meaningfully treats diabetes on its own.",
+      "evidence": [
+        {
+          "citation": "ShishehborF et al 2017 Diabetes Res Clin Pract",
+          "year": 2017,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Vinegar consumption can attenuate postprandial glucose and insulin responses; a systematic review and meta-analysis of clinical trials.",
+          "pmid": "28292654"
+        },
+        {
+          "citation": "ZhaoW et al 2020 Nutr Res",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Co-ingested vinegar-soaked or preloaded dried apple mitigated acute postprandial glycemia of rice meal in healthy subjects under equicarbohydrate conditions.",
+          "pmid": "33075621",
+          "n_participants": 15,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": -42.4,
+            "unit": "percent",
+            "comparator": "incremental glucose AUC0-120 versus rice reference meal"
+          }
+        },
+        {
+          "citation": "JasbiP et al 2019 Food Funct",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Daily red wine vinegar ingestion for eight weeks improves glucose homeostasis and affects the metabolome but does not reduce adiposity in adults.",
+          "pmid": "31647087",
+          "n_participants": 45,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": -8.3,
+            "unit": "percent",
+            "comparator": "change in insulin resistance in vinegar group over 8 weeks"
+          }
+        }
+      ]
+    }
+  ]
+}

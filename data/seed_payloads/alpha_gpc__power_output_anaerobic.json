@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "alpha_gpc",
+      "name": "Alpha-glycerylphosphorylcholine (alpha-GPC)",
+      "kind": "supplement",
+      "aliases": [
+        "alpha-GPC",
+        "alpha glycerylphosphorylcholine"
+      ],
+      "description": "A choline-containing supplement marketed for cognitive and exercise-performance support."
+    },
+    {
+      "slug": "power_output_anaerobic",
+      "name": "Anaerobic power output",
+      "kind": "process",
+      "aliases": [
+        "explosive power",
+        "high-intensity power production"
+      ],
+      "description": "Peak or near-peak power production during short, high-intensity exercise tasks."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "alpha_gpc",
+      "outcome_slug": "power_output_anaerobic",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "healthy trained or recreationally active men",
+      "mechanism": "Alpha-GPC may transiently increase choline availability and cholinergic signaling, which could plausibly support neuromuscular drive during explosive efforts. In practice, the human data are inconsistent, with some signals for force or jump mechanics but little proof of a robust repeatable anaerobic-power benefit across protocols.",
+      "summary": "Evidence that alpha-GPC improves anaerobic power output is still preliminary and mixed. Small randomized trials show occasional gains in isolated force or jump-power outcomes, but null findings are common and one of the positive cycling studies used a multi-ingredient supplement that makes alpha-GPC-specific attribution impossible.",
+      "caveats": "The total evidence base is tiny, male-dominated, and built from short supplementation periods. Because several studies are underpowered or confounded by co-ingredients, this edge should be treated as speculative rather than established.",
+      "evidence": [
+        {
+          "citation": "Ziegenfuss TN et al 2015 J Int Soc Sports Nutr",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "The effect of 6 days of alpha glycerylphosphorylcholine on isometric strength.",
+          "pmid": "26582972",
+          "n_participants": 13
+        },
+        {
+          "citation": "Marcus L et al 2017 J Int Soc Sports Nutr",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Evaluation of the effects of two doses of alpha glycerylphosphorylcholine on physical and psychomotor performance.",
+          "pmid": "29042830",
+          "n_participants": 48
+        },
+        {
+          "citation": "King RJ et al 2023 J Int Soc Sports Nutr",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Effects of branched chain amino acids, l-citrulline, and alpha-glycerylphosphorylcholine supplementation on exercise performance in trained cyclists: a randomized crossover trial.",
+          "pmid": "37229544",
+          "n_participants": 30
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "methylene_blue_low_dose",
+      "name": "Low-dose methylene blue",
+      "kind": "drug",
+      "aliases": [
+        "methylene blue",
+        "low-dose methylthioninium"
+      ],
+      "description": "Low-dose methylene blue used experimentally for memory modulation, neuroprotection, or perioperative cognitive outcomes."
+    },
+    {
+      "slug": "cognition_humans",
+      "name": "Human cognitive performance",
+      "kind": "process",
+      "aliases": [
+        "cognition in humans",
+        "human memory and executive performance"
+      ],
+      "description": "Cognitive performance in human participants across memory, attention, executive, or postoperative neurocognitive outcomes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "methylene_blue_low_dose",
+      "outcome_slug": "cognition_humans",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "healthy adults, psychiatric patients, and older surgical patients",
+      "mechanism": "Low-dose methylene blue may influence mitochondrial electron transport and neural energy metabolism, which could strengthen memory consolidation or preserve cognition under stress. Human evidence is fragmented, however, and effects differ sharply by context, with some benefit signals in memory retention or postoperative cognition but little support for a broad consistent enhancement profile.",
+      "summary": "Methylene blue remains an early, mixed human cognition edge rather than a validated nootropic. Some controlled studies show benefits in memory-related or perioperative cognitive outcomes, while others find no meaningful cognitive improvement even when mood symptoms change, so the overall human picture is intriguing but unsettled.",
+      "caveats": "The populations, doses, and cognitive endpoints vary widely across the small literature. A compound that helps extinction memory in a specific task or reduces postoperative cognitive complications is not the same thing as a broadly effective everyday cognitive enhancer.",
+      "evidence": [
+        {
+          "citation": "Telch MJ et al 2014 Am J Psychiatry",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of post-session administration of methylene blue on fear extinction and contextual memory in adults with claustrophobia.",
+          "pmid": "25018057",
+          "n_participants": 42
+        },
+        {
+          "citation": "Alda M et al 2017 Br J Psychiatry",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Methylene blue treatment for residual symptoms of bipolar disorder: randomised crossover study.",
+          "pmid": "27284082",
+          "n_participants": 37
+        },
+        {
+          "citation": "Wang Y et al 2021 J Clin Anesth",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Methylene blue reduces incidence of early postoperative cognitive disorders in elderly patients undergoing major non-cardiac surgery: An open-label randomized controlled clinical trial.",
+          "pmid": "33091706",
+          "n_participants": 248
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "lactobacillus_plantarum_299v",
+      "name": "Lactobacillus plantarum 299v",
+      "kind": "supplement",
+      "aliases": [
+        "LP299V",
+        "Lactiplantibacillus plantarum 299v"
+      ],
+      "description": "A probiotic strain studied for irritable bowel syndrome and stress-related gut outcomes."
+    },
+    {
+      "slug": "ibs_global_severity",
+      "name": "Global IBS symptom severity",
+      "kind": "condition",
+      "aliases": [
+        "overall irritable bowel syndrome symptom burden",
+        "IBS global symptom score"
+      ],
+      "description": "Overall symptom severity in irritable bowel syndrome, including abdominal pain, bloating, bowel habit dissatisfaction, or composite symptom scores."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "lactobacillus_plantarum_299v",
+      "outcome_slug": "ibs_global_severity",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Small early randomized trials favored LP299V for abdominal pain and overall IBS symptoms, but a later 120-patient placebo-controlled trial found no significant advantage for pain, bloating, or incomplete rectal emptying.",
+      "population": "adults with irritable bowel syndrome, including mixed and constipation-predominant symptom presentations",
+      "mechanism": "LP299V is thought to alter luminal fermentation, mucosal interactions, and stress-responsive gut signaling. That biology may help some patients, but the clinical signal looks inconsistent enough that any benefit is probably context-specific rather than universal across IBS populations.",
+      "summary": "Lactobacillus plantarum 299v may reduce IBS symptom burden in some settings, but the total evidence is mixed. The early positive trials are hard to ignore, yet the later larger randomized study pulls the overall read toward a modest and uncertain effect rather than a dependable probiotic fix.",
+      "caveats": "IBS is heterogeneous, and outcomes differ depending on whether a trial emphasizes pain, bloating, bowel habits, or composite symptom scores. Strain, formulation, and study quality also matter, so this edge should be interpreted more cautiously than the strongest probiotic marketing suggests.",
+      "evidence": [
+        {
+          "citation": "Niedzielin K et al 2001 Eur J Gastroenterol Hepatol",
+          "year": 2001,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A controlled, double-blind, randomized study on the efficacy of Lactobacillus plantarum 299V in patients with irritable bowel syndrome.",
+          "pmid": "11711768",
+          "n_participants": 40
+        },
+        {
+          "citation": "Sen S et al 2002 Dig Dis Sci",
+          "year": 2002,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of Lactobacillus plantarum 299v on colonic fermentation and symptoms of irritable bowel syndrome.",
+          "pmid": "12452404",
+          "n_participants": 12
+        },
+        {
+          "citation": "Khan MA et al 2022 J Pak Med Assoc",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Role of Lactobacillus plantarum 299v versus Placebo in symptomatic improvement of irritable bowel syndrome patients.",
+          "pmid": "35320214",
+          "n_participants": 120
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "lion_s_mane_hericium",
+      "name": "Lion's mane mushroom (Hericium erinaceus)",
+      "kind": "supplement",
+      "aliases": [
+        "Hericium erinaceus",
+        "lion's mane"
+      ],
+      "description": "Supplementation with fruiting body or powdered preparations of the edible mushroom Hericium erinaceus."
+    },
+    {
+      "slug": "cognitive_function_mild_impairment",
+      "name": "Cognitive function in mild impairment",
+      "kind": "process",
+      "aliases": [
+        "mild cognitive impairment performance",
+        "cognition in MCI"
+      ],
+      "description": "Objective cognitive performance in people with mild cognitive impairment or early subclinical decline."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "lion_s_mane_hericium",
+      "outcome_slug": "cognitive_function_mild_impairment",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "older adults with mild cognitive impairment, plus healthy younger adults in exploratory trials",
+      "mechanism": "Hericium erinaceus contains compounds such as hericenones and erinacines that are proposed to influence neurotrophic signaling and neuronal plasticity. Human data are still too early and sparse to establish whether those mechanisms translate into a reproducible cognitive benefit in mild impairment rather than isolated task-level improvements.",
+      "summary": "Lion's mane remains an intriguing but still uncertain cognitive supplement. One older placebo-controlled trial in mild cognitive impairment reported improvement during active intake, but newer healthy-adult trials show either narrowly positive or largely null acute effects, which keeps the overall edge in the mixed, low-confidence range.",
+      "caveats": "The MCI literature is extremely small, and later studies often involve healthy younger adults rather than the target population of mild impairment. Any apparent benefit may depend on dose, extract standardization, and continuous use, with little evidence that effects persist after stopping supplementation.",
+      "evidence": [
+        {
+          "citation": "Mori K et al 2009 Phytother Res",
+          "year": 2009,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Improving effects of the mushroom Yamabushitake (Hericium erinaceus) on mild cognitive impairment: a double-blind placebo-controlled clinical trial.",
+          "pmid": "18844328",
+          "n_participants": 30
+        },
+        {
+          "citation": "Vigna L et al 2023 Nutrients",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "The Acute and Chronic Effects of Lion's Mane Mushroom Supplementation on Cognitive Function, Stress and Mood in Young Adults: A Double-Blind, Parallel Groups, Pilot Study.",
+          "pmid": "38004235",
+          "n_participants": 41
+        },
+        {
+          "citation": "Bennett AP et al 2025 Front Nutr",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Acute effects of a standardised extract of Hericium erinaceus (Lion's Mane mushroom) on cognition and mood in healthy younger adults: a double-blind randomised placebo-controlled study.",
+          "pmid": "40276537",
+          "n_participants": 18
+        }
+      ]
+    }
+  ]
+}

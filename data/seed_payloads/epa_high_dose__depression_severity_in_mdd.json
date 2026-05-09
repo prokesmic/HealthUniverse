@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "epa_high_dose",
+      "name": "High-dose eicosapentaenoic acid (EPA)",
+      "kind": "supplement",
+      "aliases": [
+        "high-EPA omega-3",
+        "EPA-enriched omega-3"
+      ],
+      "description": "EPA-dominant omega-3 supplementation at doses typically used in clinical depression trials."
+    },
+    {
+      "slug": "depression_severity_in_mdd",
+      "name": "Depression severity in major depressive disorder",
+      "kind": "condition",
+      "aliases": [
+        "MDD symptom severity",
+        "depressive symptom burden in major depression"
+      ],
+      "description": "Clinician-rated or self-reported depressive symptom severity in adults with major depressive disorder."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "epa_high_dose",
+      "outcome_slug": "depression_severity_in_mdd",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2016 meta-analysis of adults with major depressive disorder found an overall omega-3 benefit (SMD 0.398, 95% CI 0.114 to 0.682) and identified higher EPA dose as a likely driver of that signal.",
+      "population": "adults with DSM-defined major depressive disorder, either as monotherapy or add-on therapy",
+      "mechanism": "EPA is often positioned as the anti-inflammatory member of the omega-3 family, and depression trials suggest that any omega-3 benefit is more likely to come from EPA-heavy formulations than DHA-heavy ones. Even so, the effect seems modest and inconsistent rather than antidepressant-grade across all trial settings.",
+      "summary": "High-EPA omega-3 supplementation probably reduces depressive symptom severity in at least some adults with major depressive disorder, but the effect is uneven and not universally reproducible. The best case for benefit comes from meta-regression and selected randomized trials, whereas large monotherapy studies still show meaningful placebo-like outcomes and occasional null results.",
+      "caveats": "EPA has been studied both alone and as adjunctive therapy, and response may depend on baseline inflammation, antidepressant use, and formulation purity. A positive average effect does not mean high-dose EPA is a reliable stand-alone replacement for standard depression treatment.",
+      "evidence": [
+        {
+          "citation": "Mocking RJT et al 2016 Transl Psychiatry",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Meta-analysis and meta-regression of omega-3 polyunsaturated fatty acid supplementation for major depressive disorder.",
+          "pmid": "26978738",
+          "n_participants": 1233,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.398,
+            "ci_low": 0.114,
+            "ci_high": 0.682,
+            "comparator": "omega-3 supplementation versus placebo for depressive symptoms in adult MDD"
+          }
+        },
+        {
+          "citation": "Mischoulon D et al 2015 J Clin Psychiatry",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "A double-blind, randomized controlled clinical trial comparing eicosapentaenoic acid versus docosahexaenoic acid for depression.",
+          "pmid": "25272149",
+          "n_participants": 196
+        },
+        {
+          "citation": "Jazayeri S et al 2008 Aust N Z J Psychiatry",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Comparison of therapeutic effects of omega-3 fatty acid eicosapentaenoic acid and fluoxetine, separately and in combination, in major depressive disorder.",
+          "pmid": "18247193",
+          "n_participants": 60
+        }
+      ]
+    }
+  ]
+}

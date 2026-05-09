@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "chronic_endurance_overtraining",
+      "name": "Chronic endurance overtraining",
+      "kind": "behavior",
+      "aliases": [
+        "overtraining syndrome in endurance athletes",
+        "prolonged excessive endurance training"
+      ],
+      "description": "Sustained endurance training loads that exceed recovery capacity and are accompanied by persistent fatigue or overtraining symptoms."
+    },
+    {
+      "slug": "testosterone_men",
+      "name": "Testosterone in men",
+      "kind": "process",
+      "aliases": [
+        "male testosterone status",
+        "circulating testosterone in men"
+      ],
+      "description": "Circulating testosterone concentrations and related androgen status in men."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "chronic_endurance_overtraining",
+      "outcome_slug": "testosterone_men",
+      "direction": "harmful",
+      "tier": "X",
+      "effect_size": "moderate",
+      "population": "male endurance athletes exposed to high-volume or prolonged training loads with inadequate recovery",
+      "effect_quant": "In a 1991 overtraining cohort, testosterone fell from 6.8 to 4.4 ng/mL in the athletes who developed overtraining symptoms, and a six-man prolonged endurance training experiment reported a 17% testosterone decline after two weeks.",
+      "mechanism": "Persistent endurance overreaching lowers energy availability, disrupts hypothalamic-pituitary signaling, and often couples androgen suppression with higher prolactin or broader recovery stress markers. The signal looks more like reversible central suppression from chronic strain than permanent gonadal failure.",
+      "summary": "Human evidence suggests that genuine endurance overtraining can suppress testosterone in men, but the literature is thin and based largely on small athlete cohorts. The direction is still credible because the available studies point the same way: when endurance load outstrips recovery for long enough, resting testosterone tends to drift down.",
+      "caveats": "Most direct evidence comes from small observational or experimental athlete samples, so precision is poor and effect sizes may not generalize to recreational exercisers. This edge is best read as a stress-recovery warning, not as proof that endurance training itself is inherently anti-androgenic.",
+      "evidence": [
+        {
+          "citation": "Hackney AC 1991 Biol Sport",
+          "year": 1991,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "HORMONAL CHANGES AT REST IN OVERTRAINED ENDURANCE ATHLETES.",
+          "pmid": "32218643",
+          "n_participants": 8,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -2.4,
+            "unit": "ng/mL",
+            "comparator": "resting testosterone before versus after overtraining in symptomatic athletes"
+          }
+        },
+        {
+          "citation": "Griffith RO et al 1990 Phys Sportsmed",
+          "year": 1990,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Testicular Function During Exhaustive Endurance Training.",
+          "pmid": "27424583",
+          "n_participants": 6,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -17.0,
+            "unit": "%",
+            "comparator": "after exhaustive endurance training versus baseline"
+          }
+        },
+        {
+          "citation": "Friedl KE et al 2026 J Clin Endocrinol Metab",
+          "year": 2026,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Stress-Associated Testosterone Suppression: Central Adaptation or Hypogonadism?",
+          "pmid": "42044038"
+        }
+      ]
+    }
+  ]
+}

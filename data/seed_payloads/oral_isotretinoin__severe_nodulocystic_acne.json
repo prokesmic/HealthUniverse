@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "oral_isotretinoin",
+      "name": "Oral isotretinoin",
+      "kind": "drug",
+      "aliases": [
+        "systemic isotretinoin",
+        "13-cis-retinoic acid oral therapy"
+      ],
+      "description": "Oral isotretinoin treatment used for moderate-to-severe acne, especially severe recalcitrant nodular or nodulocystic disease."
+    },
+    {
+      "slug": "severe_nodulocystic_acne",
+      "name": "Severe nodulocystic acne",
+      "kind": "condition",
+      "aliases": [
+        "severe recalcitrant nodular acne",
+        "severe nodular acne"
+      ],
+      "description": "Severe inflammatory acne with nodules, cysts, and high relapse or scarring risk."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "oral_isotretinoin",
+      "outcome_slug": "severe_nodulocystic_acne",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "Systematic review evidence across 11 randomized acne trials found isotretinoin consistently reduced lesion counts more than control, and the largest nodular-acne trial randomized 925 patients and confirmed noninferior high-level lesion reduction with modern isotretinoin formulation treatment. Across treatment-comparison studies, isotretinoin also shows more durable remission than antibiotic-based alternatives.",
+      "population": "adolescents and adults with moderate-to-severe acne, especially severe recalcitrant nodular or nodulocystic acne",
+      "mechanism": "Oral isotretinoin suppresses sebaceous gland activity, reduces follicular plugging, and powerfully shifts the inflammatory environment that drives severe acne, which is why it remains the escalation therapy when scarring risk is high.",
+      "summary": "Oral isotretinoin remains the most evidence-backed treatment for severe nodulocystic acne. The tradeoff profile is real and requires monitoring, but in terms of actually controlling severe acne and sustaining remission, the signal is stronger than for routine antibiotic-based strategies.",
+      "caveats": "This is not a casual wellness intervention. The benefit sits alongside common mucocutaneous adverse effects and the need for pregnancy prevention and clinical monitoring.",
+      "evidence": [
+        {
+          "citation": "VallerandIA et al 2018 Br J Dermatol",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy and adverse events of oral isotretinoin for acne: a systematic review.",
+          "pmid": "28542914",
+          "n_participants": 760
+        },
+        {
+          "citation": "WebsterGF et al 2014 J Drugs Dermatol",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Results of a Phase III, double-blind, randomized, parallel-group, non-inferiority study evaluating the safety and efficacy of isotretinoin-Lidose in patients with severe recalcitrant nodular acne.",
+          "pmid": "24918555",
+          "n_participants": 925
+        },
+        {
+          "citation": "AkmanA et al 2007 Arch Dermatol Res",
+          "year": 2007,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Treatment of acne with intermittent and conventional isotretinoin: a randomized, controlled multicenter study.",
+          "pmid": "17710426",
+          "n_participants": 66
+        }
+      ]
+    }
+  ]
+}
