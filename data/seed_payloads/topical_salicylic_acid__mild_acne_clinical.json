@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "topical_salicylic_acid",
+      "name": "Topical salicylic acid",
+      "kind": "drug",
+      "aliases": [
+        "salicylic acid peel",
+        "topical SA acne treatment"
+      ],
+      "description": "Topical salicylic-acid-containing acne treatments, including peels and leave-on products."
+    },
+    {
+      "slug": "mild_acne_clinical",
+      "name": "Clinical mild acne",
+      "kind": "condition",
+      "aliases": [
+        "mild acne vulgaris",
+        "clinically assessed mild acne"
+      ],
+      "description": "Clinically assessed mild acne vulgaris, including inflammatory and non-inflammatory lesion burden."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "topical_salicylic_acid",
+      "outcome_slug": "mild_acne_clinical",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The Cochrane-derived review found little or no difference when salicylic acid was compared with tretinoin for participant-rated acne improvement, with a pooled relative risk of 1.00 (95% CI 0.92 to 1.09). Smaller peel studies still show lesion-count improvement from baseline, so the signal is positive but not dramatic.",
+      "population": "adolescents and adults with mild acne or mild-to-moderate acne treated with topical salicylic-acid products or peels",
+      "mechanism": "Salicylic acid is lipophilic and comedolytic, helping to reduce follicular plugging while providing mild anti-inflammatory activity that can improve both inflammatory and non-inflammatory lesions.",
+      "summary": "Topical salicylic acid helps mild acne, but the literature does not support calling it a superstar monotherapy. It works best as a useful, usually tolerable comedolytic option rather than a clearly superior treatment.",
+      "caveats": "Much of the evidence comes from peels, small comparative trials, or heterogeneous topical regimens. This edge is intentionally boring because the signal is helpful but modest.",
+      "evidence": [
+        {
+          "citation": "LiuH et al 2020 J Evid Based Med",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Evidence-based topical treatments (azelaic acid, salicylic acid, nicotinamide, sulfur, zinc, and fruit acid) for acne: an abridged version of a Cochrane systematic review.",
+          "pmid": "33034949",
+          "n_participants": 3880,
+          "effect_quant": {
+            "metric": "relative_risk",
+            "value": 1.0,
+            "unit": "ratio",
+            "comparator": "participant-rated acne improvement with salicylic acid versus tretinoin"
+          }
+        },
+        {
+          "citation": "DayalS et al 2021 Dermatol Pract Concept",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Efficacy and Safety of 25% Trichloroacetic Acid Peel Versus 30% Salicylic Acid Peel in Mild-to-Moderate Acne Vulgaris: A Comparative Study.",
+          "pmid": "34123563",
+          "n_participants": 50
+        },
+        {
+          "citation": "BaeBG et al 2013 Dermatol Surg",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Salicylic acid peels versus Jessner's solution for acne vulgaris: a comparative study.",
+          "pmid": "23121256",
+          "n_participants": 13
+        }
+      ]
+    }
+  ]
+}

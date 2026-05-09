@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "topical_hyaluronic_acid",
+      "name": "Topical hyaluronic acid",
+      "kind": "drug",
+      "aliases": [
+        "hyaluronic acid serum",
+        "topical HA moisturizer"
+      ],
+      "description": "Topically applied hyaluronic acid-containing cosmetic or dermatologic formulations intended to improve skin hydration and visible skin quality."
+    },
+    {
+      "slug": "skin_hydration_acute",
+      "name": "Acute skin hydration",
+      "kind": "biomarker",
+      "aliases": [
+        "short-term skin moisture",
+        "acute stratum corneum hydration"
+      ],
+      "description": "Short-term changes in measurable skin hydration, moisture retention, and related barrier-function markers after topical product application."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "topical_hyaluronic_acid",
+      "outcome_slug": "skin_hydration_acute",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a randomized assessor-blinded forearm study, a single application of a 1% hyaluronic acid fluid increased skin hydration by 59% at 1 hour and still by 29% at 24 hours while lowering transepidermal water loss. Longer cosmetic trials and a later review point in the same direction, even if formulations differ.",
+      "population": "adult women using topical hyaluronic-acid-containing skin products for hours to weeks",
+      "mechanism": "Topical hyaluronic acid binds water in the stratum corneum and can temporarily improve surface hydration and barrier behaviour, especially when paired with humectants and barrier-supportive vehicles.",
+      "summary": "Topical hyaluronic acid is one of the cleaner hydration edges in cosmetic dermatology because the short-term signal is direct and reproducible: skin water content rises quickly after application. The limitation is that the effect is mainly supportive and cosmetic rather than a structural reversal of aging.",
+      "caveats": "Most studies test formulated products rather than hyaluronic acid alone, so vehicle effects matter. This edge is about acute hydration and barrier support, not permanent dermal remodeling.",
+      "evidence": [
+        {
+          "citation": "MilaniM et al 2017 Clin Cosmet Investig Dermatol",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The 24-hour skin hydration and barrier function effects of a hyaluronic 1%, glycerin 5%, and Centella asiatica stem cells extract moisturizing fluid: an intra-subject, randomized, assessor-blinded study.",
+          "pmid": "28860834",
+          "n_participants": 20,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 59,
+            "unit": "percent",
+            "comparator": "increase in skin hydration 1 hour after application versus baseline"
+          }
+        },
+        {
+          "citation": "NobileV et al 2014 J Cosmet Dermatol",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Anti-aging and filling efficacy of six types hyaluronic acid based dermo-cosmetic treatment: double blind, randomized clinical trial of efficacy and safety.",
+          "pmid": "25399620",
+          "n_participants": 40
+        },
+        {
+          "citation": "BravoB et al 2022 Dermatol Ther",
+          "year": 2022,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Benefits of topical hyaluronic acid for skin quality and signs of skin aging: From literature review to clinical evidence.",
+          "pmid": "36200921"
+        }
+      ]
+    }
+  ]
+}

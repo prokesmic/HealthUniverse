@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "topical_adapalene_0_1pct",
+      "name": "Topical adapalene 0.1%",
+      "kind": "drug",
+      "aliases": [
+        "adapalene 0.1% gel",
+        "adapalene 0.1% lotion"
+      ],
+      "description": "Topical adapalene 0.1% formulations used as acne treatment."
+    },
+    {
+      "slug": "moderate_acne_clinical",
+      "name": "Clinical moderate acne",
+      "kind": "condition",
+      "aliases": [
+        "moderate acne vulgaris",
+        "clinically assessed moderate acne"
+      ],
+      "description": "Clinically assessed mild-to-moderate or moderate acne vulgaris severity and lesion burden."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "topical_adapalene_0_1pct",
+      "outcome_slug": "moderate_acne_clinical",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The largest placebo-controlled adapalene 0.1% programme randomized 2,141 subjects and found significantly better investigator-rated success and lesion-count reduction than vehicle at 12 weeks. Smaller practice-based studies and review-level evidence reinforce that adapalene 0.1% is clinically effective and generally well tolerated for mild-to-moderate acne.",
+      "population": "adolescents and adults with mild-to-moderate or moderate acne vulgaris treated with adapalene 0.1%",
+      "mechanism": "Adapalene normalizes follicular keratinization and reduces inflammatory acne activity while generally causing less irritation than older topical retinoids, which helps adherence.",
+      "summary": "Topical adapalene 0.1% is a well-supported first-line acne retinoid rather than a speculative cosmeceutical. The evidence is not novel, but it is strong enough and consistent enough to support a beneficial classification for moderate acne control.",
+      "caveats": "Adapalene often works best within combination regimens, and it can still irritate sensitive skin. This edge is about clinical acne improvement, not immediate cosmetic clearing.",
+      "evidence": [
+        {
+          "citation": "EichenfieldLF et al 2010 J Drugs Dermatol",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Adapalene 0.1% lotion in the treatment of acne vulgaris: results from two placebo-controlled, multicenter, randomized double-blind, clinical studies.",
+          "pmid": "20645525",
+          "n_participants": 2141
+        },
+        {
+          "citation": "PercySH et al 2003 Indian J Dermatol Venereol Leprol",
+          "year": 2003,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Safety and efficacy of adapalene gel 0.1% in acne vulgaris: results of a post-marketing surveillance study.",
+          "pmid": "17642911",
+          "n_participants": 571
+        },
+        {
+          "citation": "WaughJ et al 2004 Am J Clin Dermatol",
+          "year": 2004,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Spotlight on adapalene in acne vulgaris.",
+          "pmid": "15554742"
+        }
+      ]
+    }
+  ]
+}
