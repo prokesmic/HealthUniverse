@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "topical_minoxidil_5pct",
+      "name": "Topical minoxidil 5%",
+      "kind": "drug",
+      "aliases": [
+        "5% minoxidil solution",
+        "5% minoxidil foam"
+      ],
+      "description": "Topical 5% minoxidil formulations used for patterned hair loss."
+    },
+    {
+      "slug": "androgenetic_alopecia_women",
+      "name": "Female androgenetic alopecia",
+      "kind": "condition",
+      "aliases": [
+        "female pattern hair loss",
+        "FPHL"
+      ],
+      "description": "Female pattern hair loss or androgenetic alopecia affecting women."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "topical_minoxidil_5pct",
+      "outcome_slug": "androgenetic_alopecia_women",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a 48-week placebo-controlled multicenter trial of 381 women, 5% topical minoxidil was superior to placebo on hair count and both patient and investigator assessments. Later female pattern hair loss syntheses continued to rank 5% topical minoxidil among the most effective established monotherapies.",
+      "population": "adult women with female pattern hair loss using topical 5% minoxidil solution or foam over several months",
+      "mechanism": "Topical minoxidil can prolong anagen and improve follicular cycling, which gradually increases visible density in patterned hair loss.",
+      "summary": "Topical 5% minoxidil is one of the most defensible nonprocedural treatments for female pattern hair loss. The effect is not dramatic, but randomized evidence shows better hair outcomes than placebo and sustained positioning among the leading monotherapies in later reviews.",
+      "caveats": "The benefit requires continuous use and can plateau. This edge does not mean every woman tolerates or responds equally well, especially because scalp irritation and unwanted facial hair can limit adherence.",
+      "evidence": [
+        {
+          "citation": "OlsenEA et al 2004 J Am Acad Dermatol",
+          "year": 2004,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A randomized, placebo-controlled trial of 5% and 2% topical minoxidil solutions in the treatment of female pattern hair loss.",
+          "pmid": "15034503",
+          "n_participants": 381
+        },
+        {
+          "citation": "vanZuurenEJ et al 2016 Cochrane Database Syst Rev",
+          "year": 2016,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Interventions for female pattern hair loss.",
+          "pmid": "27225981",
+          "n_participants": 5290
+        },
+        {
+          "citation": "GuA et al 2024 J Cosmet Dermatol",
+          "year": 2024,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The relative effect of monotherapy with 5-alpha reductase inhibitors and minoxidil for female pattern hair loss: A network meta-analysis study.",
+          "pmid": "37386777"
+        }
+      ]
+    }
+  ]
+}
