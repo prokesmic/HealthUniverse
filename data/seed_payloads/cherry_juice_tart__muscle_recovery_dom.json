@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cherry_juice_tart",
+      "name": "Tart cherry supplementation",
+      "kind": "food",
+      "aliases": [
+        "tart cherry juice",
+        "Montmorency tart cherry",
+        "freeze-dried tart cherry"
+      ],
+      "description": "Tart cherry juice or powder used around hard training or competition as a polyphenol-rich recovery strategy."
+    },
+    {
+      "slug": "muscle_recovery_dom",
+      "name": "Post-exercise muscle soreness recovery",
+      "kind": "process",
+      "aliases": [
+        "DOMS recovery",
+        "delayed-onset muscle soreness recovery"
+      ],
+      "description": "Recovery from delayed-onset muscle soreness after damaging or exhaustive exercise."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cherry_juice_tart",
+      "outcome_slug": "muscle_recovery_dom",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The newest meta-analysis found no significant pooled effect of tart cherry juice on muscle soreness after exercise-induced muscle damage, even though some functional recovery and CRP outcomes improved. Recent direct trials after a marathon and repeated sprinting also failed to show a clear soreness advantage over placebo.",
+      "population": "trained athletes and physically active adults recovering from endurance or repeated-sprint exercise",
+      "mechanism": "Tart cherry polyphenols may dampen part of the inflammatory response to hard exercise, but soreness is only loosely coupled to blood inflammatory markers. That helps explain why CRP can move in a favorable direction while DOMS itself barely changes.",
+      "summary": "This is a good example of why recovery supplements should be judged on the exact endpoint they claim to improve. Tart cherry may help selected inflammatory or force-recovery markers, but the muscle-soreness story itself remains inconsistent enough that the honest label is mixed.",
+      "caveats": "Protocol differences are large across the literature: juice versus powder, sprint versus marathon models, and trained versus recreational participants. A user chasing lower soreness should not expect a reliable effect every time.",
+      "evidence": [
+        {
+          "citation": "Moura e SilvaKS et al 2026 Sports Med Open",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Effects of Tart Cherry Juice Supplementation on Recovery from Exercise-Induced Muscle Damage in Athletes: A Systematic Review and Meta-Analysis.",
+          "pmid": "41945263",
+          "n_participants": 19
+        },
+        {
+          "citation": "BellPG et al 2026 Eur J Nutr",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Recovery with vistula tart cherries following a marathon.",
+          "pmid": "41677899",
+          "n_participants": 35
+        },
+        {
+          "citation": "MaloneySJ et al 2026 Nutrients",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Impact of Powdered Tart Cherry Supplementation on Performance Recovery Following Repeated Sprint Exercise.",
+          "pmid": "41683264",
+          "n_participants": 40
+        }
+      ]
+    }
+  ]
+}

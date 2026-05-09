@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "curcumin_with_piperine",
+      "name": "Curcumin with piperine",
+      "kind": "supplement",
+      "aliases": [
+        "turmeric plus piperine",
+        "curcumin-black pepper combination"
+      ],
+      "description": "Curcumin provided with piperine or a bioavailability-enhancing formula to try to reduce exercise-associated inflammation and soreness."
+    },
+    {
+      "slug": "exercise_induced_inflammation",
+      "name": "Exercise-induced inflammation",
+      "kind": "process",
+      "aliases": [
+        "post-exercise inflammatory response",
+        "inflammatory marker rise after exercise"
+      ],
+      "description": "The acute increase in inflammatory cytokines and related markers after strenuous exercise."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "curcumin_with_piperine",
+      "outcome_slug": "exercise_induced_inflammation",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A dose-response meta-analysis reported a pooled TNF-alpha reduction of -0.22 pg/mL with curcumin, but a newer meta-analysis focused on exercise-induced muscle damage found no statistically significant pooled inflammation effect across timepoints. A direct curcumin-plus-piperine crossover trial did show blunted post-run cytokine rises despite no performance benefit.",
+      "population": "healthy runners and other active adults exposed to strenuous endurance or muscle-damaging exercise",
+      "mechanism": "Curcumin can modulate NF-kappaB-linked inflammatory signaling, and piperine raises curcumin bioavailability enough to make short-term cytokine effects biologically plausible. The catch is that exercise models, timing, and formulations vary so much that pooled inflammation results remain unstable.",
+      "summary": "Curcumin is one of the more plausible anti-inflammatory recovery supplements mechanistically, but the exercise literature is still noisier than the marketing implies. The strongest cautious take is that inflammation markers may improve in some protocols, yet the total pooled signal is not consistent enough for a confident protective label.",
+      "caveats": "Results vary by formulation, dose, and whether the exercise model creates a large enough inflammatory signal in the first place. Lower cytokine responses are also not the same as better long-term adaptation or performance.",
+      "evidence": [
+        {
+          "citation": "NicolLM et al 2024 Nutr Health",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "The effect of curcumin supplementation on functional strength outcomes and markers of exercise-induced muscle damage: A systematic review and meta-analysis.",
+          "pmid": "37408367",
+          "n_participants": 16
+        },
+        {
+          "citation": "TavsanchiA et al 2022 Phytother Res",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The effect of curcumin supplementation on delayed-onset muscle soreness, inflammation, muscle strength, and joint flexibility: A systematic review and dose-response meta-analysis of randomized controlled trials.",
+          "pmid": "35574627",
+          "n_participants": 10,
+          "effect_quant": {
+            "metric": "weighted_mean_difference",
+            "value": -0.22,
+            "comparator": "curcumin versus placebo for TNF-alpha concentration after exercise-induced muscle damage"
+          }
+        },
+        {
+          "citation": "TanabeY et al 2022 Biology (Basel)",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The Curcumin Supplementation with Piperine Can Influence the Acute Elevation of Exercise-Induced Cytokines: Double-Blind Crossover Study.",
+          "pmid": "35453772",
+          "n_participants": 16
+        }
+      ]
+    }
+  ]
+}
