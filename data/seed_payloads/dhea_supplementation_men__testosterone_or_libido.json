@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "dhea_supplementation_men",
+      "name": "DHEA supplementation in men",
+      "kind": "supplement",
+      "aliases": [
+        "dehydroepiandrosterone in men",
+        "oral DHEA for men"
+      ],
+      "description": "Supplemental dehydroepiandrosterone used in adult men to influence androgens or sexual symptoms."
+    },
+    {
+      "slug": "testosterone_or_libido",
+      "name": "Testosterone or libido response",
+      "kind": "process",
+      "aliases": [
+        "androgen or sexual desire response",
+        "testosterone/libido outcome"
+      ],
+      "description": "A combined practical outcome capturing hormonal testosterone changes or libido-related effects in men."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "dhea_supplementation_men",
+      "outcome_slug": "testosterone_or_libido",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "A 2020 meta-analysis of randomized trials found DHEA supplementation increased testosterone by a weighted mean difference of 28.02 ng/dL (95% CI 21.44 to 34.60), but that hormonal rise does not reliably translate into consistent libido benefit.",
+      "population": "adult men, including middle-aged and older men using oral DHEA",
+      "mechanism": "DHEA sits upstream of androgen synthesis, so small testosterone increases are biologically unsurprising. What the literature does not show cleanly is that modest endocrine movement reliably becomes meaningful sexual or symptomatic improvement, which is why this edge belongs in the noisy-supplement bucket rather than the strong-evidence bucket.",
+      "summary": "DHEA supplementation can modestly increase testosterone in men, but the real-world meaning of that rise is uncertain and libido benefits are inconsistent. This is a classic case where a biomarker signal is easier to prove than a dependable felt benefit.",
+      "caveats": "The expected testosterone increase is usually small relative to testosterone replacement or SERM therapy, and the symptom literature is sparse. DHEA should not be marketed as a reliable male hormonal-optimization shortcut just because it nudges serum testosterone upward on average.",
+      "evidence": [
+        {
+          "citation": "Rahmani J et al 2020 Exp Gerontol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A dose-response and meta-analysis of dehydroepiandrosterone (DHEA) supplementation on testosterone levels: perinatal prediction of randomized clinical trials.",
+          "pmid": "33045358",
+          "n_participants": 1417,
+          "effect_quant": {
+            "metric": "WMD",
+            "value": 28.02,
+            "ci_low": 21.44,
+            "ci_high": 34.60,
+            "comparator": "DHEA supplementation versus control for serum testosterone"
+          }
+        },
+        {
+          "citation": "Brown GA et al 1999 Med Sci Sports Exerc",
+          "year": 1999,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effects of dehydroepiandrosterone vs androstenedione supplementation in men.",
+          "pmid": "10613429",
+          "n_participants": 40
+        },
+        {
+          "citation": "Morales AJ et al 1994 J Clin Endocrinol Metab",
+          "year": 1994,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effects of replacement dose of dehydroepiandrosterone in men and women of advancing age.",
+          "pmid": "7515387",
+          "n_participants": 30
+        }
+      ]
+    }
+  ]
+}
