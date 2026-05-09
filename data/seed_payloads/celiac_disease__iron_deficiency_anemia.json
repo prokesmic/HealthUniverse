@@ -1,5 +1,54 @@
 {
   "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "celiac_disease",
+      "outcome_slug": "iron_deficiency_anemia",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a meta-analysis of 2998 patients with iron deficiency anemia, biopsy-confirmed celiac disease was present in 3.2% overall and 5.5% in higher-quality studies; among 100 celiac patients in an Iranian cohort, 31.6% still had anemia and 25.4% had depleted iron stores despite a gluten-free diet.",
+      "population": "adults and children with celiac disease or unexplained iron deficiency anemia",
+      "mechanism": "Celiac disease damages the proximal small intestine where nonheme iron is primarily absorbed, reducing iron uptake even before classic gastrointestinal symptoms appear. Ongoing mucosal inflammation and villous atrophy can therefore present as isolated iron deficiency anemia or make oral iron repletion sluggish until gluten withdrawal heals the bowel.",
+      "summary": "Celiac disease is a well-established cause of iron deficiency anemia through malabsorption, and anemia is one of its common extraintestinal presentations. The signal is strong enough that unexplained iron deficiency anemia is routinely considered a reason to screen for celiac disease.",
+      "caveats": "The association is clearest in untreated disease; anemia can improve substantially after a strict gluten-free diet, although iron stores may take much longer to normalize. Prevalence estimates vary with age, sex mix, biopsy strategy, and whether patients are already on a gluten-free diet.",
+      "evidence": [
+        {
+          "citation": "Mahadev S et al 2018 Gastroenterology",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prevalence of Celiac Disease in Patients With Iron Deficiency Anemia-A Systematic Review With Meta-analysis.",
+          "doi": "10.1053/j.gastro.2018.04.016",
+          "pmid": "29689265",
+          "n_participants": 2998
+        },
+        {
+          "citation": "Annibale B et al 2001 Am J Gastroenterol",
+          "year": 2001,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Efficacy of gluten-free diet alone on recovery from iron deficiency anemia in adult celiac patients.",
+          "doi": "10.1111/j.1572-0241.2001.03463.x",
+          "pmid": "11197242",
+          "n_participants": 190
+        },
+        {
+          "citation": "Pirzadeh SA et al 2023 Gastroenterol Hepatol Bed Bench",
+          "year": 2023,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Assessment of iron status and iron deficiency anemia in patients with celiac, a single center experience.",
+          "doi": "10.22037/ghfbb.v16i2.2728",
+          "pmid": "37554755",
+          "n_participants": 59
+        }
+      ]
+    }
+  ],
   "new_entities": [
     {
       "slug": "celiac_disease",
@@ -8,55 +57,7 @@
       "aliases": [
         "coeliac disease"
       ],
-      "description": "Immune-mediated enteropathy triggered by gluten exposure in genetically susceptible individuals."
-    }
-  ],
-  "edges": [
-    {
-      "factor_slug": "celiac_disease",
-      "outcome_slug": "iron_deficiency_anemia",
-      "direction": "harmful",
-      "tier": "B",
-      "effect_size": "moderate",
-      "effect_quant": "In a prospective adult celiac cohort, anemia was present in 93.2% of patients at diagnosis and iron deficiency in 81.5%.",
-      "population": "children and adults with untreated or newly diagnosed celiac disease",
-      "mechanism": "Celiac disease damages the proximal small bowel where iron absorption is concentrated, reducing uptake even before classic gastrointestinal symptoms are obvious. Ongoing villous atrophy can therefore produce iron deficiency and eventually frank iron-deficiency anemia as one of the most common extraintestinal presentations.",
-      "summary": "Untreated celiac disease is a well-established cause of iron-deficiency anemia. Prospective cohorts and clinical reviews consistently describe iron-deficiency anemia as one of the most common extraintestinal manifestations, and improvement after gluten withdrawal reinforces that the relationship is not just coincidental screening overlap.",
-      "caveats": "Not every patient with celiac disease is anemic, and iron deficiency can persist for months after starting a gluten-free diet while mucosal recovery and iron-store repletion catch up. The edge is strongest for untreated or newly diagnosed disease rather than stable treated celiac disease with healed mucosa.",
-      "evidence": [
-        {
-          "citation": "Annibale B et al 2001 Am J Gastroenterol",
-          "pmid": "11197242",
-          "doi": "10.1111/j.1572-0241.2001.03463.x",
-          "year": 2001,
-          "study_type": "cohort",
-          "n_participants": 26,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Efficacy of gluten-free diet alone on recovery from iron deficiency anemia in adult celiac patients."
-        },
-        {
-          "citation": "Berry N et al 2018 JGH Open",
-          "pmid": "30483589",
-          "doi": "10.1002/jgh3.12073",
-          "year": 2018,
-          "study_type": "cohort",
-          "n_participants": 103,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Anemia in celiac disease is multifactorial in etiology: A prospective study from India."
-        },
-        {
-          "citation": "Talarico V et al 2021 Nutrients",
-          "pmid": "34067622",
-          "doi": "10.3390/nu13051695",
-          "year": 2021,
-          "study_type": "expert_opinion",
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Iron Deficiency Anemia in Celiac Disease."
-        }
-      ]
+      "description": "Immune-mediated gluten-sensitive enteropathy causing villous atrophy and malabsorption."
     }
   ]
 }

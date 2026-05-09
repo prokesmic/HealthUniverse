@@ -7,41 +7,51 @@
       "direction": "protective",
       "tier": "C",
       "effect_size": "small",
-      "effect_quant": "The clearest direct cognitive signal comes from a placebo-controlled withdrawal trial in adults 65 and older, where successful benzodiazepine withdrawal produced relative improvements on several cognitive and psychomotor tasks over 24 to 52 weeks. Newer tapering trials mainly confirm that discontinuation is feasible and does not necessarily worsen sleep when paired with structured behavioral support.",
-      "population": "older adults chronically using benzodiazepines or benzodiazepine receptor agonists for insomnia or anxiety who enter supervised deprescribing programs",
-      "mechanism": "Deprescribing benzodiazepines in older adults may improve cognition by removing chronic GABAergic sedation that blunts attention, psychomotor speed, and memory encoding. The benefit is usually subtle rather than dramatic, but it matters because long-term hypnotic exposure often provides little ongoing sleep gain while preserving cognitive drag.",
-      "summary": "Deprescribing benzodiazepines in older adults appears modestly protective for cognition. Older withdrawal trials found small but real cognitive and psychomotor improvements after successful tapering, and newer discontinuation studies suggest that stopping these drugs can often be achieved without the major sleep collapse many patients fear.",
-      "caveats": "Most discontinuation studies focus on feasibility and sleep rather than hard neurocognitive endpoints, so the cognitive benefit signal is still less mature than the rationale for stopping. The upside is also more likely in chronic users than in people who used these drugs only briefly.",
+      "effect_quant": "In long-term benzodiazepine users aged 65 years and older, 80% were successfully withdrawn by 6 months in a placebo-controlled taper trial and withdrawers showed relative improvement on several cognitive and psychomotor tasks. In a randomized insomnia trial, 63% of older adults became drug-free within about 7 weeks and the combination of tapering plus CBT produced the highest discontinuation rate, while a later EMPOWER subgroup analysis found similar cessation success in older adults with and without mild cognitive impairment.",
+      "population": "older adults with chronic benzodiazepine or sedative-hypnotic use, especially long-term users undergoing supervised withdrawal or educational deprescribing interventions",
+      "mechanism": "Stopping long-term benzodiazepine exposure can remove ongoing GABAergic sedation that impairs attention, psychomotor speed, memory encoding, and sleep architecture. The likely benefit is not dramatic cognitive recovery, but a modest reversal of medication-related slowing in older brains that are especially sensitive to sedative burden.",
+      "summary": "The most defensible reading is that benzodiazepine deprescribing in older adults has a small but real cognitive upside and is usually more feasible than clinicians fear. The clearest direct trial showed relative improvement on several cognitive tasks after withdrawal, and the broader deprescribing literature suggests that successful tapering can often be achieved without major rebound harm even in cognitively vulnerable elders.",
+      "caveats": "The direct cognition evidence is narrower than the discontinuation evidence: only a limited number of trials measured neuropsychological outcomes in detail, and many deprescribing studies focus on cessation rates, sleep, or withdrawal symptoms rather than long-term cognition. Benefits are therefore best framed as modest recovery from drug-related cognitive drag rather than proof of large disease-modifying effects.",
       "evidence": [
         {
-          "citation": "Curran et al 2003 Psychol Med",
-          "pmid": "14580077",
+          "citation": "CurranHV et al 2003 Psychol Med",
           "year": 2003,
           "study_type": "rct",
-          "n_participants": 139,
           "direction": "protective",
           "quality": "moderate",
-          "notes": "Older adults and withdrawal from benzodiazepine hypnotics in general practice: effects on cognitive function, sleep, mood and quality of life."
+          "notes": "Older adults and withdrawal from benzodiazepine hypnotics in general practice: effects on cognitive function, sleep, mood and quality of life.",
+          "doi": "10.1017/S0033291703008213",
+          "pmid": "14580077",
+          "n_participants": 192
         },
         {
-          "citation": "Morin et al 2004 Am J Psychiatry",
-          "pmid": "14754783",
+          "citation": "MorinCM et al 2004 Am J Psychiatry",
           "year": 2004,
           "study_type": "rct",
-          "n_participants": 76,
           "direction": "protective",
           "quality": "moderate",
-          "notes": "Randomized clinical trial of supervised tapering and cognitive behavior therapy to facilitate benzodiazepine discontinuation in older adults with chronic insomnia."
+          "notes": "Randomized clinical trial of supervised tapering and cognitive behavior therapy to facilitate benzodiazepine discontinuation in older adults with chronic insomnia.",
+          "doi": "10.1176/appi.ajp.161.2.332",
+          "pmid": "14754783",
+          "n_participants": 76
         },
         {
-          "citation": "Pizon et al 2024 JAMA Intern Med",
-          "pmid": "39374004",
-          "year": 2024,
+          "citation": "MartinP et al 2017 BMC Geriatr",
+          "year": 2017,
           "study_type": "rct",
-          "n_participants": 188,
           "direction": "protective",
-          "quality": "high",
-          "notes": "Masked Taper With Behavioral Intervention for Discontinuation of Benzodiazepine Receptor Agonists: A Randomized Clinical Trial."
+          "quality": "low",
+          "notes": "Use of the EMPOWER brochure to deprescribe sedative-hypnotic drugs in older adults with mild cognitive impairment.",
+          "doi": "10.1186/s12877-017-0432-5",
+          "pmid": "28143413",
+          "n_participants": 261,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.79,
+            "ci_low": 0.45,
+            "ci_high": 1.38,
+            "comparator": "benzodiazepine cessation in older adults with mild cognitive impairment versus normal cognition after the EMPOWER intervention"
+          }
         }
       ]
     }
@@ -51,15 +61,21 @@
       "slug": "deprescribing_benzodiazepines_elderly",
       "name": "Deprescribing benzodiazepines in older adults",
       "kind": "behavior",
-      "aliases": [],
-      "description": "Supervised tapering or discontinuation of benzodiazepines or benzodiazepine receptor agonists in older adults."
+      "aliases": [
+        "benzodiazepine tapering in elders",
+        "sedative-hypnotic deprescribing"
+      ],
+      "description": "Planned dose reduction or discontinuation of chronic benzodiazepine or related sedative-hypnotic use in older adults."
     },
     {
       "slug": "cognition",
-      "name": "Cognitive performance",
+      "name": "Cognition",
       "kind": "condition",
-      "aliases": [],
-      "description": "Overall cognitive performance, including memory, attention, and psychomotor function."
+      "aliases": [
+        "cognitive performance",
+        "cognitive function"
+      ],
+      "description": "Global or domain-specific cognitive performance including memory, attention, psychomotor speed, and executive function."
     }
   ]
 }

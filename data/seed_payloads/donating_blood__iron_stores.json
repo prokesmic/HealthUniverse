@@ -5,48 +5,59 @@
       "factor_slug": "donating_blood",
       "outcome_slug": "iron_stores",
       "direction": "harmful",
-      "tier": "B",
+      "tier": "A",
       "effect_size": "moderate",
-      "effect_quant": "Systematic review evidence shows repeated blood donation is associated with a meaningful prevalence of iron deficiency, particularly in female and frequent donors, and current donors have substantially lower ferritin than never-donors.",
-      "population": "regular whole-blood donors",
-      "mechanism": "Each whole-blood donation removes a significant amount of iron in hemoglobin, and repeated donation can deplete ferritin stores faster than diet alone replenishes them. The effect is strongest in frequent donors, menstruating donors, and donors not receiving routine iron replacement.",
-      "summary": "Regular blood donation lowers body iron stores and can lead to iron deficiency, especially when donation frequency is high. The strongest support comes from systematic reviews and donor cohorts showing lower ferritin and a non-trivial burden of iron deficiency in repeat donors.",
-      "caveats": "Risk varies by sex, baseline iron reserves, donation frequency, and whether oral or intravenous iron replacement is offered. This edge is about repeated donation patterns, not one isolated blood donation in an otherwise iron-replete person.",
+      "effect_quant": "In REDS-II, absent iron stores at follow-up occurred in 27% of returning frequent female donors and 18% of returning frequent male donors, while the INTERVAL randomized trial of 45,042 participants found that more frequent donation lowered ferritin and hemoglobin and increased iron-deficiency-related symptoms and low-hemoglobin deferrals.",
+      "population": "whole-blood donors, including frequent adult donors and adolescent donors",
+      "mechanism": "Each whole-blood donation removes a meaningful amount of iron-containing hemoglobin, and repeated donations can outpace dietary repletion, especially in menstruating donors or people with low baseline ferritin. Shorter inter-donation intervals compound the deficit by truncating the recovery window.",
+      "summary": "The evidence that regular blood donation lowers iron stores is strong and unusually consistent across large cohorts and randomized interval studies. Donation frequency is one of the dominant determinants of ferritin in donor populations, and low baseline stores can persist for many months without supplementation or longer recovery intervals.",
+      "caveats": "This edge reflects donor iron balance, not a blanket judgment that blood donation is unhealthy overall. Risk is strongly modified by sex, baseline ferritin, age, inter-donation interval, and whether ferritin-guided supplementation policies are in place.",
       "evidence": [
         {
-          "citation": "Smith GA et al 2014 Cochrane Database Syst Rev",
-          "pmid": "24990381",
-          "doi": "10.1002/14651858.CD009532.pub2",
-          "year": 2014,
-          "study_type": "systematic_review",
-          "n_participants": 1,
+          "citation": "Cable RG et al 2012 Transfusion",
+          "year": 2012,
+          "study_type": "cohort",
           "direction": "harmful",
           "quality": "high",
-          "notes": "Oral or parenteral iron supplementation to reduce deferral, iron deficiency and/or anaemia in blood donors."
+          "notes": "Iron deficiency in blood donors: the REDS-II Donor Iron Status Evaluation (RISE) study.",
+          "doi": "10.1111/j.1537-2995.2011.03401.x",
+          "pmid": "22023513",
+          "n_participants": 2425
         },
         {
-          "citation": "Mantilla-Gutierrez CY et al 2012 Rev Esp Salud Publica",
-          "pmid": "23076082",
-          "doi": "10.4321/S1135-57272012000400004",
-          "year": 2012,
-          "study_type": "systematic_review",
-          "n_participants": 16979,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Iron deficiency prevalence in blood donors: a systematic review, 2001-2011."
-        },
-        {
-          "citation": "Engberink MF et al 2008 Atherosclerosis",
-          "pmid": "17336986",
-          "doi": "10.1016/j.atherosclerosis.2007.01.031",
-          "year": 2008,
+          "citation": "Partanen J et al 2019 PLoS One",
+          "year": 2019,
           "study_type": "cohort",
-          "n_participants": 819,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Blood donation, body iron status and carotid intima-media thickness."
+          "notes": "The effect of donation activity dwarfs the effect of lifestyle, diet and targeted iron supplementation on blood donor iron stores.",
+          "doi": "10.1371/journal.pone.0220862",
+          "pmid": "31408501",
+          "n_participants": 2200
+        },
+        {
+          "citation": "DiAngelantonio E et al 2017 Lancet",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Efficiency and safety of varying the frequency of whole blood donation (INTERVAL): a randomised trial of 45,000 donors.",
+          "doi": "10.1016/S0140-6736(17)31928-1",
+          "pmid": "28941948",
+          "n_participants": 45042
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "iron_stores",
+      "name": "Body iron stores",
+      "kind": "condition",
+      "aliases": [
+        "ferritin stores"
+      ],
+      "description": "The level of stored iron available in the body, commonly tracked with ferritin."
     }
   ]
 }

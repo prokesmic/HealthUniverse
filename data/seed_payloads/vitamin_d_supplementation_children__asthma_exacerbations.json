@@ -1,75 +1,95 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "vitamin_d_supplementation_children",
-      "name": "Vitamin D supplementation in children",
-      "kind": "supplement"
-    },
-    {
-      "slug": "asthma_exacerbations",
-      "name": "Asthma exacerbations",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "vitamin_d_supplementation_children",
       "outcome_slug": "asthma_exacerbations",
       "direction": "mixed",
-      "tier": "C",
+      "tier": "B",
       "effect_size": "small",
-      "effect_quant": "Some pediatric syntheses report fewer exacerbations with vitamin D, but newer child-only meta-analysis and broader Cochrane review show that the benefit is not stable across datasets.",
-      "population": "children with asthma receiving vitamin D supplementation as adjunct therapy",
-      "mechanism": "Vitamin D may modulate airway inflammation and steroid responsiveness, which could reduce exacerbation susceptibility in deficient children. The inconsistent trial results suggest that any benefit is probably concentrated in selected subgroups rather than spread uniformly across all pediatric asthma.",
-      "summary": "Vitamin D supplementation for childhood asthma exacerbations remains a mixed edge. Some meta-analyses show fewer exacerbations, especially in corticosteroid-treated or vitamin-D-insufficient populations, but newer child-focused evidence does not consistently confirm a broad benefit for routine use.",
-      "caveats": "The literature mixes children with very different baseline vitamin D status, asthma severity, dosing regimens, and co-treatments. This means the edge is better interpreted as a conditional adjunct possibility than a standard preventive step for every child with asthma.",
+      "effect_quant": "Earlier syntheses suggested fewer childhood asthma exacerbations with vitamin D, but newer evidence is more neutral. A 2015 meta-analysis found RR 0.41 for exacerbations, whereas a 2022 pediatric meta-analysis found RR 0.92 and the VDKA trial found an adjusted hazard ratio of 1.13 for time to severe exacerbation.",
+      "population": "children with asthma receiving vitamin D supplementation in addition to standard controller therapy",
+      "mechanism": "Vitamin D could plausibly modulate airway inflammation, antiviral defense, and steroid responsiveness, but any clinical effect may depend on baseline deficiency, asthma phenotype, and dose strategy rather than appearing uniformly across pediatric asthma populations.",
+      "summary": "The pediatric asthma-exacerbation signal is mixed rather than convincingly beneficial. Small earlier trials and older meta-analyses suggested fewer attacks, but larger later syntheses and a modern multicenter randomized trial did not confirm a clear reduction in severe exacerbations.",
+      "caveats": "Results are sensitive to how exacerbations are defined, whether children are vitamin D deficient at baseline, and whether the endpoint is any flare, steroid use, hospitalization, or time to severe exacerbation. This edge should not be interpreted as a substitute for standard asthma controller therapy.",
       "evidence": [
         {
-          "citation": "FedoraK et al 2024 Ann Med",
-          "pmid": "39421966",
-          "year": 2024,
-          "study_type": "meta_analysis",
-          "n_participants": 1243,
-          "direction": "protective",
-          "quality": "moderate",
-          "notes": "Vitamin D supplementation decrease asthma exacerbations in children: a systematic review and meta-analysis of randomized controlled trials.",
-          "effect_quant": {
-            "metric": "RR",
-            "value": 0.62,
-            "ci_low": 0.44,
-            "ci_high": 0.87,
-            "comparator": "total number of asthma exacerbations with vitamin D versus placebo"
-          }
-        },
-        {
-          "citation": "HaoM et al 2022 Front Pediatr",
-          "pmid": "35844729",
-          "year": 2022,
-          "study_type": "meta_analysis",
-          "n_participants": 738,
-          "direction": "neutral",
-          "quality": "moderate",
-          "notes": "The Effect of Vitamin D Supplementation in Children With Asthma: A Meta-Analysis."
-        },
-        {
-          "citation": "RiverinBD et al 2015 PLoS One",
-          "pmid": "26322509",
+          "citation": "Riverin BD et al 2015 PLoS One",
           "year": 2015,
           "study_type": "meta_analysis",
-          "n_participants": 378,
           "direction": "protective",
-          "quality": "low",
+          "quality": "moderate",
           "notes": "Vitamin D Supplementation for Childhood Asthma: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1371/journal.pone.0136841",
+          "pmid": "26322509",
+          "n_participants": 378,
           "effect_quant": {
             "metric": "RR",
             "value": 0.41,
             "ci_low": 0.27,
             "ci_high": 0.63,
-            "comparator": "risk of asthma exacerbations in children receiving vitamin D versus control"
+            "comparator": "asthma exacerbations in children receiving vitamin D supplementation versus placebo or control"
+          }
+        },
+        {
+          "citation": "Hao M et al 2022 Front Pediatr",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "The Effect of Vitamin D Supplementation in Children With Asthma: A Meta-Analysis.",
+          "doi": "10.3389/fped.2022.840617",
+          "pmid": "35844729",
+          "n_participants": 738,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.92,
+            "ci_low": 0.68,
+            "ci_high": 1.25,
+            "comparator": "asthma exacerbations in children receiving vitamin D supplementation versus placebo"
+          }
+        },
+        {
+          "citation": "Forno E et al 2020 JAMA",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Effect of Vitamin D3 Supplementation on Severe Asthma Exacerbations in Children With Asthma and Low Vitamin D Levels: The VDKA Randomized Clinical Trial.",
+          "doi": "10.1001/jama.2020.12384",
+          "pmid": "32840597",
+          "n_participants": 192,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.13,
+            "ci_low": 0.69,
+            "ci_high": 1.85,
+            "comparator": "time to severe asthma exacerbation with vitamin D3 4000 IU daily versus placebo"
           }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vitamin_d_supplementation_children",
+      "name": "Vitamin D supplementation in children",
+      "kind": "supplement",
+      "aliases": [
+        "pediatric vitamin D supplementation",
+        "child vitamin D supplementation"
+      ],
+      "description": "Oral vitamin D supplementation given to children to improve vitamin D status and potentially modify health outcomes."
+    },
+    {
+      "slug": "asthma_exacerbations",
+      "name": "Asthma exacerbations",
+      "kind": "condition",
+      "aliases": [
+        "asthma attacks",
+        "severe asthma flares"
+      ],
+      "description": "Episodes of worsening asthma symptoms that may require additional treatment, systemic steroids, urgent care, or hospitalization."
     }
   ]
 }

@@ -4,49 +4,68 @@
     {
       "factor_slug": "sucralose",
       "outcome_slug": "glucose_tolerance",
-      "direction": "mixed",
-      "tier": "X",
+      "direction": "harmful",
+      "tier": "C",
       "effect_size": "small",
-      "effect_quant": "Human intervention studies on sucralose are inconsistent: a 10-week trial in healthy adults reported higher glucose and insulin responses during OGTT after daily sucralose exposure, while other randomized crossover studies showed no effect or even lower glucose area under the curve in some settings.",
-      "population": "healthy adults and adults at metabolic risk exposed to acute or repeated sucralose intake",
-      "mechanism": "Sucralose could in principle alter glucose tolerance through sweet-taste signaling in the gut, incretin responses, or microbiome-mediated effects, but those pathways are not expressed consistently across human studies. The clinical signal appears highly protocol-sensitive, varying with chronicity, co-ingested carbohydrate, background metabolic status, and whether sucralose is taken alone or in beverage mixtures.",
-      "summary": "Sucralose does not have a settled human effect on glucose tolerance. Some trials suggest worsened glucose or insulin responses after repeated exposure, while other acute crossover studies show no metabolic change or even lower glucose excursions, so the safest conclusion is that the evidence is mixed and not yet strong enough for a firm directional claim.",
-      "caveats": "Most studies are small and use different doses, exposure durations, and test conditions, which makes the results hard to synthesize into one clinical rule. This edge should be treated as an unsettled metabolic signal, not as proof that sucralose either reliably harms or protects glucose tolerance.",
+      "effect_quant": "In 17 obese adults who did not routinely use non-nutritive sweeteners, sucralose taken before an oral glucose load increased peak glucose and insulin area under the curve and reduced insulin sensitivity by 23%; in a randomized trial of 66 healthy low-users, 14 days of sucralose reduced insulin sensitivity by a median 17.7% versus 2.8% in controls; and in a 10-week trial of 40 healthy adults, sucralose increased OGTT glucose area under the curve and serum insulin compared with water.",
+      "population": "adults without diabetes, especially low habitual users of non-nutritive sweeteners undergoing acute or short-term sucralose exposure before glucose testing",
+      "mechanism": "Sucralose may alter cephalic sweet signaling, incretin responses, microbiome composition, and insulin handling in a way that slightly worsens glycemic responses to a glucose challenge in susceptible settings.",
+      "summary": "Human sucralose trials do not all agree, but several controlled studies show modest worsening of insulin sensitivity or glucose handling after acute or short-term exposure. The overall signal is not large, yet it is consistent enough to justify a harmful lean rather than assuming complete metabolic neutrality.",
+      "caveats": "The strongest effects tend to appear in non-habitual users, obese participants, or longer-exposure designs, and many other studies have found no material change. This is a low-magnitude, context-dependent signal rather than a demonstration that ordinary sucralose use reliably causes dysglycemia in everyone.",
       "evidence": [
         {
-          "citation": "Mendez-Garcia LA et al 2022 Microorganisms",
-          "pmid": "35208888",
-          "doi": "10.3390/microorganisms10020434",
-          "year": 2022,
+          "citation": "Pepino MY et al 2013 Diabetes Care",
+          "year": 2013,
           "study_type": "rct",
-          "n_participants": 40,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Ten-Week Sucralose Consumption Induces Gut Dysbiosis and Altered Glucose and Insulin Levels in Healthy Young Adults."
+          "notes": "Sucralose affects glycemic and hormonal responses to an oral glucose load.",
+          "doi": "10.2337/dc12-2221",
+          "pmid": "23633524",
+          "n_participants": 17
         },
         {
-          "citation": "Temizkan S et al 2015 Eur J Clin Nutr",
-          "pmid": "25271009",
-          "doi": "10.1038/ejcn.2014.208",
-          "year": 2015,
-          "study_type": "rct",
-          "n_participants": 16,
-          "direction": "protective",
-          "quality": "low",
-          "notes": "Sucralose enhances GLP-1 release and lowers blood glucose in the presence of carbohydrate in healthy subjects but not in patients with type 2 diabetes."
-        },
-        {
-          "citation": "Bonnet F et al 2018 J Nutr",
-          "pmid": "29982723",
-          "doi": "10.1093/jn/nxy100",
+          "citation": "RomoRomo A et al 2018 Am J Clin Nutr",
           "year": 2018,
           "study_type": "rct",
-          "n_participants": 50,
-          "direction": "neutral",
+          "direction": "harmful",
           "quality": "moderate",
-          "notes": "Consumption of a Carbonated Beverage with High-Intensity Sweeteners Has No Effect on Insulin Sensitivity and Secretion in Nondiabetic Adults."
+          "notes": "Sucralose decreases insulin sensitivity in healthy subjects: a randomized controlled trial.",
+          "doi": "10.1093/ajcn/nqy152",
+          "pmid": "30535090",
+          "n_participants": 66
+        },
+        {
+          "citation": "MendezGarcia LA et al 2022 Microorganisms",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Ten-Week Sucralose Consumption Induces Gut Dysbiosis and Altered Glucose and Insulin Levels in Healthy Young Adults.",
+          "doi": "10.3390/microorganisms10020434",
+          "pmid": "35208888",
+          "n_participants": 40
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "sucralose",
+      "name": "Sucralose",
+      "kind": "food",
+      "aliases": [],
+      "description": "Sucralose as a food or dietary exposure."
+    },
+    {
+      "slug": "glucose_tolerance",
+      "name": "Glucose tolerance",
+      "kind": "process",
+      "aliases": [
+        "glycemic control",
+        "insulin sensitivity during glucose challenge"
+      ],
+      "description": "The body's ability to handle a glucose load without excessive hyperglycemia or insulin resistance."
     }
   ]
 }

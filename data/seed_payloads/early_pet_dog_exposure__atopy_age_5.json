@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "early_pet_dog_exposure",
-      "name": "Early-life household dog exposure",
-      "kind": "environmental"
-    },
-    {
-      "slug": "atopy_age_5",
-      "name": "Atopy by early school age",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "early_pet_dog_exposure",
@@ -19,43 +7,89 @@
       "direction": "protective",
       "tier": "B",
       "effect_size": "small",
-      "effect_quant": "The strongest pooled cohort evidence suggests that early-life dog ownership is linked to slightly lower allergic sensitization and does not increase school-age asthma. Older birth cohorts and high-risk infant studies point the same way, with lower atopy or recurrent wheeze among children exposed to dogs early in life.",
-      "population": "infants and young children exposed to household dogs during pregnancy, infancy, or early childhood",
-      "mechanism": "Dog exposure may increase endotoxin and microbial diversity in the home, broadening early immune education and nudging responses away from allergic sensitization. If the effect is real, it is likely mediated through environmental microbial exposure rather than through dogs themselves as a biologic agent.",
-      "summary": "Early household dog exposure appears mildly protective against later atopy rather than harmful. The best recent pooled cohort analysis shows no asthma penalty and some reduction in allergic sensitization, while older cohort work found lower rates of atopy and recurrent wheeze in dog-exposed infants or children.",
-      "caveats": "This is observational evidence and heavily entangled with self-selection, housing, endotoxin load, and families avoiding pets because of pre-existing allergy risk. The effect, if present, is modest and should not be overstated as a guaranteed prevention strategy.",
+      "effect_quant": "Several birth cohorts suggest that dog exposure in infancy is associated with lower later atopy or eczema. In the Finnish DIPP cohort, having a dog in the house during the first year was associated with OR 0.77 for atopic sensitization by age 5, and other cohorts report lower eczema or atopic disease among children exposed to dogs from birth.",
+      "population": "children exposed to household dogs during gestation or the first year of life",
+      "mechanism": "Dog exposure may increase microbial diversity, endotoxin exposure, and immune training during infancy in ways that favor tolerance rather than allergic sensitization. The effect appears to depend on timing and may be stronger for dog exposure than cat exposure in some cohorts.",
+      "summary": "The overall direction leans protective. Multiple prospective cohorts associate early dog exposure with lower odds of allergic sensitization, eczema, or atopic asthma later in childhood, although the exact phenotype and age of benefit vary across studies.",
+      "caveats": "Pet-owning families differ from non-pet-owning families in ways that can bias observational results, and reverse causation is difficult to eliminate completely. Not all cohorts find the same outcome pattern, and benefits for eczema or sensitization do not necessarily translate into lower non-atopic wheeze.",
       "evidence": [
         {
-          "citation": "PinotdeMoiraA et al 2022 J Allergy Clin Immunol",
-          "pmid": "35150722",
-          "year": 2022,
-          "study_type": "meta_analysis",
-          "n_participants": 77434,
+          "citation": "Ojwang V et al 2020 Pediatr Allergy Immunol",
+          "year": 2020,
+          "study_type": "cohort",
           "direction": "protective",
           "quality": "high",
-          "notes": "Associations of early-life pet ownership with asthma and allergic sensitization: A meta-analysis of more than 77,000 children from the EU Child Cohort Network."
+          "notes": "Early exposure to cats, dogs and farm animals and the risk of childhood asthma and allergy.",
+          "doi": "10.1111/pai.13186",
+          "pmid": "31829464",
+          "n_participants": 3781,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.77,
+            "ci_low": 0.63,
+            "ci_high": 0.96,
+            "comparator": "atopic sensitization by age 5 in children with a dog in the house during the first year of life versus no dog exposure"
+          }
         },
         {
-          "citation": "ChenCM et al 2008 Eur Respir J",
-          "pmid": "18256062",
+          "citation": "Bufford JD et al 2008 Clin Exp Allergy",
           "year": 2008,
           "study_type": "cohort",
-          "n_participants": 3155,
-          "direction": "protective",
-          "quality": "high",
-          "notes": "Dog ownership and contact during childhood and later allergy development."
-        },
-        {
-          "citation": "CampoP et al 2006 J Allergy Clin Immunol",
-          "pmid": "17157656",
-          "year": 2006,
-          "study_type": "cohort",
-          "n_participants": 532,
           "direction": "protective",
           "quality": "moderate",
-          "notes": "Influence of dog ownership and high endotoxin on wheezing and atopy during infancy."
+          "notes": "Effects of dog ownership in early childhood on immune development and atopic diseases.",
+          "doi": "10.1111/j.1365-2222.2008.03018.x",
+          "pmid": "18702654",
+          "n_participants": 275,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -0.556,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "atopic dermatitis prevalence at year 3 in children with dog exposure at birth versus no dog exposure (12% vs 27%)"
+          }
+        },
+        {
+          "citation": "Collin SM et al 2015 Clin Exp Allergy",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Pet ownership is associated with increased risk of non-atopic asthma and reduced risk of atopy in childhood: findings from a UK birth cohort.",
+          "doi": "10.1111/cea.12380",
+          "pmid": "25077415",
+          "n_participants": 3768,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.48,
+            "ci_low": 0.34,
+            "ci_high": 0.68,
+            "comparator": "atopic asthma at age 7 with continuous pet ownership versus non-ownership"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "early_pet_dog_exposure",
+      "name": "Early pet dog exposure",
+      "kind": "environmental",
+      "aliases": [
+        "dog exposure in infancy",
+        "household dog exposure in the first year"
+      ],
+      "description": "Living with a household dog during gestation or the first year of life."
+    },
+    {
+      "slug": "atopy_age_5",
+      "name": "Atopy by age 5",
+      "kind": "condition",
+      "aliases": [
+        "childhood allergic sensitization",
+        "preschool atopy"
+      ],
+      "description": "Atopic sensitization or allergic disease present by around 5 years of age."
     }
   ]
 }

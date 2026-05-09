@@ -1,63 +1,61 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "iron_deficiency_anemia",
-      "name": "Iron deficiency anemia",
-      "kind": "condition",
-      "aliases": [
-        "IDA"
-      ],
-      "description": "Anemia caused by depleted iron stores and inadequate iron availability for erythropoiesis."
-    }
-  ],
   "edges": [
     {
       "factor_slug": "iron_deficiency_anemia",
       "outcome_slug": "restless_legs_syndrome",
       "direction": "harmful",
-      "tier": "B",
+      "tier": "C",
       "effect_size": "moderate",
-      "effect_quant": "In the Cochrane synthesis, iron treatment improved IRLS severity versus placebo (MD -3.78 points, 95% CI -6.25 to -1.31), and randomized data in patients with iron deficiency anemia support the same general direction.",
-      "population": "adults with iron deficiency or iron deficiency anemia",
-      "mechanism": "Restless legs syndrome has long been linked to impaired brain iron handling, and overt iron deficiency anemia makes that biological problem easier to trigger and sustain. The association is more convincing here than in many nutrition-neurology links because both symptom burden and treatment response move in the expected direction when iron deficit is present.",
-      "summary": "The literature supports iron deficiency anemia as a meaningful contributor to restless legs syndrome rather than a coincidental lab finding. Treatment-focused syntheses and trials show symptom improvement when iron deficiency is corrected, and contemporary hematology work continues to describe a substantially higher RLS burden in people with iron deficiency anemia.",
-      "caveats": "Not every RLS case is driven by anemia, and the disorder also occurs in people with normal peripheral iron stores. This edge is strongest for RLS occurring in the setting of clear iron deficiency rather than for idiopathic RLS broadly.",
+      "effect_quant": "Across contemporary clinic-based studies, restless legs syndrome was present in 23.9% to 40.3% of adults with iron deficiency anemia, far above background prevalence estimates.",
+      "population": "adults with iron deficiency anemia",
+      "mechanism": "Iron deficiency can impair central dopaminergic signaling and reduce brain iron availability in regions involved in sensory discomfort and limb-movement control, which makes RLS biologically plausible in people with iron-deficient states.",
+      "summary": "Observational studies consistently report that restless legs syndrome is common among adults with iron deficiency anemia, with prevalence estimates often in the one-quarter to two-fifths range. The signal is clinically meaningful but still comes mainly from cross-sectional or clinic-based cohorts rather than large population meta-analyses, so the edge stays conservative.",
+      "caveats": "Most evidence is observational and enriched for symptomatic or referred patients, so the exact prevalence may not generalize to every community setting. These studies support screening and plausibility more than a precise causal effect size.",
       "evidence": [
         {
-          "citation": "Trotti LM et al 2019 Cochrane Database Syst Rev",
-          "pmid": "30609006",
-          "doi": "10.1002/14651858.CD007834.pub3",
+          "citation": "Bae H et al 2021 J Clin Sleep Med",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The prevalence and clinical characteristics of restless legs syndrome in patients with iron deficiency anemia in Korea.",
+          "doi": "10.5664/jcsm.9230",
+          "pmid": "33704047",
+          "n_participants": 124
+        },
+        {
+          "citation": "Allen RP et al 2013 Am J Hematol",
+          "year": 2013,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The prevalence and impact of restless legs syndrome on patients with iron deficiency anemia.",
+          "doi": "10.1002/ajh.23397",
+          "pmid": "23494945",
+          "n_participants": 251
+        },
+        {
+          "citation": "Telarovic S et al 2019 Hematology",
           "year": 2019,
-          "study_type": "systematic_review",
-          "n_participants": 345,
+          "study_type": "cross_sectional",
           "direction": "harmful",
-          "quality": "high",
-          "notes": "Iron for the treatment of restless legs syndrome."
-        },
-        {
-          "citation": "Qadri SN et al 2024 Sleep Med",
-          "pmid": "39326219",
-          "doi": "10.1016/j.sleep.2024.09.017",
-          "year": 2024,
-          "study_type": "meta_analysis",
-          "n_participants": 537,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Clinical efficacy and safety of IV ferric carboxymaltose in restless legs syndrome: A meta-analysis of 537 patients."
-        },
-        {
-          "citation": "Short V et al 2024 Am J Hematol",
-          "pmid": "38476079",
-          "doi": "10.1002/ajh.27290",
-          "year": 2024,
-          "study_type": "rct",
-          "n_participants": 70,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "A randomized double-blind pilot study to evaluate the efficacy, safety, and tolerability of intravenous iron versus oral iron for the treatment of restless legs syndrome in patients with iron deficiency anemia."
+          "quality": "low",
+          "notes": "Frequency of iron deficiency anemia in pregnant and non-pregnant women suffering from restless legs syndrome.",
+          "doi": "10.1080/16078454.2018.1560935",
+          "pmid": "31793405",
+          "n_participants": 462
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "iron_deficiency_anemia",
+      "name": "Iron deficiency anemia",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Iron deficiency anemia as a clinically relevant condition."
     }
   ]
 }

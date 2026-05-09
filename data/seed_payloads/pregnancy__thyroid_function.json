@@ -1,61 +1,72 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "pregnancy",
-      "name": "Pregnancy",
-      "kind": "process"
-    },
-    {
-      "slug": "thyroid_function",
-      "name": "Thyroid function",
-      "kind": "biomarker"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "pregnancy",
       "outcome_slug": "thyroid_function",
       "direction": "u_shaped",
       "tier": "B",
-      "effect_size": "small",
-      "effect_quant": "Across longitudinal pregnancy cohorts, thyroid physiology shifts in a distinctly non-linear way: TSH tends to be lowest in early gestation, then rises across later trimesters, while free T4 gradually declines from early pregnancy toward the third trimester. The point is physiologic recalibration rather than disease.",
-      "population": "women with uncomplicated singleton pregnancy and no baseline thyroid disease",
-      "mechanism": "Human chorionic gonadotropin transiently stimulates the thyroid early in pregnancy, which suppresses TSH and can raise thyroid hormone production. As gestation progresses, binding proteins and iodine demands change, so free thyroxine trends downward while TSH drifts upward toward postpartum values.",
-      "summary": "Pregnancy changes thyroid function in a patterned, trimester-specific way rather than pushing it in one simple direction. The early gestational state is relatively TSH-lowering, but later pregnancy looks progressively more like mild thyroid insufficiency if non-pregnant reference intervals are applied, which is why trimester-specific interpretation matters.",
-      "caveats": "This edge describes normal physiologic adaptation, not pathology, and the exact reference intervals depend on assay platform, iodine status, and thyroid antibody status. Values that look abnormal by non-pregnant standards may still be physiologic in pregnancy.",
+      "effect_size": "moderate",
+      "effect_quant": "Pregnancy causes large, trimester-specific shifts in thyroid physiology rather than a one-directional linear effect. One cohort found TSH reference intervals of 0.18 to 2.99 mIU/L at 9 to 12 weeks, 0.11 to 3.98 in the second trimester, and 0.48 to 4.71 in the third, while both low and high maternal thyroid hormone availability have been linked to adverse outcomes in observational cohorts and meta-analytic work.",
+      "population": "pregnant women across the trimesters of gestation",
+      "mechanism": "Human chorionic gonadotropin stimulates the thyroid early in pregnancy and can suppress TSH, while rising thyroxine-binding globulin, altered iodine demand, placental deiodinase activity, and fetal dependence on maternal hormone shift thyroid homeostasis over time. The result is a dynamic physiologic curve in which both low and high thyroid hormone availability can become problematic.",
+      "summary": "Pregnancy has a strong and distinctly trimester-dependent effect on thyroid function, making a u-shaped interpretation the best fit. Early gestation tends to lower TSH and alter free thyroid hormone measurements, then reference ranges shift again later in pregnancy, and both ends of the thyroid-function spectrum have been associated with adverse maternal or child outcomes.",
+      "caveats": "This edge is about physiologic and clinical thyroid-function shifts during pregnancy, not a claim that pregnancy itself is a disease exposure. Assay differences, iodine status, ethnicity, body size, and local population reference intervals materially affect what should be considered normal.",
       "evidence": [
         {
-          "citation": "EkinciEI et al 2013 Ann Clin Biochem",
-          "pmid": "23873872",
-          "year": 2013,
+          "citation": "Donovan LE et al 2019 Thyroid",
+          "year": 2019,
           "study_type": "cohort",
-          "n_participants": 130,
-          "direction": "mixed",
+          "direction": "u_shaped",
           "quality": "high",
-          "notes": "Longitudinal assessment of thyroid function in pregnancy."
+          "notes": "A Practical Approach for the Verification and Determination of Site- and Trimester-Specific Reference Intervals for Thyroid Function Tests in Pregnancy.",
+          "doi": "10.1089/thy.2018.0439",
+          "pmid": "30595114",
+          "n_participants": 444
         },
         {
-          "citation": "ZhangX et al 2016 Thyroid",
-          "pmid": "27733101",
-          "year": 2016,
+          "citation": "Liu WY et al 2022 Diabetes Metab Syndr Obes",
+          "year": 2022,
           "study_type": "cohort",
-          "n_participants": 99,
-          "direction": "mixed",
-          "quality": "high",
-          "notes": "Reference Intervals of Thyroid Function During Pregnancy: Self-Sequential Longitudinal Study Versus Cross-Sectional Study."
-        },
-        {
-          "citation": "WeekeJ et al 1982 Acta Endocrinol",
-          "pmid": "7158229",
-          "year": 1982,
-          "study_type": "cohort",
-          "n_participants": 20,
-          "direction": "mixed",
+          "direction": "u_shaped",
           "quality": "moderate",
-          "notes": "A longitudinal study of serum TSH, and total and free iodothyronines during normal pregnancy."
+          "notes": "Associations of Thyroid Function Tests with Lipid Levels and Adverse Pregnancy Outcomes During the First Trimester.",
+          "doi": "10.2147/DMSO.S352073",
+          "pmid": "35386588",
+          "n_participants": 1779
+        },
+        {
+          "citation": "Medici Marco et al 2015 Clin Chem",
+          "year": 2015,
+          "study_type": "expert_opinion",
+          "direction": "u_shaped",
+          "quality": "high",
+          "notes": "Thyroid function in pregnancy: what is normal?",
+          "doi": "10.1373/clinchem.2014.236646",
+          "pmid": "25829408"
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "pregnancy",
+      "name": "Pregnancy",
+      "kind": "condition",
+      "aliases": [
+        "gestation"
+      ],
+      "description": "The physiologic state of pregnancy across the trimesters."
+    },
+    {
+      "slug": "thyroid_function",
+      "name": "Thyroid function",
+      "kind": "biomarker",
+      "aliases": [
+        "TSH and free thyroxine status",
+        "maternal thyroid physiology"
+      ],
+      "description": "Thyroid hormone status and related laboratory measures such as TSH and free thyroxine."
     }
   ]
 }

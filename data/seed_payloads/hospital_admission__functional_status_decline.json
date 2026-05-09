@@ -1,61 +1,95 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "hospital_admission",
-      "name": "Hospital admission",
-      "kind": "process"
-    },
-    {
-      "slug": "functional_status_decline",
-      "name": "Functional status decline",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "hospital_admission",
       "outcome_slug": "functional_status_decline",
       "direction": "harmful",
-      "tier": "A",
+      "tier": "B",
       "effect_size": "moderate",
-      "effect_quant": "The pooled prevalence of hospital-associated disability in older adults is around 30%, and contemporary inpatient cohorts still show substantial functional loss between admission and discharge despite shorter lengths of stay and more protocolized care.",
-      "population": "older adults admitted to acute-care hospitals",
-      "mechanism": "Hospital admission exposes older adults to bed rest, delirium, sleep disruption, undernutrition, deconditioning, iatrogenic complications, and abrupt environmental change. Functional reserve can fall quickly even when the admitting illness improves, which is why discharge mobility and activities of daily living often lag behind physiologic recovery.",
-      "summary": "This is one of the clearest harmful geriatric process edges in the graph. Meta-analytic data show that hospital-associated disability is common after acute admission, and newer cohorts confirm that meaningful functional decline remains a frequent consequence of hospitalization rather than a rare side effect of severe illness alone.",
-      "caveats": "The size of decline varies by baseline frailty, illness severity, delirium burden, rehabilitation intensity, and diagnosis. Still, even potentially avoidable hospitalizations carry enough functional downside that prevention and early mobilization matter as much as treatment of the index disease.",
+      "effect_quant": "Hospital-associated disability is common in older adults. A meta-analysis of 7,375 hospitalized adults aged 65 and older estimated a pooled prevalence of new disability of 30% (95% CI 24% to 33%). Cohort studies also show that lower mobility and poorer steadiness during admission strongly track with loss of ADL independence by discharge and follow-up.",
+      "population": "older adults admitted to acute medical or medical-surgical hospital services, especially those aged 65 years or older",
+      "mechanism": "Acute illness, bed rest, delirium, sleep disruption, iatrogenic stressors, and low mobility during admission can rapidly decondition older adults and reduce reserve. Even short hospital stays can therefore convert transient illness into durable loss of independence in basic activities of daily living.",
+      "summary": "This is one of the clearest harmful geriatric systems-level edges. Acute hospital admission is not just a marker of illness severity; it is itself associated with substantial risk of downstream functional decline, particularly when mobility and baseline reserve are poor.",
+      "caveats": "Hospitalization effects are entangled with the severity of the illness that led to admission, so some measured decline reflects both the acute disease and the hospital process. Even so, the persistence of hospital-associated disability across cohorts and eras makes a genuinely harmful interpretation more credible than a purely confounded one.",
       "evidence": [
         {
-          "citation": "LoydC et al 2020 J Am Med Dir Assoc",
-          "pmid": "31734122",
-          "year": 2020,
+          "citation": "LoydC et al 2019 J Am Med Dir Assoc",
+          "year": 2019,
           "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prevalence of Hospital-Associated Disability in Older Adults: A Meta-analysis.",
+          "doi": "10.1016/j.jamda.2019.09.015",
+          "pmid": "31734122",
           "n_participants": 7375,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Prevalence of Hospital-Associated Disability in Older Adults: A Meta-analysis."
+          "effect_quant": {
+            "metric": "prevalence",
+            "value": 0.3,
+            "ci_low": 0.24,
+            "ci_high": 0.33,
+            "comparator": "combined prevalence of hospital-associated disability across acute-care studies in older adults"
+          }
         },
         {
-          "citation": "SkainsRM et al 2023 J Am Geriatr Soc",
-          "pmid": "36661192",
-          "year": 2023,
+          "citation": "ZisbergA et al 2011 J Am Geriatr Soc",
+          "year": 2011,
           "study_type": "cohort",
-          "n_participants": 38960,
           "direction": "harmful",
           "quality": "high",
-          "notes": "Hospital-associated disability due to avoidable hospitalizations among older adults."
+          "notes": "Low mobility during hospitalization and functional decline in older adults.",
+          "doi": "10.1111/j.1532-5415.2010.03276.x",
+          "pmid": "21314647",
+          "n_participants": 525,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 18.03,
+            "ci_low": 7.68,
+            "ci_high": 42.28,
+            "comparator": "worse basic functional status at discharge for low versus high in-hospital mobility"
+          }
         },
         {
-          "citation": "HosodaT and HamadaS 2021 BMC Geriatr",
-          "pmid": "34772350",
-          "year": 2021,
+          "citation": "LindenbergerEC et al 2003 J Am Geriatr Soc",
+          "year": 2003,
           "study_type": "cohort",
-          "n_participants": 132,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Functional decline in hospitalized older patients with coronavirus disease 2019: a retrospective cohort study."
+          "notes": "Unsteadiness reported by older hospitalized patients predicts functional decline.",
+          "doi": "10.1034/j.1600-0579.2003.00205.x",
+          "pmid": "12752836",
+          "n_participants": 1557,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 2.6,
+            "ci_low": 1.5,
+            "ci_high": 4.5,
+            "comparator": "ADL decline during hospitalization for very unsteady versus very steady older medical inpatients"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hospital_admission",
+      "name": "Acute hospital admission",
+      "kind": "environmental",
+      "aliases": [
+        "hospitalization",
+        "inpatient admission"
+      ],
+      "description": "Exposure to an acute-care inpatient hospital stay, especially in older adults admitted for medical illness."
+    },
+    {
+      "slug": "functional_status_decline",
+      "name": "Functional status decline",
+      "kind": "condition",
+      "aliases": [
+        "ADL decline",
+        "loss of independence"
+      ],
+      "description": "Worsening ability to perform activities of daily living or maintain baseline functional independence."
     }
   ]
 }

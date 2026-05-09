@@ -1,16 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "hereditary_hemochromatosis",
-      "name": "Hereditary hemochromatosis (HFE)",
-      "kind": "condition",
-      "aliases": [
-        "HFE C282Y-linked hemochromatosis"
-      ],
-      "description": "Inherited HFE-related hemochromatosis, classically driven by C282Y homozygosity and associated with progressive iron loading."
-    }
-  ],
   "edges": [
     {
       "factor_slug": "hereditary_hemochromatosis",
@@ -18,44 +7,64 @@
       "direction": "harmful",
       "tier": "A",
       "effect_size": "large",
-      "effect_quant": "Among previously undiagnosed C282Y homozygotes in the HEIRS screening study, ferritin was above conventional overload thresholds in 88% of men and 57% of women.",
-      "population": "adults with HFE C282Y-linked hereditary hemochromatosis",
-      "mechanism": "HFE-linked hemochromatosis reduces appropriate hepcidin signaling, allowing excessive intestinal iron absorption over many years. That creates the defining phenotype of progressive iron loading, with ferritin and transferrin saturation rising before organ damage appears.",
-      "summary": "Hereditary hemochromatosis is one of the clearest causal pathways to iron overload in clinical medicine. Modern reviews, family cohorts, and population screening studies all agree on the core relationship even though penetrance varies by sex, age, and background modifiers.",
-      "caveats": "Not every C282Y homozygote develops severe biochemical or clinical expression, and women are often less affected before menopause. The edge is nevertheless high-confidence because iron overload is the central disease mechanism, even if the degree of expression varies.",
+      "effect_quant": "In the Melbourne cohort, 28.4% of male C282Y homozygotes and 1.2% of female homozygotes had documented iron-overload-related disease, while a Copenhagen hereditary hemochromatosis cohort found ferritin above 1000 ug/L in 39.0% of homozygous patients versus 14.5% of compound heterozygotes.",
+      "population": "people with HFE hereditary hemochromatosis, especially C282Y homozygotes",
+      "mechanism": "HFE mutations reduce hepcidin signaling and increase intestinal iron absorption, causing progressive transferrin saturation and ferritin elevation over time. Once the iron-buffering capacity is exceeded, excess iron accumulates in the liver, joints, pancreas, heart, and other tissues.",
+      "summary": "Hereditary hemochromatosis is one of the clearest genetic drivers of systemic iron overload, especially in C282Y homozygotes. Population and clinic cohorts consistently show elevated ferritin and transferrin saturation in carriers with clinically important overload concentrated in a substantial minority of men and a smaller but real fraction of women.",
+      "caveats": "Penetrance is incomplete, so not every genetically affected person develops overt organ injury, particularly in population-screened cohorts and in women before menopause. Even so, the relationship to biochemical iron loading is strong enough that the edge itself is not meaningfully in doubt.",
       "evidence": [
         {
-          "citation": "Adams PC 2025 Adv Exp Med Biol",
-          "pmid": "40603788",
-          "year": 2025,
-          "study_type": "expert_opinion",
+          "citation": "Allen KJ et al 2008 N Engl J Med",
+          "year": 2008,
+          "study_type": "cohort",
           "direction": "harmful",
           "quality": "high",
-          "notes": "Diagnosis and Treatment of HFE(C282Y)-Linked Hemochromatosis."
+          "notes": "Iron-overload-related disease in HFE hereditary hemochromatosis.",
+          "doi": "10.1056/NEJMoa073286",
+          "pmid": "18199861",
+          "n_participants": 1438
         },
         {
-          "citation": "Lazarescu A et al 2005 Clin Gastroenterol Hepatol",
-          "pmid": "16234052",
-          "doi": "10.1016/S1542-3565(05)00413-1",
-          "year": 2005,
+          "citation": "Andersen RV et al 2022 Scand J Gastroenterol",
+          "year": 2022,
           "study_type": "cohort",
-          "n_participants": 148,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Phenotype variation in C282Y homozygotes for the hemochromatosis gene."
+          "notes": "Hereditary hemochromatosis: data from a single center Copenhagen cohort.",
+          "doi": "10.1080/00365521.2022.2042591",
+          "pmid": "35249441",
+          "n_participants": 203
         },
         {
-          "citation": "Adams PC et al 2005 N Engl J Med",
-          "pmid": "15858186",
-          "doi": "10.1056/NEJMoa041534",
-          "year": 2005,
+          "citation": "Andersen RV et al 2004 Blood",
+          "year": 2004,
           "study_type": "cohort",
-          "n_participants": 99711,
           "direction": "harmful",
-          "quality": "high",
-          "notes": "Hemochromatosis and iron-overload screening in a racially diverse population."
+          "quality": "moderate",
+          "notes": "Hemochromatosis mutations in the general population: iron overload progression rate.",
+          "doi": "10.1182/blood-2003-10-3564",
+          "pmid": "15070663",
+          "n_participants": 9174
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hereditary_hemochromatosis",
+      "name": "Hereditary hemochromatosis",
+      "kind": "condition",
+      "aliases": [
+        "HFE hemochromatosis"
+      ],
+      "description": "Inherited iron-loading disorder, usually related to HFE mutations."
+    },
+    {
+      "slug": "iron_overload",
+      "name": "Iron overload",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Pathologic accumulation of excess body iron."
     }
   ]
 }

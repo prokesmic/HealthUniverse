@@ -1,5 +1,54 @@
 {
   "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "polycythemia_vera",
+      "outcome_slug": "stroke_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In the 20-year Gruppo Italiano cohort of 1213 patients with polycythemia vera, 634 major thrombotic events occurred and stroke was classified among the major events; in a multicenter recurrent-thrombosis cohort, 191 of 494 first thrombotic events were cerebrovascular and recurrent thrombosis occurred in 33.6% of patients overall.",
+      "population": "adults with polycythemia vera in hospital-based and population-based cohorts",
+      "mechanism": "Polycythemia vera raises hematocrit and blood viscosity while also promoting platelet, leukocyte, and endothelial activation. That combination increases arterial thrombosis risk, and cerebral vessels are one of the classic territories where this hypercoagulable, hyperviscous state can present.",
+      "summary": "Polycythemia vera is a well-established thrombotic disorder, and stroke is one of its classic arterial complications. Across long-term cohorts, cerebrovascular events appear both as presenting events and as recurrent complications during follow-up.",
+      "caveats": "Many studies report arterial thrombosis composites rather than stroke alone, so the precise stroke-specific absolute risk varies by cohort, age, treatment intensity, and prior thrombosis history. Modern therapy lowers risk, but it does not eliminate it.",
+      "evidence": [
+        {
+          "citation": "Gruppo Italiano Studio Policitemia 1995 Ann Intern Med",
+          "year": 1995,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Polycythemia vera: the natural history of 1213 patients followed for 20 years.",
+          "doi": "10.7326/0003-4819-123-9-199511010-00003",
+          "pmid": "7574220",
+          "n_participants": 1213
+        },
+        {
+          "citation": "DeStefano V et al 2008 Haematologica",
+          "year": 2008,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Recurrent thrombosis in patients with polycythemia vera and essential thrombocythemia: incidence, risk factors, and effect of treatments.",
+          "doi": "10.3324/haematol.12053",
+          "pmid": "18268279",
+          "n_participants": 494
+        },
+        {
+          "citation": "Larsson J et al 2026 Eur J Haematol",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Polycythemia Vera and Essential Thrombocythemia: A Nationwide Population-Based Study on Treatment Patterns, Vascular Complications and Survival.",
+          "doi": "10.1111/ejh.70113",
+          "pmid": "41531010",
+          "n_participants": 2604
+        }
+      ]
+    }
+  ],
   "new_entities": [
     {
       "slug": "polycythemia_vera",
@@ -8,55 +57,7 @@
       "aliases": [
         "PV"
       ],
-      "description": "A myeloproliferative neoplasm characterized by increased red cell mass and heightened thrombotic risk."
-    }
-  ],
-  "edges": [
-    {
-      "factor_slug": "polycythemia_vera",
-      "outcome_slug": "stroke_risk",
-      "direction": "harmful",
-      "tier": "B",
-      "effect_size": "moderate",
-      "effect_quant": "A 2026 Swedish population study of 2,604 polycythemia vera patients found arterial event rates above 2 per 100 patient-years even on treatment, consistent with substantial residual cerebrovascular risk.",
-      "population": "adults with polycythemia vera",
-      "mechanism": "Polycythemia vera increases hematocrit, blood viscosity, leukocyte activation, and platelet-driven thrombosis, all of which can promote arterial occlusion including ischemic stroke. Uncontrolled counts and coexisting cardiovascular risk factors can amplify that baseline thrombotic tendency.",
-      "summary": "Polycythemia vera carries a clear excess thrombotic burden, and stroke belongs to that arterial-risk spectrum. Modern real-world cohorts and longstanding hematology reviews consistently show that cerebrovascular events remain a key complication, which is why hematocrit control and antithrombotic risk reduction are central in PV management.",
-      "caveats": "Many studies report arterial thrombosis as a composite rather than isolating stroke alone, so this edge is partly inferred from the well-established arterial-event burden in PV. Absolute stroke risk varies with age, prior thrombosis, leukocytosis, cardiovascular comorbidity, and adequacy of cytoreductive control.",
-      "evidence": [
-        {
-          "citation": "Larsson AE et al 2026 Eur J Haematol",
-          "pmid": "41531010",
-          "doi": "10.1111/ejh.70113",
-          "year": 2026,
-          "study_type": "cohort",
-          "n_participants": 2604,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Polycythemia Vera and Essential Thrombocythemia: A Nationwide Population-Based Study on Treatment Patterns, Vascular Complications and Survival."
-        },
-        {
-          "citation": "Neumark N et al 2026 Ann Hematol",
-          "pmid": "41661348",
-          "doi": "10.1007/s00277-026-06768-w",
-          "year": 2026,
-          "study_type": "cohort",
-          "n_participants": 107,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Long-term real-world thrombotic and clinical outcomes in polycythemia vera - a hospital-based i2b2 cohort study."
-        },
-        {
-          "citation": "Pearson TC 2002 Semin Oncol",
-          "pmid": "12096353",
-          "doi": "10.1053/sonc.2002.33756",
-          "year": 2002,
-          "study_type": "expert_opinion",
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "The risk of thrombosis in essential thrombocythemia and polycythemia vera."
-        }
-      ]
+      "description": "A chronic myeloproliferative neoplasm characterized by excess red cell production and heightened thrombotic risk."
     }
   ]
 }

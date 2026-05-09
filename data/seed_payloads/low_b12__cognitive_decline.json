@@ -1,64 +1,61 @@
 {
   "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "low_b12",
+      "outcome_slug": "cognitive_decline",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In Framingham, plasma vitamin B12 below 258 pmol/L with high folate predicted roughly a 1-point-per-year faster MMSE decline, but other well-nourished cohorts found little or no association.",
+      "population": "older adults",
+      "mechanism": "Low vitamin B12 can raise methylmalonic acid and impair one-carbon metabolism, myelin maintenance, and neuronal energy handling. Those pathways make slower processing and steeper cognitive decline plausible, especially when deficiency is metabolically confirmed rather than inferred from serum B12 alone.",
+      "summary": "Older-adult cohort studies suggest that low or low-normal B12 status can track with faster cognitive decline, particularly when accompanied by metabolic evidence of deficiency or high folate exposure. The literature is not fully uniform, though, because some healthier cohorts with better baseline nutrition show little association.",
+      "caveats": "Serum B12 alone may miss functionally important deficiency, and reverse causation or nutritional confounding can blur observational findings. This edge is best interpreted as a plausible risk signal rather than a settled large effect across all elderly populations.",
+      "evidence": [
+        {
+          "citation": "Tangney CC et al 2009 Neurology",
+          "year": 2009,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Biochemical indicators of vitamin B12 and folate insufficiency and cognitive decline.",
+          "doi": "10.1212/01.wnl.0000341272.48617.b0",
+          "pmid": "19171834",
+          "n_participants": 516
+        },
+        {
+          "citation": "Morris MS et al 2012 J Am Geriatr Soc",
+          "year": 2012,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Vitamin B-12 and folate status in relation to decline in scores on the mini-mental state examination in the framingham heart study.",
+          "doi": "10.1111/j.1532-5415.2012.04076.x",
+          "pmid": "22788704",
+          "n_participants": 549
+        },
+        {
+          "citation": "Kang JH et al 2006 Epidemiology",
+          "year": 2006,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Prospective study of plasma folate, vitamin B12, and cognitive function and decline.",
+          "doi": "10.1097/01.ede.0000239727.59575.da",
+          "pmid": "17028506",
+          "n_participants": 635
+        }
+      ]
+    }
+  ],
   "new_entities": [
     {
       "slug": "low_b12",
       "name": "Low vitamin B12",
       "kind": "biomarker",
-      "aliases": [
-        "vitamin B12 deficiency",
-        "low serum B12"
-      ],
-      "description": "Subnormal vitamin B12 status measured by serum B12 or related functional biomarkers."
-    }
-  ],
-  "edges": [
-    {
-      "factor_slug": "low_b12",
-      "outcome_slug": "cognitive_decline",
-      "direction": "mixed",
-      "tier": "C",
-      "effect_size": "small",
-      "effect_quant": "Prospective cohort evidence is inconsistent for serum B12 alone, but low to low-normal B12 status in Framingham predicted faster MMSE decline and low B12 with high folate in pooled cohorts was linked to worse cognition (AOR 3.45, 95% CI 1.60 to 7.43).",
-      "population": "older adults",
-      "mechanism": "Vitamin B12 is needed for myelin maintenance and one-carbon metabolism, so prolonged deficiency can plausibly affect cognition through methylation stress, homocysteine elevation, and neuronal dysfunction. The challenge is that serum B12 is an imperfect biomarker, which weakens the apparent signal in some cohort studies.",
-      "summary": "Low B12 status is a plausible cognitive risk factor, but the direct epidemiology is more mixed than many simple health claims suggest. The best summary is that conventional serum B12 alone has not shown a uniformly strong prospective association, yet lower or low-normal B12 repeatedly travels with worse cognitive trajectories in some older cohorts, especially when folate status is high or metabolic markers suggest functional deficiency.",
-      "caveats": "This edge is intentionally conservative because biomarker choice matters a great deal: methylmalonic acid and holotranscobalamin often perform differently from serum B12 alone. It should be read as a potentially meaningful but measurement-sensitive cognitive risk signal rather than a settled population-wide causal claim.",
-      "evidence": [
-        {
-          "citation": "OLeary F et al 2012 Br J Nutr",
-          "pmid": "23084026",
-          "doi": "10.1017/S0007114512004175",
-          "year": 2012,
-          "study_type": "systematic_review",
-          "n_participants": 14325,
-          "direction": "mixed",
-          "quality": "high",
-          "notes": "Vitamin B12 status, cognitive decline and dementia: a systematic review of prospective cohort studies."
-        },
-        {
-          "citation": "Morris MS et al 2012 J Am Geriatr Soc",
-          "pmid": "22788704",
-          "doi": "10.1111/j.1532-5415.2012.04076.x",
-          "year": 2012,
-          "study_type": "cohort",
-          "n_participants": 549,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Vitamin B-12 and folate status in relation to decline in scores on the mini-mental state examination in the framingham heart study."
-        },
-        {
-          "citation": "Moore EM et al 2014 J Alzheimers Dis",
-          "pmid": "24246419",
-          "doi": "10.3233/JAD-131265",
-          "year": 2014,
-          "study_type": "cohort",
-          "n_participants": 1354,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Among vitamin B12 deficient older people, high folate levels are associated with worse cognitive function: combined data from three cohorts."
-        }
-      ]
+      "aliases": [],
+      "description": "Low circulating vitamin B12 status as a clinically relevant biomarker."
     }
   ]
 }

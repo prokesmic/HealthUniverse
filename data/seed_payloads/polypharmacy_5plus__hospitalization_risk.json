@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "polypharmacy_5plus",
-      "name": "Polypharmacy (5 or more medications)",
-      "kind": "behavior"
-    },
-    {
-      "slug": "hospitalization_risk",
-      "name": "Hospitalization risk",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "polypharmacy_5plus",
@@ -19,43 +7,68 @@
       "direction": "harmful",
       "tier": "B",
       "effect_size": "moderate",
-      "effect_quant": "The clearest signal is that a medication count at or above the usual polypharmacy threshold tracks with more hospital use, but the size of that signal varies with setting and whether deprescribing studies or observational cohorts are being pooled.",
-      "population": "older adults in inpatient, outpatient, and post-acute care settings",
-      "mechanism": "Once medication burden reaches five or more long-term drugs, the chance of drug-drug interactions, prescribing cascades, orthostasis, and adherence failure rises enough to make hospitalization more likely. The count threshold is imperfect, but it captures a clinically meaningful jump in complexity and exposure to preventable adverse events.",
-      "summary": "The most grounded starting point for this edge is the 2024 JAGS meta-analysis of medication review and deprescribing in older inpatients. It does not prove that every fifth medication causes harm, but across older-adult settings the standard polypharmacy threshold consistently identifies people with higher downstream hospitalization risk and a bigger opportunity for medication optimization.",
-      "caveats": "Medication count is partly a marker of multimorbidity, so confounding is unavoidable in observational work. This edge is most useful as a risk-stratification signal and a prompt for medication review rather than as proof that all five-drug regimens are inappropriate.",
+      "effect_quant": "A 2022 meta-analysis of 24 cohort studies in 2,967,952 older adults found that polypharmacy defined as 5 or more drugs was associated with a 50% higher hospitalization rate (RR 1.50, 95% CI 1.18 to 1.89). In a 2023 cohort of 496 older adults with comorbidities, 5-plus medication use was associated with higher all-cause hospitalization (adjusted OR 1.66, 95% CI 1.08 to 2.56).",
+      "population": "older adults, especially community-dwelling or multimorbid patients taking five or more chronic prescription medications",
+      "mechanism": "Using five or more medicines increases the probability of adverse drug reactions, drug-drug interactions, prescribing cascades, and medication-management errors. Those medication-related hazards add to comorbidity burden and make acute decompensation or hospital admission more likely.",
+      "summary": "The direction here is strongly harmful. Across pooled cohort evidence and large administrative datasets, crossing the 5-medication threshold tracks with higher hospitalization risk, even after adjustment for comorbidity and prior healthcare use.",
+      "caveats": "Polypharmacy is partly a marker of illness complexity, so residual confounding is unavoidable. The threshold is more useful as a signal for medication review than as a standalone biological cutoff, and the real risk often depends on drug mix, duration, and frailty rather than count alone.",
       "evidence": [
         {
-          "citation": "Carollo et al 2024 J Am Geriatr Soc",
-          "pmid": "38822740",
-          "year": 2024,
+          "citation": "LiY et al 2022 Arch Gerontol Geriatr",
+          "year": 2022,
           "study_type": "meta_analysis",
-          "n_participants": 99,
           "direction": "harmful",
           "quality": "high",
-          "notes": "Clinical impact of medication review and deprescribing in older inpatients: A systematic review and meta-analysis."
+          "notes": "Association between polypharmacy and mortality in the older adults: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.archger.2022.104630",
+          "pmid": "35101709",
+          "n_participants": 2967952
         },
         {
-          "citation": "Eriksen et al 2022 Eur Geriatr Med",
-          "pmid": "35900651",
-          "year": 2022,
+          "citation": "DoumatG et al 2023 BMC Prim Care",
+          "year": 2023,
           "study_type": "cohort",
-          "n_participants": 49,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Older patients acutely admitted and readmitted to the same geriatric department: a descriptive cohort study of primary diagnoses and health characteristics."
+          "notes": "The effect of polypharmacy on healthcare services utilization in older adults with comorbidities: a retrospective cohort study.",
+          "doi": "10.1186/s12875-023-02070-0",
+          "pmid": "37237338",
+          "n_participants": 496
         },
         {
-          "citation": "Ucarer et al 2026 Drugs Aging",
-          "pmid": "42047996",
-          "year": 2026,
-          "study_type": "systematic_review",
-          "n_participants": 2025,
+          "citation": "ChaeJ et al 2024 Front Pharmacol",
+          "year": 2024,
+          "study_type": "cohort",
           "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Hospitalisation as an Opportunity to Optimise Quality Use of Medicines in Older Adults: A Systematic Review."
+          "quality": "high",
+          "notes": "The association between continuous polypharmacy and hospitalization, emergency department visits, and death in older adults: a nationwide large cohort study.",
+          "doi": "10.3389/fphar.2024.1382990",
+          "pmid": "39144630",
+          "n_participants": 6443896
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "polypharmacy_5plus",
+      "name": "Polypharmacy of 5 or more medications",
+      "kind": "behavior",
+      "aliases": [
+        "5+ medications",
+        "polypharmacy threshold of five"
+      ],
+      "description": "Concurrent long-term use of five or more medications in an older adult."
+    },
+    {
+      "slug": "hospitalization_risk",
+      "name": "Hospitalization risk",
+      "kind": "condition",
+      "aliases": [
+        "risk of hospital admission",
+        "all-cause hospitalization"
+      ],
+      "description": "Risk of being admitted to hospital for any cause over follow-up."
     }
   ]
 }

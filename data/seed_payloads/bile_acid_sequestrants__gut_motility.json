@@ -6,44 +6,70 @@
       "outcome_slug": "gut_motility",
       "direction": "mixed",
       "tier": "C",
-      "effect_size": "moderate",
-      "effect_quant": "Across 2025 meta-analyses of randomized bile-acid-diarrhea trials, sequestrants significantly improved stool frequency and consistency, which is the clinical expression of slower, better-controlled colonic transit in bile-acid-driven diarrhea. A dedicated 2010 randomized physiology study also showed that colesevelam delayed ascending-colon emptying by roughly 4 hours in IBS-D patients, although its overall whole-colon transit effect was modest.",
-      "population": "adults with bile acid diarrhea or diarrhea-predominant IBS treated with bile acid sequestrants such as colesevelam",
-      "mechanism": "Bile acid sequestrants alter gut motility indirectly by binding intraluminal bile acids that would otherwise accelerate colonic secretion and transit. Their clinical effect is therefore context-dependent: they can normalize excessively fast bowel motility in bile-acid diarrhea, but they do not uniformly improve every motility phenotype and can overshoot toward cramping or constipation.",
-      "summary": "Bile acid sequestrants change gut motility in a useful way when excess bile acids are driving fast, loose stools, but the effect is not a simple universal motility enhancer. Randomized trials and recent meta-analyses show that these drugs can slow transit enough to improve stool consistency and frequency in bile-acid diarrhea, while physiology studies suggest the transit effect is modest and phenotype-dependent.",
-      "caveats": "This edge is about bile-acid-related rapid transit, not about motility disorders in general. Benefits are strongest when bile-acid diarrhea is objectively present, and the same slowing effect can become a downside in people without that mechanism or in those prone to constipation and abdominal cramping.",
+      "effect_size": "small",
+      "effect_quant": "In a placebo-controlled study of 24 patients with diarrhea-predominant IBS, colesevelam prolonged ascending-colon emptying by about 4 hours versus placebo but only modestly affected overall colonic transit; in a later 30-patient randomized trial, colesevelam changed bile-acid biomarkers and mucosal gene expression without significantly altering stool frequency, consistency, colonic transit, or permeability overall.",
+      "population": "adults with diarrhea-predominant irritable bowel syndrome or bile-acid-related diarrhea treated with cholestyramine or colesevelam",
+      "mechanism": "Bile-acid sequestrants can reduce the prosecretory and pro-motility effects of intraluminal bile acids, especially in the colon, but the net clinical effect depends on baseline bile-acid excess, colonic transit biology, and host pharmacogenetic context.",
+      "summary": "Bile-acid sequestrants clearly can slow transit in some diarrhea-predominant patients, but the effect is neither universal nor dramatic. The best read is a mixed motility signal: helpful in the bile-acid-driven subgroup, modest or absent at the overall-group level, and potentially shaped by genotype and baseline bile-acid synthesis.",
+      "caveats": "Most studies are small and focused on IBS-D or bile-acid diarrhea rather than the full spectrum of motility disorders. Benefits on stool form or urgency do not always translate into statistically significant changes in global colonic transit metrics.",
       "evidence": [
         {
-          "citation": "Tariq et al 2025 J Clin Pharmacol",
-          "pmid": "39428959",
-          "year": 2025,
-          "study_type": "meta_analysis",
-          "n_participants": 311,
-          "direction": "protective",
-          "quality": "high",
-          "notes": "Efficacy of Bile Acid Sequestrants in the Treatment of Bile Acid Diarrhea: A Meta-Analysis of Randomized Controlled Trials."
-        },
-        {
-          "citation": "Camilleri et al 2010 Clin Gastroenterol Hepatol",
-          "pmid": "19879973",
+          "citation": "OdunsiShiyanbadeST et al 2010 Clin Gastroenterol Hepatol",
           "year": 2010,
           "study_type": "rct",
-          "n_participants": 24,
           "direction": "protective",
           "quality": "moderate",
-          "notes": "Effects of chenodeoxycholate and a bile acid sequestrant, colesevelam, on intestinal transit and bowel function."
+          "notes": "Effects of chenodeoxycholate and a bile acid sequestrant, colesevelam, on intestinal transit and bowel function.",
+          "doi": "10.1016/j.cgh.2009.10.020",
+          "pmid": "19879973",
+          "n_participants": 24
         },
         {
-          "citation": "Camilleri et al 2012 Dig Dis Sci",
-          "pmid": "22271411",
+          "citation": "WongBS et al 2012 Dig Dis Sci",
           "year": 2012,
-          "study_type": "cohort",
-          "n_participants": 24,
-          "direction": "mixed",
+          "study_type": "rct",
+          "direction": "protective",
           "quality": "low",
-          "notes": "Pharmacogenetics of the effects of colesevelam on colonic transit in irritable bowel syndrome with diarrhea."
+          "notes": "Pharmacogenetics of the effects of colesevelam on colonic transit in irritable bowel syndrome with diarrhea.",
+          "doi": "10.1007/s10620-012-2035-5",
+          "pmid": "22271411",
+          "n_participants": 24
+        },
+        {
+          "citation": "VijayvargiyaP et al 2020 Clin Gastroenterol Hepatol",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Effects of Colesevelam on Bowel Symptoms, Biomarkers, and Colonic Mucosal Gene Expression in Patients With Bile Acid Diarrhea in a Randomized Trial.",
+          "doi": "10.1016/j.cgh.2020.02.027",
+          "pmid": "32088296",
+          "n_participants": 30
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "bile_acid_sequestrants",
+      "name": "Bile-acid sequestrants",
+      "kind": "drug",
+      "aliases": [
+        "cholestyramine",
+        "colesevelam",
+        "colestipol"
+      ],
+      "description": "Medications that bind bile acids in the intestinal lumen and reduce their downstream secretory and motility effects."
+    },
+    {
+      "slug": "gut_motility",
+      "name": "Gut motility",
+      "kind": "condition",
+      "aliases": [
+        "intestinal transit",
+        "colonic transit"
+      ],
+      "description": "The speed and pattern of gastrointestinal transit and bowel propulsion."
     }
   ]
 }

@@ -1,61 +1,95 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "cesarean_delivery",
-      "name": "Cesarean delivery",
-      "kind": "process"
-    },
-    {
-      "slug": "atopic_eczema_child",
-      "name": "Childhood atopic eczema",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "cesarean_delivery",
       "outcome_slug": "atopic_eczema_child",
       "direction": "harmful",
-      "tier": "B",
+      "tier": "C",
       "effect_size": "small",
-      "effect_quant": "The broadest recent synthesis found that cesarean delivery was associated with a modest increase in offspring atopic dermatitis or eczema risk, with pooled odds ratio about 1.08. Large nationwide and older cohort studies point in the same direction, but the effect is small enough that residual confounding remains a real concern.",
-      "population": "children followed from birth through early childhood after cesarean versus vaginal delivery",
-      "mechanism": "Cesarean delivery may alter early immune education by changing exposure to maternal vaginal and intestinal microbes at birth, which can shift microbiome colonization during a period when skin-barrier and immune tolerance pathways are still developing. If the effect is real, it is probably small and intertwined with antibiotic exposure, breastfeeding patterns, and family-level atopy risk.",
-      "summary": "Cesarean delivery appears to modestly raise the risk of childhood eczema, but this is a weak-to-moderate epidemiologic signal rather than a major deterministic effect. The newest large review, an older Kaiser cohort, and a Swedish nationwide study all lean in the same harmful direction, which is enough to treat the association as probably real but small.",
-      "caveats": "This is observational evidence and highly vulnerable to confounding by indication, intrapartum antibiotics, maternal atopy, and family context. The effect size is modest, so cesarean delivery should not be framed as a dominant cause of childhood eczema.",
+      "effect_quant": "Any association appears small and inconsistent. An older meta-analysis found no pooled association with eczema or atopic dermatitis overall, but newer prospective Scandinavian data reported adjusted odds of 1.33 for atopic dermatitis by age 3 after cesarean delivery.",
+      "population": "children born by cesarean delivery and followed for eczema or atopic dermatitis in infancy and early childhood",
+      "mechanism": "Cesarean delivery may alter early microbial exposure at birth and shift immune development compared with vaginal delivery. If a real eczema effect exists, it is likely mediated through subtle microbiome and immune-patterning differences rather than a large direct causal pathway.",
+      "summary": "The most defensible interpretation is a small possible harmful association with substantial uncertainty. Recent analyses suggest modestly higher odds of childhood atopic dermatitis after cesarean delivery, but large cohort studies and older meta-analyses have also found null or nearly null associations.",
+      "caveats": "Mode of delivery is heavily entangled with maternal comorbidity, labor characteristics, antibiotics, breastfeeding patterns, and familial atopy, so residual confounding is a real concern. This edge should be read as a weak epidemiologic signal, not as a strong causal conclusion against medically indicated cesarean birth.",
       "evidence": [
         {
-          "citation": "LiuX et al 2024 J Allergy Clin Immunol Pract",
-          "pmid": "38908434",
-          "year": 2024,
-          "study_type": "systematic_review",
-          "n_participants": 113,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Risk of Asthma and Allergies in Children Delivered by Cesarean Section: A Comprehensive Systematic Review."
+          "citation": "Bager P et al 2008 Clin Exp Allergy",
+          "year": 2008,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Caesarean delivery and risk of atopy and allergic disease: meta-analyses.",
+          "doi": "10.1111/j.1365-2222.2008.02939.x",
+          "pmid": "18266879",
+          "n_participants": 1308387,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.03,
+            "ci_low": 0.98,
+            "ci_high": 1.09,
+            "comparator": "eczema or atopic dermatitis in offspring born by cesarean delivery versus vaginal delivery"
+          }
         },
         {
-          "citation": "MubangaM et al 2023 Pediatr Allergy Immunol",
-          "pmid": "36705040",
+          "citation": "Hoel ST et al 2023 J Allergy Clin Immunol Glob",
           "year": 2023,
           "study_type": "cohort",
-          "n_participants": 1399406,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Mode of delivery and offspring atopic dermatitis in a Swedish nationwide study."
-        },
-        {
-          "citation": "RenzPolsterH et al 2005 Clin Exp Allergy",
-          "pmid": "16297144",
-          "year": 2005,
-          "study_type": "cohort",
-          "n_participants": 8953,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Caesarean section delivery and the risk of allergic disorders in childhood."
+          "notes": "Birth mode is associated with development of atopic dermatitis in infancy and early childhood.",
+          "doi": "10.1016/j.jacig.2023.100104",
+          "pmid": "37779526",
+          "n_participants": 2129,
+          "effect_quant": {
+            "metric": "aOR",
+            "value": 1.33,
+            "ci_low": 1.02,
+            "ci_high": 1.74,
+            "comparator": "atopic dermatitis by 3 years of age after cesarean delivery versus vaginal delivery"
+          }
+        },
+        {
+          "citation": "Richards M et al 2020 Clin Exp Allergy",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Caesarean delivery and the risk of atopic dermatitis in children.",
+          "doi": "10.1111/cea.13668",
+          "pmid": "32436356",
+          "n_participants": 173105,
+          "effect_quant": {
+            "metric": "aRR",
+            "value": 1.02,
+            "ci_low": 0.99,
+            "ci_high": 1.05,
+            "comparator": "atopic dermatitis by age 4 after cesarean delivery versus vaginal delivery"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cesarean_delivery",
+      "name": "Cesarean delivery",
+      "kind": "process",
+      "aliases": [
+        "caesarean section",
+        "C-section birth"
+      ],
+      "description": "Birth by cesarean delivery rather than vaginal delivery."
+    },
+    {
+      "slug": "atopic_eczema_child",
+      "name": "Childhood atopic eczema",
+      "kind": "condition",
+      "aliases": [
+        "childhood atopic dermatitis",
+        "eczema in childhood"
+      ],
+      "description": "Atopic dermatitis or eczema diagnosed during infancy or early childhood."
     }
   ]
 }

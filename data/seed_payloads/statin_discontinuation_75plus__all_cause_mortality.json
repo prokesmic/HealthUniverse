@@ -5,43 +5,46 @@
       "factor_slug": "statin_discontinuation_75plus",
       "outcome_slug": "all_cause_mortality",
       "direction": "u_shaped",
-      "tier": "X",
-      "effect_size": "moderate",
-      "effect_quant": "The broadest recent systematic review found that statin discontinuation was associated with higher mortality in non-randomized studies, with pooled hazard ratio about 1.92, while a 2026 target-trial emulation in multimorbid older adults found higher 12-month risk of cardiovascular events or death with discontinuation. In contrast, a palliative-care RCT found no short-term mortality penalty when statins were stopped near the end of life.",
-      "population": "older adults aged roughly 70 years or older facing statin discontinuation outside versus inside advanced life-limiting illness settings",
-      "mechanism": "Stopping statins in older adults may raise mortality when vascular risk remains meaningful because lipid-lowering and plaque-stabilizing effects are withdrawn, but the same drugs can become lower-yield when prognosis is short and treatment burden dominates. That is why the effect looks context-dependent rather than uniformly harmful or uniformly safe.",
-      "summary": "Statin discontinuation in adults over 75 looks context-sensitive rather than simply good or bad. Outside end-of-life care, observational evidence increasingly suggests higher mortality after stopping, especially in multimorbid older adults, while a randomized palliative-care trial found no short-term survival harm and some quality-of-life upside from deprescribing.",
-      "caveats": "Most of the apparent harm comes from observational evidence that may still reflect frailty, prognosis, or clinician selection, and the cleanest randomized trial was conducted in people with limited life expectancy rather than in routine healthy 75-plus primary prevention. This edge is best interpreted as a deprescribing judgment call, not a blanket rule.",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2024 systematic review covering 35 non-randomized studies and 1,708,684 participants found statin discontinuation was associated with higher all-cause mortality outside end-of-life settings (pooled HR 1.92, 95% CI 1.52 to 2.44), with similar findings in people aged 75 years or older; in contrast, the 381-person Kutner trial in patients with life expectancy under 1 year found no important 60-day mortality difference after discontinuation (risk difference 3.5%, 90% CI -3.5 to 10.5).",
+      "population": "older adults aged 75 years and above or similarly old multimorbid populations facing decisions about whether to continue or stop statins, especially in primary-prevention or preventive-polypharmacy settings",
+      "mechanism": "Stopping statins can remove ongoing LDL lowering and plaque-stabilizing effects, which may gradually raise vascular-event and mortality risk in older adults who still have enough life expectancy to benefit. At the same time, near end-of-life the delayed cardiovascular benefits may matter less than pill burden, adverse effects, or quality of life.",
+      "summary": "The literature fits a u-shaped interpretation better than a simple harmful label. In generally stable older adults, especially those still using multiple preventive therapies, discontinuing statins is usually associated with worse long-term outcomes; but in advanced life-limiting illness, randomized evidence suggests stopping statins does not materially worsen short-term survival.",
+      "caveats": "Most long-term harm estimates come from non-randomized data and may partly reflect confounding by frailty, prognosis, or clinician treatment selection. This edge should not be generalized to secondary-prevention patients with established atherosclerotic disease, where continuation arguments are usually stronger than in primary prevention.",
       "evidence": [
         {
-          "citation": "Foong et al 2024 J Am Geriatr Soc",
-          "pmid": "39051828",
+          "citation": "PeixotoC et al 2024 J Am Geriatr Soc",
           "year": 2024,
           "study_type": "systematic_review",
-          "n_participants": 1708684,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Discontinuation versus continuation of statins: A systematic review."
+          "notes": "Discontinuation versus continuation of statins: A systematic review.",
+          "doi": "10.1111/jgs.19093",
+          "pmid": "39051828",
+          "n_participants": 1709065
         },
         {
-          "citation": "Apetrei et al 2026 Eur J Clin Invest",
-          "pmid": "41028982",
-          "year": 2026,
+          "citation": "ReaF et al 2021 JAMA Netw Open",
+          "year": 2021,
           "study_type": "cohort",
-          "n_participants": 2668,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Target trial emulation of statin discontinuation in multimorbid older adults with polypharmacy."
+          "notes": "Cardiovascular Outcomes and Mortality Associated With Discontinuing Statins in Older Patients Receiving Polypharmacy.",
+          "doi": "10.1001/jamanetworkopen.2021.13186",
+          "pmid": "34125221",
+          "n_participants": 29047
         },
         {
-          "citation": "Kutner et al 2015 JAMA Intern Med",
-          "pmid": "25798575",
+          "citation": "KutnerJS et al 2015 JAMA Intern Med",
           "year": 2015,
           "study_type": "rct",
-          "n_participants": 381,
           "direction": "neutral",
           "quality": "moderate",
-          "notes": "Safety and benefit of discontinuing statin therapy in the setting of advanced, life-limiting illness: a randomized clinical trial."
+          "notes": "Safety and benefit of discontinuing statin therapy in the setting of advanced, life-limiting illness: a randomized clinical trial.",
+          "doi": "10.1001/jamainternmed.2015.0289",
+          "pmid": "25798575",
+          "n_participants": 381
         }
       ]
     }
@@ -49,10 +52,13 @@
   "new_entities": [
     {
       "slug": "statin_discontinuation_75plus",
-      "name": "Statin discontinuation in adults 75+",
+      "name": "Statin discontinuation after age 75",
       "kind": "behavior",
-      "aliases": [],
-      "description": "Stopping chronic statin therapy in adults aged 75 years or older."
+      "aliases": [
+        "stopping statins in older adults",
+        "deprescribing statins after 75"
+      ],
+      "description": "Intentional discontinuation of statin therapy in adults aged 75 years or older."
     }
   ]
 }

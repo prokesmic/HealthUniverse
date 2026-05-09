@@ -1,61 +1,78 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "tricyclic_antidepressants_elderly",
-      "name": "Tricyclic antidepressant use in older adults",
-      "kind": "drug"
-    },
-    {
-      "slug": "cognitive_function",
-      "name": "Cognitive function",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "tricyclic_antidepressants_elderly",
       "outcome_slug": "cognitive_function",
       "direction": "harmful",
-      "tier": "B",
+      "tier": "C",
       "effect_size": "small",
-      "effect_quant": "The direct long-term signal is not uniformly catastrophic, but evidence across anticholinergic reviews, prospective cohorts, and older-adult medication studies points toward measurable cognitive harm or vulnerability rather than benefit.",
-      "population": "older adults exposed to tricyclic antidepressants or comparable strong anticholinergic burden",
-      "mechanism": "Tricyclic antidepressants impair cognition mainly through central anticholinergic effects that blunt attention, working memory, and processing speed. In older adults with lower cholinergic reserve, even modest anticholinergic exposure can unmask non-amnestic cognitive slowing and, over long cumulative exposure, may contribute to more durable impairment.",
-      "summary": "This edge should be read as a class-risk signal rather than a statement that every older person on a tricyclic will deteriorate. The best evidence shows that tricyclics consistently impair attention and information processing in older adults, and their inclusion among the strongest anticholinergic exposures helps explain why geriatric prescribing frameworks treat them as cognitively risky drugs.",
-      "caveats": "Longitudinal population data do not always show accelerated decline after adjustment, and some of the observed harm may reflect confounding by depression itself. Still, the anticholinergic mechanism and repeated short-term impairment findings are strong enough to keep the edge on the harmful side.",
+      "effect_quant": "Across older-adult studies, tricyclic antidepressants are repeatedly linked to worse cognitive performance or higher risk of later cognitive impairment, largely through anticholinergic burden. In the Women's Health Initiative Memory Study, tricyclic use was associated with incident mild cognitive impairment with HR 1.78 (95% CI 0.99 to 3.21). A meta-analysis of anticholinergic drugs in adults aged 65 and older found class exposure associated with 45% higher odds of cognitive impairment, and a German primary-care cohort found more potentially inappropriate medication exposure, with amitriptyline among the common PRISCUS drugs, associated with reduced cognitive test performance.",
+      "population": "older adults exposed to tricyclic antidepressants, especially amitriptyline-class drugs in multimorbid or cognitively vulnerable populations",
+      "mechanism": "Tricyclic antidepressants can impair cognition through strong central antimuscarinic effects that interfere with attention, working memory, and encoding. Sedation, orthostasis, and cumulative anticholinergic burden may further worsen executive function and lower cognitive reserve in older adults.",
+      "summary": "The most defensible reading is that tricyclic antidepressants are cognitively unfriendly in older adults, even if the exact long-term effect size varies. Direct late-life data and broader anticholinergic literature both point in the same direction, which is why geriatric prescribing frameworks consistently push TCAs down the preference list when cognition matters.",
+      "caveats": "Not every study isolates TCAs cleanly from depression severity or other anticholinergic drugs, so some of the long-term association could reflect confounding by indication or overall medication burden. Even so, the short-term pharmacologic plausibility and the repeated observational signal make a harmful interpretation more credible than a neutral one.",
       "evidence": [
         {
-          "citation": "TannenbaumC et al 2012 Drugs Aging",
-          "pmid": "22812538",
-          "year": 2012,
-          "study_type": "systematic_review",
-          "n_participants": 162,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "A systematic review of amnestic and non-amnestic mild cognitive impairment induced by anticholinergic, antihistamine, GABAergic and opioid drugs."
-        },
-        {
-          "citation": "GraySL et al 2015 JAMA Intern Med",
-          "pmid": "25621434",
+          "citation": "RuxtonK et al 2015 Br J Clin Pharmacol",
           "year": 2015,
-          "study_type": "cohort",
-          "n_participants": 3434,
+          "study_type": "meta_analysis",
           "direction": "harmful",
-          "quality": "high",
-          "notes": "Cumulative use of strong anticholinergics and incident dementia: a prospective cohort study."
+          "quality": "moderate",
+          "notes": "Drugs with anticholinergic effects and cognitive impairment, falls and all-cause mortality in older adults: A systematic review and meta-analysis.",
+          "doi": "10.1111/bcp.12617",
+          "pmid": "25735839",
+          "n_participants": 124286,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.45,
+            "ci_low": 1.16,
+            "ci_high": 1.73,
+            "comparator": "cognitive impairment with exposure to anticholinergic drugs as a class in older adults"
+          }
         },
         {
-          "citation": "CarriereI et al 2017 BMC Med",
-          "pmid": "28424070",
-          "year": 2017,
+          "citation": "GoveasJS et al 2012 Int Psychogeriatr",
+          "year": 2012,
           "study_type": "cohort",
-          "n_participants": 7381,
-          "direction": "mixed",
+          "direction": "harmful",
           "quality": "moderate",
-          "notes": "Antidepressant use and cognitive decline in community-dwelling elderly people - The Three-City Cohort."
+          "notes": "Depressive symptoms, antidepressant use, and future cognitive health in postmenopausal women: the Women's Health Initiative Memory Study.",
+          "doi": "10.1017/S1041610211002778",
+          "pmid": "22301077",
+          "n_participants": 6998,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.78,
+            "ci_low": 0.99,
+            "ci_high": 3.21,
+            "comparator": "incident mild cognitive impairment with tricyclic antidepressant use versus no antidepressant use in older women"
+          }
+        },
+        {
+          "citation": "KrugerC et al 2021 BMJ Open",
+          "year": 2021,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Comparison of FORTA, PRISCUS and EU(7)-PIM lists on identifying potentially inappropriate medication and its impact on cognitive function in multimorbid elderly German people in primary care: a multicentre observational study.",
+          "doi": "10.1136/bmjopen-2021-050344",
+          "pmid": "34535481",
+          "n_participants": 3189
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "tricyclic_antidepressants_elderly",
+      "name": "Tricyclic antidepressants in older adults",
+      "kind": "drug",
+      "aliases": [
+        "TCAs in the elderly",
+        "amitriptyline-class antidepressants"
+      ],
+      "description": "Use of tricyclic antidepressants such as amitriptyline, nortriptyline, or imipramine in older adults."
     }
   ]
 }

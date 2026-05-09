@@ -5,43 +5,46 @@
       "factor_slug": "anticholinergic_burden_score",
       "outcome_slug": "cognitive_decline",
       "direction": "harmful",
-      "tier": "X",
-      "effect_size": "small",
-      "effect_quant": "The most informative older-adult meta-analysis found that cognitively unimpaired elders with anticholinergic burden on the Anticholinergic Cognitive Burden scale had higher odds of later cognitive decline or dementia, with adjusted pooled odds ratio around 2.63. Other large cohorts do not always show accelerated decline over time, so the direction is concerning but the certainty remains limited.",
-      "population": "older adults with anticholinergic medication exposure quantified by a formal burden scale",
-      "mechanism": "A high anticholinergic burden score likely contributes to cognitive decline by cumulatively suppressing central cholinergic signaling that supports attention, memory encoding, and executive processing. The signal is biologically plausible, but the long-term prognostic effect varies because the scales differ and anticholinergic use often tracks with multimorbidity itself.",
-      "summary": "A high anticholinergic burden score is a credible risk marker for later cognitive decline in older adults, but the evidence is less uniform than the mechanism suggests. Meta-analytic work in cognitively intact elders points toward higher odds of future decline, while some large cohorts show lower cognitive performance without clearly faster deterioration over time.",
-      "caveats": "Different anticholinergic scales classify exposure differently, and confounding by illness burden, frailty, and indication is hard to eliminate. This edge should be read as a low-certainty but clinically important warning, not as proof that every anticholinergic exposure trajectory causes progressive decline.",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a 2021 Cochrane review of 25 studies in 968,428 older adults, adjusted pooled odds ratios using the Anticholinergic Cognitive Burden scale suggested higher future cognitive decline or dementia risk (OR 2.63, 95% CI 1.09 to 6.29), with an exploratory across-scale pooled adjusted OR of 2.16; in a British birth cohort, high anticholinergic exposure at ages 60 to 64 was associated with a 2.34-point lower ACE-III score at age 69 and lower longitudinal verbal-memory scores.",
+      "population": "middle-aged and older adults exposed to medications with anticholinergic properties, including community cohorts and prognostic studies of cognitively normal elders",
+      "mechanism": "Anticholinergic burden suppresses central acetylcholine signaling that supports attention, memory encoding, and executive function. Repeated exposure may also worsen delirium vulnerability, reduce cognitive reserve, and compound medication-related frailty in aging brains.",
+      "summary": "The best-supported read is that higher cumulative anticholinergic burden tracks with worse cognitive aging, especially when measured by validated burden scales and followed longitudinally. The signal is not perfectly uniform across scales or outcomes, but the pooled evidence points toward a real harmful association rather than a one-off artifact.",
+      "caveats": "Much of the evidence is observational and vulnerable to confounding by indication, multimorbidity, and polypharmacy. Some cohorts show stronger links with mild cognitive impairment or verbal-memory decline than with frank dementia, and deprescribing trials remain too small to prove reversibility.",
       "evidence": [
         {
-          "citation": "Taylor-Rowan et al 2021 Cochrane Database Syst Rev",
-          "pmid": "34097766",
+          "citation": "Taylor-RowanM et al 2021 Cochrane Database Syst Rev",
           "year": 2021,
-          "study_type": "systematic_review",
-          "n_participants": 968428,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Anticholinergic burden (prognostic factor) for prediction of dementia or cognitive decline in older adults with no known cognitive syndrome.",
+          "doi": "10.1002/14651858.CD013540.pub2",
+          "pmid": "34097766",
+          "n_participants": 968428
+        },
+        {
+          "citation": "RawleMJ et al 2024 Drugs Aging",
+          "year": 2024,
+          "study_type": "cohort",
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Anticholinergic burden (prognostic factor) for prediction of dementia or cognitive decline in older adults with no known cognitive syndrome."
+          "notes": "Associations Between Midlife Anticholinergic Medication Use and Subsequent Cognitive Decline: A British Birth Cohort Study.",
+          "doi": "10.1007/s40266-024-01116-x",
+          "pmid": "38740716",
+          "n_participants": 1690
         },
         {
-          "citation": "Taylor-Rowan et al 2022 Cochrane Database Syst Rev",
-          "pmid": "35994403",
-          "year": 2022,
-          "study_type": "systematic_review",
-          "n_participants": 102684,
-          "direction": "mixed",
-          "quality": "moderate",
-          "notes": "Anticholinergic burden for prediction of cognitive decline or neuropsychiatric symptoms in older adults with mild cognitive impairment or dementia."
-        },
-        {
-          "citation": "Mur et al 2023 Br J Clin Pharmacol",
-          "pmid": "36813260",
+          "citation": "GildengersA et al 2023 Alzheimer Dis Assoc Disord",
           "year": 2023,
           "study_type": "cohort",
-          "n_participants": 163043,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Anticholinergic burden in middle and older age is associated with lower cognitive function, but not with brain atrophy."
+          "notes": "Anticholinergic Drug Burden and Risk of Incident MCI and Dementia: A Population-based Study.",
+          "doi": "10.1097/WAD.0000000000000538",
+          "pmid": "36706325",
+          "n_participants": 1959
         }
       ]
     }
@@ -49,10 +52,13 @@
   "new_entities": [
     {
       "slug": "anticholinergic_burden_score",
-      "name": "High anticholinergic burden score",
-      "kind": "behavior",
-      "aliases": [],
-      "description": "A high cumulative medication burden measured using an anticholinergic burden scale."
+      "name": "Anticholinergic burden score",
+      "kind": "process",
+      "aliases": [
+        "ACB scale",
+        "anticholinergic burden"
+      ],
+      "description": "A cumulative measure of exposure to medications with anticholinergic properties, typically derived from scales such as the Anticholinergic Cognitive Burden score."
     }
   ]
 }

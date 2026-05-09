@@ -1,70 +1,95 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "combined_oral_contraceptives",
-      "name": "Combined oral contraceptives",
-      "kind": "drug"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "combined_oral_contraceptives",
       "outcome_slug": "ovarian_cancer",
       "direction": "protective",
-      "tier": "B",
+      "tier": "A",
       "effect_size": "moderate",
-      "effect_quant": "The ovarian-cancer signal is one of the most consistent long-term benefits of combined oral contraceptives. Across pooled datasets, ever use is associated with lower risk, and longer duration generally strengthens that protection.",
-      "population": "premenopausal and postmenopausal women with prior exposure to combined oral contraceptives",
-      "mechanism": "Combined oral contraceptives suppress ovulation and reduce repeated epithelial disruption and inflammatory repair at the ovary. That cumulative ovulation-suppression model fits the duration-response pattern seen across cohort and pooled analyses.",
-      "summary": "Combined oral contraceptives are associated with lower ovarian-cancer risk in large pooled analyses, and the most persuasive evidence suggests the benefit grows with duration of use. This is one of the clearest long-term protective associations in reproductive cancer epidemiology.",
-      "caveats": "Most of the strongest evidence is observational, and formulations have changed across decades. The protective association also needs to be weighed against other outcomes, including small increases in some hormone-sensitive cancers.",
+      "effect_quant": "This is one of the clearest long-term protective signals in reproductive epidemiology. In a collaborative individual-participant meta-analysis of 110,560 women, each 5 years of oral-contraceptive use was linked to about a 29% lower ovarian-cancer risk when use had ceased within the prior decade, and benefit persisted for decades after stopping. Additional case-control and BRCA-carrier cohort data support the same direction.",
+      "population": "women using combined oral contraceptives, including general-population users and high-risk BRCA1 or BRCA2 mutation carriers",
+      "mechanism": "Combined oral contraceptives suppress ovulation and reduce repeated epithelial disruption and repair at the ovarian surface. That lower lifetime ovulatory burden is the leading biologic explanation for the durable reduction in epithelial ovarian-cancer risk seen across observational datasets.",
+      "summary": "The ovarian-cancer signal is strongly protective and unusually consistent. Large pooled epidemiology, conventional case-control data, and hereditary-risk cohorts all point in the same direction: longer combined oral-contraceptive exposure is associated with lower ovarian-cancer risk, and the protection often persists long after discontinuation.",
+      "caveats": "Absolute benefit varies with baseline risk, duration of use, and tumor subtype, and mucinous tumors appear less affected than other epithelial subtypes. Any counseling still has to weigh this protection against other oral-contraceptive tradeoffs, including a small breast-cancer signal in current or recent users and a more mixed cervical-cancer literature.",
       "evidence": [
         {
-          "citation": "Iodice et al 2010 Eur J Cancer",
-          "pmid": "20537530",
-          "year": 2010,
+          "citation": "Collaborative Group on Epidemiological Studies of Ovarian Cancer 2008 Lancet",
+          "year": 2008,
           "study_type": "meta_analysis",
-          "n_participants": 4,
-          "direction": "protective",
-          "quality": "moderate",
-          "notes": "Oral contraceptive use and breast or ovarian cancer risk in BRCA1/2 carriers: a meta-analysis."
-        },
-        {
-          "citation": "Moorman et al 2013 J Clin Oncol",
-          "pmid": "24145348",
-          "year": 2013,
-          "study_type": "meta_analysis",
-          "n_participants": 6,
           "direction": "protective",
           "quality": "high",
-          "notes": "Oral contraceptives and risk of ovarian cancer and breast cancer among high-risk women: a systematic review and meta-analysis.",
+          "notes": "Ovarian cancer and oral contraceptives: collaborative reanalysis of data from 45 epidemiological studies including 23,257 women with ovarian cancer and 87,303 controls.",
+          "doi": "10.1016/S0140-6736(08)60167-1",
+          "pmid": "18294997",
+          "n_participants": 110560,
           "effect_quant": {
-            "metric": "OR",
-            "value": 0.58,
-            "ci_low": 0.46,
-            "ci_high": 0.73,
-            "comparator": "ever versus never combined oral-contraceptive use in BRCA1/2 carriers"
+            "metric": "RR",
+            "value": 0.71,
+            "ci_low": 0.66,
+            "ci_high": 0.77,
+            "comparator": "ovarian-cancer risk per 5 years of combined oral-contraceptive use among women whose use had ceased less than 10 years earlier"
           }
         },
         {
-          "citation": "Balaii et al 2024 Bull Cancer",
-          "pmid": "39261253",
-          "year": 2024,
-          "study_type": "meta_analysis",
-          "n_participants": 67,
+          "citation": "Rosenberg L et al 1994 Am J Epidemiol",
+          "year": 1994,
+          "study_type": "case_control",
           "direction": "protective",
-          "quality": "high",
-          "notes": "The association between oral contraceptive pills and ovarian cancer risk: A systematic review and meta-analysis.",
+          "quality": "moderate",
+          "notes": "A case-control study of oral contraceptive use and invasive epithelial ovarian cancer.",
+          "doi": "10.1093/oxfordjournals.aje.a117055",
+          "pmid": "8166126",
+          "n_participants": 2506,
           "effect_quant": {
             "metric": "RR",
-            "value": 0.69,
-            "ci_low": 0.61,
-            "ci_high": 0.78,
-            "comparator": "ever versus never use in cohort studies"
+            "value": 0.6,
+            "ci_low": 0.4,
+            "ci_high": 0.8,
+            "comparator": "at least 3 years of oral-contraceptive use versus never use in invasive epithelial ovarian cancer"
+          }
+        },
+        {
+          "citation": "Schrijver LH et al 2021 Am J Obstet Gynecol",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Oral contraceptive use and ovarian cancer risk for BRCA1/2 mutation carriers: an international cohort study.",
+          "doi": "10.1016/j.ajog.2021.01.014",
+          "pmid": "33493488",
+          "n_participants": 6434,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.37,
+            "ci_low": 0.19,
+            "ci_high": 0.73,
+            "comparator": "more than 10 years versus less than 5 years of oral-contraceptive use in BRCA1 mutation carriers"
           }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "combined_oral_contraceptives",
+      "name": "Combined oral contraceptives",
+      "kind": "drug",
+      "aliases": [
+        "the pill",
+        "estrogen-progestin oral contraceptives"
+      ],
+      "description": "Oral contraceptive pills that contain both estrogen and progestin and are used for contraception or cycle control."
+    },
+    {
+      "slug": "ovarian_cancer",
+      "name": "Ovarian cancer",
+      "kind": "condition",
+      "aliases": [
+        "epithelial ovarian cancer",
+        "ovarian neoplasm"
+      ],
+      "description": "Malignant ovarian neoplasms, especially epithelial ovarian cancer."
     }
   ]
 }

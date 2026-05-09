@@ -4,46 +4,71 @@
     {
       "factor_slug": "lgg_supplementation",
       "outcome_slug": "atopic_dermatitis_children",
-      "direction": "mixed",
-      "tier": "X",
+      "direction": "protective",
+      "tier": "C",
       "effect_size": "small",
-      "effect_quant": "A 2022 randomized trial in 100 children reported higher rates of clinically meaningful SCORAD improvement with Lactobacillus rhamnosus GG, but a 2007 placebo-controlled infant trial with 102 participants found no therapeutic benefit. A 2017 strain-specific meta-analysis also found no significant SCORAD improvement for Lactobacillus rhamnosus GG overall.",
-      "population": "infants and young children with atopic dermatitis treated with Lactobacillus rhamnosus GG supplementation",
-      "mechanism": "LGG could help pediatric atopic dermatitis by altering gut-immune signaling, microbial metabolite production, and downstream skin inflammation, but these effects appear strain-, age-, and context-dependent. The conflicting trials suggest that any benefit is not robust across all pediatric AD populations and may require specific disease phenotypes or background microbiomes.",
-      "summary": "LGG supplementation has mixed evidence for treating atopic dermatitis in children. A recent pediatric trial is encouraging, but older placebo-controlled infant data and strain-specific meta-analysis do not show a stable benefit, so the safest conclusion is that LGG remains an unsettled adjunct rather than a dependable therapy.",
-      "caveats": "This edge is specific to LGG, not probiotics in general, and the LGG literature does not move in a single direction. Results likely vary with age, baseline severity, and whether microbiome-responsive subgroups are present, which is why this remains an early and inconsistent signal.",
+      "effect_quant": "In an 8-week randomized trial of 66 children aged 4-48 months with atopic dermatitis, the mean SCORAD change was -21.69 with Lactobacillus rhamnosus versus -12.35 with placebo (p=0.014); in the 100-patient ProPAD trial, more children receiving LGG achieved the minimum clinically important SCORAD improvement at 12 and 16 weeks than those receiving placebo, although an earlier 102-infant trial found no significant therapeutic benefit.",
+      "population": "infants and young children with mild-to-moderate atopic dermatitis receiving Lactobacillus rhamnosus GG as adjunctive probiotic therapy",
+      "mechanism": "LGG may support atopic dermatitis control by reshaping gut and possibly skin microbial ecosystems, strengthening barrier-immune signaling, and reducing inflammatory tone that amplifies eczema severity.",
+      "summary": "The pediatric LGG literature for atopic dermatitis is better than a generic probiotic hand-wave, with two randomized trials showing clinical improvement and one older infant trial showing none. The fairest read is that LGG may help some children as an adjunctive therapy, but the benefit is modest and not consistently reproduced across all age groups and study designs.",
+      "caveats": "Trial sizes are still moderate, background skincare and rescue-medication use differ across studies, and the null infant trial shows that response is not guaranteed. This is not a substitute for standard anti-inflammatory eczema care.",
       "evidence": [
         {
-          "citation": "Navarro-Lopez et al 2017 Front Cell Infect Microbiol",
-          "pmid": "28932705",
-          "year": 2017,
-          "study_type": "meta_analysis",
-          "n_participants": 13,
-          "direction": "neutral",
-          "quality": "moderate",
-          "notes": "Probiotics for the Treatment of Atopic Dermatitis in Children: A Systematic Review and Meta-Analysis of Randomized Controlled Trials."
-        },
-        {
-          "citation": "Gruber et al 2007 Allergy",
-          "pmid": "17919141",
+          "citation": "Gruber C et al 2007 Allergy",
           "year": 2007,
           "study_type": "rct",
-          "n_participants": 102,
           "direction": "neutral",
           "quality": "moderate",
-          "notes": "Randomized, placebo-controlled trial of Lactobacillus rhamnosus GG as treatment of atopic dermatitis in infancy."
+          "notes": "Randomized, placebo-controlled trial of Lactobacillus rhamnosus GG as treatment of atopic dermatitis in infancy.",
+          "doi": "",
+          "pmid": "17919141",
+          "n_participants": 102
         },
         {
-          "citation": "Nocerino et al 2022 Pediatr Allergy Immunol",
-          "pmid": "36003050",
-          "year": 2022,
+          "citation": "WuYJ et al 2017 J Microbiol Immunol Infect",
+          "year": 2017,
           "study_type": "rct",
-          "n_participants": 100,
           "direction": "protective",
           "quality": "moderate",
-          "notes": "Therapeutic effects elicited by the probiotic Lacticaseibacillus rhamnosus GG in children with atopic dermatitis. The results of the ProPAD trial."
+          "notes": "Evaluation of efficacy and safety of Lactobacillus rhamnosus in children aged 4-48 months with atopic dermatitis: An 8-week, double-blind, randomized, placebo-controlled study.",
+          "doi": "10.1016/j.jmii.2015.10.003",
+          "pmid": "26733351",
+          "n_participants": 66
+        },
+        {
+          "citation": "Carucci L et al 2022 Pediatr Allergy Immunol",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Therapeutic effects elicited by the probiotic Lacticaseibacillus rhamnosus GG in children with atopic dermatitis. The results of the ProPAD trial.",
+          "doi": "10.1111/pai.13836",
+          "pmid": "36003050",
+          "n_participants": 100
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "lgg_supplementation",
+      "name": "L. rhamnosus GG supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "LGG supplementation",
+        "Lactobacillus rhamnosus GG"
+      ],
+      "description": "Supplementation with the probiotic strain Lactobacillus rhamnosus GG."
+    },
+    {
+      "slug": "atopic_dermatitis_children",
+      "name": "Atopic dermatitis (children)",
+      "kind": "condition",
+      "aliases": [
+        "pediatric atopic dermatitis",
+        "childhood eczema"
+      ],
+      "description": "Atopic dermatitis occurring in infants and children."
     }
   ]
 }

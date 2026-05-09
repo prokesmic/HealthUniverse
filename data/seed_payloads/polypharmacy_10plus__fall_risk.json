@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "polypharmacy_10plus",
-      "name": "Hyperpolypharmacy (10 or more medications)",
-      "kind": "behavior"
-    },
-    {
-      "slug": "fall_risk",
-      "name": "Fall risk",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "polypharmacy_10plus",
@@ -19,43 +7,68 @@
       "direction": "harmful",
       "tier": "B",
       "effect_size": "moderate",
-      "effect_quant": "Across syntheses of older-adult medication review and geriatric-syndrome studies, the direction is consistently harmful: once medication burden reaches hyperpolypharmacy territory, fall risk rises meaningfully even if the exact pooled effect differs by care setting and comorbidity mix.",
-      "population": "older adults with high medication burden in community, hospital, and long-term care settings",
-      "mechanism": "A ten-drug regimen greatly increases the chance of cumulative sedation, orthostatic hypotension, impaired reaction time, and interacting central nervous system effects. Hyperpolypharmacy also correlates with frailty and multimorbidity, which amplifies vulnerability to even small medication-related balance impairments.",
-      "summary": "This edge is best read as a high-risk threshold signal, not a numerology rule. The strongest meta-analytic evidence shows that heavier medication burden in older adults repeatedly tracks with more falls, and once regimens move into hyperpolypharmacy territory the combination of sedative load, hypotension, and interaction burden becomes hard to dismiss as background noise.",
-      "caveats": "Medication count does not distinguish essential from avoidable prescribing, and some of the observed fall signal reflects underlying frailty. But when counts reach ten or more drugs, the burden is high enough that medication review becomes a fall-prevention intervention in its own right.",
+      "effect_quant": "In a longitudinal English cohort of 5,213 adults aged 60 years and older, using 10 or more drugs was associated with a 50% higher falls rate over two years (adjusted IRR 1.50, 95% CI 1.34 to 1.67). In long-term care, residents using more than 10 medications had a fall rate of 1.84 per person-year versus 0.84 in the non-polypharmacy group, and in European home care excessive polypharmacy was associated with falls (OR 1.55, 95% CI 1.01 to 2.40).",
+      "population": "older adults exposed to excessive polypharmacy, typically defined as ten or more concurrent medications, across community, home-care, and long-term-care settings",
+      "mechanism": "Ten-plus medication regimens amplify sedation, orthostasis, anticholinergic load, hypoglycemia, gait impairment, and interaction risk. The sheer number of medicines also increases administration complexity and the chance that several fall-promoting adverse effects will stack at once.",
+      "summary": "The evidence supports a clear harmful association between excessive polypharmacy and falls in older adults. The signal is stronger at the 10-plus threshold than at lower medication counts, which fits the idea of a dose-response relationship between medication burden and instability.",
+      "caveats": "Medication count alone cannot distinguish appropriate from inappropriate polypharmacy, and sicker patients are more likely to take many drugs. Even so, the consistency across community and institutional cohorts suggests the 10-plus threshold is a clinically meaningful falls-risk marker.",
       "evidence": [
         {
-          "citation": "Carollo et al 2026 Age Ageing",
-          "pmid": "41967033",
-          "year": 2026,
-          "study_type": "meta_analysis",
-          "n_participants": 3548,
+          "citation": "DhalwaniNN et al 2017 BMJ Open",
+          "year": 2017,
+          "study_type": "cohort",
           "direction": "harmful",
           "quality": "high",
-          "notes": "Evaluating the impact of medication review and deprescribing on prescribing appropriateness and clinical outcomes in older people residing in long-term care facilities: a systematic review and meta-analysis."
+          "notes": "Association between polypharmacy and falls in older adults: a longitudinal study from England.",
+          "doi": "10.1136/bmjopen-2017-016358",
+          "pmid": "29042378",
+          "n_participants": 5213
         },
         {
-          "citation": "Das et al 2026 BMC Geriatr",
-          "pmid": "41840386",
-          "year": 2026,
-          "study_type": "meta_analysis",
-          "n_participants": 33000,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Deprescribing preventive medications in older adults with advanced frailty, dementia, or limited life expectancy: a systematic review and meta-analysis."
-        },
-        {
-          "citation": "Elmotia et al 2025 Res Gerontol Nurs",
-          "pmid": "39874547",
-          "year": 2025,
-          "study_type": "meta_analysis",
-          "n_participants": 5420,
+          "citation": "RoittoHM et al 2023 BMC Geriatr",
+          "year": 2023,
+          "study_type": "cohort",
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Geriatric Syndromes in Older Adults With and Without Diabetes: A Systematic Review and Meta-Analysis."
+          "notes": "Association of medication use with falls and mortality among long-term care residents: a longitudinal cohort study.",
+          "doi": "10.1186/s12877-023-04096-6",
+          "pmid": "37331981",
+          "n_participants": 532
+        },
+        {
+          "citation": "GiovanniniS et al 2018 Drugs Aging",
+          "year": 2018,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Polypharmacy in Home Care in Europe: Cross-Sectional Data from the IBenC Study.",
+          "doi": "10.1007/s40266-018-0521-y",
+          "pmid": "29411310",
+          "n_participants": 1873
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "polypharmacy_10plus",
+      "name": "Polypharmacy of 10 or more medications",
+      "kind": "behavior",
+      "aliases": [
+        "excessive polypharmacy",
+        "10+ medications"
+      ],
+      "description": "Concurrent use of ten or more medications, a common threshold for excessive polypharmacy."
+    },
+    {
+      "slug": "fall_risk",
+      "name": "Fall risk",
+      "kind": "condition",
+      "aliases": [
+        "risk of falls",
+        "falls risk"
+      ],
+      "description": "Likelihood of experiencing one or more falls over follow-up."
     }
   ]
 }

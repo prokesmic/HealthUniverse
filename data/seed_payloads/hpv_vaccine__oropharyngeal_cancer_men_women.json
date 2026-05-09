@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "hpv_vaccine",
-      "name": "Human papillomavirus vaccination",
-      "kind": "drug"
-    },
-    {
-      "slug": "oropharyngeal_cancer_men_women",
-      "name": "HPV-related oropharyngeal cancer in men and women",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "hpv_vaccine",
@@ -19,43 +7,89 @@
       "direction": "protective",
       "tier": "B",
       "effect_size": "moderate",
-      "effect_quant": "The evidence is indirect but persuasive: pooled studies show that prophylactic HPV vaccination markedly reduces oral and oropharyngeal HPV 16 and 18 infections, the causal precursor for most HPV-driven oropharyngeal cancers. The best current estimate from the systematic review literature points to very large relative prevention of vaccine-type oral infection.",
-      "population": "adolescents and young adults, with strongest direct evidence from vaccinated female cohorts and mixed-sex observational data",
-      "mechanism": "HPV vaccination prevents persistent infection with oncogenic HPV types that seed later malignant transformation in the oropharynx. Because the causal chain from oral HPV infection to cancer is well established, sustained reduction in oral vaccine-type infection is the main mechanistic basis for expecting future cancer prevention.",
-      "summary": "HPV vaccination should already be viewed as likely protective against HPV-driven oropharyngeal cancer, even though direct cancer-endpoint trials are not yet mature. The most convincing evidence comes from a 2021 systematic review and randomized or community-randomized follow-up studies showing large reductions in oral and oropharyngeal HPV infection after vaccination.",
-      "caveats": "This edge is intentionally indirect: the strongest data are on oral HPV infection rather than incident oropharyngeal cancer. Most direct trial follow-up comes from women, while the future burden of HPV-positive oropharyngeal cancer is especially important in men, so population-level extrapolation should be explicit.",
+      "effect_quant": "Direct cancer-incidence trials are not yet mature, but the best indirect evidence points strongly in a protective direction. A systematic review of 48,777 participants found a mean relative prevention percentage of 83.9% for vaccine-type oral or oropharyngeal HPV infection, and a randomized Costa Rica trial showed 82.4% efficacy against multisite cervical, anal, and oral HPV16/18 infection.",
+      "population": "adolescents and adults vaccinated against HPV, with oral or oropharyngeal HPV infection used as a proxy marker for future HPV-related oropharyngeal cancer risk",
+      "mechanism": "Most HPV-positive oropharyngeal cancers are driven by vaccine-type HPV, especially HPV16. By preventing oral acquisition and persistence of these oncogenic types and generating oral fluid antibodies, prophylactic vaccination is biologically expected to lower later HPV-related oropharyngeal cancer risk in both women and men.",
+      "summary": "This edge is best framed as indirectly protective. Current evidence does not yet include mature randomized or population-wide cancer incidence endpoints for oropharyngeal cancer itself, but multiple study designs consistently show markedly lower vaccine-type oral HPV infection after vaccination, supporting a likely downstream reduction in HPV-driven oropharyngeal cancer.",
+      "caveats": "Because oropharyngeal cancer develops decades after infection, this is still an inferential edge rather than a fully mature cancer-incidence one. Oral HPV prevalence is uncommon and varies by sex, age, and sexual behavior, so current observational studies remain underpowered for direct cancer outcomes.",
       "evidence": [
         {
-          "citation": "NielsenKJ et al 2021 Viruses",
-          "pmid": "34372545",
+          "citation": "Nielsen et al 2021 Viruses",
           "year": 2021,
           "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The Effect of Prophylactic HPV Vaccines on Oral and Oropharyngeal HPV Infection-A Systematic Review.",
+          "doi": "10.3390/v13071339",
+          "pmid": "34372545",
           "n_participants": 48777,
-          "direction": "protective",
-          "quality": "high",
-          "notes": "The Effect of Prophylactic HPV Vaccines on Oral and Oropharyngeal HPV Infection-A Systematic Review."
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -0.839,
+            "ci_low": -0.978,
+            "ci_high": -0.666,
+            "comparator": "mean relative prevention percentage for vaccine-type oral or oropharyngeal HPV infection across included vaccinated versus comparison populations"
+          }
         },
         {
-          "citation": "LehtinenM et al 2020 Int J Cancer",
-          "pmid": "31736068",
-          "year": 2020,
+          "citation": "Beachler et al 2016 J Natl Cancer Inst",
+          "year": 2016,
           "study_type": "rct",
-          "n_participants": 4871,
           "direction": "protective",
           "quality": "high",
-          "notes": "Effectiveness of the AS04-adjuvanted HPV-16/18 vaccine in reducing oropharyngeal HPV infections in young females-Results from a community-randomized trial."
+          "notes": "Multisite HPV16/18 Vaccine Efficacy Against Cervical, Anal, and Oral HPV Infection.",
+          "doi": "10.1093/jnci/djv302",
+          "pmid": "26467666",
+          "n_participants": 4186,
+          "effect_quant": {
+            "metric": "VE",
+            "value": 0.824,
+            "ci_low": 0.721,
+            "ci_high": 0.908,
+            "comparator": "multisite HPV16/18 infection at four-year follow-up in HPV-naive women randomized to Cervarix versus control vaccine"
+          }
         },
         {
-          "citation": "HerreroR et al 2013 PLoS One",
-          "pmid": "23873171",
-          "year": 2013,
-          "study_type": "rct",
-          "n_participants": 5840,
+          "citation": "Souza MMA et al 2023 Int J Cancer",
+          "year": 2023,
+          "study_type": "cross_sectional",
           "direction": "protective",
-          "quality": "high",
-          "notes": "Reduced prevalence of oral human papillomavirus (HPV) 4 years after bivalent HPV vaccination in a randomized clinical trial in Costa Rica."
+          "quality": "moderate",
+          "notes": "Oral human papillomavirus (HPV) infection and HPV vaccination in an Australian cohort.",
+          "doi": "10.1002/ijc.34517",
+          "pmid": "36943030",
+          "n_participants": 911,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -0.735,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "prevalence of nonavalent vaccine-type oral HPV infection in vaccinated versus unvaccinated participants"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hpv_vaccine",
+      "name": "HPV vaccine",
+      "kind": "drug",
+      "aliases": [
+        "human papillomavirus vaccine",
+        "HPV vaccination"
+      ],
+      "description": "Prophylactic human papillomavirus vaccination given before HPV exposure to prevent HPV-related disease."
+    },
+    {
+      "slug": "oropharyngeal_cancer_men_women",
+      "name": "Oropharyngeal cancer in men and women",
+      "kind": "condition",
+      "aliases": [
+        "HPV-related oropharyngeal cancer",
+        "oropharyngeal squamous cell carcinoma"
+      ],
+      "description": "Oropharyngeal cancer risk across women and men, especially the HPV-associated subtype."
     }
   ]
 }

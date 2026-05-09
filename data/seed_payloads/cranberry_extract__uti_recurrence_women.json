@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "cranberry_extract",
-      "name": "Cranberry extract",
-      "kind": "supplement"
-    },
-    {
-      "slug": "uti_recurrence_women",
-      "name": "Urinary tract infection recurrence in women",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "cranberry_extract",
@@ -19,50 +7,82 @@
       "direction": "protective",
       "tier": "B",
       "effect_size": "small",
-      "effect_quant": "The strongest recent syntheses suggest cranberry products modestly reduce recurrence risk in women prone to UTIs, although individual trials have not all pointed the same way. The signal is real enough to support a cautious protective classification, but not strong enough to displace better-supported options like vaginal estrogen in postmenopausal recurrence.",
-      "population": "adult women with a history of recurrent urinary tract infection",
-      "mechanism": "Cranberry proanthocyanidins can reduce adherence of uropathogenic E coli to the urothelium, making recolonization and recurrence less likely. That anti-adhesion model fits why benefit, when present, is preventive rather than curative.",
-      "summary": "Cranberry extract appears to modestly reduce recurrent UTI risk in women, but the effect is uneven across trials. Modern meta-analyses lean protective overall, even though some well-known individual randomized trials were neutral.",
-      "caveats": "Benefit depends on formulation, dose standardization, and adherence, and cranberry juice studies do not always generalize to concentrated extracts or capsules. This edge is best read as low-risk, modest prevention rather than high-certainty prophylaxis.",
+      "effect_quant": "The best current synthesis supports a modest preventive effect. A 2023 Cochrane review including 8,857 randomized participants found benefit overall, and a 2017 meta-analysis in otherwise healthy women found a 26% lower recurrence risk with cranberry (pooled RR 0.74, 95% CI 0.55 to 0.98). A standardized-extract trial also suggested fewer symptomatic UTIs with higher proanthocyanidin dosing, although the primary comparison did not reach significance in the full sample.",
+      "population": "women with a history of recurrent urinary tract infections using cranberry extract or related cranberry products for prophylaxis",
+      "mechanism": "Cranberry proanthocyanidins are thought to reduce bacterial adhesion, especially of uropathogenic Escherichia coli, to the urothelium. That anti-adhesion mechanism makes cranberry more plausible as a preventive aid than as an acute infection treatment.",
+      "summary": "The literature now leans protective for recurrent UTI prevention, especially in women who are otherwise healthy and prone to recurrence. The effect is modest rather than dramatic, but recent pooled evidence is more favorable than older uncertainty suggested.",
+      "caveats": "Effectiveness varies with product formulation, proanthocyanidin content, adherence, and baseline recurrence risk. This edge should be read as prophylactic support, not as a replacement for antibiotics when a symptomatic infection is already established.",
       "evidence": [
         {
+          "citation": "Williams Gabrielle et al 2023 Cochrane Database Syst Rev",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Cranberries for preventing urinary tract infections.",
+          "doi": "10.1002/14651858.CD001321.pub6",
+          "pmid": "37068952",
+          "n_participants": 8857
+        },
+        {
           "citation": "FuZ et al 2017 J Nutr",
-          "pmid": "29046404",
           "year": 2017,
           "study_type": "meta_analysis",
-          "n_participants": 1498,
           "direction": "protective",
           "quality": "high",
           "notes": "Cranberry Reduces the Risk of Urinary Tract Infection Recurrence in Otherwise Healthy Women: A Systematic Review and Meta-Analysis.",
+          "doi": "10.3945/jn.117.254961",
+          "pmid": "29046404",
+          "n_participants": 1498,
           "effect_quant": {
             "metric": "RR",
             "value": 0.74,
             "ci_low": 0.55,
             "ci_high": 0.98,
-            "comparator": "cranberry intervention versus placebo or control in women at risk of recurrent UTI"
+            "comparator": "cranberry intervention versus placebo or control for recurrent urinary tract infection in otherwise healthy women"
           }
         },
         {
-          "citation": "Williams et al 2023 Cochrane Database Syst Rev",
-          "pmid": "37068952",
-          "year": 2023,
-          "study_type": "systematic_review",
-          "n_participants": 8857,
-          "direction": "protective",
-          "quality": "high",
-          "notes": "Cranberries for preventing urinary tract infections."
-        },
-        {
-          "citation": "Barbosa-Cesnik et al 2011 Clin Infect Dis",
-          "pmid": "21148516",
-          "year": 2011,
+          "citation": "Babar Asma et al 2021 BMC Urol",
+          "year": 2021,
           "study_type": "rct",
-          "n_participants": 319,
-          "direction": "neutral",
+          "direction": "protective",
           "quality": "moderate",
-          "notes": "Cranberry juice fails to prevent recurrent urinary tract infection: results from a randomized placebo-controlled trial."
+          "notes": "High dose versus low dose standardized cranberry proanthocyanidin extract for the prevention of recurrent urinary tract infection in healthy women: a double-blind randomized controlled trial.",
+          "doi": "10.1186/s12894-021-00811-w",
+          "pmid": "33757474",
+          "n_participants": 145,
+          "effect_quant": {
+            "metric": "IRR",
+            "value": 0.76,
+            "ci_low": 0.51,
+            "ci_high": 1.11,
+            "comparator": "high-dose versus low-dose cranberry proanthocyanidin extract for symptomatic recurrent urinary tract infection over 24 weeks"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cranberry_extract",
+      "name": "Cranberry extract",
+      "kind": "supplement",
+      "aliases": [
+        "cranberry proanthocyanidins",
+        "cranberry supplement"
+      ],
+      "description": "Standardized cranberry-derived extract or concentrated cranberry prophylaxis used to prevent recurrent urinary tract infection."
+    },
+    {
+      "slug": "uti_recurrence_women",
+      "name": "Recurrent urinary tract infection in women",
+      "kind": "condition",
+      "aliases": [
+        "recurrent UTI in women",
+        "recurrent cystitis in women"
+      ],
+      "description": "Repeated urinary tract infections in adult women."
     }
   ]
 }

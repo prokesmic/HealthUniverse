@@ -1,68 +1,95 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "breastfeeding_long_duration",
-      "name": "Long-duration breastfeeding",
-      "kind": "behavior"
-    },
-    {
-      "slug": "maternal_cardiovascular_disease",
-      "name": "Maternal cardiovascular disease",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "breastfeeding_long_duration",
       "outcome_slug": "maternal_cardiovascular_disease",
       "direction": "protective",
       "tier": "B",
-      "effect_size": "small",
-      "effect_quant": "The maternal cardiovascular signal is not just about blood pressure or weight: large cohorts consistently link longer lifetime lactation with lower later cardiovascular and coronary disease risk. The effect size is modest, but it is coherent across different cardiovascular endpoints.",
-      "population": "parous women followed into midlife or postmenopause",
-      "mechanism": "Lactation appears to help reverse the insulin-resistant, lipogenic physiology of pregnancy by increasing energy expenditure and improving postpartum metabolic resetting. Over years, that could plausibly translate into lower hypertension, dyslipidemia, and coronary disease risk in women who breastfeed longer.",
-      "summary": "Longer breastfeeding duration is associated with lower later maternal cardiovascular risk. The evidence is observational rather than randomized, but the pattern is dose-responsive and repeats across broad cardiovascular outcomes, with especially consistent signals for hypertension and coronary disease.",
-      "caveats": "Residual confounding remains possible because women who breastfeed longer may differ in health, parity, and socioeconomic factors. The association is strongest when lactation duration is cumulative and long enough to reflect a meaningful physiologic exposure, not just brief initiation.",
+      "effect_size": "moderate",
+      "effect_quant": "The strongest synthesis suggests that mothers who breastfeed, especially for longer cumulative durations, have lower later cardiovascular risk. A 2022 meta-analysis of 1,192,700 parous women found a pooled hazard ratio of 0.89 (95% CI 0.83 to 0.95) for overall cardiovascular disease in women who ever breastfed versus those who never did, with progressive risk reduction up to about 12 months of lifetime breastfeeding.",
+      "population": "parous women followed for later cardiovascular disease after differing cumulative breastfeeding durations",
+      "mechanism": "Lactation may help reverse the insulin-resistant, dyslipidemic, and central-adiposity-promoting metabolic state of pregnancy. Longer breastfeeding has also been associated with more favorable blood pressure, glucose handling, and adiposity trajectories that plausibly translate into lower long-term cardiovascular risk.",
+      "summary": "The literature supports a protective association between longer breastfeeding duration and later maternal cardiovascular health. The signal appears across very large prospective cohorts and meta-analytic pooling, with lower rates of cardiovascular disease, coronary heart disease, stroke, and cardiovascular mortality among women who breastfed.",
+      "caveats": "These data are observational and remain vulnerable to residual confounding by socioeconomic status, lifestyle, adiposity, and pregnancy complications. Breastfeeding is best interpreted here as a long-term risk marker and potentially beneficial behavior, not a guaranteed causal shield against cardiovascular disease.",
       "evidence": [
         {
-          "citation": "SchwarzEB et al 2009 Obstet Gynecol",
-          "pmid": "19384111",
-          "year": 2009,
-          "study_type": "cohort",
-          "n_participants": 139681,
+          "citation": "Tschiderer et al 2022 J Am Heart Assoc",
+          "year": 2022,
+          "study_type": "meta_analysis",
           "direction": "protective",
           "quality": "high",
-          "notes": "Duration of lactation and risk factors for maternal cardiovascular disease.",
+          "notes": "Breastfeeding Is Associated With a Reduced Maternal Cardiovascular Risk: Systematic Review and Meta-Analysis Involving Data From 8 Studies and 1 192 700 Parous Women.",
+          "doi": "10.1161/JAHA.121.022746",
+          "pmid": "35014854",
+          "n_participants": 1192700,
           "effect_quant": {
-            "metric": "OR",
-            "value": 0.91,
-            "ci_low": 0.84,
-            "ci_high": 0.98,
-            "comparator": "women with more than 12 months of lifetime lactation versus women who never breast-fed for prevalent cardiovascular disease"
+            "metric": "HR",
+            "value": 0.89,
+            "ci_low": 0.83,
+            "ci_high": 0.95,
+            "comparator": "overall cardiovascular disease in parous women who ever breastfed versus parous women who never breastfed"
           }
         },
         {
-          "citation": "StuebeAM et al 2011 Am J Epidemiol",
-          "pmid": "21997568",
-          "year": 2011,
+          "citation": "Peters et al 2017 J Am Heart Assoc",
+          "year": 2017,
           "study_type": "cohort",
-          "n_participants": 55636,
           "direction": "protective",
           "quality": "high",
-          "notes": "Duration of lactation and incidence of maternal hypertension: a longitudinal cohort study."
+          "notes": "Breastfeeding and the Risk of Maternal Cardiovascular Disease: A Prospective Study of 300 000 Chinese Women.",
+          "doi": "10.1161/JAHA.117.006081",
+          "pmid": "28637778",
+          "n_participants": 289573,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.82,
+            "ci_low": 0.77,
+            "ci_high": 0.87,
+            "comparator": "coronary heart disease in women who breastfed for 24 months or more versus women who never breastfed"
+          }
         },
         {
-          "citation": "StuebeAM et al 2009 Am J Obstet Gynecol",
-          "pmid": "19110223",
-          "year": 2009,
+          "citation": "Nguyen et al 2019 J Am Heart Assoc",
+          "year": 2019,
           "study_type": "cohort",
-          "n_participants": 89326,
           "direction": "protective",
           "quality": "high",
-          "notes": "Duration of lactation and incidence of myocardial infarction in middle to late adulthood."
+          "notes": "Breastfeeding and Cardiovascular Disease Hospitalization and Mortality in Parous Women: Evidence From a Large Australian Cohort Study.",
+          "doi": "10.1161/JAHA.118.011056",
+          "pmid": "30871389",
+          "n_participants": 100864,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.86,
+            "ci_low": 0.78,
+            "ci_high": 0.96,
+            "comparator": "first cardiovascular disease hospitalization in women who ever breastfed versus women who never breastfed"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "breastfeeding_long_duration",
+      "name": "Long-duration breastfeeding",
+      "kind": "behavior",
+      "aliases": [
+        "prolonged lactation",
+        "longer cumulative breastfeeding"
+      ],
+      "description": "Breastfeeding sustained for longer cumulative durations across one or more pregnancies."
+    },
+    {
+      "slug": "maternal_cardiovascular_disease",
+      "name": "Maternal cardiovascular disease",
+      "kind": "condition",
+      "aliases": [
+        "later maternal CVD",
+        "maternal heart and stroke disease"
+      ],
+      "description": "Cardiovascular disease outcomes in mothers later in life, including coronary heart disease, stroke, and cardiovascular mortality."
     }
   ]
 }

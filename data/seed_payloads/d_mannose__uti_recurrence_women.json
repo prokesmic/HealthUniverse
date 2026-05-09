@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "d_mannose",
-      "name": "D-mannose",
-      "kind": "supplement"
-    },
-    {
-      "slug": "uti_recurrence_women",
-      "name": "Urinary tract infection recurrence in women",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "d_mannose",
@@ -19,57 +7,74 @@
       "direction": "mixed",
       "tier": "C",
       "effect_size": "small",
-      "effect_quant": "D-mannose looked promising in early small studies, but the strongest recent placebo-controlled evidence is neutral and the newest RCT-only meta-analysis is inconclusive. The safest overall classification is mixed evidence with no dependable preventive effect established yet.",
-      "population": "adult women with recurrent urinary tract infection or high recurrence risk",
-      "mechanism": "D-mannose is thought to block binding of uropathogenic E coli to urothelial FimH adhesins, which makes biologic sense for prevention. The problem is not plausibility but translation: clinical trials have been small, heterogeneous, and sensitive to formulation and comparator choice.",
-      "summary": "D-mannose should no longer be described as clearly preventive for recurrent UTI in women. Earlier syntheses suggested a benefit against placebo, but a larger modern primary-care randomized trial and the latest RCT-only meta-analysis both found no statistically reliable reduction in recurrence.",
-      "caveats": "The literature mixes prevention-only studies with treatment-plus-prevention designs, and different powders or combination products may not be interchangeable. A small benefit remains possible, but the evidence is too inconsistent for a confident protective verdict.",
+      "effect_quant": "The d-mannose story is no longer uniformly positive. Earlier open-label trials suggested lower recurrence versus no prophylaxis and similar outcomes to nitrofurantoin, but a 2022 Cochrane review found no clear evidence because trials were too heterogeneous to pool, and a large 2024 placebo-controlled trial found no reduction in medically attended recurrent UTI over 6 months.",
+      "population": "adult women with recurrent urinary tract infections considering d-mannose powder as prophylaxis",
+      "mechanism": "d-Mannose may competitively inhibit adhesion of uropathogenic bacteria to urothelial cells, a mechanism that is biologically plausible for recurrence prevention. The mixed clinical results suggest that any anti-adhesion effect may be modest, context-dependent, or highly sensitive to study design.",
+      "summary": "The current evidence is mixed. Small earlier trials suggested that d-mannose could reduce recurrent UTIs and might perform similarly to nitrofurantoin in selected women, but the strongest recent placebo-controlled community trial did not confirm a preventive benefit.",
+      "caveats": "This edge should not be presented as a settled alternative to antibiotic prophylaxis. Heterogeneity in comparator arms, background antibiotic treatment, and study setting likely explains some of the conflicting results.",
       "evidence": [
         {
-          "citation": "KrishnaMM et al 2025 J Infect Prev",
-          "pmid": "41195062",
-          "year": 2025,
-          "study_type": "meta_analysis",
-          "n_participants": 890,
-          "direction": "neutral",
-          "quality": "high",
-          "notes": "D-Mannose for prevention of recurrent urinary tract infection in adult women: An updated systematic review and meta-analysis of randomized controlled trials.",
-          "effect_quant": {
-            "metric": "RR",
-            "value": 0.44,
-            "ci_low": 0.18,
-            "ci_high": 1.11,
-            "comparator": "d-mannose versus placebo or no treatment for recurrent UTI prevention"
-          }
-        },
-        {
-          "citation": "LengerSM et al 2020 Am J Obstet Gynecol",
-          "pmid": "32497610",
-          "year": 2020,
-          "study_type": "meta_analysis",
-          "n_participants": 248,
-          "direction": "protective",
-          "quality": "moderate",
-          "notes": "D-mannose vs other agents for recurrent urinary tract infection prevention in adult women: a systematic review and meta-analysis.",
-          "effect_quant": {
-            "metric": "RR",
-            "value": 0.23,
-            "ci_low": 0.14,
-            "ci_high": 0.37,
-            "comparator": "d-mannose versus placebo for urinary tract infection recurrence"
-          }
-        },
-        {
-          "citation": "HaywardG et al 2024 JAMA Intern Med",
-          "pmid": "38587819",
+          "citation": "Hayward Gail et al 2024 JAMA Intern Med",
           "year": 2024,
           "study_type": "rct",
-          "n_participants": 598,
           "direction": "neutral",
           "quality": "high",
-          "notes": "d-Mannose for Prevention of Recurrent Urinary Tract Infection Among Women: A Randomized Clinical Trial."
+          "notes": "d-Mannose for Prevention of Recurrent Urinary Tract Infection Among Women: A Randomized Clinical Trial.",
+          "doi": "10.1001/jamainternmed.2024.0264",
+          "pmid": "38587819",
+          "n_participants": 598
+        },
+        {
+          "citation": "Lenger SM et al 2022 Cochrane Database Syst Rev",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "D-mannose for preventing and treating urinary tract infections.",
+          "doi": "10.1002/14651858.CD013608.pub2",
+          "pmid": "36041061",
+          "n_participants": 719
+        },
+        {
+          "citation": "Kranjcec Bojana et al 2014 World J Urol",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "D-mannose powder for prophylaxis of recurrent urinary tract infections in women: a randomized clinical trial.",
+          "doi": "10.1007/s00345-013-1091-6",
+          "pmid": "23633128",
+          "n_participants": 308,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.239,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "recurrent urinary tract infection during prophylaxis with d-mannose versus no prophylaxis after treatment of acute cystitis"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "d_mannose",
+      "name": "D-mannose",
+      "kind": "supplement",
+      "aliases": [
+        "D-mannose powder"
+      ],
+      "description": "An oral sugar supplement used as an anti-adhesion strategy for urinary tract infection prevention."
+    },
+    {
+      "slug": "uti_recurrence_women",
+      "name": "Recurrent urinary tract infection in women",
+      "kind": "condition",
+      "aliases": [
+        "recurrent UTI in women",
+        "recurrent cystitis in women"
+      ],
+      "description": "Repeated urinary tract infections in adult women."
     }
   ]
 }

@@ -7,41 +7,58 @@
       "direction": "harmful",
       "tier": "B",
       "effect_size": "moderate",
-      "effect_quant": "In the landmark BRAIN-ICU cohort, longer delirium duration during critical illness independently predicted worse global cognition and executive function at both 3 and 12 months after discharge. Later phenotype analyses and additional ICU cohorts have reinforced that delirium is not just an acute bedside phenomenon but a marker of more persistent cognitive injury.",
-      "population": "adult ICU survivors with respiratory failure, shock, or mechanical ventilation who developed delirium during critical illness",
-      "mechanism": "ICU delirium likely contributes to long-term cognitive decline by reflecting acute brain dysfunction from inflammation, hypoxia, sedative exposure, metabolic injury, and network disorganization during critical illness. The more prolonged that acute cerebral insult, the greater the chance that survivors leave the ICU with durable impairment in memory, attention, and executive speed.",
-      "summary": "ICU delirium is a strong harmful marker for later cognitive decline. Prospective cohort work from BRAIN-ICU and related studies shows that longer delirium during critical illness tracks with worse cognitive outcomes months after discharge, often to a degree comparable with traumatic brain injury or early neurodegenerative disease levels.",
-      "caveats": "Delirium is part of a larger critical-illness syndrome, so it is difficult to separate it perfectly from the shock, sepsis, sedation, and mechanical ventilation that travel with it. Even so, the repeated link between delirium duration and later cognition is now too consistent to treat as incidental noise.",
+      "effect_quant": "Across prospective ICU cohorts, longer delirium duration consistently predicts worse cognition months later. In the original ventilated-medical-ICU cohort, 79% of survivors were cognitively impaired at 3 months and 71% at 12 months, with delirium duration independently predicting worse scores. In BRAIN-ICU and related analyses, three versus zero days of sedative-associated delirium predicted a 4.03-point lower RBANS global cognition score at 12 months, and longer hypoactive delirium was associated with 5.13-point lower global cognition at 3 months.",
+      "population": "adult survivors of critical illness, especially ICU patients with shock or respiratory failure who experienced delirium during hospitalization",
+      "mechanism": "ICU delirium likely marks and contributes to acute brain injury through neuroinflammation, disturbed neurotransmission, hypoxemia, sepsis, sleep disruption, and sedative toxicity. Longer delirium exposure may therefore reduce cognitive reserve and leave persistent deficits in memory, attention, and executive function long after the acute illness resolves.",
+      "summary": "This is one of the clearer harmful neurocognitive signals in critical care. Multiple prospective cohorts, including BRAIN-ICU, show that longer ICU delirium is associated with worse cognitive outcomes months later, and the association remains after adjustment for baseline vulnerability and illness severity.",
+      "caveats": "The evidence is observational, so delirium may partly be a marker of overall acute brain injury rather than the sole cause of later decline. Even so, the consistency across cohorts and delirium phenotypes makes it hard to dismiss as pure confounding, particularly because modifiable exposures such as sedation appear to matter.",
       "evidence": [
         {
-          "citation": "Pandharipande et al 2013 N Engl J Med",
-          "pmid": "24088092",
-          "year": 2013,
-          "study_type": "cohort",
-          "n_participants": 821,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Long-term cognitive impairment after critical illness."
-        },
-        {
-          "citation": "Girard et al 2010 Crit Care Med",
-          "pmid": "20473145",
+          "citation": "GirardTD et al 2010 Crit Care Med",
           "year": 2010,
           "study_type": "cohort",
-          "n_participants": 77,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Delirium as a predictor of long-term cognitive impairment in survivors of critical illness."
+          "notes": "Delirium as a predictor of long-term cognitive impairment in survivors of critical illness.",
+          "doi": "10.1097/CCM.0b013e3181e47be1",
+          "pmid": "20473145",
+          "n_participants": 77
         },
         {
-          "citation": "Brummel et al 2018 Lancet Respir Med",
-          "pmid": "29508705",
+          "citation": "GirardTD et al 2018 Lancet Respir Med",
           "year": 2018,
           "study_type": "cohort",
-          "n_participants": 1040,
           "direction": "harmful",
           "quality": "high",
-          "notes": "Clinical phenotypes of delirium during critical illness and severity of subsequent long-term cognitive impairment: a prospective cohort study."
+          "notes": "Clinical phenotypes of delirium during critical illness and severity of subsequent long-term cognitive impairment: a prospective cohort study.",
+          "doi": "10.1016/S2213-2600(18)30062-6",
+          "pmid": "29508705",
+          "n_participants": 1040,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -4.03,
+            "ci_low": -7.8,
+            "ci_high": -0.26,
+            "comparator": "RBANS global cognition score at 12 months for 3 versus 0 days of sedative-associated delirium"
+          }
+        },
+        {
+          "citation": "HayhurstCJ et al 2020 Crit Care Med",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of Hypoactive and Hyperactive Delirium With Cognitive Function After Critical Illness.",
+          "doi": "10.1097/CCM.0000000000004313",
+          "pmid": "32317589",
+          "n_participants": 582,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -5.13,
+            "ci_low": -8.75,
+            "ci_high": -1.51,
+            "comparator": "3-month global cognition score associated with longer hypoactive delirium duration"
+          }
         }
       ]
     }
@@ -51,15 +68,21 @@
       "slug": "icu_delirium",
       "name": "ICU delirium",
       "kind": "condition",
-      "aliases": [],
-      "description": "Delirium occurring during intensive care unit admission."
+      "aliases": [
+        "critical illness delirium",
+        "delirium during intensive care"
+      ],
+      "description": "Acute delirium occurring during critical illness and intensive care, often in patients with shock, respiratory failure, or heavy sedative exposure."
     },
     {
       "slug": "long_term_cognitive_decline",
       "name": "Long-term cognitive decline",
-      "kind": "process",
-      "aliases": [],
-      "description": "Persistent decline in cognition lasting months after the index illness or exposure."
+      "kind": "condition",
+      "aliases": [
+        "persistent cognitive impairment",
+        "post-ICU cognitive decline"
+      ],
+      "description": "Sustained decline in cognition months to years after an exposure or illness, affecting memory, attention, executive function, or global cognition."
     }
   ]
 }

@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "farm_environment_exposure",
-      "name": "Traditional farm-environment exposure",
-      "kind": "environmental"
-    },
-    {
-      "slug": "allergic_disease",
-      "name": "Allergic disease",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "farm_environment_exposure",
@@ -19,43 +7,89 @@
       "direction": "protective",
       "tier": "A",
       "effect_size": "moderate",
-      "effect_quant": "The clearest modern evidence comes from the Amish-Hutterite comparison, where traditional farm exposure was associated with dramatically lower asthma and allergic sensitization despite similar ancestry. Complementary farm-cohort studies show lower atopy and asthma together with more regulatory immune profiles in farm-exposed children.",
-      "population": "children raised in traditional farming environments compared with children in non-farm or industrial-farm environments",
-      "mechanism": "Traditional farm exposure delivers high and diverse microbial signals, endotoxin-rich dust, and animal-associated environmental inputs during immune development. These exposures appear to strengthen innate immune training and regulatory T-cell responses in ways that reduce later allergic sensitization and asthma expression.",
-      "summary": "Farm-environment exposure remains one of the strongest naturally occurring protective patterns in childhood allergy epidemiology. The Amish-Hutterite study made that difference unusually vivid, and subsequent cohort and immunology work support the idea that traditional farm microbial exposure lowers allergic disease risk rather than merely correlating with it.",
-      "caveats": "Not every rural or farming exposure is the same, and protective signals are strongest in traditional livestock-heavy settings rather than in generic countryside living. The edge speaks to environmental patterning, not to simple one-factor interventions such as taking endotoxin supplements or copying one farm product in isolation.",
+      "effect_quant": "Early-life farm exposure is consistently associated with lower allergic disease burden. In Amish and Hutterite children, asthma and allergic sensitization were fourfold and sixfold less common in the Amish traditional-farm environment, and longitudinal farm cohorts show lower incident sensitization and lower allergy prevalence in exposed children.",
+      "population": "children growing up in traditional farm environments or with repeated early-life farm-related exposures",
+      "mechanism": "Traditional farm environments expose children to dense and diverse microbial signals, animal sheds, dust, and unprocessed farm products that appear to shape innate and adaptive immune maturation away from allergic sensitization. This is a classic human example of the farm effect and microbial immune training.",
+      "summary": "The evidence strongly supports a protective farm effect for allergic disease. Across U.S. and European cohorts, children with early-life farm exposure generally show less allergic sensitization, less asthma, and lower allergy prevalence than children in non-farm or industrialized-farm environments.",
+      "caveats": "Not every farming context is protective; industrialized large-animal operations and non-affluent settings can show different respiratory patterns. The clearest benefit appears in traditional farm environments with repeated early-life exposure rather than a single isolated farm-related factor.",
       "evidence": [
         {
-          "citation": "SteinMM et al 2016 N Engl J Med",
-          "pmid": "27518660",
+          "citation": "Stein MM et al 2016 N Engl J Med",
           "year": 2016,
-          "study_type": "cohort",
-          "n_participants": 60,
+          "study_type": "cross_sectional",
           "direction": "protective",
           "quality": "high",
-          "notes": "Innate Immunity and Asthma Risk in Amish and Hutterite Farm Children."
-        },
-        {
-          "citation": "LluisA et al 2014 J Allergy Clin Immunol",
-          "pmid": "23993223",
-          "year": 2014,
-          "study_type": "cohort",
-          "n_participants": 298,
-          "direction": "protective",
-          "quality": "high",
-          "notes": "Increased regulatory T-cell numbers are associated with farm milk exposure and lower atopic sensitization and asthma in childhood."
-        },
-        {
-          "citation": "HruschCL et al 2019 J Allergy Clin Immunol",
-          "pmid": "31401285",
-          "year": 2019,
-          "study_type": "cohort",
+          "notes": "Innate Immunity and Asthma Risk in Amish and Hutterite Farm Children.",
+          "doi": "10.1056/NEJMoa1508749",
+          "pmid": "27518660",
           "n_participants": 60,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -0.75,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "asthma prevalence in Amish versus Hutterite farm children; asthma was four times less common and allergic sensitization six times less common in the Amish environment"
+          }
+        },
+        {
+          "citation": "Horak F et al 2002 Clin Exp Allergy",
+          "year": 2002,
+          "study_type": "cohort",
           "direction": "protective",
           "quality": "moderate",
-          "notes": "T-cell phenotypes are associated with serum IgE levels in Amish and Hutterite children."
+          "notes": "Parental farming protects children against atopy: longitudinal evidence involving skin prick tests.",
+          "doi": "10.1046/j.1365-2745.2002.01448.x",
+          "pmid": "12190651",
+          "n_participants": 844,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.34,
+            "ci_low": 0.12,
+            "ci_high": 0.98,
+            "comparator": "new occurrence of skin-prick-test positivity in children from farming versus non-farming families"
+          }
+        },
+        {
+          "citation": "Waser M et al 2007 Clin Exp Allergy",
+          "year": 2007,
+          "study_type": "cross_sectional",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Inverse association of farm milk consumption with asthma and allergy in rural and suburban populations across Europe.",
+          "doi": "10.1111/j.1365-2222.2006.02640.x",
+          "pmid": "17456213",
+          "n_participants": 14893,
+          "effect_quant": {
+            "metric": "aOR",
+            "value": 0.56,
+            "ci_low": 0.43,
+            "ci_high": 0.73,
+            "comparator": "rhinoconjunctivitis in children who had ever consumed farm milk versus shop-purchased milk in the PARSIFAL study"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "farm_environment_exposure",
+      "name": "Farm environment exposure",
+      "kind": "environmental",
+      "aliases": [
+        "traditional farm upbringing",
+        "early-life farm exposure"
+      ],
+      "description": "Growing up in a traditional farm environment with early repeated exposure to animals, sheds, dust, and related microbial signals."
+    },
+    {
+      "slug": "allergic_disease",
+      "name": "Allergic disease",
+      "kind": "condition",
+      "aliases": [
+        "allergy",
+        "allergic sensitization and symptoms"
+      ],
+      "description": "Allergic disease including sensitization, eczema, rhinitis, and asthma-related allergic phenotypes."
     }
   ]
 }

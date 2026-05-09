@@ -1,68 +1,74 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "maternal_antibiotics_in_pregnancy",
-      "name": "Maternal antibiotic use during pregnancy",
-      "kind": "drug"
-    },
-    {
-      "slug": "child_asthma_risk",
-      "name": "Childhood asthma risk",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "maternal_antibiotics_in_pregnancy",
       "outcome_slug": "child_asthma_risk",
       "direction": "harmful",
-      "tier": "B",
+      "tier": "C",
       "effect_size": "small",
-      "effect_quant": "Meta-analyses of prenatal antibiotic exposure consistently show a modest increase in offspring asthma or wheeze risk, generally around 20%. A large Norwegian analysis suggests the association persists after accounting for maternal infections, although confounding by indication still cannot be fully removed.",
-      "population": "children prenatally exposed to maternal antibiotic treatment during pregnancy",
-      "mechanism": "Maternal antibiotic use during pregnancy may alter maternal microbial exposures, fetal immune programming, or early neonatal colonization. Some of the observed association may also reflect the pregnancy infections prompting treatment, which is why better-controlled cohort data are important here.",
-      "summary": "Maternal antibiotic use in pregnancy is associated with higher childhood asthma risk, but the effect looks modest rather than dramatic. The pooled literature is directionally consistent, and large cohort work suggests the signal is not entirely explained away by underlying maternal infection.",
-      "caveats": "Confounding by indication remains the biggest limitation, because respiratory or genitourinary infections during pregnancy may themselves influence offspring asthma risk. This edge should guide interpretation of population risk, not discourage necessary antibiotic treatment in pregnancy.",
+      "effect_quant": "Across large registry-based studies, maternal antibiotic exposure during pregnancy is usually associated with offspring asthma estimates around RR or OR 1.2 to 1.3, but adjustment for infections and sibling comparisons attenuate the effect.",
+      "population": "children with prenatal exposure to maternal antibiotic use during pregnancy",
+      "mechanism": "Prenatal antibiotic exposure may shift maternal and neonatal microbial transfer, infection patterns, and fetal immune programming in ways that modestly alter later asthma susceptibility.",
+      "summary": "Several large Scandinavian studies link maternal antibiotic use during pregnancy with a modest increase in later childhood asthma risk. The direction is fairly consistent, but confounding by maternal infection burden and shared family susceptibility remains a major part of the interpretation.",
+      "caveats": "The same maternal infections that prompt antibiotics may independently influence asthma risk in offspring. Sibling analyses and models that account for infections usually weaken the association, so the evidence is better for a modest association than for a clean causal effect.",
       "evidence": [
         {
-          "citation": "ZhaoD et al 2015 Pediatr Allergy Immunol",
-          "pmid": "26126682",
+          "citation": "Metsala J et al 2015 Clin Exp Allergy",
           "year": 2015,
-          "study_type": "meta_analysis",
-          "n_participants": 10,
+          "study_type": "case_control",
           "direction": "harmful",
-          "quality": "high",
-          "notes": "Prenatal antibiotic use and risk of childhood wheeze/asthma: A meta-analysis.",
-          "effect_quant": {
-            "metric": "OR",
-            "value": 1.20,
-            "ci_low": 1.13,
-            "ci_high": 1.27,
-            "comparator": "prenatal antibiotic exposure versus no prenatal antibiotic exposure"
-          }
+          "quality": "moderate",
+          "notes": "Prenatal and post-natal exposure to antibiotics and risk of asthma in childhood.",
+          "doi": "10.1111/cea.12356",
+          "pmid": "24943808",
+          "n_participants": 13380
         },
         {
-          "citation": "ZhongY et al 2021 Pediatr Allergy Immunol",
-          "pmid": "33190323",
-          "year": 2021,
-          "study_type": "meta_analysis",
-          "n_participants": 26,
-          "direction": "harmful",
+          "citation": "Ortqvist AK et al 2014 BMJ",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "mixed",
           "quality": "high",
-          "notes": "Maternal antibiotic exposure during pregnancy and the risk of allergic diseases in childhood: A meta-analysis."
+          "notes": "Antibiotics in fetal and early life and subsequent childhood asthma: nationwide population based study with sibling analysis.",
+          "doi": "10.1136/bmj.g6979",
+          "pmid": "25432937",
+          "n_participants": 493785
         },
         {
-          "citation": "RantalaAK et al 2022 Eur J Epidemiol",
-          "pmid": "35939140",
+          "citation": "Rantala AK et al 2022 Eur J Epidemiol",
           "year": 2022,
           "study_type": "cohort",
-          "n_participants": 470965,
-          "direction": "harmful",
+          "direction": "mixed",
           "quality": "high",
-          "notes": "Maternal antibiotic use and infections during pregnancy and offspring asthma: the Norwegian Mother, Father and Child Cohort Study and a nationwide register cohort."
+          "notes": "Maternal antibiotic use and infections during pregnancy and offspring asthma: the Norwegian Mother, Father and Child Cohort Study and a nationwide register cohort.",
+          "doi": "10.1007/s10654-022-00897-y",
+          "pmid": "35939140",
+          "n_participants": 470965
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "maternal_antibiotics_in_pregnancy",
+      "name": "Maternal antibiotic use during pregnancy",
+      "kind": "drug",
+      "aliases": [
+        "prenatal maternal antibiotics",
+        "antibiotics during pregnancy"
+      ],
+      "description": "Maternal systemic antibiotic use during pregnancy."
+    },
+    {
+      "slug": "child_asthma_risk",
+      "name": "Child asthma risk",
+      "kind": "condition",
+      "aliases": [
+        "offspring asthma risk",
+        "childhood asthma susceptibility"
+      ],
+      "description": "Risk of asthma developing in offspring during childhood."
     }
   ]
 }

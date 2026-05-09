@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "black_cohosh",
-      "name": "Black cohosh",
-      "kind": "supplement"
-    },
-    {
-      "slug": "hot_flash_frequency",
-      "name": "Hot flash frequency",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "black_cohosh",
@@ -19,50 +7,75 @@
       "direction": "mixed",
       "tier": "C",
       "effect_size": "small",
-      "effect_quant": "The best recent meta-analysis suggests black cohosh modestly improves hot flashes, but earlier systematic reviews judged the evidence uncertain. The most defensible overall read is mixed evidence with a possible small benefit.",
-      "population": "peri- and postmenopausal women with vasomotor menopausal symptoms",
-      "mechanism": "Black cohosh does not appear to act like classic estrogen replacement. Proposed effects include serotonergic and neurovegetative modulation that could damp vasomotor symptoms, but the mechanism remains less certain than the clinical use pattern suggests.",
-      "summary": "Black cohosh may reduce hot flashes for some women, but the literature has never been consistently one-directional. Newer pooled analyses are more favorable than older reviews, so the edge reads as mixed with a plausible but not decisive benefit.",
-      "caveats": "Results vary by extract type, dose standardization, and whether studies examined black cohosh alone or in combination regimens. Because the evidence base is heterogeneous, it is safer to frame this as possible benefit rather than a strong recommendation.",
+      "effect_quant": "The black cohosh literature is inconsistent. Some trials report improvement in hot flash number and severity, but larger placebo-controlled cancer-survivor and crossover trials found no significant advantage over placebo. In one recent 84-woman trial, symptom counts improved significantly versus placebo, while a 132-patient phase III crossover trial found a 17% reduction in frequency on black cohosh versus 26% on placebo.",
+      "population": "peri- or postmenopausal women using black cohosh to relieve vasomotor symptoms, including some women with a history of breast cancer",
+      "mechanism": "Black cohosh does not appear to act like a straightforward estrogen replacement. Proposed mechanisms include serotonergic or central thermoregulatory effects, which could plausibly influence vasomotor symptoms, but biologic uncertainty mirrors the uneven clinical results.",
+      "summary": "The most defensible interpretation is mixed. Smaller or selected trials sometimes suggest that black cohosh reduces hot flash frequency or severity, but better-controlled studies have repeatedly failed to show a clear benefit over placebo, leaving a possible small effect in some subgroups rather than a robust general solution.",
+      "caveats": "Formulations differ substantially across trials, and only some standardized extracts have been studied. Placebo responses in menopausal hot-flash trials are large, which makes modest benefits hard to distinguish from noise.",
       "evidence": [
         {
-          "citation": "Sadahiro et al 2023 Menopause",
-          "pmid": "37192826",
-          "year": 2023,
-          "study_type": "meta_analysis",
-          "n_participants": 2310,
-          "direction": "protective",
+          "citation": "Pockaj BA et al 2006 J Clin Oncol",
+          "year": 2006,
+          "study_type": "rct",
+          "direction": "neutral",
           "quality": "high",
-          "notes": "Black cohosh extracts in women with menopausal symptoms: an updated pairwise meta-analysis.",
+          "notes": "Phase III double-blind, randomized, placebo-controlled crossover trial of black cohosh in the management of hot flashes: NCCTG Trial N01CC1.",
+          "doi": "10.1200/JCO.2005.05.4296",
+          "pmid": "16782922",
+          "n_participants": 132,
           "effect_quant": {
-            "metric": "SMD",
-            "value": 0.315,
-            "ci_low": 0.107,
-            "ci_high": 0.524,
-            "comparator": "black cohosh versus placebo for hot flashes"
+            "metric": "relative_change",
+            "value": -0.17,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "mean reduction in hot flash frequency on black cohosh over two 4-week treatment periods; placebo showed a 26% reduction over the same periods"
           }
         },
         {
-          "citation": "Borrelli et al 2008 Pharmacol Res",
-          "pmid": "18585461",
-          "year": 2008,
-          "study_type": "systematic_review",
-          "n_participants": 1112,
-          "direction": "mixed",
-          "quality": "moderate",
-          "notes": "Black cohosh (Cimicifuga racemosa) for menopausal symptoms: a systematic review of its efficacy."
-        },
-        {
-          "citation": "Osmers et al 2005 Obstet Gynecol",
-          "pmid": "15863547",
-          "year": 2005,
+          "citation": "Shahnazi Mahnaz et al 2013 J Caring Sci",
+          "year": 2013,
           "study_type": "rct",
-          "n_participants": 304,
           "direction": "protective",
           "quality": "moderate",
-          "notes": "Efficacy and safety of isopropanolic black cohosh extract for climacteric symptoms."
+          "notes": "Effect of black cohosh (cimicifuga racemosa) on vasomotor symptoms in postmenopausal women: a randomized clinical trial.",
+          "doi": "10.5681/jcs.2013.013",
+          "pmid": "25276716",
+          "n_participants": 84
+        },
+        {
+          "citation": "Jacobson JS et al 2001 J Clin Oncol",
+          "year": 2001,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Randomized trial of black cohosh for the treatment of hot flashes among women with a history of breast cancer.",
+          "doi": "10.1200/JCO.2001.19.10.2739",
+          "pmid": "11352967",
+          "n_participants": 85
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "black_cohosh",
+      "name": "Black cohosh",
+      "kind": "supplement",
+      "aliases": [
+        "Cimicifuga racemosa",
+        "Actaea racemosa"
+      ],
+      "description": "An herbal supplement used by some women to manage menopausal symptoms such as hot flashes."
+    },
+    {
+      "slug": "hot_flash_frequency",
+      "name": "Hot flash frequency",
+      "kind": "condition",
+      "aliases": [
+        "vasomotor symptom frequency",
+        "number of hot flashes"
+      ],
+      "description": "The frequency of menopausal hot flashes or vasomotor episodes."
     }
   ]
 }

@@ -5,48 +5,71 @@
       "factor_slug": "fecal_microbiota_transplant",
       "outcome_slug": "ibs_global_score",
       "direction": "mixed",
-      "tier": "C",
+      "tier": "B",
       "effect_size": "small",
-      "effect_quant": "A 2022 meta-analysis of 8 randomized trials involving 472 patients found no significant overall improvement in IBS symptom severity or responder rates, despite individual trials reporting benefit.",
-      "population": "adults with moderate-to-severe irritable bowel syndrome",
-      "mechanism": "FMT can clearly alter gut microbial composition in IBS, but symptom benefit appears inconsistent because IBS is multifactorial and recipient biology may determine whether donor strains meaningfully change function rather than simply colonization patterns. This makes it more plausible as a subgroup-responsive intervention than as a broadly effective IBS therapy.",
-      "summary": "FMT changes the microbiome in IBS, but symptom relief is inconsistent across trials. Some randomized studies report meaningful improvement in IBS severity scores, whereas pooled trial evidence and newer mechanistic follow-up work suggest that microbiome shifts often occur without a reliable parallel improvement in global symptoms.",
-      "caveats": "Differences in donor selection, administration route, bowel prep, and IBS subtype likely contribute to the conflicting results. At the moment this is not a settled beneficial edge; it is better interpreted as a mixed and formulation-sensitive intervention with uncertain generalizability.",
+      "effect_quant": "A 2022 meta-analysis of 8 randomized trials involving 472 IBS patients found no significant overall benefit for IBS symptom severity or total responders (RR 1.84, 95% CI 0.82-2.65), yet one placebo-controlled trial reported 65% versus 43% response at 3 months, while a later 56-patient diarrhea-predominant IBS trial found 57.1% versus 46.4% response (p=0.42) but better bloating relief with FMT.",
+      "population": "adults with irritable bowel syndrome, especially moderate-to-severe mixed or diarrhea-predominant IBS enrolled in randomized placebo-controlled trials",
+      "mechanism": "FMT may help some IBS patients by shifting fermentation patterns, bile acid handling, gas production, and mucosal immune signaling, but donor effects, route of administration, and IBS subtype appear to matter substantially.",
+      "summary": "The IBS literature does not support a clean yes-or-no answer for FMT. Some trials show meaningful symptom relief, but pooled randomized evidence remains negative overall, suggesting that any benefit is likely donor-, protocol-, or subtype-specific rather than broadly reliable.",
+      "caveats": "Trial sizes are modest, placebo response is high, and different studies used different donors, routes, stool preparations, and endpoints. Positive single-center studies have not translated into a consistent pooled benefit.",
       "evidence": [
         {
-          "citation": "Abdelghafar YA et al 2022 Health Sci Rep",
-          "pmid": "36110348",
-          "doi": "10.1002/hsr2.814",
+          "citation": "Abdelghafar M et al 2022 Health Sci Rep",
           "year": 2022,
           "study_type": "meta_analysis",
-          "n_participants": 472,
-          "direction": "neutral",
+          "direction": "mixed",
           "quality": "high",
-          "notes": "Efficacy and safety of fecal microbiota transplant in irritable bowel syndrome: An update based on meta-analysis of randomized control trials."
+          "notes": "Efficacy and safety of fecal microbiota transplant in irritable bowel syndrome: An update based on meta-analysis of randomized control trials.",
+          "doi": "10.1002/hsr2.814",
+          "pmid": "36110348",
+          "n_participants": 472
         },
         {
           "citation": "Johnsen PH et al 2018 Lancet Gastroenterol Hepatol",
-          "pmid": "29100842",
-          "doi": "10.1016/S2468-1253(17)30338-2",
           "year": 2018,
           "study_type": "rct",
-          "n_participants": 83,
           "direction": "protective",
           "quality": "moderate",
-          "notes": "Faecal microbiota transplantation versus placebo for moderate-to-severe irritable bowel syndrome: a double-blind, randomised, placebo-controlled, parallel-group, single-centre trial."
+          "notes": "Faecal microbiota transplantation versus placebo for moderate-to-severe irritable bowel syndrome: a double-blind, randomised, placebo-controlled, parallel-group, single-centre trial.",
+          "doi": "10.1016/S2468-1253(17)30338-2",
+          "pmid": "29100842",
+          "n_participants": 83
         },
         {
-          "citation": "Hartikainen AK et al 2024 NPJ Biofilms Microbiomes",
-          "pmid": "39191760",
-          "doi": "10.1038/s41522-024-00549-x",
-          "year": 2024,
+          "citation": "Yau Y et al 2023 Aliment Pharmacol Ther",
+          "year": 2023,
           "study_type": "rct",
-          "n_participants": 49,
           "direction": "neutral",
           "quality": "moderate",
-          "notes": "Fecal microbiota transplantation influences microbiota without connection to symptom relief in irritable bowel syndrome patients."
+          "notes": "Randomised clinical trial: Faecal microbiota transplantation for irritable bowel syndrome with diarrhoea.",
+          "doi": "10.1111/apt.17703",
+          "pmid": "37667968",
+          "n_participants": 56
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "fecal_microbiota_transplant",
+      "name": "Fecal microbiota transplantation",
+      "kind": "activity",
+      "aliases": [
+        "FMT",
+        "faecal microbiota transplantation"
+      ],
+      "description": "Transfer of screened donor stool or stool-derived microbes to a recipient in order to reshape the gut microbiome."
+    },
+    {
+      "slug": "ibs_global_score",
+      "name": "IBS global symptom score",
+      "kind": "condition",
+      "aliases": [
+        "IBS symptom severity score",
+        "IBS-SSS",
+        "global IBS symptom burden"
+      ],
+      "description": "Overall symptom burden in irritable bowel syndrome, often measured with validated global or severity scoring instruments."
     }
   ]
 }

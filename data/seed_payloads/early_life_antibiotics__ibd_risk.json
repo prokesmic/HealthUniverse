@@ -7,46 +7,69 @@
       "direction": "harmful",
       "tier": "B",
       "effect_size": "small",
-      "effect_quant": "A 2026 meta-analysis of childhood antibiotic exposure found a pooled relative risk of 1.42 for later inflammatory bowel disease, with a stronger signal for Crohn disease (RR 1.59).",
-      "population": "children exposed to antibiotics during infancy or early childhood",
-      "mechanism": "Antibiotics in early life can disrupt microbiome assembly during an immune-development window when tolerance, mucosal barrier signaling, and colonization resistance are still being programmed. Repeated exposure may create a more persistent ecological and immune shift that nudges susceptibility toward later inflammatory bowel disease, especially Crohn disease.",
-      "summary": "Early-life antibiotic exposure is now reasonably well supported as a modest risk factor for later IBD, especially Crohn disease. Meta-analytic and nationwide cohort data are directionally consistent, with stronger risk estimates in children receiving repeated courses and in studies that focus on pediatric-onset disease.",
-      "caveats": "Absolute risk remains low, and confounding by infection burden can never be fully excluded in observational work. The association also seems stronger for Crohn disease than for ulcerative colitis, so this should be read as a probabilistic risk signal rather than a deterministic cause.",
+      "effect_quant": "In Denmark, oral antibiotics during the first 5 years of life were associated with pediatric-onset IBD (HR 1.33, 95% CI 1.2-1.5) in 1927 cases and 18,318 reference individuals; in Norway, antibiotic exposure before age 2 carried an aOR of 1.33 (95% CI 1.15-1.53), rising to 1.47 after more than two courses and 2.57 for broad-spectrum exposure.",
+      "population": "children exposed to systemic antibiotics in infancy or early childhood, especially large Scandinavian registry cohorts assessing pediatric-onset inflammatory bowel disease",
+      "mechanism": "Antibiotics in early life can disrupt microbiome maturation, deplete key commensals, alter bile acid and short-chain fatty acid ecology, and potentially skew mucosal immune development toward later chronic intestinal inflammation.",
+      "summary": "Across large pediatric registry cohorts, early-life antibiotic exposure tracks with a higher later risk of pediatric IBD, especially Crohn disease and repeated or broad-spectrum exposure. The effect is modest in relative terms but appears consistent enough to support a harmful population-level signal.",
+      "caveats": "Absolute risk remains low, and residual confounding by infections, healthcare utilization, and underlying susceptibility is still possible. The evidence is observational, so it supports stewardship rather than a claim that brief necessary antibiotic treatment directly causes IBD in any given child.",
       "evidence": [
         {
-          "citation": "Stordal K et al 2026 Inflamm Bowel Dis",
-          "pmid": "41617205",
-          "doi": "10.1093/ibd/izaf324",
-          "year": 2026,
-          "study_type": "meta_analysis",
-          "n_participants": 2783,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Systematic review and meta-analysis of childhood exposure to antibiotics and the subsequent risk of IBD."
-        },
-        {
           "citation": "Jawad AB et al 2023 J Pediatr Gastroenterol Nutr",
-          "pmid": "37346028",
-          "doi": "10.1097/MPG.0000000000003861",
           "year": 2023,
           "study_type": "cohort",
-          "n_participants": 20245,
           "direction": "harmful",
           "quality": "high",
-          "notes": "Early Life Oral Antibiotics Are Associated With Pediatric-Onset Inflammatory Bowel Disease-A Nationwide Study."
+          "notes": "Early Life Oral Antibiotics Are Associated With Pediatric-Onset Inflammatory Bowel Disease-A Nationwide Study.",
+          "doi": "10.1097/MPG.0000000000003861",
+          "pmid": "37346028",
+          "n_participants": 20245
         },
         {
-          "citation": "Mark-Christensen A et al 2022 Inflamm Bowel Dis",
-          "pmid": "34000050",
-          "doi": "10.1093/ibd/izab085",
-          "year": 2022,
+          "citation": "Andersen S et al 2024 J Pediatr Clin Pract",
+          "year": 2024,
           "study_type": "cohort",
-          "n_participants": 979039,
           "direction": "harmful",
           "quality": "high",
-          "notes": "Early-Life Exposure to Antibiotics and Risk for Crohn's Disease: A Nationwide Danish Birth Cohort Study."
+          "notes": "Fetal and Early-Life Antibiotics and Risk of Pediatric Inflammatory Bowel Disease: A Population-Based Nationwide Register Study.",
+          "doi": "10.1016/j.jpedcp.2024.200096",
+          "pmid": "39949419",
+          "n_participants": 536819
+        },
+        {
+          "citation": "Lundgren M et al 2022 Inflamm Bowel Dis",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Early-Life Exposure to Antibiotics and Risk for Crohn's Disease: A Nationwide Danish Birth Cohort Study.",
+          "doi": "10.1093/ibd/izab085",
+          "pmid": "34000050",
+          "n_participants": 979039
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "early_life_antibiotics",
+      "name": "Early-life antibiotics",
+      "kind": "activity",
+      "aliases": [
+        "infant antibiotic exposure",
+        "childhood antibiotic exposure",
+        "antibiotics in infancy"
+      ],
+      "description": "Systemic antibiotic exposure during pregnancy, infancy, or early childhood."
+    },
+    {
+      "slug": "ibd_risk",
+      "name": "Inflammatory bowel disease risk",
+      "kind": "condition",
+      "aliases": [
+        "pediatric IBD risk",
+        "risk of Crohn disease or ulcerative colitis"
+      ],
+      "description": "Likelihood of later developing inflammatory bowel disease, including Crohn disease or ulcerative colitis."
     }
   ]
 }

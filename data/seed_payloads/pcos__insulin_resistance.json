@@ -1,12 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "pcos",
-      "name": "Polycystic ovary syndrome",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "pcos",
@@ -14,43 +7,72 @@
       "direction": "harmful",
       "tier": "A",
       "effect_size": "moderate",
-      "effect_quant": "The strongest synthesis using gold-standard clamp studies found that women with PCOS had about 27% lower insulin sensitivity than controls, and that deficit persisted independent of BMI. Later metabolic studies in lean PCOS and obesity-focused meta-analyses support the same direction, showing that insulin resistance is not just a by-product of weight alone.",
-      "population": "premenopausal women with polycystic ovary syndrome across lean and overweight phenotypes",
-      "mechanism": "PCOS appears tightly linked to insulin resistance through a combination of post-receptor insulin signaling abnormalities, lipid accumulation in muscle, hyperandrogenism, and adipokine disruption. Obesity often worsens the problem, but the metabolic defect is present even in some lean women with PCOS, which is why the association looks intrinsic rather than incidental.",
-      "summary": "Insulin resistance is one of the most reproducible metabolic features of PCOS. The best clamp-based meta-analysis shows a substantial reduction in insulin sensitivity even after accounting for body size, and newer mechanistic work in lean women confirms that the signal is not confined to obesity-associated PCOS alone.",
-      "caveats": "The degree of insulin resistance varies by phenotype, adiposity, ethnicity, and diagnostic criteria, so not every woman with PCOS shows the same metabolic burden. But at the group level, the relationship is strong enough that PCOS should be treated as a cardiometabolic risk flag, not just a reproductive diagnosis.",
+      "effect_quant": "Insulin resistance is a core metabolic feature of PCOS rather than a peripheral association. In a large clamp-based cohort, 74.9% of women with PCOS were insulin resistant, including 59.3% of normal-weight women, 77.5% of overweight women, and 93.9% of obese women. Earlier mechanistic case-control clamp studies also found significantly reduced insulin sensitivity in PCOS independent of obesity.",
+      "population": "women of reproductive age with polycystic ovary syndrome, including both lean and overweight phenotypes",
+      "mechanism": "PCOS is linked to intrinsic post-receptor defects in insulin signaling and reduced insulin-mediated glucose disposal, with obesity adding an additional acquired burden. The result is compensatory hyperinsulinemia that amplifies ovarian androgen production, ovulatory dysfunction, and broader metabolic risk.",
+      "summary": "This is one of the strongest edges in the map. Gold-standard clamp studies and larger metabolic cohorts consistently show that insulin resistance is common in PCOS, including among women who are not obese, which is why the relationship is best treated as a central pathogenic feature rather than a coincidental comorbidity.",
+      "caveats": "The degree of insulin resistance varies across PCOS phenotypes and is worsened by adiposity, so not every patient has the same metabolic burden. Even so, the evidence is strong enough that a harmful direction is much more defensible than a neutral reading.",
       "evidence": [
         {
-          "citation": "Stepto et al 2016 Hum Reprod",
-          "pmid": "27907900",
-          "year": 2016,
-          "study_type": "meta_analysis",
-          "n_participants": 28,
+          "citation": "TosiF et al 2017 Hum Reprod",
+          "year": 2017,
+          "study_type": "cross_sectional",
           "direction": "harmful",
           "quality": "high",
-          "notes": "Insulin resistance in polycystic ovary syndrome: a systematic review and meta-analysis of euglycaemic-hyperinsulinaemic clamp studies."
+          "notes": "Insulin resistance in a large cohort of women with polycystic ovary syndrome: a comparison between euglycaemic-hyperinsulinaemic clamp and surrogate indexes.",
+          "doi": "10.1093/humrep/dex308",
+          "pmid": "29040529",
+          "n_participants": 375,
+          "effect_quant": {
+            "metric": "prevalence",
+            "value": 0.749,
+            "comparator": "prevalence of insulin resistance by euglycaemic-hyperinsulinaemic clamp among women with PCOS in a large metabolic cohort"
+          }
         },
         {
-          "citation": "Joham et al 2019 Obes Rev",
-          "pmid": "30339316",
-          "year": 2019,
-          "study_type": "systematic_review",
-          "n_participants": 59,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Metabolic syndrome in polycystic ovary syndrome: a systematic review, meta-analysis and meta-regression."
-        },
-        {
-          "citation": "Skov et al 2019 J Clin Endocrinol Metab",
-          "pmid": "30544235",
-          "year": 2019,
+          "citation": "DunaifA et al 1992 Diabetes",
+          "year": 1992,
           "study_type": "case_control",
-          "n_participants": 20,
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Evidence for distinctive and intrinsic defects in insulin action in polycystic ovary syndrome.",
+          "doi": "10.2337/diab.41.10.1257",
+          "pmid": "1397698",
+          "n_participants": 62
+        },
+        {
+          "citation": "DunaifA et al 1993 Diabetes",
+          "year": 1993,
+          "study_type": "case_control",
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Molecular Mechanisms in Skeletal Muscle Underlying Insulin Resistance in Women Who Are Lean With Polycystic Ovary Syndrome."
+          "notes": "Ethnicity and polycystic ovary syndrome are associated with independent and additive decreases in insulin action in Caribbean-Hispanic women.",
+          "doi": "10.2337/diab.42.10.1462",
+          "pmid": "8375585",
+          "n_participants": 36
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "pcos",
+      "name": "Polycystic ovary syndrome",
+      "kind": "condition",
+      "aliases": [
+        "PCOS"
+      ],
+      "description": "A common endocrine disorder characterized by hyperandrogenism, ovulatory dysfunction, and polycystic ovarian morphology."
+    },
+    {
+      "slug": "insulin_resistance",
+      "name": "Insulin resistance",
+      "kind": "condition",
+      "aliases": [
+        "reduced insulin sensitivity",
+        "hyperinsulinemic insulin resistance"
+      ],
+      "description": "Reduced biological response to insulin, often associated with compensatory hyperinsulinemia and adverse metabolic outcomes."
     }
   ]
 }

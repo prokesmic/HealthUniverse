@@ -5,45 +5,66 @@
       "factor_slug": "saccharin",
       "outcome_slug": "glucose_tolerance",
       "direction": "harmful",
-      "tier": "X",
+      "tier": "C",
       "effect_size": "small",
-      "effect_quant": "In a 2022 randomized trial, the saccharin arm showed impaired glycemic responses after 2 weeks of exposure, and an earlier 2014 pilot found glucose intolerance emerging in 4 of 7 healthy volunteers after 6 days of high-dose saccharin. A dedicated 2021 placebo-controlled saccharin trial in healthy lean adults, however, found no oral glucose tolerance effect, so the signal remains early and inconsistent.",
-      "population": "healthy adults exposed to short-term saccharin or other non-nutritive sweetener interventions that included saccharin",
-      "mechanism": "Saccharin may impair glucose tolerance in susceptible people through microbiome-mediated changes in carbohydrate handling and downstream glycemic responses rather than through a uniform direct endocrine effect. The conflicting trials suggest that baseline microbiome composition, co-exposures, and formulation details likely determine whether a measurable glucose signal appears.",
-      "summary": "Saccharin has an early harmful signal for glucose tolerance, but it is not a settled effect. Small human experiments and a later randomized sweetener trial suggest that saccharin can worsen glycemic responses in some people, while a placebo-controlled study using pure saccharin at the acceptable daily intake found no glucose intolerance. The fairest conclusion is a person-specific harmful possibility rather than a stable universal effect.",
-      "caveats": "The positive human signal is still based on short interventions with small samples, and one of the strongest null studies specifically tested pure saccharin under controlled conditions. This edge should be treated as an unresolved metabolic warning, not proof that ordinary saccharin exposure reliably harms everyone.",
+      "effect_quant": "In the 2014 Nature study, 4 of 7 healthy volunteers developed a poorer glycemic response after 6 to 7 days of saccharin at the acceptable daily intake; however, a later double-blind parallel-arm study using pure saccharin at the maximum acceptable daily intake for 2 weeks in 46 healthy adults found no change in OGTT glucose or hormonal responses.",
+      "population": "healthy adults or adults at metabolic risk exposed to short-term saccharin or mixed artificial-sweetener challenges",
+      "mechanism": "Saccharin may affect glucose tolerance through microbiome-dependent changes in fermentation and host signaling or through intestinal sweet-taste receptor pathways, but human responses appear heterogeneous and highly context dependent.",
+      "summary": "Saccharin has one of the more concerning mechanistic sweetener signals because small interventional work suggests some people can develop worse glycemic responses after brief exposure. At the same time, a larger pure-saccharin randomized trial was negative, so the overall edge is best read as early harmful evidence rather than settled metabolic toxicity.",
+      "caveats": "This literature is small, protocol-sensitive, and partly driven by responder subgroups. Commercial formulations, background diet, habitual sweetener use, and microbiome composition likely matter a great deal, and one mixed-sweetener pilot found no acute blood glucose effect at all.",
       "evidence": [
         {
-          "citation": "Suez et al 2014 Nature",
-          "pmid": "25231862",
+          "citation": "Suez J et al 2014 Nature",
           "year": 2014,
           "study_type": "mechanistic",
-          "n_participants": 7,
           "direction": "harmful",
-          "quality": "low",
-          "notes": "Artificial sweeteners induce glucose intolerance by altering the gut microbiota."
+          "quality": "moderate",
+          "notes": "Artificial sweeteners induce glucose intolerance by altering the gut microbiota.",
+          "doi": "10.1038/nature13793",
+          "pmid": "25231862"
         },
         {
-          "citation": "Serrano et al 2021 Microbiome",
-          "pmid": "33431052",
+          "citation": "Serrano J et al 2021 Microbiome",
           "year": 2021,
           "study_type": "rct",
-          "n_participants": 23,
           "direction": "neutral",
-          "quality": "moderate",
-          "notes": "High-dose saccharin supplementation does not induce gut microbiota changes or glucose intolerance in healthy humans and mice."
+          "quality": "high",
+          "notes": "High-dose saccharin supplementation does not induce gut microbiota changes or glucose intolerance in healthy humans and mice.",
+          "doi": "10.1186/s40168-020-00976-w",
+          "pmid": "33431052",
+          "n_participants": 46
         },
         {
-          "citation": "Suez et al 2022 Cell",
-          "pmid": "35987213",
-          "year": 2022,
-          "study_type": "rct",
-          "n_participants": 20,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Personalized microbiome-driven effects of non-nutritive sweeteners on human glucose tolerance."
+          "citation": "Skokan I et al 2007 ScientificWorldJournal",
+          "year": 2007,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "low",
+          "notes": "Influence of artificial sweetener on human blood glucose concentration.",
+          "doi": "10.1100/tsw.2007.228",
+          "pmid": "17982603",
+          "n_participants": 16
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "saccharin",
+      "name": "Saccharin",
+      "kind": "food",
+      "aliases": [],
+      "description": "Saccharin as a non-nutritive sweetener exposure."
+    },
+    {
+      "slug": "glucose_tolerance",
+      "name": "Glucose tolerance",
+      "kind": "process",
+      "aliases": [
+        "glycemic control",
+        "insulin sensitivity during glucose challenge"
+      ],
+      "description": "The body's ability to handle a glucose load without excessive hyperglycemia or insulin resistance."
     }
   ]
 }

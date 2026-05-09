@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "loop_diuretics_elderly",
-      "name": "Loop diuretic use in older adults",
-      "kind": "drug"
-    },
-    {
-      "slug": "electrolyte_disturbance",
-      "name": "Electrolyte disturbance",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "loop_diuretics_elderly",
@@ -19,43 +7,68 @@
       "direction": "harmful",
       "tier": "B",
       "effect_size": "moderate",
-      "effect_quant": "The most consistent signal is not one single electrolyte but a cluster of sodium, potassium, magnesium, and volume-related abnormalities that becomes more common as loop-diuretic intensity rises. Older age and heart failure amplify that susceptibility.",
-      "population": "older adults and older heart-failure cohorts exposed to loop diuretics or loop-based sequential diuresis",
-      "mechanism": "Loop diuretics increase urinary sodium, potassium, chloride, calcium, and magnesium losses while also activating neurohormonal and volume-regulatory responses. In older adults with reduced renal reserve, poor intake, or combination diuretic therapy, those shifts can quickly become clinically relevant electrolyte disturbances.",
-      "summary": "This is a practical medication-safety edge rather than a debate about whether loops work. Across heart-failure cohorts and augmentation studies, electrolyte derangements remain a common cost of aggressive loop-diuretic therapy, particularly hyponatremia, hypokalemia, and hypomagnesemia in older or physiologically fragile patients.",
-      "caveats": "Some of the electrolyte signal reflects underlying heart failure severity and combination diuretic strategies rather than loop drugs alone. Even so, the association is strong enough that close biochemical monitoring is part of safe chronic loop-diuretic use in older adults.",
+      "effect_quant": "In older adults, loop diuretics consistently track with hypokalemia and related electrolyte instability. In a 36,361-patient geriatric screening study, loop diuretics were an independent risk factor for community-acquired hypokalemia. Earlier geriatric admission studies also found loop or thiazide diuretic exposure associated independently with lower serum potassium, and diuretic users had lower sodium and higher urea and creatinine than nonusers.",
+      "population": "older adults, especially those aged 65 years or older who are prescribed loop diuretics such as furosemide for heart failure or volume management",
+      "mechanism": "Loop diuretics increase urinary sodium, potassium, and magnesium losses while also provoking volume shifts that can worsen azotemia and dysnatremia in susceptible older adults. Age-related renal vulnerability, comorbidity burden, and concurrent medications amplify those electrolyte effects.",
+      "summary": "This is a credible harmful medication-safety edge in geriatrics. The literature most consistently points to potassium loss, but broader sodium and renal chemistry disturbances are also more common in older diuretic users, particularly when renal function is reduced or multiple comorbidities are present.",
+      "caveats": "Some observational studies group loop and thiazide diuretics together or compare several preparations at once, so not every risk estimate is loop-specific. Even so, the repeated direction of association and the underlying renal physiology make a harmful interpretation much stronger than a neutral one.",
       "evidence": [
         {
-          "citation": "VelatI et al 2020 BMC Pharmacol Toxicol",
-          "pmid": "32746925",
-          "year": 2020,
-          "study_type": "cohort",
-          "n_participants": 565,
+          "citation": "ByattCM et al 1990 J R Soc Med",
+          "year": 1990,
+          "study_type": "cross_sectional",
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Furosemide and spironolactone doses and hyponatremia in patients with heart failure."
+          "notes": "Diuretics and electrolyte disturbances in 1000 consecutive geriatric admissions.",
+          "doi": "10.1177/014107689008301111",
+          "pmid": "2250268",
+          "n_participants": 929
         },
         {
-          "citation": "MilionisHJ et al 2002 Eur J Heart Fail",
-          "pmid": "11959045",
-          "year": 2002,
-          "study_type": "cohort",
-          "n_participants": 86,
+          "citation": "BorlandC et al 1986 Age Ageing",
+          "year": 1986,
+          "study_type": "cross_sectional",
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Hypomagnesemia and concurrent acid-base and electrolyte abnormalities in patients with congestive heart failure."
+          "notes": "Biochemical and clinical correlates of diuretic therapy in the elderly.",
+          "doi": "10.1093/ageing/15.6.357",
+          "pmid": "3799365",
+          "n_participants": 561
         },
         {
-          "citation": "MoranvilleMP et al 2015 Cardiovasc Ther",
-          "pmid": "25712736",
-          "year": 2015,
-          "study_type": "cohort",
-          "n_participants": 55,
-          "direction": "mixed",
+          "citation": "BardakS et al 2017 Urolithiasis",
+          "year": 2017,
+          "study_type": "case_control",
+          "direction": "harmful",
           "quality": "moderate",
-          "notes": "Comparison of metolazone versus chlorothiazide in acute decompensated heart failure with diuretic resistance."
+          "notes": "Community-acquired hypokalemia in elderly patients: related factors and clinical outcomes.",
+          "doi": "10.1007/s11255-016-1489-3",
+          "pmid": "28035617",
+          "n_participants": 451
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "loop_diuretics_elderly",
+      "name": "Loop diuretic use in older adults",
+      "kind": "drug",
+      "aliases": [
+        "furosemide in elders",
+        "loop diuretics in the elderly"
+      ],
+      "description": "Use of loop diuretics such as furosemide, bumetanide, or torsemide in older adults."
+    },
+    {
+      "slug": "electrolyte_disturbance",
+      "name": "Electrolyte disturbance",
+      "kind": "condition",
+      "aliases": [
+        "electrolyte imbalance",
+        "sodium or potassium disturbance"
+      ],
+      "description": "Abnormal serum electrolytes such as hyponatremia, hypokalemia, hyperkalemia, or related chemistry derangements."
     }
   ]
 }

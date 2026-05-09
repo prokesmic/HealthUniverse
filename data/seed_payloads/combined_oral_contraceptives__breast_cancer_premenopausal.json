@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "combined_oral_contraceptives",
-      "name": "Combined oral contraceptives",
-      "kind": "drug"
-    },
-    {
-      "slug": "breast_cancer_premenopausal",
-      "name": "Premenopausal breast cancer",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "combined_oral_contraceptives",
@@ -19,64 +7,82 @@
       "direction": "harmful",
       "tier": "C",
       "effect_size": "small",
-      "effect_quant": "The most defensible reading is a small increase in breast-cancer risk, especially with current or recent use, rather than a large absolute-risk jump. For younger users the absolute excess remains modest, but the direction of effect is usually slightly upward.",
-      "population": "premenopausal women using or recently exposed to combined oral contraceptives",
-      "mechanism": "Combined oral contraceptives expose breast tissue to estrogen and progestagen signaling that can modestly increase proliferative pressure in hormone-responsive cells. That biologic rationale matches the epidemiology better for current and recent use than for remote past exposure.",
-      "summary": "Across cohort, case-control, and recent nested case-control evidence, combined oral contraceptives appear to slightly increase premenopausal breast-cancer risk, particularly during current or recent use. The effect is usually small, but it is more consistent than a null association.",
-      "caveats": "The absolute excess risk for many younger users remains low, and older formulations differ from modern products. This edge should be read as modest harm, not dramatic risk inflation.",
+      "effect_quant": "The premenopausal breast-cancer signal is modest rather than dramatic, but the literature leans upward. A 2023 UK nested case-control study found an OR of 1.23 (95% CI 1.14 to 1.32) for current or recent combined oral-contraceptive use in women younger than 50, while broader meta-analyses suggest little or no overall increase for ever use but somewhat higher risk with longer duration.",
+      "population": "premenopausal women using combined oral contraceptives",
+      "mechanism": "Combined oral contraceptives expose breast tissue to exogenous estrogen and progestagen signaling that can increase proliferative drive in susceptible hormone-responsive cells. The expected effect is a small shift in relative risk during current or recent exposure rather than a large permanent increase for all users.",
+      "summary": "For premenopausal breast cancer, the evidence supports a cautious harmful interpretation with a small effect size. The strongest recent data in younger women show a modest increase during current or recent use, but other meta-analyses remain closer to null overall, making this a signal worth acknowledging rather than a high-magnitude risk claim.",
+      "caveats": "Absolute excess risk in younger women remains small because baseline incidence is low. The literature is also sensitive to duration, recency, receptor subtype, and formulation era, so this edge should be read as a modest current-use signal rather than proof of a large lifetime hazard.",
       "evidence": [
         {
-          "citation": "Zhu et al 2012 Eur J Contracept Reprod Health Care",
-          "pmid": "23061743",
-          "year": 2012,
-          "study_type": "meta_analysis",
-          "n_participants": 859894,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Oral contraceptive use and risk of breast cancer: a meta-analysis of prospective cohort studies.",
-          "effect_quant": {
-            "metric": "RR",
-            "value": 1.08,
-            "ci_low": 0.99,
-            "ci_high": 1.17,
-            "comparator": "ever versus never oral-contraceptive use"
-          }
-        },
-        {
-          "citation": "Fitzpatrick et al 2023 PLoS Med",
-          "pmid": "36943819",
+          "citation": "Fitzpatrick D et al 2023 PLoS Med",
           "year": 2023,
           "study_type": "case_control",
-          "n_participants": 27669,
           "direction": "harmful",
           "quality": "high",
           "notes": "Combined and progestagen-only hormonal contraceptives and breast cancer risk: A UK nested case-control study and meta-analysis.",
+          "doi": "10.1371/journal.pmed.1004188",
+          "pmid": "36943819",
+          "n_participants": 27669,
           "effect_quant": {
             "metric": "OR",
             "value": 1.23,
             "ci_low": 1.14,
             "ci_high": 1.32,
-            "comparator": "current or recent combined oral-contraceptive use versus nonuse"
+            "comparator": "current or recent combined oral-contraceptive use versus nonuse in women younger than 50 years"
           }
         },
         {
-          "citation": "Kanadys et al 2021 Int J Environ Res Public Health",
-          "pmid": "33925599",
+          "citation": "Kanadys W et al 2021 Int J Environ Res Public Health",
           "year": 2021,
           "study_type": "meta_analysis",
-          "n_participants": 195680,
-          "direction": "harmful",
+          "direction": "mixed",
           "quality": "moderate",
           "notes": "Use of Oral Contraceptives as a Potential Risk Factor for Breast Cancer: A Systematic Review and Meta-Analysis of Case-Control Studies Up to 2010.",
+          "doi": "10.3390/ijerph18094638",
+          "pmid": "33925599",
+          "n_participants": 195680,
           "effect_quant": {
             "metric": "OR",
-            "value": 1.09,
-            "ci_low": 1.01,
-            "ci_high": 1.18,
-            "comparator": "oral-contraceptive use longer than 5 years versus shorter or never use"
+            "value": 1.06,
+            "ci_low": 0.92,
+            "ci_high": 1.22,
+            "comparator": "ever oral-contraceptive use versus never use among premenopausal women"
           }
+        },
+        {
+          "citation": "Busund M et al 2018 Int J Cancer",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Progestin-only and combined oral contraceptives and receptor-defined premenopausal breast cancer risk: The Norwegian Women and Cancer Study.",
+          "doi": "10.1002/ijc.31266",
+          "pmid": "29349773",
+          "n_participants": 74862
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "combined_oral_contraceptives",
+      "name": "Combined oral contraceptives",
+      "kind": "drug",
+      "aliases": [
+        "the pill",
+        "estrogen-progestin oral contraceptives"
+      ],
+      "description": "Oral contraceptive pills that contain both estrogen and progestin and are used for contraception or cycle control."
+    },
+    {
+      "slug": "breast_cancer_premenopausal",
+      "name": "Premenopausal breast cancer",
+      "kind": "condition",
+      "aliases": [
+        "breast cancer before menopause",
+        "breast cancer in younger women"
+      ],
+      "description": "Incident breast cancer occurring in premenopausal or predominantly younger women."
     }
   ]
 }

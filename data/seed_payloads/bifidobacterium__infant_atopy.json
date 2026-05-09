@@ -5,45 +5,69 @@
       "factor_slug": "bifidobacterium",
       "outcome_slug": "infant_atopy",
       "direction": "protective",
-      "tier": "X",
+      "tier": "C",
       "effect_size": "small",
-      "effect_quant": "In a 2014 mother-infant supplementation study of 166 pairs, prenatal and postnatal bifidobacterial supplementation lowered eczema/atopic dermatitis risk during the first 18 months of life. Complementary observational studies also found that infants who later developed allergy or eczema had lower Bifidobacterium abundance early in life than healthy controls.",
-      "population": "pregnant women and infants receiving bifidobacterial supplementation, and infant cohorts profiled for early-life Bifidobacterium abundance and later allergic outcomes",
-      "mechanism": "Bifidobacterium may protect against infant atopy by shaping early immune tolerance during the window when gut colonization calibrates Th1/Th2 balance and barrier maturation. The human data fit a model in which bifidobacterial dominance is a marker of healthier early colonization and, in some settings, a plausible modifiable contributor to lower atopic risk.",
-      "summary": "Higher early-life bifidobacterial exposure looks protective against infant atopy, but the evidence is still early and partly observational. The strongest interventional signal comes from one open mother-infant supplementation study, while microbiome cohort data consistently show lower Bifidobacterium abundance in infants who later develop eczema or broader allergic disease.",
-      "caveats": "The intervention evidence is not blinded and uses combined bifidobacterial strains, so this is not proof that any single Bifidobacterium product prevents atopy. Observational microbiome studies also cannot fully separate causal protection from correlated features like breastfeeding, antibiotics, or delivery mode.",
+      "effect_quant": "In a randomized prevention trial of 112 high-risk pregnant women and their infants, a probiotic mixture containing Bifidobacterium bifidum and Bifidobacterium lactis reduced eczema prevalence at 1 year to 18.2% versus 40.0% with placebo and lowered cumulative eczema incidence to 36.4% versus 62.9%; by contrast, a 137-infant randomized treatment trial of Bifidobacterium lactis found no significant SCORAD advantage over placebo.",
+      "population": "infants at elevated allergic risk or early-life eczema, including prenatal-postnatal probiotic prevention studies and infant microbiome association studies",
+      "mechanism": "Bifidobacteria may shape early immune tolerance by favoring short-chain-fatty-acid production, barrier maturation, and regulatory immune signaling during the period when allergic phenotypes first emerge.",
+      "summary": "The early-life bifidobacterium signal looks potentially beneficial, especially when bifidobacterial strains are part of prenatal and postnatal prevention strategies in allergy-prone families. At the same time, the literature is not cleanly strain-agnostic: isolated bifidobacterial interventions can be neutral, and some observational data suggest that specific species may track with eczema rather than protection.",
+      "caveats": "Most of the strongest preventive data come from mixed-strain regimens rather than from bifidobacteria alone. Effects may depend on timing, breastfeeding context, background diet, and the exact species used rather than on the genus as a whole.",
       "evidence": [
         {
-          "citation": "Enomoto et al 2014 Allergol Int",
-          "pmid": "25056226",
-          "year": 2014,
-          "study_type": "cohort",
-          "n_participants": 166,
+          "citation": "Kim JY et al 2010 Pediatr Allergy Immunol",
+          "year": 2010,
+          "study_type": "rct",
           "direction": "protective",
           "quality": "moderate",
-          "notes": "Effects of bifidobacterial supplementation to pregnant women and infants in the prevention of allergy development in infants and on fecal microbiota."
+          "notes": "Effect of probiotic mix (Bifidobacterium bifidum, Bifidobacterium lactis, Lactobacillus acidophilus) in the primary prevention of eczema: a double-blind, randomized, placebo-controlled trial.",
+          "doi": "10.1111/j.1399-3038.2009.00958.x",
+          "pmid": "19840300",
+          "n_participants": 112
         },
         {
-          "citation": "Zheng et al 2016 PLoS One",
-          "pmid": "27812181",
-          "year": 2016,
-          "study_type": "case_control",
-          "n_participants": 101,
-          "direction": "protective",
-          "quality": "low",
-          "notes": "Altered Gut Microbiota Composition Associated with Eczema in Infants."
+          "citation": "Gore C et al 2012 Allergy",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Treatment and secondary prevention effects of the probiotics Lactobacillus paracasei or Bifidobacterium lactis on early infant eczema: randomized controlled trial with follow-up until age 3 years.",
+          "doi": "10.1111/j.1365-2222.2011.03885.x",
+          "pmid": "22092692",
+          "n_participants": 137
         },
         {
-          "citation": "Dzidic et al 2017 Benef Microbes",
-          "pmid": "29022383",
-          "year": 2017,
+          "citation": "Gore C et al 2008 J Allergy Clin Immunol",
+          "year": 2008,
           "study_type": "case_control",
-          "n_participants": 39,
-          "direction": "protective",
+          "direction": "harmful",
           "quality": "low",
-          "notes": "Ratio of Klebsiella/Bifidobacterium in early life correlates with later development of paediatric allergy."
+          "notes": "Bifidobacterium pseudocatenulatum is associated with atopic eczema: a nested case-control study investigating the fecal microbiota of infants.",
+          "doi": "10.1016/j.jaci.2007.07.061",
+          "pmid": "17900682",
+          "n_participants": 61
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "bifidobacterium",
+      "name": "Bifidobacterium",
+      "kind": "supplement",
+      "aliases": [
+        "Bifidobacteria"
+      ],
+      "description": "The probiotic genus Bifidobacterium used as an early-life microbial exposure or supplement."
+    },
+    {
+      "slug": "infant_atopy",
+      "name": "Infant atopy",
+      "kind": "condition",
+      "aliases": [
+        "early-life allergic disease",
+        "infant eczema risk"
+      ],
+      "description": "Early allergic sensitization or eczema-like atopic disease during infancy."
     }
   ]
 }

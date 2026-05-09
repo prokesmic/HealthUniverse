@@ -5,47 +5,59 @@
       "factor_slug": "donating_blood",
       "outcome_slug": "cardiovascular_risk",
       "direction": "mixed",
-      "tier": "X",
+      "tier": "C",
       "effect_size": "small",
-      "effect_quant": "A large donor cohort found lower cardiovascular morbidity in high-frequency female donors (HRR 0.91, 95% CI 0.85 to 0.98) but no effect in men, leaving the overall protective hypothesis uncertain.",
-      "population": "frequent blood donors",
-      "mechanism": "The classic rationale is that repeated blood donation lowers iron stores and potentially reduces iron-catalyzed oxidative stress that could promote atherosclerosis. In practice, that signal is hard to separate from healthy-donor selection and other behavioral confounding, which is why this edge remains low-confidence.",
-      "summary": "The idea that regular blood donation lowers cardiovascular risk is plausible and still supported by some cohort findings, but the evidence is not decisive. Large donor analyses suggest at most a small protective association in selected groups, while methodological work shows that healthy-donor effects can easily exaggerate apparent benefit.",
-      "caveats": "This edge stays mixed and low-tier because the best modern data do not show a clear, uniform reduction in cardiovascular risk across all donors. It should be read as an unresolved hypothesis with some supportive observational signals, not as a proven cardioprotective intervention.",
+      "effect_quant": "Among 819 Dutch adults, current donors had substantially lower ferritin than ex-donors or never-donors but only a small, non-significant reduction in carotid intima-media thickness, and in the FeAST randomized trial of 1277 patients with peripheral arterial disease, iron-reduction phlebotomy did not significantly reduce death or the composite of death, myocardial infarction, and stroke (HR 0.88, 95% CI 0.72-1.07).",
+      "population": "adult blood donors and adults undergoing serial iron-reduction phlebotomy",
+      "mechanism": "Lowering iron stores could theoretically reduce oxidative stress and slow atherosclerotic injury, which is the basis of the classic iron-heart hypothesis. In practice, any such benefit appears small, difficult to separate from healthy-donor bias, and not consistently reproduced in randomized studies.",
+      "summary": "The idea that blood donation protects against cardiovascular disease remains unsettled. Observational work shows lower ferritin in donors and occasional hints of less atherosclerosis, but randomized phlebotomy studies have not shown a clear reduction in major cardiovascular events or endothelial dysfunction.",
+      "caveats": "A major interpretive problem is healthy-donor selection, because donors are generally healthier than non-donors before the first unit is removed. Evidence from therapeutic phlebotomy in patients with vascular disease is informative mechanistically, but it is not identical to routine community blood donation.",
       "evidence": [
         {
-          "citation": "Peffer K et al 2019 Heart",
-          "pmid": "30872386",
-          "doi": "10.1136/heartjnl-2018-314138",
-          "year": 2019,
-          "study_type": "cohort",
-          "n_participants": 159934,
-          "direction": "protective",
-          "quality": "moderate",
-          "notes": "Cardiovascular risk in 159 934 frequent blood donors while addressing the healthy donor effect."
-        },
-        {
           "citation": "Engberink MF et al 2008 Atherosclerosis",
-          "pmid": "17336986",
-          "doi": "10.1016/j.atherosclerosis.2007.01.031",
           "year": 2008,
-          "study_type": "cohort",
-          "n_participants": 819,
+          "study_type": "cross_sectional",
           "direction": "protective",
           "quality": "low",
-          "notes": "Blood donation, body iron status and carotid intima-media thickness."
+          "notes": "Blood donation, body iron status and carotid intima-media thickness.",
+          "doi": "10.1016/j.atherosclerosis.2007.01.031",
+          "pmid": "17336986",
+          "n_participants": 819
         },
         {
-          "citation": "France CR et al 2017 Transfusion",
-          "pmid": "28083954",
-          "doi": "10.1111/trf.13975",
-          "year": 2017,
-          "study_type": "expert_opinion",
-          "direction": "mixed",
+          "citation": "Zacharski LR et al 2007 JAMA",
+          "year": 2007,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Reduction of iron stores and cardiovascular outcomes in patients with peripheral arterial disease: a randomized controlled trial.",
+          "doi": "10.1001/jama.297.6.603",
+          "pmid": "17299195",
+          "n_participants": 1277
+        },
+        {
+          "citation": "Parker AB et al 2019 Clin Hemorheol Microcirc",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "neutral",
           "quality": "moderate",
-          "notes": "Donating blood on a regular basis appears to reduce blood pressure, but appearances can be deceiving."
+          "notes": "Effects of serial phlebotomy on vascular endothelial function: Results of a prospective double-blind randomized study.",
+          "doi": "10.1111/1755-5922.12470",
+          "pmid": "30341986",
+          "n_participants": 84
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cardiovascular_risk",
+      "name": "Cardiovascular risk",
+      "kind": "condition",
+      "aliases": [
+        "CVD risk"
+      ],
+      "description": "Risk of cardiovascular disease events or progression."
     }
   ]
 }

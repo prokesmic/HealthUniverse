@@ -6,42 +6,59 @@
       "outcome_slug": "hirsutism",
       "direction": "protective",
       "tier": "B",
-      "effect_size": "moderate",
-      "effect_quant": "The most useful recent PCOS-specific meta-analysis found that anti-androgen regimens reduce hirsutism, and a one-year randomized trial showed larger hirsutism-score improvement with combined oral contraceptives plus spironolactone than with metformin alone. Older systematic review work in women with hirsutism also found spironolactone consistently better than placebo-level control for lowering Ferriman-Gallwey scores.",
-      "population": "women with polycystic ovary syndrome receiving spironolactone alone or as part of anti-androgen therapy",
-      "mechanism": "Spironolactone reduces hirsutism in PCOS by antagonizing androgen signaling at the hair follicle rather than by directly fixing the metabolic drivers of the syndrome. That makes it especially relevant for visible hyperandrogenic symptoms even when deeper ovulatory or insulin abnormalities persist.",
-      "summary": "Spironolactone appears effective for improving hirsutism in PCOS. The strongest modern evidence comes from anti-androgen meta-analysis and a randomized one-year PCOS trial, both of which support a clinically meaningful reduction in hirsutism scores rather than just a biochemical androgen change.",
-      "caveats": "Spironolactone is a symptom-directed anti-androgen, not a full PCOS disease-modifying therapy, and its use generally requires contraception because of teratogenic risk. The benefit is also gradual, so expectations should be set around months rather than weeks.",
+      "effect_size": "small",
+      "effect_quant": "Anti-androgen therapy improves PCOS-related hirsutism, and spironolactone is one of the main contributors to that signal. A PCOS-specific 2023 meta-analysis found anti-androgens plus lifestyle superior to metformin plus lifestyle for hirsutism (WMD -1.59, 95% CI -3.06 to -0.12). A broader Cochrane review also found spironolactone more effective than placebo for Ferriman-Gallwey score reduction (MD -7.69, 95% CI -10.12 to -5.26).",
+      "population": "women with polycystic ovary syndrome or clinically relevant hyperandrogenic hirsutism treated with spironolactone",
+      "mechanism": "Spironolactone reduces hirsutism mainly through androgen receptor antagonism and partial inhibition of androgen production, which decreases terminal hair growth in androgen-sensitive areas over time.",
+      "summary": "This is a reasonable protective edge with good clinical face validity. The direct PCOS literature is not huge and often groups spironolactone with other anti-androgens, but the overall evidence still supports spironolactone as an effective option for reducing hirsutism severity when contraception and safety monitoring are in place.",
+      "caveats": "Much of the pooled evidence is anti-androgen class-based rather than spironolactone-only, and cosmetic improvement takes months rather than weeks. The evidence is therefore supportive but not perfectly isolated to one drug in one phenotype.",
       "evidence": [
         {
-          "citation": "Teede et al 2023 EClinicalMedicine",
-          "pmid": "37583655",
+          "citation": "AlesiS et al 2023 EClinicalMedicine",
           "year": 2023,
           "study_type": "meta_analysis",
-          "n_participants": 27,
           "direction": "protective",
           "quality": "high",
-          "notes": "Efficacy and safety of anti-androgens in the management of polycystic ovary syndrome: a systematic review and meta-analysis of randomised controlled trials."
+          "notes": "Efficacy and safety of anti-androgens in the management of polycystic ovary syndrome: a systematic review and meta-analysis of randomised controlled trials.",
+          "doi": "10.1016/j.eclinm.2023.102162",
+          "pmid": "37583655",
+          "n_participants": 961,
+          "effect_quant": {
+            "metric": "WMD",
+            "value": -1.59,
+            "ci_low": -3.06,
+            "ci_high": -0.12,
+            "comparator": "hirsutism score with anti-androgens plus lifestyle versus metformin plus lifestyle in PCOS"
+          }
         },
         {
-          "citation": "Brown et al 2008 Clin Endocrinol",
-          "pmid": "17980017",
-          "year": 2008,
+          "citation": "vanZuurenEJ et al 2015 Br J Dermatol",
+          "year": 2015,
           "study_type": "systematic_review",
-          "n_participants": 28,
           "direction": "protective",
-          "quality": "moderate",
-          "notes": "A systematic review of commonly used medical treatments for hirsutism in women."
+          "quality": "high",
+          "notes": "Interventions for hirsutism excluding laser and photoepilation therapy alone: abridged Cochrane systematic review including GRADE assessments.",
+          "doi": "10.1111/bjd.14486",
+          "pmid": "26892495",
+          "n_participants": 10550,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -7.69,
+            "ci_low": -10.12,
+            "ci_high": -5.26,
+            "comparator": "Ferriman-Gallwey score change with spironolactone versus placebo in randomized hirsutism trials"
+          }
         },
         {
-          "citation": "Ibanez et al 2017 Eur J Endocrinol",
-          "pmid": "28912358",
-          "year": 2017,
+          "citation": "MoghettiP et al 2000 J Clin Endocrinol Metab",
+          "year": 2000,
           "study_type": "rct",
-          "n_participants": 46,
           "direction": "protective",
           "quality": "moderate",
-          "notes": "Combined oral contraceptives plus spironolactone compared with metformin in women with polycystic ovary syndrome: a one-year randomized clinical trial."
+          "notes": "Comparison of spironolactone, flutamide, and finasteride efficacy in the treatment of hirsutism: a randomized, double blind, placebo-controlled trial.",
+          "doi": "10.1210/jcem.85.1.6245",
+          "pmid": "10634370",
+          "n_participants": 40
         }
       ]
     }
@@ -49,17 +66,23 @@
   "new_entities": [
     {
       "slug": "spironolactone_pcos",
-      "name": "Spironolactone treatment in PCOS",
+      "name": "Spironolactone for PCOS",
       "kind": "drug",
-      "aliases": [],
-      "description": "Spironolactone used to treat hyperandrogenic symptoms in polycystic ovary syndrome."
+      "aliases": [
+        "spironolactone in polycystic ovary syndrome",
+        "anti-androgen spironolactone for PCOS"
+      ],
+      "description": "Use of spironolactone as an anti-androgen treatment in women with polycystic ovary syndrome."
     },
     {
       "slug": "hirsutism",
       "name": "Hirsutism",
       "kind": "condition",
-      "aliases": [],
-      "description": "Excess terminal hair growth in androgen-sensitive areas."
+      "aliases": [
+        "excess terminal hair growth",
+        "androgen-related hair growth"
+      ],
+      "description": "Excess terminal hair growth in androgen-sensitive body areas in women."
     }
   ]
 }

@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "postpartum_thyroiditis",
-      "name": "Postpartum thyroiditis",
-      "kind": "condition"
-    },
-    {
-      "slug": "long_term_hypothyroidism",
-      "name": "Long-term hypothyroidism",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "postpartum_thyroiditis",
@@ -19,50 +7,80 @@
       "direction": "harmful",
       "tier": "B",
       "effect_size": "moderate",
-      "effect_quant": "Long-term follow-up studies consistently show that postpartum thyroiditis is not always transient. The strongest controlled cohort found roughly a fivefold increase in later hypothyroidism, and women who pass through a hypothyroid postpartum phase carry the highest long-run risk.",
-      "population": "women who develop postpartum thyroiditis after pregnancy",
-      "mechanism": "Postpartum thyroiditis reflects autoimmune thyroid injury that can recover partially, but in a meaningful subset the gland never fully returns to baseline reserve. High TSH peaks and strong thyroid autoantibody positivity mark women most likely to progress from transient postpartum dysfunction to persistent hypothyroidism.",
-      "summary": "Postpartum thyroiditis is a genuine long-term hypothyroidism risk marker, not just a short-lived postpartum nuisance. Multiple follow-up cohorts show that later permanent hypothyroidism is common enough to justify ongoing surveillance, especially after the hypothyroid phase of postpartum thyroiditis or in antibody-positive women.",
-      "caveats": "Absolute risk varies by case definition, follow-up duration, and whether studies enrolled screened community cases or referred patients. Risk is much higher after the hypothyroid form of postpartum thyroiditis than after isolated postpartum hyperthyroidism.",
+      "effect_quant": "Long-term follow-up studies consistently show that postpartum thyroiditis raises the later risk of permanent hypothyroidism. In a 12-year cohort, hypothyroidism was present in 38% of women with prior postpartum thyroid dysfunction versus 4% of women without it, and the adjusted odds ratio for later hypothyroidism was 4.8 (95% CI 1.6 to 14.1).",
+      "population": "women with prior postpartum thyroiditis or postpartum thyroid dysfunction followed for several years after delivery",
+      "mechanism": "Postpartum thyroiditis reflects autoimmune thyroid injury that may not fully resolve after the initial postpartum inflammatory phase. Women with stronger antibody positivity, a hypothyroid presentation, or abnormal thyroid ultrasound findings appear especially likely to progress from transient dysfunction to lasting thyroid failure.",
+      "summary": "The evidence supports a harmful long-term association. Although some women recover normal thyroid function after postpartum thyroiditis, a substantial minority develop persistent or recurrent hypothyroidism over subsequent years, especially when the initial postpartum episode includes hypothyroidism and thyroid autoimmunity.",
+      "caveats": "Not every woman with postpartum thyroiditis becomes permanently hypothyroid, and the absolute risk varies with follow-up duration, iodine status, diagnostic thresholds, and the severity of the original postpartum episode. This edge concerns later thyroid failure after documented postpartum thyroiditis, not transient physiologic postpartum lab fluctuations.",
       "evidence": [
         {
-          "citation": "StuckeyBG et al 2010 Clin Endocrinol",
-          "pmid": "20184598",
+          "citation": "Stuckey et al 2010 Clin Endocrinol (Oxf)",
           "year": 2010,
           "study_type": "cohort",
-          "n_participants": 409,
           "direction": "harmful",
           "quality": "high",
           "notes": "Postpartum thyroid dysfunction and the long-term risk of hypothyroidism: results from a 12-year follow-up study of women with and without postpartum thyroid dysfunction.",
+          "doi": "10.1111/j.1365-2265.2010.03797.x",
+          "pmid": "20184598",
+          "n_participants": 409,
           "effect_quant": {
             "metric": "OR",
             "value": 4.8,
             "ci_low": 1.6,
             "ci_high": 14.1,
-            "comparator": "women with postpartum thyroid dysfunction versus women without postpartum thyroid dysfunction"
+            "comparator": "later hypothyroidism in women with prior postpartum thyroid dysfunction versus women without postpartum thyroid dysfunction"
           }
         },
         {
-          "citation": "SarvghadiF et al 2005 Endocrine",
-          "pmid": "16230784",
+          "citation": "Amino et al 2005 Endocrine",
           "year": 2005,
           "study_type": "cohort",
-          "n_participants": 104,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Follow up of patients with postpartum thyroiditis: a population-based study."
+          "notes": "Follow up of patients with postpartum thyroiditis: a population-based study.",
+          "pmid": "16230784",
+          "n_participants": 104
         },
         {
-          "citation": "LucasA et al 2005 Thyroid",
-          "pmid": "16279852",
-          "year": 2005,
+          "citation": "Premawardhana et al 2000 J Clin Endocrinol Metab",
+          "year": 2000,
           "study_type": "cohort",
-          "n_participants": 45,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Postpartum thyroiditis: long-term follow-up."
+          "notes": "Postpartum thyroiditis and long-term thyroid status: prognostic influence of thyroid peroxidase antibodies and ultrasound echogenicity.",
+          "pmid": "10634366",
+          "n_participants": 168,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 32.0,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "long-term thyroid dysfunction in women with hypothyroid postpartum thyroid dysfunction plus high TPOAb and hypoechogenic ultrasound versus TPOAb-negative women"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "postpartum_thyroiditis",
+      "name": "Postpartum thyroiditis",
+      "kind": "condition",
+      "aliases": [
+        "postpartum thyroid dysfunction",
+        "PPT"
+      ],
+      "description": "Autoimmune thyroid inflammation arising in the first year after pregnancy, often with transient hyperthyroid and hypothyroid phases."
+    },
+    {
+      "slug": "long_term_hypothyroidism",
+      "name": "Long-term hypothyroidism",
+      "kind": "condition",
+      "aliases": [
+        "persistent hypothyroidism",
+        "permanent thyroid failure"
+      ],
+      "description": "Ongoing or recurrent hypothyroidism that persists beyond a transient episode and requires long-term monitoring or treatment."
     }
   ]
 }

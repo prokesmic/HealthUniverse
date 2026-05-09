@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "low_ferritin",
-      "name": "Low ferritin",
-      "kind": "biomarker",
-      "aliases": [
-        "low iron stores",
-        "reduced serum ferritin"
-      ],
-      "description": "Reduced ferritin concentration used as a marker of low body iron stores."
-    }
-  ],
   "edges": [
     {
       "factor_slug": "low_ferritin",
@@ -19,45 +7,55 @@
       "direction": "harmful",
       "tier": "C",
       "effect_size": "small",
-      "effect_quant": "Evidence is mixed but directionally leans toward lower ferritin in telogen effluvium cohorts; post-COVID TE case-control data found lower mean ferritin in cases than controls (68.5 vs 137.0 µg/L).",
-      "population": "women with acute or chronic telogen effluvium",
-      "mechanism": "Low ferritin reflects reduced iron reserves that can limit matrix-cell proliferation in the hair follicle and make follicles more vulnerable to synchronized shedding under physiologic stress. That pathway is plausible, but telogen effluvium is heterogeneous enough that ferritin is best viewed as one contributor rather than a universal explanation.",
-      "summary": "Low ferritin is commonly investigated in telogen effluvium and remains a plausible risk signal, but the literature is not uniformly positive. Recent case-control work does not always show a ferritin gap, while other cross-sectional and observational studies support an association and suggest that iron-directed treatment may help at least a subset of patients.",
-      "caveats": "Ferritin is influenced by inflammation and does not cleanly separate cause from consequence in every shedding disorder. This edge is therefore intentionally conservative and should be read as a likely contributor in some TE patients, not a defining biomarker for all cases.",
+      "effect_quant": "In a 2025 comparative study, women with telogen effluvium had mean ferritin 24.3 ng/mL versus 44.8 ng/mL in controls, and low ferritin was present in 46.5% of 2413 women tested in a large retrospective TE series.",
+      "population": "women with diffuse or telogen-pattern hair shedding",
+      "mechanism": "Ferritin reflects iron stores that support rapidly dividing matrix cells in the hair follicle. When iron reserves are low, follicles may shift prematurely into telogen, making diffuse shedding more likely even before overt anemia appears.",
+      "summary": "Current observational studies suggest that low ferritin is common in women presenting with telogen effluvium and related diffuse shedding, and some studies show significantly lower ferritin than in unaffected controls. The pattern is consistent enough to matter clinically, but because most evidence is cross-sectional or retrospective, the edge remains moderate in confidence rather than definitive.",
+      "caveats": "Diffuse hair loss is multifactorial, and ferritin thresholds vary across dermatology studies. These data support checking iron stores in symptomatic patients more than they prove that low ferritin alone explains every case of telogen effluvium.",
       "evidence": [
         {
-          "citation": "Durusu Turkoglu IN et al 2024 J Cosmet Dermatol",
-          "pmid": "39107936",
-          "doi": "10.1111/jocd.16512",
-          "year": 2024,
+          "citation": "Thamotharan N et al 2025 Cureus",
+          "year": 2025,
           "study_type": "case_control",
-          "n_participants": 180,
-          "direction": "neutral",
+          "direction": "harmful",
           "quality": "moderate",
-          "notes": "A comprehensive investigation of biochemical status in patients with telogen effluvium: Analysis of Hb, ferritin, vitamin B12, vitamin D, thyroid function tests, zinc, copper, biotin, and selenium levels."
+          "notes": "Assessment of Serum Ferritin Levels in Female Patients With Telogen Effluvium.",
+          "doi": "10.7759/cureus.100249",
+          "pmid": "41607990",
+          "n_participants": 100
         },
         {
-          "citation": "Cheung EJ et al 2016 J Drugs Dermatol",
-          "pmid": "27741341",
-          "year": 2016,
+          "citation": "Karakoyun O et al 2025 J Cosmet Dermatol",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Retrospective Review of 2851 Female Patients With Telogen Effluvium: A Single-Center Experience.",
+          "doi": "10.1111/jocd.70037",
+          "pmid": "39950230",
+          "n_participants": 2851
+        },
+        {
+          "citation": "Bilik L et al 2024 North Clin Istanb",
+          "year": 2024,
           "study_type": "cross_sectional",
-          "n_participants": 1,
           "direction": "harmful",
           "quality": "low",
-          "notes": "Vitamin and Mineral Deficiencies in Patients With Telogen Effluvium: A Retrospective Cross-Sectional Study."
-        },
-        {
-          "citation": "Bedair NI et al 2024 Arch Dermatol Res",
-          "pmid": "38844670",
-          "doi": "10.1007/s00403-024-03004-1",
-          "year": 2024,
-          "study_type": "case_control",
-          "n_participants": 100,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Post Covid telogen effluvium: the diagnostic value of serum ferritin biomarker and the preventive value of dietary supplements. a case control study."
+          "notes": "Evaluation of the relationship of digital phototrichogram findings of patients with diffuse hair loss with blood TSH, ferritin and vitamin B12 levels.",
+          "doi": "10.14744/nci.2023.33269",
+          "pmid": "38357319",
+          "n_participants": 108
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "low_ferritin",
+      "name": "Low ferritin",
+      "kind": "biomarker",
+      "aliases": [],
+      "description": "Low ferritin concentration as a marker of depleted iron stores."
     }
   ]
 }

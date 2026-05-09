@@ -1,61 +1,95 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "direct_oral_anticoagulants_falls_paradox",
-      "name": "Direct oral anticoagulant use despite falls risk",
-      "kind": "process"
-    },
-    {
-      "slug": "outcomes",
-      "name": "Clinical outcomes",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "direct_oral_anticoagulants_falls_paradox",
       "outcome_slug": "outcomes",
       "direction": "protective",
-      "tier": "B",
+      "tier": "C",
       "effect_size": "small",
-      "effect_quant": "The strongest prospective evidence found no excess major bleeding, intracranial hemorrhage, or death among older DOAC users who fell during follow-up, and emergency-department cohorts suggest lower bleeding odds with DOACs than with vitamin K antagonists after falls. The protective signal is therefore relative rather than absolute: falls do not erase net treatment value as often as clinicians fear.",
-      "population": "older adults with atrial fibrillation or fall-related head injury who are treated with direct oral anticoagulants",
-      "mechanism": "DOACs produce more predictable anticoagulation and a lower intracranial-bleeding burden than vitamin K antagonists, so a history of falling does not automatically translate into catastrophically worse outcomes. The paradox is that clinicians often overweigh falls risk while underweighting stroke prevention and the comparatively safer bleeding profile of DOACs.",
-      "summary": "The anchor paper here is the prospective 2024 DOAFF study, which found that falls during follow-up did not worsen major bleeding or mortality among older adults starting DOACs for atrial fibrillation. Trauma and head-injury cohorts point the same way by showing lower bleeding or low adverse-outcome rates compared with the warfarin-era alternative, so this edge supports the idea that falls alone should not usually block DOAC use.",
-      "caveats": "This does not mean DOACs are harmless in people who fall, and acute head trauma still deserves clinical assessment. The point is narrower: a fall history by itself is a poor reason to deny anticoagulation when stroke prevention is otherwise indicated.",
+      "effect_quant": "The best recent evidence supports the 'falls paradox': older adults with atrial fibrillation who fall are often denied anticoagulation despite limited evidence that falls meaningfully offset DOAC benefit. In a Swiss-AF cohort, recurrent fallers on anticoagulation did not have higher major bleeding risk (subdistribution HR 1.16, 95% CI 0.74 to 1.82). In the prospective DOAFF study, older fallers starting DOACs also had no increase in major bleeding or intracranial hemorrhage versus non-fallers. Compared with warfarin, edoxaban was associated with lower rates of medically attended falls, hip fractures, and death in an elderly population.",
+      "population": "older adults with atrial fibrillation who are treated with direct oral anticoagulants and have a history of falls or high concern for falling",
+      "mechanism": "DOACs reduce thromboembolic risk without the same management burden and some of the same injury patterns seen with warfarin, so the absolute stroke-prevention benefit often persists even in fall-prone older adults. The paradox arises because falls feel intuitively dangerous, yet observed bleeding excess is often smaller than clinicians assume, especially when compared with the consequences of withholding anticoagulation.",
+      "summary": "This edge is best understood as a protective prescribing principle rather than a claim that falls are harmless. Contemporary cohorts suggest that recurrent falls alone should not automatically exclude older adults with atrial fibrillation from DOAC treatment, because major bleeding does not rise as much as feared and some DOAC-versus-warfarin comparisons look favorable on fracture, fall, or mortality outcomes.",
+      "caveats": "These data are observational and apply mostly to carefully followed older adults with atrial fibrillation, not to every patient with severe trauma risk, active alcohol misuse, or repeated head injury. The signal is therefore about avoiding reflexive under-treatment of anticoagulation-eligible fallers, not about ignoring individualized bleeding risk assessment.",
       "evidence": [
         {
+          "citation": "ReginaJ et al 2025 Res Pract Thromb Haemost",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Risk of major bleeding in recurrent fallers receiving anticoagulation for atrial fibrillation: a prospective cohort study.",
+          "doi": "10.1016/j.rpth.2025.102908",
+          "pmid": "40599362",
+          "n_participants": 2154,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.16,
+            "ci_low": 0.74,
+            "ci_high": 1.82,
+            "comparator": "major bleeding in recurrent fallers versus nonfallers receiving anticoagulation for atrial fibrillation"
+          }
+        },
+        {
           "citation": "CatalaniF et al 2024 Thromb Res",
-          "pmid": "38678866",
           "year": 2024,
           "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "DOACs for Older adults with Atrial Fibrillation and Falls: Results from the prospective single-centre DOAFF study.",
+          "doi": "10.1016/j.thromres.2024.04.023",
+          "pmid": "38678866",
           "n_participants": 524,
-          "direction": "protective",
-          "quality": "high",
-          "notes": "DOACs for Older adults with Atrial Fibrillation and Falls: Results from the prospective single-centre DOAFF study."
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.04,
+            "ci_low": 0.58,
+            "ci_high": 1.85,
+            "comparator": "major bleeding in fallers versus non-fallers after DOAC initiation for atrial fibrillation"
+          }
         },
         {
-          "citation": "MullerM et al 2021 Scand J Trauma Resusc Emerg Med",
-          "pmid": "33823884",
-          "year": 2021,
+          "citation": "ZhouJ et al 2022 Bone",
+          "year": 2022,
           "study_type": "cohort",
-          "n_participants": 1447,
           "direction": "protective",
-          "quality": "moderate",
-          "notes": "Falls in ED patients: do elderly patients on direct oral anticoagulants bleed less than those on vitamin K antagonists?"
-        },
-        {
-          "citation": "FullerG et al 2020 Emerg Med J",
-          "pmid": "32900858",
-          "year": 2020,
-          "study_type": "meta_analysis",
-          "n_participants": 787,
-          "direction": "protective",
-          "quality": "moderate",
-          "notes": "Risk of significant traumatic brain injury in adults with minor head injury taking direct oral anticoagulants: a cohort study and updated meta-analysis."
+          "quality": "low",
+          "notes": "Hip fractures risks in edoxaban versus warfarin users: A propensity score-matched population-based cohort study with competing risk analyses.",
+          "doi": "10.1016/j.bone.2021.116303",
+          "pmid": "34973496",
+          "n_participants": 5014,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.47,
+            "ci_low": 0.29,
+            "ci_high": 0.75,
+            "comparator": "medically attended falls with edoxaban versus warfarin in an elderly anticoagulated population"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "direct_oral_anticoagulants_falls_paradox",
+      "name": "Direct oral anticoagulants despite falls risk",
+      "kind": "drug",
+      "aliases": [
+        "DOAC use in fall-prone older adults",
+        "anticoagulation despite falls concern"
+      ],
+      "description": "Use of direct oral anticoagulants in older adults with atrial fibrillation despite recurrent falls or concern about falling."
+    },
+    {
+      "slug": "outcomes",
+      "name": "Clinical outcomes",
+      "kind": "process",
+      "aliases": [
+        "net clinical outcomes",
+        "major outcomes"
+      ],
+      "description": "Combined clinical outcomes such as major bleeding, falls, fractures, thromboembolism, or mortality that shape treatment decisions."
     }
   ]
 }

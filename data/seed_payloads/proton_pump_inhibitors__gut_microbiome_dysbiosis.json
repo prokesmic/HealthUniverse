@@ -7,43 +7,58 @@
       "direction": "harmful",
       "tier": "B",
       "effect_size": "moderate",
-      "effect_quant": "The most persuasive evidence comes from a three-cohort meta-analysis of 1,815 adults showing that current proton pump inhibitor use was linked to reduced Shannon diversity and broad taxonomic shifts, alongside a 2024 randomized trial where a 7-day PPI course caused stronger oral-to-gut microbial transmission and microbiome disruption than histamine-2 blocker treatment. Together these studies support a reproducible dysbiosis signal rather than an isolated observational association.",
-      "population": "adult or pediatric proton pump inhibitor users assessed with stool microbiome sequencing during medium- or long-term exposure",
-      "mechanism": "Proton pump inhibitors likely promote dysbiosis by removing the normal gastric acid filter, which allows more oral and upper-gut microbes to survive passage into the intestine and shift downstream community structure. The resulting ecosystem change is one plausible bridge between PPIs and higher risks of enteric infection, small bowel overgrowth, and microbiome fragility.",
-      "summary": "Proton pump inhibitors have a fairly consistent harmful association with gut microbiome dysbiosis. Large observational sequencing studies and a recent randomized comparison with histamine-2 blockade both show that PPIs shift gut microbial composition, with the strongest experimental work suggesting they drive unusually high oral-to-gut microbial transmission rather than merely reflecting confounding by illness.",
-      "caveats": "Microbiome change does not automatically translate into clinical harm for every user, and the magnitude of disruption likely depends on age, duration, co-medications, and baseline microbial resilience. Still, among common medications, PPIs now have one of the cleaner dysbiosis signals and should be used with more indication discipline than a benign long-term default.",
+      "effect_quant": "A 2020 systematic review of next-generation sequencing studies included 12 observational cohorts with 708 PPI users and 11 interventional cohorts with 180 PPI users and found consistent taxonomic shifts toward oral-type organisms, with fecal alterations summarized across 19 cohorts comprising 790 PPI users; in a 2024 prospective intervention study of 16 healthy adults, esomeprazole caused a 42-fold increase in gut Streptococcus anginosus abundance and significantly increased oral-to-gut microbial translocation.",
+      "population": "adult chronic or short-term proton pump inhibitor users studied with sequencing-based gut microbiome profiling, including healthy volunteers and observational cohorts",
+      "mechanism": "Acid suppression weakens gastric microbial filtering and allows more oral and upper-gastrointestinal organisms to survive and seed distal gut compartments, shifting community composition toward dysbiosis-prone taxa such as streptococci and enterococci.",
+      "summary": "Among common medications, proton pump inhibitors have one of the clearer reproducible associations with gut microbiome disruption. The effect is usually described less as a loss of diversity than as a compositional drift toward oral-origin bacteria and away from several butyrate-associated or health-associated taxa.",
+      "caveats": "Not every study shows major diversity loss, and many human cohorts are observational or short-term. The microbiome shift does not mean every PPI user develops clinical harm, but it does support the idea that long-term acid suppression is a real dysbiosis-promoting exposure.",
       "evidence": [
         {
-          "citation": "Imhann et al 2016 Gut",
-          "pmid": "26657899",
-          "year": 2016,
-          "study_type": "cohort",
-          "n_participants": 1815,
+          "citation": "MackeL et al 2020 Aliment Pharmacol Ther",
+          "year": 2020,
+          "study_type": "systematic_review",
           "direction": "harmful",
           "quality": "high",
-          "notes": "Proton pump inhibitors affect the gut microbiome."
+          "notes": "Systematic review: the effects of proton pump inhibitors on the microbiome of the digestive tract-evidence from next-generation sequencing studies.",
+          "doi": "10.1111/apt.15604",
+          "pmid": "31990420",
+          "n_participants": 888
         },
         {
-          "citation": "Nagata et al 2019 J Clin Biochem Nutr",
-          "pmid": "29371761",
-          "year": 2018,
-          "study_type": "case_control",
-          "n_participants": 72,
+          "citation": "FreedbergDE et al 2015 Gastroenterology",
+          "year": 2015,
+          "study_type": "rct",
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "The influence of long-term use of proton pump inhibitors on the gut microbiota: an age-sex-matched case-control study."
+          "notes": "Proton Pump Inhibitors Alter Specific Taxa in the Human Gastrointestinal Microbiome: A Crossover Trial.",
+          "doi": "10.1053/j.gastro.2015.06.043",
+          "pmid": "26164495",
+          "n_participants": 12
         },
         {
-          "citation": "Chen et al 2024 Gut",
-          "pmid": "38050061",
+          "citation": "XiaoX et al 2024 Gut",
           "year": 2024,
           "study_type": "rct",
-          "n_participants": 49,
           "direction": "harmful",
-          "quality": "high",
-          "notes": "Compared to histamine-2 receptor antagonist, proton pump inhibitor induces stronger oral-to-gut microbial transmission and gut microbiome alterations: a randomised controlled trial."
+          "quality": "moderate",
+          "notes": "Proton pump inhibitors alter gut microbiota by promoting oral microbiota translocation: a prospective interventional study.",
+          "doi": "10.1136/gutjnl-2023-330883",
+          "pmid": "38267200",
+          "n_participants": 16
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "gut_microbiome_dysbiosis",
+      "name": "Gut microbiome dysbiosis",
+      "kind": "condition",
+      "aliases": [
+        "intestinal dysbiosis",
+        "gut microbial imbalance"
+      ],
+      "description": "An unfavorable shift in gut microbial community composition associated with impaired resilience or increased disease susceptibility."
     }
   ]
 }

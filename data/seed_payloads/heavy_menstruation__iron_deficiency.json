@@ -1,5 +1,54 @@
 {
   "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "heavy_menstruation",
+      "outcome_slug": "iron_deficiency",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Among 454 women referred for heavy menstrual bleeding, 42.8% had ferritin below 15 microg/L and 72.5% were below 30 microg/L; in a Swedish von Willebrand cohort with heavy menstrual bleeding, 45% had ferritin below 30 microg/L.",
+      "population": "adolescents and reproductive-age women with heavy menstrual bleeding",
+      "mechanism": "Repeated excessive menstrual blood loss depletes iron faster than ordinary dietary intake can replace it, gradually lowering ferritin and eventually hemoglobin. The risk rises further when bleeding is prolonged, untreated, or compounded by bleeding disorders.",
+      "summary": "Heavy menstrual bleeding is strongly linked to iron deficiency in both adolescent and adult gynecology cohorts, with low ferritin and overt anemia common in referred populations. The signal is clinically important and consistent, even though exact prevalence depends on referral severity and whether an underlying bleeding disorder is present.",
+      "caveats": "Most estimates come from specialty clinics, so community prevalence may be lower than in referral cohorts. Nonetheless, the direction is robust enough that routine iron assessment is well justified when heavy menstrual bleeding is present.",
+      "evidence": [
+        {
+          "citation": "Rugeri L et al 2026 Int J Gynaecol Obstet",
+          "year": 2026,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Evaluation of coagulation disorders and iron deficiency in women with heavy menstrual bleeding.",
+          "doi": "10.1002/ijgo.70352",
+          "pmid": "40613642",
+          "n_participants": 454
+        },
+        {
+          "citation": "Nelson AL et al 2015 Am J Obstet Gynecol",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Severe anemia from heavy menstrual bleeding requires heightened attention.",
+          "doi": "10.1016/j.ajog.2015.04.023",
+          "pmid": "25935784",
+          "n_participants": 149
+        },
+        {
+          "citation": "Myrin-Westesson L et al 2025 Res Pract Thromb Haemost",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Prevalence of heavy menstrual bleeding, iron deficiency, iron deficiency anemia, and treatment in women with von Willebrand disease-a cohort study.",
+          "doi": "10.1016/j.rpth.2025.102949",
+          "pmid": "40697484",
+          "n_participants": 136
+        }
+      ]
+    }
+  ],
   "new_entities": [
     {
       "slug": "heavy_menstruation",
@@ -9,55 +58,7 @@
         "heavy menstrual bleeding",
         "menorrhagia"
       ],
-      "description": "Menstrual blood loss heavy enough to impair daily life or cause clinically significant blood loss."
-    }
-  ],
-  "edges": [
-    {
-      "factor_slug": "heavy_menstruation",
-      "outcome_slug": "iron_deficiency",
-      "direction": "harmful",
-      "tier": "B",
-      "effect_size": "moderate",
-      "effect_quant": "In adolescent cross-sectional data, heavy menstrual bleeding was associated with greater odds of iron deficiency (OR 3.0, 95% CI 2.0 to 4.6).",
-      "population": "adolescent and reproductive-age females with heavy menstrual bleeding",
-      "mechanism": "Repeated high menstrual blood loss increases iron losses month after month and can outpace dietary replacement even before anemia appears. That makes ferritin depletion a predictable intermediate outcome, especially when heavy bleeding is combined with low iron intake or other gynecologic pathology.",
-      "summary": "Heavy menstruation is one of the clearest real-world drivers of iron deficiency in girls and women. Review literature, adolescent clinic cohorts, and newer population data all point the same way: once bleeding is heavy enough to be clinically significant, iron depletion becomes common and often underrecognized before frank anemia is identified.",
-      "caveats": "The degree of risk depends on bleeding duration, baseline iron intake, and whether iron deficiency is screened with ferritin rather than hemoglobin alone. This edge is strongest for persistent heavy bleeding, not for isolated subjective impressions of a single heavy cycle.",
-      "evidence": [
-        {
-          "citation": "Barros VV et al 2022 Rev Bras Ginecol Obstet",
-          "pmid": "36580944",
-          "doi": "10.1055/s-0042-1760235",
-          "year": 2022,
-          "study_type": "expert_opinion",
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Abnormal uterine bleeding and chronic iron deficiency."
-        },
-        {
-          "citation": "Johnson S et al 2016 J Pediatr Adolesc Gynecol",
-          "pmid": "27262832",
-          "doi": "10.1016/j.jpag.2016.05.009",
-          "year": 2016,
-          "study_type": "cohort",
-          "n_participants": 114,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Iron Deficiency without Anemia: A Common Yet Under-Recognized Diagnosis in Young Women with Heavy Menstrual Bleeding."
-        },
-        {
-          "citation": "Soderman L et al 2025 PLoS One",
-          "pmid": "41335582",
-          "doi": "10.1371/journal.pone.0336688",
-          "year": 2025,
-          "study_type": "cross_sectional",
-          "n_participants": 394,
-          "direction": "harmful",
-          "quality": "moderate",
-          "notes": "Exploring the effect of menstrual loss and dietary habits on iron deficiency in teenagers: A cross-sectional study."
-        }
-      ]
+      "description": "Heavy menstrual bleeding severe enough to increase risk of iron loss."
     }
   ]
 }

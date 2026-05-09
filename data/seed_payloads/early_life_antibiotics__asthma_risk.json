@@ -5,48 +5,82 @@
       "factor_slug": "early_life_antibiotics",
       "outcome_slug": "asthma_risk",
       "direction": "harmful",
-      "tier": "C",
+      "tier": "B",
       "effect_size": "small",
-      "effect_quant": "Early-life antibiotic exposure was associated with higher childhood asthma risk in a 2025 cohort of 1,091,449 children (HR 1.24) and in a pooled analysis of four cohorts in 2017 (OR 2.18), but sibling-adjusted nationwide data suggest part of the relationship reflects confounding by infections and family factors.",
-      "population": "children exposed to antibiotics during fetal life, infancy, or the first years of life",
-      "mechanism": "Antibiotics early in life may alter airway-relevant immune maturation indirectly through microbiome disruption, especially during the period when microbial exposures shape Th1/Th2 balance and mucosal tolerance. At the same time, respiratory infections that prompt antibiotics can mimic a causal signal, which is why the most rigorous studies still point to a likely smaller effect than crude associations suggest.",
-      "summary": "Early-life antibiotics appear associated with higher asthma risk, but this edge is more confounded and controversial than the IBD signal. Large cohorts still show a positive association, especially with repeated antibiotic courses, yet sibling and infection-adjusted analyses indicate that some of the apparent effect is explained by familial or indication-related factors rather than pure antibiotic causality.",
-      "caveats": "This is not a simple causal story: children who receive early antibiotics are also more likely to have infections or family contexts that raise asthma risk on their own. The fairest reading is a modest harmful association with substantial residual confounding, not a headline-grabbing proof that antibiotics directly cause asthma.",
+      "effect_quant": "In 152,622 Tennessee children, each additional infant antibiotic prescription was associated with 20% higher odds of childhood asthma (aOR 1.20, 95% CI 1.19-1.20); in a Swedish nationwide cohort of 493,785 children, prenatal exposure showed HR 1.28 in the cohort analysis but 0.99 in sibling analysis, while respiratory-indication antibiotics in childhood were linked to HR 4.12 in the cohort and 2.36 in sibling analysis.",
+      "population": "children exposed to antibiotics during fetal life or infancy in large observational cohorts and birth cohorts",
+      "mechanism": "Antibiotics may alter early microbial colonization and immune training in ways that could promote later airway inflammation, but the same association can also be inflated by respiratory infections or family-level susceptibility that drive both antibiotic prescribing and asthma risk.",
+      "summary": "Early-life antibiotic exposure is repeatedly associated with a higher later risk of childhood asthma, especially in large administrative and cohort datasets. The relationship survives some adjustments and dose-response analyses, but it weakens meaningfully once sibling comparisons and confounding-by-indication are considered.",
+      "caveats": "This is one of the clearest examples where a real observational signal does not automatically mean a clean causal effect. Respiratory infections, clinician prescribing behavior, and shared family factors explain part of the association, so the safest interpretation is harmful association with substantial residual confounding.",
       "evidence": [
         {
+          "citation": "Donovan BM et al 2020 Clin Infect Dis",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Dose, Timing, and Type of Infant Antibiotic Use and the Risk of Childhood Asthma.",
+          "doi": "10.1093/cid/ciz448",
+          "pmid": "31149702",
+          "n_participants": 152622
+        },
+        {
           "citation": "Ortqvist AK et al 2014 BMJ",
-          "pmid": "25432937",
-          "doi": "10.1136/bmj.g6979",
           "year": 2014,
           "study_type": "cohort",
-          "n_participants": 493785,
           "direction": "mixed",
           "quality": "high",
-          "notes": "Antibiotics in fetal and early life and subsequent childhood asthma: nationwide population based study with sibling analysis."
+          "notes": "Antibiotics in fetal and early life and subsequent childhood asthma: nationwide population based study with sibling analysis.",
+          "doi": "10.1136/bmj.g6979",
+          "pmid": "25432937",
+          "n_participants": 493785
         },
         {
-          "citation": "Beier MA et al 2025 J Infect Dis",
-          "pmid": "40237450",
-          "doi": "10.1093/infdis/jiaf191",
-          "year": 2025,
+          "citation": "Kozyrskyj AL et al 2004 Clin Exp Allergy",
+          "year": 2004,
           "study_type": "cohort",
-          "n_participants": 1091449,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Early Childhood Antibiotics and Chronic Pediatric Conditions: A Retrospective Cohort Study."
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Antibiotic use in the first year of life and asthma in early childhood.",
+          "doi": "10.1111/j.1365-2222.2004.01994.x",
+          "pmid": "15248843",
+          "n_participants": 4408
         },
         {
-          "citation": "Ahmadizar F et al 2017 Pediatr Allergy Immunol",
-          "pmid": "28423467",
-          "doi": "10.1111/pai.12725",
-          "year": 2017,
-          "study_type": "meta_analysis",
-          "n_participants": 8284,
-          "direction": "harmful",
+          "citation": "Kusel MMH et al 2010 Clin Exp Allergy",
+          "year": 2010,
+          "study_type": "cohort",
+          "direction": "neutral",
           "quality": "moderate",
-          "notes": "Early life antibiotic use and the risk of asthma and asthma exacerbations in children."
+          "notes": "Relation of early antibiotic use to childhood asthma: confounding by indication?",
+          "doi": "10.1111/j.1365-2222.2010.03539.x",
+          "pmid": "20545705",
+          "n_participants": 424
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "early_life_antibiotics",
+      "name": "Early-life antibiotics",
+      "kind": "activity",
+      "aliases": [
+        "infant antibiotic exposure",
+        "childhood antibiotic exposure",
+        "antibiotics in infancy"
+      ],
+      "description": "Systemic antibiotic exposure during pregnancy, infancy, or early childhood."
+    },
+    {
+      "slug": "asthma_risk",
+      "name": "Asthma risk",
+      "kind": "condition",
+      "aliases": [
+        "childhood asthma risk",
+        "later asthma incidence"
+      ],
+      "description": "Likelihood of later developing childhood asthma."
     }
   ]
 }

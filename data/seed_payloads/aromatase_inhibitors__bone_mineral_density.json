@@ -1,75 +1,94 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "aromatase_inhibitors",
-      "name": "Aromatase inhibitors",
-      "kind": "drug"
-    },
-    {
-      "slug": "bone_mineral_density",
-      "name": "Bone mineral density",
-      "kind": "process"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "aromatase_inhibitors",
       "outcome_slug": "bone_mineral_density",
       "direction": "harmful",
-      "tier": "B",
+      "tier": "A",
       "effect_size": "moderate",
-      "effect_quant": "Adjuvant aromatase-inhibitor therapy consistently lowers bone mineral density relative to more bone-protective endocrine strategies, and the signal is strong enough that many trials focus on how to blunt the loss rather than whether it exists.",
-      "population": "women receiving adjuvant endocrine therapy for breast cancer, especially postmenopausal women",
-      "mechanism": "Aromatase inhibitors sharply reduce peripheral estrogen production. Because estrogen restrains osteoclast activity and supports bone remodeling balance, that endocrine shift accelerates bone turnover and drives net skeletal loss.",
-      "summary": "The most defensible conclusion is that aromatase inhibitors reduce bone mineral density and worsen bone safety compared with more estrogenic comparators such as tamoxifen. Randomized endocrine-therapy studies and later comparative meta-analysis all point the same way, which is why bone-protection strategies are routinely paired with these drugs in higher-risk patients.",
-      "caveats": "The absolute bone loss depends on menopausal status, baseline skeletal health, and whether bisphosphonates or denosumab are used alongside treatment. This edge captures the adverse skeletal direction of the endocrine exposure itself, not the residual risk after optimal bone-protective management.",
+      "effect_quant": "Aromatase inhibitors consistently lower bone mineral density in postmenopausal women. In the ATAC bone substudy, anastrozole produced median 5-year BMD declines of 6.08% at the lumbar spine and 7.24% at the total hip, whereas tamoxifen users had small BMD gains.",
+      "population": "postmenopausal women receiving adjuvant aromatase inhibitor therapy for hormone receptor-positive early breast cancer",
+      "mechanism": "Aromatase inhibitors markedly suppress peripheral estrogen production. Because estrogen is central to maintaining bone turnover balance in postmenopausal women, this pharmacologic estrogen deprivation accelerates bone resorption and drives loss of bone mineral density, especially at trabecular-rich sites such as the lumbar spine.",
+      "summary": "The evidence strongly supports a harmful effect on bone density. Across randomized substudies and prospective cohorts, aromatase inhibitors accelerate bone loss compared with tamoxifen, placebo, or healthy control trajectories, making bone monitoring and protective strategies important during therapy.",
+      "caveats": "The magnitude of loss varies by baseline bone status, menopausal recency, BMI, chemotherapy exposure, and concurrent bone-protective treatment. This edge reflects the untreated or minimally protected bone effect of aromatase inhibitor therapy, not what can be achieved when bisphosphonates or denosumab are used proactively.",
       "evidence": [
         {
-          "citation": "BrufskyA et al 2007 J Clin Oncol",
-          "pmid": "17159193",
-          "year": 2007,
+          "citation": "Eastell et al 2008 J Clin Oncol",
+          "year": 2008,
           "study_type": "rct",
-          "n_participants": 602,
           "direction": "harmful",
           "quality": "high",
-          "notes": "Zoledronic acid inhibits adjuvant letrozole-induced bone loss in postmenopausal women with early breast cancer.",
+          "notes": "Effect of anastrozole on bone mineral density: 5-year results from the anastrozole, tamoxifen, alone or in combination trial 18233230.",
+          "doi": "10.1200/JCO.2007.11.0726",
+          "pmid": "18309940",
+          "n_participants": 108,
           "effect_quant": {
-            "metric": "MD_percent",
-            "value": 4.4,
-            "ci_low": 3.7,
-            "ci_high": 5.0,
-            "comparator": "lumbar-spine bone mineral density difference at 12 months between upfront and delayed zoledronic acid in women receiving letrozole"
-          }
-        },
-        {
-          "citation": "GnantMF et al 2007 J Clin Oncol",
-          "pmid": "17159195",
-          "year": 2007,
-          "study_type": "rct",
-          "n_participants": 401,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Zoledronic acid prevents cancer treatment-induced bone loss in premenopausal women receiving adjuvant endocrine therapy for hormone-responsive breast cancer: a report from the Austrian Breast and Colorectal Cancer Study Group.",
-          "effect_quant": {
-            "metric": "percent_change",
-            "value": -17.3,
+            "metric": "relative_change",
+            "value": -0.0608,
             "ci_low": null,
             "ci_high": null,
-            "comparator": "bone mineral density change after 36 months in the anastrozole plus goserelin group without zoledronic acid"
+            "comparator": "median lumbar spine bone mineral density change from baseline to 5 years among anastrozole-treated women"
           }
         },
         {
-          "citation": "ChenS et al 2022 Breast Care",
-          "pmid": "36156912",
-          "year": 2022,
-          "study_type": "meta_analysis",
-          "n_participants": 17,
+          "citation": "Confavreux et al 2007 Bone",
+          "year": 2007,
+          "study_type": "cohort",
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Bone Safety Profile of Steroidal Aromatase Inhibitor in Comparison to Nonsteroidal Aromatase Inhibitors in Postmenopausal Women with Breast Cancer: A Network Meta-Analysis."
+          "notes": "Estrogen-dependent increase in bone turnover and bone loss in postmenopausal women with breast cancer treated with anastrozole. Prevention with bisphosphonates.",
+          "pmid": "17618847",
+          "n_participants": 232,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -0.033,
+            "ci_low": -0.041,
+            "ci_high": -0.025,
+            "comparator": "mean lumbar spine bone mineral density change after 1 year of anastrozole in untreated surveillance patients"
+          }
+        },
+        {
+          "citation": "Forbes et al 2010 Ann Oncol",
+          "year": 2010,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Long-term effects of anastrozole on bone mineral density: 7-year results from the ATAC trial.",
+          "pmid": "20929964",
+          "n_participants": 50,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": 0.0402,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "median lumbar spine bone mineral density change at year 7 after completing 5 years of anastrozole in evaluable ATAC follow-up participants"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "aromatase_inhibitors",
+      "name": "Aromatase inhibitors",
+      "kind": "drug",
+      "aliases": [
+        "anastrozole",
+        "letrozole",
+        "exemestane"
+      ],
+      "description": "Endocrine therapies that suppress estrogen production and are commonly used in postmenopausal hormone receptor-positive breast cancer."
+    },
+    {
+      "slug": "bone_mineral_density",
+      "name": "Bone mineral density",
+      "kind": "biomarker",
+      "aliases": [
+        "BMD",
+        "skeletal bone density"
+      ],
+      "description": "A quantitative measure of bone mass, commonly assessed at the lumbar spine and hip to estimate skeletal strength and osteoporosis risk."
     }
   ]
 }

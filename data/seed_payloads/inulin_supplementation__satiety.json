@@ -7,43 +7,68 @@
       "direction": "protective",
       "tier": "C",
       "effect_size": "small",
-      "effect_quant": "In a 16-week pediatric trial, oligofructose-enriched inulin improved fullness and lowered prospective food consumption versus placebo in 42 children with overweight or obesity. Smaller adult trials also found lower desire to eat after repeated inulin intake, although a crossover study in 29 adults with type 2 diabetes found no appetite or energy-intake benefit.",
-      "population": "children with overweight or obesity and adults consuming inulin-type fructans or related prebiotic inulin interventions",
-      "mechanism": "Inulin may support satiety through colonic fermentation to short-chain fatty acids that feed into appetite signaling and meal termination pathways, especially over repeated exposure rather than after a single dose. The benefit seems more consistent in weight-management settings than in all metabolic contexts, which fits a modest fermentation-driven rather than dramatic anorectic effect.",
-      "summary": "Inulin supplementation modestly supports satiety, but not in every population. Repeated intake tends to improve fullness and lower desire to eat in children with overweight and in some healthy-adult studies, while a trial in adults with type 2 diabetes found no meaningful appetite effect. The safest conclusion is a small, context-dependent satiety benefit.",
-      "caveats": "Most trials are small and use subjective appetite scales, with mixed translation into actual energy intake. This edge is better read as a mild supportive tool than as a reliably strong appetite suppressant.",
+      "effect_quant": "In a placebo-controlled 6-week study of 22 overweight or obese adults, 30 g/day oligofructose reduced hunger area under the curve and motivation to eat while tending to raise PYY; in a randomized crossover study of 21 overweight or obese adults, inulin-propionate ester incorporated into food products significantly reduced ad libitum energy intake; however, a small 7-participant crossover pilot using a 10 g pre-meal inulin preload found no acute reduction in energy intake or appetite.",
+      "population": "overweight or obese adults given inulin-type fructans, oligofructose, or inulin-derived propionate-delivery supplements in short human intervention trials",
+      "mechanism": "Inulin-type fructans are fermented by colonic microbes into short-chain fatty acids that can stimulate satiety hormones such as PYY and GLP-1, slow appetite return, and modestly reduce subsequent energy intake.",
+      "summary": "Inulin-type supplementation can enhance satiety in some human studies, especially when fermentation products reach the colon effectively and when subjective hunger rather than body weight is the endpoint. The benefit is real but modest, and not every acute preload study detects it.",
+      "caveats": "Effects differ by chain length, formulation, dose, age, and whether the intervention uses plain inulin versus inulin-propionate ester. Some studies show lower hunger ratings without clear reductions in total daily energy intake or body weight.",
       "evidence": [
         {
-          "citation": "Nicolucci et al 2017 Am J Clin Nutr",
-          "pmid": "28228425",
+          "citation": "Daud NM et al 2014 Obesity (Silver Spring)",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The impact of oligofructose on stimulation of gut hormones, appetite regulation and adiposity.",
+          "doi": "10.1002/oby.20754",
+          "pmid": "24715424",
+          "n_participants": 22
+        },
+        {
+          "citation": "Byrne CS et al 2019 Nutrients",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of Inulin Propionate Ester Incorporated into Palatable Food Products on Appetite and Resting Energy Expenditure: A Randomised Crossover Study.",
+          "doi": "10.3390/nu11040861",
+          "pmid": "30995824",
+          "n_participants": 21
+        },
+        {
+          "citation": "Smiljanec K et al 2017 J Hum Nutr Diet",
           "year": 2017,
           "study_type": "rct",
-          "n_participants": 42,
-          "direction": "protective",
-          "quality": "moderate",
-          "notes": "Prebiotic supplementation improves appetite control in children with overweight and obesity: a randomized controlled trial."
-        },
-        {
-          "citation": "Meyer et al 2016 Br J Nutr",
-          "pmid": "26619790",
-          "year": 2016,
-          "study_type": "rct",
-          "n_participants": 19,
-          "direction": "protective",
-          "quality": "low",
-          "notes": "Eight-day consumption of inulin added to a yogurt breakfast lowers postprandial appetite ratings but not energy intakes in young healthy females: a randomised controlled trial."
-        },
-        {
-          "citation": "Guess et al 2021 J Nutr Sci",
-          "pmid": "34589204",
-          "year": 2021,
-          "study_type": "rct",
-          "n_participants": 29,
           "direction": "neutral",
-          "quality": "moderate",
-          "notes": "Effect of inulin-type fructans on appetite in patients with type 2 diabetes: a randomised controlled crossover trial."
+          "quality": "low",
+          "notes": "Pre-meal inulin consumption does not affect acute energy intake in overweight and obese middle-aged and older adults: A randomized controlled crossover pilot trial.",
+          "doi": "10.1177/0260106017699632",
+          "pmid": "28413905",
+          "n_participants": 7
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "inulin_supplementation",
+      "name": "Inulin supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "inulin-type fructan supplementation",
+        "oligofructose supplementation"
+      ],
+      "description": "Supplemental inulin or related inulin-type fructans used as fermentable prebiotic fibers."
+    },
+    {
+      "slug": "satiety",
+      "name": "Satiety",
+      "kind": "process",
+      "aliases": [
+        "fullness",
+        "reduced hunger"
+      ],
+      "description": "The feeling of fullness or reduced desire to eat following food or supplement intake."
     }
   ]
 }

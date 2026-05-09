@@ -1,61 +1,88 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "vaginal_estrogen",
-      "name": "Vaginal estrogen",
-      "kind": "drug"
-    },
-    {
-      "slug": "genitourinary_syndrome",
-      "name": "Genitourinary syndrome of menopause",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "vaginal_estrogen",
       "outcome_slug": "genitourinary_syndrome",
       "direction": "protective",
-      "tier": "A",
-      "effect_size": "moderate",
-      "effect_quant": "Across multiple systematic reviews, vaginal estrogen consistently improves core symptoms of genitourinary syndrome of menopause, especially dryness and dyspareunia, and no newer review has seriously reversed that conclusion.",
-      "population": "postmenopausal women with genitourinary syndrome of menopause",
-      "mechanism": "Local estrogen restores vaginal epithelial thickness, glycogen availability, and acidic vaginal pH, which improves lubrication, resilience, and urinary-genital tissue health. Because the therapy is topical, it addresses the estrogen-depleted target tissue directly rather than relying on systemic exposure.",
-      "summary": "Vaginal estrogen is one of the best-supported symptomatic treatments for genitourinary syndrome of menopause. Systematic reviews across the last decade consistently show improvement in dryness, dyspareunia, and related atrophic urinary-genital symptoms versus placebo or no treatment.",
-      "caveats": "Most studies are short term and compare symptom outcomes rather than long-term structural endpoints. Safety data for rare long-term harms are more limited than the efficacy data, especially in women with prior estrogen-sensitive cancer.",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The symptom signal is real but not perfectly uniform across trials. In a 576-woman phase 3 trial, very-low-dose estradiol cream improved vaginal dryness severity and vaginal maturation outcomes versus placebo, while a 302-woman randomized trial found no significant extra reduction in the most bothersome vulvovaginal symptom versus placebo but did show objective maturation changes and related quality-of-life gains in ancillary analyses.",
+      "population": "postmenopausal women with genitourinary syndrome of menopause or symptomatic vulvovaginal atrophy",
+      "mechanism": "Local estrogen reverses hypoestrogenic atrophic changes in the vaginal epithelium, raises superficial cell fractions, lowers vaginal pH, and improves lubrication and tissue resilience. Those local changes can reduce dryness, dyspareunia, irritation, and urinary discomfort even when placebo responses are substantial in symptom-focused trials.",
+      "summary": "For genitourinary syndrome of menopause, the overall direction is protective but the size of symptomatic benefit varies by study design and outcome choice. Objective vaginal health markers improve consistently, and some trials show symptom and quality-of-life gains, but others show that placebo gels and tablets can produce surprisingly similar short-term symptom relief for the single most bothersome complaint.",
+      "caveats": "This is best interpreted as a clinically useful but not magically uniform treatment. Benefit differs by baseline severity, symptom domain, comparator, and whether the endpoint prioritizes tissue biomarkers, sexual function, or one self-selected symptom over a short follow-up interval.",
       "evidence": [
         {
-          "citation": "Rahn et al 2014 Obstet Gynecol",
-          "pmid": "25415166",
-          "year": 2014,
-          "study_type": "systematic_review",
-          "n_participants": 44,
+          "citation": "Archer DF et al 2018 J Womens Health (Larchmt)",
+          "year": 2018,
+          "study_type": "rct",
           "direction": "protective",
           "quality": "high",
-          "notes": "Vaginal estrogen for genitourinary syndrome of menopause: a systematic review."
+          "notes": "A Randomized, Multicenter, Double-Blind, Study to Evaluate the Safety and Efficacy of Estradiol Vaginal Cream 0.003% in Postmenopausal Women with Vaginal Dryness as the Most Bothersome Symptom.",
+          "doi": "10.1089/jwh.2017.6515",
+          "pmid": "29193980",
+          "n_participants": 576
         },
         {
-          "citation": "Biehl et al 2019 Menopause",
-          "pmid": "30363010",
-          "year": 2019,
-          "study_type": "systematic_review",
-          "n_participants": 53,
-          "direction": "protective",
+          "citation": "Mitchell CM et al 2018 JAMA Intern Med",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "mixed",
           "quality": "high",
-          "notes": "A systematic review of the efficacy and safety of vaginal estrogen products for the treatment of genitourinary syndrome of menopause."
+          "notes": "Efficacy of Vaginal Estradiol or Vaginal Moisturizer vs Placebo for Treating Postmenopausal Vulvovaginal Symptoms: A Randomized Clinical Trial.",
+          "doi": "10.1001/jamainternmed.2018.0116",
+          "pmid": "29554173",
+          "n_participants": 302,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -0.1,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "change in most bothersome symptom severity with vaginal estradiol versus dual placebo over 12 weeks (-1.4 vs -1.3 points)"
+          }
         },
         {
-          "citation": "Danan et al 2024 Ann Intern Med",
-          "pmid": "39250810",
-          "year": 2024,
-          "study_type": "systematic_review",
-          "n_participants": 46,
+          "citation": "Diem SJ et al 2018 Menopause",
+          "year": 2018,
+          "study_type": "rct",
           "direction": "protective",
-          "quality": "high",
-          "notes": "Hormonal Treatments and Vaginal Moisturizers for Genitourinary Syndrome of Menopause : A Systematic Review."
+          "quality": "moderate",
+          "notes": "Effects of vaginal estradiol tablets and moisturizer on menopause-specific quality of life and mood in healthy postmenopausal women with vaginal symptoms: a randomized clinical trial.",
+          "doi": "10.1097/GME.0000000000001131",
+          "pmid": "29738424",
+          "n_participants": 302,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -0.3,
+            "ci_low": -0.5,
+            "ci_high": 0.0,
+            "comparator": "difference in total MENQOL change at 12 weeks for vaginal estradiol versus dual placebo"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vaginal_estrogen",
+      "name": "Vaginal estrogen therapy",
+      "kind": "drug",
+      "aliases": [
+        "topical vaginal estrogen",
+        "local estrogen therapy"
+      ],
+      "description": "Low-dose estrogen delivered locally to the vagina as cream, gel, tablet, or ring."
+    },
+    {
+      "slug": "genitourinary_syndrome",
+      "name": "Genitourinary syndrome of menopause",
+      "kind": "condition",
+      "aliases": [
+        "GSM",
+        "vulvovaginal atrophy"
+      ],
+      "description": "The chronic hypoestrogenic syndrome of menopause affecting vaginal, urinary, and sexual function."
     }
   ]
 }

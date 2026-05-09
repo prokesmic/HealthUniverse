@@ -1,85 +1,74 @@
 {
   "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "aces_4plus",
+      "outcome_slug": "adult_mental_health_outcomes",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "High ACE burden tracks strongly with later mental-health harm. In the original ACE Study, people with four or more adverse childhood exposures had roughly 4- to 12-fold higher risks for depression and suicide attempt than those with none, and later Kaiser analyses confirmed a graded dose-response relationship between cumulative ACE score and depressed affect and suicide attempts in adulthood.",
+      "population": "adults reporting four or more adverse childhood experiences before age 18",
+      "mechanism": "Repeated childhood adversity can recalibrate stress-response systems, increase emotional dysregulation, and elevate later risk of depression, suicidality, substance use, and other mental-health difficulties through both biologic embedding and life-course social pathways.",
+      "summary": "The evidence consistently points toward worse adult mental health with four or more ACEs. Across the original CDC-Kaiser cohort and later population-based analyses, greater cumulative adversity is linked to higher rates of depressed affect, suicidality, and broader poor mental-health status.",
+      "caveats": "These data are mostly observational and often rely on retrospective recall of adversity, so precise causal magnitudes remain uncertain. The edge is still useful because the dose-response pattern has been replicated across multiple adult samples and outcomes.",
+      "evidence": [
+        {
+          "citation": "Felitti VJ et al 1998 Am J Prev Med",
+          "year": 1998,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Relationship of childhood abuse and household dysfunction to many of the leading causes of death in adults. The Adverse Childhood Experiences (ACE) Study.",
+          "doi": "10.1016/S0749-3797(98)00017-8",
+          "pmid": "9635069",
+          "n_participants": 9508
+        },
+        {
+          "citation": "Merrick MT et al 2017 Child Abuse Negl",
+          "year": 2017,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Unpacking the impact of adverse childhood experiences on adult mental health.",
+          "doi": "10.1016/j.chiabu.2017.03.016",
+          "pmid": "28419887",
+          "n_participants": 7465
+        },
+        {
+          "citation": "Logan-Greene P et al 2014 Soc Work Health Care",
+          "year": 2014,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Distinct contributions of adverse childhood experiences and resilience resources: a cohort analysis of adult physical and mental health.",
+          "doi": "10.1080/00981389.2014.944251",
+          "pmid": "25255340",
+          "n_participants": 19333
+        }
+      ]
+    }
+  ],
   "new_entities": [
     {
       "slug": "aces_4plus",
       "name": "Four or more adverse childhood experiences",
       "kind": "behavior",
       "aliases": [
-        "ACE score 4 or more",
-        "high ACE burden"
+        "ACE score four or more",
+        "high cumulative childhood adversity"
       ],
-      "description": "A high cumulative burden of adverse childhood experiences, commonly operationalized as four or more ACEs."
+      "description": "Exposure to four or more categories of adverse childhood experiences before age 18."
     },
     {
       "slug": "adult_mental_health_outcomes",
       "name": "Adult mental health outcomes",
-      "kind": "process",
+      "kind": "condition",
       "aliases": [
-        "adult depression, anxiety, PTSD and related outcomes",
-        "adult mental ill-health"
+        "adult depression and suicidality",
+        "adult psychiatric outcomes"
       ],
-      "description": "Major adult mental health outcomes including depression, anxiety, PTSD, suicidality, and related psychopathology."
-    }
-  ],
-  "edges": [
-    {
-      "factor_slug": "aces_4plus",
-      "outcome_slug": "adult_mental_health_outcomes",
-      "direction": "harmful",
-      "tier": "A",
-      "effect_size": "large",
-      "effect_quant": "A high ACE burden is strongly associated with later adult mental ill-health, with the largest pooled effects often seen for PTSD and consistently elevated odds for depression and anxiety.",
-      "population": "adults with high cumulative childhood adversity, often operationalized as four or more ACEs",
-      "mechanism": "Repeated childhood adversity can recalibrate stress-response systems, threat processing, attachment patterns, and health behaviors in ways that make later depression, anxiety, trauma symptoms, and suicidality more likely. The dose-response pattern strengthens the case that cumulative burden matters, not just any single event alone.",
-      "summary": "This is one of the clearer harm clusters in the ACE literature. Large recent meta-analyses show that cumulative childhood adversity substantially raises the odds of adult depression, anxiety, PTSD, and related outcomes, and the prospective evidence suggests that the signal is not just an artifact of cross-sectional recall.",
-      "caveats": "The brief asks for `aces_4plus`, but many source studies pool across several cumulative-ACE thresholds rather than isolating exactly four exposures. The evidence is still highly relevant because the dose-response pattern consistently shows the heaviest adversity burden as the highest-risk group.",
-      "evidence": [
-        {
-          "citation": "LiuX et al 2026 Trauma Violence Abuse",
-          "pmid": "42087807",
-          "year": 2026,
-          "study_type": "meta_analysis",
-          "n_participants": 110556,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "The Effects of Adverse Childhood Experiences on Adult Mental Health Across Gender, Race/Ethnicity, and Economic Status in the United States: A Systematic Review and Meta-Analysis."
-        },
-        {
-          "citation": "ThurstonC et al 2025 Trauma Violence Abuse",
-          "pmid": "40819337",
-          "year": 2025,
-          "study_type": "meta_analysis",
-          "n_participants": 62,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Prospective Longitudinal Associations Between Adverse Childhood Experiences and Adult Mental Health Outcomes: Systematic Review and Meta-Analysis.",
-          "effect_quant": {
-            "metric": "OR",
-            "value": 1.61,
-            "ci_low": 1.45,
-            "ci_high": 1.76,
-            "comparator": "adult depression after ACE exposure versus lower or no ACE exposure"
-          }
-        },
-        {
-          "citation": "WatsonCB et al 2025 Acta Psychiatr Scand",
-          "pmid": "40025916",
-          "year": 2025,
-          "study_type": "meta_analysis",
-          "n_participants": 516302,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "A Systematic Review and Meta-Analysis of the Association Between Childhood Maltreatment and Adult Depression.",
-          "effect_quant": {
-            "metric": "OR",
-            "value": 2.49,
-            "ci_low": 2.25,
-            "ci_high": 2.76,
-            "comparator": "adult depression in people with childhood maltreatment versus without maltreatment"
-          }
-        }
-      ]
+      "description": "Adult mental-health outcomes such as depression, suicidality, or broader poor psychological functioning."
     }
   ]
 }

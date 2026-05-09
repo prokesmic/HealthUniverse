@@ -1,27 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "probiotics_in_infancy",
-      "name": "Probiotic supplementation in infancy",
-      "kind": "supplement",
-      "aliases": [
-        "early-life probiotics",
-        "probiotics during infancy"
-      ],
-      "description": "Probiotic supplementation given during infancy, often alongside maternal prenatal or lactation supplementation."
-    },
-    {
-      "slug": "atopic_dermatitis_2yr",
-      "name": "Atopic dermatitis by 2 years of age",
-      "kind": "condition",
-      "aliases": [
-        "eczema by age 2",
-        "early childhood atopic dermatitis"
-      ],
-      "description": "Atopic dermatitis or eczema occurring during infancy and the first two years of life."
-    }
-  ],
   "edges": [
     {
       "factor_slug": "probiotics_in_infancy",
@@ -29,57 +7,89 @@
       "direction": "mixed",
       "tier": "B",
       "effect_size": "small",
-      "effect_quant": "The most reproducible benefit of early-life probiotics is a modest reduction in eczema within the first 2 years, with much less confidence that protection persists later or generalizes across every strain strategy.",
-      "population": "infants receiving probiotics directly and/or through paired maternal-plus-infant supplementation",
-      "mechanism": "Early probiotic exposure may shift gut microbial colonization and immune education toward a less pro-atopic phenotype during the first months of life. The strain-specific and time-limited nature of the signal suggests this is a narrow early-window effect rather than a universal allergy reset.",
-      "summary": "The pooled literature supports a small early-eczema benefit, but not a sweeping allergy-prevention claim. Meta-analyses repeatedly show lower atopic dermatitis incidence up to about age 2, especially when mixed lactobacillus-bifidobacterium strategies and maternal-plus-infant exposure are used, yet the durability and strain generalizability remain uneven.",
-      "caveats": "This edge is sensitive to strain, timing, and whether mothers were supplemented during pregnancy as well. It should not be read as proof that any probiotic product prevents eczema, only that the broader intervention class has shown a modest early signal in pooled trials.",
+      "effect_quant": "The aggregate literature leans modestly protective, but not every strain works. A 2012 meta-analysis found a pooled RR of 0.79 for atopic dermatitis after probiotics given in pregnancy or early life, while one large trial of Lactobacillus rhamnosus HN001 reported a hazard ratio of 0.51 for eczema at 2 years, yet another placebo-controlled Lactobacillus GG trial found no reduction with a relative risk of 0.96.",
+      "population": "infants and high-risk mother-infant pairs receiving probiotic supplementation during pregnancy, early infancy, or both",
+      "mechanism": "Early probiotic exposure may help shape gut colonization and immune tolerance during a period when allergic sensitization pathways are still plastic, but the effect appears to depend heavily on strain, timing, and whether the mother, infant, or both receive the intervention.",
+      "summary": "This edge is best read as mixed but somewhat favorable. Meta-analyses and some strain-specific randomized trials suggest that early-life probiotics can modestly lower eczema risk by age 2, yet other well-run trials have been neutral, which argues against treating probiotics as a uniform eczema-prevention tool.",
+      "caveats": "The literature is highly strain-specific and mixes maternal, infant, and combined supplementation strategies. Positive results with one Lactobacillus strain do not guarantee that another probiotic product will reproduce the same atopic-dermatitis benefit.",
       "evidence": [
         {
-          "citation": "SunS et al 2022 J Dermatolog Treat",
-          "pmid": "34006167",
-          "year": 2022,
+          "citation": "Pelucchi C et al 2012 Epidemiology",
+          "year": 2012,
           "study_type": "meta_analysis",
-          "n_participants": 21,
           "direction": "protective",
           "quality": "high",
-          "notes": "The prevention effect of probiotics against eczema in children: an update systematic review and meta-analysis."
-        },
-        {
-          "citation": "YinDG et al 2019 Zhongguo Dang Dai Er Ke Za Zhi",
-          "pmid": "30675869",
-          "year": 2019,
-          "study_type": "meta_analysis",
-          "n_participants": 6561,
-          "direction": "protective",
-          "quality": "high",
-          "notes": "Effect of probiotic supplementation during pregnancy and infancy in preventing atopic dermatitis in children: a Meta analysis.",
+          "notes": "Probiotics supplementation during pregnancy or infancy for the prevention of atopic dermatitis: a meta-analysis.",
+          "doi": "10.1097/EDE.0b013e31824d5da2",
+          "pmid": "22441545",
+          "n_participants": 14,
           "effect_quant": {
             "metric": "RR",
-            "value": 0.74,
-            "ci_low": 0.61,
-            "ci_high": 0.9,
-            "comparator": "atopic dermatitis at age 2 years or younger in probiotic versus control groups"
+            "value": 0.79,
+            "ci_low": 0.71,
+            "ci_high": 0.88,
+            "comparator": "atopic dermatitis incidence after probiotic supplementation during pregnancy or infancy versus control"
           }
         },
         {
-          "citation": "MansfieldJA et al 2014 Mil Med",
-          "pmid": "24902123",
-          "year": 2014,
-          "study_type": "meta_analysis",
-          "n_participants": 2797,
+          "citation": "Wickens K et al 2008 J Allergy Clin Immunol",
+          "year": 2008,
+          "study_type": "rct",
           "direction": "protective",
-          "quality": "moderate",
-          "notes": "Comparative probiotic strain efficacy in the prevention of eczema in infants and children: a systematic review and meta-analysis.",
+          "quality": "high",
+          "notes": "A differential effect of 2 probiotics in the prevention of eczema and atopy: a double-blind, randomized, placebo-controlled trial.",
+          "doi": "10.1016/j.jaci.2008.07.011",
+          "pmid": "18762327",
+          "n_participants": 474,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.51,
+            "ci_low": 0.3,
+            "ci_high": 0.85,
+            "comparator": "eczema at 2 years with Lactobacillus rhamnosus HN001 versus placebo"
+          }
+        },
+        {
+          "citation": "Kopp MV et al 2008 Pediatrics",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Randomized, double-blind, placebo-controlled trial of probiotics for primary prevention: no clinical effects of Lactobacillus GG supplementation.",
+          "doi": "10.1542/peds.2007-1492",
+          "pmid": "18332075",
+          "n_participants": 105,
           "effect_quant": {
             "metric": "RR",
-            "value": 0.74,
-            "ci_low": 0.67,
-            "ci_high": 0.82,
-            "comparator": "eczema incidence in probiotic-exposed versus control children"
+            "value": 0.96,
+            "ci_low": 0.38,
+            "ci_high": 2.33,
+            "comparator": "atopic dermatitis at 2 years with Lactobacillus GG versus placebo"
           }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "probiotics_in_infancy",
+      "name": "Probiotics in infancy",
+      "kind": "supplement",
+      "aliases": [
+        "early-life probiotic supplementation",
+        "infant probiotic use"
+      ],
+      "description": "Probiotic supplementation given in infancy or across the perinatal period to the infant, mother, or both."
+    },
+    {
+      "slug": "atopic_dermatitis_2yr",
+      "name": "Atopic dermatitis by age 2 years",
+      "kind": "condition",
+      "aliases": [
+        "eczema at 2 years",
+        "early childhood atopic dermatitis"
+      ],
+      "description": "Incident or cumulative atopic dermatitis or eczema assessed in infancy or by about 2 years of age."
     }
   ]
 }

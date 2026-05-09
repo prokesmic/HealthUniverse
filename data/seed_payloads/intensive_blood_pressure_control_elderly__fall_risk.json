@@ -1,61 +1,95 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "intensive_blood_pressure_control_elderly",
-      "name": "Intensive blood pressure control in older adults",
-      "kind": "process"
-    },
-    {
-      "slug": "fall_risk",
-      "name": "Fall risk",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "intensive_blood_pressure_control_elderly",
       "outcome_slug": "fall_risk",
       "direction": "u_shaped",
-      "tier": "B",
-      "effect_size": "moderate",
-      "effect_quant": "In the SPRINT subgroup aged 75 years and older, intensive treatment did not increase injurious falls (HR 0.91, 95% CI 0.65 to 1.29), yet hypotension, electrolyte abnormalities, and acute kidney injury all moved in the wrong direction. The broader SPRINT serious-adverse-event analysis likewise showed a higher composite adverse-event rate with intensive treatment, so the fall story is more threshold-sensitive than simply reassuring or harmful.",
-      "population": "ambulatory older adults with hypertension, especially those aged 75 years and older",
-      "mechanism": "Lowering systolic pressure more aggressively can reduce long-term vascular burden, but once cerebral and orthostatic reserve are limited, the same pressure reduction can make standing perfusion more fragile. That is why intensive control may help cardiovascular outcomes overall while still increasing the kind of dizziness, hypotension, or treatment burden that matters to fall-prone older adults.",
-      "summary": "This is not a simple harmful edge. The older-adult SPRINT subgroup showed major cardiovascular benefit without a clear rise in injurious falls, but the intensive strategy still carried more hypotension-related vulnerability and a broader serious-adverse-event penalty in subsequent analyses. The most accurate read is that aggressive blood-pressure lowering becomes risk-sensitive in older adults rather than uniformly safer or uniformly dangerous.",
-      "caveats": "SPRINT enrolled relatively healthy ambulatory participants and excluded some of the frailest groups seen in routine practice, so real-world fall vulnerability may be higher than the trial suggests. This edge is best interpreted as a reminder that cardiovascular benefit does not erase the need to monitor orthostasis, medications, and symptoms when targets are pushed lower.",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In older adults, more intensive blood-pressure lowering improves cardiovascular outcomes but increases some hemodynamic adverse events, creating a narrow therapeutic window rather than a simple fall-prevention story. In SPRINT, intensive treatment lowered major cardiovascular events and mortality but caused more serious hypotension and syncope, though not more injurious falls. A meta-analysis limited to adults aged 60 and older similarly concluded that lower targets did not increase falls overall, even while hypotension and syncope were more frequent with aggressive treatment.",
+      "population": "older adults with hypertension, especially community-dwelling adults aged 60 years or older at elevated cardiovascular risk",
+      "mechanism": "Lowering blood pressure more aggressively can reduce stroke and vascular injury but can also narrow cerebral and systemic perfusion reserve in susceptible older adults. That tradeoff means modest lowering may improve outcomes, whereas overly aggressive lowering can provoke hypotension, syncope, and treatment burden without clearly increasing injurious falls across trials.",
+      "summary": "The best interpretation is a benefit-harm curve rather than a uniformly helpful or harmful effect on falls. Intensive treatment in selected older adults appears cardiovascularly beneficial and does not clearly raise injurious-fall risk, but it does raise hypotension and syncope risk enough that the ideal target likely depends on frailty, reserve, and time-to-benefit considerations.",
+      "caveats": "Trial populations such as SPRINT excluded some of the frailest or most orthostatic patients, so real-world fall risk may be less forgiving than the randomized data suggest. This edge should therefore be read as a treatment-window problem in older adults, not as proof that more-intensive control is always either safe or unsafe for mobility outcomes.",
       "evidence": [
         {
-          "citation": "WrightJT et al 2015 N Engl J Med",
-          "pmid": "26551272",
-          "year": 2015,
-          "study_type": "rct",
-          "n_participants": 9361,
-          "direction": "u_shaped",
-          "quality": "high",
-          "notes": "A Randomized Trial of Intensive versus Standard Blood-Pressure Control."
-        },
-        {
-          "citation": "WilliamsonJD et al 2016 JAMA",
-          "pmid": "27195814",
-          "year": 2016,
-          "study_type": "rct",
-          "n_participants": 2636,
-          "direction": "u_shaped",
-          "quality": "high",
-          "notes": "Intensive vs Standard Blood Pressure Control and Cardiovascular Disease Outcomes in Adults Aged ≥75 Years: A Randomized Clinical Trial."
-        },
-        {
-          "citation": "KrishnaswamiA et al 2018 Am J Med",
-          "pmid": "29940151",
+          "citation": "SinkKM et al 2018 J Am Geriatr Soc",
           "year": 2018,
           "study_type": "rct",
+          "direction": "u_shaped",
+          "quality": "high",
+          "notes": "Syncope, Hypotension, and Falls in the Treatment of Hypertension: Results from the Randomized Clinical Systolic Blood Pressure Intervention Trial.",
+          "doi": "10.1111/jgs.15236",
+          "pmid": "29601076",
           "n_participants": 9361,
-          "direction": "harmful",
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.98,
+            "ci_low": 0.75,
+            "ci_high": 1.29,
+            "comparator": "serious adverse events involving falls with intensive versus standard blood-pressure treatment in SPRINT"
+          }
+        },
+        {
+          "citation": "SPRINT Research Group 2015 N Engl J Med",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "u_shaped",
+          "quality": "high",
+          "notes": "A Randomized Trial of Intensive versus Standard Blood-Pressure Control.",
+          "doi": "10.1056/NEJMoa1511939",
+          "pmid": "26551272",
+          "n_participants": 9361,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.75,
+            "ci_low": 0.64,
+            "ci_high": 0.89,
+            "comparator": "primary cardiovascular composite with intensive versus standard systolic blood-pressure control in SPRINT"
+          }
+        },
+        {
+          "citation": "JuraschekSP et al 2020 Hypertension",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "mixed",
           "quality": "moderate",
-          "notes": "Individual and Joint Effects of Pulse Pressure and Blood Pressure Treatment Intensity on Serious Adverse Events in the SPRINT Trial."
+          "notes": "Orthostatic Hypotension, Cardiovascular Outcomes, and Adverse Events: Results From SPRINT.",
+          "doi": "10.1161/HYPERTENSIONAHA.119.14309",
+          "pmid": "31983312",
+          "n_participants": 9361,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.77,
+            "ci_low": 1.11,
+            "ci_high": 2.82,
+            "comparator": "hypotension-related hospitalizations or emergency visits associated with orthostatic hypotension during SPRINT follow-up"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "intensive_blood_pressure_control_elderly",
+      "name": "Intensive blood pressure control in older adults",
+      "kind": "behavior",
+      "aliases": [
+        "aggressive antihypertensive treatment in elders",
+        "lower systolic target in older adults"
+      ],
+      "description": "A treatment strategy that targets lower blood-pressure thresholds in older adults than standard hypertension management."
+    },
+    {
+      "slug": "fall_risk",
+      "name": "Fall risk",
+      "kind": "condition",
+      "aliases": [
+        "risk of falls",
+        "fall incidence"
+      ],
+      "description": "Likelihood of experiencing falls or fall-related injuries during follow-up."
     }
   ]
 }

@@ -1,61 +1,87 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "hrt_timing_hypothesis",
-      "name": "Early-versus-late menopausal hormone therapy timing",
-      "kind": "process"
-    },
-    {
-      "slug": "cardiovascular_disease",
-      "name": "Cardiovascular disease",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "hrt_timing_hypothesis",
       "outcome_slug": "cardiovascular_disease",
       "direction": "u_shaped",
-      "tier": "B",
-      "effect_size": "moderate",
-      "effect_quant": "The most decisive randomized evidence shows that oral estradiol slowed carotid-intima media thickness progression when started within 6 years of menopause but not when started 10 or more years after menopause. KEEPS reinforces that early initiation looks vascularly neutral-to-favorable, whereas late initiation loses that signal.",
-      "population": "healthy postmenopausal women stratified by years since menopause before hormone therapy initiation",
-      "mechanism": "The timing hypothesis assumes estrogen acts differently on relatively healthy arterial tissue than on more established atherosclerotic plaque. Early after menopause, estrogen may preserve endothelial function and slow plaque evolution, whereas later initiation may arrive after vascular remodeling has already advanced too far for the same benefit.",
-      "summary": "The cardiovascular case for menopausal hormone therapy depends heavily on timing. ELITE directly tested that question and found benefit on subclinical atherosclerosis only when estradiol started close to menopause, while KEEPS showed that early treatment did not worsen vascular progression and may modestly improve some coronary-calcium and adiposity-related signals.",
-      "caveats": "These studies are about subclinical vascular measures rather than hard myocardial infarction or stroke endpoints, so they do not justify a blanket cardioprotection claim. The edge is best read as timing-sensitive biologic plausibility with randomized support, not a license to use hormone therapy solely for primary cardiovascular prevention.",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The timing signal is directionally consistent but still rests mostly on surrogate cardiovascular outcomes rather than hard event reduction. In ELITE, estradiol started within 6 years of menopause slowed carotid intima-media thickness progression from 0.0078 to 0.0044 mm per year, whereas starting at least 10 years after menopause showed no benefit and numerically worse progression (0.0088 vs 0.0100 mm per year).",
+      "population": "postmenopausal women considering menopausal hormone therapy, with cardiovascular effects varying by age and years since menopause",
+      "mechanism": "Vascular responsiveness to estrogen appears to depend on how advanced the arterial substrate already is at the time therapy begins. Earlier after menopause, estrogen may preserve endothelial function and slow atherosclerotic remodeling, whereas later initiation may fail to help once plaque biology and vascular stiffness are already established.",
+      "summary": "The best-supported interpretation is not simply beneficial or harmful, but timing-dependent. Data from ELITE, KEEPS, and age-stratified interpretations of large hormone-therapy trials suggest that menopausal hormone therapy started close to menopause may have neutral-to-favorable vascular effects, while later initiation loses that advantage and may shift toward harm or no benefit.",
+      "caveats": "This edge relies heavily on subclinical atherosclerosis outcomes and secondary analyses rather than definitive reductions in myocardial infarction or stroke. Formulation, route, concomitant progestogen, baseline vascular health, and time since menopause all influence the result, so this should not be generalized into a simple 'HRT is cardioprotective' claim.",
       "evidence": [
         {
-          "citation": "HodisHN et al 2016 N Engl J Med",
-          "pmid": "27028912",
+          "citation": "Hodis HN et al 2016 N Engl J Med",
           "year": 2016,
           "study_type": "rct",
+          "direction": "u_shaped",
+          "quality": "high",
+          "notes": "Vascular Effects of Early versus Late Postmenopausal Treatment with Estradiol.",
+          "doi": "10.1056/NEJMoa1505241",
+          "pmid": "27028912",
           "n_participants": 643,
-          "direction": "u_shaped",
-          "quality": "high",
-          "notes": "Vascular Effects of Early versus Late Postmenopausal Treatment with Estradiol."
+          "effect_quant": {
+            "metric": "MD",
+            "value": -0.0034,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "annual carotid intima-media thickness progression with estradiol versus placebo among women less than 6 years since menopause (0.0044 vs 0.0078 mm per year); no benefit was seen in women 10 or more years since menopause"
+          }
         },
         {
-          "citation": "MillerVM et al 2019 Menopause",
-          "pmid": "31453973",
+          "citation": "ElKhoudary SR et al 2019 J Am Heart Assoc",
           "year": 2019,
-          "study_type": "systematic_review",
-          "n_participants": 727,
+          "study_type": "rct",
           "direction": "u_shaped",
-          "quality": "high",
-          "notes": "The Kronos Early Estrogen Prevention Study (KEEPS): what have we learned?"
+          "quality": "moderate",
+          "notes": "Effects of Hormone Therapy on Heart Fat and Coronary Artery Calcification Progression: Secondary Analysis From the KEEPS Trial.",
+          "doi": "10.1161/JAHA.119.012763",
+          "pmid": "31652073",
+          "n_participants": 474,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.62,
+            "ci_low": 0.40,
+            "ci_high": 0.97,
+            "comparator": "any increase in epicardial adipose tissue with oral conjugated equine estrogens versus placebo in recently menopausal women"
+          }
         },
         {
-          "citation": "ElKhoudarySR et al 2020 Menopause",
-          "pmid": "32015261",
-          "year": 2020,
-          "study_type": "rct",
-          "n_participants": 467,
-          "direction": "protective",
+          "citation": "Harman SM et al 2011 Am J Med",
+          "year": 2011,
+          "study_type": "expert_opinion",
+          "direction": "u_shaped",
           "quality": "moderate",
-          "notes": "Heart fat and carotid artery atherosclerosis progression in recently menopausal women: impact of menopausal hormone therapy: The KEEPS trial."
+          "notes": "Timing and duration of menopausal hormone treatment may affect cardiovascular outcomes.",
+          "doi": "10.1016/j.amjmed.2010.09.021",
+          "pmid": "21396500"
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hrt_timing_hypothesis",
+      "name": "Hormone therapy timing hypothesis",
+      "kind": "process",
+      "aliases": [
+        "early versus late HRT initiation",
+        "menopausal hormone timing"
+      ],
+      "description": "The concept that cardiovascular effects of menopausal hormone therapy depend on how soon after menopause treatment is initiated."
+    },
+    {
+      "slug": "cardiovascular_disease",
+      "name": "Cardiovascular disease",
+      "kind": "condition",
+      "aliases": [
+        "CVD",
+        "atherosclerotic cardiovascular disease"
+      ],
+      "description": "Cardiovascular disease outcomes including coronary disease, stroke risk, and subclinical atherosclerosis progression."
     }
   ]
 }

@@ -1,12 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "breastfeeding_parity_adjusted",
-      "name": "Breastfeeding independent of parity",
-      "kind": "behavior"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "breastfeeding_parity_adjusted",
@@ -14,64 +7,78 @@
       "direction": "protective",
       "tier": "B",
       "effect_size": "moderate",
-      "effect_quant": "The most reproducible pooled evidence suggests breastfeeding remains associated with lower ovarian-cancer risk even after parity is accounted for, with the protective signal strengthening as duration increases.",
-      "population": "parous women evaluated for ovarian-cancer risk with parity handled in analysis",
-      "mechanism": "Breastfeeding suppresses ovulation and lowers repeated cyclic epithelial disruption at the ovary. That ovulation-suppression pathway gives the duration-response pattern more credibility than a generic reproductive-history association alone.",
-      "summary": "The strongest pooled evidence suggests breastfeeding is associated with lower ovarian-cancer risk even after taking parity into account, and longer cumulative breastfeeding appears to strengthen the protection. Prospective cohort data are less dramatic than the meta-analyses but still support a duration-response signal rather than a purely confounded finding.",
-      "caveats": "Most of the evidence is observational and mixes cohort with case-control designs, so residual confounding by reproductive and socioeconomic factors remains possible. The effect is also not equally strong in every cohort, which is why this edge is better read as credible protection than as a near-certain magnitude estimate.",
+      "effect_quant": "The best parity-aware syntheses still support a protective association. A 2014 meta-analysis of 40 epidemiologic studies including 17,139 women with ovarian cancer found that, among parous women only, breastfeeding was associated with lower ovarian cancer risk (pooled RR 0.76, 95% CI 0.69 to 0.83), and risk fell further with longer total duration.",
+      "population": "parous women evaluated for epithelial ovarian cancer risk with breastfeeding duration analyzed separately from parity",
+      "mechanism": "Breastfeeding suppresses ovulation and lowers exposure to gonadotropins and cyclic ovarian epithelial turnover, which may reduce opportunities for malignant transformation. The persistence of protective estimates after parity adjustment suggests breastfeeding contributes risk reduction beyond pregnancy count alone.",
+      "summary": "The evidence supports a protective association independent of simple parity count. Meta-analytic and large case-control data show lower ovarian cancer risk in women who breastfed, with stronger protection at longer durations and after statistical adjustment for parity.",
+      "caveats": "Most evidence is observational and much of it comes from case-control studies, so recall bias and residual confounding remain possible. Some individual studies found attenuation after parity adjustment, meaning the incremental effect of breastfeeding beyond childbearing is real but probably modest rather than huge.",
       "evidence": [
         {
           "citation": "LiDP et al 2014 Asian Pac J Cancer Prev",
-          "pmid": "24998548",
           "year": 2014,
           "study_type": "meta_analysis",
-          "n_participants": 40,
           "direction": "protective",
           "quality": "high",
           "notes": "Breastfeeding and ovarian cancer risk: a systematic review and meta-analysis of 40 epidemiological studies.",
+          "pmid": "24998548",
+          "n_participants": 17139,
           "effect_quant": {
             "metric": "RR",
             "value": 0.76,
             "ci_low": 0.69,
             "ci_high": 0.83,
-            "comparator": "ever versus never breastfeeding among parous women"
+            "comparator": "ovarian cancer in parous women who breastfed versus parous women who never breastfed in the parity-restricted pooled analysis"
           }
         },
         {
-          "citation": "LuanNN et al 2013 Am J Clin Nutr",
-          "pmid": "23966430",
-          "year": 2013,
-          "study_type": "meta_analysis",
-          "n_participants": 35,
+          "citation": "Jordan et al 2012 Cancer Causes Control",
+          "year": 2012,
+          "study_type": "case_control",
           "direction": "protective",
           "quality": "high",
-          "notes": "Breastfeeding and ovarian cancer risk: a meta-analysis of epidemiologic studies.",
+          "notes": "Breast-feeding and risk of epithelial ovarian cancer.",
+          "doi": "10.1007/s10552-012-9963-4",
+          "pmid": "22527170",
+          "n_participants": 2226,
           "effect_quant": {
-            "metric": "RR",
-            "value": 0.76,
-            "ci_low": 0.69,
-            "ci_high": 0.83,
-            "comparator": "ever versus never breastfeeding"
+            "metric": "OR",
+            "value": 0.56,
+            "ci_low": 0.32,
+            "ci_high": 0.98,
+            "comparator": "epithelial ovarian cancer for average breastfeeding duration of 18 months per child versus none"
           }
         },
         {
-          "citation": "DanforthKN et al 2007 Cancer Causes Control",
-          "pmid": "17450440",
-          "year": 2007,
-          "study_type": "cohort",
-          "n_participants": 149693,
+          "citation": "Jordan et al 2009 Cancer Causes Control",
+          "year": 2009,
+          "study_type": "case_control",
           "direction": "protective",
-          "quality": "moderate",
-          "notes": "Breastfeeding and risk of ovarian cancer in two prospective cohorts.",
+          "quality": "high",
+          "notes": "Breastfeeding and risk of epithelial ovarian cancer.",
+          "doi": "10.1007/s10552-009-9440-x",
+          "pmid": "19779839",
+          "n_participants": 2380,
           "effect_quant": {
-            "metric": "RR",
-            "value": 0.66,
-            "ci_low": 0.46,
-            "ci_high": 0.96,
-            "comparator": "18 months or more of breastfeeding versus never breastfeeding"
+            "metric": "OR",
+            "value": 0.986,
+            "ci_low": 0.978,
+            "ci_high": 0.994,
+            "comparator": "ovarian cancer per additional month of total breastfeeding after adjustment for parity and confounders"
           }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "breastfeeding_parity_adjusted",
+      "name": "Breastfeeding duration adjusted for parity",
+      "kind": "behavior",
+      "aliases": [
+        "lactation independent of parity",
+        "breastfeeding beyond pregnancy count"
+      ],
+      "description": "Breastfeeding duration examined separately from or statistically adjusted for the number of births."
     }
   ]
 }

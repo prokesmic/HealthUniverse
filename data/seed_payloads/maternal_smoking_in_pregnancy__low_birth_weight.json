@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "maternal_smoking_in_pregnancy",
-      "name": "Maternal smoking during pregnancy",
-      "kind": "behavior"
-    },
-    {
-      "slug": "low_birth_weight",
-      "name": "Low birth weight",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "maternal_smoking_in_pregnancy",
@@ -19,50 +7,65 @@
       "direction": "harmful",
       "tier": "A",
       "effect_size": "moderate",
-      "effect_quant": "The strongest pooled evidence shows that maternal smoking during pregnancy is associated with about 89% higher odds of low birth weight, with a clear dose-response relationship. Large population studies have replicated both the birthweight decrement and the excess of term low-birth-weight births.",
-      "population": "singleton live births exposed to maternal smoking during pregnancy",
-      "mechanism": "Tobacco smoke can reduce fetal oxygen delivery and impair placental vascular function, which restricts fetal growth. The dose-response pattern seen across cohort and registry data fits a biologically direct growth-restriction effect rather than a purely social confounding signal.",
-      "summary": "Maternal smoking during pregnancy is one of the clearest modifiable risk factors for low birth weight. The evidence is deep, quantitatively consistent, and reinforced by dose-response findings, making this a high-confidence harmful edge rather than a subtle association.",
-      "caveats": "Residual confounding exists in all observational birth-outcome research, but it is unlikely to explain away an association of this size seen across many cohorts and populations. This edge refers to fetal growth restriction and low birth weight, not to every adverse neonatal outcome linked to smoking.",
+      "effect_quant": "Across very large cohorts, continued maternal smoking during pregnancy is associated with roughly doubled odds of low birth weight, with estimates around OR 2.0 to 2.2 and evidence that later-pregnancy smoking is especially damaging.",
+      "population": "infants with prenatal exposure to maternal cigarette smoking",
+      "mechanism": "Nicotine and carbon monoxide reduce uteroplacental blood flow and fetal oxygen delivery, directly restricting fetal growth and increasing the likelihood of low birth weight.",
+      "summary": "Few pregnancy exposures are as consistently linked to low birth weight as maternal smoking. Large register cohorts and older hospital-based cohorts all point in the same direction, and the size of effect is strong enough to support a top-tier harmful edge.",
+      "caveats": "The exact odds ratio varies by smoking intensity, timing, and background maternal risk. Even so, the evidence is broad, coherent, and directionally stable across settings.",
       "evidence": [
         {
-          "citation": "DiHK et al 2022 World J Pediatr",
-          "pmid": "35089538",
-          "year": 2022,
-          "study_type": "meta_analysis",
-          "n_participants": 55,
+          "citation": "Rumrich I et al 2020 BMJ Open",
+          "year": 2020,
+          "study_type": "cohort",
           "direction": "harmful",
           "quality": "high",
-          "notes": "Maternal smoking status during pregnancy and low birth weight in offspring: systematic review and meta-analysis of 55 cohort studies published from 1986 to 2020.",
-          "effect_quant": {
-            "metric": "OR",
-            "value": 1.89,
-            "ci_low": 1.80,
-            "ci_high": 1.98,
-            "comparator": "maternal smoking during pregnancy versus no smoking during pregnancy"
-          }
+          "notes": "Effects of maternal smoking on body size and proportions at birth: a register-based cohort study of 1.4 million births.",
+          "doi": "10.1136/bmjopen-2019-033465",
+          "pmid": "32102814",
+          "n_participants": 1380000
         },
         {
-          "citation": "VukovićM et al 2013 Matern Child Health J",
-          "pmid": "23090285",
-          "year": 2013,
+          "citation": "Lieberman E et al 1994 Am J Public Health",
+          "year": 1994,
           "study_type": "cohort",
-          "n_participants": 2613,
           "direction": "harmful",
-          "quality": "high",
-          "notes": "The influence of maternal smoking and exposure to residential ETS on pregnancy outcomes: a retrospective national study."
+          "quality": "moderate",
+          "notes": "Low birthweight at term and the timing of fetal exposure to maternal smoking.",
+          "doi": "10.2105/AJPH.84.7.1127",
+          "pmid": "8017537",
+          "n_participants": 11177
         },
         {
-          "citation": "TongVT et al 2010 Am J Prev Med",
-          "pmid": "20547278",
-          "year": 2010,
+          "citation": "Windham GC et al 2000 Epidemiology",
+          "year": 2000,
           "study_type": "cohort",
-          "n_participants": 3352756,
           "direction": "harmful",
-          "quality": "high",
-          "notes": "Infant morbidity and mortality attributable to prenatal smoking in the U.S."
+          "quality": "moderate",
+          "notes": "Prenatal active or passive tobacco smoke exposure and the risk of preterm delivery or low birth weight.",
+          "doi": "10.1097/00001648-200007000-00011",
+          "pmid": "10874550",
+          "n_participants": 4454
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "maternal_smoking_in_pregnancy",
+      "name": "Maternal smoking during pregnancy",
+      "kind": "behavior",
+      "aliases": [
+        "prenatal maternal smoking",
+        "smoking in pregnancy"
+      ],
+      "description": "Maternal cigarette smoking during pregnancy."
+    },
+    {
+      "slug": "low_birth_weight",
+      "name": "Low birth weight",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Birth weight below 2,500 grams or closely related fetal growth restriction outcomes."
     }
   ]
 }

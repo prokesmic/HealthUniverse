@@ -1,27 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "vitamin_k_injection_at_birth",
-      "name": "Intramuscular vitamin K at birth",
-      "kind": "drug",
-      "aliases": [
-        "newborn IM vitamin K prophylaxis",
-        "vitamin K injection after birth"
-      ],
-      "description": "Routine intramuscular vitamin K prophylaxis administered to newborns shortly after birth."
-    },
-    {
-      "slug": "hemorrhagic_disease_newborn",
-      "name": "Vitamin K deficiency bleeding in newborns",
-      "kind": "condition",
-      "aliases": [
-        "hemorrhagic disease of the newborn",
-        "VKDB"
-      ],
-      "description": "Early, classic, or late vitamin K deficiency bleeding during infancy."
-    }
-  ],
   "edges": [
     {
       "factor_slug": "vitamin_k_injection_at_birth",
@@ -29,50 +7,66 @@
       "direction": "protective",
       "tier": "A",
       "effect_size": "large",
-      "effect_quant": "The most convincing pooled surveillance evidence shows that intramuscular vitamin K at birth reduces late vitamin K deficiency bleeding by roughly two orders of magnitude compared with no prophylaxis.",
-      "population": "newborn infants receiving routine intramuscular vitamin K prophylaxis at birth",
-      "mechanism": "Newborn hepatic vitamin K stores are low, placental transfer is limited, and exclusive breastfeeding does not rapidly correct the deficit. A single intramuscular dose bridges that vulnerable early period and prevents spontaneous bleeding from emerging before feeding and gut microbial synthesis can stabilize vitamin K status.",
-      "summary": "This is one of the clearer prophylaxis edges in pediatrics. The systematic review found an extremely large reduction in late vitamin K deficiency bleeding with intramuscular prophylaxis versus no prophylaxis, and national surveillance data repeatedly show that the remaining cases cluster in babies who received no dose, incomplete oral dosing, or who had special risk factors such as cholestatic disease.",
-      "caveats": "Direct randomized evidence for late VKDB is limited because the event is rare and it would now be ethically difficult to randomize newborns to no prophylaxis. The practical uncertainty is mainly about oral alternatives and special populations, not about whether routine intramuscular prophylaxis works in general.",
+      "effect_quant": "Routine vitamin K prophylaxis at birth is associated with a large reduction in vitamin K deficiency bleeding risk, with older trials showing less early bleeding or coagulopathy and surveillance studies showing that VKDB becomes uncommon when prophylaxis is used.",
+      "population": "newborn infants receiving intramuscular vitamin K at birth",
+      "mechanism": "Newborn hepatic vitamin K stores are low, and intramuscular vitamin K rapidly restores the vitamin K-dependent coagulation pathway, directly lowering the chance of classic or late hemorrhagic disease.",
+      "summary": "Vitamin K injection at birth is one of the clearest preventive neonatal interventions in routine care. Both classic coagulation outcomes and population surveillance of vitamin K deficiency bleeding strongly support a protective effect, making this a high-confidence beneficial edge.",
+      "caveats": "The strongest direct randomized data are older and often focus on classic bleeding or biochemical markers rather than modern surveillance definitions of late VKDB. Even so, the direction and clinical importance of benefit are not seriously in doubt.",
       "evidence": [
         {
-          "citation": "SankarMJ et al 2016 J Perinatol",
-          "pmid": "27109090",
-          "year": 2016,
-          "study_type": "systematic_review",
-          "n_participants": 4,
-          "direction": "protective",
-          "quality": "high",
-          "notes": "Vitamin K prophylaxis for prevention of vitamin K deficiency bleeding: a systematic review.",
-          "effect_quant": {
-            "metric": "RR",
-            "value": 0.02,
-            "ci_low": 0.0,
-            "ci_high": 0.1,
-            "comparator": "intramuscular or subcutaneous prophylaxis versus no prophylaxis for late VKDB"
-          }
-        },
-        {
-          "citation": "ZurynskiY et al 2020 Arch Dis Child",
-          "pmid": "31519552",
-          "year": 2020,
-          "study_type": "cohort",
-          "n_participants": 58,
-          "direction": "protective",
-          "quality": "high",
-          "notes": "Vitamin K deficiency bleeding in Australian infants 1993-2017: an Australian Paediatric Surveillance Unit study."
-        },
-        {
-          "citation": "BusfieldA et al 2013 Arch Dis Child",
-          "pmid": "23148314",
-          "year": 2013,
-          "study_type": "cohort",
-          "n_participants": 11,
+          "citation": "MalikS et al 1992 Indian Pediatr",
+          "year": 1992,
+          "study_type": "rct",
           "direction": "protective",
           "quality": "moderate",
-          "notes": "Vitamin K deficiency bleeding after NICE guidance and withdrawal of Konakion Neonatal: British Paediatric Surveillance Unit study, 2006-2008."
+          "notes": "Comparative study of oral versus injectable vitamin K in neonates.",
+          "pmid": "1428134",
+          "n_participants": 100
+        },
+        {
+          "citation": "ZhouF et al 2002 Zhonghua Yu Fang Yi Xue Za Zhi",
+          "year": 2002,
+          "study_type": "case_control",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "[An epidemiological study on vitamin K deficiency bleeding in infants under six months].",
+          "pmid": "12411188",
+          "n_participants": 28156
+        },
+        {
+          "citation": "NatarajanAS et al 2025 Indian Pediatr",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "One Milligram Versus Two Milligram Intramuscular Vitamin K to Prevent Late-Onset Hemorrhagic Disease in Young Infants: A Randomized Controlled Trial.",
+          "doi": "10.1007/s13312-025-3374-6",
+          "pmid": "39912270",
+          "n_participants": 82
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vitamin_k_injection_at_birth",
+      "name": "Vitamin K injection at birth",
+      "kind": "drug",
+      "aliases": [
+        "intramuscular vitamin K prophylaxis",
+        "newborn vitamin K shot"
+      ],
+      "description": "Routine intramuscular vitamin K prophylaxis administered to newborns shortly after birth."
+    },
+    {
+      "slug": "hemorrhagic_disease_newborn",
+      "name": "Hemorrhagic disease of the newborn",
+      "kind": "condition",
+      "aliases": [
+        "vitamin K deficiency bleeding",
+        "VKDB"
+      ],
+      "description": "Bleeding in newborns or young infants caused by vitamin K deficiency."
     }
   ]
 }

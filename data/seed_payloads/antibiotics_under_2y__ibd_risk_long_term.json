@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "antibiotics_under_2y",
-      "name": "Antibiotic exposure before age 2 years",
-      "kind": "drug"
-    },
-    {
-      "slug": "ibd_risk_long_term",
-      "name": "Long-term inflammatory bowel disease risk",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "antibiotics_under_2y",
@@ -19,50 +7,89 @@
       "direction": "harmful",
       "tier": "B",
       "effect_size": "small",
-      "effect_quant": "The newest childhood-focused meta-analysis found that antibiotic exposure before adulthood was associated with about 42% higher later IBD risk, and the signal persisted in Scandinavian birth cohorts even after adjustment for infection frequency. Direct cohort data also show dose-response patterns when repeated antibiotic courses occur in the first year.",
-      "population": "children exposed to systemic antibiotics in infancy or the first 2 years of life, followed into later childhood or early adulthood",
-      "mechanism": "Antibiotics can disrupt microbial colonization during a developmental window when immune tolerance and epithelial homeostasis are still maturing. Repeated perturbation of the gut microbiome may make later Crohn disease or broader IBD more likely in susceptible children.",
-      "summary": "Antibiotic exposure in the first years of life is associated with higher later IBD risk, and the association now looks more credible than it did a decade ago. The strongest support comes from recent meta-analyses and a pooled Scandinavian birth-cohort study that adjusted for infection frequency, making the signal harder to dismiss as just sicker children receiving more antibiotics.",
-      "caveats": "Residual confounding by infection burden, healthcare use, and genetic susceptibility still matters, and the signal is stronger for Crohn disease than for ulcerative colitis in some analyses. This edge is about repeated early exposure and later population risk, not about avoiding clearly indicated antibiotics in an acutely ill child.",
+      "effect_quant": "The observational literature consistently points toward higher later IBD risk after antibiotic exposure in infancy or toddlerhood. In a Norwegian nationwide cohort, antibiotic exposure before age 2 was associated with an adjusted odds ratio of 1.33 for later pediatric IBD, with a stronger association after more than 2 courses and for broad-spectrum agents.",
+      "population": "children exposed to systemic antibiotics during the first 2 years of life",
+      "mechanism": "Antibiotics given during a critical window of microbiome assembly may alter gut microbial diversity, immune education, and mucosal barrier homeostasis in ways that increase later susceptibility to inflammatory bowel disease. Repeated and broad-spectrum exposure may amplify that disruption.",
+      "summary": "The signal is directionally harmful, though entirely observational. Large register studies and pediatric IBD cohorts consistently link early-life antibiotic exposure with higher later IBD risk, especially with repeated courses or broader-spectrum antibiotics.",
+      "caveats": "Confounding by infection burden is a real concern, because children who receive antibiotics differ from unexposed children in ways not fully captured by administrative data. Even so, newer analyses that adjust for infection frequency still tend to show a residual association.",
       "evidence": [
         {
-          "citation": "StørdalK et al 2026 Inflamm Bowel Dis",
-          "pmid": "41617205",
-          "year": 2026,
-          "study_type": "meta_analysis",
-          "n_participants": 2783,
+          "citation": "Andersen S et al 2024 J Pediatr Clin Pract",
+          "year": 2024,
+          "study_type": "cohort",
           "direction": "harmful",
           "quality": "high",
-          "notes": "Systematic review and meta-analysis of childhood exposure to antibiotics and the subsequent risk of IBD.",
+          "notes": "Fetal and Early-Life Antibiotics and Risk of Pediatric Inflammatory Bowel Disease: A Population-Based Nationwide Register Study.",
+          "doi": "10.1016/j.jpedcp.2024.200096",
+          "pmid": "39949419",
+          "n_participants": 536819,
           "effect_quant": {
-            "metric": "RR",
-            "value": 1.42,
-            "ci_low": 1.16,
-            "ci_high": 1.74,
-            "comparator": "childhood antibiotic exposure versus no exposure for later IBD"
+            "metric": "aOR",
+            "value": 1.33,
+            "ci_low": 1.15,
+            "ci_high": 1.53,
+            "comparator": "pediatric inflammatory bowel disease after antibiotic exposure before age 2 versus no exposure"
           }
         },
         {
-          "citation": "MårildK et al 2025 Aliment Pharmacol Ther",
-          "pmid": "39450871",
-          "year": 2025,
+          "citation": "Kronman MP et al 2012 Pediatrics",
+          "year": 2012,
           "study_type": "cohort",
-          "n_participants": 103046,
           "direction": "harmful",
           "quality": "high",
-          "notes": "Early-Life Infections, Antibiotics and Later Risk of Childhood and Early Adult-Onset Inflammatory Bowel Disease: Pooled Analysis of Two Scandinavian Birth Cohorts."
+          "notes": "Antibiotic exposure and IBD development among children: a population-based cohort study.",
+          "doi": "10.1542/peds.2011-3886",
+          "pmid": "23008454",
+          "n_participants": 1072426,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 5.51,
+            "ci_low": 1.66,
+            "ci_high": 18.28,
+            "comparator": "IBD after antianaerobic antibiotic exposure before 1 year of age versus no exposure"
+          }
         },
         {
-          "citation": "CanovaC et al 2020 Int J Environ Res Public Health",
-          "pmid": "32252276",
-          "year": 2020,
+          "citation": "Jawad AB et al 2023 J Pediatr Gastroenterol Nutr",
+          "year": 2023,
           "study_type": "cohort",
-          "n_participants": 213515,
           "direction": "harmful",
           "quality": "high",
-          "notes": "Perinatal and Antibiotic Exposures and the Risk of Developing Childhood-Onset Inflammatory Bowel Disease: A Nested Case-Control Study Based on a Population-Based Birth Cohort."
+          "notes": "Early Life Oral Antibiotics Are Associated With Pediatric-Onset Inflammatory Bowel Disease-A Nationwide Study.",
+          "doi": "10.1097/MPG.0000000000003861",
+          "pmid": "37346028",
+          "n_participants": 20245,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.33,
+            "ci_low": 1.2,
+            "ci_high": 1.5,
+            "comparator": "pediatric-onset IBD after oral antibiotic exposure during the first 5 years of life versus no exposure"
+          }
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "antibiotics_under_2y",
+      "name": "Antibiotic exposure under 2 years",
+      "kind": "drug",
+      "aliases": [
+        "antibiotics in the first 2 years of life",
+        "early-life antibiotics before age 2"
+      ],
+      "description": "Systemic antibiotic exposure during infancy and the second year of life."
+    },
+    {
+      "slug": "ibd_risk_long_term",
+      "name": "Long-term inflammatory bowel disease risk",
+      "kind": "condition",
+      "aliases": [
+        "later pediatric IBD risk",
+        "future Crohn disease or ulcerative colitis risk"
+      ],
+      "description": "Subsequent risk of pediatric or early adult-onset inflammatory bowel disease after early-life exposure."
     }
   ]
 }

@@ -1,64 +1,61 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "high_homocysteine",
-      "name": "High homocysteine",
-      "kind": "biomarker",
-      "aliases": [
-        "hyperhomocysteinemia",
-        "elevated homocysteine"
-      ],
-      "description": "Circulating homocysteine concentrations above the usual reference range."
-    }
-  ],
   "edges": [
     {
       "factor_slug": "high_homocysteine",
       "outcome_slug": "cvd",
       "direction": "harmful",
-      "tier": "C",
+      "tier": "B",
       "effect_size": "small",
-      "effect_quant": "Higher genetically predicted homocysteine was associated with any stroke in Mendelian randomization (OR 1.11 per 1-SD increase, 95% CI 1.03 to 1.21), while meta-analytic observational data show higher coronary and stroke risk at higher homocysteine levels.",
-      "population": "general adult populations",
-      "mechanism": "Homocysteine can plausibly contribute to endothelial dysfunction, oxidative stress, and thrombotic tendency, which is why it has remained a durable cardiovascular biomarker candidate. The unresolved question is whether it acts as a direct driver across the whole CVD spectrum or more selectively in certain vascular endpoints such as stroke.",
-      "summary": "High homocysteine remains a real cardiovascular warning signal, but the causality story is more specific than older broad claims implied. The observational literature links higher levels to coronary disease and especially stroke, while Mendelian-randomization evidence supports a modest stroke association more clearly than a universal causal effect across all cardiovascular outcomes.",
-      "caveats": "This edge is intentionally modest because homocysteine may be more important for some vascular phenotypes than others, and lowering homocysteine has not translated into uniformly dramatic CVD prevention. It is better read as a small harmful signal with stronger cerebrovascular support than as a master explanation for all cardiovascular disease.",
+      "effect_quant": "In pooled prospective data, each 5 micromol/L higher homocysteine was associated with OR 1.32 (95% CI 1.19 to 1.45) for ischemic heart disease and 1.59 (1.29 to 1.96) for stroke; in Hordaland, the highest category had a 1.94-fold CVD hospitalization rate ratio.",
+      "population": "general adult",
+      "mechanism": "Homocysteine is linked to endothelial dysfunction, oxidative stress, thrombogenicity, and impaired nitric-oxide signaling, which together provide a plausible route from higher circulating levels to vascular events in susceptible adults.",
+      "summary": "Prospective cohorts and older meta-analyses consistently associate higher homocysteine with more cardiovascular events, although the average effect size is moderate rather than massive and later causal interpretation has remained debated. Overall the literature supports high homocysteine as a harmful vascular risk marker, especially for stroke-prone outcomes.",
+      "caveats": "Homocysteine is also a marker of folate, B12, renal, and broader metabolic status, so confounding and mediation are difficult to separate fully. The edge is stronger as a risk signal than as proof that lowering homocysteine alone will always translate into proportional event reduction.",
       "evidence": [
         {
-          "citation": "Yuan S et al 2021 BMC Med",
-          "pmid": "33888102",
-          "doi": "10.1186/s12916-021-01977-8",
-          "year": 2021,
-          "study_type": "case_control",
-          "n_participants": 1,
+          "citation": "Wald DS et al 2002 BMJ",
+          "year": 2002,
+          "study_type": "meta_analysis",
           "direction": "harmful",
           "quality": "high",
-          "notes": "Homocysteine, B vitamins, and cardiovascular disease: a Mendelian randomization study."
+          "notes": "Homocysteine and cardiovascular disease: evidence on causality from a meta-analysis.",
+          "doi": "10.1136/bmj.325.7374.1202",
+          "pmid": "12446535",
+          "n_participants": 20669
         },
         {
-          "citation": "Wang B et al 2022 J Thorac Dis",
-          "pmid": "35399239",
-          "doi": "10.21037/jtd-22-78",
-          "year": 2022,
-          "study_type": "meta_analysis",
-          "n_participants": 10103,
+          "citation": "Nurk E et al 2002 Arch Intern Med",
+          "year": 2002,
+          "study_type": "cohort",
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Systematic review and meta-analysis of the correlation between plasma homocysteine levels and coronary heart disease."
+          "notes": "Plasma total homocysteine and hospitalizations for cardiovascular disease: the Hordaland Homocysteine Study.",
+          "doi": "10.1001/archinte.162.12.1374",
+          "pmid": "12076236",
+          "n_participants": 17361
         },
         {
-          "citation": "Zhou Q et al 2020 Nutr Metab Cardiovasc Dis",
-          "pmid": "32912796",
-          "doi": "10.1016/j.numecd.2020.07.026",
-          "year": 2020,
-          "study_type": "meta_analysis",
-          "n_participants": 11061,
+          "citation": "Schnabel R et al 2005 J Am Coll Cardiol",
+          "year": 2005,
+          "study_type": "cohort",
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Association of homocysteine level with risk of stroke: A dose-response meta-analysis of prospective cohort studies."
+          "notes": "Glutathione peroxidase-1 and homocysteine for cardiovascular risk prediction: results from the AtheroGene study.",
+          "doi": "10.1016/j.jacc.2005.02.070",
+          "pmid": "15893179",
+          "n_participants": 643
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "high_homocysteine",
+      "name": "High homocysteine",
+      "kind": "biomarker",
+      "aliases": [],
+      "description": "High circulating homocysteine as a clinically relevant biomarker."
     }
   ]
 }

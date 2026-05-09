@@ -1,61 +1,88 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "ssri_elderly",
-      "name": "SSRI use in older adults",
-      "kind": "drug"
-    },
-    {
-      "slug": "hyponatremia_risk",
-      "name": "Hyponatremia risk",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "ssri_elderly",
       "outcome_slug": "hyponatremia_risk",
       "direction": "harmful",
-      "tier": "A",
+      "tier": "B",
       "effect_size": "moderate",
-      "effect_quant": "The association is not subtle in older adults. The newest multi-hospital cohort found a significant increase in incident hyponatremia after SSRI initiation, and older geriatric cohorts show that sodium can drift quickly downward even when only a subgroup crosses the diagnostic threshold.",
-      "population": "older adults initiating SSRIs or closely related serotonergic antidepressants",
-      "mechanism": "SSRIs can trigger inappropriate antidiuretic hormone release and impair free-water excretion. Older age, female sex, low baseline sodium, concomitant diuretics, and medical comorbidity all magnify that SIADH-like vulnerability, which is why the edge is much more clinically important in geriatric practice than in younger adults.",
-      "summary": "This is a strong geriatric medication-safety edge. The best current cohort data show that older adults starting SSRIs are at increased risk of clinically meaningful hyponatremia, and earlier age-psychiatry audits support the same pattern by showing faster sodium decline after SSRI or SNRI initiation.",
-      "caveats": "Not every older SSRI user will become hyponatremic, and the risk differs across specific agents and baseline frailty. But the first weeks to months after initiation are important enough that electrolyte awareness should be built into routine prescribing.",
+      "effect_quant": "This is one of the cleaner geriatric antidepressant safety signals. In a 2026 multi-institutional cohort, SSRI initiation was associated with higher hyponatremia risk than other antidepressant classes overall (HR 1.18, 95% CI 1.01 to 1.38) and especially in adults aged 60 and older (HR 1.29, 95% CI 1.06 to 1.57). In the Stockholm Sodium Cohort of 234,217 first-time SSRI or venlafaxine users, the adjusted odds ratio for profound hyponatremia was 4.29 in the first 3 months and 10.06 in the first 2 weeks after initiation, with older women at highest absolute risk.",
+      "population": "older adults starting selective serotonin reuptake inhibitors, especially women and people with additional SIADH or sodium-lowering risk factors",
+      "mechanism": "SSRIs can provoke syndrome of inappropriate antidiuretic hormone secretion, leading to dilutional hyponatremia. Older age, female sex, low body mass, concurrent diuretics, and acute medical illness can magnify that susceptibility and make the sodium drop clinically important rather than biochemical only.",
+      "summary": "The overall signal is clearly harmful and strongest soon after treatment initiation. While not every older patient on an SSRI develops clinically significant hyponatremia, the risk is high enough and early enough that sodium monitoring and drug selection deserve more attention in frail older adults.",
+      "caveats": "The largest modern datasets combine SSRIs with some closely related serotonergic antidepressants or compare classes rather than individual molecules, so class-wide estimates may conceal meaningful drug-to-drug variation. Even so, the direction of risk is consistent enough that this edge should be treated as a real safety concern, not an isolated case-report phenomenon.",
       "evidence": [
         {
           "citation": "JungK et al 2026 Br J Clin Pharmacol",
-          "pmid": "41531184",
           "year": 2026,
           "study_type": "cohort",
-          "n_participants": 42036,
           "direction": "harmful",
           "quality": "high",
-          "notes": "Antidepressants and the risk of hyponatremia: A multi-institutional cohort study using observational medical outcomes partnership-Common Data Model."
+          "notes": "Antidepressants and the risk of hyponatremia: A multi-institutional cohort study using observational medical outcomes partnership-Common Data Model.",
+          "doi": "10.1002/bcp.70441",
+          "pmid": "41531184",
+          "n_participants": 42036,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.29,
+            "ci_low": 1.06,
+            "ci_high": 1.57,
+            "comparator": "hyponatremia risk in patients aged 60 years or older initiating an SSRI versus other antidepressant classes"
+          }
         },
         {
-          "citation": "LaneNE et al 2024 J Am Geriatr Soc",
-          "pmid": "38662854",
-          "year": 2024,
+          "citation": "IssaI et al 2025 Eur J Endocrinol",
+          "year": 2025,
           "study_type": "cohort",
-          "n_participants": 420085,
           "direction": "harmful",
           "quality": "high",
-          "notes": "Hyponatremia-associated hospital visits are not reduced by early electrolyte testing in older adults starting antidepressants."
+          "notes": "The association of selective serotonin reuptake inhibitors and venlafaxine with profound hyponatremia.",
+          "doi": "10.1093/ejendo/lvaf140",
+          "pmid": "40627725",
+          "n_participants": 234217,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 4.29,
+            "ci_low": 3.34,
+            "ci_high": 5.52,
+            "comparator": "profound hyponatremia within the first 3 months after initiating SSRI or venlafaxine therapy"
+          }
         },
         {
           "citation": "GiorlandoF et al 2013 Curr Drug Saf",
-          "pmid": "23841535",
           "year": 2013,
           "study_type": "cohort",
-          "n_participants": 259,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Hyponatraemia: an audit of aged psychiatry patients taking SSRIs and SNRIs."
+          "notes": "Hyponatraemia: an audit of aged psychiatry patients taking SSRIs and SNRIs.",
+          "doi": "10.2174/15748863113089990036",
+          "pmid": "23841535",
+          "n_participants": 259
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ssri_elderly",
+      "name": "SSRI use in older adults",
+      "kind": "drug",
+      "aliases": [
+        "selective serotonin reuptake inhibitors in elders",
+        "geriatric SSRI treatment"
+      ],
+      "description": "Use of selective serotonin reuptake inhibitors in older adults for depression, anxiety, or related conditions."
+    },
+    {
+      "slug": "hyponatremia_risk",
+      "name": "Hyponatremia risk",
+      "kind": "condition",
+      "aliases": [
+        "risk of hyponatremia",
+        "low sodium risk"
+      ],
+      "description": "Risk of treatment-associated low serum sodium, including SIADH-related hyponatremia."
     }
   ]
 }

@@ -6,44 +6,69 @@
       "outcome_slug": "intestinal_permeability",
       "direction": "protective",
       "tier": "B",
-      "effect_size": "moderate",
-      "effect_quant": "A 2024 meta-analysis of adult placebo-controlled trials found that glutamine supplementation improved established gut-permeability markers overall, and earlier surgical and critical-care meta-analyses also pointed toward lower permeability and inflammatory marker burden with glutamine-enriched feeding. The signal is not universal across every acute-care setting, but the direction is consistently toward barrier support rather than barrier injury.",
-      "population": "adults receiving oral or enteral glutamine supplementation in permeability, surgical, or critical-care clinical trials",
-      "mechanism": "Glutamine is a preferred fuel for enterocytes and may reduce intestinal permeability by supporting tight-junction integrity, mucosal repair, and epithelial energy supply during physiologic stress. Its clearest role seems to be barrier maintenance under inflammatory or catabolic pressure rather than broad performance supplementation in otherwise healthy adults.",
-      "summary": "Glutamine supplementation generally appears to improve intestinal permeability markers in adults, especially when the gut barrier is stressed by surgery, critical illness, or other catabolic states. The most up-to-date meta-analysis supports a protective effect, and earlier pooled clinical data point in the same direction, though the signal is stronger for barrier endpoints than for broad clinical outcomes in every population.",
-      "caveats": "Most supportive studies come from stressed or ill populations rather than healthy community adults, so this edge should not be overgeneralized into a universal gut-health claim. Better barrier markers do not always guarantee shorter hospital stays or lower mortality, and formulation, route, and baseline illness severity likely matter.",
+      "effect_size": "small",
+      "effect_quant": "A 2024 meta-analysis of 10 randomized trials in 352 adults found no overall significant effect of oral glutamine on intestinal permeability (WMD -0.00, 95% CI -0.04 to 0.03), but a significant reduction appeared in studies using doses above 30 g/day; in a randomized 8-week trial of 106 adults with postinfectious IBS-D and increased permeability, glutamine reduced urinary lactulose/mannitol ratio from 0.11 to 0.05 and dramatically improved IBS severity versus placebo.",
+      "population": "adults receiving oral or enteral glutamine in trials measuring lactulose-mannitol ratios or related permeability markers, including postinfectious IBS-D and critically ill or surgical populations",
+      "mechanism": "Glutamine is a preferred fuel for enterocytes and may reinforce tight-junction integrity, reduce epithelial stress, and improve mucosal repair when the barrier is metabolically strained or inflamed.",
+      "summary": "Glutamine has a biologically plausible and partly trial-supported barrier-protective signal, but the literature is not uniformly positive. The cleanest conclusion is that glutamine can improve intestinal permeability in selected stressed or hyperpermeable states, while average effects across heterogeneous adult trials are more modest.",
+      "caveats": "Dose, route, baseline barrier dysfunction, and clinical context matter a great deal. Positive findings in postinfectious IBS-D or enteral-feeding settings do not guarantee benefit in every inflammatory or critical-care population.",
       "evidence": [
         {
-          "citation": "Basiri et al 2024 Amino Acids",
-          "pmid": "39397201",
+          "citation": "AbbasiF et al 2024 Amino Acids",
           "year": 2024,
           "study_type": "meta_analysis",
-          "n_participants": 12,
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A systematic review and meta-analysis of clinical trials on the effects of glutamine supplementation on gut permeability in adults.",
+          "doi": "10.1007/s00726-024-03420-7",
+          "pmid": "39397201",
+          "n_participants": 352
+        },
+        {
+          "citation": "ZhouQ et al 2019 Gut",
+          "year": 2019,
+          "study_type": "rct",
           "direction": "protective",
           "quality": "high",
-          "notes": "A systematic review and meta-analysis of clinical trials on the effects of glutamine supplementation on gut permeability in adults."
+          "notes": "Randomised placebo-controlled trial of dietary glutamine supplements for postinfectious irritable bowel syndrome.",
+          "doi": "10.1136/gutjnl-2017-315136",
+          "pmid": "30108163",
+          "n_participants": 106
         },
         {
-          "citation": "Liu et al 2016 Exp Ther Med",
-          "pmid": "28105083",
-          "year": 2016,
-          "study_type": "meta_analysis",
-          "n_participants": 21,
-          "direction": "protective",
+          "citation": "SinghN et al 2014 Pancreas",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "neutral",
           "quality": "moderate",
-          "notes": "Effects of glutamine on markers of intestinal inflammatory response and mucosal permeability in abdominal surgery patients: A meta-analysis."
-        },
-        {
-          "citation": "Saeed et al 2016 Asia Pac J Clin Nutr",
-          "pmid": "27440684",
-          "year": 2016,
-          "study_type": "meta_analysis",
-          "n_participants": 10,
-          "direction": "protective",
-          "quality": "moderate",
-          "notes": "Efficacy of glutamine-enriched enteral feeding formulae in critically ill patients: a systematic review and meta-analysis of randomized controlled trials."
+          "notes": "Effect of oral glutamine supplementation on gut permeability and endotoxemia in patients with severe acute pancreatitis: a randomized controlled trial.",
+          "doi": "10.1097/MPA.0000000000000124",
+          "pmid": "24809408",
+          "n_participants": 80
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "glutamine_supplementation",
+      "name": "Glutamine supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "oral glutamine",
+        "enteral glutamine"
+      ],
+      "description": "Supplemental glutamine provided orally, enterally, or as glutamine-enriched feeding support."
+    },
+    {
+      "slug": "intestinal_permeability",
+      "name": "Intestinal permeability",
+      "kind": "condition",
+      "aliases": [
+        "gut permeability",
+        "leaky gut"
+      ],
+      "description": "The extent to which the intestinal barrier permits translocation of luminal solutes or microbes."
     }
   ]
 }

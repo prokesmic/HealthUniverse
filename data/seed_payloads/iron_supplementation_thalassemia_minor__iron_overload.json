@@ -5,46 +5,58 @@
       "factor_slug": "iron_supplementation_thalassemia_minor",
       "outcome_slug": "iron_overload",
       "direction": "harmful",
-      "tier": "X",
+      "tier": "C",
       "effect_size": "small",
-      "effect_quant": "Across 166 non-transfusion-dependent thalassemia patients, liver iron concentration and ferritin were already elevated despite little or no transfusion exposure, supporting caution with empiric iron in this biology.",
-      "population": "people with thalassemia trait, thalassemia minor, or related non-transfusion-dependent thalassemia when iron deficiency is unproven",
-      "mechanism": "Thalassemia syndromes can suppress hepcidin and increase intestinal iron absorption even without transfusions. If iron is added empirically to a patient misclassified as having simple iron-deficiency anemia, the extra absorbed iron can accumulate on top of an already overload-prone physiology.",
-      "summary": "Direct randomized harm trials of iron supplementation in thalassemia minor are sparse, but the precautionary signal is still real: thalassemia-spectrum patients can accumulate iron even without regular transfusions, so routine iron therapy should be avoided unless true iron deficiency is documented. This is best treated as a contraindication-style edge rather than a high-certainty pooled-effect estimate.",
-      "caveats": "This edge does not mean every person with thalassemia trait must never receive iron; documented coexisting iron deficiency can still justify treatment. The risk signal applies to empiric or prolonged supplementation in patients with thalassemia-spectrum anemia when iron deficiency has not been proven biochemically.",
+      "effect_quant": "Among 192 patients with non-transfusion-dependent thalassemia, serum ferritin and liver iron concentration were significantly elevated versus healthy controls, and in thalassemia intermedia ferritin levels around 916 to 940 ng/mL corresponded to liver iron concentration above 5 mg Fe/g dry weight.",
+      "population": "people with thalassemia trait or other non-transfusion-dependent thalassemia phenotypes",
+      "mechanism": "Thalassemia syndromes can suppress hepcidin and increase gastrointestinal iron absorption even without transfusions, creating a baseline tendency toward iron loading. In that context, empiric iron supplementation without proven deficiency can add to an already dysregulated iron pool and worsen tissue overload risk.",
+      "summary": "Routine iron supplementation is generally a poor fit for thalassemia minor unless true iron deficiency is documented, because thalassemic erythropoiesis itself can favor iron loading. The evidence tying supplementation specifically to overload in trait carriers is indirect, but the biologic rationale and related thalassemia data make the contraindication clinically sensible.",
+      "caveats": "This is a low-certainty edge because direct intervention trials of iron supplementation in beta-thalassemia minor are scarce. It should not be read as saying that every thalassemia trait carrier is iron overloaded, only that empiric iron should be avoided unless deficiency is demonstrated.",
       "evidence": [
         {
-          "citation": "Porter JB et al 2017 Br J Haematol",
-          "pmid": "27917462",
-          "doi": "10.1111/bjh.14373",
-          "year": 2017,
+          "citation": "Luo Y et al 2019 Int J Med Sci",
+          "year": 2019,
           "study_type": "cohort",
-          "n_participants": 166,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Iron overload across the spectrum of non-transfusion-dependent thalassaemias: role of erythropoiesis, splenectomy and transfusions."
+          "notes": "Imbalance of erythropoiesis and iron metabolism in patients with thalassemia.",
+          "doi": "10.7150/ijms.27829",
+          "pmid": "30745811",
+          "n_participants": 387
         },
         {
-          "citation": "Musallam KM et al 2012 Blood Rev",
-          "pmid": "22631036",
-          "doi": "10.1016/S0268-960X(12)70006-1",
-          "year": 2012,
-          "study_type": "expert_opinion",
+          "citation": "Musallam KM et al 2018 Blood Res",
+          "year": 2018,
+          "study_type": "cross_sectional",
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Iron overload in non-transfusion-dependent thalassemia: a clinical perspective."
+          "notes": "Relationship between liver iron concentration determined by R2-MRI, serum ferritin, and liver enzymes in patients with thalassemia intermedia.",
+          "doi": "10.5045/br.2018.53.4.314",
+          "pmid": "30588469",
+          "n_participants": 119
         },
         {
-          "citation": "Sun A et al 2023 J Dent Sci",
-          "pmid": "37799867",
-          "doi": "10.1016/j.jds.2023.07.036",
-          "year": 2023,
-          "study_type": "expert_opinion",
+          "citation": "Spinelli S et al 2025 Int J Mol Sci",
+          "year": 2025,
+          "study_type": "mechanistic",
           "direction": "harmful",
           "quality": "low",
-          "notes": "Differential diagnosis between iron deficiency anemia and thalassemia trait-induced anemia."
+          "notes": "Iron Overload-Related Oxidative Stress Leads to Hyperphosphorylation and Altered Anion Exchanger 1 (Band 3) Function in Erythrocytes from Subjects with β-Thalassemia Minor.",
+          "doi": "10.3390/ijms26041593",
+          "pmid": "40004059"
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "iron_supplementation_thalassemia_minor",
+      "name": "Iron supplementation in thalassemia minor",
+      "kind": "behavior",
+      "aliases": [
+        "empiric iron in beta-thalassemia trait"
+      ],
+      "description": "Use of iron supplements in people with thalassemia minor or trait."
     }
   ]
 }

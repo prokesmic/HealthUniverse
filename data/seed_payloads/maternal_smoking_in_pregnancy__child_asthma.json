@@ -1,61 +1,74 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "maternal_smoking_in_pregnancy",
-      "name": "Maternal smoking during pregnancy",
-      "kind": "behavior"
-    },
-    {
-      "slug": "child_asthma",
-      "name": "Childhood asthma",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "maternal_smoking_in_pregnancy",
       "outcome_slug": "child_asthma",
       "direction": "harmful",
-      "tier": "A",
+      "tier": "B",
       "effect_size": "moderate",
-      "effect_quant": "The best prospective meta-analysis found prenatal smoke exposure increased childhood wheeze and asthma incidence by roughly 30% to 70%, and later pooled birth-cohort analysis continued to show higher childhood asthma odds after prenatal maternal smoking. This is one of the more stable prenatal respiratory-risk signals in the literature.",
-      "population": "children exposed in utero to maternal smoking during pregnancy",
-      "mechanism": "Prenatal tobacco smoke can impair fetal lung growth, alter airway immune programming, and increase oxidative stress during a key developmental window. The effect is reinforced when low birth weight or postnatal smoke exposure are also present, which helps explain the persistence of asthma risk into later childhood.",
-      "summary": "Maternal smoking during pregnancy increases childhood asthma risk. The association is supported by large prospective meta-analysis, pooled European birth-cohort data, and cohort work showing synergistic effects when prenatal smoke exposure is combined with low birth weight.",
-      "caveats": "Some studies struggle to separate prenatal effects from correlated postnatal household smoking and socioeconomic disadvantage, but the consistency and biologic plausibility remain strong. This edge is about asthma risk, not just transient infant wheeze.",
+      "effect_quant": "Prenatal maternal smoking is associated with later child wheeze or asthma in pooled analyses, with odds ratios typically around 1.15 to 1.65 and evidence of dose-response by cigarette consumption in some cohorts.",
+      "population": "children with prenatal exposure to maternal cigarette smoking",
+      "mechanism": "Prenatal tobacco exposure can impair fetal airway development, alter immune maturation, and reduce early-life lung function, all of which provide a biologically plausible route to later asthma.",
+      "summary": "The case that smoking during pregnancy raises later child asthma risk is supported by pooled birth-cohort analyses, national cohorts, and large pooled cross-sectional datasets. The effect is not enormous, but it is persistent, plausible, and often stronger when exposure is clearly prenatal rather than mixed with postnatal smoke.",
+      "caveats": "Postnatal smoke exposure, family history of asthma, and social confounding can blur the exact size of the prenatal effect. Even so, analyses that isolate smoking during pregnancy still usually point in a harmful direction.",
       "evidence": [
         {
-          "citation": "BurkeH et al 2012 Pediatrics",
-          "pmid": "22430451",
+          "citation": "Neuman A et al 2012 Am J Respir Crit Care Med",
           "year": 2012,
-          "study_type": "meta_analysis",
-          "n_participants": 79,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Prenatal and passive smoke exposure and incidence of asthma and wheeze: systematic review and meta-analysis."
-        },
-        {
-          "citation": "ThacherJD et al 2018 Environ Health Perspect",
-          "pmid": "29664587",
-          "year": 2018,
-          "study_type": "meta_analysis",
-          "n_participants": 10860,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Maternal Smoking during Pregnancy and Early Childhood and Development of Asthma and Rhinoconjunctivitis - a MeDALL Project."
-        },
-        {
-          "citation": "NeumanÅ et al 2011 Pediatrics",
-          "pmid": "21422092",
-          "year": 2011,
           "study_type": "cohort",
-          "n_participants": 3389,
           "direction": "harmful",
           "quality": "high",
-          "notes": "A strong synergism of low birth weight and prenatal smoking on asthma in schoolchildren."
+          "notes": "Maternal smoking in pregnancy and asthma in preschool children: a pooled analysis of eight birth cohorts.",
+          "doi": "10.1164/rccm.201203-0501OC",
+          "pmid": "22952297",
+          "n_participants": 21600
+        },
+        {
+          "citation": "Jaakkola JJK et al 2004 Am J Public Health",
+          "year": 2004,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maternal smoking in pregnancy, fetal development, and childhood asthma.",
+          "doi": "10.2105/AJPH.94.1.136",
+          "pmid": "14713711",
+          "n_participants": 58841
+        },
+        {
+          "citation": "Pattenden S et al 2006 Tob Control",
+          "year": 2006,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Parental smoking and children's respiratory health: independent effects of prenatal and postnatal exposure.",
+          "doi": "10.1136/tc.2005.015065",
+          "pmid": "16885578",
+          "n_participants": 53879
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "maternal_smoking_in_pregnancy",
+      "name": "Maternal smoking during pregnancy",
+      "kind": "behavior",
+      "aliases": [
+        "prenatal maternal smoking",
+        "smoking in pregnancy"
+      ],
+      "description": "Maternal cigarette smoking during pregnancy."
+    },
+    {
+      "slug": "child_asthma",
+      "name": "Childhood asthma",
+      "kind": "condition",
+      "aliases": [
+        "child asthma",
+        "pediatric asthma"
+      ],
+      "description": "Asthma diagnosed during childhood."
     }
   ]
 }

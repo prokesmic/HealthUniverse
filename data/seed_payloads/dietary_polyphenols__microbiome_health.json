@@ -7,43 +7,68 @@
       "direction": "protective",
       "tier": "C",
       "effect_size": "small",
-      "effect_quant": "A 2025 meta-analysis of 13 randomized trials (n=670) found that polyphenol-rich interventions increased acetate and butyrate, consistent with improved microbial function. Smaller randomized crossover trials in healthy or metabolic-risk adults also reported higher Bifidobacterium and other favorable taxa after red wine polyphenol exposure.",
-      "population": "adults consuming polyphenol-rich foods or beverages such as red wine, berries, cocoa, and other plant-derived interventions",
-      "mechanism": "Polyphenols can shift microbiome health by selectively favoring bacterial groups that metabolize complex plant compounds into short-chain fatty acids and other bioactive metabolites. The resulting pattern is less about one universal diversity boost and more about reproducible increases in beneficial taxa and microbial fermentation products in responsive hosts.",
-      "summary": "Dietary polyphenols generally look supportive of microbiome health, but the effect is food-specific and not perfectly uniform across studies. The strongest human evidence points to improved short-chain fatty acid production and selective increases in taxa like Bifidobacterium or butyrate producers, rather than a dramatic across-the-board diversity effect.",
-      "caveats": "This edge bundles several polyphenol sources together, so effect size and microbial signatures vary by matrix, dose, and host metabolic state. Some trials show only modest or selective changes, which is why the evidence is better described as promising and biologically coherent than definitive.",
+      "effect_quant": "In a randomized crossover trial of 50 older adults, a polyphenol-rich diet increased Blautia and Dorea and modestly improved microbial diversity in those with higher baseline inflammation; a 2-week trial of matcha green tea in 17 treated versus 16 placebo participants significantly shifted beta-diversity and changed 30 bacterial genera; by contrast, an 8-week xanthohumol trial in 30 healthy adults reshaped some taxa but did not significantly alter overall microbiota composition.",
+      "population": "adults exposed to polyphenol-rich foods or dietary patterns, including older adults, healthy volunteers, and participants with higher inflammatory burden",
+      "mechanism": "Polyphenols can act as selective microbial substrates and antimicrobial modulators, favoring beneficial taxa, altering microbial metabolite production, and supporting gut barrier and immune homeostasis.",
+      "summary": "Human intervention studies generally suggest that polyphenol-rich diets or foods can nudge the gut ecosystem in a beneficial direction, though the changes are usually taxon-specific and not universally large. The overall signal is favorable, but it is heterogeneous across polyphenol source, dose, and baseline enterotype.",
+      "caveats": "Different subclasses of polyphenols behave differently, and response is highly individualized. Some trials show clear shifts in specific taxa without broad diversity gains, so this edge should be read as microbiome-supportive rather than microbiome-resetting.",
       "evidence": [
         {
-          "citation": "Romo-Vaquero et al 2025 Nutrients",
-          "pmid": "40806053",
+          "citation": "Gargari G et al 2025 Microbiome Res Rep",
           "year": 2025,
-          "study_type": "meta_analysis",
-          "n_participants": 670,
-          "direction": "protective",
-          "quality": "high",
-          "notes": "Effect of Polyphenol-Rich Interventions on Gut Microbiota and Inflammatory or Oxidative Stress Markers in Adults Who Are Overweight or Obese: A Systematic Review and Meta-Analysis."
-        },
-        {
-          "citation": "Queipo-Ortuno et al 2012 Am J Clin Nutr",
-          "pmid": "22552027",
-          "year": 2012,
           "study_type": "rct",
-          "n_participants": 10,
           "direction": "protective",
           "quality": "moderate",
-          "notes": "Influence of red wine polyphenols and ethanol on the gut microbiota ecology and biochemical biomarkers."
+          "notes": "Effect of a polyphenol-rich dietary pattern on subjects aged ≥ 60 years with higher levels of inflammatory markers: insights into microbiome and metabolome.",
+          "doi": "10.20517/mrr.2025.33",
+          "pmid": "41403880",
+          "n_participants": 50
         },
         {
-          "citation": "Moreno-Indias et al 2016 Food Funct",
-          "pmid": "26599039",
-          "year": 2016,
+          "citation": "Morishima S et al 2023 J Clin Biochem Nutr",
+          "year": 2023,
           "study_type": "rct",
-          "n_participants": 20,
           "direction": "protective",
           "quality": "moderate",
-          "notes": "Red wine polyphenols modulate fecal microbiota and reduce markers of the metabolic syndrome in obese patients."
+          "notes": "A randomized, double-blinded study evaluating effect of matcha green tea on human fecal microbiota.",
+          "doi": "10.3164/jcbn.22-81",
+          "pmid": "36936880",
+          "n_participants": 33
+        },
+        {
+          "citation": "Jamieson PE et al 2024 Gut Microbes",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Gut enterotype-dependent modulation of gut microbiota and their metabolism in response to xanthohumol supplementation in healthy adults.",
+          "doi": "10.1080/19490976.2024.2315633",
+          "pmid": "38358253",
+          "n_participants": 30
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "dietary_polyphenols",
+      "name": "Dietary polyphenols",
+      "kind": "nutrient",
+      "aliases": [
+        "polyphenol-rich foods",
+        "plant polyphenols"
+      ],
+      "description": "Polyphenol compounds from foods such as berries, tea, cocoa, herbs, and other plant-rich dietary sources."
+    },
+    {
+      "slug": "microbiome_health",
+      "name": "Microbiome health",
+      "kind": "process",
+      "aliases": [
+        "gut microbial health",
+        "healthy gut ecosystem"
+      ],
+      "description": "A favorable gut microbial ecosystem characterized by beneficial taxa, balanced composition, and supportive microbial metabolic function."
     }
   ]
 }

@@ -5,43 +5,53 @@
       "factor_slug": "inositol_pcos",
       "outcome_slug": "insulin_sensitivity_pcos",
       "direction": "protective",
-      "tier": "C",
+      "tier": "B",
       "effect_size": "small",
-      "effect_quant": "Across recent randomized-trial meta-analyses, inositol modestly improved several glucose and insulin metrics in women with PCOS, with the clearest pooled signal favoring better fasting glucose and insulin-area-under-the-curve measures. The effect is directionally consistent, but larger guideline-grade reviews still judge the certainty as limited and less robust than many supplement claims suggest.",
-      "population": "women with polycystic ovary syndrome treated with myo-inositol, D-chiro-inositol, or combination inositol regimens",
-      "mechanism": "Inositol may improve insulin sensitivity in PCOS by supporting intracellular insulin signaling and reducing the mismatch between metabolic and ovarian signaling pathways that is characteristic of this syndrome. The likely effect is modest metabolic tuning rather than a metformin-level overhaul of glucose handling.",
-      "summary": "Inositol seems to modestly improve insulin sensitivity in women with PCOS, but the effect is not dramatic or uniformly certain across all outcomes. Recent meta-analyses of randomized trials generally show favorable movement in glucose and insulin-related measures, while also making clear that the evidence quality is mixed and product formulations vary.",
-      "caveats": "Inositol studies use different stereoisomer combinations, doses, and comparators, which makes the class look more precise than it really is. This is better read as a reasonable low-risk adjunct with a modest metabolic signal than as a proven first-line replacement for established insulin-sensitizing therapy.",
+      "effect_quant": "Pooled randomized evidence suggests inositol can improve metabolic markers of insulin sensitivity in PCOS. A 2023 meta-analysis of 26 randomized trials found greater reductions versus placebo in glucose and insulin exposure, including AUC insulin (MD -2081.05, 95% CI -2745.32 to -1416.78). More recent umbrella evidence also reported an improvement in HOMA-IR of -1.14 compared with placebo or folic acid controls.",
+      "population": "women with polycystic ovary syndrome treated with myo-inositol, D-chiro-inositol, or related inositol formulations",
+      "mechanism": "Inositol is thought to act as part of intracellular insulin signaling pathways, potentially improving post-receptor insulin action and reducing compensatory hyperinsulinemia. In PCOS, that may translate into modest improvements in glycemic handling, androgen burden, and cycle regularity.",
+      "summary": "The evidence supports a protective metabolic effect, but the magnitude is not dramatic and appears phenotype-dependent. Inositol looks most useful as a relatively low-risk insulin-sensitizing adjunct in PCOS rather than as a universally superior replacement for metformin.",
+      "caveats": "Trial quality is uneven, formulations differ, and benefits are often clearer against placebo than against metformin. This edge should therefore be read as modestly favorable rather than as proof of a large or universal insulin-sensitivity effect.",
       "evidence": [
         {
-          "citation": "Teede et al 2024 J Clin Endocrinol Metab",
-          "pmid": "38163998",
-          "year": 2024,
-          "study_type": "meta_analysis",
-          "n_participants": 2230,
-          "direction": "protective",
-          "quality": "moderate",
-          "notes": "Inositol for Polycystic Ovary Syndrome: A Systematic Review and Meta-analysis to Inform the 2023 Update of the International Evidence-based PCOS Guidelines."
-        },
-        {
-          "citation": "Pundir et al 2023 Reprod Biol Endocrinol",
-          "pmid": "36703143",
+          "citation": "GreffD et al 2023 Reprod Biol Endocrinol",
           "year": 2023,
           "study_type": "meta_analysis",
-          "n_participants": 1691,
           "direction": "protective",
-          "quality": "moderate",
-          "notes": "Inositol is an effective and safe treatment in polycystic ovary syndrome: a systematic review and meta-analysis of randomized controlled trials."
+          "quality": "high",
+          "notes": "Inositol is an effective and safe treatment in polycystic ovary syndrome: a systematic review and meta-analysis of randomized controlled trials.",
+          "doi": "10.1186/s12958-023-01055-z",
+          "pmid": "36703143",
+          "n_participants": 1691,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -2081.05,
+            "ci_low": -2745.32,
+            "ci_high": -1416.78,
+            "comparator": "area under the curve insulin with inositol versus placebo in women with PCOS"
+          }
         },
         {
-          "citation": "Unfer et al 2022 Reprod Sci",
-          "pmid": "35477841",
-          "year": 2022,
-          "study_type": "meta_analysis",
-          "n_participants": 1083,
-          "direction": "mixed",
+          "citation": "FitzV et al 2024 J Clin Endocrinol Metab",
+          "year": 2024,
+          "study_type": "systematic_review",
+          "direction": "protective",
           "quality": "moderate",
-          "notes": "Efficacy of Myo-inositol on Anthropometric, Metabolic, and Endocrine Outcomes in PCOS Patients: a Meta-analysis of Randomized Controlled Trial."
+          "notes": "Inositol for Polycystic Ovary Syndrome: A Systematic Review and Meta-analysis to Inform the 2023 Update of the International Evidence-based PCOS Guidelines.",
+          "doi": "10.1210/clinem/dgad762",
+          "pmid": "38163998",
+          "n_participants": 2230
+        },
+        {
+          "citation": "EmekciOzayO et al 2017 Gynecol Endocrinol",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Myo-inositol administration positively effects ovulation induction and intrauterine insemination in patients with polycystic ovary syndrome: a prospective, controlled, randomized trial.",
+          "doi": "10.1080/09513590.2017.1296127",
+          "pmid": "28277112",
+          "n_participants": 196
         }
       ]
     }
@@ -49,17 +59,23 @@
   "new_entities": [
     {
       "slug": "inositol_pcos",
-      "name": "Inositol treatment in PCOS",
+      "name": "Inositol therapy for PCOS",
       "kind": "supplement",
-      "aliases": [],
-      "description": "Myo-inositol, D-chiro-inositol, or mixed inositol supplementation used to treat polycystic ovary syndrome."
+      "aliases": [
+        "myo-inositol for PCOS",
+        "D-chiro-inositol for PCOS"
+      ],
+      "description": "Use of inositol supplements, including myo-inositol and D-chiro-inositol, in women with polycystic ovary syndrome."
     },
     {
       "slug": "insulin_sensitivity_pcos",
       "name": "Insulin sensitivity in PCOS",
       "kind": "process",
-      "aliases": [],
-      "description": "Insulin sensitivity or insulin resistance metrics in women with polycystic ovary syndrome."
+      "aliases": [
+        "metabolic insulin responsiveness in PCOS",
+        "PCOS insulin sensitivity"
+      ],
+      "description": "The degree of insulin responsiveness or insulin resistance among women with polycystic ovary syndrome."
     }
   ]
 }

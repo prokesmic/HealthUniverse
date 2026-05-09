@@ -1,61 +1,88 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "memantine",
-      "name": "Memantine",
-      "kind": "drug"
-    },
-    {
-      "slug": "moderate_severe_dementia",
-      "name": "Moderate to severe dementia",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "memantine",
       "outcome_slug": "moderate_severe_dementia",
       "direction": "protective",
-      "tier": "A",
+      "tier": "B",
       "effect_size": "small",
-      "effect_quant": "The best evidence shows a small but consistent symptomatic benefit. The 2019 Cochrane update found clinically modest improvement across cognition, global status, function, and behavior in roughly 3,700 participants with moderate-to-severe Alzheimer disease, and older trial-level syntheses point the same way.",
-      "population": "adults with moderate to severe Alzheimer disease and related dementia syndromes",
-      "mechanism": "Memantine dampens pathological NMDA receptor overactivation without fully shutting down physiologic glutamatergic signaling. In later-stage dementia that can modestly reduce excitotoxic stress and slow symptomatic decline, especially in cognition, function, and agitation-heavy behavioral domains.",
-      "summary": "Memantine is one of the more stable late-stage dementia edges in the graph. It does not reverse disease, but across placebo-controlled trials and the updated Cochrane review it repeatedly shows a small symptomatic benefit in moderate-to-severe disease, with tolerability that is usually acceptable compared with many alternatives.",
-      "caveats": "The benefit is clinically modest, and the evidence is strongest for Alzheimer disease rather than every dementia subtype. This should be framed as slowing symptomatic decline, not restoring premorbid cognition or independence.",
+      "effect_quant": "The strongest evidence supports a small but consistent symptomatic benefit of memantine in moderate-to-severe dementia, especially Alzheimer disease. The 2019 Cochrane review found a 3.11-point advantage on the Severe Impairment Battery in around 3700 participants, and the DOMINO-AD randomized trial found a 1.2-point Standardized Mini-Mental State Examination benefit and a 1.5-point improvement on basic activities of daily living over 52 weeks.",
+      "population": "adults with moderate-to-severe dementia, especially Alzheimer disease, including patients already taking donepezil or other cholinesterase inhibitors",
+      "mechanism": "Memantine is an NMDA receptor antagonist that may reduce pathologic excitotoxic signaling while preserving enough physiologic glutamatergic transmission for cognition and function. In later-stage dementia, that mechanism appears to provide modest symptomatic stabilization rather than reversal of neurodegeneration.",
+      "summary": "This is a modest but fairly reproducible protective-symptomatic edge. Meta-analyses and randomized trials consistently show that memantine improves cognition, global impression, function, and sometimes behavior a little in moderate-to-severe dementia, even though the effect size is not large enough to be mistaken for disease reversal.",
+      "caveats": "The benefit is best interpreted as symptomatic support over months, not a cure or a strong disease-modifying effect. Effects are smaller or absent in mild Alzheimer disease, and the clinical importance for any one patient depends on baseline severity, concomitant therapy, and caregiver priorities.",
       "evidence": [
         {
           "citation": "McShaneR et al 2019 Cochrane Database Syst Rev",
-          "pmid": "30891742",
           "year": 2019,
-          "study_type": "systematic_review",
-          "n_participants": 3700,
+          "study_type": "meta_analysis",
           "direction": "protective",
           "quality": "high",
-          "notes": "Memantine for dementia."
+          "notes": "Memantine for dementia.",
+          "doi": "10.1002/14651858.CD003154.pub6",
+          "pmid": "30891742",
+          "n_participants": 3700,
+          "effect_quant": {
+            "metric": "MD",
+            "value": 3.11,
+            "ci_low": 2.42,
+            "ci_high": 3.92,
+            "comparator": "Severe Impairment Battery score with memantine versus placebo in moderate-to-severe Alzheimer disease"
+          }
+        },
+        {
+          "citation": "HowardR et al 2012 N Engl J Med",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Donepezil and memantine for moderate-to-severe Alzheimer's disease.",
+          "doi": "10.1056/NEJMoa1106668",
+          "pmid": "22397651",
+          "n_participants": 295,
+          "effect_quant": {
+            "metric": "MD",
+            "value": 1.2,
+            "ci_low": 0.6,
+            "ci_high": 1.8,
+            "comparator": "Standardized Mini-Mental State Examination score with memantine versus memantine placebo over 52 weeks"
+          }
         },
         {
           "citation": "WinbladB et al 2007 Dement Geriatr Cogn Disord",
-          "pmid": "17496417",
           "year": 2007,
           "study_type": "meta_analysis",
-          "n_participants": 1826,
           "direction": "protective",
-          "quality": "high",
-          "notes": "Memantine in moderate to severe Alzheimer's disease: a meta-analysis of randomised clinical trials."
-        },
-        {
-          "citation": "ReisbergB et al 2003 N Engl J Med",
-          "pmid": "12672860",
-          "year": 2003,
-          "study_type": "rct",
-          "n_participants": 252,
-          "direction": "protective",
-          "quality": "high",
-          "notes": "Memantine in moderate-to-severe Alzheimer's disease."
+          "quality": "moderate",
+          "notes": "Memantine in moderate to severe Alzheimer's disease: a meta-analysis of randomised clinical trials.",
+          "doi": "10.1159/000102568",
+          "pmid": "17496417",
+          "n_participants": 1826
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "memantine",
+      "name": "Memantine",
+      "kind": "drug",
+      "aliases": [
+        "Namenda",
+        "NMDA antagonist memantine"
+      ],
+      "description": "An NMDA receptor antagonist used for symptomatic treatment of moderate-to-severe Alzheimer disease and other dementias."
+    },
+    {
+      "slug": "moderate_severe_dementia",
+      "name": "Moderate-to-severe dementia",
+      "kind": "condition",
+      "aliases": [
+        "moderate to severe Alzheimer's disease",
+        "later-stage dementia"
+      ],
+      "description": "A later stage of dementia characterized by substantial cognitive and functional impairment, often corresponding to moderate or severe Alzheimer disease."
     }
   ]
 }

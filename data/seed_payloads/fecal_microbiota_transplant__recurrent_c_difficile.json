@@ -4,49 +4,84 @@
     {
       "factor_slug": "fecal_microbiota_transplant",
       "outcome_slug": "recurrent_c_difficile",
-      "direction": "mixed",
-      "tier": "B",
-      "effect_size": "moderate",
-      "effect_quant": "Large prospective and retrospective cohorts report recurrent Clostridioides difficile cure rates around 80% after FMT, but a 2025 placebo-controlled capsule trial in 153 veterans did not reduce recurrence or death by day 56.",
-      "population": "adults with recurrent or refractory Clostridioides difficile infection",
-      "mechanism": "FMT can restore colonization resistance by repopulating anaerobic commensals that suppress C. difficile outgrowth, normalize bile-acid metabolism, and promote mucosal recovery after repeated antibiotic disruption. Differences in delivery route, donor material, and the severity profile of enrolled patients likely explain part of the gap between positive real-world cohorts and the negative placebo-controlled capsule trial.",
-      "summary": "FMT remains a plausible and often effective option for recurrent C. difficile, but the modern evidence is not as one-directional as the older enthusiasm suggested. Real-world multicenter cohorts still show high cure rates, yet a recent randomized capsule trial failed to beat placebo on recurrence or death, so the fairest reading is that benefit is likely context-dependent rather than uniformly guaranteed.",
-      "caveats": "Delivery route, patient frailty, ongoing antibiotic exposure, and protocol differences matter a lot here. This edge should not be read as proof that every FMT product or capsule strategy works equally well, especially because the best controlled trial in a veteran population was neutral.",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "In a meta-analysis of 8 randomized trials involving 537 patients with recurrent or refractory C. difficile infection, fresh FMT lowered recurrent clinical diarrhea versus controls (RR 0.38, 95% CI 0.16-0.87); in the landmark NEJM trial, 13/16 patients (81%) responded after one infusion and 15/16 (94%) after up to two infusions versus 4/13 (31%) on vancomycin alone.",
+      "population": "mostly adults with recurrent or refractory Clostridioides difficile infection treated after failure of standard antibiotic approaches",
+      "mechanism": "FMT restores colonization resistance by reseeding depleted anaerobic gut communities, increasing microbial diversity, and suppressing recurrent C. difficile expansion after antibiotic-driven dysbiosis.",
+      "summary": "For recurrent C. difficile infection, FMT is one of the clearest microbiome-based therapeutic signals in clinical medicine. Randomized trials and pooled analyses consistently show markedly higher cure rates and lower recurrence than standard antibiotic-only management, although not every modern capsule protocol has outperformed placebo.",
+      "caveats": "Protocols differ by donor screening, route, fresh versus frozen material, and whether repeat dosing is used. A recent placebo-controlled capsule trial was neutral, so the strongest confidence still comes from the broader RCT and meta-analytic literature rather than any single contemporary formulation.",
       "evidence": [
         {
-          "citation": "Drekonja DM et al 2025 Clin Infect Dis",
-          "pmid": "39271107",
-          "doi": "10.1093/cid/ciae467",
+          "citation": "Zhang F et al 2019 PLoS One",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Fecal microbiota transplantation for treatment of recurrent C. difficile infection: An updated randomized controlled trial meta-analysis.",
+          "doi": "10.1371/journal.pone.0210016",
+          "pmid": "30673716",
+          "n_participants": 537
+        },
+        {
+          "citation": "van Nood E et al 2013 N Engl J Med",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Duodenal infusion of donor feces for recurrent Clostridium difficile.",
+          "doi": "10.1056/NEJMoa1205037",
+          "pmid": "23323867",
+          "n_participants": 42
+        },
+        {
+          "citation": "Cold F et al 2021 Ther Adv Gastroenterol",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Systematic review with meta-analysis: encapsulated faecal microbiota transplantation - evidence for clinical efficacy.",
+          "doi": "10.1177/17562848211041004",
+          "pmid": "34484424",
+          "n_participants": 755
+        },
+        {
+          "citation": "Drekonja D et al 2025 Clin Infect Dis",
           "year": 2025,
           "study_type": "rct",
-          "n_participants": 153,
           "direction": "neutral",
-          "quality": "high",
-          "notes": "A Randomized Controlled Trial of Efficacy and Safety of Fecal Microbiota Transplant for Preventing Recurrent Clostridioides difficile Infection."
-        },
-        {
-          "citation": "Vaughn BP et al 2023 Clin Gastroenterol Hepatol",
-          "pmid": "36126907",
-          "doi": "10.1016/j.cgh.2022.09.008",
-          "year": 2023,
-          "study_type": "cohort",
-          "n_participants": 269,
-          "direction": "protective",
           "quality": "moderate",
-          "notes": "Effectiveness and Safety of Colonic and Capsule Fecal Microbiota Transplantation for Recurrent Clostridioides difficile Infection."
-        },
-        {
-          "citation": "Chen JH et al 2024 Biomedicines",
-          "pmid": "39061970",
-          "doi": "10.3390/biomedicines12071396",
-          "year": 2024,
-          "study_type": "cohort",
-          "n_participants": 88,
-          "direction": "protective",
-          "quality": "moderate",
-          "notes": "Comparative Efficacy of Fecal Microbiota Transplantation in Treating Refractory or Recurrent Clostridioides difficile Infection among Patients with and without Inflammatory Bowel Disease: A Retrospective Cohort Study."
+          "notes": "A Randomized Controlled Trial of Efficacy and Safety of Fecal Microbiota Transplant for Preventing Recurrent Clostridioides difficile Infection.",
+          "doi": "10.1093/cid/ciae467",
+          "pmid": "39271107",
+          "n_participants": 153
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "fecal_microbiota_transplant",
+      "name": "Fecal microbiota transplantation",
+      "kind": "activity",
+      "aliases": [
+        "FMT",
+        "faecal microbiota transplantation",
+        "microbiota transfer therapy"
+      ],
+      "description": "Transfer of screened donor stool or stool-derived microbes to a recipient in order to reshape the gut microbiome."
+    },
+    {
+      "slug": "recurrent_c_difficile",
+      "name": "Recurrent Clostridioides difficile infection",
+      "kind": "condition",
+      "aliases": [
+        "recurrent C. difficile infection",
+        "recurrent CDI",
+        "rCDI"
+      ],
+      "description": "Repeat Clostridioides difficile infection after an apparently successful treatment course."
     }
   ]
 }

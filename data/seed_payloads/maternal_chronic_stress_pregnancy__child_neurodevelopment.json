@@ -1,27 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "maternal_chronic_stress_pregnancy",
-      "name": "Chronic psychological stress during pregnancy",
-      "kind": "behavior",
-      "aliases": [
-        "prenatal chronic stress",
-        "maternal prenatal distress"
-      ],
-      "description": "Sustained maternal psychological distress during pregnancy, including anxiety, depression, perceived stress, and major bereavement-related stress."
-    },
-    {
-      "slug": "child_neurodevelopment",
-      "name": "Child neurodevelopment",
-      "kind": "process",
-      "aliases": [
-        "early neurodevelopment",
-        "offspring neurodevelopmental outcomes"
-      ],
-      "description": "Early cognitive, language, behavioral, and socioemotional developmental trajectories in infancy and childhood."
-    }
-  ],
   "edges": [
     {
       "factor_slug": "maternal_chronic_stress_pregnancy",
@@ -29,57 +7,68 @@
       "direction": "harmful",
       "tier": "C",
       "effect_size": "small",
-      "effect_quant": "The most consistent signal is a small but repeatable association between higher prenatal maternal distress and less favorable early neurodevelopmental trajectories, especially attention and behavioral regulation rather than a large global developmental decrement.",
-      "population": "children exposed to sustained maternal psychological distress during pregnancy",
-      "mechanism": "Chronic prenatal stress can increase fetal glucocorticoid exposure and alter placental stress signaling during sensitive windows of brain development. That makes later differences in attention, emotional regulation, and behavior more plausible than a dramatic uniform effect on every cognitive domain.",
-      "summary": "The strongest evidence is now the broad prenatal-distress review of the first 3 years, which found small, context-sensitive differences across cognitive, language, and behavioral domains rather than a single large impairment. Meta-analytic work on externalizing behaviors and large registry data on severe bereavement point in the same direction, so the safest claim is that chronic prenatal stress is a modest developmental risk amplifier.",
-      "caveats": "This literature is observational and heavily exposed to confounding by socioeconomic adversity, parental mental health, and postnatal environment. The direction looks more stable than the magnitude, and the effect is better read as a modest probabilistic shift than a deterministic cause of neurodevelopmental disorder.",
+      "effect_quant": "Prospective cohort studies generally show lower infant cognitive or psychomotor scores under higher prenatal stress exposure, but the literature is too heterogeneous for one stable pooled estimate.",
+      "population": "children exposed to sustained maternal psychological or physiologic stress during pregnancy",
+      "mechanism": "Chronic prenatal stress can alter maternal cortisol signaling, placental glucocorticoid handling, and fetal brain development during sensitive windows, with downstream effects on infant cognition, motor development, and later socioemotional regulation.",
+      "summary": "Across several prospective cohorts, higher maternal stress during pregnancy is linked to worse early neurodevelopmental outcomes in offspring, including lower cognitive scores, poorer psychomotor performance, or altered social-emotional development. The signal is not perfectly uniform, but it is biologically plausible and consistent enough to support a cautious harmful edge.",
+      "caveats": "Studies use different stress constructs, from job strain to trauma history to broad psychological distress, so effect sizes are not directly interchangeable. Residual confounding by postnatal environment and socioeconomic adversity is still possible.",
       "evidence": [
         {
-          "citation": "DeDomenicoC et al 2025 BMJ Open",
-          "pmid": "41218936",
-          "year": 2025,
-          "study_type": "systematic_review",
-          "n_participants": 44,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Prenatal psychological distress and neurodevelopmental trajectories in the first 3 years: a systematic review."
-        },
-        {
-          "citation": "TungI et al 2024 Psychol Bull",
-          "pmid": "37971856",
-          "year": 2024,
-          "study_type": "meta_analysis",
-          "n_participants": 55,
-          "direction": "harmful",
-          "quality": "high",
-          "notes": "Prenatal stress and externalizing behaviors in childhood and adolescence: A systematic review and meta-analysis.",
-          "effect_quant": {
-            "metric": "r",
-            "value": 0.16,
-            "ci_low": null,
-            "ci_high": null,
-            "comparator": "higher prenatal psychological distress versus lower prenatal distress"
-          }
-        },
-        {
-          "citation": "LiJ et al 2010 Eur Child Adolesc Psychiatry",
-          "pmid": "20495989",
-          "year": 2010,
+          "citation": "KimE et al 2015 Ann Occup Environ Med",
+          "year": 2015,
           "study_type": "cohort",
-          "n_participants": 1015912,
           "direction": "harmful",
           "quality": "moderate",
-          "notes": "Attention-deficit/hyperactivity disorder in the offspring following prenatal maternal bereavement: a nationwide follow-up study in Denmark.",
-          "effect_quant": {
-            "metric": "HR",
-            "value": 1.72,
-            "ci_low": 1.09,
-            "ci_high": 2.73,
-            "comparator": "boys exposed to unexpected maternal bereavement during pregnancy versus unexposed boys"
-          }
+          "notes": "Effect of maternal job strain during pregnancy on infant neurodevelopment by gender at 6 and 12 months: Mothers and Children's Environmental Health (MOCEH) study.",
+          "doi": "10.1186/s40557-015-0059-y",
+          "pmid": "25866667",
+          "n_participants": 343
+        },
+        {
+          "citation": "CampbellRK et al 2019 Stress",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Prenatal cortisol modifies the association between maternal trauma history and child cognitive development in a sex-specific manner in an urban pregnancy cohort.",
+          "doi": "10.1080/10253890.2018.1553950",
+          "pmid": "30767640",
+          "n_participants": 258
+        },
+        {
+          "citation": "WuY et al 2022 JAMA Netw Open",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of Elevated Maternal Psychological Distress, Altered Fetal Brain, and Offspring Cognitive and Social-Emotional Outcomes at 18 Months.",
+          "doi": "10.1001/jamanetworkopen.2022.9244",
+          "pmid": "35486403",
+          "n_participants": 97
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "maternal_chronic_stress_pregnancy",
+      "name": "Maternal chronic stress during pregnancy",
+      "kind": "behavior",
+      "aliases": [
+        "prenatal maternal stress",
+        "chronic psychological stress in pregnancy"
+      ],
+      "description": "Sustained maternal psychological stress, distress, trauma-related stress, or high strain experienced during pregnancy."
+    },
+    {
+      "slug": "child_neurodevelopment",
+      "name": "Child neurodevelopment",
+      "kind": "condition",
+      "aliases": [
+        "offspring neurodevelopment",
+        "infant and child cognitive development"
+      ],
+      "description": "Child cognitive, language, motor, or socioemotional developmental outcomes."
     }
   ]
 }

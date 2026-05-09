@@ -1,17 +1,5 @@
 {
   "schema_version": 1,
-  "new_entities": [
-    {
-      "slug": "early_peanut_introduction_4_11mo",
-      "name": "Peanut introduction at 4 to 11 months",
-      "kind": "behavior"
-    },
-    {
-      "slug": "peanut_allergy",
-      "name": "Peanut allergy",
-      "kind": "condition"
-    }
-  ],
   "edges": [
     {
       "factor_slug": "early_peanut_introduction_4_11mo",
@@ -19,57 +7,106 @@
       "direction": "protective",
       "tier": "A",
       "effect_size": "large",
-      "effect_quant": "The strongest randomized evidence shows that introducing peanut during the 4-to-11-month window substantially lowers later peanut-allergy risk, and the protective effect persists into adolescence.",
-      "population": "infants, especially those at elevated allergic risk, introduced to peanut in the first year of life",
-      "mechanism": "Regular oral exposure during infancy appears to promote immune tolerance at a stage when strict avoidance leaves sensitization more likely. The timing signal fits the idea of a developmental window in which mucosal immune education is easier to establish.",
-      "summary": "Peanut introduction between 4 and 11 months is one of the clearest infant-feeding interventions for allergy prevention. The original pooled trial evidence was strong, later pooled causal analyses broadened that protection across risk groups, and long-term follow-up now shows that the benefit can endure into adolescence.",
-      "caveats": "Much of the strongest evidence comes from high-risk infants under structured protocols, so implementation in general populations still depends on context, baseline eczema, and family confidence with introduction. This edge is about allergy prevention, not the practical details of introducing peanut safely in every infant.",
+      "effect_quant": "Across randomized evidence, introducing peanut in infancy substantially lowers later peanut allergy risk. A 2023 meta-analysis found a pooled RR of 0.31 for peanut introduction between 3 and 10 months, and the LEAP program showed durable protection through childhood and adolescence.",
+      "population": "infants, especially those at elevated allergy risk because of severe eczema, egg allergy, or other atopic features",
+      "mechanism": "Regular peanut exposure during an early immunologic window appears to promote oral tolerance rather than sensitization. Avoidance during infancy may leave high-risk children more vulnerable to developing persistent IgE-mediated peanut allergy.",
+      "summary": "This is one of the clearest prevention edges in pediatrics. Randomized trials and long-term follow-up consistently show that introducing peanut during infancy, rather than delaying it, markedly reduces later peanut allergy, with benefits persisting after periods of avoidance and into adolescence.",
+      "caveats": "Most of the strongest evidence comes from high-risk infants and from carefully structured introduction protocols, so implementation still depends on age-appropriate forms and clinical judgment for infants with severe eczema or suspected existing allergy. The effect is strongest for true regular ingestion rather than one-time exposure.",
       "evidence": [
         {
-          "citation": "IerodiakonouD et al 2016 JAMA",
-          "pmid": "27654604",
-          "year": 2016,
+          "citation": "Scarpone R et al 2023 JAMA Pediatr",
+          "year": 2023,
           "study_type": "meta_analysis",
-          "n_participants": 1550,
           "direction": "protective",
           "quality": "high",
-          "notes": "Timing of Allergenic Food Introduction to the Infant Diet and Risk of Allergic or Autoimmune Disease: A Systematic Review and Meta-analysis.",
+          "notes": "Timing of Allergenic Food Introduction and Risk of Immunoglobulin E-Mediated Food Allergy: A Systematic Review and Meta-analysis.",
+          "doi": "10.1001/jamapediatrics.2023.0142",
+          "pmid": "36972063",
+          "n_participants": 3796,
           "effect_quant": {
             "metric": "RR",
-            "value": 0.29,
-            "ci_low": 0.11,
-            "ci_high": 0.74,
-            "comparator": "early peanut introduction at 4 to 11 months versus later introduction"
+            "value": 0.31,
+            "ci_low": 0.19,
+            "ci_high": 0.51,
+            "comparator": "peanut allergy after peanut introduction between 3 and 10 months versus later introduction or avoidance"
           }
         },
         {
-          "citation": "DuToitG et al 2024 NEJM Evid",
-          "pmid": "38804779",
+          "citation": "DuToit G et al 2015 N Engl J Med",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Randomized trial of peanut consumption in infants at risk for peanut allergy.",
+          "doi": "10.1056/NEJMoa1414850",
+          "pmid": "25705822",
+          "n_participants": 530,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -0.861,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "peanut allergy prevalence at 60 months in the negative skin-prick-test intention-to-treat population: 1.9% with consumption versus 13.7% with avoidance"
+          }
+        },
+        {
+          "citation": "DuToit G et al 2016 N Engl J Med",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of Avoidance on Peanut Allergy after Early Peanut Consumption.",
+          "doi": "10.1056/NEJMoa1514209",
+          "pmid": "26942922",
+          "n_participants": 556,
+          "effect_quant": {
+            "metric": "relative_change",
+            "value": -0.742,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "peanut allergy prevalence at 72 months after 12 months of avoidance: 4.8% in the original consumption group versus 18.6% in the original avoidance group"
+          }
+        },
+        {
+          "citation": "DuToit G et al 2024 NEJM Evid",
           "year": 2024,
           "study_type": "rct",
-          "n_participants": 640,
           "direction": "protective",
           "quality": "high",
           "notes": "Follow-up to Adolescence after Early Peanut Introduction for Allergy Prevention.",
+          "doi": "10.1056/EVIDoa2300311",
+          "pmid": "38804779",
+          "n_participants": 508,
           "effect_quant": {
-            "metric": "RR",
-            "value": 0.29,
+            "metric": "relative_change",
+            "value": -0.714,
             "ci_low": null,
             "ci_high": null,
-            "comparator": "peanut allergy at age 144 months in the original peanut consumption group versus the original avoidance group"
+            "comparator": "peanut allergy prevalence at age 144 months: 4.4% in the original consumption group versus 15.4% in the original avoidance group"
           }
-        },
-        {
-          "citation": "LoganK et al 2023 Allergy",
-          "pmid": "36435990",
-          "year": 2023,
-          "study_type": "rct",
-          "n_participants": 1303,
-          "direction": "protective",
-          "quality": "high",
-          "notes": "Early introduction of peanut reduces peanut allergy across risk groups in pooled and causal inference analyses."
         }
       ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "early_peanut_introduction_4_11mo",
+      "name": "Early peanut introduction at 4 to 11 months",
+      "kind": "behavior",
+      "aliases": [
+        "infant peanut introduction",
+        "peanut introduction in late infancy"
+      ],
+      "description": "Introducing age-appropriate peanut-containing foods during roughly 4 to 11 months of age to promote oral tolerance."
+    },
+    {
+      "slug": "peanut_allergy",
+      "name": "Peanut allergy",
+      "kind": "condition",
+      "aliases": [
+        "IgE-mediated peanut allergy"
+      ],
+      "description": "Clinical peanut allergy diagnosed by challenge, clinician assessment, or validated allergy endpoints."
     }
   ]
 }
