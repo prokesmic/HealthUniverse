@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "influenza_vaccine_in_pregnancy",
+      "outcome_slug": "neonatal_flu_protection",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The stronger recent cohorts show substantial infant protection. In Utah, maternal vaccination during pregnancy was associated with a relative risk of 0.30 for laboratory-confirmed influenza and 0.19 for infant influenza hospitalization under 6 months, while a large Ontario test-negative study estimated 64% effectiveness against laboratory-confirmed infant influenza.",
+      "population": "infants under 6 months born to pregnant women vaccinated against influenza during pregnancy",
+      "mechanism": "Maternal influenza vaccination raises maternal antibodies that cross the placenta and provide passive infant protection during the first months of life, when babies are too young to receive seasonal influenza vaccination themselves.",
+      "summary": "The evidence leans clearly protective for infant influenza prevention after maternal vaccination in pregnancy. Large North American observational studies and a smaller prospective infant cohort all report fewer lab-confirmed influenza infections in infants whose mothers were vaccinated while pregnant.",
+      "caveats": "Most of the evidence is observational or test-negative rather than randomized in current high-income settings, so residual confounding and season-specific vaccine match still matter. The benefit is strongest for the first 6 months of life and should not be interpreted as complete protection against all respiratory illness.",
+      "evidence": [
+        {
+          "citation": "Shakib JH et al 2016 Pediatrics",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Influenza in Infants Born to Women Vaccinated During Pregnancy.",
+          "doi": "10.1542/peds.2015-2360",
+          "pmid": "27244843",
+          "n_participants": 249387,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.3,
+            "ci_low": 0.19,
+            "ci_high": 0.46,
+            "comparator": "laboratory-confirmed influenza in infants under 6 months born to vaccinated versus unvaccinated mothers"
+          }
+        },
+        {
+          "citation": "Fell DB et al 2024 J Infect Dis",
+          "year": 2024,
+          "study_type": "case_control",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effectiveness of Influenza Vaccination During Pregnancy Against Laboratory-Confirmed Seasonal Influenza Among Infants Under 6 Months of Age in Ontario, Canada.",
+          "doi": "10.1093/infdis/jiad539",
+          "pmid": "39052720",
+          "n_participants": 23806,
+          "effect_quant": {
+            "metric": "VE_percent",
+            "value": 64,
+            "ci_low": 50,
+            "ci_high": 74,
+            "comparator": "estimated vaccine effectiveness against laboratory-confirmed infant influenza for maternal vaccination during pregnancy"
+          }
+        },
+        {
+          "citation": "Maltezou HC et al 2022 Expert Rev Vaccines",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effectiveness of maternal vaccination with quadrivalent inactivated influenza vaccine in pregnant women and their infants in 2019-2020.",
+          "doi": "10.1080/14760584.2022.2013820",
+          "pmid": "34878959",
+          "n_participants": 474,
+          "effect_quant": {
+            "metric": "VE_percent",
+            "value": 31.4,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "estimated effectiveness against laboratory-confirmed influenza in infants of vaccinated versus unvaccinated mothers"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "influenza_vaccine_in_pregnancy",
+      "name": "Influenza vaccination during pregnancy",
+      "kind": "drug",
+      "aliases": [
+        "maternal flu shot",
+        "antenatal influenza vaccination"
+      ],
+      "description": "Seasonal influenza immunization administered during pregnancy."
+    },
+    {
+      "slug": "neonatal_flu_protection",
+      "name": "Infant influenza protection under 6 months",
+      "kind": "condition",
+      "aliases": [
+        "neonatal flu protection",
+        "reduced infant influenza risk"
+      ],
+      "description": "Protection against laboratory-confirmed influenza or influenza hospitalization in infants too young for routine flu vaccination."
+    }
+  ]
+}
