@@ -2456,17 +2456,36 @@ def api_report_card(request: Request,
                     note: str = Form("")):
     """Capture a user-reported problem with a card. Lightweight: writes
     to card_reports table. A maintainer reviews via /trust."""
+    import os, sys
     reason = (reason or "").strip()[:60]
     note = (note or "").strip()[:2000]
     if not reason:
         return RedirectResponse(f"/edge/{edge_id}?reported=invalid", status_code=303)
-    with connect() as conn:
-        conn.execute(
-            "INSERT INTO card_reports (edge_id, reason, note, reported_at) "
-            "VALUES (?, ?, ?, ?)",
-            (edge_id, reason, note,
-             datetime_now().isoformat(timespec="seconds")))
-        conn.commit()
+    ts = datetime_now().isoformat(timespec="seconds")
+    # Notify the founder (Vercel-friendly).
+    try:
+        notify_to = os.environ.get("WAITLIST_NOTIFY_TO", "")
+        if notify_to and os.environ.get("RESEND_API_KEY"):
+            _resend_send(
+                notify_to,
+                f"[HU] Card report — edge {edge_id} ({reason})",
+                f"<p>New card-report.</p>"
+                f"<p><b>Edge:</b> <a href='https://health-universe.vercel.app/edge/{edge_id}'>{edge_id}</a></p>"
+                f"<p><b>Reason:</b> {reason}</p>"
+                f"<p><b>Note:</b> {note or '(none)'}</p>"
+                f"<p><b>At:</b> {ts}</p>")
+    except Exception as exc:
+        print(f"[report] resend notify failed: {exc}", file=sys.stderr)
+    # Best-effort local DB row.
+    try:
+        with connect() as conn:
+            conn.execute(
+                "INSERT INTO card_reports (edge_id, reason, note, reported_at) "
+                "VALUES (?, ?, ?, ?)", (edge_id, reason, note, ts))
+            conn.commit()
+    except Exception:
+        pass
+    print(f"[report] edge={edge_id} reason={reason} note={note[:80]!r}", file=sys.stderr)
     return RedirectResponse(f"/edge/{edge_id}?reported=ok", status_code=303)
 
 
@@ -2654,12 +2673,45 @@ def _build_brief_payload(conn, raw_items: list[str], skeptic: bool):
     return matched, warnings
 
 
+def _encode_brief_items(items: list[str], skeptic: bool) -> str:
+    """Pack the item list + skeptic flag into a URL-safe token. Keeps
+    briefs stateless (no DB write at request time → works on
+    serverless), while still giving each brief a stable, shareable
+    URL the user can pass around."""
+    import base64, json as _json
+    payload = _json.dumps({
+        "i": items,
+        "s": 1 if skeptic else 0,
+    }, separators=(",", ":")).encode()
+    return base64.urlsafe_b64encode(payload).rstrip(b"=").decode()
+
+
+def _decode_brief_items(token: str) -> tuple[list[str], bool]:
+    """Reverse of _encode_brief_items. Returns ([], False) on any
+    parse error so the route can redirect home cleanly."""
+    import base64, json as _json
+    try:
+        pad = "=" * (-len(token) % 4)
+        raw = base64.urlsafe_b64decode((token + pad).encode())
+        d = _json.loads(raw)
+        items = d.get("i") or []
+        if not isinstance(items, list):
+            return [], False
+        items = [str(x)[:60] for x in items if str(x).strip()][:30]
+        return items, bool(d.get("s"))
+    except Exception:
+        return [], False
+
+
 @app.get("/stack", response_class=HTMLResponse)
 def stack_form(request: Request, items: str = "", skeptic: int = 0):
     """Free input → evidence brief. Paste a stack (comma- or
     line-separated supplements / foods / habits / meds), get back what
     the corpus says. First three items are free; more requires Pro.
-    POST-redirects to /stack/s/<token> so every brief is shareable."""
+
+    Stateless: no DB writes — the brief renders inline at this URL,
+    and the share-URL encodes items into the path so links work
+    on serverless filesystems too."""
     raw_items: list[str] = []
     if items:
         for part in _re_stack.split(r"[,\n]+", items):
@@ -2667,74 +2719,32 @@ def stack_form(request: Request, items: str = "", skeptic: int = 0):
             if not part:
                 continue
             raw_items.append(part[:60])
-    if raw_items:
-        # Persist the brief so it has a stable URL we can render
-        # (and let users share it). Re-use the same token if the same
-        # canonical input string was just saved by anyone — keeps the
-        # table tidy and means re-submitting an identical stack
-        # doesn't generate token churn.
-        canonical = ",".join(raw_items).lower()
-        with connect() as conn:
-            existing = conn.execute(
-                "SELECT token FROM saved_briefs WHERE LOWER(items)=? "
-                "AND skeptic=? ORDER BY created_at DESC LIMIT 1",
-                (canonical, 1 if skeptic else 0)).fetchone()
-            if existing:
-                token = existing["token"]
-            else:
-                token = _make_brief_token()
-                conn.execute(
-                    "INSERT INTO saved_briefs "
-                    "(token, items, skeptic, created_at) VALUES (?,?,?,?)",
-                    (token, ",".join(raw_items), 1 if skeptic else 0,
-                     datetime_now().isoformat(timespec="seconds")))
-                conn.commit()
-        qs = "?skeptic=1" if skeptic else ""
-        return RedirectResponse(f"/stack/s/{token}{qs}", status_code=303)
-    return render(request, "stack.html", {
-        "title": "Stack Brief",
-        "raw": "",
-        "raw_items": [],
-        "matches": [],
-        "warnings": [],
-        "summary": None,
-        "pro_locked": False,
-        "share_url": None,
-        "skeptic": False,
-        "is_print": False,
-    })
-
-
-@app.get("/stack/s/{token}", response_class=HTMLResponse)
-def stack_brief_saved(request: Request, token: str, skeptic: int = 0):
-    """Render a saved brief. Public, shareable. Same paywall rules as
-    the live submission page (first 3 items free)."""
+    skeptic_flag = bool(skeptic)
+    if not raw_items:
+        return render(request, "stack.html", {
+            "title": "Stack Brief",
+            "raw": "",
+            "raw_items": [],
+            "matches": [],
+            "warnings": [],
+            "summary": None,
+            "pro_locked": False,
+            "share_url": None,
+            "skeptic": False,
+            "token": None,
+        })
+    FREE_LIMIT = 3
+    pro_locked = len(raw_items) > FREE_LIMIT
+    visible = raw_items[:FREE_LIMIT]
     with connect() as conn:
-        row = conn.execute(
-            "SELECT * FROM saved_briefs WHERE token=?", (token,)).fetchone()
-        if not row:
-            return RedirectResponse("/stack", status_code=303)
-        # Bump view counter (best-effort, no error).
-        try:
-            conn.execute(
-                "UPDATE saved_briefs SET views=views+1 WHERE token=?",
-                (token,))
-            conn.commit()
-        except Exception:
-            pass
-        items = (row["items"] or "")
-        skeptic_flag = bool(skeptic) or bool(row["skeptic"])
-        raw_items = [s.strip()[:60] for s in items.split(",") if s.strip()]
-        FREE_LIMIT = 3
-        pro_locked = len(raw_items) > FREE_LIMIT
-        visible = raw_items[:FREE_LIMIT]
         matches, warnings = _build_brief_payload(conn, visible, skeptic_flag)
     summary = _summarize_brief(matches)
+    token = _encode_brief_items(raw_items, skeptic_flag)
     base = str(request.base_url).rstrip("/")
-    share_url = f"{base}/stack/s/{token}" + ("?skeptic=1" if skeptic_flag else "")
+    share_url = f"{base}/stack/s/{token}"
     return render(request, "stack.html", {
         "title": "Stack Brief",
-        "raw": items,
+        "raw": ",".join(raw_items),
         "raw_items": raw_items,
         "matches": matches,
         "warnings": warnings,
@@ -2742,7 +2752,37 @@ def stack_brief_saved(request: Request, token: str, skeptic: int = 0):
         "pro_locked": pro_locked,
         "share_url": share_url,
         "skeptic": skeptic_flag,
-        "is_print": False,
+        "token": token,
+    })
+
+
+@app.get("/stack/s/{token}", response_class=HTMLResponse)
+def stack_brief_saved(request: Request, token: str, skeptic: int = 0):
+    """Render a brief from an encoded token. Public, shareable, and
+    completely stateless — no DB row needed. The token decodes back
+    to the original input items."""
+    items, sk_from_token = _decode_brief_items(token)
+    if not items:
+        return RedirectResponse("/stack", status_code=303)
+    skeptic_flag = bool(skeptic) or sk_from_token
+    FREE_LIMIT = 3
+    pro_locked = len(items) > FREE_LIMIT
+    visible = items[:FREE_LIMIT]
+    with connect() as conn:
+        matches, warnings = _build_brief_payload(conn, visible, skeptic_flag)
+    summary = _summarize_brief(matches)
+    base = str(request.base_url).rstrip("/")
+    share_url = f"{base}/stack/s/{token}"
+    return render(request, "stack.html", {
+        "title": "Stack Brief",
+        "raw": ",".join(items),
+        "raw_items": items,
+        "matches": matches,
+        "warnings": warnings,
+        "summary": summary,
+        "pro_locked": pro_locked,
+        "share_url": share_url,
+        "skeptic": skeptic_flag,
         "token": token,
     })
 
@@ -2751,22 +2791,20 @@ def stack_brief_saved(request: Request, token: str, skeptic: int = 0):
 def stack_brief_print(request: Request, token: str, skeptic: int = 0):
     """Print-styled view of a brief. Browsers' Save-as-PDF gives a
     clean PDF without server deps. The 'Pro PDF export' button on the
-    main brief opens this URL in a new tab and triggers print()."""
+    main brief opens this URL in a new tab and triggers print().
+    Stateless via the same token encoding as /stack/s/<token>."""
+    items, sk_from_token = _decode_brief_items(token)
+    if not items:
+        return RedirectResponse("/stack", status_code=303)
+    skeptic_flag = bool(skeptic) or sk_from_token
     with connect() as conn:
-        row = conn.execute(
-            "SELECT * FROM saved_briefs WHERE token=?", (token,)).fetchone()
-        if not row:
-            return RedirectResponse("/stack", status_code=303)
-        items = (row["items"] or "")
-        skeptic_flag = bool(skeptic) or bool(row["skeptic"])
-        raw_items = [s.strip()[:60] for s in items.split(",") if s.strip()]
-        # Print view shows ALL items (no paywall on PDF — user already
-        # paid OR it's the founder's marketing material).
-        matches, warnings = _build_brief_payload(conn, raw_items, skeptic_flag)
+        # Print view shows ALL items (a paid Pro user has unlocked it,
+        # or it's the founder's marketing material).
+        matches, warnings = _build_brief_payload(conn, items, skeptic_flag)
     summary = _summarize_brief(matches)
     return render(request, "stack_print.html", {
         "title": "Stack Brief — print",
-        "raw_items": raw_items,
+        "raw_items": items,
         "matches": matches,
         "warnings": warnings,
         "summary": summary,
@@ -2780,17 +2818,43 @@ def stack_brief_print(request: Request, token: str, skeptic: int = 0):
 def api_pro_waitlist(request: Request,
                      email: str = Form(...),
                      source: str = Form("")):
-    """Capture an email for the Pro waitlist. Cheap signup, no
-    payments yet — that's Milestone 3."""
+    """Capture an email for the Pro waitlist.
+
+    Vercel's runtime filesystem is read-only, so we can't INSERT into
+    the local SQLite at request time. Instead we email the founder
+    via Resend (an env-var-gated path). On dev / non-Vercel the local
+    DB write still happens as a fallback so the data isn't lost
+    locally."""
+    import os, sys
     em = (email or "").strip().lower()
     if "@" not in em or len(em) > 200:
         return RedirectResponse("/stack?waitlist=invalid", status_code=303)
-    with connect() as conn:
-        conn.execute(
-            "INSERT INTO pro_waitlist (email, source, signed_up_at) "
-            "VALUES (?, ?, ?)",
-            (em, source[:40], datetime_now().isoformat(timespec="seconds")))
-        conn.commit()
+    src = (source or "")[:40]
+    ts = datetime_now().isoformat(timespec="seconds")
+    # Best-effort email notification to the founder.
+    try:
+        notify_to = os.environ.get("WAITLIST_NOTIFY_TO", "")
+        if notify_to and os.environ.get("RESEND_API_KEY"):
+            _resend_send(
+                notify_to,
+                f"[HU] Pro waitlist: {em}",
+                f"<p>New Pro waitlist signup.</p>"
+                f"<p><b>Email:</b> {em}</p>"
+                f"<p><b>Source:</b> {src or '(none)'}</p>"
+                f"<p><b>At:</b> {ts}</p>")
+    except Exception as exc:
+        print(f"[waitlist] resend notify failed: {exc}", file=sys.stderr)
+    # Best-effort local DB row (succeeds on dev, no-ops on Vercel).
+    try:
+        with connect() as conn:
+            conn.execute(
+                "INSERT INTO pro_waitlist (email, source, signed_up_at) "
+                "VALUES (?, ?, ?)", (em, src, ts))
+            conn.commit()
+    except Exception:
+        pass
+    # Always log so Vercel function logs capture the signup.
+    print(f"[waitlist] {em} via {src} at {ts}", file=sys.stderr)
     return RedirectResponse("/stack?waitlist=ok", status_code=303)
 
 
