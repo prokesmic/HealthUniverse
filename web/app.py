@@ -988,6 +988,19 @@ def my_plan(request: Request):
     })
 
 
+@app.get("/me/data", response_class=HTMLResponse)
+def me_data(request: Request):
+    """The personal-data hub. Renders the empty shell; all data lives
+    client-side in localStorage and is hydrated by personal.js. Server
+    only ever provides the evidence-overlay API endpoints (stateless,
+    no PHI received)."""
+    p = decode(request.cookies.get(COOKIE))
+    return render(request, "me_data.html", {
+        "title": "Your data",
+        "profile": p,
+    })
+
+
 @app.get("/sync", response_class=HTMLResponse)
 def sync_form(request: Request, sent: int = 0, error: str = ""):
     """Cross-device sync. User enters email → server emails a /restore link
@@ -2927,6 +2940,202 @@ def stack_brief_print(request: Request, token: str, skeptic: int = 0):
         "token": token,
         "generated_at": datetime_now().isoformat(timespec="minutes"),
     })
+
+
+# ────────────────────────────────────────────────────────────────────
+# Personal-data evidence overlay endpoints. These are STATELESS — they
+# never receive PHI tied to identity. The browser holds all personal
+# data in localStorage and asks the server only "given this lab value
+# / this SNP / this finding, which edges in the graph are relevant?"
+# ────────────────────────────────────────────────────────────────────
+
+_LAB_PANEL_FILE = ROOT / "data" / "lab_panel.json"
+_SNP_PANEL_FILE = ROOT / "data" / "snp_panel.json"
+_LAB_PANEL_CACHE: dict | None = None
+_SNP_PANEL_CACHE: dict | None = None
+
+
+def _lab_panel() -> dict:
+    global _LAB_PANEL_CACHE
+    if _LAB_PANEL_CACHE is not None:
+        return _LAB_PANEL_CACHE
+    try:
+        import json as _json
+        _LAB_PANEL_CACHE = _json.loads(_LAB_PANEL_FILE.read_text())
+    except Exception:
+        _LAB_PANEL_CACHE = {"labs": {}}
+    return _LAB_PANEL_CACHE
+
+
+def _snp_panel() -> dict:
+    global _SNP_PANEL_CACHE
+    if _SNP_PANEL_CACHE is not None:
+        return _SNP_PANEL_CACHE
+    try:
+        import json as _json
+        _SNP_PANEL_CACHE = _json.loads(_SNP_PANEL_FILE.read_text())
+    except Exception:
+        _SNP_PANEL_CACHE = {"snps": {}}
+    return _SNP_PANEL_CACHE
+
+
+def _resolve_lab_key(name_in: str) -> tuple[str, dict] | tuple[None, None]:
+    """Match a free-text lab name to an entry in the lab panel."""
+    if not name_in:
+        return None, None
+    n = (name_in or "").strip().lower()
+    for key, entry in _lab_panel().get("labs", {}).items():
+        if n == key:
+            return key, entry
+        for alias in entry.get("aliases", []):
+            if alias.lower() == n or n in alias.lower() or alias.lower() in n:
+                return key, entry
+    return None, None
+
+
+def _edges_for_entity_slugs(slugs: list[str], limit: int = 20) -> list[dict]:
+    """Top edges where any of these slugs is the FACTOR — sorted by tier
+    then update recency. Used to power lab/SNP/finding evidence overlays."""
+    if not slugs:
+        return []
+    with connect() as conn:
+        ph = ",".join("?" * len(slugs))
+        rows = conn.execute(f"""
+            SELECT e.id, e.tier, e.direction, e.summary, e.effect_size, e.effect_quant,
+                   COALESCE(e.review_status,'unreviewed') AS review_status,
+                   f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                   o.slug AS o_slug, o.name AS o_name
+            FROM edge e
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE f.slug IN ({ph}) AND e.tier IN ('A','B','C')
+            ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 ELSE 3 END,
+                     e.updated_at DESC
+            LIMIT ?
+        """, [*slugs, limit]).fetchall()
+    return [dict(r) for r in rows]
+
+
+def _interventions_for_outcomes(outcome_slugs: list[str], limit: int = 8) -> list[dict]:
+    """Top protective interventions for any of these outcome slugs.
+    Used to surface "what to DO about a high lab" rather than just
+    "what high lab does to you"."""
+    if not outcome_slugs:
+        return []
+    with connect() as conn:
+        ph = ",".join("?" * len(outcome_slugs))
+        rows = conn.execute(f"""
+            SELECT e.id, e.tier, e.direction, e.summary, e.effect_size, e.effect_quant,
+                   COALESCE(e.review_status,'unreviewed') AS review_status,
+                   f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
+                   o.slug AS o_slug, o.name AS o_name
+            FROM edge e
+            JOIN entity f ON f.id=e.factor_id
+            JOIN entity o ON o.id=e.outcome_id
+            WHERE o.slug IN ({ph}) AND e.tier IN ('A','B','C')
+              AND e.direction = 'protective'
+            ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 ELSE 3 END,
+                     e.updated_at DESC
+            LIMIT ?
+        """, [*outcome_slugs, limit]).fetchall()
+    return [dict(r) for r in rows]
+
+
+@app.get("/api/me/lab-evidence")
+def api_lab_evidence(name: str = "", value: float = 0.0, unit: str = ""):
+    """Stateless: given a lab name + value, return reference range,
+    out-of-range direction, edges where this biomarker is a factor,
+    and protective interventions for the outcomes those edges hit."""
+    key, entry = _resolve_lab_key(name)
+    if not entry:
+        return JSONResponse({"matched": False, "name": name, "message":
+            "We don't have this lab in our reference panel yet. "
+            "Tell us via /api/report-card if it's a common one."})
+    direction = "in_range"
+    out_slugs: list[str] = []
+    if value > entry.get("ref_high", 1e9):
+        direction = "high"
+        out_slugs = entry.get("high_entities", [])
+    elif value < entry.get("ref_low", -1):
+        direction = "low"
+        out_slugs = entry.get("low_entities", [])
+    edges = _edges_for_entity_slugs(out_slugs) if out_slugs else []
+    # The outcomes those edges affect → so we can recommend interventions.
+    affected_outcome_slugs = list({e["o_slug"] for e in edges})
+    interventions = _interventions_for_outcomes(affected_outcome_slugs)
+    return JSONResponse({
+        "matched":         True,
+        "key":             key,
+        "name":            entry.get("name"),
+        "ref_low":         entry.get("ref_low"),
+        "ref_high":        entry.get("ref_high"),
+        "unit":            entry.get("unit"),
+        "category":        entry.get("category"),
+        "explainer":       entry.get("explainer"),
+        "direction":       direction,
+        "out_of_range":    direction in ("high", "low"),
+        "matched_entities": out_slugs,
+        "edges":           edges,
+        "interventions":   interventions,
+    })
+
+
+@app.get("/api/me/snp-evidence")
+def api_snp_evidence(rsid: str = "", genotype: str = ""):
+    """Stateless: given an rsID + genotype, return interpretation +
+    any edges to amplify in the personal plan."""
+    rsid = (rsid or "").strip().lower()
+    genotype = (genotype or "").strip().upper()
+    snp = _snp_panel().get("snps", {}).get(rsid)
+    if not snp:
+        return JSONResponse({"matched": False, "rsid": rsid,
+            "message": "Not in our actionable SNP panel yet."})
+    interp = snp.get("interpretation", {}).get(genotype)
+    if not interp:
+        # Try the reverse complement (e.g. 23andMe sometimes reports the
+        # opposite strand).
+        rev = "".join({"A":"T","T":"A","C":"G","G":"C"}.get(b, b) for b in genotype[::-1])
+        interp = snp.get("interpretation", {}).get(rev)
+    if not interp:
+        return JSONResponse({"matched": True, "rsid": rsid, "gene": snp.get("gene"),
+            "name": snp.get("name"), "genotype": genotype,
+            "interpretation": None,
+            "message": "Genotype not in our panel for this SNP — read raw allele directly."})
+    amplify = interp.get("amplify_edges", [])
+    edges = _edges_for_entity_slugs(amplify) if amplify else []
+    return JSONResponse({
+        "matched":  True,
+        "rsid":     rsid,
+        "gene":     snp.get("gene"),
+        "name":     snp.get("name"),
+        "category": snp.get("category"),
+        "genotype": genotype,
+        "label":    interp.get("label"),
+        "summary":  interp.get("summary"),
+        "amplify_factor": interp.get("amplify_factor"),
+        "amplify_edges":  amplify,
+        "edges":    edges,
+    })
+
+
+@app.get("/api/me/finding-evidence")
+def api_finding_evidence(slug: str = ""):
+    """Stateless: given a medical-record finding slug (e.g.
+    'disc_degeneration'), return relevant edges from the corpus."""
+    slug = (slug or "").strip().lower()
+    if not slug:
+        return JSONResponse({"matched": False})
+    edges = _edges_for_entity_slugs([slug])
+    interventions = _interventions_for_outcomes([slug])
+    return JSONResponse({
+        "matched":      bool(edges or interventions),
+        "slug":         slug,
+        "edges":        edges,
+        "interventions": interventions,
+    })
+
+
+# ────────────────────────────────────────────────────────────────────
 
 
 @app.post("/api/pro-waitlist")

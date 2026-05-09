@@ -1,0 +1,256 @@
+{
+  "schema_version": 1,
+  "comment": "Lab name aliases + reference ranges + entity-slug mapping. Each lab has: aliases (user-typed strings), units, ref_low / ref_high (adult population), and high_slug / low_slug pointing to entities in our graph that fire when the value is out of range. Multiple slug names allowed; we surface every matching edge.",
+  "labs": {
+    "tsh": {
+      "name": "TSH (thyroid stimulating hormone)",
+      "aliases": ["tsh", "thyroid stimulating hormone", "thyrotropin"],
+      "unit": "mIU/L",
+      "ref_low": 0.4, "ref_high": 4.0,
+      "high_entities": ["tsh_high", "subclinical_hypothyroid"],
+      "low_entities":  ["tsh_low", "hyperthyroid"],
+      "category": "thyroid",
+      "explainer": "Thyroid stimulating hormone — elevated values suggest the thyroid isn't producing enough T4/T3, low values suggest excess thyroid hormone. Often the first thyroid test ordered."
+    },
+    "free_t4": {
+      "name": "Free T4",
+      "aliases": ["free t4", "ft4", "free thyroxine"],
+      "unit": "ng/dL",
+      "ref_low": 0.8, "ref_high": 1.8,
+      "high_entities": ["hyperthyroid"],
+      "low_entities":  ["hypothyroid"],
+      "category": "thyroid"
+    },
+    "ldl_c": {
+      "name": "LDL cholesterol",
+      "aliases": ["ldl", "ldl-c", "ldl cholesterol", "ldl-cholesterol"],
+      "unit": "mg/dL",
+      "ref_low": 0, "ref_high": 100,
+      "high_entities": ["ldl_cholesterol", "ldl_c"],
+      "low_entities":  [],
+      "category": "lipids",
+      "explainer": "Low-density lipoprotein cholesterol — the primary lipid target for cardiovascular risk. Optimal varies by overall risk; <70 mg/dL for established CVD, <100 for primary prevention."
+    },
+    "hdl_c": {
+      "name": "HDL cholesterol",
+      "aliases": ["hdl", "hdl-c", "hdl cholesterol"],
+      "unit": "mg/dL",
+      "ref_low": 40, "ref_high": 999,
+      "high_entities": [],
+      "low_entities":  ["hdl_low"],
+      "category": "lipids"
+    },
+    "triglycerides": {
+      "name": "Triglycerides",
+      "aliases": ["triglycerides", "tg"],
+      "unit": "mg/dL",
+      "ref_low": 0, "ref_high": 150,
+      "high_entities": ["triglycerides_high"],
+      "low_entities":  [],
+      "category": "lipids"
+    },
+    "apob": {
+      "name": "ApoB",
+      "aliases": ["apob", "apolipoprotein b", "apo b"],
+      "unit": "mg/dL",
+      "ref_low": 0, "ref_high": 90,
+      "high_entities": ["apob"],
+      "low_entities":  [],
+      "category": "lipids",
+      "explainer": "ApoB counts every atherogenic particle (LDL, VLDL, IDL, Lp(a)) — increasingly seen as a better risk marker than LDL-C alone. Levels under 80 mg/dL are commonly recommended for optimal cardiovascular risk."
+    },
+    "lpa": {
+      "name": "Lipoprotein(a)",
+      "aliases": ["lp(a)", "lpa", "lipoprotein a", "lipoprotein(a)"],
+      "unit": "nmol/L",
+      "ref_low": 0, "ref_high": 75,
+      "high_entities": ["lpa_high"],
+      "low_entities":  [],
+      "category": "lipids",
+      "explainer": "Largely genetic; tested once, doesn't change much with lifestyle. Elevated Lp(a) is independently linked to atherosclerosis and aortic stenosis."
+    },
+    "hba1c": {
+      "name": "HbA1c",
+      "aliases": ["hba1c", "a1c", "glycated hemoglobin"],
+      "unit": "%",
+      "ref_low": 4.0, "ref_high": 5.6,
+      "high_entities": ["hba1c_high", "hba1c"],
+      "low_entities":  [],
+      "category": "metabolic",
+      "explainer": "Reflects average blood glucose over ~3 months. ≥6.5% is diabetes; 5.7-6.4% is prediabetes. Trajectory matters as much as snapshot."
+    },
+    "fasting_glucose": {
+      "name": "Fasting glucose",
+      "aliases": ["fasting glucose", "fpg", "glucose fasting"],
+      "unit": "mg/dL",
+      "ref_low": 70, "ref_high": 99,
+      "high_entities": ["fasting_glucose_high"],
+      "low_entities":  [],
+      "category": "metabolic"
+    },
+    "fasting_insulin": {
+      "name": "Fasting insulin",
+      "aliases": ["fasting insulin", "insulin fasting"],
+      "unit": "µIU/mL",
+      "ref_low": 2, "ref_high": 12,
+      "high_entities": ["fasting_insulin_high"],
+      "low_entities":  [],
+      "category": "metabolic",
+      "explainer": "An early warning of insulin resistance, often elevated years before HbA1c rises. Many physicians don't order it; biohackers track it routinely."
+    },
+    "homa_ir": {
+      "name": "HOMA-IR",
+      "aliases": ["homa-ir", "homa ir", "insulin resistance index"],
+      "unit": "score",
+      "ref_low": 0, "ref_high": 1.9,
+      "high_entities": ["homa_ir_high"],
+      "low_entities":  [],
+      "category": "metabolic"
+    },
+    "vitamin_d_25oh": {
+      "name": "Vitamin D 25-OH",
+      "aliases": ["vitamin d", "25-oh vitamin d", "25(oh)d", "vit d"],
+      "unit": "ng/mL",
+      "ref_low": 30, "ref_high": 60,
+      "high_entities": ["vitamin_d_high"],
+      "low_entities":  ["vitamin_d_deficiency"],
+      "category": "nutrient"
+    },
+    "vitamin_b12": {
+      "name": "Vitamin B12",
+      "aliases": ["b12", "vitamin b12", "cobalamin"],
+      "unit": "pg/mL",
+      "ref_low": 300, "ref_high": 900,
+      "high_entities": [],
+      "low_entities":  ["low_b12"],
+      "category": "nutrient"
+    },
+    "folate": {
+      "name": "Folate (serum)",
+      "aliases": ["folate", "folic acid", "serum folate"],
+      "unit": "ng/mL",
+      "ref_low": 4.5, "ref_high": 30,
+      "high_entities": [],
+      "low_entities":  ["low_folate"],
+      "category": "nutrient"
+    },
+    "ferritin": {
+      "name": "Ferritin",
+      "aliases": ["ferritin"],
+      "unit": "ng/mL",
+      "ref_low": 30, "ref_high": 200,
+      "high_entities": ["high_ferritin"],
+      "low_entities":  ["low_ferritin"],
+      "category": "iron"
+    },
+    "homocysteine": {
+      "name": "Homocysteine",
+      "aliases": ["homocysteine", "tHcy"],
+      "unit": "µmol/L",
+      "ref_low": 0, "ref_high": 10,
+      "high_entities": ["high_homocysteine", "homocysteine"],
+      "low_entities":  [],
+      "category": "cardiometabolic"
+    },
+    "hs_crp": {
+      "name": "hs-CRP",
+      "aliases": ["crp", "hs-crp", "high sensitivity crp", "c-reactive protein"],
+      "unit": "mg/L",
+      "ref_low": 0, "ref_high": 1.0,
+      "high_entities": ["crp", "hs_crp_high"],
+      "low_entities":  [],
+      "category": "inflammation"
+    },
+    "testosterone_total": {
+      "name": "Total testosterone",
+      "aliases": ["testosterone", "total testosterone", "test"],
+      "unit": "ng/dL",
+      "ref_low": 264, "ref_high": 916,
+      "high_entities": [],
+      "low_entities":  ["testosterone_low_men"],
+      "category": "hormonal",
+      "explainer": "Reference ranges vary by lab + age. Interpretation depends on free testosterone, SHBG, symptoms; a single low reading isn't diagnostic."
+    },
+    "estradiol": {
+      "name": "Estradiol",
+      "aliases": ["estradiol", "e2"],
+      "unit": "pg/mL",
+      "ref_low": 10, "ref_high": 50,
+      "high_entities": [],
+      "low_entities":  [],
+      "category": "hormonal"
+    },
+    "shbg": {
+      "name": "SHBG",
+      "aliases": ["shbg", "sex hormone binding globulin"],
+      "unit": "nmol/L",
+      "ref_low": 16, "ref_high": 55,
+      "high_entities": [],
+      "low_entities":  [],
+      "category": "hormonal"
+    },
+    "alt": {
+      "name": "ALT",
+      "aliases": ["alt", "alanine aminotransferase", "sgpt"],
+      "unit": "U/L",
+      "ref_low": 0, "ref_high": 35,
+      "high_entities": ["alt_high"],
+      "low_entities":  [],
+      "category": "liver"
+    },
+    "ast": {
+      "name": "AST",
+      "aliases": ["ast", "aspartate aminotransferase", "sgot"],
+      "unit": "U/L",
+      "ref_low": 0, "ref_high": 35,
+      "high_entities": ["ast_high"],
+      "low_entities":  [],
+      "category": "liver"
+    },
+    "creatinine": {
+      "name": "Creatinine",
+      "aliases": ["creatinine", "cr"],
+      "unit": "mg/dL",
+      "ref_low": 0.6, "ref_high": 1.2,
+      "high_entities": ["creatinine_high"],
+      "low_entities":  [],
+      "category": "kidney"
+    },
+    "egfr": {
+      "name": "eGFR",
+      "aliases": ["egfr", "estimated gfr", "kidney function"],
+      "unit": "mL/min/1.73m²",
+      "ref_low": 90, "ref_high": 999,
+      "high_entities": [],
+      "low_entities":  ["egfr_low", "ckd"],
+      "category": "kidney"
+    },
+    "uric_acid": {
+      "name": "Uric acid",
+      "aliases": ["uric acid", "urate"],
+      "unit": "mg/dL",
+      "ref_low": 3.5, "ref_high": 7.0,
+      "high_entities": ["uric_acid_high"],
+      "low_entities":  [],
+      "category": "metabolic"
+    },
+    "magnesium": {
+      "name": "Magnesium (serum)",
+      "aliases": ["magnesium", "mg", "serum magnesium"],
+      "unit": "mg/dL",
+      "ref_low": 1.7, "ref_high": 2.4,
+      "high_entities": [],
+      "low_entities":  ["magnesium_low"],
+      "category": "nutrient"
+    },
+    "tsh_with_t4_combo_marker": {
+      "name": "Free T3",
+      "aliases": ["free t3", "ft3"],
+      "unit": "pg/mL",
+      "ref_low": 2.0, "ref_high": 4.4,
+      "high_entities": ["hyperthyroid"],
+      "low_entities":  ["hypothyroid"],
+      "category": "thyroid"
+    }
+  }
+}

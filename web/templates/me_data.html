@@ -1,0 +1,453 @@
+{% extends "base.html" %}
+{% block title %}Your data — Health Universe{% endblock %}
+{% block content %}
+<style>
+  /* ─── Hub layout ─── */
+  .hub-hero { padding: 24px 0 12px; }
+  .hub-hero h1 { margin: 0 0 6px; }
+  .hub-hero .lede { max-width: 760px; }
+  .hub-counter {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px; border-radius: 999px;
+    background: #1f3a2e; color: #fffaf0;
+    font-size: 13px; font-weight: 600; margin-top: 8px;
+  }
+  .hub-counter .dot { width: 6px; height: 6px; border-radius: 50%; background: #66dd99; }
+  .hub-privacy {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 10px; border: 1px solid #b7e0c4;
+    border-radius: 6px; background: #f4faf6;
+    font-size: 12px; color: #1b5e20; margin-left: 8px;
+  }
+
+  .hub-summary {
+    display: grid; gap: 10px; margin: 14px 0 22px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  }
+  .hub-stat {
+    padding: 12px 14px; border: 1px solid var(--line);
+    border-radius: 10px; background: #fff;
+  }
+  .hub-stat .n {
+    font-family: 'Fraunces', serif; font-size: 24px;
+    font-weight: 600; line-height: 1;
+  }
+  .hub-stat .lbl { font-size: 12px; color: var(--ink-soft); margin-top: 4px; }
+  .hub-stat.is-empty { background: #fafafa; }
+  .hub-stat.is-empty .n { color: #999; }
+
+  /* ─── Section blocks ─── */
+  .data-section {
+    border: 1px solid var(--line); border-radius: 14px;
+    margin-bottom: 20px; padding: 18px 20px; background: #fff;
+  }
+  .data-section header { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .data-section h2 { margin: 0; font-size: 20px; }
+  .data-section h2 .icon { font-size: 22px; }
+  .data-section .sec-count {
+    font-size: 13px; color: var(--ink-soft); font-variant-numeric: tabular-nums;
+  }
+  .data-section .sec-pitch {
+    margin: 6px 0 14px; color: var(--ink-soft); max-width: 720px; font-size: 14px;
+  }
+
+  /* Empty-state body shows the value-pitch + an inviting CTA. */
+  .empty-pitch {
+    padding: 18px 20px; border-radius: 10px;
+    background: #fafafa; border: 1px dashed var(--line);
+    color: var(--ink-soft); font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .empty-pitch .pitch-title { font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .empty-pitch .pitch-example {
+    margin-top: 10px; padding: 10px 12px; border-radius: 8px;
+    background: #fff; border: 1px solid var(--line);
+    font-family: ui-monospace, monospace; font-size: 12px;
+  }
+
+  /* ─── Add forms ─── */
+  .add-row {
+    display: flex; gap: 8px; flex-wrap: wrap; align-items: end;
+    padding: 12px 14px; background: #f7faf8;
+    border: 1px solid #d4e9d8; border-radius: 10px;
+    margin-bottom: 12px;
+  }
+  .add-row label { font-size: 12px; font-weight: 600; color: var(--ink-soft); }
+  .add-row input, .add-row select, .add-row textarea {
+    padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
+    font-size: 14px; font-family: inherit; min-width: 0;
+  }
+  .add-row .grow { flex: 1; min-width: 140px; }
+  .add-row button { padding: 8px 16px; }
+  .upload-row {
+    margin-top: 8px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    font-size: 13px; color: var(--ink-soft);
+  }
+
+  /* ─── Saved data lists ─── */
+  .data-list { list-style: none; padding: 0; margin: 12px 0; display: grid; gap: 10px; }
+  .data-item {
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; background: #fff;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .data-item.is-out { border-color: #f3b3ad; background: #fff8f7; }
+  .data-item.is-good { border-color: #b7e0c4; background: #f8fcf9; }
+  .data-item .item-head {
+    display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  }
+  .data-item .item-name { font-weight: 600; }
+  .data-item .item-value {
+    font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .data-item .item-meta { font-size: 12px; color: var(--ink-soft); }
+  .data-item .item-evidence {
+    margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line);
+    font-size: 13px; color: var(--ink-soft);
+  }
+  .data-item .item-evidence a { color: var(--ink); }
+  .data-item .item-actions {
+    display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto;
+  }
+  .data-item .item-delete {
+    background: none; border: 0; color: #9b1c1c;
+    cursor: pointer; font-size: 12px; padding: 4px 6px;
+  }
+  .data-item .item-delete:hover { text-decoration: underline; }
+
+  .pill-mini {
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 600;
+  }
+  .pm-good { background:#e7f5ec; color:#1b5e20; }
+  .pm-warn { background:#fff7e0; color:#7a5c00; }
+  .pm-bad  { background:#fdecea; color:#9b1c1c; }
+  .pm-info { background:#eaf3ff; color:#1f3a7e; }
+  .pm-mute { background:#f0f0f0; color:#555; }
+
+  /* ─── Trend graphs (tiny inline SVG) ─── */
+  .trend-wrap { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin: 12px 0; }
+  .trend-card {
+    border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; background: #fff;
+  }
+  .trend-card h4 { margin: 0 0 4px; font-size: 13px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
+  .trend-card .latest { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; }
+  .trend-card .delta { font-size: 12px; margin-left: 6px; }
+  .trend-card .delta.up { color: #9b1c1c; }
+  .trend-card .delta.down { color: #1b5e20; }
+  .trend-card svg { display: block; width: 100%; height: 50px; margin-top: 6px; }
+  .trend-card .trend-line { fill: none; stroke: #1f3a2e; stroke-width: 1.5; }
+  .trend-card .trend-area { fill: rgba(31,58,46,0.08); stroke: none; }
+
+  /* ─── Tab strip ─── */
+  .data-tabs {
+    display: flex; gap: 4px; overflow-x: auto;
+    border-bottom: 1px solid var(--line); margin-bottom: 14px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .data-tabs button {
+    background: none; border: 0; padding: 10px 14px;
+    font-size: 14px; font-weight: 500; color: var(--ink-soft);
+    cursor: pointer; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+  .data-tabs button.is-active {
+    color: var(--ink); font-weight: 600;
+    border-bottom-color: #1f3a2e;
+  }
+  .data-pane { display: none; }
+  .data-pane.is-active { display: block; }
+
+  @media (max-width: 720px) {
+    .data-section { padding: 14px 14px; }
+    .add-row { flex-direction: column; align-items: stretch; }
+    .add-row .grow { width: 100%; }
+  }
+</style>
+
+<header class="hub-hero">
+  <p class="hp-eyebrow">YOUR DATA</p>
+  <h1>Your second brain for health<span class="dot">.</span></h1>
+  <p class="lede hp-lede">
+    Add what your doctor doesn't see — labs, wearables, genetic variants,
+    medical-record findings, your own self-experiments. We read it against
+    the latest evidence so you walk into every appointment prepared.
+  </p>
+  <div>
+    <span class="hub-counter" id="hub-counter"><span class="dot"></span><span id="hub-counter-text">No data added yet</span></span>
+    <span class="hub-privacy">🔒 Stored on your device, never on our servers</span>
+  </div>
+</header>
+
+<section class="hub-summary" id="hub-summary"></section>
+
+<div class="data-tabs" role="tablist">
+  <button data-tab="labs" class="is-active">🧪 Labs</button>
+  <button data-tab="wearables">⌚ Wearables</button>
+  <button data-tab="genetics">🧬 Genetics</button>
+  <button data-tab="records">📄 Medical records</button>
+  <button data-tab="protocols">🔬 N-of-1 protocols</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     LABS
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="data-pane is-active data-section" data-pane="labs">
+  <header>
+    <h2><span class="icon">🧪</span> Labs</h2>
+    <span class="sec-count" id="labs-count">0 added</span>
+  </header>
+  <p class="sec-pitch">
+    Bring in any blood test (Function Health, Quest, LabCorp, your GP's
+    print-out). Each value is matched to our reference panel and lit up
+    against the corpus — you'll see which edges in the graph it activates
+    and which protective interventions hit those outcomes.
+  </p>
+
+  <div id="labs-empty"></div>
+
+  <form class="add-row" id="lab-add-form" autocomplete="off">
+    <div class="grow">
+      <label>Lab name</label>
+      <input id="lab-name" list="lab-suggestions" placeholder="e.g. TSH, ApoB, HbA1c" required>
+      <datalist id="lab-suggestions">
+        <option value="TSH"><option value="Free T4"><option value="Free T3">
+        <option value="LDL cholesterol"><option value="HDL cholesterol"><option value="Triglycerides">
+        <option value="ApoB"><option value="Lp(a)"><option value="HbA1c">
+        <option value="Fasting glucose"><option value="Fasting insulin"><option value="HOMA-IR">
+        <option value="Vitamin D"><option value="Vitamin B12"><option value="Folate">
+        <option value="Ferritin"><option value="Homocysteine"><option value="hs-CRP">
+        <option value="Testosterone"><option value="Estradiol"><option value="SHBG">
+        <option value="ALT"><option value="AST"><option value="Creatinine"><option value="eGFR">
+        <option value="Uric acid"><option value="Magnesium">
+      </datalist>
+    </div>
+    <div>
+      <label>Value</label>
+      <input id="lab-value" type="number" step="0.01" required style="width:100px">
+    </div>
+    <div>
+      <label>Unit</label>
+      <input id="lab-unit" placeholder="auto" style="width:90px">
+    </div>
+    <div>
+      <label>Date</label>
+      <input id="lab-date" type="date">
+    </div>
+    <button type="submit" class="btn-primary">Add lab</button>
+  </form>
+
+  <div class="upload-row">
+    <label for="lab-csv-upload" class="btn-secondary inline" style="cursor:pointer">📂 Upload CSV</label>
+    <input type="file" id="lab-csv-upload" accept=".csv,.txt" style="display:none">
+    <span class="muted small">CSV columns: name, value, unit, date</span>
+  </div>
+
+  <ul class="data-list" id="lab-list"></ul>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     WEARABLES
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="data-pane data-section" data-pane="wearables" style="display:none">
+  <header>
+    <h2><span class="icon">⌚</span> Wearables &amp; daily metrics</h2>
+    <span class="sec-count" id="wearables-count">0 points</span>
+  </header>
+  <p class="sec-pitch">
+    Add resting heart rate, sleep hours, weight, HRV — by hand, or paste
+    a CSV export from Apple Health / Garmin / Whoop / Oura. We track the
+    trend and tell you when something drifts. Even a single weekly weigh-in
+    is enough to start.
+  </p>
+
+  <div id="wearables-empty"></div>
+
+  <div class="add-row">
+    <div>
+      <label>Stream</label>
+      <select id="wearable-stream">
+        <option value="rhr">Resting HR (bpm)</option>
+        <option value="sleep_hours">Sleep (hours)</option>
+        <option value="weight">Weight (kg or lb)</option>
+        <option value="hrv">HRV (ms)</option>
+        <option value="steps">Steps</option>
+        <option value="glucose">Glucose (mg/dL)</option>
+      </select>
+    </div>
+    <div>
+      <label>Value</label>
+      <input id="wearable-value" type="number" step="0.1" required style="width:100px">
+    </div>
+    <div>
+      <label>Date</label>
+      <input id="wearable-date" type="date">
+    </div>
+    <button id="wearable-add-btn" class="btn-primary">Log point</button>
+  </div>
+
+  <div class="upload-row">
+    <label for="wearable-csv-upload" class="btn-secondary inline" style="cursor:pointer">📂 Upload CSV</label>
+    <input type="file" id="wearable-csv-upload" accept=".csv,.txt" style="display:none">
+    <span class="muted small">CSV columns: stream, date, value (one stream per file or stream column included)</span>
+  </div>
+
+  <div class="trend-wrap" id="wearable-trends"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     GENETICS
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="data-pane data-section" data-pane="genetics" style="display:none">
+  <header>
+    <h2><span class="icon">🧬</span> Genetic variants</h2>
+    <span class="sec-count" id="genetics-count">0 variants</span>
+  </header>
+  <p class="sec-pitch">
+    We focus on a curated panel of 20+ actionable SNPs (APOE, MTHFR,
+    FTO, CYP1A2, COMT…). Drop a 23andMe / Ancestry raw text file or
+    enter rsIDs manually. Variants modify how edges weight in your plan —
+    e.g. APOE-ε4 amplifies dementia-prevention edges, CYP1A2 slow shifts
+    caffeine recommendations.
+  </p>
+
+  <div id="genetics-empty"></div>
+
+  <form class="add-row" id="snp-add-form" autocomplete="off">
+    <div>
+      <label>rsID</label>
+      <input id="snp-rsid" placeholder="rs429358" required style="width:140px">
+    </div>
+    <div>
+      <label>Genotype</label>
+      <input id="snp-genotype" placeholder="CT" required style="width:80px" maxlength="3">
+    </div>
+    <button type="submit" class="btn-primary">Add variant</button>
+  </form>
+
+  <div class="upload-row">
+    <label for="snp-file-upload" class="btn-secondary inline" style="cursor:pointer">📂 Upload 23andMe / Ancestry raw</label>
+    <input type="file" id="snp-file-upload" accept=".txt,.zip,.csv" style="display:none">
+    <span class="muted small">We only parse rsIDs in our actionable panel. Everything else is ignored.</span>
+  </div>
+
+  <ul class="data-list" id="snp-list"></ul>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     RECORDS
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="data-pane data-section" data-pane="records" style="display:none">
+  <header>
+    <h2><span class="icon">📄</span> Medical records</h2>
+    <span class="sec-count" id="records-count">0 records</span>
+  </header>
+  <p class="sec-pitch">
+    Paste a radiology report, a specialist letter, a hospital discharge
+    summary. We extract noun phrases that match entities in our graph
+    and surface relevant evidence + interventions for each. You walk
+    into your next appointment with a list of evidence-backed questions.
+  </p>
+
+  <div id="records-empty"></div>
+
+  <form class="add-row" id="record-add-form" autocomplete="off" style="flex-direction:column;align-items:stretch">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:end">
+      <div>
+        <label>Type</label>
+        <select id="record-type">
+          <option value="radiology">Radiology</option>
+          <option value="pathology">Pathology</option>
+          <option value="specialist">Specialist letter</option>
+          <option value="discharge">Hospital discharge</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div>
+        <label>Date</label>
+        <input id="record-date" type="date">
+      </div>
+      <div class="grow">
+        <label>Label</label>
+        <input id="record-label" placeholder="e.g. Lumbar spine MRI 2025">
+      </div>
+    </div>
+    <div style="margin-top:8px">
+      <label>Paste the report text</label>
+      <textarea id="record-text" rows="5" style="width:100%;font-family:inherit;font-size:14px;padding:10px;border:1px solid var(--line);border-radius:6px"
+        placeholder="Paste the report. We'll extract findings client-side; nothing transits our servers."></textarea>
+    </div>
+    <button type="submit" class="btn-primary" style="align-self:flex-start;margin-top:8px">Add record</button>
+  </form>
+
+  <ul class="data-list" id="record-list"></ul>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PROTOCOLS
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="data-pane data-section" data-pane="protocols" style="display:none">
+  <header>
+    <h2><span class="icon">🔬</span> N-of-1 protocols</h2>
+    <span class="sec-count" id="protocols-count">0 active</span>
+  </header>
+  <p class="sec-pitch">
+    Population averages don't tell you whether <i>you</i> respond. Pick a
+    factor (e.g. creatine, magnesium, late-dinner avoidance), set a
+    duration, log a daily score. At the end we estimate your personal
+    effect size — and tell you whether your data agrees with the
+    meta-analysis or not.
+  </p>
+
+  <div id="protocols-empty"></div>
+
+  <form class="add-row" id="protocol-add-form" autocomplete="off">
+    <div class="grow">
+      <label>Factor (what you'll test)</label>
+      <input id="protocol-factor" placeholder="e.g. creatine_monohydrate" required>
+    </div>
+    <div class="grow">
+      <label>Outcome you'll track</label>
+      <input id="protocol-outcome" placeholder="e.g. strength_one_rep_max" required>
+    </div>
+    <div>
+      <label>Duration</label>
+      <select id="protocol-duration">
+        <option value="14">14 days</option>
+        <option value="28" selected>28 days</option>
+        <option value="56">56 days</option>
+        <option value="84">84 days</option>
+      </select>
+    </div>
+    <button type="submit" class="btn-primary">Start protocol</button>
+  </form>
+
+  <ul class="data-list" id="protocol-list"></ul>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     Data tools
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="data-section" style="background:#f7f7f7;margin-top:24px">
+  <header><h2 style="font-size:16px">Tools</h2></header>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+    <button class="btn-secondary inline" id="export-btn">⤓ Export all data (JSON)</button>
+    <label class="btn-secondary inline" style="cursor:pointer">
+      📂 Import data
+      <input type="file" id="import-file" accept=".json" style="display:none">
+    </label>
+    <button class="btn-secondary inline" id="clear-btn" style="border-color:#f3b3ad;color:#9b1c1c">⚠ Clear all data</button>
+  </div>
+  <p class="muted small" style="margin-top:10px">
+    Your data lives in this browser only. Export creates a portable JSON
+    you can move between devices, share with a clinician, or save to
+    your own backup.
+  </p>
+</section>
+
+<script src="/static/personal.js"></script>
+<script src="/static/me_data.js"></script>
+{% endblock %}

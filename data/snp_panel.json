@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "comment": "Actionable SNPs with genotype interpretations. Each SNP maps a genotype to a list of edges in the Health Universe graph that should be amplified, suppressed, or context-flagged. We start with ~30 of the most consensus-backed clinical / lifestyle markers. The rest of the genome is ignored to avoid false-precision; expansion is a deliberate curation step.",
+  "snps": {
+    "rs429358": {
+      "gene": "APOE",
+      "name": "APOE Cys112Arg (ε4 allele)",
+      "category": "neuro",
+      "interpretation": {
+        "TT": {"label": "ε3/ε3 (most common, baseline risk)", "amplify_edges": [], "summary": "Baseline APOE genotype. Standard dementia-risk profile."},
+        "CT": {"label": "ε3/ε4 (one risk allele) — heterozygous", "amplify_edges": ["smoking", "social_isolation", "aerobic_exercise", "mediterranean_diet"], "amplify_factor": 1.5, "summary": "Single ε4 allele roughly doubles late-onset Alzheimer's risk vs ε3/ε3. Lifestyle interventions for dementia weight more heavily for you."},
+        "CC": {"label": "ε4/ε4 (two risk alleles) — homozygous", "amplify_edges": ["smoking", "social_isolation", "aerobic_exercise", "mediterranean_diet", "head_injury"], "amplify_factor": 2.0, "summary": "Two ε4 alleles confer 8-12× higher Alzheimer's risk vs ε3/ε3. Dementia-prevention edges weight 2× in your plan; cardiovascular and metabolic prevention also matter more given the shared mechanism."}
+      }
+    },
+    "rs7412": {
+      "gene": "APOE",
+      "name": "APOE Cys158Arg (ε2 allele)",
+      "category": "neuro",
+      "interpretation": {
+        "CC": {"label": "ε3 or ε4 background", "summary": "Required to be read together with rs429358 for full APOE genotype."},
+        "CT": {"label": "ε2/ε3 (one protective allele)", "summary": "ε2 may confer some protection against late-onset Alzheimer's but is also linked to higher risk of type III hyperlipidemia. Net effect is mixed."},
+        "TT": {"label": "ε2/ε2 (two protective alleles, rare)", "summary": "Roughly half the dementia risk of ε3/ε3 but a higher risk of dysbetalipoproteinemia. Clinical significance unclear without lipid panel."}
+      }
+    },
+    "rs1801133": {
+      "gene": "MTHFR",
+      "name": "MTHFR C677T",
+      "category": "metabolic",
+      "interpretation": {
+        "GG": {"label": "C/C wild-type", "summary": "Normal MTHFR function. No dietary folate adjustment needed beyond normal recommendations."},
+        "AG": {"label": "C/T heterozygous (~30% reduced enzyme activity)", "amplify_edges": ["folate_repletion", "low_folate", "high_homocysteine"], "summary": "Slightly less efficient folate metabolism. Methylated folate forms (5-MTHF) may be preferred over folic acid; check homocysteine."},
+        "AA": {"label": "T/T homozygous (~70% reduced enzyme activity)", "amplify_edges": ["folate_repletion", "low_folate", "high_homocysteine", "methylfolate"], "amplify_factor": 1.5, "summary": "Significantly reduced folate metabolism. Methylated folate forms strongly preferred. Routine homocysteine monitoring useful — elevations linked to CVD and cognitive risk."}
+      }
+    },
+    "rs9939609": {
+      "gene": "FTO",
+      "name": "FTO obesity variant",
+      "category": "metabolic",
+      "interpretation": {
+        "TT": {"label": "T/T wild-type", "summary": "Standard weight-regulation profile."},
+        "AT": {"label": "A/T heterozygous", "amplify_edges": ["aerobic_exercise", "resistance_training", "ultra_processed_food"], "summary": "~17% higher per-allele obesity risk. Exercise sensitivity for weight remains intact — physical activity offsets the genetic effect."},
+        "AA": {"label": "A/A homozygous", "amplify_edges": ["aerobic_exercise", "resistance_training", "ultra_processed_food"], "amplify_factor": 1.4, "summary": "~70% higher obesity risk vs T/T. Lifestyle (especially exercise) appears to fully mitigate the variant's effect — weight control is harder but not predetermined."}
+      }
+    },
+    "rs1799752": {
+      "gene": "ACE",
+      "name": "ACE I/D polymorphism",
+      "category": "cardio",
+      "interpretation": {
+        "II": {"label": "I/I (insertion homozygous)", "amplify_edges": ["aerobic_exercise"], "summary": "Endurance-favoured genotype. Modest enrichment in elite endurance athletes."},
+        "ID": {"label": "I/D heterozygous", "summary": "Mixed phenotype. No meaningful clinical implications outside athletic context."},
+        "DD": {"label": "D/D (deletion homozygous)", "amplify_edges": ["resistance_training"], "summary": "Power/strength-favoured genotype. Modest enrichment in sprinters and powerlifters."}
+      }
+    },
+    "rs6265": {
+      "gene": "BDNF",
+      "name": "BDNF Val66Met",
+      "category": "neuro",
+      "interpretation": {
+        "GG": {"label": "Val/Val wild-type", "summary": "Standard BDNF secretion. Baseline cognition / mood profile."},
+        "AG": {"label": "Val/Met heterozygous", "amplify_edges": ["aerobic_exercise", "cognitive_training"], "summary": "~30% reduced activity-dependent BDNF release. Aerobic exercise's pro-cognitive effects matter more for offsetting this."},
+        "AA": {"label": "Met/Met homozygous", "amplify_edges": ["aerobic_exercise", "cognitive_training"], "amplify_factor": 1.5, "summary": "More substantial BDNF reduction. Stress-resilience and learning-related interventions weighted higher."}
+      }
+    },
+    "rs1801131": {
+      "gene": "MTHFR",
+      "name": "MTHFR A1298C",
+      "category": "metabolic",
+      "interpretation": {
+        "TT": {"label": "A/A wild-type", "summary": "Normal MTHFR A1298C function."},
+        "GT": {"label": "A/C heterozygous", "summary": "Mild reduction in MTHFR activity at this position. Combined effect with C677T (rs1801133) matters more than each alone."},
+        "GG": {"label": "C/C homozygous", "amplify_edges": ["folate_repletion", "high_homocysteine"], "summary": "~30-40% reduced enzyme activity. Combined with C677T heterozygosity has a larger effect; check homocysteine."}
+      }
+    },
+    "rs4988235": {
+      "gene": "MCM6 / LCT",
+      "name": "Lactase persistence",
+      "category": "diet",
+      "interpretation": {
+        "GG": {"label": "Lactase non-persistent (lactose intolerant)", "amplify_edges": ["dairy_elimination"], "summary": "Lactase production declines after weaning. Most adults globally have this genotype. Symptomatic intolerance varies — try dairy-free for 4 weeks if GI symptoms."},
+        "AG": {"label": "Heterozygous (lactase persistent)", "summary": "Lactase persistence — should tolerate dairy normally as an adult."},
+        "AA": {"label": "Homozygous lactase persistent", "summary": "Strongest lactase persistence. Dairy is well-tolerated."}
+      }
+    },
+    "rs762551": {
+      "gene": "CYP1A2",
+      "name": "CYP1A2 caffeine metabolism",
+      "category": "drug-metabolism",
+      "interpretation": {
+        "AA": {"label": "Fast caffeine metaboliser", "summary": "Caffeine is cleared quickly. Less likely to disrupt sleep from afternoon coffee; cardiovascular effects of high intake are smaller."},
+        "AC": {"label": "Intermediate metaboliser", "summary": "Average caffeine metabolism. Standard advice applies."},
+        "CC": {"label": "Slow caffeine metaboliser", "amplify_edges": ["coffee_more_than_3_cups", "caffeine_more_than_6h_before_bed"], "amplify_factor": 1.5, "summary": "Caffeine lingers significantly longer. Higher cardiovascular risk from heavy intake; afternoon caffeine more likely to disrupt sleep. Cap at 1-2 cups, none after 12pm."}
+      }
+    },
+    "rs2231142": {
+      "gene": "ABCG2",
+      "name": "ABCG2 uric acid transport",
+      "category": "metabolic",
+      "interpretation": {
+        "GG": {"label": "Wild-type uric acid handling", "summary": "Standard uric acid profile."},
+        "GT": {"label": "Heterozygous (reduced excretion)", "amplify_edges": ["uric_acid_high"], "summary": "~30% higher serum uric acid risk. Worth checking uric acid + considering gout-prevention edges."},
+        "TT": {"label": "Homozygous (significantly reduced excretion)", "amplify_edges": ["uric_acid_high"], "amplify_factor": 1.5, "summary": "Significantly higher gout risk. Limit fructose, alcohol, organ meats; check uric acid."}
+      }
+    },
+    "rs1800497": {
+      "gene": "ANKK1 / DRD2",
+      "name": "DRD2 Taq1A",
+      "category": "neuro",
+      "interpretation": {
+        "GG": {"label": "A2/A2 wild-type", "summary": "Standard dopamine receptor density."},
+        "AG": {"label": "A1/A2 heterozygous", "summary": "~30% reduced D2 receptor density. Some evidence for higher reward-seeking and addiction susceptibility, but effect size is small. Behavioural interventions remain the dominant lever."},
+        "AA": {"label": "A1/A1 homozygous", "summary": "Larger reduction in D2 density. Studies suggest moderately higher addiction risk; intentional dopamine-fasting / habit design may help, though evidence is mixed."}
+      }
+    },
+    "rs1815739": {
+      "gene": "ACTN3",
+      "name": "ACTN3 R577X (sprint vs endurance)",
+      "category": "athletic",
+      "interpretation": {
+        "CC": {"label": "R/R (alpha-actinin-3 expressed)", "amplify_edges": ["resistance_training"], "summary": "Power/sprint-favoured genotype. Disproportionately enriched in elite sprinters and powerlifters."},
+        "CT": {"label": "R/X heterozygous", "summary": "Mixed phenotype — most of the population. Both endurance and strength training respond normally."},
+        "TT": {"label": "X/X (alpha-actinin-3 absent)", "amplify_edges": ["aerobic_exercise"], "summary": "Endurance-favoured genotype. Slightly reduced sprint/power potential; endurance training response is normal to enhanced."}
+      }
+    },
+    "rs53576": {
+      "gene": "OXTR",
+      "name": "Oxytocin receptor",
+      "category": "social",
+      "interpretation": {
+        "GG": {"label": "G/G genotype", "summary": "Some studies suggest stronger social-bonding response and stress recovery; effect sizes are small and culturally variable."},
+        "AG": {"label": "Heterozygous", "summary": "Average."},
+        "AA": {"label": "A/A genotype", "summary": "Some studies suggest reduced social-bonding response; clinical relevance is contested."}
+      }
+    },
+    "rs1726866": {
+      "gene": "TAS2R38",
+      "name": "Bitter taste sensitivity",
+      "category": "diet",
+      "interpretation": {
+        "GG": {"label": "PAV/PAV (taster)", "summary": "Sensitive to bitter compounds. Likely to find cruciferous vegetables, dark chocolate, coffee, and brassicas more bitter than average."},
+        "AG": {"label": "Intermediate", "summary": "Average bitter sensitivity."},
+        "AA": {"label": "AVI/AVI (non-taster)", "summary": "Reduced bitter sensitivity — bitter foods often more palatable."}
+      }
+    },
+    "rs2802292": {
+      "gene": "FOXO3",
+      "name": "FOXO3 longevity variant",
+      "category": "longevity",
+      "interpretation": {
+        "TT": {"label": "T/T (most common)", "summary": "Standard longevity-related genotype."},
+        "GT": {"label": "G/T heterozygous", "summary": "~30% higher likelihood of reaching extreme longevity in some populations. Modest effect; lifestyle dwarfs it."},
+        "GG": {"label": "G/G homozygous", "summary": "Roughly 3× higher likelihood of reaching 95+ in studied populations. Still small absolute effect; doesn't override lifestyle."}
+      }
+    },
+    "rs7903146": {
+      "gene": "TCF7L2",
+      "name": "Type 2 diabetes risk",
+      "category": "metabolic",
+      "interpretation": {
+        "CC": {"label": "C/C wild-type", "summary": "Standard T2D risk."},
+        "CT": {"label": "C/T heterozygous", "amplify_edges": ["t2d", "low_carbohydrate_diet", "aerobic_exercise"], "summary": "~40% per-allele increase in T2D risk. Glycemic-control edges weight more heavily for you."},
+        "TT": {"label": "T/T homozygous", "amplify_edges": ["t2d", "low_carbohydrate_diet", "aerobic_exercise"], "amplify_factor": 1.5, "summary": "~2× T2D risk. Especially worth tracking HbA1c trajectory; lifestyle interventions for glycemic control are high-leverage."}
+      }
+    },
+    "rs1801253": {
+      "gene": "ADRB1",
+      "name": "Beta-blocker response",
+      "category": "drug-metabolism",
+      "interpretation": {
+        "CC": {"label": "Arg/Arg", "summary": "Stronger blood-pressure response to beta-blockers. May get more BP-lowering at lower doses."},
+        "CG": {"label": "Arg/Gly heterozygous", "summary": "Average beta-blocker response."},
+        "GG": {"label": "Gly/Gly", "summary": "Reduced BP response to beta-blockers. May need higher doses or alternative classes."}
+      }
+    },
+    "rs4244285": {
+      "gene": "CYP2C19",
+      "name": "CYP2C19 *2 (clopidogrel response)",
+      "category": "drug-metabolism",
+      "interpretation": {
+        "GG": {"label": "*1/*1 (extensive metaboliser)", "summary": "Normal clopidogrel activation. Standard antiplatelet response."},
+        "AG": {"label": "*1/*2 (intermediate metaboliser)", "summary": "Reduced clopidogrel activation. Some guidelines recommend alternative antiplatelet (prasugrel/ticagrelor) for ACS."},
+        "AA": {"label": "*2/*2 (poor metaboliser)", "summary": "Significantly reduced clopidogrel activation. Strong guideline preference for alternative antiplatelet for ACS / PCI."}
+      }
+    },
+    "rs1057910": {
+      "gene": "CYP2C9",
+      "name": "CYP2C9 *3 (warfarin sensitivity)",
+      "category": "drug-metabolism",
+      "interpretation": {
+        "AA": {"label": "*1/*1 wild-type", "summary": "Normal warfarin metabolism."},
+        "AC": {"label": "*1/*3 heterozygous", "summary": "~40% lower warfarin clearance. Lower starting doses recommended; closer INR monitoring at initiation."},
+        "CC": {"label": "*3/*3 homozygous (rare)", "summary": "Very low warfarin clearance. Significantly lower doses + intensive INR monitoring required."}
+      }
+    },
+    "rs4680": {
+      "gene": "COMT",
+      "name": "COMT Val158Met",
+      "category": "neuro",
+      "interpretation": {
+        "GG": {"label": "Val/Val (warrior)", "summary": "Faster dopamine clearance in prefrontal cortex. Tends toward better stress resilience but lower baseline reward sensitivity."},
+        "AG": {"label": "Val/Met heterozygous", "summary": "Intermediate phenotype."},
+        "AA": {"label": "Met/Met (worrier)", "summary": "Slower dopamine clearance. Higher baseline cognitive performance under low stress; more anxiety-prone under high stress. Stress-management edges may matter more."}
+      }
+    }
+  }
+}
