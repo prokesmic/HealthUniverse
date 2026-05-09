@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "high_volume_training_split",
+      "name": "High-volume split resistance training",
+      "kind": "behavior",
+      "aliases": [
+        "split routine bodybuilding training",
+        "high-volume body-part split",
+        "split-based hypertrophy training"
+      ],
+      "description": "A resistance-training style that spreads higher weekly hypertrophy volume across split sessions targeting different muscle groups."
+    },
+    {
+      "slug": "muscle_hypertrophy",
+      "name": "Muscle hypertrophy",
+      "kind": "process",
+      "aliases": [
+        "muscle growth",
+        "increased muscle size"
+      ],
+      "description": "The increase in muscle size that occurs over time with effective resistance training."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "high_volume_training_split",
+      "outcome_slug": "muscle_hypertrophy",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2024 meta-analysis of 14 studies with 392 subjects found no significant hypertrophy difference between split and full-body routines when training volume was equated. At the same time, a 2019 randomized trial in trained men showed a dose-response pattern for hypertrophy, with higher per-session volume outperforming lower-volume programs for several muscle sites. A 2022 systematic review further suggested that 12-20 weekly sets per muscle is often enough, while pushing above 20 sets is not clearly better for every muscle group.",
+      "population": "healthy resistance-trained adults pursuing hypertrophy-focused training",
+      "mechanism": "Higher weekly set volumes can promote more growth, but the advantage appears to come from total effective volume rather than the split format itself. Splits mainly serve as an organizational tool for tolerating more work.",
+      "summary": "The literature does not support a simple 'split routines grow more muscle' claim. High-volume split training can work well for hypertrophy, but its benefit seems to come from making volume manageable, not from the split structure being inherently anabolic.",
+      "caveats": "When weekly volume is matched, split and full-body routines look broadly similar. Individual recovery, exercise quality, and adherence may matter more than the routine label itself.",
+      "evidence": [
+        {
+          "citation": "Ramos-CampoDJ et al 2024 J Strength Cond Res",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Efficacy of Split Versus Full-Body Resistance Training on Strength and Muscle Growth: A Systematic Review With Meta-Analysis.",
+          "pmid": "38595233",
+          "n_participants": 392
+        },
+        {
+          "citation": "SchoenfeldBJ et al 2019 Med Sci Sports Exerc",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Resistance Training Volume Enhances Muscle Hypertrophy but Not Strength in Trained Men.",
+          "pmid": "30153194",
+          "n_participants": 34
+        },
+        {
+          "citation": "LongrakR et al 2024 S Afr J Sports Med",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Regional morphological adaptations of vastus lateralis muscle in response to different progressive resistance training programs: A randomised controlled trial.",
+          "pmid": "39355555",
+          "n_participants": 18
+        }
+      ]
+    }
+  ]
+}
