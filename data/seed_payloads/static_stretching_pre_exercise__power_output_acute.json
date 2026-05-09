@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "static_stretching_pre_exercise",
+      "name": "Static stretching before exercise",
+      "kind": "behavior",
+      "aliases": [
+        "pre-exercise static stretching",
+        "static stretch warm-up"
+      ],
+      "description": "Static stretching used immediately before training or competition as part of a warm-up."
+    },
+    {
+      "slug": "power_output_acute",
+      "name": "Acute power output",
+      "kind": "process",
+      "aliases": [
+        "immediate explosive performance",
+        "short-term power performance"
+      ],
+      "description": "Explosive or power-based performance measured immediately after a warm-up intervention."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "static_stretching_pre_exercise",
+      "outcome_slug": "power_output_acute",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A classic meta-analysis found that pre-exercise static stretching reduced power by about 1.9% on average and explosive performance by about 2.0%, while a newer multilevel meta-analysis confirmed small strength losses that become much larger when single stretches last 60 seconds or longer. The downside is usually modest, but it is consistent enough that static stretching should not be the main warm-up if explosive output matters.",
+      "population": "healthy athletes and active adults performing explosive or power-oriented activity after static stretching",
+      "mechanism": "Longer static holds can transiently reduce musculotendinous stiffness and neural drive in ways that make explosive contractions slightly less effective right afterward. That effect is most noticeable when static stretching is the main warm-up rather than one small component of a fuller routine.",
+      "summary": "The practical message here is more nuanced than the old blanket warning, but still useful. Static stretching before power work can shave a small amount off acute output, especially if the holds are long and not followed by more dynamic activation.",
+      "caveats": "Very short stretches embedded inside a dynamic warm-up may not matter much, and some newer analyses suggest the effect on sport-specific performance can be trivial. The risk is highest when static stretching is prolonged and used in isolation.",
+      "evidence": [
+        {
+          "citation": "SimicL et al 2013 Scand J Med Sci Sports",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Does pre-exercise static stretching inhibit maximal muscular performance? A meta-analytical review.",
+          "pmid": "22316148",
+          "n_participants": 104,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": -1.9,
+            "comparator": "pre-exercise static stretching versus control for acute power performance"
+          }
+        },
+        {
+          "citation": "KonradA et al 2024 J Sport Health Sci",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Revisiting the stretch-induced force deficit: A systematic review with multilevel meta-analysis of acute effects.",
+          "pmid": "38735533",
+          "n_participants": 2012,
+          "effect_quant": {
+            "metric": "effect_size",
+            "value": -0.84,
+            "comparator": "static stretching lasting 60 seconds or more per bout versus passive control for maximal strength"
+          }
+        },
+        {
+          "citation": "WangJ et al 2026 Front Physiol",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Acute neuromechanical effects of static and PNF hamstring stretching on explosive power and balance.",
+          "pmid": "41884266",
+          "n_participants": 21
+        }
+      ]
+    }
+  ]
+}

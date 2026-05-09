@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "compression_garments_post_exercise",
+      "name": "Compression garments after exercise",
+      "kind": "behavior",
+      "aliases": [
+        "post-exercise compression wear",
+        "recovery compression sleeves",
+        "compression tights after training"
+      ],
+      "description": "Compression sleeves, tights, or pants worn after hard exercise in an attempt to improve subsequent recovery."
+    },
+    {
+      "slug": "recovery_markers",
+      "name": "Recovery markers",
+      "kind": "process",
+      "aliases": [
+        "post-exercise recovery outcomes",
+        "recovery indicators"
+      ],
+      "description": "A bundle of post-exercise outcomes such as soreness, power recovery, strength recovery, heart-rate recovery, and related physiological indicators."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "compression_garments_post_exercise",
+      "outcome_slug": "recovery_markers",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2025 meta-analysis found small but significant recovery benefits for post-exercise muscle strength and power, with Hedges g values of about -0.21 and -0.23 versus control. But recent randomized trials still show protocol-sensitive and sometimes null results, so the fairest label remains mixed rather than reliably protective.",
+      "population": "healthy athletes and active adults using lower-body compression garments after fatiguing exercise",
+      "mechanism": "External pressure may reduce swelling, alter venous return, and slightly accelerate some physiological recovery signals. In practice, though, those effects are modest and do not consistently translate into better performance or less soreness across every sport context.",
+      "summary": "Compression garments probably help a little in some post-exercise settings, but they are not a universally strong recovery tool. The literature supports a modest upside for selected recovery markers while leaving enough null trial evidence to justify a mixed overall verdict.",
+      "caveats": "Pressure level, when the garment is worn, and which recovery endpoint is chosen all matter. An athlete should expect at most a small edge, not a dramatic recovery shortcut.",
+      "evidence": [
+        {
+          "citation": "ZhouQ et al 2025 Life (Basel)",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of Compression Garments on Muscle Strength and Power Recovery Post-Exercise: A Systematic Review and Meta-Analysis.",
+          "pmid": "40141783",
+          "n_participants": 27,
+          "effect_quant": {
+            "metric": "hedges_g",
+            "value": -0.21,
+            "comparator": "compression garments versus control for post-exercise muscle strength decline"
+          }
+        },
+        {
+          "citation": "LiuZ et al 2025 Sensors (Basel)",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of Compression Pants with Different Pressure Levels on Anaerobic Performance and Post-Exercise Physiological Recovery: Randomized Crossover Trial.",
+          "pmid": "40808038",
+          "n_participants": 20
+        },
+        {
+          "citation": "WahlP et al 2026 Physiol Rep",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Do full leg compression sleeves improve repeated sprint performance after soccer-specific exercise in adolescent male soccer players?",
+          "pmid": "41693319",
+          "n_participants": 12
+        }
+      ]
+    }
+  ]
+}

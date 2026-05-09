@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "foam_rolling_post_exercise",
+      "name": "Foam rolling after exercise",
+      "kind": "behavior",
+      "aliases": [
+        "post-exercise foam rolling",
+        "self-myofascial release after training"
+      ],
+      "description": "Foam rolling used after exercise to restore flexibility and reduce stiffness or soreness."
+    },
+    {
+      "slug": "range_of_motion_acute",
+      "name": "Acute range of motion",
+      "kind": "process",
+      "aliases": [
+        "short-term flexibility",
+        "immediate ROM"
+      ],
+      "description": "Range of motion measured immediately or shortly after an intervention."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "foam_rolling_post_exercise",
+      "outcome_slug": "range_of_motion_acute",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The broadest acute warm-up meta-analysis found that foam rolling was not superior to other warm-up interventions for ROM, but direct trials still consistently show that ROM rises acutely after a foam-rolling bout. In one 2025 trial, range-of-motion gains persisted for at least 10 minutes, and another post-exercise study found a 12.7% flexibility improvement after foam rolling versus passive recovery.",
+      "population": "healthy athletes and active adults using foam rolling around exercise or recovery sessions",
+      "mechanism": "Foam rolling probably increases stretch tolerance more than it changes tissue structure, which is why ROM often improves quickly even when stiffness or power outcomes do not. The benefit is real, but it is usually modest and not unique to foam rolling compared with every other warm-up choice.",
+      "summary": "Foam rolling is a reasonable way to get a short-term flexibility bump. The evidence is strongest for acute ROM itself, while the more inflated claims about broad performance benefits are much less consistent.",
+      "caveats": "Foam rolling does not appear uniquely superior to all other warm-up methods. If the goal is only acute ROM, it works, but other strategies can often achieve a similar result.",
+      "evidence": [
+        {
+          "citation": "KonradA et al 2024 J Sport Health Sci",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Foam rolling and stretching do not provide superior acute flexibility and stiffness improvements compared to any other warm-up intervention: A systematic review with meta-analysis.",
+          "pmid": "38244921",
+          "n_participants": 1134
+        },
+        {
+          "citation": "WongP et al 2025 PLoS One",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Sex and pressure effects of foam rolling on acute range of motion in the hamstring muscles.",
+          "pmid": "39993022",
+          "n_participants": 20
+        },
+        {
+          "citation": "StastnyP et al 2025 Medicina (Kaunas)",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A Single Bout of Foam Rolling After Nordic Hamstring Exercise Improves Flexibility but Has No Effect on Muscle Stiffness or Functional Muscle Parameters.",
+          "pmid": "40870532",
+          "n_participants": 32,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 12.7,
+            "comparator": "foam rolling versus passive recovery for acute flexibility after Nordic hamstring exercise"
+          }
+        }
+      ]
+    }
+  ]
+}
