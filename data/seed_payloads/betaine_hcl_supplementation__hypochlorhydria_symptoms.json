@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "betaine_hcl_supplementation",
+      "name": "Betaine HCl supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "betaine hydrochloride",
+        "oral betaine HCl"
+      ],
+      "description": "Oral betaine hydrochloride used with the goal of transiently re-acidifying the stomach in people with hypochlorhydria or acid-suppressed gastric conditions."
+    },
+    {
+      "slug": "hypochlorhydria_symptoms",
+      "name": "Hypochlorhydria symptoms",
+      "kind": "condition",
+      "aliases": [
+        "low stomach acid symptoms",
+        "acid-suppressed dyspeptic symptoms"
+      ],
+      "description": "Symptoms or functional consequences associated with low stomach acid, including impaired gastric acidification and related upper gastrointestinal complaints."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "betaine_hcl_supplementation",
+      "outcome_slug": "hypochlorhydria_symptoms",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In the cleanest mechanistic human study, 1500 mg betaine HCl lowered mean gastric pH from 5.2 to 0.6 and kept pH below 3 for about 73 minutes in rabeprazole-induced hypochlorhydria. Drug-absorption crossover trials confirm that this re-acidification can be pharmacologically meaningful, but the same literature also shows the effect is context-dependent and not the same thing as proven symptom relief.",
+      "population": "healthy volunteers with pharmacologically induced hypochlorhydria or acid-suppressed gastric conditions",
+      "mechanism": "Betaine HCl acts as an exogenous acid donor that can transiently restore gastric acidity, potentially reversing the impaired dissolution and upstream digestive environment caused by suppressed stomach acid.",
+      "summary": "Betaine HCl clearly re-acidifies the stomach for a short window, but the leap from that pharmacologic effect to routine symptom relief is much less proven. The evidence supports a real mechanistic action with mixed clinical implications rather than a broadly validated low-stomach-acid remedy.",
+      "caveats": "Most studies were done in healthy volunteers with induced hypochlorhydria and evaluated pH or drug absorption rather than patient-reported digestive symptoms. The benefit may differ substantially in fed versus fasted states.",
+      "evidence": [
+        {
+          "citation": "YagoMR et al 2013 Mol Pharm",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Gastric reacidification with betaine HCl in healthy volunteers with rabeprazole-induced hypochlorhydria.",
+          "pmid": "23980906",
+          "n_participants": 6,
+          "effect_quant": {
+            "metric": "absolute_change",
+            "value": -4.5,
+            "unit": "pH_units",
+            "comparator": "mean gastric pH change after 1500 mg betaine HCl"
+          }
+        },
+        {
+          "citation": "YagoMR et al 2014 AAPS J",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The use of betaine HCl to enhance dasatinib absorption in healthy volunteers with rabeprazole-induced hypochlorhydria.",
+          "pmid": "25274610",
+          "n_participants": 11,
+          "effect_quant": {
+            "metric": "percent_of_control",
+            "value": 121,
+            "unit": "percent",
+            "comparator": "AUC restored relative to dasatinib alone after rabeprazole pretreatment"
+          }
+        },
+        {
+          "citation": "FaberKP et al 2017 Pharm Res",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Meal Effects Confound Attempts to Counteract Rabeprazole-Induced Hypochlorhydria Decreases in Atazanavir Absorption.",
+          "pmid": "28028768",
+          "n_participants": 11
+        }
+      ]
+    }
+  ]
+}

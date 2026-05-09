@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "fadogia_agrestis",
+      "name": "Fadogia agrestis",
+      "kind": "supplement",
+      "aliases": [
+        "Fadogia stem extract",
+        "fadogia testosterone booster"
+      ],
+      "description": "A West African botanical marketed in supplement circles as a natural testosterone booster despite extremely limited human evidence."
+    },
+    {
+      "slug": "testosterone_humans",
+      "name": "Testosterone in humans",
+      "kind": "biomarker",
+      "aliases": [
+        "serum testosterone in adults",
+        "human testosterone levels"
+      ],
+      "description": "Measured testosterone status in adult humans using fadogia-containing supplements or extracts."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "fadogia_agrestis",
+      "outcome_slug": "testosterone_humans",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "humans seeking testosterone support, with most available direct efficacy data coming only from animal models rather than human trials",
+      "mechanism": "Animal work suggests fadogia extracts may influence Leydig-cell steroidogenesis or related androgen signaling, but this proposed mechanism has not been validated in humans.",
+      "summary": "Fadogia agrestis is a classic example of a testosterone claim outrunning its evidence base. PubMed contains animal data and supplement chemistry papers, but no convincing human trial literature showing that fadogia reliably raises testosterone in people.",
+      "caveats": "This edge is intentionally low tier because the human evidence is essentially absent. Consumers encounter the claim constantly, so representing the gap in the corpus is more honest than silently implying support.",
+      "evidence": [
+        {
+          "citation": "YakubuMT et al 2005 Asian J Androl",
+          "year": 2005,
+          "study_type": "animal",
+          "direction": "protective",
+          "quality": "very_low",
+          "notes": "Aphrodisiac potentials of the aqueous extract of Fadogia agrestis (Schweinf. Ex Hiern) stem in male albino rats.",
+          "pmid": "16281088"
+        },
+        {
+          "citation": "OgunroOB et al 2023 Reprod Sci",
+          "year": 2023,
+          "study_type": "animal",
+          "direction": "protective",
+          "quality": "very_low",
+          "notes": "Fadogia agrestis (Schweinf. Ex Hiern) Stem Extract Restores Selected Biomolecules of Erectile Dysfunction in the Testicular and Penile Tissues of Paroxetine-Treated Wistar Rats.",
+          "pmid": "35969364"
+        },
+        {
+          "citation": "AvulaB et al 2019 Planta Med",
+          "year": 2019,
+          "study_type": "mechanistic",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Quantification of Phenolic Compounds from Fadogia agrestis and Dietary Supplements using UHPLC-PDA-MS.",
+          "pmid": "30170324"
+        }
+      ]
+    }
+  ]
+}

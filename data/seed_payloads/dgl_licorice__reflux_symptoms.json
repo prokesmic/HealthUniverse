@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "dgl_licorice",
+      "name": "DGL licorice",
+      "kind": "supplement",
+      "aliases": [
+        "deglycyrrhizinated licorice",
+        "GutGard licorice extract"
+      ],
+      "description": "Deglycyrrhizinated licorice preparations used as upper-gastrointestinal remedies, including standardized flavonoid-rich extracts with reduced glycyrrhizin content."
+    },
+    {
+      "slug": "reflux_symptoms",
+      "name": "Reflux symptoms",
+      "kind": "condition",
+      "aliases": [
+        "GERD symptoms",
+        "heartburn and regurgitation"
+      ],
+      "description": "Patient-reported symptoms of gastroesophageal reflux, especially heartburn, regurgitation, and related quality-of-life impairment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "dgl_licorice",
+      "outcome_slug": "reflux_symptoms",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "population": "adults with gastroesophageal reflux or upper-GI symptom syndromes using licorice-based nonprescription products",
+      "mechanism": "Deglycyrrhizinated licorice extracts are proposed to soothe the esophageal and gastric mucosa and may exert anti-inflammatory effects, but many products combine licorice with other actives and the clinically dominant mechanism remains uncertain.",
+      "summary": "Licorice-based reflux products have more real trial data than many supplement users realize, but the evidence is still product-specific rather than definitive. The best modern placebo-controlled reflux trial is positive, yet other supportive studies blend licorice with additional ingredients or target broader dyspepsia rather than classic GERD.",
+      "caveats": "This edge reflects deglycyrrhizinated or low-glycyrrhizin licorice products, not ordinary licorice candy. Some supporting evidence uses multi-ingredient gums or dyspepsia outcomes rather than isolated reflux endpoints.",
+      "evidence": [
+        {
+          "citation": "RajJP et al 2025 Complement Med Res",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and Safety of GutGard® in Managing Gastroesophageal Reflux-Related Symptoms: A Phase III, Single-Centre, Double-Blind, Randomized Placebo-Controlled Trial.",
+          "pmid": "39929150",
+          "n_participants": 200
+        },
+        {
+          "citation": "BrownR et al 2015 J Diet Suppl",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Effect of GutsyGum(tm), A Novel Gum, on Subjective Ratings of Gastro Esophageal Reflux Following A Refluxogenic Meal.",
+          "pmid": "25144853",
+          "n_participants": 24
+        },
+        {
+          "citation": "RaveendraKR et al 2012 Evid Based Complement Alternat Med",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "An Extract of Glycyrrhiza glabra (GutGard) Alleviates Symptoms of Functional Dyspepsia: A Randomized, Double-Blind, Placebo-Controlled Study.",
+          "pmid": "21747893",
+          "n_participants": 50
+        }
+      ]
+    }
+  ]
+}
