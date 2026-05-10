@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ivf_dhea_supplementation_dor",
+      "name": "DHEA supplementation during IVF for diminished ovarian reserve",
+      "kind": "supplement",
+      "aliases": [
+        "DHEA in IVF with DOR",
+        "dehydroepiandrosterone pretreatment in diminished ovarian reserve"
+      ],
+      "description": "Use of dehydroepiandrosterone as an adjunct before or during IVF in women with diminished ovarian reserve or poor ovarian response."
+    },
+    {
+      "slug": "live_birth_rate_diminished_reserve",
+      "name": "Live birth rate in diminished ovarian reserve",
+      "kind": "process",
+      "aliases": [
+        "live birth success in women with DOR",
+        "IVF live birth in poor reserve"
+      ],
+      "description": "Probability of live birth after IVF or ICSI among women with diminished ovarian reserve or poor ovarian response."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ivf_dhea_supplementation_dor",
+      "outcome_slug": "live_birth_rate_diminished_reserve",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "The highest-signal takeaway is that DHEA has not convincingly increased live birth in randomized-only analyses. The 2023 Frontiers meta-analysis found no significant live birth increase when restricted to RCTs, and the 2023 systematic review found a live birth RR of 1.35 with confidence intervals crossing the null despite improvements in some intermediate IVF markers.",
+      "population": "women with diminished ovarian reserve or poor ovarian response undergoing IVF or ICSI",
+      "mechanism": "DHEA is proposed to augment the intra-ovarian androgen environment, potentially improving follicular recruitment and oocyte competence. The clinical problem is that plausible endocrine effects have not translated consistently into higher live birth rates in randomized evidence.",
+      "summary": "This is a classic mixed IVF adjunct edge. DHEA may improve some reserve markers or embryology metrics in selected women with diminished reserve, but the current randomized evidence does not justify a confident live-birth benefit claim.",
+      "caveats": "Definitions of diminished reserve and poor response vary across studies, and many meta-analyses pool RCTs with weaker observational designs. This edge should remain restrained and outcome-specific to live birth rather than being upgraded on the basis of intermediate markers alone.",
+      "evidence": [
+        {
+          "citation": "Lensen S et al 2025 Fertil Steril",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Therapeutic management in women with a diminished ovarian reserve: a systematic review and meta-analysis of randomized controlled trials.",
+          "doi": "10.1016/j.fertnstert.2024.09.038",
+          "pmid": "39332623",
+          "n_participants": 1336
+        },
+        {
+          "citation": "LiJ et al 2023 Front Endocrinol (Lausanne)",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Efficacy of dehydroepiandrosterone priming in women with poor ovarian response undergoing IVF/ICSI: a meta-analysis.",
+          "pmid": "37361534",
+          "n_participants": 1336
+        },
+        {
+          "citation": "Yao S et al 2023 Comb Chem High Throughput Screen",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The Role of Dehydroepiandrosterone in Improving in vitro Fertilization Outcome in Patients with DOR/POR: A Systematic Review and Meta- Analysis.",
+          "doi": "10.2174/1386207325666220820164357",
+          "pmid": "35996249",
+          "n_participants": 1998,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.35,
+            "ci_low": 0.94,
+            "ci_high": 1.94,
+            "comparator": "live birth rate with DHEA supplementation versus control in women with DOR or poor ovarian response"
+          }
+        }
+      ]
+    }
+  ]
+}

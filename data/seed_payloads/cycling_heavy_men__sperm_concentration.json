@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cycling_heavy_men",
+      "name": "Heavy cycling in men",
+      "kind": "activity",
+      "aliases": [
+        "high-volume bicycling in men",
+        "bicycling five hours per week or more"
+      ],
+      "description": "Regular high-volume bicycling or cycling training in men before conception."
+    },
+    {
+      "slug": "sperm_concentration",
+      "name": "Sperm concentration",
+      "kind": "biomarker",
+      "aliases": [
+        "sperm count concentration",
+        "sperm density"
+      ],
+      "description": "The concentration of spermatozoa in semen, usually expressed as millions per milliliter."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cycling_heavy_men",
+      "outcome_slug": "sperm_concentration",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The anchor fertility-clinic cohort found that bicycling at least five hours per week was associated with nearly doubled odds of low sperm concentration (OR 1.92, 95% CI 1.03-3.56). Review-level evidence also suggests cycling is one of the specific sports most consistently linked to lower concentration, but the broader physical-activity literature is not uniformly negative.",
+      "population": "men of reproductive age who engage in regular high-volume bicycling or endurance cycling",
+      "mechanism": "Heavy cycling may lower sperm concentration through repeated perineal compression, local heat buildup, and prolonged saddle pressure, potentially combined with endurance-energy stress in more serious cyclists. That mechanism is more specific than exercise in general, which is why cycling can look less favorable than other physical activity patterns.",
+      "summary": "The most conservative claim is that heavy bicycling is a plausible sperm-concentration risk factor, not that all cycling is harmful. The negative signal appears mainly at higher weekly volumes and should not be generalized to casual riding.",
+      "caveats": "Most studies are observational and may not fully separate cycling volume from clothing, saddle design, recovery state, or other endurance-training habits. The literature supports caution at higher volumes, but it does not justify treating all cycling as an infertility hazard.",
+      "evidence": [
+        {
+          "citation": "Wise LA et al 2011 Fertil Steril",
+          "year": 2011,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Physical activity and semen quality among men attending an infertility clinic.",
+          "doi": "10.1016/j.fertnstert.2010.11.006",
+          "pmid": "21122845",
+          "n_participants": 2261,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.92,
+            "ci_low": 1.03,
+            "ci_high": 3.56,
+            "comparator": "odds of low sperm concentration in men bicycling at least 5 hours per week versus no regular exercise"
+          }
+        },
+        {
+          "citation": "Vaamonde D et al 2019 Arch Gynecol Obstet",
+          "year": 2019,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "An update on the implication of physical activity on semen quality: a systematic review and meta-analysis.",
+          "doi": "10.1007/s00404-019-05045-8",
+          "pmid": "30671700",
+          "n_participants": 32
+        },
+        {
+          "citation": "Mínguez-Alarcón L et al 2014 Hum Reprod",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Paternal physical and sedentary activities in relation to semen quality and reproductive outcomes among couples from a fertility center.",
+          "pmid": "25164027",
+          "n_participants": 231
+        }
+      ]
+    }
+  ]
+}
