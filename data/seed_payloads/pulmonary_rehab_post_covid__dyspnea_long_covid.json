@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pulmonary_rehab_post_covid",
+      "name": "Pulmonary rehabilitation after COVID-19",
+      "kind": "behavior",
+      "aliases": [
+        "post-COVID pulmonary rehabilitation",
+        "pulmonary rehab for long COVID"
+      ],
+      "description": "Structured pulmonary rehabilitation used for persistent respiratory symptoms after acute COVID-19."
+    },
+    {
+      "slug": "dyspnea_long_covid",
+      "name": "Dyspnea in long COVID",
+      "kind": "condition",
+      "aliases": [
+        "long-COVID breathlessness",
+        "persistent dyspnea after COVID-19"
+      ],
+      "description": "Persistent breathlessness during post-acute COVID-19 syndrome."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pulmonary_rehab_post_covid",
+      "outcome_slug": "dyspnea_long_covid",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The long-COVID PR meta-analysis found no clear pooled dyspnea improvement overall (mean difference -0.57, 95% CI -1.32 to 0.17), but pragmatic and multicenter trials reported clinically meaningful improvement in modified MRC and multidimensional dyspnea scores.",
+      "population": "adults with persistent respiratory symptoms after COVID-19 or long COVID",
+      "mechanism": "Pulmonary rehabilitation may improve long-COVID breathlessness through graded conditioning, inspiratory muscle retraining, breathing pattern work, and reduced deconditioning. The mixed pooled result likely reflects heterogeneity in long-COVID phenotypes, with some patients having exertional dyspnea that responds to training and others having symptom drivers less responsive to standard rehabilitation.",
+      "summary": "The strongest pooled review shows that pulmonary rehabilitation clearly improves exercise capacity and fatigue after COVID-19, but the dyspnea signal is less uniform. Individual randomized trials do show better breathlessness scores with structured exercise-based rehabilitation, so the fairest read is mixed-but-promising rather than firmly protective.",
+      "caveats": "Long COVID is not one syndrome, and breathlessness may reflect dysautonomia, dysfunctional breathing, cardiopulmonary injury, or post-exertional symptom exacerbation risk. Programs that help a respiratory-limited subgroup may not generalize cleanly to all long-COVID patients with dyspnea complaints.",
+      "evidence": [
+        {
+          "citation": "Oliveira MR et al 2024 Arch Phys Med Rehabil",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Effect of Pulmonary Rehabilitation on Exercise Capacity, Dyspnea, Fatigue, and Peripheral Muscle Strength in Patients With Post-COVID-19 Syndrome: A Systematic Review and Meta-analysis.",
+          "pmid": "38311096",
+          "n_participants": 188
+        },
+        {
+          "citation": "Romanet C et al 2023 Ann Phys Rehabil Med",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effectiveness of exercise training on the dyspnoea of individuals with long COVID: A randomised controlled multicentre trial.",
+          "pmid": "37271020",
+          "n_participants": 60
+        },
+        {
+          "citation": "van der Sar-van der Brugge S et al 2025 BMJ Open Respir Res",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Improved functional exercise capacity after primary care pulmonary rehabilitation in patients with long COVID (PuRe-COVID): a pragmatic randomised controlled trial.",
+          "pmid": "41253410",
+          "n_participants": 76
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "paced_activity_long_covid",
+      "name": "Paced activity for long COVID",
+      "kind": "behavior",
+      "aliases": [
+        "activity pacing in long COVID",
+        "energy management pacing for long COVID"
+      ],
+      "description": "An activity-management approach that aims to stay within an individual's exertional tolerance to reduce symptom flares in long COVID."
+    },
+    {
+      "slug": "symptom_burden",
+      "name": "Symptom burden",
+      "kind": "process",
+      "aliases": [
+        "overall symptom load",
+        "symptom severity burden"
+      ],
+      "description": "The overall frequency, intensity, or functional burden of symptoms experienced by a patient."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "paced_activity_long_covid",
+      "outcome_slug": "symptom_burden",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "The most relevant review found that five rehabilitation studies involving 193 participants reported lower frequency or intensity of post-exertional malaise after tailored programmes centered on pacing approaches, but robust pooled treatment estimates were not available.",
+      "population": "adults with long COVID, especially those with fatigue or post-exertional symptom exacerbation",
+      "mechanism": "Pacing may reduce symptom burden by keeping activity below an individual's post-exertional trigger threshold and smoothing boom-bust cycles. At the same time, overt avoidance can reinforce deconditioning, and objective exercise-challenge work suggests not every long-COVID patient has reproducible post-exertional worsening, so pacing likely helps a subset more than the whole population.",
+      "summary": "The strongest anchor is the 2025 PEM review, which suggests that tailored rehabilitation programmes built around pacing can reduce PEM frequency or intensity in some long-COVID patients. But the evidence base is still thin, most of it is not direct head-to-head pacing research, and objective studies show a more heterogeneous exertional response than patient reports alone imply, so this edge should stay mixed and low-certainty.",
+      "caveats": "Direct randomized trials of pacing itself are still largely absent. Much of the available literature blends pacing with broader rehabilitation, self-management, or PEM screening, which makes it hard to distinguish a true pacing effect from careful patient selection or multimodal care.",
+      "evidence": [
+        {
+          "citation": "Gordon B et al 2025 Arch Phys Med Rehabil",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Prevalence and Impact of Postexertional Malaise on Recovery in Adults With Post-COVID-19 Condition: A Systematic Review With Meta-analysis.",
+          "pmid": "39921187",
+          "n_participants": 5349
+        },
+        {
+          "citation": "Daynes E et al 2024 ERJ Open Res",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Changes in fatigue symptoms following an exercise-based rehabilitation programme for patients with long COVID.",
+          "pmid": "39040593",
+          "n_participants": 148
+        },
+        {
+          "citation": "Hekkert B et al 2025 Front Neurol",
+          "year": 2025,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Post-exertional malaise in Long COVID: subjective reporting versus objective assessment.",
+          "pmid": "40337174",
+          "n_participants": 296
+        }
+      ]
+    }
+  ]
+}

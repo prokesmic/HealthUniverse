@@ -19,6 +19,7 @@ import difflib
 import json
 import sys
 import time
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Any
 
@@ -78,6 +79,33 @@ def _pubmed_lookup(pmids: list[str]) -> dict[str, dict]:
         except Exception as e:
             print(f"  [pubmed lookup] {e}", file=sys.stderr)
         time.sleep(0.4)
+        missing = [pmid for pmid in chunk if pmid not in out]
+        for pmid in missing:
+            try:
+                r = httpx.get(
+                    "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi",
+                    params={"db": "pubmed", "id": pmid, "retmode": "xml"},
+                    timeout=30.0,
+                )
+                r.raise_for_status()
+                root = ET.fromstring(r.text)
+                article = root.find(".//PubmedArticle")
+                if article is None:
+                    continue
+                title_node = article.find(".//ArticleTitle")
+                title = "".join(title_node.itertext()) if title_node is not None else ""
+                if not title:
+                    continue
+                journal = (article.findtext(".//Journal/ISOAbbreviation", "")
+                           or article.findtext(".//Journal/Title", ""))
+                year = article.findtext(".//PubDate/Year", "")
+                if not year:
+                    medline_date = article.findtext(".//PubDate/MedlineDate", "")
+                    year = medline_date[:4] if medline_date else ""
+                out[pmid] = {"title": title, "journal": journal, "year": year}
+            except Exception as e:
+                print(f"  [pubmed efetch] {pmid}: {e}", file=sys.stderr)
+            time.sleep(0.4)
     return out
 
 
