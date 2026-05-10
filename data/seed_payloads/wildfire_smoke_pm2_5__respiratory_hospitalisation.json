@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "wildfire_smoke_pm2_5",
+      "outcome_slug": "respiratory_hospitalisation",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In 10,369,361 older adults across the western United States, raising smoke-specific PM2.5 from 0 to 40 micrograms per cubic meter was associated with 2.40 more respiratory hospitalizations per 100,000 people per day. In more than 89 million cardiopulmonary hospitalizations across 20 states, each 1 microgram per cubic meter increase in two-year wildfire-specific PM2.5 was associated with higher pulmonary hospitalization risk, including a relative risk of 1.160 for asthma. A 2025 systematic review found that each 10 micrograms per cubic meter increase in short-term wildfire PM2.5 was associated with a 3% increase in respiratory infectious disease outcomes overall.",
+      "population": "older adults and general populations exposed to short-term and medium-term wildfire smoke PM2.5",
+      "mechanism": "Wildfire smoke delivers a highly oxidative particulate mixture that can inflame airway epithelium, intensify bronchial reactivity, and worsen infection-related airway stress. The clearest burden shows up in respiratory admissions rather than in subtle symptom changes.",
+      "summary": "The most defensible claim is the boring one: when wildfire smoke gets heavy, respiratory hospital use goes up. Large hospitalization datasets now support that conclusion more clearly than the cardiovascular literature does.",
+      "caveats": "The evidence mixes short-term spikes with multi-year exposure windows and combines several respiratory end points, from asthma to infection-related admissions. That means the edge is strong enough to treat as harmful, but not precise enough to claim a single uniform effect size for every respiratory diagnosis.",
+      "evidence": [
+        {
+          "citation": "Sofia Vega et al 2025 JAMA Netw Open",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Wildfire Smoke Exposure and Cause-Specific Hospitalization in Older Adults.",
+          "doi": "10.1001/jamanetworkopen.2025.7956",
+          "pmid": "40305019",
+          "n_participants": 10369361
+        },
+        {
+          "citation": "Min Zhang et al 2025 medRxiv",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Cardiopulmonary hospitalization risks from wildfire and non-wildfire PM(2.5) in 20 US states.",
+          "doi": "10.1101/2025.07.15.25331618",
+          "pmid": "40791683",
+          "n_participants": 89000000
+        },
+        {
+          "citation": "Rahini Mahendran et al 2025 ACS Environ Au",
+          "year": 2025,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Wildfire-Related Air Pollution and Infectious Diseases: Systematic Review and Meta-Analysis.",
+          "doi": "10.1021/acsenvironau.4c00087",
+          "pmid": "40416841",
+          "n_participants": null
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "wildfire_smoke_pm2_5",
+      "name": "Wildfire smoke PM2.5 exposure",
+      "kind": "environmental",
+      "aliases": [
+        "wildfire-specific PM2.5",
+        "fire smoke fine particulate exposure"
+      ],
+      "description": "Exposure to fine particulate matter specifically attributable to wildfire smoke."
+    },
+    {
+      "slug": "respiratory_hospitalisation",
+      "name": "Respiratory hospitalization",
+      "kind": "condition",
+      "aliases": [
+        "respiratory hospital admission",
+        "pulmonary hospitalization"
+      ],
+      "description": "Hospital admission for asthma, COPD, respiratory infection, or other acute respiratory illness."
+    }
+  ]
+}

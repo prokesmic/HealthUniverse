@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "mold_exposure_chronic",
+      "outcome_slug": "respiratory_symptoms_severity",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In more than 58,000 children in the PATY collaboration, visible mould exposure was associated with higher odds of multiple respiratory symptoms, with pooled odds ratios ranging from 1.30 for nocturnal cough to 1.50 for morning cough. In 552 adolescents from the PIAMA cohort, early-life dampness or mould exposure was associated with reduced lung function growth in adolescence. A 2023 systematic review reported pooled odds ratios ranging from 1.28 for dampness and respiratory tract infections to 1.76 for mould and respiratory symptoms.",
+      "population": "children and adolescents living in damp or mould-affected homes",
+      "mechanism": "Persistent dampness and mould can increase fungal fragments, microbial volatile compounds, and irritant particulates that amplify airway inflammation and cough or wheeze burden. The effect is usually chronic symptom worsening rather than a single dramatic toxic event.",
+      "summary": "The strongest evidence here is not exotic: children in mould-affected homes tend to report more cough, wheeze, and related respiratory symptom burden. The signal is fairly consistent across pooled datasets, even if exposure measurement is still blunt.",
+      "caveats": "Most studies rely on reported visible mould or dampness rather than detailed mycologic sampling, so exposure misclassification is common. Socioeconomic conditions, crowding, and other home exposures can also travel with mould, which is why this remains a moderate rather than top-tier causal edge.",
+      "evidence": [
+        {
+          "citation": "Tatiana Antova et al 2008 J Epidemiol Community Health",
+          "year": 2008,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Exposure to indoor mould and children's respiratory health in the PATY study.",
+          "doi": "10.1136/jech.2007.065896",
+          "pmid": "18621956",
+          "n_participants": 58000
+        },
+        {
+          "citation": "Edith Milanzi et al 2020 Thorax",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Timing of secondhand smoke, pet, dampness or mould exposure and lung function in adolescence.",
+          "doi": "10.1136/thoraxjnl-2019-213149",
+          "pmid": "31748257",
+          "n_participants": 552
+        },
+        {
+          "citation": "Jonathan Groot et al 2023 Paediatr Respir Rev",
+          "year": 2023,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Exposure to residential mold and dampness and the associations with respiratory tract infections and symptoms thereof in children in high income countries: A systematic review and meta-analyses of epidemiological studies.",
+          "doi": "10.1016/j.prrv.2023.06.003",
+          "pmid": "37482434",
+          "n_participants": null
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "mold_exposure_chronic",
+      "name": "Chronic indoor mold exposure",
+      "kind": "environmental",
+      "aliases": [
+        "persistent household mould exposure",
+        "chronic damp-mould exposure"
+      ],
+      "description": "Long-term residential exposure to visible mould, mould odour, or damp indoor environments."
+    },
+    {
+      "slug": "respiratory_symptoms_severity",
+      "name": "Respiratory symptom severity",
+      "kind": "condition",
+      "aliases": [
+        "respiratory symptom burden",
+        "wheeze and cough severity"
+      ],
+      "description": "Severity or burden of respiratory symptoms such as cough, wheeze, chest tightness, or shortness of breath."
+    }
+  ]
+}

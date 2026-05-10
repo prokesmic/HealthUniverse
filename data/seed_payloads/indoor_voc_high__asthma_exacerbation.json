@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "indoor_voc_high",
+      "outcome_slug": "asthma_exacerbation",
+      "direction": "harmful",
+      "tier": "D",
+      "effect_size": "unknown",
+      "effect_quant": "In a case-control study of 192 young children, asthma cases had significantly higher home volatile organic compound concentrations than controls, with benzene and toluene showing some of the strongest risk gradients. In 126 homes of children with asthma, indoor VOC burdens varied widely and several hazardous compounds reached elevated levels. A 2015 systematic review concluded that the evidence linking domestic VOC exposure to asthma development or exacerbation remained inconsistent and generally low quality.",
+      "population": "young children and children with established asthma living in homes with higher indoor volatile organic compound exposure",
+      "mechanism": "Many indoor VOCs act as airway irritants or oxidation-prone solvents that can worsen epithelial stress and amplify reactivity in already sensitive airways. The problem is that homes contain mixtures rather than one clean compound, so exposure attribution is messy even when the biologic pathway is plausible.",
+      "summary": "The literature supports caution more than confidence. Higher indoor VOC burdens show up in asthma case households and are biologically plausible triggers, but direct evidence for causing more exacerbations is still patchy and methodologically weak.",
+      "caveats": "This is one of the noisier edges in the graph. Studies vary in which VOCs they measure, whether they assess diagnosis or exacerbations, and how well they separate indoor VOC effects from smoking, cleaning products, traffic, or renovation exposures. The edge is best read as a low-certainty harmful signal rather than settled causality.",
+      "evidence": [
+        {
+          "citation": "Kiril Rumchev et al 2004 Thorax",
+          "year": 2004,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of domestic exposure to volatile organic compounds with asthma in young children.",
+          "doi": "10.1136/thx.2003.013680",
+          "pmid": "15333849",
+          "n_participants": 192
+        },
+        {
+          "citation": "Jong-Yoon Chin et al 2014 Indoor Air",
+          "year": 2014,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Levels and sources of volatile organic compounds in homes of children with asthma.",
+          "doi": "10.1111/ina.12086",
+          "pmid": "24329990",
+          "n_participants": 126
+        },
+        {
+          "citation": "Ulugbek Nurmatov et al 2015 Eur Respir Rev",
+          "year": 2015,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Volatile organic compounds and risk of asthma and allergy: a systematic review.",
+          "doi": "10.1183/09059180.00000714",
+          "pmid": "25726560",
+          "n_participants": null
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "indoor_voc_high",
+      "name": "High indoor VOC exposure",
+      "kind": "environmental",
+      "aliases": [
+        "elevated indoor volatile organic compounds",
+        "high household VOC burden"
+      ],
+      "description": "Indoor air exposure to elevated concentrations of volatile organic compounds from solvents, cleaning products, building materials, or related household sources."
+    },
+    {
+      "slug": "asthma_exacerbation",
+      "name": "Asthma exacerbation",
+      "kind": "condition",
+      "aliases": [
+        "asthma flare",
+        "asthma attack"
+      ],
+      "description": "Worsening asthma requiring unscheduled care, medication escalation, or causing marked symptom deterioration."
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "household_air_pollution_biomass",
+      "outcome_slug": "copd_risk",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The strongest quantitative signal comes from studies of cleaner stove replacement rather than deliberate exposure: in 9,757 women, improved cookstoves were associated with lower COPD risk (RR 0.74, 95% CI 0.61 to 0.90), implying higher COPD risk when biomass smoke remains the default exposure. Review-level literature consistently describes biomass smoke as an important COPD risk exposure for women in low-income settings, but direct pooled exposure-response estimates are still limited.",
+      "population": "women in low-income and middle-income countries with chronic exposure to biomass-fuel cooking smoke",
+      "mechanism": "Biomass smoke exposes airways to chronic particulate, carbonyl, and oxidant stress that can drive small-airway inflammation, impaired mucociliary clearance, and emphysema-like remodeling. The pathway looks more like long-duration inhalational injury than a short, reversible irritant effect.",
+      "summary": "This is one of those edges where the cleanest human evidence comes from removing the exposure rather than assigning it. When cleaner stoves lower COPD risk and symptoms, the simplest reading is that chronic biomass smoke is a harmful COPD exposure, especially for women who cook daily in poorly ventilated homes.",
+      "caveats": "Much of the literature is observational and often mixes COPD diagnosis methods, symptom outcomes, and stove interventions. That keeps the tier below the strongest causal edges, but the direction of effect is still more consistent than not.",
+      "evidence": [
+        {
+          "citation": "Megha Thakur et al 2018 Thorax",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Impact of improved cookstoves on women's and child health in low and middle income countries: a systematic review and meta-analysis.",
+          "doi": "10.1136/thoraxjnl-2017-210952",
+          "pmid": "29925674",
+          "n_participants": 9757
+        },
+        {
+          "citation": "Ritul Kamal et al 2022 Int J Environ Health Res",
+          "year": 2022,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Chronic obstructive pulmonary disease (COPD) in women due to indoor biomass burning: a meta analysis.",
+          "doi": "10.1080/09603123.2021.1887460",
+          "pmid": "33573386",
+          "n_participants": null
+        },
+        {
+          "citation": "Stephen Gordon et al 2014 Lancet Respir Med",
+          "year": 2014,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Respiratory risks from household air pollution in low and middle income countries.",
+          "doi": "10.1016/S2213-2600(14)70168-7",
+          "pmid": "25193349",
+          "n_participants": null
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "household_air_pollution_biomass",
+      "name": "Household biomass smoke exposure",
+      "kind": "environmental",
+      "aliases": [
+        "biomass-fuel household air pollution",
+        "solid-fuel cooking smoke"
+      ],
+      "description": "Chronic inhalation exposure to smoke from cooking or heating with biomass or other solid fuels in the home."
+    },
+    {
+      "slug": "copd_risk",
+      "name": "COPD risk",
+      "kind": "condition",
+      "aliases": [
+        "chronic obstructive pulmonary disease risk"
+      ],
+      "description": "Risk of chronic obstructive pulmonary disease or spirometrically defined chronic airflow obstruction."
+    }
+  ]
+}

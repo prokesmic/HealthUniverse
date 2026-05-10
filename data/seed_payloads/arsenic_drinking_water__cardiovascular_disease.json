@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "arsenic_drinking_water",
+      "outcome_slug": "cardiovascular_disease",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In a dose-response meta-analysis of 408,945 participants, raising drinking-water arsenic from 10 to 20 micrograms per litre was associated with a pooled relative risk of 1.09 for cardiovascular disease incidence and 1.07 for cardiovascular disease mortality. In 4,990 U.S. adults from NHANES, higher urinary inorganic arsenic exposure was consistent with increased heart-disease mortality, and the updated pooled relative risk per doubling of water inorganic arsenic was 1.16 (95% CI 1.07 to 1.25). A 2020 systematic review also found positive low-level dose-response associations across several cardiovascular endpoints below the WHO guideline threshold.",
+      "population": "general adult populations chronically exposed to low-moderate or high arsenic concentrations in drinking water",
+      "mechanism": "Inorganic arsenic can promote endothelial dysfunction, oxidative stress, vascular inflammation, and atherosclerotic injury over long time windows. The cardiovascular signal looks more like chronic vascular toxicity than a short-term exposure effect.",
+      "summary": "This edge has matured past speculation. Even at concentrations near or below older regulatory comfort zones, chronic arsenic in drinking water tracks with higher cardiovascular disease risk in pooled dose-response analyses.",
+      "caveats": "Most evidence is observational and exposure estimation is often ecological or based on urinary surrogates rather than perfect long-term personal monitoring. The relative risks are modest, so the edge is best treated as a population-level cardiovascular hazard rather than a dramatic deterministic cause in one individual.",
+      "evidence": [
+        {
+          "citation": "Katherine Moon et al 2017 Int J Epidemiol",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "A dose-response meta-analysis of chronic arsenic exposure and incident cardiovascular disease.",
+          "doi": "10.1093/ije/dyx202",
+          "pmid": "29040626",
+          "n_participants": 408945
+        },
+        {
+          "citation": "Anne Nigra et al 2021 Environ Res",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Urinary arsenic and heart disease mortality in NHANES 2003-2014.",
+          "doi": "10.1016/j.envres.2021.111387",
+          "pmid": "34090890",
+          "n_participants": 4990
+        },
+        {
+          "citation": "Lingqian Xu et al 2020 Int J Environ Res Public Health",
+          "year": 2020,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Positive Association of Cardiovascular Disease (CVD) with Chronic Exposure to Drinking Water Arsenic (As) at Concentrations below the WHO Provisional Guideline Value: A Systematic Review and Meta-Analysis.",
+          "doi": "10.3390/ijerph17072536",
+          "pmid": "32272785",
+          "n_participants": null
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "arsenic_drinking_water",
+      "name": "Drinking-water arsenic exposure",
+      "kind": "environmental",
+      "aliases": [
+        "arsenic in drinking water",
+        "chronic water inorganic arsenic exposure"
+      ],
+      "description": "Chronic exposure to inorganic arsenic through contaminated drinking water."
+    }
+  ]
+}
