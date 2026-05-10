@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "omega3_high_dose_amd",
+      "outcome_slug": "amd_progression",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The omega-3 and AMD literature is genuinely mixed. A Cochrane review of 2 randomized trials with 2,343 participants found no reduction in progression to advanced AMD (pooled HR 0.96, 95% CI 0.84-1.10), and the AREDS2 trial likewise found no statistically significant progression benefit from DHA plus EPA. In contrast, a later observational meta-analysis suggested lower risk of wet AMD progression among people with the highest dietary DHA and EPA intake.",
+      "population": "older adults with age-related macular degeneration or at elevated risk for progression, using higher-dose DHA and EPA supplementation or intake",
+      "mechanism": "Omega-3 fatty acids may influence retinal membrane composition, inflammatory signaling, and vascular pathways relevant to macular degeneration, but randomized interventional evidence has not consistently translated that biology into clear progression benefit.",
+      "summary": "This edge should stay mixed. Observational studies often suggest benefit, but randomized evidence for slowing AMD progression with omega-3 supplementation has been disappointing or null.",
+      "caveats": "Dietary intake studies and supplement trials may not be interchangeable, and baseline diet, disease subtype, and concurrent AREDS-style treatment likely modify results. This is a good example of plausible mechanism plus suggestive observational data not fully confirmed by intervention trials.",
+      "evidence": [
+        {
+          "citation": "Lawrenson JG et al 2015 Cochrane Database Syst Rev",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Omega 3 fatty acids for preventing or slowing the progression of age-related macular degeneration.",
+          "pmid": "25856365",
+          "n_participants": 2343
+        },
+        {
+          "citation": "Meng XT et al 2022 Nutr Hosp",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Dietary omega-3 LCPUFA intake in the prevention of neovascular age-related macular degeneration: a systematic review and meta-analysis.",
+          "pmid": "35388706",
+          "n_participants": 5
+        },
+        {
+          "citation": "Chew EY et al 2013 JAMA",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Lutein + zeaxanthin and omega-3 fatty acids for age-related macular degeneration: the Age-Related Eye Disease Study 2 (AREDS2) randomized clinical trial.",
+          "pmid": "23644932",
+          "n_participants": 4203
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "omega3_high_dose_amd",
+      "name": "High-dose omega-3 for AMD",
+      "kind": "supplement",
+      "aliases": [
+        "DHA and EPA supplementation for AMD",
+        "omega-3 long-chain PUFA for macular degeneration"
+      ],
+      "description": "Use of higher-dose DHA and EPA supplementation or intake with the aim of slowing age-related macular degeneration progression."
+    },
+    {
+      "slug": "amd_progression",
+      "name": "Age-related macular degeneration progression",
+      "kind": "process",
+      "aliases": [
+        "AMD progression",
+        "progression to advanced AMD"
+      ],
+      "description": "Worsening of age-related macular degeneration toward more advanced or vision-threatening stages."
+    }
+  ]
+}
