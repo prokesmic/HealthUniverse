@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pfas_high_serum",
+      "name": "High serum PFAS burden",
+      "kind": "environmental",
+      "aliases": [
+        "elevated serum per- and polyfluoroalkyl substances",
+        "high PFAS blood burden"
+      ],
+      "description": "Above-background serum concentrations of per- and polyfluoroalkyl substances measured in human biospecimens."
+    },
+    {
+      "slug": "hepatic_steatosis",
+      "name": "Hepatic steatosis",
+      "kind": "condition",
+      "aliases": [
+        "fatty liver",
+        "liver steatosis"
+      ],
+      "description": "Excess hepatic fat accumulation, including nonalcoholic fatty liver disease or related steatosis phenotypes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pfas_high_serum",
+      "outcome_slug": "hepatic_steatosis",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Among 546 patients with acute coronary syndrome, each doubling in PFOS was associated with a 1.82% higher hepatic steatosis index and a 42% higher odds of MAFLD. In a larger NHANES-based analysis of 6,990 adults, PFAS mixtures showed positive, nearly linear associations with NAFLD risk score and liver function abnormalities, with triglycerides mediating part of the relationship.",
+      "population": "adults with measured serum PFAS concentrations, including acute coronary syndrome cohorts and general-population NHANES participants",
+      "mechanism": "PFAS may promote hepatic steatosis through lipid-handling disruption, triglyceride accumulation, and altered metabolic signaling in the liver. The human pattern still looks more associative than definitive, but it aligns with a mechanistic story centered on dysregulated lipid homeostasis.",
+      "summary": "High serum PFAS burden is increasingly associated with hepatic steatosis and related fatty-liver phenotypes in adults. The signal is not yet as mature as the PFAS-lipid literature, but recent human studies are consistent enough to treat fatty liver as a credible downstream risk rather than a speculative one.",
+      "caveats": "Current human data rely heavily on observational designs and risk scores or indirect steatosis indices rather than biopsy-confirmed disease. This edge should be read as an emerging metabolic-liver concern, not as final proof that PFAS directly cause fatty liver in every exposed population.",
+      "evidence": [
+        {
+          "citation": "YangM et al 2023 Ecotoxicol Environ Saf",
+          "year": 2023,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of per- and polyfluoroalkyl substances with hepatic steatosis and metabolic dysfunction-associated fatty liver disease among patients with acute coronary syndrome.",
+          "pmid": "37722302",
+          "n_participants": 546,
+          "effect_quant": {
+            "metric": "or",
+            "value": 1.42,
+            "ci_low": 1.13,
+            "ci_high": 1.81,
+            "comparator": "each doubling in PFOS versus risk of MAFLD"
+          }
+        },
+        {
+          "citation": "QiaoW et al 2025 Ecotoxicol Environ Saf",
+          "year": 2025,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Triglycerides mediate the relationships of per- and poly-fluoroalkyl substance (PFAS) exposure with nonalcoholic fatty liver disease (NAFLD) risk in US participants.",
+          "pmid": "39637633",
+          "n_participants": 6990
+        },
+        {
+          "citation": "QiW et al 2020 Toxicol Environ Chem",
+          "year": 2020,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Per- and Polyfluoroalkyl Substances and Obesity, Type 2 Diabetes and Non-alcoholic Fatty Liver Disease: A Review of Epidemiologic Findings.",
+          "pmid": "33304027"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pfas_high_serum",
+      "name": "High serum PFAS burden",
+      "kind": "environmental",
+      "aliases": [
+        "elevated serum per- and polyfluoroalkyl substances",
+        "high PFAS blood burden"
+      ],
+      "description": "Above-background serum concentrations of per- and polyfluoroalkyl substances measured in human biospecimens."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pfas_high_serum",
+      "outcome_slug": "kidney_function_decline",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In a 4-year community cohort, branched PFOS and PFHxS predicted greater eGFR decline, and PFNA as well as branched PFOS were associated cross-sectionally with much lower eGFR and higher CKD odds. A proof-of-concept young-adult cohort also linked each standard-deviation increase in PFAS burden to 2.4% lower follow-up eGFR.",
+      "population": "adults and young adults with repeated serum PFAS measurements and longitudinal kidney-function follow-up",
+      "mechanism": "The kidney is a major target for PFAS accumulation and excretion, making chronic exposure biologically plausible as a contributor to tubular and glomerular stress. The human literature increasingly suggests a compound-specific nephrotoxicity signal rather than a uniform effect across all PFAS congeners.",
+      "summary": "High serum PFAS burden appears associated with worse kidney trajectories, especially when exposure is sustained and congener-specific analysis is used. The evidence is still early and somewhat heterogeneous, but the direction is increasingly consistent enough to justify kidney monitoring in highly exposed groups.",
+      "caveats": "Some associations differ by PFAS isomer and study population, and reverse-causation concerns remain for cross-sectional analyses because kidney handling also affects measured PFAS concentrations. This edge is best read as an emerging but plausible nephrotoxicity signal rather than as a settled causal estimate for every PFAS compound.",
+      "evidence": [
+        {
+          "citation": "ChenCY et al 2025 Ecotoxicol Environ Saf",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Perfluoroalkyl substances exposure and kidney function decline in a community-based prospective cohort.",
+          "pmid": "40929916",
+          "n_participants": 257
+        },
+        {
+          "citation": "HampsonHE et al 2024 Sci Total Environ",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "The potential mediating role of the gut microbiome and metabolites in the association between PFAS and kidney function in young adults: A proof-of-concept study.",
+          "pmid": "39424468",
+          "n_participants": 78,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": -2.4,
+            "ci_low": -4.8,
+            "ci_high": -0.1,
+            "comparator": "each standard deviation increase in baseline PFAS burden score versus follow-up eGFR"
+          }
+        },
+        {
+          "citation": "BlakeBE et al 2018 Environ Pollut",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Associations between longitudinal serum perfluoroalkyl substance (PFAS) levels and measures of thyroid hormone, kidney function, and body mass index in the Fernald Community Cohort.",
+          "pmid": "30373035",
+          "n_participants": 210
+        }
+      ]
+    }
+  ]
+}

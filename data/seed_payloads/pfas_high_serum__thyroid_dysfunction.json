@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pfas_high_serum",
+      "name": "High serum PFAS burden",
+      "kind": "environmental",
+      "aliases": [
+        "elevated serum per- and polyfluoroalkyl substances",
+        "high PFAS blood burden"
+      ],
+      "description": "Above-background serum concentrations of per- and polyfluoroalkyl substances measured in human biospecimens."
+    },
+    {
+      "slug": "thyroid_dysfunction",
+      "name": "Thyroid dysfunction",
+      "kind": "condition",
+      "aliases": [
+        "altered thyroid hormone homeostasis",
+        "thyroid hormone disturbance"
+      ],
+      "description": "Disturbance in thyroid hormone balance or thyroid-stimulating hormone regulation measured by serum TSH, T4, FT4, or related markers."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pfas_high_serum",
+      "outcome_slug": "thyroid_dysfunction",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In a repeated-measures community cohort, an interquartile-range increase in serum PFOS was associated with a 9.75% rise in thyroid-stimulating hormone, while other PFAS were linked to small shifts in eGFR and thyroid markers. NHANES-based adult data also found higher PFOS, PFNA, and total PFAS associated with higher free T4, especially in non-smokers, suggesting subtle but measurable thyroid disruption rather than overt disease.",
+      "population": "adults with measurable serum PFAS concentrations from community, NHANES, or environmentally exposed cohorts",
+      "mechanism": "PFAS can interfere with thyroid signaling through protein binding, transport disruption, and altered hormone synthesis or metabolism. In humans, the observable effect appears to be subtle hormone dysregulation rather than uniform overt thyroid disease, but the direction is still consistent with endocrine disruption.",
+      "summary": "High serum PFAS burden is associated with small but directionally concerning shifts in thyroid function markers. The human signal is not dramatic enough to imply overt thyroid disease in every exposed person, yet it is persistent across adult cohorts and supports treating PFAS as a thyroid-disrupting exposure worth monitoring.",
+      "caveats": "Most human evidence tracks hormone shifts rather than clinically diagnosed thyroid disease, and associations vary by age, smoking status, and the specific PFAS congener measured. This edge should be interpreted as endocrine dysregulation risk, not as proof that all PFAS-exposed adults will develop overt thyroid illness.",
+      "evidence": [
+        {
+          "citation": "BlakeBE et al 2018 Environ Pollut",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Associations between longitudinal serum perfluoroalkyl substance (PFAS) levels and measures of thyroid hormone, kidney function, and body mass index in the Fernald Community Cohort.",
+          "pmid": "30373035",
+          "n_participants": 210,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 9.75,
+            "ci_low": 1.72,
+            "ci_high": 18.4,
+            "comparator": "interquartile-range increase in serum PFOS versus thyroid-stimulating hormone level"
+          }
+        },
+        {
+          "citation": "ShresthaS et al 2015 Environ Int",
+          "year": 2015,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Perfluoroalkyl substances and thyroid function in older adults.",
+          "pmid": "25483837",
+          "n_participants": 87
+        },
+        {
+          "citation": "vanGerwenM et al 2020 Toxics",
+          "year": 2020,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The Impact of Smoking on the Association between Perfluoroalkyl Acids (PFAS) and Thyroid Hormones: A National Health and Nutrition Examination Survey Analysis.",
+          "pmid": "33316920",
+          "n_participants": 1325
+        }
+      ]
+    }
+  ]
+}

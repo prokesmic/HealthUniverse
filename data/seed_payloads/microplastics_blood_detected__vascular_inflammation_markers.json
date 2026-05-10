@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "microplastics_blood_detected",
+      "name": "Detected microplastics in blood or thrombotic circulation",
+      "kind": "environmental",
+      "aliases": [
+        "blood-detected microplastics",
+        "circulating microplastic burden"
+      ],
+      "description": "Detection of microplastic or related synthetic microparticle burden in human blood, thrombi, or directly blood-exposed medical circulation pathways."
+    },
+    {
+      "slug": "vascular_inflammation_markers",
+      "name": "Vascular inflammation markers",
+      "kind": "process",
+      "aliases": [
+        "circulating vascular inflammatory markers",
+        "thrombo-inflammatory biomarker burden"
+      ],
+      "description": "Inflammatory or thrombo-inflammatory markers relevant to vascular injury, such as platelet activation or circulating inflammatory biomarker changes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "microplastics_blood_detected",
+      "outcome_slug": "vascular_inflammation_markers",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "unknown",
+      "effect_quant": "The most direct human thrombotic evidence found microparticles in 16 of 26 thrombi, and the number of retained particles correlated positively with blood platelet levels after adjustment. Broader human systematic review work repeatedly identifies CRP, IL-6, TNF-alpha, and oxidative-stress markers as recurrent associations, but causal vascular inference remains unsettled because direct blood-detection studies are still sparse.",
+      "population": "adults with blood, thrombus, or bloodstream-exposed microplastic detection in human observational or biomonitoring studies",
+      "mechanism": "If microplastics or synthetic microparticles reach the circulation, they could plausibly contribute to endothelial irritation, platelet activation, oxidative stress, or other thrombo-inflammatory responses. Human evidence remains thin enough that the biological story is plausible but not yet cleanly quantified at the vascular-marker level.",
+      "summary": "Detected microplastics in blood or thrombotic circulation may be associated with vascular inflammation markers, but the current human evidence is still sparse and methodologically uneven. The strongest direct clues come from thrombus studies and biomarker-focused reviews rather than from large, definitive population cohorts.",
+      "caveats": "This is a thin-evidence edge and should be read cautiously. Much of the literature establishes exposure or biomarker association rather than clear causal vascular injury, and the field still lacks standardized blood-detection and longitudinal outcome methods.",
+      "evidence": [
+        {
+          "citation": "WuD et al 2023 J Adv Res",
+          "year": 2023,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Pigment microparticles and microplastics found in human thrombi based on Raman spectral evidence.",
+          "pmid": "36116710",
+          "n_participants": 26
+        },
+        {
+          "citation": "TuP et al 2026 Environ Sci Technol",
+          "year": 2026,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "What Drives Microplastic Exposure in Human Blood and Feces? Machine Learning Reveals Potential Key Influencing Factors.",
+          "pmid": "41469546",
+          "n_participants": 229
+        },
+        {
+          "citation": "RirieAK et al 2025 Cureus",
+          "year": 2025,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Impact of Microplastic Exposure on Human Health: A Systematic Review of Mechanisms, Biomarkers, and Clinical Outcomes.",
+          "pmid": "41613683"
+        }
+      ]
+    }
+  ]
+}
