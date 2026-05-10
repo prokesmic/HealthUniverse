@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "arterial_stiffness_pwv_high",
+      "outcome_slug": "cv_events",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In the individual-participant meta-analysis of 11 cohorts, each 1-SD increase in carotid-femoral pulse wave velocity carried a 1.21-fold higher ASCVD risk. In the Kailuan cohort, estimated PWV of at least 10 m/s increased cardiovascular event risk by 32%, and in the Korean prevention cohort brachial-ankle PWV independently improved major adverse cardiovascular event prediction beyond pooled-cohort-equation risk.",
+      "population": "middle-aged and older adults undergoing pulse-wave-velocity-based arterial stiffness assessment",
+      "mechanism": "High pulse wave velocity reflects stiffer central arteries, earlier wave reflection, higher pulsatile load, and greater microvascular stress. That combination plausibly accelerates myocardial, cerebral, and renal vascular injury, which is why the signal often extends across myocardial infarction, stroke, and composite cardiovascular events.",
+      "summary": "This edge is stronger than many biomarker-prognosis links because arterial stiffness repeatedly adds information beyond routine blood pressure and lipid measures. The literature is not just showing correlation with aging; it is showing that higher PWV meaningfully separates people who go on to have more cardiovascular events.",
+      "caveats": "PWV measurement methods vary across cohorts, and the exact threshold that defines 'high' depends on device, path-length calculation, and population risk. Estimated PWV is also less specific than directly measured carotid-femoral PWV.",
+      "evidence": [
+        {
+          "citation": "Pavey H 2025 BMJ Open",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between carotid-femoral pulse wave velocity and cardiovascular disease in individuals with moderate blood pressure: a systematic review and individual participant meta-analysis.",
+          "doi": "10.1136/bmjopen-2024-087169",
+          "pmid": "41401986",
+          "n_participants": 15987
+        },
+        {
+          "citation": "Chunpeng Ji 2020 Int J Cardiol Hypertens",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Estimated pulse wave velocity and cardiovascular events in Chinese.",
+          "doi": "10.1016/j.ijchy.2020.100063",
+          "pmid": "33447784",
+          "n_participants": 98348
+        },
+        {
+          "citation": "Kim HM 2022 PLoS One",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Integrated approach of brachial-ankle pulse wave velocity and cardiovascular risk scores for predicting the risk of cardiovascular events.",
+          "doi": "10.1371/journal.pone.0268415",
+          "pmid": "35476644",
+          "n_participants": 6359
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "arterial_stiffness_pwv_high",
+      "name": "High arterial stiffness by pulse wave velocity",
+      "kind": "biomarker",
+      "aliases": [
+        "high PWV",
+        "elevated pulse wave velocity",
+        "high cfPWV"
+      ],
+      "description": "Pulse wave velocity high enough to indicate increased arterial stiffness, typically defined by study-specific thresholds such as roughly 10 m/s or higher."
+    },
+    {
+      "slug": "cv_events",
+      "name": "Cardiovascular events",
+      "kind": "condition",
+      "aliases": [
+        "ASCVD events",
+        "major cardiovascular events"
+      ],
+      "description": "Incident cardiovascular events such as myocardial infarction, stroke, cardiovascular death, or composite atherosclerotic cardiovascular outcomes."
+    }
+  ]
+}
