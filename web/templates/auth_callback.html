@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Signing you in… — Health Universe{% endblock %}
+{% block content %}
+<style>
+  .auth-cb { padding: 40px 0; max-width: 480px; }
+  .auth-cb h1 { margin: 0 0 8px; }
+  .auth-cb .status { color: var(--ink-soft); font-size: 14px; margin-top: 12px; }
+  .auth-cb .err {
+    margin-top: 12px; padding: 12px 14px; border-radius: 8px;
+    background: #fdecea; border: 1px solid #f3b3ad; color: #9b1c1c; font-size: 13px;
+  }
+  .auth-cb .ok {
+    margin-top: 12px; padding: 12px 14px; border-radius: 8px;
+    background: #e7f5ec; border: 1px solid #b7e0c4; color: #1b5e20; font-size: 13px;
+  }
+  .auth-cb-spinner {
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 2px solid #1f3a2e; border-top-color: transparent;
+    display: inline-block; vertical-align: middle; margin-right: 8px;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+<section class="auth-cb">
+  <h1>Signing you in…</h1>
+  <div id="auth-status" class="status">
+    <span class="auth-cb-spinner"></span>
+    Verifying your magic-link token with Supabase.
+  </div>
+  <div id="auth-err" class="err" style="display:none"></div>
+  <div id="auth-ok" class="ok" style="display:none"></div>
+</section>
+
+<script>
+(async function () {
+  const status = document.getElementById("auth-status");
+  const err = document.getElementById("auth-err");
+  const ok = document.getElementById("auth-ok");
+
+  // Supabase returns the token in the URL hash on a successful magic
+  // link click: #access_token=...&refresh_token=...&type=magiclink
+  function parseHash() {
+    const h = (window.location.hash || "").replace(/^#/, "");
+    if (!h) return {};
+    const out = {};
+    for (const pair of h.split("&")) {
+      const [k, v] = pair.split("=");
+      if (k) out[decodeURIComponent(k)] = decodeURIComponent(v || "");
+    }
+    return out;
+  }
+
+  // Some Supabase flows put it in the query string instead.
+  function parseQuery() {
+    const u = new URL(window.location.href);
+    const out = {};
+    for (const [k, v] of u.searchParams) out[k] = v;
+    return out;
+  }
+
+  function showError(msg) {
+    status.style.display = "none";
+    err.style.display = "block";
+    err.innerHTML = msg + "<br><br><a href='/'>Back home</a> · <a href='/api/auth/login'>Try again</a>";
+  }
+  function showOk(msg) {
+    status.style.display = "none";
+    ok.style.display = "block";
+    ok.textContent = msg;
+  }
+
+  const fromHash = parseHash();
+  const fromQuery = parseQuery();
+  const params = { ...fromQuery, ...fromHash };
+
+  if (params.error || params.error_description) {
+    showError("Sign-in failed: " + (params.error_description || params.error));
+    return;
+  }
+  if (!params.access_token) {
+    showError("No access token in this URL. The magic link may have already been used or expired. " +
+      "<a href='/'>Request a new one</a>.");
+    return;
+  }
+
+  try {
+    const fd = new FormData();
+    fd.append("access_token", params.access_token);
+    const r = await fetch("/auth/exchange", { method: "POST", body: fd });
+    const j = await r.json();
+    if (!j.ok) {
+      showError("Server rejected the token: " + (j.error || "unknown error"));
+      return;
+    }
+    showOk("Signed in as " + j.email + ". Taking you to your data…");
+    // Wipe the hash from the URL so refreshes don't re-submit.
+    history.replaceState(null, "", "/auth/callback");
+    setTimeout(() => { window.location.href = j.redirect || "/me/data"; }, 600);
+  } catch (e) {
+    showError("Network error: " + e);
+  }
+})();
+</script>
+{% endblock %}

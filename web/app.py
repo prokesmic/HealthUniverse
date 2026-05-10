@@ -23,6 +23,12 @@ from profile import (COOKIE, Profile, decode, encode, relevance_score,  # noqa
 # Cached-art adapter: looks up data/art_manifest.json and returns either
 # the cached <img> snippet or the procedural SVG fallback. Same call
 # signatures as the originals in web/illustrations.py.
+from web.auth import (                                # noqa: E402
+    SESSION_COOKIE, SESSION_MAX_AGE,
+    encode_session, decode_session, current_account,
+    send_magic_link, exchange_token_for_session,
+    supabase_service,
+)
 from web.generated_art import (   # noqa: E402
     edge_svg, hero_svg, featured_card_svg, discovery_card_svg, strength_wave_svg,
 )
@@ -2736,7 +2742,25 @@ def api_report_card(request: Request,
     if not reason:
         return RedirectResponse(f"/edge/{edge_id}?reported=invalid", status_code=303)
     ts = datetime_now().isoformat(timespec="seconds")
-    # Notify the founder (Vercel-friendly).
+    # Look up account_id if signed in — links the report to the user.
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    account_id = account.user_id if account else None
+    persisted = False
+    # 1) Persist to Supabase.
+    sb = supabase_service()
+    if sb is not None:
+        try:
+            sb.table("card_reports").insert({
+                "edge_id": int(edge_id),
+                "account_id": account_id,
+                "reason": reason,
+                "note": note or None,
+                "reported_at": ts,
+            }).execute()
+            persisted = True
+        except Exception as exc:
+            print(f"[report] supabase insert failed: {exc}", file=sys.stderr)
+    # 2) Notify the founder.
     try:
         notify_to = os.environ.get("WAITLIST_NOTIFY_TO", "")
         if notify_to and os.environ.get("RESEND_API_KEY"):
@@ -2747,19 +2771,12 @@ def api_report_card(request: Request,
                 f"<p><b>Edge:</b> <a href='https://health-universe.vercel.app/edge/{edge_id}'>{edge_id}</a></p>"
                 f"<p><b>Reason:</b> {reason}</p>"
                 f"<p><b>Note:</b> {note or '(none)'}</p>"
-                f"<p><b>At:</b> {ts}</p>")
+                f"<p><b>Reporter:</b> {account.email if account else 'anonymous'}</p>"
+                f"<p><b>At:</b> {ts}</p>"
+                f"<p><b>Persisted:</b> {persisted}</p>")
     except Exception as exc:
         print(f"[report] resend notify failed: {exc}", file=sys.stderr)
-    # Best-effort local DB row.
-    try:
-        with connect() as conn:
-            conn.execute(
-                "INSERT INTO card_reports (edge_id, reason, note, reported_at) "
-                "VALUES (?, ?, ?, ?)", (edge_id, reason, note, ts))
-            conn.commit()
-    except Exception:
-        pass
-    print(f"[report] edge={edge_id} reason={reason} note={note[:80]!r}", file=sys.stderr)
+    print(f"[report] edge={edge_id} reason={reason} (supabase={persisted})", file=sys.stderr)
     return RedirectResponse(f"/edge/{edge_id}?reported=ok", status_code=303)
 
 
@@ -3529,24 +3546,106 @@ def api_finding_evidence(slug: str = ""):
 # ────────────────────────────────────────────────────────────────────
 
 
+# ────────────────────────────────────────────────────────────────────
+# Auth endpoints — magic-link login via Supabase, signed session cookie
+# ────────────────────────────────────────────────────────────────────
+
+
+@app.post("/api/auth/login")
+def api_auth_login(request: Request, email: str = Form(...)):
+    """User submits an email; we ask Supabase to send a magic link.
+    The link points back to /auth/callback which finalises the session."""
+    em = (email or "").strip().lower()
+    if "@" not in em or len(em) > 200:
+        return JSONResponse({"ok": False, "error": "invalid email"}, status_code=400)
+    base = str(request.base_url).rstrip("/")
+    redirect = f"{base}/auth/callback"
+    ok, msg = send_magic_link(em, redirect)
+    if not ok:
+        return JSONResponse({"ok": False, "error": msg}, status_code=502)
+    return JSONResponse({"ok": True, "message":
+        "Check your inbox — we just sent a magic link to " + em + "."})
+
+
+@app.get("/auth/callback", response_class=HTMLResponse)
+def auth_callback_page(request: Request):
+    """Supabase redirects here after the user clicks the magic link.
+    The token comes back in the URL hash (#access_token=...) which the
+    server can't see directly, so we render a tiny page that extracts
+    it client-side and POSTs it to /auth/exchange. After that POST,
+    we redirect to /me/data with the session cookie set."""
+    return render(request, "auth_callback.html", {"title": "Signing you in…"})
+
+
+@app.post("/auth/exchange")
+def auth_exchange(request: Request, access_token: str = Form(...)):
+    """Verify the access_token Supabase returned, set our signed
+    session cookie, and respond with where to redirect."""
+    if not access_token:
+        return JSONResponse({"ok": False, "error": "missing token"}, status_code=400)
+    account, msg = exchange_token_for_session(access_token)
+    if not account:
+        return JSONResponse({"ok": False, "error": msg}, status_code=401)
+    cookie = encode_session(account.user_id, account.email)
+    resp = JSONResponse({"ok": True, "redirect": "/me/data?welcome=1",
+                         "email": account.email})
+    resp.set_cookie(
+        SESSION_COOKIE, cookie,
+        max_age=SESSION_MAX_AGE, httponly=True, samesite="lax",
+        secure=request.url.scheme == "https",
+    )
+    return resp
+
+
+@app.post("/api/auth/logout")
+def api_auth_logout():
+    resp = JSONResponse({"ok": True})
+    resp.delete_cookie(SESSION_COOKIE)
+    return resp
+
+
+@app.get("/api/me/account")
+def api_me_account(request: Request):
+    """Returns the currently-logged-in account or null. Client uses
+    this to decide whether to show 'Sign in' or the account chip."""
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    if not account:
+        return JSONResponse({"signed_in": False})
+    return JSONResponse({
+        "signed_in": True,
+        "email": account.email,
+        "pro": account.is_pro,
+        "pro_until": account.pro_until,
+        "cron_subscribed": account.cron_subscribed,
+    })
+
+
 @app.post("/api/pro-waitlist")
 def api_pro_waitlist(request: Request,
                      email: str = Form(...),
                      source: str = Form("")):
-    """Capture an email for the Pro waitlist.
-
-    Vercel's runtime filesystem is read-only, so we can't INSERT into
-    the local SQLite at request time. Instead we email the founder
-    via Resend (an env-var-gated path). On dev / non-Vercel the local
-    DB write still happens as a fallback so the data isn't lost
-    locally."""
+    """Capture an email for the Pro waitlist. Persists to Supabase
+    (Vercel-safe writeable backend); falls back to email notification
+    + stderr log if Supabase isn't configured."""
     import os, sys
     em = (email or "").strip().lower()
     if "@" not in em or len(em) > 200:
         return RedirectResponse("/stack?waitlist=invalid", status_code=303)
     src = (source or "")[:40]
     ts = datetime_now().isoformat(timespec="seconds")
-    # Best-effort email notification to the founder.
+    persisted = False
+    # 1) Persist to Supabase (RLS allows anon insert on pro_waitlist).
+    sb = supabase_service()
+    if sb is not None:
+        try:
+            sb.table("pro_waitlist").upsert(
+                {"email": em, "source": src, "signed_up_at": ts},
+                on_conflict="email"
+            ).execute()
+            persisted = True
+        except Exception as exc:
+            print(f"[waitlist] supabase upsert failed: {exc}", file=sys.stderr)
+    # 2) Best-effort email notification.
     try:
         notify_to = os.environ.get("WAITLIST_NOTIFY_TO", "")
         if notify_to and os.environ.get("RESEND_API_KEY"):
@@ -3556,20 +3655,11 @@ def api_pro_waitlist(request: Request,
                 f"<p>New Pro waitlist signup.</p>"
                 f"<p><b>Email:</b> {em}</p>"
                 f"<p><b>Source:</b> {src or '(none)'}</p>"
-                f"<p><b>At:</b> {ts}</p>")
+                f"<p><b>At:</b> {ts}</p>"
+                f"<p><b>Persisted to Supabase:</b> {persisted}</p>")
     except Exception as exc:
         print(f"[waitlist] resend notify failed: {exc}", file=sys.stderr)
-    # Best-effort local DB row (succeeds on dev, no-ops on Vercel).
-    try:
-        with connect() as conn:
-            conn.execute(
-                "INSERT INTO pro_waitlist (email, source, signed_up_at) "
-                "VALUES (?, ?, ?)", (em, src, ts))
-            conn.commit()
-    except Exception:
-        pass
-    # Always log so Vercel function logs capture the signup.
-    print(f"[waitlist] {em} via {src} at {ts}", file=sys.stderr)
+    print(f"[waitlist] {em} via {src} at {ts} (supabase={persisted})", file=sys.stderr)
     return RedirectResponse("/stack?waitlist=ok", status_code=303)
 
 

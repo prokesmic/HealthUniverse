@@ -86,6 +86,29 @@
       </span>
     </summary>
     <div class="account-panel" role="menu">
+      <div class="account-head" id="account-auth-head"
+           style="border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:8px">
+        <div id="account-auth-loading" style="font-size:12px;color:var(--ink-soft)">Loading…</div>
+        <div id="account-auth-anon" style="display:none">
+          <b>Not signed in</b>
+          <small class="muted" style="display:block;margin-bottom:6px">
+            Sign in to sync your stack across devices and get the Sunday briefing.
+          </small>
+          <button type="button" class="account-cta" id="account-signin-btn"
+                  style="cursor:pointer;border:0;background:#1f3a2e;color:#fffaf0;padding:6px 12px;border-radius:6px">
+            Sign in with email →
+          </button>
+        </div>
+        <div id="account-auth-signed" style="display:none">
+          <b><span id="account-auth-email"></span></b>
+          <small class="muted" style="display:block;margin-bottom:6px">
+            <span id="account-auth-tier">Free</span>
+            <span id="account-auth-cron" style="margin-left:6px"></span>
+          </small>
+          <button type="button" class="btn-secondary inline" id="account-signout-btn"
+                  style="cursor:pointer;font-size:12px;padding:4px 10px">Sign out</button>
+        </div>
+      </div>
       <div class="account-head">
         {% if nav_edges_7d %}
         <span class="hp-stat-delta" style="margin-bottom:6px">↑ +{{ nav_edges_7d }} new edge{{ "s" if nav_edges_7d != 1 else "" }} this week</span>
@@ -145,6 +168,93 @@ document.addEventListener('click', function(ev){
   var d = document.getElementById('account-menu');
   if (d && d.open && !d.contains(ev.target)) d.open = false;
 });
+</script>
+
+{# ─── Sign-in modal — shown when user clicks 'Sign in with email →' ── #}
+<div id="hu-signin-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center;padding:20px">
+  <div style="background:#fff;border-radius:14px;padding:24px;max-width:420px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,0.2)">
+    <h2 style="margin:0 0 6px;font-size:20px">Sign in</h2>
+    <p style="margin:0 0 14px;font-size:14px;color:#666">
+      We'll email you a one-click magic link. No password — and your personal data stays in this browser.
+    </p>
+    <form id="hu-signin-form" style="display:flex;flex-direction:column;gap:10px">
+      <input id="hu-signin-email" type="email" required placeholder="you@example.com"
+             style="padding:10px 12px;font-size:15px;border:1px solid #d4d4d4;border-radius:6px">
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:6px">
+        <button type="button" id="hu-signin-cancel" class="btn-secondary inline">Cancel</button>
+        <button type="submit" class="btn-primary">Send magic link</button>
+      </div>
+    </form>
+    <div id="hu-signin-msg" style="margin-top:12px;font-size:13px"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  // Hydrate the account-menu auth section from /api/me/account.
+  const loading = document.getElementById("account-auth-loading");
+  const anon    = document.getElementById("account-auth-anon");
+  const signed  = document.getElementById("account-auth-signed");
+  const emailEl = document.getElementById("account-auth-email");
+  const tierEl  = document.getElementById("account-auth-tier");
+  const cronEl  = document.getElementById("account-auth-cron");
+  if (!loading) return;
+  fetch("/api/me/account").then(r => r.json()).then(j => {
+    loading.style.display = "none";
+    if (j.signed_in) {
+      signed.style.display = "block";
+      emailEl.textContent = j.email;
+      tierEl.textContent = j.pro ? "Pro · until " + j.pro_until : "Free tier";
+      tierEl.style.color = j.pro ? "#1b5e20" : "#666";
+      if (j.cron_subscribed) cronEl.innerHTML = "· <span style='color:#1b5e20'>Sunday briefing on</span>";
+    } else {
+      anon.style.display = "block";
+    }
+  }).catch(() => { loading.style.display = "none"; anon.style.display = "block"; });
+
+  // Modal open / close.
+  const modal = document.getElementById("hu-signin-modal");
+  const openBtn = document.getElementById("account-signin-btn");
+  const cancelBtn = document.getElementById("hu-signin-cancel");
+  const form = document.getElementById("hu-signin-form");
+  const msg = document.getElementById("hu-signin-msg");
+  function show() { modal.style.display = "flex"; setTimeout(() => document.getElementById("hu-signin-email").focus(), 10); }
+  function hide() { modal.style.display = "none"; msg.textContent = ""; form.reset(); }
+  if (openBtn) openBtn.addEventListener("click", show);
+  if (cancelBtn) cancelBtn.addEventListener("click", hide);
+  modal.addEventListener("click", (e) => { if (e.target === modal) hide(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && modal.style.display !== "none") hide(); });
+
+  if (form) {
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const email = document.getElementById("hu-signin-email").value.trim();
+      msg.style.color = "#666";
+      msg.textContent = "Sending…";
+      const fd = new FormData();
+      fd.append("email", email);
+      try {
+        const r = await fetch("/api/auth/login", { method: "POST", body: fd });
+        const j = await r.json();
+        if (!j.ok) { msg.style.color = "#9b1c1c"; msg.textContent = "Couldn't send: " + (j.error || "unknown error"); return; }
+        msg.style.color = "#1b5e20";
+        msg.innerHTML = "✓ " + j.message + "<br><small>Click the link from your inbox to finish signing in.</small>";
+      } catch (e) {
+        msg.style.color = "#9b1c1c";
+        msg.textContent = "Network error: " + e;
+      }
+    });
+  }
+
+  // Sign out.
+  const out = document.getElementById("account-signout-btn");
+  if (out) {
+    out.addEventListener("click", async () => {
+      await fetch("/api/auth/logout", { method: "POST" });
+      window.location.reload();
+    });
+  }
+})();
 </script>
 
 <main id="main-content" tabindex="-1">{% block content %}{% endblock %}</main>
