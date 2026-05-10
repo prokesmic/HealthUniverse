@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "text_message_intervention",
+      "outcome_slug": "medication_adherence",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The broad meta-analysis of 16 randomized trials and 2,742 patients found that mobile text messaging improved medication adherence overall (OR 2.11, 95% CI 1.52-2.93), while a separate meta-analysis showed that two-way texting outperformed one-way reminders (RR 1.23, 95% CI 1.13-1.35 vs no text messaging).",
+      "population": "adults with chronic disease or long-term prescription treatment",
+      "mechanism": "Text messaging works by reducing forgetfulness at the exact moment adherence breaks down. When reminders are interactive rather than passive, they also create a small accountability loop that prompts patients to notice missed doses and re-engage with their regimen before nonadherence becomes habitual.",
+      "summary": "The best anchor is the 16-trial meta-analysis, which found that text messaging meaningfully improves medication adherence across chronic diseases. The nuance is that not all texts work equally well: two-way message systems do better than simple one-way reminders, and some pragmatic hypertension trials suggest that messaging alone is not always strong enough to move downstream clinical outcomes.",
+      "caveats": "Much of this literature measures adherence over relatively short follow-up and often relies on self-report or refill behavior rather than hard clinical outcomes. The intervention also appears more robust for adherence behavior itself than for blood pressure or other downstream disease markers.",
+      "evidence": [
+        {
+          "citation": "Thakkar J et al 2016 JAMA Intern Med",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Mobile Telephone Text Messaging for Medication Adherence in Chronic Disease: A Meta-analysis.",
+          "pmid": "26831740",
+          "n_participants": 2742
+        },
+        {
+          "citation": "Wald DS et al 2015 Am J Med",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "One-way versus two-way text messaging on improving medication adherence: meta-analysis of randomized trials.",
+          "pmid": "26087045",
+          "n_participants": 1994
+        },
+        {
+          "citation": "Buis LR et al 2019 J Gen Intern Med",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Electronic Pill Bottles or Bidirectional Text Messaging to Improve Hypertension Medication Adherence (Way 2 Text): a Randomized Clinical Trial.",
+          "pmid": "31396815",
+          "n_participants": 149
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "text_message_intervention",
+      "name": "Text message intervention",
+      "kind": "behavior",
+      "aliases": [
+        "SMS reminder program",
+        "mobile text messaging support"
+      ],
+      "description": "A behavior-change intervention delivered through mobile text messages, including reminders, prompts, or interactive adherence support."
+    },
+    {
+      "slug": "medication_adherence",
+      "name": "Medication adherence",
+      "kind": "behavior",
+      "aliases": [
+        "treatment adherence",
+        "prescription adherence"
+      ],
+      "description": "How consistently a person takes prescribed medication as directed over time."
+    }
+  ]
+}
