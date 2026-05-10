@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% block title %}Claim checker — Health Universe{% endblock %}
+{% block content %}
+<style>
+  .cc-hero { padding: 24px 0 12px; }
+  .cc-hero h1 { margin: 0; }
+  .cc-hero .lede { color: var(--ink-soft); margin: 8px 0 0; max-width: 760px; }
+  .cc-form textarea {
+    width: 100%; min-height: 80px; padding: 12px;
+    font-size: 16px; border: 1px solid var(--line);
+    border-radius: 10px; font-family: inherit;
+  }
+  .cc-form button { margin-top: 10px; }
+  .cc-result { margin-top: 18px; }
+  .cc-verdict {
+    border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 20px; background: #fff; margin-bottom: 12px;
+  }
+  .cc-verdict .plaus {
+    display: inline-block; padding: 4px 12px;
+    font-size: 12px; font-weight: 600; border-radius: 999px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .cc-verdict .plaus-well_supported { background:#e7f5ec;color:#1b5e20; }
+  .cc-verdict .plaus-partial { background:#fff7e0;color:#7a5c00; }
+  .cc-verdict .plaus-weak { background:#fdecea;color:#9b1c1c; }
+  .cc-verdict .plaus-unsupported { background:#fdecea;color:#9b1c1c; }
+  .cc-verdict .plaus-contested { background:#eaf3ff;color:#1f3a7e; }
+  .cc-verdict .summary { font-size: 17px; font-weight: 600; margin: 10px 0; }
+  .cc-verdict .relevance { font-size: 14px; color: var(--ink-soft); margin: 8px 0; }
+  .cc-twocol { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; margin-top: 12px; }
+  @media (max-width: 720px) { .cc-twocol { grid-template-columns: 1fr; } }
+  .cc-true, .cc-false {
+    padding: 12px 14px; border-radius: 10px;
+  }
+  .cc-true { background: #f4faf6; border: 1px solid #b7e0c4; }
+  .cc-false { background: #fff8f7; border: 1px solid #f3b3ad; }
+  .cc-true h4, .cc-false h4 { margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .cc-true h4 { color: #1b5e20; }
+  .cc-false h4 { color: #9b1c1c; }
+  .cc-true ul, .cc-false ul { margin: 0; padding-left: 20px; font-size: 13px; }
+  .cc-corpus {
+    margin-top: 14px; padding: 14px; background: #fafafa;
+    border-radius: 10px; border: 1px solid var(--line); font-size: 13px;
+  }
+  .cc-corpus h4 { margin: 0 0 8px; font-size: 13px; color: var(--ink-soft); }
+  .cc-spinner {
+    display: inline-block; width: 14px; height: 14px;
+    border: 2px solid #1f3a2e; border-top-color: transparent;
+    border-radius: 50%; animation: spin 0.8s linear infinite;
+    vertical-align: middle; margin-right: 8px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .cc-suggestions {
+    display: grid; gap: 6px; margin-top: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .cc-suggestion {
+    padding: 10px 12px; background: #f7faf8;
+    border: 1px solid #d4e9d8; border-radius: 8px;
+    cursor: pointer; font-size: 13px;
+  }
+  .cc-suggestion:hover { border-color: #1f3a2e; }
+</style>
+
+<header class="cc-hero">
+  <p class="hp-eyebrow">CLAIM CHECKER</p>
+  <h1>Paste a wellness claim. Get the truth, scaled to you<span class="dot">.</span></h1>
+  <p class="lede">
+    Heard a podcast claim, an influencer post, a friend's recommendation?
+    Paste it. We parse it into a factor and outcome, look up our audited
+    corpus, and return a plausibility verdict — adjusted for what you've
+    told us about yourself.
+  </p>
+</header>
+
+<section class="cc-form">
+  <form id="cc-form" autocomplete="off">
+    <label for="cc-claim" style="font-weight:600;display:block;margin-bottom:6px">The claim</label>
+    <textarea id="cc-claim" required
+      placeholder='e.g. "Eat 30 g of protein within 30 minutes of training for 30% more strength gains" or "Cold plunges at 50°F daily fix depression" or "Lions mane regrows nerves"'
+    ></textarea>
+    <button type="submit" class="btn-primary">Check this claim</button>
+  </form>
+  <div class="cc-suggestions">
+    <div class="cc-suggestion" data-fill="Apple cider vinegar before meals lowers blood sugar dramatically">Apple cider vinegar lowers blood sugar dramatically</div>
+    <div class="cc-suggestion" data-fill="Cold plunges at 50°F daily fix depression">Cold plunges fix depression</div>
+    <div class="cc-suggestion" data-fill="Eating 30g protein within 30 minutes of a workout gives 30% more strength gains">30g protein in 30 min for 30% gains</div>
+    <div class="cc-suggestion" data-fill="Magnesium glycinate cures insomnia">Magnesium glycinate cures insomnia</div>
+  </div>
+</section>
+
+<section id="cc-result" class="cc-result"></section>
+
+<script>
+(function () {
+  const form = document.getElementById("cc-form");
+  const result = document.getElementById("cc-result");
+  const claimInput = document.getElementById("cc-claim");
+  function esc(s) { return String(s||"").replace(/[&<>"']/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+  // Click-to-fill suggestions
+  document.querySelectorAll(".cc-suggestion").forEach((el) => {
+    el.addEventListener("click", () => {
+      claimInput.value = el.dataset.fill;
+      claimInput.focus();
+    });
+  });
+
+  form.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const claim = claimInput.value.trim();
+    if (!claim) return;
+
+    // Pull personal context from local profile cookie if present.
+    let profile_hints = {};
+    try {
+      // Best-effort: read public profile via the existing /me/account / cookie
+      // We have profile.* in the template render; pull what's safe to send.
+      profile_hints = {
+        {% if profile %}
+        age: {{ profile.age|tojson }},
+        sex: {{ profile.sex|tojson }},
+        conditions: {{ (profile.conditions or [])|tojson }},
+        {% endif %}
+      };
+    } catch (_) {}
+
+    result.innerHTML = `<div class="cc-verdict"><span class="cc-spinner"></span>Parsing the claim, looking up the corpus, and writing a verdict…</div>`;
+
+    try {
+      const r = await fetch("/api/claim-check", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ claim, profile_hints }),
+      });
+      if (!r.ok) {
+        const j = await r.json().catch(() => ({}));
+        result.innerHTML = `<div class="cc-verdict" style="border-color:#f3b3ad;background:#fff8f7">Error ${r.status}: ${esc(j.error || "unknown")}</div>`;
+        return;
+      }
+      const j = await r.json();
+      const v = j.verdict || {};
+      const p = j.parsed || {};
+      let html = `<div class="cc-verdict">
+        <span class="plaus plaus-${v.plausibility || 'partial'}">${esc((v.plausibility || 'partial').replace(/_/g,' '))}</span>
+        <div class="summary">${esc(v.verdict || '—')}</div>
+        ${v.personal_relevance ? `<div class="relevance"><b>For you:</b> ${esc(v.personal_relevance)}</div>` : ""}
+        <div class="muted small" style="margin-top:8px">
+          Parsed as: <b>${esc(p.factor || '?')}</b> → <b>${esc(p.outcome || '?')}</b> · claim says ${esc(p.claimed_direction || '?')} (${esc(p.claimed_magnitude || '?')}). Confidence: ${esc(v.confidence || 'moderate')}.
+        </div>`;
+
+      if ((v.what_is_true || []).length || (v.what_is_false_or_overstated || []).length) {
+        html += `<div class="cc-twocol">`;
+        if ((v.what_is_true || []).length) {
+          html += `<div class="cc-true"><h4>✓ What's true</h4><ul>` +
+            v.what_is_true.map(x => `<li>${esc(x)}</li>`).join("") + `</ul></div>`;
+        }
+        if ((v.what_is_false_or_overstated || []).length) {
+          html += `<div class="cc-false"><h4>✗ What's overstated or false</h4><ul>` +
+            v.what_is_false_or_overstated.map(x => `<li>${esc(x)}</li>`).join("") + `</ul></div>`;
+        }
+        html += `</div>`;
+      }
+      html += `</div>`;
+
+      // Corpus rows
+      if (Array.isArray(j.corpus_edges) && j.corpus_edges.length) {
+        html += `<div class="cc-corpus"><h4>Corpus rows we used</h4>` +
+          j.corpus_edges.map((e) =>
+            `<div style="padding:4px 0">
+               <span style="display:inline-block;padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600;background:#eaf3ff;color:#1f3a7e;margin-right:4px">${e.tier}</span>
+               <a href="/edge/${e.id}">${esc(e.f_name)} → ${esc(e.o_name)}</a>
+               <span class="muted small">· ${esc(e.direction || "")}</span>
+             </div>`
+          ).join("") + `</div>`;
+      } else {
+        html += `<div class="cc-corpus muted small">No directly-matching edges in our corpus — the verdict relies on the model's training plus the parsed claim.</div>`;
+      }
+
+      result.innerHTML = html;
+    } catch (e) {
+      result.innerHTML = `<div class="cc-verdict">Network error: ${esc(String(e))}</div>`;
+    }
+  });
+})();
+</script>
+{% endblock %}

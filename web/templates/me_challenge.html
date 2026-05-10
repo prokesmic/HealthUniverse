@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block title %}Challenge my plan — Health Universe{% endblock %}
+{% block content %}
+<style>
+  .ch-hero { padding: 24px 0 12px; }
+  .ch-hero h1 { margin: 0; }
+  .ch-hero .lede { color: var(--ink-soft); margin: 8px 0 0; max-width: 760px; }
+  .ch-form textarea {
+    width: 100%; min-height: 100px; padding: 12px;
+    font-size: 16px; border: 1px solid var(--line);
+    border-radius: 10px; font-family: inherit;
+  }
+  .ch-form button { margin-top: 10px; }
+  .ch-result { margin-top: 18px; }
+  .ch-card {
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px 18px; margin-bottom: 12px; background: #fff;
+  }
+  .ch-card.summary { background: #fff8f7; border-color: #f3b3ad; }
+  .ch-card.questions { background: #f4faf6; border-color: #b7e0c4; }
+  .ch-card.signals { background: #fffbe7; border-color: #f0d68a; }
+  .ch-card h3 { margin: 0 0 6px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+  .ch-card ul { margin: 6px 0 0; padding-left: 20px; }
+  .ch-card li { margin-bottom: 4px; font-size: 14px; }
+  .ch-corpus {
+    margin-top: 14px; padding: 14px; background: #fafafa;
+    border-radius: 10px; border: 1px solid var(--line); font-size: 13px;
+  }
+  .ch-corpus h4 { margin: 0 0 8px; font-size: 13px; color: var(--ink-soft); }
+  .ch-corpus a { color: var(--ink); }
+  .ch-corpus .pill {
+    display:inline-block;padding:1px 6px;border-radius:4px;
+    font-size:11px;font-weight:600;margin-right:4px;
+  }
+  .ch-corpus .pill-A { background:#e7f5ec;color:#1b5e20; }
+  .ch-corpus .pill-B { background:#fff7e0;color:#7a5c00; }
+  .ch-corpus .pill-C { background:#f0f0f0;color:#444; }
+  .ch-corpus .pill-X { background:#fdecea;color:#9b1c1c; }
+  .ch-spinner {
+    display: inline-block; width: 14px; height: 14px;
+    border: 2px solid #1f3a2e; border-top-color: transparent;
+    border-radius: 50%; animation: spin 0.8s linear infinite;
+    vertical-align: middle; margin-right: 8px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+<header class="ch-hero">
+  <p class="hp-eyebrow">CHALLENGE MODE</p>
+  <h1>State your plan. Get the strongest counter-argument<span class="dot">.</span></h1>
+  <p class="lede">
+    Reactive Q&amp;A tools wait until you ask the right question. This page
+    flips that: tell us what you're thinking of doing, and we surface the
+    counter-evidence you'd want to hear before you act — pulled from the
+    audited corpus, framed as questions for your clinician. Not advice,
+    not approval — just the strongest version of "have you considered…?"
+  </p>
+</header>
+
+<section class="ch-form">
+  <form id="ch-form" autocomplete="off">
+    <label for="ch-plan" style="font-weight:600;display:block;margin-bottom:6px">Your plan</label>
+    <textarea id="ch-plan" required
+      placeholder="e.g. I'm going to start TRT for low energy. Or: I'm going to do a 7-day fast. Or: I'll add 5 g of creatine daily and aim for under 6 hours sleep on workdays."
+    ></textarea>
+    <button type="submit" class="btn-primary">Challenge my plan</button>
+  </form>
+</section>
+
+<section id="ch-result" class="ch-result"></section>
+
+<script>
+(function () {
+  const form = document.getElementById("ch-form");
+  const result = document.getElementById("ch-result");
+  function esc(s) { return String(s||"").replace(/[&<>"']/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+  form.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const plan = document.getElementById("ch-plan").value.trim();
+    if (!plan) return;
+    result.innerHTML = `<div class="ch-card"><span class="ch-spinner"></span>Pulling counter-evidence from the corpus and asking the model to challenge…</div>`;
+    try {
+      const r = await fetch("/api/me/challenge", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plan }),
+      });
+      if (!r.ok) {
+        const j = await r.json().catch(() => ({}));
+        result.innerHTML = `<div class="ch-card" style="border-color:#f3b3ad;background:#fff8f7">Error ${r.status}: ${esc(j.error || "unknown")}</div>`;
+        return;
+      }
+      const j = await r.json();
+      const c = j.challenge || {};
+      let html = "";
+      if (c.summary) {
+        html += `<div class="ch-card summary"><h3>The framing</h3><p style="margin:0">${esc(c.summary)}</p></div>`;
+      }
+      if (Array.isArray(c.counterpoints) && c.counterpoints.length) {
+        html += `<div class="ch-card"><h3>Counterpoints</h3><ul>` +
+          c.counterpoints.map((x) => `<li>${esc(x)}</li>`).join("") + `</ul></div>`;
+      }
+      if (Array.isArray(c.questions_for_clinician) && c.questions_for_clinician.length) {
+        html += `<div class="ch-card questions"><h3>Questions to bring to your clinician</h3><ul>` +
+          c.questions_for_clinician.map((x) => `<li>${esc(x)}</li>`).join("") + `</ul></div>`;
+      }
+      if (Array.isArray(c.signals_to_watch) && c.signals_to_watch.length) {
+        html += `<div class="ch-card signals"><h3>Signals to watch</h3><ul>` +
+          c.signals_to_watch.map((x) => `<li>${esc(x)}</li>`).join("") + `</ul></div>`;
+      }
+      // Corpus underpinnings
+      if (Array.isArray(j.corpus_edges) && j.corpus_edges.length) {
+        html += `<div class="ch-corpus"><h4>Underlying corpus rows used</h4>` +
+          j.corpus_edges.map((e) =>
+            `<div style="padding:4px 0">
+               <span class="pill pill-${e.tier}">${e.tier}</span>
+               <a href="/edge/${e.id}">${esc(e.f_name)} → ${esc(e.o_name)}</a>
+               <span class="muted small">· ${esc(e.direction || "")}</span>
+             </div>`
+          ).join("") + `</div>`;
+      } else {
+        html += `<div class="ch-corpus muted small">No directly-matching edges in the corpus — the model is working from your plan's text alone, with lower confidence.</div>`;
+      }
+      result.innerHTML = html;
+    } catch (e) {
+      result.innerHTML = `<div class="ch-card">Network error: ${esc(String(e))}</div>`;
+    }
+  });
+})();
+</script>
+{% endblock %}

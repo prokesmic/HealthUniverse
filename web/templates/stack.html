@@ -163,6 +163,43 @@
   </div>
   {% endif %}
 
+  {% if synergies and (synergies.active or synergies.near_misses) %}
+  <div class="stack-warnings" style="background:#f4faf6;border-color:#b7e0c4">
+    {% if synergies.active %}
+    <h3 style="color:#1b5e20">✦ Synergies in your stack ({{ synergies.active|length }})</h3>
+    {% for s in synergies.active %}
+    <div class="stack-warning" style="border-color:#cce8d3">
+      <span class="sev" style="background:{% if s.strength=='high' %}#1b5e20{% elif s.strength=='moderate' %}#3b8e5a{% else %}#7c8e3a{% endif %};color:#fff">{{ s.strength|upper }}</span>
+      <b style="color:#1b5e20">{{ s.label }}</b><br/>
+      <small class="muted">{{ s.factors | join(' + ') | replace('_', ' ') }}</small>
+      <p>{{ s.mechanism }}</p>
+      {% if s.context %}<p class="muted small" style="margin-top:4px">{{ s.context }}</p>{% endif %}
+      {% if s.sources %}
+        <div style="font-size:12px;color:#666;margin-top:4px">
+          {% for src in s.sources %}
+            {% if src.startswith('PMID:') %}<a href="https://pubmed.ncbi.nlm.nih.gov/{{ src[5:] }}/" target="_blank" rel="noopener">{{ src }}</a>{% if not loop.last %} · {% endif %}{% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% if synergies.near_misses %}
+    <h3 style="color:#7a5c00;margin-top:18px">+ One-add-away synergies ({{ synergies.near_misses|length }})</h3>
+    {% for s in synergies.near_misses %}
+    <div class="stack-warning" style="border-color:#f0d68a;background:#fffbe7">
+      <span class="sev" style="background:#7a5c00;color:#fff">ADD: {{ s.missing_factors[0] | replace('_',' ') }}</span>
+      <b>{{ s.label }}</b><br/>
+      <small class="muted">You have: {{ s.covered_factors | join(', ') | replace('_', ' ') }} · Missing: {{ s.missing_factors | join(', ') | replace('_', ' ') }}</small>
+      <p>{{ s.mechanism }}</p>
+      {% if s.context %}<p class="muted small" style="margin-top:4px">{{ s.context }}</p>{% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <p class="muted small" style="margin-top:8px">Curated synergies from the literature. Different mechanism than interactions — these are <i>combos that compound</i>, not <i>combos that conflict</i>.</p>
+  </div>
+  {% endif %}
+
   {% if warnings %}
   <div class="stack-warnings">
     <h3>⚠ Possible interactions in your stack ({{ warnings|length }})</h3>

@@ -1159,6 +1159,159 @@ def me_checkup(request: Request):
     })
 
 
+@app.get("/me/challenge", response_class=HTMLResponse)
+def me_challenge(request: Request):
+    """Adaptive coach mode — devil's advocate against the user's plan."""
+    p = decode(request.cookies.get(COOKIE))
+    return render(request, "me_challenge.html", {
+        "title": "Challenge my plan",
+        "profile": p,
+    })
+
+
+@app.get("/claim-check", response_class=HTMLResponse)
+def claim_check(request: Request):
+    """Public claim checker — paste any wellness claim, get a
+    profile-adjusted plausibility score from the corpus."""
+    p = decode(request.cookies.get(COOKIE))
+    return render(request, "claim_check.html", {
+        "title": "Claim checker",
+        "profile": p,
+    })
+
+
+@app.post("/api/claim-check")
+async def api_claim_check(request: Request):
+    """Stateless: parse a claim into (factor, outcome, claim_strength),
+    look up the relevant corpus edge, and return a profile-adjusted
+    plausibility verdict using Claude."""
+    body = await request.json()
+    claim = (body.get("claim") or "").strip()[:600]
+    if not claim:
+        return JSONResponse({"error": "missing claim"}, status_code=400)
+    profile_hints = body.get("profile_hints") or {}  # {age, sex, conditions[]}
+
+    # Step 1: parse the claim with Claude into structured form.
+    import os
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        return JSONResponse({"error": "LLM not configured"}, status_code=503)
+    parse_system = (
+        "Extract from a wellness/health claim:\n"
+        '{ "factor": "the thing being claimed", '
+        '  "factor_type": "supplement|food|drug|behavior|activity|other", '
+        '  "outcome": "the effect being claimed", '
+        '  "claimed_direction": "protective|harmful|mixed", '
+        '  "claimed_magnitude": "small|moderate|large|extraordinary", '
+        '  "claim_summary": "one sentence" }\n'
+        "Return JSON only, no prose."
+    )
+    try:
+        from claude_client import call as claude_call, extract_json
+        text, _ = claude_call(
+            system=parse_system, user=claim,
+            operation="claim_check_parse", max_tokens=300, temperature=0.1,
+        )
+        parsed = extract_json(text) or {}
+    except Exception as exc:
+        return JSONResponse({"error": "parse failed: " + str(exc)[:200]}, status_code=500)
+
+    # Step 2: corpus lookup. Match factor name to entity → pull edges
+    # to the named outcome (or any outcome if outcome name is generic).
+    factor_name = (parsed.get("factor") or "").strip().lower()
+    outcome_name = (parsed.get("outcome") or "").strip().lower()
+    matched_edges: list[dict] = []
+    with connect() as conn:
+        if factor_name:
+            rows = conn.execute("""
+                SELECT e.id, e.tier, e.direction, e.summary, e.effect_size, e.effect_quant,
+                       f.slug AS f_slug, f.name AS f_name,
+                       o.slug AS o_slug, o.name AS o_name
+                FROM edge e
+                JOIN entity f ON f.id=e.factor_id
+                JOIN entity o ON o.id=e.outcome_id
+                WHERE LOWER(f.name) LIKE ? AND e.tier IN ('A','B','C','X')
+                ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 WHEN 'X' THEN 3 ELSE 4 END
+                LIMIT 12""", (f"%{factor_name}%",)).fetchall()
+            matched_edges = [dict(r) for r in rows]
+            # Filter to outcome match if we have one.
+            if outcome_name and matched_edges:
+                pref = [e for e in matched_edges
+                        if outcome_name in (e["o_name"] or "").lower()
+                        or (e["o_name"] or "").lower() in outcome_name]
+                if pref:
+                    matched_edges = pref
+
+    # Step 3: verdict via Claude. Give it the parsed claim, the corpus
+    # rows, and any profile hints.
+    if matched_edges:
+        corpus_block = "\n".join(
+            f"- {e['f_name']} → {e['o_name']}: tier {e['tier']}, {e['direction']}"
+            f"{', ' + str(e['effect_size']) + ' effect' if e.get('effect_size') else ''}"
+            f"{'. ' + (e['effect_quant'] or '')[:200] if e.get('effect_quant') else ''}"
+            for e in matched_edges[:6]
+        )
+    else:
+        corpus_block = "(no matching edges found in our corpus)"
+
+    profile_block = ""
+    if profile_hints:
+        bits = []
+        if profile_hints.get("age"): bits.append(f"age {profile_hints['age']}")
+        if profile_hints.get("sex"): bits.append(f"sex {profile_hints['sex']}")
+        cs = profile_hints.get("conditions") or []
+        if cs: bits.append("tracking " + ", ".join(cs[:5]))
+        if bits:
+            profile_block = "Personal context: " + " · ".join(bits) + "\n\n"
+
+    verdict_system = (
+        "You are an evidence skeptic. Given a parsed wellness claim, "
+        "the relevant corpus rows, and personal context, return a JSON verdict:\n"
+        '{ "plausibility": "well_supported|partial|weak|unsupported|contested", '
+        '  "magnitude_check": "as_claimed|over_stated|under_stated|unknown", '
+        '  "verdict": "1-2 sentence honest verdict", '
+        '  "personal_relevance": "1-2 sentences tailored to the personal context, '
+        '       or general if no context", '
+        '  "what_is_true": ["specific true element if any"], '
+        '  "what_is_false_or_overstated": ["..."], '
+        '  "confidence": "high|moderate|low" }\n'
+        "Return JSON only. Be honest, not diplomatic."
+    )
+    verdict_user = (
+        f"PARSED CLAIM: {parsed}\n\n"
+        f"{profile_block}"
+        f"CORPUS EVIDENCE:\n{corpus_block}\n\n"
+        "Return JSON only."
+    )
+    try:
+        text, _ = claude_call(
+            system=verdict_system, user=verdict_user,
+            operation="claim_check_verdict", max_tokens=600, temperature=0.2,
+        )
+        verdict = extract_json(text) or {}
+    except Exception as exc:
+        return JSONResponse({"error": "verdict failed: " + str(exc)[:200]}, status_code=500)
+
+    return JSONResponse({
+        "ok": True,
+        "claim": claim,
+        "parsed": parsed,
+        "corpus_edges": matched_edges[:6],
+        "verdict": verdict,
+    })
+
+
+@app.get("/me/risks", response_class=HTMLResponse)
+def me_risks(request: Request):
+    """Calibrated risk equations (ASCVD 10-year, FINDRISC) computed
+    against the user's local labs/biomarkers + manual inputs. Tracks
+    score over time in localStorage so the user sees the trajectory."""
+    p = decode(request.cookies.get(COOKIE))
+    return render(request, "me_risks.html", {
+        "title": "Your risk projection",
+        "profile": p,
+    })
+
+
 @app.get("/me/data", response_class=HTMLResponse)
 def me_data(request: Request):
     """The personal-data hub. Renders the empty shell; all data lives
@@ -1355,6 +1508,143 @@ def _interactions_for_stack(stack: list[str]) -> list[dict]:
         if pair and pair.issubset(s):
             out.append(it)
     return out
+
+
+_SYNERGIES_FILE = ROOT / "data" / "synergies.json"
+_SYNERGIES_CACHE: list[dict] | None = None
+
+
+def _load_synergies() -> list[dict]:
+    """Lazy-load the synergies JSON. Same shape as interactions but
+    'factors' (list, ≥2) instead of 'pair' (always 2). Each row also
+    carries a strength tier so the UI can rank."""
+    global _SYNERGIES_CACHE
+    if _SYNERGIES_CACHE is not None:
+        return _SYNERGIES_CACHE
+    if not _SYNERGIES_FILE.exists():
+        _SYNERGIES_CACHE = []
+        return _SYNERGIES_CACHE
+    try:
+        import json as _json
+        data = _json.loads(_SYNERGIES_FILE.read_text())
+        _SYNERGIES_CACHE = data.get("synergies", [])
+    except Exception:
+        _SYNERGIES_CACHE = []
+    return _SYNERGIES_CACHE
+
+
+def _synergies_for_stack(stack_slugs: list[str]) -> dict:
+    """Return active synergies (all factors covered) and missing-but-close
+    synergies (most factors covered, one short — surfaceable as 'add X
+    to compound your Y')."""
+    if not stack_slugs:
+        return {"active": [], "near_misses": []}
+    s = set(stack_slugs)
+    active: list[dict] = []
+    near: list[dict] = []
+    for syn in _load_synergies():
+        factors = set(syn.get("factors", []))
+        if not factors:
+            continue
+        covered = factors & s
+        missing = factors - s
+        if not missing:
+            active.append({**syn, "covered_factors": list(covered)})
+        elif len(covered) >= 1 and len(missing) == 1:
+            near.append({
+                **syn,
+                "covered_factors": list(covered),
+                "missing_factors": list(missing),
+            })
+    # Rank: high strength first, then more-covered first.
+    rank_strength = {"high": 0, "moderate": 1, "low": 2}
+    active.sort(key=lambda r: rank_strength.get(r.get("strength"), 3))
+    near.sort(key=lambda r: (
+        rank_strength.get(r.get("strength"), 3),
+        -len(r.get("covered_factors", [])),
+    ))
+    return {"active": active, "near_misses": near}
+
+
+@app.post("/api/me/risk-projection")
+async def api_me_risk_projection(request: Request):
+    """Stateless: given a flat dict of risk inputs, compute ASCVD,
+    FINDRISC, and a hypothetical-change projection. The browser sends
+    its locally-stored values; we never persist them."""
+    from web.risk_models import ascvd_10yr, findrisc, ascvd_delta_if
+    body = await request.json()
+    out = {"ascvd": None, "findrisc": None, "scenarios": []}
+    # ASCVD
+    try:
+        out["ascvd"] = ascvd_10yr(
+            age=float(body.get("age") or 0),
+            sex=(body.get("sex") or "M").upper(),
+            race=body.get("race") or "white",
+            total_cholesterol=float(body.get("total_cholesterol") or 0),
+            hdl=float(body.get("hdl") or 0),
+            systolic_bp=float(body.get("systolic_bp") or 0),
+            bp_treated=bool(body.get("bp_treated", False)),
+            smoker=bool(body.get("smoker", False)),
+            diabetes=bool(body.get("diabetes", False)),
+        )
+    except Exception as exc:
+        out["ascvd"] = {"score": None, "error": str(exc)[:200]}
+    # FINDRISC
+    try:
+        out["findrisc"] = findrisc(
+            age=int(body.get("age") or 0),
+            bmi=float(body.get("bmi") or 0),
+            waist_cm=float(body.get("waist_cm") or 0),
+            sex=(body.get("sex") or "M").upper(),
+            physical_activity_30min_daily=bool(body.get("physical_activity_30min_daily", False)),
+            eats_vegetables_or_fruit_daily=bool(body.get("eats_vegetables_or_fruit_daily", False)),
+            on_bp_medication=bool(body.get("on_bp_medication", False)),
+            ever_high_blood_glucose=bool(body.get("ever_high_blood_glucose", False)),
+            family_diabetes=body.get("family_diabetes", "none"),
+        )
+    except Exception as exc:
+        out["findrisc"] = {"score": None, "error": str(exc)[:200]}
+    # ASCVD scenarios — common interventions
+    if out["ascvd"] and out["ascvd"].get("score") is not None:
+        baseline = out["ascvd"]["components"]
+        scenarios = []
+        # Quit smoking
+        if baseline.get("smoker"):
+            r = ascvd_delta_if(baseline_inputs=baseline, change={"smoker": False})
+            if r.get("score") is not None:
+                scenarios.append({"label": "If you quit smoking",
+                                  "score": r["score"], "delta": round(out["ascvd"]["score"] - r["score"], 1)})
+        # Lower SBP to 120
+        if baseline.get("systolic_bp", 120) > 120:
+            r = ascvd_delta_if(baseline_inputs=baseline, change={"systolic_bp": 120.0})
+            if r.get("score") is not None:
+                scenarios.append({"label": f"If SBP {int(baseline['systolic_bp'])}→120",
+                                  "score": r["score"], "delta": round(out["ascvd"]["score"] - r["score"], 1)})
+        # Lower TC by 30 (statin equivalent)
+        tc = baseline.get("total_cholesterol", 200)
+        if tc > 180:
+            new_tc = max(150.0, tc - 30)
+            r = ascvd_delta_if(baseline_inputs=baseline, change={"total_cholesterol": new_tc})
+            if r.get("score") is not None:
+                scenarios.append({"label": f"If TC {int(tc)}→{int(new_tc)} (~statin)",
+                                  "score": r["score"], "delta": round(out["ascvd"]["score"] - r["score"], 1)})
+        # Raise HDL by 10
+        hdl = baseline.get("hdl", 50)
+        if hdl < 60:
+            r = ascvd_delta_if(baseline_inputs=baseline, change={"hdl": hdl + 10})
+            if r.get("score") is not None:
+                scenarios.append({"label": f"If HDL {int(hdl)}→{int(hdl+10)} (exercise + omega-3)",
+                                  "score": r["score"], "delta": round(out["ascvd"]["score"] - r["score"], 1)})
+        out["scenarios"] = scenarios
+    return JSONResponse(out)
+
+
+@app.get("/api/me/synergies")
+def api_me_synergies(stack: str = ""):
+    """Stateless: given a comma-separated list of factor slugs, return
+    active synergies + near-miss synergies (one factor away)."""
+    items = [s.strip() for s in (stack or "").split(",") if s.strip()]
+    return JSONResponse(_synergies_for_stack(items))
 
 
 @app.get("/api/interactions/check")
@@ -2980,7 +3270,8 @@ def _build_brief_payload(conn, raw_items: list[str], skeptic: bool):
         else:
             m["edges"] = []
     warnings = _interactions_for_stack(list(interaction_slugs))
-    return matched, warnings
+    synergies = _synergies_for_stack(list(interaction_slugs))
+    return matched, warnings, synergies
 
 
 def _encode_brief_items(items: list[str], skeptic: bool) -> str:
@@ -3037,6 +3328,7 @@ def stack_form(request: Request, items: str = "", skeptic: int = 0):
             "raw_items": [],
             "matches": [],
             "warnings": [],
+            "synergies": {"active": [], "near_misses": []},
             "summary": None,
             "pro_locked": False,
             "share_url": None,
@@ -3047,7 +3339,7 @@ def stack_form(request: Request, items: str = "", skeptic: int = 0):
     pro_locked = len(raw_items) > FREE_LIMIT
     visible = raw_items[:FREE_LIMIT]
     with connect() as conn:
-        matches, warnings = _build_brief_payload(conn, visible, skeptic_flag)
+        matches, warnings, synergies = _build_brief_payload(conn, visible, skeptic_flag)
     summary = _summarize_brief(matches)
     token = _encode_brief_items(raw_items, skeptic_flag)
     base = str(request.base_url).rstrip("/")
@@ -3058,6 +3350,7 @@ def stack_form(request: Request, items: str = "", skeptic: int = 0):
         "raw_items": raw_items,
         "matches": matches,
         "warnings": warnings,
+        "synergies": synergies,
         "summary": summary,
         "pro_locked": pro_locked,
         "share_url": share_url,
@@ -3079,7 +3372,7 @@ def stack_brief_saved(request: Request, token: str, skeptic: int = 0):
     pro_locked = len(items) > FREE_LIMIT
     visible = items[:FREE_LIMIT]
     with connect() as conn:
-        matches, warnings = _build_brief_payload(conn, visible, skeptic_flag)
+        matches, warnings, synergies = _build_brief_payload(conn, visible, skeptic_flag)
     summary = _summarize_brief(matches)
     base = str(request.base_url).rstrip("/")
     share_url = f"{base}/stack/s/{token}"
@@ -3089,6 +3382,7 @@ def stack_brief_saved(request: Request, token: str, skeptic: int = 0):
         "raw_items": items,
         "matches": matches,
         "warnings": warnings,
+        "synergies": synergies,
         "summary": summary,
         "pro_locked": pro_locked,
         "share_url": share_url,
@@ -3110,13 +3404,14 @@ def stack_brief_print(request: Request, token: str, skeptic: int = 0):
     with connect() as conn:
         # Print view shows ALL items (a paid Pro user has unlocked it,
         # or it's the founder's marketing material).
-        matches, warnings = _build_brief_payload(conn, items, skeptic_flag)
+        matches, warnings, synergies = _build_brief_payload(conn, items, skeptic_flag)
     summary = _summarize_brief(matches)
     return render(request, "stack_print.html", {
         "title": "Stack Brief — print",
         "raw_items": items,
         "matches": matches,
         "warnings": warnings,
+        "synergies": synergies,
         "summary": summary,
         "skeptic": skeptic_flag,
         "token": token,
@@ -3620,6 +3915,106 @@ def auth_exchange(request: Request, access_token: str = Form(...)):
         secure=request.url.scheme == "https",
     )
     return resp
+
+
+@app.post("/api/me/challenge")
+async def api_me_challenge(request: Request):
+    """Adaptive devil's-advocate. The user states what they're
+    thinking of doing; we look up the relevant edges in the corpus,
+    pull the strongest counter-evidence, then ask Claude to write a
+    structured challenge. The LLM only ever sees PUBLIC corpus rows
+    plus a small set of fields the user explicitly puts in their plan
+    statement — no PHI from /me/data."""
+    body = await request.json()
+    plan = (body.get("plan") or "").strip()[:1000]
+    if not plan:
+        return JSONResponse({"error": "missing plan"}, status_code=400)
+    # Find candidate factors mentioned in the plan: simple keyword
+    # match against entity names. Anything we recognise becomes a
+    # corpus lookup.
+    plan_lower = plan.lower()
+    factor_slugs: list[str] = []
+    candidate_edges: list[dict] = []
+    with connect() as conn:
+        # Pull factor names + slugs and check substring inclusion.
+        ents = conn.execute(
+            "SELECT slug, name, kind FROM entity "
+            "WHERE kind IN ('drug','supplement','food','behavior','activity','nutrient','process')"
+        ).fetchall()
+        for e in ents:
+            n = (e["name"] or "").lower()
+            if not n or len(n) < 4:
+                continue
+            if n in plan_lower:
+                factor_slugs.append(e["slug"])
+        factor_slugs = list(dict.fromkeys(factor_slugs))[:6]
+        if factor_slugs:
+            ph = ",".join("?" * len(factor_slugs))
+            rows = conn.execute(f"""
+                SELECT e.id, e.tier, e.direction, e.summary, e.effect_size, e.effect_quant,
+                       f.slug AS f_slug, f.name AS f_name, o.name AS o_name
+                FROM edge e
+                JOIN entity f ON f.id=e.factor_id
+                JOIN entity o ON o.id=e.outcome_id
+                WHERE f.slug IN ({ph}) AND e.tier IN ('A','B','C','X')
+                ORDER BY CASE e.direction
+                    WHEN 'harmful' THEN 1
+                    WHEN 'u_shaped' THEN 2
+                    WHEN 'mixed' THEN 3
+                    ELSE 4 END,
+                  CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 WHEN 'X' THEN 3 ELSE 4 END
+                LIMIT 12""", factor_slugs).fetchall()
+            candidate_edges = [dict(r) for r in rows]
+
+    # Build the corpus context as plain text — no LLM slop, just facts.
+    corpus_lines = []
+    for e in candidate_edges[:8]:
+        corpus_lines.append(
+            f"- {e['f_name']} → {e['o_name']}: tier {e['tier']}, "
+            f"{e['direction']}{', ' + str(e['effect_size']) + ' effect' if e.get('effect_size') else ''}"
+            f"{'. ' + e['summary'] if e.get('summary') else ''}"
+        )
+    corpus_block = "\n".join(corpus_lines) if corpus_lines else "(no directly-matching edges found)"
+
+    system = (
+        "You are an evidence-grounded skeptic for a personal health platform. "
+        "The user states a plan. Your job is to challenge it productively — "
+        "surface the strongest counter-evidence, the contested edges, and the "
+        "questions the user should ask their clinician BEFORE acting. "
+        "Never tell them not to do it. Never tell them to do it. Frame "
+        "as: 'here's what the literature says you should weigh.' "
+        "Cite the corpus block. Stay under 280 words.\n\n"
+        "Respond in this strict JSON shape:\n"
+        '{ "summary": "1-2 sentence framing", '
+        '"counterpoints": ["...", "..."], '
+        '"questions_for_clinician": ["...", "...", "..."], '
+        '"signals_to_watch": ["...", "..."] }'
+    )
+    user = (
+        f"USER'S STATED PLAN:\n{plan}\n\n"
+        f"RELEVANT EDGES FROM OUR CORPUS:\n{corpus_block}\n\n"
+        "Return JSON only."
+    )
+
+    import os
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        return JSONResponse({"error": "LLM not configured", "corpus": candidate_edges}, status_code=503)
+    try:
+        from claude_client import call as claude_call, extract_json
+        text, _usage = claude_call(
+            system=system, user=user,
+            operation="challenge", max_tokens=600, temperature=0.3,
+        )
+        parsed = extract_json(text) or {}
+        return JSONResponse({
+            "ok": True,
+            "plan": plan,
+            "matched_factors": factor_slugs,
+            "corpus_edges": candidate_edges[:6],
+            "challenge": parsed,
+        })
+    except Exception as exc:
+        return JSONResponse({"error": str(exc)[:300]}, status_code=500)
 
 
 @app.post("/api/me/recommendation")

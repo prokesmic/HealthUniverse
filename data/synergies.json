@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "comment": "Synergistic combinations: factors that compound when taken together (vs simple additive). Each row is a list of factors that combine super-additively, with a strength (high/moderate/low), a label, a mechanism note, and PMID sources.",
+  "synergies": [
+    {
+      "factors": ["vitamin_c", "iron"],
+      "strength": "high",
+      "label": "Vitamin C boosts non-heme iron absorption",
+      "mechanism": "Vitamin C reduces Fe³⁺ to Fe²⁺ in the duodenum, the form readily absorbed by enterocytes. ~3× absorption of plant-source iron when taken with ≥75 mg vit C.",
+      "context": "Especially relevant for vegetarians, women of reproductive age, and anyone with low ferritin.",
+      "sources": ["PMID:9701160", "PMID:23078797"]
+    },
+    {
+      "factors": ["curcumin", "piperine"],
+      "strength": "high",
+      "label": "Piperine boosts curcumin bioavailability ~20×",
+      "mechanism": "Piperine inhibits CYP3A4 and glucuronidation in the gut wall, preventing first-pass metabolism of curcumin. Standard supplement formulation pairs curcumin with 5-10 mg piperine.",
+      "context": "Without piperine, oral curcumin has very poor absorption. The pairing is what makes anti-inflammatory effects observed in trials replicable.",
+      "sources": ["PMID:9619120", "PMID:30382212"]
+    },
+    {
+      "factors": ["magnesium_glycinate", "vitamin_b6"],
+      "strength": "moderate",
+      "label": "B6 supports magnesium cellular uptake and sleep / mood pathway",
+      "mechanism": "B6 (P5P) is a cofactor for the magnesium-dependent enzymes downstream of magnesium uptake. Combined supplementation outperforms either alone in sleep latency and HPA-axis trials.",
+      "context": "Especially relevant for sleep onset issues, premenstrual symptoms, anxiety.",
+      "sources": ["PMID:28438907", "PMID:33861761"]
+    },
+    {
+      "factors": ["vitamin_d", "vitamin_k2"],
+      "strength": "moderate",
+      "label": "K2 directs calcium absorbed via D into bone, away from arteries",
+      "mechanism": "Vitamin D increases intestinal Ca absorption; K2 (MK-7) activates osteocalcin and matrix Gla protein, which deposit Ca in bone and inhibit vascular calcification. Solo high-dose D without K2 may shift Ca toward soft tissue.",
+      "context": "Especially relevant if supplementing >2000 IU vitamin D, post-menopause, or with elevated CAC scores.",
+      "sources": ["PMID:25972604", "PMID:26770674"]
+    },
+    {
+      "factors": ["creatine_monohydrate", "carbohydrate"],
+      "strength": "high",
+      "label": "Insulin spike from carbs increases muscle creatine uptake",
+      "mechanism": "Creatine uptake is insulin-dependent at the sarcolemma. Co-ingesting 30-90g carbs raises plasma insulin and roughly doubles muscle creatine retention vs creatine alone.",
+      "context": "Most relevant during a creatine 'loading' phase. Less critical at maintenance dose.",
+      "sources": ["PMID:8572212", "PMID:11099358"]
+    },
+    {
+      "factors": ["l_theanine", "caffeine"],
+      "strength": "high",
+      "label": "L-theanine smooths caffeine: focus without jitters",
+      "mechanism": "L-theanine raises alpha-wave brain activity and inhibits glutamate excitotoxicity, blunting the catecholamine surge from caffeine. Combination shows better sustained attention and lower self-reported anxiety than caffeine alone.",
+      "context": "Standard ratio: 200 mg L-theanine + 100 mg caffeine. Naturally found in green tea (~50 mg L-theanine + 30 mg caffeine per cup).",
+      "sources": ["PMID:18681988", "PMID:18006208"]
+    },
+    {
+      "factors": ["cocoa_flavanols", "aerobic_exercise"],
+      "strength": "moderate",
+      "label": "Flavanols boost exercise-induced NO bioavailability",
+      "mechanism": "Cocoa flavanols (esp. epicatechin) are eNOS substrates. Pre-exercise dose increases flow-mediated dilation and exercise endothelial response above either alone.",
+      "context": "Most studied at 200-500 mg flavanols 60-90 min pre-exercise. Don't conflate with sugar-laden chocolate.",
+      "sources": ["PMID:24607302", "PMID:30571572"]
+    },
+    {
+      "factors": ["whey_protein_post_workout", "leucine_3g"],
+      "strength": "moderate",
+      "label": "Leucine activates mTORC1 muscle protein synthesis",
+      "mechanism": "Leucine is the rate-limiting amino acid for the mTOR pathway. Whey naturally contains ~10% leucine; topping up to 3g leucine per dose maximises post-workout muscle protein synthesis, especially in older adults.",
+      "context": "Especially valuable in older adults (anabolic resistance) and during caloric deficit.",
+      "sources": ["PMID:21092806", "PMID:23636791"]
+    },
+    {
+      "factors": ["omega3_high_dose", "curcumin"],
+      "strength": "moderate",
+      "label": "EPA/DHA + curcumin combine on inflammation pathway",
+      "mechanism": "Omega-3s shift eicosanoid synthesis toward anti-inflammatory resolvins; curcumin inhibits NF-κB. Different mechanisms, additive-to-synergistic on inflammatory biomarkers (hs-CRP, IL-6) in trials.",
+      "context": "Most relevant for autoimmune, joint, or chronic inflammation conditions.",
+      "sources": ["PMID:23467345", "PMID:30287834"]
+    },
+    {
+      "factors": ["fiber_soluble", "fermented_foods"],
+      "strength": "high",
+      "label": "Prebiotic fiber + probiotic strains co-build microbiome diversity",
+      "mechanism": "Fermented foods deliver live bacteria; soluble fiber feeds them. The combination raises short-chain fatty acid production and microbial diversity more than either alone in dietary trials.",
+      "context": "Stanford fermented-food trial showed compound effects on inflammatory markers and microbiome diversity above fiber-only or fermented-only arms.",
+      "sources": ["PMID:34256014"]
+    },
+    {
+      "factors": ["resistance_training", "protein_intake_elderly"],
+      "strength": "high",
+      "label": "Resistance training + ≥1.2g/kg protein together preserve muscle",
+      "mechanism": "Resistance training provides the mechanical signal; protein provides the substrate. Either alone is dramatically less effective than the combination for older-adult sarcopenia outcomes.",
+      "context": "Most validated combination in geriatric muscle research — should be near-default advice for over-60s.",
+      "sources": ["PMID:30181432", "PMID:32717861"]
+    },
+    {
+      "factors": ["mediterranean_diet", "olive_oil"],
+      "strength": "moderate",
+      "label": "Mediterranean pattern + extra-virgin olive oil > diet pattern alone",
+      "mechanism": "EVOO polyphenols (oleocanthal, hydroxytyrosol) appear to drive a substantial portion of the Mediterranean diet's CV benefit. The PREDIMED-EVOO arm outperformed the diet-only control.",
+      "context": "Quality matters: cold-pressed, unfiltered, polyphenol-rich. Refined oils don't carry the same benefit.",
+      "sources": ["PMID:23432189"]
+    },
+    {
+      "factors": ["zinc", "copper"],
+      "strength": "high",
+      "label": "Zinc supplementation needs balanced copper",
+      "mechanism": "High-dose zinc (>40 mg/d) blocks copper absorption via metallothionein induction. Chronic high zinc without copper can cause anaemia and neuropathy. Standard ratio: 8-15 zinc : 1 copper.",
+      "context": "Synergy here is structural — they need to be balanced, not 'more-of-both'. Worth flagging when users take zinc isolates.",
+      "sources": ["PMID:24108469"]
+    },
+    {
+      "factors": ["coq10", "selenium"],
+      "strength": "moderate",
+      "label": "CoQ10 + selenium reduce CV mortality in elderly (KiSel-10)",
+      "mechanism": "CoQ10 is an electron-transport antioxidant; selenium is required for glutathione peroxidase. Together they support mitochondrial function in tissue with high oxidative load.",
+      "context": "KiSel-10 trial in elderly Swedish adults showed substantial CV mortality reduction over 5+ years with the combination.",
+      "sources": ["PMID:23414836", "PMID:31272034"]
+    },
+    {
+      "factors": ["bright_light_morning", "regular_sleep_schedule"],
+      "strength": "high",
+      "label": "Morning light + consistent bedtime co-anchor circadian rhythm",
+      "mechanism": "Morning light advances the circadian phase; consistent bedtime maintains it. Together they produce stronger melatonin onset and better sleep architecture than either alone.",
+      "context": "Especially valuable for shift workers, night owls trying to shift earlier, and older adults with fragmented sleep.",
+      "sources": ["PMID:30311830"]
+    },
+    {
+      "factors": ["aerobic_exercise", "resistance_training"],
+      "strength": "high",
+      "label": "Combined cardio + strength outperforms either for cardiometabolic outcomes",
+      "mechanism": "Aerobic improves mitochondrial density and cardiovascular fitness; resistance preserves lean mass and insulin sensitivity. Combined-arm trials in T2D, obesity, and aging consistently outperform single-modality.",
+      "context": "Most-replicated synergy in exercise science. Default for general health.",
+      "sources": ["PMID:21084554", "PMID:31243961"]
+    },
+    {
+      "factors": ["fiber_soluble", "ldl_cholesterol_reduction"],
+      "strength": "moderate",
+      "label": "Soluble fiber + statin: additive LDL-lowering",
+      "mechanism": "Fiber sequesters bile acids in the gut, forcing hepatic cholesterol use for re-synthesis; statins block hepatic synthesis directly. Stacked: independent mechanisms with additive LDL reduction.",
+      "context": "Adding 10g/day soluble fiber to statin therapy yields ~5-10% additional LDL reduction.",
+      "sources": ["PMID:32030961"]
+    },
+    {
+      "factors": ["spermidine", "autophagy_fasting_window"],
+      "strength": "low",
+      "label": "Spermidine + time-restricted eating both raise autophagy",
+      "mechanism": "Spermidine is a known autophagy inducer; extended fasting windows independently activate AMPK/autophagy. Theoretical synergy on cellular cleanup; human evidence is preliminary.",
+      "context": "Mechanism is plausible but trials with both arms are sparse. Don't oversell.",
+      "sources": ["PMID:30245460"]
+    },
+    {
+      "factors": ["walking", "outdoors_green_space"],
+      "strength": "moderate",
+      "label": "Walking outdoors > walking indoors for mental health",
+      "mechanism": "Same physical activity, but green-space exposure adds a separately-evidenced effect on cortisol, mood, and rumination. Combined: more than additive in depression/anxiety trials.",
+      "context": "Especially relevant for users in dense urban environments who can choose where to walk.",
+      "sources": ["PMID:25724381", "PMID:33500394"]
+    },
+    {
+      "factors": ["resistance_training", "creatine_monohydrate"],
+      "strength": "high",
+      "label": "Creatine amplifies resistance-training adaptations",
+      "mechanism": "Creatine raises the phosphocreatine reservoir, allowing more high-intensity reps and faster recovery between sets. Net effect: more cumulative training volume per session, more hypertrophy.",
+      "context": "Effect is modest in untrained individuals but consistent and replicable. Combined-arm trials show ~10-15% more strength gain than training alone.",
+      "sources": ["PMID:12701816", "PMID:32916123"]
+    }
+  ]
+}

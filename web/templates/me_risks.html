@@ -1,0 +1,321 @@
+{% extends "base.html" %}
+{% block title %}Risk projection — Health Universe{% endblock %}
+{% block content %}
+<style>
+  .rk-hero { padding: 24px 0 12px; }
+  .rk-hero h1 { margin: 0; }
+  .rk-grid {
+    display: grid; gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    margin: 18px 0;
+  }
+  @media (max-width: 720px) { .rk-grid { grid-template-columns: 1fr; } }
+  .rk-card {
+    border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 20px; background: #fff;
+  }
+  .rk-card h2 { margin: 0 0 4px; font-size: 18px; }
+  .rk-card .meta { color: var(--ink-soft); font-size: 13px; margin-bottom: 12px; }
+  .rk-form { display: grid; gap: 8px; }
+  .rk-form label { font-size: 13px; font-weight: 600; color: var(--ink-soft); }
+  .rk-form input, .rk-form select {
+    padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px;
+    font-size: 14px; font-family: inherit;
+  }
+  .rk-form .row { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+  .rk-form .row-3 { display: grid; gap: 10px; grid-template-columns: 1fr 1fr 1fr; }
+  .rk-form .check { display: flex; align-items: center; gap: 6px; }
+  .rk-result {
+    padding: 14px 16px; border-radius: 10px; margin-top: 14px;
+    border: 1px solid var(--line); background: #fafafa;
+  }
+  .rk-result .big {
+    font-family: 'Fraunces', serif; font-size: 36px;
+    font-weight: 600; line-height: 1;
+  }
+  .rk-result .big.low { color: #1b5e20; }
+  .rk-result .big.mid { color: #c9a02a; }
+  .rk-result .big.high { color: #9b1c1c; }
+  .rk-result .lbl { font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+
+  .rk-scenarios {
+    margin-top: 14px; padding: 12px 14px; border-radius: 8px;
+    background: #f4faf6; border: 1px solid #b7e0c4;
+  }
+  .rk-scenarios h3 { margin: 0 0 6px; font-size: 14px; color: #1b5e20; }
+  .rk-scenario { font-size: 13px; padding: 6px 0; border-top: 1px dashed #cfe5d4; }
+  .rk-scenario:first-of-type { border-top: 0; }
+  .rk-scenario b { font-family: 'Fraunces', serif; }
+  .rk-scenario .delta { color: #1b5e20; font-weight: 600; margin-left: 6px; }
+
+  .rk-trail {
+    margin-top: 18px; padding: 14px 16px;
+    border: 1px solid var(--line); border-radius: 10px; background: #fff;
+  }
+  .rk-trail h3 { margin: 0 0 8px; font-size: 14px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em; }
+  .rk-trail svg { width: 100%; height: 60px; }
+  .rk-trail .trend-line { fill: none; stroke: #1f3a2e; stroke-width: 1.5; }
+
+  .rk-disclaimer {
+    margin-top: 24px; padding: 14px; background: #f7f7f7;
+    border-radius: 8px; font-size: 13px; color: var(--ink-soft);
+  }
+</style>
+
+<header class="rk-hero">
+  <p class="hp-eyebrow">CALIBRATED RISK PROJECTION</p>
+  <h1>Your numbers, projected forward<span class="dot">.</span></h1>
+  <p class="lede" style="max-width:760px">
+    Plug your labs and a few flags in. We run the published risk
+    equations the cardiology and diabetes guidelines use — ASCVD
+    Pooled Cohort Equations (10-year cardiovascular risk) and
+    FINDRISC (Finnish 10-year T2D risk) — and show you the projected
+    impact of common interventions. Your inputs stay in this browser.
+  </p>
+</header>
+
+<form id="rk-form" class="rk-card" autocomplete="off">
+  <h2>Your inputs</h2>
+  <p class="meta">Edit anything to recompute. We auto-fill from your /me/data labs when we can match.</p>
+  <div class="rk-form">
+    <div class="row-3">
+      <label>Age <input id="rk-age" type="number" min="40" max="79" placeholder="55" required></label>
+      <label>Sex
+        <select id="rk-sex"><option value="M">Male</option><option value="F">Female</option></select>
+      </label>
+      <label>Race
+        <select id="rk-race">
+          <option value="white">White / other</option>
+          <option value="aa">African-American</option>
+        </select>
+      </label>
+    </div>
+    <div class="row-3">
+      <label>Total cholesterol (mg/dL) <input id="rk-tc" type="number" placeholder="200" required></label>
+      <label>HDL (mg/dL) <input id="rk-hdl" type="number" placeholder="50" required></label>
+      <label>Systolic BP (mmHg) <input id="rk-sbp" type="number" placeholder="120" required></label>
+    </div>
+    <div class="row-3">
+      <label>BMI <input id="rk-bmi" type="number" step="0.1" placeholder="25"></label>
+      <label>Waist (cm) <input id="rk-waist" type="number" placeholder="92"></label>
+      <label>Family T2D
+        <select id="rk-family">
+          <option value="none">None</option>
+          <option value="second_degree">Grandparent / cousin</option>
+          <option value="first_degree">Parent / sibling</option>
+        </select>
+      </label>
+    </div>
+    <div class="row" style="margin-top:6px">
+      <div class="check"><input id="rk-bp-treat" type="checkbox"><label for="rk-bp-treat">On BP medication</label></div>
+      <div class="check"><input id="rk-smoker" type="checkbox"><label for="rk-smoker">Current smoker</label></div>
+    </div>
+    <div class="row" style="margin-top:2px">
+      <div class="check"><input id="rk-diab" type="checkbox"><label for="rk-diab">Diagnosed diabetes</label></div>
+      <div class="check"><input id="rk-glu" type="checkbox"><label for="rk-glu">Ever flagged high blood sugar</label></div>
+    </div>
+    <div class="row" style="margin-top:2px">
+      <div class="check"><input id="rk-act" type="checkbox" checked><label for="rk-act">Active ≥30 min/day</label></div>
+      <div class="check"><input id="rk-veg" type="checkbox" checked><label for="rk-veg">Veg/fruit daily</label></div>
+    </div>
+    <button type="submit" class="btn-primary" style="margin-top:8px">Compute</button>
+  </div>
+</form>
+
+<div class="rk-grid">
+  <div class="rk-card">
+    <h2>ASCVD 10-year</h2>
+    <p class="meta">Cardiovascular risk per 2013 ACC/AHA Pooled Cohort Equations</p>
+    <div id="rk-ascvd" style="display:none">
+      <div class="rk-result">
+        <div class="big" id="rk-ascvd-num">—</div>
+        <div class="lbl" id="rk-ascvd-lbl">—</div>
+      </div>
+      <div class="rk-scenarios" id="rk-scenarios" style="display:none">
+        <h3>What if you change one thing?</h3>
+        <div id="rk-scenarios-body"></div>
+      </div>
+    </div>
+    <p id="rk-ascvd-empty" class="muted small">Compute above to see your projected 10-year MACE risk.</p>
+    <div id="rk-ascvd-trail" class="rk-trail" style="display:none">
+      <h3>Your trajectory</h3>
+      <svg id="rk-ascvd-svg" viewBox="0 0 300 60" preserveAspectRatio="none"></svg>
+      <div class="muted small" id="rk-ascvd-trail-meta"></div>
+    </div>
+  </div>
+
+  <div class="rk-card">
+    <h2>FINDRISC (10-year T2D)</h2>
+    <p class="meta">Finnish risk score, 0–26 points</p>
+    <div id="rk-findrisc" style="display:none">
+      <div class="rk-result">
+        <div class="big" id="rk-findrisc-num">—</div>
+        <div class="lbl" id="rk-findrisc-lbl">—</div>
+      </div>
+    </div>
+    <p id="rk-findrisc-empty" class="muted small">Compute above to see your projected 10-year T2D risk.</p>
+    <div id="rk-findrisc-trail" class="rk-trail" style="display:none">
+      <h3>Your trajectory</h3>
+      <svg id="rk-findrisc-svg" viewBox="0 0 300 60" preserveAspectRatio="none"></svg>
+      <div class="muted small" id="rk-findrisc-trail-meta"></div>
+    </div>
+  </div>
+</div>
+
+<div class="rk-disclaimer">
+  <b>Reminder:</b> these are <i>population</i> equations. They give you a calibrated estimate
+  but every individual's actual risk depends on factors not captured (genetics, family history,
+  rare risk-modifiers, current medications). Bring this to your clinician — don't substitute it.
+</div>
+
+<script src="/static/personal.js"></script>
+<script>
+(function () {
+  "use strict";
+  const HU = window.HUPersonal;
+
+  // ─── Auto-fill from local data where possible ─────────────────
+  function autofill() {
+    if (!HU) return;
+    const s = HU.load();
+    // Latest TC, HDL, SBP from labs.
+    const labByName = {};
+    (s.labs || []).forEach((l) => {
+      const n = (l.name || "").toLowerCase();
+      const ts = new Date(l.date).getTime();
+      if (!labByName[n] || labByName[n].ts < ts) labByName[n] = { v: l.value, ts };
+    });
+    function setIf(id, key) {
+      const el = document.getElementById(id);
+      if (!el || el.value) return;
+      for (const k of Object.keys(labByName)) {
+        if (k.includes(key)) { el.value = labByName[k].v; return; }
+      }
+    }
+    setIf("rk-tc", "total cholesterol");
+    setIf("rk-hdl", "hdl");
+    // Latest weight → BMI guess (no height in profile yet, leave for user)
+    // Wearables RHR / SBP not auto-filled (need separate field).
+  }
+  autofill();
+
+  // ─── Snapshots — store each computation in localStorage ────────
+  const SNAP_KEY = "hu_risk_snapshots";
+  function loadSnaps() {
+    try { return JSON.parse(localStorage.getItem(SNAP_KEY) || "[]"); }
+    catch (_) { return []; }
+  }
+  function saveSnap(snap) {
+    const all = loadSnaps();
+    all.push(snap);
+    if (all.length > 60) all.splice(0, all.length - 60);
+    localStorage.setItem(SNAP_KEY, JSON.stringify(all));
+  }
+  function renderTrail(stream, key, label) {
+    const all = loadSnaps().filter((s) => s[key] != null).slice(-12);
+    if (all.length < 2) return;
+    document.getElementById(stream + "-trail").style.display = "block";
+    const svg = document.getElementById(stream + "-svg");
+    svg.innerHTML = "";
+    const ns = "http://www.w3.org/2000/svg";
+    const W = 300, H = 60, P = 6;
+    const xs = all.map((_, i) => P + (W - 2 * P) * (i / Math.max(all.length - 1, 1)));
+    const ys = all.map((s) => s[key]);
+    const min = Math.min(...ys, 0), max = Math.max(...ys);
+    const span = (max - min) || 1;
+    const points = xs.map((x, i) => {
+      const y = H - P - (H - 2 * P) * (ys[i] - min) / span;
+      return x.toFixed(1) + "," + y.toFixed(1);
+    }).join(" ");
+    const poly = document.createElementNS(ns, "polyline");
+    poly.setAttribute("class", "trend-line");
+    poly.setAttribute("points", points);
+    svg.appendChild(poly);
+    document.getElementById(stream + "-trail-meta").textContent =
+      `${all.length} snapshots · last ${ys[ys.length - 1]} → first ${ys[0]} (${all[0].date.slice(0,10)})`;
+  }
+
+  // ─── Compute ───────────────────────────────────────────────────
+  document.getElementById("rk-form").addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    const $ = (id) => document.getElementById(id);
+    const body = {
+      age: Number($("rk-age").value),
+      sex: $("rk-sex").value,
+      race: $("rk-race").value,
+      total_cholesterol: Number($("rk-tc").value),
+      hdl: Number($("rk-hdl").value),
+      systolic_bp: Number($("rk-sbp").value),
+      bmi: Number($("rk-bmi").value || 0),
+      waist_cm: Number($("rk-waist").value || 0),
+      bp_treated: $("rk-bp-treat").checked,
+      smoker: $("rk-smoker").checked,
+      diabetes: $("rk-diab").checked,
+      ever_high_blood_glucose: $("rk-glu").checked,
+      physical_activity_30min_daily: $("rk-act").checked,
+      eats_vegetables_or_fruit_daily: $("rk-veg").checked,
+      family_diabetes: $("rk-family").value,
+      on_bp_medication: $("rk-bp-treat").checked,
+    };
+    const r = await fetch("/api/me/risk-projection", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const j = await r.json();
+
+    // ASCVD
+    const ascvd = j.ascvd || {};
+    if (ascvd.score != null) {
+      $("rk-ascvd").style.display = "block";
+      $("rk-ascvd-empty").style.display = "none";
+      const num = $("rk-ascvd-num"); num.textContent = ascvd.score + "%";
+      num.className = "big " + (ascvd.score < 7.5 ? "low" : ascvd.score < 20 ? "mid" : "high");
+      $("rk-ascvd-lbl").textContent = ascvd.label;
+      const sc = j.scenarios || [];
+      const scBody = $("rk-scenarios-body");
+      if (sc.length) {
+        $("rk-scenarios").style.display = "block";
+        scBody.innerHTML = sc.map((s) =>
+          `<div class="rk-scenario"><b>${s.score}%</b> ${s.label}<span class="delta">↓ ${s.delta}%</span></div>`
+        ).join("");
+      } else {
+        $("rk-scenarios").style.display = "none";
+      }
+    } else {
+      $("rk-ascvd").style.display = "none";
+      $("rk-ascvd-empty").style.display = "block";
+      $("rk-ascvd-empty").innerHTML = "ASCVD couldn't be computed: " + (ascvd.label || ascvd.error || "missing inputs");
+    }
+
+    // FINDRISC
+    const f = j.findrisc || {};
+    if (f.score != null) {
+      $("rk-findrisc").style.display = "block";
+      $("rk-findrisc-empty").style.display = "none";
+      $("rk-findrisc-num").textContent = f.score + " / " + f.score_max;
+      $("rk-findrisc-num").className = "big " +
+        (f.score < 7 ? "low" : f.score < 15 ? "mid" : "high");
+      $("rk-findrisc-lbl").textContent = f.label + " · ~" + f.ten_year_risk_pct + "% 10-year T2D risk";
+    } else {
+      $("rk-findrisc").style.display = "none";
+    }
+
+    // Save a snapshot for the trajectory.
+    saveSnap({
+      date: new Date().toISOString(),
+      ascvd_score: ascvd.score,
+      findrisc_score: f.score,
+      findrisc_pct: f.ten_year_risk_pct,
+      inputs: body,
+    });
+    renderTrail("rk-ascvd", "ascvd_score", "ASCVD %");
+    renderTrail("rk-findrisc", "findrisc_score", "FINDRISC pts");
+  });
+
+  // Render existing trajectory immediately if present.
+  renderTrail("rk-ascvd", "ascvd_score", "ASCVD %");
+  renderTrail("rk-findrisc", "findrisc_score", "FINDRISC pts");
+})();
+</script>
+{% endblock %}
