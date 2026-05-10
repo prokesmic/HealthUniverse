@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "opioids_long_term",
+      "outcome_slug": "constipation_chronic",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "Across trial and observational literature, constipation is one of the most common chronic opioid adverse effects: a systematic review of randomized trials found constipation in 15% of exposed participants, while cross-sectional outpatient data found opioid-induced bowel dysfunction with constipation in more than 90% of patients using bowel-function scales.",
+      "population": "adults receiving long-term opioid therapy for chronic cancer or non-cancer pain",
+      "mechanism": "Chronic opioid exposure slows gastrointestinal motility and secretion through peripheral mu-opioid receptor activity in the gut, making constipation a predictable on-treatment adverse effect rather than an incidental association.",
+      "summary": "This is a strong harmful edge. The practical question is not whether chronic opioid therapy can cause constipation, but how often and how severely it does so in different pain populations, because the bowel effect is built into the drug class rather than confined to a rare subgroup.",
+      "caveats": "Prevalence estimates vary with study design, bowel-function definition, cancer versus non-cancer populations, and whether prophylactic laxatives were used. Short randomized trials probably understate the day-to-day burden seen in routine long-term care.",
+      "evidence": [
+        {
+          "citation": "MooreRA 2005 Arthritis Res Ther",
+          "year": 2005,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prevalence of opioid adverse events in chronic non-malignant pain: systematic review of randomised trials of oral opioids.",
+          "pmid": "16207320",
+          "n_participants": 5546,
+          "effect_quant": {
+            "metric": "prevalence",
+            "value": 15.0,
+            "unit": "%",
+            "comparator": "constipation among participants receiving oral opioids in randomized trials"
+          }
+        },
+        {
+          "citation": "RejasJ 2014 Aten Primaria",
+          "year": 2014,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Observational and cross-sectional study of prevalence and severity of the opioid-induced bowel dysfunction.",
+          "pmid": "24332445",
+          "n_participants": 317,
+          "effect_quant": {
+            "metric": "prevalence",
+            "value": 91.6,
+            "unit": "%",
+            "comparator": "constipation measured by Bowel Function Index among opioid-treated outpatients"
+          }
+        },
+        {
+          "citation": "NobleM 2010 Cochrane Database Syst Rev",
+          "year": 2010,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Long-term opioid management for chronic noncancer pain.",
+          "pmid": "20091598",
+          "n_participants": 4893,
+          "effect_quant": {
+            "metric": "discontinuation_due_to_adverse_events",
+            "value": 22.9,
+            "unit": "%",
+            "comparator": "oral long-term opioid treatment groups"
+          }
+        }
+      ]
+    }
+  ]
+}

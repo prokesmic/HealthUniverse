@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "benzodiazepines_long_term",
+      "name": "Long-term benzodiazepine use",
+      "kind": "drug",
+      "aliases": [],
+      "description": "Sustained benzodiazepine exposure over months or longer in adults, especially older adults."
+    },
+    {
+      "slug": "cognitive_decline_elderly",
+      "name": "Cognitive decline in older adults",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Decline in memory, attention, executive function, or processing speed in older adults."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "benzodiazepines_long_term",
+      "outcome_slug": "cognitive_decline_elderly",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The clearest pooled signal is lower Digit Symbol scores in older benzodiazepine users (SMD -0.61, 95% CI -0.91 to -0.31), while smaller cohort studies suggest subtle executive-function deficits and some partial reversibility after withdrawal.",
+      "population": "older adults using benzodiazepines or related hypnotics for months or longer",
+      "mechanism": "Persistent benzodiazepine exposure can impair attention, processing speed, and memory encoding through GABAergic central nervous system suppression, with older brains showing less reserve to compensate for these effects.",
+      "summary": "The evidence supports a harmful but not catastrophic cognitive edge. Long-term benzodiazepine use in older adults most consistently shows up as slower processing and weaker executive performance rather than a dramatic, universal collapse across every cognitive domain.",
+      "caveats": "Effect sizes are usually modest and are vulnerable to confounding by indication, sleep problems, anxiety, and baseline frailty. Some deficits appear at least partly reversible after discontinuation, which argues against treating this as fixed neurodegeneration in every user.",
+      "evidence": [
+        {
+          "citation": "LiuLili 2020 Front Psychiatry",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Effects of Benzodiazepine Use and Abuse on Cognition in the Elders: A Systematic Review and Meta-Analysis of Comparative Studies.",
+          "pmid": "33093832",
+          "n_participants": 253,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -0.61,
+            "ci_low": -0.91,
+            "ci_high": -0.31,
+            "comparator": "digit symbol test score in elderly benzodiazepine users versus controls"
+          }
+        },
+        {
+          "citation": "McAndrewsMP 2003 Hum Psychopharmacol",
+          "year": 2003,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Cognitive effects of long-term benzodiazepine use in older adults.",
+          "doi": "10.1002/hup.453",
+          "pmid": "12532315",
+          "n_participants": 51
+        },
+        {
+          "citation": "LiuLinzi 2020 Front Psychiatry",
+          "year": 2020,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Is the Long-Term Use of Benzodiazepines Associated With Worse Cognition Performance in Highly Educated Older Adults?",
+          "doi": "10.3389/fpsyt.2020.595623",
+          "pmid": "33192741",
+          "n_participants": 140
+        }
+      ]
+    }
+  ]
+}

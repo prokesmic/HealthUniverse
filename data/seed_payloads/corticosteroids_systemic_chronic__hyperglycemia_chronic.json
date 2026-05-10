@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "corticosteroids_systemic_chronic",
+      "name": "Chronic systemic corticosteroids",
+      "kind": "drug",
+      "aliases": [
+        "long-term systemic glucocorticoids"
+      ],
+      "description": "Repeated oral or systemic corticosteroid exposure over months or longer."
+    },
+    {
+      "slug": "hyperglycemia_chronic",
+      "name": "Chronic hyperglycemia",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Sustained or repeatedly provoked hyperglycemia during ongoing corticosteroid exposure."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "corticosteroids_systemic_chronic",
+      "outcome_slug": "hyperglycemia_chronic",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In randomized respiratory trials, glucocorticoid treatment increased hyperglycemia risk by about 72% overall; in a large matched hospital cohort, systemic glucocorticoid exposure doubled the incidence rate of new-onset hyperglycemia compared with non-exposure.",
+      "population": "adults exposed to systemic glucocorticoids in hospital or chronic inflammatory disease settings",
+      "mechanism": "Systemic corticosteroids increase hepatic glucose output and insulin resistance, especially later in the day, producing a recognizable steroid-hyperglycemia pattern that can persist throughout repeated dosing.",
+      "summary": "The literature supports a clear harmful glycemic edge for systemic corticosteroids, but the magnitude depends heavily on age, dose, baseline diabetes risk, and clinical setting. The best evidence shows that repeated systemic exposure makes new-onset or worsened hyperglycemia substantially more likely, even if some younger or lower-risk groups avoid severe elevations.",
+      "caveats": "Hospital cohorts may overrepresent sicker patients and short-term inpatient monitoring, while respiratory-trial meta-analyses may not generalize perfectly to every chronic inflammatory disease. Severe hyperglycemia is not inevitable, but clinically meaningful glucose elevation is common enough to justify monitoring.",
+      "evidence": [
+        {
+          "citation": "HwangJL 2016 Diabetes Obes Metab",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Glucocorticoid-induced hyperglycaemia in respiratory disease: a systematic review and meta-analysis.",
+          "pmid": "27392119",
+          "n_participants": 2121,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.72,
+            "ci_low": 1.50,
+            "ci_high": 2.04,
+            "comparator": "hyperglycemia in adults randomized to glucocorticoids versus placebo"
+          }
+        },
+        {
+          "citation": "AlexandrakiKI 2025 Diabetes Obes Metab",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Glucocorticoid-induced hyperglycaemia in hospitalised adults: A matched cohort study (2013-2023).",
+          "pmid": "40171899",
+          "n_participants": 451606,
+          "effect_quant": {
+            "metric": "IRR",
+            "value": 2.15,
+            "ci_low": 1.18,
+            "ci_high": 3.12,
+            "comparator": "new-onset hyperglycemia during systemic glucocorticoid exposure versus non-exposure"
+          }
+        },
+        {
+          "citation": "BurtMG 2018 Endocr Pract",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "High-Dose Glucocorticoid Treatment Does Not Induce Severe Hyperglycemia in Young Patients With Autoimmune Diseases by CGMS.",
+          "pmid": "29106815",
+          "n_participants": 24
+        }
+      ]
+    }
+  ]
+}
