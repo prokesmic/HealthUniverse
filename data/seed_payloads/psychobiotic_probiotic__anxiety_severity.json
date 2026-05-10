@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "psychobiotic_probiotic",
+      "name": "Psychobiotic probiotic supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "psychobiotic probiotics",
+        "gut-brain probiotic supplementation"
+      ],
+      "description": "Probiotic supplementation used with the specific aim of modulating gut-brain signaling and mood-related symptoms."
+    },
+    {
+      "slug": "anxiety_severity",
+      "name": "Anxiety severity",
+      "kind": "process",
+      "aliases": [
+        "anxiety symptom burden",
+        "severity of anxiety symptoms"
+      ],
+      "description": "Severity of anxiety symptoms measured with validated self-report or clinician-rated scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "psychobiotic_probiotic",
+      "outcome_slug": "anxiety_severity",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "A large 2025 randomized-trial synthesis found a modest pooled anxiety benefit for probiotics, prebiotics, and synbiotics versus placebo (SMD -0.44, 95% CI -0.59 to -0.28), but earlier psychobiotic-focused review work concluded anxiety results were not consistently different from placebo. Subclinical worker data also show only a small average effect (SMD -0.21, 95% CI -0.34 to -0.09) across mixed distress outcomes.",
+      "population": "adults with anxiety or mixed mood symptoms, including healthy workers with subclinical stress and broader psychiatric or chronic-disease samples receiving gut-brain-targeted microbiome interventions",
+      "mechanism": "Psychobiotic probiotics may influence anxiety through inflammatory signaling, hypothalamic-pituitary-adrenal stress pathways, and microbial metabolite effects on neural circuits. In practice, differences in probiotic composition, duration, and baseline psychiatric burden make the clinical anxiety signal look inconsistent rather than uniformly robust.",
+      "summary": "Psychobiotic probiotics may modestly reduce anxiety severity in some settings, but the literature is contested and highly heterogeneous. Newer pooled estimates are encouraging, yet earlier psychobiotic-focused reviews and subgroup findings suggest that anxiety benefit is much less stable than headline probiotic enthusiasm often implies.",
+      "caveats": "Many trials enroll subclinical or mixed-population samples instead of patients with a clear anxiety-disorder diagnosis. This edge should be interpreted as a cautious adjunctive signal, not as settled evidence that probiotics reliably improve anxiety severity across clinical populations.",
+      "evidence": [
+        {
+          "citation": "ZhangJ et al 2025 BMC Psychiatry",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The efficacy of probiotics, prebiotics, and synbiotics on anxiety, depression, and sleep: a systematic review and meta-analysis of randomized controlled trials.",
+          "pmid": "41310510",
+          "n_participants": 3912,
+          "effect_quant": {
+            "metric": "smd",
+            "value": -0.44,
+            "ci_low": -0.59,
+            "ci_high": -0.28,
+            "comparator": "probiotics, prebiotics, or synbiotics versus placebo on anxiety symptoms"
+          }
+        },
+        {
+          "citation": "BenFredjS et al 2026 BMC Psychol",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Probiotic intake and mental health in healthy working adults: a systematic review and meta-analysis of randomized controlled trials.",
+          "pmid": "41501907",
+          "n_participants": 3350,
+          "effect_quant": {
+            "metric": "smd",
+            "value": -0.21,
+            "ci_low": -0.34,
+            "ci_high": -0.09,
+            "comparator": "probiotic supplementation versus control on pooled subclinical depression, anxiety, and stress outcomes in healthy working adults"
+          }
+        },
+        {
+          "citation": "ZagorskaA et al 2020 Benef Microbes",
+          "year": 2020,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "From probiotics to psychobiotics - the gut-brain axis in psychiatric disorders.",
+          "pmid": "33191776"
+        }
+      ]
+    }
+  ]
+}
