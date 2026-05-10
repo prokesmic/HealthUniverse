@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "calcium_with_vitamin_d_high_dose",
+      "outcome_slug": "kidney_stone_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The strongest direct trial evidence comes from the Women's Health Initiative, where combined calcium plus vitamin D increased renal calculi risk by about 17%, while smaller physiology studies show that supplementation commonly provokes hypercalciuria even if overt stones are less frequent.",
+      "population": "postmenopausal and older women receiving combined calcium and vitamin D supplementation in fracture-prevention or bone-health trials",
+      "mechanism": "Combined calcium and vitamin D can raise intestinal calcium absorption and urinary calcium excretion, which increases supersaturation in susceptible stone formers even when average participants do not all cross into clinically apparent nephrolithiasis.",
+      "summary": "This edge is driven mainly by the very large WHI randomized trial, which showed a real but modest excess of kidney stones. Smaller mechanistic trials are less uniform on overt stone risk but support the biological pathway through hypercalciuria, making the overall signal credible even if not dramatic.",
+      "caveats": "Absolute risk increase is small, and susceptibility likely depends on baseline urinary chemistry, hydration, and prior stone history. The literature is much stronger for routine supplement regimens in postmenopausal women than for every younger or lower-dose use case.",
+      "evidence": [
+        {
+          "citation": "Jackson RD 2006 N Engl J Med",
+          "year": 2006,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Calcium plus vitamin D supplementation and the risk of fractures.",
+          "doi": "10.1056/NEJMoa055218",
+          "pmid": "16481635",
+          "n_participants": 36282,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.17,
+            "ci_low": 1.02,
+            "ci_high": 1.34,
+            "comparator": "calcium plus vitamin D supplementation versus placebo for renal calculi"
+          }
+        },
+        {
+          "citation": "Pak CY 2000 Osteoporos Int",
+          "year": 2000,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Risk of calcium oxalate nephrolithiasis after calcium or combined calcium and calcitriol supplementation in postmenopausal women.",
+          "doi": "10.1007/s001980070090",
+          "pmid": "10982163",
+          "n_participants": 53
+        },
+        {
+          "citation": "Gallagher JC 2014 Menopause",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Incidence of hypercalciuria and hypercalcemia during vitamin D and calcium supplementation in older women.",
+          "doi": "10.1097/GME.0000000000000270",
+          "pmid": "24937025",
+          "n_participants": 163
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "calcium_with_vitamin_d_high_dose",
+      "name": "High-dose calcium plus vitamin D supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "combined calcium and vitamin D supplements"
+      ],
+      "description": "Combined calcium and vitamin D supplementation regimens such as approximately 1,000 to 1,200 mg elemental calcium daily with vitamin D co-supplementation."
+    },
+    {
+      "slug": "kidney_stone_risk",
+      "name": "Kidney stone risk",
+      "kind": "condition",
+      "aliases": [
+        "renal calculi risk",
+        "nephrolithiasis risk"
+      ],
+      "description": "Risk of clinically apparent kidney stones or renal calculi during or after supplementation exposure."
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "fluoroquinolones",
+      "outcome_slug": "aortic_aneurysm_risk",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Older pooled observational syntheses reported short-term risk elevations after fluoroquinolone exposure, including RR 3.40 within 30 days in a 2026 meta-analysis, but the most rigorous modern active-comparator cohorts attenuate the estimate toward no excess risk.",
+      "population": "adults prescribed systemic fluoroquinolones in observational cohorts, network studies, and pooled post-marketing comparative analyses",
+      "mechanism": "The proposed mechanism is collagen and matrix injury within the aortic wall, analogous to the tendon signal, but that biological hypothesis has to compete with heavy confounding from infection severity, vascular fragility, and antibiotic indication.",
+      "summary": "The most boring reading is that this is still a warning signal rather than a settled class harm. Pooled observational studies continue to find an association, but two very large active-comparator analyses weaken the claim substantially once confounding is handled more aggressively.",
+      "caveats": "Because aneurysm and dissection are rare, even relative risk inflation translates to low absolute event counts. Comparator choice matters a lot here, and this edge should be framed as contested pharmacovigilance evidence rather than a universally accepted causal effect.",
+      "evidence": [
+        {
+          "citation": "Zhiyuan Wu 2026 Rev Cardiovasc Med",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Effects of Fluoroquinolones on Aortic Aneurysm or Dissection Processes: A Systematic Review and Meta-Analysis.",
+          "doi": "10.31083/RCM43656",
+          "pmid": "41923717",
+          "n_participants": 36224419,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 3.4,
+            "ci_low": 2.72,
+            "ci_high": 4.24,
+            "comparator": "fluoroquinolone exposure versus unexposed comparators for de novo aortic aneurysm or dissection within 30 days"
+          }
+        },
+        {
+          "citation": "Dong Y 2025 EClinicalMedicine",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Risk of aortic aneurysm or dissection following use of fluoroquinolones: a retrospective multinational network cohort study.",
+          "doi": "10.1016/j.eclinm.2025.103096",
+          "pmid": "39975698",
+          "n_participants": 13588837,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.01,
+            "ci_low": 0.82,
+            "ci_high": 1.25,
+            "comparator": "fluoroquinolones versus cephalosporins in propensity-matched outpatient UTI treatment"
+          }
+        },
+        {
+          "citation": "Pasternak B 2023 JAMA Cardiol",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Association Between Fluoroquinolone Use and Hospitalization With Aortic Aneurysm or Aortic Dissection.",
+          "doi": "10.1001/jamacardio.2023.2418",
+          "pmid": "37585175",
+          "n_participants": 3586207,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.03,
+            "ci_low": 0.91,
+            "ci_high": 1.17,
+            "comparator": "fluoroquinolones versus cephalosporins after inverse-probability adjustment in UK primary care cohorts"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "fluoroquinolones",
+      "name": "Systemic fluoroquinolone antibiotics",
+      "kind": "drug",
+      "aliases": [
+        "fluoroquinolone therapy",
+        "ciprofloxacin or levofloxacin exposure"
+      ],
+      "description": "Systemic fluoroquinolone antibiotic exposure, including agents such as ciprofloxacin, levofloxacin, moxifloxacin, or ofloxacin."
+    },
+    {
+      "slug": "aortic_aneurysm_risk",
+      "name": "Aortic aneurysm risk",
+      "kind": "condition",
+      "aliases": [
+        "aortic aneurysm or dissection risk"
+      ],
+      "description": "Risk of incident aortic aneurysm or closely related acute aortic events after medication exposure."
+    }
+  ]
+}

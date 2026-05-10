@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "iron_supplementation_high_dose",
+      "outcome_slug": "gi_distress",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Across randomized evidence, standard oral ferrous sulfate meaningfully increases gastrointestinal symptoms, with pooled odds of GI side effects about 2.3-fold versus placebo and more than 3-fold versus intravenous iron comparators.",
+      "population": "adults and pregnant or postpartum women receiving oral ferrous salt regimens typically providing at least 60 mg elemental iron daily",
+      "mechanism": "High-dose oral iron leaves unabsorbed iron in the gut lumen, which can irritate mucosa, alter motility, shift stool characteristics, and amplify nausea, abdominal pain, and constipation before any hematologic benefit is felt.",
+      "summary": "This is a straightforward tolerability edge, not a subtle signal. The best synthesis does not show that every formulation is equally problematic, but it does show that conventional high-dose oral ferrous sulfate regimens predictably generate more gastrointestinal complaints than placebo or intravenous alternatives.",
+      "caveats": "The literature is stronger for ferrous sulfate and pregnancy-era regimens than for every newer iron formulation. Symptoms are usually non-serious but common enough to reduce adherence, so the practical harm is often treatment discontinuation rather than organ toxicity.",
+      "evidence": [
+        {
+          "citation": "Tolkien Z 2015 PLoS One",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Ferrous sulfate supplementation causes significant gastrointestinal side-effects in adults: a systematic review and meta-analysis.",
+          "doi": "10.1371/journal.pone.0117383",
+          "pmid": "25700159",
+          "n_participants": 6831,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 2.32,
+            "ci_low": 1.74,
+            "ci_high": 3.08,
+            "comparator": "oral ferrous sulfate versus placebo for gastrointestinal side effects"
+          }
+        },
+        {
+          "citation": "Sanghvi T 2019 J Obstet Gynaecol India",
+          "year": 2019,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Parenteral Versus Oral Iron for Treatment of Iron Deficiency Anaemia During Pregnancy and post-partum: A Systematic Review.",
+          "doi": "10.1007/s13224-018-1191-8",
+          "pmid": "30814805",
+          "n_participants": 2346,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -0.78,
+            "comparator": "mean hemoglobin difference favoring intravenous iron over oral iron across pooled antenatal comparisons"
+          }
+        },
+        {
+          "citation": "Paesano R 2009 Acta Obstet Gynecol Scand",
+          "year": 2009,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Efficacy and tolerability of oral bovine lactoferrin compared to ferrous sulfate in pregnant women with iron deficiency anemia: a prospective controlled randomized study.",
+          "doi": "10.1080/00016340903117994",
+          "pmid": "19639462",
+          "n_participants": 97
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "iron_supplementation_high_dose",
+      "name": "High-dose oral iron supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "high-dose ferrous sulfate",
+        "oral iron at 60 mg or more elemental iron daily"
+      ],
+      "description": "Oral iron supplementation regimens typically delivering at least 60 mg elemental iron daily, especially ferrous sulfate or similar ferrous salts."
+    },
+    {
+      "slug": "gi_distress",
+      "name": "Gastrointestinal distress",
+      "kind": "condition",
+      "aliases": [
+        "GI side effects",
+        "nausea, abdominal pain, or constipation"
+      ],
+      "description": "Treatment-related gastrointestinal symptoms such as nausea, abdominal pain, vomiting, constipation, diarrhea, or bowel discomfort."
+    }
+  ]
+}

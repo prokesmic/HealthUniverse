@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "calcium_supplementation_high_dose",
+      "outcome_slug": "vascular_calcification",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The strongest longitudinal imaging signals are modest rather than dramatic: calcium supplement use was linked to incident coronary artery calcification in MESA (RR 1.22) and to greater serial calcification on intravascular ultrasound (OR 1.15), while a randomized WHI substudy did not show a clear CAC difference.",
+      "population": "middle-aged and older adults or coronary disease patients using oral calcium supplements in longitudinal imaging studies",
+      "mechanism": "Calcium supplements deliver large boluses of absorbable calcium that may transiently raise serum calcium exposure and favor ectopic mineral deposition in already diseased vasculature, especially when background plaque biology is permissive.",
+      "summary": "The safest summary is that high-dose calcium supplementation may nudge vascular calcification upward in observational imaging studies, but randomized evidence has not shown a large unequivocal plaque-burden effect. This looks more like a plausible small harm signal than a settled major vascular toxin.",
+      "caveats": "Most positive data come from observational or post hoc imaging analyses, so residual confounding remains possible. The signal is stronger for supplement pills than for calcium-rich diets, and the clinical significance of more calcification without parallel event data remains uncertain.",
+      "evidence": [
+        {
+          "citation": "Anderson JJB 2016 J Am Heart Assoc",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Calcium Intake From Diet and Supplements and the Risk of Coronary Artery Calcification and its Progression Among Older Adults: 10-Year Follow-up of the Multi-Ethnic Study of Atherosclerosis (MESA).",
+          "doi": "10.1161/JAHA.116.003815",
+          "pmid": "27729333",
+          "n_participants": 5448,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.22,
+            "ci_low": 1.07,
+            "ci_high": 1.39,
+            "comparator": "calcium supplement users versus non-users after accounting for total calcium intake"
+          }
+        },
+        {
+          "citation": "Matsumura M 2021 JACC Cardiovasc Imaging",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Oral Calcium Supplements Associate With Serial Coronary Calcification: Insights From Intravascular Ultrasound.",
+          "doi": "10.1016/j.jcmg.2020.06.030",
+          "pmid": "32828785",
+          "n_participants": 5147,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.15,
+            "ci_low": 1.05,
+            "ci_high": 1.26,
+            "comparator": "oral calcium supplement use versus no supplements for increase in annualized coronary calcium index"
+          }
+        },
+        {
+          "citation": "Manson JE 2010 Menopause",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Calcium/vitamin D supplementation and coronary artery calcification in the Women's Health Initiative.",
+          "doi": "10.1097/gme.0b013e3181d683b5",
+          "pmid": "20551849",
+          "n_participants": 754,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.29,
+            "ci_low": 0.88,
+            "ci_high": 1.87,
+            "comparator": "calcium plus vitamin D versus placebo for post-trial CAC score of at least 10"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "calcium_supplementation_high_dose",
+      "name": "High-dose calcium supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "elemental calcium supplements",
+        "calcium pills at about 1 gram per day or more"
+      ],
+      "description": "Calcium supplementation delivered as pills or tablets, typically around 1,000 mg elemental calcium daily or higher."
+    },
+    {
+      "slug": "vascular_calcification",
+      "name": "Vascular calcification progression",
+      "kind": "condition",
+      "aliases": [
+        "coronary artery calcification",
+        "arterial calcium deposition"
+      ],
+      "description": "Progression of coronary or vascular calcification burden measured by imaging or validated calcium scoring methods."
+    }
+  ]
+}
