@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "school_physical_activity_intervention",
+      "name": "School physical activity intervention",
+      "kind": "behavior",
+      "aliases": [
+        "school-based physical activity intervention",
+        "school exercise intervention"
+      ],
+      "description": "A school-delivered physical activity or exercise program intended to increase movement, fitness, or physical performance in children or adolescents."
+    },
+    {
+      "slug": "fitness_children",
+      "name": "Fitness in children",
+      "kind": "process",
+      "aliases": [
+        "child fitness",
+        "physical fitness in children",
+        "cardiorespiratory or muscular fitness in youth"
+      ],
+      "description": "Child or adolescent physical fitness outcomes such as cardiorespiratory fitness, muscular fitness, or related performance markers."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "school_physical_activity_intervention",
+      "outcome_slug": "fitness_children",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "An individual participant pooled analysis of 20 school-based trials found a 0.47 mL/kg/min improvement in cardiorespiratory fitness (95% CI 0.33 to 0.61), and a 2016 meta-analysis found school-based interventions significantly improved adolescent cardiorespiratory fitness across 25 studies and 14,943 participants.",
+      "population": "school-aged children and adolescents participating in school-based exercise or physical activity programs",
+      "mechanism": "Structured school activity increases training stimulus, movement time, and repeated fitness exposure during the week, supporting improvements in aerobic capacity and muscular performance.",
+      "summary": "School-based physical activity interventions improve child fitness overall, with the strongest and most consistent evidence for cardiorespiratory and muscular fitness gains.",
+      "caveats": "Average effects are modest and often smaller in girls, older adolescents, or those already less responsive to school activity offerings. Program design, session frequency, duration, and whether activity is added versus replacing existing PE all influence effect size.",
+      "evidence": [
+        {
+          "citation": "Minatto G et al 2016 Sports Med",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "School-Based Interventions to Improve Cardiorespiratory Fitness in Adolescents: Systematic Review with Meta-analysis.",
+          "pmid": "26846429",
+          "n_participants": 14943
+        },
+        {
+          "citation": "Eather N et al 2021 Br J Sports Med",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "School-based interventions modestly increase physical activity and cardiorespiratory fitness but are least effective for youth who need them most: an individual participant pooled analysis of 20 controlled trials.",
+          "pmid": "33441332",
+          "n_participants": 6621
+        },
+        {
+          "citation": "Villa-Gonzalez E et al 2023 Eur J Sport Sci",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of school-based interventions for improving muscular fitness outcomes in children: A systematic review and meta-analysis.",
+          "pmid": "35023448",
+          "n_participants": 1653
+        }
+      ]
+    }
+  ]
+}
