@@ -183,6 +183,15 @@
     fd.append("file", f);
     try {
       const r = await fetch("/api/me/parse-lab-image", { method: "POST", body: fd });
+      if (r.status === 401) {
+        summary.innerHTML = `<span style="color:#9b1c1c">Sign in first to parse images.</span> <button class="btn-secondary inline" onclick="document.getElementById('account-signin-btn')?.click()">Sign in →</button>`;
+        return;
+      }
+      if (r.status === 402) {
+        const j = await r.json().catch(() => ({}));
+        summary.innerHTML = `<div style="padding:10px 12px;background:linear-gradient(180deg,#fffbe7,#fff5d6);border:1px solid #f0d68a;border-radius:8px"><b style="color:#7a5c00">Pro feature</b><div style="margin-top:4px;font-size:13px">${escapeHTML(j.message || "AI lab parsing is part of the Pro tier.")}</div><a href="${j.upgrade_url || "/stack"}" class="btn-primary inline" style="margin-top:8px;display:inline-block;text-decoration:none">Join the Pro waitlist →</a></div>`;
+        return;
+      }
       if (!r.ok) {
         const j = await r.json().catch(() => ({}));
         summary.innerHTML = `<span style="color:#9b1c1c">Parse failed (${r.status}): ${escapeHTML(j.message || j.error || "unknown error")}</span>`;

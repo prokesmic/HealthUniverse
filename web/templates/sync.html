@@ -2,8 +2,25 @@
 {% block content %}
 
 <section class="onb-page">
+  <div style="margin-bottom:18px;padding:14px 18px;border-radius:12px;
+              background:linear-gradient(180deg,#f4faf6,#e7f5ec);
+              border:1px solid #b7e0c4;color:#1b5e20">
+    <b>We've launched proper accounts.</b>
+    Sign in with email to sync across devices automatically — same magic-link flow,
+    but your stack stays in sync continuously instead of needing a manual restore.
+    <button type="button" class="btn-primary inline"
+            style="margin-left:8px;text-decoration:none"
+            onclick="document.getElementById('account-signin-btn')?.click()">
+      Sign in instead →
+    </button>
+    <div style="font-size:12px;margin-top:6px;color:#2a4a36">
+      The legacy /sync flow below still works for backward compatibility,
+      but accounts are the recommended path.
+    </div>
+  </div>
+
   <header class="onb-head">
-    <p class="hp-eyebrow">CROSS-DEVICE SYNC · NO ACCOUNTS</p>
+    <p class="hp-eyebrow">CROSS-DEVICE SYNC · LEGACY FLOW</p>
     <h1 class="hp-title">Send your profile<br/>to another device<span class="dot">.</span></h1>
     <p class="hp-lede">Your stack lives in a signed cookie on this browser. To
       pick up where you left off on another device — or after clearing

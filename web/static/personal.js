@@ -204,6 +204,27 @@
   }
 
   // ─── Recommendations log (loop closure) ─────────────────────────
+  // Local-only for anonymous users; mirrored to Supabase via the
+  // /api/me/recommendation endpoint when signed in (server silently
+  // no-ops if no session cookie).
+  function _mirrorRecommendation(payload) {
+    try {
+      fetch("/api/me/recommendation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }).catch(() => {});
+    } catch (_) {}
+  }
+  function _mirrorClose(payload) {
+    try {
+      fetch("/api/me/recommendation/close", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }).catch(() => {});
+    } catch (_) {}
+  }
   function addRecommendation({ edge_id, edge_label, source, target_metric, baseline_value }) {
     const s = load();
     const key = `${source || "system"}:${edge_id}`;
@@ -225,6 +246,8 @@
       followup_value: null,
     });
     save(s);
+    // Best-effort server mirror for signed-in users.
+    _mirrorRecommendation({ edge_id, edge_label, source: source || "system" });
   }
   function closeRecommendation(id, { verdict, followup_value }) {
     const s = load();
@@ -235,6 +258,7 @@
     r.verdict = verdict || "uncertain";
     if (followup_value != null) r.followup_value = Number(followup_value);
     save(s);
+    _mirrorClose({ edge_id: r.edge_id, verdict: r.verdict });
   }
   function deleteRecommendation(id) {
     const s = load();

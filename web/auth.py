@@ -102,13 +102,41 @@ class Account:
 
     @property
     def is_pro(self) -> bool:
-        if not self.pro_until:
-            return False
-        from datetime import date
-        try:
-            return date.fromisoformat(self.pro_until) >= date.today()
-        except Exception:
-            return False
+        # Real Pro: paid subscription with a valid until-date.
+        if self.pro_until:
+            from datetime import date
+            try:
+                if date.fromisoformat(self.pro_until) >= date.today():
+                    return True
+            except Exception:
+                pass
+        # Beta bridge: until Stripe is wired, we allowlist Pro by email
+        # via BETA_PRO_EMAILS env (comma-separated). Lets the founder
+        # and friends-and-family use Pro features today.
+        beta = os.environ.get("BETA_PRO_EMAILS", "")
+        beta_emails = {e.strip().lower() for e in beta.split(",") if e.strip()}
+        return self.email.lower() in beta_emails
+
+
+def require_pro(account: Optional[Account]) -> Optional[JSONResponse]:
+    """Return a 402 JSON response if the user isn't Pro; None if they are.
+    Endpoints call this at entry; if non-None, return it directly."""
+    from fastapi.responses import JSONResponse
+    if not account:
+        return JSONResponse({
+            "error": "auth_required",
+            "message": "Sign in first.",
+            "tier": "anonymous",
+        }, status_code=401)
+    if not account.is_pro:
+        return JSONResponse({
+            "error": "pro_required",
+            "message": "This feature is part of the Pro tier. "
+                       "Founder pricing $19/mo — join the waitlist.",
+            "tier": "free",
+            "upgrade_url": "/stack#pro-waitlist",
+        }, status_code=402)
+    return None
 
 
 def current_account(session_cookie: Optional[str]) -> Optional[Account]:

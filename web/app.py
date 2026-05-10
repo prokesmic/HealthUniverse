@@ -27,7 +27,7 @@ from web.auth import (                                # noqa: E402
     SESSION_COOKIE, SESSION_MAX_AGE,
     encode_session, decode_session, current_account,
     send_magic_link, exchange_token_for_session,
-    supabase_service,
+    supabase_service, require_pro,
 )
 from web.generated_art import (   # noqa: E402
     edge_svg, hero_svg, featured_card_svg, discovery_card_svg, strength_wave_svg,
@@ -660,26 +660,45 @@ def cron_proactive_weekly(request: Request):
     )
     html = "\n".join(body_lines)
 
-    sub_file = Path(__file__).parent.parent / "data" / "subscribers.json"
+    # Source-of-truth for who gets the Sunday email is now Supabase:
+    # 1) accounts.cron_subscribed = true (the real users)
+    # 2) pro_waitlist (anonymous email captures from /stack and the
+    #    briefing-page subscribe form, before they signed in)
+    # 3) data/subscribers.json (legacy fallback for any old subscribers
+    #    not yet migrated)
     subs: list = []
+    seen: set = set()
+
+    sb = supabase_service()
+    if sb is not None:
+        try:
+            r = sb.table("accounts").select("email").eq("cron_subscribed", True).execute()
+            for row in (r.data or []):
+                em = (row.get("email") or "").lower().strip()
+                if em and em not in seen:
+                    subs.append({"email": em, "src": "account"}); seen.add(em)
+        except Exception as exc:
+            print(f"[cron] supabase accounts read failed: {exc}")
+        try:
+            r = sb.table("pro_waitlist").select("email").execute()
+            for row in (r.data or []):
+                em = (row.get("email") or "").lower().strip()
+                if em and em not in seen:
+                    subs.append({"email": em, "src": "waitlist"}); seen.add(em)
+        except Exception as exc:
+            print(f"[cron] supabase waitlist read failed: {exc}")
+
+    # Legacy fallback — early subscribers who landed before Supabase.
+    sub_file = Path(__file__).parent.parent / "data" / "subscribers.json"
     if sub_file.exists():
         try:
             import json as _json
-            subs = _json.loads(sub_file.read_text())
+            for s in _json.loads(sub_file.read_text()):
+                em = (s.get("email") or "").lower().strip()
+                if em and em not in seen:
+                    subs.append({"email": em, "src": "legacy"}); seen.add(em)
         except Exception:
             pass
-    # Also include rows from pro_waitlist (best-effort; may not exist on a
-    # cold Vercel deploy because the table is in the read-only DB).
-    try:
-        with connect() as conn:
-            rows = conn.execute(
-                "SELECT email FROM pro_waitlist ORDER BY signed_up_at DESC"
-            ).fetchall()
-        for r in rows:
-            if r["email"] and r["email"] not in (s.get("email") for s in subs):
-                subs.append({"email": r["email"]})
-    except Exception:
-        pass
 
     sent = 0
     errors: list[dict] = []
@@ -3375,8 +3394,8 @@ def api_corpus_deltas(days: int = 7, limit: int = 8):
 
 @app.post("/api/me/parse-lab-image")
 async def api_parse_lab_image(request: Request):
-    """Parse a lab PDF or image into structured {name,value,unit,date}
-    rows. Configurable backend:
+    """Pro-only endpoint. Parse a lab PDF or image into structured
+    {name,value,unit,date} rows. Configurable backend:
 
       1) HU_VISION_MODEL env set + Ollama reachable → local vision
          model (no data leaves the user's machine). Set this for
@@ -3390,6 +3409,12 @@ async def api_parse_lab_image(request: Request):
     import base64
     import os
     import json as _json
+
+    # Pro gate. Falls through to a 401/402 if the user is anon or free.
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    pro_block = require_pro(account)
+    if pro_block is not None:
+        return pro_block
 
     form = await request.form()
     upload = form.get("file")
@@ -3595,6 +3620,74 @@ def auth_exchange(request: Request, access_token: str = Form(...)):
         secure=request.url.scheme == "https",
     )
     return resp
+
+
+@app.post("/api/me/recommendation")
+async def api_me_recommendation(request: Request):
+    """Mirror a client-side recommendation into Supabase, but ONLY if
+    the user is signed in. Anonymous users keep their log in localStorage
+    only. Idempotent — same (account_id, edge_id, source) within 14 days
+    is a no-op via on_conflict."""
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    if not account:
+        return JSONResponse({"ok": False, "skipped": "anonymous"})
+    body = await request.json()
+    edge_id = body.get("edge_id")
+    edge_label = (body.get("edge_label") or "")[:200]
+    source = (body.get("source") or "system")[:40]
+    if not edge_id:
+        return JSONResponse({"ok": False, "error": "missing edge_id"}, status_code=400)
+    sb = supabase_service()
+    if sb is None:
+        return JSONResponse({"ok": False, "skipped": "no_supabase"})
+    try:
+        # Avoid duplicates: query for an existing open recommendation
+        # within 14 days for this (account, edge, source).
+        from datetime import timedelta as _td
+        since = (datetime_now() - _td(days=14)).isoformat(timespec="seconds")
+        existing = sb.table("recommendations_log").select("id").eq(
+            "account_id", account.user_id).eq("edge_id", int(edge_id)).eq(
+            "source", source).gte("suggested_at", since).limit(1).execute()
+        if existing.data:
+            return JSONResponse({"ok": True, "deduped": True})
+        sb.table("recommendations_log").insert({
+            "account_id": account.user_id,
+            "edge_id": int(edge_id),
+            "edge_label": edge_label,
+            "source": source,
+        }).execute()
+        return JSONResponse({"ok": True, "logged": True})
+    except Exception as exc:
+        return JSONResponse({"ok": False, "error": str(exc)[:200]}, status_code=500)
+
+
+@app.post("/api/me/recommendation/close")
+async def api_me_recommendation_close(request: Request):
+    """Close a recommendation with a verdict (helped / no_change /
+    harmed / never_tried). Used by the verdict buttons on /me/briefing
+    when the user is signed in (vs anonymous, where state lives only
+    in localStorage)."""
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    if not account:
+        return JSONResponse({"ok": False, "skipped": "anonymous"})
+    body = await request.json()
+    edge_id = body.get("edge_id")
+    verdict = (body.get("verdict") or "").strip()
+    if verdict not in ("helped", "no_change", "harmed", "never_tried"):
+        return JSONResponse({"ok": False, "error": "bad verdict"}, status_code=400)
+    sb = supabase_service()
+    if sb is None:
+        return JSONResponse({"ok": False, "skipped": "no_supabase"})
+    try:
+        sb.table("recommendations_log").update({
+            "verdict": verdict,
+            "closed_at": datetime_now().isoformat(timespec="seconds"),
+        }).eq("account_id", account.user_id).eq("edge_id", int(edge_id)).is_(
+            "closed_at", "null"
+        ).execute()
+        return JSONResponse({"ok": True})
+    except Exception as exc:
+        return JSONResponse({"ok": False, "error": str(exc)[:200]}, status_code=500)
 
 
 @app.post("/api/auth/logout")
