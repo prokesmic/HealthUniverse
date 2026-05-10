@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ppis_long_term",
+      "outcome_slug": "magnesium_deficiency_clinical",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across observational syntheses, long-term PPI use is associated with higher hypomagnesemia odds, with pooled adjusted estimates around OR 1.71 and a stronger signal at higher PPI doses (adjusted OR 2.13 in one updated meta-analysis).",
+      "population": "adults with chronic proton pump inhibitor exposure in outpatient or hospital-based observational cohorts",
+      "mechanism": "Sustained gastric acid suppression appears to impair active intestinal magnesium absorption, which becomes most clinically visible in long-duration or higher-dose exposure and in patients with other electrolyte-loss risks.",
+      "summary": "The clearest read is that chronic PPI exposure can meaningfully tilt magnesium balance in the wrong direction, but it usually does so as a modest risk modifier rather than a universal depletion effect. The dose-response signal in the larger meta-analysis is what makes this edge more persuasive than isolated case reports alone.",
+      "caveats": "All direct evidence here is observational, and baseline illness severity, diuretic use, and kidney disease can amplify the association. This edge is strongest for biochemical or diagnosed hypomagnesemia, not for a guaranteed symptomatic deficiency in every long-term user.",
+      "evidence": [
+        {
+          "citation": "Srinutta T 2019 Medicine (Baltimore)",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Proton pump inhibitors and hypomagnesemia: A meta-analysis of observational studies.",
+          "doi": "10.1097/MD.0000000000017788",
+          "pmid": "31689852",
+          "n_participants": 131507
+        },
+        {
+          "citation": "Cheungpasitporn W 2015 Ren Fail",
+          "year": 2015,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Proton pump inhibitors linked to hypomagnesemia: a systematic review and meta-analysis of observational studies.",
+          "doi": "10.3109/0886022X.2015.1057800",
+          "pmid": "26108134",
+          "n_participants": 109798
+        },
+        {
+          "citation": "Park C 2014 PLoS One",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The association between the use of proton pump inhibitors and the risk of hypomagnesemia: a systematic review and meta-analysis.",
+          "doi": "10.1371/journal.pone.0112558",
+          "pmid": "25394217",
+          "n_participants": 115455
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ppis_long_term",
+      "name": "Long-term proton pump inhibitor therapy",
+      "kind": "drug",
+      "aliases": [
+        "chronic PPI use"
+      ],
+      "description": "Sustained proton pump inhibitor exposure over months to years, typically for chronic acid suppression."
+    },
+    {
+      "slug": "magnesium_deficiency_clinical",
+      "name": "Clinical magnesium deficiency",
+      "kind": "condition",
+      "aliases": [
+        "hypomagnesemia requiring clinical recognition"
+      ],
+      "description": "Biochemical or clinically recognized magnesium deficiency relevant to diagnosis, treatment, or monitoring."
+    }
+  ]
+}

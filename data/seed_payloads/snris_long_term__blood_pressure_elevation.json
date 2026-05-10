@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "snris_long_term",
+      "outcome_slug": "blood_pressure_elevation",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The clearest dose-response evidence comes from venlafaxine, where persistent diastolic blood-pressure elevation became clinically meaningful at doses above 300 mg/day; duloxetine pooled analyses show smaller average increases, around 1 mmHg in systolic or diastolic pressure.",
+      "population": "adults treated with SNRIs for depression, anxiety, pain, or related indications",
+      "mechanism": "SNRIs increase synaptic norepinephrine as dose rises, which can raise vascular tone and heart rate enough to nudge blood pressure upward, especially with venlafaxine and in people already near the hypertensive range.",
+      "summary": "This edge is harmful overall, but it is not a uniform class-wide blood-pressure problem of equal size across every SNRI. The strongest signal is a venlafaxine dose-response effect, while duloxetine tends to produce smaller average shifts that are usually measurable before they become dramatic.",
+      "caveats": "Many trials are short and exclude higher-risk cardiovascular patients, so routine-practice risk may differ from trial averages. The literature supports monitoring more than blanket avoidance, particularly when doses escalate or baseline blood pressure is already high.",
+      "evidence": [
+        {
+          "citation": "Thase M 1998 J Clin Psychiatry",
+          "year": 1998,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effects of venlafaxine on blood pressure: a meta-analysis of original data from 3744 depressed patients.",
+          "doi": "10.4088/JCP.v59n1002",
+          "pmid": "9818630",
+          "n_participants": 3744
+        },
+        {
+          "citation": "Thase M 2005 J Clin Psychopharmacol",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Cardiovascular profile of duloxetine, a dual reuptake inhibitor of serotonin and norepinephrine.",
+          "doi": "10.1097/01.jcp.0000155815.44338.95",
+          "pmid": "15738744",
+          "n_participants": 2345
+        },
+        {
+          "citation": "Wernicke J 2007 Drug Saf",
+          "year": 2007,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "An evaluation of the cardiovascular safety profile of duloxetine: findings from 42 placebo-controlled studies.",
+          "doi": "10.2165/00002018-200730050-00007",
+          "pmid": "17472422",
+          "n_participants": 8504
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "snris_long_term",
+      "name": "Long-term SNRI therapy",
+      "kind": "drug",
+      "aliases": [
+        "chronic SNRI use"
+      ],
+      "description": "Sustained serotonin-norepinephrine reuptake inhibitor exposure over months or longer."
+    },
+    {
+      "slug": "blood_pressure_elevation",
+      "name": "Blood pressure elevation",
+      "kind": "condition",
+      "aliases": [
+        "treatment-related blood pressure increase"
+      ],
+      "description": "Clinically relevant rise in systolic or diastolic blood pressure during treatment exposure."
+    }
+  ]
+}

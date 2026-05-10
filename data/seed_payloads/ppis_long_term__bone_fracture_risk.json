@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ppis_long_term",
+      "outcome_slug": "bone_fracture_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The strongest pooled observational evidence suggests modestly higher fracture risk with long-term PPI exposure, with overall estimates around OR 1.28 for any fracture and RR 1.20 for hip fracture, and some analyses showing larger effects with longer duration or higher dose.",
+      "population": "adults with sustained proton pump inhibitor exposure in observational cohorts and claims datasets",
+      "mechanism": "Chronic acid suppression may impair calcium handling and subtly worsen bone resilience over time, while the same long-term users often also carry frailty, multimorbidity, or fall-risk burdens that can magnify fracture incidence.",
+      "summary": "This is a modest but fairly consistent harm signal rather than a dramatic osteotoxic effect. The stronger studies do not suggest that PPIs rapidly destroy bone density, but they do suggest that prolonged use tracks with more fragility fractures than would be expected if the drug were bone-neutral.",
+      "caveats": "The data are observational and vulnerable to confounding by age, frailty, steroid exposure, and indication. The evidence is stronger for fracture incidence than for measurable bone-density loss, so this edge should be read as risk association rather than proof of a single direct mechanism.",
+      "evidence": [
+        {
+          "citation": "Nassar Y 2018 J Bone Metab",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Proton-pump Inhibitor Use and Fracture Risk: An Updated Systematic Review and Meta-analysis.",
+          "doi": "10.11005/jbm.2018.25.3.141",
+          "pmid": "30237993",
+          "n_participants": 2714502
+        },
+        {
+          "citation": "Poly T 2019 Osteoporos Int",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Proton pump inhibitors and risk of hip fracture: a meta-analysis of observational studies.",
+          "doi": "10.1007/s00198-018-4788-y",
+          "pmid": "30539272",
+          "n_participants": 2103800
+        },
+        {
+          "citation": "Zhang Y 2022 Kidney Blood Press Res",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Relationship between Proton Pump Inhibitors and Adverse Effects in Hemodialysis Patients: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1159/000526122",
+          "pmid": "35878597",
+          "n_participants": 4227497
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ppis_long_term",
+      "name": "Long-term proton pump inhibitor therapy",
+      "kind": "drug",
+      "aliases": [
+        "chronic PPI use"
+      ],
+      "description": "Sustained proton pump inhibitor exposure over months to years, typically for chronic acid suppression."
+    },
+    {
+      "slug": "bone_fracture_risk",
+      "name": "Bone fracture risk",
+      "kind": "condition",
+      "aliases": [
+        "fragility fracture risk"
+      ],
+      "description": "Risk of hip, spine, or other clinically significant bone fractures."
+    }
+  ]
+}
