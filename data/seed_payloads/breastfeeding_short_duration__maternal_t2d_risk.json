@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "breastfeeding_short_duration",
+      "name": "Short breastfeeding duration",
+      "kind": "behavior",
+      "aliases": [
+        "brief lactation duration",
+        "minimal breastfeeding after delivery"
+      ],
+      "description": "Little or no breastfeeding after delivery, or breastfeeding for only a short duration."
+    },
+    {
+      "slug": "maternal_t2d_risk",
+      "name": "Maternal type 2 diabetes risk",
+      "kind": "process",
+      "aliases": [
+        "future maternal T2D risk",
+        "maternal diabetes incidence"
+      ],
+      "description": "The later-life risk or incidence of type 2 diabetes in mothers after childbirth."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "breastfeeding_short_duration",
+      "outcome_slug": "maternal_t2d_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Across observational data, longer lactation shows a graded association with lower diabetes risk. The clearest cohort contrast is that women who did not breastfeed had higher later diabetes odds than nulliparous women (OR 1.48, 95% CI 1.26 to 1.73), whereas each additional month of lactation in meta-analysis tracked with about a 1% lower risk.",
+      "population": "parous women followed months to decades after pregnancy in community or population-based cohorts",
+      "mechanism": "Lactation increases maternal energy expenditure and may help normalize postpartum glucose and lipid metabolism. When breastfeeding is absent or very brief, that metabolic reset may be weaker, which is biologically consistent with higher long-term diabetes risk.",
+      "summary": "This is one of the more consistent maternal-after-pregnancy metabolic edges. Short or absent breastfeeding is associated with higher later type 2 diabetes risk, while longer lactation tends to show a graded protective association.",
+      "caveats": "All major evidence is observational, so confounding by prepregnancy adiposity, gestational diabetes history, socioeconomic factors, and breastfeeding difficulty remains possible. The signal is strongest over longer follow-up horizons rather than in the immediate postpartum period.",
+      "evidence": [
+        {
+          "citation": "PinhoGomesAC et al 2021 Diabetes Obes Metab",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of lactation with maternal risk of type 2 diabetes: A systematic review and meta-analysis of observational studies.",
+          "pmid": "33908692",
+          "n_participants": 16,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.99,
+            "ci_low": 0.98,
+            "ci_high": 0.99,
+            "comparator": "each additional month of lactation and later maternal type 2 diabetes risk"
+          }
+        },
+        {
+          "citation": "LiuB et al 2010 Diabetes Care",
+          "year": 2010,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Parity, breastfeeding, and the subsequent risk of maternal type 2 diabetes.",
+          "pmid": "20332359",
+          "n_participants": 52731,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.48,
+            "ci_low": 1.26,
+            "ci_high": 1.73,
+            "comparator": "parous women who did not breastfeed versus nulliparous women for later type 2 diabetes"
+          }
+        },
+        {
+          "citation": "SchwarzEB et al 2010 Am J Med",
+          "year": 2010,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Lactation and maternal risk of type 2 diabetes: a population-based study.",
+          "pmid": "20800156",
+          "n_participants": 2233,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.93,
+            "ci_low": 1.14,
+            "ci_high": 3.27,
+            "comparator": "mothers who never breastfed versus nulliparous women for later type 2 diabetes"
+          }
+        },
+        {
+          "citation": "MazariegosM et al 2019 Matern Child Nutr",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Lactation and maternal risk of diabetes: Evidence from the Mexican Teachers' Cohort.",
+          "pmid": "31343828",
+          "n_participants": 66573,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.73,
+            "ci_low": 0.59,
+            "ci_high": 0.91,
+            "comparator": "6 to less than 12 months mean lactation per child versus no breastfeeding for maternal diabetes incidence"
+          }
+        }
+      ]
+    }
+  ]
+}
