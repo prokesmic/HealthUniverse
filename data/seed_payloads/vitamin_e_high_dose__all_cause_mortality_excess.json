@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vitamin_e_high_dose",
+      "outcome_slug": "all_cause_mortality_excess",
+      "direction": "u_shaped",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The main threshold signal comes from the 2005 dose-response meta-analysis, where vitamin E doses of 400 IU/day or more were associated with 39 extra deaths per 10,000 participants, while lower-dose trials did not show the same excess.",
+      "population": "adults enrolled in long-term randomized vitamin E supplementation trials, often with chronic disease or cardiovascular risk",
+      "mechanism": "Very high alpha-tocopherol exposure may disturb redox balance or interact with broader nutrient systems in ways that are not captured by the original antioxidant rationale, which helps explain why any putative benefit appears to flatten or reverse at higher doses.",
+      "summary": "The most defensible read is threshold-dependent rather than uniformly harmful or uniformly neutral. Older pooled analyses suggested excess mortality once vitamin E dosing moved into the high-dose range, whereas broader later meta-analyses found little or no overall mortality effect when all doses and populations were pooled together.",
+      "caveats": "These mortality analyses combine heterogeneous populations, formulations, and background treatments, so they are better for detecting broad signal direction than for estimating a universal absolute risk. This edge is best interpreted as a warning against chronic high-dose vitamin E, not as a claim that physiologic dietary vitamin E is dangerous.",
+      "evidence": [
+        {
+          "citation": "Miller ER 2005 Ann Intern Med",
+          "year": 2005,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Meta-analysis: high-dosage vitamin E supplementation may increase all-cause mortality.",
+          "doi": "10.7326/0003-4819-142-1-200501040-00110",
+          "pmid": "15537682",
+          "n_participants": 135967,
+          "effect_quant": {
+            "metric": "risk_difference_per_10000",
+            "value": 39,
+            "ci_low": 3,
+            "ci_high": 74,
+            "comparator": "high-dosage vitamin E at 400 IU/day or more versus control"
+          }
+        },
+        {
+          "citation": "Bjelakovic G 2013 PLoS One",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Meta-regression analyses, meta-analyses, and trial sequential analyses of the effects of supplementation with beta-carotene, vitamin A, and vitamin E singly or in different combinations on all-cause mortality: do we have evidence for lack of harm?",
+          "doi": "10.1371/journal.pone.0074558",
+          "pmid": "24040282",
+          "n_participants": 241883,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.03,
+            "ci_low": 1.0,
+            "ci_high": 1.05,
+            "comparator": "vitamin E doses above the recommended daily allowance versus control"
+          }
+        },
+        {
+          "citation": "Abner EL 2011 Curr Aging Sci",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Vitamin E and all-cause mortality: a meta-analysis.",
+          "doi": "10.2174/1874609811104020158",
+          "pmid": "21235492",
+          "n_participants": 246371,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.0,
+            "ci_low": 0.98,
+            "ci_high": 1.02,
+            "comparator": "vitamin E supplementation across pooled adult trials versus control"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vitamin_e_high_dose",
+      "name": "High-dose vitamin E supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "high-dose alpha-tocopherol",
+        "vitamin E at 400 IU or more daily"
+      ],
+      "description": "Supplemental vitamin E exposure in doses substantially above usual dietary intake, particularly chronic regimens at or above 400 IU daily."
+    },
+    {
+      "slug": "all_cause_mortality_excess",
+      "name": "Excess all-cause mortality",
+      "kind": "condition",
+      "aliases": [
+        "higher total mortality",
+        "excess death risk"
+      ],
+      "description": "A relative or absolute increase in death from any cause over the study follow-up period."
+    }
+  ]
+}

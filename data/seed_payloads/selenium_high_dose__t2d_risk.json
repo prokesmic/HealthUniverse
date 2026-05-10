@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "selenium_high_dose",
+      "outcome_slug": "t2d_risk",
+      "direction": "u_shaped",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Across pooled observational data, higher selenium status is linked to more diabetes, with a meta-analysis reporting OR 1.63 for the highest versus lowest serum selenium categories and a non-linear dose-response pattern rather than a simple linear benefit.",
+      "population": "adults with high selenium intake, supplementation, or elevated serum selenium concentrations in randomized trials and observational studies",
+      "mechanism": "Selenium is essential up to a point, but higher exposure may push selenoprotein signaling toward impaired insulin sensitivity or dysregulated redox handling, creating a threshold pattern rather than a monotonic benefit.",
+      "summary": "The best-supported interpretation is not that selenium is universally harmful, but that more is not better once status is already adequate. Randomized supplementation trials show at most a small excess diabetes signal, while observational biomarker studies more consistently point toward higher diabetes risk at the upper end of exposure.",
+      "caveats": "The evidence is heterogeneous and likely depends on baseline selenium status, biomarker used, and whether exposure comes from supplements or environmental intake. This edge should be read as caution against chronic high exposure, not as a claim that selenium deficiency is desirable or protective.",
+      "evidence": [
+        {
+          "citation": "Mao S 2014 Endocrine",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Selenium supplementation and the risk of type 2 diabetes mellitus: a meta-analysis of randomized controlled trials.",
+          "doi": "10.1007/s12020-014-0298-7",
+          "pmid": "24858736",
+          "n_participants": 20294,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.09,
+            "ci_low": 0.99,
+            "ci_high": 1.2,
+            "comparator": "selenium supplementation versus control in randomized trials"
+          }
+        },
+        {
+          "citation": "Wang XL 2016 Nutr J",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association between serum selenium level and type 2 diabetes mellitus: a non-linear dose-response meta-analysis of observational studies.",
+          "doi": "10.1186/s12937-016-0169-6",
+          "pmid": "27142520",
+          "n_participants": 13460,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.63,
+            "ci_low": 1.04,
+            "ci_high": 2.56,
+            "comparator": "highest versus lowest serum selenium categories"
+          }
+        },
+        {
+          "citation": "Demircan K 2023 Redox Biol",
+          "year": 2023,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Sex-specific associations of serum selenium and selenoprotein P with type 2 diabetes mellitus and hypertension in the Berlin Aging Study II.",
+          "doi": "10.1016/j.redox.2023.102823",
+          "pmid": "37516012",
+          "n_participants": 1500,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.22,
+            "ci_low": 1.0,
+            "ci_high": 1.48,
+            "comparator": "one mg/L higher selenoprotein P in men for prevalent type 2 diabetes"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "selenium_high_dose",
+      "name": "High-dose selenium exposure",
+      "kind": "supplement",
+      "aliases": [
+        "selenium supplementation above adequacy",
+        "high selenium status"
+      ],
+      "description": "Selenium exposure from supplements or other sources high enough to move serum or intake levels above usual nutritional adequacy."
+    },
+    {
+      "slug": "t2d_risk",
+      "name": "Type 2 diabetes risk",
+      "kind": "condition",
+      "aliases": [
+        "risk of type 2 diabetes mellitus"
+      ],
+      "description": "Risk of incident or prevalent type 2 diabetes mellitus."
+    }
+  ]
+}

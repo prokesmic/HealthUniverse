@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "niacin_extended_release",
+      "outcome_slug": "liver_function_disturbance",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Modern extended-release niacin appears much safer than older sustained-release niacin, but it still causes measurable liver-test disturbance, with transaminase elevations above three times the upper limit of normal reported in about 0.5% of long-term open-label users and under 0.3% in a large initial-therapy cohort.",
+      "population": "adults treated with prescription extended-release niacin, alone or combined with lovastatin, for dyslipidemia",
+      "mechanism": "Niacin can stress hepatic metabolism during dose escalation and higher nightly dosing, so extended-release formulations reduce but do not eliminate the liver-monitoring burden that became notorious with older sustained-release preparations.",
+      "summary": "The key nuance is formulation-specific. Extended-release niacin is not the same safety story as old sustained-release niacin, but it also is not completely liver-neutral; the best data support a low-frequency signal for liver function disturbance rather than common severe hepatotoxicity.",
+      "caveats": "Most modern prescription extended-release studies report uncommon rather than frequent clinically important hepatotoxicity. This edge therefore supports periodic monitoring and caution at higher doses, not a blanket claim that every extended-release niacin regimen is unsafe.",
+      "evidence": [
+        {
+          "citation": "Morgan JM 1998 Am J Cardiol",
+          "year": 1998,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "A new extended-release niacin (Niaspan): efficacy, tolerability, and safety in hypercholesterolemic patients.",
+          "doi": "10.1016/S0002-9149(98)00732-2",
+          "pmid": "9915660",
+          "n_participants": 122
+        },
+        {
+          "citation": "Kashyap ML 2002 Am J Cardiol",
+          "year": 2002,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Long-term safety and efficacy of a once-daily niacin/lovastatin formulation for patients with dyslipidemia.",
+          "doi": "10.1016/S0002-9149(01)02338-4",
+          "pmid": "11897208",
+          "n_participants": 814,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 0.005,
+            "comparator": "participants with liver enzymes above 3 times the upper limit of normal during 52-week treatment"
+          }
+        },
+        {
+          "citation": "Rubenfire M 2004 Am J Cardiol",
+          "year": 2004,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Safety and compliance with once-daily niacin extended-release/lovastatin as initial therapy in the Impact of Medical Subspecialty on Patient Compliance to Treatment (IMPACT) study.",
+          "doi": "10.1016/j.amjcard.2004.04.024",
+          "pmid": "15276093",
+          "n_participants": 4499,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 0.003,
+            "comparator": "participants with AST or ALT above 3 times the upper limit of normal during niacin extended-release/lovastatin therapy"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "niacin_extended_release",
+      "name": "Extended-release niacin",
+      "kind": "drug",
+      "aliases": [
+        "ER niacin",
+        "prescription prolonged-release nicotinic acid"
+      ],
+      "description": "Prescription extended-release niacin formulations used for dyslipidemia management, including niacin ER alone or in ER niacin/lovastatin combinations."
+    },
+    {
+      "slug": "liver_function_disturbance",
+      "name": "Liver function disturbance",
+      "kind": "condition",
+      "aliases": [
+        "transaminase elevation",
+        "liver test abnormality"
+      ],
+      "description": "Clinically relevant liver enzyme elevations or other liver function abnormalities during treatment."
+    }
+  ]
+}
