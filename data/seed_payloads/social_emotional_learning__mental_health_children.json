@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "social_emotional_learning",
+      "name": "School social-emotional learning",
+      "kind": "behavior",
+      "aliases": [
+        "SEL program",
+        "social and emotional learning curriculum",
+        "school-based SEL"
+      ],
+      "description": "Universal or classroom-delivered social-emotional learning programs in schools."
+    },
+    {
+      "slug": "mental_health_children",
+      "name": "Child mental health outcomes",
+      "kind": "condition",
+      "aliases": [
+        "youth mental health",
+        "student emotional and behavioral health",
+        "child psychological outcomes"
+      ],
+      "description": "Broad child and adolescent mental health outcomes including emotional symptoms, behavior, prosociality, and related wellbeing measures."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "social_emotional_learning",
+      "outcome_slug": "mental_health_children",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "A 2011 meta-analysis of 213 universal school-based SEL programs involving 270,034 students found significantly improved social-emotional skills, behavior, and academic performance, and a 2024 meta-analysis of 59 studies involving 83,233 participants found an overall effect size of 0.15 with reductions in antisocial behavior and gains in social-emotional outcomes.",
+      "population": "children and adolescents participating in universal school-based social-emotional learning programs",
+      "mechanism": "SEL programs build emotional regulation, social problem-solving, empathy, and classroom climate, which can reduce internalizing and behavioral symptoms over time.",
+      "summary": "School-based social-emotional learning programs consistently improve broad child mental health and behavioral outcomes, though average effects are generally small at the individual level.",
+      "caveats": "Effects vary by dosage, implementation quality, curriculum design, and baseline student risk. Programs often show broader psychosocial benefits more consistently than disorder-specific symptom remission.",
+      "evidence": [
+        {
+          "citation": "Durlak JA et al 2011 Child Dev",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The impact of enhancing students' social and emotional learning: a meta-analysis of school-based universal interventions.",
+          "pmid": "21291449",
+          "n_participants": 270034
+        },
+        {
+          "citation": "Shi J and Cheung ACK 2024 J Youth Adolesc",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effective Components of Social Emotional Learning Programs: A Meta-analysis.",
+          "pmid": "38280178",
+          "n_participants": 83233
+        },
+        {
+          "citation": "Jones SM et al 2010 J Consult Clin Psychol",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A school-randomized clinical trial of an integrated social-emotional learning and literacy intervention: impacts after 1 school year.",
+          "pmid": "21114343",
+          "n_participants": 942
+        }
+      ]
+    }
+  ]
+}

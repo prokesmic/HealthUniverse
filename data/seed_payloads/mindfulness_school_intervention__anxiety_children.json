@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "mindfulness_school_intervention",
+      "name": "School-based mindfulness intervention",
+      "kind": "behavior",
+      "aliases": [
+        "school mindfulness program",
+        "mindfulness curriculum in schools",
+        "school-based mindfulness training"
+      ],
+      "description": "Mindfulness-based programs delivered in school settings to children or adolescents."
+    },
+    {
+      "slug": "anxiety_children",
+      "name": "Child anxiety symptoms",
+      "kind": "condition",
+      "aliases": [
+        "anxiety in children",
+        "youth anxiety symptoms",
+        "school-age anxiety"
+      ],
+      "description": "Anxiety symptoms or anxiety/stress scales measured in children and adolescents."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "mindfulness_school_intervention",
+      "outcome_slug": "anxiety_children",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2019 meta-analysis of 33 randomized trials involving 3,666 children and adolescents found small but statistically significant benefits of mindfulness-based interventions for anxiety/stress, with effect sizes in the d=0.16 to 0.30 range overall, but effects were less consistent in the active-control subset.",
+      "population": "school-age children and adolescents exposed to mindfulness programs in classroom or school-linked settings",
+      "mechanism": "Mindfulness training may improve attention regulation, stress appraisal, and emotional awareness, which can reduce anxious arousal for some students.",
+      "summary": "School-based mindfulness interventions can modestly reduce anxiety symptoms in some child and adolescent groups, but the effects are heterogeneous and not consistently robust across trials or comparators.",
+      "caveats": "Benefits tend to be small, vary by age and implementation quality, and are less convincing against active controls. Some school mindfulness programs improve broader well-being or stress regulation more reliably than anxiety-specific endpoints.",
+      "evidence": [
+        {
+          "citation": "Dunning DL et al 2019 J Child Psychol Psychiatry",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Research Review: The effects of mindfulness-based interventions on cognition and mental health in children and adolescents - a meta-analysis of randomized controlled trials.",
+          "pmid": "30345511",
+          "n_participants": 3666
+        },
+        {
+          "citation": "Schonert-Reichl KA et al 2015 Dev Psychol",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Enhancing cognitive and social-emotional development through a simple-to-administer mindfulness-based school program for elementary school children: a randomized controlled trial.",
+          "pmid": "25546595",
+          "n_participants": 99
+        },
+        {
+          "citation": "Sibinga EMS et al 2013 Prev Med",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "School-based mindfulness instruction for urban male youth: a small randomized controlled trial.",
+          "pmid": "24029559",
+          "n_participants": 41
+        }
+      ]
+    }
+  ]
+}

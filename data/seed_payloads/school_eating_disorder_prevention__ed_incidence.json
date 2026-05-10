@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "school_eating_disorder_prevention",
+      "name": "School-based eating disorder prevention",
+      "kind": "behavior",
+      "aliases": [
+        "school eating disorder prevention program",
+        "school body image prevention intervention",
+        "school ED prevention curriculum"
+      ],
+      "description": "School-delivered programs intended to reduce eating disorder symptoms, risk factors, or onset in adolescents."
+    },
+    {
+      "slug": "ed_incidence",
+      "name": "Eating disorder incidence and symptom emergence",
+      "kind": "condition",
+      "aliases": [
+        "eating disorder onset",
+        "eating disorder symptom development",
+        "emergent eating pathology"
+      ],
+      "description": "Incident eating disorder pathology or clinically relevant emergence of eating disorder symptoms over time."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "school_eating_disorder_prevention",
+      "outcome_slug": "ed_incidence",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Across eating disorder prevention research, effects on knowledge and risk factors tend to be larger than effects on eating pathology itself. In a 2017 cluster-randomized school trial, the primary eating disorder pathology outcome was not significantly improved at 6 months, whereas a 2024 quasi-randomized school e-health trial found short-term improvement signals on symptom-related measures.",
+      "population": "adolescents exposed to school-based prevention programs targeting eating disorder risk factors or symptoms",
+      "mechanism": "Programs aim to reduce thin-ideal internalization, body dissatisfaction, unhealthy dieting, and related risk pathways before disorder onset.",
+      "summary": "School-based eating disorder prevention can improve knowledge and some risk factors, but effects on actual eating disorder symptom emergence or pathology are inconsistent across trials.",
+      "caveats": "Outcomes differ across universal versus indicated programs, program dose, delivery mode, and follow-up length. Many studies show short-term risk-factor gains without strong durable effects on eating pathology itself.",
+      "evidence": [
+        {
+          "citation": "Sharpe H et al 2013 Br J Psychiatry",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Feasibility, acceptability and efficacy of a school-based prevention programme for eating disorders: cluster randomised controlled trial.",
+          "pmid": "24115345",
+          "n_participants": 448
+        },
+        {
+          "citation": "Gumz A et al 2017 BMC Psychiatry",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Efficacy of a prevention program for eating disorders in schools: a cluster-randomized controlled trial.",
+          "pmid": "28800753",
+          "n_participants": 2342
+        },
+        {
+          "citation": "Perez-Vazquez J et al 2024 J Prev (2022)",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Effectiveness of an e-Health Quasi-Randomized Controlled Universal Prevention Program for Eating Disorders in Spanish Adolescents.",
+          "pmid": "37906405",
+          "n_participants": 161
+        }
+      ]
+    }
+  ]
+}
