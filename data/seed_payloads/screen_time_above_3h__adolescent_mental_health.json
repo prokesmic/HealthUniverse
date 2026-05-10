@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "screen_time_above_3h",
+      "name": "Screen time above 3 hours daily",
+      "kind": "behavior",
+      "aliases": [
+        "high recreational screen time",
+        "more than 3 hours of daily screen time"
+      ],
+      "description": "Recreational screen exposure exceeding about three hours per day in adolescents."
+    },
+    {
+      "slug": "adolescent_mental_health",
+      "name": "Adolescent mental health",
+      "kind": "process",
+      "aliases": [
+        "teen mental health",
+        "adolescent psychological wellbeing"
+      ],
+      "description": "Mental health and psychological wellbeing outcomes in adolescents."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "screen_time_above_3h",
+      "outcome_slug": "adolescent_mental_health",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2023 systematic review including 50 studies concluded that most studies linked greater screen exposure with worse adolescent mental health, and a 2021 international observational analysis of 577,475 adolescents found that increasing recreational screen time beyond 2 hours per day was dose-dependently associated with poorer mental wellbeing.",
+      "population": "adolescents with recreational screen use, including smartphone, television, gaming, and social media exposure",
+      "mechanism": "Excessive screen time can crowd out sleep, physical activity, in-person interaction, and recovery time while increasing exposure to overstimulation, social comparison, and stress reactivity.",
+      "summary": "High recreational screen time has a fairly consistent harmful association with adolescent mental wellbeing, especially once exposure rises above a moderate threshold. The effect is not catastrophic at the individual level, but it is strong enough across populations to justify a harmful classification.",
+      "caveats": "Screen content, context, and displacement effects matter; the relationship is not identical across all screen activities. The evidence is strongest for overall mental wellbeing and internalizing symptoms at higher exposure levels, not for every possible psychiatric outcome.",
+      "evidence": [
+        {
+          "citation": "Santos RMS et al 2023 BMC Psychol",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The associations between screen time and mental health in adolescents: a systematic review.",
+          "pmid": "37081557",
+          "n_participants": 50
+        },
+        {
+          "citation": "Khan A et al 2021 Lancet Child Adolesc Health",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Dose-dependent and joint associations between screen time, physical activity, and mental wellbeing in adolescents: an international observational study.",
+          "pmid": "34384543",
+          "n_participants": 577475
+        },
+        {
+          "citation": "Khan A et al 2022 J Adolesc Health",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Associations of Passive and Active Screen Time With Psychosomatic Complaints of Adolescents.",
+          "pmid": "35725131",
+          "n_participants": 577475
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "delayed_school_start_times",
+      "name": "Delayed school start times",
+      "kind": "environmental",
+      "aliases": [
+        "later school start times",
+        "delayed school schedules"
+      ],
+      "description": "Policies that shift school start time later in the morning for adolescents."
+    },
+    {
+      "slug": "adolescent_sleep_duration",
+      "name": "Adolescent sleep duration",
+      "kind": "process",
+      "aliases": [
+        "teen sleep duration",
+        "weeknight sleep time in adolescents"
+      ],
+      "description": "Total sleep duration among adolescents, especially on school nights."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "delayed_school_start_times",
+      "outcome_slug": "adolescent_sleep_duration",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "A 2017 meta-analysis aggregating five longitudinal and 15 cross-sectional studies found later school start times were associated with longer student sleep duration, and a 2016 systematic review of experimental evidence reported weeknight sleep increases ranging from 25 to 77 minutes after start times were delayed by 25 to 60 minutes.",
+      "population": "middle-school and high-school adolescents exposed to later morning school start times",
+      "mechanism": "Later start times better align school schedules with delayed adolescent circadian timing, reducing forced early wake times and extending achievable weeknight sleep.",
+      "summary": "Delayed school start time is one of the strongest policy-level sleep interventions for adolescents. The evidence is consistent enough to treat it as a genuine protective factor for adolescent sleep duration rather than a speculative education-policy idea.",
+      "caveats": "The magnitude of benefit varies by baseline start time, commuting patterns, and student behavior. Not all downstream academic or mental-health outcomes improve equally, but the sleep-duration effect is among the most reproducible findings.",
+      "evidence": [
+        {
+          "citation": "Bowers JM et al 2017 Sleep Health",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of school start time on students' sleep duration, daytime sleepiness, and attendance: a meta-analysis.",
+          "pmid": "29157635",
+          "n_participants": 20
+        },
+        {
+          "citation": "Minges KE et al 2016 Sleep Med Rev",
+          "year": 2016,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Delayed school start times and adolescent sleep: A systematic review of the experimental evidence.",
+          "pmid": "26545246",
+          "n_participants": 6
+        },
+        {
+          "citation": "Paksarian D et al 2015 Am J Public Health",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "School Start Time and Adolescent Sleep Patterns: Results From the U.S. National Comorbidity Survey--Adolescent Supplement.",
+          "pmid": "25973803",
+          "n_participants": 7308
+        }
+      ]
+    }
+  ]
+}

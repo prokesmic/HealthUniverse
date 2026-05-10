@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "sleep_extension_adolescent",
+      "name": "Sleep extension in adolescents",
+      "kind": "activity",
+      "aliases": [
+        "adolescent sleep extension",
+        "increasing sleep opportunity in teens"
+      ],
+      "description": "Interventions that deliberately increase sleep opportunity or sleep duration in adolescents."
+    },
+    {
+      "slug": "academic_performance",
+      "name": "Academic performance",
+      "kind": "process",
+      "aliases": [
+        "school performance",
+        "learning performance"
+      ],
+      "description": "Academic functioning such as classroom attention, quiz performance, and school-related performance."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "sleep_extension_adolescent",
+      "outcome_slug": "academic_performance",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A randomized simulated-classroom study found that adolescents performed better on lecture-based quizzes and showed better classroom attention after healthy sleep than after multi-night sleep restriction, while a 2025 in-home crossover sleep-extension trial increased sleep duration by 1.37 hours and supports the causal plausibility of school-night sleep extension as a performance-relevant intervention.",
+      "population": "adolescents with insufficient sleep or experimentally manipulated sleep schedules",
+      "mechanism": "Additional sleep improves alertness, sustained attention, and learning efficiency, which can translate into better classroom engagement and academic task performance.",
+      "summary": "Sleep extension has a real protective signal for school-related functioning in adolescents. The evidence base is still modest, but controlled studies support the view that increasing sleep opportunity improves performance-relevant outcomes rather than merely correlating with them.",
+      "caveats": "Most intervention trials rely on short-term or simulated academic measures rather than long-term grade outcomes. Benefits should be framed as improvements in learning readiness and classroom performance, not guaranteed grade inflation.",
+      "evidence": [
+        {
+          "citation": "Beebe DW et al 2017 Sleep",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Impact of Multi-Night Experimentally Induced Short Sleep on Adolescent Performance in a Simulated Classroom.",
+          "pmid": "28364497",
+          "n_participants": 20
+        },
+        {
+          "citation": "Holtman S et al 2025 Sleep",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Changes in circadian timing following a 1-week in-home sleep extension manipulation in habitually short-sleeping adolescents.",
+          "pmid": "39582182",
+          "n_participants": 26
+        },
+        {
+          "citation": "Kira G et al 2014 J Clin Sleep Med",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Sleep education improves the sleep duration of adolescents: a randomized controlled pilot study.",
+          "pmid": "25024657",
+          "n_participants": 56
+        }
+      ]
+    }
+  ]
+}
