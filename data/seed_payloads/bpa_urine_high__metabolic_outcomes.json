@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "bpa_urine_high",
+      "outcome_slug": "metabolic_outcomes",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2015 systematic review and meta-analysis found that people with the highest urinary BPA concentrations were more likely to have diabetes (pooled OR 1.47), obesity (OR 1.67), elevated waist circumference (OR 1.48), and hypertension (OR 1.41), but it also noted that the strongest evidence came from cross-sectional studies and that prospective findings were less consistent. In Korean adults, higher urinary BPA was positively associated with obesity in a representative sample of 10,021 adults. In the Nurses' Health Study cohorts, however, prospective associations with incident type 2 diabetes were present in the younger cohort but not in the older one, reinforcing that the long-term signal is not uniformly consistent.",
+      "population": "adults with higher urinary bisphenol A concentrations in population-based studies",
+      "mechanism": "BPA can interact with endocrine and metabolic signaling pathways tied to adiposity, insulin handling, and blood-pressure regulation. But because urinary BPA is a short-half-life exposure marker that also tracks with packaging and diet patterns, its epidemiology can look more like a noisy metabolic-risk signal than a clean causal dose-response curve.",
+      "summary": "The evidence leans harmful, but not cleanly enough to pretend the case is settled. Higher urinary BPA is repeatedly linked to obesity, diabetes, and related metabolic markers in cross-sectional work, while prospective studies are more uneven.",
+      "caveats": "Single urine samples are weak proxies for long-term exposure, and dietary confounding is hard to remove fully. This edge is best read as a mixed but concerning metabolic signal rather than a proven stand-alone cause of metabolic disease.",
+      "evidence": [
+        {
+          "citation": "Fanny Ranciere et al 2015 Environ Health",
+          "year": 2015,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Bisphenol A and the risk of cardiometabolic disorders: a systematic review with meta-analysis of the epidemiological evidence.",
+          "doi": "10.1186/s12940-015-0036-5",
+          "pmid": "26026606",
+          "n_participants": null
+        },
+        {
+          "citation": "Shinje Moon et al 2021 Sci Rep",
+          "year": 2021,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Urinary bisphenol A concentrations and the risk of obesity in Korean adults.",
+          "doi": "10.1038/s41598-021-80980-8",
+          "pmid": "33452339",
+          "n_participants": 10021
+        },
+        {
+          "citation": "Marilyn Cornelis et al 2014 Environ Health Perspect",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Association of urinary concentrations of bisphenol A and phthalate metabolites with risk of type 2 diabetes: a prospective investigation in the Nurses' Health Study (NHS) and NHSII cohorts.",
+          "doi": "10.1289/ehp.1307201",
+          "pmid": "24633239",
+          "n_participants": 1942
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "bpa_urine_high",
+      "name": "High urinary BPA",
+      "kind": "environmental",
+      "aliases": [
+        "elevated urinary bisphenol A",
+        "high bisphenol A biomonitoring level"
+      ],
+      "description": "Higher urinary bisphenol A concentrations used as a biomarker of recent BPA exposure."
+    },
+    {
+      "slug": "metabolic_outcomes",
+      "name": "Metabolic outcomes",
+      "kind": "condition",
+      "aliases": [
+        "cardiometabolic outcomes",
+        "metabolic disease markers"
+      ],
+      "description": "Metabolic outcomes such as obesity, diabetes, abdominal adiposity, insulin resistance, or hypertension-related metabolic burden."
+    }
+  ]
+}

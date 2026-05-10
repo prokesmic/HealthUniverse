@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "lead_exposure_low_level",
+      "outcome_slug": "adult_hypertension",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2025 dose-response meta-analysis of 24 studies involving 181,500 participants reported a pooled odds ratio of 1.27 for hypertension with lead exposure, with risk rising sharply at higher blood lead concentrations. An earlier meta-analysis of 33,141 participants found that a twofold increase in blood lead was associated with about 1.0 mmHg higher systolic pressure and 0.6 mmHg higher diastolic pressure. In NHANES 2009-2012, higher urinary lead concentrations were also associated with increased odds of high blood pressure (OR 1.49, 95% CI 1.12 to 1.98).",
+      "population": "adults with environmental or occupational low-level lead exposure",
+      "mechanism": "Lead can disrupt vascular smooth-muscle signaling, increase oxidative stress, and impair nitric-oxide-mediated endothelial regulation over long periods. At lower exposure levels, the effect is usually a slow upward shift in blood-pressure risk rather than an acute toxic syndrome.",
+      "summary": "The most boring reading is still the right one: even relatively low lead exposure appears to nudge adult blood pressure upward. The effect size is usually modest, but it is replicated often enough that hypertension belongs on the consequence side of the graph.",
+      "caveats": "The magnitude is small and studies use different exposure biomarkers, including blood, urine, and predicted bone lead. Residual confounding is possible, but the repeated dose-response signal makes a purely chance explanation less convincing.",
+      "evidence": [
+        {
+          "citation": "Peilin Yang et al 2025 Front Public Health",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Relationship between lead exposure and different types of hypertension: systematic review and dose-response meta-analysis.",
+          "doi": "10.3389/fpubh.2025.1706805",
+          "pmid": "41450520",
+          "n_participants": 181500
+        },
+        {
+          "citation": "Jan Staessen et al 1994 J Cardiovasc Risk",
+          "year": 1994,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Hypertension caused by low-level lead exposure: myth or fact?",
+          "pmid": "7614423",
+          "n_participants": 33141
+        },
+        {
+          "citation": "Ivy Shiue et al 2014 Hypertens Res",
+          "year": 2014,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Higher urinary heavy metal, phthalate and arsenic concentrations accounted for 3-19% of the population attributable risk for high blood pressure: US NHANES, 2009-2012.",
+          "doi": "10.1038/hr.2014.121",
+          "pmid": "25077919",
+          "n_participants": 6890
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "lead_exposure_low_level",
+      "name": "Low-level lead exposure",
+      "kind": "environmental",
+      "aliases": [
+        "chronic low-dose lead exposure",
+        "background lead exposure"
+      ],
+      "description": "Environmental or occupational exposure to lead at low but measurable levels over time."
+    },
+    {
+      "slug": "adult_hypertension",
+      "name": "Adult hypertension",
+      "kind": "condition",
+      "aliases": [
+        "high blood pressure in adults"
+      ],
+      "description": "Established or measured high blood pressure in adulthood."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "mercury_fish_consumption",
+      "outcome_slug": "fetal_neurodevelopment",
+      "direction": "u_shaped",
+      "tier": "C",
+      "effect_size": "unknown",
+      "effect_quant": "In the New Bedford Cohort, fish intake was generally beneficial for child neurodevelopment when the estimated mercury content of consumed fish was low, but detrimental in the highest mercury tertile, where each serving was associated with 1.3 fewer correct responses on the Boston Naming Test. In the INMA birth cohort, higher cord-blood mercury was associated with better average neuropsychological scores overall, but the association turned adverse in children whose mothers ate less fish or had a less favorable polyunsaturated-fatty-acid profile. In the Seychelles Nutrition Cohort 2, prenatal methylmercury exposure showed no overall adverse association with 20-month neurodevelopment, but maternal PUFA status modified psychomotor outcomes.",
+      "population": "pregnant women and offspring in fish-consuming populations with low to moderate prenatal methylmercury exposure",
+      "mechanism": "Fish intake during pregnancy delivers both methylmercury and nutrients important for fetal brain development, especially long-chain omega-3 fatty acids and selenium. That creates a genuine tradeoff edge: low-mercury fish can support neurodevelopment, while higher-mercury fish or poorer nutrient balance can shift the same exposure pattern toward harm.",
+      "summary": "This is not a simple toxicant story. The best current evidence suggests a U-shaped or tradeoff pattern, where fish-associated mercury becomes problematic mainly when mercury density rises or the nutritional upside of fish is lower.",
+      "caveats": "Exposure is entangled with fish species, selenium, and fatty-acid status, so studies that model mercury alone can be misleading. This edge should be interpreted as an exposure-balance problem, not as a universal reason to avoid fish during pregnancy.",
+      "evidence": [
+        {
+          "citation": "Sally Thurston et al 2025 Am J Epidemiol",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "u_shaped",
+          "quality": "high",
+          "notes": "A novel approach to assessing the joint effects of mercury and fish consumption on neurodevelopment in the New Bedford Cohort.",
+          "doi": "10.1093/aje/kwae149",
+          "pmid": "38940366",
+          "n_participants": 361
+        },
+        {
+          "citation": "Sabrina Llop et al 2017 Int J Epidemiol",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "u_shaped",
+          "quality": "moderate",
+          "notes": "Prenatal exposure to mercury and neuropsychological development in young children: the role of fish consumption.",
+          "doi": "10.1093/ije/dyw259",
+          "pmid": "27864405",
+          "n_participants": 1362
+        },
+        {
+          "citation": "James Strain et al 2015 Am J Clin Nutr",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Prenatal exposure to methyl mercury from fish consumption and polyunsaturated fatty acids: associations with child development at 20 mo of age in an observational study in the Republic of Seychelles.",
+          "doi": "10.3945/ajcn.114.100503",
+          "pmid": "25733638",
+          "n_participants": 1265
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "mercury_fish_consumption",
+      "name": "Mercury exposure from fish consumption",
+      "kind": "environmental",
+      "aliases": [
+        "methylmercury from maternal fish intake",
+        "fish-borne mercury exposure"
+      ],
+      "description": "Prenatal mercury exposure attributable to maternal fish consumption during pregnancy."
+    },
+    {
+      "slug": "fetal_neurodevelopment",
+      "name": "Fetal neurodevelopment",
+      "kind": "process",
+      "aliases": [
+        "offspring neurodevelopment",
+        "prenatal neurodevelopmental outcome"
+      ],
+      "description": "Neurodevelopmental performance of offspring influenced by fetal or prenatal exposures."
+    }
+  ]
+}
