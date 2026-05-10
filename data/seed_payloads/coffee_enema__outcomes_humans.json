@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "coffee_enema",
+      "name": "Coffee enema",
+      "kind": "behavior",
+      "aliases": [
+        "coffee enema therapy",
+        "coffee colon cleanse"
+      ],
+      "description": "Rectal instillation of coffee promoted in detox or alternative-medicine protocols."
+    },
+    {
+      "slug": "outcomes_humans",
+      "name": "Human outcomes",
+      "kind": "process",
+      "aliases": [
+        "clinical outcomes in humans",
+        "human clinical outcomes"
+      ],
+      "description": "Overall clinically meaningful outcomes reported in human use, including benefit, harm, or lack of validated efficacy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "coffee_enema",
+      "outcome_slug": "outcomes_humans",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "unknown",
+      "effect_quant": "A 2020 systematic review of coffee-enema case reports found no studies demonstrating effectiveness and identified nine adverse-event reports, including multiple colitis cases. A 34-patient pilot study for bowel preparation found feasibility without major immediate complications in that narrow endoscopy setting, but this does not validate broader wellness or detox claims.",
+      "population": "people using coffee enemas for self-care, detoxification, or alternative-medicine purposes",
+      "mechanism": "Promoters claim bile flow or glutathione-related detox enhancement, but those mechanistic claims have not translated into convincing human outcome evidence.",
+      "summary": "This is a contested and safety-limited edge rather than a legitimate wellness therapy. The clinical literature offers essentially no proof of broad benefit, while documented harms range from colitis to septicemia.",
+      "caveats": "The one small endoscopy-prep pilot is not evidence for systemic detox, metabolic improvement, or general health benefit. Most of the stronger literature around coffee enemas centers on adverse events, not efficacy.",
+      "evidence": [
+        {
+          "citation": "Son H et al 2020 Medicine (Baltimore)",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The safety and effectiveness of self-administered coffee enema: A systematic review of case reports.",
+          "pmid": "32899046",
+          "n_participants": 9
+        },
+        {
+          "citation": "Kim ES et al 2014 Clin Nutr Res",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Coffee enema for preparation for small bowel video capsule endoscopy: a pilot study.",
+          "pmid": "25136541",
+          "n_participants": 34
+        },
+        {
+          "citation": "Margolin KA et al 1984 West J Med",
+          "year": 1984,
+          "study_type": "case_report",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Polymicrobial enteric septicemia from coffee enemas.",
+          "pmid": "6710988"
+        }
+      ]
+    }
+  ]
+}

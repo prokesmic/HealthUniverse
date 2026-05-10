@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "juice_cleansing_protocols",
+      "name": "Juice-cleansing protocols",
+      "kind": "behavior",
+      "aliases": [
+        "juice cleanse",
+        "juice fasting protocol"
+      ],
+      "description": "Short-term juice-only or juice-dominant dietary regimens promoted for cleansing, reset, or metabolic improvement."
+    },
+    {
+      "slug": "metabolic_outcomes",
+      "name": "Metabolic outcomes",
+      "kind": "process",
+      "aliases": [
+        "metabolic markers",
+        "metabolic health outcomes"
+      ],
+      "description": "Outcomes related to weight, glucose regulation, lipid status, inflammation, or other metabolic-health markers."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "juice_cleansing_protocols",
+      "outcome_slug": "metabolic_outcomes",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "The direct cleanse literature is sparse and small. A six-person juice-fasting feasibility study mainly described microbiome shifts rather than clear metabolic benefit, while a 14-person intervention study found that short-term exclusive juice intake was associated with microbiome changes that could plausibly be metabolically unfavorable because of high sugar and low fiber exposure. Adjacent vegetable-juice interventions can improve some metabolic-syndrome components, but that does not validate short-term juice cleanses as a distinct metabolic therapy.",
+      "population": "healthy adults or overweight adults using short-term juice-only or juice-dominant dietary interventions",
+      "mechanism": "Juice cleanses sharply reduce insoluble fiber while concentrating rapidly absorbable sugars and phytochemicals, which may cause transient caloric restriction effects but also microbiome and glycemic tradeoffs.",
+      "summary": "This is a contested metabolic-health edge. Juice cleanses can change intake patterns quickly, but the direct human evidence is too small and inconsistent to support broad claims of meaningful metabolic reset or detoxification.",
+      "caveats": "Evidence from vegetable-juice supplementation or polyphenol-rich juice trials should not be casually generalized to multi-day juice-only cleanses. The cleanse-specific literature remains tiny and methodologically weak.",
+      "evidence": [
+        {
+          "citation": "Thriene K et al 2022 Foods",
+          "year": 2022,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Assessment of the Gut Microbiota during Juice Fasting with and without Inulin Supplementation: A Feasibility Study in Healthy Volunteers.",
+          "pmid": "36429265",
+          "n_participants": 6
+        },
+        {
+          "citation": "Sardaro MLS et al 2025 Nutrients",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Effects of Vegetable and Fruit Juicing on Gut and Oral Microbiome Composition.",
+          "pmid": "39940316",
+          "n_participants": 14
+        },
+        {
+          "citation": "Honma C et al 2025 Public Health Nutr",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Effects of monitoring dietary biomarkers and providing vegetable juice on metabolic syndrome components in adults with an overweight or obese body mass index in Ulaanbaatar: a randomized controlled trial.",
+          "pmid": "39924530",
+          "n_participants": 94
+        }
+      ]
+    }
+  ]
+}
