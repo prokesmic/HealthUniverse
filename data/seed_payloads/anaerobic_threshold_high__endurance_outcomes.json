@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "anaerobic_threshold_high",
+      "outcome_slug": "endurance_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A 24-study systematic review in rowers found that power or speed at a 4 mmol/L lactate threshold correlated strongly with 2000 m ergometer performance, with reported coefficients from 0.53 to 0.96. In 4,001 endurance athletes, velocity at anaerobic threshold was one of the most important modeled predictors of running speed outcomes. Older physiology work also showed that threshold-related variables explained roughly 50% to 84% of the variance in endurance performance, depending on the specific threshold metric and model used.",
+      "population": "endurance athletes and trained adults undergoing exercise testing with lactate-threshold or anaerobic-threshold assessment",
+      "mechanism": "A higher anaerobic or lactate threshold means an athlete can sustain a faster pace before marked lactate accumulation and ventilatory compensation set in. That shifts sustainable race intensity upward and usually reflects a favorable integration of aerobic capacity, metabolic efficiency, and fatigue resistance.",
+      "summary": "The most defensible claim is that a high anaerobic threshold is protective for endurance performance, in the sense that it reliably sits on the favorable side of race outcomes. The exact test protocol varies, but across rowing, running, and training-adaptation literature, athletes who can sustain more speed or power at threshold generally perform better.",
+      "caveats": "Threshold testing is protocol-dependent and not interchangeable across labs, sports, or definitions such as lactate turnpoint, OBLA, or ventilatory threshold. This edge is therefore about the broad physiological concept of a higher threshold as a favorable endurance marker, not about one universally superior threshold formula.",
+      "evidence": [
+        {
+          "citation": "Timothy Kilbey et al 2025 Sports Med Open",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Associations Between Lactate Thresholds and 2000 m Rowing Ergometer Performance: Implications for Prediction-A Systematic Review.",
+          "pmid": "40019691",
+          "n_participants": 797
+        },
+        {
+          "citation": "Szczepan Wiecha et al 2022 J Clin Med",
+          "year": 2022,
+          "study_type": "cross_sectional",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Modeling Physiological Predictors of Running Velocity for Endurance Athletes.",
+          "pmid": "36431165",
+          "n_participants": 4001
+        },
+        {
+          "citation": "Tanaka K et al 1983 Eur J Appl Physiol Occup Physiol",
+          "year": 1983,
+          "study_type": "cross_sectional",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Relationships of anaerobic threshold and onset of blood lactate accumulation with endurance performance.",
+          "doi": "10.1007/BF00429025",
+          "pmid": "6686129",
+          "n_participants": 11
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "anaerobic_threshold_high",
+      "name": "High anaerobic threshold",
+      "kind": "biomarker",
+      "aliases": [
+        "high lactate threshold",
+        "high threshold speed or power"
+      ],
+      "description": "A high exercise intensity, speed, or power that can be sustained before marked lactate accumulation or ventilatory compensation occurs."
+    },
+    {
+      "slug": "endurance_outcomes",
+      "name": "Endurance outcomes",
+      "kind": "process",
+      "aliases": [
+        "endurance performance outcomes",
+        "distance-race performance"
+      ],
+      "description": "Endurance-related performance outcomes such as race time, sustainable pace, ergometer performance, or related endurance-testing results."
+    }
+  ]
+}

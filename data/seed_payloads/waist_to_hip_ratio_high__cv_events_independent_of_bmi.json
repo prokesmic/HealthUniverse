@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "waist_to_hip_ratio_high",
+      "outcome_slug": "cv_events_independent_of_bmi",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A meta-regression of 15 prospective studies found that each 0.01-unit increase in waist-to-hip ratio was associated with a 5% higher cardiovascular-event risk, and the extreme-quantile comparison yielded an RR of 1.95. In 17,232 adults with prediabetes or diabetes but normal BMI, central obesity defined by high waist-to-hip ratio was linked to 54% higher cardiovascular mortality and 43% higher myocardial infarction risk. In a geriatric cohort, waist-to-hip ratio remained independently associated with ischemic heart disease whereas BMI did not.",
+      "population": "adults being cardiovascular-risk stratified, including older adults and people with dysglycemia or normal-weight central obesity",
+      "mechanism": "A high waist-to-hip ratio reflects relatively greater abdominal fat deposition for a given body size. That central-fat pattern tracks insulin resistance, inflammatory signaling, and atherogenic lipid handling more closely than BMI alone, which helps explain why cardiovascular risk can remain elevated even in people who are not globally obese by BMI.",
+      "summary": "The most defensible interpretation is that a high waist-to-hip ratio is a harmful cardiovascular marker even after BMI is taken into account. Across pooled prospective data and later cohort work, fat distribution around the abdomen predicts cardiovascular events more consistently than total body size alone.",
+      "caveats": "The edge is strongest as a risk-stratification signal, not as proof that waist-to-hip ratio itself is the direct causal agent. Thresholds vary by sex and ancestry, and in some cohorts other central-obesity indices such as waist-to-height ratio perform similarly or slightly better.",
+      "evidence": [
+        {
+          "citation": "Lawrence de Koning et al 2007 Eur Heart J",
+          "year": 2007,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Waist circumference and waist-to-hip ratio as predictors of cardiovascular events: meta-regression analysis of prospective studies.",
+          "doi": "10.1093/eurheartj/ehm026",
+          "pmid": "17403720",
+          "n_participants": 258114
+        },
+        {
+          "citation": "Pingting Zhong et al 2023 Diabetes Metab Res Rev",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Normal-weight central obesity and risk of cardiovascular and microvascular events in adults with prediabetes or diabetes: Chinese and British cohorts.",
+          "doi": "10.1002/dmrr.3707",
+          "pmid": "37525502",
+          "n_participants": 17232
+        },
+        {
+          "citation": "Onur Erdogan et al 2025 Aging Clin Exp Res",
+          "year": 2025,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Beyond BMI: central obesity measures and cardiovascular risk in late life.",
+          "pmid": "41055826",
+          "n_participants": 1174
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "waist_to_hip_ratio_high",
+      "name": "High waist-to-hip ratio",
+      "kind": "biomarker",
+      "aliases": [
+        "elevated WHR",
+        "central obesity by waist-to-hip ratio"
+      ],
+      "description": "A high waist-to-hip ratio reflecting central or abdominal adiposity relative to hip circumference."
+    },
+    {
+      "slug": "cv_events_independent_of_bmi",
+      "name": "Cardiovascular events independent of BMI",
+      "kind": "condition",
+      "aliases": [
+        "BMI-independent cardiovascular event risk",
+        "cardiovascular risk beyond BMI"
+      ],
+      "description": "Risk of cardiovascular events that remains associated with an exposure even after considering body mass index or normal-weight status."
+    }
+  ]
+}
