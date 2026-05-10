@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hyperbaric_oxygen_off_label",
+      "name": "Off-label hyperbaric oxygen therapy",
+      "kind": "activity",
+      "aliases": [
+        "off-label HBOT",
+        "hyperbaric oxygen for nonapproved uses"
+      ],
+      "description": "Hyperbaric oxygen therapy promoted beyond established indications for neurological, recovery, cognitive, or post-viral syndromes."
+    },
+    {
+      "slug": "various_outcomes",
+      "name": "Various outcomes",
+      "kind": "process",
+      "aliases": [
+        "multiple clinical outcomes",
+        "broad outcome claims"
+      ],
+      "description": "A broad mix of clinical outcomes across several off-label conditions rather than one validated indication."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hyperbaric_oxygen_off_label",
+      "outcome_slug": "various_outcomes",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "HBOT has positive evidence in some narrow disease states, but a 2024 living systematic review of long-COVID interventions found no compelling evidence for hyperbaric oxygen, while a 2023 safety meta-analysis showed adverse effects were more common with HBOT than control conditions.",
+      "population": "patients receiving hyperbaric oxygen outside core approved indications, especially for post-concussion symptoms, long COVID, wellness, or broad neurorecovery claims",
+      "mechanism": "Hyperoxia under pressure can alter tissue oxygen delivery, inflammatory signaling, and repair pathways, but biological plausibility does not guarantee broad clinical effectiveness across diverse off-label conditions.",
+      "summary": "Off-label HBOT is best treated as a contested umbrella claim rather than a single validated therapy. Some targeted conditions may show promise, but the overall off-label landscape remains heterogeneous, indication-specific, and often ahead of the evidence.",
+      "caveats": "Do not merge approved-indication evidence with wellness or off-label claims. Safety, cost, and condition-specific null results matter, especially where sham-controlled or living-review evidence remains unconvincing.",
+      "evidence": [
+        {
+          "citation": "Lansdorp CA et al 2024 BMJ",
+          "year": 2024,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Interventions for the management of long covid (post-covid condition): living systematic review.",
+          "pmid": "39603702",
+          "n_participants": 24
+        },
+        {
+          "citation": "Mathieu D 2019 Curr Opin Anaesthesiol",
+          "year": 2019,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Emerging indications for hyperbaric oxygen.",
+          "pmid": "31343466"
+        },
+        {
+          "citation": "Zhang Y et al 2023 Front Med (Lausanne)",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Adverse effects of hyperbaric oxygen therapy: a systematic review and meta-analysis.",
+          "pmid": "37275378",
+          "n_participants": 24
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cold_thermogenesis",
+      "name": "Cold thermogenesis exposure",
+      "kind": "activity",
+      "aliases": [
+        "cold thermogenesis",
+        "mild cold exposure"
+      ],
+      "description": "Repeated or acute cold exposure used to stimulate thermogenesis, brown adipose tissue, or metabolic adaptations."
+    },
+    {
+      "slug": "metabolic_outcomes",
+      "name": "Metabolic outcomes",
+      "kind": "process",
+      "aliases": [
+        "metabolic health outcomes",
+        "glucose and lipid outcomes"
+      ],
+      "description": "Metabolic endpoints such as glucose handling, insulin sensitivity, lipid metabolism, and energy expenditure."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cold_thermogenesis",
+      "outcome_slug": "metabolic_outcomes",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Human cold-exposure research consistently shows higher energy expenditure and brown-fat activation, while controlled acclimation trials have also reported improved insulin sensitivity and glucose metabolism in some participants after repeated mild cold exposure.",
+      "population": "healthy adults or metabolically characterized adults exposed to acute or repeated mild cold for brown adipose activation",
+      "mechanism": "Cold exposure activates sympathetic signaling and brown adipose tissue, which can increase thermogenesis and alter substrate use, but short-term metabolic benefits are variable and may be offset by compensatory intake or heterogeneity in BAT responsiveness.",
+      "summary": "Cold thermogenesis has real physiologic effects, but the jump from BAT activation to reliable metabolic improvement is still too large for a strong consumer claim. The most defensible view is a mixed metabolic signal with mechanistic interest and modest, inconsistent human outcome benefits.",
+      "caveats": "Do not equate BAT activation with proven weight loss or lasting metabolic disease improvement. Human studies remain small, heterogeneous, and often focused on surrogate outcomes.",
+      "evidence": [
+        {
+          "citation": "van der Lans AA et al 2014 Trends Endocrinol Metab",
+          "year": 2014,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Cold exposure--an approach to increasing energy expenditure in humans.",
+          "pmid": "24462079"
+        },
+        {
+          "citation": "Lee P et al 2014 Diabetes",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Temperature-acclimated brown adipose tissue modulates insulin sensitivity in humans.",
+          "pmid": "24954193",
+          "n_participants": 5
+        },
+        {
+          "citation": "Iwen KA et al 2017 J Clin Endocrinol Metab",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cold-Induced Brown Adipose Tissue Activity Alters Plasma Fatty Acids and Improves Glucose Metabolism in Men.",
+          "pmid": "28945846",
+          "n_participants": 10
+        }
+      ]
+    }
+  ]
+}

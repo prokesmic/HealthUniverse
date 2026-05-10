@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "red_light_panel_at_home",
+      "name": "At-home red light panel",
+      "kind": "activity",
+      "aliases": [
+        "home red light device",
+        "home LED photobiomodulation panel"
+      ],
+      "description": "Consumer red or near-infrared light panels marketed for home use to improve skin tone, wrinkles, or skin recovery."
+    },
+    {
+      "slug": "outcomes_skin",
+      "name": "Skin outcomes",
+      "kind": "process",
+      "aliases": [
+        "skin appearance outcomes",
+        "cutaneous outcomes"
+      ],
+      "description": "Visible or measured skin-related outcomes such as wrinkles, erythema, healing, or rejuvenation."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "red_light_panel_at_home",
+      "outcome_slug": "outcomes_skin",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2022 systematic review and meta-analysis of light-emitting diode skin studies found the most consistent pooled improvements in psoriasis and skin rejuvenation subsets, while a 2008 facial-photoaging trial reported visible improvement in fine lines and wrinkles in 74% of 22 treated participants after handheld red and near-infrared LED use.",
+      "population": "adults using home or clinic-style red and near-infrared LED photobiomodulation devices for aesthetic skin concerns",
+      "mechanism": "Red and near-infrared light may alter mitochondrial signaling, wound-healing pathways, and collagen-related processes, but outcomes depend heavily on wavelength, dose, device design, and treatment target.",
+      "summary": "At-home red-light devices have a plausible and moderately supportive skin literature, but the evidence is not uniform across indications or device types. The most defensible claim is modest benefit for selected skin endpoints rather than a universal rejuvenation effect.",
+      "caveats": "Do not generalize positive clinic-style LED studies to every consumer light panel. Evidence for efficacy varies by protocol, and long-term cosmetic benefit is less certain than short-term improvement in selected measures.",
+      "evidence": [
+        {
+          "citation": "Khalid M et al 2022 Photodermatol Photoimmunol Photomed",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Utilization of light-emitting diodes for skin therapy: Systematic review and meta-analysis.",
+          "pmid": "36310510",
+          "n_participants": 31
+        },
+        {
+          "citation": "Sadick NS 2008 J Cosmet Dermatol",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "A study to determine the efficacy of a novel handheld light-emitting diode device in the treatment of photoaged skin.",
+          "pmid": "19146602",
+          "n_participants": 22
+        },
+        {
+          "citation": "Glass GE 2023 Aesthet Surg J",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Photobiomodulation: A Systematic Review of the Oncologic Safety of Low-Level Light Therapy for Aesthetic Skin Rejuvenation.",
+          "pmid": "36722207",
+          "n_participants": 1
+        }
+      ]
+    }
+  ]
+}
