@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hba1c_prediabetes_5_7_to_6_4",
+      "outcome_slug": "cv_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2021 meta-analysis of 106 prospective studies and nearly 1.85 million participants found intermediate hyperglycemia associated with higher cardiovascular mortality, with glycemia-related risk curves rising once HbA1c entered the prediabetic range. In UK Biobank, ADA-defined prediabetes including HbA1c 5.7 to 6.4% carried a hazard ratio of 1.14 for cardiovascular events and a stronger mortality signal under stricter criteria, while NHANES phenotype analysis found cardiovascular mortality hazard ratios of 1.84 and 2.04 in people meeting two or three prediabetes defects versus one defect.",
+      "population": "adults without diagnosed diabetes who meet HbA1c-defined prediabetes criteria or adjacent intermediate-hyperglycemia definitions",
+      "mechanism": "HbA1c in the prediabetes range reflects chronic dysglycemia below the diabetes threshold but high enough to signal endothelial stress, glycation burden, insulin resistance, and clustering with other cardiometabolic abnormalities. Over years, that can translate into higher vascular-event and cardiovascular-death risk even before overt diabetes is diagnosed.",
+      "summary": "The safest reading is that HbA1c-defined prediabetes is not a benign border zone. Large meta-analytic and contemporary cohort data show that once HbA1c rises into the 5.7 to 6.4% range, cardiovascular mortality risk is modestly but consistently higher than in normoglycemia, especially when the dysglycemia clusters with other prediabetes defects.",
+      "caveats": "Not every study isolates HbA1c-defined prediabetes from fasting-glucose or oral-glucose-tolerance abnormalities, so some pooled estimates reflect broader intermediate hyperglycemia rather than HbA1c alone. Effect size is smaller than in established diabetes and depends heavily on baseline cardiovascular risk and the definition used.",
+      "evidence": [
+        {
+          "citation": "Cai X et al 2021 BMJ Open Diabetes Res Care",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between varying cut-points of intermediate hyperglycemia and risk of mortality, cardiovascular events and chronic kidney disease: a systematic review and meta-analysis.",
+          "pmid": "33906835",
+          "n_participants": 1850000
+        },
+        {
+          "citation": "Luo Y et al 2026 Cardiovasc Diabetol",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prognostic stratification of cardiovascular risk and cardiac remodeling in prediabetes: a multimodal analysis comparing ADA and WHO/IEC diagnostic criteria.",
+          "pmid": "41776566",
+          "n_participants": 278697
+        },
+        {
+          "citation": "Kong X et al 2025 Endocr Pract",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Prediabetes Phenotypes and All-Cause or Cardiovascular Mortality: Evidence From a Population-Based Study.",
+          "doi": "10.1016/j.eprac.2025.01.003",
+          "pmid": "39837477",
+          "n_participants": 4511
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hba1c_prediabetes_5_7_to_6_4",
+      "name": "HbA1c prediabetes 5.7 to 6.4%",
+      "kind": "biomarker",
+      "aliases": [
+        "HbA1c-defined prediabetes",
+        "glycated hemoglobin 5.7 to 6.4"
+      ],
+      "description": "Prediabetes defined by glycated hemoglobin in the ADA intermediate-hyperglycemia range of 5.7% to 6.4%."
+    },
+    {
+      "slug": "cv_mortality",
+      "name": "Cardiovascular mortality",
+      "kind": "condition",
+      "aliases": [
+        "CVD mortality",
+        "cardiovascular death"
+      ],
+      "description": "Death attributed to cardiovascular disease including coronary, cerebrovascular, and related vascular causes."
+    }
+  ]
+}

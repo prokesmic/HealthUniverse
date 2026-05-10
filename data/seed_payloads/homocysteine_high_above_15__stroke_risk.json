@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "homocysteine_high_above_15",
+      "outcome_slug": "stroke_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In the Northern Manhattan Study, fasting homocysteine at or above 15 micromol/L was associated with an adjusted hazard ratio of 2.01 for ischemic stroke versus less than 10 micromol/L. In pooled prospective data, each 5 micromol/L higher homocysteine carried an odds ratio of 1.59 for stroke, and in Hordaland the oldest adults showed a graded rise in cardiovascular hospitalization risk from homocysteine 15 to 19.9 micromol/L and above 20 micromol/L.",
+      "population": "middle-aged and older adults, especially those with mild to moderate fasting homocysteine elevation",
+      "mechanism": "Higher homocysteine can impair endothelial nitric-oxide signaling, increase oxidative stress, and tilt hemostasis toward thrombosis. That makes a stroke-focused signal plausible even when homocysteine also reflects folate, B12, renal, and broader metabolic status.",
+      "summary": "The strongest direct anchor for this edge is the Northern Manhattan cohort, where homocysteine at or above 15 micromol/L marked a materially higher ischemic stroke risk. Older meta-analytic and population-cohort data point in the same direction, so the most defensible reading is that clearly elevated homocysteine is a harmful vascular risk marker, with stroke among the more reproducible outcomes.",
+      "caveats": "Homocysteine is not a pure causal toxin because it also tracks renal function, vitamin status, age, and general cardiometabolic burden. The edge is stronger as a risk signal than as proof that every homocysteine-lowering intervention will proportionally reduce stroke events.",
+      "evidence": [
+        {
+          "citation": "Wald DS et al 2002 BMJ",
+          "year": 2002,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Homocysteine and cardiovascular disease: evidence on causality from a meta-analysis.",
+          "doi": "10.1136/bmj.325.7374.1202",
+          "pmid": "12446535",
+          "n_participants": 20669
+        },
+        {
+          "citation": "Sacco RL et al 2004 Stroke",
+          "year": 2004,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Homocysteine and the risk of ischemic stroke in a triethnic cohort: the NOrthern MAnhattan Study.",
+          "doi": "10.1161/01.STR.0000142374.33919.92",
+          "pmid": "15345803",
+          "n_participants": 2939
+        },
+        {
+          "citation": "Nurk E et al 2002 Arch Intern Med",
+          "year": 2002,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Plasma total homocysteine and hospitalizations for cardiovascular disease: the Hordaland Homocysteine Study.",
+          "doi": "10.1001/archinte.162.12.1374",
+          "pmid": "12076236",
+          "n_participants": 17361
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "homocysteine_high_above_15",
+      "name": "Homocysteine high above 15 micromol/L",
+      "kind": "biomarker",
+      "aliases": [
+        "high homocysteine above 15",
+        "tHcy above 15"
+      ],
+      "description": "Fasting total homocysteine in a clearly elevated range, commonly operationalized around or above 15 micromol/L."
+    }
+  ]
+}

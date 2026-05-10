@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "fasting_insulin_high_above_15",
+      "outcome_slug": "cardiometabolic_outcomes",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a pooled analysis of 11 prospective European cohorts, fasting insulin in the highest quartile was associated with cardiovascular mortality hazard ratios of 1.54 in men and 2.66 in women. A 2017 meta-analysis of 55,059 participants found elevated fasting insulin associated with incident hypertension with a pooled risk ratio of 1.54, and in older British women fasting insulin showed a linear association with combined coronary heart disease or stroke events despite normal fasting glucose at baseline.",
+      "population": "adults without overt diabetes or adults in early metabolic dysfunction with elevated fasting insulin or hyperinsulinemia",
+      "mechanism": "High fasting insulin is a practical signal of compensatory hyperinsulinemia and underlying insulin resistance. That state clusters with sympathetic activation, sodium retention, endothelial dysfunction, adverse lipids, and prothrombotic signaling, which helps explain why elevated fasting insulin often precedes broad cardiometabolic harm.",
+      "summary": "This edge is best read as a broad early-warning signal rather than a single-disease marker. Across prospective cohorts, elevated fasting insulin consistently tracks with worse downstream cardiometabolic outcomes such as cardiovascular death, hypertension, and composite vascular events, which makes a harmful direction more defensible than a neutral one.",
+      "caveats": "Study cutoffs vary and are often defined by cohort quartiles rather than one universal threshold, so the above-15 slug should be interpreted as an approximate high-hyperinsulinemia zone. Fasting insulin also reflects obesity, liver fat, and insulin resistance severity, so some of its predictive value is shared with those upstream traits.",
+      "evidence": [
+        {
+          "citation": "Pyorala M et al 2004 Diabetologia",
+          "year": 2004,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Plasma insulin and cardiovascular mortality in non-diabetic European men and women: a meta-analysis of data from eleven prospective studies.",
+          "doi": "10.1007/s00125-004-1433-4",
+          "pmid": "15241592",
+          "n_participants": 11507
+        },
+        {
+          "citation": "Wang F et al 2017 Clin Chim Acta",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Fasting insulin, insulin resistance and risk of hypertension in the general population: A meta-analysis.",
+          "doi": "10.1016/j.cca.2016.11.009",
+          "pmid": "27836689",
+          "n_participants": 55059
+        },
+        {
+          "citation": "Lawlor DA et al 2007 PLoS Med",
+          "year": 2007,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Independent associations of fasting insulin, glucose, and glycated haemoglobin with stroke and coronary heart disease in older women.",
+          "doi": "10.1371/journal.pmed.0040263",
+          "pmid": "17760500",
+          "n_participants": 3246
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "fasting_insulin_high_above_15",
+      "name": "Fasting insulin high above 15 microIU/mL",
+      "kind": "biomarker",
+      "aliases": [
+        "high fasting insulin above 15",
+        "hyperinsulinemia above 15"
+      ],
+      "description": "Fasting insulin in a clearly elevated range around or above 15 microIU/mL, acknowledging that studies often use nearby absolute cutoffs or top-quantile definitions."
+    },
+    {
+      "slug": "cardiometabolic_outcomes",
+      "name": "Cardiometabolic outcomes",
+      "kind": "condition",
+      "aliases": [
+        "cardiometabolic risk outcomes",
+        "vascular and metabolic outcomes"
+      ],
+      "description": "A broad set of downstream cardiovascular and metabolic outcomes such as hypertension, vascular events, and cardiometabolic mortality."
+    }
+  ]
+}
