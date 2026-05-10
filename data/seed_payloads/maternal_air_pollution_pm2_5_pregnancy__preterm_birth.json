@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "maternal_air_pollution_pm2_5_pregnancy",
+      "name": "Maternal PM2.5 exposure during pregnancy",
+      "kind": "environmental",
+      "aliases": [
+        "fine particulate air pollution in pregnancy",
+        "maternal exposure to ambient PM2.5"
+      ],
+      "description": "Maternal exposure during pregnancy to ambient fine particulate matter with aerodynamic diameter of 2.5 micrometers or less."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "maternal_air_pollution_pm2_5_pregnancy",
+      "outcome_slug": "preterm_birth",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across the best available synthesis, each 10 μg/m3 increase in PM2.5 exposure during pregnancy was associated with higher preterm-birth risk. The 2015 BMC Pregnancy and Childbirth meta-analysis reported an OR of 1.13 (95% CI 1.03 to 1.24) for whole-pregnancy exposure.",
+      "population": "pregnant women exposed to higher ambient fine-particulate air pollution during pregnancy",
+      "mechanism": "PM2.5 may increase oxidative stress, endothelial dysfunction, placental inflammation, and vascular impairment, all of which can shorten gestation or disrupt fetal growth. The effect size per exposure increment is modest, but the exposure is widespread enough to matter at population scale.",
+      "summary": "This is a solid harmful environmental edge. Multiple large observational cohorts and repeated meta-analyses point in the same direction: higher maternal PM2.5 exposure during pregnancy is associated with a small but real increase in preterm-birth risk.",
+      "caveats": "Air-pollution epidemiology is vulnerable to exposure misclassification, hospital-level confounding, and regional differences in PM composition. Individual studies can be neutral, but the broader body of evidence still leans consistently harmful.",
+      "evidence": [
+        {
+          "citation": "SunX et al 2015 BMC Pregnancy Childbirth",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The association between fine particulate matter exposure during pregnancy and preterm birth: a meta-analysis.",
+          "pmid": "26581753",
+          "n_participants": 1515887,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.13,
+            "ci_low": 1.03,
+            "ci_high": 1.24,
+            "comparator": "preterm birth per 10 μg/m3 increase in PM2.5 exposure during the entire pregnancy"
+          }
+        },
+        {
+          "citation": "RappazzoKM et al 2014 Environ Health Perspect",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Exposure to fine particulate matter during pregnancy and risk of preterm birth among women in New Jersey, Ohio, and Pennsylvania, 2000-2005.",
+          "pmid": "24879653",
+          "n_participants": 1940213
+        },
+        {
+          "citation": "ZhuJ et al 2019 Environ Sci Pollut Res Int",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Exposure to ambient PM2.5 during pregnancy and preterm birth in metropolitan areas of the state of Georgia.",
+          "pmid": "30471062",
+          "n_participants": 53094,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.15,
+            "ci_low": 1.07,
+            "ci_high": 1.25,
+            "comparator": "preterm birth with average pregnancy AQI above 50 for PM2.5 versus lower exposure"
+          }
+        }
+      ]
+    }
+  ]
+}
