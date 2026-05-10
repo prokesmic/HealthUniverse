@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "neurofeedback_for_adhd_children",
+      "name": "Neurofeedback for ADHD in children",
+      "kind": "activity",
+      "aliases": [
+        "EEG neurofeedback for pediatric ADHD",
+        "portable EEG-based neurofeedback for childhood ADHD"
+      ],
+      "description": "EEG-based neurofeedback training used in children or adolescents with attention-deficit/hyperactivity disorder."
+    },
+    {
+      "slug": "adhd_symptom_severity",
+      "name": "ADHD symptom severity",
+      "kind": "process",
+      "aliases": [
+        "ADHD total symptom burden",
+        "childhood ADHD inattention and hyperactivity severity"
+      ],
+      "description": "Overall severity of attention-deficit/hyperactivity disorder symptoms measured by clinician, parent, teacher, or blinded rater scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "neurofeedback_for_adhd_children",
+      "outcome_slug": "adhd_symptom_severity",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The most rigorous recent synthesis found no significant benefit on probably blinded ADHD total symptom ratings overall (SMD 0.04, 95% CI -0.10 to 0.18), although a smaller favorable signal emerged in standard-protocol subgroups and some newer portable EEG trials report between-group improvement.",
+      "population": "children and adolescents with attention-deficit/hyperactivity disorder treated with clinic-based or portable EEG neurofeedback protocols",
+      "mechanism": "Neurofeedback is meant to train self-regulation of cortical activity patterns linked to inattention and impulsivity. If learning transfers outside the training setting, symptoms could improve; if it does not, gains may mainly reflect expectancy, therapist attention, or rater proximity rather than durable core symptom change.",
+      "summary": "This edge should stay mixed rather than promotional. Some neurofeedback trials show symptom improvement, but the strongest blinded-outcome meta-analyses still find little or no clear benefit on core ADHD severity.",
+      "caveats": "Results are highly sensitive to rater blinding, protocol quality, and whether true neural self-regulation was demonstrated. Parent-proximal ratings often look better than probably blinded ratings, which is exactly why the literature remains contested.",
+      "evidence": [
+        {
+          "citation": "WestwoodSJ et al 2025 JAMA Psychiatry",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Neurofeedback for Attention-Deficit/Hyperactivity Disorder: A Systematic Review and Meta-Analysis.",
+          "pmid": "39661381",
+          "n_participants": 2472,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.04,
+            "ci_low": -0.1,
+            "ci_high": 0.18,
+            "comparator": "neurofeedback versus control on probably blinded ADHD total symptom ratings at first post-intervention assessment"
+          }
+        },
+        {
+          "citation": "CorteseS et al 2016 J Am Acad Child Adolesc Psychiatry",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Neurofeedback for Attention-Deficit/Hyperactivity Disorder: Meta-Analysis of Clinical and Neuropsychological Outcomes From Randomized Controlled Trials.",
+          "pmid": "27238063",
+          "n_participants": 520,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.35,
+            "ci_low": 0.11,
+            "ci_high": 0.59,
+            "comparator": "neurofeedback versus control on the least blinded ADHD total symptom ratings; effects were not significant on probably blinded ratings"
+          }
+        },
+        {
+          "citation": "HuangX et al 2025 Appl Neuropsychol Child",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of portable EEG-based neurofeedback for ADHD: A meta-analysis of randomized controlled trials.",
+          "pmid": "41467763",
+          "n_participants": 391,
+          "effect_quant": {
+            "metric": "qualitative_synthesis",
+            "value": null,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "portable EEG-based neurofeedback produced greater reductions in ADHD symptom severity than control conditions in 10 randomized trials"
+          }
+        }
+      ]
+    }
+  ]
+}

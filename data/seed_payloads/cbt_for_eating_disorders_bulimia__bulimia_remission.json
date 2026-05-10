@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cbt_for_eating_disorders_bulimia",
+      "name": "Cognitive behavioral therapy for bulimia nervosa",
+      "kind": "activity",
+      "aliases": [
+        "CBT for bulimia",
+        "eating-disorder specific cognitive behavioural therapy"
+      ],
+      "description": "Cognitive behavioral therapy specifically adapted to treat bulimia nervosa and recurrent binge-purge symptoms."
+    },
+    {
+      "slug": "bulimia_remission",
+      "name": "Bulimia nervosa remission",
+      "kind": "process",
+      "aliases": [
+        "full remission from bulimia",
+        "end-of-treatment remission from binge-purge behavior"
+      ],
+      "description": "Remission from bulimia nervosa, typically defined by cessation of binge eating and compensatory purging behaviors."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cbt_for_eating_disorders_bulimia",
+      "outcome_slug": "bulimia_remission",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The most direct remission synthesis is the 2018 bulimia network meta-analysis, where individual CBT specific to eating disorders had the strongest end-of-treatment remission signal versus wait list (OR 3.89, 95% CrI 1.19 to 14.02).",
+      "population": "adults with bulimia nervosa treated in randomized psychotherapy or psychotherapy-versus-medication trials",
+      "mechanism": "Bulimia-focused CBT targets binge-purge cycles by restructuring overvaluation of shape and weight, normalizing eating patterns, interrupting dietary restraint, and reducing compensatory rituals. As behavioral regularity and cognitive flexibility improve, remission from binge-purge behavior becomes more achievable.",
+      "summary": "This is a core treatment edge rather than a speculative one. Across randomized bulimia trials, individual CBT consistently shows one of the best remission profiles and usually outperforms either wait-list or antidepressant-based comparators.",
+      "caveats": "The evidence base is not huge and some comparisons are underpowered, especially head-to-head psychotherapy versus medication trials. Group CBT helps, but individual eating-disorder specific CBT still appears to be the stronger remission treatment when the two are compared.",
+      "evidence": [
+        {
+          "citation": "SladeE et al 2018 Psychol Med",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Treatments for bulimia nervosa: a network meta-analysis.",
+          "pmid": "29729686",
+          "n_participants": 1828,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 3.89,
+            "ci_low": 1.19,
+            "ci_high": 14.02,
+            "comparator": "individual bulimia-specific CBT versus wait list for full remission at end of treatment"
+          }
+        },
+        {
+          "citation": "SamaraMT et al 2024 Aust N Z J Psychiatry",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Is cognitive behavioral therapy more effective than pharmacotherapy for binge spectrum disorders? A systematic review and meta-analysis.",
+          "pmid": "38179705",
+          "n_participants": 531,
+          "effect_quant": {
+            "metric": "qualitative_synthesis",
+            "value": null,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "CBT was superior to antidepressants for remission and binge-frequency outcomes across bulimia nervosa and binge-eating disorder trials"
+          }
+        },
+        {
+          "citation": "PolnayA et al 2014 Psychol Med",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Group therapy for people with bulimia nervosa: systematic review and meta-analysis.",
+          "pmid": "24238470",
+          "n_participants": 10,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.77,
+            "ci_low": 0.62,
+            "ci_high": 0.96,
+            "comparator": "group CBT versus no treatment on remission-related outcome coding at therapy end, with the review concluding a clinically relevant advantage for group CBT"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "prolonged_exposure_therapy",
+      "name": "Prolonged exposure therapy",
+      "kind": "activity",
+      "aliases": [
+        "PE therapy",
+        "manualized imaginal and in vivo exposure for PTSD"
+      ],
+      "description": "A trauma-focused psychotherapy using repeated imaginal recounting and in vivo exposure to reduce post-traumatic stress symptoms."
+    },
+    {
+      "slug": "ptsd_severity",
+      "name": "Post-traumatic stress disorder severity",
+      "kind": "process",
+      "aliases": [
+        "PTSD symptom burden",
+        "post-traumatic stress symptom severity"
+      ],
+      "description": "Clinician-rated or self-reported severity of post-traumatic stress disorder symptoms."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "prolonged_exposure_therapy",
+      "outcome_slug": "ptsd_severity",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "The most direct prolonged-exposure synthesis is the 2010 Clinical Psychology Review meta-analysis, where prolonged exposure outperformed wait-list or psychological placebo with a large post-treatment effect on primary PTSD outcomes (Hedges g 1.08) across 13 randomized studies.",
+      "population": "adolescents and adults with post-traumatic stress disorder across assault, combat, and mixed trauma trial populations",
+      "mechanism": "Prolonged exposure aims to reduce conditioned fear and trauma-related avoidance by repeated imaginal processing of the memory and graduated in vivo contact with avoided cues. Over time, this can shrink threat expectancy, reduce autonomic reactivity, and weaken the avoidance loops that sustain PTSD severity.",
+      "summary": "This is one of the most established psychotherapy edges in the graph. Prolonged exposure consistently reduces PTSD symptom burden compared with inactive controls, and its benefits usually hold up at follow-up.",
+      "caveats": "Prolonged exposure is not uniquely superior to every other trauma-focused therapy, and some patients find the treatment demanding. Trial samples also vary by trauma type, comorbidity burden, and comparator intensity, so effect sizes are strongest against inactive controls rather than against other competent trauma therapies.",
+      "evidence": [
+        {
+          "citation": "PowersMB et al 2010 Clin Psychol Rev",
+          "year": 2010,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A meta-analytic review of prolonged exposure for posttraumatic stress disorder.",
+          "pmid": "20546985",
+          "n_participants": 675,
+          "effect_quant": {
+            "metric": "hedges_g",
+            "value": 1.08,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "prolonged exposure versus wait-list or psychological placebo on primary PTSD outcomes at post-treatment"
+          }
+        },
+        {
+          "citation": "YunitriN et al 2023 Psychol Med",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Comparative effectiveness of psychotherapies in adults with posttraumatic stress disorder: a network meta-analysis of randomised controlled trials.",
+          "pmid": "36628572",
+          "n_participants": 5567,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": null,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "prolonged exposure was among the psychotherapies that significantly reduced PTSD symptoms versus no treatment or treatment as usual in a 98-trial network meta-analysis"
+          }
+        },
+        {
+          "citation": "JayawickremeN et al 2014 Depress Anxiety",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Primum non nocere (first do no harm): symptom worsening and improvement in female assault victims after prolonged exposure for PTSD.",
+          "pmid": "24382682",
+          "n_participants": 361,
+          "effect_quant": {
+            "metric": "qualitative_synthesis",
+            "value": null,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "pooled randomized data in female assault survivors showed reliable PTSD improvement with prolonged exposure and no excess reliable PTSD worsening compared with other active treatments or wait-list"
+          }
+        }
+      ]
+    }
+  ]
+}

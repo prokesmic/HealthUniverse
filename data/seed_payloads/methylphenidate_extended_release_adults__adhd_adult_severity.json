@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "methylphenidate_extended_release_adults",
+      "name": "Extended-release methylphenidate in adults",
+      "kind": "drug",
+      "aliases": [
+        "OROS methylphenidate for adult ADHD",
+        "extended-release MPH in adults"
+      ],
+      "description": "Long-acting methylphenidate formulations used for adults with attention-deficit/hyperactivity disorder."
+    },
+    {
+      "slug": "adhd_adult_severity",
+      "name": "Adult ADHD severity",
+      "kind": "process",
+      "aliases": [
+        "adult ADHD core symptom burden",
+        "adult inattention and hyperactivity severity"
+      ],
+      "description": "Severity of adult ADHD symptoms on clinician-rated or self-rated ADHD scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "methylphenidate_extended_release_adults",
+      "outcome_slug": "adhd_adult_severity",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The most direct adult extended-release synthesis is the 2022 Cochrane review, which found that extended-release methylphenidate reduced self-rated ADHD symptoms versus placebo across 24 trials in 5,066 adults, with individual adult randomized trials also showing clinically meaningful symptom drops.",
+      "population": "adults with formal attention-deficit/hyperactivity disorder diagnoses treated with extended-release methylphenidate formulations",
+      "mechanism": "Extended-release methylphenidate increases synaptic dopamine and norepinephrine across the day, which can improve sustained attention, inhibitory control, and task persistence while reducing distractibility and impulsive responding.",
+      "summary": "The adult evidence base is strong enough to treat this as a real efficacy edge. Extended-release methylphenidate consistently improves adult ADHD symptom severity compared with placebo, including in individualized-dose and laboratory-classroom designs.",
+      "caveats": "The literature is cleaner for short-term symptom control than for long-term functional outcomes, and many trials exclude substantial psychiatric comorbidity. Benefit also has to be balanced against appetite, sleep, pulse, and blood-pressure effects in real-world prescribing.",
+      "evidence": [
+        {
+          "citation": "BoesenK et al 2022 Cochrane Database Syst Rev",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Extended-release methylphenidate for attention deficit hyperactivity disorder (ADHD) in adults.",
+          "pmid": "35201607",
+          "n_participants": 5066,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": null,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "extended-release methylphenidate versus placebo on self-rated and investigator-rated adult ADHD symptom scales across randomized trials"
+          }
+        },
+        {
+          "citation": "WeissMD et al 2021 J Atten Disord",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and Safety of PRC-063, Extended-Release Multilayer Methylphenidate in Adults with ADHD Including 6-Month Open-Label Extension.",
+          "pmid": "31916473",
+          "n_participants": 375,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -4.7,
+            "ci_low": -7.7,
+            "ci_high": -1.6,
+            "comparator": "PRC-063 extended-release methylphenidate versus placebo on ADHD-RS-5 total score change"
+          }
+        },
+        {
+          "citation": "GoodmanDW et al 2017 J Clin Psychiatry",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Randomized, 6-Week, Placebo-Controlled Study of Treatment for Adult Attention-Deficit/Hyperactivity Disorder: Individualized Dosing of Osmotic-Release Oral System (OROS) Methylphenidate With a Goal of Symptom Remission.",
+          "pmid": "27487193",
+          "n_participants": 341,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -5.4,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "OROS methylphenidate versus placebo on AISRS total score change from baseline to endpoint"
+          }
+        }
+      ]
+    }
+  ]
+}
