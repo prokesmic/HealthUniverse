@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "chelation_iv_edta",
+      "name": "IV EDTA chelation",
+      "kind": "drug",
+      "aliases": [
+        "intravenous EDTA chelation",
+        "edetate disodium chelation"
+      ],
+      "description": "Intravenous disodium EDTA or edetate-based chelation regimens promoted to reduce cardiovascular risk."
+    },
+    {
+      "slug": "cardiovascular_outcomes",
+      "name": "Cardiovascular outcomes",
+      "kind": "process",
+      "aliases": [
+        "cardiovascular event outcomes",
+        "major adverse cardiovascular outcomes"
+      ],
+      "description": "Clinical cardiovascular endpoints such as myocardial infarction, stroke, revascularization, hospitalization, or cardiovascular death."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "chelation_iv_edta",
+      "outcome_slug": "cardiovascular_outcomes",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "In the original TACT randomized trial of 1,708 post-MI patients, EDTA chelation modestly lowered the composite cardiovascular endpoint versus placebo (HR 0.82, 95% CI 0.69-0.99), but the 2024 TACT2 replication in 1,000 patients with diabetes and prior MI did not reproduce a reduction in cardiovascular events. Cochrane-level reviews therefore rate the overall evidence as low-certainty and insufficient for routine use.",
+      "population": "older adults with established atherosclerotic cardiovascular disease, especially prior myocardial infarction cohorts receiving repeated IV EDTA infusions",
+      "mechanism": "Chelation advocates propose removal of toxic metals or vascular calcium-related effects, but any biologic plausibility remains secondary to the inconsistent clinical-outcomes record.",
+      "summary": "This is a contested cardiovascular-intervention edge. One large randomized trial suggested a modest composite benefit, but replication has been poor and modern evidence does not support routine IV EDTA chelation as an established cardiovascular therapy.",
+      "caveats": "Do not present chelation as standard secondary prevention for cardiovascular disease. The apparent positive signal is heavily dependent on one older trial and is offset by lower-certainty evidence and failed replication.",
+      "evidence": [
+        {
+          "citation": "Diaz-Arocutipa C et al 2022 J Am Heart Assoc",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Chelation Therapy in Patients With Cardiovascular Disease: A Systematic Review.",
+          "pmid": "35229619",
+          "n_participants": 24
+        },
+        {
+          "citation": "Lamas GA et al 2013 JAMA",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of disodium EDTA chelation regimen on cardiovascular events in patients with previous myocardial infarction: the TACT randomized trial.",
+          "pmid": "23532240",
+          "n_participants": 1708
+        },
+        {
+          "citation": "Lamas GA et al 2024 JAMA",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Edetate Disodium-Based Chelation for Patients With a Previous Myocardial Infarction and Diabetes: TACT2 Randomized Clinical Trial.",
+          "pmid": "39141382",
+          "n_participants": 1000
+        }
+      ]
+    }
+  ]
+}
