@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ssris_long_term",
+      "name": "Long-term SSRI exposure",
+      "kind": "drug",
+      "aliases": [
+        "chronic selective serotonin reuptake inhibitor use",
+        "maintenance SSRI treatment"
+      ],
+      "description": "Extended treatment with selective serotonin reuptake inhibitors before tapering or discontinuation."
+    },
+    {
+      "slug": "discontinuation_syndrome_risk",
+      "name": "Antidepressant discontinuation syndrome risk",
+      "kind": "process",
+      "aliases": [
+        "withdrawal symptom risk after SSRI stopping",
+        "discontinuation symptom burden"
+      ],
+      "description": "Risk of acute or persistent withdrawal-type symptoms after reducing or stopping antidepressant treatment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ssris_long_term",
+      "outcome_slug": "discontinuation_syndrome_risk",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The strongest modern estimate is the 2025 JAMA Psychiatry meta-analysis, where discontinuation increased one-week discontinuation symptom scores versus continuation (SMD 0.31, 95% CI 0.23 to 0.39), with marked increases in dizziness, vertigo, and nausea.",
+      "population": "adults discontinuing maintenance antidepressant treatment, especially SSRI-dominant randomized and observational discontinuation cohorts",
+      "mechanism": "Long-term serotonin reuptake blockade can produce receptor and signaling adaptation. When the drug is reduced or stopped, that adapted system may temporarily destabilize, leading to vestibular, gastrointestinal, sensory, sleep, and affective withdrawal symptoms.",
+      "summary": "This is no longer a fringe concern. Modern evidence supports a real discontinuation-syndrome signal after chronic SSRI exposure, with symptom risk concentrated in the first days to weeks after stopping and a smaller subset developing more persistent problems.",
+      "caveats": "Symptom risk varies meaningfully by specific drug, half-life, taper speed, and patient history. Not everyone experiences clinically significant withdrawal, and relapse can be mistaken for discontinuation symptoms if the time course is not examined carefully.",
+      "evidence": [
+        {
+          "citation": "KalfasM et al 2025 JAMA Psychiatry",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Incidence and Nature of Antidepressant Discontinuation Symptoms: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1001/jamapsychiatry.2025.1362",
+          "pmid": "40632531",
+          "n_participants": 17828,
+          "effect_quant": {
+            "metric": "smd",
+            "value": 0.31,
+            "ci_low": 0.23,
+            "ci_high": 0.39,
+            "comparator": "discontinuation versus continuation on one-week discontinuation symptom scores"
+          }
+        },
+        {
+          "citation": "FavaGA et al 2015 Psychother Psychosom",
+          "year": 2015,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Withdrawal Symptoms after Selective Serotonin Reuptake Inhibitor Discontinuation: A Systematic Review.",
+          "doi": "10.1159/000370338",
+          "pmid": "25721705"
+        },
+        {
+          "citation": "RennwaldA et al 2025 Epidemiol Psychiatr Sci",
+          "year": 2025,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Post-acute withdrawal syndrome (PAWS) after stopping antidepressants: a systematic review with meta-narrative synthesis.",
+          "doi": "10.1017/S204579602500023X",
+          "pmid": "40357765"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "clozapine_treatment_resistant_schizophrenia",
+      "name": "Clozapine for treatment-resistant schizophrenia",
+      "kind": "drug",
+      "aliases": [
+        "clozapine maintenance in treatment-resistant schizophrenia",
+        "clozapine therapy for refractory schizophrenia"
+      ],
+      "description": "Use of clozapine as maintenance antipsychotic treatment in patients with schizophrenia who have not responded adequately to other agents."
+    },
+    {
+      "slug": "relapse_prevention",
+      "name": "Relapse prevention",
+      "kind": "process",
+      "aliases": [
+        "reduced relapse risk",
+        "maintenance of clinical stability"
+      ],
+      "description": "Lower risk of relapse, rehospitalization, or clinical deterioration during maintenance treatment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "clozapine_treatment_resistant_schizophrenia",
+      "outcome_slug": "relapse_prevention",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "population": "adults with schizophrenia or related psychotic disorders, especially treatment-resistant or high-relapse populations",
+      "mechanism": "Clozapine likely lowers relapse partly by providing broader receptor coverage and better symptom control in refractory illness, while also reducing hostility and severe behavioral destabilization that often drive rehospitalization. Its maintenance advantage may also reflect better efficacy in people who have already failed standard antipsychotics.",
+      "summary": "The maintenance signal for clozapine is real, but it comes more from comparative meta-analysis and large real-world effectiveness data than from neat placebo-style relapse trials. Across longer-term schizophrenia evidence, clozapine repeatedly sits near the top for keeping difficult-to-treat patients out of relapse or discontinuation.",
+      "caveats": "This is not a clean first-line edge: clozapine is usually reserved for treatment-resistant disease and brings substantial monitoring burdens. Some of its apparent relapse-prevention advantage may also reflect channeling into specialist care and differences in adherence monitoring.",
+      "evidence": [
+        {
+          "citation": "EfthimiouO et al 2024 Lancet Psychiatry",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy and effectiveness of antipsychotics in schizophrenia: network meta-analyses combining evidence from randomised controlled trials and real-world data.",
+          "doi": "10.1016/S2215-0366(23)00366-8",
+          "pmid": "38215784",
+          "n_participants": 100560
+        },
+        {
+          "citation": "KishimotoT et al 2019 World Psychiatry",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Long-term effectiveness of oral second-generation antipsychotics in patients with schizophrenia and related disorders: a systematic review and meta-analysis of direct head-to-head comparisons.",
+          "doi": "10.1002/wps.20632",
+          "pmid": "31059621",
+          "n_participants": 45787
+        },
+        {
+          "citation": "GlickID et al 2011 J Clin Psychiatry",
+          "year": 2011,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Mid-term and long-term efficacy and effectiveness of antipsychotic medications for schizophrenia: a data-driven, personalized clinical approach.",
+          "doi": "10.4088/JCP.11r06927",
+          "pmid": "22244023"
+        }
+      ]
+    }
+  ]
+}

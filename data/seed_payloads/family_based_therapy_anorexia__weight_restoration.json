@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "family_based_therapy_anorexia",
+      "name": "Family-based therapy for anorexia nervosa",
+      "kind": "activity",
+      "aliases": [
+        "FBT for anorexia nervosa",
+        "Maudsley family-based treatment for adolescent anorexia"
+      ],
+      "description": "A structured family-based psychotherapy that places parents in an active role to restore nutrition and weight in adolescents with anorexia nervosa."
+    },
+    {
+      "slug": "weight_restoration",
+      "name": "Weight restoration",
+      "kind": "process",
+      "aliases": [
+        "return to expected body weight",
+        "nutritional rehabilitation"
+      ],
+      "description": "Recovery toward age- and sex-appropriate body weight after undernutrition from anorexia nervosa."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "family_based_therapy_anorexia",
+      "outcome_slug": "weight_restoration",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "population": "adolescents with anorexia nervosa treated in outpatient randomized or specialist family-therapy programs",
+      "mechanism": "Family-based treatment aims to reverse starvation early by externalizing the illness, mobilizing parents to supervise meals, and reducing avoidance around weight gain. That structure can improve caloric intake consistency long before the adolescent can reliably self-manage anorexic thoughts.",
+      "summary": "The cleanest evidence comes from adolescent randomized trials. Family-based therapy tends to produce better weight restoration and remission follow-up than individual therapy or treatment as usual, especially when parents are actively engaged in refeeding.",
+      "caveats": "Most evidence is adolescent-specific and comes from specialist centers, so it should not be overgeneralized to adults or to every family context. Benefits are strongest for early outpatient anorexia treatment rather than for highly chronic or medically unstable cases.",
+      "evidence": [
+        {
+          "citation": "LockJ et al 2010 Arch Gen Psychiatry",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Randomized clinical trial comparing family-based treatment with adolescent-focused individual therapy for adolescents with anorexia nervosa.",
+          "doi": "10.1001/archgenpsychiatry.2010.128",
+          "pmid": "20921118",
+          "n_participants": 121
+        },
+        {
+          "citation": "GodartN et al 2022 J Child Psychol Psychiatry",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Long-term follow-up of a randomized controlled trial comparing systemic family therapy added to treatment as usual with treatment as usual alone in adolescents with anorexia nervosa.",
+          "doi": "10.1111/jcpp.13583",
+          "pmid": "35178708",
+          "n_participants": 60
+        },
+        {
+          "citation": "AustinA et al 2024 Int J Eat Disord",
+          "year": 2024,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of Eating Disorder Focused Family Therapy for Adolescents With Anorexia Nervosa: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1002/eat.24255",
+          "pmid": "39041682"
+        }
+      ]
+    }
+  ]
+}

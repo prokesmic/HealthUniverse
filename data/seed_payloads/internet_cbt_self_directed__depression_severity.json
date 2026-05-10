@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "internet_cbt_self_directed",
+      "name": "Self-directed internet CBT",
+      "kind": "activity",
+      "aliases": [
+        "self-guided iCBT",
+        "unguided internet cognitive behavioral therapy"
+      ],
+      "description": "Internet-delivered cognitive behavioral therapy completed largely as self-help, with little or no therapist guidance."
+    },
+    {
+      "slug": "depression_severity",
+      "name": "Depression severity",
+      "kind": "process",
+      "aliases": [
+        "depressive symptom burden",
+        "depression symptom severity"
+      ],
+      "description": "Severity of depressive symptoms measured with validated clinician-rated or self-report scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "internet_cbt_self_directed",
+      "outcome_slug": "depression_severity",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "The most direct long-term depression synthesis is the 2023 JMIR Mental Health meta-analysis, where self-help internet CBT reduced depressive symptoms versus control at follow-up (SMD -0.43, 95% CI -0.67 to -0.20).",
+      "population": "adults with depressive symptoms or depressive disorders using self-help or minimally guided internet CBT programs",
+      "mechanism": "Self-directed internet CBT aims to lower depressive symptom burden by teaching cognitive restructuring, behavioral activation, and relapse-prevention skills in a scalable format. Even without regular therapist contact, repeated exposure to structured CBT modules can improve coping and reduce depressive inertia.",
+      "summary": "The evidence is more solid than the phrase 'self-help' might suggest. Across randomized syntheses, self-directed internet CBT usually outperforms control conditions for depressive symptom reduction, though effects are smaller than in therapist-supported formats.",
+      "caveats": "Adherence is a real constraint, and some of the strongest long-term data combine self-directed and minimally guided programs. This edge is best interpreted as scalable benefit with modest average effects, not as a full substitute for every patient who would otherwise need clinician-led care.",
+      "evidence": [
+        {
+          "citation": "MamukashviliDelauM et al 2023 JMIR Ment Health",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Long-Term Efficacy of Internet-Based Cognitive Behavioral Therapy Self-Help Programs for Adults With Depression: Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+          "doi": "10.2196/46925",
+          "pmid": "37606990",
+          "n_participants": 1689,
+          "effect_quant": {
+            "metric": "smd",
+            "value": -0.43,
+            "ci_low": -0.67,
+            "ci_high": -0.2,
+            "comparator": "self-help internet CBT versus control on long-term depressive symptoms"
+          }
+        },
+        {
+          "citation": "ZainalNH et al 2024 Clin Psychol Rev",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Do the effects of internet-delivered cognitive-behavioral therapy (i-CBT) last after a year and beyond? A meta-analysis of 154 randomized controlled trials (RCTs).",
+          "doi": "10.1016/j.cpr.2024.102518",
+          "pmid": "39579466",
+          "n_participants": 45335,
+          "effect_quant": {
+            "metric": "hedges_g",
+            "value": -0.09,
+            "ci_low": -0.14,
+            "ci_high": -0.04,
+            "comparator": "self-guided internet CBT versus control on depressive symptoms at one year or longer"
+          }
+        },
+        {
+          "citation": "BakanaiteR et al 2025 Telemed J E Health",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Long-Term Effectiveness of Internet-Based Versus Traditional Cognitive Behavioral Therapy Across Psychiatric Disorders: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1177/15305627251358855",
+          "pmid": "40669868",
+          "n_participants": 1272,
+          "effect_quant": {
+            "metric": "hedges_g",
+            "value": -0.07,
+            "ci_low": -0.36,
+            "ci_high": 0.21,
+            "comparator": "internet CBT versus face-to-face CBT on long-term symptom outcomes across psychiatric disorders"
+          }
+        }
+      ]
+    }
+  ]
+}
