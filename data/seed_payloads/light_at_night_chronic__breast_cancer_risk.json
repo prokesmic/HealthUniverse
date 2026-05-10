@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "light_at_night_chronic",
+      "outcome_slug": "breast_cancer_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2021 dose-response meta-analysis reported a pooled risk ratio of 1.11 (95% CI 1.07 to 1.15) for highest versus lowest light-at-night exposure. In the French E3N nested case-control analysis, each interquartile-range increase in outdoor LAN was associated with an OR of 1.11 (95% CI 1.02 to 1.20). In a 24,793-woman pooled cohort, the highest tertile of melatonin-suppressive outdoor light was associated with a 1.53-fold higher breast cancer hazard among women reporting light entering the bedroom, but the overall cohort estimate was null.",
+      "population": "adult women exposed chronically to outdoor artificial light at night",
+      "mechanism": "Nighttime light can suppress melatonin and shift circadian timing, which may alter estrogen signaling, cell-cycle control, and DNA repair in breast tissue. The signal appears strongest when light intensity, spectrum, and actual nighttime bedroom exposure line up rather than from outdoor brightness alone.",
+      "summary": "The literature supports a cautious harmful reading, but not a dramatic one. The strongest takeaway is that chronic light-at-night exposure probably contributes a small breast-cancer risk signal that becomes more convincing in studies with better exposure characterization, while some large cohorts still attenuate toward null after adjustment for urban co-exposures.",
+      "caveats": "This edge is sensitive to confounding by urbanicity, air pollution, greenness, and indoor nighttime light behavior. It is also possible that wavelength and bedroom penetration matter more than outdoor brightness alone, so the exposure is still measured imperfectly in many cohorts.",
+      "evidence": [
+        {
+          "citation": "Urbano T et al 2021 Int J Health Geogr",
+          "year": 2021,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Light at night and risk of breast cancer: a systematic review and dose-response meta-analysis.",
+          "doi": "10.1186/s12942-021-00297-7",
+          "pmid": "34656111",
+          "n_participants": null
+        },
+        {
+          "citation": "Prajapati N et al 2025 Environ Health Perspect",
+          "year": 2025,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Outdoor Exposure to Artificial Light at Night and Breast Cancer Risk: A Case-Control Study Nested in the E3N-Generations Cohort.",
+          "doi": "10.1289/EHP15105",
+          "pmid": "40233256",
+          "n_participants": 10444
+        },
+        {
+          "citation": "Quinn EK et al 2025 Environ Int",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Wavelength-resolved measures of outdoor artificial light at night and breast cancer risk.",
+          "doi": "10.1016/j.envint.2025.109871",
+          "pmid": "41135428",
+          "n_participants": 24793
+        },
+        {
+          "citation": "Sweeney MR et al 2022 Environ Int",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Light at night and the risk of breast cancer: Findings from the Sister study.",
+          "doi": "10.1016/j.envint.2022.107495",
+          "pmid": "36084405",
+          "n_participants": 47145
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "light_at_night_chronic",
+      "name": "Chronic artificial light at night exposure",
+      "kind": "environmental",
+      "aliases": [
+        "chronic outdoor light at night",
+        "chronic ALAN exposure",
+        "long-term nighttime light pollution"
+      ],
+      "description": "Long-term exposure to artificial outdoor light during usual nighttime hours, typically estimated with satellite or geospatial light-pollution measures."
+    },
+    {
+      "slug": "breast_cancer_risk",
+      "name": "Breast cancer risk",
+      "kind": "condition",
+      "aliases": [
+        "incident breast cancer",
+        "breast cancer incidence"
+      ],
+      "description": "Risk of developing incident breast cancer over follow-up."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "street_light_outdoor_exposure",
+      "outcome_slug": "sleep_efficiency",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In 502 Hong Kong participants, nonresidential outdoor ALAN exposure was associated with lower sleep efficiency (beta -0.03, 95% CI -0.04 to -0.01). In 484 adults followed across 1,748 nights, both mobility-based and residence-based LAN metrics showed negative associations with objective sleep efficiency. In a 788-person urban actigraphy study, greater objective street lighting was associated with poorer sleep efficiency and longer wake after sleep onset.",
+      "population": "adolescents and adults exposed to neighborhood or mobility-based outdoor nighttime lighting",
+      "mechanism": "Outdoor night lighting can delay circadian timing, increase retinal light exposure before and during sleep, and fragment sleep continuity through both biologic alerting and neighborhood disturbance pathways. In practice, the effect seems strongest when people spend time in brightly lit activity spaces rather than only at the home address.",
+      "summary": "This is one of the cleaner sleep-pollution edges because objective actigraphy-based studies now point in the same direction. The effect size is modest, but repeated evidence suggests that heavier exposure to outdoor nighttime lighting is linked to worse sleep efficiency rather than simply shorter time in bed.",
+      "caveats": "Lighting is entangled with noise, neighborhood disorder, mobility patterns, and socioeconomic context, so it is hard to isolate as a pure causal exposure. Some studies also measure general outdoor light rather than street lights specifically, so the factor should be read as street-light-like nighttime outdoor illumination rather than lamp-post exposure alone.",
+      "evidence": [
+        {
+          "citation": "Cui Y et al 2026 Environ Res",
+          "year": 2026,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Beyond residential exposure: Mobility-oriented outdoor artificial light at night and its lagged associations with sleep.",
+          "doi": "10.1016/j.envres.2026.124443",
+          "pmid": "41956368",
+          "n_participants": 502
+        },
+        {
+          "citation": "Cui Y et al 2025 Environ Sci Technol",
+          "year": 2025,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Individual-Level Exposure to Light at Night and Sleep Health: A Comparison between Real-Time Mobility-Based Measurements and Indoor Residence-Based Measurements.",
+          "doi": "10.1021/acs.est.5c08270",
+          "pmid": "41139397",
+          "n_participants": 484
+        },
+        {
+          "citation": "Troxel WM et al 2018 Sleep",
+          "year": 2018,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Neighborhood disadvantage is associated with actigraphy-assessed sleep continuity and short sleep duration.",
+          "doi": "10.1093/sleep/zsy140",
+          "pmid": "30016507",
+          "n_participants": 788
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "street_light_outdoor_exposure",
+      "name": "Outdoor street-light exposure at night",
+      "kind": "environmental",
+      "aliases": [
+        "street lighting exposure",
+        "outdoor nighttime lighting exposure",
+        "neighborhood light at night exposure"
+      ],
+      "description": "Exposure to outdoor nighttime lighting from street lights and other built-environment light sources in residential or activity spaces."
+    },
+    {
+      "slug": "sleep_efficiency",
+      "name": "Sleep efficiency",
+      "kind": "process",
+      "aliases": [
+        "objective sleep efficiency",
+        "overnight sleep continuity"
+      ],
+      "description": "The proportion of time in bed spent asleep, used as an objective marker of overnight sleep continuity."
+    }
+  ]
+}
