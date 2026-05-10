@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "apoe_e4_diet_tailoring",
+      "name": "APOE ε4-tailored diet strategy",
+      "kind": "behavior",
+      "aliases": [
+        "APOE4 personalized diet",
+        "APOE-targeted nutrition"
+      ],
+      "description": "Dietary recommendations or lifestyle nutrition strategies tailored specifically to APOE ε4 carrier status."
+    },
+    {
+      "slug": "cognitive_outcomes",
+      "name": "Cognitive outcomes",
+      "kind": "process",
+      "aliases": [
+        "cognitive performance outcomes",
+        "cognition-related outcomes"
+      ],
+      "description": "Changes in memory, executive function, global cognition, or related cognitive-performance measures."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "apoe_e4_diet_tailoring",
+      "outcome_slug": "cognitive_outcomes",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "In the FINGER subgroup analysis, cognitive benefits from a multidomain lifestyle intervention were seen in both APOE ε4 carriers and noncarriers, with no strong evidence that genotype-specific diet tailoring itself was the decisive ingredient. The 2025 PENSA trial in APOE ε4 carriers with subjective cognitive decline also did not show a statistically significant primary cognitive advantage at 12 months for the intensive lifestyle-plus-EGCG strategy over the comparison arm.",
+      "population": "older adults or at-risk adults whose dietary or lifestyle advice is tailored according to APOE ε4 genotype",
+      "mechanism": "APOE ε4 may modify lipid handling, glucose vulnerability, or dementia risk trajectories, but translating that biology into a proven genotype-specific dietary prescription remains difficult.",
+      "summary": "This is a mixed precision-nutrition edge rather than a validated genotype-based prescription. APOE ε4 status is relevant to risk stratification, but the evidence does not yet show that APOE-specific diet tailoring reliably improves cognition beyond broader healthy lifestyle approaches.",
+      "caveats": "Many studies bundle diet with exercise, cognitive training, or supplements, so the diet-specific contribution is hard to isolate. Risk prediction should not be confused with evidence for a successful personalized nutrition treatment.",
+      "evidence": [
+        {
+          "citation": "Solomon A et al 2018 JAMA Neurol",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of the Apolipoprotein E Genotype on Cognitive Change During a Multidomain Lifestyle Intervention: A Subgroup Analysis of a Randomized Clinical Trial.",
+          "pmid": "29356827",
+          "n_participants": 1260
+        },
+        {
+          "citation": "Forcano L et al 2025 J Prev Alzheimers Dis",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A multimodal lifestyle intervention complemented with epigallocatechin gallate to prevent cognitive decline in APOE- ɛ4 carriers with Subjective Cognitive Decline: a randomized, double-blinded clinical trial (PENSA study).",
+          "pmid": "40664536",
+          "n_participants": 129
+        },
+        {
+          "citation": "Lefevre-Arbogast S et al 2021 J Prev Alzheimers Dis",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "High Glycemic Load Is Associated with Cognitive Decline in Apolipoprotein E ε4 Allele Carriers.",
+          "pmid": "33255701",
+          "n_participants": 2537
+        }
+      ]
+    }
+  ]
+}

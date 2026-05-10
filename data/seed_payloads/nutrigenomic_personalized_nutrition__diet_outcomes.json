@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "nutrigenomic_personalized_nutrition",
+      "name": "Nutrigenomic personalized nutrition",
+      "kind": "process",
+      "aliases": [
+        "genotype-based personalized nutrition",
+        "nutrigenetic diet personalization"
+      ],
+      "description": "Dietary guidance tailored partly or primarily using genomic or nutrigenomic information."
+    },
+    {
+      "slug": "diet_outcomes",
+      "name": "Diet outcomes",
+      "kind": "process",
+      "aliases": [
+        "dietary behavior outcomes",
+        "nutrition behavior outcomes"
+      ],
+      "description": "Changes in dietary intake, diet quality, adherence, or related nutrition-behavior measures."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "nutrigenomic_personalized_nutrition",
+      "outcome_slug": "diet_outcomes",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The Food4Me trial found that personalized nutrition improved dietary behavior more than conventional advice at 6 months, but adding genotype data on top of diet and phenotype information did not clearly produce a large extra effect. Later systematic reviews likewise conclude that personalized nutrition can improve some dietary outcomes, but benefits are inconsistent and the genotype-specific increment remains modest.",
+      "population": "generally healthy adults receiving personalized or nutrigenomic dietary advice through digital, clinic, or research programs",
+      "mechanism": "Tailored advice may improve engagement, relevance, and adherence, but the behavior-change advantage may come more from personalization itself than from nutrigenomic precision per se.",
+      "summary": "This is a cautiously positive but still mixed edge. Personalized nutrition can help some people improve diet quality or nutrient intake, yet the specific value added by nutrigenomic/genotype information is often small, inconsistent, or hard to isolate.",
+      "caveats": "Better outcomes in personalized nutrition trials do not automatically validate direct-to-consumer nutrigenomic panels. Much of the benefit may derive from coaching intensity, self-monitoring, and tailored feedback rather than gene-based inference alone.",
+      "evidence": [
+        {
+          "citation": "Jinnette R et al 2021 Adv Nutr",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Does Personalized Nutrition Advice Improve Dietary Intake in Healthy Adults? A Systematic Review of Randomized Controlled Trials.",
+          "pmid": "33313795",
+          "n_participants": 11
+        },
+        {
+          "citation": "Celis-Morales C et al 2017 Int J Epidemiol",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of personalized nutrition on health-related behaviour change: evidence from the Food4Me European randomized controlled trial.",
+          "pmid": "27524815",
+          "n_participants": 1269
+        },
+        {
+          "citation": "Brennan L et al 2025 Food Funct",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Key evidence for personalised nutrition: a review of randomised controlled trials.",
+          "pmid": "41493072",
+          "n_participants": 24
+        }
+      ]
+    }
+  ]
+}
