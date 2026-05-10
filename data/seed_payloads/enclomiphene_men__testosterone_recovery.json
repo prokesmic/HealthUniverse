@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "enclomiphene_men",
+      "name": "Enclomiphene citrate in men",
+      "kind": "drug",
+      "aliases": [
+        "male enclomiphene",
+        "enclomiphene therapy"
+      ],
+      "description": "A selective estrogen receptor modulator used to stimulate endogenous testosterone production in men."
+    },
+    {
+      "slug": "testosterone_recovery",
+      "name": "Testosterone recovery",
+      "kind": "process",
+      "aliases": [
+        "restoration of serum testosterone",
+        "endogenous testosterone normalization"
+      ],
+      "description": "Recovery or normalization of serum testosterone levels in hypogonadal men."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "enclomiphene_men",
+      "outcome_slug": "testosterone_recovery",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "A 2025 randomized-trial meta-analysis found selective estrogen receptor modulators increased total testosterone versus placebo by a mean 273.76 ng/dL (95% CI 191.87 to 355.66).",
+      "population": "men with functional or secondary hypogonadism, often overweight or obesity-associated",
+      "mechanism": "Enclomiphene blocks estrogen feedback at the hypothalamus and pituitary, so LH and FSH rise and the testes are pushed to make testosterone endogenously. That mechanism is exactly why this edge is stronger for testosterone recovery than for broader symptom promises: the hormonal effect is direct and repeatable even when downstream symptom changes vary.",
+      "summary": "Enclomiphene reliably restores serum testosterone in many men with secondary hypogonadism while preserving gonadotropin signaling. The evidence is stronger for biochemical testosterone recovery than for every patient-reported outcome, but as a fertility-conscious alternative to exogenous testosterone it has one of the cleaner hormonal signals in this track.",
+      "caveats": "Most studies are short and focus on hormone endpoints rather than long-term fertility or symptom durability. This should be read as evidence for endogenous testosterone restoration, not proof that enclomiphene is interchangeable with testosterone therapy for every clinical goal.",
+      "evidence": [
+        {
+          "citation": "Ribeiro de Oliveira A et al 2025 Arch Endocrinol Metab",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Clomiphene or enclomiphene citrate for the treatment of male hypogonadism: a systematic review and meta-analysis of randomized controlled trials.",
+          "pmid": "41066380",
+          "n_participants": 461,
+          "effect_quant": {
+            "metric": "MD",
+            "value": 273.76,
+            "ci_low": 191.87,
+            "ci_high": 355.66,
+            "comparator": "SERM therapy versus placebo for total testosterone"
+          }
+        },
+        {
+          "citation": "Wiehle RD et al 2014 Fertil Steril",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Enclomiphene citrate stimulates testosterone production while preventing oligospermia: a randomized phase II clinical trial comparing topical testosterone.",
+          "pmid": "25044085",
+          "n_participants": 124
+        },
+        {
+          "citation": "Kaminetsky J et al 2016 BJU Int",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Oral enclomiphene citrate raises testosterone and preserves sperm counts in obese hypogonadal men, unlike topical testosterone: restoration instead of replacement.",
+          "pmid": "26496621",
+          "n_participants": 124
+        }
+      ]
+    }
+  ]
+}

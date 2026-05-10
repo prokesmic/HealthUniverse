@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "slippery_elm_marshmallow_root",
+      "name": "Slippery elm and marshmallow root",
+      "kind": "supplement",
+      "aliases": [
+        "demulcent herbal reflux formula",
+        "Ulmus rubra and Althaea officinalis"
+      ],
+      "description": "Demulcent herbal ingredients such as slippery elm and marshmallow root that are promoted for soothing reflux or esophageal irritation."
+    },
+    {
+      "slug": "reflux_symptoms",
+      "name": "Reflux symptoms",
+      "kind": "condition",
+      "aliases": [
+        "GERD symptoms",
+        "heartburn and regurgitation"
+      ],
+      "description": "Patient-reported symptoms of gastroesophageal reflux, especially heartburn, regurgitation, and related quality-of-life impairment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "slippery_elm_marshmallow_root",
+      "outcome_slug": "reflux_symptoms",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "adults using demulcent herbal products for reflux-like upper gastrointestinal symptoms",
+      "mechanism": "Slippery elm and marshmallow root are thought to provide mucilage that transiently coats irritated mucosa, but the clinical evidence for reflux is mostly extrapolated from multi-ingredient formulas and anecdotal use.",
+      "summary": "The case for slippery elm or marshmallow root in reflux is mostly traditional rather than trial-secure. There are hints from mixed-herb formula studies and expert reviews, but direct controlled evidence for these specific demulcent herbs in reflux symptom relief remains sparse.",
+      "caveats": "Most available human data involve multi-ingredient formulas or case-level integrative care rather than isolated slippery elm or marshmallow root. This should be read as an evidence-gap edge, not as a strong endorsement.",
+      "evidence": [
+        {
+          "citation": "RiedK et al 2020 Nutr Res",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Herbal formula improves upper and lower gastrointestinal symptoms and gut health in Australian adults with digestive disorders.",
+          "pmid": "32151878",
+          "n_participants": 43
+        },
+        {
+          "citation": "AhujaA et al 2019 Curr Gastroenterol Rep",
+          "year": 2019,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Popular Remedies for Esophageal Symptoms: a Critical Appraisal.",
+          "pmid": "31289950"
+        },
+        {
+          "citation": "MartinBR et al 2015 J Chiropr Med",
+          "year": 2015,
+          "study_type": "case_report",
+          "direction": "mixed",
+          "quality": "very_low",
+          "notes": "Dietary and Lifestyle Changes in the Treatment of a 23-Year-Old Female Patient With Migraine.",
+          "pmid": "26778934"
+        }
+      ]
+    }
+  ]
+}

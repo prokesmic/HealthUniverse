@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "topical_caffeine",
+      "name": "Topical caffeine",
+      "kind": "supplement",
+      "aliases": [
+        "caffeine shampoo",
+        "caffeine scalp topical"
+      ],
+      "description": "Topically applied caffeine-containing shampoos or scalp formulations used with the aim of reducing hair loss or improving hair growth characteristics."
+    },
+    {
+      "slug": "hair_shaft_thickness",
+      "name": "Hair shaft thickness",
+      "kind": "process",
+      "aliases": [
+        "hair diameter",
+        "hair-fibre thickness"
+      ],
+      "description": "Measured hair diameter or shaft-thickness outcomes in people using topical hair-growth products."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "topical_caffeine",
+      "outcome_slug": "hair_shaft_thickness",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "population": "adults with pattern hair loss or self-reported hair thinning using caffeine-containing shampoos or scalp formulations",
+      "mechanism": "Caffeine may increase intracellular cAMP signaling and prolong anagen biology in follicles, but real-world topical studies usually combine it with other actives, making shaft-thickness effects difficult to isolate.",
+      "summary": "Topical caffeine is promising for hair-loss care, but the evidence for making individual hairs thicker is much shakier than the marketing. Trials show better density and less shedding more consistently than actual shaft-thickness gains, so a mixed call is the most honest one.",
+      "caveats": "Most positive studies use combination products that include adenosine or other actives. Even the newest systematic review concluded that topical caffeine is promising overall, but standardized thickness outcomes remain inconsistent.",
+      "evidence": [
+        {
+          "citation": "LyN et al 2025 J Drugs Dermatol",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Caffeine Supplementation and Hair: A Systematic Review.",
+          "pmid": "41187241",
+          "n_participants": 859
+        },
+        {
+          "citation": "ChenD et al 2024 J Cosmet Dermatol",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Anti-hair loss effect of a shampoo containing caffeine and adenosine.",
+          "pmid": "38764299",
+          "n_participants": 77
+        },
+        {
+          "citation": "CellenoL et al 2025 J Cosmet Dermatol",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A Novel Approach Against Male Pattern Hair Loss With Topical Dimethylglycine Sodium Salt (DMG-Na) and Caffeine: Efficacy of a 24-Week, Double-Blind, Randomized, Placebo-Controlled Trial.",
+          "pmid": "40820949",
+          "n_participants": 154
+        }
+      ]
+    }
+  ]
+}

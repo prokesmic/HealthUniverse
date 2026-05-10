@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "caffeine_pre_exercise",
+      "name": "Pre-exercise caffeine intake",
+      "kind": "supplement",
+      "aliases": [
+        "acute caffeine supplementation before exercise"
+      ],
+      "description": "Caffeine consumed before exercise in ergogenic doses."
+    },
+    {
+      "slug": "endurance_performance_trained",
+      "name": "Endurance performance in trained athletes",
+      "kind": "process",
+      "aliases": [
+        "trained endurance performance",
+        "cycling or running performance in trained athletes"
+      ],
+      "description": "Performance in endurance exercise tasks among trained runners, cyclists, or other endurance-trained athletes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "caffeine_pre_exercise",
+      "outcome_slug": "endurance_performance_trained",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In trained runners, caffeine increases time to exhaustion with a pooled Hedges g of 0.344 (95% CI 0.122 to 0.566), and in trained cyclists moderate doses around 4 to 6 mg/kg improve time-trial performance by an SMD of -0.55 (95% CI -0.84 to -0.26).",
+      "population": "trained cyclists, trained runners, and endurance-trained adults",
+      "mechanism": "Caffeine blocks adenosine receptors, lowering perceived effort and helping trained athletes sustain a harder pace for longer. In endurance settings that often shows up as slightly longer time to exhaustion or slightly faster completion times rather than a dramatic physiological transformation.",
+      "summary": "This is a fairly dependable ergogenic edge in trained endurance athletes. The clearest pooled evidence shows small but repeatable improvements in trained runners and cyclists, and direct cyclist trials suggest that the benefit persists even in people who already have a strong endurance base.",
+      "caveats": "The effect is modest and depends on dose, event type, heat stress, and habitual caffeine exposure. Not every trained athlete improves, and the benefit is easier to see in time-trial or time-to-exhaustion outcomes than in every endurance task.",
+      "evidence": [
+        {
+          "citation": "WangZ et al 2022 Nutrients",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of Caffeine Intake on Endurance Running Performance and Time to Exhaustion: A Systematic Review and Meta-Analysis.",
+          "pmid": "36615805",
+          "n_participants": 254,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.344,
+            "ci_low": 0.122,
+            "ci_high": 0.566,
+            "comparator": "caffeine versus placebo for time to exhaustion in trained runners"
+          }
+        },
+        {
+          "citation": "NaulleauC et al 2022 Sports Med",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of Pre-Exercise Caffeine Intake on Endurance Performance and Core Temperature Regulation During Exercise in the Heat: A Systematic Review with Meta-Analysis.",
+          "pmid": "35616851",
+          "n_participants": 52,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 2.1,
+            "ci_low": -0.7,
+            "ci_high": 4.8,
+            "comparator": "caffeine versus placebo for endurance performance in the heat"
+          }
+        },
+        {
+          "citation": "deMouraE CamposEZ et al 2020 Nutrients",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Caffeine Supplementation for 4 Days Does Not Induce Tolerance to the Ergogenic Effects Promoted by Acute Intake on Physiological, Metabolic, and Performance Parameters of Cyclists: A Randomized, Double-Blind, Crossover, Placebo-Controlled Study.",
+          "pmid": "32708555",
+          "n_participants": 14,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 2.53,
+            "comparator": "acute caffeine versus placebo for 16 km time-trial time in recreationally trained cyclists"
+          }
+        }
+      ]
+    }
+  ]
+}

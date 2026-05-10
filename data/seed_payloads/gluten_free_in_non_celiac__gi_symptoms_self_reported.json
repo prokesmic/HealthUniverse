@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "gluten_free_in_non_celiac",
+      "name": "Gluten-free diet in non-celiac individuals",
+      "kind": "behavior",
+      "aliases": [
+        "gluten avoidance without celiac disease",
+        "gluten-free diet in self-reported sensitivity"
+      ],
+      "description": "Avoidance of dietary gluten in people without confirmed celiac disease."
+    },
+    {
+      "slug": "gi_symptoms_self_reported",
+      "name": "Self-reported gastrointestinal symptoms",
+      "kind": "condition",
+      "aliases": [
+        "subjective GI symptom burden",
+        "self-reported digestive symptoms"
+      ],
+      "description": "Patient-reported gastrointestinal symptom severity such as bloating, pain, stool changes, or general symptom relapse."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "gluten_free_in_non_celiac",
+      "outcome_slug": "gi_symptoms_self_reported",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Among 59 adults self-reporting non-celiac gluten sensitivity, fructan challenge worsened symptoms more than gluten, which argues that a gluten-free response is often a broader FODMAP response rather than a gluten-specific one. But two randomized gluten-challenge studies still found a meaningful subgroup that relapsed specifically on gluten.",
+      "population": "adults without confirmed celiac disease who self-report gluten sensitivity or functional gastrointestinal symptoms",
+      "mechanism": "Some apparent gluten responses may actually reflect fructans or broader fermentable-carbohydrate intolerance, while a smaller subgroup appears to have a reproducible symptom response to gluten itself.",
+      "summary": "This edge should stay mixed. Gluten-free eating can reduce self-reported GI symptoms in some non-celiac people, but the challenge literature shows that the benefit often reflects removal of fructans or other dietary triggers rather than a universal gluten-specific effect.",
+      "caveats": "This does not dismiss non-celiac symptom experience; it means the mechanism is heterogeneous. A self-imposed gluten-free diet can feel helpful while still being an imprecise proxy for the true trigger.",
+      "evidence": [
+        {
+          "citation": "SkodjeGI et al 2018 Gastroenterology",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Fructan, Rather Than Gluten, Induces Symptoms in Patients With Self-Reported Non-Celiac Gluten Sensitivity.",
+          "pmid": "29102613",
+          "n_participants": 59
+        },
+        {
+          "citation": "DiSabatinoA et al 2016 Nutrients",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Evidence for the Presence of Non-Celiac Gluten Sensitivity in Patients with Functional Gastrointestinal Symptoms: Results from a Multicenter Randomized Double-Blind Placebo-Controlled Gluten Challenge.",
+          "pmid": "26867199",
+          "n_participants": 98
+        },
+        {
+          "citation": "Fernandez-BanaresF et al 2016 PLoS One",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Double-Blind Randomized Clinical Trial: Gluten versus Placebo Rechallenge in Patients with Lymphocytic Enteritis and Suspected Celiac Disease.",
+          "pmid": "27392045",
+          "n_participants": 18,
+          "effect_quant": {
+            "metric": "risk_difference",
+            "value": 62.5,
+            "unit": "percentage points",
+            "comparator": "clinical relapse on gluten versus placebo challenge"
+          }
+        }
+      ]
+    }
+  ]
+}

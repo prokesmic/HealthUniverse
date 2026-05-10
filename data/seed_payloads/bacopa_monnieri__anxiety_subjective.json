@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "bacopa_monnieri",
+      "name": "Bacopa monnieri extract",
+      "kind": "supplement",
+      "aliases": [
+        "Bacopa monnieri",
+        "Brahmi extract"
+      ],
+      "description": "Standardized Bacopa monnieri botanical extract used as an Ayurvedic nootropic supplement."
+    },
+    {
+      "slug": "anxiety_subjective",
+      "name": "Subjective anxiety symptoms",
+      "kind": "process",
+      "aliases": [
+        "self-reported anxiety",
+        "state and trait anxiety symptoms"
+      ],
+      "description": "Self-reported anxiety or stress-related symptoms measured with validated mood or anxiety scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "bacopa_monnieri",
+      "outcome_slug": "anxiety_subjective",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "healthy middle-aged or older adults taking Bacopa for weeks to months",
+      "mechanism": "Bacopa may influence stress reactivity through serotonergic, cholinergic, and antioxidant pathways, which could lower subjective anxiety in some users. In human trials, though, affective benefits are inconsistent and often secondary to cognitive outcomes, making the anxiolytic story much shakier than the memory-marketing narrative.",
+      "summary": "The evidence that Bacopa reliably lowers subjective anxiety is mixed. Some randomized trials report reductions in anxiety or stress reactivity, but at least one well-known placebo-controlled study specifically challenged earlier anti-anxiety claims and found only a trend rather than a clear effect.",
+      "caveats": "Anxiety is usually a secondary endpoint in these studies, and many trials are small or optimized for cognitive rather than mood outcomes. This makes the evidence easy to overstate if it is marketed as a primary anti-anxiety supplement.",
+      "evidence": [
+        {
+          "citation": "Calabrese C et al 2008 J Altern Complement Med",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of a standardized Bacopa monnieri extract on cognitive performance, anxiety, and depression in the elderly: a randomized, double-blind, placebo-controlled trial.",
+          "pmid": "18611150",
+          "n_participants": 54
+        },
+        {
+          "citation": "Sathyanarayanan V et al 2013 Psychopharmacology (Berl)",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Brahmi for the better? New findings challenging cognition and anti-anxiety effects of Brahmi (Bacopa monniera) in healthy adults.",
+          "pmid": "23354535",
+          "n_participants": 72
+        },
+        {
+          "citation": "Stough C et al 2025 Clin Drug Investig",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The Effects of a Bacopa monnieri Extract (Bacumen®) on Cognition, Stress, and Fatigue in Healthy Adults: A Randomized, Double-Blind, Placebo-Controlled Trial.",
+          "pmid": "41091332",
+          "n_participants": 101
+        }
+      ]
+    }
+  ]
+}

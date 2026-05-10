@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "creatine_monohydrate",
+      "name": "Creatine monohydrate supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "creatine",
+        "oral creatine monohydrate"
+      ],
+      "description": "Oral creatine monohydrate supplementation used to support training adaptations and high-intensity exercise performance."
+    },
+    {
+      "slug": "high_intensity_sprint_performance",
+      "name": "High-intensity sprint performance",
+      "kind": "process",
+      "aliases": [
+        "anaerobic sprint performance",
+        "short-duration sprint output"
+      ],
+      "description": "Performance in short, maximal, high-intensity sprint or anaerobic power tasks."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "creatine_monohydrate",
+      "outcome_slug": "high_intensity_sprint_performance",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Pooled data suggest creatine raises Wingate peak power by about 71 W, but direct sprint-race studies are not uniformly positive, especially in already elite swimmers.",
+      "population": "healthy adults and athletes performing short-duration maximal exercise",
+      "mechanism": "Creatine expands phosphocreatine availability and speeds ATP resynthesis during repeated maximal efforts, which should favor short anaerobic work. In practice, that translates more consistently to lab-based power outputs than to every sport-specific sprint outcome, where technique, training status, and event format matter a lot.",
+      "summary": "The literature is positive overall for anaerobic power, but less clean for real-world sprint races. Creatine seems to help some high-intensity sprint contexts, yet the effect is not universal enough to call this a straightforward protective edge without qualification.",
+      "caveats": "Benefit appears more reliable for cycling Wingate-type outputs and repeated sprint work than for all sport-specific sprint events. Highly trained athletes may show smaller or null improvements, and some positive results come from small trials.",
+      "evidence": [
+        {
+          "citation": "GuJ et al 2026 Front Nutr",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Creatine supplementation in young men under resistance versus non-resistance training: a systematic review and meta-analysis of strength, performance, and lean mass.",
+          "pmid": "42027564",
+          "n_participants": 246,
+          "effect_quant": {
+            "metric": "MD",
+            "value": 71.27,
+            "ci_low": 38.09,
+            "ci_high": 104.45,
+            "comparator": "creatine versus control for Wingate peak power"
+          }
+        },
+        {
+          "citation": "SkareOC et al 2001 Scand J Med Sci Sports",
+          "year": 2001,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Creatine supplementation improves sprint performance in male sprinters.",
+          "pmid": "11252467",
+          "n_participants": 18
+        },
+        {
+          "citation": "MujikaI et al 1996 Med Sci Sports Exerc",
+          "year": 1996,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Creatine supplementation does not improve sprint performance in competitive swimmers.",
+          "pmid": "8933496",
+          "n_participants": 20
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "polarised_endurance_training_distribution",
+      "name": "Polarised endurance training distribution",
+      "kind": "behavior",
+      "aliases": [
+        "polarized intensity distribution",
+        "POL endurance training",
+        "mostly easy plus some very hard training distribution"
+      ],
+      "description": "An endurance-training model with most work at low intensity, very little near threshold, and a smaller high-intensity component."
+    },
+    {
+      "slug": "vo2max",
+      "name": "VO2max",
+      "kind": "biomarker",
+      "aliases": [
+        "maximal oxygen uptake",
+        "aerobic capacity"
+      ],
+      "description": "The maximum rate of oxygen uptake during intense exercise, commonly used as a marker of aerobic fitness."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "polarised_endurance_training_distribution",
+      "outcome_slug": "vo2max",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The newest individual-participant network meta-analysis found no overall VO2max difference between polarised and pyramidal intensity distributions (SMD -0.06, p = 0.68), though competitive athletes may respond better to polarised training than recreational athletes. Earlier randomized-trial evidence suggested polarised training may outperform threshold-focused models for endurance performance, but direct VO2max superiority is much less consistent than the broader performance narrative.",
+      "population": "recreational and competitive endurance-trained athletes using structured intensity-distribution models",
+      "mechanism": "Polarised training may balance high aerobic volume with enough very hard work to stimulate central and peripheral adaptation while avoiding excessive threshold fatigue, but the exact aerobic-capacity response depends on athlete level and what comparator model is used.",
+      "summary": "This is a good example of a coaching idea that is stronger for performance than for one single biomarker. Polarised training can be an excellent endurance model, but the current VO2max-specific literature is mixed rather than decisively superior across all athletes.",
+      "caveats": "Competitive athletes may benefit more than recreational ones. Also, not every study uses the same zone definitions or comparator model, which makes clean one-line conclusions about VO2max difficult.",
+      "evidence": [
+        {
+          "citation": "RosenblatMA et al 2025 Sports Med",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Which Training Intensity Distribution Intervention will Produce the Greatest Improvements in Maximal Oxygen Uptake and Time-Trial Performance in Endurance Athletes? A Systematic Review and Network Meta-analysis of Individual Participant Data.",
+          "pmid": "39888556",
+          "n_participants": 348
+        },
+        {
+          "citation": "RosenblatMA et al 2019 J Strength Cond Res",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Polarized vs. Threshold Training Intensity Distribution on Endurance Sport Performance: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+          "pmid": "29863593",
+          "n_participants": 4
+        },
+        {
+          "citation": "PerezA et al 2019 Eur J Sport Sci",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of two different intensity distribution training programmes on aerobic and body composition variables in ultra-endurance runners.",
+          "pmid": "30381001",
+          "n_participants": 20
+        }
+      ]
+    }
+  ]
+}

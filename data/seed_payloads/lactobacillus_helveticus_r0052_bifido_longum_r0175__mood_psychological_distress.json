@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "lactobacillus_helveticus_r0052_bifido_longum_r0175",
+      "name": "Lactobacillus helveticus R0052 plus Bifidobacterium longum R0175",
+      "kind": "supplement",
+      "aliases": [
+        "R0052/R0175 psychobiotic blend",
+        "Cerebiome-style probiotic combination"
+      ],
+      "description": "A two-strain probiotic formulation combining Lactobacillus helveticus R0052 and Bifidobacterium longum R0175."
+    },
+    {
+      "slug": "mood_psychological_distress",
+      "name": "Mood and psychological distress",
+      "kind": "condition",
+      "aliases": [
+        "psychological distress burden",
+        "subclinical mood symptom load"
+      ],
+      "description": "Self-reported distress, anxiety, low mood, and related psychological symptom burden."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "lactobacillus_helveticus_r0052_bifido_longum_r0175",
+      "outcome_slug": "mood_psychological_distress",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "A 30-day randomized human study reported lower global distress, depression, anger-hostility, and urinary free cortisol with the R0052/R0175 blend, but a later 15-participant dancer trial showed no statistically significant between-group changes in stress-coping measures and a 65-participant secondary analysis suggested the mood effect may depend on concurrent non-SSRI antidepressant use.",
+      "population": "healthy adults with subclinical stress, depressed adults in adjunctive-treatment settings, and physically stressed female performers",
+      "mechanism": "This two-strain combination is proposed to modulate mood through gut-brain immune and metabolite signaling, including stress-hormone dynamics and short-chain fatty acid shifts. The mixed human pattern suggests that any benefit is context-sensitive and may depend on baseline distress level or background pharmacotherapy.",
+      "summary": "The R0052/R0175 blend may reduce psychological distress in some adults, but the evidence is mixed and probably context-dependent. Early healthy-volunteer results were encouraging, yet later small or stratified studies make the signal look conditional rather than robustly generalizable.",
+      "caveats": "Several human datasets are small, and one later analysis suggests antidepressant background may modify the apparent effect. This edge should be read as an exploratory psychobiotic signal, not as settled evidence of a broadly effective mood intervention.",
+      "evidence": [
+        {
+          "citation": "Messaoudi M et al 2011 Br J Nutr",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Assessment of psychotropic-like properties of a probiotic formulation (Lactobacillus helveticus R0052 and Bifidobacterium longum R0175) in rats and human subjects.",
+          "pmid": "20974015",
+          "n_participants": 55
+        },
+        {
+          "citation": "Wiącek J et al 2025 Microorganisms",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "low",
+          "notes": "Lactobacillus helveticus R0052 and Bifidobacterium longum R0175 Supplementation: An Exploratory, Randomized, Placebo-Controlled Trial of Endocannabinoid and Inflammatory Responses in Female Dancers.",
+          "pmid": "40572172",
+          "n_participants": 15
+        },
+        {
+          "citation": "Skonieczna-Żydecka K et al 2025 Comput Struct Biotechnol J",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Does isovaleric acid play a key role in the interaction between probiotics and antidepressants? A secondary analysis of a randomized clinical trial.",
+          "pmid": "40520599",
+          "n_participants": 65
+        }
+      ]
+    }
+  ]
+}

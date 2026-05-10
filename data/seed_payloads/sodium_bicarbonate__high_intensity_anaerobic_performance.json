@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "sodium_bicarbonate",
+      "name": "Sodium bicarbonate supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "baking soda supplementation",
+        "NaHCO3 supplementation"
+      ],
+      "description": "Oral sodium bicarbonate used to increase extracellular buffering capacity before high-intensity exercise."
+    },
+    {
+      "slug": "high_intensity_anaerobic_performance",
+      "name": "High-intensity anaerobic performance",
+      "kind": "process",
+      "aliases": [
+        "repeated sprint anaerobic performance",
+        "Wingate-style anaerobic performance"
+      ],
+      "description": "Performance during repeated short-duration high-intensity efforts that rely heavily on anaerobic energy production."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "sodium_bicarbonate",
+      "outcome_slug": "high_intensity_anaerobic_performance",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The most consistent benefit appears in repeated rather than single anaerobic efforts. In one meta-analysis, sodium bicarbonate improved mean power in repeated Wingate tests with SMDs ranging from 0.09 to 0.62, and direct athlete trials report about 2.9 to 5.9% gains in repeated-bout work output.",
+      "population": "trained athletes performing repeated high-intensity anaerobic efforts",
+      "mechanism": "Sodium bicarbonate raises extracellular bicarbonate and helps buffer the hydrogen ions that accumulate during repeated maximal work. That does not guarantee better performance in a single all-out sprint, but it can preserve output when fatigue and acidosis build over successive bouts.",
+      "summary": "This is a legitimate ergogenic edge, but it is more specific than the hype often suggests. Sodium bicarbonate tends to help repeated Wingate-style or sport-specific high-intensity efforts more than a single short sprint, which is why the best-supporting trials are the ones that stress repeated-bout fatigue.",
+      "caveats": "Gastrointestinal side effects are common and can erase the benefit in practice. The response is also protocol-dependent, so single-bout laboratory tests may underestimate the scenarios where bicarbonate actually helps.",
+      "evidence": [
+        {
+          "citation": "GrgicJ et al 2022 J Am Nutr Assoc",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of Sodium Bicarbonate Ingestion on Measures of Wingate Test Performance: A Meta-Analysis.",
+          "pmid": "33314967",
+          "n_participants": 10,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.62,
+            "ci_low": 0.15,
+            "ci_high": 1.08,
+            "comparator": "sodium bicarbonate versus placebo for mean power in repeated Wingate test 4"
+          }
+        },
+        {
+          "citation": "GrgicT et al 2020 Sci Rep",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The influence of progressive-chronic and acute sodium bicarbonate supplementation on anaerobic power and specific performance in team sports: a randomized, double-blind, placebo-controlled crossover study.",
+          "pmid": "32489393",
+          "n_participants": 24,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 2.7,
+            "comparator": "acute sodium bicarbonate versus placebo for discipline-specific field performance time"
+          }
+        },
+        {
+          "citation": "deOliveiraLF et al 2016 Scand J Med Sci Sports",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Chronic lactate supplementation does not improve blood buffering capacity and repeated high-intensity exercise.",
+          "pmid": "27882611",
+          "n_participants": 18,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 2.9,
+            "comparator": "sodium bicarbonate versus placebo for overall total mechanical work across repeated Wingate bouts"
+          }
+        }
+      ]
+    }
+  ]
+}

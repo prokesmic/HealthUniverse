@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "iodine_excess",
+      "name": "Iodine excess",
+      "kind": "nutrient",
+      "aliases": [
+        "high iodine exposure",
+        "excess iodine intake"
+      ],
+      "description": "Iodine exposure above physiological need from diet, supplements, or iodinated contrast."
+    },
+    {
+      "slug": "autoimmune_thyroid_susceptible",
+      "name": "Autoimmune thyroid susceptibility",
+      "kind": "condition",
+      "aliases": [
+        "thyroid autoimmunity risk",
+        "susceptibility to autoimmune thyroid dysfunction"
+      ],
+      "description": "Risk of thyroid autoimmunity or iodine-triggered thyroid dysfunction in susceptible individuals."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "iodine_excess",
+      "outcome_slug": "autoimmune_thyroid_susceptible",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A case-control study found urinary iodine excretion above 300 µg/L was more common in hypothyroid cases than community controls (OR 0.509 for controls versus cases), and a prospective contrast cohort found abnormal TSH in 22% of adults after a single large iodine load.",
+      "population": "adults or pregnant women with thyroid susceptibility, prior autoimmunity risk, or sudden exposure to large iodine loads",
+      "mechanism": "Excess iodine can increase intrathyroidal oxidative stress, alter antigen presentation, and trigger the Wolff-Chaikoff escape problem in susceptible glands. In people with borderline thyroid reserve or autoimmune tendency, this can shift a tolerable nutrient exposure into overt dysfunction.",
+      "summary": "Excess iodine appears harmful in people who are susceptible to thyroid autoimmunity or thyroid dysfunction, even though the broader iodine-thyroid relationship is not simply linear. The best read is that iodine is essential but oversupply can provoke autoimmune or hypothyroid problems in vulnerable groups.",
+      "caveats": "This is not an argument for iodine avoidance in the general population, because deficiency is also harmful and some cohorts show a U-shaped rather than monotonic curve. The risk signal is strongest when exposure is clearly excessive or when the thyroid is already vulnerable.",
+      "evidence": [
+        {
+          "citation": "Kotwal A 2015 Arch Med Res",
+          "year": 2015,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Does iodine excess lead to hypothyroidism? Evidence from a case-control study in India.",
+          "pmid": "26247626",
+          "n_participants": 792
+        },
+        {
+          "citation": "Lee SY 2015 Thyroid",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Urinary iodine excretion and serum thyroid function in adults after iodinated contrast administration.",
+          "pmid": "25744578",
+          "n_participants": 54,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 22.0,
+            "unit": "%",
+            "comparator": "participants developing abnormal TSH after iodinated contrast exposure"
+          }
+        },
+        {
+          "citation": "Zhang X 2022 Biol Trace Elem Res",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Association Between Iodine Nutritional Status and Adverse Pregnancy Outcomes in Beijing, China: a Single-Center Cohort Study.",
+          "pmid": "34570342",
+          "n_participants": 726
+        }
+      ]
+    }
+  ]
+}

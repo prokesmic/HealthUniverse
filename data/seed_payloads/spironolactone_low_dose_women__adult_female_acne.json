@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "spironolactone_low_dose_women",
+      "name": "Low-dose spironolactone in women",
+      "kind": "drug",
+      "aliases": [
+        "spironolactone for adult female acne",
+        "oral spironolactone in women"
+      ],
+      "description": "Low-dose oral spironolactone used in women for hormonally influenced acne management."
+    },
+    {
+      "slug": "adult_female_acne",
+      "name": "Adult female acne",
+      "kind": "condition",
+      "aliases": [
+        "acne in adult women",
+        "female adult acne"
+      ],
+      "description": "Persistent or moderate-to-severe acne affecting adult women."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "spironolactone_low_dose_women",
+      "outcome_slug": "adult_female_acne",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The 2025 placebo-controlled meta-analysis found objective acne improvement was much more likely with spironolactone than placebo (OR 6.59, 95% CI 3.50 to 12.43). A larger 1,086-patient synthesis and the SAFA randomized trial both support a real benefit in adult female acne.",
+      "population": "adult women with persistent, moderate, or hormonally influenced acne treated with low-dose oral spironolactone",
+      "mechanism": "Spironolactone blocks androgen signaling at the pilosebaceous unit, which makes it particularly useful when acne is hormonally driven or persistent in adult women.",
+      "summary": "This is one of the more credible hormonal-acne interventions in the current literature. Spironolactone is not just a niche off-label idea anymore; randomized and pooled evidence now supports real benefit in adult female acne, especially when long antibiotic courses are undesirable.",
+      "caveats": "Menstrual irregularity and other adverse effects still matter, and the edge is specific to women rather than acne treatment in general. Benefit is strongest for hormonally patterned or persistent adult female acne, not every acne phenotype.",
+      "evidence": [
+        {
+          "citation": "AbdelkhalekM et al 2025 J Cosmet Dermatol",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy and Safety of Oral Spironolactone for Women With Acne Vulgaris: A Systematic Review and Meta-Analysis of Randomized Placebo-Controlled Trials With Trial Sequential Analysis.",
+          "pmid": "40823723",
+          "n_participants": 563,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 6.59,
+            "ci_low": 3.50,
+            "ci_high": 12.43,
+            "comparator": "objective acne improvement with spironolactone versus placebo"
+          }
+        },
+        {
+          "citation": "AlharbiA et al 2025 Arch Dermatol Res",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and safety of Spironolactone in treating patients with acne vulgaris: a systematic review and meta-analysis of 1,086 patients.",
+          "pmid": "39891744",
+          "n_participants": 1086
+        },
+        {
+          "citation": "LaytonAM et al 2024 Health Technol Assess",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Clinical and cost-effectiveness of spironolactone in treating persistent facial acne in women: SAFA double-blinded RCT.",
+          "pmid": "39268864",
+          "n_participants": 410
+        }
+      ]
+    }
+  ]
+}

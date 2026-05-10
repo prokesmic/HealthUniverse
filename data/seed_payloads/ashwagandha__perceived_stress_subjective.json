@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ashwagandha",
+      "name": "Ashwagandha (Withania somnifera)",
+      "kind": "supplement",
+      "aliases": [
+        "Withania somnifera",
+        "ashwagandha root extract"
+      ],
+      "description": "Ashwagandha root extract used as an adaptogenic supplement for stress, anxiety, sleep, and general well-being."
+    },
+    {
+      "slug": "perceived_stress_subjective",
+      "name": "Subjective perceived stress",
+      "kind": "process",
+      "aliases": [
+        "self-reported stress burden",
+        "perceived stress scale outcome"
+      ],
+      "description": "Self-reported perceived stress measured with questionnaires such as the Perceived Stress Scale."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ashwagandha",
+      "outcome_slug": "perceived_stress_subjective",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2024 meta-analysis of nine randomized trials found that ashwagandha reduced Perceived Stress Scale scores versus placebo with a mean difference of -4.72 points (95% CI -8.45 to -0.99).",
+      "population": "healthy or mildly stressed adults with self-reported stress symptoms",
+      "mechanism": "Ashwagandha is proposed to reduce perceived stress through effects on hypothalamic-pituitary-adrenal signaling, autonomic balance, and possibly sleep quality. In human trials, the clearest benefit is on self-reported stress scales rather than on every objective biological marker.",
+      "summary": "Among popular stress supplements, ashwagandha has a more credible evidence base than many competitors. Pooled randomized evidence supports a modest reduction in perceived stress, although recent individual trials still show heterogeneity and suggest the average effect is meaningful but not dramatic.",
+      "caveats": "Trials differ in extract standardization, dose, and participant selection, which likely contributes to variable effect size. Subjective stress outcomes are also vulnerable to expectation and placebo effects, so the true real-world benefit may be smaller than the marketing suggests.",
+      "evidence": [
+        {
+          "citation": "Salve J et al 2024 Explore (NY)",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of Ashwagandha (Withania Somnifera) on stress and anxiety: A systematic review and meta-analysis.",
+          "pmid": "39348746",
+          "n_participants": 558,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -4.72,
+            "ci_low": -8.45,
+            "ci_high": -0.99,
+            "comparator": "ashwagandha versus placebo for perceived stress scale"
+          }
+        },
+        {
+          "citation": "Lopresti AL et al 2019 Medicine (Baltimore)",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "An investigation into the stress-relieving and pharmacological actions of an ashwagandha (Withania somnifera) extract: A randomized, double-blind, placebo-controlled study.",
+          "pmid": "31517876",
+          "n_participants": 60
+        },
+        {
+          "citation": "Smith-Ryan AE et al 2023 J Psychopharmacol",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Exploring the efficacy and safety of a novel standardized ashwagandha (Withania somnifera) root extract (Witholytin®) in adults experiencing high stress and fatigue in a randomized, double-blind, placebo-controlled trial.",
+          "pmid": "37740662",
+          "n_participants": 58
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "glycogen_supercompensation",
+      "name": "Glycogen supercompensation",
+      "kind": "behavior",
+      "aliases": [
+        "carbohydrate loading",
+        "glycogen loading",
+        "pre-race carbohydrate supercompensation"
+      ],
+      "description": "A pre-endurance-event strategy that raises muscle glycogen stores through several days of high carbohydrate intake, sometimes after a depletion session."
+    },
+    {
+      "slug": "marathon_finish_time",
+      "name": "Marathon finish time",
+      "kind": "process",
+      "aliases": [
+        "marathon performance time",
+        "42.2 km race time"
+      ],
+      "description": "How long it takes a runner to complete a marathon-distance race."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "glycogen_supercompensation",
+      "outcome_slug": "marathon_finish_time",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Direct marathon-finish-time trials are sparse, but modern endurance reviews still treat carbohydrate loading as the standard way to raise glycogen availability before marathon-length events. Older experiments suggest glycogen supercompensation supports longer endurance performance, whereas a much shorter 10 km time trial did not improve after only modest carbohydrate manipulation.",
+      "population": "trained endurance runners and other athletes competing in events long enough for glycogen depletion to become performance-limiting",
+      "mechanism": "Carbohydrate loading increases starting muscle glycogen, which delays the point at which pace must be reduced because carbohydrate availability becomes limiting. That logic matters much more in marathon-length competition than in shorter events where glycogen depletion is less decisive.",
+      "summary": "This is a classic endurance-sports edge where the physiology is stronger than the direct marathon RCT literature. The boring conclusion is still that glycogen supercompensation is worth doing for marathon-length races, but the strongest direct experiments are older and often use endurance surrogates rather than modern marathon finish-time designs.",
+      "caveats": "Evidence is more convincing for prolonged events than for shorter races. A null 10 km running trial should not be overgeneralized to the marathon, but it does argue against assuming that any high-carbohydrate week automatically improves performance regardless of event duration and protocol quality.",
+      "evidence": [
+        {
+          "citation": "BurkeLM et al 2019 Int J Sport Nutr Exerc Metab",
+          "year": 2019,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Contemporary Nutrition Strategies to Optimize Performance in Distance Runners and Race Walkers.",
+          "pmid": "30747558"
+        },
+        {
+          "citation": "WagenmakersAJ et al 1995 Int J Sport Nutr",
+          "year": 1995,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of carbohydrate ingestion subsequent to carbohydrate supercompensation on endurance performance.",
+          "pmid": "8605519",
+          "n_participants": 7
+        },
+        {
+          "citation": "ChryssanthopoulosC et al 1996 Br J Sports Med",
+          "year": 1996,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effects of alterations in dietary carbohydrate intake on running performance during a 10 km treadmill time trial.",
+          "pmid": "8889116",
+          "n_participants": 6
+        }
+      ]
+    }
+  ]
+}

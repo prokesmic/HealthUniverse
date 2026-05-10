@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "bacopa_monnieri",
+      "name": "Bacopa monnieri extract",
+      "kind": "supplement",
+      "aliases": [
+        "Bacopa monnieri",
+        "Brahmi extract"
+      ],
+      "description": "Standardized Bacopa monnieri botanical extract used as an Ayurvedic nootropic supplement."
+    },
+    {
+      "slug": "memory_in_healthy_adults",
+      "name": "Memory performance in healthy adults",
+      "kind": "process",
+      "aliases": [
+        "memory function in non-demented adults",
+        "healthy-adult memory performance"
+      ],
+      "description": "Objective memory performance in healthy or cognitively normal adults measured with standardized neuropsychological tasks."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "bacopa_monnieri",
+      "outcome_slug": "memory_in_healthy_adults",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2014 meta-analysis of nine randomized trials found that Bacopa improved selected cognitive endpoints, including choice reaction time by 10.6 ms (95% CI 9.2 to 12.1 ms) and Trail B performance by 17.9 ms versus control.",
+      "population": "healthy middle-aged and older adults without dementia",
+      "mechanism": "Bacopa's bacosides are proposed to support synaptic signaling, antioxidant defenses, and cholinergic function, which could modestly aid memory consolidation and speed of information processing over repeated dosing. Human effects appear to emerge after weeks rather than acutely and are more consistent for memory acquisition and attention speed than for every cognitive domain.",
+      "summary": "Bacopa monnieri has a modest but credible signal for improving memory-related performance in healthy adults when taken for at least several weeks. The strongest support comes from pooled randomized evidence and older placebo-controlled trials in healthy older adults, although not every recent trial has replicated a clear benefit on all primary cognitive endpoints.",
+      "caveats": "Most positive studies use chronic dosing over 12 weeks, so this is not an acute nootropic effect. Gastrointestinal side effects are not rare, and the size of benefit appears modest rather than dramatic.",
+      "evidence": [
+        {
+          "citation": "Kongkeaw C et al 2014 J Ethnopharmacol",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Meta-analysis of randomized controlled trials on cognitive effects of Bacopa monnieri extract.",
+          "pmid": "24252493",
+          "n_participants": 518,
+          "effect_quant": {
+            "metric": "WMD",
+            "value": -10.6,
+            "ci_low": -12.1,
+            "ci_high": -9.2,
+            "comparator": "Bacopa versus placebo for choice reaction time"
+          }
+        },
+        {
+          "citation": "Calabrese C et al 2008 J Altern Complement Med",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of a standardized Bacopa monnieri extract on cognitive performance, anxiety, and depression in the elderly: a randomized, double-blind, placebo-controlled trial.",
+          "pmid": "18611150",
+          "n_participants": 54
+        },
+        {
+          "citation": "Morgan A et al 2010 J Altern Complement Med",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Does Bacopa monnieri improve memory performance in older persons? Results of a randomized, placebo-controlled, double-blind trial.",
+          "pmid": "20590480",
+          "n_participants": 98
+        }
+      ]
+    }
+  ]
+}

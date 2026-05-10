@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "magnesium_supplementation",
+      "name": "Magnesium supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "oral magnesium repletion",
+        "magnesium replacement"
+      ],
+      "description": "Supplemental magnesium used to improve magnesium status or correct inadequate intake."
+    },
+    {
+      "slug": "testosterone_in_deficient",
+      "name": "Testosterone in deficient states",
+      "kind": "process",
+      "aliases": [
+        "testosterone under low-magnesium status",
+        "androgen status in deficiency-prone men"
+      ],
+      "description": "Circulating testosterone concentrations in men with low magnesium intake, low magnesium status, or other deficiency-prone states."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "magnesium_supplementation",
+      "outcome_slug": "testosterone_in_deficient",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "In a cohort of 399 older men, higher serum magnesium was independently associated with higher total testosterone (beta 48.72 +/- 12.61 after multivariable adjustment), but direct supplementation evidence is limited to a small 30-participant sports study and broader supplement reviews still judge the testosterone claim as weakly supported overall.",
+      "population": "adult men with low or variable magnesium status, including older community-dwelling men and young men in small supplementation trials",
+      "mechanism": "Magnesium may influence testosterone indirectly by improving cellular energy handling, reducing inflammatory signaling, and modulating sex hormone binding dynamics. In humans, though, the signal appears to depend heavily on baseline magnesium status and study context rather than behaving like a robust standalone testosterone booster.",
+      "summary": "Magnesium supplementation may help testosterone when magnesium status is low or physiologically stressed, but the human evidence is still thin and uneven. The strongest large human signal is observational, while direct supplementation trials are small and not cleanly representative of ordinary deficiency correction.",
+      "caveats": "Most of the evidence does not come from clearly magnesium-deficient hypogonadal men. This edge should be read as a plausible but weak deficiency-correction signal, not as strong support for magnesium as a reliable testosterone enhancer in the general population.",
+      "evidence": [
+        {
+          "citation": "Maggio M et al 2011 Int J Androl",
+          "year": 2011,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Magnesium and anabolic hormones in older men.",
+          "pmid": "21675994",
+          "n_participants": 399
+        },
+        {
+          "citation": "Cinar V et al 2011 Biol Trace Elem Res",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Effects of magnesium supplementation on testosterone levels of athletes and sedentary subjects at rest and after exhaustion.",
+          "pmid": "20352370",
+          "n_participants": 30
+        },
+        {
+          "citation": "Balasubramanian A et al 2020 World J Mens Health",
+          "year": 2020,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "'Testosterone Boosting' Supplements Composition and Claims Are not Supported by the Academic Literature.",
+          "pmid": "31385468"
+        }
+      ]
+    }
+  ]
+}

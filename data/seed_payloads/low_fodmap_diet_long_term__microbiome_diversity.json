@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "low_fodmap_diet_long_term",
+      "name": "Long-term low-FODMAP diet",
+      "kind": "behavior",
+      "aliases": [
+        "sustained low-FODMAP diet",
+        "extended FODMAP restriction"
+      ],
+      "description": "Ongoing restriction of fermentable oligo-, di-, mono-saccharides and polyols over weeks to months."
+    },
+    {
+      "slug": "microbiome_diversity",
+      "name": "Gut microbiome diversity",
+      "kind": "process",
+      "aliases": [
+        "alpha diversity of gut microbiota",
+        "microbial diversity"
+      ],
+      "description": "Diversity of the intestinal microbial community, including alpha-diversity indices and overall community richness."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "low_fodmap_diet_long_term",
+      "outcome_slug": "microbiome_diversity",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The best crossover diet trial found a low-FODMAP phase produced greater microbial diversity while simultaneously reducing total bacterial abundance, which is exactly why the long-term microbiome story stays mixed. Later clinical and review literature keeps that ambivalence: symptoms often improve, but the microbiome consequences are not uniformly reassuring.",
+      "population": "adults with irritable bowel syndrome or related gut symptoms following low-FODMAP dietary restriction for weeks to months",
+      "mechanism": "Reducing fermentable substrates can relieve osmotic and gas-driven IBS symptoms, but it can also reduce fermentable input for commensal organisms, so symptom benefit and microbial richness do not necessarily move in the same direction.",
+      "summary": "A long-term low-FODMAP diet should be treated as microbiome-mixed rather than simply beneficial or harmful. The diet can change the colonic environment in ways that improve symptoms, but sustained restriction may also suppress total bacterial abundance or specific beneficial taxa even when headline diversity metrics do not worsen.",
+      "caveats": "This edge is about microbial diversity, not symptom relief. It also does not imply the diet is unsafe; it means prolonged restriction should ideally be structured and liberalized when possible rather than followed indefinitely without reassessment.",
+      "evidence": [
+        {
+          "citation": "HalmosEP et al 2015 Gut",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Diets that differ in their FODMAP content alter the colonic luminal microenvironment.",
+          "pmid": "25016597",
+          "n_participants": 33
+        },
+        {
+          "citation": "NaseriK et al 2021 BMC Gastroenterol",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Influence of low FODMAP-gluten free diet on gut microbiota alterations and symptom severity in Iranian patients with irritable bowel syndrome.",
+          "pmid": "34261437",
+          "n_participants": 42
+        },
+        {
+          "citation": "StaudacherHM et al 2017 Neurogastroenterol Motil",
+          "year": 2017,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Low FODMAP in 2017: Lessons learned from clinical trials and mechanistic studies.",
+          "doi": "10.1111/nmo.13135",
+          "pmid": "28345807"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "progesterone_micronised_oral",
+      "name": "Oral micronized progesterone",
+      "kind": "drug",
+      "aliases": [
+        "micronized progesterone by mouth",
+        "oral progesterone"
+      ],
+      "description": "Micronized progesterone taken orally, usually at bedtime, in menopausal care."
+    },
+    {
+      "slug": "menopausal_sleep",
+      "name": "Menopausal sleep disturbance",
+      "kind": "condition",
+      "aliases": [
+        "sleep problems during menopause",
+        "menopausal insomnia symptoms"
+      ],
+      "description": "Subjective or objective sleep disruption occurring during the menopausal transition or postmenopause."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "progesterone_micronised_oral",
+      "outcome_slug": "menopausal_sleep",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In a 21-woman randomized sleep-laboratory trial, the oral micronized progesterone arm improved sleep efficiency by 8% and reduced wake after sleep onset over 6 months, while a 2020 systematic review of seven progestin-only RCTs concluded that the clearest symptom benefit came from 300 mg oral micronized progesterone.",
+      "population": "postmenopausal women with menopausal symptoms including night sweats, vasomotor symptoms, or disturbed sleep",
+      "mechanism": "Micronized progesterone is converted into neuroactive metabolites such as allopregnanolone that can enhance GABA-A signaling and promote sleep continuity. In menopause, that sedative effect may work together with vasomotor symptom reduction to decrease awakenings rather than dramatically change sleep architecture.",
+      "summary": "Oral micronized progesterone probably helps some menopausal women sleep better, especially when night waking is tied to vasomotor symptoms. The evidence is promising but still modest in size and more convincing for sleep continuity than for a broad cure of menopausal insomnia.",
+      "caveats": "Much of the literature is small and heterogeneous, and some benefit may be mediated through fewer hot flashes rather than a pure hypnotic effect. This edge is better supported for bedtime progesterone use in symptomatic postmenopausal women than for generalized sleep complaints of any cause.",
+      "evidence": [
+        {
+          "citation": "Friess E et al 2001 Menopause",
+          "year": 2001,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Sleep in menopause: differential effects of two forms of hormone replacement therapy.",
+          "pmid": "11201509",
+          "n_participants": 21
+        },
+        {
+          "citation": "Dolitsky SN et al 2020 Menopause",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of progestin-only treatment for the management of menopausal symptoms: a systematic review.",
+          "pmid": "33109992",
+          "n_participants": 601
+        },
+        {
+          "citation": "Hitchcock CL et al 2012 Menopause",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Oral micronized progesterone for vasomotor symptoms--a placebo-controlled randomized trial in healthy postmenopausal women.",
+          "pmid": "22453200",
+          "n_participants": 133
+        }
+      ]
+    }
+  ]
+}

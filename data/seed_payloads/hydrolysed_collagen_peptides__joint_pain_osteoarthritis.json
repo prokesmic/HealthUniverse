@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hydrolysed_collagen_peptides",
+      "name": "Hydrolysed collagen peptides",
+      "kind": "supplement",
+      "aliases": [
+        "oral collagen peptides",
+        "collagen hydrolysate"
+      ],
+      "description": "Orally consumed hydrolysed collagen peptide supplements marketed for skin, joint, and connective tissue support."
+    },
+    {
+      "slug": "joint_pain_osteoarthritis",
+      "name": "Joint pain in osteoarthritis",
+      "kind": "condition",
+      "aliases": [
+        "osteooarthritis pain",
+        "OA joint pain"
+      ],
+      "description": "Pain severity or symptomatic burden in osteoarthritis."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hydrolysed_collagen_peptides",
+      "outcome_slug": "joint_pain_osteoarthritis",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2023 meta-analysis of four knee-osteoarthritis trials found a significant pooled pain-relief signal for collagen peptides versus placebo, but individual randomized trials are inconsistent, including a 2025 placebo-controlled study that found no between-group advantage.",
+      "population": "adults with knee or hip osteoarthritis taking oral hydrolysed collagen formulations for several weeks to months",
+      "mechanism": "Collagen hydrolysates may influence cartilage matrix turnover and joint symptom perception, but the clinical literature suggests any benefit is modest and formulation-dependent rather than uniformly robust.",
+      "summary": "Collagen peptides for osteoarthritis pain sit in the mixed zone. Pooled analyses suggest small symptomatic benefit, but better recent randomized evidence has been less enthusiastic, so this is not a high-certainty joint-pain intervention.",
+      "caveats": "This edge should not be sold as a disease-modifying osteoarthritis treatment. Results vary by formulation, comparator, and trial quality, and many studies remain small or commercially flavored.",
+      "evidence": [
+        {
+          "citation": "XingR et al 2023 J Orthop Surg Res",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Analgesic efficacy of collagen peptide in knee osteoarthritis: a meta-analysis of randomized controlled trials.",
+          "pmid": "37717022",
+          "n_participants": 507
+        },
+        {
+          "citation": "BagchiD et al 2012 J Agric Food Chem",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of the novel low molecular weight hydrolyzed chicken sternal cartilage extract, BioCell Collagen, on improving osteoarthritis-related symptoms: a randomized, double-blind, placebo-controlled trial.",
+          "pmid": "22486722",
+          "n_participants": 80
+        },
+        {
+          "citation": "MelloLR et al 2025 Sci Rep",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Efficacy of combined undenatured type II collagen and hydrolysed collagen supplementation in knee osteoarthritis: a randomised controlled trial.",
+          "pmid": "40897777",
+          "n_participants": 68
+        }
+      ]
+    }
+  ]
+}

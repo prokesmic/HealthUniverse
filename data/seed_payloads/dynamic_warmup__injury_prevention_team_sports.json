@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "dynamic_warmup",
+      "name": "Dynamic neuromuscular warm-up",
+      "kind": "behavior",
+      "aliases": [
+        "neuromuscular warm-up",
+        "dynamic movement-prep warm-up",
+        "FIFA 11+ style warm-up"
+      ],
+      "description": "A structured warm-up that combines running, balance, agility, strength, and movement-control drills before sport participation."
+    },
+    {
+      "slug": "injury_prevention_team_sports",
+      "name": "Injury prevention in team sports",
+      "kind": "process",
+      "aliases": [
+        "lower-extremity injury risk reduction in team sports",
+        "sports injury prevention"
+      ],
+      "description": "Reducing the rate of sports injuries during team-based athletic participation."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "dynamic_warmup",
+      "outcome_slug": "injury_prevention_team_sports",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The injury-prevention signal for structured dynamic warm-ups is one of the stronger applied sports-medicine findings. A 2017 dose-response meta-analysis found a 42% lower lower-extremity injury rate with neuromuscular training overall, and newer soccer-specific meta-analyses report meaningful injury reductions when FIFA 11+ style warm-ups are followed consistently.",
+      "population": "youth and adult team-sport athletes, especially soccer players and female field and court sport athletes",
+      "mechanism": "These warm-ups likely work by rehearsing safer movement patterns while improving balance, trunk control, eccentric strength, and landing or cutting mechanics. The benefit depends heavily on adherence, which is why coach implementation quality matters almost as much as the exercise menu itself.",
+      "summary": "Unlike many performance supplements, this is a genuinely strong practical edge. Structured dynamic neuromuscular warm-ups are low-cost, scalable, and consistently linked to lower injury risk in team-sport settings.",
+      "caveats": "The effect depends on compliance. A nominal warm-up printed on paper but poorly adopted by teams will not deliver the same protection as a consistently coached program.",
+      "evidence": [
+        {
+          "citation": "SteibS et al 2017 Front Physiol",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Dose-Response Relationship of Neuromuscular Training for Injury Prevention in Youth Athletes: A Meta-Analysis.",
+          "pmid": "29184511",
+          "n_participants": 16,
+          "effect_quant": {
+            "metric": "injury_rate_ratio",
+            "value": 0.58,
+            "comparator": "neuromuscular training versus usual practice for lower-extremity injury risk"
+          }
+        },
+        {
+          "citation": "MartinezP et al 2025 J Clin Med",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effectiveness of Neuromuscular Training in Preventing Lower Limb Soccer Injuries: A Systematic Review and Meta-Analysis.",
+          "pmid": "40095804",
+          "n_participants": 10000
+        },
+        {
+          "citation": "SilvaR et al 2026 Am J Sports Med",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The Effects of Adherence to the FIFA 11+ Program on Injury Risk in Soccer Players: A Systematic Review and Meta-analysis.",
+          "pmid": "41981827",
+          "n_participants": 2025
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "boswellia_serrata",
+      "name": "Boswellia serrata",
+      "kind": "supplement",
+      "aliases": [
+        "frankincense extract",
+        "boswellia gum resin"
+      ],
+      "description": "Boswellia serrata gum resin extract used as an anti-inflammatory herbal supplement."
+    },
+    {
+      "slug": "ulcerative_colitis_remission",
+      "name": "Ulcerative colitis remission",
+      "kind": "condition",
+      "aliases": [
+        "UC remission",
+        "remission of active ulcerative colitis"
+      ],
+      "description": "Clinical remission or maintenance of remission in ulcerative colitis."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "boswellia_serrata",
+      "outcome_slug": "ulcerative_colitis_remission",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "The only direct Boswellia ulcerative colitis trial was tiny, with remission reported in 82% of Boswellia-treated patients versus 75% of sulfasalazine controls in a 30-patient comparison. Later reviews mainly conclude that the signal is intriguing but far too thin to treat as established remission therapy.",
+      "population": "adults with active ulcerative colitis receiving Boswellia serrata gum resin or extract preparations",
+      "mechanism": "Boswellia’s boswellic acids may reduce leukotriene-driven intestinal inflammation through 5-lipoxygenase-related pathways, which is why the supplement is often framed as an anti-inflammatory adjunct in inflammatory bowel disease.",
+      "summary": "Boswellia for ulcerative colitis remains a low-confidence edge. A small early trial suggested remission rates comparable to sulfasalazine, but the evidence base never matured into the kind of replicated placebo-controlled program needed to upgrade this beyond a tentative signal.",
+      "caveats": "This is exactly the kind of edge that supplement marketing tends to overstate. The direct human remission literature is sparse, old, and methodologically limited, so this should not be interpreted as a replacement for established UC therapy.",
+      "evidence": [
+        {
+          "citation": "GuptaI et al 1997 Eur J Med Res",
+          "year": 1997,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Effects of Boswellia serrata gum resin in patients with ulcerative colitis.",
+          "pmid": "9049593",
+          "n_participants": 30
+        },
+        {
+          "citation": "LangmeadL et al 2013 Aliment Pharmacol Ther",
+          "year": 2013,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Systematic review: the efficacy of herbal therapy in inflammatory bowel disease.",
+          "doi": "10.1111/apt.12464",
+          "pmid": "23981095",
+          "n_participants": 1484
+        },
+        {
+          "citation": "TriantafillidisJK et al 2015 Ann Gastroenterol",
+          "year": 2015,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Herbal and plant therapy in patients with inflammatory bowel disease.",
+          "pmid": "25830661"
+        }
+      ]
+    }
+  ]
+}

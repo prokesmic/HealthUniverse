@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "dairy_elimination",
+      "name": "Dairy elimination",
+      "kind": "behavior",
+      "aliases": [
+        "cow's milk avoidance",
+        "milk-free diet"
+      ],
+      "description": "Intentional removal of dairy foods, usually cow's milk and related products, from a child's diet as a strategy to improve eczema."
+    },
+    {
+      "slug": "eczema_severity_children",
+      "name": "Eczema severity in children",
+      "kind": "condition",
+      "aliases": [
+        "paediatric atopic dermatitis severity",
+        "SCORAD in children with eczema"
+      ],
+      "description": "Clinical severity of childhood atopic dermatitis or eczema, measured by validated scores such as SCORAD or similar symptom scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "dairy_elimination",
+      "outcome_slug": "eczema_severity_children",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The best modern synthesis found that dietary elimination may improve eczema severity slightly, with about 50% improving by a minimally important SCORAD difference versus 41% without elimination, a risk difference of 9%. That modest possible benefit sits beside older challenge studies showing some children worsen with cow's milk reintroduction, but the evidence is inconsistent and not strong enough to justify broad indiscriminate dairy restriction.",
+      "population": "children with atopic dermatitis or eczema, generally without clearly established food allergy",
+      "mechanism": "In a subset of children, cow's milk proteins may act as symptom triggers through allergic or non-IgE inflammatory pathways, but outside that subgroup indiscriminate dairy elimination can remove nutrient-dense foods without meaningfully changing skin inflammation.",
+      "summary": "Dairy elimination can help some children with eczema, but the effect is not broad or reliably large. The most defensible reading is that milk avoidance may slightly improve symptoms in selected children, while routine elimination for all paediatric eczema is not strongly supported.",
+      "caveats": "Older studies often bundled milk elimination with removal of other foods, and many trials are small or at risk of bias. This edge is about eczema severity, not confirmed food allergy management, which follows a different clinical logic.",
+      "evidence": [
+        {
+          "citation": "OykhmanP et al 2022 J Allergy Clin Immunol Pract",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Dietary Elimination for the Treatment of Atopic Dermatitis: A Systematic Review and Meta-Analysis.",
+          "pmid": "35987995",
+          "n_participants": 599,
+          "effect_quant": {
+            "metric": "risk_difference",
+            "value": 9,
+            "unit": "percent",
+            "comparator": "proportion achieving minimally important SCORAD improvement versus no elimination"
+          }
+        },
+        {
+          "citation": "VassilopoulouE et al 2024 Allergy",
+          "year": 2024,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A systematic review and meta-analysis of nutritional and dietary interventions in randomized controlled trials for skin symptoms in children with atopic dermatitis and without food allergy: An EAACI task force report.",
+          "pmid": "38783644",
+          "n_participants": 1880
+        },
+        {
+          "citation": "SloperKS et al 1991 Q J Med",
+          "year": 1991,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Children with atopic eczema. I: Clinical response to food elimination and subsequent double-blind food challenge.",
+          "pmid": "1754670",
+          "n_participants": 91
+        }
+      ]
+    }
+  ]
+}

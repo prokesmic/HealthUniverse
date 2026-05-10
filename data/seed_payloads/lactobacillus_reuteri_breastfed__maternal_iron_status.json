@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "lactobacillus_reuteri_breastfed",
+      "name": "Lactobacillus reuteri in breastfeeding dyads",
+      "kind": "supplement",
+      "aliases": [
+        "maternal L. reuteri supplementation during lactation",
+        "Lactobacillus reuteri while breastfeeding"
+      ],
+      "description": "Maternal or breastfeeding-dyad supplementation with Lactobacillus reuteri during late pregnancy or lactation."
+    },
+    {
+      "slug": "maternal_iron_status",
+      "name": "Maternal iron status",
+      "kind": "biomarker",
+      "aliases": [
+        "breast-milk iron status",
+        "iron-related lactation status"
+      ],
+      "description": "Maternal iron-related status during lactation, including breast-milk iron concentration or closely related iron-availability measures."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "lactobacillus_reuteri_breastfed",
+      "outcome_slug": "maternal_iron_status",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "pregnant or lactating women, and breastfed mother-infant dyads receiving probiotic supplementation",
+      "mechanism": "Any iron-related effect would likely be indirect through gut or breast-milk microbiology, inflammatory signaling, or micronutrient handling during lactation rather than a direct strain-specific iron action.",
+      "summary": "This is mostly an evidence-gap edge. The literature on L. reuteri in breastfeeding women focuses on breast-milk immune markers and neonatal microbiota, while direct iron-status outcomes are scarce and come mainly from broader synbiotic rather than clearly strain-specific studies.",
+      "caveats": "The closest mineral study is synbiotic rather than clearly L. reuteri-only. This payload exists to capture uncertainty transparently, not to make a confident claim that L. reuteri improves maternal iron status.",
+      "evidence": [
+        {
+          "citation": "MahdaviR et al 2015 J Trace Elem Med Biol",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "A pilot study of synbiotic supplementation on breast milk mineral concentrations and growth of exclusively breast fed infants.",
+          "pmid": "25744506",
+          "n_participants": 57
+        },
+        {
+          "citation": "PagliariniE et al 2026 Nutrients",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Effect of Supplementation with Lactobacillus reuteri SGL 01 in Lactating Women on Breast Milk and Neonatal Gut Microbiota: An Exploratory, Randomized, Open-Label Clinical Trial.",
+          "pmid": "41829964",
+          "n_participants": 27
+        },
+        {
+          "citation": "BottcherMF et al 2008 Pediatr Allergy Immunol",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Low breast milk TGF-beta2 is induced by Lactobacillus reuteri supplementation and associates with reduced risk of sensitization during infancy.",
+          "pmid": "18221472",
+          "n_participants": 109
+        }
+      ]
+    }
+  ]
+}

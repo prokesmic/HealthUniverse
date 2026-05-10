@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "vinpocetine",
+      "name": "Vinpocetine",
+      "kind": "supplement",
+      "aliases": [
+        "Cavinton",
+        "ethyl apovincaminate"
+      ],
+      "description": "A synthetic vincamine derivative marketed for cerebral blood flow and cognition."
+    },
+    {
+      "slug": "cognitive_function_vascular",
+      "name": "Cognitive function in vascular impairment",
+      "kind": "process",
+      "aliases": [
+        "vascular cognition",
+        "cognition in vascular dementia or hypoperfusion"
+      ],
+      "description": "Cognitive performance in people with vascular cognitive impairment, vascular dementia, or chronic cerebral hypoperfusion."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "vinpocetine",
+      "outcome_slug": "cognitive_function_vascular",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "adults with vascular dementia, mixed dementia syndromes, or chronic cerebral hypoperfusion",
+      "mechanism": "Vinpocetine is mainly proposed to help by improving cerebrovascular reserve and modulating phosphodiesterase-dependent signaling in hypoperfused brain tissue. That vascular rationale is biologically plausible, but the clinical literature remains old, heterogeneous, and too inconsistent to show that better blood-flow physiology translates into dependable cognitive benefit.",
+      "summary": "Vinpocetine has shown occasional cognitive improvement signals in vascular or mixed dementia studies, but the evidence base remains inconclusive. The strongest review found only three old randomized trials, and later human work has been too heterogeneous or too small to turn vinpocetine into a convincing evidence-backed therapy for vascular cognitive decline.",
+      "caveats": "Much of this literature predates contemporary dementia trial standards, and several reports mix vascular and degenerative syndromes. Claims that vinpocetine is a proven cognition enhancer are much stronger than the actual human evidence supports.",
+      "evidence": [
+        {
+          "citation": "Szatmari SZ et al 2003 Cochrane Database Syst Rev",
+          "year": 2003,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Vinpocetine for cognitive impairment and dementia.",
+          "pmid": "12535455",
+          "n_participants": 583
+        },
+        {
+          "citation": "Hindmarch I et al 1991 Int Clin Psychopharmacol",
+          "year": 1991,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Efficacy and tolerance of vinpocetine in ambulant patients suffering from mild to moderate organic psychosyndromes.",
+          "pmid": "2071888",
+          "n_participants": 203
+        },
+        {
+          "citation": "Valikovics A 2007 Ideggyogy Sz",
+          "year": 2007,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "[Investigation of the effect of vinpocetine on cerebral blood flow and cognitive functions].",
+          "pmid": "17713111",
+          "n_participants": 56
+        }
+      ]
+    }
+  ]
+}

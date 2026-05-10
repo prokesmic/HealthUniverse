@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "citicoline",
+      "name": "Citicoline (CDP-choline)",
+      "kind": "supplement",
+      "aliases": [
+        "CDP-choline",
+        "cytidinediphosphocholine"
+      ],
+      "description": "An orally administered choline donor used to support membrane phospholipid synthesis and cognitive function."
+    },
+    {
+      "slug": "memory_age_related_decline",
+      "name": "Memory decline related to aging",
+      "kind": "process",
+      "aliases": [
+        "age-associated memory impairment",
+        "age-related memory loss"
+      ],
+      "description": "Declining memory performance in older adults without overt dementia or with mild chronic cerebral impairment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "citicoline",
+      "outcome_slug": "memory_age_related_decline",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "population": "older adults with age-associated memory impairment or chronic cerebral cognitive decline",
+      "mechanism": "Citicoline supplies choline and cytidine needed for phosphatidylcholine synthesis and acetylcholine support, which may help neuronal membrane turnover and memory-related neurotransmission in aging brains. Human benefits appear more plausible in people with baseline inefficiency or impairment than in already high-functioning younger adults.",
+      "summary": "Citicoline has a modest but plausible evidence base for supporting memory in older adults with age-related decline. The newer placebo-controlled trial in age-associated memory impairment is positive, and older randomized evidence plus Cochrane review data point in the same general direction, though the literature is older and methodologically uneven.",
+      "caveats": "Much of the evidence predates modern trial standards and often mixes age-related decline with broader chronic cerebrovascular cognitive impairment. The overall signal looks more like a modest niche benefit than a dramatic memory-restoring effect.",
+      "evidence": [
+        {
+          "citation": "Nakazaki E et al 2021 J Nutr",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Citicoline and Memory Function in Healthy Older Adults: A Randomized, Double-Blind, Placebo-Controlled Clinical Trial.",
+          "pmid": "33978188",
+          "n_participants": 100
+        },
+        {
+          "citation": "Fioravanti M et al 2000 Cochrane Database Syst Rev",
+          "year": 2000,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cytidinediphosphocholine (CDP choline) for cognitive and behavioural disturbances associated with chronic cerebral disorders in the elderly.",
+          "pmid": "11034681",
+          "n_participants": 12
+        },
+        {
+          "citation": "Spiers PA et al 1996 Arch Neurol",
+          "year": 1996,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Citicoline improves verbal memory in aging.",
+          "pmid": "8624220",
+          "n_participants": 95
+        }
+      ]
+    }
+  ]
+}

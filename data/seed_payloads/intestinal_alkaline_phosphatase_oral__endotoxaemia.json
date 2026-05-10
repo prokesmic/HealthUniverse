@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "intestinal_alkaline_phosphatase_oral",
+      "name": "Oral intestinal alkaline phosphatase",
+      "kind": "supplement",
+      "aliases": [
+        "oral IAP",
+        "exogenous alkaline phosphatase"
+      ],
+      "description": "Orally administered intestinal alkaline phosphatase or related exogenous alkaline-phosphatase formulations promoted for gut-barrier and endotoxin-detoxifying effects."
+    },
+    {
+      "slug": "endotoxaemia",
+      "name": "Endotoxaemia",
+      "kind": "biomarker",
+      "aliases": [
+        "circulating endotoxin burden",
+        "LPS-related endotoxemia"
+      ],
+      "description": "Systemic exposure to endotoxin or lipopolysaccharide-related inflammatory burden associated with gut barrier dysfunction."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "intestinal_alkaline_phosphatase_oral",
+      "outcome_slug": "endotoxaemia",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "humans or translational models receiving exogenous intestinal alkaline phosphatase to modulate gut-derived inflammation or endotoxin burden",
+      "mechanism": "Intestinal alkaline phosphatase can dephosphorylate lipopolysaccharide and other microbial ligands, which provides a biologically coherent route for lowering endotoxin signaling and improving gut barrier resilience.",
+      "summary": "Oral intestinal alkaline phosphatase has one of the clearest mechanistic stories in the whole gut-supplement space, but human evidence remains early and indirect. The literature supports a plausible anti-endotoxin role, yet direct clinical proof that oral supplementation lowers endotoxaemia in humans is still thin.",
+      "caveats": "Most of the strongest endotoxin evidence is mechanistic or animal-based. The available human trial was in ulcerative colitis and tracked inflammatory activity rather than a clean endotoxemia endpoint.",
+      "evidence": [
+        {
+          "citation": "LukasM et al 2010 Inflamm Bowel Dis",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Exogenous alkaline phosphatase for the treatment of patients with moderate to severe ulcerative colitis.",
+          "pmid": "19885903",
+          "n_participants": 21
+        },
+        {
+          "citation": "EstakiM et al 2014 World J Gastroenterol",
+          "year": 2014,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Interplay between intestinal alkaline phosphatase, diet, gut microbes and immunity.",
+          "pmid": "25400448"
+        },
+        {
+          "citation": "SinghSB et al 2021 Biomolecules",
+          "year": 2021,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Role of Intestinal Alkaline Phosphatase in Innate Immunity.",
+          "pmid": "34944428"
+        }
+      ]
+    }
+  ]
+}

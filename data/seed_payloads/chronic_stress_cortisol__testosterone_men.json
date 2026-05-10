@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "chronic_stress_cortisol",
+      "name": "Chronic stress with elevated cortisol burden",
+      "kind": "process",
+      "aliases": [
+        "chronic distress with high cortisol",
+        "long-term HPA-axis stress load"
+      ],
+      "description": "Persistent psychological or physiological stress states characterized by higher cortisol exposure."
+    },
+    {
+      "slug": "testosterone_men",
+      "name": "Testosterone status in men",
+      "kind": "biomarker",
+      "aliases": [
+        "male testosterone levels",
+        "testosterone in adult men"
+      ],
+      "description": "Circulating testosterone level or testosterone-linked androgen status in men."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "chronic_stress_cortisol",
+      "outcome_slug": "testosterone_men",
+      "direction": "harmful",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "The Caerphilly cohort found a higher morning cortisol:testosterone ratio predicted later ischemic heart disease with an age-adjusted odds ratio of 1.22 per standard-deviation increase, showing that chronic cortisol-dominant hormonal tone tracks with lower-androgen physiology rather than resilience. Smaller SABPA data then linked chronic distress and cortisol burden specifically to the low-testosterone male subgroup.",
+      "population": "adult men exposed to chronic psychological or physiological stress, including community cohorts and endurance-trained men with chronic energy stress",
+      "mechanism": "Persistent HPA-axis activation can suppress gonadotropin signalling and shift steroidogenesis toward cortisol-dominant physiology, especially when stress is paired with energy deficit, poor sleep, or cardiometabolic strain.",
+      "summary": "The literature supports a cautious harmful reading rather than dramatic certainty: chronic cortisol-heavy stress states in men are associated with lower-testosterone physiology, but the human evidence base is still built on a few cohorts and mechanistic reviews rather than large intervention trials.",
+      "caveats": "This edge is not strong enough to claim that every stressed man will show clinically low testosterone, and some of the evidence uses cortisol:testosterone balance or low-testosterone subgroups rather than clean before-and-after stress interventions.",
+      "evidence": [
+        {
+          "citation": "SmithGD et al 2005 Circulation",
+          "year": 2005,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Cortisol, testosterone, and coronary heart disease: prospective evidence from the Caerphilly study.",
+          "pmid": "16009799",
+          "n_participants": 2512,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.22,
+            "ci_low": 1.07,
+            "ci_high": 1.38,
+            "comparator": "incident ischemic heart disease per standard-deviation increase in cortisol:testosterone ratio"
+          }
+        },
+        {
+          "citation": "MalanNT et al 2014 J Hum Hypertens",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Chronic distress and acute vascular stress responses associated with ambulatory blood pressure in low-testosterone African men: the SABPA Study.",
+          "doi": "10.1038/jhh.2013.124",
+          "pmid": "24284381",
+          "n_participants": 202
+        },
+        {
+          "citation": "ObmińskiZ et al 2023 Eur J Transl Myol",
+          "year": 2023,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Hungry runners - low energy availability in male endurance athletes and its impact on performance and testosterone: mini-review.",
+          "doi": "10.4081/ejtm.2023.11244",
+          "pmid": "37052052"
+        }
+      ]
+    }
+  ]
+}

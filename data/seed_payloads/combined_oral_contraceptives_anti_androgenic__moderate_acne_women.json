@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "combined_oral_contraceptives_anti_androgenic",
+      "name": "Anti-androgenic combined oral contraceptives",
+      "kind": "drug",
+      "aliases": [
+        "drospirenone-containing oral contraceptives",
+        "anti-androgenic COCs"
+      ],
+      "description": "Combined oral contraceptives with anti-androgenic properties used for acne control in women."
+    },
+    {
+      "slug": "moderate_acne_women",
+      "name": "Moderate acne in women",
+      "kind": "condition",
+      "aliases": [
+        "moderate female acne",
+        "women with moderate acne vulgaris"
+      ],
+      "description": "Moderate acne vulgaris in female patients."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "combined_oral_contraceptives_anti_androgenic",
+      "outcome_slug": "moderate_acne_women",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a pooled placebo-controlled analysis of 893 women, an ethinylestradiol 20 μg/drospirenone 3 mg regimen tripled the odds of investigator-rated clear or almost clear skin (OR 3.41, 95% CI 2.15 to 5.43). Placebo-controlled truncal and facial acne trials show the same direction of benefit.",
+      "population": "adolescent and adult women with moderate acne vulgaris using anti-androgenic combined oral contraceptive regimens",
+      "mechanism": "Anti-androgenic oral contraceptives reduce ovarian androgen signaling and sebaceous stimulation, which can lower lesion formation in hormonally responsive acne.",
+      "summary": "Anti-androgenic combined oral contraceptives are a real acne intervention, not just a side effect of contraception. The clinical-trial literature shows consistent lesion reduction and higher odds of clear or almost clear skin in women with moderate acne.",
+      "caveats": "This edge is limited to women who are appropriate candidates for combined hormonal contraception. It should be interpreted alongside contraceptive risks and preferences rather than as a universally interchangeable acne medication.",
+      "evidence": [
+        {
+          "citation": "KoltunW et al 2011 Eur J Obstet Gynecol Reprod Biol",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Treatment of moderate acne vulgaris using a combined oral contraceptive containing ethinylestradiol 20 μg plus drospirenone 3mg administered in a 24/4 regimen: a pooled analysis.",
+          "pmid": "21288628",
+          "n_participants": 893,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 3.41,
+            "ci_low": 2.15,
+            "ci_high": 5.43,
+            "comparator": "investigator-rated clear or almost clear skin with EE/drospirenone versus placebo"
+          }
+        },
+        {
+          "citation": "MaloneyJM et al 2009 J Drugs Dermatol",
+          "year": 2009,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A randomized controlled trial of a low-dose combined oral contraceptive containing 3 mg drospirenone plus 20 microg ethinylestradiol in the treatment of acne vulgaris: lesion counts, investigator ratings and subject self-assessment.",
+          "pmid": "19746676",
+          "n_participants": 538
+        },
+        {
+          "citation": "vanVlotenWA et al 2010 Int J Womens Health",
+          "year": 2010,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Efficacy and safety of combined ethinyl estradiol/drospirenone oral contraceptives in the treatment of acne.",
+          "pmid": "21072290"
+        }
+      ]
+    }
+  ]
+}

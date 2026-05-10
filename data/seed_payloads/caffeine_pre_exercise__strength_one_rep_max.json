@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "caffeine_pre_exercise",
+      "name": "Pre-exercise caffeine intake",
+      "kind": "supplement",
+      "aliases": [
+        "acute caffeine supplementation before exercise"
+      ],
+      "description": "Caffeine consumed before exercise in ergogenic doses."
+    },
+    {
+      "slug": "strength_one_rep_max",
+      "name": "One-repetition maximum strength",
+      "kind": "process",
+      "aliases": [
+        "1RM strength",
+        "maximal lifting strength"
+      ],
+      "description": "Maximal dynamic strength assessed with a one-repetition maximum test."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "caffeine_pre_exercise",
+      "outcome_slug": "strength_one_rep_max",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The best synthesis reports a small pooled benefit for maximal strength overall, with SMD 0.20 (95% CI 0.03 to 0.36), but individual 1RM studies range from no effect to only about 2.5 to 2.7% improvement in bench press.",
+      "population": "healthy adults and resistance-trained participants",
+      "mechanism": "Caffeine may improve maximal strength by increasing central drive and reducing the perception of effort, but single-repetition strength is less metabolically limited than endurance tasks. That means the physiology supports only a modest effect, and expectation or training status can easily influence whether a given study sees a benefit.",
+      "summary": "The literature supports at most a small benefit of pre-exercise caffeine on 1RM strength, and the direct trial evidence is not perfectly consistent. This is a good example of an edge that is probably real on average but too noisy to overstate for every lifter or every testing setup.",
+      "caveats": "The effect is more consistent for upper-body strength than lower-body strength, and some studies use caffeine-containing pre-workouts rather than pure caffeine. People expecting a dramatic jump in 1RM from caffeine alone are likely to be disappointed.",
+      "evidence": [
+        {
+          "citation": "GrgicJ et al 2018 J Int Soc Sports Nutr",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of caffeine intake on muscle strength and power: a systematic review and meta-analysis.",
+          "pmid": "29527137",
+          "n_participants": 10,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.20,
+            "ci_low": 0.03,
+            "ci_high": 0.36,
+            "comparator": "caffeine versus placebo for maximal muscle strength"
+          }
+        },
+        {
+          "citation": "GrgicJ et al 2023 Eur J Nutr",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of isolated and combined ingestion of caffeine and citrulline malate on resistance exercise and jumping performance: a randomized double-blind placebo-controlled crossover study.",
+          "pmid": "37450275",
+          "n_participants": 35,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 2.6,
+            "comparator": "isolated caffeine versus placebo for 1RM bench press"
+          }
+        },
+        {
+          "citation": "BeckTW et al 2009 J Strength Cond Res",
+          "year": 2009,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Acute effects of a caffeine-containing supplement on bench press and leg extension strength and time to exhaustion during cycle ergometry.",
+          "pmid": "19834348",
+          "n_participants": 21
+        }
+      ]
+    }
+  ]
+}

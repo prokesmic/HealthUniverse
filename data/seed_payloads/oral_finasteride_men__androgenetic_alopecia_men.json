@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "oral_finasteride_men",
+      "name": "Oral finasteride in men",
+      "kind": "drug",
+      "aliases": [
+        "finasteride 1 mg",
+        "oral finasteride for hair loss"
+      ],
+      "description": "Oral finasteride therapy used in male androgenetic alopecia."
+    },
+    {
+      "slug": "androgenetic_alopecia_men",
+      "name": "Male androgenetic alopecia",
+      "kind": "condition",
+      "aliases": [
+        "male pattern hair loss",
+        "AGA in men"
+      ],
+      "description": "Androgenetic alopecia affecting male patients."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "oral_finasteride_men",
+      "outcome_slug": "androgenetic_alopecia_men",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A 48-week placebo-controlled trial in 212 men found finasteride produced a placebo-adjusted gain of 17.3 total hairs and 27 anagen hairs in the target scalp area. Larger comparative data and network meta-analysis continue to rank 1 mg finasteride among the most effective established male AGA monotherapies.",
+      "population": "adult men with androgenetic alopecia treated with oral finasteride, typically 1 mg daily",
+      "mechanism": "Finasteride lowers scalp dihydrotestosterone by inhibiting type II 5-alpha reductase, slowing follicular miniaturization and improving anagen maintenance in susceptible scalp hair.",
+      "summary": "Oral finasteride remains one of the most effective evidence-backed pharmacologic options for male pattern hair loss. The literature consistently shows meaningful improvement in hair density and anagen status, even if response is not uniform and long-term tradeoffs matter.",
+      "caveats": "This edge is about hair efficacy only, not the sexual-side-effect controversy, which belongs on a separate harms edge. Continued use is required to maintain benefit.",
+      "evidence": [
+        {
+          "citation": "VanNesteD et al 2000 Br J Dermatol",
+          "year": 2000,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Finasteride increases anagen hair in men with androgenetic alopecia.",
+          "pmid": "11069460",
+          "n_participants": 212,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 17.3,
+            "unit": "hairs",
+            "comparator": "placebo-adjusted difference in total hair count at 48 weeks"
+          }
+        },
+        {
+          "citation": "OlsenEA et al 2014 J Am Acad Dermatol",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A randomized, active- and placebo-controlled study of the efficacy and safety of different doses of dutasteride versus placebo and finasteride in the treatment of male subjects with androgenetic alopecia.",
+          "pmid": "24411083",
+          "n_participants": 917
+        },
+        {
+          "citation": "GuA et al 2024 J Cosmet Dermatol",
+          "year": 2024,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The impact of monotherapies for male androgenetic alopecia: A network meta-analysis study.",
+          "pmid": "38725143"
+        }
+      ]
+    }
+  ]
+}

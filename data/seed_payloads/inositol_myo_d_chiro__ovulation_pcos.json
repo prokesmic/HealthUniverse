@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "inositol_myo_d_chiro",
+      "name": "Myo- and D-chiro-inositol",
+      "kind": "supplement",
+      "aliases": [
+        "inositol supplementation in PCOS",
+        "myo-inositol or D-chiro-inositol"
+      ],
+      "description": "Oral inositol formulations used to improve metabolic and reproductive function in polycystic ovary syndrome."
+    },
+    {
+      "slug": "ovulation_pcos",
+      "name": "Ovulation in PCOS",
+      "kind": "process",
+      "aliases": [
+        "ovulation rate in polycystic ovary syndrome",
+        "restoration of ovulation in PCOS"
+      ],
+      "description": "Ovulatory activity and ovulation induction outcomes in women with polycystic ovary syndrome."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "inositol_myo_d_chiro",
+      "outcome_slug": "ovulation_pcos",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "A 2018 meta-analysis of randomized trials found inositol improved ovulation rate versus placebo in PCOS (RR 2.3, 95% CI 1.1 to 4.7), and a 2024 guideline-informed review found benefits across reproductive outcomes while noting evidence quality remains uneven.",
+      "population": "women with polycystic ovary syndrome, especially anovulatory or subfertile patients seeking cycle or fertility improvement",
+      "mechanism": "Inositol acts as an insulin-signaling mediator and may reduce hyperinsulinemia-driven ovarian androgen excess, helping normalize follicular maturation. That endocrine shift can make ovulation more likely, particularly in insulin-resistant PCOS phenotypes.",
+      "summary": "Myo- and D-chiro-inositol appear protective for ovulation in PCOS, with randomized evidence showing better ovulation and menstrual restoration than placebo or minimal support care. The benefit looks real, but confidence is tempered by trial heterogeneity and variable formulation quality across the literature.",
+      "caveats": "Trials differ by inositol subtype, combination with folate or fertility treatment, and whether the goal is spontaneous ovulation, IUI, IVF preparation, or broader fertility support. This edge reflects a supportive adjunct pattern rather than a guaranteed first-line replacement for all ovulation-induction strategies.",
+      "evidence": [
+        {
+          "citation": "Pundir J 2018 BJOG",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Inositol treatment of anovulation in women with polycystic ovary syndrome: a meta-analysis of randomised trials.",
+          "pmid": "28544572",
+          "n_participants": 601,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 2.3,
+            "ci_low": 1.1,
+            "ci_high": 4.7,
+            "comparator": "inositol versus placebo for ovulation rate"
+          }
+        },
+        {
+          "citation": "Fitz V 2024 J Clin Endocrinol Metab",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Inositol for Polycystic Ovary Syndrome: A Systematic Review and Meta-analysis to Inform the 2023 Update of the International Evidence-based PCOS Guidelines.",
+          "pmid": "38163998",
+          "n_participants": 2230
+        },
+        {
+          "citation": "EmekciOzay O 2017 Gynecol Endocrinol",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Myo-inositol administration positively effects ovulation induction and intrauterine insemination in patients with polycystic ovary syndrome: a prospective, controlled, randomized trial.",
+          "pmid": "28277112",
+          "n_participants": 196
+        }
+      ]
+    }
+  ]
+}

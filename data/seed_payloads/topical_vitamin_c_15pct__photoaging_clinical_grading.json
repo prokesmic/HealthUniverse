@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "topical_vitamin_c_15pct",
+      "name": "Topical vitamin C 15%",
+      "kind": "drug",
+      "aliases": [
+        "15% L-ascorbic acid serum",
+        "15% vitamin C topical antioxidant"
+      ],
+      "description": "Topical 15% vitamin C or closely related 15%-strength ascorbic-acid-based antioxidant serums used for photodamaged skin."
+    },
+    {
+      "slug": "photoaging_clinical_grading",
+      "name": "Clinical photoaging grading",
+      "kind": "condition",
+      "aliases": [
+        "photoaged skin appearance",
+        "clinical grading of facial photoaging"
+      ],
+      "description": "Clinician-graded or trial-graded signs of photodamaged skin such as fine wrinkling, lentigines, roughness, and overall photoaging severity."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "topical_vitamin_c_15pct",
+      "outcome_slug": "photoaging_clinical_grading",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across modern cosmetic trials, 15%-strength topical vitamin-C-based serums improve roughness, redness, and visible aging markers over 8 to 12 weeks. In a 69-subject split-face trial of tetra-isopalmitoyl ascorbic acid, wrinkle grading improved after 8 weeks, and a 40-woman 90-day trial of a 15% L-ascorbic acid antioxidant serum improved visible skin-aging signs with good tolerability.",
+      "population": "adults with visible facial or hand photoaging using 15%-class topical vitamin C formulations daily for weeks to months",
+      "mechanism": "Topical vitamin C reduces oxidative stress, supports collagen synthesis, and can modestly improve dyspigmentation and surface texture in photodamaged skin.",
+      "summary": "Topical vitamin C belongs in the credible anti-photoaging group, but the payoff is incremental rather than dramatic. The literature supports mild improvement in visible aging signs, especially tone and texture, with the usual caveat that formulations differ and combination serums dominate the evidence.",
+      "caveats": "Most trials evaluate formulated antioxidant blends rather than plain ascorbic acid alone, so the edge reflects 15%-class vitamin-C-centered products rather than a single universal formula. Benefits are cosmetic and gradual, not equivalent to prescription retinoids.",
+      "evidence": [
+        {
+          "citation": "CorreiaG et al 2023 J Cosmet Dermatol",
+          "year": 2023,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of topical vitamin C in melasma and photoaging: A systematic review.",
+          "pmid": "37128827"
+        },
+        {
+          "citation": "NevesJR et al 2022 J Cosmet Dermatol",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of a topical serum containing L-ascorbic acid, neohesperidin, pycnogenol, tocopherol, and hyaluronic acid in relation to skin aging signs.",
+          "pmid": "35150043",
+          "n_participants": 40
+        },
+        {
+          "citation": "YokotaM et al 2022 J Cosmet Dermatol",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Evaluation of the anti-wrinkle effect of a lipophilic pro-vitamin C derivative, tetra-isopalmitoyl ascorbic acid.",
+          "pmid": "34910367",
+          "n_participants": 69
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "creatine_monohydrate",
+      "name": "Creatine monohydrate supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "creatine",
+        "oral creatine monohydrate"
+      ],
+      "description": "Oral creatine monohydrate supplementation used to support training adaptations and high-intensity exercise performance."
+    },
+    {
+      "slug": "muscle_mass_gains_resistance_training",
+      "name": "Muscle mass gains during resistance training",
+      "kind": "process",
+      "aliases": [
+        "lean mass gains with lifting",
+        "hypertrophy during resistance training"
+      ],
+      "description": "Longitudinal increases in lean mass or hypertrophy during a structured resistance-training program."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "creatine_monohydrate",
+      "outcome_slug": "muscle_mass_gains_resistance_training",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Meta-analyses suggest creatine adds roughly 1.1 to 1.4 kg of lean or fat-free mass beyond resistance training alone, with smaller direct-imaging hypertrophy effects.",
+      "population": "healthy adults doing progressive resistance training",
+      "mechanism": "Creatine can improve training volume and phosphocreatine recovery, potentially increasing the stimulus for hypertrophy. Some lean-mass gains may also reflect shifts in intracellular water, so direct-imaging studies generally show a smaller effect than DXA-based lean-mass analyses.",
+      "summary": "The evidence supports a real but not dramatic hypertrophy edge. Creatine monohydrate tends to increase lean-mass gains during resistance training, though the magnitude is modest and part of the effect may reflect fluid-related changes rather than pure contractile tissue growth.",
+      "caveats": "Lean-mass outcomes are easier to improve than direct imaging measures of muscle hypertrophy, so studies using DXA or similar methods may slightly overstate practical muscle gain. Effects also vary by age, training status, and protocol duration.",
+      "evidence": [
+        {
+          "citation": "AshtaryLarkyD et al 2025 J Int Soc Sports Nutr",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Creatine supplementation and resistance training: a comparison between novice and experienced lifters - a systematic review and dose-response meta-analysis.",
+          "pmid": "41433021",
+          "n_participants": 1457,
+          "effect_quant": {
+            "metric": "WMD",
+            "value": 1.39,
+            "ci_low": 1.07,
+            "ci_high": 1.7,
+            "comparator": "creatine plus resistance training versus control for fat-free mass"
+          }
+        },
+        {
+          "citation": "GuJ et al 2026 Front Nutr",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Creatine supplementation in young men under resistance versus non-resistance training: a systematic review and meta-analysis of strength, performance, and lean mass.",
+          "pmid": "42027564",
+          "n_participants": 327,
+          "effect_quant": {
+            "metric": "MD",
+            "value": 2.32,
+            "ci_low": 0.76,
+            "ci_high": 3.89,
+            "comparator": "creatine plus training versus control for fat-free mass"
+          }
+        },
+        {
+          "citation": "BecqueMD et al 2000 Med Sci Sports Exerc",
+          "year": 2000,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of oral creatine supplementation on muscular strength and body composition.",
+          "pmid": "10731009",
+          "n_participants": 23
+        }
+      ]
+    }
+  ]
+}

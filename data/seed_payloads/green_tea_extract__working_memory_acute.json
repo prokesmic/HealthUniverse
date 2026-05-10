@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "green_tea_extract",
+      "name": "Green tea extract",
+      "kind": "supplement",
+      "aliases": [
+        "green tea catechin extract",
+        "green tea concentrate"
+      ],
+      "description": "Extracted green tea preparations used acutely in cognition studies."
+    },
+    {
+      "slug": "working_memory_acute",
+      "name": "Acute working memory performance",
+      "kind": "process",
+      "aliases": [
+        "short-term working memory",
+        "acute memory task performance"
+      ],
+      "description": "Working memory task performance after a single dose or short exposure."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "green_tea_extract",
+      "outcome_slug": "working_memory_acute",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "healthy adults given single-dose green tea extract preparations under lab testing conditions",
+      "mechanism": "Green tea extract combines catechins, caffeine, and theanine-related compounds that may alter prefrontal efficiency and arousal during demanding tasks. The acute literature suggests a brain-activation signal is easier to demonstrate than a clean behavioral working-memory gain, which is why this edge remains mixed instead of clearly beneficial.",
+      "summary": "Acute green tea extract may modulate prefrontal processes relevant to working memory, but behavioral improvement is inconsistent and usually small. The human evidence is interesting enough to justify continued research, yet it does not support a strong claim that one dose reliably boosts working-memory performance.",
+      "caveats": "Some studies emphasize neuroimaging or hemodynamic endpoints rather than clear task-score improvements. Because green tea preparations vary in caffeine, catechin, and theanine composition, results from one extract should not be generalized to all green tea products.",
+      "evidence": [
+        {
+          "citation": "Dietz C and Dekker M 2017 Phytomedicine",
+          "year": 2017,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Green tea effects on cognition, mood and human brain function: A systematic review.",
+          "pmid": "28899506",
+          "n_participants": 21
+        },
+        {
+          "citation": "Borgwardt S et al 2012 Eur J Clin Nutr",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Neural effects of green tea extract on dorsolateral prefrontal cortex.",
+          "pmid": "22929964",
+          "n_participants": 12
+        },
+        {
+          "citation": "Yin Y et al 2023 Front Neuroergonomics",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Acute effects of (-)-gallocatechin gallate-rich green tea extract on the cerebral hemodynamic response of the prefrontal cortex in healthy humans.",
+          "pmid": "38234497",
+          "n_participants": 35
+        }
+      ]
+    }
+  ]
+}

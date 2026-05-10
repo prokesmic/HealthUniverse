@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "citrulline_malate",
+      "name": "Citrulline malate supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "CitMal",
+        "CM supplementation"
+      ],
+      "description": "Oral citrulline malate used before resistance exercise to try to increase repetition performance and training volume."
+    },
+    {
+      "slug": "resistance_training_volume",
+      "name": "Resistance training volume",
+      "kind": "process",
+      "aliases": [
+        "repetitions to failure in resistance exercise",
+        "lifting volume during training"
+      ],
+      "description": "The amount of work performed during resistance training, often measured as repetitions completed or total training volume."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "citrulline_malate",
+      "outcome_slug": "resistance_training_volume",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The most targeted meta-analysis found that taking 6 to 8 g of citrulline malate 40 to 60 minutes before lifting increased repetitions by about 3 ± 5, or 6.4 ± 7.9%, compared with placebo. But newer direct trials in trained adults do not consistently reproduce that gain.",
+      "population": "healthy adults, especially resistance-trained men and women",
+      "mechanism": "Citrulline malate may increase nitric oxide availability and slightly delay fatigue during repeated contractions, which could raise repetition count in some sessions. The likely effect is small, though, and recent null trials suggest the supplement is highly context-dependent rather than universally ergogenic.",
+      "summary": "This is exactly the kind of supplement edge that benefits from a skeptical label. A targeted meta-analysis suggests a small repetition advantage, but more recent and better-powered resistance-training trials have been inconsistent, so the most honest classification is mixed rather than confidently protective.",
+      "caveats": "Dose, training status, exercise selection, and whether the study emphasizes repetitions to failure all seem to matter. If citrulline malate helps, the benefit is probably subtle and not guaranteed to show up in every resistance session.",
+      "evidence": [
+        {
+          "citation": "VårvikFT et al 2021 Int J Sport Nutr Exerc Metab",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Acute Effect of Citrulline Malate on Repetition Performance During Strength Training: A Systematic Review and Meta-Analysis.",
+          "pmid": "34010809",
+          "n_participants": 137,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 6.4,
+            "comparator": "citrulline malate versus placebo for repetitions to failure during strength training"
+          }
+        },
+        {
+          "citation": "Pérez-GómezJ et al 2024 Eur J Nutr",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Malate or Not? Acute Effects of L-Citrulline Versus Citrulline Malate on Neuromuscular Performance in Young, Trained Adults: A Randomized, Double-Blind, Placebo-Controlled Crossover Trial.",
+          "pmid": "39662304",
+          "n_participants": 43
+        },
+        {
+          "citation": "WaxB et al 2015 Eur J Nutr",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Acute citrulline malate supplementation improves upper- and lower-body submaximal weightlifting exercise performance in resistance-trained females.",
+          "pmid": "26658899",
+          "n_participants": 15
+        }
+      ]
+    }
+  ]
+}

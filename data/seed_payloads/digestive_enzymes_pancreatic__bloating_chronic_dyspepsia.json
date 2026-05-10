@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "digestive_enzymes_pancreatic",
+      "name": "Digestive enzymes pancreatic",
+      "kind": "supplement",
+      "aliases": [
+        "pancrelipase-like enzyme supplements",
+        "pancreatic digestive enzymes"
+      ],
+      "description": "Oral enzyme supplements containing pancreatic enzymes such as lipase, amylase, and protease, used to reduce meal-related upper gastrointestinal discomfort."
+    },
+    {
+      "slug": "bloating_chronic_dyspepsia",
+      "name": "Bloating in chronic dyspepsia",
+      "kind": "condition",
+      "aliases": [
+        "postprandial bloating in dyspepsia",
+        "indigestion-related fullness and bloating"
+      ],
+      "description": "Bloating, fullness, and related upper gastrointestinal discomfort in people with chronic dyspepsia or recurrent indigestion."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "digestive_enzymes_pancreatic",
+      "outcome_slug": "bloating_chronic_dyspepsia",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "population": "healthy adults challenged with fatty meals or patients with functional dyspepsia or indigestion receiving oral digestive-enzyme products",
+      "mechanism": "Supplemental lipase and related enzymes may improve luminal fat digestion and reduce gastric distension or delayed processing after rich meals, which can lessen fullness and bloating in some settings.",
+      "summary": "Digestive-enzyme supplements have a plausible symptom role, but the evidence is patchy rather than definitive. Several randomized studies show less fullness or dyspepsia with enzyme products, yet effects vary by formulation and many data come from meal-challenge or product-specific studies rather than broad high-quality meta-analysis.",
+      "caveats": "Many products combine multiple enzymes or pair them with probiotics, making attribution difficult. This edge is about symptom relief in dyspepsia-like bloating, not pancreatic enzyme replacement for documented pancreatic insufficiency.",
+      "evidence": [
+        {
+          "citation": "MajeedM et al 2018 J Med Food",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Evaluation of the Safety and Efficacy of a Multienzyme Complex in Patients with Functional Dyspepsia: A Randomized, Double-Blind, Placebo-Controlled Study.",
+          "pmid": "30156436",
+          "n_participants": 40
+        },
+        {
+          "citation": "SuarezF et al 1999 Dig Dis Sci",
+          "year": 1999,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Pancreatic supplements reduce symptomatic response of healthy subjects to a high fat meal.",
+          "pmid": "10489912",
+          "n_participants": 18
+        },
+        {
+          "citation": "LevineME et al 2015 Gut Liver",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Lipase Supplementation before a High-Fat Meal Reduces Perceptions of Fullness in Healthy Subjects.",
+          "pmid": "25287168",
+          "n_participants": 16
+        }
+      ]
+    }
+  ]
+}

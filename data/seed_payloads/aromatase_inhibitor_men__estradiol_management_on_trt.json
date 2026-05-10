@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "aromatase_inhibitor_men",
+      "name": "Aromatase inhibitor therapy in men",
+      "kind": "drug",
+      "aliases": [
+        "anastrozole or letrozole in men",
+        "male aromatase inhibition"
+      ],
+      "description": "Use of aromatase inhibitors such as anastrozole or letrozole in male endocrine management."
+    },
+    {
+      "slug": "estradiol_management_on_trt",
+      "name": "Estradiol management on testosterone therapy",
+      "kind": "process",
+      "aliases": [
+        "E2 control during TRT",
+        "management of aromatization during testosterone treatment"
+      ],
+      "description": "Control of estradiol levels or testosterone-to-estradiol balance in men receiving or being evaluated for testosterone-related therapy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "aromatase_inhibitor_men",
+      "outcome_slug": "estradiol_management_on_trt",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "population": "men with obesity-associated or infertility-related hypogonadism, or men in experimental testosterone/estradiol manipulation studies",
+      "mechanism": "Aromatase inhibitors lower conversion of testosterone to estradiol, which can increase serum testosterone while reducing estrogen exposure. That makes them effective biochemical tools for managing aromatization, but it also means they can overshoot and disrupt the bone, libido, and body-composition balance that estradiol helps maintain in men.",
+      "summary": "Aromatase inhibitors can control estradiol-related hormonal balance in men, but the tradeoff profile is mixed rather than cleanly beneficial. They reliably shift testosterone and estradiol in the expected direction, yet the clinical payoff during testosterone-related therapy is inconsistent and can come at the cost of downstream adverse effects if estradiol is pushed too low.",
+      "caveats": "Most data are from infertility clinics, obesity-associated hypogonadism, or mechanistic hormone studies rather than routine long-term TRT practice. This edge is about hormonal management, not proof that routine estradiol suppression improves outcomes for most men on testosterone.",
+      "evidence": [
+        {
+          "citation": "Bhasin S et al 2013 N Engl J Med",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Gonadal steroids and body composition, strength, and sexual function in men.",
+          "pmid": "24024838",
+          "n_participants": 400
+        },
+        {
+          "citation": "Helo S et al 2015 Fertil Steril",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Changes in hormonal profile and seminal parameters with use of aromatase inhibitors in management of infertile men with low testosterone to estradiol ratios.",
+          "pmid": "22579129",
+          "n_participants": 29
+        },
+        {
+          "citation": "Mays MJ et al 2020 Front Endocrinol (Lausanne)",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Aromatase Inhibitors Plus Weight Loss Improves the Hormonal Profile of Obese Hypogonadal Men Without Causing Major Side Effects.",
+          "pmid": "32499757",
+          "n_participants": 23
+        }
+      ]
+    }
+  ]
+}

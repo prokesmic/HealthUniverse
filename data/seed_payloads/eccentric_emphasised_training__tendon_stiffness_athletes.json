@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "eccentric_emphasised_training",
+      "name": "Eccentric-emphasised training",
+      "kind": "behavior",
+      "aliases": [
+        "eccentric-focused loading",
+        "accentuated eccentric training",
+        "high-load eccentric work"
+      ],
+      "description": "Training that emphasizes the eccentric phase of movement to increase mechanical loading on the muscle-tendon unit."
+    },
+    {
+      "slug": "tendon_stiffness_athletes",
+      "name": "Athletic tendon stiffness",
+      "kind": "process",
+      "aliases": [
+        "tendon mechanical stiffness in athletes",
+        "sports tendon stiffness adaptation"
+      ],
+      "description": "The mechanical stiffness of tendons relevant to force transmission and athletic performance."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "eccentric_emphasised_training",
+      "outcome_slug": "tendon_stiffness_athletes",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2022 meta-analysis of 61 articles and 763 participants found that mechanical loading increases lower-limb tendon stiffness overall (SMD 0.74, 95% CI 0.62 to 0.86), with higher-strain resistance protocols showing the strongest effects (SMD 1.04, 95% CI 0.65 to 1.43). But eccentric-emphasised trials are not uniformly positive: high-load eccentric knee-extensor training improved patellar tendon force, stiffness, and modulus at high torque levels, whereas accentuated eccentric loading in already-trained men did not change patellar tendon stiffness over 10 weeks.",
+      "population": "healthy athletes and trained adults using eccentric-emphasised loading to drive tendon adaptation",
+      "mechanism": "Eccentric-emphasised loading can expose the tendon to high strains that encourage mechanical adaptation, but the response depends heavily on baseline training status and whether the protocol meaningfully exceeds habitual loading.",
+      "summary": "The broader tendon-loading literature is clearly supportive, but the eccentric-specific athlete signal is less tidy than the hype suggests. Eccentric-emphasised work can help tendon stiffness, yet it is not guaranteed to outperform other heavy loading strategies in already-trained populations.",
+      "caveats": "This edge is especially sensitive to population and protocol. Untrained or rehab populations may respond differently from already-trained athletes, and some studies show little extra tendon benefit from accentuated eccentric loading once a high-strength baseline is already present.",
+      "evidence": [
+        {
+          "citation": "LazarczukSL et al 2022 Sports Med",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Mechanical, Material and Morphological Adaptations of Healthy Lower Limb Tendons to Mechanical Loading: A Systematic Review and Meta-Analysis.",
+          "pmid": "35657492",
+          "n_participants": 763
+        },
+        {
+          "citation": "WalkerS et al 2020 Eur J Appl Physiol",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Increased fascicle length but not patellar tendon stiffness after accentuated eccentric-load strength training in already-trained men.",
+          "pmid": "32772246",
+          "n_participants": 28
+        },
+        {
+          "citation": "MahieuNN et al 2008 Med Sci Sports Exerc",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of eccentric training on the plantar flexor muscle-tendon tissue properties.",
+          "pmid": "18091014",
+          "n_participants": 74
+        }
+      ]
+    }
+  ]
+}

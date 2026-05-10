@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "branched_chain_amino_acids",
+      "name": "Branched-chain amino acid supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "BCAA supplementation"
+      ],
+      "description": "Supplementation with leucine, isoleucine, and valine around exercise."
+    },
+    {
+      "slug": "muscle_soreness_dom",
+      "name": "Delayed-onset muscle soreness",
+      "kind": "condition",
+      "aliases": [
+        "DOMS",
+        "post-exercise muscle soreness"
+      ],
+      "description": "Muscle soreness developing in the hours to days after strenuous exercise."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "branched_chain_amino_acids",
+      "outcome_slug": "muscle_soreness_dom",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The strongest DOMS-specific meta-analysis found a moderate pooled reduction in soreness, with effect size 0.73 (95% CI 0.50 to 0.96), but other recovery meta-analyses have been less consistent and suggest the benefit depends on training status, dose, and timing.",
+      "population": "healthy adults performing damaging resistance or eccentric exercise",
+      "mechanism": "BCAAs may reduce perceived soreness by limiting exercise-induced protein breakdown and supporting repair processes after muscle-damaging exercise. But soreness is influenced by many factors beyond muscle protein turnover, which is why the subjective benefit is inconsistent across protocols.",
+      "summary": "BCAAs probably help delayed-onset muscle soreness in some contexts, but the literature is too noisy to call the effect robust for everyone. The cleanest reading is that there may be a modest soreness benefit when dosing is adequate and supplementation starts before or spans the damage window, yet the average result is not strong enough to promise a reliable recovery shortcut.",
+      "caveats": "A reduction in soreness does not necessarily translate into better functional recovery. The effect appears less reliable in untrained people, with severe damage protocols, or when BCAA dosing is too low or only begins after the exercise bout.",
+      "evidence": [
+        {
+          "citation": "FedewaMV et al 2019 Int J Vitam Nutr Res",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of branched-Chain Amino Acid Supplementation on Muscle Soreness following Exercise: A Meta-Analysis.",
+          "pmid": "30938579",
+          "n_participants": 61,
+          "effect_quant": {
+            "metric": "ES",
+            "value": 0.7286,
+            "ci_low": 0.5017,
+            "ci_high": 0.9555,
+            "comparator": "BCAA versus placebo for delayed-onset muscle soreness"
+          }
+        },
+        {
+          "citation": "DomaK et al 2021 Amino Acids",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The use of BCAA to decrease delayed-onset muscle soreness after a single bout of exercise: a systematic review and meta-analysis.",
+          "pmid": "34669012",
+          "n_participants": 10
+        },
+        {
+          "citation": "ShimomuraY et al 2010 J Sports Med Phys Fitness",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Branched-chain amino acid supplementation before squat exercise and delayed-onset muscle soreness.",
+          "pmid": "20601741",
+          "n_participants": 12
+        }
+      ]
+    }
+  ]
+}

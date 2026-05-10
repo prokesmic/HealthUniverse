@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "topical_minoxidil_5pct",
+      "name": "Topical minoxidil 5%",
+      "kind": "drug",
+      "aliases": [
+        "5% minoxidil solution",
+        "5% minoxidil foam"
+      ],
+      "description": "Topical 5% minoxidil formulations used for androgenetic alopecia."
+    },
+    {
+      "slug": "androgenetic_alopecia_men",
+      "name": "Male androgenetic alopecia",
+      "kind": "condition",
+      "aliases": [
+        "male pattern hair loss",
+        "AGA in men"
+      ],
+      "description": "Androgenetic alopecia affecting male patients."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "topical_minoxidil_5pct",
+      "outcome_slug": "androgenetic_alopecia_men",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a 48-week randomized trial of 393 men, 5% topical minoxidil outperformed both 2% minoxidil and placebo on nonvellus hair count and global scalp-coverage ratings. Later placebo-controlled foam studies and a head-to-head trial against oral minoxidil reinforce that topical 5% minoxidil remains a genuinely active hair-regrowth treatment.",
+      "population": "adult men with androgenetic alopecia using topical 5% minoxidil solution or foam over months",
+      "mechanism": "Topical minoxidil prolongs anagen and promotes follicular activity, improving hair density and slowing visible progression of male pattern hair loss.",
+      "summary": "Topical 5% minoxidil is one of the most established non-surgical male AGA treatments. It does not regrow a full juvenile hairline, but randomized evidence consistently shows better hair counts and coverage than placebo.",
+      "caveats": "Benefit depends on continued use and tends to be gradual. This edge is about meaningful improvement, not cure, and adherence or irritation issues can limit real-world outcomes.",
+      "evidence": [
+        {
+          "citation": "OlsenEA et al 2002 J Am Acad Dermatol",
+          "year": 2002,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A randomized clinical trial of 5% topical minoxidil versus 2% topical minoxidil and placebo in the treatment of androgenetic alopecia in men.",
+          "pmid": "12196747",
+          "n_participants": 393
+        },
+        {
+          "citation": "OlsenEA et al 2007 J Am Acad Dermatol",
+          "year": 2007,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A multicenter, randomized, placebo-controlled, double-blind clinical trial of a novel formulation of 5% minoxidil topical foam versus placebo in the treatment of androgenetic alopecia in men.",
+          "pmid": "17761356",
+          "n_participants": 352
+        },
+        {
+          "citation": "RamosPM et al 2024 JAMA Dermatol",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Oral Minoxidil vs Topical Minoxidil for Male Androgenetic Alopecia: A Randomized Clinical Trial.",
+          "pmid": "38598226",
+          "n_participants": 90
+        }
+      ]
+    }
+  ]
+}

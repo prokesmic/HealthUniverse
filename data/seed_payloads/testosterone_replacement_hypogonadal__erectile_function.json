@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "testosterone_replacement_hypogonadal",
+      "name": "Testosterone replacement in hypogonadal men",
+      "kind": "drug",
+      "aliases": [
+        "TRT for hypogonadism",
+        "testosterone therapy in low-testosterone men"
+      ],
+      "description": "Exogenous testosterone therapy given to symptomatic men with documented low testosterone."
+    },
+    {
+      "slug": "erectile_function",
+      "name": "Erectile function",
+      "kind": "process",
+      "aliases": [
+        "erectile performance",
+        "erection quality"
+      ],
+      "description": "The ability to achieve or maintain erections adequate for sexual activity."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "testosterone_replacement_hypogonadal",
+      "outcome_slug": "erectile_function",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "A 2018 placebo-controlled meta-analysis found a modest improvement in erectile function with testosterone therapy (SMD 0.16, 95% CI 0.06 to 0.27), and a 2017 network meta-analysis reported a similar class effect (SMD 0.25, 95% CI 0.10 to 0.41).",
+      "population": "adult men with symptomatic hypogonadism and low serum testosterone",
+      "mechanism": "Testosterone supports sexual desire and contributes to erectile physiology through central and peripheral androgen signaling, but erections are less purely testosterone-driven than libido. That is why the erectile signal is usually positive yet smaller and less dependable than the desire signal in hypogonadal treatment trials.",
+      "summary": "Testosterone replacement modestly improves erectile function in hypogonadal men, but it is not a universal fix for erectile dysfunction. The benefit is real on average, yet many men still need other interventions because vascular, neurologic, and relational factors matter at least as much as androgen status.",
+      "caveats": "This edge applies to men with true hypogonadism, not the much broader population of men with erectile dysfunction from mixed causes. A modest pooled improvement does not mean testosterone should be expected to outperform standard ED treatments like PDE5 inhibitors.",
+      "evidence": [
+        {
+          "citation": "Corona G et al 2018 J Clin Endocrinol Metab",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The efficacy and adverse events of testosterone replacement therapy in hypogonadal men: A systematic review and meta-analysis of randomized, placebo-controlled trials.",
+          "pmid": "29562341",
+          "n_participants": 1779,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.16,
+            "ci_low": 0.06,
+            "ci_high": 0.27,
+            "comparator": "testosterone replacement versus placebo for erectile function"
+          }
+        },
+        {
+          "citation": "Elliott J et al 2017 BMJ Open",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Testosterone therapy in hypogonadal men: a systematic review and network meta-analysis.",
+          "pmid": "29150464",
+          "n_participants": 10000,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 0.25,
+            "ci_low": 0.10,
+            "ci_high": 0.41,
+            "comparator": "testosterone replacement class effect versus placebo for erectile function"
+          }
+        },
+        {
+          "citation": "Snyder PJ et al 2016 J Clin Endocrinol Metab",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Testosterone Treatment and Sexual Function in Older Men With Low Testosterone Levels.",
+          "pmid": "27355400",
+          "n_participants": 470
+        }
+      ]
+    }
+  ]
+}

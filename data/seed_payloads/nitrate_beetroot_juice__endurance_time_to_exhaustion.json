@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "nitrate_beetroot_juice",
+      "name": "Nitrate-rich beetroot juice supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "beetroot juice nitrate",
+        "dietary nitrate from beetroot juice"
+      ],
+      "description": "Beetroot juice used as a nitrate-rich ergogenic supplement before endurance exercise."
+    },
+    {
+      "slug": "endurance_time_to_exhaustion",
+      "name": "Endurance time to exhaustion",
+      "kind": "process",
+      "aliases": [
+        "time to exhaustion during endurance exercise",
+        "constant-load endurance tolerance"
+      ],
+      "description": "How long an athlete or participant can maintain a set endurance workload before exhaustion."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "nitrate_beetroot_juice",
+      "outcome_slug": "endurance_time_to_exhaustion",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The earliest meta-analysis found a moderate pooled benefit for time-to-exhaustion outcomes, with effect size 0.79 (95% CI 0.23 to 1.35). But direct trials show that the signal is not uniform in trained populations: some studies extend endurance tolerance by roughly 15%, while others in elite endurance athletes show no improvement.",
+      "population": "healthy adults and trained endurance athletes taking nitrate-rich beetroot juice before endurance exercise",
+      "mechanism": "Dietary nitrate can increase nitric oxide bioavailability, lower the oxygen cost of submaximal work, and sometimes delay the point at which severe-intensity exercise becomes unsustainable. In highly trained athletes, however, the room for additional efficiency gains may be smaller, which is why the effect becomes more inconsistent.",
+      "summary": "Beetroot juice probably helps time-to-exhaustion performance in some endurance settings, but the athlete-specific literature is not cleanly one-directional. The most accurate interpretation is that the benefit is real on average, yet weaker and less reliable in elite endurance populations than in recreational or moderately trained participants.",
+      "caveats": "This edge is marked mixed because positive constant-load studies sit alongside null trials in high-level endurance athletes. It should not be read as proof that beetroot juice reliably improves every trained athlete's endurance test.",
+      "evidence": [
+        {
+          "citation": "HoonMW et al 2013 Int J Sport Nutr Exerc Metab",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The effect of nitrate supplementation on exercise performance in healthy individuals: a systematic review and meta-analysis.",
+          "pmid": "23580439",
+          "n_participants": 17,
+          "effect_quant": {
+            "metric": "ES",
+            "value": 0.79,
+            "ci_low": 0.23,
+            "ci_high": 1.35,
+            "comparator": "nitrate supplementation versus control for time to exhaustion performance"
+          }
+        },
+        {
+          "citation": "BaileySJ et al 2009 J Appl Physiol (1985)",
+          "year": 2009,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Dietary nitrate supplementation reduces the O2 cost of low-intensity exercise and enhances tolerance to high-intensity exercise in humans.",
+          "pmid": "19661447",
+          "n_participants": 8,
+          "effect_quant": {
+            "metric": "seconds",
+            "value": 92,
+            "comparator": "beetroot juice versus placebo for time to exhaustion during severe exercise"
+          }
+        },
+        {
+          "citation": "Balsalobre-FernándezC et al 2019 J Am Coll Nutr",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Beetroot Juice Does Not Enhance Supramaximal Intermittent Exercise Performance in Elite Endurance Athletes.",
+          "pmid": "31084516",
+          "n_participants": 11
+        }
+      ]
+    }
+  ]
+}

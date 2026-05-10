@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "zinc_repletion_in_deficient",
+      "name": "Zinc repletion in zinc-deficient men",
+      "kind": "supplement",
+      "aliases": [
+        "zinc replacement for deficiency",
+        "oral zinc repletion in low-zinc men"
+      ],
+      "description": "Zinc supplementation used to correct low zinc status in men."
+    },
+    {
+      "slug": "testosterone",
+      "name": "Testosterone",
+      "kind": "process",
+      "aliases": [
+        "serum testosterone",
+        "circulating testosterone"
+      ],
+      "description": "Total circulating testosterone concentration in men."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "zinc_repletion_in_deficient",
+      "outcome_slug": "testosterone",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "In a 1996 human repletion study, marginally zinc-deficient older men increased testosterone from 8.3 +/- 6.3 to 16.0 +/- 4.4 nmol/L after six months of oral zinc, but the broader literature still depends heavily on small and observational datasets.",
+      "population": "men with low zinc status, including marginally deficient older men, infertile men, and uremic men",
+      "mechanism": "Zinc participates in steroidogenic enzyme activity and broader testicular function, so deficiency states can plausibly suppress androgen production. What the literature suggests is that repletion helps most when zinc status is genuinely low, while the evidence is much weaker for men who are already replete.",
+      "summary": "Zinc repletion can raise testosterone when men are actually zinc deficient, but the evidence is narrower than supplement marketing suggests. The best human data support a deficiency-correction story rather than a universal testosterone-boosting effect in everyone.",
+      "caveats": "The direct human evidence base is small and includes older observational work as well as heterogeneous clinical populations. This edge should be interpreted as targeted correction of deficiency, not a blanket recommendation for routine zinc loading in men with normal zinc status.",
+      "evidence": [
+        {
+          "citation": "Prasad AS et al 1996 Nutrition",
+          "year": 1996,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Zinc status and serum testosterone levels of healthy adults.",
+          "pmid": "8875519",
+          "n_participants": 53,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 7.7,
+            "comparator": "serum testosterone rise after zinc repletion in marginally zinc-deficient elderly men, nmol/L"
+          }
+        },
+        {
+          "citation": "Paniagua R et al 1982 Arch Androl",
+          "year": 1982,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Zinc, prolactin, gonadotropins, and androgen levels in uremic men.",
+          "pmid": "6810775",
+          "n_participants": 32
+        },
+        {
+          "citation": "Ali H et al 2005 J Coll Physicians Surg Pak",
+          "year": 2005,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Relationship of serum and seminal plasma zinc levels and serum testosterone in oligospermic and azoospermic infertile men.",
+          "pmid": "16300697",
+          "n_participants": 83
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "huperzine_a",
+      "name": "Huperzine A",
+      "kind": "supplement",
+      "aliases": [
+        "HupA",
+        "huperzine Alpha"
+      ],
+      "description": "An acetylcholinesterase-inhibiting alkaloid sold as a nootropic and memory supplement."
+    },
+    {
+      "slug": "memory_alzheimer_disease",
+      "name": "Memory performance in Alzheimer disease",
+      "kind": "process",
+      "aliases": [
+        "Alzheimer memory function",
+        "memory outcomes in AD"
+      ],
+      "description": "Cognitive and memory test performance in people with Alzheimer disease."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "huperzine_a",
+      "outcome_slug": "memory_alzheimer_disease",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "moderate",
+      "population": "adults with mild to moderate Alzheimer disease, mostly in older Chinese trials",
+      "mechanism": "Huperzine A reversibly inhibits acetylcholinesterase, so the main proposed mechanism is the same short-term cholinergic symptom relief seen with conventional AD drugs rather than disease modification. That mechanism can plausibly improve test scores over weeks, but it does not resolve the deeper uncertainty created by small, older, mostly regional trials.",
+      "summary": "Huperzine A has repeatedly produced short-term cognitive improvements in older Alzheimer trials, but the evidence base is thin and methodologically weak by modern standards. The positive signal is real enough to keep the edge alive, yet it is still too fragile to treat huperzine A as a reliably established memory therapy for Alzheimer disease.",
+      "caveats": "Most positive studies are old, short, and geographically concentrated, and several modern reviews note substantial risk of bias. This is a symptom-management question, not proof that huperzine A slows neurodegeneration or changes long-term progression.",
+      "evidence": [
+        {
+          "citation": "Jian Li et al 2008 Cochrane Database Syst Rev",
+          "year": 2008,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Huperzine A for Alzheimer's disease.",
+          "pmid": "18425924",
+          "n_participants": 454,
+          "effect_quant": {
+            "metric": "WMD",
+            "value": 2.81,
+            "ci_low": 1.87,
+            "ci_high": 3.76,
+            "comparator": "huperzine A versus placebo for MMSE improvement"
+          }
+        },
+        {
+          "citation": "Shusen Xu et al 2002 Zhonghua Yi Xue Za Zhi",
+          "year": 2002,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "[Clinical efficacy and safety of huperzine Alpha in treatment of mild to moderate Alzheimer disease, a placebo-controlled, double-blind, randomized trial].",
+          "pmid": "12181083",
+          "n_participants": 202
+        },
+        {
+          "citation": "Shusen Xu et al 1995 Acta Pharmacol Sin",
+          "year": 1995,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Efficacy of tablet huperzine-A on memory, cognition, and behavior in Alzheimer's disease.",
+          "pmid": "8701750",
+          "n_participants": 103
+        }
+      ]
+    }
+  ]
+}
