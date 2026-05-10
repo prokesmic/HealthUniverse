@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ivf_omega3_supplementation",
+      "name": "Omega-3 supplementation around IVF",
+      "kind": "supplement",
+      "aliases": [
+        "fish oil supplementation before IVF",
+        "EPA or DHA supplementation in assisted reproduction"
+      ],
+      "description": "Use of omega-3-rich supplements or marine omega-3 interventions before or during IVF or other assisted reproductive treatment."
+    },
+    {
+      "slug": "live_birth_rate",
+      "name": "Live birth rate",
+      "kind": "process",
+      "aliases": [
+        "chance of live birth",
+        "live birth success"
+      ],
+      "description": "The probability of delivering a live infant after a fertility treatment cycle or conception attempt."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ivf_omega3_supplementation",
+      "outcome_slug": "live_birth_rate",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "The most generous pooled estimate comes from a 2024 meta-analysis of six fertility-treatment trials, where omega-3 exposure was associated with higher pregnancy odds (OR 1.74), but the review pooled supplements with dietary interventions and did not establish a clean live-birth benefit in IVF specifically.",
+      "population": "women undergoing IVF or other assisted reproductive treatment, including selected overweight, obese, or subfertile populations",
+      "mechanism": "Marine omega-3 fatty acids may alter inflammatory tone, follicular lipid composition, and endometrial signaling in ways that could support embryo implantation. The clinical problem is that direct supplementation trials tied to live birth are sparse, while much of the apparent signal comes from dietary or biomarker associations rather than clean intervention evidence.",
+      "summary": "This edge should remain low-certainty and carefully worded. Omega-3 biology is plausible and some IVF-adjacent data are encouraging, but there is still no robust trial base showing that omega-3 supplementation reliably improves live birth in IVF.",
+      "caveats": "The literature mixes supplements, diet-based exposure, and serum-fatty-acid biomarker studies. That makes it easy to overstate this edge if pregnancy or fertilization signals are casually promoted into a proven live-birth claim.",
+      "evidence": [
+        {
+          "citation": "Trop-SteinbergS et al 2024 Heliyon",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Effect of omega-3 supplements or diets on fertility in women: A meta-analysis.",
+          "pmid": "38628754",
+          "n_participants": 1789,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.74,
+            "comparator": "pregnancy among women receiving fertility treatment with omega-3 exposure versus control"
+          }
+        },
+        {
+          "citation": "ChiuYH et al 2018 Hum Reprod",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Serum omega-3 fatty acids and treatment outcomes among women undergoing assisted reproduction.",
+          "pmid": "29136189",
+          "n_participants": 100,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 2.37,
+            "ci_low": 1.02,
+            "ci_high": 5.51,
+            "comparator": "live birth when replacing 1% energy from saturated fat with long-chain omega-3 intake in women undergoing ART"
+          }
+        },
+        {
+          "citation": "MoranLJ et al 2016 Nutrients",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Altered Preconception Fatty Acid Intake Is Associated with Improved Pregnancy Rates in Overweight and Obese Women Undertaking in Vitro Fertilisation.",
+          "pmid": "26742065",
+          "n_participants": 46
+        }
+      ]
+    }
+  ]
+}

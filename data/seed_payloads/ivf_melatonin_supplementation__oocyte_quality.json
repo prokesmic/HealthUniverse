@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ivf_melatonin_supplementation",
+      "name": "Melatonin supplementation during IVF",
+      "kind": "supplement",
+      "aliases": [
+        "melatonin pretreatment in IVF",
+        "melatonin during assisted reproductive technology"
+      ],
+      "description": "Use of oral melatonin before or during ovarian stimulation in women undergoing IVF or related assisted reproductive technology."
+    },
+    {
+      "slug": "oocyte_quality",
+      "name": "Oocyte quality",
+      "kind": "process",
+      "aliases": [
+        "egg quality",
+        "oocyte competence",
+        "embryological oocyte quality"
+      ],
+      "description": "The developmental competence or quality of retrieved oocytes, often inferred through maturation, fertilization, embryo quality, or related embryology markers."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ivf_melatonin_supplementation",
+      "outcome_slug": "oocyte_quality",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The best pooled evidence suggests melatonin improves intermediate embryology markers more reliably than hard reproductive outcomes. In a 1,241-participant meta-analysis, melatonin increased MII oocyte counts by 1.39 and top-quality embryos by 0.56, while live birth remained non-significant (RR 1.23, 95% CI 0.85 to 1.80).",
+      "population": "women undergoing IVF or related assisted reproductive technology, especially women with diminished ovarian reserve, PCOS, or prior poor embryology",
+      "mechanism": "Melatonin is a follicular antioxidant and circadian hormone that may lower oxidative stress in the ovarian microenvironment, support mitochondrial function, and preserve meiotic competence. The uncertainty is that these biologically plausible follicular benefits do not translate consistently into higher live birth rates across randomized trials.",
+      "summary": "This is a plausible IVF optimization edge, but it should stay restrained. Melatonin often improves oocyte maturation or embryo-quality markers, yet the randomized evidence remains too inconsistent to treat it as a proven route to better ultimate reproductive outcomes.",
+      "caveats": "Trials are heterogeneous in dose, timing, comparator, and patient selection. Some studies combine melatonin with other fertility adjuncts, while even standalone trials remain underpowered for live birth.",
+      "evidence": [
+        {
+          "citation": "TangH et al 2025 BMC Pregnancy Childbirth",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Melatonin supplementation and outcomes of assisted reproductive technology: a systematic review and meta-analysis.",
+          "pmid": "41286761",
+          "n_participants": 1241,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.23,
+            "ci_low": 0.85,
+            "ci_high": 1.8,
+            "comparator": "live birth rate with melatonin versus control in assisted reproductive technology"
+          }
+        },
+        {
+          "citation": "SadeghpourS et al 2025 J Ovarian Res",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The effects of melatonin on follicular oxidative stress and ART outcomes in women with diminished ovarian reserve: a randomized controlled trial.",
+          "pmid": "39780224",
+          "n_participants": 68
+        },
+        {
+          "citation": "FernandoS et al 2018 Front Endocrinol (Lausanne)",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Melatonin in Assisted Reproductive Technology: A Pilot Double-Blind Randomized Placebo-Controlled Clinical Trial.",
+          "pmid": "30283403",
+          "n_participants": 160,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.57,
+            "ci_low": 0.59,
+            "ci_high": 4.14,
+            "comparator": "clinical pregnancy with pooled melatonin doses versus placebo in IVF or ICSI"
+          }
+        }
+      ]
+    }
+  ]
+}

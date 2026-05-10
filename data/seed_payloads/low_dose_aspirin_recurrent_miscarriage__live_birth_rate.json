@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "low_dose_aspirin_recurrent_miscarriage",
+      "name": "Low-dose aspirin for recurrent miscarriage",
+      "kind": "drug",
+      "aliases": [
+        "baby aspirin for recurrent pregnancy loss",
+        "low-dose aspirin in recurrent spontaneous abortion"
+      ],
+      "description": "Use of low-dose aspirin, usually alone or as part of antithrombotic therapy, in women with recurrent miscarriage or recurrent pregnancy loss."
+    },
+    {
+      "slug": "live_birth_rate",
+      "name": "Live birth rate",
+      "kind": "process",
+      "aliases": [
+        "chance of live birth",
+        "live birth success"
+      ],
+      "description": "The probability of delivering a live infant after a fertility treatment cycle or conception attempt."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "low_dose_aspirin_recurrent_miscarriage",
+      "outcome_slug": "live_birth_rate",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "The strongest quantitative takeaway is that low-dose aspirin alone does not reliably improve live birth in antiphospholipid-related recurrent loss. In a 1,251-patient meta-analysis, aspirin alone versus placebo showed no live-birth benefit (RR 0.97, 95% CI 0.80 to 1.16), whereas heparin-containing regimens performed better.",
+      "population": "women with recurrent miscarriage or recurrent pregnancy loss, especially those with antiphospholipid antibodies or antiphospholipid syndrome",
+      "mechanism": "Aspirin may reduce platelet activation and placental microthrombotic risk, which is why it is biologically attractive in antiphospholipid-associated pregnancy loss. The clinical reality is that aspirin alone often underperforms, and any meaningful benefit appears more tied to combined anticoagulant strategies than to aspirin monotherapy itself.",
+      "summary": "This is not a cleanly protective aspirin edge. The evidence supports a mixed conclusion: low-dose aspirin alone is usually not enough to improve live birth, while better outcomes are more often seen when heparin is part of the regimen in selected APS populations.",
+      "caveats": "This literature is highly subgroup-dependent. Findings in persistent antiphospholipid-antibody syndromes should not be generalized to all recurrent-loss populations, and this edge should not be upgraded on the basis of combination therapy results alone.",
+      "evidence": [
+        {
+          "citation": "HamulyákEN et al 2020 Cochrane Database Syst Rev",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Aspirin or heparin or both for improving pregnancy outcomes in women with persistent antiphospholipid antibodies and recurrent pregnancy loss.",
+          "pmid": "32358837",
+          "n_participants": 1672
+        },
+        {
+          "citation": "LuC et al 2019 J Matern Fetal Neonatal Med",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Aspirin or heparin or both in the treatment of recurrent spontaneous abortion in women with antiphospholipid antibody syndrome: a meta-analysis of randomized controlled trials.",
+          "pmid": "29179589",
+          "n_participants": 1251,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.97,
+            "ci_low": 0.8,
+            "ci_high": 1.16,
+            "comparator": "live birth with aspirin alone versus placebo in recurrent spontaneous abortion with APS"
+          }
+        },
+        {
+          "citation": "LvS et al 2018 Am J Reprod Immunol",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "A comparison of effectiveness among frequent treatments of recurrent spontaneous abortion: A Bayesian network meta-analysis.",
+          "pmid": "29709100",
+          "n_participants": 8496
+        }
+      ]
+    }
+  ]
+}
