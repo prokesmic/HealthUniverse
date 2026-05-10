@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "paternal_smoking_preconception",
+      "name": "Paternal smoking before conception",
+      "kind": "behavior",
+      "aliases": [
+        "preconception cigarette smoking in men",
+        "male smoking before conception"
+      ],
+      "description": "Cigarette smoking in prospective fathers during the months before conception."
+    },
+    {
+      "slug": "sperm_dna_fragmentation",
+      "name": "Sperm DNA fragmentation",
+      "kind": "biomarker",
+      "aliases": [
+        "sperm DNA damage",
+        "sperm DNA integrity loss",
+        "SDF"
+      ],
+      "description": "Elevated fragmentation or damage of sperm nuclear DNA measured by validated laboratory assays."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "paternal_smoking_preconception",
+      "outcome_slug": "sperm_dna_fragmentation",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The clearest modern population study found that heavy smokers had higher sperm DNA fragmentation than non-smokers in a cohort of 1,222 young men, and two smaller clinical cohorts also found materially worse DNA-integrity markers in smokers. The signal is not subtle enough to treat as background noise even though assay methods differ across studies.",
+      "population": "men of reproductive age who smoke cigarettes before conception, including both general-population and fertility-clinic cohorts",
+      "mechanism": "Cigarette smoke increases oxidative stress and toxicant exposure in the male reproductive tract, which can damage sperm chromatin packaging and DNA integrity during spermatogenesis. That mechanism is more plausible for DNA fragmentation than for every conventional semen parameter, which is why this edge is stronger than some older smoking-semen volume debates.",
+      "summary": "This is a real male-fertility harm signal. Across population-based and clinic-based cohorts, smoking before conception is consistently linked with worse sperm DNA integrity, even if the exact magnitude varies by smoking intensity and assay method.",
+      "caveats": "The literature mixes different fragmentation assays and often bundles smoking with other lifestyle exposures such as alcohol. This edge is most defensible as a harmful preconception fertility signal, not as a precise quantitative threshold for every smoker.",
+      "evidence": [
+        {
+          "citation": "Osadchuk L et al 2023 Front Endocrinol (Lausanne)",
+          "year": 2023,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Effects of cigarette smoking on semen quality, reproductive hormone levels, metabolic profile, zinc and sperm DNA fragmentation in men: results from a population-based study.",
+          "doi": "10.3389/fendo.2023.1255304",
+          "pmid": "37920251",
+          "n_participants": 1222
+        },
+        {
+          "citation": "Anifandis G et al 2014 Arch Gynecol Obstet",
+          "year": 2014,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The impact of cigarette smoking and alcohol consumption on sperm parameters and sperm DNA fragmentation (SDF) measured by Halosperm(®).",
+          "doi": "10.1007/s00404-014-3281-x",
+          "pmid": "24840110",
+          "n_participants": 207
+        },
+        {
+          "citation": "Amor H et al 2022 Andrologia",
+          "year": 2022,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Impact of heavy alcohol consumption and cigarette smoking on sperm DNA integrity.",
+          "doi": "10.1111/and.14434",
+          "pmid": "35484935",
+          "n_participants": 211
+        }
+      ]
+    }
+  ]
+}

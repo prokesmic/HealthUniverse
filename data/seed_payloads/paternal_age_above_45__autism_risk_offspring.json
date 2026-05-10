@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "paternal_age_above_45",
+      "name": "Paternal age above 45 years",
+      "kind": "biomarker",
+      "aliases": [
+        "advanced paternal age above 45",
+        "older father age over 45"
+      ],
+      "description": "Father age in the advanced range above about 45 years at the time of conception or birth."
+    },
+    {
+      "slug": "autism_risk_offspring",
+      "name": "Autism risk in offspring",
+      "kind": "condition",
+      "aliases": [
+        "offspring autism spectrum disorder risk",
+        "child autism risk"
+      ],
+      "description": "Risk of autism spectrum disorder diagnosed in the child or offspring."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "paternal_age_above_45",
+      "outcome_slug": "autism_risk_offspring",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The signal is consistent across large registry cohorts. The Swedish birth cohort found a 2.2-fold autism risk for offspring of fathers aged 50 years or older versus 29 years or younger, while the earlier Israeli cohort found a 5.75-fold risk for fathers 40 years or older versus younger than 30 in a more selected sample. Kaiser Permanente registry data also showed a 28% higher autism risk per 10-year paternal age increase.",
+      "population": "children born to older fathers in population-based birth and health-register cohorts",
+      "mechanism": "Advanced paternal age is plausibly linked to accumulating de novo germline mutations and age-related epigenetic drift in sperm. The epidemiology does not prove mechanism, but the persistence of the association across large cohorts makes a purely artifactual explanation harder to defend.",
+      "summary": "The safest reading is that older paternal age is a genuine autism-risk signal, though the exact magnitude depends on cohort design and comparison group. This is not a deterministic edge, but it is strong enough that a harmful direction is more defensible than a neutral one.",
+      "caveats": "Absolute autism risk remains low, and paternal age is entangled with maternal age, parity, and family-level social factors. Thresholds also vary across studies, so the above-45 slug should be read as an approximate advanced-age zone rather than a magic cutoff.",
+      "evidence": [
+        {
+          "citation": "Hultman CM et al 2011 Mol Psychiatry",
+          "year": 2011,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Advancing paternal age and risk of autism: new evidence from a population-based study and a meta-analysis of epidemiological studies.",
+          "doi": "10.1038/mp.2010.121",
+          "pmid": "21116277",
+          "n_participants": 1075588,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 2.2,
+            "ci_low": 1.26,
+            "ci_high": 3.88,
+            "comparator": "offspring autism risk for fathers aged 50 years or older versus 29 years or younger"
+          }
+        },
+        {
+          "citation": "Reichenberg A et al 2006 Arch Gen Psychiatry",
+          "year": 2006,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Advancing paternal age and autism.",
+          "doi": "10.1001/archpsyc.63.9.1026",
+          "pmid": "16953005",
+          "n_participants": 132271,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 5.75,
+            "ci_low": 2.65,
+            "ci_high": 12.46,
+            "comparator": "offspring autism risk for fathers aged 40 years or older versus younger than 30 years"
+          }
+        },
+        {
+          "citation": "Croen LA et al 2007 Arch Pediatr Adolesc Med",
+          "year": 2007,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Maternal and paternal age and risk of autism spectrum disorders.",
+          "doi": "10.1001/archpedi.161.4.334",
+          "pmid": "17404129",
+          "n_participants": 132844,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.28,
+            "ci_low": 1.09,
+            "ci_high": 1.51,
+            "comparator": "autism spectrum disorder risk per 10-year increase in paternal age"
+          }
+        }
+      ]
+    }
+  ]
+}

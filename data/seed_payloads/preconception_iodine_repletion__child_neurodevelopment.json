@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "preconception_iodine_repletion",
+      "name": "Preconception iodine repletion",
+      "kind": "nutrient",
+      "aliases": [
+        "adequate iodine status before pregnancy",
+        "periconceptional iodine sufficiency"
+      ],
+      "description": "Adequate maternal iodine status before conception or in very early pregnancy, typically through diet or supplementation."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "preconception_iodine_repletion",
+      "outcome_slug": "child_neurodevelopment",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The best direct participant-level synthesis found a curvilinear association between maternal iodine status and child verbal IQ in 6,180 mother-child pairs, but the more intervention-like trial evidence is much weaker than the folate literature. A large ALSPAC cohort found higher odds of low verbal IQ and poorer reading when first-trimester iodine-to-creatinine ratios were below 150 μg/g, while the randomized trial in mildly deficient women did not show a clear cognitive benefit from supplementation started at about 11 weeks' gestation.",
+      "population": "women entering pregnancy with low-to-adequate iodine status and their offspring followed for neurodevelopmental outcomes",
+      "mechanism": "Iodine is required for maternal thyroid-hormone production, and fetal brain development depends on thyroid hormone signaling very early in gestation. That timing makes preconception sufficiency more biologically plausible than late rescue after key neurodevelopmental windows have already opened.",
+      "summary": "This edge is biologically plausible and supported by observational pregnancy cohorts, but it is not nearly as settled as folate and neural tube defect prevention. The safest read is that avoiding iodine insufficiency before or very early in pregnancy is prudent for child neurodevelopment, while the magnitude of benefit from supplementation in only mildly deficient settings remains uncertain.",
+      "caveats": "Much of the evidence is actually gestational rather than strictly preconceptional, so the slug overstates the precision of the intervention timing. Randomized supplementation started after conception has not consistently improved later IQ, which argues for caution and against overselling this as a high-certainty enhancement edge.",
+      "evidence": [
+        {
+          "citation": "Levie D et al 2019 J Clin Endocrinol Metab",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Association of Maternal Iodine Status With Child IQ: A Meta-Analysis of Individual Participant Data.",
+          "doi": "10.1210/jc.2018-02559",
+          "pmid": "30920622",
+          "n_participants": 6180
+        },
+        {
+          "citation": "Bath SC et al 2013 Lancet",
+          "year": 2013,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of inadequate iodine status in UK pregnant women on cognitive outcomes in their children: results from the Avon Longitudinal Study of Parents and Children (ALSPAC).",
+          "doi": "10.1016/S0140-6736(13)60436-5",
+          "pmid": "23706508",
+          "n_participants": 1040,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.58,
+            "ci_low": 1.09,
+            "ci_high": 2.30,
+            "comparator": "odds of offspring verbal IQ in the lowest quartile when maternal iodine-to-creatinine ratio was below 150 μg/g versus at least 150 μg/g in early pregnancy"
+          }
+        },
+        {
+          "citation": "Gowachirapant S et al 2017 Lancet Diabetes Endocrinol",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Effect of iodine supplementation in pregnant women on child neurodevelopment: a randomised, double-blind, placebo-controlled trial.",
+          "doi": "10.1016/S2213-8587(17)30332-7",
+          "pmid": "29030199",
+          "n_participants": 832
+        }
+      ]
+    }
+  ]
+}
