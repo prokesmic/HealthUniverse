@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "visceral_adipose_tissue_high",
+      "outcome_slug": "mace_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In premature coronary disease, visceral adipose tissue in the highest tertile (at least 194 cm²) was associated with a 2.71-fold higher recurrent-MACE risk over 5 years. In 33,432 UK Biobank participants, elevated visceral-fat proportion remained associated with MACE after adjustment for BMI and waist circumference, with adjusted hazard ratios around 1.37 in females and 1.22 in males. A second UK Biobank body-composition analysis found higher VAT index associated with higher ASCVD risk (HR 1.16, 95% CI 1.09 to 1.23).",
+      "population": "middle-aged and older adults with imaging-derived body composition assessment, including primary-prevention populations and people with established premature coronary disease",
+      "mechanism": "Visceral adipose tissue is metabolically active and drains into portal and systemic pathways that promote insulin resistance, inflammatory signaling, dyslipidemia, and endothelial dysfunction. Those processes help explain why visceral fat often carries more event risk than body mass index alone.",
+      "summary": "The strongest claim is that high visceral adipose tissue is a harmful cardiovascular-risk phenotype, especially when measured directly by imaging rather than inferred from BMI alone. Across contemporary cohorts, people with more visceral fat generally show more future major cardiovascular events, even after basic anthropometric adjustment.",
+      "caveats": "The size of the risk signal varies by population and by whether models adjust for other body-composition compartments. Some studies suggest low skeletal muscle or fat infiltration adds prognostic information alongside visceral fat, so this edge should be read as part of a broader body-composition risk pattern rather than as a stand-alone determinant.",
+      "evidence": [
+        {
+          "citation": "Aida Medina-Urrutia et al 2025 Eur J Prev Cardiol",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Visceral Adipose Tissue is Associated with Recurrent Cardiovascular Events in Premature Coronary Artery Disease: Sub-analysis of the GEA study cohort.",
+          "doi": "10.1093/eurjpc/zwaf074",
+          "pmid": "39957360",
+          "n_participants": 853
+        },
+        {
+          "citation": "Matthias Jung et al 2025 Ann Intern Med",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association Between Body Composition and Cardiometabolic Outcomes : A Prospective Cohort Study.",
+          "doi": "10.7326/ANNALS-24-01863",
+          "pmid": "41021919",
+          "n_participants": 33432
+        },
+        {
+          "citation": "Umidakhon Makhmudova et al 2025 Eur J Prev Cardiol",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Visceral Adipose Tissue, Aortic Distensibility and Atherosclerotic Cardiovascular Risk Across Body Mass Index Categories.",
+          "doi": "10.1093/eurjpc/zwaf447",
+          "pmid": "40680099",
+          "n_participants": 36829
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "visceral_adipose_tissue_high",
+      "name": "High visceral adipose tissue",
+      "kind": "biomarker",
+      "aliases": [
+        "high visceral fat",
+        "elevated VAT"
+      ],
+      "description": "An elevated amount or proportion of visceral adipose tissue measured directly by imaging such as CT, DXA, or MRI."
+    },
+    {
+      "slug": "mace_risk",
+      "name": "Major adverse cardiovascular event risk",
+      "kind": "condition",
+      "aliases": [
+        "MACE risk",
+        "major cardiovascular event risk"
+      ],
+      "description": "Risk of major adverse cardiovascular events such as myocardial infarction, stroke, heart-failure hospitalization, or cardiovascular death."
+    }
+  ]
+}

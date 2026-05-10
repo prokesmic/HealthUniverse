@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "slow_wave_sleep_short",
+      "outcome_slug": "memory_consolidation",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "modest",
+      "effect_quant": "A 10-study meta-analysis of acoustic slow-wave enhancement found a small overall memory benefit (Hedges g 0.25) and a larger subgroup effect with phase-locked stimulation (g 0.44). In nine adults with amnestic MCI, boosting slow-wave activity by more than 10% during stimulation was associated with better next-morning word recall (r = 0.78). In 135 cognitively intact older adults, a higher proportion of slow-wave sleep was positively associated with episodic memory performance.",
+      "population": "healthy adults, older adults, and adults with mild cognitive impairment studied with polysomnography or experimental slow-wave manipulation",
+      "mechanism": "Slow-wave sleep supports hippocampo-cortical dialogue that helps newly encoded information stabilize overnight. When slow-wave sleep is shortened or blunted, replay and systems-level transfer of memory traces appear less efficient, making next-day recall more fragile.",
+      "summary": "The cleanest claim is that short or weakened slow-wave sleep is unfavorable for memory consolidation. The literature is a mix of physiology, experimental enhancement, and observational aging data, but it repeatedly points to the same underlying idea: more intact slow-wave sleep usually supports better overnight memory stabilization.",
+      "caveats": "The effect is not huge, and some enhancement experiments show only trend-level or delayed cognitive benefits. This edge is most defensible for episodic-memory consolidation rather than for every memory domain, and age or cognitive reserve may buffer some of the impact of lower slow-wave sleep.",
+      "evidence": [
+        {
+          "citation": "Marina Wunderlin et al 2021 Sleep",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Modulating overnight memory consolidation by acoustic stimulation during slow-wave sleep: a systematic review and meta-analysis.",
+          "doi": "10.1093/sleep/zsaa296",
+          "pmid": "33406249",
+          "n_participants": 177
+        },
+        {
+          "citation": "Nelly Papalambros et al 2019 Ann Clin Transl Neurol",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Acoustic enhancement of sleep slow oscillations in mild cognitive impairment.",
+          "doi": "10.1002/acn3.796",
+          "pmid": "31353857",
+          "n_participants": 9
+        },
+        {
+          "citation": "Valentin Ourry et al 2023 Aging (Albany NY)",
+          "year": 2023,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Effect of cognitive reserve on the association between slow wave sleep and cognition in community-dwelling older adults.",
+          "doi": "10.18632/aging.204943",
+          "pmid": "37770186",
+          "n_participants": 135
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "slow_wave_sleep_short",
+      "name": "Short slow-wave sleep",
+      "kind": "biomarker",
+      "aliases": [
+        "reduced slow-wave sleep",
+        "low N3 sleep"
+      ],
+      "description": "A reduced amount or proportion of slow-wave sleep, the deep non-REM stage often labeled N3."
+    },
+    {
+      "slug": "memory_consolidation",
+      "name": "Memory consolidation",
+      "kind": "process",
+      "aliases": [
+        "overnight memory stabilization",
+        "sleep-dependent memory consolidation"
+      ],
+      "description": "The strengthening and stabilization of newly learned information across time, especially across sleep."
+    }
+  ]
+}

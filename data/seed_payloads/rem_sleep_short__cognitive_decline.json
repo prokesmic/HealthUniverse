@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "rem_sleep_short",
+      "outcome_slug": "cognitive_decline",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In the Framingham cohort, each 1-point reduction in REM sleep percentage was associated with about a 9% higher incident-dementia risk over long follow-up (HR 0.91, 95% CI 0.86 to 0.97 per higher REM percentage). In a 235-person elderly cohort, shorter average REM duration within NREM/REM cycles predicted later MCI or dementia (OR 0.87, 95% CI 0.76 to 0.98 per longer REM duration). A 430-participant meta-analysis in mild cognitive impairment also found reduced REM sleep and longer REM latency versus cognitively healthy controls.",
+      "population": "older adults and cognitively at-risk adults undergoing objective sleep architecture assessment",
+      "mechanism": "REM sleep supports cholinergic and limbic network processes involved in memory integration, emotional tagging, and synaptic recalibration. When REM sleep is persistently shortened, those restorative and integrative processes may weaken, which can make emerging neurodegenerative trajectories more visible.",
+      "summary": "The strongest reading is that shortened REM sleep is a harmful early cognitive-aging marker. Longitudinal community data, elderly cohort analyses, and meta-analytic case-control work all point in the same broad direction: people with less REM sleep tend to sit closer to later cognitive decline than those with more preserved REM architecture.",
+      "caveats": "This edge is still partly biomarker-like rather than definitively causal. Reduced REM sleep may contribute to decline, but it may also reflect early neurodegenerative change that is already underway, and the literature does not yet prove that selectively increasing REM sleep will prevent dementia.",
+      "evidence": [
+        {
+          "citation": "Matthew Pase et al 2017 Neurology",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Sleep architecture and the risk of incident dementia in the community.",
+          "doi": "10.1212/WNL.0000000000004373",
+          "pmid": "28835407",
+          "n_participants": 321
+        },
+        {
+          "citation": "Seung Wan Suh et al 2019 J Alzheimers Dis",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Short Average Duration of NREM/REM Cycle Is Related to Cognitive Decline in an Elderly Cohort: An Exploratory Investigation.",
+          "doi": "10.3233/JAD-190399",
+          "pmid": "31322573",
+          "n_participants": 235
+        },
+        {
+          "citation": "Angela D'Rozario et al 2020 Sleep Med Rev",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Objective measurement of sleep in mild cognitive impairment: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.smrv.2020.101308",
+          "pmid": "32302775",
+          "n_participants": 430
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "rem_sleep_short",
+      "name": "Short REM sleep",
+      "kind": "biomarker",
+      "aliases": [
+        "reduced REM sleep",
+        "low REM sleep percentage"
+      ],
+      "description": "A reduced amount or proportion of rapid eye movement sleep, or unusually short REM duration within overnight sleep architecture."
+    }
+  ]
+}
