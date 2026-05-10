@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "low_dose_atropine",
+      "outcome_slug": "childhood_myopia_progression",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Across randomized and network meta-analytic evidence, low-dose atropine consistently slows refractive worsening and axial elongation in children, with 0.05% generally delivering the best efficacy-tolerability balance. The strongest network meta-analysis estimated an overall risk reduction for progression with 0.05% atropine versus control, while living reviews continue to rank atropine among the most effective interventions.",
+      "population": "children with progressive myopia treated with low-dose atropine eye drops",
+      "mechanism": "Low-dose atropine appears to modulate retinal and scleral signaling involved in axial elongation without relying only on cycloplegia. Lower concentrations preserve more tolerability while still slowing structural myopia progression.",
+      "summary": "This is one of the cleaner childhood myopia-control edges. Low-dose atropine has strong evidence for slowing progression, especially when the goal is a practical compromise between efficacy and side effects rather than maximal pharmacologic suppression.",
+      "caveats": "The effect is about slowing progression, not eliminating myopia, and rebound after stopping therapy still matters. Concentration choice, duration, and adherence strongly affect the real-world trade-off.",
+      "evidence": [
+        {
+          "citation": "Ahnul Ha et al 2022 Ophthalmology",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy and Safety of 8 Atropine Concentrations for Myopia Control in Children: A Network Meta-Analysis.",
+          "pmid": "34688698",
+          "n_participants": 3272,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.39,
+            "ci_low": 0.27,
+            "ci_high": 0.57,
+            "comparator": "control for overall myopia progression with 0.05% atropine"
+          }
+        },
+        {
+          "citation": "Lawrenson JG et al 2023 Cochrane Database Syst Rev",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Interventions for myopia control in children: a living systematic review and network meta-analysis.",
+          "pmid": "36809645",
+          "n_participants": 11617
+        },
+        {
+          "citation": "Tsai HR et al 2022 J Formos Med Assoc",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy of atropine, orthokeratology, and combined atropine with orthokeratology for childhood myopia: A systematic review and network meta-analysis.",
+          "pmid": "35688780",
+          "n_participants": 3435
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "low_dose_atropine",
+      "name": "Low-dose atropine",
+      "kind": "drug",
+      "aliases": [
+        "low-concentration atropine eye drops",
+        "atropine for myopia control"
+      ],
+      "description": "Low-concentration topical atropine used to slow childhood myopia progression."
+    },
+    {
+      "slug": "childhood_myopia_progression",
+      "name": "Childhood myopia progression",
+      "kind": "process",
+      "aliases": [
+        "progressive myopia in children",
+        "myopia worsening in childhood"
+      ],
+      "description": "Worsening refractive error or axial elongation in children who already have myopia."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "excessive_screen_time",
+      "outcome_slug": "dry_eye_symptoms",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Pediatric and youth studies consistently show worse dry-eye symptom scores or tear-film metrics with heavier device exposure. A school-based cross-sectional study found significantly higher dry-eye risk above roughly 3 to 3.5 hours of daily device use, and a pediatric case-control study linked smartphone use with dry eye disease in children. Acute experimental evidence also shows that one hour of smartphone gaming worsens symptoms and sharply reduces blink rate in school-aged children.",
+      "population": "children, adolescents, and youth with prolonged daily digital screen exposure",
+      "mechanism": "Excessive screen use lowers blink rate, increases interblink interval, and can destabilize the tear film during sustained near work, which plausibly worsens ocular-surface discomfort and dry-eye symptoms.",
+      "summary": "The literature leans harmful here. Longer screen exposure in children and adolescents is associated with more dry-eye symptoms and worse tear-function markers, even if some of the evidence is observational rather than fully longitudinal.",
+      "caveats": "The evidence base is still somewhat mixed in design quality and includes cross-sectional and case-control work rather than large long-term cohorts. Device ergonomics, ambient humidity, and baseline ocular-surface health also influence symptom severity.",
+      "evidence": [
+        {
+          "citation": "Jadeja JN et al 2024 Indian J Ophthalmol",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of digital device usage and dry eye disease in school children.",
+          "pmid": "38905463",
+          "n_participants": 462,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.94,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "increment in computer usage for moderate to severe pediatric dry eye risk"
+          }
+        },
+        {
+          "citation": "Moon JH et al 2016 BMC Ophthalmol",
+          "year": 2016,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Smartphone use is a risk factor for pediatric dry eye disease according to region and age: a case control study.",
+          "pmid": "27788672",
+          "n_participants": 916
+        },
+        {
+          "citation": "Chidi-Egboka NC et al 2023 Eye (Lond)",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Smartphone gaming induces dry eye symptoms and reduces blinking in school-aged children.",
+          "pmid": "35668140",
+          "n_participants": 36
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "excessive_screen_time",
+      "name": "Excessive screen time",
+      "kind": "behavior",
+      "aliases": [
+        "prolonged digital device use",
+        "heavy screen exposure"
+      ],
+      "description": "High daily exposure to smartphones, tablets, computers, or other digital screens for work, school, or leisure."
+    },
+    {
+      "slug": "dry_eye_symptoms",
+      "name": "Dry eye symptoms",
+      "kind": "condition",
+      "aliases": [
+        "ocular surface dryness symptoms",
+        "digital dry eye complaints"
+      ],
+      "description": "Symptoms such as dryness, burning, grittiness, or ocular discomfort associated with tear-film instability."
+    }
+  ]
+}
