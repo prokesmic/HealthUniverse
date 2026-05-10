@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "grounding_earthing",
+      "name": "Grounding or earthing",
+      "kind": "behavior",
+      "aliases": [
+        "earthing",
+        "grounding the body"
+      ],
+      "description": "Direct skin contact with the earth or conductive grounding devices marketed for inflammation, recovery, and chronic disease benefit."
+    },
+    {
+      "slug": "inflammation_markers",
+      "name": "Inflammation markers",
+      "kind": "process",
+      "aliases": [
+        "inflammatory biomarkers",
+        "inflammation biomarker profile"
+      ],
+      "description": "Laboratory or physiological markers used as proxies for inflammation."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "grounding_earthing",
+      "outcome_slug": "inflammation_markers",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "Small grounding studies have reported physiologic changes such as an average 2.70 increase in red-blood-cell zeta potential after a 2-hour grounding session in 10 adults, but the broader earthing literature remains dominated by small, nonconfirmatory studies and advocacy-style reviews rather than rigorous inflammation trials.",
+      "population": "adults using grounding or earthing interventions for wellness, inflammation, or cardiovascular claims",
+      "mechanism": "Grounding proponents propose electron transfer from the earth that alters redox balance and inflammatory signaling, but the evidence base remains small and heavily reliant on surrogate markers rather than robust clinical anti-inflammatory outcomes.",
+      "summary": "Grounding has a biologically interesting but very weak evidence profile. A few small studies suggest changes in surrogate physiology, yet the current literature is far from establishing grounding as a dependable anti-inflammatory intervention.",
+      "caveats": "Do not treat surrogate-marker shifts as proof of disease modification. The field has a high risk of sponsorship and confirmation bias, and better independent randomized trials are still needed.",
+      "evidence": [
+        {
+          "citation": "Chevalier G et al 2013 J Altern Complement Med",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Earthing (grounding) the human body reduces blood viscosity-a major factor in cardiovascular disease.",
+          "pmid": "22757749",
+          "n_participants": 10
+        },
+        {
+          "citation": "Oschman JL 2023 Biomed J",
+          "year": 2023,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Illnesses in technologically advanced societies due to lack of grounding (earthing).",
+          "pmid": "36336303"
+        },
+        {
+          "citation": "Oschman JL et al 2012 J Environ Public Health",
+          "year": 2012,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Earthing: health implications of reconnecting the human body to the Earth's surface electrons.",
+          "pmid": "22291721",
+          "n_participants": 21
+        }
+      ]
+    }
+  ]
+}

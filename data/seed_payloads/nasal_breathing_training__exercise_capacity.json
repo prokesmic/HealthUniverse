@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "nasal_breathing_training",
+      "name": "Nasal breathing training",
+      "kind": "behavior",
+      "aliases": [
+        "nose-breathing training",
+        "nasal-only breathing practice"
+      ],
+      "description": "Intentional practice of nasal breathing during exercise or training as a means to improve exercise physiology or performance."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "nasal_breathing_training",
+      "outcome_slug": "exercise_capacity",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 1995 trial in 20 healthy adults found that maximal ventilation dropped more than maximal oxygen consumption during nose-only breathing, although all subjects still reached an aerobic training intensity; a 2024 crossover study in 57 participants found nasal versus oral breathing improved submaximal ventilatory efficiency in cardiac patients but did not establish a clear universal performance gain.",
+      "population": "healthy adults, athletes, or cardiac patients intentionally using nasal breathing during exercise",
+      "mechanism": "Nasal breathing can alter airway conditioning, breathing frequency, ventilatory efficiency, and perceived respiratory effort, but it may also limit peak ventilation and therefore blunt maximal exercise in some settings.",
+      "summary": "Nasal breathing during exercise is not a universally performance-enhancing technique. It may improve submaximal breathing efficiency or training control in some people, but it can also constrain peak ventilation and reduce maximal exercise capacity compared with oral or oronasal breathing.",
+      "caveats": "Do not advertise this as a guaranteed endurance upgrade. The balance between efficiency benefits and peak-ventilation limits depends on the person, exercise intensity, and whether the goal is submaximal control or maximal output.",
+      "evidence": [
+        {
+          "citation": "Morton AR et al 1995 Aust J Sci Med Sport",
+          "year": 1995,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Comparison of maximal oxygen consumption with oral and nasal breathing.",
+          "pmid": "8599744",
+          "n_participants": 20
+        },
+        {
+          "citation": "Eser P et al 2024 Front Physiol",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Improved exercise ventilatory efficiency with nasal compared to oral breathing in cardiac patients.",
+          "pmid": "39165283",
+          "n_participants": 57
+        },
+        {
+          "citation": "Niinimaa V et al 1980 Respir Physiol",
+          "year": 1980,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "The switching point from nasal to oronasal breathing.",
+          "pmid": "7444224",
+          "n_participants": 30
+        }
+      ]
+    }
+  ]
+}

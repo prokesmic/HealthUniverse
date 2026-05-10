@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "mouth_taping_sleep",
+      "name": "Mouth taping during sleep",
+      "kind": "behavior",
+      "aliases": [
+        "nighttime mouth taping",
+        "mouth closure during sleep"
+      ],
+      "description": "Sealing or closing the mouth during sleep to encourage nasal breathing and potentially reduce snoring or sleep-disordered breathing."
+    },
+    {
+      "slug": "sleep_apnea_outcomes",
+      "name": "Sleep apnea outcomes",
+      "kind": "process",
+      "aliases": [
+        "OSA outcomes",
+        "sleep-disordered breathing outcomes"
+      ],
+      "description": "Outcomes related to obstructive sleep apnea severity, airflow, and related sleep-breathing measures."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "mouth_taping_sleep",
+      "outcome_slug": "sleep_apnea_outcomes",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "In a 2024 nonrandomized clinical trial of 54 patients with OSA, mouth closure increased total inspiratory flow overall by 1.0 L/min but worsened airflow by 1.9 L/min in the subgroup with the greatest baseline mouth breathing; a 2022 preliminary study in 20 mouth-breathers with mild OSA reported median AHI improvement from 8.3 to 4.7 events/h with mouth taping.",
+      "population": "adults with mouth breathing, snoring, or obstructive sleep apnea using mouth closure or taping during sleep",
+      "mechanism": "Mouth closure may reduce oral-route breathing and improve some airflow patterns, but in patients who rely on the mouth to bypass nasal or velopharyngeal obstruction it can also worsen airflow and obstructive physiology.",
+      "summary": "Mouth taping is not a one-directional 'biohack win.' Some mild or selected mouth-breathing patients may improve, but responses are heterogeneous and patients with significant upstream obstruction may worsen when forced into nasal-only airflow.",
+      "caveats": "Do not generalize small-study improvements to all patients with OSA. The safety profile depends heavily on airway anatomy, disease severity, and whether mouth breathing is compensatory rather than purely dysfunctional.",
+      "evidence": [
+        {
+          "citation": "Yang H et al 2024 JAMA Otolaryngol Head Neck Surg",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Mouth Closure and Airflow in Patients With Obstructive Sleep Apnea: A Nonrandomized Clinical Trial.",
+          "pmid": "39361293",
+          "n_participants": 54
+        },
+        {
+          "citation": "Jau JY et al 2023 Nat Sci Sleep",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Mouth Puffing Phenomenon and Upper Airway Features May Be Used to Predict the Severity of Obstructive Sleep Apnea.",
+          "pmid": "37032816",
+          "n_participants": 71
+        },
+        {
+          "citation": "Chadwick JW et al 2024 JAMA Otolaryngol Head Neck Surg",
+          "year": 2024,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Should Mouth Taping and Obstructive Sleep Apnea Therapies Be Regulated?",
+          "pmid": "39361319"
+        }
+      ]
+    }
+  ]
+}
