@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "sugar_consumption_acute",
+      "name": "Acute sugar consumption",
+      "kind": "behavior",
+      "aliases": [
+        "acute sucrose intake",
+        "single sugar challenge"
+      ],
+      "description": "Short-term sugar intake or sugar challenge used to test immediate behavioral effects in children."
+    },
+    {
+      "slug": "behavior_children",
+      "name": "Behavior in children",
+      "kind": "process",
+      "aliases": [
+        "child behavior",
+        "behavioral response in children"
+      ],
+      "description": "Observed or rated child behavior such as activity, aggression, attention, or disruptiveness."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "sugar_consumption_acute",
+      "outcome_slug": "behavior_children",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "Narrative and quantitative reviews of blinded challenge studies have generally concluded that acute sugar does not reliably worsen child behavior overall, although a few small preschool challenge studies have reported subgroup or context-specific behavioral changes.",
+      "population": "children undergoing acute sugar or sucrose challenge studies, including those believed by parents to be sugar-sensitive",
+      "mechanism": "Acute glycemic or expectancy-related effects could alter activity or attention in some contexts, but controlled trials have generally failed to show a consistent clinically meaningful behavioral effect across children as a whole.",
+      "summary": "The best overall reading is contested but mostly negative: sugar does not reliably cause hyperactive behavior in children in blinded challenge studies, though small subgroup responses remain possible and are often what sustain the claim culturally.",
+      "caveats": "Do not convert this into 'sugar is behaviorally irrelevant in every child.' The literature leaves room for occasional individual sensitivity, but not for the broad popular claim that acute sugar reliably makes children hyperactive.",
+      "evidence": [
+        {
+          "citation": "Stevenson J 2006 Proc Nutr Soc",
+          "year": 2006,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Dietary influences on cognitive development and behaviour in children.",
+          "pmid": "17181902"
+        },
+        {
+          "citation": "Kruesi MJ et al 1987 Am J Psychiatry",
+          "year": 1987,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Effects of sugar and aspartame on aggression and activity in children.",
+          "pmid": "3674234",
+          "n_participants": 30
+        },
+        {
+          "citation": "Wolraich ML et al 1994 N Engl J Med",
+          "year": 1994,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Effects of diets high in sucrose or aspartame on the behavior and cognitive performance of children.",
+          "pmid": "8277950",
+          "n_participants": 48
+        },
+        {
+          "citation": "Goldman JA et al 1986 J Abnorm Child Psychol",
+          "year": 1986,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Behavioral effects of sucrose on preschool children.",
+          "pmid": "3782627",
+          "n_participants": 8
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "parent_training_adhd",
+      "name": "Parent training for ADHD",
+      "kind": "activity",
+      "aliases": [
+        "behavioral parent training for ADHD",
+        "ADHD parent-management training"
+      ],
+      "description": "Structured parent-focused behavioral training intended to improve child behavior and family management in ADHD."
+    },
+    {
+      "slug": "child_behavior_outcomes",
+      "name": "Child behavior outcomes",
+      "kind": "process",
+      "aliases": [
+        "behavioral outcomes in children",
+        "child behavior profile"
+      ],
+      "description": "Child behavior outcomes such as oppositionality, disruptive behavior, and parent-rated functional behavior."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "parent_training_adhd",
+      "outcome_slug": "child_behavior_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A Cochrane meta-analysis found significant parent-training effects on internalizing behavior in the pooled subset of two studies (n = 142), and later randomized trials also reported improved child externalizing or ADHD-related behavior versus wait-list control or treatment as usual.",
+      "population": "children with ADHD and their caregivers receiving structured parent-training interventions",
+      "mechanism": "Training changes how parents cue, reinforce, and respond to child behavior, which can reduce coercive cycles and improve daily behavioral functioning even when core ADHD symptoms persist.",
+      "summary": "Parent training has a credible behavioral benefit signal in ADHD, especially for disruptive behavior and family-level functioning. It should be framed as a practical behavioral-management intervention rather than a cure for core attentional dysfunction.",
+      "caveats": "Benefits vary by outcome source and are often stronger for parent-reported behavior than blinded or school-based measures. Some programs improve parenting more consistently than they improve all child behavior domains.",
+      "evidence": [
+        {
+          "citation": "Zwi M et al 2011 Cochrane Database Syst Rev",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Parent training interventions for Attention Deficit Hyperactivity Disorder (ADHD) in children aged 5 to 18 years.",
+          "pmid": "22161373",
+          "n_participants": 284
+        },
+        {
+          "citation": "Weinblatt U et al 2021 J Atten Disord",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Parent training in non-violent resistance for children with attention deficit hyperactivity disorder: a controlled outcome study.",
+          "pmid": "33528659",
+          "n_participants": 101
+        },
+        {
+          "citation": "Abikoff H et al 2015 J Child Psychol Psychiatry",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Parent training for preschool ADHD: a randomized controlled trial of specialized and generic programs.",
+          "pmid": "25318650",
+          "n_participants": 164
+        }
+      ]
+    }
+  ]
+}

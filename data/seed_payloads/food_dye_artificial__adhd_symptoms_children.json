@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "food_dye_artificial",
+      "name": "Artificial food dyes",
+      "kind": "environmental",
+      "aliases": [
+        "synthetic food color additives",
+        "artificial food colorings"
+      ],
+      "description": "Synthetic food coloring additives consumed in foods and beverages."
+    },
+    {
+      "slug": "adhd_symptoms_children",
+      "name": "ADHD symptoms in children",
+      "kind": "process",
+      "aliases": [
+        "child ADHD symptom burden",
+        "hyperactivity symptoms in children"
+      ],
+      "description": "Hyperactivity, impulsivity, and attention-related symptoms in children."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "food_dye_artificial",
+      "outcome_slug": "adhd_symptoms_children",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2004 meta-analysis of 15 double-blind placebo-controlled trials estimated an overall effect size of 0.283 for artificial food colorings on hyperactivity symptoms, and a 2011 updated meta-analysis concluded that synthetic food colors may contribute to ADHD symptoms in a susceptible subgroup, although the overall effect remained modest and heterogeneous.",
+      "population": "children with ADHD, hyperactive syndromes, or suspected food-color sensitivity",
+      "mechanism": "Some children may have neurobehavioral sensitivity to certain food additives, but the response is inconsistent and likely limited to susceptible subgroups rather than the general child population.",
+      "summary": "Artificial food dyes deserve a mixed rather than dismissive verdict. The pooled literature suggests a modest average effect with probable responder subgroups, but the signal is not strong or consistent enough to frame dyes as a universal major driver of childhood ADHD symptoms.",
+      "caveats": "Do not oversell elimination diets as a standalone ADHD treatment. The most accurate framing is that dyes may worsen symptoms in some children, while many others show little or no measurable response.",
+      "evidence": [
+        {
+          "citation": "Schab DW et al 2004 J Dev Behav Pediatr",
+          "year": 2004,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Do artificial food colors promote hyperactivity in children with hyperactive syndromes? A meta-analysis of double-blind placebo-controlled trials.",
+          "pmid": "15613992",
+          "n_participants": 15
+        },
+        {
+          "citation": "Nigg JT et al 2012 J Am Acad Child Adolesc Psychiatry",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Meta-analysis of attention-deficit/hyperactivity disorder or attention-deficit/hyperactivity disorder symptoms, restriction diet, and synthetic food color additives.",
+          "pmid": "22176942",
+          "n_participants": 34
+        },
+        {
+          "citation": "Rowe KS et al 1994 J Paediatr Child Health",
+          "year": 1994,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Synthetic food coloring and behavior: a dose response effect in a double-blind, placebo-controlled, repeated-measures study.",
+          "pmid": "7965420",
+          "n_participants": 200
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "behavior_therapy_preschool_adhd",
+      "name": "Behavior therapy for preschool ADHD",
+      "kind": "activity",
+      "aliases": [
+        "behavioral therapy in preschool ADHD",
+        "behavioral parent-based therapy for preschool ADHD"
+      ],
+      "description": "Behavioral therapy approaches, often parent-mediated, used as first-line treatment for preschool-aged children with ADHD."
+    },
+    {
+      "slug": "adhd_severity",
+      "name": "ADHD severity",
+      "kind": "process",
+      "aliases": [
+        "ADHD symptom severity",
+        "overall ADHD symptom burden"
+      ],
+      "description": "Overall severity of attention-deficit/hyperactivity disorder symptoms."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "behavior_therapy_preschool_adhd",
+      "outcome_slug": "adhd_severity",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A meta-analysis of eight randomized preschool ADHD trials totaling 399 participants found parental behavioral interventions reduced ADHD symptoms with a pooled standardized mean difference of -0.68, while a later randomized trial in 164 preschoolers showed parent training improved parent-rated ADHD and disruptive symptoms compared with wait-list control.",
+      "population": "preschool-aged children with ADHD or clinically significant ADHD symptoms receiving behavior therapy, usually through parent-mediated treatment",
+      "mechanism": "Behavior therapy can reduce symptom severity indirectly by improving parent responses, reinforcement patterns, routines, emotional regulation, and disruptive behavior cycles that amplify ADHD symptoms in early childhood.",
+      "summary": "Behavior therapy is one of the strongest nonpharmacologic options in preschool ADHD and is appropriately treated as first-line care. The effect is not universal or dramatic in every child, but the pooled evidence supports meaningful symptom reduction, especially on parent-rated measures.",
+      "caveats": "Teacher-rated and objective laboratory effects are often smaller than parent-rated improvements. The main benefits are usually symptom and family-function gains rather than full remission.",
+      "evidence": [
+        {
+          "citation": "Mulqueen JM et al 2015 J Atten Disord",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Meta-analysis: parental interventions for preschool ADHD.",
+          "pmid": "24071773",
+          "n_participants": 399
+        },
+        {
+          "citation": "Abikoff H et al 2015 J Child Psychol Psychiatry",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Parent training for preschool ADHD: a randomized controlled trial of specialized and generic programs.",
+          "pmid": "25318650",
+          "n_participants": 164
+        },
+        {
+          "citation": "Halperin JM et al 2020 J Abnorm Child Psychol",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Training Executive, Attention, and Motor Skills (TEAMS): a Preliminary Randomized Clinical Trial of Preschool Youth with ADHD.",
+          "pmid": "31834588",
+          "n_participants": 67
+        }
+      ]
+    }
+  ]
+}
