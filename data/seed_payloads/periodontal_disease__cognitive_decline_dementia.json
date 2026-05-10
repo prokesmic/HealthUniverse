@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "periodontal_disease",
+      "outcome_slug": "cognitive_decline_dementia",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A dementia-focused meta-analysis found periodontal disease was associated with higher dementia risk overall (RR 1.38, 95% CI 1.01-1.90), with a smaller but still significant estimate in cohort studies alone (RR 1.18, 95% CI 1.06-1.31). A recent 15-year cohort of 642 older men did not confirm a direct periodontitis association with later dementia or MCI, but greater tooth retention was protective.",
+      "population": "older adults with periodontitis or broader periodontal disease followed for cognitive decline or dementia",
+      "mechanism": "Periodontal disease may contribute to neurodegenerative risk through chronic systemic inflammation, vascular injury, and repeated exposure to oral pathogens or their inflammatory products. If the link is real, it is likely to be modest and mediated rather than a simple direct cause-effect relationship.",
+      "summary": "The balance of evidence leans toward a harmful association, but with substantial uncertainty. Meta-analytic pooling suggests higher dementia risk in people with periodontal disease, yet newer prospective data are less uniformly positive, so this edge is best interpreted as plausible and concerning rather than conclusively causal.",
+      "caveats": "Reverse causality is a real issue because early cognitive decline can worsen oral hygiene and dental care, making periodontal disease look more predictive than it truly is. The evidence base includes different dementia definitions, periodontal assessments, and study designs, which is why this edge stays in mid-confidence rather than moving higher.",
+      "evidence": [
+        {
+          "citation": "Nadim R et al 2020 Eur J Epidemiol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Influence of periodontal disease on risk of dementia: a systematic literature review and a meta-analysis.",
+          "pmid": "32533373",
+          "n_participants": 12
+        },
+        {
+          "citation": "Farsi DN et al 2026 J Alzheimers Dis",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Periodontitis and incident cognitive decline and dementia: A 15-year prospective cohort study of older men residing in Northern Ireland.",
+          "pmid": "41384827",
+          "n_participants": 642
+        },
+        {
+          "citation": "Malik NAB et al 2023 Saudi Dent J",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Periodontal health status of people with dementia - A systematic review of case-control studies.",
+          "pmid": "37817782",
+          "n_participants": 28
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "periodontal_disease",
+      "name": "Periodontal disease",
+      "kind": "condition",
+      "aliases": [
+        "periodontitis",
+        "gum disease"
+      ],
+      "description": "Inflammatory disease affecting the supporting structures of the teeth, including gingiva, periodontal ligament, and alveolar bone."
+    },
+    {
+      "slug": "cognitive_decline_dementia",
+      "name": "Cognitive decline or dementia",
+      "kind": "condition",
+      "aliases": [
+        "incident cognitive impairment",
+        "dementia risk"
+      ],
+      "description": "Meaningful deterioration in cognition, including mild cognitive impairment or dementia during follow-up."
+    }
+  ]
+}
