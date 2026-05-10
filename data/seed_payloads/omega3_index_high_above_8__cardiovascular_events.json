@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "omega3_index_high_above_8",
+      "outcome_slug": "cardiovascular_events",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The 2017 Omega-3 Index analysis estimated about a 30% reduction in fatal coronary heart disease risk moving from around 4% to 8%, reinforcing the clinical convention that values above 8% sit in a lower-risk zone. In Framingham Offspring, higher omega-3 index improved 10-year cardiovascular-event prediction beyond traditional pooled-cohort risk modeling, and in MESA higher plasma EPA and DHA were independently associated with fewer long-term cardiovascular events, with the absolute benefit greatest when subclinical atherosclerosis was already present.",
+      "population": "community-dwelling adults without established atherosclerotic cardiovascular disease at baseline",
+      "mechanism": "A higher omega-3 index reflects greater membrane incorporation of EPA and DHA, which may support plaque stability, lower arrhythmic susceptibility, and temper inflammatory signaling. Those effects offer a biologically coherent explanation for fewer downstream cardiovascular events when the index is in the higher range.",
+      "summary": "This is one of the cleaner biomarker-threshold stories in the manifest. The literature does not prove that 8% is a magical cliff, but cohort-based analyses repeatedly treat values above roughly 8% as the low-risk end of the spectrum, and that interpretation aligns with fewer cardiovascular events over long follow-up.",
+      "caveats": "The strongest direct threshold paper estimates risk from pooled cohort distributions rather than from a trial randomizing people to specific omega-3 index targets. Event reduction may differ by baseline dietary intake, background statin use, and whether the endpoint is fatal coronary disease, broad ASCVD, or sudden cardiac death.",
+      "evidence": [
+        {
+          "citation": "William Harris et al 2017 Atherosclerosis",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The Omega-3 Index and relative risk for coronary heart disease mortality: Estimation from 10 cohort studies.",
+          "doi": "10.1016/j.atherosclerosis.2017.05.007",
+          "pmid": "28511049",
+          "n_participants": 10
+        },
+        {
+          "citation": "William Franco et al 2025 J Clin Lipidol",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Omega-3 index improves upon the pooled cohort equation in predicting risk for CVD.",
+          "doi": "10.1016/j.jacl.2024.12.005",
+          "pmid": "40074603",
+          "n_participants": 2550
+        },
+        {
+          "citation": "Khurram Nasir et al 2022 Atherosclerosis",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Omega-3 fatty acids, subclinical atherosclerosis, and cardiovascular events: Implications for primary prevention.",
+          "pmid": "35759823",
+          "n_participants": 6568
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "omega3_index_high_above_8",
+      "name": "Omega-3 index high above 8%",
+      "kind": "biomarker",
+      "aliases": [
+        "high omega-3 index above 8",
+        "omega-3 index over 8%"
+      ],
+      "description": "Red blood cell EPA plus DHA percentage in the higher range commonly interpreted as above about 8%."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hs_crp_high_above_3",
+      "outcome_slug": "cv_events",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a 53,065-person prospective cohort, repeated hs-CRP at or above 3 mg/L carried a hazard ratio of 1.38 for cardiovascular disease in participants exposed at all three examinations versus those never exposed. In stable coronary disease, the 2022 meta-analysis of 22,602 patients found a pooled risk ratio of 1.77 for major adverse cardiovascular events comparing the highest versus lowest CRP groups. Large pooled prospective data also show that CRP meaningfully improves first-event prediction on top of conventional risk factors.",
+      "population": "adults without baseline cardiovascular disease and adults with stable coronary disease undergoing inflammatory risk stratification",
+      "mechanism": "hs-CRP integrates low-grade vascular inflammation that often accompanies endothelial activation, plaque instability, visceral adiposity, and upstream metabolic dysfunction. Because inflammation participates in atherosclerotic initiation and event triggering, persistently elevated hs-CRP plausibly marks a higher likelihood of future cardiovascular events.",
+      "summary": "The literature is consistent enough that hs-CRP above about 3 mg/L is best viewed as an unfavorable cardiovascular-risk zone. The signal is not perfectly specific, because CRP rises in many inflammatory states, but across both primary-prevention and established-coronary cohorts, persistently higher hs-CRP tracks with more downstream cardiovascular events.",
+      "caveats": "CRP is a broad inflammatory marker, so infections, autoimmune disease, obesity, and liver-related processes can all influence it. The edge is strongest as a prognostic risk marker and weaker as proof that any intervention lowering hs-CRP alone will necessarily reduce events proportionally.",
+      "evidence": [
+        {
+          "citation": "Kaptoge S et al 2012 N Engl J Med",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "C-reactive protein, fibrinogen, and cardiovascular disease prediction.",
+          "doi": "10.1056/NEJMoa1107477",
+          "pmid": "23034020",
+          "n_participants": 246669
+        },
+        {
+          "citation": "Shuangyan Luo et al 2022 Medicine (Baltimore)",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Predictive value of baseline C-reactive protein level in patients with stable coronary artery disease: A meta-analysis.",
+          "doi": "10.1097/MD.0000000000030331",
+          "pmid": "36107517",
+          "n_participants": 22602
+        },
+        {
+          "citation": "Yongmei Yuan et al 2017 J Am Heart Assoc",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cumulative Exposure to High-Sensitivity C-Reactive Protein Predicts the Risk of Cardiovascular Disease.",
+          "doi": "10.1161/JAHA.117.005610",
+          "pmid": "29066453",
+          "n_participants": 53065
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hs_crp_high_above_3",
+      "name": "hs-CRP high above 3 mg/L",
+      "kind": "biomarker",
+      "aliases": [
+        "high hs-CRP above 3",
+        "high-sensitivity CRP over 3"
+      ],
+      "description": "High-sensitivity C-reactive protein in the elevated cardiovascular-risk range commonly framed as above about 3 mg/L."
+    },
+    {
+      "slug": "cv_events",
+      "name": "Cardiovascular events",
+      "kind": "condition",
+      "aliases": [
+        "major cardiovascular events",
+        "vascular events"
+      ],
+      "description": "Major cardiovascular outcomes such as myocardial infarction, stroke, cardiovascular death, and related vascular events."
+    }
+  ]
+}
