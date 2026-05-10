@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "occupational_silica_dust_chronic",
+      "outcome_slug": "silicosis_risk",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "Dose-response evidence shows silicosis risk rises with cumulative respirable crystalline silica exposure, with mining and engineered-stone settings carrying especially high progression risk.",
+      "population": "workers with chronic occupational respirable crystalline silica exposure",
+      "mechanism": "Respirable crystalline silica is directly toxic to alveolar macrophages and drives a self-sustaining fibrotic cascade in the lung. Once cumulative exposure is high enough, the biology fits an exposure-dependent pneumoconiosis model much more than a subtle associative signal.",
+      "summary": "The best anchor is the recent dose-response meta-analysis showing that higher cumulative silica exposure maps to higher silicosis risk rather than merely correlating with dusty jobs in general. Other systematic reviews and cohort follow-up in rapidly progressive artificial-stone disease reinforce that this is one of the cleaner occupational harm edges in the graph.",
+      "caveats": "Absolute risk depends heavily on dust intensity, duration, and the silica content of the material being worked. Engineered-stone cohorts can progress faster than traditional mining cohorts, so they should not be treated as identical exposure settings.",
+      "evidence": [
+        {
+          "citation": "Howlett P et al 2024 Thorax",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Relationship between cumulative silica exposure and silicosis: a systematic review and dose-response meta-analysis.",
+          "pmid": "39107111",
+          "n_participants": 24
+        },
+        {
+          "citation": "Howlett P et al 2023 PLOS Glob Public Health",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Silicosis, tuberculosis and silica exposure among artisanal and small-scale miners: A systematic review and modelling paper.",
+          "pmid": "37733799",
+          "n_participants": 29562
+        },
+        {
+          "citation": "Hoy RF et al 2020 Chest",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Artificial Stone Silicosis: Rapid Progression Following Exposure Cessation.",
+          "pmid": "32563682",
+          "n_participants": 48
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "occupational_silica_dust_chronic",
+      "name": "Chronic occupational silica dust exposure",
+      "kind": "environmental",
+      "aliases": [
+        "long-term respirable crystalline silica exposure"
+      ],
+      "description": "Repeated workplace exposure to respirable crystalline silica dust over years."
+    },
+    {
+      "slug": "silicosis_risk",
+      "name": "Silicosis risk",
+      "kind": "condition",
+      "aliases": [
+        "risk of silicosis"
+      ],
+      "description": "Risk of developing silicosis from cumulative silica exposure."
+    }
+  ]
+}
