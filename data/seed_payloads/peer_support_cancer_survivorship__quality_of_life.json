@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "peer_support_cancer_survivorship",
+      "name": "Peer support during cancer survivorship",
+      "kind": "behavior",
+      "aliases": [
+        "cancer survivor peer support",
+        "peer-delivered survivorship support"
+      ],
+      "description": "Structured support delivered by cancer survivors or peer mentors to people living after cancer treatment or diagnosis."
+    },
+    {
+      "slug": "quality_of_life",
+      "name": "Quality of life",
+      "kind": "process",
+      "aliases": [
+        "health-related quality of life",
+        "HRQoL"
+      ],
+      "description": "Overall physical, emotional, social, and functional well-being measured with validated quality-of-life instruments."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "peer_support_cancer_survivorship",
+      "outcome_slug": "quality_of_life",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The broader cancer peer-support meta-analysis reported a quality-of-life benefit of SMD 0.48 (95% CI 0.21 to 0.75), but several survivor trials found little or no advantage on global HRQoL endpoints.",
+      "population": "adult cancer survivors or patients receiving peer-delivered survivorship support programs",
+      "mechanism": "Peer support may improve quality of life by normalizing treatment side effects, reducing isolation, and providing practical survivorship coping strategies from people with lived experience. The effect depends heavily on whether the peer contact is sustained, culturally matched, and skillfully structured rather than simply available.",
+      "summary": "The strongest pooled evidence suggests that peer support can improve quality of life in cancer populations, but the survivorship trials are not uniformly positive. Breast cancer and rural Latina survivor trials often improved anxiety, coping, or selected domains more than overall global HRQoL, so the most defensible conclusion is that peer support is promising but inconsistent rather than reliably transformative.",
+      "caveats": "This literature mixes telephone, group, online, and peer-led coping programs, so the intervention itself is heterogeneous. Some positive studies focused on domain-specific or culturally tailored benefits, whereas generic HRQoL scores often moved less, which makes effect estimates sensitive to the outcome instrument chosen.",
+      "evidence": [
+        {
+          "citation": "Sharif F et al 2010 Health Qual Life Outcomes",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The effect of peer-led education on the life quality of mastectomy patients referred to breast cancer-clinics in Shiraz, Iran 2009.",
+          "pmid": "20653966",
+          "n_participants": 99
+        },
+        {
+          "citation": "Miyashita M et al 2019 Support Care Cancer",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effectiveness of peer support on health-related quality of life in recently diagnosed breast cancer patients: a randomized controlled trial.",
+          "pmid": "30338354",
+          "n_participants": 260
+        },
+        {
+          "citation": "Moreno PI et al 2020 Psychooncology",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Nuevo Amanecer-II: Results of a randomized controlled trial of a community-based participatory, peer-delivered stress management intervention for rural Latina breast cancer survivors.",
+          "pmid": "32672864",
+          "n_participants": 153
+        },
+        {
+          "citation": "Salzer MS et al 2010 Psychooncology",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "A randomized, controlled study of Internet peer-to-peer interactions among women newly diagnosed with breast cancer.",
+          "pmid": "19484712",
+          "n_participants": 78
+        }
+      ]
+    }
+  ]
+}

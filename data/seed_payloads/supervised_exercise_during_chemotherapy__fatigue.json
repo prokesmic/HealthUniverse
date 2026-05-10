@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "supervised_exercise_during_chemotherapy",
+      "name": "Supervised exercise during chemotherapy",
+      "kind": "activity",
+      "aliases": [
+        "exercise training during chemotherapy",
+        "supervised training during active chemotherapy"
+      ],
+      "description": "Structured aerobic and/or resistance exercise delivered under supervision while a patient is actively receiving chemotherapy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "supervised_exercise_during_chemotherapy",
+      "outcome_slug": "fatigue",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Meta-analyses found lower fatigue during adjuvant treatment overall (SMD -0.46, 95% CI -0.66 to -0.27) and with supervised resistance-focused programs during chemotherapy (SMD about -0.30 to -0.34).",
+      "population": "women with breast cancer receiving adjuvant or neoadjuvant chemotherapy",
+      "mechanism": "Supervised exercise can blunt treatment-related deconditioning, preserve muscle function, and reduce the inflammatory and behavioral spiral that worsens cancer-related fatigue. Programs that combine resistance and aerobic elements appear more reliable because they protect both strength and cardiorespiratory reserve during treatment.",
+      "summary": "The strongest evidence supports supervised exercise during chemotherapy as a practical fatigue-reduction tool. The benefit is not huge, but it is consistent across pooled analyses and reinforced by recent randomized trial data showing less fatigue deterioration when supervised combined training runs concurrently with chemotherapy.",
+      "caveats": "Exercise protocols differ in intensity, supervision, and whether resistance training is combined with aerobic work. The best results tend to come from supervised rather than purely home-based programs, and most of the evidence comes from breast cancer rather than mixed tumor populations.",
+      "evidence": [
+        {
+          "citation": "Drouin P et al 2024 Support Care Cancer",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Impact of resistance training on fatigue among breast cancer patients undergoing chemotherapy: a systematic review and meta-analysis.",
+          "pmid": "39392491",
+          "n_participants": 1512
+        },
+        {
+          "citation": "Bail JR et al 2022 Support Care Cancer",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Impact on fatigue of different types of physical exercise during adjuvant chemotherapy and radiotherapy in breast cancer: systematic review and meta-analysis.",
+          "pmid": "35064331",
+          "n_participants": 1793
+        },
+        {
+          "citation": "Schmitt ACB et al 2024 Med Sci Sports Exerc",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Exercise Training Benefits Health-Related Quality of Life and Functional Capacity during Breast Cancer Chemotherapy: A Randomized Controlled Trial.",
+          "pmid": "38051110",
+          "n_participants": 93
+        }
+      ]
+    }
+  ]
+}
