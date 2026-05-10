@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vo2max_high",
+      "outcome_slug": "coronary_disease_progression",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The cleanest longitudinal cohort found that higher VO2peak predicted significantly slower progression of coronary calcium over repeated scans in 4,843 adults, and the CARDIA cohort found an odds ratio of 0.59 for later coronary calcium in the high- versus low-fitness group.",
+      "population": "asymptomatic or primary-prevention adults undergoing exercise testing and coronary calcium assessment",
+      "mechanism": "Higher aerobic fitness plausibly slows coronary disease progression through lower blood pressure, better insulin sensitivity, improved endothelial function, and lower cumulative inflammatory load. The main uncertainty is not mechanism but whether extremely high training loads continue to improve plaque biology once conventional risk factors are already optimized.",
+      "summary": "The boring read is that better cardiorespiratory fitness usually points toward slower coronary plaque progression, but this is a thinner and less perfectly monotonic literature than the mortality evidence. The best serial-imaging data support a protective association, while some cross-sectional datasets suggest the very highest fitness strata can still carry substantial calcified plaque burden.",
+      "caveats": "Most of the direct evidence uses coronary artery calcium as the progression marker rather than hard coronary events, so this edge is about subclinical atherosclerosis trajectory. Very high exercise exposure may also produce more calcified but potentially more stable plaque, which complicates simplistic interpretations of coronary calcium alone.",
+      "evidence": [
+        {
+          "citation": "Sung J 2016 Heart Vessels",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Relationship between aerobic fitness and progression of coronary atherosclerosis.",
+          "doi": "10.1007/s00380-015-0745-2",
+          "pmid": "26400860",
+          "n_participants": 4843
+        },
+        {
+          "citation": "Lee CD 2009 Atherosclerosis",
+          "year": 2009,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cardiorespiratory fitness and coronary artery calcification in young adults: The CARDIA Study.",
+          "doi": "10.1016/j.atherosclerosis.2008.06.012",
+          "pmid": "18653190",
+          "n_participants": 2373
+        },
+        {
+          "citation": "Kermott CA 2019 Mayo Clin Proc Innov Qual Outcomes",
+          "year": 2019,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Cardiorespiratory Fitness and Coronary Artery Calcification in a Primary Prevention Population.",
+          "doi": "10.1016/j.mayocpiqo.2019.04.004",
+          "pmid": "31193905",
+          "n_participants": 2946
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vo2max_high",
+      "name": "Higher cardiorespiratory fitness",
+      "kind": "process",
+      "aliases": [
+        "higher VO2max",
+        "high aerobic fitness",
+        "high CRF"
+      ],
+      "description": "Cardiorespiratory fitness in the higher end of age- or sex-adjusted aerobic-capacity distributions, usually measured or estimated from exercise testing."
+    },
+    {
+      "slug": "coronary_disease_progression",
+      "name": "Coronary disease progression",
+      "kind": "condition",
+      "aliases": [
+        "progression of coronary atherosclerosis",
+        "coronary plaque progression",
+        "worsening coronary calcium"
+      ],
+      "description": "Progressive worsening of subclinical or clinical coronary atherosclerosis, often captured by serial coronary calcium or plaque imaging."
+    }
+  ]
+}

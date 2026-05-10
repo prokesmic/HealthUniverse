@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vo2max_low",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The largest updated meta-analysis of 37 cohorts involving 2,258,029 participants found a pooled relative risk of 0.55 for top versus bottom fitness tertiles and 0.89 per 1-MET higher fitness; the earlier JAMA meta-analysis found a 1.70 relative risk of all-cause mortality for low versus high cardiorespiratory fitness.",
+      "population": "generally healthy adults undergoing exercise-based cardiorespiratory fitness assessment",
+      "mechanism": "Low VO2max behaves partly as low cardiopulmonary reserve and partly as a summary marker for lower physical activity, sarcopenia, metabolic dysfunction, and autonomic vulnerability. That makes the pathway to higher mortality broad rather than disease-specific, which is why the most credible effect is on total mortality rather than one isolated cause.",
+      "summary": "This is one of the cleaner prognostic fitness edges in the graph. Across large cohort meta-analyses, lower cardiorespiratory fitness consistently tracks with higher all-cause mortality, and the argument is mostly about slope and threshold rather than about whether the relationship is real.",
+      "caveats": "The evidence is observational, so residual confounding by smoking, adiposity, illness burden, and long-term physical activity patterns never fully disappears. Still, the signal is unusually consistent across cohorts, fitness-testing methods, and demographic subgroups.",
+      "evidence": [
+        {
+          "citation": "Kodama S 2009 JAMA",
+          "year": 2009,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Cardiorespiratory fitness as a quantitative predictor of all-cause mortality and cardiovascular events in healthy men and women: a meta-analysis.",
+          "doi": "10.1001/jama.2009.681",
+          "pmid": "19454641",
+          "n_participants": 102980
+        },
+        {
+          "citation": "Laukkanen JA 2022 Mayo Clin Proc",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Objectively Assessed Cardiorespiratory Fitness and All-Cause Mortality Risk: An Updated Meta-analysis of 37 Cohort Studies Involving 2,258,029 Participants.",
+          "doi": "10.1016/j.mayocp.2022.02.029",
+          "pmid": "35562197",
+          "n_participants": 2258029
+        },
+        {
+          "citation": "Steell L 2019 Br J Sports Med",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Dose-response associations of cardiorespiratory fitness with all-cause mortality and incidence and mortality of cancer and cardiovascular and respiratory diseases: the UK Biobank cohort study.",
+          "doi": "10.1136/bjsports-2018-099093",
+          "pmid": "30796106",
+          "n_participants": 73259
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vo2max_low",
+      "name": "Low cardiorespiratory fitness",
+      "kind": "condition",
+      "aliases": [
+        "low VO2max",
+        "poor aerobic fitness",
+        "low CRF"
+      ],
+      "description": "Cardiorespiratory fitness low enough to place an adult near the bottom of age- or sex-adjusted aerobic capacity distributions, typically measured or estimated from exercise testing."
+    }
+  ]
+}
