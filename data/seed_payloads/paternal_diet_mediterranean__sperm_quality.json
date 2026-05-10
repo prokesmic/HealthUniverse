@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "paternal_diet_mediterranean",
+      "name": "Paternal Mediterranean-style diet",
+      "kind": "behavior",
+      "aliases": [
+        "Mediterranean diet in prospective fathers",
+        "male Mediterranean dietary pattern"
+      ],
+      "description": "Higher adherence to a Mediterranean-style dietary pattern before conception in men."
+    },
+    {
+      "slug": "sperm_quality",
+      "name": "Sperm quality",
+      "kind": "biomarker",
+      "aliases": [
+        "overall semen quality",
+        "composite sperm parameters"
+      ],
+      "description": "Overall quality of semen or sperm assessed using concentration, motility, morphology, count, or related composite markers."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "paternal_diet_mediterranean",
+      "outcome_slug": "sperm_quality",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across fertility-clinic cohorts, higher Mediterranean-diet adherence tracks with better semen quality rather than worse. In the Italian clinic study, higher adherence was linked to lower odds of poor semen parameters in 309 men, and newer cohorts of 274 and 358 men also reported positive associations between Mediterranean-pattern adherence and concentration, motility, or morphology.",
+      "population": "men of reproductive age, especially fertility-clinic patients assessed for diet quality and semen parameters before assisted reproduction",
+      "mechanism": "A Mediterranean-style diet delivers more unsaturated fats, polyphenols, legumes, seafood, fruits, and vegetables while lowering ultra-processed intake. That pattern can reduce oxidative stress and improve metabolic and inflammatory tone in ways that plausibly support spermatogenesis and sperm-membrane function.",
+      "summary": "This is a reasonable protective lifestyle edge, but it is still mostly observational. The literature consistently leans toward better semen quality with stronger Mediterranean-diet adherence, even though the effect size is modest and not equivalent to guaranteed fertility improvement.",
+      "caveats": "These studies are mostly cross-sectional or clinic-based and remain vulnerable to healthy-user bias. Better semen parameters do not automatically translate into higher live birth rates after treatment, so the edge should stay focused on sperm quality rather than promise reproductive success.",
+      "evidence": [
+        {
+          "citation": "Cutillas-Tolín A et al 2019 Clin Nutr",
+          "year": 2019,
+          "study_type": "cross_sectional",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Mediterranean diet and the risk of poor semen quality: cross-sectional analysis of men referring to an Italian Fertility Clinic.",
+          "doi": "10.1016/j.clnu.2018.11.034",
+          "pmid": "30663272",
+          "n_participants": 309
+        },
+        {
+          "citation": "Nouri M et al 2024 Eur J Obstet Gynecol Reprod Biol",
+          "year": 2024,
+          "study_type": "cross_sectional",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Correlation of mediterranean diet pattern and lifestyle factors with semen quality of men attending fertility clinics: A cross-sectional study.",
+          "doi": "10.1016/j.ejogrb.2024.09.036",
+          "pmid": "39340894",
+          "n_participants": 274
+        },
+        {
+          "citation": "DeToni L et al 2025 Nutrients",
+          "year": 2025,
+          "study_type": "cross_sectional",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Role of Mediterranean Diet and Ultra-Processed Foods on Sperm Parameters: Data from a Cross-Sectional Study.",
+          "pmid": "40647172",
+          "n_participants": 358
+        }
+      ]
+    }
+  ]
+}

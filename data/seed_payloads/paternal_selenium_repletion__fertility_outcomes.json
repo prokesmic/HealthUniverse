@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "paternal_selenium_repletion",
+      "name": "Paternal selenium repletion",
+      "kind": "nutrient",
+      "aliases": [
+        "selenium supplementation in prospective fathers",
+        "male selenium replacement"
+      ],
+      "description": "Restoration or supplementation of selenium exposure in men before conception or fertility treatment."
+    },
+    {
+      "slug": "fertility_outcomes",
+      "name": "Fertility outcomes",
+      "kind": "process",
+      "aliases": [
+        "male fertility treatment outcomes",
+        "pregnancy and related fertility success"
+      ],
+      "description": "Clinical fertility outcomes such as fertilization success, pregnancy, or related reproductive endpoints."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "paternal_selenium_repletion",
+      "outcome_slug": "fertility_outcomes",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "The evidence base suggests possible benefit in selected infertile men, but it is not cleanly selenium-specific. A 2009 antioxidant review of 1,665 men found that many antioxidant trials improved sperm quality or pregnancy rate, selenium-containing combination trials reported higher spontaneous pregnancy or fertilization success in small RCTs, yet the MOXI secondary analysis found no relationship between normal baseline selenium levels and later pregnancy or live birth.",
+      "population": "subfertile men receiving selenium-containing supplementation or being assessed for selenium status during fertility treatment",
+      "mechanism": "Selenium contributes to selenoprotein antioxidant systems involved in sperm structural integrity and redox balance. The main uncertainty is that benefit may depend on true deficiency or combination therapy rather than selenium alone, which is why the literature does not justify a stronger claim.",
+      "summary": "This is a tentative and heterogeneous edge. Selenium repletion may help some male-fertility outcomes, especially inside broader antioxidant stacks or in lower-status men, but the evidence is too indirect and inconsistent to treat selenium as a reliable stand-alone fertility enhancer.",
+      "caveats": "Much of the intervention literature combines selenium with carnitine, zinc, or other micronutrients, so attribution is weak. Baseline selenium sufficiency also matters, and higher-normal selenium status has not been convincingly linked to better live birth outcomes.",
+      "evidence": [
+        {
+          "citation": "Showell MG et al 2011 Fertil Steril",
+          "year": 2011,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A systematic review of the effect of oral antioxidants on male infertility.",
+          "pmid": "20378409",
+          "n_participants": 1665
+        },
+        {
+          "citation": "Krzastek SC et al 2020 Andrology",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Dietary supplementation with a novel l-carnitine multi-micronutrient in idiopathic male subfertility involving oligo-, astheno-, teratozoospermia: A randomized clinical study.",
+          "doi": "10.1111/andr.12805",
+          "pmid": "32330373",
+          "n_participants": 83
+        },
+        {
+          "citation": "Steiner AZ et al 2021 Urol Pract",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The relationship of plasma antioxidant levels to semen parameters: the Males, Antioxidants, and Infertility (MOXI) randomized clinical trial.",
+          "doi": "10.1097/UPJ.0000000000000240",
+          "pmid": "34455507",
+          "n_participants": 124
+        }
+      ]
+    }
+  ]
+}
