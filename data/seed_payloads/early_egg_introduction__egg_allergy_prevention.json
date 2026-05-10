@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "early_egg_introduction",
+      "name": "Early egg introduction",
+      "kind": "activity",
+      "aliases": [
+        "egg introduction before 6 months",
+        "early infant egg exposure"
+      ],
+      "description": "Introducing egg in infancy before or around 6 months of age for allergy prevention."
+    },
+    {
+      "slug": "egg_allergy_prevention",
+      "name": "Egg allergy prevention",
+      "kind": "process",
+      "aliases": [
+        "prevention of egg allergy",
+        "reduced incident egg allergy"
+      ],
+      "description": "Lower risk of developing IgE-mediated egg allergy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "early_egg_introduction",
+      "outcome_slug": "egg_allergy_prevention",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "A 2021 meta-analysis reported that introducing egg before 6 months reduced egg allergy risk versus later introduction (RR 0.60, 95% CI 0.46-0.79), with an even stronger subgroup estimate in infants with allergic risk factors (RR 0.55, 95% CI 0.40-0.75).",
+      "population": "infants, especially those with eczema or a family or personal predisposition to allergic disease",
+      "mechanism": "Early oral egg exposure may promote antigen-specific immune tolerance during a critical developmental window and reduce later allergic sensitization.",
+      "summary": "Early egg introduction is protective against later egg allergy overall, with the clearest benefit seen when introduced before 6 months in infants at elevated allergic risk.",
+      "caveats": "Form of egg, dose, and baseline eczema or sensitization status matter. Trials differ in whether they used heated, raw, or stepwise introduction strategies.",
+      "evidence": [
+        {
+          "citation": "Burgess JA et al 2019 Clin Exp Allergy",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Age at introduction to complementary solid food and food allergy and sensitization: A systematic review and meta-analysis.",
+          "pmid": "30861244",
+          "n_participants": 25
+        },
+        {
+          "citation": "Wang L et al 2021 Zhonghua Er Ke Za Zhi",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Timing of food introduction to the infant diet and risk of food allergy: a systematic review and meta-analysis.",
+          "pmid": "34405638",
+          "n_participants": 8
+        },
+        {
+          "citation": "Natsume O et al 2017 Lancet",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Two-step egg introduction for prevention of egg allergy in high-risk infants with eczema (PETIT): a randomised, double-blind, placebo-controlled trial.",
+          "pmid": "27939035",
+          "n_participants": 147
+        }
+      ]
+    }
+  ]
+}

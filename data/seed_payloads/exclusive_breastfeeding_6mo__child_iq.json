@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "exclusive_breastfeeding_6mo",
+      "name": "Exclusive breastfeeding for 6 months",
+      "kind": "activity",
+      "aliases": [
+        "6-month exclusive breastfeeding",
+        "exclusive breastfeeding through 6 months"
+      ],
+      "description": "Exclusive breastfeeding maintained for approximately the first 6 months of life."
+    },
+    {
+      "slug": "child_iq",
+      "name": "Child IQ",
+      "kind": "process",
+      "aliases": [
+        "child intelligence quotient",
+        "cognitive test score in children"
+      ],
+      "description": "Measured intelligence quotient or closely related cognitive test performance in childhood."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "exclusive_breastfeeding_6mo",
+      "outcome_slug": "child_iq",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A classic meta-analysis found that after adjustment for key confounders, breastfeeding was associated with a 3.16-point higher cognitive score (95% CI 2.35-3.98) versus formula feeding, and a 2015 birth cohort reported a dose-response association between breastfeeding duration and adult IQ.",
+      "population": "children followed after exclusive or predominant breastfeeding versus shorter duration or mixed/formula feeding",
+      "mechanism": "Breastfeeding may support neurodevelopment through long-chain polyunsaturated fatty acids, bioactive factors, and enriched caregiver-infant interaction patterns.",
+      "summary": "Exclusive breastfeeding through about 6 months is associated with higher later cognitive performance or IQ overall, although confounding by family and social factors remains an important concern in observational evidence.",
+      "caveats": "This literature is largely observational and vulnerable to residual confounding by maternal intelligence, education, and caregiving environment. Effect sizes are modest and should not be framed deterministically at the individual level.",
+      "evidence": [
+        {
+          "citation": "Anderson JW et al 1999 Am J Clin Nutr",
+          "year": 1999,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Breast-feeding and cognitive development: a meta-analysis.",
+          "pmid": "10500022",
+          "n_participants": 20
+        },
+        {
+          "citation": "Victora CG et al 2015 Lancet Glob Health",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Association between breastfeeding and intelligence, educational attainment, and income at 30 years of age: a prospective birth cohort study from Brazil.",
+          "pmid": "25794674",
+          "n_participants": 3493
+        },
+        {
+          "citation": "Jedrychowski W et al 2012 Eur J Pediatr",
+          "year": 2012,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of exclusive breastfeeding on the development of children's cognitive function in the Krakow prospective birth cohort study.",
+          "pmid": "21660433",
+          "n_participants": 468
+        }
+      ]
+    }
+  ]
+}
