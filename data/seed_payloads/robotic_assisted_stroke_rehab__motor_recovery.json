@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "robotic_assisted_stroke_rehab",
+      "name": "Robot-assisted stroke rehabilitation",
+      "kind": "behavior",
+      "aliases": [
+        "robot-assisted upper-limb rehab after stroke",
+        "robotic stroke rehabilitation"
+      ],
+      "description": "Stroke rehabilitation delivered with robotic or electromechanical upper-limb training devices."
+    },
+    {
+      "slug": "motor_recovery",
+      "name": "Motor recovery",
+      "kind": "process",
+      "aliases": [
+        "motor improvement",
+        "motor outcome recovery"
+      ],
+      "description": "Recovery of motor impairment and movement performance after neurological injury."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "robotic_assisted_stroke_rehab",
+      "outcome_slug": "motor_recovery",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across 41 randomized trials, robot-assisted therapy improved post-stroke upper-extremity motor scores with a small pooled effect size (Hedges g 0.25, 95% CI 0.11-0.38) compared with dose-matched conventional rehabilitation.",
+      "population": "adults with upper-limb motor impairment after stroke",
+      "mechanism": "Robot-assisted rehabilitation increases repetitions, standardizes task dosing, and can make impaired movement practice more feasible over long sessions. The likely ceiling is that robotics improve training delivery more than they create a qualitatively different biological recovery signal, so gains are generally modest and device-dependent.",
+      "summary": "The strongest anchor is the large 2021 meta-analysis showing a small pooled advantage of robot-assisted therapy over dose-matched conventional rehabilitation on upper-limb motor impairment. Newer network and portable-device reviews support benefit but also make clear that effects vary by device type and comparator intensity, so this edge is better treated as mixed-with-benefit than as a universally strong motor-recovery solution.",
+      "caveats": "Not all robotic systems perform equally, and some comparisons become less impressive when the control group receives intensive conventional therapy. The technology seems best understood as a way to deliver more practice rather than a substitute for all therapist-led rehabilitation.",
+      "evidence": [
+        {
+          "citation": "Wang H et al 2025 Arch Rehabil Res Clin Transl",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy of Robot-assisted Training on Upper Limb Motor Function After Stroke: A Systematic Review and Network Meta-analysis.",
+          "pmid": "40463769",
+          "n_participants": 1537
+        },
+        {
+          "citation": "Liao YY et al 2021 Phys Ther",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Robot-Assisted Therapy for Upper Extremity Motor Impairment After Stroke: A Systematic Review and Meta-Analysis.",
+          "pmid": "33454787",
+          "n_participants": 1916
+        },
+        {
+          "citation": "Liao JY et al 2024 Ann Med",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Portable robots for upper-limb rehabilitation after stroke: a systematic review and meta-analysis.",
+          "pmid": "38640459",
+          "n_participants": 295
+        }
+      ]
+    }
+  ]
+}

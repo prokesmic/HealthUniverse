@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "constraint_induced_movement_stroke",
+      "name": "Constraint-induced movement therapy after stroke",
+      "kind": "behavior",
+      "aliases": [
+        "CIMT after stroke",
+        "modified CIMT for stroke"
+      ],
+      "description": "Constraint-induced or modified constraint-induced movement therapy used to improve paretic arm use after stroke."
+    },
+    {
+      "slug": "upper_limb_function",
+      "name": "Upper limb function",
+      "kind": "process",
+      "aliases": [
+        "arm function",
+        "upper extremity motor function"
+      ],
+      "description": "Functional performance of the upper limb, including motor control, task use, and dexterity."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "constraint_induced_movement_stroke",
+      "outcome_slug": "upper_limb_function",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The acute and subacute stroke meta-analysis found meaningful gains with constraint-induced movement therapy on the Fugl-Meyer arm score (WMD 10.82) and Action Research Arm Test (WMD 10.72) compared with control therapy.",
+      "population": "adults with upper-extremity dysfunction after acute, subacute, or mixed-stage stroke",
+      "mechanism": "Constraint-induced movement therapy forces high-frequency use of the paretic arm while limiting reliance on the unaffected side, which counters learned nonuse and increases task-specific motor practice. The benefit appears strongest in patients who retain at least some voluntary wrist and finger movement and can engage in repetitive shaping tasks.",
+      "summary": "The strongest anchor is the 2017 meta-analysis of acute and subacute stroke trials, which found consistent gains in upper-limb motor scales with constraint-induced movement therapy versus conventional rehabilitation. Earlier meta-analytic and randomized data point in the same direction, so this edge is best read as genuinely protective for upper-limb function when patients are appropriate candidates for intensive arm practice.",
+      "caveats": "CIMT is not a universal stroke intervention. Trials usually require at least modest residual hand movement and the protocol can be demanding, so benefits in carefully selected participants may overstate what happens in more severely affected or less adherent real-world populations.",
+      "evidence": [
+        {
+          "citation": "Qiu Q et al 2017 Neural Regen Res",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Constraint-induced movement therapy in treatment of acute and sub-acute stroke: a meta-analysis of 16 randomized controlled trials.",
+          "pmid": "29089989",
+          "n_participants": 738
+        },
+        {
+          "citation": "Shi YX et al 2011 Arch Phys Med Rehabil",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Modified constraint-induced movement therapy versus traditional rehabilitation in patients with upper-extremity dysfunction after stroke: a systematic review and meta-analysis.",
+          "pmid": "21621674",
+          "n_participants": 278
+        },
+        {
+          "citation": "Singh P et al 2013 Ann Indian Acad Neurol",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Study to assess the effectiveness of modified constraint-induced movement therapy in stroke subjects: A randomized controlled trial.",
+          "pmid": "23956560",
+          "n_participants": 40
+        }
+      ]
+    }
+  ]
+}

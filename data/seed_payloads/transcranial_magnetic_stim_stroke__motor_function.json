@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "transcranial_magnetic_stim_stroke",
+      "name": "Repetitive transcranial magnetic stimulation after stroke",
+      "kind": "process",
+      "aliases": [
+        "rTMS after stroke",
+        "repetitive transcranial magnetic stimulation for stroke rehab"
+      ],
+      "description": "Repetitive transcranial magnetic stimulation used as an adjunct to motor rehabilitation after stroke."
+    },
+    {
+      "slug": "motor_function",
+      "name": "Motor function",
+      "kind": "process",
+      "aliases": [
+        "motor performance",
+        "movement function"
+      ],
+      "description": "Measured motor performance and impairment severity on validated functional scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "transcranial_magnetic_stim_stroke",
+      "outcome_slug": "motor_function",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The 2020 PRISMA meta-analysis found better Fugl-Meyer motor scores with post-stroke rTMS (SMD 0.635, 95% CI 0.421-0.848), but newer stratified work suggests benefit depends on stroke stage, severity, and stimulation protocol.",
+      "population": "adults with motor impairment after ischemic or hemorrhagic stroke",
+      "mechanism": "rTMS aims to rebalance cortical excitability by dampening maladaptive interhemispheric inhibition or boosting residual excitability in the affected motor cortex. That mechanism is plausible, but the effect is protocol-sensitive, which is why pooled benefit coexists with uncertainty about who should receive which stimulation pattern.",
+      "summary": "The evidence base repeatedly shows a positive average effect of rTMS on post-stroke motor scales, with the clearest signal in meta-analyses pooling randomized trials. At the same time, those gains are not uniform across stroke stage or severity, so this edge is best characterized as mixed rather than universally protective.",
+      "caveats": "The label rTMS bundles together low-frequency, high-frequency, and theta-burst approaches applied to different hemispheres and at different timepoints after stroke. That heterogeneity is large enough that a positive pooled effect should not be mistaken for a settled one-size-fits-all protocol.",
+      "evidence": [
+        {
+          "citation": "Wang Y et al 2020 Am J Phys Med Rehabil",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Repetitive Transcranial Magnetic Stimulation on Motor Recovery for Patients With Stroke: A PRISMA Compliant Systematic Review and Meta-analysis.",
+          "pmid": "31361620",
+          "n_participants": 841
+        },
+        {
+          "citation": "Hsu WY et al 2012 Stroke",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of repetitive transcranial magnetic stimulation on motor functions in patients with stroke: a meta-analysis.",
+          "pmid": "22713491",
+          "n_participants": 392
+        },
+        {
+          "citation": "Yan T et al 2024 Front Neurol",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The stratified effects of repetitive transcranial magnetic stimulation in upper limb motor impairment recovery after stroke: a meta-analysis.",
+          "pmid": "38628695",
+          "n_participants": 865
+        }
+      ]
+    }
+  ]
+}
