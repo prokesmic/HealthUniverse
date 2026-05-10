@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ketogenic_diet_therapeutic",
+      "name": "Therapeutic ketogenic diet",
+      "kind": "activity",
+      "aliases": [
+        "ketogenic metabolic therapy",
+        "clinical ketogenic diet"
+      ],
+      "description": "A carbohydrate-restricted diet designed to induce sustained nutritional ketosis for therapeutic purposes."
+    },
+    {
+      "slug": "bipolar_mood_stabilization",
+      "name": "Bipolar mood stabilization",
+      "kind": "process",
+      "aliases": [
+        "improved mood stability in bipolar disorder",
+        "reduced bipolar symptom fluctuation"
+      ],
+      "description": "Stabilization of depressive, hypomanic, or manic symptom burden in bipolar disorder."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ketogenic_diet_therapeutic",
+      "outcome_slug": "bipolar_mood_stabilization",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The best trial-like bipolar data are still pilot and observational. In the 2025 Edinburgh pilot, standard mood scales in euthymic bipolar participants did not change significantly over 6 to 8 weeks, even though higher ketone levels tracked with better daily self-rated mood and energy.",
+      "population": "adults with bipolar disorder participating in pilot ketogenic interventions or metabolic-therapy case studies",
+      "mechanism": "A ketogenic diet may affect bipolar symptoms through altered brain energy metabolism, glutamate-GABA balance, mitochondrial efficiency, and ion-channel signaling. But those theoretical benefits compete with strong selection effects, adherence challenges, and the possibility that metabolic change improves energy or anxiety without producing robust syndromal stabilization.",
+      "summary": "The bipolar ketogenic literature is promising but far from settled. Pilot and case-based reports suggest some people experience better day-to-day mood stability, yet the only structured pilot data so far are small and do not show a clean randomized-style efficacy signal on standard bipolar mood scales.",
+      "caveats": "Most available evidence is open-label, pilot, or case-based, and some cohorts were euthymic at baseline, which limits room for improvement. This edge should be treated as experimental metabolic psychiatry rather than established bipolar maintenance therapy.",
+      "evidence": [
+        {
+          "citation": "CampbellIH et al 2025 BJPsych Open",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A pilot study of a ketogenic diet in bipolar disorder: clinical, metabolic and magnetic resonance spectroscopy findings.",
+          "doi": "10.1192/bjo.2024.841",
+          "pmid": "39995103",
+          "n_participants": 27
+        },
+        {
+          "citation": "NeedhamN et al 2023 BJPsych Open",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Pilot study of a ketogenic diet in bipolar disorder.",
+          "doi": "10.1192/bjo.2023.568",
+          "pmid": "37814952",
+          "n_participants": 27
+        },
+        {
+          "citation": "LaurentN 2024 Front Nutr",
+          "year": 2024,
+          "study_type": "case_report",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Retrospective case study: ketogenic metabolic therapy in the effective management of treatment-resistant depressive symptoms in bipolar disorder.",
+          "doi": "10.3389/fnut.2024.1394679",
+          "pmid": "39188977"
+        }
+      ]
+    }
+  ]
+}

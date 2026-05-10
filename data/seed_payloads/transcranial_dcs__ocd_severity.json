@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "transcranial_dcs",
+      "name": "Transcranial direct current stimulation",
+      "kind": "activity",
+      "aliases": [
+        "tDCS",
+        "noninvasive direct current brain stimulation"
+      ],
+      "description": "A noninvasive brain stimulation technique that applies low-intensity direct current through scalp electrodes."
+    },
+    {
+      "slug": "ocd_severity",
+      "name": "Obsessive-compulsive disorder severity",
+      "kind": "process",
+      "aliases": [
+        "Y-BOCS symptom burden",
+        "severity of obsessive-compulsive symptoms"
+      ],
+      "description": "Severity of obsessive-compulsive symptoms, typically measured with the Yale-Brown Obsessive Compulsive Scale."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "transcranial_dcs",
+      "outcome_slug": "ocd_severity",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Recent OCD-focused tDCS meta-analyses point in opposite directions: some report modest Y-BOCS improvement versus sham, while others conclude the advantage disappears or may even favor sham in small trial sets.",
+      "population": "adults with obsessive-compulsive disorder enrolled in randomized or controlled tDCS studies, often after incomplete response to medication or CBT",
+      "mechanism": "tDCS may alter excitability within cortico-striato-thalamo-cortical circuits implicated in OCD, especially supplementary motor and prefrontal networks. The problem is that montage, dose, and target heterogeneity are large enough that mechanistic plausibility has not yet translated into stable clinical consistency.",
+      "summary": "This is a genuinely mixed neuromodulation edge. Some syntheses show modest reductions in OCD severity with active tDCS, but other reviews find no clear superiority over sham, and the entire literature still rests on very small trial bases.",
+      "caveats": "Most studies are small, short, and heterogeneous in electrode placement and concomitant treatment. The edge should be read as experimental rather than established, even though some subgroup results look encouraging.",
+      "evidence": [
+        {
+          "citation": "YanL et al 2025 Int J Psychiatry Clin Pract",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Transcranial direct current stimulation in patients with obsessive-compulsive disorder: a meta-analysis of randomised controlled trials.",
+          "doi": "10.1080/13651501.2025.2466498",
+          "pmid": "39989049",
+          "n_participants": 201,
+          "effect_quant": {
+            "metric": "smd",
+            "value": -0.46,
+            "ci_low": -0.84,
+            "ci_high": -0.07,
+            "comparator": "active tDCS versus sham on total Y-BOCS score"
+          }
+        },
+        {
+          "citation": "IbrahimIA et al 2024 Exp Gerontol",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A systematic review and meta-analysis for the efficacy of transcranial direct current stimulation (tDCS) in OCD treatment: A non-pharmacological approach to clinical interventions.",
+          "doi": "10.1016/j.exger.2024.112551",
+          "pmid": "39173783",
+          "n_participants": 147
+        },
+        {
+          "citation": "PintoBS et al 2023 Biomedicines",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The Effects of Transcranial Direct Current Stimulation in Obsessive-Compulsive Disorder Symptoms: A Meta-Analysis and Integrated Electric Fields Modeling Analysis.",
+          "doi": "10.3390/biomedicines11010080",
+          "pmid": "36672588",
+          "n_participants": 241
+        }
+      ]
+    }
+  ]
+}

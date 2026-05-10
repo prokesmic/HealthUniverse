@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "low_carb_diet",
+      "name": "Low-carbohydrate diet",
+      "kind": "activity",
+      "aliases": [
+        "carbohydrate-restricted diet",
+        "LCD"
+      ],
+      "description": "A dietary pattern that reduces carbohydrate intake below conventional mixed-diet levels, sometimes approaching ketogenic intake."
+    },
+    {
+      "slug": "mood_subjective",
+      "name": "Subjective mood",
+      "kind": "process",
+      "aliases": [
+        "self-reported mood state",
+        "subjective emotional well-being"
+      ],
+      "description": "Self-reported mood or emotional state assessed using validated questionnaires or symptom scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "low_carb_diet",
+      "outcome_slug": "mood_subjective",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The pooled trial literature does not show a clean mood advantage. The 2023 J Affect Disorders meta-analysis found no significant effect of low-carbohydrate diets on depression or anxiety overall, and the 2025 Int J Food Sci Nutr meta-analysis likewise found no significant benefit for mood disturbance.",
+      "population": "adults in randomized low-carbohydrate or ketogenic diet trials, mostly without primary mood disorders",
+      "mechanism": "Carbohydrate restriction may improve energy regulation and glycaemic volatility in some people, but it can also alter appetite, sleep, and subjective stress in ways that pull mood in opposite directions. That helps explain why aggregated trial results often wash out into a mixed or null overall effect.",
+      "summary": "This is a mixed edge rather than a positive one. Controlled-trial syntheses generally show that low-carbohydrate diets are not clearly better than comparison diets for subjective mood, although some subgroups or longer interventions may do somewhat better.",
+      "caveats": "Most trials were not designed primarily around psychiatric outcomes, and many enrolled people without diagnosed mood disorders. Mood findings also vary by carbohydrate threshold, follow-up length, and whether the comparison diet is equally intensive or behaviorally supported.",
+      "evidence": [
+        {
+          "citation": "VaraeeH et al 2023 J Affect Disord",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of low-carbohydrate diet on depression and anxiety: A systematic review and meta-analysis of controlled trials.",
+          "doi": "10.1016/j.jad.2022.12.030",
+          "pmid": "36584702",
+          "n_participants": 590,
+          "effect_quant": {
+            "metric": "smd",
+            "value": 0.06,
+            "ci_low": -0.11,
+            "ci_high": 0.24,
+            "comparator": "low-carbohydrate diet versus control on depression outcomes overall"
+          }
+        },
+        {
+          "citation": "ArsalandehF et al 2025 Int J Food Sci Nutr",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of low-carbohydrate diets on quality of life, mental health, and speed of memory in adults: a systematic review and meta-analysis of randomised controlled trials.",
+          "doi": "10.1080/09637486.2024.2430006",
+          "pmid": "39617964",
+          "n_participants": 1781
+        },
+        {
+          "citation": "SindlerD et al 2024 Nutr Rev",
+          "year": 2024,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The effects of carbohydrate-restricted diet on psychological outcomes: a systematic review of randomized controlled trials.",
+          "doi": "10.1093/nutrit/nuad053",
+          "pmid": "37290430"
+        }
+      ]
+    }
+  ]
+}
