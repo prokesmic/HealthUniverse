@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "helmet_use_youth_sport",
+      "name": "Helmet use in youth sport",
+      "kind": "behavior",
+      "aliases": [
+        "youth sports helmet use",
+        "wearing a helmet during youth sport participation"
+      ],
+      "description": "Use of protective helmets during youth sport or recreation settings with head-impact risk."
+    },
+    {
+      "slug": "concussion_risk",
+      "name": "Concussion risk",
+      "kind": "process",
+      "aliases": [
+        "risk of concussion",
+        "mild traumatic brain injury risk"
+      ],
+      "description": "The likelihood of sustaining concussion or related traumatic brain injury during sport participation."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "helmet_use_youth_sport",
+      "outcome_slug": "concussion_risk",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Helmet syntheses in youth-relevant alpine sports show substantially lower head injury risk, including a pooled odds ratio of 0.41 for head injury among children younger than 13 years, though concussion-specific protection is less cleanly quantified than overall head injury reduction.",
+      "population": "children and adolescents in helmet-relevant sports and recreation, especially skiing and snowboarding cohorts",
+      "mechanism": "Helmets can dissipate impact forces and reduce direct cranial trauma, which plausibly lowers at least part of the concussion and head-injury burden in youth sport settings where helmet design matches the exposure.",
+      "summary": "The evidence supports a protective classification, but with an important caveat: the strongest data are for overall head injury reduction in alpine sport and similar settings, while concussion-specific effects are less uniformly demonstrated. Even so, the direction of evidence is more protective than neutral.",
+      "caveats": "Evidence generalizes better to skiing, snowboarding, cycling-like, and other helmet-designed sports than to every youth sport. Helmets reduce head injury risk but do not eliminate concussion risk, and their effect on neck injury or all mild traumatic brain injury endpoints is not uniformly strong across studies.",
+      "evidence": [
+        {
+          "citation": "Russell K et al 2010 CMAJ",
+          "year": 2010,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The effect of helmets on the risk of head and neck injuries among skiers and snowboarders: a meta-analysis.",
+          "pmid": "20123800",
+          "n_participants": 12,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.41,
+            "ci_low": 0.24,
+            "ci_high": 0.69,
+            "comparator": "helmet use versus no helmet among children younger than 13 years for head injury"
+          }
+        },
+        {
+          "citation": "Bailly N et al 2018 Wilderness Environ Med",
+          "year": 2018,
+          "study_type": "case_control",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of Helmet Use on Traumatic Brain Injuries and Other Head Injuries in Alpine Sport.",
+          "pmid": "29397300",
+          "n_participants": 45244
+        },
+        {
+          "citation": "Finvers KA et al 1996 Clin J Sport Med",
+          "year": 1996,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The effect of bicycling helmets in preventing significant bicycle-related injuries in children.",
+          "pmid": "8673566",
+          "n_participants": 699,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 3.12,
+            "ci_low": 1.13,
+            "ci_high": 8.75,
+            "comparator": "no helmet versus helmet use for serious head injury in injured children"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "caffeine_adolescent",
+      "name": "Adolescent caffeine exposure",
+      "kind": "behavior",
+      "aliases": [
+        "caffeine use in adolescents",
+        "teen caffeine intake"
+      ],
+      "description": "Consumption of caffeine-containing beverages or products during adolescence, including coffee, energy drinks, and caffeinated soft drinks."
+    },
+    {
+      "slug": "sleep_anxiety",
+      "name": "Sleep and anxiety symptoms",
+      "kind": "condition",
+      "aliases": [
+        "sleep disturbance and anxiety",
+        "sleep disruption with anxious symptoms"
+      ],
+      "description": "Combined sleep-quality, sleep-duration, and anxiety-related symptom outcomes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "caffeine_adolescent",
+      "outcome_slug": "sleep_anxiety",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2023 meta-analysis found that caffeine reduced total sleep time by about 45 minutes and worsened several sleep-continuity measures, while adolescent observational data link higher energy-drink intake to shorter sleep and more emotional problems.",
+      "population": "adolescents and young people consuming caffeine, especially energy drinks and other high-caffeine beverages",
+      "mechanism": "Caffeine blocks adenosine signaling, delays sleep onset, reduces sleep continuity, and can amplify physiological arousal. In adolescents, those sleep disruptions can plausibly worsen anxiety, emotional lability, and related distress.",
+      "summary": "The clearest evidence is that caffeine worsens sleep, and adolescent observational data suggest that heavier caffeinated beverage use tracks with more emotional and behavioral problems. That is enough for a cautious harmful classification on the combined sleep-anxiety construct.",
+      "caveats": "Most adolescent evidence is observational and often uses energy-drink intake as the exposure, so confounding from broader lifestyle patterns is possible. The strongest causal evidence is for sleep disruption, while the anxiety component is more associative than experimentally proven.",
+      "evidence": [
+        {
+          "citation": "Gardiner C et al 2023 Sleep Med Rev",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The effect of caffeine on subsequent sleep: A systematic review and meta-analysis.",
+          "pmid": "36870101",
+          "n_participants": 24,
+          "effect_quant": {
+            "metric": "mean_difference_minutes",
+            "value": -45.35,
+            "comparator": "caffeine versus control for total sleep time"
+          }
+        },
+        {
+          "citation": "Veselska ZD et al 2021 Int J Environ Res Public Health",
+          "year": 2021,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Energy Drinks Consumption Associated with Emotional and Behavioural Problems via Lack of Sleep and Skipped Breakfast among Adolescents.",
+          "pmid": "34199877",
+          "n_participants": 8405
+        },
+        {
+          "citation": "Zhong L et al 2024 Sleep Med",
+          "year": 2024,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Modifiable dietary factors in adolescent sleep: A systematic review and meta-analysis.",
+          "pmid": "38350307",
+          "n_participants": 33,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.67,
+            "ci_low": 1.28,
+            "ci_high": 2.17,
+            "comparator": "higher caffeine intake versus lower caffeine intake for sleep problems in adolescents"
+          }
+        }
+      ]
+    }
+  ]
+}

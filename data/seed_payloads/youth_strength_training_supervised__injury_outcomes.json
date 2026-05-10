@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "youth_strength_training_supervised",
+      "name": "Supervised youth strength training",
+      "kind": "activity",
+      "aliases": [
+        "coached youth resistance training",
+        "supervised strength work in young athletes"
+      ],
+      "description": "Structured, supervised strength-oriented exercise programs delivered to children or adolescents, usually within sport or training settings."
+    },
+    {
+      "slug": "injury_outcomes",
+      "name": "Sports injury outcomes",
+      "kind": "process",
+      "aliases": [
+        "injury incidence",
+        "injury burden"
+      ],
+      "description": "The frequency and burden of sports-related injuries, including total, acute, and overuse injuries."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "youth_strength_training_supervised",
+      "outcome_slug": "injury_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Youth exercise-based prevention syntheses consistently show roughly one-third lower injury incidence, and the 2024 network meta-analysis reported one of the strongest effects for strength-only programs with an incidence rate ratio of 0.30.",
+      "population": "children and adolescents in supervised sports training or youth athletic programs",
+      "mechanism": "Supervised strength training can improve tissue tolerance, force absorption, landing mechanics, trunk and hip control, and general resilience to training load. Those changes plausibly reduce both acute and overuse injury burden when programs are coached well.",
+      "summary": "The cleanest evidence supports supervised strength work as part of youth injury-prevention programming, and some analyses suggest that strength-focused components are among the most effective pieces. This is a protective edge, but the literature is stronger for supervised structured programs than for unsupervised lifting in general.",
+      "caveats": "Much of the evidence comes from multicomponent prevention programs rather than isolated weight-room interventions, so the specific contribution of strength alone is not always perfectly separable. Proper supervision, progression, and technique likely matter substantially.",
+      "evidence": [
+        {
+          "citation": "Steib S et al 2017 Front Physiol",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Dose-Response Relationship of Neuromuscular Training for Injury Prevention in Youth Athletes: A Meta-Analysis.",
+          "pmid": "29184511",
+          "n_participants": 16
+        },
+        {
+          "citation": "Robles-Palazon FJ et al 2024 Ann Med",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A systematic review and network meta-analysis on the effectiveness of exercise-based interventions for reducing the injury incidence in youth team-sport players. Part 1: an analysis by classical training components.",
+          "pmid": "39351708",
+          "n_participants": 21,
+          "effect_quant": {
+            "metric": "IRR",
+            "value": 0.3,
+            "ci_low": 0.1,
+            "ci_high": 0.93,
+            "comparator": "strength-only injury prevention program versus control"
+          }
+        },
+        {
+          "citation": "Duran-Custodio R et al 2026 Sports Health",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "High-Load Strength Training Reduces Injury Incidence and Injury Burden and Improves Physical Fitness in Young Highly Trained Soccer Players.",
+          "pmid": "40289456",
+          "n_participants": 20
+        }
+      ]
+    }
+  ]
+}
