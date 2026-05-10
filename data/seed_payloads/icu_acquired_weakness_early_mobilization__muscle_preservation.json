@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "icu_acquired_weakness_early_mobilization",
+      "name": "Early mobilization for ICU-acquired weakness prevention",
+      "kind": "activity",
+      "aliases": [
+        "ICU early mobilization",
+        "early rehabilitation in critical illness"
+      ],
+      "description": "Structured early mobilization or rehabilitation in the ICU to limit weakness and muscle loss during critical illness."
+    },
+    {
+      "slug": "muscle_preservation",
+      "name": "Muscle preservation",
+      "kind": "process",
+      "aliases": [
+        "preservation of muscle strength",
+        "protection from muscle wasting"
+      ],
+      "description": "Maintenance of muscle mass or muscle strength during illness, hospitalization, or recovery."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "icu_acquired_weakness_early_mobilization",
+      "outcome_slug": "muscle_preservation",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Meta-analyses show lower ICU-acquired weakness with early mobilization, including RR 0.60 (95% CI 0.40 to 0.90) and OR 0.22 (95% CI 0.14 to 0.35), though one newer RCT improved mobilization level without changing measured muscle strength.",
+      "population": "critically ill adults admitted to intensive care units",
+      "mechanism": "Early mobilization counters immobilization-driven catabolism, neuromuscular disuse, and the rapid loss of contractile activity that drives ICU-acquired weakness. Even when strength gains are hard to capture over a short ICU stay, earlier activation may still preserve enough function to reduce downstream weakness and dependence.",
+      "summary": "The best aggregate evidence supports early mobilization as a muscle-preserving strategy in critical care, mainly through lower ICU-acquired weakness and better functional recovery at discharge. The signal is not universal in every individual trial, but the pooled evidence still favors early rehabilitation over routine bed rest or delayed mobilization.",
+      "caveats": "Interventions range from passive mobilization to active exercise and walking protocols, and studies use different strength and function endpoints. Short ICU stays and severe illness can make true muscle preservation difficult to measure precisely, so some trials show functional gains without clear changes on strength scales.",
+      "evidence": [
+        {
+          "citation": "Zhang L et al 2019 PLoS One",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Early mobilization of critically ill patients in the intensive care unit: A systematic review and meta-analysis.",
+          "pmid": "31581205",
+          "n_participants": 2308
+        },
+        {
+          "citation": "Xiao J et al 2019 Zhonghua Wei Zhong Bing Ji Jiu Yi Xue",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "[Effect of early mobilization on the physical function of patients in intensive care unit: a Meta-analysis].",
+          "pmid": "31109421",
+          "n_participants": 1347
+        },
+        {
+          "citation": "Oliveira GT et al 2024 Physiother Theory Pract",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of a structured early mobilization protocol on the level of mobilization and muscle strength in critical care patients: A randomized clinical trial.",
+          "pmid": "37417694",
+          "n_participants": 85
+        }
+      ]
+    }
+  ]
+}

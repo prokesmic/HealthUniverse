@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "blood_flow_restriction_rehab_post_acl",
+      "name": "Blood flow restriction rehabilitation after ACL reconstruction",
+      "kind": "activity",
+      "aliases": [
+        "BFR rehab after ACL reconstruction",
+        "low-load blood flow restriction after ACL surgery"
+      ],
+      "description": "Use of blood flow restriction training as part of rehabilitation after anterior cruciate ligament reconstruction."
+    },
+    {
+      "slug": "quadriceps_strength",
+      "name": "Quadriceps strength",
+      "kind": "process",
+      "aliases": [
+        "knee extensor strength",
+        "quadriceps muscle strength"
+      ],
+      "description": "Strength output of the quadriceps muscle group, commonly assessed with isometric or isokinetic testing."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "blood_flow_restriction_rehab_post_acl",
+      "outcome_slug": "quadriceps_strength",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "The strongest review found only two of six randomized trials showed greater quadriceps strength with low-load blood flow restriction than non-BFR rehab, while one modern RCT found no added quadriceps function benefit.",
+      "population": "patients undergoing rehabilitation after anterior cruciate ligament reconstruction",
+      "mechanism": "Blood flow restriction may allow low-load training to generate a stronger anabolic and neural stimulus while protecting the healing graft from the joint stress of heavy resistance exercise. The mechanism is plausible, but the practical effect depends on timing, occlusion pressure, and whether the surrounding rehab program is already strong enough to narrow the room for benefit.",
+      "summary": "The best current summary is that blood flow restriction after ACL reconstruction may help some patients preserve quadriceps strength, but the evidence is inconsistent rather than settled. Earlier and smaller trials reported strength advantages, yet more recent randomized work has shown little added benefit over well-run conventional rehabilitation.",
+      "caveats": "Protocols vary widely across studies in cuff pressure, exercise load, timing after surgery, and graft type. That makes the apparent benefit highly sensitive to implementation details, and the field still lacks a consistent pooled effect on quadriceps strength.",
+      "evidence": [
+        {
+          "citation": "Koc BB et al 2022 Int J Sports Phys Ther",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of Low-Load Blood Flow Restriction Training After Anterior Cruciate Ligament Reconstruction: A Systematic Review.",
+          "pmid": "35391871",
+          "n_participants": 154
+        },
+        {
+          "citation": "Ohta H et al 2003 Acta Orthop Scand",
+          "year": 2003,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Low-load resistance muscular training with moderate restriction of blood flow after anterior cruciate ligament reconstruction.",
+          "pmid": "12635796",
+          "n_participants": 44
+        },
+        {
+          "citation": "Curran MT et al 2020 Am J Sports Med",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Blood Flow Restriction Training Applied With High-Intensity Exercise Does Not Improve Quadriceps Muscle Function After Anterior Cruciate Ligament Reconstruction: A Randomized Controlled Trial.",
+          "pmid": "32167837",
+          "n_participants": 34
+        }
+      ]
+    }
+  ]
+}
