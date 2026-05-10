@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "dialectical_behaviour_therapy",
+      "name": "Dialectical behavior therapy",
+      "kind": "activity",
+      "aliases": [
+        "DBT",
+        "dialectical behaviour therapy"
+      ],
+      "description": "A skills-based psychotherapy focused on emotion regulation, distress tolerance, interpersonal effectiveness, and mindfulness."
+    },
+    {
+      "slug": "self_harm_frequency",
+      "name": "Self-harm frequency",
+      "kind": "process",
+      "aliases": [
+        "frequency of self-harm",
+        "rate of deliberate self-injury",
+        "NSSI frequency"
+      ],
+      "description": "How often self-harm episodes occur over a defined follow-up period."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "dialectical_behaviour_therapy",
+      "outcome_slug": "self_harm_frequency",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The clearest pooled estimate comes from the 2016 Lancet Psychiatry review of adult self-harm trials, where DBT reduced the frequency of self-harm (mean difference -18.82, 95% CI -36.68 to -0.95), even though it did not clearly reduce the proportion of people who repeated self-harm.",
+      "population": "adolescents and adults with recurrent self-harm, nonsuicidal self-injury, or suicidality treated in outpatient or partial-hospital DBT programs",
+      "mechanism": "DBT targets self-harm by teaching distress-tolerance and emotion-regulation strategies that can replace self-injury as a fast-acting response to overwhelming affect. The reduction often shows up more clearly in episode frequency than in simple yes-no repetition outcomes.",
+      "summary": "The evidence supports a real signal, but it is more nuanced than a blanket cure claim. DBT seems especially useful for reducing how often self-harm happens, while effects on binary repetition outcomes are less uniformly strong.",
+      "caveats": "The DBT literature is heterogeneous across ages, settings, and outcome definitions. Some studies focus on NSSI, others on broader suicidal or self-harming behavior, so effect estimates should not be overgeneralized across all self-harm phenotypes.",
+      "evidence": [
+        {
+          "citation": "HawtonK et al 2016 Lancet Psychiatry",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Psychosocial interventions following self-harm in adults: a systematic review and meta-analysis.",
+          "pmid": "27422028",
+          "n_participants": 267,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -18.82,
+            "ci_low": -36.68,
+            "ci_high": -0.95,
+            "comparator": "dialectical behaviour therapy versus treatment as usual for frequency of self-harm"
+          }
+        },
+        {
+          "citation": "MehlumL et al 2014 J Am Acad Child Adolesc Psychiatry",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Dialectical behavior therapy for adolescents with repeated suicidal and self-harming behavior: a randomized trial.",
+          "pmid": "25245352",
+          "n_participants": 77
+        },
+        {
+          "citation": "RamseyWA et al 2021 Child Adolesc Ment Health",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Targeting self-criticism in the treatment of nonsuicidal self-injury in dialectical behavior therapy for adolescents: a randomized clinical trial.",
+          "pmid": "33608976",
+          "n_participants": 40
+        }
+      ]
+    }
+  ]
+}

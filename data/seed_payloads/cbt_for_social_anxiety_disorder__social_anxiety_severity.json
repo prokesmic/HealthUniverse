@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cbt_for_social_anxiety_disorder",
+      "name": "Cognitive behavioral therapy for social anxiety disorder",
+      "kind": "activity",
+      "aliases": [
+        "CBT for social anxiety",
+        "cognitive behavioural therapy for SAD"
+      ],
+      "description": "Cognitive behavioral psychotherapy, including exposure-based formats, for social anxiety disorder."
+    },
+    {
+      "slug": "social_anxiety_severity",
+      "name": "Social anxiety severity",
+      "kind": "process",
+      "aliases": [
+        "social anxiety symptom burden",
+        "severity of social anxiety disorder"
+      ],
+      "description": "The clinical severity of social anxiety symptoms measured using standard disorder-specific scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cbt_for_social_anxiety_disorder",
+      "outcome_slug": "social_anxiety_severity",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Across placebo-controlled anxiety-disorder trials, CBT shows small-to-moderate benefits for social anxiety disorder. A disorder-specific meta-analysis of internet CBT found a moderate effect versus controls (g -0.55), while a randomized trial of individual and group CBT both improved primary social anxiety symptoms relative to waitlist.",
+      "population": "adults and young adults with social anxiety disorder in face-to-face or internet-delivered CBT trials",
+      "mechanism": "CBT for social anxiety targets threat predictions about scrutiny, avoidance of feared situations, and post-event rumination. Exposure practice and cognitive restructuring reduce the perceived danger of social evaluation, which tends to lower overall symptom severity.",
+      "summary": "The literature supports CBT as a real treatment for social anxiety, but the effect is more often moderate than dramatic. Different formats appear helpful, and internet-delivered CBT can approach face-to-face outcomes in selected settings.",
+      "caveats": "Some trials focus on internet or group delivery rather than classic individual CBT, and effect sizes in social anxiety tend to be smaller than in disorders such as OCD or GAD. Treatment engagement and exposure completion remain important moderators.",
+      "evidence": [
+        {
+          "citation": "GuoS et al 2021 Clin Psychol Psychother",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The efficacy of internet-based cognitive behavioural therapy for social anxiety disorder: A systematic review and meta-analysis.",
+          "pmid": "33142004",
+          "n_participants": 1743,
+          "effect_quant": {
+            "metric": "g",
+            "value": -0.55,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "internet-based CBT versus control groups for social anxiety disorder symptoms"
+          }
+        },
+        {
+          "citation": "CarpenterJK et al 2018 Depress Anxiety",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Cognitive behavioral therapy for anxiety and related disorders: A meta-analysis of randomized placebo-controlled trials.",
+          "pmid": "29451967",
+          "n_participants": 2843,
+          "effect_quant": {
+            "metric": "g",
+            "value": 0.56,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "CBT versus placebo across anxiety-related disorders; effects were small to moderate in social anxiety disorder"
+          }
+        },
+        {
+          "citation": "NeufeldCB et al 2020 Int J Clin Health Psychol",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A randomized clinical trial of group and individual Cognitive-Behavioral Therapy approaches for Social Anxiety Disorder.",
+          "pmid": "32021616",
+          "n_participants": 86
+        }
+      ]
+    }
+  ]
+}

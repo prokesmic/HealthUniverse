@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cbt_for_generalized_anxiety_disorder",
+      "name": "Cognitive behavioral therapy for generalized anxiety disorder",
+      "kind": "activity",
+      "aliases": [
+        "CBT for GAD",
+        "cognitive behavioural therapy for generalized anxiety"
+      ],
+      "description": "Structured cognitive behavioral psychotherapy delivered to adults with generalized anxiety disorder."
+    },
+    {
+      "slug": "gad_severity",
+      "name": "Generalized anxiety disorder severity",
+      "kind": "process",
+      "aliases": [
+        "GAD symptom burden",
+        "worry and generalized anxiety severity"
+      ],
+      "description": "Clinician-rated or self-reported severity of generalized anxiety disorder symptoms."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cbt_for_generalized_anxiety_disorder",
+      "outcome_slug": "gad_severity",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The strongest disorder-specific synthesis now comes from the 2024 JAMA Psychiatry network meta-analysis, where CBT reduced GAD severity versus treatment as usual (SMD -0.74, 95% CI -1.09 to -0.38) and remained superior at 3 to 12 months (SMD -0.60, 95% CI -0.99 to -0.21).",
+      "population": "adults with primary generalized anxiety disorder treated in outpatient or remote psychotherapy trials",
+      "mechanism": "CBT for GAD targets chronic worry through cognitive restructuring, behavioral experiments, exposure to uncertainty, and alternative coping strategies. By reducing avoidance of uncertainty and interrupting repetitive worry loops, it tends to lower both subjective distress and clinician-rated GAD severity.",
+      "summary": "This is one of the cleaner psychotherapy edges in the graph. Disorder-specific evidence repeatedly shows CBT meaningfully reduces GAD severity, with benefits that often persist after treatment ends.",
+      "caveats": "Different CBT packages vary in focus, delivery format, and comparator strength. Remote or low-intensity formats can be helpful, but the strongest evidence still tends to favor therapist-delivered individual or group CBT.",
+      "evidence": [
+        {
+          "citation": "PapolaD et al 2024 JAMA Psychiatry",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Psychotherapies for Generalized Anxiety Disorder in Adults: A Systematic Review and Network Meta-Analysis of Randomized Clinical Trials.",
+          "pmid": "37851421",
+          "n_participants": 5048,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -0.74,
+            "ci_low": -1.09,
+            "ci_high": -0.38,
+            "comparator": "CBT versus treatment as usual for generalized anxiety disorder severity"
+          }
+        },
+        {
+          "citation": "LiuS et al 2025 Transl Psychiatry",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "CBT treatment delivery formats for generalized anxiety disorder: a systematic review and network meta-analysis of randomized controlled trials.",
+          "pmid": "40506439",
+          "n_participants": 4361,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": 1.12,
+            "ci_low": 0.24,
+            "ci_high": 2.0,
+            "comparator": "individual CBT versus treatment as usual for relieving generalized anxiety disorder symptoms"
+          }
+        },
+        {
+          "citation": "BrenesGA et al 2015 JAMA Psychiatry",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Telephone-Delivered Cognitive Behavioral Therapy and Telephone-Delivered Nondirective Supportive Therapy for Rural Older Adults With Generalized Anxiety Disorder: A Randomized Clinical Trial.",
+          "pmid": "26244854",
+          "n_participants": 141,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -2.36,
+            "ci_low": -4.0,
+            "ci_high": -0.72,
+            "comparator": "telephone CBT versus nondirective supportive therapy for GAD-7 symptom improvement at 4 months"
+          }
+        }
+      ]
+    }
+  ]
+}

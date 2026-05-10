@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cbt_for_panic_disorder",
+      "name": "Cognitive behavioral therapy for panic disorder",
+      "kind": "activity",
+      "aliases": [
+        "CBT for panic disorder",
+        "cognitive behavioural treatment for panic"
+      ],
+      "description": "Structured CBT using psychoeducation, cognitive restructuring, and exposure-based techniques for panic disorder."
+    },
+    {
+      "slug": "panic_attack_frequency",
+      "name": "Panic attack frequency",
+      "kind": "process",
+      "aliases": [
+        "panic frequency",
+        "recurrent panic attacks"
+      ],
+      "description": "How often panic attacks occur over time in people with panic disorder."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cbt_for_panic_disorder",
+      "outcome_slug": "panic_attack_frequency",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "A modern network meta-analysis found face-to-face individual CBT superior to treatment as usual for panic disorder efficacy (SMD -0.43, 95% CI -0.70 to -0.15), and an older randomized trial found 85% of treated patients panic-free after group CBT versus 30% of delayed-treatment controls.",
+      "population": "adolescents and adults with panic disorder, with or without agoraphobia, in randomized CBT trials",
+      "mechanism": "CBT for panic disorder works by changing catastrophic interpretations of bodily sensations and pairing that cognitive work with interoceptive and situational exposure. As fear of bodily cues drops, panic attacks tend to occur less often and become less disabling.",
+      "summary": "This is a strong edge. Across older and newer trials, CBT consistently lowers panic symptoms and often meaningfully reduces the recurrence of panic attacks.",
+      "caveats": "Not every CBT format performs equally well, and some blended or low-adherence formats show weaker results. Comparators also matter: superiority is clearest against treatment as usual, waiting lists, or non-specific control conditions.",
+      "evidence": [
+        {
+          "citation": "PapolaD et al 2023 Psychol Med",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "CBT treatment delivery formats for panic disorder: a systematic review and network meta-analysis of randomised controlled trials.",
+          "pmid": "37132646",
+          "n_participants": 6699,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -0.43,
+            "ci_low": -0.7,
+            "ci_high": -0.15,
+            "comparator": "face-to-face individual CBT versus treatment as usual for panic disorder efficacy"
+          }
+        },
+        {
+          "citation": "PompoliA et al 2018 Psychol Med",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Dismantling cognitive-behaviour therapy for panic disorder: a systematic review and component network meta-analysis.",
+          "pmid": "29368665",
+          "n_participants": 4064,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 7.69,
+            "ci_low": 1.75,
+            "ci_high": 33.33,
+            "comparator": "most versus least efficacious CBT component combination for remission in panic disorder"
+          }
+        },
+        {
+          "citation": "TelchMJ et al 1993 Behav Res Ther",
+          "year": 1993,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Group cognitive-behavioral treatment of panic disorder.",
+          "pmid": "8476402",
+          "n_participants": 67,
+          "effect_quant": {
+            "metric": "proportion_panic_free",
+            "value": 0.85,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "group CBT panic-free proportion after treatment versus 0.30 in delayed-treatment controls"
+          }
+        }
+      ]
+    }
+  ]
+}
