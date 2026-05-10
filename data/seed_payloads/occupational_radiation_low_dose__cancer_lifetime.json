@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "occupational_radiation_low_dose",
+      "outcome_slug": "cancer_lifetime",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Large worker cohorts show a small but directionally concerning increase in solid-cancer risk with higher cumulative dose, even though very low-dose categories do not always show a clean linear excess.",
+      "population": "workers with chronic occupational exposure to low-dose ionizing radiation",
+      "mechanism": "Even low-dose ionizing radiation can generate DNA strand breaks and mutational injury that accumulate over long latency periods. The core uncertainty is not whether radiation can cause cancer, but how steeply risk rises in the lower occupational-dose range typical of modern workforces.",
+      "summary": "The most useful anchor is INWORKS, which showed that site-specific solid-cancer mortality does rise across very large occupational cohorts exposed to protracted ionizing radiation. More recent low-dose worker analyses do not support alarmist interpretations, but they still leave the overall lifetime cancer direction on the harmful side rather than reassuringly neutral.",
+      "caveats": "This edge should not be read as meaning that every low occupational dose produces a large absolute cancer increment. Risk is highly dependent on cumulative dose, organ dose, and latency, and some lower-dose cohorts show only modest or statistically fragile excesses.",
+      "evidence": [
+        {
+          "citation": "Daniels RD et al 2018 Epidemiology",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Site-specific Solid Cancer Mortality After Exposure to Ionizing Radiation: A Cohort Study of Workers (INWORKS).",
+          "pmid": "28991003",
+          "n_participants": 308297
+        },
+        {
+          "citation": "Tao XG et al 2024 J Occup Environ Med",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Low Dose Radiation and Solid Tumors Mortality Risk.",
+          "pmid": "38527177",
+          "n_participants": 437937
+        },
+        {
+          "citation": "Tian HC et al 2024 Oncol Lett",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Occupational radiation exposure and risk of thyroid cancer: A meta-analysis of cohort studies.",
+          "pmid": "39081964",
+          "n_participants": 3409717
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "occupational_radiation_low_dose",
+      "name": "Low-dose occupational radiation exposure",
+      "kind": "environmental",
+      "aliases": [
+        "chronic low-dose ionizing radiation at work"
+      ],
+      "description": "Repeated occupational exposure to low-dose ionizing radiation in medical, nuclear, or industrial work."
+    },
+    {
+      "slug": "cancer_lifetime",
+      "name": "Lifetime cancer risk",
+      "kind": "condition",
+      "aliases": [
+        "lifetime cancer outcomes"
+      ],
+      "description": "Long-term lifetime risk of developing or dying from cancer."
+    }
+  ]
+}

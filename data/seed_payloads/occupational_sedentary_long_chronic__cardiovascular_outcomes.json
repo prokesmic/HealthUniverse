@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "occupational_sedentary_long_chronic",
+      "outcome_slug": "cardiovascular_outcomes",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Cardiovascular risk from sedentary time appears nonlinear: pooled evidence shows clearer excess risk once daily sedentary exposure becomes prolonged, especially around 10 or more hours per day.",
+      "population": "adults with chronically high sedentary time, including occupational sitting patterns",
+      "mechanism": "Long sedentary exposure can worsen glucose handling, vascular function, and overall cardiometabolic load through repeated low-muscle-activity states. Occupational sitting is not perfectly interchangeable with total sedentary time, but the broader physiology still points toward small adverse cardiovascular effects when sitting accumulates heavily.",
+      "summary": "The best overall summary is that very high sedentary time increases cardiovascular risk, and the association is not purely linear from the first hour onward. Updated meta-analyses and objective-monitor cohorts both support a harmful direction, even though the literature is stronger for total sedentary burden than for job-based sitting alone.",
+      "caveats": "This edge is less settled than classic smoking or hypertension edges because occupational sitting is difficult to isolate from total daily sedentary time and physical activity. The harmful signal is strongest at high cumulative sitting durations, not necessarily at ordinary desk-work levels in otherwise active people.",
+      "evidence": [
+        {
+          "citation": "Yang LL et al 2022 BMC Public Health",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Sedentary time and its association with risk of cardiovascular diseases in adults: an updated systematic review and meta-analysis of observational studies.",
+          "pmid": "35148747",
+          "n_participants": 1451730
+        },
+        {
+          "citation": "Pandey A et al 2016 JAMA Cardiol",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Continuous Dose-Response Association Between Sedentary Time and Risk for Cardiovascular Disease: A Meta-analysis.",
+          "pmid": "27434872",
+          "n_participants": 720425
+        },
+        {
+          "citation": "Bellettiere J et al 2019 Circulation",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Sedentary behavior and cardiovascular disease in older women: The Objective Physical Activity and Cardiovascular Health (OPACH) Study.",
+          "pmid": "31031411",
+          "n_participants": 5638
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "occupational_sedentary_long_chronic",
+      "name": "Chronic long occupational sedentary time",
+      "kind": "behavior",
+      "aliases": [
+        "prolonged workplace sitting"
+      ],
+      "description": "Chronic accumulation of long sitting time during work and related daily routines."
+    },
+    {
+      "slug": "cardiovascular_outcomes",
+      "name": "Cardiovascular outcomes",
+      "kind": "condition",
+      "aliases": [
+        "cardiovascular disease outcomes",
+        "CVD outcomes"
+      ],
+      "description": "Broad cardiovascular disease outcomes including incident coronary disease, stroke, and cardiovascular mortality."
+    }
+  ]
+}
