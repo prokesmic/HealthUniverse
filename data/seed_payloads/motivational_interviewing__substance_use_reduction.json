@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "motivational_interviewing",
+      "outcome_slug": "substance_use_reduction",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The Cochrane review of 59 studies and 13,342 participants found the largest benefit immediately after treatment (SMD 0.79, 95% CI 0.48-1.09), with smaller short-term (SMD 0.17, 95% CI 0.09-0.26) and medium-term (SMD 0.15, 95% CI 0.04-0.25) effects and no clear long-term advantage.",
+      "population": "adolescents and adults receiving substance use counseling or brief intervention",
+      "mechanism": "Motivational interviewing works by lowering resistance to change rather than prescribing a fixed behavioral script. That collaborative style can increase readiness, self-efficacy, and follow-through around reducing alcohol or drug use, but the effect tends to fade when the interviewing dose is brief and no longer reinforced.",
+      "summary": "The strongest anchor is the Cochrane meta-analysis, which found that motivational interviewing does reduce substance use, but mostly in the near term rather than as a durable long-run fix. Later randomized trials fit that shape: alcohol outcomes often improve, cannabis effects are weaker, and the biggest gains show up when motivation is still fresh after the intervention.",
+      "caveats": "This edge blends alcohol and drug outcomes across different clinical settings, so the pooled benefit is not equally strong for every substance. The long-term signal is also weaker than the post-intervention signal, which means motivational interviewing often needs reinforcement or follow-on treatment rather than being treated as a one-session cure.",
+      "evidence": [
+        {
+          "citation": "Smedslund G et al 2011 Cochrane Database Syst Rev",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Motivational interviewing for substance abuse.",
+          "pmid": "21563163",
+          "n_participants": 13342
+        },
+        {
+          "citation": "Feldstein Ewing S et al 2022 Exp Clin Psychopharmacol",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Randomized controlled trial of motivational interviewing for alcohol and cannabis use within a predominantly Hispanic adolescent sample.",
+          "pmid": "33749294",
+          "n_participants": 448
+        },
+        {
+          "citation": "Gaume J et al 2011 Alcohol Clin Exp Res",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Is brief motivational intervention effective in reducing alcohol use among young men voluntarily receiving it? A randomized controlled trial.",
+          "pmid": "21777259",
+          "n_participants": 572
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "motivational_interviewing",
+      "name": "Motivational interviewing",
+      "kind": "behavior",
+      "aliases": [
+        "MI counseling",
+        "motivational enhancement interviewing"
+      ],
+      "description": "A client-centered counseling approach that elicits intrinsic motivation for behavior change by exploring ambivalence."
+    },
+    {
+      "slug": "substance_use_reduction",
+      "name": "Substance use reduction",
+      "kind": "behavior",
+      "aliases": [
+        "reduced alcohol or drug use",
+        "lower substance consumption"
+      ],
+      "description": "Reduction in alcohol or drug use frequency, quantity, or risky-use patterns over follow-up."
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "financial_incentives_smoking_cessation",
+      "outcome_slug": "quit_rate",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The Cochrane review of 31 mixed-population trials (adjusted N = 20,097) found that incentives improved long-term smoking cessation compared with controls (RR 1.49, 95% CI 1.28-1.73), with benefits persisting even when studies paying incentives at long-term follow-up were excluded (RR 1.40, 95% CI 1.16-1.69).",
+      "population": "adult smokers offered financial rewards or deposit-style cessation incentives",
+      "mechanism": "Financial incentives make the benefits of quitting immediate instead of distant. By attaching money or vouchers to counseling participation, pharmacotherapy use, or biochemically confirmed abstinence, they increase engagement with cessation supports and raise the short-term payoff for staying smoke-free during the relapse-prone early months.",
+      "summary": "The strongest anchor is the Cochrane review, which shows a clear improvement in quit rates when cessation is reinforced with cash or voucher incentives. Individual trials are noisier, especially in smaller or lower-income samples, but they mostly point the same way: incentives can move abstinence upward, even if the exact size of the benefit depends on program design and reward size.",
+      "caveats": "Not all incentive trials are large enough to estimate the effect precisely, and some combine incentives with counseling, pharmacotherapy, or deposit-contract features. The evidence supports incentives as a helpful booster to quitting, but it does not settle the optimal payment structure or guarantee the same return in every real-world program.",
+      "evidence": [
+        {
+          "citation": "Notley C et al 2019 Cochrane Database Syst Rev",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Incentives for smoking cessation.",
+          "pmid": "31313293",
+          "n_participants": 20097
+        },
+        {
+          "citation": "Ladapo JA et al 2020 Am J Med",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Financial Incentives for Smoking Cessation in Hospitalized Patients: A Randomized Clinical Trial.",
+          "pmid": "31982494",
+          "n_participants": 182
+        },
+        {
+          "citation": "Anderson DR et al 2021 J Smok Cessat",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Evaluation of Combined Financial Incentives and Deposit Contract Intervention for Smoking Cessation: A Randomized Controlled Trial.",
+          "pmid": "34306224",
+          "n_participants": 311
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "financial_incentives_smoking_cessation",
+      "name": "Financial incentives for smoking cessation",
+      "kind": "behavior",
+      "aliases": [
+        "quit-smoking cash incentives",
+        "voucher-based smoking cessation incentives"
+      ],
+      "description": "Programs that reward smoking-cessation behaviors or verified abstinence with money, vouchers, or deposit-contract returns."
+    },
+    {
+      "slug": "quit_rate",
+      "name": "Smoking quit rate",
+      "kind": "process",
+      "aliases": [
+        "smoking abstinence rate",
+        "cessation success rate"
+      ],
+      "description": "The proportion of smokers who achieve verified or reported abstinence over follow-up."
+    }
+  ]
+}

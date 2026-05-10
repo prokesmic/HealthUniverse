@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "motivational_interviewing",
+      "outcome_slug": "medication_adherence",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The chronic-disease meta-analysis pooled 16 randomized trials (N = 4,221) and found a small but statistically significant adherence benefit for motivational interviewing (effect size 0.12, 95% CI 0.05-0.20; I2 = 1%), with stronger effects when interviewing was MI-only, coached, and delivered face-to-face.",
+      "population": "adults prescribed long-term medications for chronic disease",
+      "mechanism": "Motivational interviewing targets the friction between knowing a medicine matters and actually taking it day after day. By eliciting personal reasons for treatment, resolving ambivalence, and making adherence plans feel self-authored rather than imposed, it can improve refill persistence in some settings, though the effect is usually modest.",
+      "summary": "The best anchor is the chronic-disease meta-analysis, which suggests motivational interviewing does improve medication adherence, but only by a small margin. Individual trials help explain why: structured phone or pharmacy-delivered programs can move adherence meaningfully, yet stroke and glaucoma trials show the effect is not automatic when baseline adherence is already high or the intervention bundle is doing most of the work.",
+      "caveats": "This edge spans many diseases, medication types, and delivery formats, so a pooled positive result still hides important context. Motivational interviewing seems less reliable when it is diluted inside larger multicomponent programs, delivered mainly as reminders, or tested in groups that were already fairly adherent before the intervention started.",
+      "evidence": [
+        {
+          "citation": "Zomahoun HTV et al 2017 Int J Epidemiol",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effectiveness of motivational interviewing interventions on medication adherence in adults with chronic diseases: a systematic review and meta-analysis.",
+          "pmid": "27864410",
+          "n_participants": 4221
+        },
+        {
+          "citation": "Abughosh S et al 2017 J Manag Care Spec Pharm",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A Motivational Interviewing Intervention by Pharmacy Students to Improve Medication Adherence.",
+          "pmid": "28448784",
+          "n_participants": 743
+        },
+        {
+          "citation": "Hedegaard U et al 2014 Cerebrovasc Dis Extra",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Multifaceted intervention including motivational interviewing to support medication adherence after stroke/transient ischemic attack: a randomized trial.",
+          "pmid": "25598772",
+          "n_participants": 203
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "motivational_interviewing",
+      "name": "Motivational interviewing",
+      "kind": "behavior",
+      "aliases": [
+        "MI counseling",
+        "motivational enhancement interviewing"
+      ],
+      "description": "A client-centered counseling approach that elicits intrinsic motivation for behavior change by exploring ambivalence."
+    },
+    {
+      "slug": "medication_adherence",
+      "name": "Medication adherence",
+      "kind": "behavior",
+      "aliases": [
+        "treatment adherence",
+        "prescription adherence"
+      ],
+      "description": "How consistently a person takes prescribed medication as directed over time."
+    }
+  ]
+}
