@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "vestibular_rehabilitation_concussion",
+      "name": "Vestibular rehabilitation after concussion",
+      "kind": "behavior",
+      "aliases": [
+        "vestibular rehab for concussion",
+        "cervicovestibular rehabilitation after concussion"
+      ],
+      "description": "Vestibular-focused rehabilitation used for dizziness, balance, or oculomotor symptoms after concussion."
+    },
+    {
+      "slug": "symptom_resolution",
+      "name": "Symptom resolution",
+      "kind": "process",
+      "aliases": [
+        "resolution of symptoms",
+        "clinical symptom improvement"
+      ],
+      "description": "Improvement or clearance of symptoms over time."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "vestibular_rehabilitation_concussion",
+      "outcome_slug": "symptom_resolution",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The concussion vestibular-rehabilitation systematic review found a pooled Dizziness Handicap Inventory benefit of -6.91 points (95% CI -9.11 to -4.72), while randomized trials showed faster medical clearance or vestibular symptom improvement with targeted vestibular programs.",
+      "population": "adolescents and adults with concussion or mild traumatic brain injury with vestibular symptoms",
+      "mechanism": "Vestibular rehabilitation aims to recalibrate gaze stabilization, motion sensitivity, and balance responses that often remain symptomatic after concussion. The mechanism is symptom-specific rather than general concussion magic, which is why benefit is strongest in patients with vestibular or cervicovestibular complaints.",
+      "summary": "The strongest anchor is the randomized-trial systematic review showing a pooled improvement in vestibular symptom burden after concussion rehabilitation. Two targeted randomized trials also support faster clinical recovery or better vestibular outcomes, so this edge is reasonably protective when the symptom profile is actually vestibular.",
+      "caveats": "Not every concussion patient needs vestibular therapy. The signal is strongest in symptomatic subgroups with dizziness, neck pain, motion sensitivity, or oculomotor findings, and the intervention is often bundled with cervical or behavioral management rather than being purely vestibular.",
+      "evidence": [
+        {
+          "citation": "Galeno E et al 2022 Healthcare (Basel)",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effectiveness of Vestibular Rehabilitation after Concussion: A Systematic Review of Randomised Controlled Trial.",
+          "pmid": "36611549",
+          "n_participants": 252
+        },
+        {
+          "citation": "Schneider KJ et al 2014 Br J Sports Med",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cervicovestibular rehabilitation in sport-related concussion: a randomised controlled trial.",
+          "pmid": "24855132",
+          "n_participants": 31
+        },
+        {
+          "citation": "Kontos AP et al 2021 J Pediatr",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A Randomized Controlled Trial of Precision Vestibular Rehabilitation in Adolescents following Concussion: Preliminary Findings.",
+          "pmid": "34450120",
+          "n_participants": 55
+        }
+      ]
+    }
+  ]
+}

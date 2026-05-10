@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "post_concussion_subsymptom_aerobic",
+      "name": "Subsymptom-threshold aerobic exercise after concussion",
+      "kind": "activity",
+      "aliases": [
+        "subthreshold aerobic exercise for concussion",
+        "early aerobic exercise after concussion"
+      ],
+      "description": "Aerobic exercise prescribed below the symptom-provocation threshold during concussion recovery."
+    },
+    {
+      "slug": "recovery_time",
+      "name": "Recovery time",
+      "kind": "process",
+      "aliases": [
+        "time to recovery",
+        "days to clinical recovery"
+      ],
+      "description": "The duration required to recover or become medically cleared."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "post_concussion_subsymptom_aerobic",
+      "outcome_slug": "recovery_time",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In the key adolescent concussion trial, subthreshold aerobic exercise shortened median recovery from 17 to 13 days compared with placebo-like stretching, and a later randomized study also found faster asymptomatic status and medical clearance with structured early aerobic exercise.",
+      "population": "adolescents and young adults recovering from sport-related concussion, including persistent-symptom cohorts",
+      "mechanism": "Subsymptom aerobic exercise may normalize autonomic and cerebrovascular regulation, reduce deconditioning, and provide a controlled graded exposure to exertion without repeatedly triggering symptom flares. The main point is not high intensity, but carefully staying below the threshold that worsens symptoms.",
+      "summary": "The best current evidence supports early, individualized subsymptom aerobic exercise as a way to shorten concussion recovery time. Multiple randomized trials point in the same direction, so this edge is one of the cleaner active-rehabilitation signals in the concussion literature.",
+      "caveats": "Most of the strongest data come from sport-related concussion in adolescents and young adults, so generalization to all concussion settings is imperfect. The intervention also requires some monitoring or testing to identify the symptom threshold; it is not simply unrestricted exercise.",
+      "evidence": [
+        {
+          "citation": "Leddy JJ et al 2019 JAMA Pediatr",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Early Subthreshold Aerobic Exercise for Sport-Related Concussion: A Randomized Clinical Trial.",
+          "pmid": "30715132",
+          "n_participants": 103
+        },
+        {
+          "citation": "Hutchison MG et al 2022 PLoS One",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Randomized controlled trial of early aerobic exercise following sport-related concussion: Progressive percentage of age-predicted maximal heart rate versus usual care.",
+          "pmid": "36548338",
+          "n_participants": 38
+        },
+        {
+          "citation": "Dobney DM et al 2019 Front Neurol",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Pilot Randomized Controlled Trial of an Exercise Program Requiring Minimal In-person Visits for Youth With Persistent Sport-Related Concussion.",
+          "pmid": "31316446",
+          "n_participants": 32
+        }
+      ]
+    }
+  ]
+}

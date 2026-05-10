@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cognitive_rehabilitation_post_concussion",
+      "name": "Cognitive rehabilitation after concussion",
+      "kind": "behavior",
+      "aliases": [
+        "post-concussion cognitive rehab",
+        "cognitive rehabilitation after mTBI"
+      ],
+      "description": "Structured cognitive rehabilitation used after concussion or mild traumatic brain injury."
+    },
+    {
+      "slug": "cognitive_outcomes",
+      "name": "Cognitive outcomes",
+      "kind": "process",
+      "aliases": [
+        "cognitive recovery outcomes",
+        "neurocognitive outcomes"
+      ],
+      "description": "Measured cognitive symptoms or performance outcomes after injury."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cognitive_rehabilitation_post_concussion",
+      "outcome_slug": "cognitive_outcomes",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The cognitive-and-psychological intervention review found no clear pooled reduction in post-concussion symptoms at 3 to 6 months, although some trials reported better functional outcomes or prevention of persistent syndrome in higher-risk subgroups.",
+      "population": "adults or military personnel with concussion or mild traumatic brain injury and persistent cognitive complaints",
+      "mechanism": "Cognitive rehabilitation may improve attention, compensatory strategy use, and task performance through structured practice and psychoeducation. But concussion symptoms often reflect a blend of cognitive, psychological, vestibular, and sleep-related factors, so purely cognitive rehabilitation does not reliably move every outcome in every population.",
+      "summary": "The best overall reading is mixed. Systematic review evidence finds limited consistent symptom reduction, yet selected trials show benefit in high-risk or structured rehabilitation settings, especially when cognitive work is embedded in a broader multidimensional program.",
+      "caveats": "The evidence base mixes very different populations, from civilian mild TBI to military service members with chronic symptoms, and the interventions themselves range from therapist-led training to integrated CBT-like programs. That heterogeneity makes it hard to claim a single robust cognitive-rehab effect on concussion recovery.",
+      "evidence": [
+        {
+          "citation": "Teo SH et al 2020 Brain Inj",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Cognitive and psychological interventions for the reduction of post-concussion symptoms in patients with mild traumatic brain injury: a systematic review.",
+          "pmid": "32772725",
+          "n_participants": 3081
+        },
+        {
+          "citation": "Caplain S et al 2019 Front Neurol",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of Psychoeducation and Cognitive Rehabilitation After Mild Traumatic Brain Injury for Preventing Post-concussional Syndrome in Individuals With High Risk of Poor Prognosis: A Randomized Clinical Trial.",
+          "pmid": "31551902",
+          "n_participants": 80
+        },
+        {
+          "citation": "Cooper DB et al 2017 J Head Trauma Rehabil",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Cognitive Rehabilitation for Military Service Members With Mild Traumatic Brain Injury: A Randomized Clinical Trial.",
+          "pmid": "27603763",
+          "n_participants": 126
+        }
+      ]
+    }
+  ]
+}
