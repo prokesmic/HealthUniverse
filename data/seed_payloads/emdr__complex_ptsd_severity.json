@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "complex_ptsd_severity",
+      "name": "Complex PTSD severity",
+      "kind": "process",
+      "aliases": [
+        "cPTSD symptom burden",
+        "childhood trauma-related complex post-traumatic stress severity"
+      ],
+      "description": "Severity of complex post-traumatic stress symptoms, especially in populations with repeated interpersonal or childhood trauma."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "emdr",
+      "outcome_slug": "complex_ptsd_severity",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "The most directly aligned synthesis is the 2018 review of complex childhood trauma trials, which found EMDR-associated reductions in post-traumatic symptoms across six randomized studies involving 251 participants, but with substantial heterogeneity and a still-limited evidence base.",
+      "population": "adolescents and adults with complex trauma histories, especially childhood abuse-related PTSD or complex PTSD presentations",
+      "mechanism": "EMDR attempts to reduce persistent trauma reactivity by pairing trauma memory activation with dual-attention tasks that may facilitate reconsolidation, emotional processing, and reduced physiological arousal. In complex trauma populations, that may lessen both classic PTSD symptoms and broader dysregulation that overlaps with complex PTSD.",
+      "summary": "The evidence points in a favorable direction, but this is not yet a finished edge. EMDR appears capable of reducing trauma symptom burden in complex-trauma populations, including some groups explicitly meeting complex PTSD criteria, yet the literature is still heterogeneous and often uses childhood-abuse PTSD as a proxy rather than a clean modern ICD-11 cPTSD outcome set.",
+      "caveats": "A lot of this literature predates routine use of formal complex PTSD diagnostic frameworks, so some evidence is indirect. Several studies also combine EMDR with skills-based stabilization or compare phase-based protocols rather than testing a pure EMDR-only pathway against a strong active comparator.",
+      "evidence": [
+        {
+          "citation": "KaratziasT et al 2018 Eur J Psychotraumatol",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The Efficacy of Eye Movement Desensitization and Reprocessing in Children and Adults Who Have Experienced Complex Childhood Trauma: A Systematic Review of Randomized Controlled Trials.",
+          "pmid": "29695993",
+          "n_participants": 251,
+          "effect_quant": {
+            "metric": "qualitative_synthesis",
+            "value": null,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "EMDR versus alternative therapies or control conditions in complex childhood trauma trials showed post-treatment reductions in PTSD and related symptom burden"
+          }
+        },
+        {
+          "citation": "SlotemaCW et al 2024 Eur J Psychotraumatol",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Skills training followed by either EMDR or narrative therapy for posttraumatic stress disorder in adult survivors of childhood abuse: a randomized controlled trial.",
+          "pmid": "38629403",
+          "n_participants": 68,
+          "effect_quant": {
+            "metric": "effect_size_d",
+            "value": 0.81,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "STAIR followed by EMDR in adult survivors of childhood abuse; interviewer-rated PTSD symptom improvement ranged from d 0.81 to 1.29"
+          }
+        },
+        {
+          "citation": "deRoosC et al 2024 Eur J Psychotraumatol",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Predictors and moderators of treatment outcomes in phase-based treatment and trauma-focused treatments in patients with childhood abuse-related post-traumatic stress disorder.",
+          "pmid": "38230608",
+          "n_participants": 121,
+          "effect_quant": {
+            "metric": "qualitative_synthesis",
+            "value": null,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "EMDR-only versus STAIR plus EMDR among childhood abuse-related PTSD patients; direct trauma-focused EMDR remained effective even when complex PTSD features were present"
+          }
+        }
+      ]
+    }
+  ]
+}

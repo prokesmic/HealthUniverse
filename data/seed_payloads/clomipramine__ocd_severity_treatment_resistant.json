@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "clomipramine",
+      "name": "Clomipramine",
+      "kind": "drug",
+      "aliases": [
+        "Anafranil",
+        "serotonergic tricyclic clomipramine"
+      ],
+      "description": "A potent serotonin reuptake inhibiting tricyclic antidepressant sometimes used after first-line SSRI failure in obsessive-compulsive disorder."
+    },
+    {
+      "slug": "ocd_severity_treatment_resistant",
+      "name": "Treatment-resistant obsessive-compulsive disorder severity",
+      "kind": "process",
+      "aliases": [
+        "refractory OCD symptom burden",
+        "Y-BOCS severity after first-line treatment failure"
+      ],
+      "description": "Severity of obsessive-compulsive symptoms in patients who have not responded adequately to prior standard serotonin reuptake inhibitor treatment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "clomipramine",
+      "outcome_slug": "ocd_severity_treatment_resistant",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The cleanest direct resistant-population signal comes from the 1998 placebo-controlled intravenous clomipramine trial, where 21% responded during the infusion phase versus 0% on placebo despite prior oral clomipramine failure.",
+      "population": "adults with obsessive-compulsive disorder who had inadequate response to prior standard serotonin reuptake inhibitor or oral clomipramine treatment",
+      "mechanism": "Clomipramine is one of the strongest serotonergic anti-obsessional drugs available. In resistant OCD, intravenous or pulse-loaded strategies may bypass slow oral titration, reach high effective exposure quickly, and help patients who previously failed standard SSRI dosing or even oral clomipramine.",
+      "summary": "The signal here is real but narrower than for first-line SSRI treatment. Resistant OCD studies suggest clomipramine, especially parenteral or pulse-loaded strategies, can reduce refractory symptom burden, but the evidence base is much smaller and more specialized than the broader OCD pharmacology literature.",
+      "caveats": "Most treatment-resistant evidence is built on intravenous clomipramine rather than ordinary outpatient oral prescribing, and trial sizes are small. That makes this closer to a specialist rescue strategy than a general recommendation for routine OCD care.",
+      "evidence": [
+        {
+          "citation": "MundoE et al 2025 Eur Psychiatry",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Parenteral clomipramine for depression or obsessive-compulsive disorder: a systematic review and meta-analysis.",
+          "pmid": "41978943",
+          "n_participants": 47,
+          "effect_quant": {
+            "metric": "qualitative_synthesis",
+            "value": null,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "two OCD randomized trials of parenteral clomipramine versus comparison treatment in resistant OCD were too heterogeneous for pooled meta-analysis"
+          }
+        },
+        {
+          "citation": "KoranLM et al 1998 Arch Gen Psychiatry",
+          "year": 1998,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Intravenous clomipramine for obsessive-compulsive disorder refractory to oral clomipramine: a placebo-controlled study.",
+          "pmid": "9783563",
+          "n_participants": 54,
+          "effect_quant": {
+            "metric": "response_rate",
+            "value": 0.21,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "intravenous clomipramine versus intravenous placebo during the blinded infusion phase; responder rates were 21% versus 0%"
+          }
+        },
+        {
+          "citation": "FallonBA et al 2006 J Clin Psychiatry",
+          "year": 2006,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Pulse-loaded intravenous clomipramine in treatment-resistant obsessive-compulsive disorder.",
+          "pmid": "16415712",
+          "n_participants": 34,
+          "effect_quant": {
+            "metric": "MD",
+            "value": null,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "intravenous versus oral pulse-loaded clomipramine; intravenous loading did not outperform oral loading on Y-BOCS at day 6 or week 12"
+          }
+        }
+      ]
+    }
+  ]
+}
