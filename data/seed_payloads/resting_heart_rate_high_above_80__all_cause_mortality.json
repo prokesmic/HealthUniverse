@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "resting_heart_rate_high_above_80",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In the 2016 general-population meta-analysis, resting heart rate above 80 beats per minute carried a relative risk of 1.45 for all-cause mortality versus the lowest category. The broader 2017 dose-response meta-analysis found a 17% higher all-cause mortality risk per 10 beats per minute increase, and life-course cohort data also linked persistently elevated resting heart rate with higher mortality in later adulthood.",
+      "population": "community-dwelling adults and older adults without restricting to any one disease cohort",
+      "mechanism": "A high resting heart rate can reflect sympathetic overactivity, lower cardiorespiratory fitness, inflammation, underlying disease burden, or reduced physiologic reserve. Even when it is partly a marker rather than a pure cause, it tends to sit in the same biologic corridor as higher long-term mortality risk.",
+      "summary": "This threshold is one of the clearest simple biomarker signals in the map. Once resting heart rate is consistently above about 80 beats per minute, all-cause mortality risk is reliably higher across large prospective datasets, making a harmful direction much more plausible than a neutral one.",
+      "caveats": "Resting heart rate is influenced by medications, fitness, thyroid status, acute illness, and measurement context, so one isolated reading should not be over-interpreted. The association is strong enough for risk stratification, but it does not mean lowering heart rate in every context will automatically lower mortality.",
+      "evidence": [
+        {
+          "citation": "Dongfeng Zhang et al 2016 CMAJ",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Resting heart rate and all-cause and cardiovascular mortality in the general population: a meta-analysis.",
+          "doi": "10.1503/cmaj.150535",
+          "pmid": "26598376",
+          "n_participants": 1246203
+        },
+        {
+          "citation": "Dagfinn Aune et al 2017 Nutr Metab Cardiovasc Dis",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Resting heart rate and the risk of cardiovascular disease, total cancer, and all-cause mortality - A systematic review and dose-response meta-analysis of prospective studies.",
+          "doi": "10.1016/j.numecd.2017.04.004",
+          "pmid": "28552551",
+          "n_participants": 87
+        },
+        {
+          "citation": "Golinowska S et al 2014 Int J Epidemiol",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association between resting heart rate across the life course and all-cause mortality: longitudinal findings from the Medical Research Council (MRC) National Survey of Health and Development (NSHD).",
+          "doi": "10.1093/ije/dyu076",
+          "pmid": "24850484",
+          "n_participants": 1297
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "resting_heart_rate_high_above_80",
+      "name": "Resting heart rate high above 80 bpm",
+      "kind": "biomarker",
+      "aliases": [
+        "resting pulse above 80",
+        "high resting heart rate over 80"
+      ],
+      "description": "A resting heart rate in a clearly elevated range, commonly interpreted as above about 80 beats per minute."
+    }
+  ]
+}

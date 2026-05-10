@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "anticholinergic_burden_chronic",
+      "name": "Chronic anticholinergic burden",
+      "kind": "drug",
+      "aliases": [],
+      "description": "Cumulative long-term exposure to one or more medications with anticholinergic effects."
+    },
+    {
+      "slug": "dementia_risk",
+      "name": "Dementia risk",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Future risk of dementia or closely related pre-dementia cognitive decline."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "anticholinergic_burden_chronic",
+      "outcome_slug": "dementia_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The strongest pooled estimate comes from the Cochrane prognostic review, where adjusted odds ratios on the Anticholinergic Cognitive Burden scale suggested higher future dementia or cognitive decline risk (OR 2.63, 95% CI 1.09 to 6.29), with exploratory across-scale pooling at OR 2.16.",
+      "population": "middle-aged and older adults with chronic exposure to medications carrying anticholinergic burden",
+      "mechanism": "Sustained anticholinergic exposure can reduce central acetylcholine signaling that supports memory and executive function, potentially accelerating cognitive vulnerability in people already aging or medically burdened.",
+      "summary": "This is a real risk signal, but it is stronger for the broad idea of worse cognitive aging than for one perfectly uniform dementia estimate across every burden scale. The most careful read is that chronic anticholinergic load increases the odds of later cognitive decline and may raise dementia risk, while individual cohort results vary depending on exposure definition and outcome choice.",
+      "caveats": "Observational design, polypharmacy, and confounding by indication remain important limitations. Some cohorts link anticholinergic use more strongly to incident MCI or lower cognitive scores than to frank dementia diagnosis.",
+      "evidence": [
+        {
+          "citation": "TaylorRowanM 2021 Cochrane Database Syst Rev",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Anticholinergic burden (prognostic factor) for prediction of dementia or cognitive decline in older adults with no known cognitive syndrome.",
+          "pmid": "34097766",
+          "n_participants": 968428,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 2.63,
+            "ci_low": 1.09,
+            "ci_high": 6.29,
+            "comparator": "adjusted dementia or cognitive decline risk at higher anticholinergic burden on the ACB scale"
+          }
+        },
+        {
+          "citation": "CunninghamEL 2023 Alzheimer Dis Assoc Disord",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Anticholinergic Drug Burden and Risk of Incident MCI and Dementia: A Population-based Study.",
+          "pmid": "36706325",
+          "n_participants": 1959
+        },
+        {
+          "citation": "RawleMJ 2024 Drugs Aging",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Associations Between Midlife Anticholinergic Medication Use and Subsequent Cognitive Decline: A British Birth Cohort Study.",
+          "pmid": "38740716",
+          "n_participants": 1690,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -2.34,
+            "ci_low": -3.51,
+            "ci_high": -1.17,
+            "comparator": "ACE-III score at age 69 in participants with high exposure at ages 60 to 64 versus no exposure"
+          }
+        }
+      ]
+    }
+  ]
+}

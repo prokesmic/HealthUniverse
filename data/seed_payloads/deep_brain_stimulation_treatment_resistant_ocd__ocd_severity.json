@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "deep_brain_stimulation_treatment_resistant_ocd",
+      "name": "Deep brain stimulation for treatment-resistant OCD",
+      "kind": "activity",
+      "aliases": [
+        "DBS for refractory obsessive-compulsive disorder",
+        "implantable neurostimulation for severe OCD"
+      ],
+      "description": "Implanted deep brain stimulation used for adults with severe obsessive-compulsive disorder that has not responded to standard medication and psychotherapy."
+    },
+    {
+      "slug": "ocd_severity",
+      "name": "Obsessive-compulsive disorder severity",
+      "kind": "process",
+      "aliases": [
+        "Y-BOCS symptom burden",
+        "obsession and compulsion severity"
+      ],
+      "description": "Clinician-rated severity of obsessive-compulsive symptoms, usually measured with the Yale-Brown Obsessive Compulsive Scale."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "deep_brain_stimulation_treatment_resistant_ocd",
+      "outcome_slug": "ocd_severity",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The strongest sham-controlled synthesis is the 2025 individual-participant meta-analysis, where active deep brain stimulation lowered Y-BOCS by 5.1 points more than sham and produced a pooled Hedges g of 0.56.",
+      "population": "adults with severe treatment-refractory obsessive-compulsive disorder enrolled in sham-controlled or observational deep brain stimulation studies",
+      "mechanism": "DBS aims to modulate cortico-striato-thalamo-cortical circuits that drive intrusive thoughts, threat overestimation, and compulsive rituals. When target selection and programming are effective, stimulation can reduce pathological salience and decrease the urge to neutralize obsessions through repetitive behavior.",
+      "summary": "This is one of the few genuinely effective last-line interventions for very severe OCD, but the evidence base is still small and specialized. Sham-controlled trials consistently show symptom reduction, though estimates are based on modest sample sizes and invasive treatment contexts.",
+      "caveats": "DBS evidence is limited to highly selected refractory patients and requires neurosurgical implantation, ongoing programming, and management of device-related adverse effects. The effect is not a simple lifestyle or first-line treatment analogue, so results should not be generalized beyond severe refractory OCD.",
+      "evidence": [
+        {
+          "citation": "CohenSE et al 2025 Mol Psychiatry",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Deep brain stimulation for obsessive-compulsive-disorder: a systematic review and meta-analysis of individual participant outcome data from sham-controlled trials.",
+          "pmid": "40579425",
+          "n_participants": 91,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -5.1,
+            "ci_low": -8.1,
+            "ci_high": -2.0,
+            "comparator": "active deep brain stimulation versus sham stimulation on Y-BOCS"
+          }
+        },
+        {
+          "citation": "MartinhoFP et al 2020 J Clin Psychiatry",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy, Effect on Mood Symptoms, and Safety of Deep Brain Stimulation in Refractory Obsessive-Compulsive Disorder: A Systematic Review and Meta-Analysis.",
+          "pmid": "32459406",
+          "n_participants": 85,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -7.8,
+            "ci_low": -11.2,
+            "ci_high": -4.3,
+            "comparator": "active versus sham deep brain stimulation on Y-BOCS in randomized trials"
+          }
+        },
+        {
+          "citation": "KiselyS et al 2014 Psychol Med",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Deep brain stimulation for obsessive-compulsive disorder: a systematic review and meta-analysis.",
+          "pmid": "25066053",
+          "n_participants": 44,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -8.93,
+            "ci_low": -13.35,
+            "ci_high": -5.76,
+            "comparator": "active versus sham deep brain stimulation on final Y-BOCS scores"
+          }
+        }
+      ]
+    }
+  ]
+}

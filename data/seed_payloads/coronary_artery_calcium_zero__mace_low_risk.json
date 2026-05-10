@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "coronary_artery_calcium_zero",
+      "outcome_slug": "mace_low_risk",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In MESA, coronary artery calcium of zero had the strongest downward cardiovascular risk reclassification of all negative risk markers, with a diagnostic likelihood ratio of 0.54 for 10-year CVD events. In the CAC Consortium, CAC=0 tracked with cardiovascular death rates around 0.32 to 0.43 per 1000 person-years over 12 years, and in CONFIRM the reference group with CAC=0 had the lowest observed major adverse cardiac event rates across renal-function strata.",
+      "population": "asymptomatic or primary-prevention adults undergoing coronary artery calcium scoring",
+      "mechanism": "CAC=0 is not a direct anti-disease mechanism; it is a negative imaging marker showing very low calcified plaque burden at the time of scanning. That matters because it compresses near-term absolute risk for infarction, stroke, and cardiovascular death even when conventional risk scores are intermediate.",
+      "summary": "This is one of the best validated low-risk signals in preventive cardiology. A zero CAC score does not mean zero plaque forever, but across large cohorts it consistently identifies people whose short- to intermediate-term major cardiovascular event risk is much lower than risk calculators alone would imply.",
+      "caveats": "CAC=0 does not rule out all non-calcified plaque, especially in symptomatic patients, younger adults, or people with diabetes and smoking exposure. The reassurance is strongest for near-term event risk, not for indefinite lifetime immunity from atherosclerosis.",
+      "evidence": [
+        {
+          "citation": "Blaha MJ 2016 Circulation",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Role of Coronary Artery Calcium Score of Zero and Other Negative Risk Markers for Cardiovascular Disease: The Multi-Ethnic Study of Atherosclerosis (MESA).",
+          "doi": "10.1161/CIRCULATIONAHA.115.018524",
+          "pmid": "26801055",
+          "n_participants": 6814
+        },
+        {
+          "citation": "Blaha MJ 2020 Atherosclerosis",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "All-cause and cause-specific mortality in individuals with zero and minimal coronary artery calcium: A long-term, competing risk analysis in the Coronary Artery Calcium Consortium.",
+          "doi": "10.1016/j.atherosclerosis.2019.11.008",
+          "pmid": "31784032",
+          "n_participants": 66363
+        },
+        {
+          "citation": "Lee JH 2019 Am J Cardiol",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The Predictive Value of Coronary Artery Calcium Scoring for Major Adverse Cardiac Events According to Renal Function (from the Coronary Computed Tomography Angiography Evaluation for Clinical Outcomes: An International Multicenter [CONFIRM] Registry).",
+          "doi": "10.1016/j.amjcard.2019.01.055",
+          "pmid": "30850210",
+          "n_participants": 9563
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "coronary_artery_calcium_zero",
+      "name": "Coronary artery calcium score of zero",
+      "kind": "biomarker",
+      "aliases": [
+        "CAC zero",
+        "CAC=0",
+        "zero calcium score"
+      ],
+      "description": "A coronary artery calcium score of zero on cardiac CT, indicating no detectable calcified coronary plaque at the time of scanning."
+    },
+    {
+      "slug": "mace_low_risk",
+      "name": "Low near-term risk of major adverse cardiovascular events",
+      "kind": "process",
+      "aliases": [
+        "low MACE risk",
+        "downward cardiovascular risk reclassification"
+      ],
+      "description": "A favorable short- to intermediate-term cardiovascular risk state with substantially lower major adverse cardiovascular event probability than expected from baseline clinical risk factors alone."
+    }
+  ]
+}

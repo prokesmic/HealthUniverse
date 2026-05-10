@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tolerance_dependence",
+      "name": "Tolerance or dependence",
+      "kind": "condition",
+      "aliases": [
+        "opioid dependence",
+        "opioid tolerance"
+      ],
+      "description": "Development of opioid tolerance, problematic opioid use, dependence, or opioid use disorder during long-term therapy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "opioids_long_term",
+      "outcome_slug": "tolerance_dependence",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The broadest meta-analysis found nearly one in ten chronic pain patients on opioid analgesics met criteria for dependence or opioid use disorder, while a prospective primary-care cohort documented opioid misuse in 32% over one year.",
+      "population": "adults receiving long-term opioid therapy for chronic non-cancer pain",
+      "mechanism": "Repeated opioid exposure can downregulate receptor responsiveness while reinforcing reward and withdrawal circuitry, which makes dose escalation, physiologic dependence, and misuse more likely over time.",
+      "summary": "This edge is harmful and clinically important even though the literature uses several overlapping outcomes such as dependence, opioid use disorder, misuse, and aberrant medication behavior. The strongest evidence does not support treating long-term opioid exposure as a neutral maintenance state; it shows a meaningful minority of chronic-pain patients develop dependence-like or misuse-related outcomes over time.",
+      "caveats": "Outcome definitions vary substantially across studies, so exact prevalence estimates are heterogeneous. Some long-term studies are uncontrolled and may underestimate or inconsistently detect dependence, while misuse-focused cohorts can capture a broader set of behaviors than formal opioid use disorder alone.",
+      "evidence": [
+        {
+          "citation": "Thomas KH 2024 Addiction",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prevalence of problematic pharmaceutical opioid use in patients with chronic non-cancer pain: A systematic review and meta-analysis.",
+          "doi": "10.1111/add.16616",
+          "pmid": "39111346",
+          "n_participants": 4300000
+        },
+        {
+          "citation": "Noble M 2010 Cochrane Database Syst Rev",
+          "year": 2010,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Long-term opioid management for chronic noncancer pain.",
+          "pmid": "20091598",
+          "n_participants": 4893
+        },
+        {
+          "citation": "Ives TJ 2006 BMC Health Serv Res",
+          "year": 2006,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Predictors of opioid misuse in patients with chronic pain: a prospective cohort study.",
+          "doi": "10.1186/1472-6963-6-46",
+          "pmid": "16595013",
+          "n_participants": 196
+        }
+      ]
+    }
+  ]
+}

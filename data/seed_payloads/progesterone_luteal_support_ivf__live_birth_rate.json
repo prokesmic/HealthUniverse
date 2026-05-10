@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "progesterone_luteal_support_ivf",
+      "name": "Progesterone luteal support in IVF",
+      "kind": "drug",
+      "aliases": [
+        "progesterone luteal phase support after IVF",
+        "progestogen support after embryo transfer"
+      ],
+      "description": "Use of progesterone or progestogenic support after oocyte retrieval or embryo transfer to support the luteal phase in IVF."
+    },
+    {
+      "slug": "live_birth_rate",
+      "name": "Live birth rate",
+      "kind": "process",
+      "aliases": [
+        "chance of live birth",
+        "live birth success"
+      ],
+      "description": "The probability of delivering a live infant after a fertility treatment cycle or conception attempt."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "progesterone_luteal_support_ivf",
+      "outcome_slug": "live_birth_rate",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The strongest placebo-controlled synthesis remains favorable to progesterone support. In the 2015 Cochrane review, progesterone versus placebo or no treatment increased live birth or ongoing pregnancy (OR 1.77, 95% CI 1.09 to 2.86), and later large IVF trials found oral dydrogesterone non-inferior or slightly favorable versus vaginal progesterone comparators.",
+      "population": "women undergoing fresh IVF cycles receiving luteal support after oocyte retrieval or embryo transfer",
+      "mechanism": "Ovarian stimulation and oocyte retrieval can disrupt endogenous corpus luteum signaling, leaving the post-retrieval luteal phase hormonally fragile. Exogenous progesterone helps maintain endometrial receptivity and implantation support during the period before placental hormone production is established.",
+      "summary": "This is one of the sturdier IVF support edges in the manifest. Progesterone-based luteal support has long-standing biologic plausibility and a large randomized evidence base, although the exact best formulation or route remains more debated than the core idea of support itself.",
+      "caveats": "Fresh-cycle evidence is stronger than broad generalization across all IVF contexts. Much of the newer literature compares one progesterone regimen with another rather than pure support versus no support, so the route-specific hierarchy is less certain than the overall protective direction.",
+      "evidence": [
+        {
+          "citation": "van der LindenM et al 2015 Cochrane Database Syst Rev",
+          "year": 2015,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Luteal phase support for assisted reproduction cycles.",
+          "pmid": "26148507",
+          "n_participants": 26198,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.77,
+            "ci_low": 1.09,
+            "ci_high": 2.86,
+            "comparator": "live birth or ongoing pregnancy with progesterone versus placebo or no treatment in assisted reproduction"
+          }
+        },
+        {
+          "citation": "GriesingerG et al 2020 PLoS One",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Dydrogesterone as an oral alternative to vaginal progesterone for IVF luteal phase support: A systematic review and individual participant data meta-analysis.",
+          "pmid": "33147288",
+          "n_participants": 1957,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.28,
+            "ci_low": 1.04,
+            "ci_high": 1.57,
+            "comparator": "live birth with oral dydrogesterone versus micronized vaginal progesterone for luteal phase support in fresh-cycle IVF"
+          }
+        },
+        {
+          "citation": "TournayeH et al 2017 Hum Reprod",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A Phase III randomized controlled trial comparing the efficacy, safety and tolerability of oral dydrogesterone versus micronized vaginal progesterone for luteal support in in vitro fertilization.",
+          "pmid": "28333318",
+          "n_participants": 1031
+        }
+      ]
+    }
+  ]
+}

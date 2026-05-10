@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cbt_insomnia_chronic",
+      "name": "Cognitive behavioral therapy for chronic insomnia",
+      "kind": "activity",
+      "aliases": [
+        "CBT-I",
+        "cognitive behavioural therapy for insomnia"
+      ],
+      "description": "Structured behavioral and cognitive therapy targeting chronic insomnia through stimulus control, sleep restriction, cognitive restructuring, and sleep-habit change."
+    },
+    {
+      "slug": "insomnia_severity_index",
+      "name": "Insomnia Severity Index score",
+      "kind": "process",
+      "aliases": [
+        "ISI symptom burden",
+        "insomnia severity score"
+      ],
+      "description": "Severity of insomnia symptoms measured with the Insomnia Severity Index."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cbt_insomnia_chronic",
+      "outcome_slug": "insomnia_severity_index",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The most scalable evidence now comes from the 2020 digital CBT-I meta-analysis, where CBT-I lowered Insomnia Severity Index scores by 5.00 points versus control at post-treatment across 9,364 randomized participants.",
+      "population": "adults with chronic insomnia, including digital and comorbidity-focused CBT-I trial populations",
+      "mechanism": "CBT-I reduces insomnia severity by pairing homeostatic sleep drive with cleaner behavioral cues for sleep, while also weakening catastrophic beliefs about sleeplessness. The combination of sleep restriction, stimulus control, and cognitive restructuring usually improves both nighttime continuity and the daytime distress captured by the ISI.",
+      "summary": "This is one of the strongest non-drug sleep edges in the graph. Across digital, internet-delivered, and comorbidity-focused randomized syntheses, CBT-I consistently produces clinically meaningful reductions in Insomnia Severity Index scores.",
+      "caveats": "Digital CBT-I and therapist-delivered CBT-I are not identical, and not every patient can tolerate the early fatigue that comes with sleep restriction. Effects can also be smaller when insomnia is tightly entangled with active medical or psychiatric disease, although benefit usually still remains.",
+      "evidence": [
+        {
+          "citation": "SohHL et al 2020 Sleep Med Rev",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy of digital cognitive behavioural therapy for insomnia: a meta-analysis of randomised controlled trials.",
+          "pmid": "32950013",
+          "n_participants": 9364,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -5.0,
+            "ci_low": -5.68,
+            "ci_high": -4.33,
+            "comparator": "digital CBT-I versus wait-list, treatment as usual, or online education on Insomnia Severity Index at post-intervention"
+          }
+        },
+        {
+          "citation": "ZachariaeR et al 2016 Sleep Med Rev",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Internet-based cognitive-behavioural therapy for insomnia (ICBT-i): a meta-analysis of randomised controlled trials.",
+          "pmid": "27903557",
+          "n_participants": 1604,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -5.88,
+            "ci_low": -7.46,
+            "ci_high": -4.29,
+            "comparator": "internet CBT-I versus waiting-list control on Insomnia Severity Index at post-test"
+          }
+        },
+        {
+          "citation": "WuJQ et al 2020 Sleep Breath",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cognitive Behavioural Therapy for Insomnia Monotherapy in Patients with Medical or Psychiatric Comorbidities: a Meta-Analysis of Randomized Controlled Trials.",
+          "pmid": "32860556",
+          "n_participants": 853,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -0.74,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "CBT-I monotherapy versus active control in insomnia patients with medical or psychiatric comorbidities on Insomnia Severity Index"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ivf_coq10_supplementation",
+      "name": "CoQ10 supplementation during IVF",
+      "kind": "supplement",
+      "aliases": [
+        "coenzyme Q10 pretreatment in IVF",
+        "CoQ10 for IVF or ICSI"
+      ],
+      "description": "Coenzyme Q10 supplementation before or during IVF or ICSI treatment."
+    },
+    {
+      "slug": "oocyte_quality",
+      "name": "Oocyte quality",
+      "kind": "process",
+      "aliases": [
+        "oocyte competence",
+        "egg quality",
+        "embryological oocyte quality"
+      ],
+      "description": "Quality or competence of retrieved oocytes, often inferred through aneuploidy, fertilization, embryo quality, or related embryological outcomes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ivf_coq10_supplementation",
+      "outcome_slug": "oocyte_quality",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The best human trial evidence is suggestive but underpowered. In low-prognosis young women with decreased ovarian reserve, CoQ10 pretreatment improved fertilization and high-quality embryo counts in a 186-patient RCT, while the smaller placebo-controlled aneuploidy trial showed a numerically lower oocyte aneuploidy rate without statistical certainty. A newer 100-patient randomized study found better oocyte counts and ovarian response but no significant clinical-pregnancy difference.",
+      "population": "women undergoing IVF or ICSI, especially those with poor ovarian reserve or poor ovarian response",
+      "mechanism": "CoQ10 is involved in mitochondrial electron transport and antioxidant defense, making it biologically plausible as a support for oocyte energy metabolism and chromosomal competence. The central uncertainty is whether those mitochondrial gains are large enough to produce reliable human clinical benefits beyond small embryology improvements.",
+      "summary": "This is a plausible but not yet definitive IVF optimization edge. CoQ10 may improve some oocyte or embryo-quality markers, particularly in poor-reserve populations, but the clinical evidence is still too thin and underpowered for a stronger claim.",
+      "caveats": "Several studies are small, enriched for selected poor-reserve populations, or terminated early. This edge should stay focused on oocyte-quality signals rather than be inflated into a proven live-birth enhancer.",
+      "evidence": [
+        {
+          "citation": "XuY et al 2018 Reprod Biol Endocrinol",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Pretreatment with coenzyme Q10 improves ovarian response and embryo quality in low-prognosis young women with decreased ovarian reserve: a randomized controlled trial.",
+          "pmid": "29587861",
+          "n_participants": 186
+        },
+        {
+          "citation": "Bentov Y et al 2014 Clin Med Insights Reprod Health",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Coenzyme Q10 Supplementation and Oocyte Aneuploidy in Women Undergoing IVF-ICSI Treatment.",
+          "doi": "10.4137/CMRH.S14681",
+          "pmid": "24987272",
+          "n_participants": 39
+        },
+        {
+          "citation": "Aly H et al 2026 Drug Des Devel Ther",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Coenzyme Q10 Impact on Ovarian Reserve Measures and the Intra-Cytoplasmic Sperm Injection (ICSI) Outcomes in Women with Poor Ovarian Response: A Randomized Controlled Study.",
+          "pmid": "41800295",
+          "n_participants": 100
+        }
+      ]
+    }
+  ]
+}

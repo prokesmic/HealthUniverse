@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "preconception_folate_supplementation",
+      "name": "Preconception folate supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "periconceptional folic acid supplementation",
+        "preconception folic acid use"
+      ],
+      "description": "Oral folic acid or folate supplementation started before conception or continued through the periconceptional window."
+    },
+    {
+      "slug": "ntd_prevention",
+      "name": "Neural tube defect prevention",
+      "kind": "process",
+      "aliases": [
+        "prevention of neural tube defects",
+        "NTD risk reduction"
+      ],
+      "description": "Reducing the incidence or recurrence of fetal neural tube defects through preventive intervention before or around conception."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "preconception_folate_supplementation",
+      "outcome_slug": "ntd_prevention",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "This is one of the clearest prevention edges in reproductive nutrition. The 2015 Cochrane review found a pooled RR of 0.31 for neural tube defects across 6,708 births, and the 2017 USPSTF evidence review found the older pre-fortification trial and cohort literature consistently protective even though post-fortification observational studies became harder to interpret.",
+      "population": "women of childbearing age using folic acid or folate supplementation before conception and during the early periconceptional period",
+      "mechanism": "Folate is required for one-carbon transfer reactions that support DNA synthesis, methylation, and rapid neural-tube closure in early embryogenesis. Repletion before conception matters because neural-tube closure occurs very early, often before pregnancy recognition.",
+      "summary": "The most boring defensible claim is still the right one here: taking folate before conception and through early pregnancy materially lowers neural tube defect risk. This is not a speculative supplement edge or a small optimization signal; it is a foundational preventive intervention with decades of convergent support.",
+      "caveats": "The strongest benefit signal comes from the pre-fortification era, so modern observational studies in fortified populations can look weaker because background folate exposure is higher. This edge is about prevention before and around conception, not treatment after an affected pregnancy is already established.",
+      "evidence": [
+        {
+          "citation": "De-Regil LM et al 2015 Cochrane Database Syst Rev",
+          "year": 2015,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects and safety of periconceptional oral folate supplementation for preventing birth defects.",
+          "doi": "10.1002/14651858.CD001056",
+          "pmid": "26662928",
+          "n_participants": 7391,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.31,
+            "ci_low": 0.17,
+            "ci_high": 0.58,
+            "comparator": "daily folic acid supplementation versus no intervention, placebo, or micronutrients without folic acid for neural tube defect prevention"
+          }
+        },
+        {
+          "citation": "Viswanathan M et al 2017 JAMA",
+          "year": 2017,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Folic Acid Supplementation for the Prevention of Neural Tube Defects: An Updated Evidence Report and Systematic Review for the US Preventive Services Task Force.",
+          "doi": "10.1001/jama.2016.19193",
+          "pmid": "28097361",
+          "n_participants": 58860
+        },
+        {
+          "citation": "Tang KF et al 2015 Sci Rep",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Quantitative assessment of maternal biomarkers related to one-carbon metabolism and neural tube defects.",
+          "doi": "10.1038/srep08510",
+          "pmid": "25728980",
+          "n_participants": 5885
+        }
+      ]
+    }
+  ]
+}

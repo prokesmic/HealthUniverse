@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "light_at_night_chronic",
+      "outcome_slug": "metabolic_syndrome",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In 20,812 adults from the Yinzhou cohort, each interquartile-range increase in outdoor light at night was associated with a 5% higher hazard of incident metabolic syndrome. In 11,729 middle-aged and older adults from CHARLS, the highest light-at-night quartile was associated with higher metabolic syndrome odds (OR 1.04, 95% CI 1.02 to 1.06). In 14,804 Chinese youth, the association was nonlinear and U-shaped, with both very low and very high outdoor light exposure tracking more metabolic syndrome.",
+      "population": "children, adolescents, and middle-aged to older adults exposed chronically to outdoor artificial light at night",
+      "mechanism": "Chronic nighttime light can delay melatonin secretion, fragment circadian timing, and shift late eating and sleep patterns in ways that favor insulin resistance, adiposity, and abnormal lipid handling. The pathway is more plausibly a whole-circadian disruption signal than a single-toxin effect.",
+      "summary": "The most defensible claim is that chronic outdoor light at night behaves like a modest metabolic risk exposure rather than a harmless feature of urban living. Multiple large Chinese datasets now point in the same direction, although the shape of the association may be nonlinear and the absolute effect size is not large.",
+      "caveats": "The literature is still mostly observational, and outdoor light measurements are often satellite-based rather than personal exposure measurements. Residual confounding by urbanicity, air pollution, noise, and deprivation remains a real concern, so this edge should be read as a risk signal rather than proof that reducing light alone will reverse metabolic syndrome.",
+      "evidence": [
+        {
+          "citation": "Wang Jianbing et al 2026 Environ Res",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Associations of concomitant exposure to outdoor light at night, air pollution, and greenness with metabolic syndrome: A cohort study in China.",
+          "doi": "10.1016/j.envres.2025.123590",
+          "pmid": "41418857",
+          "n_participants": 20812
+        },
+        {
+          "citation": "Fan M et al 2025 Front Public Health",
+          "year": 2025,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association between outdoor artificial light at night and metabolic diseases in middle-aged to older adults-the CHARLS survey",
+          "doi": "10.3389/fpubh.2025.1515597",
+          "pmid": "40115347",
+          "n_participants": 11729
+        },
+        {
+          "citation": "Chen Ya-jun et al 2026 Environ Pollut",
+          "year": 2026,
+          "study_type": "cross_sectional",
+          "direction": "u_shaped",
+          "quality": "moderate",
+          "notes": "U-shaped association between outdoor artificial light at night exposure and metabolic syndrome in Chinese youth: Findings from a nationally representative study.",
+          "doi": "10.1016/j.envpol.2025.127548",
+          "pmid": "41421473",
+          "n_participants": 14804
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "light_at_night_chronic",
+      "name": "Chronic artificial light at night exposure",
+      "kind": "environmental",
+      "aliases": [
+        "chronic outdoor light at night",
+        "chronic ALAN exposure",
+        "long-term nighttime light pollution"
+      ],
+      "description": "Long-term exposure to artificial outdoor light during usual nighttime hours, typically estimated with satellite or geospatial light-pollution measures."
+    }
+  ]
+}

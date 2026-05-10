@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "n_acetylcysteine",
+      "name": "N-acetylcysteine",
+      "kind": "supplement",
+      "aliases": [
+        "NAC",
+        "acetylcysteine"
+      ],
+      "description": "An acetylated cysteine derivative used as a glutamate-modulating and antioxidant adjunct in psychiatric trials."
+    },
+    {
+      "slug": "ocd_severity",
+      "name": "Obsessive-compulsive disorder severity",
+      "kind": "process",
+      "aliases": [
+        "Y-BOCS symptom burden",
+        "severity of obsessive-compulsive symptoms"
+      ],
+      "description": "Clinician-rated severity of obsessive-compulsive symptoms, usually measured with the Yale-Brown Obsessive Compulsive Scale."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "n_acetylcysteine",
+      "outcome_slug": "ocd_severity",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The most focused 2024 meta-analysis of NAC augmentation in OCD pooled six randomized trials and found a positive effect on total Y-BOCS scores only in the 5-to-8-week window, with no significant benefit at shorter or longer durations. A broader 2022 meta-analysis of mitochondrial modulators also found overall symptom improvement favoring NAC versus placebo, but not stronger response or remission outcomes.",
+      "population": "adults with moderate to severe obsessive-compulsive disorder receiving N-acetylcysteine as augmentation, usually on top of SSRI treatment",
+      "mechanism": "N-acetylcysteine may reduce obsessive-compulsive symptoms by modulating glutamatergic tone and redox balance within cortico-striatal circuits implicated in compulsivity. The signal remains inconsistent because the current literature is small, adjunctive, and heavily dependent on treatment duration and trial design.",
+      "summary": "N-acetylcysteine may modestly reduce OCD severity in some adults, but the evidence is still mixed rather than definitive. Meta-analytic signals are encouraging enough to justify research interest, yet they do not clearly establish durable benefit across longer treatment windows or stronger categorical outcomes.",
+      "caveats": "Most studies examine NAC as SSRI augmentation rather than monotherapy, and total samples remain small. This edge should be interpreted as a plausible adjunctive option with unresolved durability rather than as a proven OCD treatment.",
+      "evidence": [
+        {
+          "citation": "EghdamiS et al 2024 Front Psychiatry",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The safety and efficacy of N-acetylcysteine as an augmentation in the treatment of obsessive-compulsive disorder in adults: a systematic review and meta-analysis of randomized clinical trials.",
+          "pmid": "39376972",
+          "n_participants": 195
+        },
+        {
+          "citation": "KishiT et al 2022 Transl Psychiatry",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Mitochondrial modulators for obsessive-compulsive and related disorders: a systematic review and meta-analysis.",
+          "pmid": "35764619",
+          "n_participants": 629
+        },
+        {
+          "citation": "CamfieldDA et al 2011 Prog Neuropsychopharmacol Biol Psychiatry",
+          "year": 2011,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Nutraceuticals in the treatment of obsessive compulsive disorder (OCD): a review of mechanistic and clinical evidence.",
+          "pmid": "21352883"
+        }
+      ]
+    }
+  ]
+}

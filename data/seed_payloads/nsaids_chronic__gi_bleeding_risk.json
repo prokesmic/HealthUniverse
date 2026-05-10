@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "gi_bleeding_risk",
+      "name": "Gastrointestinal bleeding risk",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Risk of clinically important upper gastrointestinal bleeding or hemorrhage."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "nsaids_chronic",
+      "outcome_slug": "gi_bleeding_risk",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "The clearest quantitative signal is not subtle: the classic hospital case-control study found odds ratios of 4.9 to 19.1 for individual non-aspirin NSAIDs, and the large multicenter genotype-stratified case-control study still found odds ratios above 4 among exposed users.",
+      "population": "adults using non-aspirin NSAIDs for recurrent or chronic analgesic or anti-inflammatory treatment",
+      "mechanism": "Chronic NSAID exposure impairs cyclooxygenase-dependent prostaglandin protection in the gastroduodenal mucosa, making bleeding more likely when mucosal injury, erosions, or ulcers occur.",
+      "summary": "This is one of the least ambiguous iatrogenic edges in the graph. Across classic case-control work and later randomized-trial meta-analysis, chronic or repeated NSAID exposure consistently increases the risk of serious upper gastrointestinal bleeding complications, with the largest harms seen for higher-risk individual agents rather than a perfectly uniform class effect.",
+      "caveats": "Magnitude varies by molecule, dose, age, ulcer history, and co-medications such as aspirin or anticoagulants. The strongest quantitative papers focus on upper GI hemorrhage or composite upper GI complications rather than every possible lower-GI bleed phenotype.",
+      "evidence": [
+        {
+          "citation": "Bhala N 2013 Lancet",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Vascular and upper gastrointestinal effects of non-steroidal anti-inflammatory drugs: meta-analyses of individual participant data from randomised trials.",
+          "pmid": "23726390",
+          "n_participants": 353809
+        },
+        {
+          "citation": "Laporte JR 1991 Lancet",
+          "year": 1991,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Upper gastrointestinal bleeding in relation to previous use of analgesics and non-steroidal anti-inflammatory drugs. Catalan Countries Study on Upper Gastrointestinal Bleeding.",
+          "doi": "10.1016/0140-6736(91)90744-A",
+          "pmid": "1670734",
+          "n_participants": 3557
+        },
+        {
+          "citation": "Mallah N 2021 Sci Rep",
+          "year": 2021,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "A multicenter case-control study of the effect of e-nos VNTR polymorphism on upper gastrointestinal hemorrhage in NSAID users.",
+          "doi": "10.1038/s41598-021-99402-w",
+          "pmid": "34620931",
+          "n_participants": 1069
+        }
+      ]
+    }
+  ]
+}

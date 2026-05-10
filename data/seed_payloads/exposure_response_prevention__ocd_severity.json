@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "exposure_response_prevention",
+      "name": "Exposure and response prevention",
+      "kind": "activity",
+      "aliases": [
+        "ERP for OCD",
+        "exposure and ritual prevention therapy"
+      ],
+      "description": "A behavioral treatment approach in which patients confront obsessional triggers while refraining from compulsive rituals."
+    },
+    {
+      "slug": "ocd_severity",
+      "name": "Obsessive-compulsive disorder severity",
+      "kind": "process",
+      "aliases": [
+        "OCD symptom burden",
+        "Y-BOCS severity"
+      ],
+      "description": "The severity of obsessive-compulsive symptoms, commonly measured using the Yale-Brown Obsessive Compulsive Scale."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "exposure_response_prevention",
+      "outcome_slug": "ocd_severity",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "When added to medication, ERP reduced OCD severity more than medication alone in a 21-study meta-analysis (MD -6.60 Y-BOCS points, 95% CI -8.35 to -4.84). A newer active-comparator trial also found ERP superior to stress management training with a post-treatment effect size of -0.72.",
+      "population": "adolescents and adults with obsessive-compulsive disorder receiving ERP alone or in combination with standard pharmacotherapy",
+      "mechanism": "ERP reduces compulsive behavior by weakening the learned link between obsessional triggers and ritualized relief. Repeated exposure without ritual completion allows threat expectancy to recalibrate and usually drives meaningful reductions in Y-BOCS severity over time.",
+      "summary": "This is one of the strongest psychotherapy edges in the dataset. ERP repeatedly outperforms non-specific comparators and improves OCD symptom severity both as a stand-alone therapy and when layered onto medication.",
+      "caveats": "Many trials study ERP as augmentation to pharmacotherapy, so some estimates reflect combined treatment rather than ERP monotherapy. Delivery quality and willingness to complete exposures can materially change outcomes.",
+      "evidence": [
+        {
+          "citation": "MaoL et al 2022 Front Psychiatry",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The effectiveness of exposure and response prevention combined with pharmacotherapy for obsessive-compulsive disorder: A systematic review and meta-analysis.",
+          "pmid": "36186855",
+          "n_participants": 1113,
+          "effect_quant": {
+            "metric": "MD",
+            "value": -6.6,
+            "ci_low": -8.35,
+            "ci_high": -4.84,
+            "comparator": "ERP plus medication versus medication alone on Yale-Brown Obsessive Compulsive Scale score"
+          }
+        },
+        {
+          "citation": "HimleJA et al 2024 Behav Res Ther",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Exposure and response prevention versus stress management training for adults and adolescents with obsessive compulsive disorder: A randomized clinical trial.",
+          "pmid": "38103359",
+          "n_participants": 126,
+          "effect_quant": {
+            "metric": "effect_size",
+            "value": -0.72,
+            "ci_low": -0.91,
+            "ci_high": -0.52,
+            "comparator": "ERP versus stress management training for post-treatment C/Y-BOCS improvement"
+          }
+        },
+        {
+          "citation": "JacobyRJ et al 2025 Behav Res Ther",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Neural mechanisms underlying exposure and response prevention for obsessive compulsive disorder: A randomized controlled trial.",
+          "pmid": "41005270",
+          "n_participants": 34
+        }
+      ]
+    }
+  ]
+}

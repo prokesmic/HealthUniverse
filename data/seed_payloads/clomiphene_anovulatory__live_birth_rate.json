@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "clomiphene_anovulatory",
+      "name": "Clomiphene for anovulatory infertility",
+      "kind": "drug",
+      "aliases": [
+        "clomiphene citrate ovulation induction",
+        "anti-estrogen induction for anovulatory infertility"
+      ],
+      "description": "Use of clomiphene citrate as an ovulation-induction treatment for women with anovulatory infertility, particularly PCOS."
+    },
+    {
+      "slug": "live_birth_rate",
+      "name": "Live birth rate",
+      "kind": "process",
+      "aliases": [
+        "chance of live birth",
+        "live birth success"
+      ],
+      "description": "The probability of delivering a live infant after fertility treatment or conception."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "clomiphene_anovulatory",
+      "outcome_slug": "live_birth_rate",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Clomiphene remains an active fertility drug, but the live-birth evidence is older and weaker than for letrozole. The 2016 Cochrane update concluded clomiphene is superior to placebo for pregnancy outcomes and remains an accepted first-line oral inducer, while newer comparative meta-analysis shows it is consistently outperformed by letrozole for live birth.",
+      "population": "women with anovulatory infertility, especially women with PCOS undergoing first-line ovulation induction",
+      "mechanism": "Clomiphene blocks estrogen receptors centrally, increasing gonadotropin release and triggering follicular recruitment and ovulation. Its main limitation is that the same anti-estrogenic action can also impair endometrial receptivity or cervical mucus, which likely explains why it helps but does not lead the field anymore.",
+      "summary": "Clomiphene is still a genuinely active ovulation-induction drug, not a placebo-like relic. The more careful modern interpretation is that it can improve fertility and live-birth outcomes in anovulatory women, but it now sits as a useful older standard rather than the best-performing first-line option.",
+      "caveats": "Live-birth reporting is sparse in the older clomiphene literature, and many trials focus on pregnancy or ovulation rather than delivery. This edge should therefore be read as modestly favorable, with the explicit understanding that letrozole generally performs better.",
+      "evidence": [
+        {
+          "citation": "BrownJ et al 2016 Cochrane Database Syst Rev",
+          "year": 2016,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Clomiphene and other antioestrogens for ovulation induction in polycystic ovarian syndrome.",
+          "pmid": "27976369",
+          "n_participants": 3377
+        },
+        {
+          "citation": "BrownJ et al 2009 Cochrane Database Syst Rev",
+          "year": 2009,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Clomiphene and anti-oestrogens for ovulation induction in PCOS.",
+          "pmid": "19821295",
+          "n_participants": 15,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 5.8,
+            "ci_low": 1.6,
+            "ci_high": 21.5,
+            "comparator": "pregnancy with clomiphene versus placebo in anovulatory subfertility related to PCOS"
+          }
+        },
+        {
+          "citation": "WangR et al 2019 Hum Reprod Update",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "First-line ovulation induction for polycystic ovary syndrome: an individual participant data meta-analysis.",
+          "pmid": "31647106",
+          "n_participants": 3962,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.43,
+            "ci_low": 1.17,
+            "ci_high": 1.75,
+            "comparator": "letrozole versus clomiphene citrate for live birth, showing clomiphene as the inferior but active first-line comparator"
+          }
+        }
+      ]
+    }
+  ]
+}

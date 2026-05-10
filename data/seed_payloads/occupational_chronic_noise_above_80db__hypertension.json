@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "occupational_chronic_noise_above_80db",
+      "outcome_slug": "hypertension",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Higher workplace noise is associated with modestly higher hypertension risk overall, while specific studies at or above 80 dB(A) report larger odds ratios in heavily exposed workers.",
+      "population": "workers chronically exposed to workplace noise at or above roughly 80 dB(A)",
+      "mechanism": "Sustained high noise exposure can keep sympathetic arousal and stress-hormone signaling chronically elevated, which fits a small but biologically coherent rise in blood-pressure burden over time. The exposure threshold matters because the signal looks weaker when lower-level noise or mixed settings are pooled together.",
+      "summary": "The broad occupational review from the WHO and ILO supports a harmful direction for high workplace noise and hypertension, even though the pooled estimate is modest. The more threshold-specific case-control data are sharper: once exposure is defined around 80 dB(A) or above, the odds of hypertension rise meaningfully rather than staying flat.",
+      "caveats": "This is not one of the graph's largest risk effects, and residual confounding from shift work, job strain, smoking, and other industrial exposures remains possible. The edge is strongest when noise is measured with occupational dosimetry and explicit high-exposure thresholds.",
+      "evidence": [
+        {
+          "citation": "Teixeira LR et al 2021 Environ Int",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The effect of occupational exposure to noise on ischaemic heart disease, stroke and hypertension: A systematic review and meta-analysis from the WHO/ILO Joint Estimates of the Work-Related Burden of Disease and Injury.",
+          "pmid": "33612311",
+          "n_participants": 534688
+        },
+        {
+          "citation": "Liu HJ et al 2022 Int J Public Health",
+          "year": 2022,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Relationship Between Occupational Noise and Hypertension in Modern Enterprise Workers: A Case-Control Study.",
+          "pmid": "36405529",
+          "n_participants": 1527
+        },
+        {
+          "citation": "Wang J et al 2023 J Clin Hypertens",
+          "year": 2023,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of occupational noise exposure with hypertension: A cross-sectional study.",
+          "pmid": "36585815",
+          "n_participants": 4746
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "occupational_chronic_noise_above_80db",
+      "name": "Chronic occupational noise above 80 dB",
+      "kind": "environmental",
+      "aliases": [
+        "workplace noise exposure over 80 dB(A)"
+      ],
+      "description": "Repeated occupational exposure to sound levels at or above about 80 dB(A)."
+    }
+  ]
+}

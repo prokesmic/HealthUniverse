@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "coronary_artery_calcium_high",
+      "outcome_slug": "mace_10yr",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In the 23,637-person Walter Reed cohort, adjusted subhazard ratios for major adverse cardiovascular events were 1.4, 2.0, and 2.8 for CAC scores of 1-100, 101-400, and over 400 versus zero. In MESA, each doubling of CAC was associated with a 14% increase in 10-year ASCVD risk and CAC above 300 corresponded to 10-year event rates of roughly 13% to 26% across demographic groups.",
+      "population": "asymptomatic or primary-prevention adults undergoing coronary artery calcium scoring",
+      "mechanism": "High coronary artery calcium is a cumulative plaque-burden signal rather than a transient lab abnormality. It integrates the long-run effect of lipoprotein exposure, blood pressure, glycemic stress, and vascular inflammation, so a strong link to 10-year major cardiovascular events is biologically expected.",
+      "summary": "This is one of the most practically useful risk-stratification edges in the corpus. Once CAC becomes clearly elevated, 10-year major cardiovascular event risk rises in a graded way across multiple cohorts, and the main discussion shifts from whether risk is elevated to how aggressively prevention should be intensified.",
+      "caveats": "Coronary calcium is not identical to unstable plaque, so it predicts long-run event burden better than immediate plaque rupture risk. Absolute risk also changes with age, renal function, diabetes burden, and background preventive therapy, so CAC should be read as a strong modifier of baseline risk rather than as a standalone diagnosis.",
+      "evidence": [
+        {
+          "citation": "Mitchell JD 2018 JACC Cardiovasc Imaging",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Coronary Artery Calcium and Long-Term Risk of Death, Myocardial Infarction, and Stroke: The Walter Reed Cohort Study.",
+          "doi": "10.1016/j.jcmg.2017.09.003",
+          "pmid": "29153576",
+          "n_participants": 23637
+        },
+        {
+          "citation": "Lee JH 2019 Am J Cardiol",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The Predictive Value of Coronary Artery Calcium Scoring for Major Adverse Cardiac Events According to Renal Function (from the Coronary Computed Tomography Angiography Evaluation for Clinical Outcomes: An International Multicenter [CONFIRM] Registry).",
+          "doi": "10.1016/j.amjcard.2019.01.055",
+          "pmid": "30850210",
+          "n_participants": 9563
+        },
+        {
+          "citation": "Budoff MJ 2018 Eur Heart J",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Ten-year association of coronary artery calcium with atherosclerotic cardiovascular disease (ASCVD) events: the multi-ethnic study of atherosclerosis (MESA).",
+          "doi": "10.1093/eurheartj/ehy217",
+          "pmid": "29688297",
+          "n_participants": 6814
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "coronary_artery_calcium_high",
+      "name": "High coronary artery calcium score",
+      "kind": "biomarker",
+      "aliases": [
+        "elevated CAC score",
+        "high coronary calcium"
+      ],
+      "description": "A coronary artery calcium score high enough to indicate substantial calcified atherosclerotic plaque burden on cardiac CT."
+    },
+    {
+      "slug": "mace_10yr",
+      "name": "10-year major adverse cardiovascular events",
+      "kind": "condition",
+      "aliases": [
+        "10-year MACE risk",
+        "major cardiovascular events over 10 years"
+      ],
+      "description": "Composite risk of major adverse cardiovascular events over roughly 10 years, typically including myocardial infarction, stroke, cardiovascular death, and related hard atherosclerotic outcomes."
+    }
+  ]
+}

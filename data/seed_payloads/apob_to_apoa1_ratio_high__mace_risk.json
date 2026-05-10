@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "apob_to_apoa1_ratio_high",
+      "outcome_slug": "mace_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In the AMORIS cohort, increasing apoB/apoA-1 ratio showed a strong graded relationship with major adverse cardiovascular events, with a hazard ratio of 1.7 comparing the 10th versus first decile. In PCI patients, the fourth versus first apoB/apoA1 quartile carried an adjusted hazard ratio of 1.92 for future cardiovascular adverse events, and in ACS patients apoB/apoA1 independently predicted 5-year MACCE risk on top of SYNTAX severity measures.",
+      "population": "adults with measured apolipoproteins in primary-prevention, coronary-disease, or acute-coronary-syndrome cohorts",
+      "mechanism": "The apoB/apoA1 ratio captures the balance between atherogenic particle number and the anti-atherogenic HDL-associated apoA1 pool. When the ratio is high, the vascular environment is shifted toward lipoprotein retention, foam-cell formation, and plaque instability rather than cholesterol efflux and repair.",
+      "summary": "This is one of the more practical ratio biomarkers because it consistently outperforms intuition based on LDL cholesterol alone. Across both large population cohorts and higher-risk coronary cohorts, a higher apoB/apoA1 ratio marks people who go on to have more major cardiovascular events and to have them earlier.",
+      "caveats": "Thresholds vary across sex, assay, and background treatment, so this edge is better treated as a graded risk marker than a universal cutoff rule. Much of the strongest evidence is cohort-based rather than randomized biomarker-guided intervention data.",
+      "evidence": [
+        {
+          "citation": "Walldius G 2021 PLoS Med",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Long-term risk of a major cardiovascular event by apoB, apoA-1, and the apoB/apoA-1 ratio-Experience from the Swedish AMORIS cohort: A cohort study.",
+          "doi": "10.1371/journal.pmed.1003853",
+          "pmid": "34851955",
+          "n_participants": 137100
+        },
+        {
+          "citation": "Tian M 2019 Lipids Health Dis",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Comparison of Apolipoprotein B/A1 ratio, Framingham risk score and TC/HDL-c for predicting clinical outcomes in patients undergoing percutaneous coronary intervention.",
+          "doi": "10.1186/s12944-019-1150-3",
+          "pmid": "31744496",
+          "n_participants": 1639
+        },
+        {
+          "citation": "Wang X 2020 BMC Cardiovasc Disord",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Prognosis evaluation of universal acute coronary syndrome: the interplay between SYNTAX score and ApoB/ApoA1.",
+          "doi": "10.1186/s12872-020-01558-6",
+          "pmid": "32539722",
+          "n_participants": 396
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "apob_to_apoa1_ratio_high",
+      "name": "High apoB to apoA1 ratio",
+      "kind": "biomarker",
+      "aliases": [
+        "elevated apoB/apoA1 ratio",
+        "high apoB-to-apoA1"
+      ],
+      "description": "An apolipoprotein profile in which atherogenic apoB is high relative to apoA1, indicating an imbalance toward atherogenic particle burden."
+    },
+    {
+      "slug": "mace_risk",
+      "name": "Major adverse cardiovascular event risk",
+      "kind": "condition",
+      "aliases": [
+        "MACE risk",
+        "major cardiovascular event risk"
+      ],
+      "description": "Risk of major adverse cardiovascular events such as myocardial infarction, stroke, cardiovascular death, or closely related composite cardiovascular outcomes."
+    }
+  ]
+}

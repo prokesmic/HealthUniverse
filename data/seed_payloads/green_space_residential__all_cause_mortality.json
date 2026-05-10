@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "green_space_residential",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across large cohorts, higher residential greenness is associated with modestly lower all-cause mortality, with pooled estimates suggesting roughly 4% lower risk per 0.1 increase in nearby NDVI.",
+      "population": "community-dwelling adults with measured residential greenness exposure",
+      "mechanism": "Residential green space can plausibly reduce mortality risk through several converging pathways: lower stress burden, more physical activity, lower heat and air-pollution burden, and stronger social engagement. That makes the edge more credible than a purely aesthetic neighborhood effect, even if the exact causal mix varies by setting.",
+      "summary": "The strongest anchor is the 2019 cohort meta-analysis, which found a consistent inverse association between residential greenness and all-cause mortality across very large populations. Large prospective cohorts in women and older Chinese adults point in the same direction, suggesting that surrounding greenness is better understood as a modest longevity-supporting exposure than as a dramatic mortality intervention.",
+      "caveats": "Greenness is measured in several ways and is tightly linked to urban form, socioeconomic status, and air pollution, so residual confounding remains possible. The signal is generally modest and should not be interpreted as if green space alone overwhelms stronger mortality drivers like smoking or deprivation.",
+      "evidence": [
+        {
+          "citation": "Rojas-Rueda D et al 2019 Lancet Planet Health",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Green spaces and mortality: a systematic review and meta-analysis of cohort studies.",
+          "pmid": "31777338",
+          "n_participants": 8324652
+        },
+        {
+          "citation": "James P et al 2016 Environ Health Perspect",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Exposure to Greenness and Mortality in a Nationwide Prospective Cohort Study of Women.",
+          "pmid": "27074702",
+          "n_participants": 108630
+        },
+        {
+          "citation": "Zhu Anna et al 2020 Lancet Planet Health",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Interaction between residential greenness and air pollution mortality: analysis of the Chinese Longitudinal Healthy Longevity Survey.",
+          "pmid": "32220672",
+          "n_participants": 12873
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "green_space_residential",
+      "name": "Residential green space exposure",
+      "kind": "environmental",
+      "aliases": [
+        "neighborhood greenness",
+        "residential greenness"
+      ],
+      "description": "Exposure to vegetation or green space around the home environment, often measured with NDVI or related satellite indices."
+    }
+  ]
+}

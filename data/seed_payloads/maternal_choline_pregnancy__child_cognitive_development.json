@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "maternal_choline_pregnancy",
+      "name": "Higher maternal choline intake during pregnancy",
+      "kind": "nutrient",
+      "aliases": [
+        "prenatal choline sufficiency",
+        "maternal choline supplementation in pregnancy"
+      ],
+      "description": "Higher dietary intake, circulating status, or supplementation of choline during pregnancy."
+    },
+    {
+      "slug": "child_cognitive_development",
+      "name": "Child cognitive development",
+      "kind": "process",
+      "aliases": [
+        "offspring neurocognitive development",
+        "child brain and cognitive development"
+      ],
+      "description": "Cognitive, memory, attention, or related neurodevelopmental performance measured during infancy or childhood."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "maternal_choline_pregnancy",
+      "outcome_slug": "child_cognitive_development",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The strongest pattern is inconsistency rather than a single pooled gain. A 2025 systematic review found four prenatal choline trials and five observational cohorts, with most neurodevelopmental outcomes null despite occasional favorable signals.",
+      "population": "pregnant women and their offspring, including general-population cohorts and smaller supplementation trials",
+      "mechanism": "Choline donates methyl groups and supports phosphatidylcholine synthesis, acetylcholine production, and fetal membrane formation, so biologic plausibility for neurodevelopment is real. In human studies, however, those mechanistic advantages translate unevenly, suggesting any effect depends on timing, baseline intake, and whether the fetus is under specific stressors such as prenatal alcohol exposure.",
+      "summary": "This edge should stay conservative. Human pregnancy data support biologic plausibility, and a few trials or cohorts show better infant attention-like outcomes, but most measured cognitive endpoints remain null, so the evidence is mixed rather than convincingly protective.",
+      "caveats": "The literature mixes supplementation trials, circulating biomarker studies, and special-risk cohorts. Positive findings are often endpoint-specific or seen in subgroups, while broader infant cognition batteries and childhood IQ results are frequently neutral.",
+      "evidence": [
+        {
+          "citation": "GouldJF et al 2025 Nutrients",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Choline During Pregnancy and Child Neurodevelopment: A Systematic Review of Randomized Controlled Trials and Observational Studies.",
+          "pmid": "40077755",
+          "n_participants": 9
+        },
+        {
+          "citation": "CheathamCL et al 2012 Am J Clin Nutr",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Phosphatidylcholine supplementation in pregnant women consuming moderate-choline diets does not enhance infant cognitive function: a randomized, double-blind, placebo-controlled trial.",
+          "pmid": "23134891",
+          "n_participants": 99
+        },
+        {
+          "citation": "JacobsonSW et al 2018 Alcohol Clin Exp Res",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of Maternal Choline Supplementation During Pregnancy in Mitigating Adverse Effects of Prenatal Alcohol Exposure on Growth and Cognitive Function: A Randomized, Double-Blind, Placebo-Controlled Clinical Trial.",
+          "pmid": "29750367",
+          "n_participants": 69
+        },
+        {
+          "citation": "SignoreC et al 2008 Am J Clin Nutr",
+          "year": 2008,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Choline concentrations in human maternal and cord blood and intelligence at 5 y of age.",
+          "pmid": "18400712",
+          "n_participants": 404
+        },
+        {
+          "citation": "HunterSK et al 2022 Psychol Med",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Prenatal choline, cannabis, and infection, and their association with offspring development of attention and social problems through 4 years of age.",
+          "pmid": "33491615",
+          "n_participants": 83
+        }
+      ]
+    }
+  ]
+}

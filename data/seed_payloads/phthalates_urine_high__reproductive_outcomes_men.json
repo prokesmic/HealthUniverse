@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "phthalates_urine_high",
+      "outcome_slug": "reproductive_outcomes_men",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The human signal is directionally harmful but heterogeneous: pooled endocrine reviews generally point toward worse male reproductive hormone or semen outcomes, while individual cohort and cross-sectional studies vary by metabolite and exposure window.",
+      "population": "adolescent or adult males with measured urinary phthalate exposure",
+      "mechanism": "Phthalates are endocrine-disrupting plasticizers that can interfere with Leydig-cell steroidogenesis and Sertoli-cell support of spermatogenesis. That makes semen quality and reproductive hormone disruption the most plausible human readouts rather than one single male-fertility endpoint.",
+      "summary": "The strongest current overview is the 2026 systematic review on semen quality, which treats phthalates as a plausible contributor to male reproductive impairment rather than a uniformly catastrophic toxin. The more useful read is that higher urinary phthalate burdens repeatedly map to worse reproductive markers, but the exact metabolite, life stage, and endpoint determine how large and how consistent the effect looks.",
+      "caveats": "This literature mixes semen parameters, reproductive hormones, and developmental testicular outcomes, so it should not be simplified into one universal male-infertility effect. Exposure assessment is usually based on spot urine samples, which can add noise and weaken consistency across studies.",
+      "evidence": [
+        {
+          "citation": "Zhang YL et al 2024 ACS Environ Health",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of Di(2-ethylhexyl) Phthalate Exposure with Reproductive Hormones in the General Population and the Susceptible Population: A Systematic Review and Meta-Analysis.",
+          "pmid": "39568700",
+          "n_participants": 28911
+        },
+        {
+          "citation": "Duty SM et al 2005 Hum Reprod",
+          "year": 2005,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Phthalate exposure and reproductive hormones in adult men.",
+          "pmid": "15591081",
+          "n_participants": 295
+        },
+        {
+          "citation": "Main KM et al 2023 Sci Total Environ",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Maternal phthalate exposure during pregnancy and testis function of young adult sons.",
+          "pmid": "36736395",
+          "n_participants": 100
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "phthalates_urine_high",
+      "name": "High urinary phthalate exposure",
+      "kind": "environmental",
+      "aliases": [
+        "elevated urinary phthalate metabolites"
+      ],
+      "description": "High body-burden phthalate exposure inferred from urinary phthalate metabolite measurements."
+    },
+    {
+      "slug": "reproductive_outcomes_men",
+      "name": "Male reproductive outcomes",
+      "kind": "process",
+      "aliases": [
+        "male fertility markers",
+        "male reproductive function"
+      ],
+      "description": "Male reproductive health outcomes including semen quality, reproductive hormones, and related fertility markers."
+    }
+  ]
+}

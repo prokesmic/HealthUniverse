@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "lead_exposure_low_level",
+      "outcome_slug": "cognitive_decline_elderly",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In 584 older women from the Nurses' Health Study, each standard-deviation increase in tibia lead was associated with an excess annual decline in overall cognitive score of about 0.024 standard units. In 1,001 adults aged 50 to 70 years from the Baltimore Memory Study, higher cumulative tibia lead was associated with worse performance in several late-life cognitive domains, especially under higher neighborhood psychosocial stress. A meta-analysis of 3,849 adults also found that every 10 micrograms per deciliter increase in blood lead translated into a cognitive decline of about Hedges g 0.09.",
+      "population": "older adults and late-middle-aged adults with cumulative environmental lead exposure",
+      "mechanism": "Lead accumulates in bone and can continue to redistribute over time, creating a long-tail exposure even after external sources decline. In older adults, that cumulative burden may amplify neuroinflammation, vascular injury, and synaptic dysfunction that show up as faster cognitive aging rather than dramatic poisoning.",
+      "summary": "The clearest signal is cumulative rather than current lead. Older adults with more lifetime lead burden appear to age cognitively a bit faster, especially on memory, fluency, and executive-type tasks.",
+      "caveats": "The effect size is modest, and some cohorts show domain-specific rather than global cognitive associations. This edge should be read as a contributor to cognitive aging risk, not as a single dominant cause of dementia on its own.",
+      "evidence": [
+        {
+          "citation": "Melinda Power et al 2014 Environ Res",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Lead exposure and rate of change in cognitive function in older women.",
+          "doi": "10.1016/j.envres.2013.12.010",
+          "pmid": "24529005",
+          "n_participants": 584
+        },
+        {
+          "citation": "Thomas Glass et al 2009 Am J Epidemiol",
+          "year": 2009,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Neighborhood psychosocial hazards and the association of cumulative lead dose with cognitive function in older adults.",
+          "doi": "10.1093/aje/kwn390",
+          "pmid": "19155330",
+          "n_participants": 1001
+        },
+        {
+          "citation": "Thomas Vlasak et al 2019 Sci Total Environ",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Blood lead levels and cognitive functioning: A meta-analysis.",
+          "doi": "10.1016/j.scitotenv.2019.03.052",
+          "pmid": "30856576",
+          "n_participants": 3849
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "lead_exposure_low_level",
+      "name": "Low-level lead exposure",
+      "kind": "environmental",
+      "aliases": [
+        "chronic low-dose lead exposure",
+        "background lead exposure"
+      ],
+      "description": "Environmental or occupational exposure to lead at low but measurable levels over time."
+    },
+    {
+      "slug": "cognitive_decline_elderly",
+      "name": "Cognitive decline in older adults",
+      "kind": "condition",
+      "aliases": [
+        "elderly cognitive decline",
+        "late-life cognitive decline"
+      ],
+      "description": "Decline in memory, executive function, language, or global cognition in older adulthood."
+    }
+  ]
+}

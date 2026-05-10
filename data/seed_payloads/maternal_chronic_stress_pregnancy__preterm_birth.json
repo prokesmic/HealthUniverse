@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "maternal_chronic_stress_pregnancy",
+      "outcome_slug": "preterm_birth",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The strongest broad prenatal-stress estimate in this batch comes from a 2025 meta-analysis of psychosocial work stress, where prenatal stress was associated with an 18% increase in preterm birth across 1,346,686 pregnancies. Maternal anxiety meta-analysis from prospective cohorts also found a 50% higher preterm-birth risk.",
+      "population": "pregnant women exposed to chronic psychosocial strain, anxiety, or persistently stressful conditions during pregnancy",
+      "mechanism": "Sustained maternal stress may alter HPA-axis signaling, inflammatory tone, autonomic balance, and placental glucocorticoid handling in ways that can shorten gestation. The key clinical point is not one perfect biomarker, but the repeated observation that chronic psychosocial burden tends to cluster with earlier delivery risk.",
+      "summary": "This edge should be kept harmful but not dramatized. The evidence is not perfectly uniform across all stress measures, yet well-designed reviews and cohort syntheses consistently point toward higher preterm-birth risk under sustained prenatal stress or anxiety.",
+      "caveats": "Stress is measured in many different ways across studies, including work strain, perceived anxiety, and low-support contexts. Residual socioeconomic and postnatal confounding is possible, so this edge is best framed as a probabilistic risk enhancer rather than a deterministic cause.",
+      "evidence": [
+        {
+          "citation": "AdmasWT et al 2025 Scand J Work Environ Health",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The effects of prenatal psychosocial work stress on adverse pregnancy outcomes: A comprehensive systematic review and meta-analysis.",
+          "pmid": "40478210",
+          "n_participants": 1346686,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.18,
+            "comparator": "preterm birth with prenatal psychosocial work stress versus lower stress exposure"
+          }
+        },
+        {
+          "citation": "DingXX et al 2014 J Affect Disord",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Maternal anxiety during pregnancy and adverse birth outcomes: a systematic review and meta-analysis of prospective cohort studies.",
+          "pmid": "24679397",
+          "n_participants": 17304,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.5,
+            "ci_low": 1.33,
+            "ci_high": 1.7,
+            "comparator": "preterm birth with maternal anxiety during pregnancy versus lower-anxiety pregnancies"
+          }
+        },
+        {
+          "citation": "HetheringtonE et al 2015 Paediatr Perinat Epidemiol",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Preterm Birth and Social Support during Pregnancy: a Systematic Review and Meta-Analysis.",
+          "pmid": "26332279",
+          "n_participants": 6374,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.52,
+            "ci_low": 1.18,
+            "ci_high": 1.97,
+            "comparator": "preterm birth among women with high stress and low social support versus more buffered pregnancies"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "preterm_birth",
+      "name": "Preterm birth",
+      "kind": "condition",
+      "aliases": [
+        "birth before 37 weeks",
+        "premature birth"
+      ],
+      "description": "Delivery before 37 completed weeks of gestation."
+    }
+  ]
+}

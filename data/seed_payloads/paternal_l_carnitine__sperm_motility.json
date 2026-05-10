@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "paternal_l_carnitine",
+      "name": "Paternal L-carnitine supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "male L-carnitine use before conception",
+        "carnitine supplementation in men"
+      ],
+      "description": "Oral L-carnitine or acetyl-L-carnitine supplementation in men before attempted conception."
+    },
+    {
+      "slug": "sperm_motility",
+      "name": "Sperm motility",
+      "kind": "biomarker",
+      "aliases": [
+        "progressive sperm motility",
+        "motile sperm percentage"
+      ],
+      "description": "The ability of sperm to move effectively, including total or progressive motility."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "paternal_l_carnitine",
+      "outcome_slug": "sperm_motility",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Network meta-analytic evidence in 2,045 men with idiopathic OAT ranked L-carnitine, especially with acetyl-L-carnitine, among the strongest options for progressive motility. Smaller randomized combination trials also report better normalization of spermiograms or higher pregnancy rates, but most studies combine carnitine with other nutrients, so the single-agent certainty is lower than the enthusiasm around the supplement suggests.",
+      "population": "men with subfertility or idiopathic oligo-, astheno-, or teratozoospermia using L-carnitine-containing supplements before conception",
+      "mechanism": "Carnitine is central to mitochondrial fatty-acid transport and sperm energy metabolism, making a motility effect biologically plausible. The main limitation is that many clinical trials supplement carnitine inside multi-ingredient formulations, which blurs how much of the benefit is attributable to carnitine itself.",
+      "summary": "This edge leans favorable, but the evidence is still better for improved sperm motility than for hard reproductive outcomes. The conservative interpretation is that L-carnitine may help motility in selected infertile men, while the size and reliability of the effect remain uncertain because many studies are combination-based.",
+      "caveats": "A large fraction of the literature uses acetyl-L-carnitine or combines carnitine with vitamins, selenium, zinc, or clomiphene. That means this edge should not be read as proof that plain L-carnitine alone reliably transforms male fertility.",
+      "evidence": [
+        {
+          "citation": "Mongioì LM et al 2023 Andrology",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of antioxidants on semen parameters in men with oligo-astheno-teratozoospermia: a network meta-analysis.",
+          "pmid": "37495550",
+          "n_participants": 2045
+        },
+        {
+          "citation": "Krzastek SC et al 2020 Andrology",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Dietary supplementation with a novel l-carnitine multi-micronutrient in idiopathic male subfertility involving oligo-, astheno-, teratozoospermia: A randomized clinical study.",
+          "doi": "10.1111/andr.12805",
+          "pmid": "32330373",
+          "n_participants": 83
+        },
+        {
+          "citation": "Moskvin SV et al 2017 Urologiia",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Using L- and acetyl-L-carnitines in combination with clomiphene citrate and antioxidant complex for treating idiopathic male infertility: a prospective randomized trial.",
+          "pmid": "28845935",
+          "n_participants": 173
+        }
+      ]
+    }
+  ]
+}

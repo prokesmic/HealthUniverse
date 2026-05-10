@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "fluoroquinolones",
+      "outcome_slug": "tendon_rupture_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The clearest large observational estimates cluster around a 3-fold Achilles rupture signal, with one large case-control study reporting OR 4.1 for Achilles rupture and a population cohort reporting a standardized incidence ratio of 3.1 after first exposure.",
+      "population": "adults prescribed systemic fluoroquinolone antibiotics in population cohorts, insurer databases, and regional case-control analyses",
+      "mechanism": "Fluoroquinolones appear to impair tendon extracellular matrix turnover and collagen integrity, which matters most in weight-bearing tendons such as the Achilles and can be amplified by corticosteroids, older age, or mechanical load.",
+      "summary": "This is one of the more established fluoroquinolone safety signals. The evidence is observational rather than randomized, but across several large datasets the Achilles tendon repeatedly emerges as the site where rupture risk increases most clearly after exposure.",
+      "caveats": "Absolute risk remains low, so most exposed patients will not rupture a tendon. The signal is strongest for Achilles rupture, older adults, and concomitant corticosteroid use, so this edge should be interpreted as a selective but clinically real class harm rather than a universal consequence of every short course.",
+      "evidence": [
+        {
+          "citation": "van der Linden P 2007 Eur J Clin Pharmacol",
+          "year": 2007,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Use of fluroquinolone and risk of Achilles tendon rupture: a population-based cohort study.",
+          "doi": "10.1007/s00228-007-0265-9",
+          "pmid": "17334751",
+          "n_participants": 28262,
+          "effect_quant": {
+            "metric": "SIR",
+            "value": 3.1,
+            "ci_low": 1.0,
+            "ci_high": 7.3,
+            "comparator": "within 90 days of first fluoroquinolone use versus the background population"
+          }
+        },
+        {
+          "citation": "Corrao G 2006 Drug Saf",
+          "year": 2006,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Evidence of tendinitis provoked by fluoroquinolone treatment: a case-control study.",
+          "doi": "10.2165/00002018-200629100-00006",
+          "pmid": "16970512",
+          "n_participants": 127100,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 4.1,
+            "ci_low": 1.8,
+            "ci_high": 9.6,
+            "comparator": "current fluoroquinolone use versus non-use for Achilles tendon rupture"
+          }
+        },
+        {
+          "citation": "Sode J 2006 Pharmacoepidemiol Drug Saf",
+          "year": 2006,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Achilles tendon rupture and its association with fluoroquinolone antibiotics and other potential risk factors in a managed care population.",
+          "doi": "10.1002/pds.1214",
+          "pmid": "16456878",
+          "n_participants": 19887,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.5,
+            "ci_low": 1.0,
+            "ci_high": 2.3,
+            "comparator": "higher cumulative fluoroquinolone dose versus lower or no recent exposure"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "fluoroquinolones",
+      "name": "Systemic fluoroquinolone antibiotics",
+      "kind": "drug",
+      "aliases": [
+        "fluoroquinolone therapy",
+        "ciprofloxacin or levofloxacin exposure"
+      ],
+      "description": "Systemic fluoroquinolone antibiotic exposure, including agents such as ciprofloxacin, levofloxacin, moxifloxacin, or ofloxacin."
+    },
+    {
+      "slug": "tendon_rupture_risk",
+      "name": "Tendon rupture risk",
+      "kind": "condition",
+      "aliases": [
+        "Achilles tendon rupture risk"
+      ],
+      "description": "Risk of clinically recognized tendon rupture, especially Achilles tendon rupture after medication exposure."
+    }
+  ]
+}

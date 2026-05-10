@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "gestational_weight_gain_low",
+      "name": "Gestational weight gain below guideline range",
+      "kind": "biomarker",
+      "aliases": [
+        "inadequate gestational weight gain",
+        "low pregnancy weight gain"
+      ],
+      "description": "Total gestational weight gain below guideline or reference ranges for the mother's prepregnancy body mass index."
+    },
+    {
+      "slug": "small_for_gestational_age",
+      "name": "Small for gestational age",
+      "kind": "condition",
+      "aliases": [
+        "SGA birth",
+        "small size for gestational age"
+      ],
+      "description": "Birth size below the expected weight for gestational age, usually below the 10th percentile."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "gestational_weight_gain_low",
+      "outcome_slug": "small_for_gestational_age",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The most direct pooled estimate comes from the 1,309,136-participant JAMA meta-analysis, where weight gain below IOM recommendations was associated with higher small-for-gestational-age risk (OR 1.53, 95% CI 1.44 to 1.64).",
+      "population": "pregnant women evaluated against guideline-based gestational weight gain targets, including general-population and obesity-stratified cohorts",
+      "mechanism": "Gestational weight gain is an imperfect but useful proxy for the energy, protein, fluid, and placental-growth environment available to the fetus. When gain stays below target, fetal substrate delivery and placental reserve can become inadequate, which is consistent with higher SGA rates even though obesity-specific subgroups show more nuance.",
+      "summary": "This is a fairly robust harmful edge in general obstetric populations. Low gestational weight gain repeatedly tracks with higher SGA risk, although the magnitude is less uniform in pregnancies already complicated by maternal obesity.",
+      "caveats": "Not all low weight gain is pathologic, and obesity-class analyses suggest the signal may weaken or even disappear after multivariable adjustment in some subgroups. Reverse causation is also possible when fetal or maternal illness suppresses weight gain.",
+      "evidence": [
+        {
+          "citation": "GoldsteinRF et al 2017 JAMA",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of Gestational Weight Gain With Maternal and Infant Outcomes: A Systematic Review and Meta-analysis.",
+          "pmid": "28586887",
+          "n_participants": 1309136,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.53,
+            "ci_low": 1.44,
+            "ci_high": 1.64,
+            "comparator": "gestational weight gain below versus within IOM recommendations for small for gestational age"
+          }
+        },
+        {
+          "citation": "MelbyMK et al 2016 Am J Hum Biol",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Inadequate gestational weight gain increases risk of small-for-gestational-age term birth in girls in Japan: A population-based cohort study.",
+          "pmid": "27153770",
+          "n_participants": 383,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 6.64,
+            "ci_low": 2.18,
+            "ci_high": 20.22,
+            "comparator": "inadequate gestational weight gain versus recommended gain for small-for-gestational-age term birth in girls"
+          }
+        },
+        {
+          "citation": "MustafaHJ et al 2022 Am J Obstet Gynecol MFM",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Gestational weight gain below instead of within the guidelines per class of maternal obesity: a systematic review and meta-analysis of obstetrical and neonatal outcomes.",
+          "pmid": "35728780",
+          "n_participants": 30245946,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.3,
+            "ci_low": 1.17,
+            "ci_high": 1.45,
+            "comparator": "obesity class I pregnancies with weight gain below versus within guidelines for small for gestational age in univariate analysis"
+          }
+        }
+      ]
+    }
+  ]
+}

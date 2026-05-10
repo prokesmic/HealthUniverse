@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "letrozole_anovulatory_pcos",
+      "name": "Letrozole for anovulatory PCOS",
+      "kind": "drug",
+      "aliases": [
+        "letrozole ovulation induction in anovulatory PCOS",
+        "aromatase inhibition for infertility in PCOS"
+      ],
+      "description": "Use of letrozole as a first-line ovulation-induction treatment in women with anovulatory polycystic ovary syndrome."
+    },
+    {
+      "slug": "live_birth_rate",
+      "name": "Live birth rate",
+      "kind": "process",
+      "aliases": [
+        "chance of live birth",
+        "live birth success"
+      ],
+      "description": "The probability of delivering a live infant after fertility treatment or conception."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "letrozole_anovulatory_pcos",
+      "outcome_slug": "live_birth_rate",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The clearest pooled estimate now comes from the 2023 Obstetrics & Gynecology meta-analysis, where letrozole improved live birth versus clomiphene citrate (RR 1.49, 95% CI 1.27 to 1.74). This closely matches the earlier Cochrane estimate (OR 1.68, 95% CI 1.42 to 1.99) and large trial data.",
+      "population": "women with infertility due to anovulatory polycystic ovary syndrome undergoing first-line ovulation induction",
+      "mechanism": "Letrozole lowers estrogen feedback and increases endogenous FSH drive without the same anti-estrogenic endometrial effects often associated with clomiphene. That tends to support more favorable follicular development and implantation conditions, which helps explain why live birth benefits are stronger than a simple ovulation-count story.",
+      "summary": "This is one of the stronger reproductive edges in the corpus. Letrozole has moved beyond being a plausible alternative and now has repeated comparative evidence showing higher live-birth success than clomiphene in anovulatory PCOS.",
+      "caveats": "Most evidence is comparative against clomiphene rather than placebo, so the claim is about first-line treatment superiority rather than spontaneous fertility restoration. Live-birth gains can still vary by BMI, phenotype, and whether intercourse or IUI follows induction.",
+      "evidence": [
+        {
+          "citation": "LiuZ et al 2023 Obstet Gynecol",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Letrozole Compared With Clomiphene Citrate for Polycystic Ovarian Syndrome: A Systematic Review and Meta-analysis.",
+          "pmid": "36735392",
+          "n_participants": 3952,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.49,
+            "ci_low": 1.27,
+            "ci_high": 1.74,
+            "comparator": "letrozole versus clomiphene citrate for live birth in infertility with PCOS"
+          }
+        },
+        {
+          "citation": "FranikS et al 2018 Cochrane Database Syst Rev",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Aromatase inhibitors (letrozole) for subfertile women with polycystic ovary syndrome.",
+          "pmid": "29797697",
+          "n_participants": 2954,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.68,
+            "ci_low": 1.42,
+            "ci_high": 1.99,
+            "comparator": "live birth with letrozole versus clomiphene citrate with or without adjuncts followed by timed intercourse"
+          }
+        },
+        {
+          "citation": "HuS et al 2018 Arch Gynecol Obstet",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Letrozole versus clomiphene citrate in polycystic ovary syndrome: a meta-analysis of randomized controlled trials.",
+          "pmid": "29392438",
+          "n_participants": 2255,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.55,
+            "ci_low": 1.28,
+            "ci_high": 1.88,
+            "comparator": "letrozole versus clomiphene citrate for live birth in PCOS ovulation induction"
+          }
+        }
+      ]
+    }
+  ]
+}

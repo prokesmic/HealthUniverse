@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "paternal_zinc_repletion",
+      "name": "Paternal zinc repletion",
+      "kind": "nutrient",
+      "aliases": [
+        "zinc supplementation in prospective fathers",
+        "male zinc replacement"
+      ],
+      "description": "Zinc supplementation or restoration of zinc adequacy in men before conception."
+    },
+    {
+      "slug": "sperm_motility",
+      "name": "Sperm motility",
+      "kind": "biomarker",
+      "aliases": [
+        "progressive sperm motility",
+        "motile sperm percentage"
+      ],
+      "description": "The ability of sperm to move effectively, including total or progressive motility."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "paternal_zinc_repletion",
+      "outcome_slug": "sperm_motility",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The most current network meta-analysis found zinc among the better-ranked options for total motility in 2,045 men with idiopathic OAT, but direct trial data are inconsistent. One older smoker-infertility study reported improved sperm quality after zinc therapy in 125 men, whereas a placebo-controlled OAT trial in 83 men found no meaningful motility benefit after accounting for placebo effects.",
+      "population": "subfertile men or men with impaired semen parameters receiving zinc supplementation before attempted conception",
+      "mechanism": "Zinc is involved in antioxidant defenses, chromatin stabilization, and sperm-membrane function, so repletion is biologically plausible when baseline status is low or exposure burdens are high. The inconsistent trial results suggest that benefit probably depends on deficiency, co-exposures, or whether zinc is used alone or inside a broader antioxidant regimen.",
+      "summary": "The safest interpretation is that zinc repletion may help sperm motility in some men, but the evidence is not consistent enough to treat it as a dependable stand-alone fix. This is best framed as a context-dependent, low-to-moderate-certainty male-fertility intervention.",
+      "caveats": "Many studies combine zinc with other antioxidants or include special populations such as smokers or severe OAT cases. Baseline zinc status is often poorly characterized, which makes it hard to distinguish true repletion from empiric supplement stacking.",
+      "evidence": [
+        {
+          "citation": "Mongioì LM et al 2023 Andrology",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of antioxidants on semen parameters in men with oligo-astheno-teratozoospermia: a network meta-analysis.",
+          "pmid": "37495550",
+          "n_participants": 2045
+        },
+        {
+          "citation": "Raigani M et al 2014 Andrologia",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The micronutrient supplements, zinc sulphate and folic acid, did not ameliorate sperm functional parameters in oligoasthenoteratozoospermic men.",
+          "doi": "10.1111/and.12180",
+          "pmid": "24147895",
+          "n_participants": 83
+        },
+        {
+          "citation": "Omu AE et al 1999 Arch Androl",
+          "year": 1999,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Chronic cadmium toxicity to sperm of heavy cigarette smokers: immunomodulation by zinc.",
+          "doi": "10.1080/014850199262643",
+          "pmid": "10543576",
+          "n_participants": 125
+        }
+      ]
+    }
+  ]
+}

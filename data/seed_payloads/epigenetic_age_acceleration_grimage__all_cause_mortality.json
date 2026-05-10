@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "epigenetic_age_acceleration_grimage",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In 490 adults from TILDA, GrimAge age acceleration was the epigenetic clock most consistently associated with 10-year all-cause mortality after multivariable adjustment. In 1,942 NHANES participants, both GrimAge and GrimAge2 age acceleration showed approximately linear positive associations with all-cause mortality. In 1,966 U.S. adults aged 50 and older, each 5-year increase in GrimAge acceleration was associated with a 44% higher all-cause mortality risk.",
+      "population": "middle-aged and older adults with blood DNA-methylation clock assessment and long-term mortality follow-up",
+      "mechanism": "GrimAge acceleration summarizes methylation patterns linked to smoking exposure, inflammatory burden, protein surrogates, and biological wear-and-tear. A higher-than-expected GrimAge therefore acts as a condensed signal that multiple mortality-relevant aging pathways are already running faster than chronological age would suggest.",
+      "summary": "This is one of the cleaner harmful biomarker edges in the batch. Across multiple cohorts, GrimAge acceleration repeatedly outperforms older epigenetic clocks and shows a fairly consistent positive association with all-cause mortality.",
+      "caveats": "GrimAge is a composite methylation-derived risk marker, not a direct mechanistic cause of death. It is also partly built from smoking- and protein-related surrogates, so its predictive power reflects bundled biology rather than a single aging pathway.",
+      "evidence": [
+        {
+          "citation": "Cathal McCrory et al 2021 J Gerontol A Biol Sci Med Sci",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "GrimAge Outperforms Other Epigenetic Clocks in the Prediction of Age-Related Clinical Phenotypes and All-Cause Mortality.",
+          "pmid": "33211845",
+          "n_participants": 490
+        },
+        {
+          "citation": "Tieshi Zhu et al 2025 Epigenetics",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "GrimAge and GrimAge2 Age Acceleration effectively predict mortality risk: a retrospective cohort study.",
+          "pmid": "40658048",
+          "n_participants": 1942
+        },
+        {
+          "citation": "Yun Zou et al 2025 Clin Epigenetics",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Associations between five indicators of epigenetic age acceleration and all-cause and cause-specific mortality among US adults aged 50 years and older.",
+          "pmid": "40301953",
+          "n_participants": 1966
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "epigenetic_age_acceleration_grimage",
+      "name": "GrimAge epigenetic age acceleration",
+      "kind": "biomarker",
+      "aliases": [
+        "GrimAge acceleration",
+        "positive GrimAge age acceleration"
+      ],
+      "description": "A positive mismatch between DNAm GrimAge and chronological age, indicating faster biological aging by the GrimAge methylation clock."
+    }
+  ]
+}

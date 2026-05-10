@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "acetaminophen_chronic_high_dose",
+      "name": "Chronic high-dose acetaminophen",
+      "kind": "drug",
+      "aliases": [
+        "paracetamol high-dose chronic use"
+      ],
+      "description": "Repeated acetaminophen exposure at or near the upper recommended daily dose over multiple consecutive days."
+    },
+    {
+      "slug": "liver_enzyme_elevation",
+      "name": "Liver enzyme elevation",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Elevation of aminotransferases such as ALT or AST during drug exposure."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "acetaminophen_chronic_high_dose",
+      "outcome_slug": "liver_enzyme_elevation",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The anchor randomized trial in healthy adults found ALT above three times the upper limit of normal in 31% to 44% of participants receiving 4 g/day, whereas a broader systematic review of 30,865 prospectively observed subjects found aminotransferase elevations in only 0.4% overall and no fulminant hepatic failure.",
+      "population": "adults exposed to repeated acetaminophen dosing at or near 4 g/day, including healthy volunteers and newly abstinent alcohol-dependent patients",
+      "mechanism": "When high daily acetaminophen dosing is repeated over consecutive days, hepatotoxic metabolite production can outpace glutathione buffering enough to raise aminotransferases before overt liver failure appears.",
+      "summary": "The literature supports a real laboratory liver-signal edge at sustained high therapeutic dosing, but it is not the same as saying routine short-course use reliably causes clinical liver failure. The best evidence shows that aminotransferase elevations can appear surprisingly often in tightly monitored healthy volunteers at 4 g/day, while other short-duration or special-population studies show much milder findings.",
+      "caveats": "Duration, fasting status, alcohol timing, and exact dose matter. This edge is about laboratory enzyme elevations during repeated high-dose exposure, not proof that every therapeutic course causes clinically meaningful liver injury.",
+      "evidence": [
+        {
+          "citation": "Watkins PB 2006 JAMA",
+          "year": 2006,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Aminotransferase elevations in healthy adults receiving 4 grams of acetaminophen daily: a randomized controlled trial.",
+          "doi": "10.1001/jama.296.1.87",
+          "pmid": "16820551",
+          "n_participants": 145
+        },
+        {
+          "citation": "Dart RC 2007 Pharmacotherapy",
+          "year": 2007,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Does therapeutic use of acetaminophen cause acute liver failure?",
+          "doi": "10.1592/phco.27.9.1219",
+          "pmid": "17723075",
+          "n_participants": 30865
+        },
+        {
+          "citation": "Kuffner EK 2007 BMC Med",
+          "year": 2007,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The effect of acetaminophen (four grams a day for three consecutive days) on hepatic tests in alcoholic patients--a multicenter randomized study.",
+          "pmid": "17537264",
+          "n_participants": 443
+        }
+      ]
+    }
+  ]
+}

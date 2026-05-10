@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "corticosteroids_systemic_chronic",
+      "name": "Chronic systemic corticosteroids",
+      "kind": "drug",
+      "aliases": [
+        "long-term systemic glucocorticoids"
+      ],
+      "description": "Repeated oral or systemic corticosteroid exposure over months or longer."
+    },
+    {
+      "slug": "bone_density_loss",
+      "name": "Bone density loss",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Loss of bone mineral density over time."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "corticosteroids_systemic_chronic",
+      "outcome_slug": "bone_density_loss",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The broad cohort meta-analysis estimated one-year lumbar spine bone loss of 1.7% in chronic inflammatory disease settings and 3.6% in higher-dose transplant settings, while smaller observational studies show that bone loss can begin rapidly after systemic corticosteroids are started.",
+      "population": "adults exposed to long-term or high-dose systemic glucocorticoid therapy",
+      "mechanism": "Systemic corticosteroids suppress osteoblast activity, accelerate bone resorption, and disrupt calcium balance, creating a direct path to measurable bone density loss, especially early in treatment or at higher cumulative exposure.",
+      "summary": "This is a strong harmful edge and one of the classic long-term corticosteroid toxicities. The evidence does not suggest every patient loses bone at the same rate, but it consistently shows that chronic systemic exposure shifts bone density downward and can do so surprisingly quickly.",
+      "caveats": "Underlying inflammatory disease, transplant status, supplementation, menopause, and baseline fracture risk all influence magnitude. Bone density loss is often fastest early in therapy, so short follow-up studies can still be clinically informative here.",
+      "evidence": [
+        {
+          "citation": "LemsWF 2016 RMD Open",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "One-year effects of glucocorticoids on bone density: a meta-analysis in cohorts on high and low-dose therapy.",
+          "doi": "10.1136/rmdopen-2016-000313",
+          "pmid": "27651928",
+          "n_participants": 2136,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": -1.7,
+            "unit": "%",
+            "comparator": "one-year lumbar spine bone mineral density change in chronic inflammatory disease cohorts on glucocorticoids"
+          }
+        },
+        {
+          "citation": "WalshLJ 2002 Am J Respir Crit Care Med",
+          "year": 2002,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The impact of oral corticosteroid use on bone mineral density and vertebral fracture.",
+          "pmid": "12204867",
+          "n_participants": 117
+        },
+        {
+          "citation": "NatsuiK 2006 Osteoporos Int",
+          "year": 2006,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "High-dose glucocorticoid treatment induces rapid loss of trabecular bone mineral density and lean body mass.",
+          "doi": "10.1007/s00198-005-1923-3",
+          "pmid": "15886861",
+          "n_participants": 33
+        }
+      ]
+    }
+  ]
+}

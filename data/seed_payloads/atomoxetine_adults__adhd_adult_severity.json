@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "atomoxetine_adults",
+      "name": "Atomoxetine in adults",
+      "kind": "drug",
+      "aliases": [
+        "Strattera in adults",
+        "adult atomoxetine treatment for ADHD"
+      ],
+      "description": "Atomoxetine used for treatment of attention-deficit/hyperactivity disorder in adults."
+    },
+    {
+      "slug": "adhd_adult_severity",
+      "name": "Adult ADHD severity",
+      "kind": "process",
+      "aliases": [
+        "adult ADHD core symptom burden",
+        "adult inattention and hyperactivity severity"
+      ],
+      "description": "Severity of adult ADHD symptoms on clinician-rated or self-rated ADHD scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "atomoxetine_adults",
+      "outcome_slug": "adhd_adult_severity",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "The cleanest atomoxetine-specific adult synthesis is the 2023 CNS Drugs meta-analysis, where 15 randomized controlled trials showed a clinician- and patient-reported efficacy signal versus placebo (Hedges g -0.48, 95% CI -0.64 to -0.33), but with weaker tolerability than placebo.",
+      "population": "adults with attention-deficit/hyperactivity disorder treated with atomoxetine monotherapy in randomized placebo-controlled trials",
+      "mechanism": "Atomoxetine blocks norepinephrine reuptake and increases prefrontal catecholamine signaling without acting as a classic stimulant. That can improve attention regulation, working memory support, and impulse control, though usually with a smaller effect size and slower onset than stimulant therapy.",
+      "summary": "This is a real but modest efficacy edge. Atomoxetine improves adult ADHD symptom severity compared with placebo, but the average effect is smaller than what is usually seen with stimulants and the tolerability trade-off matters.",
+      "caveats": "Atomoxetine is often chosen because stimulants are not tolerated, not desired, or not appropriate, so comparative context matters. The literature repeatedly shows benefit versus placebo, but not a large one, and discontinuation due to adverse events is more common than on placebo.",
+      "evidence": [
+        {
+          "citation": "RadonjićNV et al 2023 CNS Drugs",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Nonstimulant Medications for Attention-Deficit/Hyperactivity Disorder (ADHD) in Adults: Systematic Review and Meta-analysis.",
+          "pmid": "37166701",
+          "n_participants": 4308,
+          "effect_quant": {
+            "metric": "hedges_g",
+            "value": -0.48,
+            "ci_low": -0.64,
+            "ci_high": -0.33,
+            "comparator": "atomoxetine versus placebo on adult ADHD symptom severity"
+          }
+        },
+        {
+          "citation": "CunillR et al 2013 Pharmacoepidemiol Drug Saf",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Atomoxetine for attention deficit hyperactivity disorder in the adulthood: a meta-analysis and meta-regression.",
+          "pmid": "23813665",
+          "n_participants": 3375,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -0.4,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "atomoxetine versus placebo on clinician-rated ADHD symptom reduction in adults"
+          }
+        },
+        {
+          "citation": "ElliottJ et al 2020 PLoS One",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Pharmacologic treatment of attention deficit hyperactivity disorder in adults: A systematic review and network meta-analysis.",
+          "pmid": "33085721",
+          "n_participants": 14887,
+          "effect_quant": {
+            "metric": "qualitative_synthesis",
+            "value": null,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "atomoxetine was associated with improved patient-reported clinical response and quality of life versus placebo in the adult ADHD network meta-analysis"
+          }
+        }
+      ]
+    }
+  ]
+}

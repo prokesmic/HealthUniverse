@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ldl_p_high_discordant",
+      "outcome_slug": "atherosclerosis_progression",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In MESA, discordantly high apoB relative to LDL-C or non-HDL-C was associated with coronary calcium progression among 3,947 adults, while in the Women's Health Study discordantly high LDL particle concentration carried a hazard ratio of 1.70 for future coronary events before risk-factor adjustment. In Japanese men free of clinical cardiovascular disease, higher LDL particle concentration remained independently associated with both carotid intima-media thickness and coronary artery calcification after LDL-C adjustment.",
+      "population": "adults with discordance between cholesterol mass and atherogenic particle concentration, especially in metabolic-risk phenotypes",
+      "mechanism": "When LDL particle concentration is high despite less alarming LDL-C, a person may be carrying more circulating apoB-containing particles than standard cholesterol panels imply. That raises the chance of arterial entry, retention, and plaque growth even before the conventional lipid panel looks dramatically abnormal.",
+      "summary": "This is a thinner and more inferential edge than simple LDL-C risk, so the right framing is conservative. The best evidence suggests that discordantly high particle burden tends to travel with more subclinical plaque accumulation and worse downstream coronary risk, but the progression literature is not yet as standardized as for apoB or CAC themselves.",
+      "caveats": "Most studies operationalize discordance using apoB or LDL-p residuals rather than one universal clinical threshold, so this edge is partly about a phenotype rather than a single lab cutoff. Some associations also attenuate after adjustment for metabolic syndrome and related traits.",
+      "evidence": [
+        {
+          "citation": "Cao J 2020 J Clin Lipidol",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Apolipoprotein B discordance with low-density lipoprotein cholesterol and non-high-density lipoprotein cholesterol in relation to coronary artery calcification in the Multi-Ethnic Study of Atherosclerosis (MESA).",
+          "doi": "10.1016/j.jacl.2019.11.005",
+          "pmid": "31882375",
+          "n_participants": 3947
+        },
+        {
+          "citation": "Lawler PR 2017 Clin Chem",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Discordance between Circulating Atherogenic Cholesterol Mass and Lipoprotein Particle Concentration in Relation to Future Coronary Events in Women.",
+          "doi": "10.1373/clinchem.2016.264515",
+          "pmid": "28174174",
+          "n_participants": 27533
+        },
+        {
+          "citation": "Zaid M 2016 J Clin Lipidol",
+          "year": 2016,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Associations of serum LDL particle concentration with carotid intima-media thickness and coronary artery calcification.",
+          "doi": "10.1016/j.jacl.2015.12.027",
+          "pmid": "27678437",
+          "n_participants": 870
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ldl_p_high_discordant",
+      "name": "Discordantly high LDL particle concentration",
+      "kind": "biomarker",
+      "aliases": [
+        "high LDL-P despite lower LDL-C",
+        "particle-cholesterol discordance with high LDL-P"
+      ],
+      "description": "A lipid-discordance phenotype in which atherogenic particle concentration such as LDL-P or apoB is high relative to the corresponding LDL-C or non-HDL-C percentile."
+    },
+    {
+      "slug": "atherosclerosis_progression",
+      "name": "Atherosclerosis progression",
+      "kind": "condition",
+      "aliases": [
+        "subclinical plaque progression",
+        "worsening arterial plaque burden"
+      ],
+      "description": "Progressive worsening of subclinical or clinical atherosclerotic burden, often reflected by coronary calcium progression, carotid intima-media thickening, or future coronary event emergence."
+    }
+  ]
+}

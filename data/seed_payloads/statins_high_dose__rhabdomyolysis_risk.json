@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "statins_high_dose",
+      "outcome_slug": "rhabdomyolysis_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The clearest large-cohort signal found high-potency statin exposure associated with higher rhabdomyolysis risk in men (HR 1.93, 95% CI 1.27-2.94), with rosuvastatin 20 mg and simvastatin 40 mg showing HRs above 5 in some subgroups.",
+      "population": "adults prescribed high-potency or high-dose statin therapy for primary prevention or routine clinical care",
+      "mechanism": "Severe statin muscle toxicity is most plausible when high systemic statin exposure overwhelms skeletal-muscle energy handling, especially with higher doses, CYP3A4-interacting drugs, or impaired renal clearance.",
+      "summary": "The anchor study here is the French nationwide cohort, which did not show a blanket excess for all statin use but did show a clear harm signal once therapy moved into high-potency dosing. That makes this a dose-intensity safety edge more than a class effect applying equally to every statin regimen.",
+      "caveats": "Rhabdomyolysis remains rare, so absolute event rates are low even when relative risk rises. Sex, interacting drugs, renal disease, and specific statin-dose combinations appear to matter more than the statin class alone.",
+      "evidence": [
+        {
+          "citation": "Coste F 2019 Eur J Prev Cardiol",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Statins for primary prevention and rhabdomyolysis: A nationwide cohort study in France.",
+          "doi": "10.1177/2047487318776831",
+          "pmid": "29799296",
+          "n_participants": 8236667
+        },
+        {
+          "citation": "Schech S 2007 Pharmacoepidemiol Drug Saf",
+          "year": 2007,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Risk factors for statin-associated rhabdomyolysis.",
+          "doi": "10.1002/pds.1287",
+          "pmid": "16892458",
+          "n_participants": 221
+        },
+        {
+          "citation": "van Staa T 2014 Br J Clin Pharmacol",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Predictors and outcomes of increases in creatine phosphokinase concentrations or rhabdomyolysis risk during statin treatment.",
+          "doi": "10.1111/bcp.12367",
+          "pmid": "24602118",
+          "n_participants": 641703
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "statins_high_dose",
+      "name": "High-dose statin therapy",
+      "kind": "drug",
+      "aliases": [
+        "high-potency statins",
+        "intensive statin therapy"
+      ],
+      "description": "Higher-intensity or high-dose statin regimens such as atorvastatin 40-80 mg, rosuvastatin 20-40 mg, or similar potency ranges."
+    },
+    {
+      "slug": "rhabdomyolysis_risk",
+      "name": "Rhabdomyolysis risk",
+      "kind": "condition",
+      "aliases": [
+        "statin rhabdomyolysis"
+      ],
+      "description": "Risk of clinically significant rhabdomyolysis requiring recognition, treatment, or hospitalization."
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "heart_rate_variability_low",
+      "outcome_slug": "cardiac_arrhythmia_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a 6,693-patient ambulatory-ECG cohort, low short-term RR variability was associated with a 4.1-fold higher sudden-death risk before adjustment and 2.6-fold after multivariable adjustment. In coronary artery disease, impaired low- and very-low-frequency variability tracked greater susceptibility to spontaneous ventricular arrhythmias, while device and ablation cohorts show that abnormal autonomic variability signatures are linked to new atrial fibrillation or its recurrence.",
+      "population": "adults undergoing rhythm risk stratification, including people with coronary disease, heart failure, atrial fibrillation, or implanted rhythm devices",
+      "mechanism": "Low heart rate variability reflects impaired autonomic flexibility and reduced beat-to-beat modulation of sinus rhythm. That autonomic rigidity can coexist with substrate vulnerability, making both ventricular and supraventricular arrhythmias more likely under physiologic stress.",
+      "summary": "The most defensible claim is that low heart rate variability is a harmful rhythm-risk marker, especially in higher-risk cardiac populations. The exact HRV feature that matters differs by setting, but across sudden-death, ventricular-arrhythmia, and atrial-fibrillation cohorts, autonomic dysregulation repeatedly marks people with more arrhythmic events.",
+      "caveats": "Not every HRV metric moves in the same direction across all arrhythmia phenotypes, and some atrial-fibrillation recurrence studies find higher vagal-type measures rather than globally lower variability. This edge therefore represents impaired or unfavorable autonomic variability broadly, not a claim that every single low HRV metric predicts every arrhythmia equally well.",
+      "evidence": [
+        {
+          "citation": "Huikuri HV et al 1993 Circulation",
+          "year": 1993,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Heart rate variability from 24-hour electrocardiography and the 2-year risk for sudden death.",
+          "doi": "10.1161/01.CIR.88.3.122",
+          "pmid": "8319331",
+          "n_participants": 6693
+        },
+        {
+          "citation": "Valkama JO et al 1995 J Am Coll Cardiol",
+          "year": 1995,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Relation between heart rate variability and spontaneous and induced ventricular arrhythmias in patients with coronary artery disease.",
+          "doi": "10.1016/0735-1097(94)00392-4",
+          "pmid": "7530264",
+          "n_participants": 70
+        },
+        {
+          "citation": "Enyuan Zhang et al 2022 Front Cardiovasc Med",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Prognostic value of heart rate variability in atrial fibrillation recurrence following catheter ablation: A systematic review and meta-analysis.",
+          "pmid": "36818913",
+          "n_participants": 2352
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "heart_rate_variability_low",
+      "name": "Low heart rate variability",
+      "kind": "biomarker",
+      "aliases": [
+        "reduced HRV",
+        "autonomic variability low"
+      ],
+      "description": "Reduced beat-to-beat heart rate variability indicating impaired autonomic flexibility or unfavorable cardiac autonomic tone."
+    },
+    {
+      "slug": "cardiac_arrhythmia_risk",
+      "name": "Cardiac arrhythmia risk",
+      "kind": "condition",
+      "aliases": [
+        "arrhythmic risk",
+        "rhythm-event risk"
+      ],
+      "description": "Risk of clinically important cardiac rhythm disturbances including atrial fibrillation recurrence, ventricular arrhythmias, and sudden arrhythmic death."
+    }
+  ]
+}

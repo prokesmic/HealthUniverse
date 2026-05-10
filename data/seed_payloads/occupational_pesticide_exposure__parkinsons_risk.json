@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "occupational_pesticide_exposure",
+      "outcome_slug": "parkinsons_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The most reproducible pooled estimate is a roughly 50% to 70% higher Parkinson's risk in occupationally exposed workers, though exact magnitude varies with exposure definition and study design.",
+      "population": "workers with occupational pesticide exposure",
+      "mechanism": "Repeated occupational pesticide exposure can injure dopaminergic pathways through mitochondrial dysfunction, oxidative stress, and chronic neuroinflammatory signaling. That mechanism is broad enough to fit the recurring Parkinson's signal across different pesticide-exposed occupations even when individual compounds are not always isolated cleanly.",
+      "summary": "The strongest anchor here is the 2017 occupational meta-analysis, which concluded that work exposure to pesticides is associated with at least a 50% higher Parkinson's risk. Later dose-response and occupational-exposure syntheses did not erase that signal; they mostly refined how strongly risk rises when exposure assessment is better or more specific.",
+      "caveats": "This edge pools many pesticide classes together, so it does not mean each pesticide has the same neurologic risk. Exposure misclassification and recall bias still matter, but they have not flipped the direction of the association in the better occupational meta-analyses.",
+      "evidence": [
+        {
+          "citation": "Gunnarsson LG et al 2017 Scand J Work Environ Health",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Parkinson's disease and occupational exposures: a systematic literature review and meta-analyses.",
+          "pmid": "28379585",
+          "n_participants": 23
+        },
+        {
+          "citation": "Yan D et al 2018 Oncotarget",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Pesticide exposure and risk of Parkinson's disease: Dose-response meta-analysis of observational studies.",
+          "pmid": "29729297",
+          "n_participants": 20
+        },
+        {
+          "citation": "Cherrie JW et al 2022 Occup Environ Med",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Impact of occupational pesticide exposure assessment method on risk estimates for prostate cancer, non-Hodgkin's lymphoma and Parkinson's disease: results of three meta-analyses.",
+          "pmid": "35393289",
+          "n_participants": 3
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "parkinsons_risk",
+      "name": "Parkinson's disease risk",
+      "kind": "condition",
+      "aliases": [
+        "risk of Parkinson disease"
+      ],
+      "description": "Risk of developing Parkinson's disease."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "maternal_caffeine_high_pregnancy",
+      "name": "High maternal caffeine intake during pregnancy",
+      "kind": "behavior",
+      "aliases": [
+        "high prenatal caffeine exposure",
+        "higher caffeine consumption in pregnancy"
+      ],
+      "description": "Habitual caffeine consumption during pregnancy at levels generally above low-intake reference groups."
+    },
+    {
+      "slug": "fetal_growth_restriction",
+      "name": "Fetal growth restriction",
+      "kind": "condition",
+      "aliases": [
+        "intrauterine growth restriction",
+        "restricted fetal growth",
+        "small fetal growth trajectory"
+      ],
+      "description": "Impaired fetal growth, often captured as customized fetal growth restriction, intrauterine growth restriction, or birth weight standardized for gestational age."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "maternal_caffeine_high_pregnancy",
+      "outcome_slug": "fetal_growth_restriction",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The clearest prospective estimate comes from the 2,635-participant CARE cohort, where 200 to 299 mg/day was linked to higher fetal growth restriction risk (OR 1.5, 95% CI 1.1 to 2.1) and intake above 300 mg/day showed a similar pattern (OR 1.4, 95% CI 1.0 to 2.0) versus less than 100 mg/day.",
+      "population": "pregnant women from community or hospital-based cohorts with quantified caffeine exposure during pregnancy",
+      "mechanism": "Caffeine crosses the placenta and is cleared slowly in pregnancy. Plausible pathways include catecholamine-mediated uteroplacental vasoconstriction and direct fetal exposure during a period when fetal caffeine metabolism is limited, which can plausibly constrain growth even if moderate-intake studies are not perfectly consistent.",
+      "summary": "This edge leans harmful, but the effect is not perfectly uniform across cohorts. The best prospective study shows a dose-related increase in fetal growth restriction, while some older moderate-intake cohorts were null after careful control for smoking and other confounders.",
+      "caveats": "Caffeine measurement is difficult and residual confounding by smoking, nausea, and correlated dietary habits remains an issue. The literature is more persuasive for higher habitual intake than for very low or occasional use.",
+      "evidence": [
+        {
+          "citation": "CAREStudyGroup 2008 BMJ",
+          "year": 2008,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maternal caffeine intake during pregnancy and risk of fetal growth restriction: a large prospective observational study.",
+          "pmid": "18981029",
+          "n_participants": 2635,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.5,
+            "ci_low": 1.1,
+            "ci_high": 2.1,
+            "comparator": "200 to 299 mg/day versus less than 100 mg/day caffeine intake during pregnancy for fetal growth restriction"
+          }
+        },
+        {
+          "citation": "ClaussonB et al 2002 Am J Epidemiol",
+          "year": 2002,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Effect of caffeine exposure during pregnancy on birth weight and gestational age.",
+          "pmid": "11867354",
+          "n_participants": 873
+        },
+        {
+          "citation": "MillsJL et al 1993 JAMA",
+          "year": 1993,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Moderate caffeine use and the risk of spontaneous abortion and intrauterine growth retardation.",
+          "pmid": "8421363",
+          "n_participants": 431,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.11,
+            "ci_low": 0.88,
+            "ci_high": 1.4,
+            "comparator": "higher caffeine intake versus lower exposure for decreased birth weight after adjustment"
+          }
+        }
+      ]
+    }
+  ]
+}

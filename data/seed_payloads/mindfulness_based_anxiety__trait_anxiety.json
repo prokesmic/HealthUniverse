@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "mindfulness_based_anxiety",
+      "name": "Mindfulness-based training for anxiety",
+      "kind": "activity",
+      "aliases": [
+        "mindfulness-based intervention for anxious individuals",
+        "mindfulness training for anxiety symptoms"
+      ],
+      "description": "Mindfulness-based training delivered to people with elevated anxiety symptoms or anxiety disorders."
+    },
+    {
+      "slug": "trait_anxiety",
+      "name": "Trait anxiety",
+      "kind": "process",
+      "aliases": [
+        "stable anxious disposition",
+        "baseline anxiety proneness"
+      ],
+      "description": "A relatively stable tendency toward anxious thoughts and affect, often measured with trait anxiety scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "mindfulness_based_anxiety",
+      "outcome_slug": "trait_anxiety",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "population": "adults with generalized anxiety, elevated anxiety traits, or high-anxiety nonclinical samples",
+      "mechanism": "Mindfulness training may reduce repetitive worry and cognitive fusion, but trait anxiety is a relatively stable construct and may shift more slowly than acute state anxiety. That makes short mindfulness courses more likely to change immediate distress than deeper dispositional anxiety scores.",
+      "summary": "The literature here is uneven. Mindfulness-based training often helps acute anxiety or overall symptom scores, but evidence for changing trait anxiety specifically is less consistent and weakens when the comparator is active rather than inactive.",
+      "caveats": "This edge should not be oversold as a clean trait-level transformation. Small trials, short interventions, mixed comparators, and the distinction between state anxiety and trait anxiety all make the overall signal noisier than popular summaries suggest.",
+      "evidence": [
+        {
+          "citation": "WilliamsM et al 2023 Curr Psychol",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Psychological Outcomes and Mechanisms of Mindfulness-Based Training for Generalised Anxiety Disorder: A Systematic Review and Meta-Analysis.",
+          "doi": "10.1007/s12144-023-04695-x",
+          "pmid": "37359641",
+          "n_participants": 334,
+          "effect_quant": {
+            "metric": "hedges_g",
+            "value": -1.92,
+            "ci_low": -2.93,
+            "ci_high": -0.91,
+            "comparator": "mindfulness training versus inactive controls on anxiety symptoms in generalized anxiety, while trait-level mediators were not consistently significant"
+          }
+        },
+        {
+          "citation": "WilliamsM et al 2024 J Psychiatr Res",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Psychological and attentional outcomes following acute mindfulness induction among high anxiety individuals: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.jpsychires.2023.12.009",
+          "pmid": "38215647",
+          "n_participants": 277,
+          "effect_quant": {
+            "metric": "hedges_g",
+            "value": -0.6,
+            "ci_low": -0.91,
+            "ci_high": -0.29,
+            "comparator": "acute mindfulness induction versus control on state anxiety in high-anxiety individuals"
+          }
+        },
+        {
+          "citation": "DawsonAF et al 2020 Appl Psychol Health Well Being",
+          "year": 2020,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Mindfulness-Based Interventions for University Students: A Systematic Review and Meta-Analysis of Randomised Controlled Trials.",
+          "doi": "10.1111/aphw.12188",
+          "pmid": "31743957"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "maternal_dha_supplementation_pregnancy",
+      "name": "Maternal DHA or omega-3 supplementation during pregnancy",
+      "kind": "supplement",
+      "aliases": [
+        "prenatal DHA supplementation",
+        "maternal omega-3 intake in pregnancy"
+      ],
+      "description": "Maternal use of DHA-rich or omega-3 long-chain polyunsaturated fatty acid supplements during pregnancy."
+    },
+    {
+      "slug": "preterm_birth_prevention",
+      "name": "Preterm birth prevention",
+      "kind": "process",
+      "aliases": [
+        "reduced preterm birth risk",
+        "prevention of premature delivery"
+      ],
+      "description": "Lowered risk of delivery before 37 weeks of gestation."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "maternal_dha_supplementation_pregnancy",
+      "outcome_slug": "preterm_birth_prevention",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The pooled prenatal omega-3 literature consistently leans protective for preterm birth. The 2018 Cochrane review found lower preterm birth below 37 weeks (RR 0.89, 95% CI 0.81 to 0.97) and substantially lower early preterm birth below 34 weeks (RR 0.58, 95% CI 0.44 to 0.77).",
+      "population": "pregnant women receiving DHA-rich or omega-3 LCPUFA supplementation across low-risk, mixed-risk, or higher-risk pregnancy settings",
+      "mechanism": "DHA and EPA may modulate inflammatory lipid mediators, membrane signaling, and uteroplacental physiology in ways that help prolong gestation. The signal appears stronger for earlier preterm birth prevention than for broad improvements in every birth outcome.",
+      "summary": "This is a legitimately favorable prenatal nutrition edge. The benefit is not dramatic, but repeated randomized meta-analyses support a modest reduction in preterm birth risk, especially for earlier and more clinically consequential prematurity.",
+      "caveats": "The literature often evaluates broader omega-3 LCPUFA supplementation rather than isolated DHA alone, so the factor should be interpreted as DHA-rich prenatal omega-3 support rather than proof that one specific capsule formula is universally effective. Effects on other outcomes such as birth weight or preeclampsia are less uniform.",
+      "evidence": [
+        {
+          "citation": "MiddletonP et al 2018 Cochrane Database Syst Rev",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Omega-3 fatty acid addition during pregnancy.",
+          "pmid": "30480773",
+          "n_participants": 10304,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.89,
+            "ci_low": 0.81,
+            "ci_high": 0.97,
+            "comparator": "preterm birth before 37 weeks with omega-3 LCPUFA supplementation versus no omega-3"
+          }
+        },
+        {
+          "citation": "AbdelrahmanMA et al 2023 Arch Gynecol Obstet",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Impact of n-3 polyunsaturated fatty acid intake in pregnancy on maternal health and birth outcomes: systematic review and meta-analysis from randomized controlled trails.",
+          "pmid": "35348829",
+          "n_participants": 15510,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.86,
+            "ci_low": 0.77,
+            "ci_high": 0.95,
+            "comparator": "preterm birth below 37 weeks with prenatal omega-3 supplementation versus control"
+          }
+        },
+        {
+          "citation": "KarS et al 2016 Eur J Obstet Gynecol Reprod Biol",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of omega-3 fatty acids in prevention of early preterm delivery: a systematic review and meta-analysis of randomized studies.",
+          "pmid": "26773247",
+          "n_participants": 5980,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.83,
+            "ci_low": 0.7,
+            "ci_high": 0.98,
+            "comparator": "any preterm delivery with omega-3 fatty acid supplementation versus control"
+          }
+        }
+      ]
+    }
+  ]
+}

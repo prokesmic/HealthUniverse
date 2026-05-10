@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "paternal_obesity",
+      "name": "Paternal obesity",
+      "kind": "condition",
+      "aliases": [
+        "obesity in prospective fathers",
+        "male obesity before conception"
+      ],
+      "description": "Obesity in men before conception, typically defined by body mass index in the obese range."
+    },
+    {
+      "slug": "sperm_concentration",
+      "name": "Sperm concentration",
+      "kind": "biomarker",
+      "aliases": [
+        "sperm count concentration",
+        "sperm density"
+      ],
+      "description": "The concentration of spermatozoa in semen, usually expressed as millions per milliliter."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "paternal_obesity",
+      "outcome_slug": "sperm_concentration",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The direct conventional-semen literature is not perfectly consistent, but newer clinic cohorts do show lower sperm concentration with higher paternal adiposity. In a 1,285-man infertility-clinic cohort, obesity was associated with a mean sperm-concentration reduction of 15.83 million/mL, and a 715-man retrospective study found BMI above 22.40 kg/m2 tracked with lower concentration, while the broad 2015 meta-analysis concluded that conventional semen-parameter differences were not uniformly clinically significant.",
+      "population": "men with overweight or obesity undergoing fertility evaluation or being studied for preconception semen quality",
+      "mechanism": "Obesity can alter the hormonal and thermal environment of spermatogenesis through insulin resistance, inflammation, aromatization of androgens, and increased scrotal heat stress. Those pathways plausibly affect concentration, but the clinical expression appears more variable than obesity's effects on DNA fragmentation or broader reproductive outcomes.",
+      "summary": "The most conservative read is that paternal obesity probably drags sperm concentration downward on average, but the effect is less cleanly reproducible than some adjacent male-fertility harms. That keeps the edge harmful overall, while still acknowledging that conventional semen metrics are not uniformly degraded in every dataset.",
+      "caveats": "This is a noisier edge than paternal obesity and overall reproductive potential. Some meta-analytic work finds stronger effects on DNA fragmentation, morphology, or assisted-reproduction outcomes than on concentration itself, so this specific sperm-concentration edge should stay modest and caveated.",
+      "evidence": [
+        {
+          "citation": "Ramaraju GA et al 2018 Andrologia",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association between obesity and sperm quality.",
+          "doi": "10.1111/and.12888",
+          "pmid": "28929508",
+          "n_participants": 1285,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -15.83,
+            "comparator": "difference in sperm concentration for obese men versus non-obese men in an infertility-clinic cohort"
+          }
+        },
+        {
+          "citation": "Wang S et al 2023 Front Endocrinol (Lausanne)",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Influence of body mass index and waist-hip ratio on male semen parameters in infertile men in the real world: a retrospective study.",
+          "doi": "10.3389/fendo.2023.1228980",
+          "pmid": "37455907",
+          "n_participants": 715
+        },
+        {
+          "citation": "Campbell JM et al 2015 Reprod Biomed Online",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Paternal obesity negatively affects male fertility and assisted reproduction outcomes: a systematic review and meta-analysis.",
+          "doi": "10.1016/j.rbmo.2015.07.012",
+          "pmid": "26380863",
+          "n_participants": 115158
+        }
+      ]
+    }
+  ]
+}

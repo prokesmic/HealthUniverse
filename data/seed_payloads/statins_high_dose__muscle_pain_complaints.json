@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "statins_high_dose",
+      "outcome_slug": "muscle_pain_complaints",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "Across large blinded trials, more intensive statin regimens produced a higher rate ratio for muscle pain or weakness than less intensive regimens (RR 1.08, 95% CI 1.04-1.13), with an estimated year-1 absolute excess of 11 reports per 1000 person-years.",
+      "population": "adults receiving high-intensity or higher-dose statin therapy",
+      "mechanism": "Most statin-related muscle complaints appear to reflect a mild dose-dependent effect on muscle energy handling rather than frank muscle necrosis, which is why symptoms are common but severe laboratory injury is uncommon.",
+      "summary": "The CTT muscle-symptom meta-analysis is the right anchor here because it isolates what remains in blinded trials after expectations and nocebo effects are stripped away. The signal is real, but it is small and concentrated in the early phase and in more intensive regimens rather than being a large universal toxicity.",
+      "caveats": "Most reported muscle pain during statin treatment is not actually caused by the drug, and the severe end of muscle injury is much rarer than routine aches or weakness complaints. High-dose comparisons often show only modest absolute differences.",
+      "evidence": [
+        {
+          "citation": "CTT Collaboration 2022 Lancet",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effect of statin therapy on muscle symptoms: an individual participant data meta-analysis of large-scale, randomised, double-blind trials.",
+          "doi": "10.1016/S0140-6736(22)01545-8",
+          "pmid": "36049498",
+          "n_participants": 154664
+        },
+        {
+          "citation": "Jacobs B 2020 Ann Pharmacother",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Safety Outcomes of Atorvastatin 80 mg Versus Atorvastatin 40 mg in a Veteran Population.",
+          "doi": "10.1177/1060028019877540",
+          "pmid": "31544472",
+          "n_participants": 205
+        },
+        {
+          "citation": "Cai T 2021 BMJ",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Associations between statins and adverse events in primary prevention of cardiovascular disease: systematic review with pairwise, network, and dose-response meta-analyses.",
+          "doi": "10.1136/bmj.n1537",
+          "pmid": "34261627",
+          "n_participants": 120456
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "statins_high_dose",
+      "name": "High-dose statin therapy",
+      "kind": "drug",
+      "aliases": [
+        "high-potency statins",
+        "intensive statin therapy"
+      ],
+      "description": "Higher-intensity or high-dose statin regimens such as atorvastatin 40-80 mg, rosuvastatin 20-40 mg, or similar potency ranges."
+    },
+    {
+      "slug": "muscle_pain_complaints",
+      "name": "Muscle pain complaints",
+      "kind": "condition",
+      "aliases": [
+        "myalgia complaints",
+        "muscle pain or weakness reports"
+      ],
+      "description": "Patient-reported muscle pain, soreness, aching, or weakness complaints during treatment exposure."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ferritin_high_above_300",
+      "outcome_slug": "metabolic_syndrome",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A 2021 dose-response meta-analysis of 14 studies and 74,710 participants found higher ferritin associated with metabolic syndrome with an overall odds ratio of 1.77. In the Finnish 6.5-year follow-up study, ferritin rose more in those who developed incident metabolic syndrome, and in Taiwan the highest ferritin tertile was linked to substantially higher metabolic syndrome odds in the highest-risk Indigenous subgroup.",
+      "population": "general adults without hereditary iron-overload syndromes, especially those with central adiposity or metabolic risk factors",
+      "mechanism": "High ferritin can reflect greater iron stores but also low-grade inflammation, hepatic steatosis, and adipose dysfunction. Those states cluster tightly with insulin resistance, dyslipidemia, and visceral adiposity, making elevated ferritin a plausible marker and possible amplifier of metabolic syndrome biology.",
+      "summary": "The strongest evidence here is the dose-response meta-analysis showing that higher ferritin tracks with higher metabolic syndrome prevalence across large observational datasets. Prospective and population-based cohorts then reinforce the same direction, so ferritin above the clearly elevated range is best treated as a harmful metabolic-risk signal rather than a benign lab quirk.",
+      "caveats": "Ferritin is not a pure iron-overload measure because alcohol use, inflammation, liver disease, and menopause can all raise it. This edge should be read as a metabolic-risk marker with some biologic plausibility, not as proof that ferritin itself is always the causal driver.",
+      "evidence": [
+        {
+          "citation": "Jiang Y et al 2021 Biomed Environ Sci",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Serum Ferritin and the Risk of Metabolic Syndrome: A Systematic Review and Dose-Response Meta-Analysis of Cross-sectional Studies.",
+          "doi": "10.3967/bes2021.086",
+          "pmid": "34474722",
+          "n_participants": 74710
+        },
+        {
+          "citation": "Hamalainen P et al 2014 Diabetol Metab Syndr",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Serum ferritin levels and the development of metabolic syndrome and its components: a 6.5-year follow-up study.",
+          "pmid": "25371712",
+          "n_participants": 691
+        },
+        {
+          "citation": "ChunWei Lu et al 2014 Public Health Nutr",
+          "year": 2014,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Serum ferritin contributes to racial or geographic disparities in metabolic syndrome in Taiwan.",
+          "doi": "10.1017/S1368980013001596",
+          "pmid": "23866264",
+          "n_participants": 2638
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ferritin_high_above_300",
+      "name": "Ferritin high above 300 ng/mL",
+      "kind": "biomarker",
+      "aliases": [
+        "high ferritin above 300",
+        "hyperferritinemia above 300"
+      ],
+      "description": "Ferritin in a clearly elevated range around or above 300 ng/mL, acknowledging that sex-specific and assay-specific upper limits vary."
+    }
+  ]
+}

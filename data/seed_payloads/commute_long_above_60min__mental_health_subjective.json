@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "commute_long_above_60min",
+      "outcome_slug": "mental_health_subjective",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Longer commute time is associated with worse self-reported mental health, but the signal is mostly small and more consistent in cross-sectional or symptom-based studies than in hard longitudinal psychiatric outcomes.",
+      "population": "working adults with longer daily or weekly commuting time",
+      "mechanism": "Long commutes can erode discretionary time, increase unpredictability, and sustain fatigue and stress load across the work week. That makes subjective wellbeing, anxiety, and depressive symptom scales more sensitive early readouts than clinically diagnosed mental illness.",
+      "summary": "The literature supports a harmful direction for very long commutes, but it is not one of the cleaner edges in the graph. Cross-sectional worker surveys consistently show more depressive symptoms, anxiety, or fatigue as commute time rises, while longitudinal evidence suggests the effect is real but smaller and easier to wash out once work context and baseline health are taken into account.",
+      "caveats": "This edge is based mostly on subjective mental-health measures, not hard psychiatric diagnoses. Reverse causation, neighborhood selection, transport mode, and job characteristics can all influence the association, so the effect should be read as plausible and modest rather than definitive.",
+      "evidence": [
+        {
+          "citation": "Martin A et al 2014 Prev Med",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Does active commuting improve psychological wellbeing? Longitudinal evidence from eighteen waves of the British Household Panel Survey.",
+          "pmid": "25152507",
+          "n_participants": 17985
+        },
+        {
+          "citation": "Dragano N et al 2023 Gesundheitswesen",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "[Long Working and Commuting Times as Risk Factors for Depressive Symptoms: Cross-Sectional and Longitudinal Analyses].",
+          "pmid": "37972582",
+          "n_participants": 3413
+        },
+        {
+          "citation": "Cho YS et al 2023 Ann Occup Environ Med",
+          "year": 2023,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Correlation of commute time with the risk of subjective mental health problems: 6th Korean Working Conditions Survey (KWCS).",
+          "pmid": "37342827",
+          "n_participants": 37758
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "commute_long_above_60min",
+      "name": "Long commute above 60 minutes",
+      "kind": "behavior",
+      "aliases": [
+        "commuting time over one hour"
+      ],
+      "description": "Habitual commuting duration above about 60 minutes per day or per trip, depending on study design."
+    },
+    {
+      "slug": "mental_health_subjective",
+      "name": "Subjective mental health",
+      "kind": "process",
+      "aliases": [
+        "self-reported mental health",
+        "subjective wellbeing and distress"
+      ],
+      "description": "Self-reported depressive symptoms, anxiety, fatigue, wellbeing, or related subjective mental health measures."
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ferritin_low_below_30",
+      "outcome_slug": "restless_legs_syndrome",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2023 meta-analysis pooled 220 augmented restless legs syndrome cases and 687 non-augmented cases and found significantly lower ferritin in the augmented group. In a cabergoline-versus-levodopa cohort, ferritin averaged 85 ng/mL in patients with augmentation versus 118 ng/mL in those without, while the community Raine cohort found a weaker and less consistent relationship between ferritin and restless legs syndrome prevalence outside specialty-clinic populations.",
+      "population": "adults with restless legs syndrome or adults being evaluated for low iron stores and possible restless legs symptoms",
+      "mechanism": "Low ferritin reflects limited iron reserves, which can constrain iron delivery to brain pathways involved in dopamine handling and sensorimotor control. That gives a plausible route from low iron stores to worse restless legs symptoms or to a greater tendency toward augmentation once dopaminergic therapy begins.",
+      "summary": "The most boring defensible claim here is not that ferritin below 30 ng/mL guarantees restless legs syndrome, but that low iron stores meaningfully worsen the syndrome's terrain. Specialty-clinic augmentation studies and iron-response trials point in that direction, while community data are less tidy, so this edge is better framed as a clinically relevant harmful signal than as a universal population rule.",
+      "caveats": "Many studies use low or low-normal ferritin thresholds closer to 50 or 75 ng/mL rather than a strict below-30 cutoff, so threshold portability is imperfect. The signal is strongest in symptomatic or treated restless legs cohorts and weaker in general-population screening studies.",
+      "evidence": [
+        {
+          "citation": "YingSheng Li et al 2023 Sleep Med",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of low serum ferritin levels with augmentation in patients with restless legs syndrome: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.sleep.2023.10.022",
+          "pmid": "37879259",
+          "n_participants": 907
+        },
+        {
+          "citation": "Trenkwalder C et al 2008 Sleep Med",
+          "year": 2008,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Augmentation in restless legs syndrome is associated with low ferritin.",
+          "doi": "10.1016/j.sleep.2007.07.020",
+          "pmid": "17921065",
+          "n_participants": 338
+        },
+        {
+          "citation": "Daley M et al 2019 J Sleep Res",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Are serum ferritin and transferrin saturation risk markers for restless legs syndrome in young adults? Longitudinal and cross-sectional data from the Western Australian Pregnancy Cohort (Raine) Study.",
+          "doi": "10.1111/jsr.12741",
+          "pmid": "30062860",
+          "n_participants": 865
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ferritin_low_below_30",
+      "name": "Ferritin low below 30 ng/mL",
+      "kind": "biomarker",
+      "aliases": [
+        "low ferritin below 30",
+        "ferritin under 30"
+      ],
+      "description": "Low iron stores represented by ferritin in the clearly depleted range around or below 30 ng/mL."
+    }
+  ]
+}

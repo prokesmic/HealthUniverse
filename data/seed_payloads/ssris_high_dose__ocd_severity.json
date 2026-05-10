@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ssris_high_dose",
+      "name": "High-dose SSRI treatment",
+      "kind": "drug",
+      "aliases": [
+        "supratherapeutic SSRI dosing for OCD",
+        "high-dose selective serotonin reuptake inhibitor treatment"
+      ],
+      "description": "Selective serotonin reuptake inhibitor treatment titrated above standard antidepressant dosing ranges when obsessive-compulsive disorder remains inadequately controlled."
+    },
+    {
+      "slug": "ocd_severity",
+      "name": "Obsessive-compulsive disorder severity",
+      "kind": "process",
+      "aliases": [
+        "Y-BOCS symptom burden",
+        "obsession and compulsion severity"
+      ],
+      "description": "Clinician-rated severity of obsessive-compulsive symptoms, usually measured with the Yale-Brown Obsessive Compulsive Scale."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ssris_high_dose",
+      "outcome_slug": "ocd_severity",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The strongest dose-response synthesis remains the 2010 Molecular Psychiatry meta-analysis of fixed-dose placebo-controlled SSRI trials, where higher SSRI doses outperformed low or medium doses on Y-BOCS reduction and responder rates across 2,268 participants.",
+      "population": "adults with obsessive-compulsive disorder treated with fixed-dose or continuation SSRI protocols",
+      "mechanism": "OCD often needs stronger and more sustained serotonergic blockade than depression. Taking SSRIs to higher tolerated doses can deepen serotonin transporter occupancy and may reduce residual obsessions and compulsions when standard doses only partly suppress the circuit-level repetitive behavior loop.",
+      "summary": "This is one of the unusual places in psychopharmacology where more dose can plausibly buy more efficacy. Across placebo-controlled OCD trials, higher-dose SSRIs generally reduce OCD severity more than lower-dose SSRI strategies, though the gain comes with more side effects rather than a free benefit.",
+      "caveats": "Most evidence comes from adult OCD trials rather than adolescents, and some supporting studies used continuation or open-label escalation designs rather than clean fixed-dose head-to-head comparisons. Higher doses also raise dropout risk from adverse effects, so the trade-off is symptom improvement versus tolerability rather than improvement without cost.",
+      "evidence": [
+        {
+          "citation": "BlochMH et al 2010 Mol Psychiatry",
+          "year": 2010,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Meta-analysis of the dose-response relationship of SSRI in obsessive-compulsive disorder.",
+          "pmid": "19468281",
+          "n_participants": 2268,
+          "effect_quant": {
+            "metric": "WMD",
+            "value": null,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "higher SSRI doses versus low or medium doses for Yale-Brown Obsessive Compulsive Scale improvement and treatment response"
+          }
+        },
+        {
+          "citation": "IssariY et al 2016 J Clin Psychiatry",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Early onset of response with selective serotonin reuptake inhibitors in obsessive-compulsive disorder: a meta-analysis.",
+          "pmid": "27249090",
+          "n_participants": 3276,
+          "effect_quant": {
+            "metric": "WMD",
+            "value": -0.91,
+            "ci_low": -1.28,
+            "ci_high": -0.54,
+            "comparator": "SSRI versus placebo on Y-BOCS at 2 weeks, with response trajectory analysis showing stronger benefit at higher doses"
+          }
+        },
+        {
+          "citation": "NinanPT et al 2006 J Clin Psychiatry",
+          "year": 2006,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "High-dose sertraline strategy for nonresponders to acute treatment for obsessive-compulsive disorder: a multicenter double-blind trial.",
+          "pmid": "16426083",
+          "n_participants": 66,
+          "effect_quant": {
+            "metric": "response_rate",
+            "value": 0.52,
+            "ci_low": null,
+            "ci_high": null,
+            "comparator": "high-dose sertraline 250 to 400 mg/day versus sertraline 200 mg/day among standard-dose nonresponders; completer responder rates were 52% versus 34%"
+          }
+        }
+      ]
+    }
+  ]
+}

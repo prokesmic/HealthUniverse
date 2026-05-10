@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "telomere_length_short",
+      "outcome_slug": "all_cause_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A meta-analysis of 121,749 individuals found that each 1-SD decrement in leukocyte telomere length corresponded to a 9% higher all-cause mortality risk, and the shortest quarter had 26% higher mortality than the longest. In NHANES adults without cardiovascular disease, the highest telomere-length group had a 35% lower all-cause mortality risk than the lowest group. In 26,540 Chinese adults, longer telomeres were linked to lower all-cause mortality and lower noncancer death despite some opposing cancer-incidence signals.",
+      "population": "middle-aged and older adults in population-based cohorts with leukocyte telomere length measurement",
+      "mechanism": "Short telomeres reflect cumulative replicative stress and cellular aging. When telomere attrition is more advanced, tissue-repair capacity, immune resilience, and genomic stability tend to be poorer, which can translate into higher late-life vulnerability across many disease pathways.",
+      "summary": "The safest reading is that short leukocyte telomere length is a harmful all-cause mortality marker, though the size of the signal is not huge. Large pooled cohort data consistently place shorter telomeres on the less favorable side of survival risk, even if age and competing disease processes explain part of the association.",
+      "caveats": "Telomere length is not a perfect clock, and effect sizes vary by age, cohort, assay method, and cause of death. Some studies also show that very long telomeres may track higher cancer incidence, so this edge is about shorter telomeres and broad survival rather than a simple linear 'longer is always better' claim.",
+      "evidence": [
+        {
+          "citation": "Wang Q et al 2018 Ageing Res Rev",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Telomere Length and All-Cause Mortality: A Meta-analysis.",
+          "doi": "10.1016/j.arr.2018.09.002",
+          "pmid": "30254001",
+          "n_participants": 121749
+        },
+        {
+          "citation": "Qianhui Wang et al 2024 Aging Clin Exp Res",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of leukocyte telomere length with risk of all-cause and cardiovascular mortality in middle-aged and older individuals without cardiovascular disease: a prospective cohort study of NHANES 1999-2002.",
+          "doi": "10.1007/s40520-024-02773-z",
+          "pmid": "38869742",
+          "n_participants": 4174
+        },
+        {
+          "citation": "Hamed Samavat et al 2021 Int J Cancer",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Leukocyte telomere length, cancer incidence and all-cause mortality among Chinese adults: Singapore Chinese Health Study.",
+          "doi": "10.1002/ijc.33211",
+          "pmid": "33459354",
+          "n_participants": 26540
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "telomere_length_short",
+      "name": "Short telomere length",
+      "kind": "biomarker",
+      "aliases": [
+        "short leukocyte telomeres",
+        "reduced telomere length"
+      ],
+      "description": "Shortened telomere length, usually measured in leukocytes, interpreted as a marker of accumulated biological aging or replicative stress."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ssris_chronic",
+      "outcome_slug": "bleeding_risk_anticoagulated",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The most applicable pooled estimate found major bleeding risk was higher when SSRIs were used with oral anticoagulants than with anticoagulants alone (pooled HR 1.35, 95% CI 1.14-1.58), with a large UK nested case-control analysis showing IRR 1.33 overall and IRR 1.74 during the first 30 days.",
+      "population": "adults receiving oral anticoagulants, especially atrial fibrillation cohorts concurrently exposed to SSRIs",
+      "mechanism": "SSRIs reduce platelet serotonin uptake and can impair primary hemostasis; when that is layered onto oral anticoagulation, the pharmacologic combination plausibly increases clinically important bleeding risk, especially early after co-initiation.",
+      "summary": "This is a practical medication-interaction harm edge rather than a theoretical one. The larger anticoagulant datasets now point in the same direction: adding SSRIs appears to raise major bleeding risk enough that the first months of combined treatment deserve extra scrutiny.",
+      "caveats": "Magnitude differs by anticoagulant type, study design, and bleeding definition, and some cohort subsets are less conclusive than pooled estimates. The interaction is better established for major bleeding risk than for every bleeding site equally.",
+      "evidence": [
+        {
+          "citation": "Rahman M 2023 Thromb Haemost",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Concomitant Use of Selective Serotonin Reuptake Inhibitors and Oral Anticoagulants and Risk of Major Bleeding: A Systematic Review and Meta-analysis.",
+          "doi": "10.1055/a-1932-8976",
+          "pmid": "36037829",
+          "n_participants": 98070
+        },
+        {
+          "citation": "Rahman M 2024 JAMA Netw Open",
+          "year": 2024,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Concomitant Use of Selective Serotonin Reuptake Inhibitors With Oral Anticoagulants and Risk of Major Bleeding.",
+          "doi": "10.1001/jamanetworkopen.2024.3208",
+          "pmid": "38517440",
+          "n_participants": 1198831
+        },
+        {
+          "citation": "DeBoer H 2023 Clin Appl Thromb Hemost",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Selective Serotonin Reuptake Inhibitor Use and Risk of Major Bleeding during Treatment with Vitamin K Antagonists: Results of A Cohort Study.",
+          "doi": "10.1177/10760296221123063",
+          "pmid": "36208621",
+          "n_participants": 58918
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ssris_chronic",
+      "name": "Chronic SSRI use",
+      "kind": "drug",
+      "aliases": [
+        "ongoing SSRI treatment"
+      ],
+      "description": "Selective serotonin reuptake inhibitor treatment maintained over time rather than a single short exposure."
+    },
+    {
+      "slug": "bleeding_risk_anticoagulated",
+      "name": "Bleeding risk while anticoagulated",
+      "kind": "condition",
+      "aliases": [
+        "major bleeding risk on anticoagulation"
+      ],
+      "description": "Risk of major clinically relevant bleeding in patients already receiving oral anticoagulant therapy."
+    }
+  ]
+}

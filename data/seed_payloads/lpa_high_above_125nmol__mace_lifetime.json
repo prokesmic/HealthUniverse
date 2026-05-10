@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "lpa_high_above_125nmol",
+      "outcome_slug": "mace_lifetime",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In UK Biobank, lipoprotein(a) showed a near-linear event gradient with a hazard ratio of 1.11 per 50 nmol/L increase and a hazard ratio of 1.50 for concentrations at or above 150 nmol/L. In the statin-trial individual-patient meta-analysis, baseline Lp(a) of at least 50 mg/dL carried a hazard ratio of 1.31 for cardiovascular events, and elevated Lp(a) at or above 30 mg/dL in angiography patients tracked with a 41.8% versus 35.8% major adverse cardiovascular event rate over 3 years.",
+      "population": "adults in primary prevention, secondary prevention, or angiography cohorts with measured lipoprotein(a)",
+      "mechanism": "Elevated Lp(a) packages an LDL-like apoB particle together with apolipoprotein(a), creating a signal that is both atherogenic and potentially prothrombotic. That makes the edge especially relevant for lifetime event burden, because cumulative exposure to high inherited Lp(a) can operate for decades before a first clinical event.",
+      "summary": "This is a real risk signal, but it needs threshold humility because assay units and cutoffs differ across studies. The safest interpretation is that once Lp(a) rises into clearly elevated territory around or above the common 125 to 150 nmol/L high-risk zone, long-term major cardiovascular event risk rises meaningfully even when LDL cholesterol is otherwise well managed.",
+      "caveats": "Thresholds are assay-dependent and not perfectly interchangeable between nmol/L and mg/dL. The literature is stronger for graded event risk than for one universally correct cutoff, so the 125 nmol/L slug should be read as a clinically useful high-risk threshold rather than a magic biological boundary.",
+      "evidence": [
+        {
+          "citation": "Patel AP 2021 Arterioscler Thromb Vasc Biol",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Lp(a) (Lipoprotein[a]) Concentrations and Incident Atherosclerotic Cardiovascular Disease: New Insights From a Large National Biobank.",
+          "doi": "10.1161/ATVBAHA.120.315291",
+          "pmid": "33115266",
+          "n_participants": 460506
+        },
+        {
+          "citation": "Willeit P 2018 Lancet",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Baseline and on-statin treatment lipoprotein(a) levels for prediction of cardiovascular events: individual patient-data meta-analysis of statin outcome trials.",
+          "doi": "10.1016/S0140-6736(18)31652-0",
+          "pmid": "30293769",
+          "n_participants": 29069
+        },
+        {
+          "citation": "Nicholls SJ 2010 J Lipid Res",
+          "year": 2010,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Lipoprotein(a) levels and long-term cardiovascular risk in the contemporary era of statin therapy.",
+          "doi": "10.1194/jlr.M008961",
+          "pmid": "20601648",
+          "n_participants": 2769
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "lpa_high_above_125nmol",
+      "name": "High lipoprotein(a) above about 125 nmol/L",
+      "kind": "biomarker",
+      "aliases": [
+        "Lp(a) high above 125 nmol/L",
+        "elevated lipoprotein(a)",
+        "high Lp(a)"
+      ],
+      "description": "Lipoprotein(a) elevated into a clearly high-risk range around or above 125 nmol/L, acknowledging that some studies and assays use nearby thresholds such as 150 nmol/L or about 50 mg/dL."
+    },
+    {
+      "slug": "mace_lifetime",
+      "name": "Lifetime major adverse cardiovascular event burden",
+      "kind": "condition",
+      "aliases": [
+        "lifetime MACE risk",
+        "long-run cardiovascular event burden"
+      ],
+      "description": "Long-term risk of major adverse cardiovascular events across the adult lifespan, including myocardial infarction, stroke, coronary revascularization, or cardiovascular death."
+    }
+  ]
+}

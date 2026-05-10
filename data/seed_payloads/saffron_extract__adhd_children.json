@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "saffron_extract",
+      "name": "Saffron extract",
+      "kind": "supplement",
+      "aliases": [
+        "Crocus sativus extract",
+        "saffron stigma extract"
+      ],
+      "description": "Extracts or encapsulated stigma preparations from Crocus sativus used in neuropsychiatric and mood-related trials."
+    },
+    {
+      "slug": "adhd_children",
+      "name": "Pediatric ADHD symptoms",
+      "kind": "condition",
+      "aliases": [
+        "ADHD in children and adolescents",
+        "childhood attention-deficit/hyperactivity disorder"
+      ],
+      "description": "Attention-deficit/hyperactivity disorder symptom burden in children and adolescents, usually measured with validated parent- or teacher-rated ADHD scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "saffron_extract",
+      "outcome_slug": "adhd_children",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "The clearest direct randomized evidence comes from a 54-child double-blind trial in which saffron was not significantly different from methylphenidate over 6 weeks on teacher or parent ADHD-RS-IV scores. A later 63-participant effectiveness study also found broadly comparable overall efficacy, with hints that saffron may favor hyperactivity more than inattention.",
+      "population": "children and adolescents with attention-deficit/hyperactivity disorder treated with saffron extract instead of, or compared with, methylphenidate",
+      "mechanism": "Saffron is hypothesized to influence monoaminergic signaling and oxidative-stress pathways that could affect attentional control and hyperactivity. The current pediatric ADHD literature suggests possible symptomatic activity, but not enough consistent evidence to conclude that saffron reliably matches stimulant therapy across symptom domains.",
+      "summary": "Saffron extract may improve pediatric ADHD symptoms, but the evidence remains mixed and still looks more exploratory than settled. The small trial base suggests saffron can perform similarly to methylphenidate in some short-term settings, yet the overall dataset is too small and too regionally concentrated to justify strong confidence.",
+      "caveats": "The main human studies are short and small, and one key follow-up is non-randomized. This edge should be read as a potentially useful alternative or adjunct signal in selected cases, not as proof of a stimulant-equivalent treatment for pediatric ADHD.",
+      "evidence": [
+        {
+          "citation": "BaziarS et al 2019 J Child Adolesc Psychopharmacol",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Crocus sativus L. Versus Methylphenidate in Treatment of Children with Attention-Deficit/Hyperactivity Disorder: A Randomized, Double-Blind Pilot Study.",
+          "pmid": "30741567",
+          "n_participants": 54
+        },
+        {
+          "citation": "BlascoFontecillaH et al 2022 Nutrients",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Effectivity of Saffron Extract (Saffr'Activ) on Treatment for Children and Adolescents with Attention Deficit/Hyperactivity Disorder (ADHD): A Clinical Effectivity Study.",
+          "pmid": "36235697",
+          "n_participants": 63
+        },
+        {
+          "citation": "GolsorkhiH et al 2023 Avicenna J Phytomed",
+          "year": 2023,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Herbal medicines in the treatment of children and adolescents with attention-deficit/hyperactivity disorder (ADHD): An updated systematic review of clinical trials.",
+          "pmid": "37663386"
+        }
+      ]
+    }
+  ]
+}

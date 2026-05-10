@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "occupational_asbestos_low_dose",
+      "outcome_slug": "mesothelioma_lifetime",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "Mesothelioma risk remains elevated even after exposure cessation, and systematic reviews show that lower-dose non-occupational exposure does not eliminate risk; it only changes the exposure context.",
+      "population": "workers or other adults with low-dose but repeated asbestos exposure",
+      "mechanism": "Biopersistent asbestos fibers lodge in pleural tissue, provoke chronic macrophage activation, and create long-latency genotoxic injury. Because fiber clearance is poor, even lower-dose repeated exposures can contribute to lifetime mesothelioma risk instead of disappearing once contact stops.",
+      "summary": "The cleanest message is that asbestos-related mesothelioma risk does not simply vanish when exposure is lighter or remote in time. Meta-regression on exposure cessation, non-occupational exposure syntheses, and occupation-specific mesothelioma meta-analyses all point in the same direction: lower-dose exposure may change magnitude, but it does not make the lifetime signal biologically trivial.",
+      "caveats": "The exact lifetime risk depends on fiber type, cumulative dose, and years since first exposure. This edge should be read as a long-latency lifetime hazard statement, not as a prediction of short-term mesothelioma incidence after brief exposure.",
+      "evidence": [
+        {
+          "citation": "Marinaccio A et al 2020 Occup Environ Med",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Risk of mesothelioma after cessation of asbestos exposure: a systematic review and meta-regression.",
+          "pmid": "30993422",
+          "n_participants": 9
+        },
+        {
+          "citation": "Hwang WT et al 2018 Environ Health",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association between mesothelioma and non-occupational asbestos exposure: systematic review and meta-analysis.",
+          "pmid": "30567579",
+          "n_participants": 16
+        },
+        {
+          "citation": "Rota M et al 2024 Eur J Cancer Prev",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Mesothelioma among seamen: a systematic review and meta-analysis.",
+          "pmid": "38502527",
+          "n_participants": 17
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "occupational_asbestos_low_dose",
+      "name": "Low-dose occupational asbestos exposure",
+      "kind": "environmental",
+      "aliases": [
+        "low-intensity workplace asbestos exposure"
+      ],
+      "description": "Repeated occupational asbestos exposure at lower cumulative intensity than classic heavy industrial exposure."
+    },
+    {
+      "slug": "mesothelioma_lifetime",
+      "name": "Lifetime mesothelioma risk",
+      "kind": "condition",
+      "aliases": [
+        "lifetime risk of mesothelioma"
+      ],
+      "description": "Long-term lifetime risk of mesothelioma after asbestos exposure."
+    }
+  ]
+}

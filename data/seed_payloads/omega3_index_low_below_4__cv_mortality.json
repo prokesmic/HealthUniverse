@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "omega3_index_low_below_4",
+      "outcome_slug": "cv_mortality",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Using 10 cohort studies, the 2017 Omega-3 Index analysis estimated about a 30% lower fatal coronary heart disease risk when moving from roughly 4% to 8%, supporting the long-used interpretation that values below 4% reflect higher risk. In Framingham Offspring, higher omega-3 index improved 10-year cardiovascular risk prediction beyond the pooled cohort equation, although a 572-patient acute-coronary-syndrome cohort with a median index of 3.6% did not show significant mortality differences across omega-3 index quartiles.",
+      "population": "adults without known cardiovascular disease and adults being risk-stratified for long-term cardiovascular mortality",
+      "mechanism": "A low omega-3 index indicates low erythrocyte EPA plus DHA, which can reflect less favorable membrane composition, reduced antiarrhythmic buffering, and weaker anti-inflammatory and plaque-stabilizing effects. Those pathways are most relevant to fatal coronary and sudden-cardiac endpoints, which is why a low index is often interpreted as a mortality-risk marker rather than just a nutrition biomarker.",
+      "summary": "The cleanest claim here is that an omega-3 index below about 4% usually falls into the higher-risk end of the cardiovascular-mortality spectrum. The literature is not perfectly uniform, but mortality-focused pooled analyses and later cohort-based risk modeling still lean enough toward harm that a low omega-3 index is more reasonably treated as an unfavorable biomarker than as a neutral finding.",
+      "caveats": "Most evidence is observational or derived from pooled cohort data rather than from trials randomizing people by omega-3 index thresholds. Some smaller high-risk cohorts with uniformly low omega-3 exposure have shown null gradients, so the exact risk rise may vary by diet, clinical context, and whether the endpoint is fatal coronary disease, sudden cardiac death, or broader cardiovascular mortality.",
+      "evidence": [
+        {
+          "citation": "William Harris et al 2017 Atherosclerosis",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The Omega-3 Index and relative risk for coronary heart disease mortality: Estimation from 10 cohort studies.",
+          "doi": "10.1016/j.atherosclerosis.2017.05.007",
+          "pmid": "28511049",
+          "n_participants": 10
+        },
+        {
+          "citation": "William Franco et al 2025 J Clin Lipidol",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Omega-3 index improves upon the pooled cohort equation in predicting risk for CVD.",
+          "doi": "10.1016/j.jacl.2024.12.005",
+          "pmid": "40074603",
+          "n_participants": 2550
+        },
+        {
+          "citation": "Bjerve KS et al 2013 Scand Cardiovasc J",
+          "year": 2013,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Omega-3 index and prognosis in acute coronary chest pain patients with a low dietary intake of omega-3.",
+          "doi": "10.3109/14017431.2012.747220",
+          "pmid": "23127172",
+          "n_participants": 572
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "omega3_index_low_below_4",
+      "name": "Omega-3 index low below 4%",
+      "kind": "biomarker",
+      "aliases": [
+        "low omega-3 index below 4",
+        "omega-3 index under 4%"
+      ],
+      "description": "Red blood cell EPA plus DHA percentage in the low-risk range boundary commonly interpreted as below about 4%."
+    },
+    {
+      "slug": "cv_mortality",
+      "name": "Cardiovascular mortality",
+      "kind": "condition",
+      "aliases": [
+        "CVD mortality",
+        "cardiovascular death"
+      ],
+      "description": "Death attributed to cardiovascular causes such as coronary, cerebrovascular, or sudden cardiac events."
+    }
+  ]
+}

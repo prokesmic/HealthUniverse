@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "wildfire_smoke_pm2_5",
+      "outcome_slug": "cv_events",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In 65.2 million Medicare beneficiaries, three-year average wildfire smoke PM2.5 was associated with higher cardiovascular hospitalization risk, peaking around a relative risk of 1.04 for overall cardiovascular disease. In approximately 22 million older adults, each 1 microgram per cubic meter increase in past two-year average wildfire smoke PM2.5 was associated with a heart-failure hazard ratio of 1.014 (95% CI 1.007 to 1.020). In more than 89 million cardiopulmonary hospitalizations from 20 states, each 1 microgram per cubic meter increase in two-year wildfire-specific PM2.5 was associated with significantly higher cardiovascular hospitalization risks across disease categories.",
+      "population": "older adults and U.S. populations exposed to wildfire-specific PM2.5 over medium- to long-term windows",
+      "mechanism": "Wildfire smoke PM2.5 carries a highly oxidative particulate mix that can intensify autonomic stress, endothelial dysfunction, thrombosis, and systemic inflammation. That makes cardiovascular hospitalization and event risk biologically plausible, especially in older adults with preexisting vascular disease.",
+      "summary": "The signal is no longer just theoretical. Large U.S. datasets now suggest that repeated wildfire-smoke PM2.5 exposure is associated with more cardiovascular hospitalizations and related events, even if the relative effect size per exposure increment is not huge.",
+      "caveats": "Studies use different exposure windows and cardiovascular end points, ranging from broad hospitalization composites to incident heart failure. Some short-term analyses show stronger respiratory than cardiovascular associations, so the edge is best read as a real but modest cardiovascular-risk signal rather than the dominant health effect of wildfire smoke.",
+      "evidence": [
+        {
+          "citation": "Zhang S et al 2026 J Am Coll Cardiol",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Impact of Long-Term Cumulative Exposure to Wildfire Smoke PM(2.5) on Cardiovascular Hospital Admissions Among Older Adults in the United States: A Population-Based Cohort Study.",
+          "doi": "10.1016/j.jacc.2025.12.079",
+          "pmid": "41706074",
+          "n_participants": 65200000
+        },
+        {
+          "citation": "Hao H et al 2025 J Am Coll Cardiol",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Long-Term Wildfire Smoke Exposure and Increased Risk of Heart Failure in Older Adults.",
+          "doi": "10.1016/j.jacc.2025.04.058",
+          "pmid": "40562508",
+          "n_participants": 22000000
+        },
+        {
+          "citation": "Zhang M et al 2025 medRxiv",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Cardiopulmonary hospitalization risks from wildfire and non-wildfire PM(2.5) in 20 US states.",
+          "doi": "10.1101/2025.07.15.25331618",
+          "pmid": "40791683",
+          "n_participants": 89000000
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "wildfire_smoke_pm2_5",
+      "name": "Wildfire smoke PM2.5 exposure",
+      "kind": "environmental",
+      "aliases": [
+        "wildfire-specific PM2.5",
+        "fire smoke fine particulate exposure"
+      ],
+      "description": "Exposure to fine particulate matter specifically attributable to wildfire smoke."
+    },
+    {
+      "slug": "cv_events",
+      "name": "Cardiovascular events",
+      "kind": "condition",
+      "aliases": [
+        "cardiovascular hospitalizations",
+        "major cardiovascular events"
+      ],
+      "description": "Cardiovascular events or hospitalizations such as ischemic heart disease, stroke, arrhythmia, heart failure, or related composite cardiovascular outcomes."
+    }
+  ]
+}

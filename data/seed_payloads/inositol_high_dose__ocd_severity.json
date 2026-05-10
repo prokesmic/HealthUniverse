@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "inositol_high_dose",
+      "name": "High-dose inositol supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "myo-inositol 18 g/day",
+        "high-dose myo-inositol"
+      ],
+      "description": "Pharmacologic-dose inositol supplementation, often around 18 g/day, used experimentally in obsessive-compulsive and related disorders."
+    },
+    {
+      "slug": "ocd_severity",
+      "name": "Obsessive-compulsive disorder severity",
+      "kind": "process",
+      "aliases": [
+        "Y-BOCS symptom burden",
+        "severity of obsessive-compulsive symptoms"
+      ],
+      "description": "Clinician-rated severity of obsessive-compulsive symptoms, usually measured with the Yale-Brown Obsessive Compulsive Scale."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "inositol_high_dose",
+      "outcome_slug": "ocd_severity",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "The most optimistic direct trial remains the 1996 crossover study, where 18 g/day of inositol lowered Y-BOCS scores more than placebo in 13 patients. That early signal did not hold up in a later meta-analysis of anxiety-disorder trials, which found no statistically significant effect of inositol on obsessive-compulsive symptoms across the available randomized evidence.",
+      "population": "adults with obsessive-compulsive disorder or related anxiety-spectrum conditions treated with pharmacologic-dose inositol",
+      "mechanism": "Inositol may affect obsessive-compulsive symptoms through second-messenger and serotonergic signaling pathways that overlap with SSRI-responsive circuitry. The trouble is that mechanistic plausibility and one early positive OCD study have not translated into a stable pooled efficacy signal.",
+      "summary": "High-dose inositol remains a genuinely mixed OCD edge. A small early crossover trial looked promising, but broader pooled evidence has been null or inconclusive, leaving the intervention in the realm of exploratory adjunctive therapy rather than established treatment.",
+      "caveats": "The human OCD evidence base is tiny and old, and even the meta-analysis relies on a very small anxiety-disorder subset. This edge should not be interpreted as strong support for inositol in OCD despite the favorable signal from the original pilot study.",
+      "evidence": [
+        {
+          "citation": "FuxM et al 1996 Am J Psychiatry",
+          "year": 1996,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Inositol treatment of obsessive-compulsive disorder.",
+          "pmid": "8780431",
+          "n_participants": 13
+        },
+        {
+          "citation": "MukaiT et al 2014 Hum Psychopharmacol",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "A meta-analysis of inositol for depression and anxiety disorders.",
+          "pmid": "24424706",
+          "n_participants": 70
+        },
+        {
+          "citation": "CamfieldDA et al 2011 Prog Neuropsychopharmacol Biol Psychiatry",
+          "year": 2011,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Nutraceuticals in the treatment of obsessive compulsive disorder (OCD): a review of mechanistic and clinical evidence.",
+          "pmid": "21352883"
+        }
+      ]
+    }
+  ]
+}

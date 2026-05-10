@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "grip_strength_low",
+      "outcome_slug": "cardiovascular_events",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The largest dose-response review found lower grip strength associated with higher cardiovascular mortality across 3,135,473 participants, and a 5,300-person prospective cohort found the low-stable grip-strength trajectory doubled incident cardiovascular disease risk with a hazard ratio of 2.17.",
+      "population": "middle-aged and older adults in community cohorts and cardiovascular prognostic studies",
+      "mechanism": "Low grip strength is a practical readout of low muscle quality, frailty, autonomic dysfunction, and poor metabolic reserve. Those same states plausibly travel with higher stroke, heart failure, and myocardial infarction risk, even if grip strength itself is mostly a marker rather than a direct cause.",
+      "summary": "The cardiovascular signal is real but slightly less tidy than the all-cause mortality signal. Lower grip strength repeatedly marks people who go on to have more cardiovascular events or cardiovascular deaths, though the exact effect size depends on whether the study looks at incident events, fatal events, or patients who already have heart disease.",
+      "caveats": "Much of the literature is observational and vulnerable to confounding by baseline illness, frailty, and physical activity. This edge is strongest as a risk-stratification marker, not yet as proof that raising grip strength alone will lower future cardiovascular event rates.",
+      "evidence": [
+        {
+          "citation": "Lopez-Bueno R 2022 Ageing Res Rev",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Thresholds of handgrip strength for all-cause, cancer, and cardiovascular mortality: A systematic review with dose-response meta-analysis.",
+          "doi": "10.1016/j.arr.2022.101778",
+          "pmid": "36332759",
+          "n_participants": 3135473
+        },
+        {
+          "citation": "Liu W 2021 Front Cardiovasc Med",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "A Prospective Study of Grip Strength Trajectories and Incident Cardiovascular Disease.",
+          "doi": "10.3389/fcvm.2021.690748",
+          "pmid": "34604349",
+          "n_participants": 5300
+        },
+        {
+          "citation": "Chainani V 2016 Int J Cardiol",
+          "year": 2016,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Objective measures of the frailty syndrome (hand grip strength and gait speed) and cardiovascular mortality: A systematic review.",
+          "doi": "10.1016/j.ijcard.2016.04.068",
+          "pmid": "27131770",
+          "n_participants": 63396
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "grip_strength_low",
+      "name": "Low grip strength",
+      "kind": "condition",
+      "aliases": [
+        "poor handgrip strength",
+        "low handgrip strength"
+      ],
+      "description": "Low measured handgrip strength, usually reflecting weakness, frailty, or low muscular reserve relative to age and sex norms."
+    }
+  ]
+}

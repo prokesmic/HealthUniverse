@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "psychobiotic_probiotic",
+      "name": "Psychobiotic probiotic supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "psychobiotic probiotics",
+        "gut-brain probiotic supplementation"
+      ],
+      "description": "Probiotic supplementation used with the specific aim of modulating gut-brain signaling and mood-related symptoms."
+    },
+    {
+      "slug": "depression_severity",
+      "name": "Depression severity",
+      "kind": "process",
+      "aliases": [
+        "depressive symptom burden",
+        "severity of depressive symptoms"
+      ],
+      "description": "Severity of depressive symptoms measured with validated scales such as BDI, HAM-D, or similar clinician-rated or self-reported instruments."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "psychobiotic_probiotic",
+      "outcome_slug": "depression_severity",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In clinically diagnosed major depressive disorder, a 2021 psychobiotic meta-analysis found a small endpoint advantage versus placebo (SMD -0.292, 95% CI -0.577 to -0.007) and a somewhat larger change-score signal on BDI (SMD -0.482, 95% CI -0.854 to -0.109). Broader 2025 syntheses remain favorable on average, but they combine heterogeneous strains, populations, and background treatments.",
+      "population": "adults with major depressive disorder, subclinical psychological distress, or anxiety-depression symptom clusters treated with probiotic, prebiotic, or synbiotic interventions",
+      "mechanism": "Psychobiotic probiotics are proposed to influence depressive symptoms through gut-brain immune signaling, microbial metabolite production, and stress-hormone regulation. The main limitation is not biological plausibility but the inconsistent translation of those mechanisms across very different strains, populations, and adjunctive-care settings.",
+      "summary": "Psychobiotic-style probiotic supplementation may modestly reduce depressive symptom severity, but the evidence is still heterogeneous rather than definitive. The clearest benefit appears in some depressive-disorder or symptom-burden populations, while broader pooled estimates suggest that any benefit is strain- and context-dependent rather than reliably generalizable.",
+      "caveats": "The literature mixes true depressive disorders with healthy or subclinical populations, and many trials use different multi-strain products for only a few weeks. This edge should be read as a plausible adjunctive signal, not as proof that probiotics deliver a consistent antidepressant effect across settings.",
+      "evidence": [
+        {
+          "citation": "MiseraA et al 2021 Pharmaceuticals (Basel)",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of Psychobiotics on Psychometric Tests and Inflammatory Markers in Major Depressive Disorder: Meta-Analysis of Randomized Controlled Trials with Meta-Regression.",
+          "pmid": "34681176",
+          "n_participants": 705,
+          "effect_quant": {
+            "metric": "smd",
+            "value": -0.292,
+            "ci_low": -0.577,
+            "ci_high": -0.007,
+            "comparator": "psychobiotic probiotic supplementation versus placebo on pooled endpoint depressive symptom scores in major depressive disorder"
+          }
+        },
+        {
+          "citation": "ZhangJ et al 2025 BMC Psychiatry",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The efficacy of probiotics, prebiotics, and synbiotics on anxiety, depression, and sleep: a systematic review and meta-analysis of randomized controlled trials.",
+          "pmid": "41310510",
+          "n_participants": 5373,
+          "effect_quant": {
+            "metric": "smd",
+            "value": -0.53,
+            "ci_low": -0.67,
+            "ci_high": -0.39,
+            "comparator": "probiotics, prebiotics, or synbiotics versus placebo on depressive symptoms"
+          }
+        },
+        {
+          "citation": "ZagorskaA et al 2020 Benef Microbes",
+          "year": 2020,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "From probiotics to psychobiotics - the gut-brain axis in psychiatric disorders.",
+          "pmid": "33191776"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vitamin_a_high_dose",
+      "outcome_slug": "liver_toxicity",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "moderate",
+      "population": "adults with prolonged high-dose retinol or vitamin A supplement exposure, typically over months to years",
+      "mechanism": "Chronic retinol overload accumulates in hepatic stellate cells, drives their activation, and can progress from enzyme elevation to perisinusoidal fibrosis, cholestatic injury, portal hypertension, or cirrhosis when intake stays high long enough.",
+      "summary": "This is a classic supplement-toxicity edge, but the evidence base is mostly case-driven rather than trial-driven because intentionally testing hepatotoxic retinol doses would be unethical. The boring conclusion is that prolonged high-dose vitamin A can injure the liver, and the signal becomes harder to dismiss when biopsy series show dose-linked fibrosis rather than just transient enzyme bumps.",
+      "caveats": "The strongest human data are case reports and case-series pathology, not randomized studies, so this edge is about a well-known toxicity pattern rather than a precise population-level risk estimate. Duration matters a lot: chronic exposure at 20,000 to 50,000 IU daily for years appears far more dangerous than short-term use.",
+      "evidence": [
+        {
+          "citation": "Nollevaux MC 2006 Liver Int",
+          "year": 2006,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Hypervitaminosis A-induced liver fibrosis: stellate cell activation and daily dose consumption.",
+          "doi": "10.1111/j.1478-3231.2005.01207.x",
+          "pmid": "16448456",
+          "n_participants": 41
+        },
+        {
+          "citation": "Kowalski TE 1994 Am J Med",
+          "year": 1994,
+          "study_type": "case_report",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Vitamin A hepatotoxicity: a cautionary note regarding 25,000 IU supplements.",
+          "doi": "10.1016/0002-9343(94)90347-6",
+          "pmid": "7985711"
+        },
+        {
+          "citation": "Minuk GY 1988 Hepatology",
+          "year": 1988,
+          "study_type": "case_report",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Vitamin A hepatotoxicity in multiple family members.",
+          "doi": "10.1002/hep.1840080214",
+          "pmid": "3356407"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vitamin_a_high_dose",
+      "name": "High-dose vitamin A supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "chronic retinol megadose use",
+        "high-dose retinol"
+      ],
+      "description": "Vitamin A or retinol supplementation at doses high enough to exceed usual replacement needs, especially when taken chronically for months or years."
+    },
+    {
+      "slug": "liver_toxicity",
+      "name": "Liver toxicity",
+      "kind": "condition",
+      "aliases": [
+        "hepatotoxicity",
+        "supplement-related liver injury"
+      ],
+      "description": "Clinically meaningful liver injury including persistent transaminase elevation, cholestatic hepatitis, fibrosis, or cirrhosis."
+    }
+  ]
+}

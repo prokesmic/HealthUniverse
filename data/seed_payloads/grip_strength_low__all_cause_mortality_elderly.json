@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "grip_strength_low",
+      "outcome_slug": "all_cause_mortality_elderly",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In the largest meta-analysis of apparently healthy adults, higher versus lower muscular strength was associated with a hazard ratio of 0.69 for all-cause mortality; the dose-response review spanning 3,135,473 participants found an inverse near-linear mortality gradient across common handgrip strength ranges.",
+      "population": "older adults or aging populations in community-based and prospective cohort studies",
+      "mechanism": "Low grip strength likely reflects low physiologic reserve more than one isolated pathology. It clusters with sarcopenia, frailty, inflammatory burden, disability, lower cardiorespiratory fitness, and reduced resilience to hospitalization or acute illness, which makes it a useful late-life mortality marker.",
+      "summary": "This is less a surprising causal discovery than a durable geriatric prognostic signal. Across very large cohorts, older adults with lower grip strength die at higher rates, and the relationship survives adjustment often enough that it is hard to dismiss as mere noise.",
+      "caveats": "Grip strength is partly a marker of underlying illness rather than a pure intervention target, so the edge should not be read as proof that squeezing exercises alone will reduce mortality. Thresholds also vary by sex, body size, and measurement protocol.",
+      "evidence": [
+        {
+          "citation": "Garcia-Hermoso A 2018 Arch Phys Med Rehabil",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Muscular Strength as a Predictor of All-Cause Mortality in an Apparently Healthy Population: A Systematic Review and Meta-Analysis of Data From Approximately 2 Million Men and Women.",
+          "doi": "10.1016/j.apmr.2018.01.008",
+          "pmid": "29425700",
+          "n_participants": 1907580
+        },
+        {
+          "citation": "Lopez-Bueno R 2022 Ageing Res Rev",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Thresholds of handgrip strength for all-cause, cancer, and cardiovascular mortality: A systematic review with dose-response meta-analysis.",
+          "doi": "10.1016/j.arr.2022.101778",
+          "pmid": "36332759",
+          "n_participants": 3135473
+        },
+        {
+          "citation": "Laukkanen JA 2020 Ann Med",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Handgrip strength is inversely associated with fatal cardiovascular and all-cause mortality events.",
+          "doi": "10.1080/07853890.2020.1748220",
+          "pmid": "32223654",
+          "n_participants": 861
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "grip_strength_low",
+      "name": "Low grip strength",
+      "kind": "condition",
+      "aliases": [
+        "poor handgrip strength",
+        "low handgrip strength"
+      ],
+      "description": "Low measured handgrip strength, usually reflecting weakness, frailty, or low muscular reserve relative to age and sex norms."
+    },
+    {
+      "slug": "all_cause_mortality_elderly",
+      "name": "All-cause mortality in older adults",
+      "kind": "condition",
+      "aliases": [
+        "elderly all-cause mortality",
+        "late-life mortality"
+      ],
+      "description": "Death from any cause measured in older adult populations, usually in community-dwelling cohorts aged roughly 60 years or older."
+    }
+  ]
+}

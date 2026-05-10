@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "gestational_weight_gain_high",
+      "name": "Gestational weight gain above guideline range",
+      "kind": "biomarker",
+      "aliases": [
+        "excess gestational weight gain",
+        "high pregnancy weight gain"
+      ],
+      "description": "Total gestational weight gain above guideline or reference ranges for the mother's prepregnancy body mass index."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "gestational_weight_gain_high",
+      "outcome_slug": "child_obesity_long_term",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The broadest individual-participant meta-analysis found excessive gestational weight gain associated with childhood overweight or obesity, with the strongest signal in late childhood (OR 1.72, 95% CI 1.56 to 1.91).",
+      "population": "mother-child cohorts followed from pregnancy into early, middle, or late childhood",
+      "mechanism": "Excess gestational weight gain likely reflects a combination of maternal energy surplus, altered glucose-lipid exposure, and shared postnatal family environment. That does not prove direct fetal programming in every case, but it is compatible with the repeated association between excess gain and later child adiposity.",
+      "summary": "This edge is fairly consistent. Excess gestational weight gain is linked not only to larger birth size, but also to higher odds of overweight or obesity years later, especially as children get older.",
+      "caveats": "Maternal prepregnancy BMI remains a major confounder and often carries a stronger signal than gestational gain itself. The effect of high gain appears smaller among women already entering pregnancy with overweight or obesity.",
+      "evidence": [
+        {
+          "citation": "NehringI et al 2013 Pediatr Obes",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Gestational weight gain in accordance to the IOM/NRC criteria and the risk for childhood overweight: a meta-analysis.",
+          "pmid": "23172639",
+          "n_participants": 7,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.38,
+            "ci_low": 1.21,
+            "ci_high": 1.57,
+            "comparator": "excessive versus guideline-consistent gestational weight gain for childhood overweight"
+          }
+        },
+        {
+          "citation": "VoermanE et al 2019 PLoS Med",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maternal body mass index, gestational weight gain, and the risk of overweight and obesity across childhood: An individual participant data meta-analysis.",
+          "pmid": "30742624",
+          "n_participants": 162129,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.72,
+            "ci_low": 1.56,
+            "ci_high": 1.91,
+            "comparator": "excessive gestational weight gain and late-childhood overweight or obesity"
+          }
+        },
+        {
+          "citation": "DieselJC et al 2015 BJOG",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Gestational weight gain and the risk of offspring obesity at 10 and 16 years: a prospective cohort study in low-income women.",
+          "pmid": "26032698",
+          "n_participants": 514
+        }
+      ]
+    }
+  ]
+}

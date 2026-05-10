@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "occupational_diesel_exhaust_chronic",
+      "outcome_slug": "lung_cancer",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The classic occupational meta-analysis found a pooled smoking-adjusted relative risk of 1.47 for heavily exposed workers, and later pooled case-control exposure-response work remained directionally consistent.",
+      "population": "workers with chronic occupational diesel exhaust exposure",
+      "mechanism": "Diesel exhaust delivers soot-bound polycyclic aromatic hydrocarbons, ultrafine particles, and reactive oxidants deep into the lung. That combination supports chronic DNA damage, mutagenesis, and inflammation, which is why lung cancer remains the most established chronic diesel-exposure cancer outcome.",
+      "summary": "The strongest anchor remains the 1999 occupational meta-analysis, which found a materially higher lung cancer risk in workers with substantial diesel exposure. Later pooled exposure-response analyses and asbestos-adjusted case-control work mostly strengthened the case that the signal is real, even if the exact risk estimate still depends on smoking control and how co-exposures are handled.",
+      "caveats": "This literature is sensitive to confounding from smoking and asbestos, so older studies can understate or overstate the true effect depending on adjustment quality. The edge is strongest for chronic occupational exposure rather than for low-level ambient exposure in the general population.",
+      "evidence": [
+        {
+          "citation": "Lipsett M et al 1999 Am J Public Health",
+          "year": 1999,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Occupational exposure to diesel exhaust and lung cancer: a meta-analysis.",
+          "pmid": "10394308",
+          "n_participants": 39
+        },
+        {
+          "citation": "Vermeulen JH et al 2020 Am J Respir Crit Care Med",
+          "year": 2020,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Diesel Engine Exhaust Exposure, Smoking, and Lung Cancer Subtype Risks. A Pooled Exposure-Response Analysis of 14 Case-Control Studies.",
+          "pmid": "32330395",
+          "n_participants": 14
+        },
+        {
+          "citation": "Matrat M et al 2015 J Cancer Epidemiol",
+          "year": 2015,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Occupational Exposure to Diesel Motor Exhaust and Lung Cancer: A Dose-Response Relationship Hidden by Asbestos Exposure Adjustment? The ICARE Study.",
+          "pmid": "26425123",
+          "n_participants": 6481
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "occupational_diesel_exhaust_chronic",
+      "name": "Chronic occupational diesel exhaust exposure",
+      "kind": "environmental",
+      "aliases": [
+        "long-term workplace diesel exhaust exposure"
+      ],
+      "description": "Repeated long-term workplace exposure to diesel motor exhaust."
+    }
+  ]
+}

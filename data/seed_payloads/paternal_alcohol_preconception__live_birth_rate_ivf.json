@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "paternal_alcohol_preconception",
+      "name": "Paternal alcohol use before conception",
+      "kind": "behavior",
+      "aliases": [
+        "male alcohol intake before conception",
+        "preconception drinking in male partners"
+      ],
+      "description": "Alcohol consumption by the male partner during the weeks or months before assisted reproduction or conception."
+    },
+    {
+      "slug": "live_birth_rate_ivf",
+      "name": "Live birth rate after IVF",
+      "kind": "process",
+      "aliases": [
+        "IVF live birth success",
+        "live birth following IVF or ICSI"
+      ],
+      "description": "Probability of achieving a live birth after in vitro fertilization or intracytoplasmic sperm injection treatment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "paternal_alcohol_preconception",
+      "outcome_slug": "live_birth_rate_ivf",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The strongest direct IVF cohort found that when both partners drank at least four drinks per week, odds of live birth were 21% lower than in couples where both drank less, and the contemporary review literature still treats paternal alcohol as a likely adverse preconception signal. A smaller fertility-center cohort reported the opposite direction for male alcohol quartiles, which is why this edge should stay modest rather than absolute.",
+      "population": "male partners in couples undergoing IVF or ICSI treatment, with alcohol intake measured before or during treatment attempts",
+      "mechanism": "Alcohol can plausibly impair reproductive outcomes through oxidative stress, endocrine disruption, and damage to sperm chromatin or epigenetic programming before fertilization. Any effect on IVF live birth is likely mediated more through sperm competence and embryo quality than through conventional semen-count metrics alone.",
+      "summary": "The safest read is that paternal drinking before IVF is not a clearly beneficial exposure and may modestly reduce live birth success, especially when alcohol use is part of a broader unhealthy couple-level pattern. The literature is not perfectly aligned, so this should be framed as a cautious harm edge rather than a deterministic IVF rule.",
+      "caveats": "Male alcohol results are inconsistent across cohorts and are vulnerable to residual confounding from female alcohol use, smoking, diet, and broader lifestyle patterns. This edge is therefore lower-certainty than the maternal alcohol literature and should not be oversold.",
+      "evidence": [
+        {
+          "citation": "Rossi BV et al 2011 Obstet Gynecol",
+          "year": 2011,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effect of alcohol consumption on in vitro fertilization.",
+          "pmid": "21173655",
+          "n_participants": 2545,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.79,
+            "ci_low": 0.66,
+            "ci_high": 0.96,
+            "comparator": "odds of live birth when both partners drank at least four drinks per week versus both drinking fewer than four drinks per week during IVF treatment"
+          }
+        },
+        {
+          "citation": "Anifandis G et al 2014 Gynecol Endocrinol",
+          "year": 2014,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Alcohol consumption and in vitro fertilization: a review of the literature.",
+          "doi": "10.3109/09513590.2014.938623",
+          "pmid": "25007008",
+          "n_participants": 2908
+        },
+        {
+          "citation": "Karmon AE et al 2017 Andrology",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Male caffeine and alcohol intake in relation to semen parameters and in vitro fertilization outcomes among fertility patients.",
+          "doi": "10.1111/andr.12310",
+          "pmid": "28187518",
+          "n_participants": 171
+        }
+      ]
+    }
+  ]
+}

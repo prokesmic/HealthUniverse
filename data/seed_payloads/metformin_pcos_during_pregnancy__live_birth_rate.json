@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "metformin_pcos_during_pregnancy",
+      "name": "Metformin through early pregnancy in PCOS",
+      "kind": "drug",
+      "aliases": [
+        "metformin continued into pregnancy in PCOS",
+        "metformin in pregnant women with PCOS"
+      ],
+      "description": "Use of metformin started before conception and continued into early pregnancy in women with polycystic ovary syndrome."
+    },
+    {
+      "slug": "live_birth_rate",
+      "name": "Live birth rate",
+      "kind": "process",
+      "aliases": [
+        "chance of live birth",
+        "live birth success"
+      ],
+      "description": "The probability of delivering a live infant after a fertility treatment cycle or conception attempt."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "metformin_pcos_during_pregnancy",
+      "outcome_slug": "live_birth_rate",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The newest randomized synthesis suggests at most a modest and uncertain live-birth benefit. In a 1,708-woman 2025 meta-analysis, preconception metformin continued through the first trimester was associated with a live-birth OR of 1.24 with confidence intervals crossing the null.",
+      "population": "women with polycystic ovary syndrome treated with metformin before conception and into early pregnancy",
+      "mechanism": "Metformin can improve insulin sensitivity, lower hyperinsulinemia, and dampen androgen excess, which may help ovulation, implantation stability, and early gestational physiology. The main uncertainty is that these endocrine benefits appear more consistent for miscarriage and obstetric complication reduction than for a clear, reproducible live-birth gain.",
+      "summary": "This is a reasonable but still non-definitive PCOS pregnancy-support edge. Metformin may improve the overall reproductive path in PCOS, yet the live-birth signal specifically remains modest and inconsistent rather than decisively proven.",
+      "caveats": "The literature spans preconception use, ovulation-induction contexts, and continuation or discontinuation after pregnancy confirmation. That makes timing critical, and it would be misleading to collapse all metformin-in-PCOS evidence into a universal live-birth claim.",
+      "evidence": [
+        {
+          "citation": "CheshireJ et al 2025 Am J Obstet Gynecol",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Preconception and first-trimester metformin on pregnancy outcomes in women with polycystic ovary syndrome: a systematic review and meta-analysis.",
+          "pmid": "40473092",
+          "n_participants": 1708,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.24,
+            "ci_low": 0.59,
+            "ci_high": 2.61,
+            "comparator": "live birth with preconception metformin continued through the first trimester versus placebo or no treatment in PCOS"
+          }
+        },
+        {
+          "citation": "ZengXL et al 2016 Medicine (Baltimore)",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of metformin on pregnancy outcomes in women with polycystic ovary syndrome: A meta-analysis.",
+          "pmid": "27603343",
+          "n_participants": 1606,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 5.23,
+            "ci_low": 3.12,
+            "ci_high": 8.75,
+            "comparator": "term delivery with metformin versus placebo or no treatment in pregnant women with PCOS"
+          }
+        },
+        {
+          "citation": "Morin-PapunenL et al 2012 J Clin Endocrinol Metab",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Metformin improves pregnancy and live-birth rates in women with polycystic ovary syndrome (PCOS): a multicenter, double-blind, placebo-controlled randomized trial.",
+          "pmid": "22419702",
+          "n_participants": 320
+        }
+      ]
+    }
+  ]
+}

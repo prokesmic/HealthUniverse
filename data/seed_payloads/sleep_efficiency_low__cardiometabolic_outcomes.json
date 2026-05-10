@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "sleep_efficiency_low",
+      "outcome_slug": "cardiometabolic_outcomes",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a 602-person multiethnic cohort, poorer sleep efficiency was associated with higher insulin resistance at the upper risk tail (quantile estimate 0.20, 95% CI 0.04 to 0.36). In 829 adolescents, higher actigraphy-derived sleep efficiency tracked a lower composite metabolic-risk score and more favorable waist circumference, blood pressure, HDL, and fat-mass profiles. Even in a small but very active older cohort, lower sleep efficiency was associated with a worse metabolic syndrome risk score in men.",
+      "population": "children, adolescents, and older adults undergoing objective sleep measurement and cardiometabolic risk phenotyping",
+      "mechanism": "Low sleep efficiency usually means more fragmented and less restorative sleep. That fragmentation can amplify sympathetic tone, worsen next-day glucose handling, and disrupt blood pressure and lipid regulation, making cardiometabolic control less stable over time.",
+      "summary": "The safest claim is that low objective sleep efficiency is a harmful cardiometabolic signal rather than a benign sleep quirk. The evidence is not yet trial-grade, but across actigraphy and polysomnography cohorts, people who spend less of the night actually asleep tend to show worse insulin resistance or broader metabolic-risk profiles.",
+      "caveats": "Most evidence is observational and uses mixed cardiometabolic composites rather than hard event outcomes such as myocardial infarction. Associations also vary by age, sex, and background risk, so this edge should be read as a risk-marker relationship, not proof that improving sleep efficiency alone will automatically reverse cardiometabolic disease.",
+      "evidence": [
+        {
+          "citation": "Steven Zamora et al 2023 Sleep Adv",
+          "year": 2023,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Objective sleep and cardiometabolic biomarkers: results from the community of mine study.",
+          "doi": "10.5665/sleep.3142",
+          "pmid": "38107604",
+          "n_participants": 602
+        },
+        {
+          "citation": "Elizabeth Cespedes Feliciano et al 2018 Pediatrics",
+          "year": 2018,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Objective Sleep Characteristics and Cardiometabolic Health in Young Adolescents.",
+          "doi": "10.1542/peds.2017-4085",
+          "pmid": "29907703",
+          "n_participants": 829
+        },
+        {
+          "citation": "Kenneth Madden et al 2022 Sleep Adv",
+          "year": 2022,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Sleep efficiency and the metabolic risk score in very active older women and men.",
+          "doi": "10.1093/sleepadvances/zpac042",
+          "pmid": "37193391",
+          "n_participants": 54
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "sleep_efficiency_low",
+      "name": "Low sleep efficiency",
+      "kind": "biomarker",
+      "aliases": [
+        "poor sleep efficiency",
+        "fragmented sleep with low efficiency"
+      ],
+      "description": "A low proportion of time in bed spent actually asleep, usually reflecting fragmented or inefficient overnight sleep."
+    },
+    {
+      "slug": "cardiometabolic_outcomes",
+      "name": "Cardiometabolic outcomes",
+      "kind": "condition",
+      "aliases": [
+        "cardiometabolic risk profile",
+        "metabolic and cardiovascular risk outcomes"
+      ],
+      "description": "Composite metabolic and cardiovascular risk outcomes such as insulin resistance, blood pressure abnormalities, adverse lipids, central adiposity, or related risk scores."
+    }
+  ]
+}

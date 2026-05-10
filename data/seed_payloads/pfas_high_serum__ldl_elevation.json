@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pfas_high_serum",
+      "name": "High serum PFAS burden",
+      "kind": "environmental",
+      "aliases": [
+        "elevated serum per- and polyfluoroalkyl substances",
+        "high PFAS blood burden"
+      ],
+      "description": "Above-background serum concentrations of per- and polyfluoroalkyl substances measured in human biospecimens."
+    },
+    {
+      "slug": "ldl_elevation",
+      "name": "LDL elevation",
+      "kind": "process",
+      "aliases": [
+        "elevated LDL cholesterol",
+        "higher LDL-C"
+      ],
+      "description": "An upward shift in low-density lipoprotein cholesterol concentration associated with exposure or intervention."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pfas_high_serum",
+      "outcome_slug": "ldl_elevation",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2023 adult meta-analysis found that each interquartile-range increase in PFOA was associated with a 1.4 mg/dL rise in LDL-C (95% CI 0.6 to 2.2), while PFOS was associated with a 1.9 mg/dL rise (95% CI 0.9 to 3.0). Longitudinal follow-up in a highly exposed Italian population also showed that declines in PFAS were accompanied by decreases in LDL-C, supporting a reversible association.",
+      "population": "general adult populations with serum PFAS measurements from NHANES, exposed regional cohorts, or pooled epidemiologic studies",
+      "mechanism": "PFAS appear to interact with lipid metabolism, bile-acid handling, and hepatic transport pathways in ways that can shift LDL concentrations upward. The effect size is usually modest, but the consistency across population studies makes the lipid signal one of the more reproducible human PFAS findings.",
+      "summary": "High serum PFAS burden is consistently associated with modest LDL elevation in adults. The average shift is not large enough to explain dyslipidemia on its own, but it is reproducible enough that PFAS exposure looks more like a real lipid risk modifier than a statistical curiosity.",
+      "caveats": "Most studies are observational and compound-specific, with stronger signals for PFOA and PFOS than for every PFAS class. This edge supports PFAS as a modest dyslipidemia contributor, not as a dominant cause of high LDL in the absence of other risk factors.",
+      "evidence": [
+        {
+          "citation": "LiuB et al 2023 Environ Health Perspect",
+          "year": 2023,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Associations between Per- and Polyfluoroalkyl Substances Exposures and Blood Lipid Levels among Adults-A Meta-Analysis.",
+          "pmid": "37141244"
+        },
+        {
+          "citation": "BhagavathulaAS et al 2026 Lipids",
+          "year": 2026,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association Between Per- and Polyfluoroalkyl Substances (PFAS) Exposure and LDL Cholesterol in US Adults: Evidence From NHANES.",
+          "pmid": "40913410",
+          "n_participants": 998,
+          "effect_quant": {
+            "metric": "beta",
+            "value": 0.3,
+            "ci_low": 0.05,
+            "ci_high": 0.54,
+            "comparator": "total PFAS exposure versus LDL-C in US adults"
+          }
+        },
+        {
+          "citation": "BatzellaE et al 2024 Sci Total Environ",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Decreases in serum PFAS are associated with decreases in serum lipids: A longitudinal study on a highly exposed population.",
+          "pmid": "39270861",
+          "n_participants": 8101,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 1.4,
+            "ci_low": 0.45,
+            "ci_high": 2.37,
+            "comparator": "ln-decrease in PFOA versus percent decrease in LDL-C over follow-up"
+          }
+        }
+      ]
+    }
+  ]
+}

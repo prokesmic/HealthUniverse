@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "renal_function_decline",
+      "name": "Renal function decline",
+      "kind": "condition",
+      "aliases": [],
+      "description": "Decline in kidney function measured by eGFR reduction or chronic kidney disease progression."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "nsaids_chronic",
+      "outcome_slug": "renal_function_decline",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The clearest population-scale estimate comes from a cohort of 1,982,488 adults, where NSAID exposure tracked with incident eGFR below 60 and with 30% or greater eGFR decline; an older CKD cohort found a 26% higher odds of rapid progression in the highest cumulative exposure decile.",
+      "population": "adults with recurrent or long-term NSAID exposure, including community-dwelling older adults and patients with rheumatoid arthritis",
+      "mechanism": "NSAIDs can reduce renal prostaglandin signaling that helps preserve glomerular perfusion, so repeated exposure becomes more dangerous when kidney reserve is already limited or cumulative dose climbs.",
+      "summary": "The safest reading of this edge is not that every chronic NSAID user experiences meaningful kidney damage, but that cumulative exposure shifts risk in the wrong direction once dose gets high or baseline renal reserve is already impaired. The strongest studies point to a real harm signal with important heterogeneity by patient group and baseline kidney function.",
+      "caveats": "Some cohorts show little or no average decline in patients with preserved renal function, so this is not a simple all-users effect. Advanced baseline CKD, heavy cumulative exposure, and older age appear to be the settings where the signal is most convincing.",
+      "evidence": [
+        {
+          "citation": "Wan EYF 2021 Clin J Am Soc Nephrol",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Comparative Risks of Nonsteroidal Anti-Inflammatory Drugs on CKD.",
+          "pmid": "33910887",
+          "n_participants": 1982488
+        },
+        {
+          "citation": "Gooch K 2007 Am J Med",
+          "year": 2007,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "NSAID use and progression of chronic kidney disease.",
+          "doi": "10.1016/j.amjmed.2006.02.015",
+          "pmid": "17349452",
+          "n_participants": 10184
+        },
+        {
+          "citation": "Moller B 2015 Ann Rheum Dis",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Chronic NSAID use and long-term decline of renal function in a prospective rheumatoid arthritis cohort study.",
+          "doi": "10.1136/annrheumdis-2013-204078",
+          "pmid": "24356672",
+          "n_participants": 4101
+        }
+      ]
+    }
+  ]
+}

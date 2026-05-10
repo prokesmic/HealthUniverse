@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "internet_cbt_self_directed",
+      "name": "Self-directed internet CBT",
+      "kind": "activity",
+      "aliases": [
+        "unguided internet cognitive behavioral therapy",
+        "self-help iCBT"
+      ],
+      "description": "Internet-delivered cognitive behavioral therapy completed largely without therapist support."
+    },
+    {
+      "slug": "anxiety_severity",
+      "name": "Anxiety severity",
+      "kind": "process",
+      "aliases": [
+        "anxiety symptom burden",
+        "severity of anxiety symptoms"
+      ],
+      "description": "Severity of anxiety symptoms measured with validated self-report or clinician-rated scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "internet_cbt_self_directed",
+      "outcome_slug": "anxiety_severity",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The clearest self-directed signal comes from the 2020 Oxford trial, where an unguided social-anxiety intervention beat waitlist at 6 weeks with a modest standardized effect size of about 0.20, and the improvement remained visible at 12 months.",
+      "population": "adults and university students using unguided internet CBT programs for social anxiety or generalized anxiety symptoms",
+      "mechanism": "Self-directed iCBT aims to reduce anxiety by teaching exposure, cognitive restructuring, and worry-management skills in a scalable digital format. When people engage with the modules, even limited support can reduce avoidance and symptom escalation.",
+      "summary": "Unguided or self-directed internet CBT can lower anxiety symptoms, but the effect is usually modest rather than dramatic. The strongest evidence comes from social anxiety and student GAD settings, where benefits appear real but depend heavily on engagement and completion.",
+      "caveats": "This edge should not be overstated as equivalent to therapist-supported anxiety treatment. Dropout is common, effects vary by disorder and population, and many trials test social anxiety or student samples rather than severe, treatment-resistant anxiety disorders.",
+      "evidence": [
+        {
+          "citation": "PowellJ et al 2020 J Med Internet Res",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effectiveness and Cost-Effectiveness of a Self-Guided Internet Intervention for Social Anxiety Symptoms in a General Population Sample: Randomized Controlled Trial.",
+          "doi": "10.2196/16804",
+          "pmid": "31821151",
+          "n_participants": 2116,
+          "effect_quant": {
+            "metric": "smd",
+            "value": 0.2,
+            "comparator": "self-guided internet intervention versus waitlist on social anxiety symptom change at 6 weeks"
+          }
+        },
+        {
+          "citation": "KaehlkeF et al 2023 Depress Anxiety",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Long-Term Outcomes and Cost-Effectiveness of an Internet-Based Self-Help Intervention for Social Anxiety Disorder in University Students: Results of a Randomized Controlled Trial.",
+          "doi": "10.1155/2023/7912017",
+          "pmid": "40224582",
+          "n_participants": 200,
+          "effect_quant": {
+            "metric": "cohens_d",
+            "value": 0.59,
+            "ci_low": 0.3,
+            "ci_high": 0.87,
+            "comparator": "unguided internet and mobile self-help intervention versus waitlist on SIAS at 6-month follow-up"
+          }
+        },
+        {
+          "citation": "EylemvanBergeijkO et al 2025 JMIR Mhealth Uhealth",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cerina-Cognitive Behavioral Therapy-Based Mobile App for Managing Generalized Anxiety Disorder Symptoms Among University Students: Results From a Pilot Feasibility Randomized Controlled Trial.",
+          "doi": "10.2196/70691",
+          "pmid": "41066166",
+          "n_participants": 158,
+          "effect_quant": {
+            "metric": "cohens_d",
+            "value": -0.4,
+            "comparator": "unguided CBT app versus waitlist on GAD symptoms in intention-to-treat analysis"
+          }
+        }
+      ]
+    }
+  ]
+}

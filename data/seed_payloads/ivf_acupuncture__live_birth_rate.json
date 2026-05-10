@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ivf_acupuncture",
+      "name": "Acupuncture during IVF",
+      "kind": "activity",
+      "aliases": [
+        "acupuncture adjunct to IVF",
+        "acupuncture during IVF-ET"
+      ],
+      "description": "Acupuncture or closely related acupoint stimulation used as an adjunct around ovarian stimulation, oocyte retrieval, or embryo transfer in IVF."
+    },
+    {
+      "slug": "live_birth_rate",
+      "name": "Live birth rate",
+      "kind": "process",
+      "aliases": [
+        "probability of live birth",
+        "live birth success rate"
+      ],
+      "description": "The probability of achieving a live birth after a fertility or clinical intervention."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ivf_acupuncture",
+      "outcome_slug": "live_birth_rate",
+      "direction": "mixed",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "Older meta-analyses suggested a possible benefit, but the most credible sham-controlled modern evidence is neutral. The 2018 JAMA trial found no live birth difference between acupuncture and sham (RR 1.02, 95% CI 0.76-1.38), while older and newer meta-analyses remain heterogeneous because protocol timing, electrical parameters, and control conditions vary widely.",
+      "population": "women undergoing IVF or IVF-ET who receive acupuncture or acupuncture-like adjunctive stimulation during treatment cycles",
+      "mechanism": "Proposed mechanisms include reduced stress reactivity, altered uterine blood flow, and possible effects on endometrial receptivity or neuroendocrine signaling. Even if those pathways are plausible, the clinical signal for live birth remains inconsistent once sham controls are used.",
+      "summary": "This edge should stay mixed. Acupuncture may improve some intermediate IVF outcomes in some protocols, but the literature does not support a confident claim that it reliably raises live birth rates.",
+      "caveats": "Trials differ markedly in timing, stimulation mode, sham design, and patient selection. The most persuasive contemporary sham-controlled trial was null, which is why this edge should not inherit the optimism of older pooled analyses without heavy caveating.",
+      "evidence": [
+        {
+          "citation": "El-Toukhy T et al 2008 BJOG",
+          "year": 2008,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A systematic review and meta-analysis of acupuncture in in vitro fertilisation.",
+          "doi": "10.1111/j.1471-0528.2008.01838.x",
+          "pmid": "18652588",
+          "n_participants": 2500
+        },
+        {
+          "citation": "Smith CA et al 2018 JAMA",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Effect of Acupuncture vs Sham Acupuncture on Live Births Among Women Undergoing In Vitro Fertilization: A Randomized Clinical Trial.",
+          "doi": "10.1001/jama.2018.5336",
+          "pmid": "29800212",
+          "n_participants": 848,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.02,
+            "ci_low": 0.76,
+            "ci_high": 1.38,
+            "comparator": "live birth after acupuncture versus sham acupuncture during IVF"
+          }
+        },
+        {
+          "citation": "Xie Y et al 2025 BMJ Open",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effects of different electroacupuncture/ transcutaneous electrical acupoint stimulation parameters on the pregnancy outcomes of in vitro fertilisation-embryo transfer: a systematic review and meta-analysis.",
+          "pmid": "40780719",
+          "n_participants": 3786
+        }
+      ]
+    }
+  ]
+}

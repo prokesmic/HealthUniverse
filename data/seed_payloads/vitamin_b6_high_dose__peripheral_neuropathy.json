@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "vitamin_b6_high_dose",
+      "outcome_slug": "peripheral_neuropathy",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "population": "adults exposed to chronic pyridoxine supplements, especially prolonged doses above standard replacement ranges",
+      "mechanism": "Excess pyridoxine preferentially injures sensory neurons, likely through disruption of pyridoxal kinase-dependent pathways and downstream sensory-neuron dysfunction, which is why the clinical picture is usually a sensory neuropathy rather than generalized CNS toxicity.",
+      "summary": "This is one of the clearer supplement neurotoxicity edges. The strongest human signal comes from a large overdose case series and later pharmacovigilance data, both of which show that prolonged pyridoxine exposure can produce bilateral sensory neuropathic symptoms that often improve after withdrawal but are not always trivial.",
+      "caveats": "The older literature involves clearly supraphysiologic doses, while newer supplement-era reports raise the possibility that toxicity may emerge at lower doses in susceptible users. The evidence is not a reason to avoid physiologic replacement, but it is a reason not to normalize chronic megadose vitamin B6 use.",
+      "evidence": [
+        {
+          "citation": "Dalton K 1987 Acta Neurol Scand",
+          "year": 1987,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Characteristics of pyridoxine overdose neuropathy syndrome.",
+          "doi": "10.1111/j.1600-0404.1987.tb03536.x",
+          "pmid": "3630649",
+          "n_participants": 172
+        },
+        {
+          "citation": "van Hunsel F 2018 Drug Saf",
+          "year": 2018,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Vitamin B6 in Health Supplements and Neuropathy: Case Series Assessment of Spontaneously Reported Cases.",
+          "doi": "10.1007/s40264-018-0664-0",
+          "pmid": "29737502",
+          "n_participants": 90
+        },
+        {
+          "citation": "Albin RL 1987 Neurology",
+          "year": 1987,
+          "study_type": "case_report",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Acute sensory neuropathy-neuronopathy from pyridoxine overdose.",
+          "doi": "10.1212/WNL.37.11.1729",
+          "pmid": "2823181"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "vitamin_b6_high_dose",
+      "name": "High-dose vitamin B6 supplementation",
+      "kind": "supplement",
+      "aliases": [
+        "high-dose pyridoxine",
+        "megadose vitamin B6"
+      ],
+      "description": "Vitamin B6 or pyridoxine supplementation in doses high enough to exceed usual replacement needs, especially when taken chronically."
+    }
+  ]
+}

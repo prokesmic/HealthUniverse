@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "cadmium_chronic_exposure",
+      "outcome_slug": "kidney_function_decline",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2024 systematic review and meta-analysis of 195,015 participants found an inverse association between environmental cadmium exposure and eGFR, with stronger effects for blood cadmium than for urinary concentrations. In NHANES 2011-2012, adults with elevated blood cadmium had more than double the odds of reduced eGFR and albuminuria. In a cohort of middle-aged women, higher blood cadmium was associated with 53% higher urinary albumin excretion among those with type 2 diabetes and more than fourfold higher odds of microalbuminuria in the highest exposure quartile.",
+      "population": "adults with chronic environmental cadmium exposure, including higher-risk middle-aged women with diabetes",
+      "mechanism": "Cadmium accumulates in proximal renal tubules over years and can gradually impair filtration and albumin handling through oxidative and tubular injury. The renal signal is usually chronic and subclinical at first, which is why eGFR and albuminuria measures matter more than acute symptoms.",
+      "summary": "This edge is stronger when framed as gradual kidney decline rather than dramatic kidney failure. Across pooled data and adult cohorts, chronic cadmium exposure tracks with lower eGFR or more albuminuria often enough to treat it as a real nephrotoxic risk.",
+      "caveats": "Effect sizes are modest and vary by biomarker, with blood cadmium often showing clearer associations than urinary cadmium. Diabetes and nutritional status can also modify susceptibility, so this edge is not equally strong in every population.",
+      "evidence": [
+        {
+          "citation": "Chiara Doccioli et al 2024 Sci Total Environ",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of cadmium environmental exposure with chronic kidney disease: A systematic review and meta-analysis.",
+          "doi": "10.1016/j.scitotenv.2023.167165",
+          "pmid": "37758140",
+          "n_participants": 195015
+        },
+        {
+          "citation": "Yu-Sheng Lin et al 2014 Environ Res",
+          "year": 2014,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Low serum zinc is associated with elevated risk of cadmium nephrotoxicity.",
+          "doi": "10.1016/j.envres.2014.06.013",
+          "pmid": "25042034",
+          "n_participants": 1545
+        },
+        {
+          "citation": "Lars Barregard et al 2014 Environ Res",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Cadmium, type 2 diabetes, and kidney damage in a cohort of middle-aged women.",
+          "doi": "10.1016/j.envres.2014.09.017",
+          "pmid": "25462681",
+          "n_participants": 590
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cadmium_chronic_exposure",
+      "name": "Chronic cadmium exposure",
+      "kind": "environmental",
+      "aliases": [
+        "long-term cadmium exposure",
+        "environmental cadmium burden"
+      ],
+      "description": "Chronic exposure to cadmium from food, smoking, or environmental sources over years."
+    }
+  ]
+}

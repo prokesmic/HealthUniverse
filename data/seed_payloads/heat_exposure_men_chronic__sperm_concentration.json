@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "heat_exposure_men_chronic",
+      "name": "Chronic heat exposure in men",
+      "kind": "environmental",
+      "aliases": [
+        "repeated testicular heat exposure",
+        "chronic scrotal hyperthermia"
+      ],
+      "description": "Repeated occupational, environmental, or recreational heat exposure in men over weeks or months."
+    },
+    {
+      "slug": "sperm_concentration",
+      "name": "Sperm concentration",
+      "kind": "biomarker",
+      "aliases": [
+        "sperm count concentration",
+        "sperm density"
+      ],
+      "description": "The concentration of spermatozoa in semen, usually expressed as millions per milliliter."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "heat_exposure_men_chronic",
+      "outcome_slug": "sperm_concentration",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The clearest pooled estimate comes from the 2022 meta-analysis, where high ambient temperature exposure was associated with substantially lower sperm concentration (SMD -1.07, 95% CI -1.42 to -0.72). A 2024 multi-center analysis of 33,234 men also found hot-season heat anomalies negatively associated with sperm concentration, and the classic sauna-intervention study showed marked but reversible suppression of spermatogenesis after repeated sauna exposure.",
+      "population": "men exposed chronically to high ambient, occupational, or recreational heat while of reproductive age",
+      "mechanism": "Spermatogenesis depends on the testes staying cooler than core body temperature. Repeated heat exposure can disrupt Sertoli-cell support, mitochondrial function, chromatin packaging, and germ-cell survival, which makes reduced sperm concentration biologically plausible rather than merely correlational.",
+      "summary": "This is a real and fairly intuitive male-fertility harm edge. The literature is not perfect on exposure definition, but across meta-analytic, cohort, and intervention-style data, chronic heat exposure consistently pushes sperm concentration in the wrong direction.",
+      "caveats": "The magnitude varies by source and timing of heat exposure, acclimatization, and whether the exposure is occupational, environmental, or voluntary sauna use. Some heat-related impairments are reversible, so this should be read as a modifiable harm signal rather than permanent infertility.",
+      "evidence": [
+        {
+          "citation": "Durairajanayagam D et al 2022 Iran J Public Health",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The Impact of High Ambient Temperature on Human Sperm Parameters: A Meta-Analysis.",
+          "doi": "10.18502/ijph.v51i4.9232",
+          "pmid": "35936544",
+          "n_participants": 356,
+          "effect_quant": {
+            "metric": "SMD",
+            "value": -1.07,
+            "ci_low": -1.42,
+            "ci_high": -0.72,
+            "comparator": "high ambient temperature exposure versus non-exposure for sperm concentration"
+          }
+        },
+        {
+          "citation": "WuY et al 2024 Heliyon",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Effects of temperature anomaly on sperm quality: A multi-center study of 33,234 men.",
+          "doi": "10.1016/j.heliyon.2024.e26765",
+          "pmid": "38434420",
+          "n_participants": 33234
+        },
+        {
+          "citation": "Garolla A et al 2013 Hum Reprod",
+          "year": 2013,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Seminal and molecular evidence that sauna exposure affects human spermatogenesis.",
+          "doi": "10.1093/humrep/det020",
+          "pmid": "23411620",
+          "n_participants": 10
+        }
+      ]
+    }
+  ]
+}

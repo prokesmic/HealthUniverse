@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "transcranial_dcs",
+      "name": "Transcranial direct current stimulation",
+      "kind": "activity",
+      "aliases": [
+        "tDCS",
+        "noninvasive direct current brain stimulation"
+      ],
+      "description": "A noninvasive brain stimulation technique that applies low-intensity direct current through scalp electrodes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "transcranial_dcs",
+      "outcome_slug": "treatment_resistant_depression",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The signal is directionally positive but not decisive. Recent tDCS syntheses in depressive episodes show modest symptom reductions versus sham, yet the same reviews often fail to show consistent remission gains and remain sensitive to trial design and sample differences.",
+      "population": "adults with major depressive episodes, including treatment-resistant or otherwise difficult-to-treat depressive samples",
+      "mechanism": "tDCS is intended to modulate cortical excitability and frontolimbic network function, especially around the dorsolateral prefrontal cortex. That may help some depressive symptoms, but effects appear heterogeneous and may depend heavily on montage, concomitant treatment, and baseline illness characteristics.",
+      "summary": "tDCS for difficult-to-treat depression remains a cautious mixed edge. Across meta-analyses it tends to improve depressive symptom scores modestly, but those benefits do not consistently translate into clear remission or durable clinical response, which keeps confidence below the strongest neuromodulation interventions.",
+      "caveats": "Many pooled analyses combine unipolar and bipolar depression or mix treatment-resistant and non-resistant samples. Sham response, small-study effects, and protocol heterogeneity still make the real-world size of benefit hard to pin down.",
+      "evidence": [
+        {
+          "citation": "MutzJ et al 2018 Neurosci Biobehav Rev",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and acceptability of non-invasive brain stimulation for the treatment of adult unipolar and bipolar depression: A systematic review and meta-analysis of randomised sham-controlled trials.",
+          "doi": "10.1016/j.neubiorev.2018.05.015",
+          "pmid": "29763711",
+          "n_participants": 3058,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 4.17,
+            "ci_low": 2.25,
+            "ci_high": 7.74,
+            "comparator": "active tDCS versus sham on response rates across depressive episodes"
+          }
+        },
+        {
+          "citation": "RazzaLB et al 2026 Br J Psychiatry",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Efficacy of transcranial direct current stimulation for depression: individual patient data meta-analysis.",
+          "doi": "10.1192/bjp.2025.10511",
+          "pmid": "41498282",
+          "n_participants": 1246,
+          "effect_quant": {
+            "metric": "hedges_d",
+            "value": 0.24,
+            "ci_low": 0.11,
+            "ci_high": 0.35,
+            "comparator": "active versus sham tDCS on continuous depressive symptom improvement"
+          }
+        },
+        {
+          "citation": "HampseyE et al 2026 J Affect Disord",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "A systematic review of transcranial electrical stimulation and meta-analysis of transcranial direct current stimulation RCTs in unipolar and bipolar depression.",
+          "doi": "10.1016/j.jad.2025.121009",
+          "pmid": "41520839",
+          "n_participants": 1833,
+          "effect_quant": {
+            "metric": "hedges_g",
+            "value": 0.387,
+            "ci_low": 0.192,
+            "ci_high": 0.582,
+            "comparator": "active tDCS versus sham on change in depression severity"
+          }
+        }
+      ]
+    }
+  ]
+}
