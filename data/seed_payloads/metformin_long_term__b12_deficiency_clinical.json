@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "metformin_long_term",
+      "outcome_slug": "b12_deficiency_clinical",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The best meta-analysis found metformin associated with higher vitamin B12 deficiency odds (OR 2.45, 95% CI 1.74-3.44), and dose-response patterns in cohort work support a clinically meaningful rather than trivial deficit signal.",
+      "population": "adults with type 2 diabetes or long-term metformin exposure",
+      "mechanism": "Metformin can impair calcium-dependent uptake of the intrinsic factor-vitamin B12 complex in the terminal ileum, so risk rises with longer duration and higher dose rather than appearing as an immediate short-course toxicity.",
+      "summary": "The cleanest anchor is the 2015 meta-analysis, which lines up with later observational work showing more deficiency in chronically exposed users. This is one of the more actionable iatrogenic edges because the harm is monitorable and usually manageable without discarding metformin's metabolic benefit.",
+      "caveats": "Definitions of deficiency vary across studies, and some cohorts capture biochemical deficiency better than anemia or neuropathy. The evidence is stronger for lower serum B12 and diagnosed deficiency than for downstream clinical complications in every patient.",
+      "evidence": [
+        {
+          "citation": "Niafar M 2015 Intern Emerg Med",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The role of metformin on vitamin B12 deficiency: a meta-analysis review.",
+          "doi": "10.1007/s11739-014-1157-5",
+          "pmid": "25502588",
+          "n_participants": 8089
+        },
+        {
+          "citation": "DeJager J 2013 Neth J Med",
+          "year": 2013,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Vitamin B12 deficiency and the lack of its consequences in type 2 diabetes patients using metformin.",
+          "doi": "",
+          "pmid": "24038568",
+          "n_participants": 298
+        },
+        {
+          "citation": "Kancherla V 2017 J Am Geriatr Soc",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Long-term Metformin Therapy and Monitoring for Vitamin B12 Deficiency Among Older Veterans.",
+          "doi": "10.1111/jgs.14761",
+          "pmid": "28182265",
+          "n_participants": 16945
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "metformin_long_term",
+      "name": "Long-term metformin therapy",
+      "kind": "drug",
+      "aliases": [
+        "chronic metformin use"
+      ],
+      "description": "Sustained metformin exposure over months to years, typically in ongoing treatment for type 2 diabetes or related insulin-resistant states."
+    },
+    {
+      "slug": "b12_deficiency_clinical",
+      "name": "Clinical vitamin B12 deficiency",
+      "kind": "condition",
+      "aliases": [
+        "B12 deficiency requiring clinical recognition"
+      ],
+      "description": "Vitamin B12 deficiency defined biochemically or clinically at a level relevant to diagnosis, treatment, or monitoring."
+    }
+  ]
+}

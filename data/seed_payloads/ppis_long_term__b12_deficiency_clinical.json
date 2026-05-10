@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ppis_long_term",
+      "outcome_slug": "b12_deficiency_clinical",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The strongest pooled estimate found higher odds of vitamin B12 deficiency in long-term PPI users versus non-users (OR 1.42, 95% CI 1.16-1.73), while one large community case-control study found a larger association after two or more years of exposure (OR 1.65, 95% CI 1.58-1.73).",
+      "population": "adults with long-term proton pump inhibitor exposure",
+      "mechanism": "Long-term acid suppression can impair liberation of protein-bound vitamin B12 from food in the stomach, which makes deficiency more plausible after sustained exposure than after short treatment courses.",
+      "summary": "The strongest evidence points to a real but modest deficiency signal with long-term PPI use, not a dramatic universal effect. The edge is best framed as a monitoring issue in people with prolonged exposure or multiple deficiency risks rather than as a reason to treat all PPI use as unsafe.",
+      "caveats": "Heterogeneity is substantial and not every cohort finds a clear association, especially once analyses move from biochemical depletion to diagnosed deficiency. Underlying illness, diet, and concurrent medications can confound the signal.",
+      "evidence": [
+        {
+          "citation": "Choudhury A 2023 Expert Rev Gastroenterol Hepatol",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Vitamin B12 deficiency and use of proton pump inhibitors: a systematic review and meta-analysis.",
+          "doi": "10.1080/17474124.2023.2204229",
+          "pmid": "37060552",
+          "n_participants": 30922
+        },
+        {
+          "citation": "Lam J 2013 JAMA",
+          "year": 2013,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Proton pump inhibitor and histamine 2 receptor antagonist use and vitamin B12 deficiency.",
+          "doi": "10.1001/jama.2013.280490",
+          "pmid": "24327038",
+          "n_participants": 210155
+        },
+        {
+          "citation": "Dinesh S 2023 J Nutr",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Association between Acid-Lowering Agents, Metformin, and Vitamin B12 among Boston-Area Puerto Ricans.",
+          "doi": "10.1016/j.tjnut.2023.05.031",
+          "pmid": "37302714",
+          "n_participants": 1428
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ppis_long_term",
+      "name": "Long-term proton pump inhibitor therapy",
+      "kind": "drug",
+      "aliases": [
+        "chronic PPI use"
+      ],
+      "description": "Sustained proton pump inhibitor exposure over months to years, typically for chronic acid suppression."
+    },
+    {
+      "slug": "b12_deficiency_clinical",
+      "name": "Clinical vitamin B12 deficiency",
+      "kind": "condition",
+      "aliases": [
+        "B12 deficiency requiring clinical recognition"
+      ],
+      "description": "Vitamin B12 deficiency defined biochemically or clinically at a level relevant to diagnosis, treatment, or monitoring."
+    }
+  ]
+}

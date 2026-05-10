@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "statins_long_term",
+      "outcome_slug": "new_onset_diabetes_risk",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "The best randomised evidence shows a 10% proportional increase in new-onset diabetes with low-to-moderate intensity statins and a 36% increase with high-intensity therapy, while a primary-prevention network meta-analysis found no clear diabetes excess overall.",
+      "population": "adults using statins long term for primary or secondary cardiovascular prevention",
+      "mechanism": "The leading explanation is a modest adverse shift in glucose homeostasis, probably through small effects on insulin sensitivity and beta-cell function that become more visible with longer exposure or higher-intensity therapy.",
+      "summary": "The strongest evidence comes from the CTT individual-participant meta-analysis, which makes the diabetes signal difficult to dismiss as simple observational confounding. The practical read is that long-term statin therapy carries a small but real diabetes tradeoff, and that the tradeoff is larger with more intensive regimens.",
+      "caveats": "Magnitude depends on baseline diabetes risk, statin intensity, and how diabetes is ascertained. Some primary-prevention syntheses do not find a clear excess, so this edge is better read as a small average harm than as a uniform risk across every statin user.",
+      "evidence": [
+        {
+          "citation": "CTT Collaboration 2024 Lancet Diabetes Endocrinol",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effects of statin therapy on diagnoses of new-onset diabetes and worsening glycaemia in large-scale randomised blinded statin trials: an individual participant data meta-analysis.",
+          "doi": "10.1016/S2213-8587(24)00040-8",
+          "pmid": "38554713",
+          "n_participants": 154664
+        },
+        {
+          "citation": "Masson W 2024 Acta Diabetol",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Statins and new-onset diabetes in primary prevention setting: an updated meta-analysis stratified by baseline diabetes risk.",
+          "doi": "10.1007/s00592-023-02205-w",
+          "pmid": "37934231",
+          "n_participants": 70453
+        },
+        {
+          "citation": "Cai T 2021 BMJ",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Associations between statins and adverse events in primary prevention of cardiovascular disease: systematic review with pairwise, network, and dose-response meta-analyses.",
+          "doi": "10.1136/bmj.n1537",
+          "pmid": "34261627",
+          "n_participants": 120456
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "new_onset_diabetes_risk",
+      "name": "New-onset diabetes risk",
+      "kind": "condition",
+      "aliases": [
+        "incident diabetes",
+        "newly diagnosed diabetes"
+      ],
+      "description": "Risk of developing diabetes after treatment exposure in people without diabetes at baseline."
+    }
+  ]
+}
