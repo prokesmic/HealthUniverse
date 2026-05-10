@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "community_health_worker_intervention",
+      "outcome_slug": "chronic_disease_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Community health worker programs produce modest but consistent chronic-disease gains: a meta-analysis of longer diabetes trials found an A1c effect size of 0.21 (95% CI 0.11-0.32), a pooled analysis of three randomized trials reduced total hospital days to 66% of control levels (IRR 0.66, P<.0001), and a Latino diabetes trial lowered HbA1c by 0.51% (95% CI -0.94% to -0.08%) versus enhanced usual care.",
+      "population": "patients with chronic disease or multimorbidity receiving support from community health workers",
+      "mechanism": "Community health workers help bridge the gap between clinic plans and everyday life by reinforcing self-management, navigating services, addressing social barriers, and maintaining contact in ways many formal health systems cannot. That tends to yield modest but meaningful improvements in disease control and care continuity, especially in higher-risk or underserved groups.",
+      "summary": "The overall picture is protective. Community health worker interventions do not transform every chronic-disease metric, but they repeatedly improve glycemic control, reduce hospitalization burden, and help vulnerable patients maintain better disease-management trajectories than usual care alone.",
+      "caveats": "Effects vary by disease, baseline risk, and how intensively the community health workers are integrated with clinical teams. The intervention seems strongest where CHWs address both social barriers and disease self-management, rather than acting only as light-touch educators.",
+      "evidence": [
+        {
+          "citation": "Palmas W et al 2015 J Gen Intern Med",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Community Health Worker Interventions to Improve Glycemic Control in People with Diabetes: A Systematic Review and Meta-Analysis.",
+          "pmid": "25735938",
+          "n_participants": 13
+        },
+        {
+          "citation": "Vasan A et al 2020 Health Serv Res",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of a standardized community health worker intervention on hospitalization among disadvantaged patients with multiple chronic conditions: A pooled analysis of three clinical trials.",
+          "pmid": "32643163",
+          "n_participants": 1340
+        },
+        {
+          "citation": "Carrasquillo O et al 2017 JAMA Intern Med",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of a Community Health Worker Intervention Among Latinos With Poorly Controlled Type 2 Diabetes: The Miami Healthy Heart Initiative Randomized Clinical Trial.",
+          "pmid": "28459925",
+          "n_participants": 300
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "community_health_worker_intervention",
+      "name": "Community health worker intervention",
+      "kind": "behavior",
+      "aliases": [
+        "CHW-led support program",
+        "community health worker care model"
+      ],
+      "description": "A chronic-disease support intervention delivered or reinforced by trained community health workers."
+    },
+    {
+      "slug": "chronic_disease_outcomes",
+      "name": "Chronic disease outcomes",
+      "kind": "process",
+      "aliases": [
+        "chronic condition outcomes",
+        "disease-management outcomes"
+      ],
+      "description": "Clinical or utilization outcomes related to chronic disease control, such as glycemic control, hospitalization, blood pressure, or related management endpoints."
+    }
+  ]
+}

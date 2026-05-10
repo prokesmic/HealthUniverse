@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "digital_therapeutics_prescribed",
+      "outcome_slug": "outcomes_disease_specific",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Evidence for prescribed or software-based digital therapeutics is uneven across diseases: in oral anticoagulation management, a 10-trial meta-analysis involving 7237 patients found less major bleeding but no clear mortality or thromboembolic benefit, while disease-specific trials in substance use disorder and cancer distress showed higher abstinence and retention (40.3% vs 17.6% abstinence; 76.2% vs 63.2% retention) and modest reductions in distress, depression, anxiety, and fatigue.",
+      "population": "patients prescribed or formally assigned software-based digital therapeutics for disease management",
+      "mechanism": "Digital therapeutics can deliver condition-specific behavioral treatment, monitoring, prompts, and reinforcement with far higher frequency than clinic visits alone. That can improve engagement and some intermediate disease outcomes, but the clinical payoff still varies sharply by condition, comparator, and how rigorously each product has been tested.",
+      "summary": "The fairest overall reading is mixed but promising. Some prescribed digital therapeutics do improve meaningful disease-specific outcomes, especially when they deliver structured behavioral therapy or monitoring, yet broader evidence reviews still show that outcome gains are not universal and that many products have stronger signals for process or safety outcomes than for hard clinical endpoints.",
+      "caveats": "This category spans very different diseases, regulatory pathways, and study designs, so one strong digital therapeutic should not be generalized to the whole class. The edge is intentionally mixed because the best-tested products show benefit in some domains, while broader evidence syntheses still find limited or inconsistent outcome improvements for others.",
+      "evidence": [
+        {
+          "citation": "Guo J et al 2026 Mayo Clin Proc Digit Health",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "The Effectiveness of Digital Therapeutics Intervention in Oral Anticoagulation Management: A Systematic Review and Meta-analysis.",
+          "pmid": "41767128",
+          "n_participants": 7237
+        },
+        {
+          "citation": "Maricich YA et al 2022 Subst Abus",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Safety and efficacy of a digital therapeutic for substance use disorder: Secondary analysis of data from a NIDA clinical trials network study.",
+          "pmid": "35420979",
+          "n_participants": 399
+        },
+        {
+          "citation": "Springer F et al 2024 J Med Internet Res",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Digital Therapeutic (Mika) Targeting Distress in Patients With Cancer: Results From a Nationwide Waitlist Randomized Controlled Trial.",
+          "pmid": "38663007",
+          "n_participants": 218
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "digital_therapeutics_prescribed",
+      "name": "Prescribed digital therapeutics",
+      "kind": "behavior",
+      "aliases": [
+        "prescription digital therapeutics",
+        "software-based prescribed treatment"
+      ],
+      "description": "Software-based therapeutic interventions that are formally prescribed or assigned to treat or manage specific conditions."
+    },
+    {
+      "slug": "outcomes_disease_specific",
+      "name": "Disease-specific outcomes",
+      "kind": "process",
+      "aliases": [
+        "condition-specific outcomes",
+        "target-condition outcomes"
+      ],
+      "description": "Clinical or patient-reported outcomes tied to the specific disease being treated, such as abstinence, distress reduction, symptom scores, or disease-control metrics."
+    }
+  ]
+}

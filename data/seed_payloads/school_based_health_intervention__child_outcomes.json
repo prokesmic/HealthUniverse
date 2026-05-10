@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "school_based_health_intervention",
+      "outcome_slug": "child_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "School-based interventions tend to produce small average child-health gains: a meta-analysis of adolescent BMI programs found a pooled BMI z-score improvement of -0.06 (95% CI -0.10 to -0.03), a meta-analysis of accelerometer-based school programs found lower sedentary time (g=-0.08, 95% CI -0.12 to -0.03) but no overall MVPA gain, and a middle-school nutrition and exercise trial reduced BMI percentile among students who were obese at baseline by 2.33 percentile points.",
+      "population": "children and adolescents exposed to structured school-based health interventions",
+      "mechanism": "Schools can influence child health through repeated exposure, peer norms, staff reinforcement, environmental changes, and curriculum-linked behavior practice. Those levers usually create modest average improvements rather than dramatic ones, but they can still matter at population scale and may be stronger in higher-risk subgroups.",
+      "summary": "The overall direction is positive but modest. School-based health interventions can improve some child outcomes, especially BMI trajectory, sedentary time, and selected diet or activity patterns, although average effects are usually small and not every trial shows a broad benefit across all endpoints.",
+      "caveats": "This edge combines different child outcomes, including anthropometric and activity-related measures, so some inconsistency is expected. Interventions seem most successful when they are multi-component and modify both the school environment and student behavior rather than relying on brief health education alone.",
+      "evidence": [
+        {
+          "citation": "Jacob CM et al 2021 Int J Behav Nutr Phys Act",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A systematic review and meta-analysis of school-based interventions with health education to reduce body mass index in adolescents aged 10 to 19 years.",
+          "pmid": "33397403",
+          "n_participants": 33
+        },
+        {
+          "citation": "Rodrigo-Sanjoaquin J et al 2022 Public Health",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Effectiveness of school-based interventions targeting physical activity and sedentary time among children: a systematic review and meta-analysis of accelerometer-assessed controlled trials.",
+          "pmid": "36413822",
+          "n_participants": 19487
+        },
+        {
+          "citation": "Bogart LM et al 2016 Pediatrics",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Two-Year BMI Outcomes From a School-Based Intervention for Nutrition and Exercise: A Randomized Trial.",
+          "pmid": "27244788",
+          "n_participants": 1368
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "school_based_health_intervention",
+      "name": "School-based health intervention",
+      "kind": "behavior",
+      "aliases": [
+        "school health program",
+        "school-based health promotion intervention"
+      ],
+      "description": "A structured health intervention delivered in or through schools to improve child or adolescent health behaviors and outcomes."
+    },
+    {
+      "slug": "child_outcomes",
+      "name": "Child outcomes",
+      "kind": "process",
+      "aliases": [
+        "child health outcomes",
+        "adolescent health outcomes"
+      ],
+      "description": "Measured health or development outcomes in children or adolescents, such as BMI, activity patterns, mental health, or related school-targeted endpoints."
+    }
+  ]
+}
