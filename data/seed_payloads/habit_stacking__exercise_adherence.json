@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "habit_stacking",
+      "outcome_slug": "exercise_adherence",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "Direct evidence is sparse. In one activity-tracker trial, adding motivational interviewing and habit education produced no overall between-group differences in primary activity outcomes, although habit strength correlated with steps per day during (r = 0.30) and after (r = 0.27) the intervention; in a micro-randomized habit-formation study, prompts and cues plus commitment showed only tentative benefits.",
+      "population": "adults attempting to maintain walking or exercise routines in daily life",
+      "mechanism": "Habit stacking tries to anchor exercise to an existing routine cue so that the behavior is triggered with less conscious effort. In theory this should improve adherence by reducing friction and decision fatigue, but success depends on cue stability, motivation, and whether the target behavior is simple enough to repeat consistently.",
+      "summary": "The evidence for habit stacking as a distinct lever for exercise adherence is promising but early and inconsistent. Some studies suggest cue-linked repetition and commitment help routine formation, yet clean between-group improvements in sustained adherence are not robust across trials.",
+      "caveats": "This edge is deliberately marked as early-stage because much of the literature measures habit formation or physical activity rather than adherence itself, and several trials bundle habit education with other behavior-change elements. The strongest direct studies are small and may not generalize well to structured exercise programs.",
+      "evidence": [
+        {
+          "citation": "Ellingson LD et al 2019 JMIR Mhealth Uhealth",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Evaluating Motivational Interviewing and Habit Formation to Enhance the Effect of Activity Trackers on Healthy Adults' Activity Levels: Randomized Intervention. Primary activity outcomes did not differ overall, but stronger habits correlated with more steps.",
+          "pmid": "30762582",
+          "n_participants": 91
+        },
+        {
+          "citation": "Baretta D et al 2025 Appl Psychol Health Well Being",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "HabitWalk: A micro-randomized trial to understand and promote habit formation in physical activity.",
+          "pmid": "39387277",
+          "n_participants": 24
+        },
+        {
+          "citation": "Robinson SA et al 2019 Psychol Health",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Time for change: using implementation intentions to promote physical activity in a randomised pilot trial. Planning steps around existing routines improved activity and time-related exercise self-efficacy.",
+          "pmid": "30596272",
+          "n_participants": 63
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "habit_stacking",
+      "name": "Habit stacking",
+      "kind": "behavior",
+      "aliases": [
+        "routine-linked habit formation",
+        "cue-based behavior stacking"
+      ],
+      "description": "A behavior-change strategy that attaches a new target action to an existing routine cue so the new action becomes easier to repeat automatically."
+    },
+    {
+      "slug": "exercise_adherence",
+      "name": "Exercise adherence",
+      "kind": "process",
+      "aliases": [
+        "exercise routine adherence",
+        "physical activity follow-through"
+      ],
+      "description": "The degree to which a person consistently follows a planned exercise or physical activity regimen over time."
+    }
+  ]
+}
