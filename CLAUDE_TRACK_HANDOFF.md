@@ -1,36 +1,37 @@
-# Claude Handoff: Track 5 Complete
+# Claude Handoff: Track 9 Complete
 
 Repo: `https://github.com/prokesmic/HealthUniverse`
 
 Primary branch to inspect:
-- `feat/codex-seed-batch-7`
+- `feat/codex-seed-batch-11`
 
-Latest completion commit:
-- `a6a1eed` — `Track 5: 150/150 — maternal programming and ACE burden finale`
+Payload completion commit:
+- `9816f5f` - `Track 9: 150/150 — pregnancy and infancy outcomes`
 
 ## Status
 
-Track 5 is fully complete on `feat/codex-seed-batch-7`.
+Track 9 is fully complete on `feat/codex-seed-batch-11`.
 
 Completed scope versus `origin/main`:
 - `150` new payload files under `data/seed_payloads`
-- all manifest pairs from `CODEX_BRIEF_V6_AUTONOMOUS.md` are covered
+- all manifest pairs from `CODEX_BRIEF_V11_AUTONOMOUS.md` are covered
+- topic split is `30` pairs each for cancer screening, drug specifics, cardiovascular subtypes, sleep apnea subtypes, and endocrine deep dive
 
 Latest known clean state:
-- per-file PMID verification was run for every newly added payload
+- `python3 seed_from_payloads.py validate --verify` -> `1520 ok, 0 failed, 1520 total`
 - `python3 seed_from_payloads.py ingest --dry-run` -> `errors: []`
 
 ## What Claude should ingest
 
-Use this branch as the authoritative finished Track 5 seed set.
+Use this branch as the authoritative finished Track 9 seed set.
 
 Main content to ingest:
-- every file in `data/seed_payloads` that exists on `feat/codex-seed-batch-7` but not on `origin/main`
+- every file in `data/seed_payloads` that exists on `feat/codex-seed-batch-11` but not on `origin/main`
 
 Quick way to confirm the count locally:
 
 ```bash
-git diff --name-only origin/main...feat/codex-seed-batch-7 -- data/seed_payloads | wc -l
+git diff --name-only origin/main...feat/codex-seed-batch-11 -- data/seed_payloads | wc -l
 ```
 
 Expected result:
@@ -41,40 +42,49 @@ Expected result:
 
 ## Validation and quality rules used
 
-These rules were enforced throughout the batch and are important context if you continue adjacent work:
+These rules were enforced throughout the batch and still matter if you continue adjacent work:
 
 - Do not run `seed.py`
 - Do not run `adjudicate.py`
 - Never fabricate PMIDs
 - Every `meta_analysis`, `systematic_review`, `rct`, `cohort`, `case_control`, and `cross_sectional` evidence row must include `n_participants`
-- Include `effect_quant` whenever the source paper reports a pooled estimate
+- Include `effect_quant` whenever the cited source reports a pooled estimate
 - Keep `python3 seed_from_payloads.py validate <path> --verify` passing
 - Keep `python3 seed_from_payloads.py ingest --dry-run` clean
 - Do not stage or remove `data/health.db`
 
-## Useful validator quirks
+## Track 9 branch summary
 
-- Citation first token cannot look like a single-letter placeholder
-- `umbrella_review` is not a valid `study_type`; use `systematic_review`
-- If a factor is rejected by the validator path but is intentionally new for the edge, declaring it in `new_entities` is acceptable
-- Performance-style or process-style outcomes often fit best with `direction: "protective"` and entity `kind: "process"`
+- `150` payloads differ versus `origin/main`
+- `150` payload edges include an edge-level `effect_quant`
+- `0` payload edges use `direction: "contested"` on this branch
+- `287` `new_entities` blocks were introduced across the branch
+
+Five random verification rows from the finished branch:
+
+- `light_therapy_advanced_sleep_phase__sleep_timing.json` - `light_therapy_advanced_sleep_phase` -> `sleep_timing` - PMID `15602801` - `2003` - `PalmerCR et al 2003 Behav Sleep Med`
+- `orlistat_pcos__metabolic_outcomes.json` - `orlistat_pcos` -> `metabolic_outcomes` - PMID `21484319` - `2011` - `KumarP et al 2011 Reprod Biomed Online`
+- `inositol_pcos_ovulation__ovulation_rate.json` - `inositol_pcos_ovulation` -> `ovulation_rate` - PMID `31298405` - `2019` - `NordioM et al 2019 Int J Endocrinol`
+- `flexible_sigmoidoscopy__colorectal_cancer_mortality.json` - `flexible_sigmoidoscopy` -> `colorectal_cancer_mortality` - PMID `27133893` - `2016` - `Fitzpatrick-Lewis D et al 2016 Clin Colorectal Cancer`
+- `colonoscopy_screening_50_75__colorectal_cancer_mortality.json` - `colonoscopy_screening_50_75` -> `colorectal_cancer_mortality` - PMID `31578199` - `2019` - `Jodal HC et al 2019 BMJ Open`
 
 ## Final batch added at 150/150
 
 These five files were added in the completion commit:
 
-- `data/seed_payloads/vegan_diet_during_pregnancy__infant_growth_outcomes.json`
-- `data/seed_payloads/maternal_obesity__child_obesity_risk.json`
-- `data/seed_payloads/maternal_gestational_diabetes__child_obesity_long_term.json`
-- `data/seed_payloads/aces_4plus__adult_mental_health_outcomes.json`
-- `data/seed_payloads/aces_4plus__adult_cardiovascular_disease.json`
+- `data/seed_payloads/ssri_during_pregnancy__child_outcomes.json`
+- `data/seed_payloads/valproate_during_pregnancy__child_neurodevelopment.json`
+- `data/seed_payloads/lithium_during_pregnancy__cardiac_anomaly_offspring.json`
+- `data/seed_payloads/lamotrigine_during_pregnancy__child_outcomes.json`
+- `data/seed_payloads/acid_suppression_in_infancy__allergy_risk_later.json`
 
 ## Commands to verify locally
 
 From repo root:
 
 ```bash
-git checkout feat/codex-seed-batch-7
+git checkout feat/codex-seed-batch-11
+python3 seed_from_payloads.py validate --verify
 python3 seed_from_payloads.py ingest --dry-run
 ```
 
@@ -87,11 +97,11 @@ python3 seed_from_payloads.py validate data/seed_payloads/<file>.json --verify
 ## Paste-ready prompt for Claude
 
 ```text
-Inspect https://github.com/prokesmic/HealthUniverse on branch feat/codex-seed-batch-7.
+Inspect https://github.com/prokesmic/HealthUniverse on branch feat/codex-seed-batch-11.
 
 Read CLAUDE_TRACK_HANDOFF.md first.
 
-Treat feat/codex-seed-batch-7 as the authoritative completed Track 5 branch.
+Treat feat/codex-seed-batch-11 as the authoritative completed Track 9 branch.
 Ingest all 150 payload files added under data/seed_payloads versus origin/main.
 
 Important constraints that governed this branch:
@@ -102,7 +112,8 @@ Important constraints that governed this branch:
 - include effect_quant whenever the cited source reports a pooled estimate
 - data/health.db is scratch and should be ignored
 
-Latest completion commit: a6a1eed
+Payload completion commit: 9816f5f
 Expected diff count versus main under data/seed_payloads: 150
+Latest validator state: python3 seed_from_payloads.py validate --verify -> 1520 ok, 0 failed, 1520 total
 Latest dry-run state: python3 seed_from_payloads.py ingest --dry-run -> errors: []
 ```
