@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "helicobacter_pylori_eradication",
+      "outcome_slug": "gastric_cancer_prevention",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Across randomized and pooled evidence, eradication of H. pylori consistently lowers future gastric cancer incidence, with the strongest benefit when treatment occurs before advanced premalignant change and with some meta-analyses also showing lower gastric-cancer mortality.",
+      "population": "H. pylori-positive adults, particularly in higher-incidence populations, treated with eradication therapy for primary gastric cancer prevention",
+      "mechanism": "Eradication removes the chronic inflammatory and mutagenic stimulus driving the Correa cascade from chronic gastritis toward atrophy, intestinal metaplasia, dysplasia, and eventually gastric adenocarcinoma.",
+      "summary": "This is one of the cleaner prevention edges in gastrointestinal oncology. The protective signal is reproducible across randomized trials and meta-analyses, even though the magnitude varies and late-stage premalignant lesions appear less modifiable than earlier disease.",
+      "caveats": "Most randomized evidence comes from East Asian populations with relatively high baseline gastric cancer risk, so absolute benefit will vary by region and baseline incidence. The preventive effect is smaller once intestinal metaplasia or dysplasia is already established.",
+      "evidence": [
+        {
+          "citation": "Ford AC et al 2020 Gut",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Helicobacter pylori eradication therapy to prevent gastric cancer: systematic review and meta-analysis.",
+          "pmid": "32205420",
+          "n_participants": 8323,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.54,
+            "ci_low": 0.4,
+            "ci_high": 0.72,
+            "comparator": "gastric cancer incidence after eradication therapy versus placebo or no treatment in healthy infected adults"
+          }
+        },
+        {
+          "citation": "Rokkas T et al 2017 Ann Gastroenterol",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A systematic review and meta-analysis of the role of Helicobacter pylori eradication in preventing gastric cancer.",
+          "pmid": "28655977",
+          "n_participants": 52363,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.56,
+            "ci_low": 0.48,
+            "ci_high": 0.66,
+            "comparator": "gastric cancer risk in successfully eradicated patients versus controls"
+          }
+        },
+        {
+          "citation": "Fuccio L et al 2009 Ann Intern Med",
+          "year": 2009,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Meta-analysis: can Helicobacter pylori eradication treatment reduce the risk for gastric cancer?",
+          "pmid": "19620164",
+          "n_participants": 6695,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.65,
+            "ci_low": 0.43,
+            "ci_high": 0.98,
+            "comparator": "gastric cancer incidence after H. pylori eradication treatment versus no treatment"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "helicobacter_pylori_eradication",
+      "name": "Helicobacter pylori eradication",
+      "kind": "activity",
+      "aliases": [
+        "H. pylori treatment",
+        "eradication therapy for Helicobacter pylori"
+      ],
+      "description": "Antimicrobial therapy intended to eradicate Helicobacter pylori infection."
+    },
+    {
+      "slug": "gastric_cancer_prevention",
+      "name": "Gastric cancer prevention",
+      "kind": "condition",
+      "aliases": [
+        "prevention of stomach cancer",
+        "gastric adenocarcinoma prevention"
+      ],
+      "description": "Reduction in the incidence or mortality of gastric cancer through preventive interventions."
+    }
+  ]
+}

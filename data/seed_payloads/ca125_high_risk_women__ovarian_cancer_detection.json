@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ca125_high_risk_women",
+      "outcome_slug": "ovarian_cancer_detection",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "CA125-based surveillance in women with hereditary or strong familial risk can improve the positive predictive value of an abnormal screen and can be tuned by menopausal status or longitudinal algorithms, but available cohorts still show interval cancers and frequent advanced-stage disease, so detection performance remains inconsistent rather than clearly reassuring.",
+      "population": "women at high inherited or family-history-based risk for tubo-ovarian cancer undergoing CA125-centered surveillance",
+      "mechanism": "Serial CA125 measurement can flag rising tumor-marker trajectories before overt symptoms, especially when personalized thresholds or longitudinal change algorithms are used, but biologically aggressive serous cancers may still emerge between screens.",
+      "summary": "This is a mixed detection edge. CA125 surveillance is more informative in higher-risk women than in the general population, yet it still misses some clinically important cancers and has not solved the interval-cancer problem that motivates risk-reducing surgery in BRCA carriers.",
+      "caveats": "Most high-risk screening evidence is observational and often combines CA125 with ultrasound or other markers, so the independent contribution of CA125 is not always isolatable. This edge concerns detection performance, not mortality reduction, and should not be read as an alternative to guideline-supported risk-reducing salpingo-oophorectomy for eligible mutation carriers.",
+      "evidence": [
+        {
+          "citation": "Skates SJ et al 2011 Cancer Prev Res (Phila)",
+          "year": 2011,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Large prospective study of ovarian cancer screening in high-risk women: CA125 cut-point defined by menopausal status.",
+          "pmid": "21893500",
+          "n_participants": 3692,
+          "effect_quant": {
+            "metric": "threshold_value",
+            "value": 50,
+            "comparator": "recommended initial CA125 cut-point in premenopausal high-risk women to achieve about a 2% false-positive rate, versus 35 U/mL in postmenopausal women"
+          }
+        },
+        {
+          "citation": "Lacey JV Jr et al 2006 Obstet Gynecol",
+          "year": 2006,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Ovarian cancer screening in women with a family history of breast or ovarian cancer.",
+          "pmid": "17077240",
+          "n_participants": 2163,
+          "effect_quant": {
+            "metric": "PPV",
+            "value": 0.016,
+            "comparator": "positive predictive value for abnormal screening results in the high-risk family-history group"
+          }
+        },
+        {
+          "citation": "Meeuwissen PA et al 2006 Int J Gynecol Cancer",
+          "year": 2006,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Efficacy of screening women at high risk of hereditary ovarian cancer: results of an 11-year cohort study.",
+          "pmid": "16515568",
+          "n_participants": 269
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ca125_high_risk_women",
+      "name": "CA125 surveillance in high-risk women",
+      "kind": "activity",
+      "aliases": [
+        "CA125 screening in hereditary-risk women",
+        "CA125 monitoring in BRCA or strong family-history carriers"
+      ],
+      "description": "CA125-based ovarian cancer surveillance in women at elevated inherited or family-history-based risk."
+    },
+    {
+      "slug": "ovarian_cancer_detection",
+      "name": "Ovarian cancer detection",
+      "kind": "condition",
+      "aliases": [
+        "screen detection of ovarian cancer",
+        "tubo-ovarian cancer detection"
+      ],
+      "description": "Detection performance for ovarian or related tubo-peritoneal cancers, including screen positivity yield, stage at diagnosis, and interval cancer burden."
+    }
+  ]
+}
