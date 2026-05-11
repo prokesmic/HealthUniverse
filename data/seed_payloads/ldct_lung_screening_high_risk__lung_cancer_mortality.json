@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ldct_lung_screening_high_risk",
+      "name": "Low-dose CT lung screening in high-risk adults",
+      "kind": "activity",
+      "aliases": [
+        "LDCT screening for high-risk smokers",
+        "high-risk low-dose CT lung cancer screening"
+      ],
+      "description": "Low-dose computed tomography screening for lung cancer in adults at high smoking-related risk."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ldct_lung_screening_high_risk",
+      "outcome_slug": "lung_cancer_mortality",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The landmark NLST and NELSON trials both showed lower lung-cancer mortality with LDCT screening in high-risk populations, and the 2022 Cochrane review estimated a pooled 21% mortality reduction across randomized trials.",
+      "population": "current or former heavy smokers and other adults meeting high-risk eligibility criteria for lung cancer screening",
+      "mechanism": "LDCT screening shifts lung cancer diagnosis toward earlier, potentially curable stages before symptom-driven presentation, which is the main pathway by which it lowers lung-cancer death in high-risk groups.",
+      "summary": "This is one of the strongest adult cancer-screening mortality edges in modern screening literature. The evidence is good enough that the main debate is now about implementation, eligibility, false positives, and overdiagnosis rather than whether high-risk LDCT can reduce lung-cancer mortality at all.",
+      "caveats": "The benefit is specific to high-risk populations and should not be generalized to low-risk adults. False positives, incidental findings, and overdiagnosis remain important harms that are not encoded in this mortality-focused edge.",
+      "evidence": [
+        {
+          "citation": "National Lung Screening Trial Research Team 2011 N Engl J Med",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Reduced lung-cancer mortality with low-dose computed tomographic screening. NLST trial.",
+          "pmid": "21714641",
+          "n_participants": 53454,
+          "effect_quant": {
+            "metric": "relative_reduction_percent",
+            "value": 20.0,
+            "ci_low": 6.8,
+            "ci_high": 26.7,
+            "comparator": "low-dose CT versus chest radiography in NLST for lung-cancer mortality"
+          }
+        },
+        {
+          "citation": "deKoning HJ et al 2020 N Engl J Med",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Reduced Lung-Cancer Mortality with Volume CT Screening in a Randomized Trial. NELSON trial.",
+          "pmid": "31995683",
+          "n_participants": 15789,
+          "effect_quant": {
+            "metric": "rate_ratio",
+            "value": 0.76,
+            "ci_low": 0.61,
+            "ci_high": 0.94,
+            "comparator": "volume CT screening versus no screening at 10 years in NELSON"
+          }
+        },
+        {
+          "citation": "Bonney A et al 2022 Cochrane Database Syst Rev",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Impact of low-dose computed tomography (LDCT) screening on lung cancer-related mortality.",
+          "pmid": "35921047",
+          "n_participants": 94445,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.79,
+            "ci_low": 0.72,
+            "ci_high": 0.87,
+            "comparator": "LDCT screening versus control groups for lung cancer-related mortality"
+          }
+        }
+      ]
+    }
+  ]
+}

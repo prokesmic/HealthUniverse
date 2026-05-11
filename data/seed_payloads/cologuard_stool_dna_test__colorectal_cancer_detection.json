@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cologuard_stool_dna_test",
+      "name": "Cologuard stool DNA test",
+      "kind": "activity",
+      "aliases": [
+        "multitarget stool DNA screening",
+        "mt-sDNA colorectal screening"
+      ],
+      "description": "Stool-based colorectal cancer screening using a multitarget stool DNA assay such as Cologuard."
+    },
+    {
+      "slug": "colorectal_cancer_detection",
+      "name": "Colorectal cancer detection",
+      "kind": "process",
+      "aliases": [
+        "screen detection of colorectal cancer",
+        "finding colorectal cancer on screening"
+      ],
+      "description": "Detection performance for colorectal cancer during screening."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cologuard_stool_dna_test",
+      "outcome_slug": "colorectal_cancer_detection",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Multitarget stool DNA testing has high colorectal cancer sensitivity, often around 89% to 94%, but it consistently trades away specificity compared with FIT and generates many positive tests that do not translate into cancer or advanced neoplasia at colonoscopy.",
+      "population": "average-risk adults using multitarget stool DNA screening instead of direct structural colorectal screening",
+      "mechanism": "The test improves noninvasive detection by combining molecular stool markers with occult blood detection, but the broader net increases false positives and follow-up colonoscopy demand.",
+      "summary": "This edge is best treated as mixed rather than purely protective. Cologuard is clearly better than doing nothing for noninvasive cancer detection and can outperform FIT on sensitivity, but the tradeoff in specificity and downstream colonoscopy burden is substantial enough that the overall screening profile is not unambiguously positive.",
+      "caveats": "Detection performance is not the same thing as mortality benefit, and program success depends on completing follow-up colonoscopy after a positive result. Advanced adenoma sensitivity remains materially below colonoscopy, and false positives are common enough to matter clinically.",
+      "evidence": [
+        {
+          "citation": "Dolatkhah R et al 2022 Gastroenterol Hepatol",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Diagnostic accuracy of multitarget stool DNA testing for colorectal cancer screening: A systematic review and meta-analysis.",
+          "pmid": "35101601",
+          "n_participants": 14,
+          "effect_quant": {
+            "metric": "sensitivity",
+            "value": 0.89,
+            "comparator": "multitarget stool DNA test for colorectal cancer detection"
+          }
+        },
+        {
+          "citation": "Ebner DW et al 2025 Am J Prev Med",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Multi-Target Stool DNA and the Fecal Immunochemical Test: A Systematic Review and Meta-Analysis on Test Performances.",
+          "pmid": "40379061",
+          "n_participants": 55,
+          "effect_quant": {
+            "metric": "sensitivity",
+            "value": 0.936,
+            "ci_low": 0.89,
+            "ci_high": 0.971,
+            "comparator": "next-generation multitarget stool DNA test for colorectal cancer detection"
+          }
+        },
+        {
+          "citation": "Vakil M et al 2020 Gastrointest Endosc",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Multitarget stool DNA testing for the prevention of colon cancer: outcomes in a large integrated healthcare system.",
+          "pmid": "31904379",
+          "n_participants": 6835
+        }
+      ]
+    }
+  ]
+}
