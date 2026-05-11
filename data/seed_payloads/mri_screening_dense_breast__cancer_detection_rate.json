@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "mri_screening_dense_breast",
+      "name": "MRI screening in dense breasts",
+      "kind": "activity",
+      "aliases": [
+        "supplemental breast MRI for dense breasts",
+        "screening MRI after negative mammography in dense breasts"
+      ],
+      "description": "Supplemental breast MRI screening for women with dense breast tissue, often after negative screening mammography."
+    },
+    {
+      "slug": "cancer_detection_rate",
+      "name": "Cancer detection rate",
+      "kind": "process",
+      "aliases": [
+        "screen-detected cancer rate",
+        "rate of cancers found on screening"
+      ],
+      "description": "The rate at which screening identifies breast cancers in an eligible population."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "mri_screening_dense_breast",
+      "outcome_slug": "cancer_detection_rate",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In dense-breast screening populations, supplemental MRI consistently adds materially more cancer detections than mammography alone, with meta-analytic estimates around 19 additional cancers per 1000 screenings and DENSE trial MRI detection around 16.5 per 1000 screenings.",
+      "population": "women with dense or extremely dense breast tissue undergoing screening mammography, especially average- or intermediate-risk dense-breast cohorts",
+      "mechanism": "MRI is much less limited by dense fibroglandular tissue than mammography, allowing it to reveal biologically relevant lesions that are masked on standard breast X-ray screening.",
+      "summary": "Supplemental MRI in dense breasts is one of the strongest yield-improvement strategies in breast screening. The evidence is more persuasive for improved detection and fewer interval cancers than for broad population implementation, but the direction on detection rate is clearly protective.",
+      "caveats": "Higher detection comes with more recalls, more biopsies, and greater cost and access burden. This edge focuses on cancer detection yield, not on overdiagnosis, net harm, or policy-level cost-effectiveness.",
+      "evidence": [
+        {
+          "citation": "Bakker MF et al 2019 N Engl J Med",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Supplemental MRI Screening for Women with Extremely Dense Breast Tissue.",
+          "pmid": "31774954",
+          "n_participants": 40373,
+          "effect_quant": {
+            "metric": "rate_per_1000",
+            "value": 16.5,
+            "comparator": "MRI cancer detection rate among women who actually underwent supplemental MRI screening"
+          }
+        },
+        {
+          "citation": "Hussein H et al 2023 Radiology",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Supplemental Breast Cancer Screening in Women with Dense Breasts and Negative Mammography: A Systematic Review and Meta-Analysis.",
+          "pmid": "36719288",
+          "n_participants": 261233,
+          "effect_quant": {
+            "metric": "incremental_rate_per_1000",
+            "value": 1.52,
+            "ci_low": 0.74,
+            "ci_high": 2.33,
+            "comparator": "MRI versus other supplemental modalities for additional cancer detection per 1000 screenings"
+          }
+        },
+        {
+          "citation": "Duggan SN et al 2026 Breast",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Supplemental imaging modalities for breast cancer screening in women with dense breasts: A systematic review with economic considerations.",
+          "pmid": "41343979",
+          "n_participants": 36,
+          "effect_quant": {
+            "metric": "additional_rate_per_1000",
+            "value": 18.92,
+            "ci_low": 15.41,
+            "ci_high": 22.43,
+            "comparator": "supplemental MRI plus mammography versus mammography alone"
+          }
+        }
+      ]
+    }
+  ]
+}

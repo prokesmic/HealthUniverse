@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "mammography_biennial_50_74",
+      "name": "Biennial mammography age 50 to 74",
+      "kind": "activity",
+      "aliases": [
+        "every-2-year screening mammography for women 50-74",
+        "biennial breast screening age 50-74"
+      ],
+      "description": "Organized or guideline-based mammography performed about every two years in women aged 50 to 74 years."
+    },
+    {
+      "slug": "breast_cancer_mortality_reduction",
+      "name": "Breast cancer mortality reduction",
+      "kind": "process",
+      "aliases": [
+        "lower breast cancer death risk",
+        "reduced mortality from breast cancer"
+      ],
+      "description": "A reduction in deaths attributed to breast cancer in a screened population."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "mammography_biennial_50_74",
+      "outcome_slug": "breast_cancer_mortality_reduction",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Across classic randomized evidence and newer incidence-based mortality syntheses, screening mammography in women 50 years and older is associated with about 22% to 26% lower breast-cancer mortality, with larger apparent reductions among consistent attenders.",
+      "population": "average-risk women aged roughly 50 to 74 years participating in organized mammography screening programs",
+      "mechanism": "Regular mammography can shift breast cancer diagnosis toward earlier-stage, more treatable disease, reducing the chance that invasive cancers progress to fatal presentation before detection.",
+      "summary": "The evidence base for mammography is much cleaner in women aged 50 and older than in women in their 40s. Both older randomized syntheses and newer incidence-based cohort meta-analyses support a real mortality benefit, which is why this age band remains the least controversial core screening group.",
+      "caveats": "Absolute benefit varies by baseline risk, participation, and treatment era, and the mortality benefit comes with false positives and overdiagnosis that this edge does not capture. The evidence base mixes invitation effects with attendance effects, which should not be interpreted as identical.",
+      "evidence": [
+        {
+          "citation": "Kerlikowske K et al 1995 JAMA",
+          "year": 1995,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy of screening mammography. A meta-analysis.",
+          "pmid": "7799496",
+          "n_participants": 13,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.74,
+            "ci_low": 0.66,
+            "ci_high": 0.83,
+            "comparator": "screening mammography versus no screening in women aged 50 to 74 years"
+          }
+        },
+        {
+          "citation": "Dibden A et al 2020 Cancers (Basel)",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Worldwide Review and Meta-Analysis of Cohort Studies Measuring the Effect of Mammography Screening Programmes on Incidence-Based Breast Cancer Mortality.",
+          "pmid": "32326646",
+          "n_participants": 27,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.78,
+            "ci_low": 0.75,
+            "ci_high": 0.82,
+            "comparator": "invitation to mammography screening versus no invitation"
+          }
+        },
+        {
+          "citation": "Duffy SW et al 2021 Radiology",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Beneficial Effect of Consecutive Screening Mammography Examinations on Mortality from Breast Cancer: A Prospective Study.",
+          "pmid": "33650900",
+          "n_participants": 549091,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.51,
+            "ci_low": 0.48,
+            "ci_high": 0.55,
+            "comparator": "serial participants versus serial nonparticipants"
+          }
+        }
+      ]
+    }
+  ]
+}

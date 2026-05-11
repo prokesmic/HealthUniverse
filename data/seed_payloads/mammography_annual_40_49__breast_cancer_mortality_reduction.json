@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "mammography_annual_40_49",
+      "name": "Annual mammography age 40 to 49",
+      "kind": "activity",
+      "aliases": [
+        "yearly screening mammography for women 40-49",
+        "annual breast screening in the 40s"
+      ],
+      "description": "Annual screening mammography performed in women aged 40 to 49 years."
+    },
+    {
+      "slug": "breast_cancer_mortality_reduction",
+      "name": "Breast cancer mortality reduction",
+      "kind": "process",
+      "aliases": [
+        "lower breast cancer death risk",
+        "reduced mortality from breast cancer"
+      ],
+      "description": "A reduction in deaths attributed to breast cancer in a screened population."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "mammography_annual_40_49",
+      "outcome_slug": "breast_cancer_mortality_reduction",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The classic meta-analysis estimated no clear short- to mid-term mortality benefit in women 40 to 49 years overall, while the major Canadian randomized trial and its longer follow-up did not show a significant mortality reduction with annual mammography before age 50.",
+      "population": "average-risk women aged 40 to 49 years considering or undergoing annual mammography screening",
+      "mechanism": "Screening in the 40s can detect tumors earlier, but the balance is harder to call because baseline mortality is lower, breast density reduces sensitivity, and false positives and overdiagnosis rise relative to absolute mortality benefit.",
+      "summary": "This edge is genuinely contested rather than simply weak. Some modern advocates argue for benefit through earlier-stage detection and longer follow-up, but the foundational randomized evidence for women in their 40s is much less convincing than for women aged 50 and older, so a contested label is the most faithful summary.",
+      "caveats": "The debate is heavily shaped by trial quality, treatment-era changes, tumor biology in younger women, and whether follow-up is long enough to detect benefit. This edge addresses mortality reduction only, not the broader tradeoff of recalls, biopsies, and overdiagnosis.",
+      "evidence": [
+        {
+          "citation": "Kerlikowske K et al 1995 JAMA",
+          "year": 1995,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Efficacy of screening mammography. A meta-analysis.",
+          "pmid": "7799496",
+          "n_participants": 13,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.93,
+            "ci_low": 0.76,
+            "ci_high": 1.13,
+            "comparator": "screening mammography versus no screening in women aged 40 to 49 years"
+          }
+        },
+        {
+          "citation": "Miller AB et al 1997 J Natl Cancer Inst Monogr",
+          "year": 1997,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The Canadian National Breast Screening Study: update on breast cancer mortality.",
+          "pmid": "9709273",
+          "n_participants": 50430,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.14,
+            "ci_low": 0.83,
+            "ci_high": 1.56,
+            "comparator": "annual mammography plus physical exam versus usual care"
+          }
+        },
+        {
+          "citation": "Narod SA et al 2014 Curr Oncol",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Impact of screening mammography on mortality from breast cancer before age 60 in women 40 to 49 years of age.",
+          "pmid": "25302030",
+          "n_participants": 50436,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.1,
+            "ci_low": 0.86,
+            "ci_high": 1.4,
+            "comparator": "one or more screening mammograms before age 50 versus no mammography"
+          }
+        }
+      ]
+    }
+  ]
+}
