@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "coronary_ct_angiography_chest_pain",
+      "name": "Coronary CT angiography for chest pain evaluation",
+      "kind": "activity",
+      "aliases": [
+        "CCTA-first chest pain workup",
+        "coronary CTA for stable or acute chest pain"
+      ],
+      "description": "Use of coronary CT angiography as an initial diagnostic strategy in adults being evaluated for suspected coronary artery disease presenting with chest pain."
+    },
+    {
+      "slug": "diagnostic_outcomes",
+      "name": "Diagnostic outcomes",
+      "kind": "condition",
+      "aliases": [
+        "diagnostic yield and accuracy",
+        "workup performance outcomes"
+      ],
+      "description": "Outcomes related to the accuracy, yield, efficiency, and downstream consequences of a diagnostic pathway."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "coronary_ct_angiography_chest_pain",
+      "outcome_slug": "diagnostic_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across randomized chest-pain pathways, CCTA increases anatomic diagnostic yield and often increases appropriately targeted angiography or revascularization rather than reducing it. In acute-chest-pain meta-analysis the strategy produced more invasive angiography (RR 1.32) and more revascularization (RR 1.77) without more MACE, and in SCOT-HEART stable chest pain it was associated with lower 5-year coronary heart disease death or nonfatal myocardial infarction (HR 0.59).",
+      "population": "adults with suspected coronary artery disease presenting with stable or acute chest pain who are being evaluated with a diagnostic strategy rather than immediate empiric treatment alone",
+      "mechanism": "Coronary CT angiography visualizes coronary anatomy directly, which can improve rule-out confidence, identify obstructive disease earlier, and guide more selective downstream angiography, preventive therapy, and revascularization.",
+      "summary": "This is a diagnostic-pathway edge, not a simple procedural win-loss claim. The strongest evidence supports CCTA as a useful front-end triage tool that improves anatomical clarification and preventive treatment targeting, even though it can increase downstream invasive procedures in the short term.",
+      "caveats": "Benefits depend on patient selection, local CT quality, and whether the comparator is usual care, functional testing, or direct invasive angiography. Some trials show better pathway efficiency rather than immediate hard-outcome superiority, so this edge stays modest rather than maximal.",
+      "evidence": [
+        {
+          "citation": "Hulten E et al 2013 J Am Coll Cardiol",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Outcomes after coronary computed tomography angiography in the emergency department: a systematic review and meta-analysis of randomized, controlled trials.",
+          "pmid": "23395069",
+          "n_participants": 3266,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 1.36,
+            "ci_low": 1.03,
+            "ci_high": 1.8,
+            "comparator": "invasive coronary angiography after CCTA versus usual care in emergency-department acute chest pain trials"
+          }
+        },
+        {
+          "citation": "Gongora CA et al 2018 Heart",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Acute chest pain evaluation using coronary computed tomography angiography compared with standard of care: a meta-analysis of randomised clinical trials.",
+          "pmid": "28855273",
+          "n_participants": 6285,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 1.77,
+            "ci_low": 1.35,
+            "ci_high": 2.31,
+            "comparator": "coronary revascularization after a CCTA-first strategy versus standard physiologic-testing approaches in acute chest pain"
+          }
+        },
+        {
+          "citation": "SCOT-HEART Investigators 2018 N Engl J Med",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Coronary CT Angiography and 5-Year Risk of Myocardial Infarction. SCOT-HEART.",
+          "pmid": "30145934",
+          "n_participants": 4146,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.59,
+            "ci_low": 0.41,
+            "ci_high": 0.84,
+            "comparator": "death from coronary heart disease or nonfatal myocardial infarction with CTA plus standard care versus standard care alone in stable chest pain"
+          }
+        }
+      ]
+    }
+  ]
+}
