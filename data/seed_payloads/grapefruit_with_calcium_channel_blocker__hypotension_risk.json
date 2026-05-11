@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "grapefruit_with_calcium_channel_blocker",
+      "name": "Grapefruit consumed with a calcium channel blocker",
+      "kind": "activity",
+      "aliases": [
+        "grapefruit juice with felodipine",
+        "grapefruit with CYP3A4-metabolized dihydropyridine calcium channel blockers"
+      ],
+      "description": "Consumption of grapefruit or grapefruit juice during use of calcium channel blockers that undergo substantial intestinal CYP3A4 metabolism."
+    },
+    {
+      "slug": "hypotension_risk",
+      "name": "Hypotension risk",
+      "kind": "condition",
+      "aliases": [
+        "risk of excess blood-pressure lowering",
+        "risk of symptomatic hypotension"
+      ],
+      "description": "Risk of lower-than-intended blood pressure that can cause dizziness, presyncope, or related hemodynamic symptoms."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "grapefruit_with_calcium_channel_blocker",
+      "outcome_slug": "hypotension_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In elderly volunteers taking felodipine, grapefruit juice increased felodipine AUC 2.9-fold and Cmax 4.0-fold, with lower systolic and diastolic blood pressures during the single-dose study.",
+      "population": "adults, especially older adults, taking felodipine or similar CYP3A4-metabolized calcium channel blockers",
+      "mechanism": "Grapefruit constituents inhibit intestinal CYP3A4 and increase oral bioavailability of susceptible calcium channel blockers, amplifying their vasodilatory and blood-pressure-lowering effects.",
+      "summary": "Grapefruit can meaningfully boost exposure to some dihydropyridine calcium channel blockers and make hypotensive effects more likely, especially in older adults or when doses are first escalated. The pharmacokinetic interaction is large even when the observed blood-pressure change varies across individuals.",
+      "caveats": "Most direct trial data are with felodipine, so extrapolation to every calcium channel blocker should be selective. The interaction is also unpredictable across individuals and grapefruit preparations, which is part of why standard counseling usually recommends avoidance rather than experimentation.",
+      "evidence": [
+        {
+          "citation": "Dresser GK et al 2000 Clin Pharmacol Ther",
+          "year": 2000,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Grapefruit juice--felodipine interaction in the elderly.",
+          "pmid": "10945313",
+          "n_participants": 12,
+          "effect_quant": {
+            "metric": "AUC_ratio",
+            "value": 2.9,
+            "comparator": "felodipine exposure with grapefruit juice versus water in the elderly"
+          }
+        },
+        {
+          "citation": "Bailey DG et al 1998 Clin Pharmacol Ther",
+          "year": 1998,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Grapefruit juice-felodipine interaction: effect of naringin and 6',7'-dihydroxybergamottin in humans.",
+          "pmid": "9757148",
+          "n_participants": 12,
+          "effect_quant": {
+            "metric": "AUC_ratio",
+            "value": 2.45,
+            "comparator": "felodipine AUC with whole grapefruit juice versus water"
+          }
+        },
+        {
+          "citation": "Bailey DG et al 2013 CMAJ",
+          "year": 2013,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Grapefruit-medication interactions: forbidden fruit or avoidable consequences?",
+          "pmid": "23184849"
+        }
+      ]
+    }
+  ]
+}

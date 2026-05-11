@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cyp3a4_strong_inhibitor_with_statin",
+      "name": "Strong CYP3A4 inhibitor used with a statin",
+      "kind": "activity",
+      "aliases": [
+        "clarithromycin or erythromycin with a CYP3A4 statin",
+        "strong CYP3A4 inhibition during statin therapy"
+      ],
+      "description": "Concurrent use of a strong CYP3A4 inhibitor with a statin that depends on CYP3A4 metabolism, such as simvastatin, lovastatin, or partly atorvastatin."
+    },
+    {
+      "slug": "rhabdomyolysis_risk",
+      "name": "Rhabdomyolysis risk",
+      "kind": "condition",
+      "aliases": [
+        "risk of severe statin myotoxicity",
+        "statin-associated rhabdomyolysis risk"
+      ],
+      "description": "Risk of clinically significant rhabdomyolysis requiring recognition, treatment, or hospitalization."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cyp3a4_strong_inhibitor_with_statin",
+      "outcome_slug": "rhabdomyolysis_risk",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In a population-based cohort of older continuous statin users, clarithromycin or erythromycin coprescription was associated with a relative risk of 2.17 for hospitalization with rhabdomyolysis compared with azithromycin.",
+      "population": "statin-treated adults, especially older patients prescribed simvastatin, lovastatin, or atorvastatin who then receive a strong CYP3A4-inhibiting anti-infective",
+      "mechanism": "Strong CYP3A4 inhibitors sharply reduce statin metabolism and can substantially increase circulating statin exposure, raising the chance of concentration-dependent muscle toxicity and frank rhabdomyolysis.",
+      "summary": "This is one of the clearest clinically relevant statin interaction harms. The absolute event rate is still low, but the risk increase is consistent enough that the combination is widely treated as avoidable or in need of a temporary statin hold or statin substitution.",
+      "caveats": "The magnitude depends on the statin and inhibitor involved, and some non-CYP3A4 statins can still be affected through transport pathways. Even so, the strongest and best-established danger remains with simvastatin or lovastatin plus potent CYP3A4 inhibitors.",
+      "evidence": [
+        {
+          "citation": "Patel AM et al 2013 Ann Intern Med",
+          "year": 2013,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Statin toxicity from macrolide antibiotic coprescription: a population-based cohort study.",
+          "pmid": "23778904",
+          "n_participants": 144336,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 2.17,
+            "comparator": "hospitalization with rhabdomyolysis after clarithromycin or erythromycin plus statin versus azithromycin plus statin"
+          }
+        },
+        {
+          "citation": "Mendes P et al 2014 Physiother Can",
+          "year": 2014,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Statin-induced rhabdomyolysis: a comprehensive review of case reports.",
+          "pmid": "24799748",
+          "n_participants": 112
+        },
+        {
+          "citation": "Antons KA et al 2006 Am J Med",
+          "year": 2006,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Clinical perspectives of statin-induced rhabdomyolysis.",
+          "pmid": "16651050"
+        }
+      ]
+    }
+  ]
+}
