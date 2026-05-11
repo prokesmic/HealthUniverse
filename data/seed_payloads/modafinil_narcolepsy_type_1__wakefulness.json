@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "modafinil_narcolepsy_type_1",
+      "name": "Modafinil for narcolepsy type 1",
+      "kind": "drug",
+      "aliases": [
+        "modafinil for narcolepsy with cataplexy",
+        "modafinil for classic narcolepsy"
+      ],
+      "description": "Use of modafinil to improve daytime wakefulness in narcolepsy type 1 or older pre-orexin narcolepsy cohorts largely corresponding to narcolepsy with cataplexy."
+    },
+    {
+      "slug": "wakefulness",
+      "name": "Wakefulness",
+      "kind": "process",
+      "aliases": [
+        "daytime alertness",
+        "ability to stay awake"
+      ],
+      "description": "Objective or subjective maintenance of daytime alertness, often measured with the Maintenance of Wakefulness Test or related sleepiness scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "modafinil_narcolepsy_type_1",
+      "outcome_slug": "wakefulness",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "A 2010 meta-analysis of 9 trials involving 1,054 patients found modafinil improved ESS by 2.73 points and MWT by 2.82 minutes versus placebo. In long-term randomized withdrawal, continued modafinil maintained MWT at 16.4 minutes versus 9.7 with placebo and lowered ESS from 15.4 to 13.2.",
+      "population": "adults with narcolepsy, especially classic narcolepsy with cataplexy corresponding most closely to modern narcolepsy type 1",
+      "mechanism": "Modafinil promotes wakefulness through dopaminergic and other arousal-network effects without directly treating the REM-intrusion biology that drives cataplexy.",
+      "summary": "This is a solid protective wakefulness edge. Modafinil consistently improves objective and subjective daytime alertness in narcolepsy, but it is primarily a sleepiness treatment rather than a full-spectrum narcolepsy therapy.",
+      "caveats": "Much of the foundational trial literature predates the modern type 1/type 2 classification, so the evidence is not perfectly phenotype-pure. Benefit is strongest for excessive daytime sleepiness and much weaker for cataplexy itself.",
+      "evidence": [
+        {
+          "citation": "GolickiD et al 2010 Med Sci Monit",
+          "year": 2010,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Modafinil for narcolepsy: systematic review and meta-analysis.",
+          "pmid": "20671626",
+          "n_participants": 1054,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -2.73,
+            "ci_low": -3.39,
+            "ci_high": -2.08,
+            "comparator": "Epworth Sleepiness Scale with modafinil versus placebo across randomized narcolepsy trials"
+          }
+        },
+        {
+          "citation": "GrossPT et al 2000 Neurology",
+          "year": 2000,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Randomized trial of modafinil as a treatment for the excessive daytime somnolence of narcolepsy.",
+          "pmid": "10720292",
+          "n_participants": 271
+        },
+        {
+          "citation": "MoldofskyH et al 2000 Sleep Med",
+          "year": 2000,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A randomized trial of the long-term, continued efficacy and safety of modafinil in narcolepsy.",
+          "pmid": "10767651",
+          "n_participants": 63,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 6.7,
+            "comparator": "Maintenance of Wakefulness Test latency with continued modafinil versus placebo during randomized withdrawal"
+          }
+        }
+      ]
+    }
+  ]
+}

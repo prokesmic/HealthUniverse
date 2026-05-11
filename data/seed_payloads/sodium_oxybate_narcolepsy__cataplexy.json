@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "sodium_oxybate_narcolepsy",
+      "name": "Sodium oxybate for narcolepsy",
+      "kind": "drug",
+      "aliases": [
+        "sodium oxybate in narcolepsy with cataplexy",
+        "Xyrem for narcolepsy"
+      ],
+      "description": "Use of immediate-release sodium oxybate to treat core narcolepsy symptoms, particularly cataplexy and daytime sleepiness."
+    },
+    {
+      "slug": "cataplexy",
+      "name": "Cataplexy",
+      "kind": "condition",
+      "aliases": [
+        "emotion-triggered muscle weakness",
+        "cataplexy attack frequency"
+      ],
+      "description": "Sudden transient loss of muscle tone, often emotionally triggered, characteristic of narcolepsy type 1."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "sodium_oxybate_narcolepsy",
+      "outcome_slug": "cataplexy",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "A 2012 meta-analysis of 6 randomized trials involving 741 participants found sodium oxybate reduced weekly cataplexy attacks by a mean 8.5 attacks versus placebo. In a 228-patient RCT, median weekly cataplexy attacks fell by 57.0%, 65.0%, and 84.7% at 4.5, 6, and 9 g/night, and a randomized withdrawal trial found median attacks of 21 after placebo withdrawal versus 0 with continued sodium oxybate.",
+      "population": "adults with narcolepsy, especially narcolepsy with cataplexy corresponding to modern narcolepsy type 1",
+      "mechanism": "Sodium oxybate consolidates nocturnal sleep and modulates REM-related instability, reducing the REM-intrusion phenomena that drive cataplexy.",
+      "summary": "This is one of the stronger symptom-control edges in narcolepsy. Sodium oxybate has consistent evidence for reducing cataplexy frequency, including both short-term randomized trials and longer-term withdrawal data.",
+      "caveats": "The benefit is symptom-focused and comes with tolerability, abuse-potential, and dosing-burden tradeoffs. The literature is strongest for cataplexy reduction, not for proving broader disease modification.",
+      "evidence": [
+        {
+          "citation": "AlshaikhMK et al 2012 J Clin Sleep Med",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Sodium oxybate for narcolepsy with cataplexy: systematic review and meta-analysis.",
+          "pmid": "22893778",
+          "n_participants": 741,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -8.5,
+            "ci_low": -15.3,
+            "ci_high": -1.6,
+            "comparator": "weekly cataplexy attacks with sodium oxybate versus placebo across randomized trials"
+          }
+        },
+        {
+          "citation": "Xyrem International Study Group 2005 Sleep Med",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Further evidence supporting the use of sodium oxybate for the treatment of cataplexy: a double-blind, placebo-controlled study in 228 patients.",
+          "pmid": "16099718",
+          "n_participants": 228,
+          "effect_quant": {
+            "metric": "responder_rate",
+            "value": 84.7,
+            "comparator": "median decrease in weekly cataplexy attacks at 9 g/night versus placebo after 8 weeks"
+          }
+        },
+        {
+          "citation": "U.S. Xyrem Multicenter Study Group 2004 Sleep Med",
+          "year": 2004,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Sodium oxybate demonstrates long-term efficacy for the treatment of cataplexy in patients with narcolepsy.",
+          "pmid": "15033130",
+          "n_participants": 55,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -21.0,
+            "comparator": "median weekly cataplexy attacks with continued sodium oxybate versus placebo withdrawal in the double-blind phase"
+          }
+        }
+      ]
+    }
+  ]
+}

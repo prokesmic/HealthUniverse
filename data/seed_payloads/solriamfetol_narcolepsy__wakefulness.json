@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "solriamfetol_narcolepsy",
+      "name": "Solriamfetol for narcolepsy",
+      "kind": "drug",
+      "aliases": [
+        "solriamfetol in narcolepsy",
+        "JZP-110 for narcolepsy"
+      ],
+      "description": "Use of solriamfetol to improve excessive daytime sleepiness and daytime alertness in narcolepsy."
+    },
+    {
+      "slug": "wakefulness",
+      "name": "Wakefulness",
+      "kind": "process",
+      "aliases": [
+        "daytime alertness",
+        "ability to stay awake"
+      ],
+      "description": "Objective or subjective maintenance of daytime alertness, often measured with the Maintenance of Wakefulness Test or related sleepiness scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "solriamfetol_narcolepsy",
+      "outcome_slug": "wakefulness",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In a 2022 network meta-analysis of 19 RCTs and 2,504 patients, solriamfetol ranked highest for wakefulness and was superior to modafinil on MWT change (SMD 0.42) and to pitolisant and sodium oxybate on ESS change. In an earlier crossover narcolepsy trial, JZP-110 prolonged MWT sleep latency by 11.8 minutes versus placebo at two weeks.",
+      "population": "adults with narcolepsy with excessive daytime sleepiness, including both type 1 and type 2 populations in modern trials",
+      "mechanism": "Solriamfetol inhibits norepinephrine and dopamine reuptake, strengthening wake-promoting signaling and increasing the ability to stay awake through the day.",
+      "summary": "This is a strong protective wakefulness edge. Solriamfetol consistently improves both subjective sleepiness and objective wakefulness and tends to rank near the top of modern comparative analyses.",
+      "caveats": "Its strength is wakefulness rather than REM-intrusion symptoms such as cataplexy. Comparative efficacy may be offset by tolerability tradeoffs, and some analyses judge modafinil, pitolisant, or oxybates to have a more balanced efficacy-safety profile overall.",
+      "evidence": [
+        {
+          "citation": "ChienPY et al 2022 J Clin Med",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Pharmacological Interventions for Excessive Daytime Sleepiness in Adults with Narcolepsy: A Systematic Review and Network Meta-Analysis.",
+          "pmid": "36362535",
+          "n_participants": 2504,
+          "effect_quant": {
+            "metric": "standardized_mean_difference",
+            "value": 0.42,
+            "ci_low": 0.05,
+            "ci_high": 0.79,
+            "comparator": "Maintenance of Wakefulness Test change with solriamfetol versus modafinil across the network meta-analysis"
+          }
+        },
+        {
+          "citation": "ThorpyMJ et al 2019 Ann Neurol",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A randomized study of solriamfetol for excessive sleepiness in narcolepsy.",
+          "pmid": "30694576",
+          "n_participants": 236
+        },
+        {
+          "citation": "BoganRK et al 2015 Sleep Med",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of oral JZP-110 (ADX-N05) treatment on wakefulness and sleepiness in adults with narcolepsy.",
+          "pmid": "26298786",
+          "n_participants": 33,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 11.8,
+            "comparator": "Maintenance of Wakefulness Test sleep latency with JZP-110 versus placebo at 2 weeks"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "adaptive_servo_ventilation_csa_hfref",
+      "name": "Adaptive servo-ventilation for central sleep apnea in HFrEF",
+      "kind": "activity",
+      "aliases": [
+        "ASV for CSA with reduced-EF heart failure",
+        "adaptive servo-ventilation in central sleep apnea and systolic heart failure"
+      ],
+      "description": "Use of adaptive servo-ventilation to treat predominant central sleep apnea or Cheyne-Stokes respiration in adults with heart failure with reduced ejection fraction."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "adaptive_servo_ventilation_csa_hfref",
+      "outcome_slug": "mortality",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In SERVE-HF, adaptive servo-ventilation increased all-cause mortality (HR 1.28) and cardiovascular mortality (HR 1.34) in symptomatic HFrEF with predominant central sleep apnea. Subsequent SERVE-HF analyses continued to show excess cardiovascular death rather than reassurance, even though smaller pre-SERVE studies had shown improvement in apnea metrics.",
+      "population": "adults with symptomatic chronic heart failure with reduced ejection fraction and predominant central sleep apnea or Cheyne-Stokes respiration",
+      "mechanism": "Although ASV suppresses central events and improves nocturnal ventilation, in HFrEF it may adversely affect vulnerable hemodynamics or arrhythmic risk in ways that outweigh surrogate sleep benefits.",
+      "summary": "This is one of the clearest harmful edges in the sleep block. In CSA plus HFrEF, ASV improves respiratory physiology but the major randomized hard-outcome trial showed excess mortality, so it should not be framed as a benign sleep-only intervention in this phenotype.",
+      "caveats": "The harm signal is phenotype specific: it applies to reduced-EF heart failure with predominant central sleep apnea, not to all causes of CSA. Smaller earlier studies and non-HFrEF cohorts can look more favorable because they were focused on surrogate endpoints rather than mortality.",
+      "evidence": [
+        {
+          "citation": "CowieMR et al 2015 N Engl J Med",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Adaptive Servo-Ventilation for Central Sleep Apnea in Systolic Heart Failure. SERVE-HF.",
+          "pmid": "26323938",
+          "n_participants": 1325,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 1.28,
+            "ci_low": 1.06,
+            "ci_high": 1.55,
+            "comparator": "all-cause mortality with adaptive servo-ventilation plus guideline-based care versus control in SERVE-HF"
+          }
+        },
+        {
+          "citation": "WoehrleH et al 2017 Eur Respir J",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Adaptive servo ventilation for central sleep apnoea in heart failure: SERVE-HF on-treatment analysis.",
+          "pmid": "28860264",
+          "n_participants": 1325
+        },
+        {
+          "citation": "WoehrleH et al 2016 Lancet Respir Med",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Mechanisms underlying increased mortality risk in patients with heart failure and reduced ejection fraction randomly assigned to adaptive servoventilation in the SERVE-HF study: results of a secondary multistate modelling analysis.",
+          "pmid": "27592224",
+          "n_participants": 1325
+        }
+      ]
+    }
+  ]
+}
