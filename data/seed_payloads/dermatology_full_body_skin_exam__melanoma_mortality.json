@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "dermatology_full_body_skin_exam",
+      "outcome_slug": "melanoma_mortality",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The evidence remains contested: large nonrandomized screening-program analyses do not show a clear population melanoma mortality benefit, but case-control and thickness-based studies suggest that clinician whole-body skin examination may reduce the incidence of thicker melanomas that drive death risk.",
+      "population": "asymptomatic adolescents and adults undergoing routine clinician or dermatologist whole-body skin examination for melanoma screening",
+      "mechanism": "Visual whole-body skin examination may detect melanoma at thinner, earlier stages when excision is more curative, but the pathway is vulnerable to lead-time bias, overdiagnosis, and inconsistent implementation across clinicians and health systems.",
+      "summary": "This edge is genuinely split rather than simply weak. The modern USPSTF-linked evidence review found little to no clear population mortality benefit, yet supportive observational work still suggests a plausible stage-shift advantage, so a mixed label is more honest than forcing either a reassuring or dismissive conclusion.",
+      "caveats": "There are no randomized trials, so the entire literature is exposed to selection bias, lead-time bias, and ecological confounding. This edge addresses melanoma mortality rather than the separate questions of thin-lesion detection, overdiagnosis, biopsy burden, or cosmetic harms.",
+      "evidence": [
+        {
+          "citation": "Wernli KJ et al 2023 JAMA",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Skin Cancer Screening: Updated Evidence Report and Systematic Review for the US Preventive Services Task Force.",
+          "pmid": "37071090",
+          "n_participants": 6053411,
+          "effect_quant": {
+            "metric": "population_screened",
+            "value": 1791615,
+            "comparator": "participants in the 2 German population-based screening programs providing direct mortality evidence; overall review included 6,053,411 people"
+          }
+        },
+        {
+          "citation": "Aitken JF et al 2010 Int J Cancer",
+          "year": 2010,
+          "study_type": "case_control",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Clinical whole-body skin examination reduces the incidence of thick melanomas.",
+          "pmid": "19609948",
+          "n_participants": 7586,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.86,
+            "ci_low": 0.75,
+            "ci_high": 0.98,
+            "comparator": "whole-body clinical skin examination in the prior 3 years versus no examination for diagnosis of thick melanoma"
+          }
+        },
+        {
+          "citation": "Boniol M et al 2015 BMJ Open",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Melanoma mortality following skin cancer screening in Germany.",
+          "pmid": "26373399",
+          "n_participants": 360288
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "dermatology_full_body_skin_exam",
+      "name": "Dermatology full-body skin examination",
+      "kind": "activity",
+      "aliases": [
+        "whole-body skin exam by a clinician",
+        "routine total-body skin examination"
+      ],
+      "description": "A clinician-performed or dermatologist-performed visual examination of the entire skin surface to screen for melanoma and other skin cancers."
+    },
+    {
+      "slug": "melanoma_mortality",
+      "name": "Melanoma mortality",
+      "kind": "condition",
+      "aliases": [
+        "death from melanoma",
+        "melanoma-specific mortality"
+      ],
+      "description": "Deaths attributable to cutaneous melanoma."
+    }
+  ]
+}

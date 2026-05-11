@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "psa_screening_routine_men_55_69",
+      "outcome_slug": "prostate_cancer_mortality",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The best evidence remains split between modest prostate-cancer mortality benefit in repeated European screening programs and little or no all-cause mortality benefit overall. ERSPC showed about a 21% relative prostate-cancer mortality reduction in the core 55-69 age group, whereas meta-analysis of all trials is much closer to null and CAP found only a small absolute difference after a single invitation strategy.",
+      "population": "average-risk men aged 55 to 69 years considering routine PSA-based population screening",
+      "mechanism": "PSA screening can identify aggressive prostate cancers before symptomatic spread, but it also increases detection of indolent tumors, downstream biopsies, overdiagnosis, and treatment-related harms that dilute net mortality benefit.",
+      "summary": "This is a genuinely contested screening edge rather than a simple protective one. The literature supports a small prostate-cancer-specific mortality benefit under some repeated-screening conditions, but that signal is inconsistent across trials and does not translate into clear all-cause mortality benefit, so a mixed label is the most faithful summary.",
+      "caveats": "The CAP trial used a single invitation rather than repeated routine screening, while ERSPC reflects repeated screening rounds in European programs, so trial design differences matter a lot. This edge addresses mortality only and does not encode overdiagnosis, biopsy complications, erectile dysfunction, or incontinence harms.",
+      "evidence": [
+        {
+          "citation": "Ilic D et al 2018 BMJ",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Prostate cancer screening with prostate-specific antigen (PSA) test: a systematic review and meta-analysis.",
+          "pmid": "30185521",
+          "n_participants": 721718,
+          "effect_quant": {
+            "metric": "IRR",
+            "value": 0.96,
+            "ci_low": 0.85,
+            "ci_high": 1.08,
+            "comparator": "PSA screening versus usual care for prostate-specific mortality across randomized trials"
+          }
+        },
+        {
+          "citation": "Schroder FH et al 2012 N Engl J Med",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Prostate-cancer mortality at 11 years of follow-up. ERSPC core age group 55-69 years.",
+          "pmid": "22417251",
+          "n_participants": 162388,
+          "effect_quant": {
+            "metric": "rate_ratio",
+            "value": 0.79,
+            "ci_low": 0.68,
+            "ci_high": 0.91,
+            "comparator": "repeated PSA-based screening versus no screening for prostate-cancer mortality in ERSPC"
+          }
+        },
+        {
+          "citation": "Martin RM et al 2024 JAMA",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Prostate-Specific Antigen Screening and 15-Year Prostate Cancer Mortality: A Secondary Analysis of the CAP Randomized Clinical Trial.",
+          "pmid": "38581198",
+          "n_participants": 415357,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.92,
+            "ci_low": 0.85,
+            "ci_high": 0.99,
+            "comparator": "single invitation to PSA screening versus no invitation for prostate-cancer mortality at 15 years in CAP"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "psa_screening_routine_men_55_69",
+      "name": "Routine PSA screening age 55 to 69",
+      "kind": "activity",
+      "aliases": [
+        "routine PSA testing in men 55 to 69",
+        "population PSA screening in core screening-age men"
+      ],
+      "description": "Routine population-level prostate-specific antigen screening offered to men aged 55 to 69 years."
+    }
+  ]
+}
