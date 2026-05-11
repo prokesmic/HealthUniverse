@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cpap_severe_osa",
+      "name": "CPAP for severe obstructive sleep apnea",
+      "kind": "activity",
+      "aliases": [
+        "continuous positive airway pressure for severe OSA",
+        "CPAP in severe obstructive sleep apnea"
+      ],
+      "description": "Continuous positive airway pressure treatment used in adults with severe or at least moderate-to-severe obstructive sleep apnea."
+    },
+    {
+      "slug": "daytime_sleepiness",
+      "name": "Daytime sleepiness",
+      "kind": "process",
+      "aliases": [
+        "excessive daytime sleepiness"
+      ],
+      "description": "Daytime sleepiness or reduced wakefulness during usual waking hours."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cpap_severe_osa",
+      "outcome_slug": "daytime_sleepiness",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "CPAP reliably improves sleepiness symptoms in moderate-severe OSA: a 41-RCT meta-analysis found ESS WMD -2.14, SAVE reported significant sleepiness improvement, and another 18-trial meta-analysis found ESS MD -1.78.",
+      "population": "adults with severe or at least moderate-to-severe obstructive sleep apnea, especially those with elevated baseline Epworth scores and reasonable nightly adherence",
+      "mechanism": "By preventing recurrent upper-airway collapse, CPAP reduces arousals, restores sleep continuity, and reduces nocturnal hypoxemia, which together lessen excessive daytime sleepiness.",
+      "summary": "This is one of the strongest CPAP edges. Even when cardiovascular outcomes stay neutral, symptom relief for daytime sleepiness is consistent and clinically meaningful.",
+      "caveats": "Benefits are smaller in mild OSA, in minimally sleepy populations, and when nightly adherence is short. Some individual trials report stronger benefit in sleepier subgroups than in the whole cohort.",
+      "evidence": [
+        {
+          "citation": "LiZ et al 2022 Front Neurol",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Predictors of the Efficacy for Daytime Sleepiness in Patients With Obstructive Sleep Apnea With Continual Positive Airway Pressure Therapy: A Meta-Analysis of Randomized Controlled Trials.",
+          "pmid": "35832171",
+          "n_participants": 7332,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -2.14,
+            "comparator": "Epworth Sleepiness Scale change with CPAP versus control across randomized OSA trials"
+          }
+        },
+        {
+          "citation": "McEvoyRD et al 2016 N Engl J Med",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "CPAP for Prevention of Cardiovascular Events in Obstructive Sleep Apnea.",
+          "pmid": "27571048",
+          "n_participants": 2717
+        },
+        {
+          "citation": "GuoJ et al 2016 Sleep Breath",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of CPAP therapy on cardiovascular events and mortality in patients with obstructive sleep apnea: a meta-analysis.",
+          "pmid": "26873722",
+          "n_participants": 4146,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -1.78,
+            "ci_low": -2.31,
+            "ci_high": -1.24,
+            "comparator": "Epworth Sleepiness Scale with CPAP versus control across randomized OSA trials"
+          }
+        }
+      ]
+    }
+  ]
+}
