@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "growth_hormone_adult_deficiency",
+      "name": "Adult growth hormone deficiency",
+      "kind": "condition",
+      "aliases": [
+        "adult GHD",
+        "growth hormone deficiency in adults"
+      ],
+      "description": "Adult-onset or persistent childhood-onset growth hormone deficiency associated with metabolic, physical, and psychosocial impairment."
+    },
+    {
+      "slug": "quality_of_life",
+      "name": "Quality of life",
+      "kind": "process",
+      "aliases": [
+        "health-related quality of life",
+        "functional status"
+      ],
+      "description": "Health-related quality of life measured with generic or disease-specific instruments."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "growth_hormone_adult_deficiency",
+      "outcome_slug": "quality_of_life",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Adults with growth hormone deficiency often start with impaired quality of life, but the evidence is heterogeneous rather than uniform. In a 1,532-patient observational cohort, baseline quality-of-life Z scores were clearly below normal and improved most in the first year of replacement therapy; smaller placebo-controlled trials also reported better energy and mood with growth hormone, but placebo effects and domain-specific variability limit any simple all-patients conclusion.",
+      "population": "adults with confirmed growth hormone deficiency, including both adult-onset and persistent childhood-onset disease",
+      "mechanism": "Growth hormone deficiency can worsen body composition, vitality, mood, and functional capacity, all of which may contribute to lower perceived quality of life; replacement can improve some but not all of these domains.",
+      "summary": "This edge is mixed rather than purely harmful or purely reversible. Many adults with GHD have reduced quality of life and can improve with replacement, but the magnitude and consistency of benefit vary across trials, baseline severity, and measurement tools.",
+      "caveats": "Much of the improvement evidence comes from replacement studies rather than natural-history cohorts, so some heterogeneity reflects treatment response rather than the underlying condition alone. Quality-of-life measures are also especially vulnerable to placebo effects and baseline selection.",
+      "evidence": [
+        {
+          "citation": "McGauley GA 1989 Acta Paediatr Scand Suppl",
+          "year": 1989,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Quality of life assessment before and after growth hormone treatment in adults with growth hormone deficiency.",
+          "pmid": "2816361",
+          "n_participants": 24
+        },
+        {
+          "citation": "Burman P et al 1995 J Clin Endocrinol Metab",
+          "year": 1995,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Quality of life in adults with growth hormone (GH) deficiency: response to treatment with recombinant human GH in a placebo-controlled 21-month trial.",
+          "pmid": "8530603",
+          "n_participants": 36
+        },
+        {
+          "citation": "Ishii H et al 2017 Growth Horm IGF Res",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Assessment of quality of life on 4-year growth hormone therapy in Japanese patients with adult growth hormone deficiency: A post-marketing, multicenter, observational study.",
+          "pmid": "28923784",
+          "n_participants": 161
+        }
+      ]
+    }
+  ]
+}
