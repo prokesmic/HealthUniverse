@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "metoclopramide_chronic",
+      "name": "Chronic metoclopramide use",
+      "kind": "drug",
+      "aliases": [
+        "long-term metoclopramide therapy",
+        "extended dopamine-blocking metoclopramide exposure"
+      ],
+      "description": "Repeated or prolonged metoclopramide exposure beyond short-course antiemetic use."
+    },
+    {
+      "slug": "tardive_dyskinesia",
+      "name": "Tardive dyskinesia",
+      "kind": "condition",
+      "aliases": [
+        "persistent orofacial dyskinesia",
+        "late extrapyramidal dyskinesia"
+      ],
+      "description": "Often persistent involuntary movements, especially of the face, mouth, or tongue, associated with chronic dopamine-blocking drug exposure."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "metoclopramide_chronic",
+      "outcome_slug": "tardive_dyskinesia",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a matched VA prevalence study, metoclopramide users had a relative risk of 1.67 for tardive dyskinesia versus controls, while a 2019 review estimated absolute risk around 0.1% per 1000 patient-years but concentrated in elderly, diabetic, and other neurologically vulnerable groups.",
+      "population": "adults receiving repeated or long-term metoclopramide, especially older adults, diabetics, and patients with other neurologic susceptibility factors",
+      "mechanism": "Chronic dopamine D2 receptor blockade in basal ganglia circuits can trigger maladaptive receptor and signaling changes that eventually manifest as persistent involuntary movements even after the drug is stopped.",
+      "summary": "Chronic metoclopramide exposure clearly carries a tardive dyskinesia risk, although modern reviews suggest the absolute rate is lower than older regulatory estimates implied. The harm remains clinically important because the syndrome can be prolonged or irreversible in a subset of patients.",
+      "caveats": "Absolute risk estimates vary by population, ascertainment method, and exposure duration. Risk is not uniform: elderly women, diabetics, people with renal or hepatic impairment, and those on concomitant dopamine-blocking drugs appear to be at much higher risk than healthier short-course users.",
+      "evidence": [
+        {
+          "citation": "Ganzini L et al 1993 Arch Intern Med",
+          "year": 1993,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The prevalence of metoclopramide-induced tardive dyskinesia and acute extrapyramidal movement disorders.",
+          "pmid": "8512437",
+          "n_participants": 102,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 1.67,
+            "comparator": "relative risk of tardive dyskinesia in metoclopramide-treated patients versus matched controls"
+          }
+        },
+        {
+          "citation": "Al-Saffar A et al 2019 Neurogastroenterol Motil",
+          "year": 2019,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Gastroparesis, metoclopramide, and tardive dyskinesia: Risk revisited.",
+          "pmid": "31050085",
+          "effect_quant": {
+            "metric": "incidence_rate",
+            "value": 0.1,
+            "unit": "percent per 1000 patient-years",
+            "comparator": "review estimate of absolute tardive dyskinesia risk with metoclopramide"
+          }
+        },
+        {
+          "citation": "Sewell DD et al 1992 Arch Fam Med",
+          "year": 1992,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Metoclopramide-associated tardive dyskinesia. An analysis of 67 cases.",
+          "pmid": "1341603",
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.71,
+            "unit": "proportion",
+            "comparator": "share of followed patients with persistent symptoms for at least 6 months after discontinuation"
+          }
+        }
+      ]
+    }
+  ]
+}

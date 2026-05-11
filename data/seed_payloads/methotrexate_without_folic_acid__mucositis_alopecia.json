@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "methotrexate_without_folic_acid",
+      "name": "Methotrexate without folic acid supplementation",
+      "kind": "activity",
+      "aliases": [
+        "MTX without folate rescue",
+        "low-dose methotrexate without folic acid"
+      ],
+      "description": "Methotrexate treatment given without routine folic or folinic acid supplementation."
+    },
+    {
+      "slug": "mucositis_alopecia",
+      "name": "Mucositis and alopecia",
+      "kind": "condition",
+      "aliases": [
+        "mouth ulcers and hair thinning",
+        "mucocutaneous methotrexate toxicity"
+      ],
+      "description": "Mucocutaneous toxic effects such as stomatitis, oral ulceration, and hair loss during methotrexate treatment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "methotrexate_without_folic_acid",
+      "outcome_slug": "mucositis_alopecia",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "A meta-analysis of randomized trials found folic acid reduced mucosal and gastrointestinal toxicity with an OR of 0.21, implying substantially higher mucocutaneous toxicity when methotrexate is used without folate supplementation.",
+      "population": "adults receiving low-dose methotrexate for rheumatoid arthritis and similar inflammatory disorders",
+      "mechanism": "Methotrexate antagonizes folate-dependent cellular replication, and tissues with high turnover such as oral mucosa and hair follicles are especially vulnerable when exogenous folate replacement is absent.",
+      "summary": "Using low-dose methotrexate without folic acid meaningfully increases the likelihood of mucocutaneous toxicity, especially stomatitis and related oral ulcer symptoms. The overall evidence base is consistent enough that routine folate co-prescription has become standard practice.",
+      "caveats": "Most controlled data come from rheumatoid arthritis populations, with mucosal and gastrointestinal outcomes more directly measured than alopecia in isolation. The edge is therefore strongest for mouth-ulcer and broader mucocutaneous toxicity rather than for hair loss alone.",
+      "evidence": [
+        {
+          "citation": "Ortiz Z et al 1998 J Rheumatol",
+          "year": 1998,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The efficacy of folic acid and folinic acid in reducing methotrexate gastrointestinal toxicity in rheumatoid arthritis. A metaanalysis of randomized controlled trials.",
+          "pmid": "9458200",
+          "n_participants": 307,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 4.76,
+            "comparator": "approximate inverse of the folic-acid-protective OR 0.21, reflecting greater mucosal and GI toxicity without folate supplementation"
+          }
+        },
+        {
+          "citation": "Shea B et al 2013 Cochrane Database Syst Rev",
+          "year": 2013,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Folic acid and folinic acid for reducing side effects in patients receiving methotrexate for rheumatoid arthritis.",
+          "pmid": "23728635",
+          "n_participants": 624,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 1.35,
+            "comparator": "approximate inverse of the 26% relative risk reduction in gastrointestinal side effects seen with folate supplementation"
+          }
+        },
+        {
+          "citation": "Mazaud C et al 2017 Br J Dermatol",
+          "year": 2017,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Relative risk of and determinants for adverse events of methotrexate prescribed at a low dose: a systematic review and meta-analysis of randomized placebo-controlled trials.",
+          "pmid": "28182264",
+          "n_participants": 6938
+        }
+      ]
+    }
+  ]
+}

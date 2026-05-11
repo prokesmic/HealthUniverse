@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "warfarin_after_leafy_green_intake_change",
+      "name": "Warfarin after a change in leafy-green intake",
+      "kind": "activity",
+      "aliases": [
+        "warfarin after vitamin K diet change",
+        "warfarin with altered green vegetable intake"
+      ],
+      "description": "Warfarin treatment during periods of changed or inconsistent dietary vitamin K intake, especially from leafy green vegetables."
+    },
+    {
+      "slug": "inr_variability",
+      "name": "INR variability",
+      "kind": "process",
+      "aliases": [
+        "unstable anticoagulation control",
+        "labile INR"
+      ],
+      "description": "Fluctuation in international normalized ratio control during vitamin K antagonist therapy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "warfarin_after_leafy_green_intake_change",
+      "outcome_slug": "inr_variability",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In a dietary-record cohort, each additional 100 micrograms/day of vitamin K averaged over 4 days lowered INR by about 0.2, and a controlled trial found that adding only 25 micrograms/day of vitamin K from a multivitamin reduced INR by a median 0.51 in vitamin-K-depleted warfarin users.",
+      "population": "adults receiving warfarin or other vitamin K antagonist therapy in outpatient anticoagulation management",
+      "mechanism": "Warfarin inhibits the vitamin K cycle, so sudden increases or erratic swings in dietary vitamin K intake can counteract anticoagulation and shift INR control away from the therapeutic range.",
+      "summary": "The practical hazard is not leafy greens themselves but changing intake patterns while on warfarin. Evidence consistently suggests that low, erratic, or suddenly increased vitamin K exposure can destabilize INR, whereas a stable dietary pattern produces more predictable anticoagulation.",
+      "caveats": "This edge does not support blanket avoidance of green vegetables; it supports consistency. Individual sensitivity varies with baseline vitamin K status, genotype, target INR range, and overall anticoagulation management quality.",
+      "evidence": [
+        {
+          "citation": "Khan T et al 2004 Br J Haematol",
+          "year": 2004,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Dietary vitamin K influences intra-individual variability in anticoagulant response to warfarin.",
+          "pmid": "14717783",
+          "n_participants": 53,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -0.2,
+            "unit": "INR units per 100 micrograms/day",
+            "comparator": "INR change associated with higher average dietary vitamin K intake over 4 days"
+          }
+        },
+        {
+          "citation": "Sconce E et al 2005 Thromb Haemost",
+          "year": 2005,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Patients with unstable control have a poorer dietary intake of vitamin K compared to patients with stable control of anticoagulation.",
+          "pmid": "15886802",
+          "n_participants": 52,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -47,
+            "unit": "micrograms/day",
+            "comparator": "lower mean daily vitamin K intake in unstable versus stable anticoagulation control"
+          }
+        },
+        {
+          "citation": "Kurnik D et al 2004 Thromb Haemost",
+          "year": 2004,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Over-the-counter vitamin K1-containing multivitamin supplements disrupt warfarin anticoagulation in vitamin K1-depleted patients. A prospective, controlled trial.",
+          "pmid": "15543329",
+          "n_participants": 16,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -0.51,
+            "unit": "INR units",
+            "comparator": "median INR change after adding 25 micrograms/day vitamin K1 in vitamin-K-depleted patients"
+          }
+        }
+      ]
+    }
+  ]
+}
