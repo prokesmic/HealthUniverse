@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "doxepin_low_dose_insomnia",
+      "name": "Low-dose doxepin for insomnia",
+      "kind": "drug",
+      "aliases": [
+        "doxepin 1 to 6 mg for insomnia",
+        "Silenor-dose doxepin"
+      ],
+      "description": "Use of low-dose doxepin, typically 1 to 6 mg at bedtime, to improve sleep maintenance in chronic insomnia."
+    },
+    {
+      "slug": "sleep_maintenance",
+      "name": "Sleep maintenance",
+      "kind": "process",
+      "aliases": [
+        "staying asleep overnight"
+      ],
+      "description": "The ability to remain asleep through the night without frequent awakenings."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "doxepin_low_dose_insomnia",
+      "outcome_slug": "sleep_maintenance",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Across randomized placebo-controlled trials, low-dose doxepin consistently improves wake after sleep onset and late-night sleep continuity. The 2014 systematic review judged low-dose doxepin to have a small-to-medium effect on sleep maintenance and duration, while pivotal adult and elderly trials showed significant wake-after-sleep-onset reductions versus placebo over one to twelve weeks.",
+      "population": "adults and older adults with chronic primary insomnia, especially those whose main complaint is waking during the night or too early in the morning",
+      "mechanism": "At very low doses, doxepin acts mainly through potent H1 histamine receptor antagonism, decreasing nocturnal wakefulness without behaving like an antidepressant-dose tricyclic regimen.",
+      "summary": "This is a strong protective sleep-maintenance edge. The best evidence supports low-dose doxepin as a maintenance-focused insomnia therapy more than as a pure sleep-initiation drug.",
+      "caveats": "Benefits are strongest for staying asleep rather than falling asleep. Trial programs were largely industry-sponsored, and although next-day sedation was generally limited at these doses, individual tolerability still matters in older adults.",
+      "evidence": [
+        {
+          "citation": "YeungWF et al 2015 Sleep Med Rev",
+          "year": 2015,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Doxepin for insomnia: a systematic review of randomized placebo-controlled trials.",
+          "pmid": "25047681",
+          "n_participants": 1423
+        },
+        {
+          "citation": "KrystalAD et al 2011 Sleep",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy and safety of doxepin 3 and 6 mg in a 35-day sleep laboratory trial in adults with chronic primary insomnia.",
+          "pmid": "21966075",
+          "n_participants": 221
+        },
+        {
+          "citation": "KrystalAD et al 2010 Sleep",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy and Safety of Doxepin 1 mg and 3 mg in a 12-week Sleep Laboratory and Outpatient Trial of Elderly Subjects with Chronic Primary Insomnia.",
+          "pmid": "21102997",
+          "n_participants": 240
+        }
+      ]
+    }
+  ]
+}

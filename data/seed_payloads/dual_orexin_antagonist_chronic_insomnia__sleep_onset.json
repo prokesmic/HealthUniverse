@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "dual_orexin_antagonist_chronic_insomnia",
+      "name": "Dual orexin receptor antagonists for chronic insomnia",
+      "kind": "drug",
+      "aliases": [
+        "DORAs for insomnia",
+        "dual orexin antagonists for insomnia disorder"
+      ],
+      "description": "Use of dual orexin receptor antagonists such as suvorexant, lemborexant, or daridorexant to improve sleep initiation in chronic insomnia."
+    },
+    {
+      "slug": "sleep_onset",
+      "name": "Sleep onset",
+      "kind": "process",
+      "aliases": [
+        "ability to fall asleep",
+        "time to sleep onset"
+      ],
+      "description": "The timing and ease of falling asleep at the beginning of the night."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "dual_orexin_antagonist_chronic_insomnia",
+      "outcome_slug": "sleep_onset",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "A 2025 network meta-analysis of 8 placebo-controlled trials and 5,198 adults found all marketed DORAs improved subjective time to sleep onset, with the strongest primary-outcome estimate for lemborexant 10 mg (SMD -0.430, 95% CI -0.568 to -0.292) versus placebo. Earlier pooled phase-3 suvorexant data and long-term lemborexant phase-3 results support a durable class effect on sleep initiation.",
+      "population": "adults with chronic insomnia disorder, including both middle-aged and older adults in modern phase 3 registration trials",
+      "mechanism": "Dual orexin receptor antagonists reduce wake drive by blocking orexin signaling, allowing sleep to begin more readily without relying on broad GABAergic sedation.",
+      "summary": "This is a strong protective sleep-onset edge. Across modern randomized trials, DORAs consistently improve insomnia sleep-initiation endpoints, with some heterogeneity in magnitude by dose and individual agent.",
+      "caveats": "The class also affects sleep maintenance, so trial outcomes often blend initiation and maintenance benefits. Somnolence and next-day impairment remain relevant dose-dependent tradeoffs, and comparative advantage among individual DORAs is still being refined.",
+      "evidence": [
+        {
+          "citation": "KishiT et al 2025 Transl Psychiatry",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Comparative efficacy and safety of daridorexant, lemborexant, and suvorexant for insomnia: a systematic review and network meta-analysis.",
+          "pmid": "40555730",
+          "n_participants": 5198,
+          "effect_quant": {
+            "metric": "standardized_mean_difference",
+            "value": -0.43,
+            "ci_low": -0.568,
+            "ci_high": -0.292,
+            "comparator": "Subjective time to sleep onset at month 1 for lemborexant 10 mg versus placebo in the network meta-analysis"
+          }
+        },
+        {
+          "citation": "HerringWJ et al 2016 J Clin Sleep Med",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Suvorexant in Patients with Insomnia: Pooled Analyses of Three-Month Data from Phase-3 Randomized Controlled Clinical Trials.",
+          "pmid": "27397664",
+          "n_participants": 1260
+        },
+        {
+          "citation": "RosenbergR et al 2020 Sleep",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Long-term efficacy and tolerability of lemborexant compared with placebo in adults with insomnia disorder: results from the phase 3 randomized clinical trial SUNRISE 2.",
+          "pmid": "32585700",
+          "n_participants": 949
+        }
+      ]
+    }
+  ]
+}

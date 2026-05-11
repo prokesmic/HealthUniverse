@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "clonazepam_rem_behavior_disorder",
+      "name": "Clonazepam for REM sleep behavior disorder",
+      "kind": "drug",
+      "aliases": [
+        "clonazepam for RBD",
+        "clonazepam in REM sleep behavior disorder"
+      ],
+      "description": "Use of bedtime clonazepam to reduce dream-enactment behaviors and episode burden in REM sleep behavior disorder."
+    },
+    {
+      "slug": "episodes",
+      "name": "Episode frequency",
+      "kind": "process",
+      "aliases": [
+        "attack frequency",
+        "behavioral episode burden"
+      ],
+      "description": "How often a recurrent symptom or disorder-specific episode occurs over time."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "clonazepam_rem_behavior_disorder",
+      "outcome_slug": "episodes",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Clonazepam remains a commonly used symptomatic therapy for REM sleep behavior disorder, but the direct evidence is weaker than its first-line reputation implies. A 2021 critical review found clear benefit reported in 684 of 1,026 clonazepam-treated patients across mostly uncontrolled clinical accounts, whereas the only placebo-controlled Parkinson disease RCT found no significant between-group difference after four weeks.",
+      "population": "adults with REM sleep behavior disorder, especially idiopathic or synucleinopathy-associated disease managed in outpatient sleep or neurology practice",
+      "mechanism": "Clonazepam likely suppresses motor expression of dream-enactment behaviors through benzodiazepine-mediated enhancement of inhibitory GABAergic signaling during sleep.",
+      "summary": "This is a cautiously protective edge rather than a cleanly settled one. Clonazepam is widely used and guideline-supported for symptom control, but the modern controlled trial signal is limited and not clearly positive.",
+      "caveats": "Most of the favorable literature consists of case series, retrospective cohorts, and mixed-etiology clinical reports rather than large randomized trials. Sedation, falls, cognitive adverse effects, and worsening of coexisting sleep apnea can limit usefulness in older adults.",
+      "evidence": [
+        {
+          "citation": "GilatM et al 2022 J Neurol",
+          "year": 2022,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A critical review of the pharmacological treatment of REM sleep behavior disorder in adults: time for more and larger randomized placebo-controlled trials.",
+          "pmid": "33410930",
+          "n_participants": 1026,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 0.667,
+            "comparator": "RBD patients reported as having clear benefit with clonazepam across aggregated clinical accounts in the review"
+          }
+        },
+        {
+          "citation": "ShinC et al 2019 J Neurol Sci",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Clonazepam for probable REM sleep behavior disorder in Parkinson's disease: A randomized placebo-controlled trial.",
+          "pmid": "31035190",
+          "n_participants": 40
+        },
+        {
+          "citation": "HowellMJ et al 2023 J Clin Sleep Med",
+          "year": 2023,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Management of REM sleep behavior disorder: an American Academy of Sleep Medicine clinical practice guideline.",
+          "pmid": "36515157"
+        }
+      ]
+    }
+  ]
+}

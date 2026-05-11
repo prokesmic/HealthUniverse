@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "shift_work_disorder_modafinil",
+      "name": "Modafinil for shift work disorder",
+      "kind": "drug",
+      "aliases": [
+        "modafinil for shift work sleep disorder",
+        "modafinil in chronic SWSD"
+      ],
+      "description": "Use of modafinil before night shifts to improve alertness and wakefulness in shift work disorder."
+    },
+    {
+      "slug": "wakefulness",
+      "name": "Wakefulness",
+      "kind": "process",
+      "aliases": [
+        "daytime alertness",
+        "ability to stay awake"
+      ],
+      "description": "Objective or subjective maintenance of daytime alertness, often measured with the Maintenance of Wakefulness Test or related sleepiness scales."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "shift_work_disorder_modafinil",
+      "outcome_slug": "wakefulness",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In the pivotal 209-patient NEJM trial, modafinil improved nighttime sleep latency by 1.7 minutes versus 0.3 with placebo and increased clinical improvement rates to 74% versus 36%. A second 278-patient placebo-controlled study also found significant gains in functioning and mental health-related quality of life.",
+      "population": "adults with chronic shift work disorder or shift work sleep disorder who have excessive sleepiness during habitual night work",
+      "mechanism": "Modafinil promotes wakefulness through catecholaminergic and broader arousal-network effects, improving the ability to remain alert during circadian misalignment.",
+      "summary": "This is a strong protective wakefulness edge. Modafinil consistently improves alertness and work-shift functioning in carefully selected patients with shift work disorder, though residual sleepiness often remains.",
+      "caveats": "Benefits are symptomatic rather than curative and do not correct the underlying circadian misalignment. Patients can remain meaningfully impaired despite treatment, so schedule design, strategic light exposure, and protected recovery sleep still matter.",
+      "evidence": [
+        {
+          "citation": "CzeislerCA et al 2005 N Engl J Med",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Modafinil for excessive sleepiness associated with shift-work sleep disorder.",
+          "pmid": "16079371",
+          "n_participants": 209,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 1.4,
+            "comparator": "Net nighttime Multiple Sleep Latency Test improvement with modafinil versus placebo after 3 months"
+          }
+        },
+        {
+          "citation": "ErmanMK et al 2007 Prim Care Companion J Clin Psychiatry",
+          "year": 2007,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Modafinil for excessive sleepiness associated with chronic shift work sleep disorder: effects on patient functioning and health-related quality of life.",
+          "pmid": "17632651",
+          "n_participants": 278
+        },
+        {
+          "citation": "TembeDV et al 2011 Neurol Res Int",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Armodafinil versus Modafinil in Patients of Excessive Sleepiness Associated with Shift Work Sleep Disorder: A Randomized Double Blind Multicentric Clinical Trial.",
+          "pmid": "21766023",
+          "n_participants": 211
+        }
+      ]
+    }
+  ]
+}
