@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ropinirole_rls",
+      "name": "Ropinirole for restless legs syndrome",
+      "kind": "drug",
+      "aliases": [
+        "ropinirole in restless legs syndrome",
+        "ropinirole for RLS"
+      ],
+      "description": "Use of ropinirole to reduce symptom burden in adults with restless legs syndrome."
+    },
+    {
+      "slug": "severity",
+      "name": "Disease severity",
+      "kind": "process",
+      "aliases": [
+        "symptom severity",
+        "clinical severity"
+      ],
+      "description": "Overall severity of a disorder, often measured by validated symptom scales such as the International Restless Legs Scale."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ropinirole_rls",
+      "outcome_slug": "severity",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Across multiple randomized trials, ropinirole lowers International Restless Legs Scale scores versus placebo. In a 381-patient US trial the adjusted treatment difference at 12 weeks was -3.7 points, in TREAT RLS 2 the difference was -2.5 points, and in very symptomatic patients with baseline IRLS at least 24 the placebo-adjusted effect remained -2.5 points at 26 weeks.",
+      "population": "adults with moderate to severe primary restless legs syndrome, including subgroups with especially high baseline IRLS scores",
+      "mechanism": "Ropinirole stimulates D2 and D3 dopamine receptors, reducing the sensory-motor urge to move and lowering overall restless-legs symptom burden.",
+      "summary": "This is a strong protective edge for symptom severity in restless legs syndrome. The effect is consistent across short-term and longer-term placebo-controlled trials and is clinically visible on the IRLS scale.",
+      "caveats": "Most placebo-controlled evidence is older than the rest of Track 9 and predates more recent concerns about augmentation and impulse-control adverse effects with chronic dopamine agonist exposure. Benefit is real, but longer-term tradeoffs matter.",
+      "evidence": [
+        {
+          "citation": "BoganRK et al 2006 Mayo Clin Proc",
+          "year": 2006,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Ropinirole in the treatment of patients with restless legs syndrome: a US-based randomized, double-blind, placebo-controlled clinical trial.",
+          "pmid": "16438474",
+          "n_participants": 381,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -3.7,
+            "ci_low": -5.4,
+            "ci_high": -2.0,
+            "comparator": "International Restless Legs Scale change with ropinirole versus placebo at 12 weeks"
+          }
+        },
+        {
+          "citation": "WaltersAS et al 2004 Mov Disord",
+          "year": 2004,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Ropinirole is effective in the treatment of restless legs syndrome. TREAT RLS 2: a 12-week, double-blind, randomized, parallel-group, placebo-controlled study.",
+          "pmid": "15390050",
+          "n_participants": 267,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -2.5,
+            "ci_low": -4.6,
+            "ci_high": -0.4,
+            "comparator": "International Restless Legs Scale change with ropinirole versus placebo at 12 weeks"
+          }
+        },
+        {
+          "citation": "GiorgiL et al 2013 Clin Ther",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Ropinirole in patients with restless legs syndrome and baseline IRLS total scores >= 24: efficacy and tolerability in a 26-week, double-blind, parallel-group, placebo-controlled study followed by a 40-week open-label extension.",
+          "pmid": "23938061",
+          "n_participants": 404,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -2.5,
+            "comparator": "International Restless Legs Scale change with ropinirole versus placebo at week 26 in patients with baseline IRLS >= 24"
+          }
+        }
+      ]
+    }
+  ]
+}
