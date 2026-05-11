@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "wearable_oximetry_osa_screening",
+      "name": "Wearable oximetry for obstructive sleep apnea screening",
+      "kind": "activity",
+      "aliases": [
+        "overnight wearable oximetry",
+        "pulse oximetry screening for OSA"
+      ],
+      "description": "Consumer or medical wearable oximetry approaches used to screen for obstructive sleep apnea before confirmatory testing."
+    },
+    {
+      "slug": "diagnosis",
+      "name": "Diagnosis",
+      "kind": "process",
+      "aliases": [
+        "detection of disease"
+      ],
+      "description": "Identification of the presence or absence of a target condition."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "wearable_oximetry_osa_screening",
+      "outcome_slug": "diagnosis",
+      "direction": "mixed",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Wearable oximetry can screen for OSA fairly well, but it should complement rather than replace formal testing. A 2025 meta-analysis found wearable sensitivity 0.87, specificity 0.86, and AUC 0.93 for AHI greater than 15, while older single-device studies showed respectable but variable performance across thresholds and populations.",
+      "population": "adults being screened for suspected obstructive sleep apnea, especially where access to standard testing is limited",
+      "mechanism": "Nocturnal desaturation patterns, oxygen desaturation indices, and photoplethysmographic signatures can reflect recurrent obstructive breathing events and help triage patients toward definitive testing.",
+      "summary": "There is real signal here, especially for moderate to severe OSA screening, but the edge is mixed because performance depends heavily on device type, threshold, and clinical context.",
+      "caveats": "Wearable oximetry is better for screening than for ruling out all OSA. It can miss milder disease, arousal-heavy disease, and some patients without pronounced desaturation, and false positives can arise from other causes of nocturnal hypoxemia.",
+      "evidence": [
+        {
+          "citation": "HasanainM et al 2025 Sleep Breath",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Diagnostic value of wearable and contactless technologies for detecting obstructive sleep apnea: a systematic review and meta-analysis.",
+          "pmid": "41310031",
+          "n_participants": 2743,
+          "effect_quant": {
+            "metric": "sensitivity",
+            "value": 0.87,
+            "comparator": "Pooled wearable-device sensitivity for detecting OSA at AHI greater than 15"
+          }
+        },
+        {
+          "citation": "RomemA et al 2014 J Clin Sleep Med",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Diagnosis of obstructive sleep apnea using pulse oximeter derived photoplethysmographic signals.",
+          "pmid": "24634626",
+          "n_participants": 65,
+          "effect_quant": {
+            "metric": "accuracy",
+            "value": 0.91,
+            "comparator": "Area under the receiver operating curve of pulse-oximetry-derived photoplethysmography for PSG AHI greater than 5 per hour"
+          }
+        },
+        {
+          "citation": "Esteban-AmarillaC et al 2020 Can Respir J",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Usefulness of Home Overnight Pulse Oximetry in Patients with Suspected Sleep-Disordered Breathing.",
+          "pmid": "33273990",
+          "n_participants": 104,
+          "effect_quant": {
+            "metric": "accuracy",
+            "value": 0.984,
+            "comparator": "Area under the curve of ODI4 for identifying AHI at least 10 per hour"
+          }
+        }
+      ]
+    }
+  ]
+}

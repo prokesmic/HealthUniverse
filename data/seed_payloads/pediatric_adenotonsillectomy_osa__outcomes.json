@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pediatric_adenotonsillectomy_osa",
+      "name": "Pediatric adenotonsillectomy for obstructive sleep apnea",
+      "kind": "activity",
+      "aliases": [
+        "adenotonsillectomy for childhood OSA",
+        "AT for pediatric sleep apnea"
+      ],
+      "description": "Adenotonsillectomy performed in children with obstructive sleep apnea or sleep-disordered breathing."
+    },
+    {
+      "slug": "outcomes",
+      "name": "Clinical outcomes",
+      "kind": "process",
+      "aliases": [
+        "patient outcomes"
+      ],
+      "description": "Overall clinical, sleep-related, behavioral, cardiovascular, and quality-of-life outcomes after an intervention."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pediatric_adenotonsillectomy_osa",
+      "outcome_slug": "outcomes",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Adenotonsillectomy improves many pediatric OSA outcomes, but benefit varies by age and severity. A 2023 meta-analysis of 93 studies found better disease and comorbidity improvement when surgery occurred between ages 3 and 7, while randomized trials showed stronger gains in quality of life, symptoms, and reduced progression than in executive-function primary endpoints.",
+      "population": "children with uncomplicated obstructive sleep apnea or clinically important sleep-disordered breathing, especially preschool and school-age children with adenotonsillar hypertrophy",
+      "mechanism": "Removing hypertrophied tonsils and adenoids enlarges the upper airway, decreases obstructive events, improves oxygenation and sleep continuity, and can relieve downstream behavioral and cardiovascular strain.",
+      "summary": "This is generally a protective edge, but it is not uniformly curative. The strongest benefits are seen in symptom burden, quality of life, and physiologic disease severity, while neurocognitive primary outcomes in milder disease can be less dramatic.",
+      "caveats": "Residual OSA is common in older children, obesity, craniofacial risk, or more severe baseline disease. Very young children have higher surgical complication risk, and mild disease can sometimes justify watchful waiting.",
+      "evidence": [
+        {
+          "citation": "ChenY et al 2023 Sleep Med Rev",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effectiveness and safety of (adeno) tonsillectomy for pediatric obstructive sleep apnea in different age groups: A systematic review and meta-analysis.",
+          "pmid": "37121134",
+          "n_participants": 9087
+        },
+        {
+          "citation": "FehrmJ et al 2020 JAMA Otolaryngol Head Neck Surg",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effectiveness of Adenotonsillectomy vs Watchful Waiting in Young Children With Mild to Moderate Obstructive Sleep Apnea: A Randomized Clinical Trial.",
+          "pmid": "32463430",
+          "n_participants": 60,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -1.0,
+            "ci_low": -2.4,
+            "ci_high": 0.5,
+            "comparator": "Difference in mean OAHI score change for adenotonsillectomy versus watchful waiting at 6 months"
+          }
+        },
+        {
+          "citation": "RedlineS et al 2023 JAMA",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Adenotonsillectomy for Snoring and Mild Sleep Apnea in Children: A Randomized Clinical Trial.",
+          "pmid": "38051326",
+          "n_participants": 458,
+          "effect_quant": {
+            "metric": "risk_difference",
+            "value": -11.2,
+            "comparator": "Difference in 12-month progression to AHI greater than 3 events per hour for adenotonsillectomy versus watchful waiting"
+          }
+        }
+      ]
+    }
+  ]
+}

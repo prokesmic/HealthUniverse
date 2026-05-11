@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "home_sleep_apnea_test",
+      "name": "Home sleep apnea test",
+      "kind": "activity",
+      "aliases": [
+        "HSAT",
+        "portable home sleep study"
+      ],
+      "description": "Home-based portable sleep testing used to evaluate suspected obstructive sleep apnea outside the laboratory."
+    },
+    {
+      "slug": "diagnosis_accuracy",
+      "name": "Diagnostic accuracy",
+      "kind": "process",
+      "aliases": [
+        "test accuracy",
+        "correct detection of disease"
+      ],
+      "description": "The ability of a diagnostic approach to correctly identify or exclude a target condition."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "home_sleep_apnea_test",
+      "outcome_slug": "diagnosis_accuracy",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "HSAT is reasonably accurate in appropriate patients but can underestimate severity. A 2018 meta-analysis of level IV monitors found sensitivity ranging 67.5% to 100% and specificity 25% to 100% for AHI at least 5, while a 2026 rescoring study improved concordance with PSG to 89.7% and reduced false negatives to 5%.",
+      "population": "adults with suspected obstructive sleep apnea, especially those with higher pretest probability and lower concern for arousal-dominant or complex sleep disease",
+      "mechanism": "Portable home testing captures airflow, respiratory effort, and oxygenation outside the lab, allowing lower-cost detection of obstructive breathing abnormalities in real-world sleep conditions.",
+      "summary": "This is a useful diagnostic edge, especially for pragmatic OSA workups. The main limitation is not that HSAT is useless, but that it can miss milder, more fragmented, or more complex disease if interpreted too simplistically.",
+      "caveats": "False negatives remain a meaningful issue, especially with nondiagnostic studies or limited channels. HSAT is less reliable for subtle disease, major comorbidity, central events, or when sleep architecture and arousal burden matter.",
+      "evidence": [
+        {
+          "citation": "AbrahamyanL et al 2018 Sleep Breath",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Diagnostic accuracy of level IV portable sleep monitors versus polysomnography for obstructive sleep apnea: a systematic review and meta-analysis.",
+          "pmid": "29318566",
+          "n_participants": 2068
+        },
+        {
+          "citation": "CushmanP et al 2026 Sleep Breath",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Modified scoring criteria to improve the accuracy of the home sleep apnea test.",
+          "pmid": "41692912",
+          "n_participants": 68,
+          "effect_quant": {
+            "metric": "accuracy",
+            "value": 89.7,
+            "comparator": "Overall concordance of modified HSAT criteria with PSG for obstructive sleep apnea diagnosis"
+          }
+        },
+        {
+          "citation": "WatsonNF et al 2026 J Clin Sleep Med",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Validation of an artificial intelligence based single-channel photoplethysmography home sleep apnea test.",
+          "pmid": "41703347",
+          "n_participants": 225,
+          "effect_quant": {
+            "metric": "sensitivity",
+            "value": 90.9,
+            "comparator": "Sensitivity of photoplethysmography-based home sleep apnea testing for OSA classification using 3% AHI"
+          }
+        }
+      ]
+    }
+  ]
+}
