@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "atorvastatin_high_dose_pad",
+      "name": "High-dose atorvastatin in peripheral artery disease",
+      "kind": "drug",
+      "aliases": [
+        "atorvastatin 80 mg for PAD",
+        "intensive atorvastatin therapy in peripheral arterial disease"
+      ],
+      "description": "Use of high-intensity atorvastatin, usually 80 mg daily, in adults with peripheral artery disease or closely related lower-extremity atherosclerotic vascular disease."
+    },
+    {
+      "slug": "cv_events_pad",
+      "name": "Cardiovascular events in peripheral artery disease",
+      "kind": "condition",
+      "aliases": [
+        "major cardiovascular events in PAD",
+        "coronary, cerebrovascular, or vascular events in PAD"
+      ],
+      "description": "Major cardiovascular outcomes among people with peripheral artery disease, including coronary events, stroke, vascular death, or related composite events."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "atorvastatin_high_dose_pad",
+      "outcome_slug": "cv_events_pad",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In the PAD subgroup of IDEAL, high-dose atorvastatin was associated with fewer major coronary events than moderate-dose simvastatin (HR 0.68), while broader PAD meta-analysis found lower stroke incidence with statin therapy (OR 0.77) and suggested lower cardiovascular mortality and myocardial infarction risk overall. In vascular-surgery patients, short-term atorvastatin cut 6-month postoperative cardiovascular events from 26.0% to 8.0%.",
+      "population": "adults with established peripheral artery disease or other severe atherosclerotic vascular disease, including post-myocardial-infarction patients with PAD and patients undergoing major vascular surgery",
+      "mechanism": "Intensive LDL lowering likely stabilizes systemic atherosclerotic plaque, improves endothelial function, and reduces thrombo-inflammatory risk across multiple vascular beds, not just the lower extremities.",
+      "summary": "This edge is more convincing for broad vascular-risk reduction than for limb symptoms. The strongest direct PAD signal comes from the IDEAL PAD subgroup and from supportive meta-analysis showing fewer cerebrovascular and cardiovascular events in statin-treated PAD populations.",
+      "caveats": "Not all PAD-specific analyses were individually powered for hard cardiovascular endpoints, and some pooled estimates come from mixed statin intensities rather than atorvastatin 80 mg alone. The direction is still protective, but the precision is not as clean as in post-ACS lipid trials.",
+      "evidence": [
+        {
+          "citation": "Stoekenbroek RM et al 2015 Heart",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "High-dose atorvastatin is superior to moderate-dose simvastatin in preventing peripheral arterial disease. IDEAL PAD subgroup analysis.",
+          "pmid": "25595417",
+          "n_participants": 8888,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.68,
+            "ci_low": 0.41,
+            "ci_high": 1.11,
+            "comparator": "major coronary events in patients with PAD at baseline in IDEAL with atorvastatin 80 mg versus simvastatin 20 to 40 mg"
+          }
+        },
+        {
+          "citation": "Antoniou GA et al 2014 Vascul Pharmacol",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Statin therapy in lower limb peripheral arterial disease: systematic review and meta-analysis.",
+          "pmid": "25446168",
+          "n_participants": 19368,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.77,
+            "ci_low": 0.67,
+            "ci_high": 0.89,
+            "comparator": "stroke incidence with statin therapy versus no statin in lower-limb PAD"
+          }
+        },
+        {
+          "citation": "Durazzo AE et al 2004 J Vasc Surg",
+          "year": 2004,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Reduction in cardiovascular events after vascular surgery with atorvastatin: a randomized trial.",
+          "pmid": "15111846",
+          "n_participants": 100,
+          "effect_quant": {
+            "metric": "absolute_risk_difference",
+            "value": -18.0,
+            "comparator": "6-month postoperative cardiovascular events with atorvastatin versus placebo after vascular surgery (8.0% vs 26.0%)"
+          }
+        }
+      ]
+    }
+  ]
+}

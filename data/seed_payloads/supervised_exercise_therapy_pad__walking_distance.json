@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "supervised_exercise_therapy_pad",
+      "name": "Supervised exercise therapy for peripheral artery disease",
+      "kind": "activity",
+      "aliases": [
+        "SET for intermittent claudication",
+        "supervised treadmill or walking rehabilitation for PAD"
+      ],
+      "description": "Structured supervised exercise therapy delivered to adults with peripheral artery disease and intermittent claudication."
+    },
+    {
+      "slug": "walking_distance",
+      "name": "Walking distance",
+      "kind": "process",
+      "aliases": [
+        "maximum walking distance",
+        "functional walking distance"
+      ],
+      "description": "Measured walking performance, usually treadmill or corridor walking distance, in people with mobility-limiting disease."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "supervised_exercise_therapy_pad",
+      "outcome_slug": "walking_distance",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Network meta-analysis found supervised exercise clearly outperformed best medical therapy alone for intermittent claudication, with Vemulapalli et al estimating a 150 m gain in maximal walking distance and Saratzis et al showing the strongest walking gains when SET was combined with angioplasty. In the ERASE trial, SET alone improved maximum treadmill distance by 955 m over 12 months.",
+      "population": "adults with lower-extremity peripheral artery disease and intermittent claudication enrolled in exercise-based rehabilitation trials",
+      "mechanism": "Repeated supervised walking improves skeletal-muscle efficiency, collateral adaptation, pain tolerance, and gait confidence, translating into substantially better functional capacity despite persistent arterial obstruction.",
+      "summary": "For symptomatic claudication, supervised exercise is one of the most reliable nonpharmacologic interventions we have. The benefit is consistently about function and walking tolerance rather than direct prevention of myocardial infarction or stroke.",
+      "caveats": "The size of benefit depends on adherence, program intensity, and duration, and trial comparisons sometimes mix supervised exercise alone with combination revascularization strategies. The edge therefore targets walking-distance improvement specifically.",
+      "evidence": [
+        {
+          "citation": "Saratzis A et al 2019 JACC Cardiovasc Interv",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Supervised Exercise Therapy and Revascularization for Intermittent Claudication: Network Meta-Analysis of Randomized Controlled Trials.",
+          "pmid": "31153838",
+          "n_participants": 2983,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 290.0,
+            "ci_low": 180.0,
+            "ci_high": 390.0,
+            "comparator": "maximum walking distance gain with PTA plus SET versus best medical therapy alone"
+          }
+        },
+        {
+          "citation": "Vemulapalli S et al 2015 Clin Cardiol",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Comparative Effectiveness of Medical Therapy, Supervised Exercise, and Revascularization for Patients With Intermittent Claudication: A Network Meta-analysis.",
+          "pmid": "25963038",
+          "n_participants": 7475,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 150.0,
+            "ci_low": 35.0,
+            "ci_high": 266.0,
+            "comparator": "maximal walking distance with exercise training versus usual care"
+          }
+        },
+        {
+          "citation": "Fakhry F et al 2015 JAMA",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Endovascular Revascularization and Supervised Exercise for Peripheral Artery Disease and Intermittent Claudication: A Randomized Clinical Trial.",
+          "pmid": "26547465",
+          "n_participants": 212,
+          "effect_quant": {
+            "metric": "mean_change",
+            "value": 955.0,
+            "comparator": "improvement in maximum walking distance over 12 months with supervised exercise alone in ERASE"
+          }
+        }
+      ]
+    }
+  ]
+}

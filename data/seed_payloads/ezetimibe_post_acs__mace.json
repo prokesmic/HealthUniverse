@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ezetimibe_post_acs",
+      "name": "Ezetimibe added after acute coronary syndrome",
+      "kind": "drug",
+      "aliases": [
+        "post-ACS ezetimibe plus statin therapy",
+        "adding ezetimibe after MI or unstable angina"
+      ],
+      "description": "Use of ezetimibe in addition to statin therapy after hospitalization for acute coronary syndrome."
+    },
+    {
+      "slug": "mace",
+      "name": "Major adverse cardiovascular events",
+      "kind": "condition",
+      "aliases": [
+        "MACE",
+        "major ischemic cardiovascular events"
+      ],
+      "description": "Composite cardiovascular outcomes such as cardiovascular death, myocardial infarction, stroke, unstable angina hospitalization, or repeat revascularization."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ezetimibe_post_acs",
+      "outcome_slug": "mace",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "In IMPROVE-IT, adding ezetimibe after ACS lowered the 7-year primary composite event rate from 34.7% to 32.7% (HR 0.936). More recent ACS-focused meta-analyses found a consistent MACE reduction with ezetimibe plus statin, including RR 0.93 across randomized trials and OR 0.89 for recurrent cardiovascular events when ezetimibe was started early after the index event.",
+      "population": "adults treated after acute coronary syndrome, usually on background high-intensity or standard statin therapy",
+      "mechanism": "Further LDL lowering after plaque rupture likely reduces recurrent ischemic events by limiting lipid burden in residual vulnerable plaques beyond what statin monotherapy achieves.",
+      "summary": "This is a real but incremental secondary-prevention benefit. The signal is not dramatic, yet it has held up from IMPROVE-IT through newer ACS-focused syntheses and fits the broader LDL-lowering story well.",
+      "caveats": "The absolute risk reduction is modest, so the value proposition depends on baseline risk and how much LDL lowering is still needed after statin optimization. Most of the benefit is driven by fewer recurrent ischemic events rather than a striking mortality reduction.",
+      "evidence": [
+        {
+          "citation": "Guida CM et al 2025 Coron Artery Dis",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Cardiovascular benefits of statin plus ezetimibe combination therapy versus statin monotherapy in acute coronary syndrome: a meta-analysis of randomized controlled trials.",
+          "pmid": "39235900",
+          "n_participants": 20574,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.93,
+            "ci_low": 0.9,
+            "ci_high": 0.97,
+            "comparator": "MACE with ezetimibe plus statin versus statin monotherapy in ACS trials"
+          }
+        },
+        {
+          "citation": "Cannon CP et al 2015 N Engl J Med",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Ezetimibe Added to Statin Therapy after Acute Coronary Syndromes. IMPROVE-IT.",
+          "pmid": "26039521",
+          "n_participants": 18144,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.936,
+            "ci_low": 0.89,
+            "ci_high": 0.99,
+            "comparator": "primary composite MACE outcome in IMPROVE-IT with simvastatin-ezetimibe versus simvastatin alone"
+          }
+        },
+        {
+          "citation": "Mahajan K et al 2024 Eur J Intern Med",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Impact of early initiation of ezetimibe in patients with acute coronary syndrome: A systematic review and meta-analysis.",
+          "pmid": "38336550",
+          "n_participants": 20291,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 0.89,
+            "ci_low": 0.83,
+            "ci_high": 0.96,
+            "comparator": "death from any cause, major ACS, and non-fatal stroke with early ezetimibe initiation versus control after ACS"
+          }
+        }
+      ]
+    }
+  ]
+}

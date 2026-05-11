@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cilostazol_pad",
+      "name": "Cilostazol for peripheral artery disease",
+      "kind": "drug",
+      "aliases": [
+        "cilostazol for intermittent claudication",
+        "PDE3 inhibition for PAD walking limitation"
+      ],
+      "description": "Use of cilostazol to improve walking performance in adults with peripheral artery disease and intermittent claudication."
+    },
+    {
+      "slug": "claudication_distance",
+      "name": "Claudication distance",
+      "kind": "process",
+      "aliases": [
+        "absolute claudication distance",
+        "pain-free or maximal claudication walking distance"
+      ],
+      "description": "The walking distance a person with intermittent claudication can achieve before limiting leg pain occurs or forces stopping."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cilostazol_pad",
+      "outcome_slug": "claudication_distance",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The 2021 Cochrane review found cilostazol increased initial claudication distance by 26.49 m and absolute claudication distance by 39.57 m versus placebo across 16 trials. Earlier network meta-analysis estimated about a 25% gain in maximum walking distance relative to placebo, and a classic RCT showed a 47% increase in absolute claudication distance after 16 weeks.",
+      "population": "adults with stable lower-extremity peripheral artery disease and intermittent claudication",
+      "mechanism": "Cilostazol inhibits phosphodiesterase 3, producing antiplatelet, vasodilatory, and possibly microcirculatory benefits that improve walking tolerance despite little change in large-vessel obstruction.",
+      "summary": "This is one of the few drug therapies with a repeatable symptom benefit in claudication. The improvement is real but modest, and it is best framed as better walking tolerance rather than a disease-modifying cardiovascular therapy.",
+      "caveats": "Benefits are measured mostly over weeks to months and are offset by common adverse effects such as headache and diarrhea. The edge is about symptom distance, not prevention of limb loss or major cardiovascular events.",
+      "evidence": [
+        {
+          "citation": "Brown T et al 2021 Cochrane Database Syst Rev",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Cilostazol for intermittent claudication.",
+          "pmid": "34192807",
+          "n_participants": 3972,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 39.57,
+            "ci_low": 21.8,
+            "ci_high": 57.33,
+            "comparator": "absolute claudication distance in meters with cilostazol versus placebo"
+          }
+        },
+        {
+          "citation": "Money SR et al 1998 J Vasc Surg",
+          "year": 1998,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of cilostazol on walking distances in patients with intermittent claudication caused by peripheral vascular disease.",
+          "pmid": "9510281",
+          "n_participants": 239,
+          "effect_quant": {
+            "metric": "percentage_change",
+            "value": 47.0,
+            "comparator": "absolute claudication distance increase at 16 weeks with cilostazol versus 12.9% with placebo"
+          }
+        },
+        {
+          "citation": "Hiatt WR 2002 Vasc Med",
+          "year": 2002,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Evidence-based symptom relief of intermittent claudication: efficacy and safety of cilostazol.",
+          "pmid": "12180354"
+        }
+      ]
+    }
+  ]
+}
