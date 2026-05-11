@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "spironolactone_resistant_hypertension",
+      "name": "Spironolactone for resistant hypertension",
+      "kind": "drug",
+      "aliases": [
+        "spironolactone add-on therapy for resistant hypertension",
+        "mineralocorticoid receptor blockade in resistant hypertension"
+      ],
+      "description": "Use of spironolactone as add-on treatment for resistant hypertension already treated with multiple standard antihypertensive agents."
+    },
+    {
+      "slug": "bp_outcomes",
+      "name": "Blood pressure outcomes",
+      "kind": "process",
+      "aliases": [
+        "blood pressure reduction",
+        "home or clinic systolic blood pressure control"
+      ],
+      "description": "Measured blood-pressure outcomes such as home systolic blood pressure lowering or improved blood pressure control."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "spironolactone_resistant_hypertension",
+      "outcome_slug": "bp_outcomes",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "PATHWAY-2 showed spironolactone lowered home systolic blood pressure 8.70 mm Hg more than placebo and about 4 mm Hg more than either bisoprolol or doxazosin. Earlier meta-analysis found aldosterone antagonists reduced systolic blood pressure by 16.5 mm Hg versus control across resistant-hypertension studies, and PATHWAY-2 mechanistic analyses reinforced that sodium-retention physiology predicts a strong spironolactone response.",
+      "population": "adults with resistant hypertension despite treatment with maximally tolerated multidrug regimens",
+      "mechanism": "Mineralocorticoid receptor blockade counteracts aldosterone-driven sodium retention and volume expansion, which appears to be a dominant mechanism in many patients with resistant hypertension.",
+      "summary": "This is one of the best supported add-on drug edges in hypertension. Spironolactone is not just another option in resistant hypertension; it has repeatedly outperformed the obvious comparators.",
+      "caveats": "Hyperkalemia risk still matters, especially in CKD or when combined with renin-angiotensin system blockade. The benefit is best established in carefully characterized resistant hypertension rather than casual intensification of simpler hypertension regimens.",
+      "evidence": [
+        {
+          "citation": "Williams B et al 2015 Lancet",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Spironolactone versus placebo, bisoprolol, and doxazosin to determine the optimal treatment for drug-resistant hypertension. PATHWAY-2.",
+          "pmid": "26414968",
+          "n_participants": 335,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -8.7,
+            "ci_low": -9.72,
+            "ci_high": -7.69,
+            "comparator": "average home systolic blood pressure with spironolactone versus placebo in PATHWAY-2"
+          }
+        },
+        {
+          "citation": "Briasoulis A et al 2014 J Hum Hypertens",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of aldosterone antagonists on blood pressure in patients with resistant hypertension: a meta-analysis.",
+          "pmid": "25078487",
+          "n_participants": 2640,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -16.5,
+            "ci_low": -30.0,
+            "ci_high": -3.0,
+            "comparator": "systolic blood pressure with aldosterone antagonists versus control in resistant hypertension"
+          }
+        },
+        {
+          "citation": "Williams B et al 2018 Lancet Diabetes Endocrinol",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Endocrine and haemodynamic changes in resistant hypertension, and blood pressure responses to spironolactone or amiloride: the PATHWAY-2 mechanisms substudies.",
+          "pmid": "29655877",
+          "n_participants": 314,
+          "effect_quant": {
+            "metric": "mean_change",
+            "value": -18.3,
+            "ci_low": -20.5,
+            "ci_high": -16.2,
+            "comparator": "clinic systolic blood pressure reduction with spironolactone 25 mg once daily in the PATHWAY-2 runout comparison"
+          }
+        }
+      ]
+    }
+  ]
+}
