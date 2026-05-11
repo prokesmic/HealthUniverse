@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tetracycline_with_dairy",
+      "name": "Tetracycline taken with dairy",
+      "kind": "activity",
+      "aliases": [
+        "tetracycline with milk",
+        "tetracycline ingested with calcium-rich dairy"
+      ],
+      "description": "Use of oral tetracycline-class therapy with simultaneous intake of milk or other calcium-rich dairy products."
+    },
+    {
+      "slug": "absorption_reduction",
+      "name": "Reduced absorption",
+      "kind": "process",
+      "aliases": [
+        "lower oral bioavailability",
+        "chelation-related absorption impairment"
+      ],
+      "description": "Reduction in intestinal absorption and systemic bioavailability of an orally administered drug."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tetracycline_with_dairy",
+      "outcome_slug": "absorption_reduction",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "In healthy volunteers, milk-containing beverages severely impaired tetracycline bioavailability in a 12-person crossover study, and simultaneous milk ingestion reduced doxycycline peak concentration by 24% with mean absorption reduced by about 30% in another crossover trial.",
+      "population": "healthy adults or patients taking oral tetracycline-class antibiotics together with milk or other dairy products",
+      "mechanism": "Calcium in dairy chelates tetracycline-class antibiotics in the gut lumen, forming poorly absorbable complexes and lowering systemic exposure.",
+      "summary": "This is a classic chelation interaction rather than a marginal food effect. The size of the reduction is largest for older tetracyclines and more variable for doxycycline, but the overall direction is clearly toward lower antibiotic exposure when dairy is taken simultaneously.",
+      "caveats": "Not every tetracycline derivative is affected to the same degree, and doxycycline tends to be less sensitive than tetracycline itself. Timing separation can reduce the practical impact, so the edge supports spacing rather than claiming permanent incompatibility.",
+      "evidence": [
+        {
+          "citation": "Jung H et al 1997 Biopharm Drug Dispos",
+          "year": 1997,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The influence of coffee with milk and tea with milk on the bioavailability of tetracycline.",
+          "pmid": "9210983",
+          "n_participants": 12
+        },
+        {
+          "citation": "Meyer FP et al 1989 Infection",
+          "year": 1989,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Influence of milk on the bioavailability of doxycycline--new aspects.",
+          "pmid": "2767766",
+          "n_participants": 9,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": -24,
+            "unit": "percent",
+            "comparator": "change in doxycycline peak plasma concentration with simultaneous milk ingestion versus water"
+          }
+        },
+        {
+          "citation": "Welling PG et al 1977 Antimicrob Agents Chemother",
+          "year": 1977,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Bioavailability of tetracycline and doxycycline in fasted and nonfasted subjects.",
+          "pmid": "856000"
+        }
+      ]
+    }
+  ]
+}
