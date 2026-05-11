@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "eras_protocol_colorectal",
+      "name": "ERAS protocol for colorectal surgery",
+      "kind": "behavior",
+      "aliases": [
+        "enhanced recovery after surgery for colorectal resection",
+        "colorectal enhanced recovery pathway"
+      ],
+      "description": "A structured perioperative enhanced-recovery pathway used around elective colorectal surgery."
+    },
+    {
+      "slug": "post_surgical_outcomes",
+      "name": "Post-surgical outcomes",
+      "kind": "process",
+      "aliases": [
+        "postoperative recovery outcomes",
+        "perioperative outcomes"
+      ],
+      "description": "Composite recovery outcomes after surgery, including morbidity, length of stay, rescue after complications, and readmission."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "eras_protocol_colorectal",
+      "outcome_slug": "post_surgical_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The strongest randomized meta-analysis found that colorectal ERAS reduced overall morbidity (RR 0.60, 95% CI 0.46-0.76) and shortened hospital stay by 2.28 days without increasing readmissions.",
+      "population": "adults undergoing elective colorectal resection",
+      "mechanism": "Colorectal ERAS bundles reduce surgical stress by combining earlier feeding and mobilization, opioid-sparing analgesia, goal-directed fluids, and routine avoidance of low-value tubes and drains. The package effect is most plausible on nonsurgical complications, length of stay, and rescue from deterioration rather than on every individual surgical complication.",
+      "summary": "The best anchor is the larger randomized-trial meta-analysis, which found fewer overall complications and shorter stays when colorectal ERAS pathways replaced conventional care. Earlier randomized and prospective multicenter data point in the same direction, and newer observational work suggests that high pathway adherence also improves rescue after complications, so this edge is best read as meaningfully protective for overall postoperative recovery.",
+      "caveats": "This is a bundle intervention, so the literature is better at showing that high-fidelity ERAS works than at isolating which specific element drives benefit. Effects are also adherence-sensitive: pathway use on paper is not the same as actually delivering more than 70% of the intended components.",
+      "evidence": [
+        {
+          "citation": "Greco M et al 2014 World J Surg",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Enhanced recovery program in colorectal surgery: a meta-analysis of randomized controlled trials.",
+          "pmid": "24368573",
+          "n_participants": 2376
+        },
+        {
+          "citation": "Varadhan KK et al 2011 Surgery",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Enhanced recovery pathways optimize health outcomes and resource utilization: a meta-analysis of randomized controlled trials in colorectal surgery.",
+          "pmid": "21236454",
+          "n_participants": 452
+        },
+        {
+          "citation": "Catarci M et al 2025 Dis Colon Rectum",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Enhanced Recovery Independently Lowers Failure to Rescue After Colorectal Surgery.",
+          "pmid": "39932201",
+          "n_participants": 8359
+        }
+      ]
+    }
+  ]
+}

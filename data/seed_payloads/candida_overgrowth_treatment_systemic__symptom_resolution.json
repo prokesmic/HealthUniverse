@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "candida_overgrowth_treatment_systemic",
+      "name": "Systemic treatment for presumed Candida overgrowth",
+      "kind": "drug",
+      "aliases": [
+        "systemic anti-Candida treatment",
+        "Candida overgrowth therapy"
+      ],
+      "description": "Systemic antifungal-style treatment or anti-Candida protocols used for presumed intestinal Candida overgrowth or Candida-related nonspecific symptom syndromes."
+    },
+    {
+      "slug": "symptom_resolution",
+      "name": "Symptom resolution",
+      "kind": "process",
+      "aliases": [
+        "resolution of symptoms",
+        "global symptom improvement"
+      ],
+      "description": "Substantial improvement or disappearance of symptomatic complaints attributed to an exposure or treatment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "candida_overgrowth_treatment_systemic",
+      "outcome_slug": "symptom_resolution",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "unknown",
+      "effect_quant": "A 2002 systematic review of 96 citations on intestinal Candida colonization found no evidence that most commonly blamed lifestyle or medication exposures predispose immunocompetent adults to clinically meaningful gut-Candida syndromes, and it concluded that therapeutic studies did not substantiate a broad Candida-syndrome model.",
+      "population": "immunocompetent adults with presumed intestinal Candida overgrowth or nonspecific symptom complexes attributed to gut Candida",
+      "mechanism": "Candida can colonize the gastrointestinal tract as a commensal or pathobiont, but colonization alone does not prove that nonspecific systemic symptoms are being driven by fungal overgrowth or that empiric systemic treatment will resolve them.",
+      "summary": "This is best treated as a contested or largely unsupported functional-medicine claim rather than a validated therapeutic pathway. Human review literature does not show a clear, reproducible syndrome in which systemic anti-Candida treatment reliably resolves broad nonspecific symptoms in otherwise immunocompetent adults.",
+      "caveats": "This edge does not apply to invasive candidiasis or clearly diagnosed mucosal fungal infections. It is specifically about the broad 'Candida overgrowth' explanation for diffuse symptoms and the claim that systemic treatment predictably fixes them.",
+      "evidence": [
+        {
+          "citation": "Krogsgaard-Larsen N et al 1988 Bull N Y Acad Med",
+          "year": 1988,
+          "study_type": "expert_opinion",
+          "direction": "neutral",
+          "quality": "low",
+          "notes": "Systemic symptoms from Candida in the gut: real or imaginary?",
+          "pmid": "3233439"
+        },
+        {
+          "citation": "Krause W et al 2002 Int J Hyg Environ Health",
+          "year": 2002,
+          "study_type": "systematic_review",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "The pathogenetic significance of intestinal Candida colonization--a systematic review from an interdisciplinary and environmental medical point of view.",
+          "pmid": "12068745",
+          "n_participants": 96
+        },
+        {
+          "citation": "Mishra AA et al 2021 Curr Opin Microbiol",
+          "year": 2021,
+          "study_type": "expert_opinion",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "The microbial and host factors that govern Candida gastrointestinal colonization and dissemination.",
+          "pmid": "34111679"
+        }
+      ]
+    }
+  ]
+}

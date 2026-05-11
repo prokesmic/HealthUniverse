@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pelvic_floor_pt_postpartum",
+      "name": "Postpartum pelvic floor physical therapy",
+      "kind": "activity",
+      "aliases": [
+        "postpartum pelvic floor muscle training",
+        "postnatal pelvic floor rehabilitation"
+      ],
+      "description": "Structured postpartum pelvic floor rehabilitation, often supervised, used to reduce urinary incontinence after childbirth."
+    },
+    {
+      "slug": "urinary_incontinence",
+      "name": "Urinary incontinence",
+      "kind": "condition",
+      "aliases": [
+        "postpartum urinary leakage",
+        "UI"
+      ],
+      "description": "Involuntary leakage of urine, including stress, urge, or mixed urinary incontinence."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pelvic_floor_pt_postpartum",
+      "outcome_slug": "urinary_incontinence",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A postpartum PFMT meta-analysis found fewer women reporting urinary incontinence versus watchful waiting (RR 0.44, 95% CI 0.25 to 0.75), while a pragmatic postpartum RCT found no clear advantage in a mixed primiparous population (RR 0.89, 95% CI 0.60 to 1.32).",
+      "population": "postpartum women within the first year after childbirth",
+      "mechanism": "Postpartum pelvic floor therapy aims to restore muscle strength, timing, and pressure support after childbirth-related stretching or levator injury. The intervention appears to work best when supervision is sustained and the women are symptomatic enough to benefit from targeted retraining rather than receiving only general advice.",
+      "summary": "The most supportive evidence comes from meta-analyses showing that postpartum pelvic floor muscle training can reduce urinary incontinence, especially when the program is supervised rather than left to unsupervised home practice. At the same time, large mixed-population trials have sometimes found little difference, so the benefit looks real but more conditional than universal.",
+      "caveats": "Results vary with how soon postpartum therapy begins, whether women are already incontinent at baseline, and whether the program is supervised, multimodal, or purely home based. Studies that mix prevention and treatment populations tend to dilute the effect compared with trials focused on symptomatic women.",
+      "evidence": [
+        {
+          "citation": "Woodley SJ et al 2018 Female Pelvic Med Reconstr Surg",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Pelvic Floor Muscle Training Versus Watchful Waiting and Pelvic Floor Disorders in Postpartum Women: A Systematic Review and Meta-analysis.",
+          "pmid": "29474288",
+          "n_participants": 3845
+        },
+        {
+          "citation": "Morkved S et al 2013 Obstet Gynecol",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Postpartum pelvic floor muscle training and urinary incontinence: a randomized controlled trial.",
+          "pmid": "24201679",
+          "n_participants": 175
+        },
+        {
+          "citation": "Woodley SJ et al 2020 Cochrane Database Syst Rev",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Pelvic floor muscle training for preventing and treating urinary and faecal incontinence in antenatal and postnatal women.",
+          "pmid": "32378735",
+          "n_participants": 10832
+        }
+      ]
+    }
+  ]
+}

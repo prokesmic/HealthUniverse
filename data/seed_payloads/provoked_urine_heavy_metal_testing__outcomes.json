@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "provoked_urine_heavy_metal_testing",
+      "name": "Provoked urine heavy-metal testing",
+      "kind": "process",
+      "aliases": [
+        "post-chelator urine metal testing",
+        "challenge urine heavy metal test"
+      ],
+      "description": "Urinary metal testing performed after administration of a chelating agent such as DMSA, DMPS, or EDTA."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "provoked_urine_heavy_metal_testing",
+      "outcome_slug": "outcomes",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "unknown",
+      "effect_quant": "A 2013 toxicology review concluded that there is no standard, validated provoked urine test and that current evidence does not support its diagnostic use. In healthy volunteers, a DMSA loading test produced urinary mercury values similar to those sometimes used to justify toxicity narratives and even caused a serious adverse reaction in one participant.",
+      "population": "people undergoing chelator-challenge urinary testing for suspected heavy-metal toxicity",
+      "mechanism": "Chelators predictably increase urinary metal excretion after dosing, but that pharmacologic effect does not establish pathological body burden or validate challenge-test reference ranges.",
+      "summary": "This is a contested and weakly supported diagnostic edge. Provoked urine heavy-metal testing changes urinary excretion by design, but that does not make it a validated diagnostic tool for chronic toxicity or nonspecific symptoms.",
+      "caveats": "Do not interpret elevated post-chelator urine values against unprovoked reference ranges. The stronger toxicology literature is cautionary, not supportive.",
+      "evidence": [
+        {
+          "citation": "Ruha AM 2013 J Med Toxicol",
+          "year": 2013,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Recommendations for provoked challenge urine testing.",
+          "pmid": "24113861"
+        },
+        {
+          "citation": "Archbold GP et al 2004 Ann Clin Biochem",
+          "year": 2004,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Dimercaptosuccinic acid loading test for assessing mercury burden in healthy individuals.",
+          "pmid": "15117439",
+          "n_participants": 6
+        },
+        {
+          "citation": "Goldberg DM et al 1970 J Clin Pathol",
+          "year": 1970,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Measurement of mercury in human urine.",
+          "pmid": "5423951",
+          "n_participants": 74
+        }
+      ]
+    }
+  ]
+}

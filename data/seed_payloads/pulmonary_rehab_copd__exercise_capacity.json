@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pulmonary_rehab_copd",
+      "name": "Pulmonary rehabilitation for COPD",
+      "kind": "behavior",
+      "aliases": [
+        "COPD pulmonary rehab",
+        "exercise-based pulmonary rehabilitation in COPD"
+      ],
+      "description": "Structured pulmonary rehabilitation for chronic obstructive pulmonary disease, usually centered on supervised exercise training."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pulmonary_rehab_copd",
+      "outcome_slug": "exercise_capacity",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Across 337 randomized COPD rehabilitation trials, in-person supervised pulmonary rehabilitation improved exercise capacity versus exercise training alone (SMD 0.41, 95% CrI 0.20-0.63), while a separate meta-analysis found a mean 6-minute-walk improvement of 31.73 meters.",
+      "population": "adults with stable or recently exacerbated chronic obstructive pulmonary disease",
+      "mechanism": "Pulmonary rehabilitation improves exercise capacity through repeated aerobic and resistance loading, respiratory muscle adaptation, dyspnea desensitization, and better activity tolerance. The consistency of benefit across delivery models suggests the core driver is structured training with supervision rather than a single program add-on.",
+      "summary": "The strongest anchor is the large 2025 component network meta-analysis, which found that supervised exercise-centered pulmonary rehabilitation reliably improves exercise capacity in COPD. Earlier meta-analytic and randomized evidence points the same way, so this is one of the cleaner rehabilitation edges in the graph and deserves a top-tier protective read.",
+      "caveats": "Magnitude depends on program design, supervision, and whether gains are measured immediately after rehabilitation or months later. Maintenance is much less consistent than short-term improvement, and home-based models can lose some of their equivalence over longer follow-up.",
+      "evidence": [
+        {
+          "citation": "Ward TJC et al 2025 EClinicalMedicine",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Impact of pulmonary rehabilitation programme design on effectiveness in COPD: a systematic review and component network meta-analysis.",
+          "pmid": "40896469",
+          "n_participants": 18911
+        },
+        {
+          "citation": "Mao H et al 2025 J Cardiopulm Rehabil Prev",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Optimal Pulmonary Rehabilitation Program and Timing of Program Initiation for Patients With Chronic Obstructive Pulmonary Disease: A Systematic Review and Network Meta-Analysis.",
+          "pmid": "40455963",
+          "n_participants": 2828
+        },
+        {
+          "citation": "Holland AE et al 2017 Thorax",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Home-based rehabilitation for COPD using minimal resources: a randomised, controlled equivalence trial.",
+          "pmid": "27672116",
+          "n_participants": 166
+        }
+      ]
+    }
+  ]
+}

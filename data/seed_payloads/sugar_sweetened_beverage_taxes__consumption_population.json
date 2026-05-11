@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "sugar_sweetened_beverage_taxes",
+      "name": "Sugar-sweetened beverage taxes",
+      "kind": "environmental",
+      "aliases": [
+        "sugary drink taxes",
+        "SSB taxes",
+        "soft drink excise taxes"
+      ],
+      "description": "Population-level fiscal policies that increase the price of sugar-sweetened beverages through taxation."
+    },
+    {
+      "slug": "consumption_population",
+      "name": "Population beverage consumption",
+      "kind": "process",
+      "aliases": [
+        "population SSB consumption",
+        "beverage consumption at the population level"
+      ],
+      "description": "Population-level purchasing or consumption of taxed beverages and close substitutes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "sugar_sweetened_beverage_taxes",
+      "outcome_slug": "consumption_population",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "A 2022 systematic review and meta-analysis of 62 quantitative studies found that implemented SSB taxes were associated with a 15% reduction in taxed beverage sales and a price elasticity of demand of -1.59, while a 2019 review found that the equivalent of a 10% SSB tax cut purchases and consumption by about 10% on average.",
+      "population": "general populations living in jurisdictions that implemented sugar-sweetened beverage excise taxes",
+      "mechanism": "Taxes raise retail prices, reduce demand for taxed beverages, and can also encourage reformulation or substitution toward untaxed drinks such as water.",
+      "summary": "Sugar-sweetened beverage taxes reliably reduce population purchases and sales of taxed drinks overall. The effect is one of the clearest population-level nutrition policy signals in the literature.",
+      "caveats": "Magnitude varies by tax size, structure, enforcement, local market conditions, and whether analyses focus on sales, purchases, or self-reported intake. Substitution patterns and cross-border shopping can attenuate or redistribute effects in some settings.",
+      "evidence": [
+        {
+          "citation": "Andreyeva T et al 2022 JAMA Netw Open",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Outcomes Following Taxation of Sugar-Sweetened Beverages: A Systematic Review and Meta-analysis.",
+          "pmid": "35648398",
+          "n_participants": 62
+        },
+        {
+          "citation": "Teng AM et al 2019 Obes Rev",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Impact of sugar-sweetened beverage taxes on purchases and dietary intake: Systematic review and meta-analysis.",
+          "pmid": "31218808",
+          "n_participants": 6
+        },
+        {
+          "citation": "Sanchez-Romero LM et al 2020 BMJ",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Association between tax on sugar sweetened beverages and soft drink consumption in adults in Mexico: open cohort longitudinal analysis of Health Workers Cohort Study.",
+          "pmid": "32376605",
+          "n_participants": 1770
+        }
+      ]
+    }
+  ]
+}

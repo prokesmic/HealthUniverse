@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "acupuncture_migraine_prophylaxis",
+      "name": "Acupuncture for migraine prophylaxis",
+      "kind": "activity",
+      "aliases": [
+        "acupuncture migraine prevention",
+        "preventive acupuncture for migraine"
+      ],
+      "description": "Acupuncture administered preventively to reduce future migraine burden."
+    },
+    {
+      "slug": "migraine_frequency",
+      "name": "Migraine frequency",
+      "kind": "process",
+      "aliases": [
+        "migraine episodes",
+        "headache attack frequency"
+      ],
+      "description": "How often migraine attacks or migraine days occur over time."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "acupuncture_migraine_prophylaxis",
+      "outcome_slug": "migraine_frequency",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2021 trial-sequential meta-analysis of 20 studies and 3,380 participants found acupuncture superior to sham for migraine episodes after treatment (SMD -0.29, 95% CI -0.47 to -0.11), while a Cochrane review of 22 trials and 4,419 participants found higher response rates and fewer headaches than no prophylactic treatment or routine care.",
+      "population": "adults receiving acupuncture to prevent recurrent migraine, especially episodic migraine without aura",
+      "mechanism": "Preventive acupuncture may alter pain modulation, autonomic balance, and attack susceptibility over time, though the magnitude of benefit is modest and protocol-dependent.",
+      "summary": "For migraine prevention, acupuncture has a reasonably consistent preventive signal. The effect is not huge, but pooled evidence supports fewer migraine episodes than sham or no prophylaxis in many trial settings.",
+      "caveats": "The effect size is modest and should be framed as one preventive option rather than a universally superior therapy. Comparator choice matters, and not every trial has shown clear superiority over active drug prophylaxis.",
+      "evidence": [
+        {
+          "citation": "Fan SQ et al 2021 J Neurol",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy of acupuncture for migraine prophylaxis: a trial sequential meta-analysis.",
+          "pmid": "32839839",
+          "n_participants": 3380
+        },
+        {
+          "citation": "Linde K et al 2009 Cochrane Database Syst Rev",
+          "year": 2009,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Acupuncture for migraine prophylaxis.",
+          "pmid": "19160193",
+          "n_participants": 4419
+        },
+        {
+          "citation": "Alecrim-Andrade J et al 2008 Clin J Pain",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Acupuncture in migraine prevention: a randomized sham controlled study with 6-months posttreatment follow-up.",
+          "pmid": "18209514",
+          "n_participants": 37
+        }
+      ]
+    }
+  ]
+}

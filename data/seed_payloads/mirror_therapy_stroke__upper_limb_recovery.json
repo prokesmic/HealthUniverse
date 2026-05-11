@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "mirror_therapy_stroke",
+      "name": "Mirror therapy after stroke",
+      "kind": "behavior",
+      "aliases": [
+        "mirror therapy for stroke",
+        "stroke mirror-box therapy"
+      ],
+      "description": "Mirror-based visual feedback therapy used to improve upper-limb motor recovery after stroke."
+    },
+    {
+      "slug": "upper_limb_recovery",
+      "name": "Upper limb recovery",
+      "kind": "process",
+      "aliases": [
+        "arm recovery",
+        "upper-extremity recovery"
+      ],
+      "description": "Recovery of motor impairment and practical function in the upper limb after neurological injury."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "mirror_therapy_stroke",
+      "outcome_slug": "upper_limb_recovery",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The most focused subacute-stroke meta-analysis found significant effects of mirror therapy on motor impairment (0.473), motor function (0.266), and activities of daily living (0.461) versus control conditions.",
+      "population": "adults with upper-limb impairment after subacute or mixed-stage stroke",
+      "mechanism": "Mirror therapy may support upper-limb recovery by pairing attempted movement of the paretic arm with congruent visual feedback, which can reinforce motor planning and attention to the affected limb. The signal appears more convincing when mirror work is embedded into active bilateral or combined rehabilitation rather than used as a minimal standalone visual trick.",
+      "summary": "The strongest anchor is the 2025 subacute-stroke meta-analysis, which found small but consistent motor and functional gains with mirror therapy, especially in bimanual formats. Supporting meta-analytic and randomized data point in the same direction, so this edge is reasonably read as protective, though the effect is not dramatic.",
+      "caveats": "Benefits vary by protocol. Bimanual or combined mirror programs tend to outperform simpler unimanual versions, which means the label 'mirror therapy' can hide meaningful differences in treatment intensity and co-interventions.",
+      "evidence": [
+        {
+          "citation": "Hsieh YW et al 2025 PM R",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of mirror therapy on motor and functional recovery of the upper extremity in subacute stroke: Systematic review and meta-analysis.",
+          "pmid": "39853944",
+          "n_participants": 546
+        },
+        {
+          "citation": "Liu C et al 2020 Front Neurol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Synergistic Effect of Combined Mirror Therapy on Upper Extremity in Patients With Stroke: A Systematic Review and Meta-Analysis.",
+          "pmid": "32300326",
+          "n_participants": 444
+        },
+        {
+          "citation": "Zeng W et al 2022 Neural Plast",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Therapeutic Role of Additional Mirror Therapy on the Recovery of Upper Extremity Motor Function after Stroke: A Single-Blind, Randomized Controlled Trial.",
+          "pmid": "36624743",
+          "n_participants": 52
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "periodontal_disease",
+      "outcome_slug": "type_2_diabetes",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Metabolic evidence suggests periodontitis tracks with worse glycemic biology: a meta-analysis of 38,896 participants found hyperglycemia was positively associated with periodontitis (OR 1.50, 95% CI 1.11-1.90), non-diabetic individuals with periodontitis had higher HbA1c values on pooled analysis, and periodontal treatment meta-analysis showed HbA1c fell by 0.38% at 3 to 4 months compared with control care.",
+      "population": "adults with periodontitis or broader periodontal disease assessed for incident diabetes or glycemic deterioration",
+      "mechanism": "Periodontal disease can intensify systemic inflammatory signaling and insulin resistance through chronic bacterial challenge and cytokine activation. That makes it biologically plausible for longstanding periodontitis to worsen glycemic control and possibly contribute to diabetes progression in susceptible people.",
+      "summary": "The evidence leans harmful, but it is less clean than the cardiovascular edge. Periodontitis is consistently associated with poorer glycemic status and treatment of periodontal disease modestly improves diabetic control, yet the strongest long-term cohort in general adults did not find a clear rise in incident diabetes, so this edge should be read as plausible and directionally adverse rather than settled beyond doubt.",
+      "caveats": "The literature here is notably bidirectional: diabetes worsens periodontal health and periodontitis may in turn worsen glycemia. Because of that entanglement, this edge is best viewed as a metabolic-risk amplifier with meaningful uncertainty around the size of any direct effect on incident type 2 diabetes itself.",
+      "evidence": [
+        {
+          "citation": "Mirzaei A et al 2021 J Diabetes Metab Disord",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Association of hyperglycaemia and periodontitis: an updated systematic review and meta-analysis.",
+          "pmid": "34900784",
+          "n_participants": 38896
+        },
+        {
+          "citation": "Kebede TG et al 2018 Diabetes Metab",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Does periodontitis affect diabetes incidence and haemoglobin A1c change? An 11-year follow-up study.",
+          "pmid": "29249612",
+          "n_participants": 2047
+        },
+        {
+          "citation": "Engebretson S et al 2013 J Clin Periodontol",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of periodontal treatment on glycemic control of patients with diabetes: A systematic review and meta-analysis.",
+          "pmid": "24843701",
+          "n_participants": 15
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "periodontal_disease",
+      "name": "Periodontal disease",
+      "kind": "condition",
+      "aliases": [
+        "periodontitis",
+        "gum disease"
+      ],
+      "description": "Inflammatory disease affecting the supporting structures of the teeth, including gingiva, periodontal ligament, and alveolar bone."
+    },
+    {
+      "slug": "type_2_diabetes",
+      "name": "Type 2 diabetes",
+      "kind": "condition",
+      "aliases": [
+        "type 2 diabetes mellitus",
+        "T2D"
+      ],
+      "description": "A chronic metabolic disease characterized by hyperglycemia and insulin resistance."
+    }
+  ]
+}

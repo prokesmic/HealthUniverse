@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "bioidentical_hormones_compounded",
+      "name": "Compounded bioidentical hormones",
+      "kind": "drug",
+      "aliases": [
+        "compounded bioidentical hormone therapy",
+        "custom-compounded BHRT"
+      ],
+      "description": "Custom-compounded estrogen, progesterone, testosterone, or combination hormone preparations marketed as bioidentical alternatives to approved hormone therapies."
+    },
+    {
+      "slug": "outcomes_safety",
+      "name": "Outcome and safety profile",
+      "kind": "process",
+      "aliases": [
+        "effectiveness and safety",
+        "clinical utility and safety"
+      ],
+      "description": "The combined clinical effectiveness and safety profile of a therapy in real-world use."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "bioidentical_hormones_compounded",
+      "outcome_slug": "outcomes_safety",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "unknown",
+      "effect_quant": "Review literature has consistently concluded that claims of superior safety or effectiveness for compounded bioidentical hormone therapy are not supported by high-quality evidence, while observational cohorts may report symptom improvement without providing the kind of randomized comparative data needed to establish safer or better outcomes than approved therapies.",
+      "population": "women or other patients using custom-compounded bioidentical hormone preparations instead of or alongside FDA-approved hormone therapy",
+      "mechanism": "These products contain hormones with plausible physiologic effects, but custom formulation, variable potency, inconsistent oversight, and lack of high-quality comparative trials make broad safety and efficacy claims unreliable.",
+      "summary": "Compounded bioidentical hormones are best treated as a contested replacement-for-approved-therapy claim rather than a clearly superior option. Symptom improvement can occur, but the overall evidence base is too weak and too loosely regulated to support the sweeping safety and naturalness claims often used in marketing.",
+      "caveats": "Do not confuse 'bioidentical' with evidence of better safety. The central issue is not whether the molecules can be active, but whether compounded products have trustworthy evidence and quality control comparable to approved formulations.",
+      "evidence": [
+        {
+          "citation": "Moskowitz D 2007 Med J Aust",
+          "year": 2007,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Bioidentical hormones for menopausal hormone therapy: variation on a theme.",
+          "pmid": "17549577"
+        },
+        {
+          "citation": "Stuenkel CA 2012 J Womens Health (Larchmt)",
+          "year": 2012,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Compounded bioidentical menopausal hormone therapy.",
+          "pmid": "22831824"
+        },
+        {
+          "citation": "Ruiz AD et al 2011 BMC Womens Health",
+          "year": 2011,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Effectiveness of compounded bioidentical hormone replacement therapy: an observational cohort study.",
+          "pmid": "21651797",
+          "n_participants": 296
+        }
+      ]
+    }
+  ]
+}

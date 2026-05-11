@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "peanut_introduction_4_6mo_high_risk",
+      "name": "Peanut introduction at 4 to 6 months in high-risk infants",
+      "kind": "activity",
+      "aliases": [
+        "early peanut introduction in high-risk infants",
+        "4 to 6 month peanut exposure"
+      ],
+      "description": "Introducing peanut-containing foods during the 4 to 6 month window in infants at elevated risk of peanut allergy."
+    },
+    {
+      "slug": "peanut_allergy_prevention",
+      "name": "Peanut allergy prevention",
+      "kind": "process",
+      "aliases": [
+        "prevention of peanut allergy",
+        "reduced incident peanut allergy"
+      ],
+      "description": "Lower risk of developing IgE-mediated peanut allergy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "peanut_introduction_4_6mo_high_risk",
+      "outcome_slug": "peanut_allergy_prevention",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "In the LEAP randomized trial, early peanut consumption in 640 high-risk infants was associated with an 86% reduction in peanut allergy among those with a negative baseline skin-prick test and a 70% reduction among those with mild baseline sensitization.",
+      "population": "infants at high risk of peanut allergy, especially those with severe eczema, egg allergy, or both",
+      "mechanism": "Early oral peanut exposure during infancy may promote immune tolerance and counteract cutaneous sensitization pathways in high-risk infants.",
+      "summary": "Introducing peanut during the 4 to 6 month window in high-risk infants is strongly protective against later peanut allergy. This is one of the clearest food-allergy prevention findings in pediatrics.",
+      "caveats": "High-risk infants may need individualized introduction plans, especially if already sensitized. The evidence is strongest for supervised or guideline-based early introduction rather than unsystematic exposure.",
+      "evidence": [
+        {
+          "citation": "Burgess JA et al 2019 Clin Exp Allergy",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Age at introduction to complementary solid food and food allergy and sensitization: A systematic review and meta-analysis.",
+          "pmid": "30861244",
+          "n_participants": 25
+        },
+        {
+          "citation": "Toit GD et al 2015 N Engl J Med",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Randomized trial of peanut consumption in infants at risk for peanut allergy.",
+          "pmid": "25705822",
+          "n_participants": 640
+        },
+        {
+          "citation": "Toit GD et al 2016 N Engl J Med",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of Avoidance on Peanut Allergy after Early Peanut Consumption.",
+          "pmid": "26942922",
+          "n_participants": 556
+        }
+      ]
+    }
+  ]
+}

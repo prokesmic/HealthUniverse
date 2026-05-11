@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "infrared_sauna",
+      "name": "Infrared sauna",
+      "kind": "activity",
+      "aliases": [
+        "infrared sauna therapy",
+        "far infrared sauna"
+      ],
+      "description": "Exposure to infrared-based sauna heat marketed for sweating, recovery, and detoxification."
+    },
+    {
+      "slug": "detoxification_claims",
+      "name": "Detoxification claims",
+      "kind": "process",
+      "aliases": [
+        "detox claims",
+        "toxin-clearing claims"
+      ],
+      "description": "Claims that an intervention meaningfully removes toxins or harmful compounds from the body in a clinically beneficial way."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "infrared_sauna",
+      "outcome_slug": "detoxification_claims",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "unknown",
+      "effect_quant": "A 2023 study of 22 people using a water-filtered infrared-A sauna found measurable excretion of multiple toxic and nutrient ions in sweat, while a 2012 systematic review of 24 sweat studies concluded that dermal excretion of arsenic, cadmium, lead, and mercury can occur but that appropriately sized therapeutic trials are still needed before a detox protocol can be considered established.",
+      "population": "adults using infrared or sauna-based sweating interventions marketed for toxin elimination",
+      "mechanism": "Sweating can excrete small amounts of various compounds, but demonstrating sweat excretion is not the same as proving meaningful detoxification, improved body burden, or better clinical outcomes.",
+      "summary": "This is a classic claim-check edge: biologically plausible in a narrow sweat-chemistry sense, but not clinically validated as a reliable detox therapy. Infrared sauna can increase sweat-borne excretion of some substances, yet the leap from that observation to broad health-detox claims remains unproven.",
+      "caveats": "Do not equate higher sweat concentrations with clinically important toxin removal. The evidence base is mostly mechanistic, small, and indirect, with little proof that sauna 'detox' improves real patient outcomes.",
+      "evidence": [
+        {
+          "citation": "Cho KH et al 2023 Environ Sci Pollut Res Int",
+          "year": 2023,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Effect of water filtration infrared-A (wIRA) sauna on inorganic ions excreted through sweat from the human body.",
+          "pmid": "36207634",
+          "n_participants": 22
+        },
+        {
+          "citation": "Sears ME et al 2012 J Environ Public Health",
+          "year": 2012,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Arsenic, cadmium, lead, and mercury in sweat: a systematic review.",
+          "pmid": "22505948",
+          "n_participants": 24
+        },
+        {
+          "citation": "Czarnowski D et al 1991 Pol Tyg Lek",
+          "year": 1991,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "[Excretion of nitrogen compounds in sweat during a sauna].",
+          "pmid": "1845745",
+          "n_participants": 1
+        }
+      ]
+    }
+  ]
+}

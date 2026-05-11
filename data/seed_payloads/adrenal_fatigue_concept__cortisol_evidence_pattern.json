@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "adrenal_fatigue_concept",
+      "name": "Adrenal fatigue concept",
+      "kind": "condition",
+      "aliases": [
+        "adrenal fatigue",
+        "adrenal stress index concept"
+      ],
+      "description": "The functional-medicine claim that chronic stress exhausts adrenal hormone output and creates a distinct syndrome of low energy and dysregulated cortisol."
+    },
+    {
+      "slug": "cortisol_evidence_pattern",
+      "name": "Cortisol evidence pattern",
+      "kind": "process",
+      "aliases": [
+        "cortisol pattern evidence",
+        "salivary cortisol profile validity"
+      ],
+      "description": "Whether cortisol-related measurements show a reproducible, clinically validated pattern supporting a proposed diagnosis."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "adrenal_fatigue_concept",
+      "outcome_slug": "cortisol_evidence_pattern",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "unknown",
+      "effect_quant": "A 2016 systematic review identified 58 studies examining fatigue-related cortisol findings and concluded there was no substantiation for a distinct 'adrenal fatigue' syndrome, while later endocrine reviews continued to describe salivary cortisol panels used for this diagnosis as nonvalidated rather than clinically diagnostic.",
+      "population": "adults assessed for fatigue, burnout, low-energy states, or functional-medicine 'adrenal fatigue' using cortisol-based testing",
+      "mechanism": "Chronic stress can alter HPA-axis signaling in some contexts, but that does not establish a discrete syndrome of adrenal exhaustion or a validated salivary cortisol signature unique to 'adrenal fatigue'.",
+      "summary": "This is a claim-check edge, not a legitimate endocrine diagnosis edge. Fatigue states may show heterogeneous cortisol findings, but the specific 'adrenal fatigue' framing remains unsupported and the commercial salivary-cortisol interpretation schemes are not clinically validated.",
+      "caveats": "Do not present this as evidence that adrenal glands 'burn out' from daily stress. The most defensible reading is that nonspecific fatigue symptoms can coexist with noisy cortisol findings without establishing a real diagnostic entity.",
+      "evidence": [
+        {
+          "citation": "Cadegiani FA et al 2016 BMC Endocr Disord",
+          "year": 2016,
+          "study_type": "systematic_review",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Adrenal fatigue does not exist: a systematic review.",
+          "pmid": "27557747",
+          "n_participants": 58
+        },
+        {
+          "citation": "Gordon MB et al 2024 J Endocr Soc",
+          "year": 2024,
+          "study_type": "expert_opinion",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Pseudo-endocrine Disorders: Recognition, Management, and Action.",
+          "pmid": "39749108"
+        },
+        {
+          "citation": "Brummelman P et al 2025 Front Endocrinol",
+          "year": 2025,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Beyond adrenal fatigue: reframing the adrenal stress index through neutrophil-mediated glucocorticoid resistance.",
+          "pmid": "41938115"
+        }
+      ]
+    }
+  ]
+}

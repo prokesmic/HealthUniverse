@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "iv_glutathione",
+      "name": "IV glutathione",
+      "kind": "supplement",
+      "aliases": [
+        "intravenous glutathione",
+        "glutathione infusion"
+      ],
+      "description": "Intravenous glutathione administered for cosmetic, anti-aging, or general wellness purposes."
+    },
+    {
+      "slug": "outcomes_humans",
+      "name": "Human outcomes",
+      "kind": "process",
+      "aliases": [
+        "clinical outcomes in humans",
+        "human clinical outcomes"
+      ],
+      "description": "Overall clinically meaningful outcomes reported in human use, including benefit, harm, or lack of validated efficacy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "iv_glutathione",
+      "outcome_slug": "outcomes_humans",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "unknown",
+      "effect_quant": "The available human literature does not show robust broad-spectrum benefit from IV glutathione. A 2025 dermatology systematic review found that the skin-lightening literature includes only one placebo-controlled IV study, while a 2016 safety review judged IV glutathione evidence inadequate and a 2025 case report described shock-like systemic inflammatory toxicity after an unregulated high-dose infusion.",
+      "population": "people receiving IV glutathione in cosmetic, anti-aging, or wellness settings",
+      "mechanism": "Glutathione is an endogenous antioxidant, but moving from biochemical plausibility to clinically meaningful benefit from IV infusion remains poorly demonstrated in human intervention studies.",
+      "summary": "This is a contested wellness-therapy edge. Human use of IV glutathione is under-studied, the claimed benefits are narrow and weakly evidenced, and case-level safety problems make broad promotional claims inappropriate.",
+      "caveats": "This edge is not about established hospital uses of glutathione-related pharmacology in highly specific settings. It addresses the consumer-facing IV glutathione infusion claim set, where evidence and regulatory support are both thin.",
+      "evidence": [
+        {
+          "citation": "Davids LM et al 2016 S Afr Med J",
+          "year": 2016,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Intravenous glutathione for skin lightening: Inadequate safety data.",
+          "pmid": "27499402"
+        },
+        {
+          "citation": "Sarkar R et al 2025 Int J Dermatol",
+          "year": 2025,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Glutathione as a skin-lightening agent and in melasma: a systematic review.",
+          "pmid": "39444151",
+          "n_participants": 6
+        },
+        {
+          "citation": "Sharma D et al 2025 Cureus",
+          "year": 2025,
+          "study_type": "case_report",
+          "direction": "harmful",
+          "quality": "low",
+          "notes": "Systemic Inflammatory Response Syndrome Following High-Dose Intravenous Glutathione-Containing Revitalising Solution in a Patient on Tirzepatide: A Case Report.",
+          "pmid": "40556995"
+        }
+      ]
+    }
+  ]
+}

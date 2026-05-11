@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cesarean_birth",
+      "name": "Cesarean birth",
+      "kind": "process",
+      "aliases": [
+        "cesarean delivery",
+        "c-section birth"
+      ],
+      "description": "Birth by cesarean section rather than vaginal delivery."
+    },
+    {
+      "slug": "child_atopy_long_term",
+      "name": "Long-term childhood atopy",
+      "kind": "condition",
+      "aliases": [
+        "long-term allergic disease in childhood",
+        "childhood atopic outcomes"
+      ],
+      "description": "Later childhood atopic disease including asthma, eczema, allergic rhinitis, food allergy, or allergic sensitization."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cesarean_birth",
+      "outcome_slug": "child_atopy_long_term",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "A 2018 meta-analysis found that cesarean delivery was associated with higher childhood asthma risk, and older meta-analytic and population data also suggest modest increases across broader atopic outcomes, although effect sizes are generally small.",
+      "population": "children followed after cesarean versus vaginal birth",
+      "mechanism": "Cesarean birth may alter early microbial colonization and immune education, contributing to later allergic sensitization and atopic disease risk.",
+      "summary": "Cesarean birth is associated with a modestly higher long-term risk of childhood atopic outcomes overall, especially asthma and allergic sensitization.",
+      "caveats": "Observed effects are modest and may partly reflect residual confounding by indication or maternal and perinatal factors. Associations vary across allergic outcomes and study settings.",
+      "evidence": [
+        {
+          "citation": "Bager P et al 2008 Clin Exp Allergy",
+          "year": 2008,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Caesarean delivery and risk of atopy and allergic disease: meta-analyses.",
+          "pmid": "18266879",
+          "n_participants": 1308387
+        },
+        {
+          "citation": "Pennington AF et al 2018 Paediatr Perinat Epidemiol",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Caesarean delivery, childhood asthma, and effect modification by sex: An observational study and meta-analysis.",
+          "pmid": "30266042",
+          "n_participants": 17075
+        },
+        {
+          "citation": "Bager P et al 2012 BMJ Open",
+          "year": 2012,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Asthma and atopy in children born by caesarean section: effect modification by family history of allergies - a population based cross-sectional study.",
+          "pmid": "23153011",
+          "n_participants": 9683
+        }
+      ]
+    }
+  ]
+}

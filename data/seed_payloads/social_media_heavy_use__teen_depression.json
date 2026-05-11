@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "social_media_heavy_use",
+      "name": "Heavy social media use",
+      "kind": "behavior",
+      "aliases": [
+        "high social media use",
+        "frequent social networking use"
+      ],
+      "description": "Frequent or heavy use of social media platforms by adolescents."
+    },
+    {
+      "slug": "teen_depression",
+      "name": "Teen depression",
+      "kind": "condition",
+      "aliases": [
+        "adolescent depressive symptoms",
+        "depression in teenagers"
+      ],
+      "description": "Depression symptoms or depressive disorder risk in adolescents."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "social_media_heavy_use",
+      "outcome_slug": "teen_depression",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2025 meta-analysis of 24 studies and 68 effects found a significant positive association between social-network risk exposure and mental disorders in adolescents and young adults (aggregate r = 0.2173), while a 2023 scoping review and meta-analysis concluded that the literature overall links adolescent social media use with depressive symptoms but remains heterogeneous and demographically narrow.",
+      "population": "adolescents and young people with frequent or heavy social media use",
+      "mechanism": "Heavy social media use can amplify social comparison, cyberstress, sleep disruption, emotional contagion, and compulsive checking patterns that may worsen depressive symptom burden in vulnerable teens.",
+      "summary": "Heavy social media use trends harmful for teen depression, but the effect is generally small rather than overwhelming. The most defensible reading is that heavier use raises risk on average while still depending strongly on context, platform behaviors, and individual vulnerability.",
+      "caveats": "Not all studies support a strong causal effect, and some longitudinal work finds weaker within-person effects than cross-sectional associations imply. The harmful classification reflects the pooled direction of the literature rather than a claim that heavy use deterministically causes depression in every teen.",
+      "evidence": [
+        {
+          "citation": "Alnasser A et al 2025 Curr Psychol",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Associations Between Social Media Use and Mental Disorders in Adolescents and Young Adults: A Systematic Review and Meta-Analysis of Recent Evidence.",
+          "pmid": "41301253",
+          "n_participants": 24
+        },
+        {
+          "citation": "Ghai S et al 2023 Clin Psychol Sci",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Lack of Sample Diversity in Research on Adolescent Depression and Social Media Use: A Scoping Review and Meta-Analysis.",
+          "pmid": "37694229",
+          "n_participants": 23
+        },
+        {
+          "citation": "Steinsbekk S et al 2024 Comput Human Behav",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Social media behaviors and symptoms of anxiety and depression. A four-wave cohort study from age 10-16 years.",
+          "pmid": "39474430",
+          "n_participants": 810
+        }
+      ]
+    }
+  ]
+}

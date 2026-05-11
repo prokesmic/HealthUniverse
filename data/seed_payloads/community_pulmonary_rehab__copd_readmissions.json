@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "community_pulmonary_rehab",
+      "name": "Community pulmonary rehabilitation",
+      "kind": "activity",
+      "aliases": [
+        "outpatient pulmonary rehabilitation",
+        "supervised pulmonary rehab program"
+      ],
+      "description": "Structured pulmonary rehabilitation delivered in community or outpatient settings for people with COPD."
+    },
+    {
+      "slug": "copd_readmissions",
+      "name": "COPD readmissions",
+      "kind": "process",
+      "aliases": [
+        "hospital readmission for COPD",
+        "readmission after COPD exacerbation"
+      ],
+      "description": "Hospital readmissions after an exacerbation or hospitalization related to chronic obstructive pulmonary disease."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "community_pulmonary_rehab",
+      "outcome_slug": "copd_readmissions",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Meta-analyses found lower short-term readmission with pulmonary rehabilitation after COPD exacerbation, including RR 0.68 (95% CI 0.50 to 0.92), RR 0.58 (95% CI 0.34 to 0.99), and RR 0.47 (95% CI 0.29 to 0.75).",
+      "population": "adults with COPD after hospitalization for acute exacerbation",
+      "mechanism": "Community pulmonary rehabilitation can reduce readmissions by rebuilding exercise tolerance, self-management skills, dyspnea control, and confidence soon after discharge. That combination likely lowers the spiral of inactivity and symptom escalation that often drives early recurrent hospitalization.",
+      "summary": "This is one of the cleaner rehabilitation signals in the literature: pulmonary rehabilitation after COPD exacerbation consistently lowers short-term readmission risk. The main open question is timing and program format, not whether rehabilitation matters at all.",
+      "caveats": "Most of the strongest evidence is in post-exacerbation populations rather than stable COPD, and some trials start rehabilitation during admission while others start after discharge. Mortality effects are less consistent than readmission effects, so the core benefit is best framed around re-hospitalization prevention and functional recovery.",
+      "evidence": [
+        {
+          "citation": "Machida Y et al 2022 Respir Care",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Pulmonary Rehabilitation for Patients After COPD Exacerbation.",
+          "pmid": "34876493",
+          "n_participants": 1056
+        },
+        {
+          "citation": "Chen CH et al 2023 Int J Chron Obstruct Pulmon Dis",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of Early Pulmonary Rehabilitation on Hospitalized Patients with Acute Exacerbation of Chronic Obstructive Pulmonary Disease: A Systematic Review and Meta-Analysis.",
+          "pmid": "37215744",
+          "n_participants": 1274
+        },
+        {
+          "citation": "Ryrso CK et al 2018 BMC Pulm Med",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Lower mortality after early supervised pulmonary rehabilitation following COPD-exacerbations: a systematic review and meta-analysis.",
+          "pmid": "30219047",
+          "n_participants": 801
+        }
+      ]
+    }
+  ]
+}

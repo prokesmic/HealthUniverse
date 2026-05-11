@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "early_pt_post_acl_repair",
+      "name": "Early physical therapy after ACL reconstruction",
+      "kind": "activity",
+      "aliases": [
+        "early rehab after ACL repair",
+        "supervised postoperative ACL physical therapy"
+      ],
+      "description": "Structured physical therapy started early after anterior cruciate ligament reconstruction or repair."
+    },
+    {
+      "slug": "return_to_sport",
+      "name": "Return to sport",
+      "kind": "process",
+      "aliases": [
+        "sport return",
+        "return to preinjury sport"
+      ],
+      "description": "Resumption of athletic participation after injury treatment, including return to previous level of sport."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "early_pt_post_acl_repair",
+      "outcome_slug": "return_to_sport",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "A rehabilitation-versus-reconstruction meta-analysis found no clear return-to-sport advantage for surgery-linked pathways over supervised rehabilitation alone (OR 1.5, 95% CI 0.76 to 2.97), while one cohort found far higher sport return among patients attending >15 supervised sessions (OR 18.5 versus <6 sessions).",
+      "population": "athletes or recreationally active people recovering from anterior cruciate ligament reconstruction",
+      "mechanism": "Early structured physical therapy may speed return to sport by restoring strength, motion, proprioception, and confidence before deconditioning and fear become entrenched. At the same time, return to sport depends on many factors outside the rehab timetable itself, including surgical pathway, reinjury fear, sport demands, and adherence over the full recovery arc.",
+      "summary": "The clearest takeaway is that supervised rehabilitation matters for return to sport after ACL reconstruction, but the evidence is not clean enough to say that simply starting PT earlier guarantees better sport return. Reviews still describe the return-to-sport evidence as undermeasured and confounded, so the most accurate label is mixed rather than straightforwardly beneficial.",
+      "caveats": "This literature blends prehabilitation, early postoperative therapy, and overall supervised rehabilitation exposure. Return-to-sport definitions also vary across studies, from any sport participation to return to the previous level of competition, which makes effect estimates difficult to compare directly.",
+      "evidence": [
+        {
+          "citation": "Giesche F et al 2020 BMC Musculoskelet Disord",
+          "year": 2020,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The effectiveness of preoperative rehabilitation programmes on postoperative outcomes following anterior cruciate ligament (ACL) reconstruction: a systematic review.",
+          "pmid": "33010802",
+          "n_participants": 122
+        },
+        {
+          "citation": "Han F et al 2015 Orthop J Sports Med",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Increased Compliance With Supervised Rehabilitation Improves Functional Outcome and Return to Sport After Anterior Cruciate Ligament Reconstruction in Recreational Athletes.",
+          "pmid": "26740958",
+          "n_participants": 93
+        },
+        {
+          "citation": "Filbay SR et al 2025 Sports Med",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "No Difference in Return-to-Sport Rate or Activity Level in People with Anterior Cruciate Ligament (ACL) Injury Managed with ACL Reconstruction or Rehabilitation Alone: A Systematic Review and Meta-Analysis.",
+          "pmid": "40603829",
+          "n_participants": 4810
+        }
+      ]
+    }
+  ]
+}

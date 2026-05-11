@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ozone_therapy",
+      "name": "Ozone therapy",
+      "kind": "activity",
+      "aliases": [
+        "medical ozone therapy",
+        "oxygen-ozone therapy"
+      ],
+      "description": "Use of ozone-containing gas or ozonated preparations for therapeutic purposes across pain, wound, dental, or systemic conditions."
+    },
+    {
+      "slug": "outcomes_humans",
+      "name": "Human outcomes",
+      "kind": "process",
+      "aliases": [
+        "clinical outcomes in humans",
+        "patient outcomes in humans"
+      ],
+      "description": "Human clinical outcomes rather than laboratory or mechanistic measures alone."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ozone_therapy",
+      "outcome_slug": "outcomes_humans",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "Recent systematic reviews report possible benefit for some narrow uses such as low back pain, chronic wounds, and certain dental applications, but these findings remain indication-specific and methodologically uneven rather than evidence for a broad human-therapeutic effect.",
+      "population": "patients receiving ozone therapy across pain, wound, dental, and musculoskeletal indications",
+      "mechanism": "Ozone may alter oxidative signaling, microbial burden, or local inflammatory pathways, but the same reactivity that motivates its use also complicates standardization, safety interpretation, and generalization across conditions.",
+      "summary": "Ozone therapy does not support a single broad 'works in humans' conclusion. The literature is scattered across narrow indications with mixed trial quality, making this better treated as a contested umbrella claim with pockets of possible benefit rather than a generally validated therapy.",
+      "caveats": "Do not extrapolate a positive result in one setting, such as low back pain or wound care, to systemic wellness or broad disease treatment. The evidence base is fragmented and often too heterogeneous for sweeping conclusions.",
+      "evidence": [
+        {
+          "citation": "Fitzpatrick E et al 2018 Int Wound J",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Ozone therapy for the treatment of chronic wounds: A systematic review.",
+          "pmid": "29536625",
+          "n_participants": 7
+        },
+        {
+          "citation": "Llombart-Blanco R et al 2024 Life (Basel)",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The Effectiveness of Ozone Infiltration on Patient-Reported Outcomes in Low Back Pain: A Systematic Review and Meta-Analysis.",
+          "pmid": "39598204",
+          "n_participants": 8
+        },
+        {
+          "citation": "Maggini F et al 2019 Cartilage",
+          "year": 2019,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Oxygen-Ozone Therapy for the Treatment of Knee Osteoarthritis: A Systematic Review of Randomized Controlled Trials.",
+          "pmid": "31679646",
+          "n_participants": 11
+        }
+      ]
+    }
+  ]
+}

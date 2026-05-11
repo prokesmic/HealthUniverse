@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "baby_led_weaning",
+      "name": "Baby-led weaning",
+      "kind": "behavior",
+      "aliases": [
+        "baby-led introduction to solids",
+        "infant self-feeding weaning approach",
+        "BLW"
+      ],
+      "description": "A complementary feeding approach in which infants primarily self-feed hand-held foods rather than being spoon-fed purees."
+    },
+    {
+      "slug": "growth_outcomes",
+      "name": "Growth outcomes",
+      "kind": "process",
+      "aliases": [
+        "infant growth",
+        "weight and length growth outcomes",
+        "BMI z score growth outcomes"
+      ],
+      "description": "Anthropometric outcomes such as weight gain, length or height gain, BMI z score, or overweight risk during infancy and early childhood."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "baby_led_weaning",
+      "outcome_slug": "growth_outcomes",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In the BLISS randomized clinical trial of 206 mother-infant pairs, a baby-led approach did not significantly change BMI z score at 12 or 24 months versus usual feeding, while a 2026 systematic review concluded that current growth evidence remains limited and inconsistent.",
+      "population": "healthy infants during complementary feeding, usually from around 6 to 24 months of age",
+      "mechanism": "Baby-led feeding may alter satiety responsiveness, food texture exposure, and energy self-regulation, but it can also vary widely in nutrient density and parental implementation.",
+      "summary": "Baby-led weaning does not show a clear consistent advantage or disadvantage for infant growth overall. The best current reading is mixed evidence with mostly neutral BMI or weight findings, but limited trial depth and implementation heterogeneity.",
+      "caveats": "BLW is not a single standardized protocol, and studies vary in how strictly self-feeding is implemented. Growth findings may differ depending on breastfeeding status, iron-rich food provision, and whether caregivers use a modified BLISS-style protocol.",
+      "evidence": [
+        {
+          "citation": "Marquez-Diaz RR et al 2026 Nutr Rev",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Baby-Led Weaning vs Traditional Spoon-Feeding: A Systematic Review of Infant Growth, Choking Risk, and Iron Status Among Infants Aged 6-12 Months.",
+          "pmid": "41528760",
+          "n_participants": 5
+        },
+        {
+          "citation": "Taylor RW et al 2017 JAMA Pediatr",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Effect of a Baby-Led Approach to Complementary Feeding on Infant Growth and Overweight: A Randomized Clinical Trial.",
+          "pmid": "28692728",
+          "n_participants": 206
+        },
+        {
+          "citation": "Cox AM et al 2024 Appetite",
+          "year": 2024,
+          "study_type": "cross_sectional",
+          "direction": "neutral",
+          "quality": "low",
+          "notes": "Baby food pouches and Baby-Led Weaning: Associations with energy intake, eating behaviour and infant weight status.",
+          "pmid": "37972656",
+          "n_participants": 933
+        }
+      ]
+    }
+  ]
+}

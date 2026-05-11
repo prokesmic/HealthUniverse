@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "swallowing_therapy_post_stroke",
+      "name": "Swallowing therapy after stroke",
+      "kind": "behavior",
+      "aliases": [
+        "post-stroke dysphagia rehabilitation",
+        "swallowing rehabilitation after stroke"
+      ],
+      "description": "Non-pharmacological swallowing rehabilitation used to improve dysphagia after stroke."
+    },
+    {
+      "slug": "dysphagia_recovery",
+      "name": "Dysphagia recovery",
+      "kind": "process",
+      "aliases": [
+        "recovery from dysphagia",
+        "swallowing recovery"
+      ],
+      "description": "Improvement in swallowing safety and oral intake after dysphagia."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "swallowing_therapy_post_stroke",
+      "outcome_slug": "dysphagia_recovery",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The broad post-stroke dysphagia network meta-analysis found meaningful swallowing-function improvements across non-pharmacological therapies, with several interventions outperforming usual care and acupuncture ranking highest (SMD -2.40, 95% CI -3.38 to -1.43).",
+      "population": "adults with post-stroke dysphagia, including severe and postextubation cases",
+      "mechanism": "Swallowing therapies can improve dysphagia recovery by strengthening swallowing musculature, improving sensorimotor triggering, and increasing the safety and coordination of airway protection. The mechanism differs by modality, but the overall pattern suggests that active rehabilitation does more than watchful waiting.",
+      "summary": "The strongest anchor is the network meta-analysis of post-stroke dysphagia interventions, which found that structured rehabilitation meaningfully improves swallowing outcomes relative to usual care. Targeted electrical-stimulation studies also point in the same direction, so this edge is best read as protectively associated with dysphagia recovery even though no single rehabilitation protocol dominates every patient subgroup.",
+      "caveats": "‘Swallowing therapy’ is a broad umbrella that includes quite different treatments, from exercise-based retraining to electrical stimulation and compensatory techniques. That heterogeneity supports the overall rehabilitative concept more strongly than it supports one universal best protocol.",
+      "evidence": [
+        {
+          "citation": "Zhang Bohan et al 2025 J Oral Rehabil",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of Non-Pharmacological Interventions on the Swallowing Function of Patients With Post-Stroke Dysphagia: A Systematic Review and Network Meta-Analysis.",
+          "pmid": "39532528",
+          "n_participants": 1341
+        },
+        {
+          "citation": "Bath PM et al 2015 Stroke Res Treat",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Pharyngeal Electrical Stimulation for Treatment of Poststroke Dysphagia: Individual Patient Data Meta-Analysis of Randomised Controlled Trials.",
+          "pmid": "26689491",
+          "n_participants": 73
+        },
+        {
+          "citation": "Suntrup-Krueger S et al 2025 Neurotherapeutics",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Treating postextubation dysphagia after stroke with pharyngeal electrical stimulation -insights from a randomized controlled pilot trial.",
+          "pmid": "40383663",
+          "n_participants": 60
+        }
+      ]
+    }
+  ]
+}

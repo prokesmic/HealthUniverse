@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "earbud_use_chronic_loud",
+      "outcome_slug": "hearing_loss_adolescent",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Personal listening device exposure frequently exceeds recommended daily noise dose in adolescents and young adults, and observational studies link these habits to worse hearing thresholds or early hearing problems. A 7.5-year adolescent cohort found substantial risky exposure via headphones, and nationally representative adolescent data show associations between leisure noise behaviors and both speech- and high-frequency hearing loss.",
+      "population": "adolescents and young adults using earbuds or headphones at loud volume over time",
+      "mechanism": "Repeated high-intensity sound delivered directly to the ear canal can produce cumulative cochlear stress and threshold shifts, especially when long duration combines with high volume in noisy environments.",
+      "summary": "This is a credible youth hearing-risk edge. Chronic loud earbud or headphone use is associated with risky acoustic dose and early hearing-loss signals in adolescents, even if long-run causal estimates are still mostly observational.",
+      "caveats": "The literature often uses self-reported volume and duration rather than objective exposure logs, and some studies measure threshold shifts or symptom correlates rather than confirmed permanent loss. The direction of concern is still clear enough to justify preventive messaging.",
+      "evidence": [
+        {
+          "citation": "Susanne Senninger et al 2024 Int J Audiol",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Risky listening behaviour to music via headphones and its determinants - 7.5 years OHRKAN cohort study.",
+          "pmid": "37768039",
+          "n_participants": 2148
+        },
+        {
+          "citation": "Jihye Rhee et al 2019 PLoS One",
+          "year": 2019,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Hearing loss in Korean adolescents: The prevalence thereof and its association with leisure noise exposure.",
+          "pmid": "30608926",
+          "n_participants": 2879
+        },
+        {
+          "citation": "Wen Jiang et al 2016 Int J Audiol",
+          "year": 2016,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Daily music exposure dose and hearing problems using personal listening devices in adolescents and young adults: A systematic review.",
+          "pmid": "26768911",
+          "n_participants": 26
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "earbud_use_chronic_loud",
+      "name": "Chronic loud earbud use",
+      "kind": "behavior",
+      "aliases": [
+        "loud headphone listening",
+        "high-volume personal listening device use"
+      ],
+      "description": "Repeated use of earbuds or headphones at loud volume over prolonged periods."
+    },
+    {
+      "slug": "hearing_loss_adolescent",
+      "name": "Adolescent hearing loss",
+      "kind": "condition",
+      "aliases": [
+        "hearing loss in adolescents",
+        "youth hearing impairment"
+      ],
+      "description": "Measured or clinically meaningful hearing loss emerging during adolescence."
+    }
+  ]
+}

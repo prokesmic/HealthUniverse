@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "cardiac_rehabilitation_post_mi",
+      "outcome_slug": "all_cause_mortality_post_mi",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Post-myocardial-infarction exercise-based cardiac rehabilitation reduced all-cause mortality in the MI-specific meta-analysis (OR 0.74, 95% CI 0.58-0.95), while broader coronary-disease updates show the mortality effect has narrowed in the contemporary treatment era.",
+      "population": "adults recovering from myocardial infarction",
+      "mechanism": "Structured post-MI rehabilitation combines supervised exercise, risk-factor control, and graduated reconditioning, which can improve autonomic recovery, functional capacity, and adherence to secondary prevention. Those linked mechanisms fit a modest survival benefit rather than a dramatic one-shot treatment effect.",
+      "summary": "The strongest anchor is the MI-specific meta-analysis, which found fewer all-cause deaths in patients randomized to exercise-based cardiac rehabilitation after myocardial infarction. Larger and newer coronary-heart-disease meta-analyses still support rehabilitation for recurrent events and cardiovascular death, but they also suggest that the total-mortality signal is smaller in the modern era, so this edge is best read as modestly protective rather than overwhelmingly so.",
+      "caveats": "Much of the mortality evidence comes from older rehabilitation trials conducted before current preventive pharmacotherapy became routine. The edge is still clinically relevant, but the magnitude of benefit in today's fully treated post-MI populations may be smaller than in the landmark rehabilitation era.",
+      "evidence": [
+        {
+          "citation": "Lawler PR et al 2011 Am Heart J",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy of exercise-based cardiac rehabilitation post-myocardial infarction: a systematic review and meta-analysis of randomized controlled trials.",
+          "pmid": "21982647",
+          "n_participants": 6111
+        },
+        {
+          "citation": "O'Connor GT et al 1989 Circulation",
+          "year": 1989,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "An overview of randomized trials of rehabilitation with exercise after myocardial infarction.",
+          "pmid": "2665973",
+          "n_participants": 4554
+        },
+        {
+          "citation": "Dibben GO et al 2023 Eur Heart J",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Exercise-based cardiac rehabilitation for coronary heart disease: a meta-analysis.",
+          "pmid": "36746187",
+          "n_participants": 23430
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cardiac_rehabilitation_post_mi",
+      "name": "Cardiac rehabilitation after myocardial infarction",
+      "kind": "behavior",
+      "aliases": [
+        "post-MI cardiac rehab",
+        "exercise-based cardiac rehabilitation after MI"
+      ],
+      "description": "Structured cardiac rehabilitation delivered after myocardial infarction, usually combining supervised exercise and secondary-prevention support."
+    },
+    {
+      "slug": "all_cause_mortality_post_mi",
+      "name": "All-cause mortality after myocardial infarction",
+      "kind": "condition",
+      "aliases": [
+        "post-MI all-cause death"
+      ],
+      "description": "Risk of death from any cause during follow-up after myocardial infarction."
+    }
+  ]
+}

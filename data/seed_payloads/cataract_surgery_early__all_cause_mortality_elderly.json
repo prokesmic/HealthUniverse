@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "cataract_surgery_early",
+      "outcome_slug": "all_cause_mortality_elderly",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Observational studies suggest lower mortality among older adults who undergo cataract surgery, but the evidence is vulnerable to healthier-user bias. In the Women's Health Initiative cohort of 74,044 older women with cataract, surgery was associated with lower all-cause mortality (adjusted HR 0.40, 95% CI 0.39-0.42).",
+      "population": "older adults with visually significant cataract considered for earlier surgical correction",
+      "mechanism": "Earlier restoration of vision may improve mobility, reduce frailty-related complications, preserve independence, and support better access to self-care and social functioning, all of which could indirectly lower mortality risk.",
+      "summary": "The direction of association is favorable, but this is still an observational edge. Earlier cataract surgery is associated with lower all-cause mortality in older adults, though some of that signal may reflect selection of healthier or more functional patients for surgery.",
+      "caveats": "This is not randomized evidence, so residual confounding is a major limitation. The edge is best interpreted as a clinically plausible association rather than proof that cataract surgery itself directly lowers mortality.",
+      "evidence": [
+        {
+          "citation": "Victoria L Tseng et al 2018 JAMA Ophthalmol",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Association of Cataract Surgery With Mortality in Older Women: Findings from the Women's Health Initiative.",
+          "pmid": "29075781",
+          "n_participants": 74044,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.4,
+            "ci_low": 0.39,
+            "ci_high": 0.42,
+            "comparator": "older women with cataract who did not undergo surgery"
+          }
+        },
+        {
+          "citation": "Calvin Sze-Un Fong et al 2014 Am J Ophthalmol",
+          "year": 2014,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Visual impairment corrected via cataract surgery and 5-year survival in a prospective cohort.",
+          "pmid": "24161249",
+          "n_participants": 1864
+        },
+        {
+          "citation": "Benjamin J Thomas et al 2016 Br J Ophthalmol",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Blindness, cataract surgery and mortality in Ethiopia.",
+          "pmid": "27267606",
+          "n_participants": 1201
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cataract_surgery_early",
+      "name": "Earlier cataract surgery",
+      "kind": "activity",
+      "aliases": [
+        "timely cataract extraction",
+        "early cataract removal"
+      ],
+      "description": "Receiving cataract surgery earlier in the course of visually significant lens opacity rather than prolonged delay."
+    },
+    {
+      "slug": "all_cause_mortality_elderly",
+      "name": "All-cause mortality in older adults",
+      "kind": "condition",
+      "aliases": [
+        "elderly all-cause mortality",
+        "mortality in older adults"
+      ],
+      "description": "Risk of death from any cause among older adults."
+    }
+  ]
+}

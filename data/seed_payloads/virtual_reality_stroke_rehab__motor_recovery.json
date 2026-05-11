@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "virtual_reality_stroke_rehab",
+      "name": "Virtual reality stroke rehabilitation",
+      "kind": "activity",
+      "aliases": [
+        "VR-based stroke rehabilitation",
+        "virtual reality therapy after stroke"
+      ],
+      "description": "Use of immersive or non-immersive virtual reality systems as part of stroke rehabilitation."
+    },
+    {
+      "slug": "motor_recovery",
+      "name": "Motor recovery",
+      "kind": "process",
+      "aliases": [
+        "motor improvement",
+        "movement recovery"
+      ],
+      "description": "Recovery of motor impairment and movement performance after neurological injury."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "virtual_reality_stroke_rehab",
+      "outcome_slug": "motor_recovery",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Meta-analyses show better arm motor impairment outcomes with VR than control, including Hedges g 0.36 for motor impairment and a pooled Fugl-Meyer odds ratio of 4.89 in early trials, but effects vary by modality and are weaker for participation-level outcomes.",
+      "population": "adults recovering from stroke with upper-limb motor deficits",
+      "mechanism": "Virtual reality can increase repetition, feedback, engagement, and task-specific motor practice beyond what many conventional sessions provide. Its benefit appears to depend on the design of the platform, with non-immersive game-like systems often outperforming more immersive setups that add novelty without better therapeutic dosing.",
+      "summary": "The strongest evidence suggests virtual reality can improve stroke motor recovery, especially for upper-limb impairment, but the magnitude is modest and highly dependent on the VR modality. Newer network analyses suggest not all VR is equal, which keeps the evidence supportive overall but still mixed at the intervention-design level.",
+      "caveats": "Studies differ in stroke chronicity, baseline paresis severity, control therapy dose, and whether the VR system is immersive or game-console based. Improvements are clearest on impairment scales, while broader participation and quality-of-life outcomes remain less consistently affected.",
+      "evidence": [
+        {
+          "citation": "Laver KE et al 2011 Stroke",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Virtual reality in stroke rehabilitation: a meta-analysis and implications for clinicians.",
+          "pmid": "21474804",
+          "n_participants": 195
+        },
+        {
+          "citation": "Lee HS et al 2022 Clin Rehabil",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of virtual reality in improving upper extremity function after stroke: A systematic review and meta-analysis of randomized controlled trials.",
+          "pmid": "34898298",
+          "n_participants": 2018
+        },
+        {
+          "citation": "Zhang Y et al 2025 Front Neurol",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effects of virtual reality with different modalities on upper limb recovery: a systematic review and network meta-analysis on optimizing stroke rehabilitation.",
+          "pmid": "40236896",
+          "n_participants": 1704
+        }
+      ]
+    }
+  ]
+}

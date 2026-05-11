@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "early_phone_ownership_under_10",
+      "name": "Phone ownership before age 10",
+      "kind": "behavior",
+      "aliases": [
+        "early smartphone acquisition under age 10",
+        "phone ownership in late childhood"
+      ],
+      "description": "Owning or acquiring a smartphone or similar personal phone before 10 years of age."
+    },
+    {
+      "slug": "adolescent_mental_health",
+      "name": "Adolescent mental health",
+      "kind": "process",
+      "aliases": [
+        "teen mental health",
+        "adolescent psychological wellbeing"
+      ],
+      "description": "Mental health and psychological wellbeing outcomes in adolescents."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "early_phone_ownership_under_10",
+      "outcome_slug": "adolescent_mental_health",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Large early-adolescent cohort data show that younger age of smartphone acquisition is linked to worse health outcomes, and companion adolescent observational studies tie heavier smartphone exposure to more depressive symptoms, sleep problems, and psychological distress.",
+      "population": "children transitioning into adolescence, especially early adolescents with personal smartphone ownership",
+      "mechanism": "Earlier phone ownership can increase sustained exposure to social comparison, notifications, disrupted sleep, compulsive use loops, and displacement of offline recovery time during a sensitive developmental window.",
+      "summary": "The current evidence supports a cautious harmful classification for very early phone ownership, mainly because earlier acquisition is associated with worse mental-health-related outcomes in large adolescent cohorts. This is still an observational literature, so the right framing is risk signal rather than deterministic harm.",
+      "caveats": "Reverse causation, family context, baseline vulnerability, and broader digital environment all matter. The literature is stronger for associations with depressive symptoms, sleep disruption, and wellbeing than for proving that early phone ownership alone causes later psychiatric illness.",
+      "evidence": [
+        {
+          "citation": "Barzilay R et al 2026 Pediatrics",
+          "year": 2026,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Smartphone Ownership, Age of Smartphone Acquisition, and Health Outcomes in Early Adolescence.",
+          "pmid": "41324306",
+          "n_participants": 10588
+        },
+        {
+          "citation": "Kim Y and Oh H 2026 J Affect Disord",
+          "year": 2026,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Smartphone use, sleep, and mental health in Korean adolescents.",
+          "pmid": "41539610",
+          "n_participants": 51718
+        },
+        {
+          "citation": "Liu S et al 2019 J Affect Disord",
+          "year": 2019,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Prolonged mobile phone use is associated with depressive symptoms in Chinese adolescents.",
+          "pmid": "31450134",
+          "n_participants": 11831,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.78,
+            "ci_low": 1.48,
+            "ci_high": 2.15,
+            "comparator": "mobile phone use at least 2 hours per weekday versus lower use for depressive symptoms"
+          }
+        }
+      ]
+    }
+  ]
+}

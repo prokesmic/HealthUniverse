@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "methylphenidate_long_term_children",
+      "name": "Long-term methylphenidate in children",
+      "kind": "drug",
+      "aliases": [
+        "chronic methylphenidate treatment in children",
+        "long-term stimulant methylphenidate use in children"
+      ],
+      "description": "Chronic methylphenidate treatment in children with ADHD over months to years."
+    },
+    {
+      "slug": "growth_velocity",
+      "name": "Growth velocity",
+      "kind": "process",
+      "aliases": [
+        "height gain velocity",
+        "growth rate"
+      ],
+      "description": "Rate of height or weight gain over time during childhood treatment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "methylphenidate_long_term_children",
+      "outcome_slug": "growth_velocity",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2011 review summarized randomized and systematic-review evidence suggesting methylphenidate slows growth by about 1 to 1.5 cm per year during treatment, and long-term observational data have repeatedly found reduced weight and height trajectories during chronic stimulant exposure, although some catch-up growth may occur after discontinuation.",
+      "population": "children and adolescents receiving long-term methylphenidate treatment for ADHD",
+      "mechanism": "Chronic stimulant therapy can reduce appetite, alter energy balance, and suppress expected height and weight gain during active treatment periods.",
+      "summary": "Long-term methylphenidate has a real growth tradeoff signal in children. The average effect is usually modest rather than catastrophic, but slower height and weight gain during treatment is a consistent enough finding to treat as a meaningful harm signal that warrants monitoring.",
+      "caveats": "This does not mean every treated child will have clinically important growth suppression, and some children show later catch-up. The clearest message is to monitor growth rather than to deny treatment benefit.",
+      "evidence": [
+        {
+          "citation": "Prescrire Int 2011 Prescrire Int",
+          "year": 2011,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Methylphenidate: growth retardation.",
+          "pmid": "21970086"
+        },
+        {
+          "citation": "Findling RL et al 2007 J Am Acad Child Adolesc Psychiatry",
+          "year": 2007,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Long-term effects of methylphenidate transdermal delivery system treatment of ADHD on growth.",
+          "pmid": "17712237",
+          "n_participants": 127
+        },
+        {
+          "citation": "Vater CH et al 2023 J Child Adolesc Psychopharmacol",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Growth Trajectories in Stimulant Treated Children and Adolescents: A Qualitative Review of the Literature from Comprehensive Datasets and Registries.",
+          "pmid": "37966364",
+          "n_participants": 12
+        }
+      ]
+    }
+  ]
+}

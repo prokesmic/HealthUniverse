@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "acupuncture_chronic_pain",
+      "name": "Acupuncture for chronic pain",
+      "kind": "activity",
+      "aliases": [
+        "acupuncture in chronic pain",
+        "needle acupuncture for chronic pain"
+      ],
+      "description": "Needle-based acupuncture used as a treatment for chronic musculoskeletal pain, headache, or related chronic pain conditions."
+    },
+    {
+      "slug": "pain_severity",
+      "name": "Pain severity",
+      "kind": "process",
+      "aliases": [
+        "pain intensity",
+        "pain score"
+      ],
+      "description": "Patient-reported severity or intensity of pain symptoms."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "acupuncture_chronic_pain",
+      "outcome_slug": "pain_severity",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "An individual-patient meta-analysis of 29 randomized trials with 17,922 patients found acupuncture superior to sham and no-acupuncture controls, with pain scores 0.23 SD lower than sham for back and neck pain and 0.15-0.16 SD lower for osteoarthritis and chronic headache; an updated IPD meta-analysis of 39 trials and 20,827 patients reported similarly durable advantages over both sham and no-acupuncture control.",
+      "population": "adults with chronic musculoskeletal pain, osteoarthritis, chronic headache, or related chronic pain syndromes",
+      "mechanism": "Acupuncture may modulate nociceptive processing, descending pain inhibition, contextual analgesia, and symptom self-regulation, although the specific needling effect appears smaller than the total treatment effect.",
+      "summary": "For chronic pain, acupuncture has a real but modest evidence-based signal. It tends to outperform sham and usual-care comparators on pain outcomes, though effect sizes are generally small and should not be oversold as dramatic pain reversal.",
+      "caveats": "Benefits are most defensible for selected chronic pain syndromes rather than every pain complaint. The difference from sham is statistically reliable but modest, which means expectation and nonspecific care effects still matter.",
+      "evidence": [
+        {
+          "citation": "Vickers AJ et al 2012 Arch Intern Med",
+          "year": 2012,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Acupuncture for chronic pain: individual patient data meta-analysis.",
+          "pmid": "22965186",
+          "n_participants": 17922
+        },
+        {
+          "citation": "Vickers AJ et al 2018 J Pain",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Acupuncture for Chronic Pain: Update of an Individual Patient Data Meta-Analysis.",
+          "pmid": "29198932",
+          "n_participants": 20827
+        },
+        {
+          "citation": "Ernst E et al 1998 Arch Intern Med",
+          "year": 1998,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Acupuncture for back pain: a meta-analysis of randomized controlled trials.",
+          "pmid": "9818803",
+          "n_participants": 12
+        }
+      ]
+    }
+  ]
+}

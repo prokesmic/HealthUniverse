@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "mediterranean_diet_children",
+      "name": "Mediterranean diet in children",
+      "kind": "behavior",
+      "aliases": [
+        "Mediterranean-style pediatric diet",
+        "Mediterranean diet intervention in children"
+      ],
+      "description": "A Mediterranean dietary pattern or intervention applied to children or adolescents, often emphasizing vegetables, legumes, fruit, olive oil, fish, and reduced ultra-processed foods."
+    },
+    {
+      "slug": "growth_outcomes",
+      "name": "Growth outcomes",
+      "kind": "process",
+      "aliases": [
+        "child growth outcomes",
+        "anthropometric growth outcomes"
+      ],
+      "description": "Anthropometric outcomes such as BMI, weight, waist circumference, body fat, or healthy growth trajectories in children."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "mediterranean_diet_children",
+      "outcome_slug": "growth_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2026 meta-analysis of 18 studies with 1539 participants found Mediterranean diet-based interventions improved BMI (ES 0.34, 95% CI 0.13-0.56) and body fat (ES 0.64, 95% CI 0.19-1.08) in children and adolescents with overweight or obesity.",
+      "population": "children and adolescents, especially those with overweight, obesity, or metabolic risk",
+      "mechanism": "Mediterranean dietary patterns may lower energy density, improve satiety and diet quality, reduce ultra-processed food intake, and support healthier body composition over time.",
+      "summary": "Mediterranean-style diet interventions in children tend to support healthier growth and body-composition outcomes overall, particularly in overweight or at-risk pediatric populations.",
+      "caveats": "Benefits are stronger in children with excess adiposity than in general-population samples. Many interventions combine Mediterranean diet counseling with physical activity or broader lifestyle support, so purely dietary effects are not always separable.",
+      "evidence": [
+        {
+          "citation": "Rosi A et al 2026 Nutr Rev",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Dietary Interventions Based on the Mediterranean Diet to Treat Obesity in Children and Adolescents: A Systematic Review with Meta-analysis and Meta-regressions.",
+          "pmid": "41637178",
+          "n_participants": 1539
+        },
+        {
+          "citation": "Blancas-Sanchez IM et al 2022 Nutrients",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "A Mediterranean-Diet-Based Nutritional Intervention for Children with Prediabetes in a Rural Town: A Pilot Randomized Controlled Trial.",
+          "pmid": "36079871",
+          "n_participants": 29
+        },
+        {
+          "citation": "Mendiara I et al 2018 Nutrients",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Improved Diet Quality and Nutrient Adequacy in Children and Adolescents with Abdominal Obesity after a Lifestyle Intervention.",
+          "pmid": "30322156",
+          "n_participants": 107
+        }
+      ]
+    }
+  ]
+}

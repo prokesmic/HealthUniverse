@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "school_based_obesity_intervention",
+      "name": "School-based obesity intervention",
+      "kind": "behavior",
+      "aliases": [
+        "school obesity prevention program",
+        "school-based obesity prevention intervention"
+      ],
+      "description": "A school-delivered intervention targeting diet, physical activity, or the broader school environment to prevent or reduce childhood or adolescent obesity."
+    },
+    {
+      "slug": "bmi_z_score",
+      "name": "BMI z score",
+      "kind": "process",
+      "aliases": [
+        "body mass index z score",
+        "BMI-for-age z score"
+      ],
+      "description": "Age- and sex-standardized BMI expressed as a z score in children or adolescents."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "school_based_obesity_intervention",
+      "outcome_slug": "bmi_z_score",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2021 meta-analysis of 14 adolescent studies found a small favorable intervention effect on BMI z score of -0.06 (95% CI -0.10 to -0.03), and a broader 2013 meta-analysis of 32 randomized trials involving 52,109 participants found school-based obesity prevention programs mildly effective overall.",
+      "population": "school-aged children and adolescents exposed to school-based obesity prevention or reduction programs",
+      "mechanism": "School interventions may improve diet quality, reduce sugary or high-energy intake, increase physical activity, and shift the everyday food and activity environment across the school day.",
+      "summary": "School-based obesity interventions produce small but real improvements in BMI z score overall, especially when they are multi-component and sustained rather than brief or purely informational.",
+      "caveats": "Effects are modest and inconsistent across age groups, with weaker impacts often seen in older adolescents. Many interventions require environmental change, parental involvement, or longer follow-up to produce durable anthropometric differences.",
+      "evidence": [
+        {
+          "citation": "Salgado-Figueroa A et al 2021 Int J Behav Nutr Phys Act",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A systematic review and meta-analysis of school-based interventions with health education to reduce body mass index in adolescents aged 10 to 19 years.",
+          "pmid": "33397403",
+          "n_participants": 14
+        },
+        {
+          "citation": "Sobol-Goldberg S et al 2013 Obesity (Silver Spring)",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "School-based obesity prevention programs: a meta-analysis of randomized controlled trials.",
+          "pmid": "23794226",
+          "n_participants": 52109
+        },
+        {
+          "citation": "Bogart LM et al 2016 Pediatrics",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Two-Year BMI Outcomes From a School-Based Intervention for Nutrition and Exercise: A Randomized Trial.",
+          "pmid": "27244788",
+          "n_participants": 1368
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "single_sport_specialization_youth",
+      "name": "Youth single-sport specialization",
+      "kind": "behavior",
+      "aliases": [
+        "early sport specialization",
+        "single-sport focus in youth athletes"
+      ],
+      "description": "Intensive youth participation focused primarily on one sport rather than diversified multi-sport play."
+    },
+    {
+      "slug": "overuse_injury_risk",
+      "name": "Overuse injury risk",
+      "kind": "process",
+      "aliases": [
+        "risk of overuse injury",
+        "repetitive strain injury risk"
+      ],
+      "description": "The likelihood of developing gradual-onset sports injuries related to repetitive loading and inadequate recovery."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "single_sport_specialization_youth",
+      "outcome_slug": "overuse_injury_risk",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The best synthesis found that highly specialized youth athletes had about 81% higher overuse injury risk than low-specialization peers, and subsequent longitudinal cohorts reported higher injury risk with specialization combined with high activity volume.",
+      "population": "children and adolescents participating in organized sports, especially higher-volume youth athletes",
+      "mechanism": "Early specialization can concentrate repetitive tissue loading onto the same joints and movement patterns while reducing recovery variation, off-season diversification, and broader motor development. That combination plausibly raises cumulative overuse injury risk.",
+      "summary": "Youth single-sport specialization is one of the cleaner harmful signals in pediatric sports medicine, especially when it is paired with high training volume. The strongest evidence points more clearly to overuse injuries than to every possible injury category.",
+      "caveats": "The effect is partly entangled with training load, competitive intensity, and year-round participation, so specialization itself is not the only driver. Risk appears most consistent for overuse injury rather than all acute injuries.",
+      "evidence": [
+        {
+          "citation": "Bell DR et al 2018 Pediatrics",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Sport Specialization and Risk of Overuse Injuries: A Systematic Review With Meta-analysis.",
+          "pmid": "30135085",
+          "n_participants": 5,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.81,
+            "ci_low": 1.27,
+            "ci_high": 2.58,
+            "comparator": "high specialization versus low specialization for overuse injury risk"
+          }
+        },
+        {
+          "citation": "Jayanthi NA et al 2020 Orthop J Sports Med",
+          "year": 2020,
+          "study_type": "case_control",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Risk of Injuries Associated With Sport Specialization and Intense Training Patterns in Young Athletes: A Longitudinal Clinical Case-Control Study.",
+          "pmid": "32637428",
+          "n_participants": 579
+        },
+        {
+          "citation": "Field AE et al 2019 Orthop J Sports Med",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Injury Risk Associated With Sports Specialization and Activity Volume in Youth.",
+          "pmid": "31555716",
+          "n_participants": 10138
+        }
+      ]
+    }
+  ]
+}

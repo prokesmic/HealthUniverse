@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "food_sensitivity_igg_testing",
+      "name": "Food-sensitivity IgG testing",
+      "kind": "process",
+      "aliases": [
+        "food-specific IgG panel testing",
+        "IgG food intolerance testing"
+      ],
+      "description": "Commercial measurement of food-specific IgG antibodies used to guide elimination diets for presumed food sensitivities."
+    },
+    {
+      "slug": "symptom_relief",
+      "name": "Symptom relief",
+      "kind": "process",
+      "aliases": [
+        "clinical symptom improvement",
+        "subjective symptom reduction"
+      ],
+      "description": "Improvement in patient-reported symptom burden or overall symptom severity."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "food_sensitivity_igg_testing",
+      "outcome_slug": "symptom_relief",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "A 2026 systematic scoping review covering 13 intervention studies and 935 IBS patients found some symptom improvements in IgG-guided elimination-diet studies, but the evidence base remained methodologically weak and heterogeneous. In the best-known 150-patient randomized IBS trial, the true IgG-guided diet produced a 10% greater symptom-score reduction than sham, rising to 26% among fully compliant participants.",
+      "population": "mostly adults with irritable bowel syndrome or related functional symptom syndromes undergoing IgG-guided elimination diets",
+      "mechanism": "The proposed mechanism is that food-specific IgG identifies symptom-triggering foods, but IgG responses may also reflect routine exposure and tolerance rather than clinically meaningful hypersensitivity.",
+      "summary": "This edge should be treated as contested rather than clinically settled. Small or open-label studies often report symptom improvement, but the broader literature does not validate food-IgG panels as a dependable way to generate symptom-relieving elimination diets.",
+      "caveats": "Do not treat a positive food-IgG panel as equivalent to proven allergy or intolerance. Much of the apparent benefit may reflect nonspecific elimination effects, expectation effects, or dietary simplification rather than test-specific accuracy.",
+      "evidence": [
+        {
+          "citation": "Zuidmeer L et al 2026 Nutr Rev",
+          "year": 2026,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Mapping the Evidence on IgG-Based Elimination Diets for the Management of Irritable Bowel Syndrome in Adults: A Systematic Scoping Review.",
+          "pmid": "41578453",
+          "n_participants": 935
+        },
+        {
+          "citation": "Atkinson W et al 2004 Gut",
+          "year": 2004,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Food elimination based on IgG antibodies in irritable bowel syndrome: a randomised controlled trial.",
+          "pmid": "15361495",
+          "n_participants": 150
+        },
+        {
+          "citation": "Aydinlar EI et al 2013 Headache",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "IgG-based elimination diet in migraine plus irritable bowel syndrome.",
+          "pmid": "23216231",
+          "n_participants": 21
+        }
+      ]
+    }
+  ]
+}

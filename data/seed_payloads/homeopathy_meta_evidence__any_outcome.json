@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "homeopathy_meta_evidence",
+      "name": "Homeopathy meta-evidence",
+      "kind": "process",
+      "aliases": [
+        "overall homeopathy evidence base",
+        "meta-analytic homeopathy evidence"
+      ],
+      "description": "The aggregate placebo-controlled evidence base for homeopathic interventions across clinical indications."
+    },
+    {
+      "slug": "any_outcome",
+      "name": "Any outcome",
+      "kind": "process",
+      "aliases": [
+        "overall outcome",
+        "general clinical outcome"
+      ],
+      "description": "Any claimed clinical outcome across conditions rather than a disease-specific endpoint."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "homeopathy_meta_evidence",
+      "outcome_slug": "any_outcome",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "A 1998 review of individualized homeopathy found an apparent pooled rate ratio of 1.62 versus placebo in 19 analyzable placebo-controlled trials, but the effect disappeared when analyses were restricted to the best trials; a 2017 meta-analysis of non-individualized homeopathy found pooled signals in lower-quality subsets but continued inconsistency once risk-of-bias filtering was applied.",
+      "population": "patients enrolled in placebo-controlled homeopathy trials across a wide range of conditions",
+      "mechanism": "Any observed benefit is difficult to separate from regression to the mean, contextual care effects, reporting bias, and weak or inconsistent trial methods, especially when higher-quality trials show attenuation toward null.",
+      "summary": "This is a claim-check edge about the overall evidence pattern, not a disease-specific endorsement. Homeopathy literature contains some positive pooled signals, but they are unstable, highly quality-sensitive, and not persuasive enough to treat homeopathy as a generally effective therapy across outcomes.",
+      "caveats": "Do not flatten this to 'all trials are identical' or 'all effects are zero.' The more careful reading is that headline-positive findings are common in weaker or selectively reported subsets, while the more reliable evidence base remains inconclusive or near-null.",
+      "evidence": [
+        {
+          "citation": "Linde K et al 1998 J Altern Complement Med",
+          "year": 1998,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Randomized controlled trials of individualized homeopathy: a state-of-the-art review.",
+          "pmid": "9884175",
+          "n_participants": 1778
+        },
+        {
+          "citation": "Mathie RT et al 2017 Syst Rev",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Randomised, double-blind, placebo-controlled trials of non-individualised homeopathic treatment: systematic review and meta-analysis.",
+          "pmid": "28340607",
+          "n_participants": 5739
+        },
+        {
+          "citation": "Jonas WB et al 2003 Homeopathy",
+          "year": 2003,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The research evidence base for homeopathy: a fresh assessment of the literature.",
+          "pmid": "12725250"
+        }
+      ]
+    }
+  ]
+}

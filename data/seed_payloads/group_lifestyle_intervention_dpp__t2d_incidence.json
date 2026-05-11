@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "group_lifestyle_intervention_dpp",
+      "outcome_slug": "t2d_incidence",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Across the landmark prevention trials, structured lifestyle programs consistently reduced progression to type 2 diabetes: the U.S. Diabetes Prevention Program cut incidence by 58% versus placebo, the long-term Finnish DPS follow-up reported an adjusted hazard ratio of 0.614 (95% CI 0.478-0.789), and the China Da Qing trial showed a 43% lower diabetes incidence over 20 years (HRR 0.57, 95% CI 0.41-0.81).",
+      "population": "adults with impaired glucose tolerance or otherwise high risk for type 2 diabetes",
+      "mechanism": "These programs reduce diabetes risk by combining weight loss, healthier diet, and more physical activity in people already on the edge of dysglycaemia. The resulting improvements in insulin sensitivity, adiposity, and post-load glucose handling make this one of the clearest prevention targets in chronic disease medicine.",
+      "summary": "This is one of the strongest lifestyle-prevention edges in the graph. Multiple randomized prevention trials across different countries show that structured diet-and-activity programs meaningfully delay or prevent incident type 2 diabetes in high-risk adults, and the benefit persists long after the most intensive intervention period ends.",
+      "caveats": "The strongest evidence comes from people with impaired glucose tolerance and elevated baseline risk, not from the general population. Programs also tend to be structured and coached rather than casual advice alone, so the real-world effect depends heavily on intensity, adherence, and whether a system can deliver something close to the original intervention design.",
+      "evidence": [
+        {
+          "citation": "Knowler et al 2002 N Engl J Med",
+          "year": 2002,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Reduction in the incidence of type 2 diabetes with lifestyle intervention or metformin.",
+          "pmid": "11832527",
+          "n_participants": 3234
+        },
+        {
+          "citation": "Lindström et al 2013 Diabetologia",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Improved lifestyle and decreased diabetes risk over 13 years: long-term follow-up of the randomised Finnish Diabetes Prevention Study (DPS).",
+          "pmid": "23093136",
+          "n_participants": 522
+        },
+        {
+          "citation": "Guangwei Li et al 2008 Lancet",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The long-term effect of lifestyle interventions to prevent diabetes in the China Da Qing Diabetes Prevention Study: a 20-year follow-up study.",
+          "pmid": "18502303",
+          "n_participants": 577
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "group_lifestyle_intervention_dpp",
+      "name": "Group lifestyle intervention modeled on diabetes prevention programs",
+      "kind": "behavior",
+      "aliases": [
+        "DPP-style lifestyle program",
+        "structured diabetes-prevention lifestyle intervention"
+      ],
+      "description": "A structured diet-and-physical-activity program designed to prevent type 2 diabetes in high-risk adults."
+    },
+    {
+      "slug": "t2d_incidence",
+      "name": "Incident type 2 diabetes",
+      "kind": "condition",
+      "aliases": [
+        "type 2 diabetes onset",
+        "new-onset type 2 diabetes"
+      ],
+      "description": "Development of type 2 diabetes during follow-up among people initially free of diagnosed disease."
+    }
+  ]
+}

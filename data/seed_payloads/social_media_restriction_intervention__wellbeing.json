@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "social_media_restriction_intervention",
+      "name": "Social media restriction intervention",
+      "kind": "activity",
+      "aliases": [
+        "social media reduction intervention",
+        "social media abstinence intervention"
+      ],
+      "description": "An intervention that deliberately restricts or reduces social media use to improve mental health or wellbeing."
+    },
+    {
+      "slug": "wellbeing",
+      "name": "Wellbeing",
+      "kind": "process",
+      "aliases": [
+        "psychological wellbeing",
+        "emotional wellbeing"
+      ],
+      "description": "Self-reported emotional or psychological wellbeing."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "social_media_restriction_intervention",
+      "outcome_slug": "wellbeing",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2025 meta-analysis of 20 randomized controlled trials and 56 effect sizes found a small positive overall effect of social media detox on wellbeing, but two individual randomized trials in 67 and 122 participants reported largely neutral short-term wellbeing effects.",
+      "population": "adolescents, students, or young adults assigned to intentionally reduce or cap social media use",
+      "mechanism": "Reducing social media may lower social comparison, fear of missing out, and compulsive checking, but benefits likely depend on whether use was excessive or distress-driven at baseline.",
+      "summary": "Restriction interventions show a small pooled wellbeing benefit overall, but individual randomized trials are mixed and often neutral over short follow-up windows. The most defensible classification is mildly protective overall, with benefit likely depending on baseline overuse, distress, and intervention intensity.",
+      "caveats": "Do not present social media restriction as a universally effective mental-health treatment. Some trials show null results, and short intervention windows may underestimate or miss subgroup-specific benefits.",
+      "evidence": [
+        {
+          "citation": "Maerevoet M et al 2025 Front Public Health",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Causal effects of social media use on self-esteem, mindfulness, sleep and emotional well-being: a social media restriction study.",
+          "pmid": "40520283",
+          "n_participants": 67
+        },
+        {
+          "citation": "Collis A et al 2022 PLoS One",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Effects of restricting social media usage on wellbeing and performance: A randomized control trial among students.",
+          "pmid": "36001541",
+          "n_participants": 122
+        },
+        {
+          "citation": "Liu Y et al 2025 Behav Sci (Basel)",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Am I Happier Without You? Social Media Detox and Well-Being: A Meta-Analysis of Randomized Controlled Trials.",
+          "pmid": "40150185",
+          "n_participants": 20
+        }
+      ]
+    }
+  ]
+}

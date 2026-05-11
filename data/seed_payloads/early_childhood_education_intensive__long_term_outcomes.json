@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "early_childhood_education_intensive",
+      "name": "Intensive early childhood education",
+      "kind": "behavior",
+      "aliases": [
+        "high-quality preschool intervention",
+        "intensive preschool education",
+        "early educational intervention"
+      ],
+      "description": "High-intensity early childhood education programs delivered before school entry, often in high-risk or disadvantaged populations."
+    },
+    {
+      "slug": "long_term_outcomes",
+      "name": "Long-term life outcomes",
+      "kind": "process",
+      "aliases": [
+        "later life outcomes",
+        "long-term educational and social outcomes",
+        "adult functioning outcomes"
+      ],
+      "description": "Downstream educational, employment, social, and adult functioning outcomes measured years after early intervention."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "early_childhood_education_intensive",
+      "outcome_slug": "long_term_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A 2017 meta-analysis of 22 high-quality experimental and quasi-experimental studies found that early childhood education reduced special education placement by 8.1 percentage points, reduced grade retention by 8.3 percentage points, and increased high school graduation by 11.4 percentage points on average.",
+      "population": "children exposed to intensive preschool or early educational intervention programs, often from disadvantaged or high-risk backgrounds",
+      "mechanism": "High-quality early education may strengthen cognitive, language, and self-regulatory skills that compound into better later educational attainment, employment, and social functioning.",
+      "summary": "Intensive early childhood education programs show durable benefits on later educational and life outcomes, especially in high-risk populations and long-running cohort follow-up studies.",
+      "caveats": "Evidence is strongest for high-quality, intensive programs and may not generalize to all contemporary preschool models. Long-term effect sizes vary across cohorts, contexts, and outcome domains.",
+      "evidence": [
+        {
+          "citation": "McCoy DC et al 2017 Educ Res",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Impacts of Early Childhood Education on Medium- and Long-Term Educational Outcomes.",
+          "pmid": "30147124",
+          "n_participants": 22
+        },
+        {
+          "citation": "Sparling J et al 2021 Int J Environ Res Public Health",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Mental Health and Social Development Effects of the Abecedarian Approach.",
+          "pmid": "34208853",
+          "n_participants": 3
+        },
+        {
+          "citation": "Pungello EP et al 2010 Child Dev",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Early educational intervention, early cumulative risk, and the early home environment as predictors of young adult outcomes within a high-risk sample.",
+          "pmid": "20331676",
+          "n_participants": 139
+        }
+      ]
+    }
+  ]
+}

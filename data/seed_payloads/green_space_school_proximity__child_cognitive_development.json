@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "green_space_school_proximity",
+      "name": "Green space near school",
+      "kind": "environmental",
+      "aliases": [
+        "school greenspace proximity",
+        "green school surroundings",
+        "school green space exposure"
+      ],
+      "description": "Availability or proximity of green natural space in or around the school environment."
+    },
+    {
+      "slug": "child_cognitive_development",
+      "name": "Child cognitive development",
+      "kind": "process",
+      "aliases": [
+        "cognitive development in children",
+        "child neurocognitive development"
+      ],
+      "description": "Attention, working memory, academic performance, or broader neurocognitive development in children."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "green_space_school_proximity",
+      "outcome_slug": "child_cognitive_development",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "A 2023 systematic review of 28 eligible school-exposure studies reported mixed but generally protective associations of green or blue school-space exposure with neurodevelopment, especially attention and cognitive or academic performance.",
+      "population": "school-aged children and adolescents exposed to greener school surroundings or greener school-based activities",
+      "mechanism": "Greener school settings may support attention restoration, reduce stress and air-pollution burdens, and increase restorative contact with natural environments during the school day.",
+      "summary": "Greener school surroundings appear to support child cognitive development overall, but the evidence is heterogeneous and not uniformly positive across cohorts. The most defensible reading is mildly protective, especially for attention restoration and some academic or working-memory outcomes.",
+      "caveats": "Evidence varies by exposure metric, buffer size, age group, and whether exposure is passive proximity or active green-space use. Some longitudinal school-greenness cohorts report inconsistent or null findings.",
+      "evidence": [
+        {
+          "citation": "Diaz-Martinez F et al 2023 Int J Environ Res Public Health",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Systematic Review: Neurodevelopmental Benefits of Active/Passive School Exposure to Green and/or Blue Spaces in Children and Adolescents.",
+          "pmid": "36900969",
+          "n_participants": 28
+        },
+        {
+          "citation": "Markevych I et al 2019 Environ Pollut",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Residential and school greenspace and academic performance: Evidence from the GINIplus and LISA longitudinal studies of German adolescents.",
+          "pmid": "30414551",
+          "n_participants": 2429
+        },
+        {
+          "citation": "Amicone G et al 2018 Front Psychol",
+          "year": 2018,
+          "study_type": "cross_sectional",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Green Breaks: The Restorative Effect of the School Environment's Green Areas on Children's Cognitive Performance.",
+          "pmid": "30333765",
+          "n_participants": 108
+        }
+      ]
+    }
+  ]
+}

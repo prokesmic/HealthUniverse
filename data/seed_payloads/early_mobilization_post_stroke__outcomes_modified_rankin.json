@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "early_mobilization_post_stroke",
+      "name": "Early mobilization after stroke",
+      "kind": "behavior",
+      "aliases": [
+        "very early mobilization after stroke",
+        "out-of-bed mobilization after stroke"
+      ],
+      "description": "Mobilization and upright activity started early after acute stroke, often within the first 24 hours."
+    },
+    {
+      "slug": "outcomes_modified_rankin",
+      "name": "Modified Rankin outcomes",
+      "kind": "process",
+      "aliases": [
+        "modified Rankin Scale outcome",
+        "functional outcome by mRS"
+      ],
+      "description": "Functional outcome measured on the modified Rankin Scale after stroke."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "early_mobilization_post_stroke",
+      "outcome_slug": "outcomes_modified_rankin",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In the phase III AVERT trial, frequent higher-dose mobilization within 24 hours reduced the odds of a favorable 3-month modified Rankin outcome (adjusted OR 0.73, 95% CI 0.59-0.90), even though earlier smaller AVERT work suggested faster walking recovery.",
+      "population": "adults with acute ischemic or hemorrhagic stroke treated on stroke units",
+      "mechanism": "Getting patients upright early may reduce immobility complications and speed walking practice, but an overly intense very-early dose can also stress a vulnerable brain before autoregulation and perfusion are stable. That tradeoff fits a timing-and-dose sensitive pattern rather than a simple more-is-better rehabilitation effect.",
+      "summary": "The strongest modern anchor is AVERT phase III, which found that very early, frequent, higher-dose mobilization within 24 hours did not improve and may worsen favorable modified Rankin outcomes. Smaller earlier AVERT studies still suggested faster return to walking and feasibility, so the right read is mixed and likely dose-sensitive rather than simply pro- or anti-mobilization.",
+      "caveats": "This edge is really about the timing and intensity of mobilization, not whether stroke patients should mobilize at all. Lower-dose or later-start protocols may behave differently from the aggressive very-early strategy tested in AVERT.",
+      "evidence": [
+        {
+          "citation": "Bernhardt J et al 2015 Lancet",
+          "year": 2015,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Efficacy and safety of very early mobilisation within 24 h of stroke onset (AVERT): a randomised controlled trial.",
+          "pmid": "25892679",
+          "n_participants": 2104
+        },
+        {
+          "citation": "Bernhardt J et al 2008 Stroke",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A very early rehabilitation trial for stroke (AVERT): phase II safety and feasibility.",
+          "pmid": "18174489",
+          "n_participants": 71
+        },
+        {
+          "citation": "Cumming TB et al 2011 Stroke",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Very early mobilization after stroke fast-tracks return to walking: further results from the phase II AVERT randomized controlled trial.",
+          "pmid": "21148439",
+          "n_participants": 71
+        }
+      ]
+    }
+  ]
+}

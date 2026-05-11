@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "tele_cardiac_rehab",
+      "outcome_slug": "adherence_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Telehealth rehabilitation generally improves or preserves adherence relative to center-based rehabilitation, and the latest network meta-analysis ranked wearable-plus-app models particularly well for adherence-related outcomes.",
+      "population": "adults with coronary or other cardiovascular disease eligible for cardiac rehabilitation",
+      "mechanism": "Remote delivery lowers travel and scheduling barriers that often limit center-based rehabilitation completion. When telehealth programs also provide monitoring, feedback, and coaching, they can improve persistence with exercise and lifestyle tasks rather than only replicating in-person sessions digitally.",
+      "summary": "The best overall read is that tele-cardiac rehabilitation does not just preserve fitness outcomes; it can also help participation and adherence by reducing practical access barriers. The strongest recent synthesis is the 2024 network meta-analysis, and the randomized post-ACS and post-MI trials fit that picture by showing better sustained activity or rehabilitation uptake when remote support is built in.",
+      "caveats": "Tele-rehabilitation is not automatically superior for every patient or every adherence metric, and many trials are still relatively small. Program design matters: simple remote substitution is less convincing than interventions that combine monitoring, coaching, and behavioral support.",
+      "evidence": [
+        {
+          "citation": "Wang Miao et al 2024 Int J Nurs Stud",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Comparative efficacy and adherence of telehealth cardiac rehabilitation interventions for patients with cardiovascular disease: A systematic review and network meta-analysis.",
+          "pmid": "39032245",
+          "n_participants": 46
+        },
+        {
+          "citation": "Song YJ et al 2022 Medicine (Baltimore)",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of telecardiac rehabilitation on coronary heart disease: A PRISMA-compliant systematic review and meta-analysis.",
+          "pmid": "35839029",
+          "n_participants": 750
+        },
+        {
+          "citation": "Avila A et al 2022 Clin Cardiol",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A randomized controlled clinical trial of cardiac telerehabilitation with a prolonged mobile care monitoring strategy after an acute coronary syndrome.",
+          "pmid": "34952989",
+          "n_participants": 67
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "tele_cardiac_rehab",
+      "name": "Tele-cardiac rehabilitation",
+      "kind": "behavior",
+      "aliases": [
+        "cardiac telerehabilitation",
+        "remote cardiac rehabilitation"
+      ],
+      "description": "Cardiac rehabilitation delivered remotely using telehealth, smartphone, web, or device-supported monitoring."
+    },
+    {
+      "slug": "adherence_outcomes",
+      "name": "Adherence outcomes",
+      "kind": "process",
+      "aliases": [
+        "program adherence",
+        "rehabilitation adherence"
+      ],
+      "description": "Completion, attendance, engagement, or persistence with a prescribed intervention program."
+    }
+  ]
+}

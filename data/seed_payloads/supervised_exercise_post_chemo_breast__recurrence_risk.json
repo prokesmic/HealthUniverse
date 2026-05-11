@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "supervised_exercise_post_chemo_breast",
+      "name": "Supervised exercise after chemotherapy for breast cancer",
+      "kind": "activity",
+      "aliases": [
+        "post-chemotherapy exercise in breast cancer survivors",
+        "supervised post-treatment breast cancer exercise"
+      ],
+      "description": "Structured exercise participation after breast cancer treatment, especially in survivorship or post-chemotherapy care."
+    },
+    {
+      "slug": "recurrence_risk",
+      "name": "Recurrence risk",
+      "kind": "process",
+      "aliases": [
+        "cancer recurrence",
+        "relapse risk"
+      ],
+      "description": "Risk that previously treated cancer returns locally, regionally, or at distant sites during follow-up."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "supervised_exercise_post_chemo_breast",
+      "outcome_slug": "recurrence_risk",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A meta-analysis of five cohorts found lower recurrence risk at >=7.5 MET-h/week versus 0-3 MET-h/week (HR 0.65, 95% CI 0.58 to 0.73), with newer prospective data showing DRFI benefit above about 5 MET-h/week.",
+      "population": "women with primary breast cancer in post-diagnosis or survivorship follow-up",
+      "mechanism": "Post-treatment exercise may reduce recurrence risk through lower insulin signaling, less adiposity-driven inflammation, and improved immune-metabolic control during survivorship. The signal appears dose-responsive up to a moderate activity threshold rather than requiring extreme training loads.",
+      "summary": "The strongest evidence for recurrence reduction comes from post-diagnosis physical activity cohorts rather than randomized supervised programs, but the direction is fairly consistent. That makes the evidence supportive for supervised post-chemotherapy exercise as a survivorship strategy, while still leaving some uncertainty about how much of the benefit comes from the structured supervision itself versus simply being more active after treatment.",
+      "caveats": "These data are observational and mostly use recreational physical activity rather than formal exercise-therapy programs. Confounding by baseline health, treatment tolerance, or healthier survivor behavior cannot be fully excluded, so the recurrence signal is encouraging but not strictly causal in the trial sense.",
+      "evidence": [
+        {
+          "citation": "Miyamoto T et al 2022 Curr Oncol Rep",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of Post-diagnosis Physical Activity on Breast Cancer Recurrence: a Systematic Review and Meta-analysis.",
+          "pmid": "35947284",
+          "n_participants": 10094
+        },
+        {
+          "citation": "Chen X et al 2011 Cancer Prev Res (Phila)",
+          "year": 2011,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Exercise after diagnosis of breast cancer in association with survival.",
+          "pmid": "21795422",
+          "n_participants": 4826
+        },
+        {
+          "citation": "Renehan AG et al 2024 J Clin Oncol",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Dose/Exposure Relationship of Exercise and Distant Recurrence in Primary Breast Cancer.",
+          "pmid": "38838281",
+          "n_participants": 10359
+        }
+      ]
+    }
+  ]
+}

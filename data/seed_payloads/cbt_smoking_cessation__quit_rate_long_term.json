@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "cbt_smoking_cessation",
+      "outcome_slug": "quit_rate_long_term",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The smoking-cessation meta-analysis of 50 randomized trials and 26,927 participants found higher long-term abstinence with intensive counseling interventions, including individual counseling (OR 1.49, 95% CrI 1.08-2.07) and group counseling (OR 1.76, 95% CrI 1.11-2.93), compared with control conditions.",
+      "population": "adult and adolescent smokers receiving cognitive-behavioral or counseling-based cessation treatment",
+      "mechanism": "Cognitive-behavioral smoking treatment improves quitting by rehearsing coping responses before cravings, identifying high-risk triggers, and replacing automatic smoking routines with planned behavioral alternatives. That skill-building does not eliminate relapse pressure, but it meaningfully raises the odds that a quit attempt survives beyond the first few vulnerable weeks.",
+      "summary": "The strongest evidence comes from the large meta-analysis showing that intensive behavioral counseling raises validated quit rates at 6 to 12 months. Individual CBT trials are less dramatic than the pooled effect, but they generally point in the same direction: when smokers get a structured coping-and-relapse-prevention program rather than simple education, more of them stay abstinent over follow-up.",
+      "caveats": "This edge leans on a broader behavioral-counseling literature because many cessation trials package CBT techniques inside counseling programs rather than labeling every arm as CBT. Quit rates also vary with nicotine replacement, cultural tailoring, and treatment intensity, so the expected benefit is real but not uniform across all smoking populations.",
+      "evidence": [
+        {
+          "citation": "Mottillo S et al 2009 Eur Heart J",
+          "year": 2009,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Behavioural interventions for smoking cessation: a meta-analysis of randomized controlled trials.",
+          "pmid": "19109354",
+          "n_participants": 26927
+        },
+        {
+          "citation": "Raja M et al 2014 J Clin Diagn Res",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cognitive Behavioural Therapy versus Basic Health Education for Tobacco Cessation among Tobacco Users: A Randomized Clinical Trail.",
+          "pmid": "24959516",
+          "n_participants": 40
+        },
+        {
+          "citation": "McClure JB et al 2020 Nicotine Tob Res",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Comparative Effectiveness of Group-Delivered Acceptance and Commitment Therapy versus Cognitive Behavioral Therapy for Smoking Cessation: A Randomized Controlled Trial.",
+          "pmid": "30590810",
+          "n_participants": 450
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "cbt_smoking_cessation",
+      "name": "Cognitive behavioral therapy for smoking cessation",
+      "kind": "behavior",
+      "aliases": [
+        "CBT smoking cessation counseling",
+        "cognitive-behavioral quit-smoking treatment"
+      ],
+      "description": "Smoking-cessation treatment built around cognitive restructuring, coping skills, trigger management, and relapse prevention."
+    },
+    {
+      "slug": "quit_rate_long_term",
+      "name": "Long-term smoking quit rate",
+      "kind": "process",
+      "aliases": [
+        "long-term abstinence rate",
+        "sustained smoking cessation"
+      ],
+      "description": "Biochemically validated or self-reported smoking abstinence sustained over longer follow-up, usually 6 months or more."
+    }
+  ]
+}

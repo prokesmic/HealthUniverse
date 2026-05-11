@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "fluoxetine_post_stroke_motor",
+      "name": "Fluoxetine for post-stroke motor recovery",
+      "kind": "drug",
+      "aliases": [
+        "fluoxetine after stroke for motor recovery",
+        "post-stroke fluoxetine"
+      ],
+      "description": "Use of fluoxetine after stroke with the intention of improving neurological or motor recovery."
+    },
+    {
+      "slug": "motor_recovery",
+      "name": "Motor recovery",
+      "kind": "process",
+      "aliases": [
+        "motor improvement",
+        "motor outcome recovery"
+      ],
+      "description": "Recovery of motor impairment and movement performance after neurological injury."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "fluoxetine_post_stroke_motor",
+      "outcome_slug": "motor_recovery",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "A pooled analysis of 7,165 patients reported short-term improvement on NIHSS and Fugl-Meyer motor scores, but the large EFFECTS trial found no functional benefit at 6 months while increasing fractures and hyponatremia.",
+      "population": "adults treated in the acute or subacute period after stroke",
+      "mechanism": "Fluoxetine could plausibly support recovery by enhancing serotonergic plasticity and mood-related engagement in rehabilitation, but any motor benefit appears fragile and may not translate into meaningful independence gains. The main mechanistic concern is that a signal on impairment scales can coexist with no real-world functional advantage and more medication-related harm.",
+      "summary": "The strongest single trial in contemporary practice is EFFECTS, and it did not improve functional outcome after stroke despite earlier enthusiasm around fluoxetine-assisted recovery. Smaller trials and pooled analyses still suggest some motor-scale improvement, but the evidence is now too internally conflicted to call this reliably beneficial, so the right label is contested.",
+      "caveats": "This literature depends heavily on which endpoint is emphasized. Motor-impairment scales can show improvement while disability scales remain unchanged, and the larger pragmatic trials also raised safety concerns that make any marginal efficacy claim much less persuasive clinically.",
+      "evidence": [
+        {
+          "citation": "Mehanna R et al 2023 Neurologist",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Recovery in Stroke Patients Treated With Fluoxetine Versus Placebo: A Pooled Analysis of 7,165 Patients.",
+          "pmid": "35777860",
+          "n_participants": 7165
+        },
+        {
+          "citation": "Lundstrom E et al 2020 Lancet Neurol",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Safety and efficacy of fluoxetine on functional recovery after acute stroke (EFFECTS): a randomised, double-blind, placebo-controlled trial.",
+          "pmid": "32702335",
+          "n_participants": 1500
+        },
+        {
+          "citation": "Dharmasaroja PA et al 2021 Contemp Clin Trials Commun",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Role of fluoxetine in pharmacological enhancement of motor functions in stroke patients: A randomized, placebo-controlled, single-blind trial.",
+          "pmid": "34278042",
+          "n_participants": 168
+        }
+      ]
+    }
+  ]
+}

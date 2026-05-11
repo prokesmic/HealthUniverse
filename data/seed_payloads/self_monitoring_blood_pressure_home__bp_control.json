@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "self_monitoring_blood_pressure_home",
+      "outcome_slug": "bp_control",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A meta-analysis of randomized trials found home blood pressure monitoring lowered systolic pressure by about 4.2 mmHg and diastolic pressure by 2.4 mmHg compared with usual clinic monitoring, with a modest increase in the proportion of patients achieving target control (risk ratio 0.90 for remaining above target).",
+      "population": "adults with hypertension using home blood pressure measurement with or without telemonitoring support",
+      "mechanism": "Home monitoring improves blood pressure control by increasing measurement frequency, reducing therapeutic inertia, and making medication adherence and treatment adjustment more responsive to out-of-clinic readings.",
+      "summary": "The evidence supports home blood pressure monitoring as a useful adjunct for improving BP control. Effects are usually modest at the population level, but they become more meaningful when home readings trigger adherence support or medication adjustment.",
+      "caveats": "Home monitoring works better when it is integrated into care rather than simply handed to patients as a device. Some benefits attenuate over time, and part of the apparent effect may come from added coaching, telemonitoring, or medication titration rather than the act of home measurement alone.",
+      "evidence": [
+        {
+          "citation": "Cappuccio FP et al 2004 BMJ",
+          "year": 2004,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Blood pressure control by home monitoring: meta-analysis of randomised trials.",
+          "pmid": "15194600",
+          "n_participants": 2714
+        },
+        {
+          "citation": "Bosworth HB et al 2011 Arch Intern Med",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Home blood pressure management and improved blood pressure control: results from a randomized controlled trial.",
+          "pmid": "21747013",
+          "n_participants": 593
+        },
+        {
+          "citation": "Pierdomenico SD et al 2021 J Clin Hypertens (Greenwich)",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A randomized controlled trial on home blood pressure monitoring and quality of care in stage 2 and 3 hypertension.",
+          "pmid": "33442031",
+          "n_participants": 501
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "self_monitoring_blood_pressure_home",
+      "name": "Home blood pressure monitoring",
+      "kind": "behavior",
+      "aliases": [
+        "HBPM",
+        "self-monitoring blood pressure at home"
+      ],
+      "description": "Regular self-measurement of blood pressure outside the clinic using a home device."
+    },
+    {
+      "slug": "bp_control",
+      "name": "Blood pressure control",
+      "kind": "process",
+      "aliases": [
+        "controlled blood pressure",
+        "achievement of blood pressure target"
+      ],
+      "description": "Attainment and maintenance of blood pressure values within a predefined treatment target range."
+    }
+  ]
+}

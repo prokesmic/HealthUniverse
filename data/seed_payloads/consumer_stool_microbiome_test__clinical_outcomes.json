@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "consumer_stool_microbiome_test",
+      "name": "Consumer stool microbiome test",
+      "kind": "activity",
+      "aliases": [
+        "direct-to-consumer microbiome test",
+        "commercial gut microbiome test"
+      ],
+      "description": "Commercial stool microbiome analysis sold directly to consumers and marketed as a guide to personalized diet, supplements, or symptom management."
+    },
+    {
+      "slug": "clinical_outcomes",
+      "name": "Clinical outcomes",
+      "kind": "process",
+      "aliases": [
+        "patient outcomes",
+        "health outcomes"
+      ],
+      "description": "Overall patient-relevant clinical outcomes rather than laboratory pattern changes alone."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "consumer_stool_microbiome_test",
+      "outcome_slug": "clinical_outcomes",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "unknown",
+      "effect_quant": "A 2025 international consensus statement concluded that an increasing number of direct-to-consumer microbiome tests are being offered without proven clinical value in practice, while a 2018 clinician review similarly cautioned that current microbiome tests do not provide much value in clinical decision making.",
+      "population": "consumers or patients using commercial stool microbiome profiling outside validated clinical indications",
+      "mechanism": "Gut microbiome profiling can describe microbial composition, but current direct-to-consumer platforms remain limited by assay variability, incomplete reference standards, and weak evidence that their reports improve patient-important outcomes.",
+      "summary": "This is a claim-check edge, not a validated precision-medicine edge. Consumer stool microbiome testing may produce interesting descriptive data, but current evidence does not show that it reliably improves diagnosis, treatment selection, or clinical outcomes for most users.",
+      "caveats": "Do not present microbiome report generation as equivalent to clinically actionable care. The strongest recent consensus documents focus on regulation, standardization, and the need to avoid inappropriate use rather than on established outcome benefits.",
+      "evidence": [
+        {
+          "citation": "Mullish BH et al 2018 Nat Rev Gastroenterol Hepatol",
+          "year": 2018,
+          "study_type": "expert_opinion",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Clinician Guide to Microbiome Testing.",
+          "pmid": "30267172"
+        },
+        {
+          "citation": "Porcari S et al 2025 Lancet Gastroenterol Hepatol",
+          "year": 2025,
+          "study_type": "expert_opinion",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "International consensus statement on microbiome testing in clinical practice.",
+          "pmid": "39647502"
+        },
+        {
+          "citation": "The Lancet Gastroenterology Hepatology 2024 Lancet Gastroenterol Hepatol",
+          "year": 2024,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Direct-to-consumer microbiome testing needs regulation.",
+          "pmid": "38870959"
+        }
+      ]
+    }
+  ]
+}

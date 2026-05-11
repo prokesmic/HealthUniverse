@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pqq_mitochondrial_supplement",
+      "name": "PQQ mitochondrial supplement",
+      "kind": "supplement",
+      "aliases": [
+        "pyrroloquinoline quinone supplement",
+        "PQQ supplement"
+      ],
+      "description": "Dietary supplementation with pyrroloquinoline quinone, typically marketed for mitochondrial, cognitive, or energy support."
+    },
+    {
+      "slug": "outcomes_humans",
+      "name": "Human outcomes",
+      "kind": "process",
+      "aliases": [
+        "clinical outcomes in humans",
+        "human clinical outcomes"
+      ],
+      "description": "Overall clinically meaningful outcomes reported in human use, including benefit, harm, or lack of validated efficacy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pqq_mitochondrial_supplement",
+      "outcome_slug": "outcomes_humans",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "A small 41-person placebo-controlled trial reported modest improvements on selected attention and visual-spatial tasks after 12 weeks of BioPQQ, but a later glaucoma crossover trial tested PQQ only as part of a multi-ingredient combination, making attribution impossible. Human evidence therefore remains exploratory rather than definitive.",
+      "population": "adults taking oral PQQ supplements for cognition, mitochondrial support, or general wellness goals",
+      "mechanism": "PQQ is promoted as a redox-active cofactor that may support mitochondrial biogenesis and oxidative-stress responses, but mechanistic plausibility still exceeds demonstrated human clinical benefit.",
+      "summary": "This is a low-certainty supplement edge. There are early positive human signals, but the literature is sparse, underpowered, and often confounded by combination products or mechanistic overinterpretation.",
+      "caveats": "Do not market PQQ as a proven mitochondrial therapy. Most of the enthusiasm still comes from preclinical biology and small human experiments rather than replicated clinical outcome trials.",
+      "evidence": [
+        {
+          "citation": "Nakano M et al 2016 Adv Exp Med Biol",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Effect of the Antioxidant Supplement Pyrroloquinoline Quinone Disodium Salt (BioPQQ™) on Cognitive Functions.",
+          "pmid": "26782228",
+          "n_participants": 41
+        },
+        {
+          "citation": "Mastropasqua R et al 2025 J Clin Med",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Randomized, Cross over, Multicenter, Single-Blind Study Comparing Citicoline 500 mg/Homotaurine 50 mg/Vitamin B3 54 mg/Pyrroloquinoline Quinone 5 mg (Neuprozin Mito®) and Citicoline 800 mg (Cebrolux®) on Pattern Electroretinogram (PERG) and Quality of Life in Patients with Primary Open-Angle Glaucoma with Well-Controlled Intraocular Pressure.",
+          "pmid": "40507536",
+          "n_participants": 40
+        },
+        {
+          "citation": "Saihara K et al 2017 Biochemistry",
+          "year": 2017,
+          "study_type": "mechanistic",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Pyrroloquinoline Quinone, a Redox-Active o-Quinone, Stimulates Mitochondrial Biogenesis by Activating the SIRT1/PGC-1α Signaling Pathway.",
+          "pmid": "29185343"
+        }
+      ]
+    }
+  ]
+}

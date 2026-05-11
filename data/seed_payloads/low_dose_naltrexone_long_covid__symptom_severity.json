@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "low_dose_naltrexone_long_covid",
+      "name": "Low-dose naltrexone for long COVID",
+      "kind": "drug",
+      "aliases": [
+        "LDN for long COVID",
+        "low-dose naltrexone in post-COVID condition"
+      ],
+      "description": "Off-label low-dose naltrexone used as a symptom-management treatment for long COVID or post-acute sequelae of SARS-CoV-2 infection."
+    },
+    {
+      "slug": "symptom_severity",
+      "name": "Symptom severity",
+      "kind": "process",
+      "aliases": [
+        "overall symptom severity",
+        "severity of symptoms"
+      ],
+      "description": "The overall intensity of symptoms reported by patients during follow-up."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "low_dose_naltrexone_long_covid",
+      "outcome_slug": "symptom_severity",
+      "direction": "mixed",
+      "tier": "X",
+      "effect_size": "small",
+      "effect_quant": "The strongest clinical signal is a 59-patient retrospective cohort in which off-label LDN use was associated with fewer symptoms and better functional status; in a separate long-COVID clinic survey, 58% of LDN users (45/77) rated it helpful.",
+      "population": "adults with long COVID or post-acute sequelae of SARS-CoV-2 infection",
+      "mechanism": "Low-dose naltrexone is hypothesized to dampen neuroinflammatory and innate-immune signaling and may also influence symptom amplification pathways relevant to fatigue, sleep, and pain. Those mechanisms are plausible for long COVID, but the current clinical evidence is still too observational and small to rule out expectancy effects or selection bias.",
+      "summary": "The strongest anchor is the small retrospective PASC cohort, where patients given low-dose naltrexone reported fewer symptoms and better function, and that signal is echoed by a clinic survey and a mechanistic study of restored TRPM3 ion-channel behavior. But none of this yet substitutes for randomized efficacy data, so the fairest current interpretation is contested and low-certainty rather than clearly beneficial.",
+      "caveats": "The controlled trial evidence is still pending, and the published long-COVID data are dominated by observational designs and mechanistic work. Patients offered LDN in specialty clinics may differ systematically from untreated patients, so the apparent benefit could be partly confounded by case selection, co-interventions, or regression toward the mean.",
+      "evidence": [
+        {
+          "citation": "Tamariz L et al 2023 Int Immunopharmacol",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Low-dose naltrexone use for the management of post-acute sequelae of COVID-19.",
+          "pmid": "37804660",
+          "n_participants": 59
+        },
+        {
+          "citation": "Finkelstein A et al 2024 J Prim Care Community Health",
+          "year": 2024,
+          "study_type": "cross_sectional",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Longitudinal Progression of Patients with Long COVID Treated in a Post-COVID Clinic: A Cross-Sectional Survey.",
+          "pmid": "38813984",
+          "n_participants": 77
+        },
+        {
+          "citation": "Sasso EM et al 2025 Front Mol Biosci",
+          "year": 2025,
+          "study_type": "mechanistic",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Low-Dose naltrexone restored TRPM3 ion channel function in natural killer cells from long COVID patients.",
+          "pmid": "40458265",
+          "n_participants": 27
+        }
+      ]
+    }
+  ]
+}

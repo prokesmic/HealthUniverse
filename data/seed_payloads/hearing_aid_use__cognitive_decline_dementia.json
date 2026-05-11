@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hearing_aid_use",
+      "outcome_slug": "cognitive_decline_dementia",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Across recent cohort and meta-analytic evidence, hearing aid use is associated with lower cognitive decline and lower dementia risk in people with hearing loss. In a Denmark cohort of 573,088 adults, dementia risk was higher in people with hearing loss who were not using hearing aids than in those using them, and a 2026 meta-analysis across 231,565 older adults found reduced cognitive impairment risk with hearing aid use (RR 0.84, 95% CI 0.80-0.88).",
+      "population": "middle-aged and older adults with hearing loss using hearing aids",
+      "mechanism": "Hearing aids can reduce auditory deprivation, lower the cognitive load required for speech decoding, and preserve social engagement, which together may help slow downstream cognitive deterioration.",
+      "summary": "This is a credible protective rehabilitation edge. The literature increasingly supports the idea that hearing aid use is associated with slower cognitive decline and lower dementia risk in people with hearing loss, even though some uncertainty remains about the exact causal share versus healthier-user bias.",
+      "caveats": "Most of the evidence is observational, so adherence, healthcare access, education, and baseline function can inflate apparent benefit. The safest read is meaningful protective association, with causality supported but not fully settled.",
+      "evidence": [
+        {
+          "citation": "Guangwen Liu et al 2026 J Gerontol B Psychol Sci Soc Sci",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of hearing aid use on memory, executive function, and cognitive impairment among older adults with hearing loss: a systematic review and meta-analysis.",
+          "pmid": "41803081",
+          "n_participants": 231565,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.84,
+            "ci_low": 0.8,
+            "ci_high": 0.88,
+            "comparator": "older adults with hearing loss not using hearing aids for cognitive impairment risk"
+          }
+        },
+        {
+          "citation": "Manuella Lech Cantuaria et al 2024 JAMA Otolaryngol Head Neck Surg",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Hearing Loss, Hearing Aid Use, and Risk of Dementia in Older Adults.",
+          "pmid": "38175662",
+          "n_participants": 573088
+        },
+        {
+          "citation": "Fan Jiang et al 2023 Lancet Public Health",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Association between hearing aid use and all-cause and cause-specific dementia: an analysis of the UK Biobank cohort.",
+          "pmid": "37062296",
+          "n_participants": 437704
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hearing_aid_use",
+      "name": "Hearing aid use",
+      "kind": "activity",
+      "aliases": [
+        "hearing aid wearing",
+        "auditory amplification use"
+      ],
+      "description": "Use of hearing aids for rehabilitation of hearing loss."
+    },
+    {
+      "slug": "cognitive_decline_dementia",
+      "name": "Cognitive decline and dementia",
+      "kind": "condition",
+      "aliases": [
+        "dementia risk and cognitive decline",
+        "cognitive deterioration with dementia outcomes"
+      ],
+      "description": "Progressive decline in cognition including incident dementia or clinically meaningful worsening of cognitive function."
+    }
+  ]
+}

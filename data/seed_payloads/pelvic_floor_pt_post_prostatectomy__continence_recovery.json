@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pelvic_floor_pt_post_prostatectomy",
+      "name": "Pelvic floor physical therapy after prostatectomy",
+      "kind": "activity",
+      "aliases": [
+        "post-prostatectomy pelvic floor muscle training",
+        "pelvic floor rehabilitation after radical prostatectomy"
+      ],
+      "description": "Therapist-guided pelvic floor rehabilitation, with or without adjunct modalities, used after radical prostatectomy to improve continence recovery."
+    },
+    {
+      "slug": "continence_recovery",
+      "name": "Continence recovery",
+      "kind": "process",
+      "aliases": [
+        "urinary continence recovery",
+        "return of continence"
+      ],
+      "description": "Recovery of urinary control after surgery or urinary dysfunction."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pelvic_floor_pt_post_prostatectomy",
+      "outcome_slug": "continence_recovery",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Meta-analyses report higher continence rates with therapist-guided pelvic floor programs versus control, including ORs around 2.79 to 4.11 at 1 to 6 months and lower early postoperative incontinence with postoperative PFME (OR 0.26 at 1 month; 0.30 at 3 months).",
+      "population": "men recovering from radical prostatectomy with post-prostatectomy urinary incontinence risk",
+      "mechanism": "Pelvic floor physical therapy improves awareness, strength, and coordination of the continence mechanism at a time when surgery has disrupted sphincter support and pelvic floor timing. Supervision likely matters because correct contraction, progression, and adherence are difficult to maintain without therapist feedback.",
+      "summary": "The best evidence supports pelvic floor physical therapy after prostatectomy as a useful way to speed continence recovery, especially in the first postoperative months. The newer literature suggests the real value is in structured therapist-guided postoperative training, while adding preoperative practice alone contributes much less than once hoped.",
+      "caveats": "Trials vary in whether they start training before surgery, after catheter removal, or across the full perioperative period, and some also add biofeedback or electrical stimulation. That heterogeneity makes the exact best protocol uncertain even though the overall signal favors guided rehabilitation over minimal advice or unguided practice.",
+      "evidence": [
+        {
+          "citation": "Hall LM et al 2018 Phys Ther",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effectiveness of Pelvic Floor Muscle Training Alone and in Combination With Biofeedback, Electrical Stimulation, or Both Compared to Control for Urinary Incontinence in Men Following Prostatectomy: Systematic Review and Meta-Analysis.",
+          "pmid": "30137629",
+          "n_participants": 2647
+        },
+        {
+          "citation": "Xin L et al 2023 Int Braz J Urol",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The effect of perioperative pelvic floor muscle exercise on urinary incontinence after radical prostatectomy: a meta-analysis.",
+          "pmid": "37267610",
+          "n_participants": 2178
+        },
+        {
+          "citation": "Overgard M et al 2008 Eur Urol",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Does physiotherapist-guided pelvic floor muscle training reduce urinary incontinence after radical prostatectomy? A randomised controlled trial.",
+          "pmid": "18448233",
+          "n_participants": 85
+        }
+      ]
+    }
+  ]
+}

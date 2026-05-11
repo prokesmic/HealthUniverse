@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "occupational_noise_above_85db",
+      "outcome_slug": "noise_induced_hearing_loss",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "The occupational hearing literature consistently shows substantial burden once workplace noise exposure stays in or above the 85 dB(A) range over time. Country-level meta-analyses in industrial workers report large pooled prevalence of occupational noise-induced hearing loss, often with worse risk where hearing protection is inconsistent.",
+      "population": "workers chronically exposed to occupational noise at or above about 85 dB(A)",
+      "mechanism": "Repeated high-intensity acoustic exposure damages cochlear hair cells and synaptic structures, progressively reducing high-frequency hearing sensitivity and, with sufficient cumulative dose, impairing broader hearing thresholds.",
+      "summary": "This is a strong occupational harm edge. Sustained workplace noise exposure above 85 dB(A) is clearly associated with noise-induced hearing loss, and the burden is large enough that the main uncertainty is more about prevention and dose calibration than about whether the signal is real.",
+      "caveats": "Exact risk varies by exposure duration, impulse versus continuous noise, co-exposure to ototoxic chemicals, and hearing-protection adherence. Much of the pooled literature reports prevalence rather than clean incidence, but the direction and practical importance are still unmistakable.",
+      "evidence": [
+        {
+          "citation": "Siavash Etemadinezhad et al 2023 Iran J Public Health",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Occupational Noise-Induced Hearing Loss in Iran: A Systematic Review and Meta-Analysis.",
+          "pmid": "37089160",
+          "n_participants": 85685
+        },
+        {
+          "citation": "Jiena Zhou et al 2020 BMJ Open",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Occupational noise-induced hearing loss in China: a systematic review and meta-analysis.",
+          "pmid": "32988950",
+          "n_participants": 71865
+        },
+        {
+          "citation": "Saurav Basu et al 2022 Indian J Community Med",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Occupational Noise Induced Hearing Loss in India: A Systematic Review and Meta-Analysis.",
+          "pmid": "36034244",
+          "n_participants": 22
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "occupational_noise_above_85db",
+      "name": "Occupational noise above 85 dB",
+      "kind": "environmental",
+      "aliases": [
+        "workplace noise above 85 dB(A)",
+        "chronic occupational noise exposure over 85 dB"
+      ],
+      "description": "Sustained occupational noise exposure at or above about 85 dB(A), a common regulatory action threshold."
+    },
+    {
+      "slug": "noise_induced_hearing_loss",
+      "name": "Noise-induced hearing loss",
+      "kind": "condition",
+      "aliases": [
+        "NIHL",
+        "occupational noise hearing loss"
+      ],
+      "description": "Hearing loss resulting from repeated or intense acoustic exposure damaging the auditory system."
+    }
+  ]
+}
