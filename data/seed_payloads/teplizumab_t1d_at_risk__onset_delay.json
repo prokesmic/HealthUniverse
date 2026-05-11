@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "teplizumab_t1d_at_risk",
+      "name": "Teplizumab in at-risk type 1 diabetes",
+      "kind": "drug",
+      "aliases": [
+        "anti-CD3 teplizumab for stage 2 type 1 diabetes",
+        "teplizumab in relatives at high risk for type 1 diabetes"
+      ],
+      "description": "Use of teplizumab in antibody-positive individuals at high risk of progressing from stage 2 to clinical stage 3 type 1 diabetes."
+    },
+    {
+      "slug": "onset_delay",
+      "name": "Delay in disease onset",
+      "kind": "process",
+      "aliases": [
+        "delay to clinical onset",
+        "postponement of stage 3 diabetes"
+      ],
+      "description": "A longer time to the onset of clinically overt disease compared with placebo or no treatment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "teplizumab_t1d_at_risk",
+      "outcome_slug": "onset_delay",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Teplizumab delays progression from stage 2 to clinical type 1 diabetes in high-risk relatives. The pivotal TrialNet prevention trial showed a hazard ratio of 0.41 and extended median time to diagnosis from 24.4 to 48.4 months; longer follow-up preserved the signal, with median times to diagnosis of 59.6 versus 27.1 months and 50% versus 22% remaining diabetes-free.",
+      "population": "antibody-positive relatives of patients with type 1 diabetes at high risk for progression to clinical disease, corresponding to stage 2 type 1 diabetes",
+      "mechanism": "Teplizumab modulates pathogenic T-cell responses through anti-CD3 signaling, reducing autoimmune beta-cell destruction and thereby slowing progression to insulin-dependent clinical disease.",
+      "summary": "This is a clear protective edge. Teplizumab is one of the strongest examples in the track of a disease-modifying therapy that meaningfully changes the time course of progression rather than only treating a downstream manifestation.",
+      "caveats": "The evidence base is built largely around one pivotal prevention trial with follow-up analyses rather than many independent phase 3 prevention trials. Benefit also appears heterogeneous across immunologic and genetic subgroups.",
+      "evidence": [
+        {
+          "citation": "HeroldKC et al 2019 N Engl J Med",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "An Anti-CD3 Antibody, Teplizumab, in Relatives at Risk for Type 1 Diabetes.",
+          "pmid": "31180194",
+          "n_participants": 76,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.41,
+            "ci_low": 0.22,
+            "ci_high": 0.78,
+            "comparator": "diagnosis of clinical type 1 diabetes with teplizumab versus placebo in high-risk relatives"
+          }
+        },
+        {
+          "citation": "SimsEK et al 2021 Sci Transl Med",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Teplizumab improves and stabilizes beta cell function in antibody-positive high-risk individuals.",
+          "pmid": "33658358",
+          "n_participants": 76,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.457,
+            "comparator": "extended-follow-up hazard ratio for development of type 1 diabetes with teplizumab versus placebo in high-risk individuals"
+          }
+        },
+        {
+          "citation": "HeroldKC et al 2019 N Engl J Med",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "An Anti-CD3 Antibody, Teplizumab, in Relatives at Risk for Type 1 Diabetes.",
+          "pmid": "31180194",
+          "n_participants": 76,
+          "effect_quant": {
+            "metric": "group_difference",
+            "value": 24.0,
+            "unit": "months",
+            "comparator": "increase in median time to diagnosis with teplizumab versus placebo in high-risk relatives (48.4 vs 24.4 months)"
+          }
+        }
+      ]
+    }
+  ]
+}

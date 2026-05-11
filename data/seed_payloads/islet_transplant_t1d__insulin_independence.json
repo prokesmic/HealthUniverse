@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "islet_transplant_t1d",
+      "name": "Islet transplantation for type 1 diabetes",
+      "kind": "activity",
+      "aliases": [
+        "allogeneic pancreatic islet transplantation in T1D",
+        "islet cell transplantation for type 1 diabetes"
+      ],
+      "description": "Allogeneic pancreatic islet transplantation used in selected people with type 1 diabetes, especially those with severe hypoglycemia or brittle glycemic control."
+    },
+    {
+      "slug": "insulin_independence",
+      "name": "Insulin independence",
+      "kind": "process",
+      "aliases": [
+        "freedom from exogenous insulin",
+        "independence from insulin therapy"
+      ],
+      "description": "Ability to remain off exogenous insulin while maintaining meaningful graft function and adequate glycemic control."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "islet_transplant_t1d",
+      "outcome_slug": "insulin_independence",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Islet transplantation can achieve insulin independence in a substantial minority of carefully selected patients, but durability is limited. In the Edmonton international trial, 44% met the primary insulin-independence endpoint at 1 year and only 31% of initial responders remained insulin-independent at 2 years; a 10-year cohort found 39% insulin independence at 5 years and 28% at 10 years, while another 10-year network reported only 4.8% independence at 10 years despite durable hypoglycemia benefits.",
+      "population": "adults with type 1 diabetes selected for allogeneic islet transplantation, often because of severe hypoglycemia, glycemic instability, or prior kidney transplantation",
+      "mechanism": "Transplanted islets can restore endogenous insulin secretion and improve glucose stability, but long-term independence is threatened by graft attrition, alloimmunity, recurrence of autoimmunity, and immunosuppression-related constraints.",
+      "summary": "This is genuinely mixed. Early and medium-term insulin independence is achievable, but the long-term curve falls off, so the therapy is better understood as a way to improve metabolic stability and severe hypoglycemia rather than a reliably durable cure.",
+      "caveats": "Outcomes are highly center-dependent and apply to carefully selected patients under specialized protocols. Long-term graft function can persist even when insulin independence is lost, so this edge should not be interpreted as the full value proposition of islet transplantation.",
+      "evidence": [
+        {
+          "citation": "ShapiroAMJ et al 2006 N Engl J Med",
+          "year": 2006,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "International trial of the Edmonton protocol for islet transplantation.",
+          "pmid": "17005949",
+          "n_participants": 36,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 44.0,
+            "unit": "percent",
+            "comparator": "participants meeting the primary endpoint of insulin independence with adequate glycemic control 1 year after final transplantation"
+          }
+        },
+        {
+          "citation": "LablancheS et al 2020 Diabetes Care",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Ten-Year Outcome of Islet Alone or Islet After Kidney Transplantation in Type 1 Diabetes: A Prospective Parallel-Arm Cohort Study.",
+          "pmid": "31615852",
+          "n_participants": 28,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 28.0,
+            "unit": "percent",
+            "comparator": "Kaplan-Meier estimate for insulin independence with HbA1c 6.5% or lower at 10 years after islet transplantation"
+          }
+        },
+        {
+          "citation": "LablancheS et al 2021 Am J Transplant",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Ten-year outcomes of islet transplantation in patients with type 1 diabetes: Data from the Swiss-French GRAGIL network.",
+          "pmid": "33961335",
+          "n_participants": 44,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 4.8,
+            "unit": "percent",
+            "comparator": "recipients remaining insulin-independent 10 years after islet transplantation in the Swiss-French GRAGIL network"
+          }
+        }
+      ]
+    }
+  ]
+}

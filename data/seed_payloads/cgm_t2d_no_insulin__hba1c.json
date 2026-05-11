@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cgm_t2d_no_insulin",
+      "name": "Continuous glucose monitoring in noninsulin-treated type 2 diabetes",
+      "kind": "activity",
+      "aliases": [
+        "CGM in type 2 diabetes not using insulin",
+        "continuous glucose monitoring for noninsulin-treated T2D"
+      ],
+      "description": "Use of continuous glucose monitoring in adults with type 2 diabetes who are not treated with insulin."
+    },
+    {
+      "slug": "hba1c",
+      "name": "Hemoglobin A1c",
+      "kind": "process",
+      "aliases": [
+        "HbA1c",
+        "glycated hemoglobin"
+      ],
+      "description": "Glycated hemoglobin as a marker of average glycemic control over the preceding two to three months."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cgm_t2d_no_insulin",
+      "outcome_slug": "hba1c",
+      "direction": "mixed",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "Recent randomized evidence in noninsulin-treated type 2 diabetes points toward modest HbA1c improvement with CGM, typically around a 0.3% to 0.4% advantage over standard monitoring or education-based comparators, but the magnitude is not large and depends on how much education, behavior change support, and treatment intensification accompany device use.",
+      "population": "adults with type 2 diabetes who are not using insulin therapy",
+      "mechanism": "CGM can make postprandial excursions and day-to-day glycemic patterns visible, allowing behavior change, improved self-management, and more targeted treatment adjustments that may reduce HbA1c.",
+      "summary": "This is best framed as a mixed but favorable signal. The direction is usually beneficial, but the effect size is modest and some of the gain may come from the education and engagement that often travel with CGM rather than from the sensor alone.",
+      "caveats": "Trial durations are relatively short, some interventions bundle CGM with educator support, and the incremental benefit may be smaller in patients with lower baseline HbA1c or limited willingness to act on the data.",
+      "evidence": [
+        {
+          "citation": "AronsonR et al 2025 Diabetes Obes Metab",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Continuous glucose monitoring in noninsulin-treated type 2 diabetes: A critical review of reported trials with an updated systematic review and meta-analysis of randomised controlled trials.",
+          "pmid": "40757453",
+          "n_participants": 541,
+          "effect_quant": {
+            "metric": "weighted_mean_difference",
+            "value": -0.37,
+            "ci_low": -0.49,
+            "ci_high": -0.24,
+            "unit": "percentage_points",
+            "comparator": "HbA1c with CGM versus blood glucose monitoring or usual care in noninsulin-treated type 2 diabetes"
+          }
+        },
+        {
+          "citation": "MaiorinoMI et al 2024 J Diabetes Sci Technol",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Continuous Glucose Monitoring Systems in Noninsulin-Treated People with Type 2 Diabetes: A Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+          "pmid": "38090767",
+          "n_participants": 407,
+          "effect_quant": {
+            "metric": "weighted_mean_difference",
+            "value": -0.31,
+            "ci_low": -0.42,
+            "ci_high": -0.21,
+            "unit": "percentage_points",
+            "comparator": "HbA1c with CGM versus self-monitoring of blood glucose in noninsulin-treated type 2 diabetes"
+          }
+        },
+        {
+          "citation": "VigerskyRA et al 2022 Diabetes Obes Metab",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "IMpact of flash glucose Monitoring in pEople with type 2 Diabetes Inadequately controlled with non-insulin Antihyperglycaemic ThErapy (IMMEDIATE): A randomized controlled trial.",
+          "pmid": "36546594",
+          "n_participants": 116,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -0.3,
+            "ci_low": -0.7,
+            "ci_high": 0.0,
+            "unit": "percentage_points",
+            "comparator": "greater HbA1c reduction with intermittently scanned CGM plus diabetes self-management education versus education alone at 16 weeks"
+          }
+        }
+      ]
+    }
+  ]
+}
