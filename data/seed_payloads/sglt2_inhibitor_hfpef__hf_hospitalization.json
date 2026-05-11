@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "sglt2_inhibitor_hfpef",
+      "name": "SGLT2 inhibitor therapy in HFpEF",
+      "kind": "drug",
+      "aliases": [
+        "empagliflozin or dapagliflozin in preserved-EF heart failure",
+        "SGLT2 inhibition for HFpEF or HFmrEF"
+      ],
+      "description": "Use of sodium-glucose cotransporter 2 inhibitors in heart failure with mildly reduced or preserved ejection fraction."
+    },
+    {
+      "slug": "hf_hospitalization",
+      "name": "Heart-failure hospitalization",
+      "kind": "condition",
+      "aliases": [
+        "hospitalization for heart failure",
+        "worsening heart-failure admission"
+      ],
+      "description": "Hospital admission or urgent worsening-heart-failure event requiring escalation of care."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "sglt2_inhibitor_hfpef",
+      "outcome_slug": "hf_hospitalization",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Across EMPEROR-Preserved and DELIVER, SGLT2 inhibition consistently reduced heart-failure worsening and hospitalization; EMPEROR-Preserved lowered total HF hospitalizations with HR 0.73, and DELIVER lowered worsening HF with HR 0.79.",
+      "population": "adults with symptomatic heart failure and left ventricular ejection fraction above 40%, including HFmrEF and HFpEF",
+      "mechanism": "SGLT2 inhibition appears to reduce congestion and improve cardiorenal hemodynamics, lowering recurrent decompensation risk even in patients without reduced ejection fraction.",
+      "summary": "This is one of the cleanest modern HFpEF benefit signals. The dominant benefit is fewer heart-failure hospitalizations and urgent worsening-HF events rather than a large clear mortality reduction.",
+      "caveats": "Most of the effect is driven by hospitalization outcomes, while cardiovascular mortality reductions are smaller and often not individually significant. The edge therefore focuses on hospitalization prevention rather than a broad cure-all framing.",
+      "evidence": [
+        {
+          "citation": "Anker SD et al 2021 N Engl J Med",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Empagliflozin in Heart Failure with a Preserved Ejection Fraction.",
+          "pmid": "34449189",
+          "n_participants": 5988,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.73,
+            "comparator": "total HF hospitalizations in EMPEROR-Preserved with empagliflozin versus placebo"
+          }
+        },
+        {
+          "citation": "Solomon SD et al 2022 N Engl J Med",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Dapagliflozin in Heart Failure with Mildly Reduced or Preserved Ejection Fraction.",
+          "pmid": "36027570",
+          "n_participants": 6263,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.79,
+            "comparator": "worsening HF in DELIVER with dapagliflozin versus placebo"
+          }
+        },
+        {
+          "citation": "Mayne KJ et al 2023 Br J Cardiol",
+          "year": 2023,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "SGLT2 inhibitors in CKD and HFpEF: two new large trials and two new meta-analyses.",
+          "pmid": "37705832"
+        }
+      ]
+    }
+  ]
+}

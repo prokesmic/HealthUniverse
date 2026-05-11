@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "inositol_pcos_ovulation",
+      "name": "Inositol therapy for ovulatory dysfunction in PCOS",
+      "kind": "supplement",
+      "aliases": [
+        "myo-inositol or D-chiro-inositol for PCOS anovulation",
+        "inositol supplementation for PCOS ovulation"
+      ],
+      "description": "Use of inositol formulations in women with polycystic ovary syndrome specifically to improve ovulation or menstrual cyclicity."
+    },
+    {
+      "slug": "ovulation_rate",
+      "name": "Ovulation rate",
+      "kind": "process",
+      "aliases": [
+        "frequency of ovulation",
+        "restoration of ovulation"
+      ],
+      "description": "The proportion or frequency of cycles in which ovulation occurs during treatment or follow-up."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "inositol_pcos_ovulation",
+      "outcome_slug": "ovulation_rate",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Randomized evidence suggests that inositol can improve ovulation in PCOS, especially against placebo-type comparators. A dedicated 2017 meta-analysis found improved ovulation rate versus placebo (RR 2.3, 95% CI 1.1 to 4.7), while newer guideline-linked synthesis describes only potential ovulatory benefit and continued uncertainty about durability and downstream fertility outcomes.",
+      "population": "women with polycystic ovary syndrome and oligo-ovulation or anovulation treated with myo-inositol, D-chiro-inositol, or mixed inositol formulations",
+      "mechanism": "Inositol compounds may improve insulin signaling and reduce ovarian androgen excess, which can help restore follicular maturation and ovulation in insulin-resistant PCOS phenotypes.",
+      "summary": "This is a mildly protective edge. The direction is favorable, but the literature is small, formulations vary, and the strongest pooled findings are clearer for ovulation than for hard fertility outcomes such as live birth.",
+      "caveats": "Benefits differ by the specific inositol formulation and comparator, and some modern guideline reviews still judge the evidence as uncertain. This is better read as a reasonable adjunct than as a uniformly reliable ovulation inducer.",
+      "evidence": [
+        {
+          "citation": "UnferV et al 2017 BJOG",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Inositol treatment of anovulation in women with polycystic ovary syndrome: a meta-analysis of randomised trials.",
+          "pmid": "28544572",
+          "n_participants": 601,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 2.3,
+            "ci_low": 1.1,
+            "ci_high": 4.7,
+            "comparator": "ovulation with inositol versus placebo in randomized trials of women with PCOS"
+          }
+        },
+        {
+          "citation": "FitzV et al 2024 J Clin Endocrinol Metab",
+          "year": 2024,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Inositol for Polycystic Ovary Syndrome: A Systematic Review and Meta-analysis to Inform the 2023 Update of the International Evidence-based PCOS Guidelines.",
+          "pmid": "38163998",
+          "n_participants": 2230
+        },
+        {
+          "citation": "NordioM et al 2019 Int J Endocrinol",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The 40:1 myo-inositol/D-chiro-inositol plasma ratio is able to restore ovulation in PCOS patients: comparison with other ratios.",
+          "pmid": "31298405",
+          "n_participants": 56
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "bempedoic_acid_statin_intolerant",
+      "name": "Bempedoic acid in statin-intolerant patients",
+      "kind": "drug",
+      "aliases": [
+        "bempedoic acid for statin intolerance",
+        "ATP citrate lyase inhibition in statin-intolerant patients"
+      ],
+      "description": "Use of bempedoic acid as lipid-lowering therapy in adults who are unable or unwilling to take statins because of intolerance."
+    },
+    {
+      "slug": "mace",
+      "name": "Major adverse cardiovascular events",
+      "kind": "condition",
+      "aliases": [
+        "MACE",
+        "major ischemic cardiovascular events"
+      ],
+      "description": "Composite cardiovascular outcomes such as cardiovascular death, myocardial infarction, stroke, or coronary revascularization."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "bempedoic_acid_statin_intolerant",
+      "outcome_slug": "mace",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "CLEAR Outcomes showed a lower primary MACE rate with bempedoic acid in statin-intolerant patients (HR 0.87). Randomized-trial meta-analysis found the same pooled MACE effect size (RR 0.87), and the primary-prevention subgroup of CLEAR Outcomes showed a larger benefit (HR 0.70).",
+      "population": "adults at high cardiovascular risk who are statin intolerant or unwilling to continue statins because of adverse effects",
+      "mechanism": "Bempedoic acid inhibits ATP citrate lyase upstream of HMG-CoA reductase, lowering LDL cholesterol without the same degree of skeletal-muscle exposure associated with statin intolerance.",
+      "summary": "This has become a much stronger edge since CLEAR Outcomes. The benefit is modest in absolute terms, but it is clinically meaningful because it applies to a group that previously had fewer evidence-based lipid-lowering options.",
+      "caveats": "The magnitude of benefit varies by baseline risk and prevention setting, and adverse effects such as gout and hyperuricemia still matter. The edge is best framed as a useful statin-intolerance fallback, not a wholesale statin replacement.",
+      "evidence": [
+        {
+          "citation": "Nissen SE et al 2023 N Engl J Med",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Bempedoic Acid and Cardiovascular Outcomes in Statin-Intolerant Patients. CLEAR Outcomes.",
+          "pmid": "36876740",
+          "n_participants": 13970,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.87,
+            "ci_low": 0.79,
+            "ci_high": 0.96,
+            "comparator": "primary MACE endpoint in CLEAR Outcomes with bempedoic acid versus placebo"
+          }
+        },
+        {
+          "citation": "Khan SA et al 2023 Am J Cardiol",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Clinical Efficacy and Safety of Bempedoic Acid in High Cardiovascular Risk Patients: A Systematic Review and Meta-analysis of Randomized Controlled Trials.",
+          "pmid": "37516330",
+          "n_participants": 17816,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.87,
+            "ci_low": 0.8,
+            "ci_high": 0.94,
+            "comparator": "pooled MACE with bempedoic acid versus placebo in randomized trials"
+          }
+        },
+        {
+          "citation": "Sullivan D et al 2023 JAMA",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Bempedoic Acid for Primary Prevention of Cardiovascular Events in Statin-Intolerant Patients.",
+          "pmid": "37354546",
+          "n_participants": 4206,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.7,
+            "ci_low": 0.55,
+            "ci_high": 0.89,
+            "comparator": "primary composite MACE outcome in the statin-intolerant primary-prevention subgroup of CLEAR Outcomes"
+          }
+        }
+      ]
+    }
+  ]
+}

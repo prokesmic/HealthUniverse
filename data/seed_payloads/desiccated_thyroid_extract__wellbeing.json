@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "desiccated_thyroid_extract",
+      "name": "Desiccated thyroid extract",
+      "kind": "drug",
+      "aliases": [
+        "natural desiccated thyroid",
+        "DTE for hypothyroidism"
+      ],
+      "description": "Porcine-derived desiccated thyroid extract used as thyroid hormone replacement for hypothyroidism."
+    },
+    {
+      "slug": "wellbeing",
+      "name": "Well-being",
+      "kind": "process",
+      "aliases": [
+        "psychological well-being",
+        "patient-reported wellness"
+      ],
+      "description": "Overall subjective well-being, including mood, vitality, symptom burden, and patient-reported health status."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "desiccated_thyroid_extract",
+      "outcome_slug": "wellbeing",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Randomized trials do not show a reliable average well-being advantage for desiccated thyroid extract over levothyroxine, but some patients prefer it. In a 70-patient crossover trial there were no significant symptom or neurocognitive differences despite 49% preferring DTE, and in a later 75-patient three-arm crossover trial overall QoL scores were again similar, though the most symptomatic subgroup improved on T3-containing therapy.",
+      "population": "adults with primary hypothyroidism who remain interested in alternative replacement strategies despite biochemical control on levothyroxine",
+      "mechanism": "DTE provides both T4 and proportionally higher T3 than endogenous human thyroid secretion, which may change symptom perception or tissue thyroid hormone exposure in selected patients.",
+      "summary": "This is a mixed edge rather than a clearly beneficial one. DTE has a persistent niche of patient preference, but controlled trials do not show robust average improvements in well-being across all treated hypothyroid patients.",
+      "caveats": "DTE has a supraphysiologic T3:T4 ratio relative to normal human thyroid output, and long-term safety data are limited. Apparent benefits may reflect individual responsiveness or preference rather than a consistent class effect on validated quality-of-life outcomes.",
+      "evidence": [
+        {
+          "citation": "HoangTD et al 2013 J Clin Endocrinol Metab",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Desiccated thyroid extract compared with levothyroxine in the treatment of hypothyroidism: a randomized, double-blind, crossover study.",
+          "pmid": "23539727",
+          "n_participants": 70,
+          "effect_quant": {
+            "metric": "group_difference",
+            "value": 30.0,
+            "unit": "percentage_points",
+            "comparator": "preference for DTE (49%) versus levothyroxine (19%) after crossover treatment"
+          }
+        },
+        {
+          "citation": "ShakirMKM et al 2021 J Clin Endocrinol Metab",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Comparative Effectiveness of Levothyroxine, Desiccated Thyroid Extract, and Levothyroxine+Liothyronine in Hypothyroidism.",
+          "pmid": "34185829",
+          "n_participants": 75
+        },
+        {
+          "citation": "IdreesT et al 2020 Thyroid",
+          "year": 2020,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Liothyronine and Desiccated Thyroid Extract in the Treatment of Hypothyroidism.",
+          "pmid": "32279609"
+        }
+      ]
+    }
+  ]
+}

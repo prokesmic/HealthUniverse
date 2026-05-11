@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "fit_test_annual",
+      "name": "Annual FIT screening",
+      "kind": "activity",
+      "aliases": [
+        "yearly fecal immunochemical test",
+        "annual fecal immunochemical colorectal screening"
+      ],
+      "description": "Annual stool-based colorectal cancer screening using the fecal immunochemical test."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "fit_test_annual",
+      "outcome_slug": "colorectal_cancer_mortality",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The best current synthesis supports lower colorectal cancer mortality with stool-based screening, while annual FIT-specific trial and program data suggest benefit but remain less definitive than colonoscopy or flexible sigmoidoscopy mortality evidence.",
+      "population": "average-risk adults participating in annual stool-based colorectal screening programs",
+      "mechanism": "Annual FIT can detect occult bleeding from early colorectal cancers and some advanced lesions, shifting diagnosis toward more curable disease when positive tests are followed by diagnostic colonoscopy.",
+      "summary": "Annual FIT is generally treated as a protective screening strategy, but the evidence is somewhat less direct than for some other colorectal screening modalities because the strongest mortality trials historically used guaiac tests or mixed fecal testing evidence. Even so, the broader screening literature and modern FIT-centered programs support a real mortality benefit signal.",
+      "caveats": "Benefit depends heavily on repeat participation and on timely follow-up colonoscopy after a positive FIT. The mortality signal is more mature for fecal testing in general than for annual FIT alone as an isolated trial question.",
+      "evidence": [
+        {
+          "citation": "Lin JS et al 2021 JAMA",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Screening for Colorectal Cancer: Updated Evidence Report and Systematic Review for the US Preventive Services Task Force.",
+          "pmid": "34003220",
+          "n_participants": 10776276
+        },
+        {
+          "citation": "Jodal HC et al 2019 BMJ Open",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Colorectal cancer screening with faecal testing, sigmoidoscopy or colonoscopy: a systematic review and network meta-analysis.",
+          "pmid": "31578199",
+          "n_participants": 96
+        },
+        {
+          "citation": "Saito H et al 2020 Int J Colorectal Dis",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of screening using annual fecal immunochemical test alone versus combined with one-time colonoscopy in reducing colorectal cancer mortality: the Akita Japan population-based colonoscopy screening trial (Akita pop-colon trial).",
+          "pmid": "32034490",
+          "n_participants": 9751
+        }
+      ]
+    }
+  ]
+}

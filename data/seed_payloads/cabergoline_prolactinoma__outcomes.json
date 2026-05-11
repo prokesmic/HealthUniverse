@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cabergoline_prolactinoma",
+      "name": "Cabergoline for prolactinoma",
+      "kind": "drug",
+      "aliases": [
+        "cabergoline treatment of prolactinoma",
+        "dopamine agonist cabergoline for pituitary prolactinoma"
+      ],
+      "description": "Cabergoline therapy used to normalize prolactin and improve tumor-related and reproductive outcomes in prolactinoma."
+    },
+    {
+      "slug": "outcomes",
+      "name": "Clinical outcomes",
+      "kind": "process",
+      "aliases": [
+        "overall prolactinoma outcomes",
+        "biochemical and imaging outcomes"
+      ],
+      "description": "Clinical outcomes such as prolactin normalization, gonadal recovery, tumor shrinkage, and related patient-centered responses."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cabergoline_prolactinoma",
+      "outcome_slug": "outcomes",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Cabergoline generally outperforms older dopamine agonists for prolactinoma-relevant outcomes. A meta-analysis of four randomized trials involving 743 participants favored cabergoline over bromocriptine for prolactin normalization and restoration of ovulatory cycles, a 37-patient untreated adenoma cohort achieved prolactin normalization in all macroadenomas and 23 of 26 microadenomas with major tumor shrinkage, and a 110-patient macroprolactinoma study found average tumor shrinkage of 92% in treatment-naive patients with significant shrinkage in 92.3%.",
+      "population": "adults with microprolactinoma or macroprolactinoma treated with cabergoline, including treatment-naive and previously exposed patients",
+      "mechanism": "Cabergoline activates dopamine D2 receptors on lactotroph adenoma cells, suppressing prolactin secretion and often producing substantial tumor shrinkage and reproductive recovery.",
+      "summary": "This is a strongly protective edge. Cabergoline improves the biochemical and structural story of prolactinoma better than bromocriptine on average and has become the default dopamine agonist for good reason.",
+      "caveats": "Response is still weaker in previously resistant or heavily pretreated tumors, and not every study focuses on the same endpoint. The outcome label is broad because cabergoline affects multiple linked endpoints at once rather than only one isolated biomarker.",
+      "evidence": [
+        {
+          "citation": "dos Santos Nunes V et al 2011 Pituitary",
+          "year": 2011,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cabergoline versus bromocriptine in the treatment of hyperprolactinemia: a systematic review of randomized controlled trials and meta-analysis.",
+          "pmid": "21221817",
+          "n_participants": 743,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.67,
+            "ci_low": 0.57,
+            "ci_high": 0.8,
+            "comparator": "persistent abnormal prolactin outcome in cabergoline versus bromocriptine arms across randomized trials"
+          }
+        },
+        {
+          "citation": "Cannavo S et al 1999 J Endocrinol Invest",
+          "year": 1999,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cabergoline: a first-choice treatment in patients with previously untreated prolactin-secreting pituitary adenoma.",
+          "pmid": "10401709",
+          "n_participants": 37
+        },
+        {
+          "citation": "Colao A et al 2000 J Clin Endocrinol Metab",
+          "year": 2000,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Macroprolactinoma shrinkage during cabergoline treatment is greater in naive patients than in patients pretreated with other dopamine agonists: a prospective study in 110 patients.",
+          "pmid": "10852458",
+          "n_participants": 110,
+          "effect_quant": {
+            "metric": "mean_change",
+            "value": 92.1,
+            "unit": "percent",
+            "comparator": "average macroprolactinoma tumor shrinkage in treatment-naive patients during cabergoline therapy"
+          }
+        }
+      ]
+    }
+  ]
+}

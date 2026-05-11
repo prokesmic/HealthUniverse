@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "graves_disease_antithyroid_long_term",
+      "name": "Long-term antithyroid drug therapy for Graves disease",
+      "kind": "activity",
+      "aliases": [
+        "extended methimazole treatment in Graves disease",
+        "prolonged antithyroid therapy for Graves hyperthyroidism"
+      ],
+      "description": "Continuation of low-dose antithyroid drug therapy for several years rather than stopping after a conventional 12- to 24-month course."
+    },
+    {
+      "slug": "relapse",
+      "name": "Relapse",
+      "kind": "condition",
+      "aliases": [
+        "recurrent hyperthyroidism",
+        "Graves disease recurrence"
+      ],
+      "description": "Return of biochemical or clinical Graves hyperthyroidism after an apparent remission."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "graves_disease_antithyroid_long_term",
+      "outcome_slug": "relapse",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Long-term antithyroid therapy lowers relapse risk compared with stopping after a conventional course. In a randomized trial, recurrent hyperthyroidism within 48 months occurred in 15% after prolonged methimazole versus 53% after conventional-duration therapy, and the RISG randomized extension found 96.4% sustained remission on fixed low-dose treatment versus 66% with observation.",
+      "population": "patients with Graves hyperthyroidism who achieve control on methimazole and continue low-dose antithyroid therapy beyond the usual 18 to 24 months",
+      "mechanism": "Longer suppression of thyroid hormone synthesis and autoimmune activity may allow more durable immunologic quiescence, reducing the chance of recurrent hyperthyroidism after stopping treatment.",
+      "summary": "This is a protective edge for relapse prevention. The older view that antithyroid drugs must be short-course only is too simplistic; prolonged low-dose therapy can materially improve remission durability in selected patients.",
+      "caveats": "Long-term therapy reduces relapse risk but does not eliminate it, and the strategy is most attractive when patients tolerate methimazole well and want to avoid ablation or surgery. Predictors such as younger age, male sex, and persistently unfavorable TRAb patterns still matter.",
+      "evidence": [
+        {
+          "citation": "Azizi F et al 2019 Thyroid",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Increased Remission Rates After Long-Term Methimazole Therapy in Patients with Graves' Disease: Results of a Randomized Clinical Trial.",
+          "pmid": "31310160",
+          "n_participants": 258,
+          "effect_quant": {
+            "metric": "group_difference",
+            "value": 38.0,
+            "unit": "percentage_points",
+            "comparator": "absolute recurrence reduction with long-term versus conventional methimazole after withdrawal (15% vs 53%)"
+          }
+        },
+        {
+          "citation": "Jin M et al 2023 Eur Thyroid J",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Long-term follow-up result of antithyroid drug treatment of Graves' hyperthyroidism in a large cohort.",
+          "pmid": "36826832",
+          "n_participants": 1829
+        },
+        {
+          "citation": "Karmisholt J et al 2019 J Thyroid Res",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Predictors of Initial and Sustained Remission in Patients Treated with Antithyroid Drugs for Graves' Hyperthyroidism: The RISG Study.",
+          "pmid": "30719273",
+          "n_participants": 66,
+          "effect_quant": {
+            "metric": "group_difference",
+            "value": 30.4,
+            "unit": "percentage_points",
+            "comparator": "sustained remission with continued low-dose treatment versus observation after remission (96.4% vs 66.0%)"
+          }
+        }
+      ]
+    }
+  ]
+}

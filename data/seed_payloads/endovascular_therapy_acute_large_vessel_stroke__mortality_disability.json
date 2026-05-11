@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "endovascular_therapy_acute_large_vessel_stroke",
+      "name": "Endovascular therapy for acute large-vessel ischemic stroke",
+      "kind": "activity",
+      "aliases": [
+        "mechanical thrombectomy for acute LVO stroke",
+        "EVT for anterior circulation large-vessel occlusion"
+      ],
+      "description": "Endovascular thrombectomy or similar endovascular reperfusion therapy used for acute ischemic stroke caused by large-vessel occlusion."
+    },
+    {
+      "slug": "mortality_disability",
+      "name": "Mortality and disability outcomes",
+      "kind": "condition",
+      "aliases": [
+        "death or severe disability",
+        "functional outcome and mortality after stroke"
+      ],
+      "description": "Stroke outcomes centered on mortality, severe disability, and functional independence after treatment."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "endovascular_therapy_acute_large_vessel_stroke",
+      "outcome_slug": "mortality_disability",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "Modern randomized-trial meta-analyses consistently show that endovascular thrombectomy improves functional outcome in acute large-vessel ischemic stroke. An updated 2024 RCT meta-analysis found functional independence odds more than doubled (OR 2.19), a 2015 RCT meta-analysis found lower extreme disability or death (OR 0.77), and even among large-core strokes the 2023 living meta-analysis found an absolute 30.3% increase in functional independence.",
+      "population": "adults with acute ischemic stroke due to large-vessel occlusion, including standard anterior-circulation thrombectomy populations and more recently selected large-core infarct populations",
+      "mechanism": "Rapid mechanical reperfusion restores blood flow to salvageable brain tissue, limiting infarct growth and preventing the progression from disabling stroke to death or severe lifelong dependence.",
+      "summary": "This is one of the clearest interventional benefits in modern stroke care. The strongest evidence consistently supports EVT as reducing disability and improving independence across a broad range of acute LVO presentations, with mortality benefit less dramatic but overall disability outcomes clearly better.",
+      "caveats": "Benefits depend on time-to-treatment, occlusion site, imaging selection, and procedural expertise. Hemorrhagic complications remain important, especially in large-core patients, but the net disability benefit remains favorable in contemporary randomized evidence.",
+      "evidence": [
+        {
+          "citation": "Makkawi S et al 2024 Syst Rev",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Endovascular thrombectomy after anterior circulation large vessel ischemic stroke: an updated meta-analysis.",
+          "pmid": "39396031",
+          "n_participants": 3897,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 2.19,
+            "ci_low": 1.81,
+            "ci_high": 2.64,
+            "comparator": "functional independence (mRS 0-2) with EVT plus medical therapy versus medical therapy alone"
+          }
+        },
+        {
+          "citation": "Hong KS et al 2015 J Stroke",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Endovascular Recanalization Therapy in Acute Ischemic Stroke: Updated Meta-analysis of Randomized Controlled Trials.",
+          "pmid": "26437993",
+          "n_participants": 2899,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 0.77,
+            "ci_low": 0.61,
+            "ci_high": 0.97,
+            "comparator": "extreme disability or death with endovascular recanalization therapy versus standard therapy in acute ischemic stroke"
+          }
+        },
+        {
+          "citation": "Morsi RZ et al 2023 J Stroke",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Endovascular Thrombectomy for Large Ischemic Strokes: A Living Systematic Review and Meta-Analysis of Randomized Trials.",
+          "pmid": "37282371",
+          "n_participants": 1010,
+          "effect_quant": {
+            "metric": "risk_difference_percent",
+            "value": 30.3,
+            "ci_low": 15.0,
+            "ci_high": 52.3,
+            "comparator": "absolute increase in functional independence with EVT versus medical management in large-core stroke trials"
+          }
+        }
+      ]
+    }
+  ]
+}

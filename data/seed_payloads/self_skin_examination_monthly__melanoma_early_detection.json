@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "self_skin_examination_monthly",
+      "outcome_slug": "melanoma_early_detection",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Monthly skin self-examination interventions reliably increase self-check behavior, and observational data suggest earlier recognition of thinner melanomas in some settings, but direct evidence that routine monthly self-examination improves hard melanoma outcomes remains limited and partly confounded by surveillance intensity.",
+      "population": "adults in the general population or melanoma-survivor settings performing regular monthly skin self-examination",
+      "mechanism": "Repeated self-inspection can identify new or changing pigmented lesions earlier, prompting clinician assessment before lesions thicken, but it can also raise biopsy and procedure volume without clearly proving mortality benefit.",
+      "summary": "The evidence supports improved self-examination behavior and some stage-shift signals, but not a clean, trial-proven reduction in clinically important melanoma outcomes. A mixed label is the most faithful representation of the current literature.",
+      "caveats": "Many studies measure self-examination frequency rather than cancer endpoints. Observational studies are vulnerable to recall bias, healthy-user effects, and confounding from concurrent clinician skin checks.",
+      "evidence": [
+        {
+          "citation": "Rodgers M et al 2019 Br J Dermatol",
+          "year": 2019,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effectiveness of interventions to support the early detection of skin cancer through skin self-examination: a systematic review and meta-analysis.",
+          "pmid": "30561006",
+          "n_participants": 6836,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 2.31,
+            "ci_low": 1.9,
+            "ci_high": 2.82,
+            "comparator": "skin self-examination activity after intervention versus control in the short term"
+          }
+        },
+        {
+          "citation": "Aitken JF et al 2013 Br J Dermatol",
+          "year": 2013,
+          "study_type": "case_control",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Recent skin self-examination and doctor visits in relation to melanoma risk and tumour depth.",
+          "pmid": "22897437",
+          "n_participants": 1101,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.39,
+            "ci_low": 0.18,
+            "ci_high": 0.81,
+            "comparator": "deeper melanoma risk in people performing skin self-examination 1 to 11 times yearly versus none"
+          }
+        },
+        {
+          "citation": "Weinstock MA et al 2007 Am J Prev Med",
+          "year": 2007,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Melanoma early detection with thorough skin self-examination: the \"Check It Out\" randomized trial.",
+          "pmid": "17533068",
+          "n_participants": 1356,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 0.55,
+            "comparator": "participants performing thorough skin self-examination at 12 months after intervention versus 0.35 in controls"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "self_skin_examination_monthly",
+      "name": "Monthly skin self-examination",
+      "kind": "activity",
+      "aliases": [
+        "monthly skin self-check",
+        "regular self skin examination"
+      ],
+      "description": "A routine monthly visual self-examination of the skin intended to identify suspicious lesions or interval change early."
+    },
+    {
+      "slug": "melanoma_early_detection",
+      "name": "Melanoma early detection",
+      "kind": "condition",
+      "aliases": [
+        "earlier melanoma diagnosis",
+        "thin melanoma detection"
+      ],
+      "description": "Earlier recognition of melanoma, often reflected by self-detection, lower tumor thickness, or diagnosis at a more curable stage."
+    }
+  ]
+}

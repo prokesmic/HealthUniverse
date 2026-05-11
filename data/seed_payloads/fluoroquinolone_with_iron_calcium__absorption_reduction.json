@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "fluoroquinolone_with_iron_calcium",
+      "name": "Fluoroquinolone taken with iron or calcium",
+      "kind": "activity",
+      "aliases": [
+        "ciprofloxacin with ferrous sulfate or calcium carbonate",
+        "fluoroquinolone coadministered with multivalent cations"
+      ],
+      "description": "Use of an oral fluoroquinolone together with iron or calcium preparations that can chelate the antibiotic in the gastrointestinal tract."
+    },
+    {
+      "slug": "absorption_reduction",
+      "name": "Reduced absorption",
+      "kind": "process",
+      "aliases": [
+        "lower oral bioavailability",
+        "chelation-related absorption impairment"
+      ],
+      "description": "Reduction in intestinal absorption and systemic bioavailability of an orally administered drug."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "fluoroquinolone_with_iron_calcium",
+      "outcome_slug": "absorption_reduction",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Ferrous sulfate reduced ciprofloxacin AUC from 14.5 to 5.4 micrograms x h/mL in one four-way crossover study, and in a separate set of crossover trials ferrous sulfate reduced ciprofloxacin AUC by 57% while substantially reducing norfloxacin and ofloxacin exposure as well.",
+      "population": "adults taking oral fluoroquinolone therapy together with iron or calcium supplements or other metallic cation preparations",
+      "mechanism": "Fluoroquinolones form poorly absorbable chelate complexes with divalent and trivalent cations such as iron and calcium, lowering the fraction of free drug available for intestinal absorption.",
+      "summary": "This is a well-established enteral absorption interaction for oral fluoroquinolones. The magnitude is strongest with simultaneous iron exposure and can be partly mitigated by dose separation, but close coadministration can reduce exposure enough to matter clinically.",
+      "caveats": "The effect differs across quinolones and depends heavily on timing. Calcium separated by a couple of hours may have little effect on ciprofloxacin, so the edge mainly supports avoiding simultaneous or near-simultaneous ingestion rather than avoiding calcium altogether.",
+      "evidence": [
+        {
+          "citation": "Nix DE et al 1989 Antimicrob Agents Chemother",
+          "year": 1989,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effect of ferrous sulfate and multivitamins with zinc on absorption of ciprofloxacin in normal volunteers.",
+          "pmid": "2610494",
+          "n_participants": 12,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -9.1,
+            "unit": "micrograms x h/mL",
+            "comparator": "decrease in ciprofloxacin AUC with ferrous sulfate coadministration from 14.5 to 5.4 micrograms x h/mL"
+          }
+        },
+        {
+          "citation": "Lehto P et al 1994 Br J Clin Pharmacol",
+          "year": 1994,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "The effect of ferrous sulphate on the absorption of norfloxacin, ciprofloxacin and ofloxacin.",
+          "pmid": "8148225",
+          "n_participants": 24,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": -57,
+            "unit": "percent",
+            "comparator": "change in ciprofloxacin AUC with concomitant ferrous sulphate versus fluoroquinolone alone"
+          }
+        },
+        {
+          "citation": "Deppermann KM et al 1993 Drugs",
+          "year": 1993,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Fluoroquinolones: interaction profile during enteral absorption.",
+          "pmid": "7689454"
+        }
+      ]
+    }
+  ]
+}

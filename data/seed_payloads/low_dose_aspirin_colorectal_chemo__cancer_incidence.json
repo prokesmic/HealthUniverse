@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "low_dose_aspirin_colorectal_chemo",
+      "outcome_slug": "cancer_incidence",
+      "direction": "u_shaped",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2023 network meta-analysis of randomized trials found no statistically significant colorectal-cancer incidence reduction with low-dose aspirin, while a 2013 cohort meta-analysis suggested long-term low-dose use could be protective. The overall pattern is dose- and duration-sensitive rather than uniformly beneficial, which fits a u-shaped evidence read better than a flat protective label.",
+      "population": "adults considering low-dose aspirin for colorectal cancer chemoprevention outside hereditary high-risk syndromes",
+      "mechanism": "Aspirin may reduce colorectal carcinogenesis through cyclooxygenase inhibition, prostaglandin suppression, and antiplatelet signaling effects, but benefit appears to depend on dose, exposure duration, and baseline cancer risk while bleeding harms rise as dose increases.",
+      "summary": "This edge is one of the clearest examples of why a simple protective label would be misleading. Some long-term observational and network-meta-analytic evidence suggests chemopreventive benefit, but low-dose regimens do not consistently reproduce that signal in randomized incidence analyses, and higher doses or longer durations often look stronger than short-term low-dose use.",
+      "caveats": "This edge is about cancer incidence, not cardiovascular prevention. The evidence base mixes general-population primary prevention trials with selected higher-risk settings, and any potential cancer benefit must be weighed against bleeding risk, which is not encoded in this incidence-only edge.",
+      "evidence": [
+        {
+          "citation": "Shah D et al 2023 Br J Surg",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Aspirin chemoprevention in colorectal cancer: network meta-analysis of low, moderate, and high doses.",
+          "pmid": "37499126",
+          "n_participants": 92550,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.69,
+            "ci_low": 0.50,
+            "ci_high": 0.96,
+            "comparator": "high-dose aspirin versus placebo or no aspirin for colorectal cancer incidence; low-dose aspirin was not statistically significant"
+          }
+        },
+        {
+          "citation": "Flossmann E et al 2007 Lancet",
+          "year": 2007,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of aspirin on long-term risk of colorectal cancer: consistent evidence from randomised and observational studies.",
+          "pmid": "17499602",
+          "n_participants": 1164513,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.74,
+            "ci_low": 0.56,
+            "ci_high": 0.97,
+            "comparator": "allocation to aspirin versus control for colorectal cancer incidence in long-term randomized follow-up"
+          }
+        },
+        {
+          "citation": "Guirguis-Blake JM et al 2022 JAMA",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Aspirin Use to Prevent Cardiovascular Disease and Colorectal Cancer: Updated Evidence Report and Systematic Review for the US Preventive Services Task Force.",
+          "pmid": "35471507",
+          "n_participants": 134870
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "low_dose_aspirin_colorectal_chemo",
+      "name": "Low-dose aspirin for colorectal chemoprevention",
+      "kind": "activity",
+      "aliases": [
+        "low-dose aspirin for colorectal cancer prevention",
+        "aspirin chemoprevention for CRC"
+      ],
+      "description": "Use of low-dose aspirin with the aim of reducing future colorectal cancer risk."
+    },
+    {
+      "slug": "cancer_incidence",
+      "name": "Cancer incidence",
+      "kind": "condition",
+      "aliases": [
+        "new cancer cases",
+        "incident cancer"
+      ],
+      "description": "The occurrence of newly diagnosed cancer over time in a defined population."
+    }
+  ]
+}

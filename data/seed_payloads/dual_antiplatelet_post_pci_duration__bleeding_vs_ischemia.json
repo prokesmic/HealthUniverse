@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "dual_antiplatelet_post_pci_duration",
+      "name": "Dual antiplatelet therapy duration after PCI",
+      "kind": "activity",
+      "aliases": [
+        "DAPT duration after drug-eluting stent PCI",
+        "short versus standard versus extended DAPT after PCI"
+      ],
+      "description": "The chosen duration of dual antiplatelet therapy after percutaneous coronary intervention with drug-eluting stent implantation."
+    },
+    {
+      "slug": "bleeding_vs_ischemia",
+      "name": "Bleeding versus ischemic tradeoff",
+      "kind": "condition",
+      "aliases": [
+        "bleeding-ischemia balance",
+        "net antiplatelet tradeoff after PCI"
+      ],
+      "description": "The tradeoff between prevention of ischemic events such as myocardial infarction or stent thrombosis and increased bleeding risk."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "dual_antiplatelet_post_pci_duration",
+      "outcome_slug": "bleeding_vs_ischemia",
+      "direction": "u_shaped",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Post-PCI DAPT duration is one of the clearest tradeoff edges in cardiology rather than a longer-is-better or shorter-is-better story. In a 2020 network meta-analysis, extended DAPT reduced MI versus 12 months (RR 0.68) but increased major bleeding, while short DAPT followed by P2Y12 monotherapy reduced bleeding. In ACS-focused meta-analysis, 1 to 3 months of DAPT reduced major bleeding (HR 0.47) without more MACE, whereas older extended-duration analyses found fewer MIs but more bleeding and even higher noncardiac mortality with prolonged treatment.",
+      "population": "adults who have undergone PCI with drug-eluting stent implantation, including both stable coronary disease and acute coronary syndrome subgroups",
+      "mechanism": "Longer DAPT suppresses platelet-mediated stent thrombosis and recurrent MI but increases hemorrhagic risk, while shorter DAPT limits bleeding exposure at the cost of less sustained ischemic protection in some patients.",
+      "summary": "This edge is best encoded as u-shaped because both too little and too much DAPT can be harmful depending on ischemic risk, bleeding risk, and whether therapy is transitioned to aspirin or P2Y12 monotherapy. The modern evidence increasingly favors individualized duration rather than a single universal standard.",
+      "caveats": "Trial results vary by ACS versus stable PCI, stent generation, monotherapy strategy after DAPT, and bleeding-risk enrichment. This edge is about the overall bleeding-ischemia balance, not a blanket recommendation for every patient to shorten or extend therapy.",
+      "evidence": [
+        {
+          "citation": "Khan SU et al 2020 Circulation",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Dual Antiplatelet Therapy After Percutaneous Coronary Intervention and Drug-Eluting Stents: A Systematic Review and Network Meta-Analysis.",
+          "pmid": "32795096",
+          "n_participants": 79073,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.68,
+            "ci_low": 0.54,
+            "ci_high": 0.87,
+            "comparator": "myocardial infarction with extended-duration DAPT versus 12-month DAPT after PCI with drug-eluting stents"
+          }
+        },
+        {
+          "citation": "Park DY et al 2022 Am Heart J",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Shortening the duration of dual antiplatelet therapy after percutaneous coronary intervention for acute coronary syndrome: A systematic review and meta-analysis.",
+          "pmid": "35654162",
+          "n_participants": 25907,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.47,
+            "ci_low": 0.36,
+            "ci_high": 0.62,
+            "comparator": "major bleeding with 1 to 3 months of DAPT versus 6 to 12 months of DAPT after PCI for ACS"
+          }
+        },
+        {
+          "citation": "Palmerini T et al 2015 Lancet",
+          "year": 2015,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Mortality in patients treated with extended duration dual antiplatelet therapy after drug-eluting stent implantation: a pairwise and Bayesian network meta-analysis of randomised trials.",
+          "pmid": "25777667",
+          "n_participants": 31666,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.82,
+            "ci_low": 0.69,
+            "ci_high": 0.98,
+            "comparator": "all-cause mortality with shorter versus longer DAPT after drug-eluting stent implantation"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "melatonin_rem_behavior_disorder",
+      "name": "Melatonin for REM sleep behavior disorder",
+      "kind": "drug",
+      "aliases": [
+        "melatonin in REM sleep behavior disorder",
+        "melatonin for RBD"
+      ],
+      "description": "Use of melatonin to reduce dream-enactment behaviors in REM sleep behavior disorder."
+    },
+    {
+      "slug": "episodes",
+      "name": "Episode frequency",
+      "kind": "process",
+      "aliases": [
+        "attack frequency",
+        "behavioral episode burden"
+      ],
+      "description": "How often a recurrent symptom or disorder-specific episode occurs over time."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "melatonin_rem_behavior_disorder",
+      "outcome_slug": "episodes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Melatonin has a plausible but uneven protective signal for reducing REM sleep behavior disorder episodes. In a small crossover trial, melatonin lowered REM sleep without atonia from 39% to 27% and improved CGI. In a 30-patient prolonged-release melatonin RCT, diary and questionnaire endpoints did not clearly beat placebo after 4 weeks. A later 209-patient chronobiotic cohort reported Ikelos-RS improvement from 6.1 to 2.5 over the first month with durable clinical gains afterward.",
+      "population": "adults with idiopathic or isolated REM sleep behavior disorder, especially ambulatory patients treated outside acute hospital settings",
+      "mechanism": "Melatonin may stabilize circadian timing and REM-sleep physiology, reducing REM motor disinhibition and the frequency of dream-enactment behaviors.",
+      "summary": "This edge is protective but not as settled as the RLS drug rows. The clinical community uses melatonin often because tolerability is favorable, yet randomized evidence remains small and mixed.",
+      "caveats": "The best controlled trial of prolonged-release melatonin was negative on its primary endpoints, and much of the positive signal comes from small crossover work or observational chronobiotic protocols. The effect may depend on dose, formulation, and exact timing.",
+      "evidence": [
+        {
+          "citation": "KunzD et al 2010 J Sleep Res",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A two-part, double-blind, placebo-controlled trial of exogenous melatonin in REM sleep behaviour disorder.",
+          "pmid": "20561180",
+          "n_participants": 8,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -12.0,
+            "comparator": "percent REM-sleep epochs without muscle atonia after melatonin versus baseline in the crossover trial"
+          }
+        },
+        {
+          "citation": "JunJS et al 2019 Ann Clin Transl Neurol",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Prolonged-release melatonin in patients with idiopathic REM sleep behavior disorder.",
+          "pmid": "31019996",
+          "n_participants": 30
+        },
+        {
+          "citation": "KunzD et al 2021 J Pineal Res",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Treatment of isolated REM sleep behavior disorder using melatonin as a chronobiotic.",
+          "pmid": "34309908",
+          "n_participants": 209,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -3.6,
+            "comparator": "Ikelos-RS symptom severity after 4 weeks of chronobiotic melatonin versus baseline"
+          }
+        }
+      ]
+    }
+  ]
+}

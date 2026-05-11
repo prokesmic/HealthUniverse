@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "metformin_with_iv_contrast",
+      "name": "Metformin continued during IV contrast exposure",
+      "kind": "activity",
+      "aliases": [
+        "metformin with iodinated contrast",
+        "continued metformin during radiocontrast administration"
+      ],
+      "description": "Continuation of metformin at the time of intravenous iodinated contrast administration."
+    },
+    {
+      "slug": "contrast_nephropathy_risk",
+      "name": "Contrast nephropathy risk",
+      "kind": "condition",
+      "aliases": [
+        "contrast-induced acute kidney injury risk",
+        "risk of contrast-associated nephropathy"
+      ],
+      "description": "Risk of acute kidney injury or nephropathy after exposure to iodinated contrast media."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "metformin_with_iv_contrast",
+      "outcome_slug": "contrast_nephropathy_risk",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Recent meta-analyses found no significant increase in contrast-induced acute kidney injury with continued metformin use, including RR 1.08 in 1,459 patients and OR 1.15 in 2,325 individuals, but historical guidance remained inconsistent because earlier evidence was sparse and low quality.",
+      "population": "adults with type 2 diabetes or related metformin use who undergo intravenous iodinated contrast exposure, especially those with mild to moderate renal impairment",
+      "mechanism": "The traditional concern is not that metformin directly causes nephropathy, but that contrast-associated kidney injury could impair metformin clearance and raise the risk of downstream lactic acidosis. Modern clinical studies have not shown a clear increase in nephropathy risk from continuing metformin itself.",
+      "summary": "This is a contested historical interaction that now leans toward no meaningful excess nephropathy risk in patients without severe renal dysfunction. Because the older caution was driven by concern about lactic acidosis after kidney injury rather than direct nephrotoxicity, the edge is best represented as mixed rather than simply harmful.",
+      "caveats": "The evidence is strongest for patients with eGFR at least 30 mL/min/1.73 m2 and modern contrast practice. This edge should not be overgeneralized to severe CKD, active AKI, or high-risk arterial procedures where institutions may still use more conservative protocols.",
+      "evidence": [
+        {
+          "citation": "Kao TW et al 2022 Eur Radiol",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Continuous use of metformin in patients receiving contrast medium: what is the evidence? A systematic review and meta-analysis.",
+          "pmid": "34837099",
+          "n_participants": 1459,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 1.08,
+            "comparator": "contrast-induced acute kidney injury with continued metformin use versus no metformin during contrast administration"
+          }
+        },
+        {
+          "citation": "Qiao H et al 2022 Cardiology",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Metformin Can Be Safely Used in Patients Exposed to Contrast Media: A Systematic Review and Meta-Analysis.",
+          "pmid": "36202076",
+          "n_participants": 2325,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 1.15,
+            "comparator": "risk of contrast-induced acute kidney injury with continuous metformin use during contrast exposure"
+          }
+        },
+        {
+          "citation": "Jung J et al 2019 Clin Radiol",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Are patients with mild to moderate renal impairment on metformin or other oral anti-hyperglycaemic agents at increased risk of contrast-induced nephropathy and metabolic acidosis after radiocontrast exposure?",
+          "pmid": "31202566",
+          "n_participants": 374
+        }
+      ]
+    }
+  ]
+}

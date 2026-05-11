@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "levothyroxine_with_calcium",
+      "name": "Levothyroxine taken with calcium",
+      "kind": "activity",
+      "aliases": [
+        "LT4 with calcium carbonate",
+        "concurrent calcium and levothyroxine dosing"
+      ],
+      "description": "Taking levothyroxine together with calcium supplements, especially calcium carbonate, or too close in time to them."
+    },
+    {
+      "slug": "tsh_absorption",
+      "name": "TSH-sensitive levothyroxine absorption",
+      "kind": "process",
+      "aliases": [
+        "thyrotropin control reflecting LT4 absorption",
+        "levothyroxine bioavailability reflected in TSH"
+      ],
+      "description": "Adequacy of levothyroxine absorption and bioavailability as reflected by TSH control and related thyroid hormone measurements."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "levothyroxine_with_calcium",
+      "outcome_slug": "tsh_absorption",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Calcium carbonate coadministration raised mean TSH from 1.6 to 2.7 mIU/L in one prospective study, and in a later cohort taking calcium within 2 hours of levothyroxine, mean TSH rose to 3.33 mIU/L versus 1.93 when calcium was separated.",
+      "population": "adults with hypothyroidism receiving stable oral tablet levothyroxine replacement who also use calcium supplements",
+      "mechanism": "Calcium salts adsorb levothyroxine in the acidic stomach and proximal intestine, lowering the amount of free hormone available for absorption and increasing replacement requirements.",
+      "summary": "Taking levothyroxine together with calcium predictably worsens biochemical thyroid control by impairing absorption. Separating the doses by several hours usually restores more reliable TSH control.",
+      "caveats": "Most evidence centers on calcium carbonate and tablet levothyroxine, so the size of the interaction can differ with formulation, gastric conditions, and the actual interval between doses. Even so, the directional signal is consistent across trials and observational data.",
+      "evidence": [
+        {
+          "citation": "Singh N et al 2000 JAMA",
+          "year": 2000,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effect of calcium carbonate on the absorption of levothyroxine.",
+          "pmid": "10838651",
+          "n_participants": 20,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 1.1,
+            "unit": "mIU/L",
+            "comparator": "increase in mean TSH during calcium carbonate coadministration from 1.6 to 2.7 mIU/L"
+          }
+        },
+        {
+          "citation": "Morini E et al 2019 Endocrine",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "L-thyroxine malabsorption due to calcium carbonate impairs blood pressure, total cholesterolemia, and fasting glycemia.",
+          "pmid": "30368654",
+          "n_participants": 50,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 1.4,
+            "unit": "mIU/L",
+            "comparator": "TSH increase when calcium was taken within 2 hours of levothyroxine versus the separated-dosing setting"
+          }
+        },
+        {
+          "citation": "Irving SA et al 2015 Clin Endocrinol (Oxf)",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Drugs that interact with levothyroxine: an observational study from the Thyroid Epidemiology, Audit and Research Study (TEARS).",
+          "pmid": "25040647",
+          "n_participants": 10999,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 0.27,
+            "unit": "mU/L",
+            "comparator": "mean TSH increase after calcium initiation in levothyroxine-treated patients"
+          }
+        }
+      ]
+    }
+  ]
+}

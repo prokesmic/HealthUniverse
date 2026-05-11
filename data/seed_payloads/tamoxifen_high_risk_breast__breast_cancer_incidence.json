@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "tamoxifen_high_risk_breast",
+      "outcome_slug": "breast_cancer_incidence",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Tamoxifen has some of the strongest breast-cancer chemoprevention evidence in the corpus. In the NSABP P-1 trial it reduced invasive breast cancer by 49%, and longer-horizon pooled SERM data show a durable overall reduction in breast-cancer incidence among higher-risk women.",
+      "population": "women at elevated breast-cancer risk, including those with increased Gail-model risk, atypical hyperplasia, LCIS, or other high-risk prevention-trial eligibility features",
+      "mechanism": "Tamoxifen is a selective estrogen receptor modulator that antagonizes estrogen signaling in breast tissue, lowering the development of estrogen receptor-positive incident cancers in higher-risk women.",
+      "summary": "Among preventive endocrine options, tamoxifen remains one of the clearest protective edges. The randomized prevention-trial evidence is direct, the effect size is clinically meaningful, and the main uncertainty is not whether it works but which higher-risk women judge the benefit worth the known adverse-effect tradeoffs.",
+      "caveats": "The benefit is strongest for estrogen receptor-positive disease and does not imply universal prevention across all breast-cancer subtypes. Endometrial cancer, thromboembolic risk, and menopausal symptoms are major tradeoffs that are not represented by this incidence-focused edge.",
+      "evidence": [
+        {
+          "citation": "Fisher B et al 1998 J Natl Cancer Inst",
+          "year": 1998,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Tamoxifen for prevention of breast cancer: report of the National Surgical Adjuvant Breast and Bowel Project P-1 Study.",
+          "pmid": "9747868",
+          "n_participants": 13388,
+          "effect_quant": {
+            "metric": "relative_reduction_percent",
+            "value": 49.0,
+            "comparator": "tamoxifen 20 mg daily versus placebo for invasive breast cancer incidence in NSABP P-1"
+          }
+        },
+        {
+          "citation": "Cuzick J et al 2013 Lancet",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Selective oestrogen receptor modulators in prevention of breast cancer: an updated meta-analysis of individual participant data.",
+          "pmid": "23639488",
+          "n_participants": 83399,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.62,
+            "ci_low": 0.56,
+            "ci_high": 0.69,
+            "comparator": "selective estrogen receptor modulators versus control for breast cancer incidence over 10 years"
+          }
+        },
+        {
+          "citation": "Vogel VG et al 2006 JAMA",
+          "year": 2006,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of tamoxifen vs raloxifene on the risk of developing invasive breast cancer and other disease outcomes: the NSABP Study of Tamoxifen and Raloxifene (STAR) P-2 trial.",
+          "pmid": "16754727",
+          "n_participants": 19747,
+          "effect_quant": {
+            "metric": "incidence_per_1000",
+            "value": 4.3,
+            "comparator": "tamoxifen arm invasive breast cancer incidence per 1000 women-years in STAR; similar to raloxifene at 4.41 per 1000"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "tamoxifen_high_risk_breast",
+      "name": "Tamoxifen in high-risk women",
+      "kind": "activity",
+      "aliases": [
+        "tamoxifen breast cancer chemoprevention",
+        "tamoxifen risk reduction in elevated-risk women"
+      ],
+      "description": "Preventive tamoxifen use in women at elevated risk of developing breast cancer."
+    },
+    {
+      "slug": "breast_cancer_incidence",
+      "name": "Breast cancer incidence",
+      "kind": "condition",
+      "aliases": [
+        "new breast cancer cases",
+        "incident breast cancer"
+      ],
+      "description": "The occurrence of newly diagnosed breast cancer in a defined population over time."
+    }
+  ]
+}

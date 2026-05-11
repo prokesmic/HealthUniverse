@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "mandibular_advancement_device_mild_moderate_osa",
+      "name": "Mandibular advancement device for mild to moderate obstructive sleep apnea",
+      "kind": "activity",
+      "aliases": [
+        "MAD for mild to moderate OSA",
+        "oral appliance for mild to moderate sleep apnea"
+      ],
+      "description": "Custom or adjustable mandibular advancement oral appliances used to treat adults with mild to moderate obstructive sleep apnea."
+    },
+    {
+      "slug": "ahi",
+      "name": "Apnea-hypopnea index",
+      "kind": "process",
+      "aliases": [
+        "sleep apnea event index"
+      ],
+      "description": "The apnea-hypopnea index, representing the number of apneas and hypopneas per hour of sleep."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "mandibular_advancement_device_mild_moderate_osa",
+      "outcome_slug": "ahi",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Mandibular advancement devices usually improve but do not normalize OSA severity. A 2025 meta-analysis in East Asian patients found pooled AHI reduction of 19.1 events/h, and randomized trials in mostly mild to moderate disease report response rates around 52% to 54%.",
+      "population": "adults with mild to moderate obstructive sleep apnea, especially those refusing or not tolerating CPAP",
+      "mechanism": "Advancing the mandible enlarges and stabilizes the retrolingual airway, reducing upper-airway collapse during sleep.",
+      "summary": "This is a real therapeutic edge, particularly for mild to moderate OSA and for patients who value a non-PAP option. The average effect is meaningful but generally smaller than CPAP.",
+      "caveats": "Response is heterogeneous and complete normalization is uncommon. Effectiveness depends on dentition, craniofacial anatomy, device titration, and adherence, and some devices trade efficacy for comfort or convenience.",
+      "evidence": [
+        {
+          "citation": "YongCW et al 2025 J Clin Sleep Med",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effectiveness of mandibular advancement devices in obstructive sleep apnea therapy for East Asian patients: a systematic review and meta-analysis.",
+          "pmid": "40110631",
+          "n_participants": 382,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -19.1,
+            "ci_low": -23.9,
+            "ci_high": -14.3,
+            "comparator": "AHI change after mandibular advancement device therapy"
+          }
+        },
+        {
+          "citation": "PepinJL et al 2019 Thorax",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Heat-moulded versus custom-made mandibular advancement devices for obstructive sleep apnoea: a randomised non-inferiority trial.",
+          "pmid": "31053619",
+          "n_participants": 198,
+          "effect_quant": {
+            "metric": "responder_rate",
+            "value": 53.6,
+            "comparator": "Response rate with heat-moulded titratable mandibular advancement device at 2 months; custom device response rate was 51.7%"
+          }
+        },
+        {
+          "citation": "WangW et al 2024 Br J Hosp Med (Lond)",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Clinical Effect of Personalized Adjustable Mandibular Advancement Device on Obstructive Sleep Apnea.",
+          "pmid": "39212566",
+          "n_participants": 40
+        }
+      ]
+    }
+  ]
+}

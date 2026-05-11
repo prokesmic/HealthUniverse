@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "colonoscopy_interval_after_negative_10yr",
+      "name": "Ten-year interval after negative colonoscopy",
+      "kind": "activity",
+      "aliases": [
+        "10-year rescreening interval after normal colonoscopy",
+        "repeat colonoscopy after a negative 10-year interval"
+      ],
+      "description": "The practice of waiting about 10 years to repeat screening colonoscopy after a negative baseline examination."
+    },
+    {
+      "slug": "cancer_incidence",
+      "name": "Cancer incidence",
+      "kind": "process",
+      "aliases": [
+        "incident cancer risk",
+        "new cancer occurrence"
+      ],
+      "description": "The incidence of newly occurring cancer over follow-up."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "colonoscopy_interval_after_negative_10yr",
+      "outcome_slug": "cancer_incidence",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Systematic review and long-term cohort evidence suggest that cancer risk remains low for at least 10 years after a negative colonoscopy, with markedly reduced colorectal cancer incidence compared with background or unscreened populations.",
+      "population": "average-risk adults with a negative baseline screening colonoscopy and follow-up over roughly 10 years or longer",
+      "mechanism": "A truly negative colonoscopy resets short- to mid-term colorectal cancer risk by excluding existing advanced lesions and lowering the near-future pool of cancers likely to emerge from missed or prevalent neoplasia.",
+      "summary": "The evidence generally supports the adequacy of a 10-year interval after a negative colonoscopy, and some cohorts suggest the low-risk window may even extend longer in selected groups. This edge is protective because the negative baseline exam is associated with persistently low incident cancer risk over the usual rescreening interval.",
+      "caveats": "This is not a statement that all patients should delay beyond 10 years; risk varies by age, sex, family history, colonoscopy quality, and symptom changes. Right-sided and interval cancers remain an important limitation of the reassurance provided by a negative exam.",
+      "evidence": [
+        {
+          "citation": "Heisser T et al 2019 BMJ",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Outcomes at follow-up of negative colonoscopy in average risk population: systematic review and meta-analysis.",
+          "pmid": "31722884",
+          "n_participants": 28
+        },
+        {
+          "citation": "Singh H et al 2006 JAMA",
+          "year": 2006,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Risk of developing colorectal cancer following a negative colonoscopy examination: evidence for a 10-year interval between colonoscopies.",
+          "pmid": "16720822",
+          "n_participants": 35975,
+          "effect_quant": {
+            "metric": "SIR",
+            "value": 0.28,
+            "ci_low": 0.09,
+            "ci_high": 0.65,
+            "comparator": "colorectal cancer incidence at 10 years after a negative colonoscopy versus the provincial population"
+          }
+        },
+        {
+          "citation": "Knudsen MD et al 2025 JAMA Oncol",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Colorectal Cancer Incidence and Mortality After Negative Colonoscopy Screening Results.",
+          "pmid": "39602147",
+          "n_participants": 195453,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.51,
+            "ci_low": 0.44,
+            "ci_high": 0.58,
+            "comparator": "negative colonoscopy screening results versus no endoscopy for colorectal cancer incidence"
+          }
+        }
+      ]
+    }
+  ]
+}

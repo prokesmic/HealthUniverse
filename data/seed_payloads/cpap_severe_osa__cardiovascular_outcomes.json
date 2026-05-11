@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cpap_severe_osa",
+      "name": "CPAP for severe obstructive sleep apnea",
+      "kind": "activity",
+      "aliases": [
+        "continuous positive airway pressure for severe OSA",
+        "CPAP in severe obstructive sleep apnea"
+      ],
+      "description": "Continuous positive airway pressure treatment used in adults with severe or at least moderate-to-severe obstructive sleep apnea."
+    },
+    {
+      "slug": "cardiovascular_outcomes",
+      "name": "Cardiovascular outcomes",
+      "kind": "process",
+      "aliases": [
+        "major adverse cardiovascular events",
+        "cardiovascular events and death"
+      ],
+      "description": "Major cardiovascular outcomes such as myocardial infarction, stroke, heart failure events, vascular death, or composite cardiovascular endpoints."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cpap_severe_osa",
+      "outcome_slug": "cardiovascular_outcomes",
+      "direction": "mixed",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "Across hard-outcome trials, CPAP has not clearly reduced major cardiovascular events in severe or moderate-to-severe OSA: pooled RR 0.77 in 10 trials, SAVE HR 1.10, and another 18-trial meta-analysis OR 0.84.",
+      "population": "adults with severe or at least moderate-to-severe obstructive sleep apnea, often with established cardiovascular disease",
+      "mechanism": "CPAP reduces intermittent hypoxemia, sympathetic activation, and blood-pressure burden, but these physiologic gains have not translated consistently into fewer major cardiovascular events in minimally sleepy or only partly adherent trial populations.",
+      "summary": "This is a physiologically plausible but clinically contested edge. CPAP helps symptoms and some surrogate cardiovascular measures, yet randomized evidence for preventing hard cardiovascular events remains largely neutral.",
+      "caveats": "Several pivotal trials enrolled patients with low baseline sleepiness and average adherence near 3 to 4 hours per night. The evidence is stronger for symptom relief and modest blood-pressure improvement than for event prevention.",
+      "evidence": [
+        {
+          "citation": "YuJ et al 2017 JAMA",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Association of Positive Airway Pressure With Cardiovascular Events and Death in Adults With Sleep Apnea: A Systematic Review and Meta-analysis.",
+          "pmid": "28697252",
+          "n_participants": 7266,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.77,
+            "ci_low": 0.53,
+            "ci_high": 1.13,
+            "comparator": "major adverse cardiovascular events with positive airway pressure versus control across 10 sleep-apnea trials"
+          }
+        },
+        {
+          "citation": "McEvoyRD et al 2016 N Engl J Med",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "CPAP for Prevention of Cardiovascular Events in Obstructive Sleep Apnea. SAVE.",
+          "pmid": "27571048",
+          "n_participants": 2717,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 1.1,
+            "ci_low": 0.91,
+            "ci_high": 1.32,
+            "comparator": "primary composite cardiovascular endpoint with CPAP plus usual care versus usual care alone in SAVE"
+          }
+        },
+        {
+          "citation": "GuoJ et al 2016 Sleep Breath",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of CPAP therapy on cardiovascular events and mortality in patients with obstructive sleep apnea: a meta-analysis.",
+          "pmid": "26873722",
+          "n_participants": 4146,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 0.84,
+            "ci_low": 0.62,
+            "ci_high": 1.13,
+            "comparator": "cardiovascular events with CPAP versus control across randomized OSA trials"
+          }
+        }
+      ]
+    }
+  ]
+}

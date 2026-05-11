@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "flexible_sigmoidoscopy",
+      "name": "Flexible sigmoidoscopy screening",
+      "kind": "activity",
+      "aliases": [
+        "screening sigmoidoscopy",
+        "flex sig colorectal screening"
+      ],
+      "description": "Colorectal cancer screening using flexible sigmoidoscopy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "flexible_sigmoidoscopy",
+      "outcome_slug": "colorectal_cancer_mortality",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Randomized evidence consistently shows lower colorectal cancer mortality with flexible sigmoidoscopy screening, with pooled mortality reductions around 26% overall and even larger reductions for distal colorectal cancer.",
+      "population": "average-risk asymptomatic adults offered colorectal cancer screening with one or two rounds of flexible sigmoidoscopy",
+      "mechanism": "Flexible sigmoidoscopy can identify and remove distal premalignant lesions and detect distal cancers earlier, reducing downstream mortality for the colorectal cancers it can reach most reliably.",
+      "summary": "Flexible sigmoidoscopy has one of the cleaner colorectal screening mortality evidence bases because several randomized trials point in the same direction. Its main limitation is anatomic reach rather than uncertainty about whether it works.",
+      "caveats": "Benefits are much stronger for distal than proximal colorectal cancer, and the modality is less comprehensive than full colonoscopy. This edge captures mortality reduction, not the inconvenience and procedural harms of screening and follow-up colonoscopy.",
+      "evidence": [
+        {
+          "citation": "Lin JS et al 2021 JAMA",
+          "year": 2021,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Screening for Colorectal Cancer: Updated Evidence Report and Systematic Review for the US Preventive Services Task Force.",
+          "pmid": "34003220",
+          "n_participants": 10776276,
+          "effect_quant": {
+            "metric": "IRR",
+            "value": 0.74,
+            "ci_low": 0.68,
+            "ci_high": 0.8,
+            "comparator": "1- or 2-time flexible sigmoidoscopy versus no screening"
+          }
+        },
+        {
+          "citation": "Fitzpatrick-Lewis D et al 2016 Clin Colorectal Cancer",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Screening for Colorectal Cancer: A Systematic Review and Meta-Analysis.",
+          "pmid": "27133893",
+          "n_participants": 4,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.74,
+            "ci_low": 0.67,
+            "ci_high": 0.83,
+            "comparator": "flexible sigmoidoscopy screening versus control"
+          }
+        },
+        {
+          "citation": "Brenner H et al 2014 BMJ",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of screening sigmoidoscopy and screening colonoscopy on colorectal cancer incidence and mortality: systematic review and meta-analysis of randomised controlled trials and observational studies.",
+          "pmid": "24922745",
+          "n_participants": 14,
+          "effect_quant": {
+            "metric": "relative_reduction_percent",
+            "value": 46,
+            "ci_low": 33,
+            "ci_high": 57,
+            "comparator": "distal colorectal cancer mortality reduction in intention-to-screen randomized analyses"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "stable_cad_invasive_vs_optimal_medical",
+      "name": "Initial invasive strategy versus optimal medical therapy in stable CAD",
+      "kind": "activity",
+      "aliases": [
+        "routine PCI or revascularization for stable coronary disease",
+        "invasive-first management of stable ischemic heart disease"
+      ],
+      "description": "An initial invasive management strategy, typically with angiography and PCI or CABG as indicated, compared against contemporary optimal medical therapy alone in stable coronary artery disease."
+    },
+    {
+      "slug": "outcomes",
+      "name": "Outcomes",
+      "kind": "condition",
+      "aliases": [
+        "clinical outcomes",
+        "net cardiovascular outcomes"
+      ],
+      "description": "Overall clinical outcomes including death, myocardial infarction, angina-related outcomes, or other major cardiovascular events."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "stable_cad_invasive_vs_optimal_medical",
+      "outcome_slug": "outcomes",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The major stable-CAD trials do not show a clean survival win for routine initial invasive management, but they also do not show a flat zero-benefit story. COURAGE found no reduction in death or nonfatal MI (HR 1.05), the 2020 stable-ischemic-heart-disease meta-analysis found no mortality reduction (RR 0.99) but less nonprocedural MI and unstable angina, and a 2021 updated PCI-versus-medical-therapy meta-analysis found a lower broad composite outcome (RR 0.63) driven largely by softer downstream events.",
+      "population": "adults with stable coronary artery disease or stable ischemic heart disease without left main disease or other immediate indications for urgent revascularization",
+      "mechanism": "Revascularization can relieve flow-limiting epicardial stenoses and angina, but optimized preventive pharmacotherapy may already neutralize much of the hard-outcome risk in many stable patients, leaving a tradeoff between symptom relief, spontaneous MI reduction, and procedural harm.",
+      "summary": "This edge is deliberately contested because the evidence depends heavily on which outcomes matter most. Symptom relief and some nonprocedural ischemic outcomes can improve with an invasive strategy, but all-cause mortality and overall hard-event superiority are not consistently demonstrated across the landmark stable-CAD trials.",
+      "caveats": "These findings should not be extrapolated to left main disease, refractory angina despite therapy, or clearly unstable presentations. The invasive strategy is most defensible when symptom burden, coronary anatomy, or patient preferences make quality-of-life gains worth the procedural tradeoffs.",
+      "evidence": [
+        {
+          "citation": "Bangalore S et al 2020 Circulation",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Routine Revascularization Versus Initial Medical Therapy for Stable Ischemic Heart Disease: A Systematic Review and Meta-Analysis of Randomized Trials.",
+          "pmid": "32794407",
+          "n_participants": 14877,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.99,
+            "ci_low": 0.9,
+            "ci_high": 1.09,
+            "comparator": "all-cause death with routine revascularization versus initial medical therapy in stable ischemic heart disease"
+          }
+        },
+        {
+          "citation": "Boden WE et al 2007 N Engl J Med",
+          "year": 2007,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Optimal medical therapy with or without PCI for stable coronary disease. COURAGE.",
+          "pmid": "17387127",
+          "n_participants": 2287,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 1.05,
+            "ci_low": 0.87,
+            "ci_high": 1.27,
+            "comparator": "death from any cause or nonfatal myocardial infarction with PCI plus optimal medical therapy versus optimal medical therapy alone in COURAGE"
+          }
+        },
+        {
+          "citation": "Laukkanen JA et al 2021 J Invasive Cardiol",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Percutaneous Coronary Intervention Versus Medical Therapy in the Treatment of Stable Coronary Artery Disease: An Updated Meta-Analysis of Contemporary Randomized Controlled Trials.",
+          "pmid": "34338654",
+          "n_participants": 9629,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.63,
+            "ci_low": 0.46,
+            "ci_high": 0.87,
+            "comparator": "broad composite of death, myocardial infarction, revascularization, rehospitalization, or stroke with PCI versus medical therapy in contemporary stable-CAD trials"
+          }
+        }
+      ]
+    }
+  ]
+}

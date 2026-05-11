@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "kisspeptin_hypogonadotropic",
+      "name": "Kisspeptin in hypogonadotropic hypogonadism",
+      "kind": "drug",
+      "aliases": [
+        "kisspeptin-54 in congenital hypogonadotropic hypogonadism",
+        "kisspeptin challenge in idiopathic hypogonadotropic hypogonadism"
+      ],
+      "description": "Use of exogenous kisspeptin as a physiologic probe or potential restorative therapy in congenital or idiopathic hypogonadotropic hypogonadism."
+    },
+    {
+      "slug": "testosterone_recovery",
+      "name": "Testosterone recovery",
+      "kind": "process",
+      "aliases": [
+        "restoration of serum testosterone",
+        "endogenous testosterone normalization"
+      ],
+      "description": "Recovery or normalization of serum testosterone levels in hypogonadal men."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "kisspeptin_hypogonadotropic",
+      "outcome_slug": "testosterone_recovery",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Kisspeptin has not shown reliable testosterone restoration in established congenital or idiopathic hypogonadotropic hypogonadism, but selected reversal phenotypes can display physiologic responsiveness. In a seven-patient IHH case series, no participant responded to exogenous kisspeptin and sex-steroid treatment did not restore responsiveness, whereas a six-man reversal cohort showed kisspeptin-induced LH pulses only in those with sustained endogenous reversal; a 21-man congenital HH study likewise found a markedly blunted LH rise after kisspeptin-54 versus healthy controls.",
+      "population": "men with congenital or idiopathic hypogonadotropic hypogonadism, including reversal phenotypes and classic persistent disease",
+      "mechanism": "Kisspeptin acts upstream of GnRH neurons, so efficacy depends on whether the hypothalamic GnRH network is functionally present and capable of responding; that appears absent in many established congenital HH cases but partly recoverable in reversal states.",
+      "summary": "This is a mixed and still exploratory edge. Kisspeptin is biologically important to the reproductive axis, but as a practical route to testosterone recovery in hypogonadotropic hypogonadism it remains inconsistent and phenotype-dependent rather than reliably therapeutic.",
+      "caveats": "Most human studies are small physiologic challenge studies that measure LH responsiveness rather than durable testosterone recovery over time. The signal is best interpreted as a probe of residual hypothalamic function, not a proven replacement strategy.",
+      "evidence": [
+        {
+          "citation": "Lippincott MF et al 2016 J Clin Endocrinol Metab",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Kisspeptin Responsiveness Signals Emergence of Reproductive Endocrine Activity: Implications for Human Puberty.",
+          "pmid": "27214398",
+          "n_participants": 6
+        },
+        {
+          "citation": "Lippincott MF et al 2018 J Endocr Soc",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "low",
+          "notes": "Assessing Sex Steroid Influence on Kisspeptin Responsiveness in Idiopathic Hypogonadotropic Hypogonadism.",
+          "pmid": "30430143",
+          "n_participants": 7
+        },
+        {
+          "citation": "Abbara A et al 2021 Neuroendocrinology",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Kisspeptin-54 Accurately Identifies Hypothalamic Gonadotropin-Releasing Hormone Neuronal Dysfunction in Men with Congenital Hypogonadotropic Hypogonadism.",
+          "pmid": "33227799",
+          "n_participants": 21,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -12.1,
+            "unit": "IU/L",
+            "comparator": "difference in maximal LH rise after kisspeptin-54 between men with congenital hypogonadotropic hypogonadism and healthy controls"
+          }
+        }
+      ]
+    }
+  ]
+}

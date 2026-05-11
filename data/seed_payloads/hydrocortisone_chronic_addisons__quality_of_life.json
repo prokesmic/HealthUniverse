@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hydrocortisone_chronic_addisons",
+      "name": "Hydrocortisone replacement in chronic Addison's disease",
+      "kind": "drug",
+      "aliases": [
+        "hydrocortisone for chronic primary adrenal insufficiency",
+        "hydrocortisone replacement in Addison disease"
+      ],
+      "description": "Chronic oral hydrocortisone replacement, including dose and formulation strategies, used to treat primary adrenal insufficiency."
+    },
+    {
+      "slug": "quality_of_life",
+      "name": "Quality of life",
+      "kind": "process",
+      "aliases": [
+        "health-related quality of life",
+        "functional status"
+      ],
+      "description": "Health-related quality of life measured with generic or disease-specific instruments."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hydrocortisone_chronic_addisons",
+      "outcome_slug": "quality_of_life",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Hydrocortisone replacement strategy can shift quality-of-life outcomes in chronic adrenal insufficiency, but the signal is formulation- and dose-dependent rather than uniformly restorative. In a 47-patient randomized trial, higher replacement doses improved several depression, fatigue, pain, and RAND-36 domains versus lower doses, while a 64-patient regimen trial found the effect of dose timing on HRQoL inconclusive; newer dual-release studies suggest modest psychological benefit without full normalization of well-being.",
+      "population": "adults with chronic primary adrenal insufficiency, mainly Addison's disease, treated with oral hydrocortisone replacement regimens",
+      "mechanism": "More physiologic cortisol exposure may reduce under-replacement symptoms such as fatigue, low vitality, pain, and depressive symptom burden, but both under-replacement and overtreatment can impair well-being.",
+      "summary": "This is a genuinely mixed edge. Hydrocortisone is essential and some dosing or formulation strategies improve specific quality-of-life domains, but standard replacement does not reliably normalize well-being and the gains are usually modest rather than transformative.",
+      "caveats": "The evidence mixes primary and secondary adrenal insufficiency and compares both dose and formulation strategies rather than placebo versus no treatment. Better symptoms at higher dose can also reflect short-term trade-offs that are not equivalent to an endorsement of chronic over-replacement.",
+      "evidence": [
+        {
+          "citation": "Tiemensma J et al 2014 Clin Endocrinol (Oxf)",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A randomized, double-blind, crossover study comparing two- and four-dose hydrocortisone regimen with regard to quality of life, cortisol and ACTH profiles in patients with primary adrenal insufficiency.",
+          "pmid": "22288685",
+          "n_participants": 64
+        },
+        {
+          "citation": "Mah PM et al 2016 Pharmacology",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Hydrocortisone Dose Influences Pain, Depressive Symptoms and Perceived Health in Adrenal Insufficiency: A Randomized Controlled Trial.",
+          "pmid": "26646751",
+          "n_participants": 47
+        },
+        {
+          "citation": "Dineen R et al 2021 Eur J Endocrinol",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Cardiometabolic and psychological effects of dual-release hydrocortisone: a cross-over study.",
+          "pmid": "33513125",
+          "n_participants": 52
+        }
+      ]
+    }
+  ]
+}

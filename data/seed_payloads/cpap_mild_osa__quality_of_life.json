@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cpap_mild_osa",
+      "name": "CPAP for mild obstructive sleep apnea",
+      "kind": "activity",
+      "aliases": [
+        "continuous positive airway pressure for mild OSA",
+        "CPAP in mild obstructive sleep apnea"
+      ],
+      "description": "Continuous positive airway pressure treatment used in adults with mild obstructive sleep apnea."
+    },
+    {
+      "slug": "quality_of_life",
+      "name": "Quality of life",
+      "kind": "process",
+      "aliases": [
+        "health-related quality of life",
+        "functional status"
+      ],
+      "description": "Health-related quality of life or sleep-related functional status measured with generic or disease-specific instruments."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cpap_mild_osa",
+      "outcome_slug": "quality_of_life",
+      "direction": "mixed",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "Mild-OSA trials are inconsistent for quality-of-life benefit: one 42-patient crossover RCT and one 31-patient sham-controlled crossover RCT found no clear QoL gain beyond placebo or sham, while a 142-patient randomized trial saw symptom and FOSQ improvement trends that did not reach significance.",
+      "population": "adults with mild obstructive sleep apnea, generally without severe daytime sleepiness",
+      "mechanism": "CPAP can reduce upper-airway obstruction and sleep disruption, but in mild OSA the symptom burden may be low enough that placebo effects and adherence limitations blunt quality-of-life gains.",
+      "summary": "For mild OSA, CPAP is far less convincing for quality-of-life improvement than it is for severe disease or for sleepiness relief. The overall signal is mixed and often dominated by placebo or sham responses.",
+      "caveats": "These trials are small, adherence is modest, and enrolled patients were often only mildly symptomatic. Individual patients with prominent symptoms may still benefit even when average trial effects are limited.",
+      "evidence": [
+        {
+          "citation": "BarnesM et al 2002 Am J Respir Crit Care Med",
+          "year": 2002,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A randomized controlled trial of continuous positive airway pressure in mild obstructive sleep apnea. No benefit over placebo in SF-36 or Functional Outcomes of Sleep Questionnaire measures.",
+          "pmid": "11897643",
+          "n_participants": 42
+        },
+        {
+          "citation": "MarshallNS et al 2005 Thorax",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Randomised controlled crossover trial of humidified continuous positive airway pressure in mild obstructive sleep apnoea. Quality of life was not improved more than sham CPAP.",
+          "pmid": "15860720",
+          "n_participants": 31
+        },
+        {
+          "citation": "MonasterioC et al 2001 Am J Respir Crit Care Med",
+          "year": 2001,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effectiveness of continuous positive airway pressure in mild sleep apnea-hypopnea syndrome. FOSQ improved more in the CPAP group but did not reach significance.",
+          "pmid": "11587974",
+          "n_participants": 142
+        }
+      ]
+    }
+  ]
+}

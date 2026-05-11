@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pcsk9_inhibitor_post_acs",
+      "name": "PCSK9 inhibitor therapy after acute coronary syndrome",
+      "kind": "drug",
+      "aliases": [
+        "alirocumab or evolocumab after ACS",
+        "post-ACS PCSK9 monoclonal antibody therapy"
+      ],
+      "description": "Use of a PCSK9 inhibitor after acute coronary syndrome in addition to maximally tolerated statin therapy."
+    },
+    {
+      "slug": "mace",
+      "name": "Major adverse cardiovascular events",
+      "kind": "condition",
+      "aliases": [
+        "MACE",
+        "major ischemic cardiovascular events"
+      ],
+      "description": "Composite cardiovascular outcomes such as cardiovascular death, myocardial infarction, stroke, unstable angina hospitalization, or repeat revascularization."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pcsk9_inhibitor_post_acs",
+      "outcome_slug": "mace",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "ACS-focused meta-analysis found PCSK9 inhibition reduced MACE overall (RR 0.87). In ODYSSEY OUTCOMES, alirocumab lowered the primary composite endpoint from 11.1% to 9.5% after recent ACS (HR 0.85), and total-event analysis showed fewer recurrent nonfatal cardiovascular and fatal events with continued therapy.",
+      "population": "adults within months of acute coronary syndrome who remain at elevated lipid-driven residual risk despite high-intensity or maximally tolerated statin therapy",
+      "mechanism": "Profound LDL lowering after plaque rupture likely stabilizes residual high-risk coronary plaque and reduces recurrent ischemic events beyond statin therapy alone.",
+      "summary": "This is a clean secondary-prevention lipid-escalation signal, especially in higher-risk or higher-LDL post-ACS patients. The benefit is clinically meaningful but still modest in absolute terms, so it is best targeted to those with the most residual risk.",
+      "caveats": "Much of the hard-outcome evidence comes from alirocumab-rich datasets rather than equally mature outcomes for every agent and every post-ACS timing strategy. Cost, injection burden, and baseline LDL level still matter for real-world use.",
+      "evidence": [
+        {
+          "citation": "Song R et al 2024 Medicine (Baltimore)",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and safety of proprotein convertase subtilisin kexin type (PCSK9) inhibitors in patients with acute coronary syndrome: A systematic review and meta-analysis.",
+          "pmid": "39259104",
+          "n_participants": 48621,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.87,
+            "ci_low": 0.83,
+            "ci_high": 0.91,
+            "comparator": "MACE with PCSK9 inhibitors versus control in ACS studies"
+          }
+        },
+        {
+          "citation": "Schwartz GG et al 2018 N Engl J Med",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Alirocumab and Cardiovascular Outcomes after Acute Coronary Syndrome. ODYSSEY OUTCOMES.",
+          "pmid": "30403574",
+          "n_participants": 18924,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.85,
+            "ci_low": 0.78,
+            "ci_high": 0.93,
+            "comparator": "primary composite MACE endpoint in ODYSSEY OUTCOMES with alirocumab versus placebo after ACS"
+          }
+        },
+        {
+          "citation": "Szarek M et al 2019 J Am Coll Cardiol",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Alirocumab Reduces Total Nonfatal Cardiovascular and Fatal Events: The ODYSSEY OUTCOMES Trial.",
+          "pmid": "30428396",
+          "n_participants": 18924,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.87,
+            "ci_low": 0.82,
+            "ci_high": 0.93,
+            "comparator": "total nonfatal cardiovascular events in the prespecified ODYSSEY OUTCOMES total-event analysis with alirocumab versus placebo"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "endoscopic_surveillance_barrett_esophagus",
+      "outcome_slug": "adenocarcinoma_mortality",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Meta-analyses of observational Barrett surveillance studies suggest lower esophageal-adenocarcinoma mortality among regularly surveilled patients and among surveillance-detected cancers, but the most rigorous community-based case-control study did not confirm a substantial mortality reduction, leaving the net effect unsettled.",
+      "population": "patients with Barrett esophagus undergoing periodic endoscopic surveillance for dysplasia or early esophageal adenocarcinoma",
+      "mechanism": "Surveillance can find dysplasia or intramucosal adenocarcinoma earlier, allowing endoscopic eradication therapy or surgery at a more treatable stage before metastatic progression.",
+      "summary": "This is a genuinely contested surveillance edge. Observational meta-analyses generally point toward lower mortality and earlier-stage detection, yet the best case-control evaluation found no clear reduction in adenocarcinoma death, so a mixed direction is more honest than a uniformly protective label.",
+      "caveats": "Lead-time bias, length bias, and selection of healthier patients into surveillance programs remain major interpretation problems. Much of the literature compares surveillance-detected with symptom-detected cancer, which can exaggerate apparent benefit if not carefully adjusted.",
+      "evidence": [
+        {
+          "citation": "Codipilly DC et al 2018 Gastroenterology",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The Effect of Endoscopic Surveillance in Patients With Barrett's Esophagus: A Systematic Review and Meta-analysis.",
+          "pmid": "29458154",
+          "n_participants": 4,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.6,
+            "ci_low": 0.5,
+            "ci_high": 0.71,
+            "comparator": "EAC-related and all-cause mortality among regularly surveilled Barrett esophagus patients versus those not regularly surveilled across cohort studies"
+          }
+        },
+        {
+          "citation": "Qiao Y et al 2015 Clin Transl Gastroenterol",
+          "year": 2015,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Surveillance in Patients With Barrett's Esophagus for Early Detection of Esophageal Adenocarcinoma: A Systematic Review and Meta-Analysis.",
+          "pmid": "26658838",
+          "n_participants": 11028,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.386,
+            "ci_low": 0.242,
+            "ci_high": 0.617,
+            "comparator": "mortality among surveillance-detected esophageal adenocarcinoma versus nonsurveillance-detected esophageal adenocarcinoma"
+          }
+        },
+        {
+          "citation": "Corley DA et al 2013 Gastroenterology",
+          "year": 2013,
+          "study_type": "case_control",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Impact of endoscopic surveillance on mortality from Barrett's esophagus-associated esophageal adenocarcinomas.",
+          "pmid": "23673354",
+          "n_participants": 139,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 0.99,
+            "ci_low": 0.36,
+            "ci_high": 2.75,
+            "comparator": "risk of death from esophageal adenocarcinoma with surveillance within 3 years versus no recent surveillance in Barrett esophagus"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "endoscopic_surveillance_barrett_esophagus",
+      "name": "Endoscopic surveillance for Barrett esophagus",
+      "kind": "activity",
+      "aliases": [
+        "Barrett surveillance endoscopy",
+        "scheduled endoscopy in Barrett esophagus"
+      ],
+      "description": "Periodic upper endoscopic surveillance of patients with Barrett esophagus to detect dysplasia or early adenocarcinoma."
+    },
+    {
+      "slug": "adenocarcinoma_mortality",
+      "name": "Adenocarcinoma mortality",
+      "kind": "condition",
+      "aliases": [
+        "death from adenocarcinoma",
+        "esophageal adenocarcinoma mortality"
+      ],
+      "description": "Mortality attributable to esophageal adenocarcinoma in Barrett-esophagus surveillance studies."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "levothyroxine_with_coffee",
+      "name": "Levothyroxine taken with coffee",
+      "kind": "activity",
+      "aliases": [
+        "LT4 with espresso",
+        "coffee consumed immediately with levothyroxine"
+      ],
+      "description": "Taking levothyroxine tablets together with coffee or espresso rather than with water on an empty stomach."
+    },
+    {
+      "slug": "tsh_absorption",
+      "name": "TSH-sensitive levothyroxine absorption",
+      "kind": "process",
+      "aliases": [
+        "thyrotropin control reflecting LT4 absorption",
+        "levothyroxine bioavailability reflected in TSH"
+      ],
+      "description": "Adequacy of levothyroxine absorption and bioavailability as reflected by TSH control and related thyroid hormone measurements."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "levothyroxine_with_coffee",
+      "outcome_slug": "tsh_absorption",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "In the main in-vivo absorption study, swallowing tablet levothyroxine with coffee lowered the serum T4 area under the curve by 36% in patients and 27% in volunteers compared with water alone.",
+      "population": "tablet levothyroxine users with hypothyroidism or healthy volunteers undergoing levothyroxine absorption testing",
+      "mechanism": "Coffee and related breakfast beverages appear to interfere with tablet dissolution and early intestinal uptake, reducing the amount of levothyroxine available for absorption when taken simultaneously.",
+      "summary": "Taking tablet levothyroxine with coffee impairs absorption enough to worsen TSH control in susceptible patients. The interaction is best documented for solid tablets and appears less important with liquid formulations engineered to bypass the same dissolution bottleneck.",
+      "caveats": "Direct human evidence is much thinner than for calcium or proton pump inhibitors, and some later studies show that liquid levothyroxine formulations are far less sensitive to breakfast beverages. This edge should therefore be read as a warning about conventional tablet coadministration with coffee, not about every LT4 formulation.",
+      "evidence": [
+        {
+          "citation": "Benvenga S et al 2008 Thyroid",
+          "year": 2008,
+          "study_type": "mechanistic",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Altered intestinal absorption of L-thyroxine caused by coffee.",
+          "pmid": "18341376",
+          "n_participants": 15,
+          "effect_quant": {
+            "metric": "AUC_ratio",
+            "value": 0.64,
+            "comparator": "serum T4 exposure when levothyroxine tablets were swallowed with coffee versus water in patients"
+          }
+        },
+        {
+          "citation": "Bernareggi A et al 2013 Pharmaceutics",
+          "year": 2013,
+          "study_type": "mechanistic",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Oral liquid formulation of levothyroxine is stable in breakfast beverages and may improve thyroid patient compliance.",
+          "pmid": "24351573"
+        },
+        {
+          "citation": "Cappelli C et al 2016 Thyroid",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A Double-Blind Placebo-Controlled Trial of Liquid Thyroxine Ingested at Breakfast: Results of the TICO Study.",
+          "pmid": "26586610",
+          "n_participants": 77
+        }
+      ]
+    }
+  ]
+}

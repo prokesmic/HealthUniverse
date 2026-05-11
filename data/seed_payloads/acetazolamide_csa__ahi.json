@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "acetazolamide_csa",
+      "name": "Acetazolamide for central sleep apnea",
+      "kind": "drug",
+      "aliases": [
+        "acetazolamide in central sleep apnea",
+        "carbonic anhydrase inhibition for CSA"
+      ],
+      "description": "Use of acetazolamide to reduce ventilatory instability and central sleep apnea burden."
+    },
+    {
+      "slug": "ahi",
+      "name": "Apnea-hypopnea index",
+      "kind": "process",
+      "aliases": [
+        "sleep apnea event index"
+      ],
+      "description": "The apnea-hypopnea index, representing the number of apneas and hypopneas per hour of sleep."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "acetazolamide_csa",
+      "outcome_slug": "ahi",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Small interventional studies suggest acetazolamide can substantially reduce central-apnea burden, including a fall in central apnea frequency from 49 to 23 events/h in HFrEF and a drop in central apnea index from 25.5 to 6.6 after one month in selected central apnea syndrome. The signal is promising but remains based on small, phenotype-specific studies rather than large long-term trials.",
+      "population": "adults with central sleep apnea, especially high-loop-gain or heart-failure-related central sleep apnea",
+      "mechanism": "Carbonic anhydrase inhibition induces a mild metabolic acidosis, lowers plant gain, widens the carbon-dioxide reserve, and stabilizes ventilatory control, which can suppress central events.",
+      "summary": "The edge is better described as mixed than firmly protective. Acetazolamide often improves physiologic breathing instability and can reduce AHI or central apnea index, but the evidence base is small, heterogeneous, and focused on surrogate sleep metrics rather than durable patient outcomes.",
+      "caveats": "Most data come from short crossover or before-after studies with limited sample sizes. Response likely depends on underlying phenotype, especially hypocapnic or high-loop-gain CSA, so the average effect may not generalize cleanly across all central sleep apnea populations.",
+      "evidence": [
+        {
+          "citation": "DeBackerWA et al 1995 Am J Respir Crit Care Med",
+          "year": 1995,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Central apnea index decreases after prolonged treatment with acetazolamide.",
+          "pmid": "7812578",
+          "n_participants": 14,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -18.9,
+            "comparator": "central apnea index after 1 month of acetazolamide versus baseline in selected central sleep apnea"
+          }
+        },
+        {
+          "citation": "JavaheriS 2006 Am J Respir Crit Care Med",
+          "year": 2006,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Acetazolamide improves central sleep apnea in heart failure: a double-blind, prospective study.",
+          "pmid": "16239622",
+          "n_participants": 12,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -26.0,
+            "comparator": "hourly episodes of central apnea with acetazolamide versus placebo in heart-failure-related CSA"
+          }
+        },
+        {
+          "citation": "ApostoloA et al 2014 J Card Fail",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Acetazolamide and inhaled carbon dioxide reduce periodic breathing during exercise in patients with chronic heart failure.",
+          "pmid": "24418726",
+          "n_participants": 20,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -9.7,
+            "comparator": "overnight apnea-hypopnea index after prolonged acetazolamide versus baseline in chronic heart failure with periodic breathing"
+          }
+        }
+      ]
+    }
+  ]
+}

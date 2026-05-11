@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "osilodrostat_cushings",
+      "name": "Osilodrostat for Cushing's disease",
+      "kind": "drug",
+      "aliases": [
+        "osilodrostat in Cushing disease",
+        "11-beta-hydroxylase inhibition with osilodrostat"
+      ],
+      "description": "Osilodrostat treatment used to lower cortisol excess in endogenous Cushing's disease."
+    },
+    {
+      "slug": "cortisol",
+      "name": "Cortisol control",
+      "kind": "process",
+      "aliases": [
+        "urinary free cortisol normalization",
+        "hypercortisolism control"
+      ],
+      "description": "Reduction or normalization of cortisol excess, usually measured with urinary free cortisol or related cortisol markers."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "osilodrostat_cushings",
+      "outcome_slug": "cortisol",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Osilodrostat has one of the stronger cortisol-control signals among current Cushing disease drugs. A 2021 meta-analysis reported pooled disease control of 66.4% across 97 treated patients, the pivotal LINC 3 phase III study showed 53% complete response at week 24 without dose up-titration and 86% versus 29% maintained response versus placebo at week 34, and the LINC 2 phase II program reported mean urinary free cortisol normalization in 78.9% during the core study.",
+      "population": "adults with persistent, recurrent, or de novo Cushing's disease requiring medical therapy for hypercortisolism",
+      "mechanism": "Osilodrostat inhibits adrenal 11-beta-hydroxylase, reducing cortisol synthesis and thereby lowering urinary free cortisol and related biochemical markers of hypercortisolism.",
+      "summary": "This is a clearly protective edge. Osilodrostat consistently lowers cortisol and sustains control in a substantial proportion of patients, though adrenal insufficiency and precursor-related adverse effects still require active monitoring.",
+      "caveats": "Control rates depend on the response definition and titration protocol, and some of the strongest signals come from selected trial populations. This edge is about biochemical cortisol control rather than guaranteed long-term remission.",
+      "evidence": [
+        {
+          "citation": "Simoes Correa Galendi J et al 2021 Front Endocrinol (Lausanne)",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effectiveness of Medical Treatment of Cushing's Disease: A Systematic Review and Meta-Analysis.",
+          "pmid": "34603209",
+          "n_participants": 97,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 66.4,
+            "unit": "percent",
+            "ci_low": 57.9,
+            "ci_high": 74.3,
+            "comparator": "pooled proportion of Cushing disease control with osilodrostat across included studies"
+          }
+        },
+        {
+          "citation": "Pivonello R et al 2020 Lancet Diabetes Endocrinol",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy and safety of osilodrostat in patients with Cushing's disease (LINC 3): a multicentre phase III study with a double-blind, randomised withdrawal phase.",
+          "pmid": "32730798",
+          "n_participants": 137,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 53.0,
+            "unit": "percent",
+            "comparator": "participants with complete response at week 24 without dose up-titration after week 12 in LINC 3"
+          }
+        },
+        {
+          "citation": "Fleseriu M et al 2022 Pituitary",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Long-term efficacy and safety of osilodrostat in Cushing's disease: final results from a Phase II study with an optional extension phase (LINC 2).",
+          "pmid": "36219274",
+          "n_participants": 19,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 78.9,
+            "unit": "percent",
+            "comparator": "patients with mean urinary free cortisol normalization during the core phase of LINC 2"
+          }
+        }
+      ]
+    }
+  ]
+}

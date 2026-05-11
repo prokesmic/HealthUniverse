@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "light_therapy_advanced_sleep_phase",
+      "name": "Light therapy for advanced sleep phase disorder",
+      "kind": "activity",
+      "aliases": [
+        "evening bright light for advanced sleep phase",
+        "phototherapy for advanced sleep-wake phase disorder"
+      ],
+      "description": "Timed light exposure, usually in the evening or early biological night, intended to delay abnormally early sleep timing in advanced sleep phase disorder."
+    },
+    {
+      "slug": "sleep_timing",
+      "name": "Sleep timing",
+      "kind": "process",
+      "aliases": [
+        "clock timing of sleep",
+        "sleep phase alignment"
+      ],
+      "description": "The clock timing of sleep onset and offset relative to a desired or socially typical schedule."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "light_therapy_advanced_sleep_phase",
+      "outcome_slug": "sleep_timing",
+      "direction": "protective",
+      "tier": "D",
+      "effect_size": "small",
+      "effect_quant": "The evidence for delaying overly early sleep timing is limited and inconsistent. In a 47-participant evening-light trial, enhanced light was no better than placebo on actigraphic phase measures, although sleep onset was subjectively delayed. In a later 32-participant crossover light-mask study, objective sleep timing also did not improve beyond control.",
+      "population": "older adults or other patients with advanced sleep phase disorder who fall asleep and wake substantially earlier than desired",
+      "mechanism": "Evening or early-night light can theoretically delay circadian phase by shifting the biological clock later, which could move sleep onset and wake time toward a more desired schedule.",
+      "summary": "This is a low-confidence protective edge rather than a robust treatment effect. Light therapy is biologically plausible and guideline-endorsed as an option, but direct randomized evidence in advanced sleep phase disorder remains small and mixed.",
+      "caveats": "Most studies are small, involve older adults with heterogeneous sleep complaints, and often show subjective improvement without clear objective phase correction. Practical benefit likely depends on precise timing, dose, adherence, and ambient light exposure outside the intervention window.",
+      "evidence": [
+        {
+          "citation": "PalmerCR et al 2003 Behav Sleep Med",
+          "year": 2003,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Efficacy of Enhanced Evening Light for Advanced Sleep Phase Syndrome.",
+          "pmid": "15602801",
+          "n_participants": 47
+        },
+        {
+          "citation": "FigueiroMG et al 2020 Behav Sleep Med",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Impact of an Individually Tailored Light Mask on Sleep Parameters in Older Adults With Advanced Phase Sleep Disorder.",
+          "pmid": "30588849",
+          "n_participants": 32
+        },
+        {
+          "citation": "AugerRR et al 2015 J Clin Sleep Med",
+          "year": 2015,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Clinical Practice Guideline for the Treatment of Intrinsic Circadian Rhythm Sleep-Wake Disorders: Advanced Sleep-Wake Phase Disorder (ASWPD), Delayed Sleep-Wake Phase Disorder (DSWPD), Non-24-Hour Sleep-Wake Rhythm Disorder (N24SWD), and Irregular Sleep-Wake Rhythm Disorder (ISWRD).",
+          "pmid": "26414986"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "inclisiran_long_term",
+      "name": "Long-term inclisiran therapy",
+      "kind": "drug",
+      "aliases": [
+        "twice-yearly inclisiran",
+        "extended inclisiran treatment"
+      ],
+      "description": "Long-term treatment with inclisiran, a small interfering RNA therapy targeting PCSK9 synthesis, usually given after initial and 3-month doses and then every 6 months."
+    },
+    {
+      "slug": "ldl_reduction",
+      "name": "LDL cholesterol reduction",
+      "kind": "process",
+      "aliases": [
+        "lowering of LDL-C",
+        "LDL cholesterol lowering"
+      ],
+      "description": "Reduction in circulating low-density lipoprotein cholesterol over time."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "inclisiran_long_term",
+      "outcome_slug": "ldl_reduction",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "Across ORION-10 and ORION-11, inclisiran lowered LDL-C by about 50% at day 510, and ORION-8 showed the effect remained durable over a mean cumulative exposure of 3.7 years with a mean LDL-C change of -49.4%. Meta-analysis of randomized trials found a pooled LDL-C lowering effect of roughly 48% to 51%.",
+      "population": "adults with atherosclerotic cardiovascular disease, ASCVD risk equivalents, or familial hypercholesterolemia who have elevated LDL cholesterol despite standard lipid-lowering therapy",
+      "mechanism": "Inclisiran silences hepatic PCSK9 synthesis through RNA interference, increasing LDL-receptor recycling and sustaining marked LDL lowering with infrequent dosing.",
+      "summary": "This is one of the cleaner long-term lipid-lowering edges in the dataset. The LDL effect is large, durable, and unusually convenient from an adherence standpoint because maintenance dosing is only twice yearly.",
+      "caveats": "The lipid effect is strong, but long-term hard-outcome data are still less mature than the LDL reduction signal itself. The edge therefore focuses on LDL lowering rather than overclaiming definitive event prevention.",
+      "evidence": [
+        {
+          "citation": "Ray KK et al 2020 N Engl J Med",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Two Phase 3 Trials of Inclisiran in Patients with Elevated LDL Cholesterol. ORION-10 and ORION-11.",
+          "pmid": "32187462",
+          "n_participants": 3178,
+          "effect_quant": {
+            "metric": "percentage_change",
+            "value": -52.3,
+            "ci_low": -55.7,
+            "ci_high": -48.8,
+            "comparator": "placebo-corrected LDL-C percentage change at day 510 in ORION-10 with inclisiran"
+          }
+        },
+        {
+          "citation": "Wright RS et al 2024 Eur Heart J",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Inclisiran administration potently and durably lowers LDL-C over an extended-term follow-up: the ORION-8 trial.",
+          "pmid": "38753448",
+          "n_participants": 3274,
+          "effect_quant": {
+            "metric": "percentage_change",
+            "value": -49.4,
+            "comparator": "mean LDL-C percentage change at end of study in ORION-8 with long-term inclisiran exposure"
+          }
+        },
+        {
+          "citation": "Khan SA et al 2020 Am J Cardiol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Meta-Analysis of Inclisiran for the Treatment of Hypercholesterolemia.",
+          "pmid": "32892993",
+          "n_participants": 3660,
+          "effect_quant": {
+            "metric": "percentage_change",
+            "value": -51.0,
+            "ci_low": -53.0,
+            "ci_high": -48.0,
+            "comparator": "pooled LDL-C percentage change with inclisiran versus placebo across randomized trials"
+          }
+        }
+      ]
+    }
+  ]
+}

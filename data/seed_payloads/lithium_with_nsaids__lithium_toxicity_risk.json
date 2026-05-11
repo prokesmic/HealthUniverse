@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "lithium_with_nsaids",
+      "name": "Lithium used with NSAIDs",
+      "kind": "activity",
+      "aliases": [
+        "concurrent lithium and nonsteroidal anti-inflammatory drug use",
+        "lithium plus ibuprofen or indomethacin"
+      ],
+      "description": "Lithium treatment during concomitant use of nonsteroidal anti-inflammatory drugs."
+    },
+    {
+      "slug": "lithium_toxicity_risk",
+      "name": "Lithium toxicity risk",
+      "kind": "condition",
+      "aliases": [
+        "elevated serum lithium with toxicity",
+        "lithium accumulation risk"
+      ],
+      "description": "Risk of clinically important lithium accumulation, reduced lithium clearance, or toxic lithium adverse effects."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "lithium_with_nsaids",
+      "outcome_slug": "lithium_toxicity_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Ibuprofen raised serum lithium and lowered lithium clearance in a 9-patient study, while indomethacin increased plasma lithium concentrations by 59% in psychiatric patients and reduced renal lithium clearance by 31% overall.",
+      "population": "patients maintained on lithium therapy who start or continue nonsteroidal anti-inflammatory drugs",
+      "mechanism": "NSAIDs reduce renal prostaglandin synthesis and can decrease renal perfusion and distal tubular lithium clearance, causing serum lithium to rise even when the lithium dose is unchanged.",
+      "summary": "Combining lithium with NSAIDs is a well-established toxicity interaction rather than a theoretical warning. The magnitude differs by NSAID and by patient susceptibility, but the direction is consistently toward higher lithium levels and reduced clearance.",
+      "caveats": "The literature is a mix of small pharmacokinetic trials, case reports, and reviews rather than large modern comparative cohorts. Individual response is variable, so some patients show only small increases while others develop severe toxicity, especially with renal impairment or dehydration.",
+      "evidence": [
+        {
+          "citation": "Ragheb M 1987 J Clin Psychiatry",
+          "year": 1987,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Ibuprofen can increase serum lithium level in lithium-treated patients.",
+          "pmid": "3558329",
+          "n_participants": 9
+        },
+        {
+          "citation": "Frolich JC et al 1979 Br Med J",
+          "year": 1979,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Indomethacin increases plasma lithium.",
+          "pmid": "444956",
+          "n_participants": 7,
+          "effect_quant": {
+            "metric": "percent_change",
+            "value": 59,
+            "unit": "percent",
+            "comparator": "increase in plasma lithium concentrations among psychiatric patients during indomethacin exposure"
+          }
+        },
+        {
+          "citation": "Finley PR et al 2016 Clin Pharmacokinet",
+          "year": 2016,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Drug Interactions with Lithium: An Update.",
+          "pmid": "26936045"
+        }
+      ]
+    }
+  ]
+}

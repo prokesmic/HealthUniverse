@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "mri_first_prostate_pathway",
+      "outcome_slug": "diagnostic_outcomes",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Compared with systematic TRUS-guided biopsy pathways, an MRI-first pathway detects more clinically significant prostate cancer while reducing unnecessary low-grade diagnoses and avoided biopsies in many studies. In randomized-trial meta-analysis, the MRI-stratified pathway improved clinically significant cancer detection with a relative detection rate of 1.45.",
+      "population": "men with suspected prostate cancer, including biopsy-naive men and some men with prior negative biopsy, undergoing diagnostic workup after elevated PSA or abnormal examination",
+      "mechanism": "Prebiopsy multiparametric MRI enriches biopsy toward suspicious lesions and can spare some men from immediate biopsy when imaging is negative, improving the yield of clinically significant disease relative to blind systematic sampling.",
+      "summary": "This is now one of the clearest diagnostic-pathway improvements in urologic oncology. The strongest evidence does not say MRI solves every problem, but it does consistently support an MRI-first strategy as better calibrated to clinically significant cancer than immediate systematic biopsy alone.",
+      "caveats": "Benefits depend on MRI quality, reader expertise, lesion targeting method, and whether the pathway omits or combines systematic cores. A purely MRI-targeted approach can still miss a minority of clinically significant cancers, so local expertise and pathway design matter.",
+      "evidence": [
+        {
+          "citation": "Drost FJH et al 2019 Eur Urol Oncol",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Comparison of Magnetic Resonance Imaging-stratified Clinical Pathways and Systematic Transrectal Ultrasound-guided Biopsy Pathway for the Detection of Clinically Significant Prostate Cancer: A Systematic Review and Meta-analysis of Randomized Controlled Trials.",
+          "pmid": "31204311",
+          "n_participants": 2908,
+          "effect_quant": {
+            "metric": "relative_detection_rate",
+            "value": 1.45,
+            "ci_low": 1.09,
+            "ci_high": 1.92,
+            "comparator": "MRI-stratified pathway versus systematic TRUS-biopsy pathway for clinically significant prostate cancer detection"
+          }
+        },
+        {
+          "citation": "Drost FJH et al 2020 Eur Urol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Prostate Magnetic Resonance Imaging, with or Without Magnetic Resonance Imaging-targeted Biopsy, and Systematic Biopsy for Detecting Prostate Cancer: A Cochrane Systematic Review and Meta-analysis.",
+          "pmid": "31326219",
+          "n_participants": 1000,
+          "effect_quant": {
+            "metric": "sensitivity",
+            "value": 0.72,
+            "ci_low": 0.60,
+            "ci_high": 0.82,
+            "comparator": "MRI pathway sensitivity for grade group 2 or higher prostate cancer per 1000 men; systematic biopsy sensitivity was 0.63"
+          }
+        },
+        {
+          "citation": "Ahdoot M et al 2020 N Engl J Med",
+          "year": 2020,
+          "study_type": "cross_sectional",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "MRI-Targeted, Systematic, and Combined Biopsy for Prostate Cancer Diagnosis.",
+          "pmid": "32130814",
+          "n_participants": 2103,
+          "effect_quant": {
+            "metric": "miss_rate_percent",
+            "value": 8.8,
+            "comparator": "clinically significant cancers that would have been missed if only MRI-targeted biopsies had been performed"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "mri_first_prostate_pathway",
+      "name": "MRI-first prostate diagnostic pathway",
+      "kind": "activity",
+      "aliases": [
+        "prebiopsy MRI prostate pathway",
+        "MRI-stratified prostate workup"
+      ],
+      "description": "A prostate diagnostic strategy that uses multiparametric MRI before biopsy to guide whether and how biopsy is performed."
+    },
+    {
+      "slug": "diagnostic_outcomes",
+      "name": "Diagnostic outcomes",
+      "kind": "condition",
+      "aliases": [
+        "diagnostic yield and accuracy",
+        "workup performance outcomes"
+      ],
+      "description": "Outcomes related to the accuracy, yield, and efficiency of a diagnostic pathway."
+    }
+  ]
+}

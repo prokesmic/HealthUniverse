@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "maxillomandibular_advancement_osa",
+      "name": "Maxillomandibular advancement for obstructive sleep apnea",
+      "kind": "activity",
+      "aliases": [
+        "MMA surgery for OSA",
+        "bimaxillary advancement for sleep apnea"
+      ],
+      "description": "Maxillomandibular advancement surgery used to enlarge the pharyngeal airway in obstructive sleep apnea."
+    },
+    {
+      "slug": "ahi_reduction",
+      "name": "Reduction in apnea-hypopnea index",
+      "kind": "process",
+      "aliases": [
+        "AHI improvement",
+        "lower sleep apnea event burden"
+      ],
+      "description": "A reduction in the apnea-hypopnea index, indicating fewer obstructive breathing events during sleep."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "maxillomandibular_advancement_osa",
+      "outcome_slug": "ahi_reduction",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "Maxillomandibular advancement has one of the largest surgical effects on OSA severity. A 2025 meta-analysis found pooled AHI improvement of -41.87 events/h, while cohort series reported 83% mean AHI reduction and 100% surgical success in selected patients at follow-up.",
+      "population": "adults with moderate to severe obstructive sleep apnea selected for definitive airway-enlarging surgery, often after CPAP intolerance or craniofacial risk factors",
+      "mechanism": "Advancing the maxilla and mandible enlarges the retropalatal and retrolingual airway, tensions surrounding soft tissues, and reduces airway collapsibility across multiple levels.",
+      "summary": "This is one of the strongest procedural edges in the whole sleep-apnea block. When patients are appropriately selected, MMA can produce large and durable objective improvements in OSA severity.",
+      "caveats": "It is major surgery with postoperative morbidity and neurosensory sequelae, and most evidence comes from single-arm series rather than sham-controlled trials. Selection bias likely inflates some reported success rates.",
+      "evidence": [
+        {
+          "citation": "WalkerA et al 2025 Otolaryngol Head Neck Surg",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Maxillomandibular Advancement Safety and Effectiveness in Obstructive Sleep Apnea: Systematic Review and Meta-Analysis.",
+          "pmid": "39764681",
+          "n_participants": 1597,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -41.87,
+            "ci_low": -49.86,
+            "ci_high": -33.89,
+            "comparator": "AHI change after maxillomandibular advancement"
+          }
+        },
+        {
+          "citation": "VargheseR et al 2012 Int J Otolaryngol",
+          "year": 2012,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Maxillomandibular advancement in the management of obstructive sleep apnea.",
+          "pmid": "22518154",
+          "n_participants": 24,
+          "effect_quant": {
+            "metric": "relative_change_percent",
+            "value": -83.0,
+            "comparator": "Group mean AHI reduction about 6.7 months after maxillomandibular advancement"
+          }
+        },
+        {
+          "citation": "GiardaM et al 2013 Acta Otorhinolaryngol Ital",
+          "year": 2013,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and safety of maxillomandibular advancement in treatment of obstructive sleep apnoea syndrome.",
+          "pmid": "23620639",
+          "n_participants": 16,
+          "effect_quant": {
+            "metric": "responder_rate",
+            "value": 100.0,
+            "comparator": "Surgical success at follow-up, defined as AHI under 20 events per hour plus more than 50% AHI reduction"
+          }
+        }
+      ]
+    }
+  ]
+}

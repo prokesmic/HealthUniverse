@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "orlistat_pcos",
+      "name": "Orlistat for PCOS",
+      "kind": "drug",
+      "aliases": [
+        "orlistat in polycystic ovary syndrome",
+        "lipase inhibition for weight loss in PCOS"
+      ],
+      "description": "Use of orlistat in women with polycystic ovary syndrome, usually in the setting of overweight or obesity, to target metabolic or weight-related outcomes."
+    },
+    {
+      "slug": "metabolic_outcomes",
+      "name": "Metabolic outcomes",
+      "kind": "process",
+      "aliases": [
+        "metabolic profile",
+        "anthropometric and metabolic measures"
+      ],
+      "description": "Metabolic outcomes such as weight, BMI, waist measures, insulin resistance, glucose markers, lipids, and related cardiometabolic features."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "orlistat_pcos",
+      "outcome_slug": "metabolic_outcomes",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The orlistat-PCOS evidence is mixed rather than cleanly positive. A 2024 guideline-linked meta-analysis found no clear metabolic benefit when orlistat plus a combined oral contraceptive was compared with oral contraceptive therapy alone for fasting insulin, while older randomized and network-meta-analytic evidence suggests orlistat can support weight loss and some androgen or lipid improvements in selected overweight PCOS populations.",
+      "population": "women with polycystic ovary syndrome, usually overweight or obese and often insulin resistant",
+      "mechanism": "By reducing intestinal fat absorption and promoting weight loss, orlistat may indirectly improve insulin sensitivity, lipids, and androgen excess, but the net effect depends on comparator, background therapy, and adherence.",
+      "summary": "This belongs in the mixed bucket. Orlistat can help some anthropometric and metabolic measures, but the benefit is modest and inconsistent across trial designs and treatment combinations.",
+      "caveats": "Many studies are short, small, or embedded within combination regimens, and the best available meta-analysis found no clear signal for some metabolic endpoints. Tolerability and adherence also affect real-world benefit.",
+      "evidence": [
+        {
+          "citation": "GoldbergA et al 2024 Obes Rev",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Anti-obesity pharmacological agents for polycystic ovary syndrome: A systematic review and meta-analysis to inform the 2023 international evidence-based guideline.",
+          "pmid": "38355887",
+          "n_participants": 996,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -8.65,
+            "ci_low": -33.55,
+            "ci_high": 16.26,
+            "unit": "pmol/L",
+            "comparator": "fasting insulin with orlistat plus combined oral contraceptive versus combined oral contraceptive alone in pooled PCOS trials"
+          }
+        },
+        {
+          "citation": "KumarP et al 2011 Reprod Biomed Online",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The effects of metformin or orlistat on obese women with polycystic ovary syndrome: a prospective randomized open-label study.",
+          "pmid": "21484319",
+          "n_participants": 80,
+          "effect_quant": {
+            "metric": "group_difference",
+            "value": 15.0,
+            "unit": "percentage_points",
+            "comparator": "ovulation rate with orlistat versus metformin after 3 months in obese women with PCOS (30% vs 15%)"
+          }
+        },
+        {
+          "citation": "KhalidS et al 2018 Clin Endocrinol (Oxf)",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Pharmacologic therapy to induce weight loss in women who have obesity/overweight with polycystic ovary syndrome: a systematic review and network meta-analysis.",
+          "pmid": "30066361",
+          "n_participants": 941
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ssri_with_tramadol",
+      "name": "SSRI used with tramadol",
+      "kind": "activity",
+      "aliases": [
+        "concurrent SSRI and tramadol use",
+        "tramadol added to an SSRI"
+      ],
+      "description": "Use of tramadol together with a selective serotonin reuptake inhibitor."
+    },
+    {
+      "slug": "serotonin_syndrome_risk",
+      "name": "Serotonin syndrome risk",
+      "kind": "condition",
+      "aliases": [
+        "serotonin toxicity risk",
+        "risk of serotonin syndrome"
+      ],
+      "description": "Risk of clinically important serotonin toxicity with autonomic, neuromuscular, and mental-status changes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ssri_with_tramadol",
+      "outcome_slug": "serotonin_syndrome_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Large review and pharmacovigilance literature consistently identifies tramadol as one of the recurrent serotonergic co-exposures in serotonin syndrome, with repeated case reports of toxicity after tramadol is layered onto SSRI therapy at usual doses.",
+      "population": "adults receiving SSRIs who are also given tramadol for pain, especially older adults and patients with polypharmacy",
+      "mechanism": "Tramadol inhibits serotonin reuptake in addition to its opioid effects. When combined with SSRI-mediated serotonin transporter blockade, synaptic serotonergic signaling can be pushed into a toxic range.",
+      "summary": "The SSRI-tramadol combination is a clinically real serotonin-toxicity interaction rather than a purely theoretical warning. Most evidence is case-driven, but the pharmacology and repeated clinical pattern make the harm signal credible enough for routine avoidance or close monitoring.",
+      "caveats": "Absolute incidence is low, and many exposed patients do not develop toxicity. Risk rises with higher doses, CYP2D6 variability, additional serotonergic drugs, and frailty, so this edge supports caution rather than inevitability.",
+      "evidence": [
+        {
+          "citation": "Beakley BD et al 2015 Pain Physician",
+          "year": 2015,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Tramadol, Pharmacology, Side Effects, and Serotonin Syndrome: A Review.",
+          "pmid": "26218943"
+        },
+        {
+          "citation": "Shakoor MT et al 2014 Am J Case Rep",
+          "year": 2014,
+          "study_type": "case_report",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Transient serotonin syndrome caused by concurrent use of tramadol and selective serotonin reuptake inhibitor.",
+          "pmid": "25540831"
+        },
+        {
+          "citation": "Spies PE et al 2017 Eur J Hosp Pharm",
+          "year": 2017,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Interaction between tramadol and selective serotonin reuptake inhibitors: are doctors aware of potential risks in their prescription practice?",
+          "pmid": "31156918",
+          "n_participants": 14189
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tongue_strengthening_myofunctional",
+      "name": "Tongue-strengthening myofunctional therapy",
+      "kind": "activity",
+      "aliases": [
+        "orofacial myofunctional therapy for OSA",
+        "tongue exercises for obstructive sleep apnea"
+      ],
+      "description": "Tongue-focused or oropharyngeal myofunctional exercise programs intended to improve upper-airway muscle function in obstructive sleep apnea."
+    },
+    {
+      "slug": "ahi_reduction",
+      "name": "Reduction in apnea-hypopnea index",
+      "kind": "process",
+      "aliases": [
+        "AHI improvement",
+        "lower sleep apnea event burden"
+      ],
+      "description": "A reduction in the apnea-hypopnea index, indicating fewer obstructive breathing events during sleep."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tongue_strengthening_myofunctional",
+      "outcome_slug": "ahi_reduction",
+      "direction": "mixed",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "The literature is conflicted. A 2025 re-analysis of systematic reviews found mean AHI improvement of -9.54 events/h, but two newer randomized trials of tongue-focused or combined myofunctional programs found no significant between-group AHI benefit.",
+      "population": "adults with mild to moderate obstructive sleep apnea, especially patients seeking non-device adjunctive therapy",
+      "mechanism": "These exercises aim to improve tone and coordination of the tongue and pharyngeal dilator muscles, which could reduce airway collapse during sleep if the targeted muscle dysfunction is a key driver of disease.",
+      "summary": "Myofunctional therapy remains plausible and sometimes promising, but the newer trial-level signal is inconsistent and seems weaker than the more optimistic pooled literature suggests.",
+      "caveats": "Many studies are small, heterogeneous, and at high risk of bias. Results may differ between multi-component myofunctional programs and narrow tongue-only protocols, and durable objective AHI improvement is uncertain.",
+      "evidence": [
+        {
+          "citation": "PisoniE et al 2025 J Sleep Res",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Myofunctional Therapy in Adults and Children With Obstructive Sleep Apnea: An Overview and Re-Analysis of Systematic Reviews.",
+          "pmid": "41045206",
+          "n_participants": 716,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -9.54,
+            "ci_low": -14.04,
+            "ci_high": -5.04,
+            "comparator": "AHI with myofunctional therapy versus control in adults"
+          }
+        },
+        {
+          "citation": "PoncinW et al 2022 J Oral Rehabil",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The effect of tongue elevation muscle training in patients with obstructive sleep apnea: A randomised controlled trial.",
+          "pmid": "36081312",
+          "n_participants": 25
+        },
+        {
+          "citation": "Diaz de TeranT et al 2025 Sleep Breath",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effectiveness of strenghtning oropharyngeal myofunctional therapy combined with cervical spine exercises in mild to moderate obstructive sleep apnoea.",
+          "pmid": "41205126",
+          "n_participants": 32,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 2.0,
+            "comparator": "Between-group AHI difference after 20 weeks of combined myofunctional and cervical exercise therapy versus control"
+          }
+        }
+      ]
+    }
+  ]
+}

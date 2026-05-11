@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "dapagliflozin_ckd_non_diabetic",
+      "name": "Dapagliflozin in non-diabetic chronic kidney disease",
+      "kind": "drug",
+      "aliases": [
+        "dapagliflozin for CKD without diabetes",
+        "SGLT2 inhibition in non-diabetic CKD"
+      ],
+      "description": "Use of dapagliflozin in adults with chronic kidney disease who do not have type 2 diabetes."
+    },
+    {
+      "slug": "kidney_outcomes",
+      "name": "Kidney outcomes",
+      "kind": "condition",
+      "aliases": [
+        "renal outcomes",
+        "progressive kidney failure outcomes"
+      ],
+      "description": "Clinically important kidney outcomes such as sustained eGFR decline, end-stage kidney disease, or kidney-related death."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "dapagliflozin_ckd_non_diabetic",
+      "outcome_slug": "kidney_outcomes",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "DAPA-CKD showed a lower primary kidney composite with dapagliflozin overall (HR 0.61), and the prespecified non-diabetic subgroup had an even stronger relative effect (HR 0.50). In the biopsy-confirmed FSGS subgroup, kidney-outcome estimates still favored dapagliflozin (HR 0.62), though with wide confidence intervals because of small sample size.",
+      "population": "adults with albuminuric chronic kidney disease without type 2 diabetes, including mixed non-diabetic CKD etiologies and smaller glomerular-disease subgroups",
+      "mechanism": "SGLT2 inhibition reduces intraglomerular pressure and tubuloglomerular stress and may slow kidney-function loss even in the absence of glucose-lowering needs.",
+      "summary": "This is one of the major practice-changing kidney-protection signals of the last few years. The effect clearly extends beyond diabetes, which is why the non-diabetic subgroup result matters so much here.",
+      "caveats": "The evidence is strongest for albuminuric CKD already on standard care, and some rarer etiologies rely on smaller subgroup analyses. The edge should not be generalized too casually to every low-albuminuria or ultra-advanced CKD scenario.",
+      "evidence": [
+        {
+          "citation": "Heerspink HJL et al 2020 N Engl J Med",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Dapagliflozin in Patients with Chronic Kidney Disease. DAPA-CKD.",
+          "pmid": "32970396",
+          "n_participants": 4304,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.61,
+            "ci_low": 0.51,
+            "ci_high": 0.72,
+            "comparator": "primary kidney composite outcome in DAPA-CKD with dapagliflozin versus placebo"
+          }
+        },
+        {
+          "citation": "Wheeler DC et al 2021 Lancet Diabetes Endocrinol",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of dapagliflozin on major adverse kidney and cardiovascular events in patients with diabetic and non-diabetic chronic kidney disease: a prespecified analysis from the DAPA-CKD trial.",
+          "pmid": "33338413",
+          "n_participants": 1398,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.5,
+            "ci_low": 0.35,
+            "ci_high": 0.72,
+            "comparator": "primary composite kidney outcome in DAPA-CKD participants without diabetes"
+          }
+        },
+        {
+          "citation": "Cherney DZI et al 2022 Clin Kidney J",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Safety and efficacy of dapagliflozin in patients with focal segmental glomerulosclerosis: a prespecified analysis of the DAPA-CKD trial.",
+          "pmid": "34850160",
+          "n_participants": 104,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.62,
+            "ci_low": 0.17,
+            "ci_high": 2.17,
+            "comparator": "primary kidney outcome in the biopsy-confirmed FSGS subgroup of DAPA-CKD with dapagliflozin versus placebo"
+          }
+        }
+      ]
+    }
+  ]
+}

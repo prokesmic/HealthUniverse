@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "iron_repletion_rls_ferritin_low",
+      "name": "Iron repletion for restless legs syndrome with low ferritin",
+      "kind": "drug",
+      "aliases": [
+        "iron therapy for low-ferritin restless legs syndrome",
+        "iron replacement in RLS with iron deficiency"
+      ],
+      "description": "Oral or intravenous iron replacement used in people with restless legs syndrome and low ferritin or nonanemic iron deficiency."
+    },
+    {
+      "slug": "severity",
+      "name": "Disease severity",
+      "kind": "process",
+      "aliases": [
+        "symptom severity",
+        "clinical severity"
+      ],
+      "description": "Overall severity of a disorder, often measured by validated symptom scales such as the International Restless Legs Scale."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "iron_repletion_rls_ferritin_low",
+      "outcome_slug": "severity",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "Iron repletion improves RLS severity when iron stores are low. In a 2019 meta-analysis, iron therapy lowered IRLS scores by WMD -3.55 overall. In nonanemic iron-deficient RLS, ferric carboxymaltose improved IRLS by -4.66 versus placebo at week 12, and in a newer 209-patient multicenter RCT, IV ferric carboxymaltose again improved placebo-adjusted RLS severity.",
+      "population": "adults with restless legs syndrome and low ferritin, nonanemic iron deficiency, or related biochemical evidence of iron-restricted physiology",
+      "mechanism": "Restoring iron availability likely improves dopaminergic and metabolic function in neural circuits implicated in restless legs syndrome, reducing symptom intensity.",
+      "summary": "This is a meaningful protective edge, especially when ferritin is low. The benefit is not dramatic in every trial, but the direction is consistent and aligns well with guideline-driven first-line management of iron-deficient RLS.",
+      "caveats": "The magnitude varies by formulation, baseline ferritin, and timing of assessment; some trials show delayed rather than immediate benefit. The evidence is strongest for iron-deficient or low-ferritin patients, not for biochemically iron-replete RLS.",
+      "evidence": [
+        {
+          "citation": "AvniT et al 2019 Eur J Intern Med",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Iron supplementation for restless legs syndrome - A systematic review and meta-analysis.",
+          "pmid": "30798983",
+          "n_participants": 345,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -3.55,
+            "ci_low": -5.41,
+            "ci_high": -1.68,
+            "comparator": "International Restless Legs Scale change with iron therapy versus control across randomized trials"
+          }
+        },
+        {
+          "citation": "TrenkwalderC et al 2017 Mov Disord",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Ferric carboxymaltose in patients with restless legs syndrome and nonanemic iron deficiency: A randomized trial.",
+          "pmid": "28643901",
+          "n_participants": 110,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -4.66,
+            "ci_low": -8.59,
+            "ci_high": -0.73,
+            "comparator": "International Restless Legs Syndrome Severity Scale change with ferric carboxymaltose versus placebo at week 12"
+          }
+        },
+        {
+          "citation": "EarleyCJ et al 2024 Sleep",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Clinical efficacy and safety of intravenous ferric carboxymaltose for treatment of restless legs syndrome: a multicenter, randomized, placebo-controlled clinical trial.",
+          "pmid": "38625730",
+          "n_participants": 209
+        }
+      ]
+    }
+  ]
+}

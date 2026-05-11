@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "icd_hfref_primary_prevention",
+      "name": "Primary-prevention ICD in HFrEF",
+      "kind": "behavior",
+      "aliases": [
+        "implantable cardioverter-defibrillator for HFrEF primary prevention",
+        "prophylactic ICD in left ventricular systolic dysfunction"
+      ],
+      "description": "Implantable cardioverter-defibrillator placement for primary prevention in heart failure with reduced ejection fraction or comparable left ventricular dysfunction."
+    },
+    {
+      "slug": "sudden_cardiac_death",
+      "name": "Sudden cardiac death",
+      "kind": "condition",
+      "aliases": [
+        "arrhythmic sudden death",
+        "unexpected cardiac death"
+      ],
+      "description": "Sudden unexpected death from a presumed cardiac arrhythmic cause."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "icd_hfref_primary_prevention",
+      "outcome_slug": "sudden_cardiac_death",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "A 2017 primary-prevention meta-analysis found sudden death fell from 12.15% with conventional care to 4.39% with ICD therapy (HR 0.41), and SCD-HeFT showed a parallel survival advantage for ICD therapy over placebo.",
+      "population": "adults with left ventricular systolic dysfunction or HFrEF receiving ICDs for primary prevention rather than after prior cardiac arrest",
+      "mechanism": "ICDs terminate malignant ventricular tachyarrhythmias that would otherwise lead to sudden cardiac death, without directly changing the underlying myocardial disease process.",
+      "summary": "Primary-prevention ICD therapy strongly reduces sudden cardiac death in appropriately selected HFrEF patients. The benefit on sudden death is much clearer than any broad effect on every nonarrhythmic cause of mortality.",
+      "caveats": "Benefit depends on competing risks, background medical therapy, and life expectancy. The device can prevent arrhythmic death but does not reverse pump failure, so absolute payoff is smaller in patients with very high nonarrhythmic mortality risk.",
+      "evidence": [
+        {
+          "citation": "Kolodziejczak M et al 2017 Ann Intern Med",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Implantable Cardioverter-Defibrillators for Primary Prevention in Patients With Ischemic or Nonischemic Cardiomyopathy: A Systematic Review and Meta-analysis.",
+          "pmid": "28632280",
+          "n_participants": 8716,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.41,
+            "comparator": "sudden cardiac death with ICD therapy versus conventional care in the pooled primary-prevention meta-analysis"
+          }
+        },
+        {
+          "citation": "Bardy GH et al 2005 N Engl J Med",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Amiodarone or an implantable cardioverter-defibrillator for congestive heart failure.",
+          "pmid": "15659722",
+          "n_participants": 2521,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.77,
+            "comparator": "all-cause mortality in SCD-HeFT with ICD therapy versus placebo"
+          }
+        },
+        {
+          "citation": "Sukhija R et al 2007 Clin Cardiol",
+          "year": 2007,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Implantable cardioverter defibrillators for prevention of sudden cardiac death.",
+          "pmid": "17262771"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "brca_prophylactic_mastectomy",
+      "outcome_slug": "breast_cancer_incidence",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "large",
+      "effect_quant": "In unaffected BRCA1 or BRCA2 carriers, prospective cohort evidence shows near-elimination of incident breast cancer after bilateral risk-reducing mastectomy over early and mid-term follow-up. The effect size is much larger than most cancer-screening or chemoprevention edges, even though the evidence base is observational rather than randomized.",
+      "population": "women with pathogenic BRCA1 or BRCA2 variants considering bilateral risk-reducing mastectomy before any breast-cancer diagnosis",
+      "mechanism": "Removing most at-risk breast tissue in BRCA carriers sharply reduces the tissue substrate available for future primary cancers, which is why the effect on incident breast-cancer risk is so large.",
+      "summary": "This is one of the strongest hereditary-risk-reduction incidence edges in the corpus. The evidence is observational and surgery is highly preference-sensitive, but across BRCA carrier cohorts the procedure consistently lowers incident breast cancer far more than surveillance alone.",
+      "caveats": "This edge is about cancer incidence reduction in unaffected BRCA carriers, not a recommendation for all high-risk women. The surgery has major reconstructive, sexual, and psychosocial consequences, and the evidence is not randomized because such trials are not realistically feasible.",
+      "evidence": [
+        {
+          "citation": "Meijers-Heijboer H et al 2001 N Engl J Med",
+          "year": 2001,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Breast cancer after prophylactic bilateral mastectomy in women with a BRCA1 or BRCA2 mutation.",
+          "pmid": "11463009",
+          "n_participants": 139,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.36,
+            "comparator": "prophylactic bilateral mastectomy versus surveillance for incident breast cancer in unaffected BRCA1/2 carriers"
+          }
+        },
+        {
+          "citation": "Heemskerk-Gerritsen BAM et al 2013 Ann Oncol",
+          "year": 2013,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Substantial breast cancer risk reduction and potential survival benefit after bilateral mastectomy when compared with surveillance in healthy BRCA1 and BRCA2 mutation carriers: a prospective analysis.",
+          "pmid": "23576707",
+          "n_participants": 570,
+          "effect_quant": {
+            "metric": "incidence_rate_per_1000_person_years",
+            "value": 0.0,
+            "comparator": "bilateral risk-reducing mastectomy group incidence rate versus 28 per 1000 person-years with surveillance"
+          }
+        },
+        {
+          "citation": "Carbine NE et al 2018 Cochrane Database Syst Rev",
+          "year": 2018,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Risk-reducing mastectomy for the prevention of primary breast cancer.",
+          "pmid": "29620792",
+          "n_participants": 15077
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "brca_prophylactic_mastectomy",
+      "name": "BRCA risk-reducing mastectomy",
+      "kind": "activity",
+      "aliases": [
+        "bilateral prophylactic mastectomy in BRCA carriers",
+        "risk-reducing bilateral mastectomy for BRCA1 or BRCA2 carriers"
+      ],
+      "description": "Bilateral prophylactic or risk-reducing mastectomy performed in unaffected BRCA1 or BRCA2 pathogenic-variant carriers to lower future breast-cancer risk."
+    },
+    {
+      "slug": "breast_cancer_incidence",
+      "name": "Breast cancer incidence",
+      "kind": "condition",
+      "aliases": [
+        "new breast cancer cases",
+        "incident breast cancer"
+      ],
+      "description": "The occurrence of newly diagnosed breast cancer in a defined population over time."
+    }
+  ]
+}

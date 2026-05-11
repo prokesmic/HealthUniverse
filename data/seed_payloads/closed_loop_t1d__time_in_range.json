@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "closed_loop_t1d",
+      "name": "Closed-loop insulin delivery in type 1 diabetes",
+      "kind": "activity",
+      "aliases": [
+        "hybrid closed-loop therapy for T1D",
+        "automated insulin delivery in type 1 diabetes"
+      ],
+      "description": "Use of closed-loop or hybrid closed-loop insulin-delivery systems for people with type 1 diabetes."
+    },
+    {
+      "slug": "time_in_range",
+      "name": "Time in range",
+      "kind": "process",
+      "aliases": [
+        "TIR",
+        "percent time in glucose target range"
+      ],
+      "description": "The percentage of time sensor glucose values are within the target range, usually 70 to 180 mg/dL."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "closed_loop_t1d",
+      "outcome_slug": "time_in_range",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Closed-loop systems consistently improve time in range in type 1 diabetes. Network meta-analysis found closed-loop therapy increased time in range by 17.85 percentage points versus usual multiple daily injections with capillary glucose testing, and randomized trials across age groups show roughly 7 to 12 percentage-point gains over contemporary control therapy.",
+      "population": "children, adolescents, adults, and selected pregnant women with type 1 diabetes using automated insulin-delivery systems",
+      "mechanism": "Closed-loop systems continuously adjust insulin delivery in response to CGM input, reducing hyperglycemia and smoothing glycemic variability while limiting hypoglycemia exposure.",
+      "summary": "This is a strong protective edge. The evidence is consistent across multiple trial designs and age groups, and time-in-range improvement is one of the clearest benefits of automated insulin delivery.",
+      "caveats": "Magnitude varies by comparator, baseline control, and device generation. Some subgroups, such as pregnancy, may need population-specific target ranges and safety considerations.",
+      "evidence": [
+        {
+          "citation": "PeaseA et al 2020 Diabetes Care",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Time in Range for Multiple Technologies in Type 1 Diabetes: A Systematic Review and Network Meta-analysis.",
+          "pmid": "32669412",
+          "n_participants": 1043,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 17.85,
+            "ci_low": 7.56,
+            "ci_high": 28.14,
+            "unit": "percentage_points",
+            "comparator": "time in range with closed-loop systems versus usual care of multiple daily injections with capillary glucose testing"
+          }
+        },
+        {
+          "citation": "BrownSA et al 2019 N Engl J Med",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Six-Month Randomized, Multicenter Trial of Closed-Loop Control in Type 1 Diabetes.",
+          "pmid": "31618560",
+          "n_participants": 168,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 11.0,
+            "ci_low": 9.0,
+            "ci_high": 14.0,
+            "unit": "percentage_points",
+            "comparator": "time in range with a closed-loop system versus sensor-augmented pump therapy over 6 months"
+          }
+        },
+        {
+          "citation": "WareJ et al 2022 N Engl J Med",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Randomized Trial of Closed-Loop Control in Very Young Children with Type 1 Diabetes.",
+          "pmid": "35045227",
+          "n_participants": 74,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 8.7,
+            "ci_low": 7.4,
+            "ci_high": 9.9,
+            "unit": "percentage_points",
+            "comparator": "time in range during closed-loop therapy versus sensor-augmented pump therapy in children aged 1 to 7 years"
+          }
+        }
+      ]
+    }
+  ]
+}

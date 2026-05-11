@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "oral_contraceptive_with_broad_spectrum_antibiotic",
+      "name": "Oral contraceptive used with a broad-spectrum antibiotic",
+      "kind": "activity",
+      "aliases": [
+        "combined oral contraceptive plus broad-spectrum antibiotic",
+        "COC during non-rifamycin antibiotic treatment"
+      ],
+      "description": "Use of a combined oral contraceptive during treatment with a broad-spectrum antibiotic that is not a rifamycin."
+    },
+    {
+      "slug": "contraceptive_failure",
+      "name": "Contraceptive failure",
+      "kind": "condition",
+      "aliases": [
+        "breakthrough pregnancy",
+        "unexpected pregnancy despite contraception"
+      ],
+      "description": "Failure of a contraceptive method resulting in unintended conception."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "oral_contraceptive_with_broad_spectrum_antibiotic",
+      "outcome_slug": "contraceptive_failure",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Large case-crossover data did not show a clear overall increase in breakthrough pregnancy with antibiotics overall (case-time-control OR 1.12, 95% CI 0.63-1.98), while a Dutch prescription-database study found an apparent association that disappeared for broad-spectrum antibiotics in sensitivity analysis.",
+      "population": "reproductive-age women using combined oral contraceptives who receive non-rifamycin broad-spectrum antibiotics",
+      "mechanism": "The hypothesized interaction is reduced enterohepatic recirculation of contraceptive steroids after antibiotic-induced alteration of gut flora, but this mechanism has not produced a consistent clinical failure signal outside of rifamycin-class enzyme induction.",
+      "summary": "This is a genuinely contested edge rather than a settled interaction. Modern observational evidence does not show a robust, reproducible broad-spectrum-antibiotic signal, but the literature is noisy enough that historical caution persists in some guidance and patient counseling.",
+      "caveats": "This edge does not apply to rifampin or similar enzyme inducers, which are much stronger and more clinically important interactions. Breakthrough-pregnancy studies are vulnerable to adherence bias, recall bias, and confounding by illness or gastrointestinal upset.",
+      "evidence": [
+        {
+          "citation": "Toh S et al 2011 Contraception",
+          "year": 2011,
+          "study_type": "case_control",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Antibiotics and oral contraceptive failure - a case-crossover study.",
+          "pmid": "21477683",
+          "n_participants": 1330,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 1.12,
+            "comparator": "case-time-control estimate for antibiotics overall and breakthrough pregnancy among combined oral contraceptive users"
+          }
+        },
+        {
+          "citation": "Helms SE et al 1997 Biopharm Drug Dispos",
+          "year": 1997,
+          "study_type": "case_control",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Are antibiotics related to oral combination contraceptive failures in the Netherlands? A case-crossover study.",
+          "pmid": "22553004",
+          "n_participants": 29419,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 1.71,
+            "comparator": "age-adjusted case-control estimate for antibiotic exposure in the breakthrough-pregnancy exposure window versus controls"
+          }
+        },
+        {
+          "citation": "Back DJ et al 1999 Contraception",
+          "year": 1999,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Interaction between broad-spectrum antibiotics and the combined oral contraceptive pill. A literature review.",
+          "pmid": "10361620"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pitolisant_narcolepsy",
+      "name": "Pitolisant for narcolepsy",
+      "kind": "drug",
+      "aliases": [
+        "pitolisant in narcolepsy",
+        "Wakix for narcolepsy",
+        "BF2.649 for narcolepsy"
+      ],
+      "description": "Use of pitolisant to treat excessive daytime sleepiness in adults with narcolepsy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pitolisant_narcolepsy",
+      "outcome_slug": "daytime_sleepiness",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pitolisant consistently improves excessive daytime sleepiness in narcolepsy. In a 2022 network meta-analysis of 19 RCTs and 2,504 patients, solriamfetol outperformed pitolisant on ESS by MD -2.88, implying pitolisant is effective but not top-ranked. In HARMONY I, ESS fell 5.8 points on pitolisant versus 3.4 on placebo, with an adjusted between-group difference of -3.0.",
+      "population": "adults with narcolepsy and clinically important excessive daytime sleepiness, including mixed narcolepsy type 1 and type 2 trial populations",
+      "mechanism": "Pitolisant is a histamine H3 receptor inverse agonist that increases central histaminergic wake-promoting tone and improves alertness during usual waking hours.",
+      "summary": "This is a solid protective edge for daytime sleepiness in narcolepsy. The signal is reproducible across randomized trials and comparative network meta-analyses, although pitolisant usually ranks below solriamfetol for pure wakefulness endpoints.",
+      "caveats": "The best evidence is symptom-control rather than disease modification. Comparative efficacy against modafinil is roughly similar rather than clearly superior, and some supportive trials focus more on cataplexy than on sleepiness itself.",
+      "evidence": [
+        {
+          "citation": "ChienPY et al 2022 J Clin Med",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Pharmacological Interventions for Excessive Daytime Sleepiness in Adults with Narcolepsy: A Systematic Review and Network Meta-Analysis.",
+          "pmid": "36362535",
+          "n_participants": 2504,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -2.88,
+            "ci_low": -4.89,
+            "ci_high": -0.88,
+            "comparator": "Epworth Sleepiness Scale change with solriamfetol versus pitolisant across the network meta-analysis"
+          }
+        },
+        {
+          "citation": "DauvilliersY et al 2013 Lancet Neurol",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Pitolisant versus placebo or modafinil in patients with narcolepsy: a double-blind, randomised trial.",
+          "pmid": "24107292",
+          "n_participants": 95,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -3.0,
+            "ci_low": -5.6,
+            "ci_high": -0.4,
+            "comparator": "adjusted Epworth Sleepiness Scale endpoint difference for pitolisant versus placebo in HARMONY I"
+          }
+        },
+        {
+          "citation": "SzakacsZ et al 2017 Lancet Neurol",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Safety and efficacy of pitolisant on cataplexy in patients with narcolepsy: a randomised, double-blind, placebo-controlled trial.",
+          "pmid": "28129985",
+          "n_participants": 106
+        }
+      ]
+    }
+  ]
+}

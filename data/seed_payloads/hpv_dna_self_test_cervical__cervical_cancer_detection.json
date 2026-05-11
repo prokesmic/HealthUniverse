@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "hpv_dna_self_test_cervical",
+      "outcome_slug": "cervical_cancer_detection",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Across modern diagnostic studies, self-collected HPV testing is close to clinician-collected testing for detecting CIN2+ or worse, especially with PCR-based assays. The 2025 meta-analysis found pooled sensitivity of 90% for self-collected HPV testing versus 93% for clinician-collected HPV testing, both higher than clinician-collected cytology at 87%.",
+      "population": "women eligible for cervical cancer screening using high-risk HPV testing, especially those considering self-collected vaginal or urine sampling",
+      "mechanism": "Self-collected HPV DNA testing can identify high-risk HPV infection and associated precancerous lesions without requiring a speculum exam, which can expand acceptable access to molecular cervical screening and preserve high diagnostic sensitivity when validated assays are used.",
+      "summary": "This edge is now stronger than older summaries made it seem. The literature has moved from asking whether self-sampling is merely feasible to showing that validated HPV assays on self-collected specimens can approach clinician-collected performance closely enough to support real-world screening and lesion detection.",
+      "caveats": "Performance depends on assay platform, specimen type, and population. Much of the strongest evidence is about detection of CIN2+ or CIN3+ as a surrogate for cervical cancer detection rather than direct mortality outcomes, and some urine-based approaches remain slightly less sensitive than clinician-collected cervical samples.",
+      "evidence": [
+        {
+          "citation": "Arbyn M et al 2014 Lancet Oncol",
+          "year": 2014,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Accuracy of human papillomavirus testing on self-collected versus clinician-collected samples: a meta-analysis.",
+          "pmid": "24433684",
+          "n_participants": 154556,
+          "effect_quant": {
+            "metric": "sensitivity_percent",
+            "value": 76.0,
+            "ci_low": 69.0,
+            "ci_high": 82.0,
+            "comparator": "absolute sensitivity of self-sampled HPV testing for CIN2+ in screening settings; PCR-based assays approached clinician-collected accuracy more closely"
+          }
+        },
+        {
+          "citation": "Zhao FH et al 2025 Sci Rep",
+          "year": 2025,
+          "study_type": "cross_sectional",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Diagnostic accuracy of human papillomavirus testing on self-collected samples among women referred for colposcopy.",
+          "pmid": "39833459",
+          "n_participants": 1588,
+          "effect_quant": {
+            "metric": "sensitivity_percent",
+            "value": 90.64,
+            "comparator": "vaginal self-collected sample sensitivity for CIN2+ versus 93.60% for clinician-collected cervical samples"
+          }
+        },
+        {
+          "citation": "Moses E et al 2025 Prev Med Rep",
+          "year": 2025,
+          "study_type": "cross_sectional",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A United States study of self-collected urine vs clinician-collected cervical sample for HPV and cervical intraepithelial neoplasia grade two or worse detection: Cross-sectional agreement and diagnostic accuracy study.",
+          "pmid": "40950939",
+          "n_participants": 188,
+          "effect_quant": {
+            "metric": "sensitivity_ratio",
+            "value": 1.0,
+            "comparator": "clinic first-void urine specimen versus clinician-collected cervical specimen for hrHPV16-linked CIN2+ detection"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "hpv_dna_self_test_cervical",
+      "name": "Cervical HPV DNA self-sampling",
+      "kind": "activity",
+      "aliases": [
+        "self-collected HPV cervical test",
+        "HPV self-sampling for cervical screening"
+      ],
+      "description": "Self-collected vaginal or urine sampling for high-risk HPV DNA testing as part of cervical cancer screening."
+    },
+    {
+      "slug": "cervical_cancer_detection",
+      "name": "Cervical cancer detection",
+      "kind": "condition",
+      "aliases": [
+        "detection of cervical precancer or cancer",
+        "cervical lesion detection"
+      ],
+      "description": "Detection of cervical cancer or clinically important cervical precancer during screening."
+    }
+  ]
+}

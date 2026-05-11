@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "brca_prophylactic_oophorectomy",
+      "outcome_slug": "ovarian_cancer_mortality",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "Among BRCA1 and BRCA2 carriers, risk-reducing salpingo-oophorectomy is associated with marked reductions in ovarian cancer events and ovarian cancer-specific mortality. In the large 2010 multicenter prospective cohort, ovarian cancer-specific mortality was lower after surgery with HR 0.21.",
+      "population": "women carrying pathogenic BRCA1 or BRCA2 variants who undergo preventive bilateral salpingo-oophorectomy before ovarian cancer develops",
+      "mechanism": "Removal of the ovaries and fallopian tubes substantially reduces the tissue at highest risk for BRCA-associated tubo-ovarian carcinogenesis and therefore lowers downstream ovarian cancer incidence and death.",
+      "summary": "This is one of the strongest hereditary gynecologic prevention edges in the corpus. The evidence is observational rather than randomized, but across large BRCA carrier cohorts the mortality and risk-reduction signal is consistent enough to support a clearly protective label.",
+      "caveats": "The intervention induces surgical menopause unless performed after natural menopause, so the decision is highly preference-sensitive and age-dependent. This edge focuses on ovarian cancer mortality and does not encode tradeoffs such as menopausal symptoms, bone loss, cardiovascular effects, or the residual risk of primary peritoneal carcinoma.",
+      "evidence": [
+        {
+          "citation": "Rebbeck TR et al 2002 N Engl J Med",
+          "year": 2002,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Prophylactic oophorectomy in carriers of BRCA1 or BRCA2 mutations.",
+          "pmid": "12023993",
+          "n_participants": 551,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.04,
+            "ci_low": 0.01,
+            "ci_high": 0.16,
+            "comparator": "bilateral prophylactic oophorectomy versus no oophorectomy for coelomic epithelial cancer risk in BRCA1/2 carriers"
+          }
+        },
+        {
+          "citation": "Domchek SM et al 2010 JAMA",
+          "year": 2010,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Association of risk-reducing surgery in BRCA1 or BRCA2 mutation carriers with cancer risk and mortality.",
+          "pmid": "20810374",
+          "n_participants": 2482,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.21,
+            "ci_low": 0.06,
+            "ci_high": 0.80,
+            "comparator": "risk-reducing salpingo-oophorectomy versus no salpingo-oophorectomy for ovarian cancer-specific mortality"
+          }
+        },
+        {
+          "citation": "Finch AP et al 2024 JAMA Oncol",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Bilateral Oophorectomy and All-Cause Mortality in Women With BRCA1 and BRCA2 Sequence Variations.",
+          "pmid": "38421677",
+          "n_participants": 4332,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.32,
+            "ci_low": 0.24,
+            "ci_high": 0.42,
+            "comparator": "preventive bilateral oophorectomy versus no oophorectomy for all-cause mortality in BRCA1/2 carriers"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "brca_prophylactic_oophorectomy",
+      "name": "BRCA risk-reducing oophorectomy",
+      "kind": "activity",
+      "aliases": [
+        "risk-reducing salpingo-oophorectomy in BRCA carriers",
+        "prophylactic oophorectomy for BRCA1 or BRCA2 carriers"
+      ],
+      "description": "Preventive bilateral salpingo-oophorectomy performed in BRCA1 or BRCA2 pathogenic-variant carriers to reduce future hereditary tubo-ovarian cancer risk."
+    },
+    {
+      "slug": "ovarian_cancer_mortality",
+      "name": "Ovarian cancer mortality",
+      "kind": "condition",
+      "aliases": [
+        "death from ovarian cancer",
+        "ovarian cancer-specific mortality"
+      ],
+      "description": "Deaths attributable to ovarian, fallopian tube, or closely related BRCA-associated tubo-ovarian cancer."
+    }
+  ]
+}

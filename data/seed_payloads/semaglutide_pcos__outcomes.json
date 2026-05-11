@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "semaglutide_pcos",
+      "name": "Semaglutide for PCOS",
+      "kind": "drug",
+      "aliases": [
+        "semaglutide in obese women with PCOS",
+        "GLP-1 receptor agonist semaglutide for polycystic ovary syndrome"
+      ],
+      "description": "Use of semaglutide, alone or with metformin, in women with polycystic ovary syndrome to improve weight, metabolic health, menstrual function, or fertility-related outcomes."
+    },
+    {
+      "slug": "outcomes",
+      "name": "Clinical outcomes",
+      "kind": "process",
+      "aliases": [
+        "symptom and treatment outcomes",
+        "metabolic and reproductive outcomes"
+      ],
+      "description": "Clinical outcomes such as weight, insulin resistance, menstrual recovery, fertility, and other patient-centered metabolic or reproductive improvements."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "semaglutide_pcos",
+      "outcome_slug": "outcomes",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "The semaglutide-PCOS literature is still early but directionally favorable. A randomized open-label trial found greater weight loss with semaglutide plus metformin than metformin alone and higher natural pregnancy rates, while smaller semaglutide-specific cohort and pilot studies report substantial weight reduction, menstrual improvement, and better metabolic markers.",
+      "population": "overweight or obese women with polycystic ovary syndrome, often with insulin resistance, prediabetes, or prior failure of lifestyle therapy alone",
+      "mechanism": "Semaglutide likely improves PCOS outcomes indirectly through weight loss, appetite reduction, and improved insulin sensitivity, which can lower hyperandrogenic and inflammatory burden and help restore menstrual or fertility-related function.",
+      "summary": "This is a promising protective edge, but it is not yet as mature as the metformin or broader anti-androgen evidence base in PCOS. The clinical signal is strong enough to capture, especially for obesity-linked PCOS, while staying explicit that the literature is still developing.",
+      "caveats": "Most data are from small or open-label studies, often in obese PCOS populations and sometimes alongside metformin. Generalization to lean PCOS or to long-term reproductive outcomes should be cautious.",
+      "evidence": [
+        {
+          "citation": "MinggeY et al 2025 Eur J Obstet Gynecol Reprod Biol",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of combined metformin and semaglutide therapy on body weight, metabolic parameters, and reproductive outcomes in overweight/obese women with polycystic ovary syndrome: a prospective, randomized, controlled, open-label clinical trial.",
+          "pmid": "40713699",
+          "n_participants": 100,
+          "effect_quant": {
+            "metric": "group_difference",
+            "value": 20.0,
+            "unit": "percentage_points",
+            "comparator": "natural pregnancy rate from weeks 16 to 40 with semaglutide plus metformin versus metformin alone in overweight or obese women with PCOS (35% vs 15%)"
+          }
+        },
+        {
+          "citation": "JensterleM et al 2023 Nutrients",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Semaglutide Treatment of Excessive Body Weight in Obese PCOS Patients Unresponsive to Lifestyle Programs.",
+          "pmid": "37762862",
+          "n_participants": 27,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -11.5,
+            "unit": "kg",
+            "comparator": "mean body-weight change after 6 months of semaglutide treatment in obese women with PCOS who responded to therapy"
+          }
+        },
+        {
+          "citation": "GriegerL et al 2025 Hormones (Athens)",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of semaglutide with metformin for weight loss and fertility in polycystic ovary syndrome (PCOS) patients with obesity: A pilot prospective study.",
+          "pmid": "41421448",
+          "n_participants": 20,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 60.0,
+            "unit": "percent",
+            "comparator": "patients achieving pregnancy during follow-up after semaglutide plus metformin therapy in obese women with PCOS and prediabetes"
+          }
+        },
+        {
+          "citation": "CrockerMK et al 2025 Clin Endocrinol (Oxf)",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The metabolic benefits associated with semaglutide use in obese women with polycystic ovary syndrome- a retrospective study of clinical practice.",
+          "pmid": "41283946",
+          "n_participants": 58,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -12.6,
+            "unit": "kg",
+            "comparator": "mean weight change after more than 6 months of semaglutide therapy in routine clinical practice among obese women with PCOS"
+          }
+        }
+      ]
+    }
+  ]
+}

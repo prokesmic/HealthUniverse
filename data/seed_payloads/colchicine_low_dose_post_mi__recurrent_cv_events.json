@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "colchicine_low_dose_post_mi",
+      "name": "Low-dose colchicine after myocardial infarction",
+      "kind": "drug",
+      "aliases": [
+        "colchicine 0.5 mg after MI",
+        "post-MI anti-inflammatory colchicine therapy"
+      ],
+      "description": "Use of low-dose colchicine after recent myocardial infarction to reduce recurrent inflammatory cardiovascular events."
+    },
+    {
+      "slug": "recurrent_cv_events",
+      "name": "Recurrent cardiovascular events",
+      "kind": "condition",
+      "aliases": [
+        "recurrent ischemic cardiovascular events",
+        "post-MI major adverse cardiovascular events"
+      ],
+      "description": "Recurrent cardiovascular outcomes after an index myocardial infarction, including recurrent MI, stroke, angina requiring revascularization, or cardiovascular death."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "colchicine_low_dose_post_mi",
+      "outcome_slug": "recurrent_cv_events",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In COLCOT, low-dose colchicine lowered the post-MI primary composite endpoint from 7.1% to 5.5% (HR 0.77). ACS-focused meta-analysis pooling COLCOT-era trials found lower recurrent composite events (OR 0.67), though a broader 2025 post-MI meta-analysis reported a more mixed overall picture with no clear pooled reduction in adverse cardiovascular events.",
+      "population": "adults within days to weeks after acute myocardial infarction receiving contemporary secondary-prevention therapy",
+      "mechanism": "Colchicine suppresses inflammasome-driven neutrophilic and interleukin-1 mediated inflammation, which may reduce plaque instability and recurrent ischemic complications after infarction.",
+      "summary": "The strongest pro signal comes from COLCOT, and it is clinically meaningful enough to keep this edge positive overall. At the same time, the literature is no longer perfectly one-directional, so the confidence is lower than for classic lipid or blood-pressure interventions.",
+      "caveats": "Later syntheses have become more mixed, partly because event definitions and follow-up differ across trials and because gastrointestinal intolerance is common. This is a good example of a promising inflammatory strategy that is not yet as settled as LDL lowering.",
+      "evidence": [
+        {
+          "citation": "Bouabdallaoui N et al 2023 Cardiovasc Drugs Ther",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Colchicine in the Management of Acute Coronary Syndrome: A Meta-analysis.",
+          "pmid": "36609745",
+          "n_participants": 5540,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 0.67,
+            "ci_low": 0.46,
+            "ci_high": 0.98,
+            "comparator": "recurrent composite cardiovascular events with colchicine versus placebo after acute coronary syndrome"
+          }
+        },
+        {
+          "citation": "Tardif JC et al 2019 N Engl J Med",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy and Safety of Low-Dose Colchicine after Myocardial Infarction. COLCOT.",
+          "pmid": "31733140",
+          "n_participants": 4745,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.77,
+            "ci_low": 0.61,
+            "ci_high": 0.96,
+            "comparator": "primary recurrent cardiovascular composite endpoint in COLCOT with colchicine versus placebo"
+          }
+        },
+        {
+          "citation": "Shah S et al 2025 Clin Res Cardiol",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Efficacy and safety of colchicine post myocardial infarction: a systematic review, meta-analysis and meta-regression analysis of randomized clinical trials.",
+          "pmid": "40548988",
+          "n_participants": 14326,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 1.0,
+            "comparator": "broader pooled post-MI adverse cardiovascular event risk was not significantly reduced with colchicine versus control in the 2025 meta-analysis"
+          }
+        }
+      ]
+    }
+  ]
+}

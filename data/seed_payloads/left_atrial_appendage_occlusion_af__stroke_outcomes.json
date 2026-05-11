@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "left_atrial_appendage_occlusion_af",
+      "name": "Left atrial appendage occlusion for atrial fibrillation",
+      "kind": "activity",
+      "aliases": [
+        "LAAC for AF",
+        "left atrial appendage closure in nonvalvular atrial fibrillation"
+      ],
+      "description": "Percutaneous or catheter-based left atrial appendage occlusion used as an alternative to long-term oral anticoagulation in atrial fibrillation."
+    },
+    {
+      "slug": "stroke_outcomes",
+      "name": "Stroke outcomes",
+      "kind": "condition",
+      "aliases": [
+        "stroke and systemic embolic outcomes",
+        "ischemic or hemorrhagic stroke outcomes"
+      ],
+      "description": "Stroke-related outcomes in atrial fibrillation, including all stroke, hemorrhagic stroke, ischemic stroke, or systemic embolism."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "left_atrial_appendage_occlusion_af",
+      "outcome_slug": "stroke_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Updated randomized-trial meta-analysis found lower all-stroke risk with left atrial appendage closure than oral anticoagulation (OR 0.68) and substantially fewer hemorrhagic strokes (OR 0.20). A 4-trial long-term meta-analysis also showed less hemorrhagic stroke (RR 0.34) without more thromboembolic events, and the OPTION trial after AF ablation showed noninferior death, stroke, or systemic embolism with lower major or clinically relevant bleeding.",
+      "population": "adults with atrial fibrillation at meaningful stroke risk who are being considered for device-based stroke prevention instead of long-term oral anticoagulation",
+      "mechanism": "Mechanical exclusion of the left atrial appendage removes the dominant site of atrial thrombus formation in nonvalvular atrial fibrillation while avoiding chronic exposure to systemic anticoagulation.",
+      "summary": "The best evidence supports LAA occlusion as a viable stroke-prevention alternative rather than a clearly superior universal replacement for anticoagulation. Stroke efficacy is broadly comparable, with an advantage mainly in hemorrhagic-stroke and bleeding tradeoffs over time.",
+      "caveats": "Procedural complications, device-related thrombus, and patient selection remain important. The most favorable comparisons often depend on long-term tradeoffs rather than large reductions in ischemic stroke itself.",
+      "evidence": [
+        {
+          "citation": "PascaN et al 2024 Int J Cardiol",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Left atrial appendage occlusion devices vs direct oral anticoagulants for atrial fibrillation: An updated systematic review and meta-analysis.",
+          "pmid": "39395644",
+          "n_participants": 18507,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.73,
+            "ci_low": 0.58,
+            "ci_high": 0.92,
+            "comparator": "composite of death, hemorrhagic, and thromboembolic events with left atrial appendage occlusion versus DOACs"
+          }
+        },
+        {
+          "citation": "Zhu W et al 2025 Heart Rhythm",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Left atrial appendage closure vs oral anticoagulation for stroke prevention in atrial fibrillation: Long-term outcomes from 4 randomized trials.",
+          "pmid": "40754231",
+          "n_participants": 3116,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.34,
+            "ci_low": 0.16,
+            "ci_high": 0.76,
+            "comparator": "hemorrhagic stroke with left atrial appendage closure versus oral anticoagulation in 4 randomized trials"
+          }
+        },
+        {
+          "citation": "Wazni OM et al 2024 N Engl J Med",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Left Atrial Appendage Closure after Ablation for Atrial Fibrillation. OPTION.",
+          "pmid": "39555822",
+          "n_participants": 1600,
+          "effect_quant": {
+            "metric": "absolute_risk_difference",
+            "value": -0.5,
+            "comparator": "death, stroke, or systemic embolism at 36 months with appendage closure versus oral anticoagulation after AF ablation (5.3% vs 5.8%)"
+          }
+        }
+      ]
+    }
+  ]
+}

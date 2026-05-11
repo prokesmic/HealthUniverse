@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tirzepatide_hfpef_obesity",
+      "name": "Tirzepatide for obesity-related HFpEF",
+      "kind": "drug",
+      "aliases": [
+        "tirzepatide in HFpEF with obesity",
+        "GIP-GLP-1 agonism for obesity-related HFpEF"
+      ],
+      "description": "Use of tirzepatide in patients with heart failure with preserved ejection fraction and obesity."
+    },
+    {
+      "slug": "outcomes",
+      "name": "Clinical outcomes",
+      "kind": "process",
+      "aliases": [
+        "heart-failure outcomes",
+        "symptom and event outcomes"
+      ],
+      "description": "Clinical outcomes such as worsening heart failure, cardiovascular death, symptoms, quality of life, and functional capacity."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tirzepatide_hfpef_obesity",
+      "outcome_slug": "outcomes",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In SUMMIT, tirzepatide lowered cardiovascular death or worsening heart-failure events versus placebo (HR 0.62) and improved KCCQ-CSS by 6.9 points at 52 weeks. CKD subgroup analysis showed the benefit was preserved across kidney-function strata, and early meta-analysis found a similar favorable composite signal (HR 0.50) in obesity-related HFpEF datasets.",
+      "population": "adults with heart failure with preserved ejection fraction and obesity, including substantial representation of patients with chronic kidney disease",
+      "mechanism": "Tirzepatide likely improves congestion, hemodynamics, inflammatory tone, and exercise tolerance through large weight reduction and broader cardiometabolic remodeling.",
+      "summary": "This is one of the most promising new obesity-phenotype HFpEF signals. The benefit is not only weight loss; the trial program suggests improvement in both symptoms and heart-failure events.",
+      "caveats": "The evidence base is still relatively young and centers on the SUMMIT program. Long-term mortality interpretation remains limited because event numbers are smaller than for classical heart-failure pharmacology trials.",
+      "evidence": [
+        {
+          "citation": "Packer M et al 2024 N Engl J Med",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Tirzepatide for Heart Failure with Preserved Ejection Fraction and Obesity. SUMMIT.",
+          "pmid": "39555826",
+          "n_participants": 731,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.62,
+            "ci_low": 0.41,
+            "ci_high": 0.95,
+            "comparator": "cardiovascular death or worsening heart-failure events in SUMMIT with tirzepatide versus placebo"
+          }
+        },
+        {
+          "citation": "Packer M et al 2025 J Am Coll Cardiol",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Interplay of Chronic Kidney Disease and the Effects of Tirzepatide in Patients With Heart Failure, Preserved Ejection Fraction, and Obesity: The SUMMIT Trial.",
+          "pmid": "40162940",
+          "n_participants": 731,
+          "effect_quant": {
+            "metric": "summary_effect",
+            "value": 0,
+            "comparator": "SUMMIT subgroup analysis showed CKD did not attenuate tirzepatide's reduction in major adverse heart-failure events or its improvement in KCCQ-CSS"
+          }
+        },
+        {
+          "citation": "FengT et al 2026 Curr Probl Cardiol",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and safety of Tirzepatide in patients with heart failure with preserved ejection fraction: A systematic review and meta-analysis.",
+          "pmid": "41862384",
+          "n_participants": 47710,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.5,
+            "ci_low": 0.42,
+            "ci_high": 0.6,
+            "comparator": "composite cardiovascular mortality or worsening heart-failure events with tirzepatide versus standard therapy in obesity-related HFpEF"
+          }
+        }
+      ]
+    }
+  ]
+}

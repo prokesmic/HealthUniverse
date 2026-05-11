@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tavi_severe_aortic_stenosis_low_risk",
+      "name": "TAVI for severe aortic stenosis in low-risk patients",
+      "kind": "activity",
+      "aliases": [
+        "TAVR in low-surgical-risk severe AS",
+        "transcatheter aortic valve replacement in low-risk severe aortic stenosis"
+      ],
+      "description": "Transcatheter aortic valve implantation or replacement for severe symptomatic aortic stenosis in patients at low surgical risk."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tavi_severe_aortic_stenosis_low_risk",
+      "outcome_slug": "mortality",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Low-risk randomized-trial meta-analysis found lower overall mortality with TAVI than surgery (RR 0.61). PARTNER 3 showed a lower 1-year composite event rate including death, stroke, or rehospitalization (HR 0.54), while Evolut Low Risk showed noninferiority for death or disabling stroke at 24 months.",
+      "population": "adults with severe symptomatic aortic stenosis who are candidates for valve replacement and have low predicted surgical risk",
+      "mechanism": "Less invasive transcatheter treatment may reduce perioperative physiologic stress, bleeding, kidney injury, and postoperative atrial fibrillation, which can translate into lower early mortality in selected low-risk populations.",
+      "summary": "The low-risk TAVI story is no longer only about noninferiority. Contemporary trial synthesis supports at least an early mortality advantage, although the magnitude is modest and longer-term durability questions remain important.",
+      "caveats": "A large part of the signal is driven by early follow-up, whereas longer-term survival differences narrow and may evolve over time. Device durability, pacemaker need, and paravalvular leak remain relevant tradeoffs, especially in younger low-risk patients.",
+      "evidence": [
+        {
+          "citation": "Hofer F et al 2020 Clin Res Cardiol",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Transcatheter versus surgical aortic valve replacement in low-risk patients: a meta-analysis of randomized trials.",
+          "pmid": "31863174",
+          "n_participants": 2887,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.61,
+            "ci_low": 0.39,
+            "ci_high": 0.96,
+            "comparator": "overall mortality with TAVI versus surgical AVR in low-risk randomized trials"
+          }
+        },
+        {
+          "citation": "Mack MJ et al 2019 N Engl J Med",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Transcatheter Aortic-Valve Replacement with a Balloon-Expandable Valve in Low-Risk Patients. PARTNER 3.",
+          "pmid": "30883058",
+          "n_participants": 1000,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.54,
+            "ci_low": 0.37,
+            "ci_high": 0.79,
+            "comparator": "death, stroke, or rehospitalization at 1 year in PARTNER 3 with TAVI versus surgery"
+          }
+        },
+        {
+          "citation": "Popma JJ et al 2019 N Engl J Med",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Transcatheter Aortic-Valve Replacement with a Self-Expanding Valve in Low-Risk Patients. Evolut Low Risk.",
+          "pmid": "30883053",
+          "n_participants": 1468,
+          "effect_quant": {
+            "metric": "risk_difference",
+            "value": -1.4,
+            "comparator": "death or disabling stroke at 24 months with TAVI versus surgery in Evolut Low Risk"
+          }
+        }
+      ]
+    }
+  ]
+}

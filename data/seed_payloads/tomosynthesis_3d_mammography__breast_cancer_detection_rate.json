@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "tomosynthesis_3d_mammography",
+      "name": "3D mammography tomosynthesis",
+      "kind": "activity",
+      "aliases": [
+        "digital breast tomosynthesis",
+        "DBT screening mammography"
+      ],
+      "description": "Breast cancer screening using digital breast tomosynthesis, usually with synthesized or standard 2D mammographic views."
+    },
+    {
+      "slug": "cancer_detection_rate",
+      "name": "Cancer detection rate",
+      "kind": "process",
+      "aliases": [
+        "screen-detected cancer rate",
+        "rate of cancers found on screening"
+      ],
+      "description": "The rate at which screening identifies breast cancers in an eligible population."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "tomosynthesis_3d_mammography",
+      "outcome_slug": "cancer_detection_rate",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "Across recent meta-analyses, digital breast tomosynthesis improves screening cancer detection by roughly 27% to 35% compared with digital mammography alone, with even larger gains in dense breasts and younger women in some analyses.",
+      "population": "screening-eligible women undergoing mammography, including dense-breast and younger screening subgroups",
+      "mechanism": "Tomosynthesis reduces tissue-overlap masking and improves lesion conspicuity, allowing more invasive and otherwise occult cancers to be detected during screening.",
+      "summary": "This is one of the cleaner imaging-upgrade signals in screening radiology. The literature is consistent that DBT increases cancer detection relative to standard digital mammography, although the absolute gain is modest and accompanied by implementation and workflow tradeoffs.",
+      "caveats": "Higher detection does not automatically prove mortality benefit, and performance gains differ by density, age, and reading workflow. The main evidence here is on screening yield and recall rather than long-term cancer outcomes.",
+      "evidence": [
+        {
+          "citation": "Heywang-Kobrunner SH et al 2022 Eur Radiol",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Digital breast tomosynthesis (DBT) plus synthesised two-dimensional mammography (s2D) in breast cancer screening is associated with higher cancer detection and lower recalls compared to digital mammography (DM) alone: results of a systematic review and meta-analysis.",
+          "pmid": "34694451",
+          "n_participants": 414281,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.35,
+            "ci_low": 1.2,
+            "ci_high": 1.52,
+            "comparator": "DBT plus synthesized 2D mammography versus digital mammography alone for cancer detection"
+          }
+        },
+        {
+          "citation": "Heywang-Kobrunner SH et al 2022 Eur J Radiol",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Tomosynthesis with synthesised two-dimensional mammography yields higher cancer detection compared to digital mammography alone, also in dense breasts and in younger women: A systematic review and meta-analysis.",
+          "pmid": "35576720",
+          "n_participants": 13,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.6,
+            "ci_low": 1.16,
+            "ci_high": 2.22,
+            "comparator": "DBT plus synthesized 2D mammography versus digital mammography alone in dense breasts"
+          }
+        },
+        {
+          "citation": "Lin Y et al 2025 Adv Clin Exp Med",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Diagnostic accuracy of digital breast tomosynthesis and digital mammography in women with dense or non-dense breast tissue: A systematic review and meta-analysis.",
+          "pmid": "39087824",
+          "n_participants": 2124018,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.27,
+            "ci_low": 1.14,
+            "ci_high": 1.41,
+            "comparator": "DBT versus digital mammography for cancer detection"
+          }
+        }
+      ]
+    }
+  ]
+}

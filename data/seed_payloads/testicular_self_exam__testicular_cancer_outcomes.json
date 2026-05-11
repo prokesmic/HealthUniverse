@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "testicular_self_exam",
+      "outcome_slug": "testicular_cancer_outcomes",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Routine testicular self-examination has not been shown in randomized or population-level evidence to improve cancer outcomes, and a large contemporary adolescent-screening cohort found low sensitivity and very high numbers needed to screen, yet educational interventions can improve examination technique and awareness in higher-risk age groups.",
+      "population": "asymptomatic adolescent and adult males considering routine self-examination or opportunistic screening for testicular cancer",
+      "mechanism": "Self-examination could theoretically shorten patient delay by detecting a painless testicular mass earlier, but the low baseline incidence, high cure rates even without screening, and substantial false-alarm burden limit measurable population benefit.",
+      "summary": "This is a low-certainty, contested screening edge. The strongest direct evidence does not support routine screening in asymptomatic males, but the literature also shows that self-exam education can improve awareness and exam performance, so the overall state is best represented as mixed rather than strongly beneficial.",
+      "caveats": "Direct mortality or morbidity benefit evidence is essentially absent, and much of the literature focuses on educational behavior rather than clinical cancer endpoints. Modern data on clinical screening effectiveness come mostly from observational settings rather than randomized screening trials.",
+      "evidence": [
+        {
+          "citation": "Zloof Y et al 2025 Am J Epidemiol",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Screening of adolescents for testicular cancer-a nationwide retrospective cohort study.",
+          "pmid": "41181889",
+          "n_participants": 300793,
+          "effect_quant": {
+            "metric": "number_needed_to_screen",
+            "value": 75198,
+            "comparator": "adolescents screened per testicular cancer detected in routine screening"
+          }
+        },
+        {
+          "citation": "Finney JW et al 1995 J Appl Behav Anal",
+          "year": 1995,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Evaluation of two health education strategies for testicular self-examination.",
+          "pmid": "7706149",
+          "n_participants": 48
+        },
+        {
+          "citation": "U.S. Preventive Services Task Force 2011 Ann Intern Med",
+          "year": 2011,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Screening for testicular cancer: U.S. Preventive Services Task Force reaffirmation recommendation statement.",
+          "pmid": "21464350"
+        },
+        {
+          "citation": "Ilic D et al 2011 Cochrane Database Syst Rev",
+          "year": 2011,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Screening for testicular cancer.",
+          "pmid": "21328302"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "testicular_self_exam",
+      "name": "Testicular self-examination",
+      "kind": "activity",
+      "aliases": [
+        "TSE",
+        "self-checking the testes"
+      ],
+      "description": "Regular self-palpation and visual inspection of the testes to look for lumps, asymmetry, or other changes suggestive of testicular cancer."
+    },
+    {
+      "slug": "testicular_cancer_outcomes",
+      "name": "Testicular cancer outcomes",
+      "kind": "condition",
+      "aliases": [
+        "testicular cancer detection and prognosis",
+        "testicular tumor outcomes"
+      ],
+      "description": "Clinical outcomes related to testicular cancer screening or detection, including stage at diagnosis, unnecessary evaluations, and cancer-specific benefit or harm."
+    }
+  ]
+}

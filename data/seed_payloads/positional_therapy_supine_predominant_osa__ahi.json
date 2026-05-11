@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "positional_therapy_supine_predominant_osa",
+      "name": "Positional therapy for supine-predominant obstructive sleep apnea",
+      "kind": "activity",
+      "aliases": [
+        "sleep position therapy for positional OSA",
+        "vibrotactile positional therapy"
+      ],
+      "description": "Positional therapy devices or strategies used to reduce time spent sleeping supine in adults with supine-predominant or positional obstructive sleep apnea."
+    },
+    {
+      "slug": "ahi",
+      "name": "Apnea-hypopnea index",
+      "kind": "process",
+      "aliases": [
+        "sleep apnea event index"
+      ],
+      "description": "The apnea-hypopnea index, representing the number of apneas and hypopneas per hour of sleep."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "positional_therapy_supine_predominant_osa",
+      "outcome_slug": "ahi",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Positional therapy lowers event burden in supine-predominant OSA. A 2023 meta-analysis found AHI mean difference -9.19 events/h, and a randomized crossover trial found sleep-position treatment noninferior to APAP within a prespecified 5 events/h margin while improving adherence.",
+      "population": "adults with positional or supine-predominant obstructive sleep apnea, especially those with relatively low nonsupine event burden",
+      "mechanism": "Avoiding the supine position reduces posterior tongue and soft-palate collapse, decreasing obstructive events in patients whose apnea is strongly position dependent.",
+      "summary": "This is a legitimately useful option for positional OSA. It tends to work best when disease is clearly supine driven and less well when obstruction remains substantial in lateral sleep.",
+      "caveats": "Positional therapy generally does not match APAP for absolute AHI suppression, long-term symptom gains can be modest, and tolerance varies by device design. It is best thought of as phenotype-targeted therapy rather than a universal replacement for PAP.",
+      "evidence": [
+        {
+          "citation": "ALQarniAS et al 2023 Thorax",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy of vibrotactile positional therapy devices on patients with positional obstructive sleep apnoea: a systematic review and meta-analysis.",
+          "pmid": "37344178",
+          "n_participants": 700,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -9.19,
+            "ci_low": -11.68,
+            "ci_high": -6.7,
+            "comparator": "AHI at follow-up versus baseline with vibrotactile positional therapy"
+          }
+        },
+        {
+          "citation": "BerryRB et al 2019 J Clin Sleep Med",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "NightBalance Sleep Position Treatment Device Versus Auto-Adjusting Positive Airway Pressure for Treatment of Positional Obstructive Sleep Apnea.",
+          "pmid": "31383231",
+          "n_participants": 117,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 3.58,
+            "comparator": "AHI difference for sleep position treatment minus APAP after crossover treatment"
+          }
+        },
+        {
+          "citation": "LoordH et al 2007 Acta Otolaryngol",
+          "year": 2007,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Positioner--a method for preventing sleep apnea.",
+          "pmid": "17762999",
+          "n_participants": 18,
+          "effect_quant": {
+            "metric": "responder_rate",
+            "value": 61.0,
+            "comparator": "Participants whose AHI decreased to under 10 using the positioner"
+          }
+        }
+      ]
+    }
+  ]
+}

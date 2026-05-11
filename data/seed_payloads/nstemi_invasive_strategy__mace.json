@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "nstemi_invasive_strategy",
+      "name": "Routine invasive strategy for NSTEMI or NSTE-ACS",
+      "kind": "activity",
+      "aliases": [
+        "early invasive management for NSTEMI",
+        "routine angiography and revascularization in non-ST-elevation ACS"
+      ],
+      "description": "A routine early invasive strategy involving coronary angiography with revascularization as appropriate in patients with NSTEMI or non-ST-elevation acute coronary syndromes."
+    },
+    {
+      "slug": "mace",
+      "name": "Major adverse cardiovascular events",
+      "kind": "condition",
+      "aliases": [
+        "major adverse cardiac events",
+        "death or myocardial infarction composite"
+      ],
+      "description": "Major cardiovascular events such as death, myocardial infarction, or other serious ischemic complications."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "nstemi_invasive_strategy",
+      "outcome_slug": "mace",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Updated randomized-trial meta-analysis found lower death-or-MI with a routine invasive strategy in NSTE-ACS (OR 0.86), and long-term trial follow-up reinforces that signal. RITA-3 showed fewer death or nonfatal MI events at 5 years (OR 0.78), and FRISC-II showed the invasive strategy postponed death or next MI by an average of 549 days over 15 years.",
+      "population": "adults with NSTEMI or broader non-ST-elevation acute coronary syndromes who are candidates for early angiography and revascularization when indicated",
+      "mechanism": "Early coronary angiography identifies unstable culprit anatomy and permits timely PCI or CABG, which can reduce recurrent ischemia and subsequent myocardial infarction in higher-risk NSTE-ACS populations.",
+      "summary": "This is one of the more durable ischemia-reduction signals in acute coronary syndromes. The benefit is not uniformly dramatic for every subgroup, but the cumulative randomized evidence supports a routine invasive strategy for appropriately selected NSTEMI and NSTE-ACS patients, especially those at higher ischemic risk.",
+      "caveats": "The absolute benefit is smaller in lower-risk or frailer patients and depends on access to contemporary antithrombotic therapy and revascularization. The evidence base often combines unstable angina and NSTEMI, so this edge reflects the dominant NSTE-ACS pattern rather than a pure biomarker-defined NSTEMI-only dataset.",
+      "evidence": [
+        {
+          "citation": "Elgendy IY et al 2016 Catheter Cardiovasc Interv",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Routine invasive versus selective invasive strategies for Non-ST-elevation acute coronary syndromes: An Updated meta-analysis of randomized trials.",
+          "pmid": "27515910",
+          "n_participants": 9650,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 0.86,
+            "ci_low": 0.77,
+            "ci_high": 0.96,
+            "comparator": "all-cause mortality or myocardial infarction with routine invasive versus selective invasive management in NSTE-ACS"
+          }
+        },
+        {
+          "citation": "Fox KAA et al 2005 Lancet",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "5-year outcome of an interventional strategy in non-ST-elevation acute coronary syndrome: the British Heart Foundation RITA 3 randomised trial.",
+          "pmid": "16154018",
+          "n_participants": 1810,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 0.78,
+            "ci_low": 0.61,
+            "ci_high": 0.99,
+            "comparator": "death or nonfatal myocardial infarction at 5 years with routine intervention versus conservative management in RITA-3"
+          }
+        },
+        {
+          "citation": "Wallentin L et al 2016 Lancet",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Early invasive versus non-invasive treatment in patients with non-ST-elevation acute coronary syndrome (FRISC-II): 15 year follow-up of a prospective, randomised, multicentre study.",
+          "pmid": "27585757",
+          "n_participants": 2457,
+          "effect_quant": {
+            "metric": "mean_days_postponed",
+            "value": 549,
+            "comparator": "average postponement of death or next myocardial infarction with an early invasive strategy versus a non-invasive strategy in FRISC-II"
+          }
+        }
+      ]
+    }
+  ]
+}

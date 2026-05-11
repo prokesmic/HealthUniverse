@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "levothyroxine_morning_fasting",
+      "name": "Levothyroxine taken fasting in the morning",
+      "kind": "activity",
+      "aliases": [
+        "morning empty-stomach levothyroxine",
+        "pre-breakfast fasting LT4 dosing"
+      ],
+      "description": "Taking levothyroxine in the morning on an empty stomach before breakfast to optimize tablet absorption."
+    },
+    {
+      "slug": "tsh_optimization",
+      "name": "TSH optimization",
+      "kind": "process",
+      "aliases": [
+        "stable euthyroid TSH control",
+        "thyrotropin target attainment"
+      ],
+      "description": "Achievement and maintenance of target thyroid-stimulating hormone control during levothyroxine replacement."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "levothyroxine_morning_fasting",
+      "outcome_slug": "tsh_optimization",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "In tablet-treated adults, fasting morning dosing produced lower mean TSH than breakfast dosing in a crossover trial (1.9 vs 2.89 mIU/L), while a 2026 randomized trial found similar TSH stability to breakfast dosing only after the nonfasting arm used a 15% dose increase.",
+      "population": "children and adults with primary hypothyroidism receiving oral levothyroxine replacement",
+      "mechanism": "Levothyroxine tablets dissolve and absorb more predictably when taken before food, coffee, or other competing substances raise gastric pH or physically interfere with dissolution and intestinal uptake.",
+      "summary": "Morning fasting dosing remains the most reliable default strategy for keeping TSH in range on tablet levothyroxine. Alternative nonfasting regimens can work, but they usually require either closer monitoring, more forgiving formulations, or dose adjustment.",
+      "caveats": "The advantage is modest rather than dramatic in many stable patients, and adherence burden matters. Newer liquid formulations and explicitly dose-adjusted breakfast strategies can narrow the gap, so this edge is strongest for conventional tablet use rather than every formulation.",
+      "evidence": [
+        {
+          "citation": "Perez CLS et al 2013 Thyroid",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Serum thyrotropin levels following levothyroxine administration at breakfast.",
+          "pmid": "23363386",
+          "n_participants": 42,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -0.99,
+            "unit": "mIU/L",
+            "comparator": "mean TSH while fasting versus taking levothyroxine with breakfast"
+          }
+        },
+        {
+          "citation": "Willems JIA et al 2026 J Clin Endocrinol Metab",
+          "year": 2026,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Fasting vs Nonfasting, Dose-adjusted Levothyroxine Ingestion in Hypothyroidism: A Randomized Clinical Trial.",
+          "pmid": "41431302",
+          "n_participants": 88,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 1.02,
+            "comparator": "TSH stability with fasting dosing (74.4%) versus breakfast dosing after a 15% levothyroxine dose increase (73.3%)"
+          }
+        },
+        {
+          "citation": "El-Kaissi S et al 2021 Eur Thyroid J",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Levothyroxine Administration during Ramadan: A Prospective Randomized Controlled Trial.",
+          "pmid": "34956918",
+          "n_participants": 148,
+          "effect_quant": {
+            "metric": "group_difference",
+            "value": 1,
+            "unit": "timing strategy favored",
+            "comparator": "taking levothyroxine 30 minutes before the meal that breaks the fast minimized post-Ramadan TSH worsening relative to later nonfasting schedules"
+          }
+        }
+      ]
+    }
+  ]
+}

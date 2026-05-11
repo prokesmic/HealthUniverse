@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "graves_disease_radioactive_iodine",
+      "name": "Radioactive iodine for Graves disease",
+      "kind": "activity",
+      "aliases": [
+        "RAI for Graves hyperthyroidism",
+        "iodine-131 treatment for Graves disease"
+      ],
+      "description": "Use of radioactive iodine as definitive therapy for Graves hyperthyroidism."
+    },
+    {
+      "slug": "graves_orbitopathy",
+      "name": "Graves orbitopathy",
+      "kind": "condition",
+      "aliases": [
+        "thyroid eye disease",
+        "Graves ophthalmopathy"
+      ],
+      "description": "Development or worsening of thyroid-associated orbitopathy, including inflammatory or progressive eye manifestations in Graves disease."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "graves_disease_radioactive_iodine",
+      "outcome_slug": "graves_orbitopathy",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "Randomized evidence and systematic review support a real eye-disease penalty from radioactive iodine compared with antithyroid drug therapy. A systematic review of 10 RCTs found increased Graves orbitopathy risk with RAI versus antithyroid drugs (RR 4.23), and the landmark Bartalena trial found development or worsening of orbitopathy in 15% after RAI versus 3% with methimazole.",
+      "population": "patients with Graves hyperthyroidism treated with radioactive iodine, especially those with mild pre-existing eye disease or other orbitopathy risk factors",
+      "mechanism": "Radioactive iodine may transiently intensify thyroid autoimmunity and worsen post-treatment hypothyroidism-driven immune signaling, increasing the likelihood of new or worsening thyroid eye disease.",
+      "summary": "This is a harmful edge and one of the best-established treatment tradeoffs in Graves disease. The magnitude is not huge in absolute terms for every patient, but it is clinically important enough that steroid prophylaxis is standard in higher-risk patients.",
+      "caveats": "The excess risk is clearest when RAI is compared with antithyroid drugs rather than surgery. Prompt correction of hypothyroidism and selective glucocorticoid prophylaxis reduce but do not erase the concern.",
+      "evidence": [
+        {
+          "citation": "Acharya SH et al 2008 Clin Endocrinol (Oxf)",
+          "year": 2008,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Radioiodine therapy (RAI) for Graves' disease (GD) and the effect on ophthalmopathy: a systematic review.",
+          "pmid": "18429949",
+          "n_participants": 1136,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 4.23,
+            "ci_low": 2.04,
+            "ci_high": 8.77,
+            "comparator": "development or worsening of Graves ophthalmopathy with RAI versus antithyroid drugs"
+          }
+        },
+        {
+          "citation": "Bartalena L et al 1998 N Engl J Med",
+          "year": 1998,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Relation between therapy for hyperthyroidism and the course of Graves' ophthalmopathy.",
+          "pmid": "9420337",
+          "n_participants": 443,
+          "effect_quant": {
+            "metric": "group_difference",
+            "value": 12.0,
+            "unit": "percentage_points",
+            "comparator": "development or worsening of ophthalmopathy with radioiodine versus methimazole (15% vs 3%)"
+          }
+        },
+        {
+          "citation": "Kung AW et al 1994 J Clin Endocrinol Metab",
+          "year": 1994,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The incidence of ophthalmopathy after radioiodine therapy for Graves' disease: prognostic factors and the role of methimazole.",
+          "pmid": "7913934",
+          "n_participants": 114
+        }
+      ]
+    }
+  ]
+}

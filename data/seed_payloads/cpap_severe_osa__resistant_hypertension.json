@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cpap_severe_osa",
+      "name": "CPAP for severe obstructive sleep apnea",
+      "kind": "activity",
+      "aliases": [
+        "continuous positive airway pressure for severe OSA",
+        "CPAP in severe obstructive sleep apnea"
+      ],
+      "description": "Continuous positive airway pressure treatment used in adults with severe or at least moderate-to-severe obstructive sleep apnea."
+    },
+    {
+      "slug": "resistant_hypertension",
+      "name": "Resistant hypertension",
+      "kind": "condition",
+      "aliases": [
+        "refractory hypertension",
+        "apparent treatment-resistant hypertension"
+      ],
+      "description": "Persistent hypertension despite a multidrug antihypertensive regimen, often including a diuretic, or hypertension requiring multiple drugs to achieve control."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cpap_severe_osa",
+      "outcome_slug": "resistant_hypertension",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In resistant hypertension with severe or moderate-severe OSA, HIPARCO lowered 24-hour mean blood pressure by 3.1 mmHg versus control, while smaller cohorts showed larger pre-post systolic reductions after CPAP initiation.",
+      "population": "adults with severe or at least moderate-to-severe obstructive sleep apnea and resistant or refractory hypertension",
+      "mechanism": "CPAP may reduce sympathetic overactivity, nocturnal hypoxemia, and nondipping blood-pressure patterns that amplify multidrug-resistant hypertension in OSA.",
+      "summary": "Among OSA phenotypes, resistant hypertension is one of the clearest blood-pressure-responsive groups for CPAP. The effect is still modest on average, but it is more consistent than the hard cardiovascular event data.",
+      "caveats": "Some supportive studies are small or uncontrolled, and adherence matters strongly. The best evidence is for ambulatory blood-pressure lowering, not for long-term stroke or myocardial infarction prevention.",
+      "evidence": [
+        {
+          "citation": "Martinez-GarciaMA et al 2013 JAMA",
+          "year": 2013,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of CPAP on blood pressure in patients with obstructive sleep apnea and resistant hypertension: the HIPARCO randomized clinical trial.",
+          "pmid": "24327037",
+          "n_participants": 194,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -3.1,
+            "ci_low": -5.6,
+            "ci_high": -0.6,
+            "comparator": "24-hour mean blood pressure with CPAP versus no CPAP in HIPARCO"
+          }
+        },
+        {
+          "citation": "DernaikaTA et al 2009 J Clin Sleep Med",
+          "year": 2009,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of nocturnal continuous positive airway pressure therapy in patients with resistant hypertension and obstructive sleep apnea.",
+          "pmid": "19968040",
+          "n_participants": 42,
+          "effect_quant": {
+            "metric": "mean_change",
+            "value": -5.6,
+            "ci_low": -8.7,
+            "ci_high": -2.0,
+            "comparator": "mean arterial pressure change after 1 year of CPAP in the resistant-hypertension subgroup"
+          }
+        },
+        {
+          "citation": "LoganAG et al 2003 Eur Respir J",
+          "year": 2003,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Refractory hypertension and sleep apnoea: effect of CPAP on blood pressure and baroreflex.",
+          "pmid": "12608436",
+          "n_participants": 11,
+          "effect_quant": {
+            "metric": "mean_change",
+            "value": -11.0,
+            "comparator": "24-hour systolic blood pressure change after 2 months of CPAP in refractory hypertensive patients with OSA"
+          }
+        }
+      ]
+    }
+  ]
+}

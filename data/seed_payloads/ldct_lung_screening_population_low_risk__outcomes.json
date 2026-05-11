@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ldct_lung_screening_population_low_risk",
+      "outcome_slug": "outcomes",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Randomized meta-analyses show lower lung-cancer mortality with LDCT overall, but they do not show a clear all-cause mortality benefit and are driven mainly by high-risk smokers. In a modern never-smoker risk-enriched cohort, TALENT reported a 2.6% lung-cancer detection rate at baseline, highlighting that detection can rise even before mortality benefit is established for lower-risk populations.",
+      "population": "lower-risk adults, including never-smokers or light-smokers outside the classic heavy-smoking eligibility groups for lung-cancer screening",
+      "mechanism": "LDCT can shift diagnosis toward earlier-stage lung cancer, but in lower-risk populations the absolute event rate is lower and the balance can tilt toward false positives, incidental findings, overdiagnosis, and uncertain mortality gain.",
+      "summary": "This is not a simple anti-screening edge, but it is not a general-population endorsement either. The strongest mortality trials support LDCT in high-risk smokers, whereas extension into lower-risk or never-smoker populations remains unsettled because detection rises faster than the evidence for meaningful outcome improvement.",
+      "caveats": "Most mortality benefit estimates come from high-risk smoking populations and should not be casually generalized to lower-risk adults. This edge therefore encodes the uncertainty around extending LDCT beyond validated eligibility groups rather than denying the clear high-risk benefit.",
+      "evidence": [
+        {
+          "citation": "Hoffman RM et al 2020 J Gen Intern Med",
+          "year": 2020,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Lung Cancer Screening with Low-Dose CT: a Meta-Analysis.",
+          "pmid": "32583338",
+          "n_participants": 96559,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.84,
+            "ci_low": 0.75,
+            "ci_high": 0.93,
+            "comparator": "LDCT screening versus control for lung-cancer mortality across randomized trials"
+          }
+        },
+        {
+          "citation": "Bonney A et al 2022 Cochrane Database Syst Rev",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Impact of low-dose computed tomography (LDCT) screening on lung cancer-related mortality.",
+          "pmid": "35921047",
+          "n_participants": 94445,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.79,
+            "ci_low": 0.72,
+            "ci_high": 0.87,
+            "comparator": "LDCT screening versus control for lung-cancer-related mortality in randomized trials"
+          }
+        },
+        {
+          "citation": "Hsu WH et al 2024 Lancet Respir Med",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Low-dose CT screening among never-smokers with or without a family history of lung cancer in Taiwan: a prospective cohort study. TALENT.",
+          "pmid": "38042167",
+          "n_participants": 12011,
+          "effect_quant": {
+            "metric": "detection_rate_percent",
+            "value": 2.6,
+            "comparator": "baseline lung-cancer detection rate in TALENT among risk-enriched never-smokers and light-smokers"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ldct_lung_screening_population_low_risk",
+      "name": "Low-dose CT lung screening in lower-risk adults",
+      "kind": "activity",
+      "aliases": [
+        "LDCT screening outside classic heavy-smoker criteria",
+        "general-population or low-risk LDCT lung screening"
+      ],
+      "description": "Low-dose computed tomography screening used in adults who do not meet the classic high-risk heavy-smoking eligibility groups for lung-cancer screening."
+    }
+  ]
+}

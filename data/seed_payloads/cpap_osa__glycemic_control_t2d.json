@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cpap_osa",
+      "name": "CPAP for obstructive sleep apnea",
+      "kind": "activity",
+      "aliases": [
+        "continuous positive airway pressure for OSA",
+        "CPAP therapy in obstructive sleep apnea"
+      ],
+      "description": "Continuous positive airway pressure treatment used in adults with obstructive sleep apnea."
+    },
+    {
+      "slug": "glycemic_control_t2d",
+      "name": "Glycemic control in type 2 diabetes",
+      "kind": "process",
+      "aliases": [
+        "HbA1c control in type 2 diabetes",
+        "diabetes control"
+      ],
+      "description": "Markers of glycemic control in type 2 diabetes, especially glycated hemoglobin and related measures of glucose regulation."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cpap_osa",
+      "outcome_slug": "glycemic_control_t2d",
+      "direction": "mixed",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "The strongest pooled evidence shows a small HbA1c improvement with CPAP in OSA plus type 2 diabetes (MD -0.24%), but individual trials are inconsistent: one 64-patient RCT was null in intention-to-treat analysis, while smaller adherent cohorts showed larger reductions.",
+      "population": "adults with obstructive sleep apnea and type 2 diabetes",
+      "mechanism": "By reducing sleep fragmentation and intermittent hypoxemia, CPAP may improve insulin sensitivity, neurohormonal stress, and nocturnal glucose dysregulation, though the effect depends heavily on adherence and baseline glycemic burden.",
+      "summary": "This edge belongs in the mixed bucket. CPAP may modestly improve HbA1c in OSA with type 2 diabetes, but the effect is small and not uniformly reproduced across randomized analyses.",
+      "caveats": "Benefits appear more likely with longer nightly use, higher baseline HbA1c, and stable background diabetes therapy. Short trials and medication changes can easily overwhelm the signal.",
+      "evidence": [
+        {
+          "citation": "HerthJ et al 2023 Eur Respir Rev",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of continuous positive airway pressure therapy on glucose metabolism in patients with obstructive sleep apnoea and type 2 diabetes: a systematic review and meta-analysis.",
+          "pmid": "37673425",
+          "n_participants": 964,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -0.24,
+            "ci_low": -0.43,
+            "ci_high": -0.06,
+            "comparator": "HbA1c with CPAP versus inactive control groups across randomized trials"
+          }
+        },
+        {
+          "citation": "LamJCM et al 2017 Sleep Breath",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "CPAP therapy for patients with sleep apnea and type 2 diabetes mellitus improves control of blood pressure. HbA1c was unchanged in intention-to-treat analysis, with per-protocol benefit among completers.",
+          "pmid": "27817148",
+          "n_participants": 64,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -0.4,
+            "ci_low": -0.7,
+            "ci_high": -0.1,
+            "comparator": "HbA1c change in adherent completers receiving CPAP versus control after 3 months"
+          }
+        },
+        {
+          "citation": "GharsalliH et al 2019 Tunis Med",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Effect of Continuous Positive Airway Pressure on glycated hemoglobin in patients with type 2 diabetes and Obstructive Sleep Apnea.",
+          "pmid": "32173803",
+          "n_participants": 30,
+          "effect_quant": {
+            "metric": "mean_change",
+            "value": -1.1,
+            "comparator": "mean HbA1c change after 2 months of adherent CPAP in patients with type 2 diabetes and OSA"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "mra_spironolactone_hfref",
+      "name": "Mineralocorticoid receptor antagonist therapy for HFrEF",
+      "kind": "drug",
+      "aliases": [
+        "spironolactone or eplerenone in reduced-EF heart failure",
+        "MRA treatment in systolic heart failure"
+      ],
+      "description": "Use of spironolactone-class mineralocorticoid receptor antagonists in heart failure with reduced ejection fraction."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "mra_spironolactone_hfref",
+      "outcome_slug": "mortality",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "RALES reduced death with spironolactone (RR 0.70), EMPHASIS-HF reduced all-cause death with eplerenone (HR 0.76), and pooled individual-patient data from RALES, EMPHASIS-HF, and TOPCAT showed sustained mortality and morbidity benefit.",
+      "population": "adults with chronic HFrEF across severe and mild symptomatic spectra receiving standard heart-failure therapy",
+      "mechanism": "Mineralocorticoid receptor blockade counteracts maladaptive aldosterone signaling, reducing myocardial fibrosis, arrhythmic vulnerability, sodium retention, and progressive ventricular remodeling.",
+      "summary": "MRA therapy is a core mortality-reducing pillar in HFrEF. The signal is strong across classic severe-HF and milder-symptom trial populations, with hyperkalemia and renal monitoring as the main tradeoff.",
+      "caveats": "The benefit is clearest when patients can safely tolerate potassium and renal-function monitoring. The factor slug names spironolactone, but the evidence base here includes the class signal from both spironolactone and eplerenone.",
+      "evidence": [
+        {
+          "citation": "Pitt B et al 1999 N Engl J Med",
+          "year": 1999,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The effect of spironolactone on morbidity and mortality in patients with severe heart failure. Randomized Aldactone Evaluation Study Investigators.",
+          "pmid": "10471456",
+          "n_participants": 1663,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.70,
+            "comparator": "all-cause mortality in RALES with spironolactone versus placebo"
+          }
+        },
+        {
+          "citation": "Zannad F et al 2011 N Engl J Med",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Eplerenone in patients with systolic heart failure and mild symptoms.",
+          "pmid": "21073363",
+          "n_participants": 2737,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.76,
+            "comparator": "all-cause mortality in EMPHASIS-HF with eplerenone versus placebo"
+          }
+        },
+        {
+          "citation": "Ferreira JP et al 2019 JACC Heart Fail",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "MRAs in Elderly HF Patients: Individual Patient-Data Meta-Analysis of RALES, EMPHASIS-HF, and TOPCAT.",
+          "pmid": "31779922",
+          "n_participants": 6167,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.74,
+            "comparator": "primary composite outcome in the pooled RALES/EMPHASIS-HF/TOPCAT patient-level meta-analysis"
+          }
+        }
+      ]
+    }
+  ]
+}

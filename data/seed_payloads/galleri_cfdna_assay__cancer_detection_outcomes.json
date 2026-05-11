@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "galleri_cfdna_assay",
+      "outcome_slug": "cancer_detection_outcomes",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "The Galleri targeted-methylation cfDNA assay has shown high specificity and clinically useful cancer-signal-origin prediction, with a roughly 38% positive predictive value in PATHFINDER and 87% cancer-signal-origin accuracy in reported real-world cases, but sensitivity remains incomplete and clinical utility is still being defined.",
+      "population": "adults undergoing screening-oriented testing with the Galleri targeted methylation cell-free DNA assay",
+      "mechanism": "Galleri sequences methylation signatures in circulating cell-free DNA to detect a cancer signal and predict the most likely tissue of origin for downstream workup.",
+      "summary": "Galleri looks operationally useful for triaging workup after a positive test, especially because tissue-of-origin prediction is fairly accurate, but the assay still misses many cancers and does not yet have randomized mortality evidence. That combination makes the net evidence mixed rather than simply protective.",
+      "caveats": "Most available Galleri data come from prospective cohorts, case-control validation work, and real-world observational follow-up rather than randomized screening trials with mortality endpoints. Reported performance varies by cancer type, stage, and the subset of patients with completed outcome reporting.",
+      "evidence": [
+        {
+          "citation": "Schrag D et al 2023 Lancet",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Blood-based tests for multicancer early detection (PATHFINDER): a prospective cohort study.",
+          "pmid": "37805216",
+          "n_participants": 6621,
+          "effect_quant": {
+            "metric": "PPV",
+            "value": 0.38,
+            "comparator": "Galleri-positive participants with confirmed cancer in PATHFINDER"
+          }
+        },
+        {
+          "citation": "Tang WHW et al 2023 Prev Med",
+          "year": 2023,
+          "study_type": "case_control",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Performance of a targeted methylation-based multi-cancer early detection test by race and ethnicity.",
+          "pmid": "36495927",
+          "n_participants": 4077,
+          "effect_quant": {
+            "metric": "specificity_range",
+            "value": 0.981,
+            "comparator": "lowest observed cancer-signal specificity across racial and ethnic groups in the independent validation set; group-specific specificity ranged from 98.1% to 100%"
+          }
+        },
+        {
+          "citation": "Matrana MR et al 2025 Nat Commun",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Real-world data and clinical experience from over 100,000 multi-cancer early detection tests.",
+          "pmid": "41173830",
+          "n_participants": 111080,
+          "effect_quant": {
+            "metric": "CSO_accuracy",
+            "value": 0.87,
+            "comparator": "correct cancer signal origin prediction among cases with a reported cancer type in real-world Galleri testing"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "galleri_cfdna_assay",
+      "name": "Galleri cfDNA assay",
+      "kind": "activity",
+      "aliases": [
+        "Galleri blood test",
+        "Galleri MCED assay"
+      ],
+      "description": "A targeted methylation cell-free DNA multi-cancer early detection assay marketed as Galleri that detects a cancer signal and predicts tissue of origin."
+    },
+    {
+      "slug": "cancer_detection_outcomes",
+      "name": "Cancer detection outcomes",
+      "kind": "condition",
+      "aliases": [
+        "diagnostic detection outcomes",
+        "screen-detected cancer outcomes"
+      ],
+      "description": "Composite detection-performance outcomes such as true-positive yield, false-positive burden, tissue-of-origin accuracy, and time to diagnostic resolution after screening."
+    }
+  ]
+}

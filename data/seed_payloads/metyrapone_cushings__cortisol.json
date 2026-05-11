@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "metyrapone_cushings",
+      "name": "Metyrapone for Cushing's syndrome",
+      "kind": "drug",
+      "aliases": [
+        "metyrapone for endogenous Cushing syndrome",
+        "11-beta-hydroxylase blockade with metyrapone"
+      ],
+      "description": "Metyrapone therapy used to reduce cortisol excess in endogenous Cushing's syndrome, including Cushing's disease."
+    },
+    {
+      "slug": "cortisol",
+      "name": "Cortisol control",
+      "kind": "process",
+      "aliases": [
+        "urinary free cortisol normalization",
+        "hypercortisolism control"
+      ],
+      "description": "Reduction or normalization of cortisol excess, usually measured with urinary free cortisol or related cortisol markers."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "metyrapone_cushings",
+      "outcome_slug": "cortisol",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Metyrapone has a fairly strong cortisol-lowering signal across prospective, retrospective, and pooled evidence. A 2021 meta-analysis estimated disease control in 66% of 66 patients with Cushing's disease, the PROMPT prospective study found normal mean urinary free cortisol in 46.9% by week 12 with 81% meeting the broader response definition, and a 31-patient real-world cohort reported urinary free cortisol normalization in 70% at last follow-up.",
+      "population": "adults with endogenous Cushing's syndrome, especially pituitary Cushing's disease, treated medically because surgery was not feasible, had failed, or was being bridged",
+      "mechanism": "Metyrapone inhibits 11-beta-hydroxylase, reducing adrenal cortisol synthesis and thereby lowering urinary free cortisol and related markers of hypercortisolism.",
+      "summary": "This is a protective edge with better real-world consistency than many pituitary-directed drug rows. The efficacy is not universal, but metyrapone routinely lowers cortisol quickly enough to matter clinically.",
+      "caveats": "The evidence base includes uncontrolled studies and mixes Cushing's disease with broader endogenous Cushing's syndrome populations. Control rates also depend on how strictly response is defined and whether LC-MS/MS or immunoassay endpoints are used.",
+      "evidence": [
+        {
+          "citation": "Simoes Correa Galendi J et al 2021 Front Endocrinol (Lausanne)",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effectiveness of Medical Treatment of Cushing's Disease: A Systematic Review and Meta-Analysis.",
+          "pmid": "34603209",
+          "n_participants": 66,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 66.0,
+            "unit": "percent",
+            "ci_low": 46.0,
+            "ci_high": 87.0,
+            "comparator": "pooled proportion of Cushing disease control with metyrapone across included studies"
+          }
+        },
+        {
+          "citation": "Daniel E et al 2025 Eur J Endocrinol",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Prospective study of metyrapone in endogenous Cushing's syndrome (PROMPT).",
+          "pmid": "40966724",
+          "n_participants": 50,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 46.9,
+            "unit": "percent",
+            "comparator": "participants with normalized mean urinary free cortisol by week 12 in PROMPT"
+          }
+        },
+        {
+          "citation": "Ceccato F et al 2018 Endocrine",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Metyrapone treatment in Cushing's syndrome: a real-life study.",
+          "pmid": "30014438",
+          "n_participants": 31,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 70.0,
+            "unit": "percent",
+            "comparator": "participants with urinary free cortisol normalization at the last visit during metyrapone treatment"
+          }
+        }
+      ]
+    }
+  ]
+}

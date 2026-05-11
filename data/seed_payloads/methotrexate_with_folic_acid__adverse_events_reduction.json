@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "methotrexate_with_folic_acid",
+      "name": "Methotrexate with folic acid supplementation",
+      "kind": "activity",
+      "aliases": [
+        "MTX plus folate rescue",
+        "folic-acid-supplemented methotrexate"
+      ],
+      "description": "Methotrexate treatment accompanied by routine folic acid or folinic acid supplementation to reduce toxicity."
+    },
+    {
+      "slug": "adverse_events_reduction",
+      "name": "Reduction in adverse events",
+      "kind": "process",
+      "aliases": [
+        "toxicity reduction",
+        "fewer methotrexate side effects"
+      ],
+      "description": "Lower frequency or severity of treatment-related adverse effects during methotrexate therapy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "methotrexate_with_folic_acid",
+      "outcome_slug": "adverse_events_reduction",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "The Cochrane review found a 26% relative reduction in gastrointestinal side effects with folate supplementation, while an earlier meta-analysis found an OR of 0.21 for mucosal and GI toxicity with folic acid.",
+      "population": "adults receiving low-dose methotrexate for rheumatoid arthritis and other chronic inflammatory diseases",
+      "mechanism": "Folic acid replenishes folate-dependent pathways partially suppressed by methotrexate, reducing collateral injury in mucosal, hepatic, and hematologic tissues without meaningfully abolishing the intended anti-inflammatory effect in most studies.",
+      "summary": "Adding folic acid to low-dose methotrexate reduces clinically important toxicity and is one of the best-supported mitigation strategies in routine rheumatology practice. The signal is strongest for mucosal, gastrointestinal, and liver-related adverse effects rather than for every toxicity domain equally.",
+      "caveats": "Some analyses discuss a theoretical tradeoff between folate rescue and methotrexate efficacy, but most modern evidence finds the toxicity benefit dominates and routine co-prescription remains standard. Exact benefit magnitude differs by dose, schedule, and whether folic or folinic acid is used.",
+      "evidence": [
+        {
+          "citation": "Shea B et al 2013 Cochrane Database Syst Rev",
+          "year": 2013,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Folic acid and folinic acid for reducing side effects in patients receiving methotrexate for rheumatoid arthritis.",
+          "pmid": "23728635",
+          "n_participants": 624,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.74,
+            "comparator": "gastrointestinal side effects with folate supplementation versus placebo or no folate"
+          }
+        },
+        {
+          "citation": "Ortiz Z et al 1998 J Rheumatol",
+          "year": 1998,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The efficacy of folic acid and folinic acid in reducing methotrexate gastrointestinal toxicity in rheumatoid arthritis. A metaanalysis of randomized controlled trials.",
+          "pmid": "9458200",
+          "n_participants": 307,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 0.21,
+            "comparator": "mucosal and gastrointestinal toxicity with folic acid supplementation versus placebo or no folate"
+          }
+        },
+        {
+          "citation": "Mazaud C et al 2017 Br J Dermatol",
+          "year": 2017,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Relative risk of and determinants for adverse events of methotrexate prescribed at a low dose: a systematic review and meta-analysis of randomized placebo-controlled trials.",
+          "pmid": "28182264",
+          "n_participants": 6938
+        }
+      ]
+    }
+  ]
+}

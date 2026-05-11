@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "lipoprotein_apheresis_extreme_lpa",
+      "name": "Lipoprotein apheresis for extreme lipoprotein(a) elevation",
+      "kind": "activity",
+      "aliases": [
+        "lipoprotein apheresis for very high Lp(a)",
+        "regular apheresis in progressive Lp(a)-associated cardiovascular disease"
+      ],
+      "description": "Regular lipoprotein apheresis for patients with extreme lipoprotein(a) elevation and progressive cardiovascular disease despite maximal conventional therapy."
+    },
+    {
+      "slug": "cv_outcomes",
+      "name": "Cardiovascular outcomes",
+      "kind": "process",
+      "aliases": [
+        "major cardiovascular outcomes",
+        "cardiovascular event burden"
+      ],
+      "description": "Composite cardiovascular outcomes such as recurrent coronary, peripheral, or cerebrovascular events and the overall cardiovascular event rate."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "lipoprotein_apheresis_extreme_lpa",
+      "outcome_slug": "cv_outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Prospective and multicenter cohort studies show large reductions in cardiovascular event burden after starting lipoprotein apheresis for extreme Lp(a). A 5-year multicenter follow-up found mean annual event rate fell from 0.58 to 0.11, and another multicenter study found a 77% event reduction in isolated Lp(a) elevation. In severe PAD with isolated Lp(a)-HLP, revascularizations fell from 35 procedures in 120 patient-months to 2 in 229 patient-months after apheresis began.",
+      "population": "adults with very high lipoprotein(a) concentrations and progressive cardiovascular disease despite maximally treated traditional lipid and vascular risk factors",
+      "mechanism": "Repeated extracorporeal removal of apoB-containing lipoproteins and especially lipoprotein(a) may rapidly lower proatherothrombotic particle burden in patients with extreme residual risk that is otherwise difficult to modify.",
+      "summary": "This is a strong rescue-therapy signal in a highly selected population with extreme Lp(a)-driven risk. The effect estimates are striking, but the evidence is observational, so the edge is best viewed as clinically compelling rather than definitively randomized.",
+      "caveats": "These studies are not randomized and involve highly selected patients in specialized programs, so confounding and regression to the mean remain possible. The intervention is intensive and not broadly scalable, which matters for interpretation.",
+      "evidence": [
+        {
+          "citation": "Leebmann J et al 2016 Arterioscler Thromb Vasc Biol",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Lipoprotein Apheresis for Lipoprotein(a)-Associated Cardiovascular Disease: Prospective 5 Years of Follow-Up and Apolipoprotein(a) Characterization.",
+          "pmid": "27417585",
+          "n_participants": 170,
+          "effect_quant": {
+            "metric": "annualized_difference",
+            "value": -0.47,
+            "comparator": "mean annual cardiovascular event rate 2 years before versus during regular lipoprotein apheresis (0.58 to 0.11)"
+          }
+        },
+        {
+          "citation": "Heigl F et al 2017 Atheroscler Suppl",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Most significant reduction of cardiovascular events in patients undergoing lipoproteinapheresis due to raised Lp(a) levels - A multicenter observational study.",
+          "pmid": "29096845",
+          "n_participants": 113,
+          "effect_quant": {
+            "metric": "percentage_change",
+            "value": -77.0,
+            "comparator": "cardiovascular event reduction in patients with isolated Lp(a) elevation after starting lipoprotein apheresis"
+          }
+        },
+        {
+          "citation": "Moriarty PM et al 2017 Atheroscler Suppl",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Lipoprotein apheresis in patients with peripheral artery disease and lipoprotein(a)-hyperlipoproteinemia: 2-year follow-up of a prospective single center study.",
+          "pmid": "29096834",
+          "n_participants": 10,
+          "effect_quant": {
+            "metric": "rate_ratio",
+            "value": 0.03,
+            "comparator": "revascularization burden after versus before lipoprotein apheresis in severe PAD with isolated Lp(a)-HLP (2 procedures in 229 patient-months vs 35 in 120 patient-months)"
+          }
+        }
+      ]
+    }
+  ]
+}

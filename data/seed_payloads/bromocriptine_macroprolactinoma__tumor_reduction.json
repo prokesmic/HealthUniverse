@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "bromocriptine_macroprolactinoma",
+      "name": "Bromocriptine for macroprolactinoma",
+      "kind": "drug",
+      "aliases": [
+        "bromocriptine treatment of macroprolactinoma",
+        "dopamine agonist bromocriptine for large prolactinoma"
+      ],
+      "description": "Bromocriptine therapy used to lower prolactin and shrink macroprolactinomas or giant prolactinomas."
+    },
+    {
+      "slug": "tumor_reduction",
+      "name": "Tumor reduction",
+      "kind": "process",
+      "aliases": [
+        "adenoma shrinkage",
+        "reduction in tumor size"
+      ],
+      "description": "Meaningful reduction in pituitary tumor size or volume on imaging."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "bromocriptine_macroprolactinoma",
+      "outcome_slug": "tumor_reduction",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Bromocriptine usually shrinks macroprolactinomas, though the durability and degree of response vary. A classic prospective series found all eight large prolactinomas decreased in size within 3 months, a four-case giant-prolactinoma report showed normalization of prolactin in three patients with radiologic response in all, and broader 2012 prolactinoma meta-analysis work found bromocriptine was associated with tumor reduction in the majority of treated patients.",
+      "population": "adults with macroprolactinoma or giant prolactinoma treated medically with bromocriptine",
+      "mechanism": "Bromocriptine activates dopamine D2 receptors on lactotroph adenoma cells, suppressing prolactin secretion and promoting tumor shrinkage over time.",
+      "summary": "This is a protective edge with older but still clinically coherent evidence. Bromocriptine can substantially reduce macroprolactinoma size, although later cabergoline-era data suggest bromocriptine is often less potent and less well tolerated than newer dopamine agonists.",
+      "caveats": "The bromocriptine literature is older and often consists of small series rather than modern randomized macroprolactinoma trials. This edge should be read as evidence of real antitumor activity, not proof that bromocriptine is the best available dopamine agonist.",
+      "evidence": [
+        {
+          "citation": "Chanson P et al 2023 Pituitary",
+          "year": 2023,
+          "study_type": "systematic_review",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Giant prolactinomas, a detailed analysis of 196 adult cases.",
+          "pmid": "37544978",
+          "n_participants": 196
+        },
+        {
+          "citation": "Molitch ME et al 1981 J Clin Endocrinol Metab",
+          "year": 1981,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Bromocriptine reduction of prolactinoma size.",
+          "pmid": "7308514",
+          "n_participants": 8,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 100.0,
+            "unit": "percent",
+            "comparator": "large prolactinomas with decreased tumor size within 3 months of bromocriptine therapy"
+          }
+        },
+        {
+          "citation": "Grebe SK et al 1992 N Z Med J",
+          "year": 1992,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "low",
+          "notes": "Treatment of extensively invasive (giant) prolactinomas with bromocriptine.",
+          "pmid": "1560924",
+          "n_participants": 4
+        }
+      ]
+    }
+  ]
+}

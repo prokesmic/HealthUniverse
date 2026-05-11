@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "liothyronine_addition_hypothyroid",
+      "name": "Liothyronine added to levothyroxine in hypothyroidism",
+      "kind": "drug",
+      "aliases": [
+        "LT4 plus LT3 combination therapy",
+        "liothyronine add-on treatment for hypothyroidism"
+      ],
+      "description": "Addition of liothyronine to levothyroxine replacement in adults with primary hypothyroidism, usually to address persistent symptoms despite biochemical euthyroidism."
+    },
+    {
+      "slug": "wellbeing",
+      "name": "Well-being",
+      "kind": "process",
+      "aliases": [
+        "psychological well-being",
+        "patient-reported wellness"
+      ],
+      "description": "Overall subjective well-being, including mood, vitality, symptom burden, and patient-reported health status."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "liothyronine_addition_hypothyroid",
+      "outcome_slug": "wellbeing",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Combination therapy remains preference-heavy but outcome-light. In a blinded meta-analysis of 7 RCTs with 348 participants, 46.2% preferred LT4+LT3, a rate not distinguishable from chance. A larger 141-patient trial showed increasing treatment preference with higher LT3 content, but a 46-patient JAMA trial found no advantage on hypothyroid-specific quality-of-life scores or cognitive testing.",
+      "population": "adults with treated primary hypothyroidism who remain dissatisfied or symptomatic on levothyroxine despite normal TSH",
+      "mechanism": "Adding liothyronine may improve tissue T3 availability in some patients whose symptom burden is not fully captured by serum TSH alone, potentially affecting mood, energy, and perceived well-being.",
+      "summary": "This edge is contested rather than clearly beneficial. Some patients prefer combination therapy and feel better on it, but average randomized-trial effects on well-being are inconsistent and often small or absent.",
+      "caveats": "Most trials are short, use different LT3 doses or T4:T3 ratios, and are not powered to identify biologically responsive subgroups. Preference does not necessarily equal objective outcome improvement, and T3-containing therapy brings greater complexity and potential overtreatment risk.",
+      "evidence": [
+        {
+          "citation": "PetersonSJ et al 2019 Front Endocrinol (Lausanne)",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "A Systematic Review and Meta-Analysis of Patient Preferences for Combination Thyroid Hormone Treatment for Hypothyroidism.",
+          "pmid": "31396154",
+          "n_participants": 348,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 0.462,
+            "ci_low": 0.402,
+            "ci_high": 0.524,
+            "comparator": "patients preferring LT4+LT3 over LT4 alone in blinded randomized trials"
+          }
+        },
+        {
+          "citation": "AppelhofBC et al 2005 J Clin Endocrinol Metab",
+          "year": 2005,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Combined therapy with levothyroxine and liothyronine in two ratios, compared with levothyroxine monotherapy in primary hypothyroidism: a double-blind, randomized, controlled clinical trial.",
+          "pmid": "15705921",
+          "n_participants": 141,
+          "effect_quant": {
+            "metric": "group_difference",
+            "value": 23.0,
+            "unit": "percentage_points",
+            "comparator": "preference for study medication in the LT4/LT3 5:1 group (52.2%) versus LT4-only group (29.2%)"
+          }
+        },
+        {
+          "citation": "ClydePW et al 2003 JAMA",
+          "year": 2003,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Combined levothyroxine plus liothyronine compared with levothyroxine alone in primary hypothyroidism: a randomized controlled trial.",
+          "pmid": "14665656",
+          "n_participants": 46
+        }
+      ]
+    }
+  ]
+}

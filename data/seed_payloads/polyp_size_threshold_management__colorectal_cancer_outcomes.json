@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "polyp_size_threshold_management",
+      "outcome_slug": "colorectal_cancer_outcomes",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Threshold-based management of diminutive and small colorectal polyps can be safe when strict imaging and resection standards are met, but the evidence also shows size cutoffs matter: forceps resection outcomes worsen above about 3 mm and management shortcuts rely heavily on optical-diagnosis quality and technique selection.",
+      "population": "adults undergoing colonoscopic management of diminutive or small colorectal polyps using size-based thresholds to guide resection strategy or pathology discard decisions",
+      "mechanism": "Very small polyps have low malignant potential, so size thresholds can reduce overtreatment and pathology burden, but incomplete resection or incorrect optical classification can leave residual neoplasia that undermines cancer prevention.",
+      "summary": "This edge is mixed because both sides are true. Small-polyp threshold strategies can work very well in experienced hands, yet there is a real technical penalty once lesions move above the lowest size cutoffs, so the safety of threshold-based management depends on context rather than the threshold alone.",
+      "caveats": "Most evidence focuses on local recurrence, complete resection, or surveillance agreement rather than long-term colorectal cancer incidence. Findings from expert or single-center programs may not generalize to lower-quality endoscopy settings.",
+      "evidence": [
+        {
+          "citation": "Wei MT et al 2022 Am J Gastroenterol",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Randomized Controlled Trial Investigating Cold Snare and Forceps Polypectomy Among Small POLYPs in Rates of Complete Resection: The TINYPOLYP Trial.",
+          "pmid": "35467557",
+          "n_participants": 279,
+          "effect_quant": {
+            "metric": "complete_resection_rate",
+            "value": 0.983,
+            "comparator": "complete resection with both cold forceps and cold snare for nonpedunculated polyps 3 mm or smaller"
+          }
+        },
+        {
+          "citation": "Kuwai T et al 2019 Endoscopy",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Local recurrence of diminutive colorectal polyps after cold forceps polypectomy with jumbo forceps followed by magnified narrow-band imaging: a multicenter prospective study.",
+          "pmid": "30674046",
+          "n_participants": 955,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 3.4,
+            "comparator": "local recurrence for lesions larger than 3 mm versus 3 mm or smaller after jumbo-forceps cold polypectomy"
+          }
+        },
+        {
+          "citation": "Sato Y et al 2018 Endosc Int Open",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Clinical outcomes of the \"resect and discard\" strategy using magnifying narrow-band imaging for small (< 10 mm) colorectal polyps.",
+          "pmid": "30505929",
+          "n_participants": 476,
+          "effect_quant": {
+            "metric": "disease_specific_survival",
+            "value": 1.0,
+            "comparator": "colorectal-cancer-related survival after resect-and-discard management of small polyps during median 83 months follow-up"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "polyp_size_threshold_management",
+      "name": "Polyp size threshold management",
+      "kind": "activity",
+      "aliases": [
+        "size-based colorectal polyp management",
+        "threshold-guided small polyp strategy"
+      ],
+      "description": "Using colorectal polyp size thresholds to guide resection method, pathology handling, or surveillance strategy."
+    },
+    {
+      "slug": "colorectal_cancer_outcomes",
+      "name": "Colorectal cancer outcomes",
+      "kind": "condition",
+      "aliases": [
+        "colorectal neoplasia outcomes",
+        "post-polypectomy colorectal outcomes"
+      ],
+      "description": "Clinical outcomes related to colorectal neoplasia management, including complete resection, recurrence, interval cancer prevention, and cancer-related survival."
+    }
+  ]
+}

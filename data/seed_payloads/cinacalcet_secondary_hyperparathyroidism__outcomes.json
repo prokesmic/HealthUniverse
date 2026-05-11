@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "cinacalcet_secondary_hyperparathyroidism",
+      "name": "Cinacalcet for secondary hyperparathyroidism",
+      "kind": "drug",
+      "aliases": [
+        "cinacalcet treatment in dialysis-associated secondary hyperparathyroidism",
+        "calcimimetic therapy for SHPT"
+      ],
+      "description": "Use of cinacalcet, alone or with conventional therapy, for secondary hyperparathyroidism in chronic kidney disease, especially dialysis populations."
+    },
+    {
+      "slug": "outcomes",
+      "name": "Clinical outcomes",
+      "kind": "process",
+      "aliases": [
+        "patient and biochemical outcomes",
+        "treatment outcomes"
+      ],
+      "description": "Clinical and treatment outcomes such as biochemical control, need for parathyroidectomy, symptoms, adverse events, and survival-related endpoints."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "cinacalcet_secondary_hyperparathyroidism",
+      "outcome_slug": "outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Cinacalcet consistently improves biochemical control in secondary hyperparathyroidism and reduces the need for parathyroidectomy, but hard-outcome gains are less convincing. Meta-analyses report stronger achievement of PTH targets (RR 3.51), improved calcium-target compliance in some comparisons (RR 1.82), and lower parathyroidectomy incidence (RR 0.48), alongside more hypocalcemia and gastrointestinal adverse effects.",
+      "population": "adults with chronic kidney disease, especially maintenance-dialysis patients, treated for secondary hyperparathyroidism",
+      "mechanism": "Cinacalcet activates the calcium-sensing receptor, suppressing PTH secretion and improving calcium-phosphate balance, which can reduce biochemical severity and downstream need for surgical rescue.",
+      "summary": "This is a protective edge mainly because cinacalcet reliably improves disease control. The tradeoff is that the best evidence does not show a clean mortality benefit and adverse events are common enough that the edge should be framed as useful but not transformative.",
+      "caveats": "The most robust gains are biochemical rather than survival-based, and hypocalcemia, nausea, vomiting, and diarrhea are important offsets. The net benefit is strongest in patients where avoiding uncontrolled SHPT or parathyroidectomy matters more than minor gastrointestinal toxicity.",
+      "evidence": [
+        {
+          "citation": "LiD et al 2013 Endocrine",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "The efficacy of cinacalcet combined with conventional therapy on bone and mineral metabolism in dialysis patients with secondary hyperparathyroidism: a meta-analysis.",
+          "pmid": "22669774",
+          "n_participants": 2548,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 3.51,
+            "ci_low": 2.38,
+            "ci_high": 5.17,
+            "comparator": "achievement of KDOQI parathyroid hormone target with cinacalcet plus conventional therapy versus conventional therapy alone"
+          }
+        },
+        {
+          "citation": "ZhangX et al 2019 Ann Palliat Med",
+          "year": 2019,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy and safety of cinacalcet and active vitamin D in the treatment of secondary hyperparathyroidism in patients with chronic kidney disease: a network meta-analysis.",
+          "pmid": "31475192",
+          "n_participants": 1443,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 1.82,
+            "ci_low": 1.51,
+            "ci_high": 2.21,
+            "comparator": "blood-calcium compliance with cinacalcet plus active vitamin D versus active vitamin D monotherapy"
+          }
+        },
+        {
+          "citation": "ZengXX et al 2018 Sci Rep",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "neutral",
+          "quality": "high",
+          "notes": "Cinacalcet versus Placebo for secondary hyperparathyroidism in chronic kidney disease patients: a meta-analysis of randomized controlled trials and trial sequential analysis.",
+          "pmid": "29449603",
+          "n_participants": 8481,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.97,
+            "ci_low": 0.89,
+            "ci_high": 1.05,
+            "comparator": "all-cause mortality with cinacalcet versus control in randomized trials of secondary hyperparathyroidism"
+          }
+        }
+      ]
+    }
+  ]
+}

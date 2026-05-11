@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "uvulopalatopharyngoplasty",
+      "name": "Uvulopalatopharyngoplasty",
+      "kind": "activity",
+      "aliases": [
+        "UPPP",
+        "palatal sleep surgery"
+      ],
+      "description": "Uvulopalatopharyngoplasty and related palatal surgery intended to enlarge or stabilize the retropalatal airway in obstructive sleep apnea."
+    },
+    {
+      "slug": "osa_severity",
+      "name": "Obstructive sleep apnea severity",
+      "kind": "process",
+      "aliases": [
+        "sleep apnea burden",
+        "OSA disease severity"
+      ],
+      "description": "Overall clinical or polysomnographic severity of obstructive sleep apnea, including event frequency and residual disease burden."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "uvulopalatopharyngoplasty",
+      "outcome_slug": "osa_severity",
+      "direction": "mixed",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "Palatal surgery can improve OSA severity in selected patients, but effects are inconsistent. A 2025 meta-analysis of palatopharyngeal techniques found pooled AHI reduction of -5.2/h, while older UPPP cohorts showed only partial responder rates and long-term relapse.",
+      "population": "adults with retropalatal obstructive sleep apnea considered for palatal surgery, particularly selected surgical candidates",
+      "mechanism": "UPPP widens or stiffens the retropalatal airway and can reduce palatal collapse, but it does not correct multilevel obstruction and may leave clinically important residual disease.",
+      "summary": "This is not a cleanly protective edge. Some patients improve meaningfully, especially with favorable anatomy, but traditional UPPP is far from uniformly effective and long-term benefit can erode.",
+      "caveats": "Outcomes vary by surgical technique, baseline anatomy, and presence of hypopharyngeal collapse. Modern palatopharyngeal modifications may perform better than older cold-steel UPPP series, so historical results can understate newer technique-specific gains.",
+      "evidence": [
+        {
+          "citation": "TschoppS et al 2025 OTO Open",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effectiveness of Palatopharyngeal Surgery Modifications in Obstructive Sleep Apnea: A Meta-analysis.",
+          "pmid": "40538995",
+          "n_participants": 1501,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -5.2,
+            "ci_low": -7.7,
+            "ci_high": -2.7,
+            "comparator": "AHI change after palatopharyngeal surgery"
+          }
+        },
+        {
+          "citation": "KhanA et al 2009 Mayo Clin Proc",
+          "year": 2009,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Uvulopalatopharyngoplasty in the management of obstructive sleep apnea: the mayo clinic experience.",
+          "pmid": "19720777",
+          "n_participants": 63,
+          "effect_quant": {
+            "metric": "responder_rate",
+            "value": 51.0,
+            "comparator": "Patients achieving at least 50% AHI reduction and-or postoperative AHI of 20 or less after UPPP"
+          }
+        },
+        {
+          "citation": "BootH et al 2000 Laryngoscope",
+          "year": 2000,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Long-term results of uvulopalatopharyngoplasty for obstructive sleep apnea syndrome.",
+          "pmid": "10718440",
+          "n_participants": 58
+        }
+      ]
+    }
+  ]
+}

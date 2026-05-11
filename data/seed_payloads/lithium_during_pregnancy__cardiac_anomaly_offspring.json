@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "lithium_during_pregnancy",
+      "outcome_slug": "cardiac_anomaly_offspring",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "In a Medicaid cohort of 1,325,563 pregnancies, cardiac malformations occurred in 2.41% of lithium-exposed infants versus 1.15% of unexposed infants, with adjusted RR 1.65 (95% CI 1.02-2.68). A Swedish cohort likewise found cardiac malformations in 2.1% versus 0.8%, with adjusted RR 3.17 (95% CI 1.64-6.13).",
+      "population": "infants exposed to maternal lithium during pregnancy, especially first-trimester exposure",
+      "mechanism": "Lithium crosses the placenta during organogenesis and has long been linked to a higher risk of congenital cardiac malformations, particularly right-sided outflow tract abnormalities including Ebstein-spectrum defects.",
+      "summary": "Modern cohort data support a real but smaller-than-historic increase in offspring cardiac malformation risk with lithium exposure during pregnancy. The absolute risk remains well below the dramatic older estimates, but it is meaningfully above background and should inform preconception counseling and fetal cardiac monitoring.",
+      "caveats": "Absolute event rates are still low, and treatment decisions must balance fetal cardiac risk against maternal relapse risk if lithium is stopped. Dose-response findings in the largest cohort suggest that higher daily doses may carry greater cardiac malformation risk.",
+      "evidence": [
+        {
+          "citation": "Patorno E et al 2017 N Engl J Med",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Lithium Use in Pregnancy and the Risk of Cardiac Malformations.",
+          "pmid": "28591541",
+          "n_participants": 1325563,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 1.65,
+            "unit": "relative risk",
+            "comparator": "cardiac malformation risk in lithium-exposed versus unexposed infants"
+          }
+        },
+        {
+          "citation": "Hastie R et al 2021 BMC Med",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Maternal lithium use and the risk of adverse pregnancy and neonatal outcomes: a Swedish population-based cohort study.",
+          "pmid": "34856987",
+          "n_participants": 854017,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 3.17,
+            "unit": "relative risk",
+            "comparator": "cardiac malformation risk in lithium-exposed versus unexposed infants"
+          }
+        },
+        {
+          "citation": "Callovini T et al 2024 J Clin Med",
+          "year": 2024,
+          "study_type": "systematic_review",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Obstetric Outcomes in Women on Lithium: A Systematic Review and Meta-Analysis.",
+          "pmid": "39201016",
+          "n_participants": 3997
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "lithium_during_pregnancy",
+      "name": "Lithium exposure during pregnancy",
+      "kind": "activity",
+      "aliases": [
+        "prenatal lithium exposure",
+        "maternal lithium treatment in pregnancy"
+      ],
+      "description": "Maternal lithium treatment during pregnancy with fetal exposure."
+    },
+    {
+      "slug": "cardiac_anomaly_offspring",
+      "name": "Offspring cardiac anomaly",
+      "kind": "condition",
+      "aliases": [
+        "congenital cardiac malformation in offspring",
+        "offspring heart defect"
+      ],
+      "description": "Congenital cardiac malformations identified in infants after prenatal exposure."
+    }
+  ]
+}

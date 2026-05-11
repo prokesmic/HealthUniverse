@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "transient_elastography_screening_hcc_high_risk",
+      "outcome_slug": "cancer_detection",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Transient elastography is a useful high-risk stratification tool for hepatocellular carcinoma, with higher liver stiffness consistently tracking future HCC development, but it is not a stand-alone HCC detection test and should be viewed as a surveillance-enrichment rather than a replacement for standard imaging surveillance.",
+      "population": "patients at elevated HCC risk because of chronic viral hepatitis or advanced chronic liver disease undergoing transient-elastography-based risk assessment",
+      "mechanism": "Higher liver stiffness reflects greater fibrosis and portal architectural distortion, which correlate with cirrhotic transformation and a higher carcinogenic microenvironment that increases HCC risk.",
+      "summary": "This edge is mixed rather than simply protective because transient elastography helps identify who is more likely to develop HCC, but it does not directly detect tumors with the specificity or workflow of an imaging screening program. The strongest use case is risk enrichment for more intensive surveillance, not stand-alone cancer detection.",
+      "caveats": "The literature mostly evaluates incident HCC risk prediction, not direct screening sensitivity for occult cancers. Thresholds vary by etiology, antiviral status, and device protocol, which limits one-size-fits-all interpretation.",
+      "evidence": [
+        {
+          "citation": "Singh S et al 2013 Clin Gastroenterol Hepatol",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Liver stiffness is associated with risk of decompensation, liver cancer, and death in patients with chronic liver diseases: a systematic review and meta-analysis.",
+          "pmid": "23954643",
+          "n_participants": 7058,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.11,
+            "ci_low": 1.05,
+            "ci_high": 1.18,
+            "comparator": "incremental risk of hepatocellular carcinoma with higher baseline liver stiffness across chronic liver disease cohorts"
+          }
+        },
+        {
+          "citation": "Lee HW et al 2016 Medicine (Baltimore)",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Transient Elastography is Superior to FIB-4 in Assessing the Risk of Hepatocellular Carcinoma in Patients With Chronic Hepatitis B.",
+          "pmid": "27196449",
+          "n_participants": 1308,
+          "effect_quant": {
+            "metric": "AUROC_range",
+            "value": 0.791,
+            "comparator": "time-dependent AUROC range of transient elastography for 3-, 5-, and 7-year HCC risk prediction, exceeding the corresponding FIB-4 range of 0.691 to 0.725"
+          }
+        },
+        {
+          "citation": "Akima T et al 2011 Hepatol Res",
+          "year": 2011,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Liver stiffness measured by transient elastography is a predictor of hepatocellular carcinoma development in viral hepatitis.",
+          "pmid": "21883739",
+          "n_participants": 106,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 0.094,
+            "comparator": "patients without baseline HCC who developed HCC during prospective follow-up after transient elastography assessment"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "transient_elastography_screening_hcc_high_risk",
+      "name": "Transient elastography for HCC high-risk screening",
+      "kind": "activity",
+      "aliases": [
+        "FibroScan-based HCC risk stratification",
+        "transient elastography in high-risk HCC surveillance"
+      ],
+      "description": "Use of transient elastography liver-stiffness assessment to stratify hepatocellular carcinoma risk in patients already considered at elevated risk."
+    },
+    {
+      "slug": "cancer_detection",
+      "name": "Cancer detection",
+      "kind": "condition",
+      "aliases": [
+        "screen-detected cancer identification",
+        "cancer finding rate"
+      ],
+      "description": "Detection of previously unrecognized cancer through screening or diagnostic testing."
+    }
+  ]
+}
