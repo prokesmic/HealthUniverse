@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "acid_suppression_in_infancy",
+      "outcome_slug": "allergy_risk_later",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Large pediatric cohorts and a 2023 meta-analysis consistently link infant acid suppression to later allergic disease. In a 792,130-child cohort, infant H2RA and PPI exposure were associated with food-allergy hazard ratios of 2.18 and 2.59, respectively, and a sibling-controlled 2023 cohort still found higher asthma risk after infant acid-suppressive exposure (HR 1.13, 95% CI 1.09-1.17).",
+      "population": "infants treated with histamine-2 receptor antagonists or proton pump inhibitors in early life",
+      "mechanism": "Acid suppression may alter gastric protein digestion, microbial colonization, and downstream immune training during infancy, increasing the likelihood of allergic sensitization and later allergic disease.",
+      "summary": "The observational evidence now supports a real downstream allergy signal after infant acid-suppressive therapy, especially for asthma, allergic rhinitis, and food allergy. The more recent sibling-controlled cohort attenuates but does not erase the association, which keeps the edge harmful rather than merely speculative.",
+      "caveats": "These data remain observational and are vulnerable to confounding by indication, since infants given acid suppressants may differ systematically from untreated infants. The effect appears more modest in newer family-controlled analyses than in earlier conventional cohorts.",
+      "evidence": [
+        {
+          "citation": "Mitre E et al 2018 JAMA Pediatr",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association Between Use of Acid-Suppressive Medications and Antibiotics During Infancy and Allergic Diseases in Early Childhood.",
+          "pmid": "29610864",
+          "n_participants": 792130,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 2.59,
+            "unit": "relative hazard",
+            "comparator": "food allergy risk in infants prescribed PPIs versus infants without acid-suppressive exposure"
+          }
+        },
+        {
+          "citation": "Noh Y et al 2023 JAMA Pediatr",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Prenatal and Infant Exposure to Acid-Suppressive Medications and Risk of Allergic Diseases in Children.",
+          "pmid": "36622684",
+          "n_participants": 4149257,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 1.13,
+            "unit": "relative hazard",
+            "comparator": "asthma risk in sibling-matched children exposed to acid-suppressive medications during infancy versus unexposed siblings"
+          }
+        },
+        {
+          "citation": "Al-Aly Z et al 2023 J Allergy Clin Immunol Pract",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Childhood Acid Suppressants May Increase Allergy Risk-A Systematic Review and Meta-Analysis.",
+          "pmid": "36257597",
+          "n_participants": 1160200,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 1.44,
+            "unit": "relative hazard",
+            "comparator": "incident asthma risk in children exposed to acid suppressants versus unexposed children in pooled analysis"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "acid_suppression_in_infancy",
+      "name": "Acid suppression during infancy",
+      "kind": "activity",
+      "aliases": [
+        "infant proton pump inhibitor or H2 blocker use",
+        "early-life acid-suppressive therapy"
+      ],
+      "description": "Use of proton pump inhibitors or histamine-2 receptor antagonists during infancy."
+    },
+    {
+      "slug": "allergy_risk_later",
+      "name": "Later allergy risk",
+      "kind": "condition",
+      "aliases": [
+        "subsequent allergic disease risk",
+        "later childhood allergy outcomes"
+      ],
+      "description": "Risk of later childhood allergic disease such as asthma, allergic rhinitis, atopic dermatitis, or food allergy."
+    }
+  ]
+}

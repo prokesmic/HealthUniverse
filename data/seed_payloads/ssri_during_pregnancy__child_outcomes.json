@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ssri_during_pregnancy",
+      "outcome_slug": "child_outcomes",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "A 2025 meta-analysis of 166 studies covering 51,596,405 participants found that, after accounting for maternal depression, antidepressant treatment during pregnancy was linked to increased risk for only limited outcomes compared with untreated antenatal depression, while a Finnish cohort still found higher speech-language disorder risk in exposed offspring (HR 1.37, 95% CI 1.11-1.70) without clear scholastic or motor excess.",
+      "population": "children born to mothers treated with selective serotonin reuptake inhibitors during pregnancy, especially compared with children of mothers with untreated depression",
+      "mechanism": "SSRIs cross the placenta and may affect fetal serotonergic signaling during sensitive developmental windows, but much of the observed risk signal is entangled with the underlying maternal depression, shared genetics, and postnatal environment.",
+      "summary": "The literature does not support a simple uniformly harmful verdict for SSRI exposure in pregnancy. Some offspring outcomes, especially language-related diagnoses and selected neonatal endpoints, show small excess risks, but large adjusted analyses and critical reviews suggest much of the broader neurodevelopmental signal is explained by confounding from maternal illness rather than medication alone.",
+      "caveats": "Outcome definitions vary from neonatal adaptation findings to later neurodevelopmental diagnoses, so this broad edge compresses heterogeneous endpoints. Residual confounding remains substantial, and medication-specific risks may differ across individual SSRIs and dose patterns.",
+      "evidence": [
+        {
+          "citation": "Liu T et al 2025 Mol Psychiatry",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Depression and antidepressant use in pregnancy and adverse maternal and offspring outcomes: a systematic review and meta-analysis.",
+          "pmid": "41039087",
+          "n_participants": 51596405
+        },
+        {
+          "citation": "Brown AS et al 2016 JAMA Psychiatry",
+          "year": 2016,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Association of Selective Serotonin Reuptake Inhibitor Exposure During Pregnancy With Speech, Scholastic, and Motor Disorders in Offspring.",
+          "pmid": "27732704",
+          "n_participants": 56340,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 1.37,
+            "unit": "relative risk",
+            "comparator": "speech-language disorder risk in SSRI-exposed offspring versus offspring of mothers with untreated depression"
+          }
+        },
+        {
+          "citation": "Rommel AS et al 2019 J Child Psychol Psychiatry",
+          "year": 2019,
+          "study_type": "expert_opinion",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Annual Research Review: Maternal antidepressant use during pregnancy and offspring neurodevelopmental problems - a critical review and recommendations for future research.",
+          "pmid": "30515808"
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ssri_during_pregnancy",
+      "name": "SSRI treatment during pregnancy",
+      "kind": "activity",
+      "aliases": [
+        "selective serotonin reuptake inhibitor use in pregnancy",
+        "prenatal SSRI exposure"
+      ],
+      "description": "Maternal treatment with a selective serotonin reuptake inhibitor during pregnancy."
+    },
+    {
+      "slug": "child_outcomes",
+      "name": "Child outcomes",
+      "kind": "condition",
+      "aliases": [
+        "offspring outcomes",
+        "child developmental and health outcomes"
+      ],
+      "description": "Broad child outcomes including neurodevelopmental, behavioral, and other clinically important offspring endpoints."
+    }
+  ]
+}

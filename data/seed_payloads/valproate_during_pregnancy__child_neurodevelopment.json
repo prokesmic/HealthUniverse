@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "valproate_during_pregnancy",
+      "outcome_slug": "child_neurodevelopment",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "large",
+      "effect_quant": "Across modern and older cohorts, prenatal valproate exposure consistently carries one of the strongest neurodevelopmental harm signals among antiseizure drugs. In a blinded 210-child cohort, developmental delay occurred in 39.6% of valproate-exposed children and valproate exposure was associated with OR 26.1 (95% CI 4.9-139) for developmental delay versus controls.",
+      "population": "children exposed to valproate in utero, usually for maternal epilepsy treatment",
+      "mechanism": "Valproate crosses the placenta and is linked to disrupted neuronal proliferation, folate-related pathways, and fetal brain development, producing higher risks of cognitive, language, behavioral, and neurodevelopmental disorders than many alternative antiseizure drugs.",
+      "summary": "The evidence that valproate in pregnancy harms offspring neurodevelopment is strong and consistent. Large contemporary registry data, blinded developmental cohorts, and comparative antiseizure-drug studies all place valproate at the high-risk end of the spectrum for autism, intellectual disability, ADHD, and broader developmental delay.",
+      "caveats": "Risk is not identical across dose levels or epilepsy populations, and some older studies had relatively small exposed samples. Even so, the direction of effect is unusually consistent compared with the more ambiguous data for several newer antiseizure drugs.",
+      "evidence": [
+        {
+          "citation": "Madley-Dowd P et al 2024 Nat Commun",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Antiseizure medication use during pregnancy and children's neurodevelopmental outcomes.",
+          "pmid": "39548057",
+          "n_participants": 3182773
+        },
+        {
+          "citation": "Cummings C et al 2011 Arch Dis Child",
+          "year": 2011,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Neurodevelopment of children exposed in utero to lamotrigine, sodium valproate and carbamazepine.",
+          "pmid": "21415043",
+          "n_participants": 210,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 26.1,
+            "unit": "relative odds",
+            "comparator": "developmental delay after in utero valproate exposure versus controls"
+          }
+        },
+        {
+          "citation": "Shaaya EA et al 2013 Reprod Toxicol",
+          "year": 2013,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Developmental outcomes at preschool age after fetal exposure to valproic acid and lamotrigine: cognitive, motor, sensory and behavioral function.",
+          "pmid": "23791930",
+          "n_participants": 124
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "valproate_during_pregnancy",
+      "name": "Valproate exposure during pregnancy",
+      "kind": "activity",
+      "aliases": [
+        "prenatal valproate exposure",
+        "sodium valproate in pregnancy"
+      ],
+      "description": "Maternal valproate treatment during pregnancy with fetal exposure."
+    },
+    {
+      "slug": "child_neurodevelopment",
+      "name": "Child neurodevelopment",
+      "kind": "condition",
+      "aliases": [
+        "offspring neurodevelopment",
+        "infant and child cognitive development"
+      ],
+      "description": "Child cognitive, language, motor, or socioemotional developmental outcomes."
+    }
+  ]
+}
