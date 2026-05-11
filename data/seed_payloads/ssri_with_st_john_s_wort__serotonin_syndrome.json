@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "ssri_with_st_john_s_wort",
+      "name": "SSRI used with St John's wort",
+      "kind": "activity",
+      "aliases": [
+        "concurrent SSRI and hypericum use",
+        "St John's wort added to an SSRI"
+      ],
+      "description": "Simultaneous use of a selective serotonin reuptake inhibitor with St John's wort or hypericum extract."
+    },
+    {
+      "slug": "serotonin_syndrome",
+      "name": "Serotonin syndrome",
+      "kind": "condition",
+      "aliases": [
+        "serotonin toxicity",
+        "hyper-serotonergic toxicity"
+      ],
+      "description": "Potentially serious serotonergic toxicity characterized by mental status change, autonomic instability, and neuromuscular hyperactivity."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "ssri_with_st_john_s_wort",
+      "outcome_slug": "serotonin_syndrome",
+      "direction": "harmful",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "Published interaction reviews and case reports repeatedly describe serotonin-toxicity presentations when hypericum is combined with SSRIs, even though the evidence base is largely case-driven rather than trial-based.",
+      "population": "adults self-treating depression or anxiety with St John's wort while also receiving SSRI therapy",
+      "mechanism": "Hypericum products have serotonergic activity and can add to serotonin transporter blockade from SSRIs, creating the same pharmacologic logic that underlies other serotonergic interaction syndromes.",
+      "summary": "The SSRI plus St John's wort combination is best treated as a real but low-frequency serotonin-toxicity risk. Because patients often add the supplement without considering it a drug, the interaction matters clinically even though hard incidence estimates are unavailable.",
+      "caveats": "Evidence is dominated by case reports, heterogeneous supplement formulations, and broader interaction reviews rather than randomized co-exposure studies. The edge therefore supports avoidance on safety grounds, but not a precise estimate of absolute risk.",
+      "evidence": [
+        {
+          "citation": "Hammerness P et al 2003 Psychosomatics",
+          "year": 2003,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "St John's wort: a systematic review of adverse effects and drug interactions for the consultation psychiatrist.",
+          "pmid": "12832592"
+        },
+        {
+          "citation": "Mannel M 2004 Drug Saf",
+          "year": 2004,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Drug interactions with St John's wort : mechanisms and clinical implications.",
+          "pmid": "15350151"
+        },
+        {
+          "citation": "Zhou S et al 2008 Curr Drug Metab",
+          "year": 2008,
+          "study_type": "expert_opinion",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "An update on clinical drug interactions with the herbal antidepressant St. John's wort.",
+          "pmid": "18537576"
+        }
+      ]
+    }
+  ]
+}

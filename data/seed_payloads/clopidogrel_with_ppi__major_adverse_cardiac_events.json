@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "clopidogrel_with_ppi",
+      "name": "Clopidogrel used with a proton pump inhibitor",
+      "kind": "activity",
+      "aliases": [
+        "clopidogrel plus PPI therapy",
+        "concomitant clopidogrel and omeprazole or pantoprazole"
+      ],
+      "description": "Concurrent use of clopidogrel with proton pump inhibitor treatment."
+    },
+    {
+      "slug": "major_adverse_cardiac_events",
+      "name": "Major adverse cardiac events",
+      "kind": "condition",
+      "aliases": [
+        "MACE",
+        "major ischemic cardiovascular events"
+      ],
+      "description": "Composite major cardiovascular outcomes such as myocardial infarction, cardiovascular death, stent thrombosis, or repeat coronary events."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "clopidogrel_with_ppi",
+      "outcome_slug": "major_adverse_cardiac_events",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Observational-heavy meta-analyses reported higher MACE with concomitant PPI use, including OR 1.37 after PCI and pooled RR 1.22 overall, but randomized-trial subgroup analyses found no significant excess cardiovascular risk despite measurable attenuation of platelet inhibition.",
+      "population": "adults receiving clopidogrel after acute coronary syndrome or percutaneous coronary intervention who also use proton pump inhibitors",
+      "mechanism": "Some PPIs, especially CYP2C19 inhibitors, may blunt clopidogrel bioactivation and reduce ex vivo platelet inhibition, but confounding by indication and baseline risk can exaggerate apparent clinical harm in observational datasets.",
+      "summary": "This is a deliberately mixed edge. Platelet-function studies support a pharmacodynamic interaction, yet better-controlled clinical evidence does not consistently show a clear increase in hard cardiac outcomes, so the real-world cardiovascular penalty remains contested rather than settled.",
+      "caveats": "Results vary by study design, specific PPI, and patient selection. The edge focuses on cardiovascular outcomes, not the separate and well-established gastrointestinal-protection benefit of PPIs in higher-bleeding-risk patients.",
+      "evidence": [
+        {
+          "citation": "Bundhun PK et al 2017 BMC Cardiovasc Disord",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Is the concomitant use of clopidogrel and Proton Pump Inhibitors still associated with increased adverse cardiovascular outcomes following coronary angioplasty?: a systematic review and meta-analysis of recently published studies (2012 - 2016).",
+          "pmid": "28056809",
+          "n_participants": 84729,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 1.37,
+            "comparator": "long-term major adverse cardiac events with PPI plus clopidogrel versus clopidogrel without PPI after PCI"
+          }
+        },
+        {
+          "citation": "Demcsák A et al 2018 Front Physiol",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "PPIs Are Not Responsible for Elevating Cardiovascular Risk in Patients on Clopidogrel-A Systematic Review and Meta-Analysis.",
+          "pmid": "30510515",
+          "n_participants": 156823,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.99,
+            "comparator": "randomized-trial subgroup estimate for MACE with concomitant PPI use versus no PPI"
+          }
+        },
+        {
+          "citation": "Chen J et al 2013 Clin Cardiol",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Pharmacodynamic impacts of proton pump inhibitors on the efficacy of clopidogrel in vivo--a systematic review.",
+          "pmid": "23450832",
+          "n_participants": 8,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 1.07,
+            "comparator": "major adverse cardiovascular events with PPI plus clopidogrel versus clopidogrel alone in the pooled randomized pharmacodynamic studies"
+          }
+        }
+      ]
+    }
+  ]
+}
