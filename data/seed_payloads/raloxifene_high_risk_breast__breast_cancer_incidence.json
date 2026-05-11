@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "raloxifene_high_risk_breast",
+      "outcome_slug": "breast_cancer_incidence",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Raloxifene clearly lowers invasive breast-cancer incidence versus placebo in postmenopausal women and remains an accepted prevention option for higher-risk women, though head-to-head STAR data suggest it may be somewhat less effective than tamoxifen over longer follow-up.",
+      "population": "postmenopausal women at elevated breast-cancer risk or women in prevention settings where raloxifene is used to lower future breast-cancer incidence",
+      "mechanism": "Raloxifene is a selective estrogen receptor modulator that blocks estrogenic signaling in breast tissue while exerting different tissue effects in bone and uterus, reducing the incidence of estrogen receptor-positive invasive breast cancer.",
+      "summary": "This edge is genuinely protective, but it is not identical to tamoxifen. The evidence shows meaningful incidence reduction, especially for invasive ER-positive disease, while longer-term head-to-head prevention data suggest raloxifene trades a little efficacy for a somewhat more favorable uterine and thromboembolic profile.",
+      "caveats": "Most direct raloxifene evidence comes from postmenopausal women, including osteoporosis trials and prevention-trial populations. Its effect is strongest for ER-positive invasive disease, and the comparative balance versus tamoxifen depends on age, menopausal status, uterine risk, and thromboembolic risk.",
+      "evidence": [
+        {
+          "citation": "Cummings SR et al 2001 Breast Cancer Res Treat",
+          "year": 2001,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Continued breast cancer risk reduction in postmenopausal women treated with raloxifene: 4-year results from the MORE trial.",
+          "pmid": "11261828",
+          "n_participants": 7705,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.28,
+            "ci_low": 0.17,
+            "ci_high": 0.46,
+            "comparator": "raloxifene versus placebo for invasive breast cancer incidence in MORE"
+          }
+        },
+        {
+          "citation": "Cuzick J et al 2013 Lancet",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Selective oestrogen receptor modulators in prevention of breast cancer: an updated meta-analysis of individual participant data.",
+          "pmid": "23639488",
+          "n_participants": 83399,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.62,
+            "ci_low": 0.56,
+            "ci_high": 0.69,
+            "comparator": "selective estrogen receptor modulators versus control for breast cancer incidence over 10 years"
+          }
+        },
+        {
+          "citation": "Vogel VG et al 2010 Cancer Prev Res (Phila)",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Update of the National Surgical Adjuvant Breast and Bowel Project Study of Tamoxifen and Raloxifene (STAR) P-2 Trial: Preventing breast cancer.",
+          "pmid": "20404000",
+          "n_participants": 19747,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.24,
+            "ci_low": 1.05,
+            "ci_high": 1.47,
+            "comparator": "raloxifene versus tamoxifen for invasive breast cancer incidence in updated STAR follow-up"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "raloxifene_high_risk_breast",
+      "name": "Raloxifene in high-risk women",
+      "kind": "activity",
+      "aliases": [
+        "raloxifene breast cancer chemoprevention",
+        "raloxifene risk reduction in elevated-risk women"
+      ],
+      "description": "Preventive raloxifene use in postmenopausal women or other higher-risk prevention settings to reduce future breast-cancer incidence."
+    },
+    {
+      "slug": "breast_cancer_incidence",
+      "name": "Breast cancer incidence",
+      "kind": "condition",
+      "aliases": [
+        "new breast cancer cases",
+        "incident breast cancer"
+      ],
+      "description": "The occurrence of newly diagnosed breast cancer in a defined population over time."
+    }
+  ]
+}
