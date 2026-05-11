@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "statin_aortic_stenosis_progression",
+      "name": "Statin therapy for aortic stenosis progression",
+      "kind": "drug",
+      "aliases": [
+        "lipid-lowering therapy for calcific aortic stenosis",
+        "statins to slow aortic stenosis"
+      ],
+      "description": "Use of statin-based lipid-lowering therapy with the goal of slowing the hemodynamic progression of calcific aortic stenosis."
+    },
+    {
+      "slug": "progression_rate",
+      "name": "Disease progression rate",
+      "kind": "process",
+      "aliases": [
+        "hemodynamic progression rate",
+        "speed of progression"
+      ],
+      "description": "The rate at which a disease or physiologic abnormality worsens over time."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "statin_aortic_stenosis_progression",
+      "outcome_slug": "progression_rate",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Randomized evidence has not shown a reliable slowing of calcific aortic-stenosis progression with statins. SEAS found no reduction in aortic-valve events (HR 1.00 for valve replacement), ASTRONOMER showed essentially identical annualized peak-gradient progression (6.3 vs 6.1 mm Hg/year), and pooled RCT meta-analysis found no meaningful effect on valve velocity, gradients, or valve area.",
+      "population": "adults with mild to moderate calcific aortic stenosis treated with statin-based lipid lowering despite no separate conventional indication strong enough to explain the treatment alone",
+      "mechanism": "Although calcific aortic stenosis shares some atherosclerotic biology with vascular disease, established valve calcification appears less responsive to LDL lowering than coronary plaque biology, limiting the expected effect on hemodynamic progression.",
+      "summary": "This is a classic mechanistic hypothesis that did not hold up well in randomized trials. The literature remains contested because observational studies once looked favorable, but the cleaner randomized evidence is largely negative for slowing valve progression.",
+      "caveats": "Statins still reduce ischemic vascular events when indicated for standard lipid reasons, so this edge only addresses aortic-stenosis progression rather than total cardiovascular benefit. The question here is not whether statins are useful overall, but whether they specifically slow valve disease progression, and the best randomized data say probably not.",
+      "evidence": [
+        {
+          "citation": "Zhao Y et al 2016 Data Brief",
+          "year": 2016,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "The effect of statins therapy in aortic stenosis: Meta-analysis comparison data of RCTs and observationals.",
+          "pmid": "26977437",
+          "n_participants": 2723,
+          "effect_quant": {
+            "metric": "summary_effect",
+            "value": 0,
+            "comparator": "pooled randomized-trial analyses showed no significant effect of statins on peak velocity, peak gradient, mean gradient, valve area, or valve calcification compared with controls"
+          }
+        },
+        {
+          "citation": "Rossebo AB et al 2008 N Engl J Med",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Intensive lipid lowering with simvastatin and ezetimibe in aortic stenosis. SEAS.",
+          "pmid": "18765433",
+          "n_participants": 1873,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.00,
+            "ci_low": 0.84,
+            "ci_high": 1.18,
+            "comparator": "aortic-valve replacement with simvastatin-ezetimibe versus placebo in SEAS"
+          }
+        },
+        {
+          "citation": "Chan KL et al 2010 Circulation",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Effect of Lipid lowering with rosuvastatin on progression of aortic stenosis: results of the aortic stenosis progression observation: measuring effects of rosuvastatin (ASTRONOMER) trial.",
+          "pmid": "20048204",
+          "n_participants": 269,
+          "effect_quant": {
+            "metric": "annualized_difference",
+            "value": 0.2,
+            "comparator": "annualized increase in peak aortic-stenosis gradient with rosuvastatin versus placebo in ASTRONOMER (6.3 vs 6.1 mm Hg/year)"
+          }
+        }
+      ]
+    }
+  ]
+}

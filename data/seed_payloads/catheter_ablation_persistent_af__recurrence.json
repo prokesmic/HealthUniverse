@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "catheter_ablation_persistent_af",
+      "name": "Catheter ablation for persistent atrial fibrillation",
+      "kind": "activity",
+      "aliases": [
+        "AF ablation for persistent AF",
+        "catheter ablation in persistent or long-standing persistent AF"
+      ],
+      "description": "Catheter ablation used as a rhythm-control strategy for adults with persistent atrial fibrillation."
+    },
+    {
+      "slug": "recurrence",
+      "name": "Arrhythmia recurrence",
+      "kind": "condition",
+      "aliases": [
+        "AF recurrence",
+        "recurrent atrial tachyarrhythmia"
+      ],
+      "description": "Return of atrial fibrillation, atrial flutter, or atrial tachycardia after an initially successful rhythm-control strategy."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "catheter_ablation_persistent_af",
+      "outcome_slug": "recurrence",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Across randomized trials that included persistent AF, catheter ablation lowered AF recurrence versus antiarrhythmic drug therapy (RR 0.44). In recurrent arrhythmia after persistent-AF ablation, repeat catheter ablation outperformed antiarrhythmic drugs (HR 0.54), and focal-source-guided persistent-AF ablation improved 1-year arrhythmia-free survival versus matched stepwise controls (HR 1.85).",
+      "population": "adults with symptomatic persistent or long-standing persistent atrial fibrillation undergoing catheter ablation or comparative rhythm-control strategies",
+      "mechanism": "Catheter ablation reduces recurrence by electrically isolating pulmonary veins and modifying sustaining atrial substrate, lowering the probability that persistent AF can reinitiate and stabilize.",
+      "summary": "Catheter ablation improves rhythm outcomes in persistent AF, but recurrence is still common and results depend heavily on substrate burden and technique. The main benefit is better freedom from recurrent atrial tachyarrhythmia than with drug-only rhythm control.",
+      "caveats": "Persistent AF is harder to ablate successfully than paroxysmal AF, so benefit sizes are smaller and more heterogeneous than in first-line paroxysmal-ablation trials. Some of the supporting evidence compares ablation strategies with each other or evaluates repeat ablation after recurrence rather than a pure ablation-versus-no-ablation question.",
+      "evidence": [
+        {
+          "citation": "Chander S et al 2024 BMC Cardiovasc Disord",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Antiarrhythmic drug therapy and catheter ablation in patients with paroxysmal or persistent atrial fibrillation: a systematic review and meta-analysis.",
+          "pmid": "38918704",
+          "n_participants": 3977,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 0.44,
+            "ci_low": 0.33,
+            "ci_high": 0.59,
+            "comparator": "AF recurrence with catheter ablation versus antiarrhythmic drug therapy in randomized trials including paroxysmal or persistent AF"
+          }
+        },
+        {
+          "citation": "Zhang XD et al 2014 Eur Heart J",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Optimal rhythm-control strategy for recurrent atrial tachycardia after catheter ablation of persistent atrial fibrillation: a randomized clinical trial.",
+          "pmid": "24497338",
+          "n_participants": 201,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.538,
+            "ci_low": 0.355,
+            "ci_high": 0.816,
+            "comparator": "recurrent atrial tachyarrhythmia with repeat catheter ablation versus antiarrhythmic drugs after recurrence following persistent AF ablation"
+          }
+        },
+        {
+          "citation": "Takahashi Y et al 2018 J Cardiovasc Electrophysiol",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of catheter ablation of focal sources in persistent atrial fibrillation.",
+          "pmid": "29315991",
+          "n_participants": 136,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 1.85,
+            "ci_low": 1.17,
+            "ci_high": 2.96,
+            "comparator": "freedom from atrial tachyarrhythmia at 1 year with focal-source-guided persistent AF ablation versus matched conventional stepwise-ablation controls"
+          }
+        }
+      ]
+    }
+  ]
+}

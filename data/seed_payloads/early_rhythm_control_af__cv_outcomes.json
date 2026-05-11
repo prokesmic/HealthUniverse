@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "early_rhythm_control_af",
+      "name": "Early rhythm control for atrial fibrillation",
+      "kind": "activity",
+      "aliases": [
+        "early antiarrhythmic or ablation strategy in AF",
+        "rhythm control within 1 year of AF diagnosis"
+      ],
+      "description": "Structured rhythm-control treatment started early after atrial fibrillation diagnosis, using antiarrhythmic drugs, cardioversion, or ablation."
+    },
+    {
+      "slug": "cv_outcomes",
+      "name": "Cardiovascular outcomes",
+      "kind": "process",
+      "aliases": [
+        "major cardiovascular outcomes",
+        "composite cardiovascular events"
+      ],
+      "description": "Composite cardiovascular outcomes such as cardiovascular death, stroke, heart-failure hospitalization, or acute coronary syndrome."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "early_rhythm_control_af",
+      "outcome_slug": "cv_outcomes",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "EAST-AFNET 4 showed fewer first primary cardiovascular events with early rhythm control than usual care (HR 0.79). Real-world meta-analysis also found lower composite cardiovascular events (HR 0.86), and high-comorbidity EAST-AFNET 4 patients had an even larger benefit (HR 0.64).",
+      "population": "adults with recently diagnosed atrial fibrillation, especially those with cardiovascular risk factors or higher comorbidity burden",
+      "mechanism": "Starting rhythm control before prolonged atrial remodeling may maintain sinus rhythm, reduce AF burden, and prevent downstream stroke, heart-failure worsening, and other cardiovascular decompensation.",
+      "summary": "This is one of the clearest examples where earlier intervention changed the old rate-versus-rhythm story. The benefit is not just symptom relief; earlier rhythm control lowers major cardiovascular events in appropriately selected recently diagnosed AF populations.",
+      "caveats": "The strategy effect is strongest when treatment starts within the first year after diagnosis and in patients with meaningful cardiovascular risk. The evidence reflects a strategy that can include drugs, cardioversion, or ablation rather than a single intervention.",
+      "evidence": [
+        {
+          "citation": "Kirchhof P et al 2020 N Engl J Med",
+          "year": 2020,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Early Rhythm-Control Therapy in Patients with Atrial Fibrillation. EAST-AFNET 4.",
+          "pmid": "32865375",
+          "n_participants": 2789,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.79,
+            "ci_low": 0.66,
+            "ci_high": 0.94,
+            "comparator": "first primary cardiovascular outcome in EAST-AFNET 4 with early rhythm control versus usual care"
+          }
+        },
+        {
+          "citation": "Zhu W et al 2024 Int J Cardiol",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Real-world evidence of early rhythm control in patients with atrial fibrillation: A systematic review and meta-analysis.",
+          "pmid": "38964555",
+          "n_participants": 130970,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.86,
+            "ci_low": 0.82,
+            "ci_high": 0.91,
+            "comparator": "primary composite cardiovascular outcome with early rhythm control versus rate control in real-world studies"
+          }
+        },
+        {
+          "citation": "Rillig A et al 2022 Circulation",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Early Rhythm Control in Patients With Atrial Fibrillation and High Comorbidity Burden.",
+          "pmid": "35968706",
+          "n_participants": 2789,
+          "effect_quant": {
+            "metric": "HR",
+            "value": 0.64,
+            "ci_low": 0.51,
+            "ci_high": 0.81,
+            "comparator": "primary composite cardiovascular outcome with early rhythm control versus usual care among EAST-AFNET 4 patients with CHA2DS2-VASc score 4 or greater"
+          }
+        }
+      ]
+    }
+  ]
+}
