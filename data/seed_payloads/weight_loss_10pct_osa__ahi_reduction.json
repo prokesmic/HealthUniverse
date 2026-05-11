@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "weight_loss_10pct_osa",
+      "name": "About 10% weight loss for obstructive sleep apnea",
+      "kind": "activity",
+      "aliases": [
+        "10 percent weight loss in OSA",
+        "meaningful lifestyle weight loss for sleep apnea"
+      ],
+      "description": "Intentional weight loss of roughly 10% body weight through diet and lifestyle intervention in adults with obstructive sleep apnea and overweight or obesity."
+    },
+    {
+      "slug": "ahi_reduction",
+      "name": "Reduction in apnea-hypopnea index",
+      "kind": "process",
+      "aliases": [
+        "AHI improvement",
+        "lower sleep apnea event burden"
+      ],
+      "description": "A reduction in the apnea-hypopnea index, indicating fewer obstructive breathing events during sleep."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "weight_loss_10pct_osa",
+      "outcome_slug": "ahi_reduction",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Intentional weight loss generally lowers OSA severity: a 9-study meta-analysis found AHI mean difference -14.3 events/h, Sleep AHEAD showed 9.7 to 7.9 events/h lower AHI through year 4 with a smaller 4.0 events/h difference by year 10, and INTERAPNEA reported a between-group AHI difference of -23.6 events/h after 8 weeks.",
+      "population": "adults with obstructive sleep apnea plus overweight or obesity, especially those able to sustain clinically meaningful weight loss",
+      "mechanism": "Weight loss reduces pharyngeal fat loading, lowers upper-airway collapsibility, improves lung volume and ventilatory mechanics, and can reduce the metabolic drivers that worsen obstructive sleep apnea.",
+      "summary": "This is one of the more reliable non-device ways to improve OSA severity. Benefit scales with the amount of weight loss, but complete normalization is not guaranteed.",
+      "caveats": "Residual OSA is common even after substantial weight loss. Long-term effects attenuate when weight is regained, and evidence is strongest in overweight or obese adults rather than in lean OSA phenotypes.",
+      "evidence": [
+        {
+          "citation": "AnandamA et al 2013 Sleep Breath",
+          "year": 2013,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of dietary weight loss on obstructive sleep apnea: a meta-analysis.",
+          "pmid": "22374151",
+          "n_participants": 577,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -14.3,
+            "ci_low": -23.5,
+            "ci_high": -5.1,
+            "comparator": "AHI change with dietary weight loss versus control"
+          }
+        },
+        {
+          "citation": "KunaST et al 2021 Am J Respir Crit Care Med",
+          "year": 2021,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effects of Weight Loss on Obstructive Sleep Apnea Severity. Ten-Year Results of the Sleep AHEAD Study.",
+          "pmid": "32721163",
+          "n_participants": 134,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -4.0,
+            "comparator": "AHI difference for intensive lifestyle intervention versus diabetes support and education at 10-year polysomnographic follow-up"
+          }
+        },
+        {
+          "citation": "Carneiro-BarreraA et al 2022 JAMA Netw Open",
+          "year": 2022,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effect of an Interdisciplinary Weight Loss and Lifestyle Intervention on Obstructive Sleep Apnea Severity: The INTERAPNEA Randomized Clinical Trial.",
+          "pmid": "35452108",
+          "n_participants": 89,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -23.6,
+            "ci_low": -28.7,
+            "ci_high": -18.5,
+            "comparator": "AHI difference at 8 weeks for lifestyle intervention plus usual care versus usual care alone"
+          }
+        }
+      ]
+    }
+  ]
+}

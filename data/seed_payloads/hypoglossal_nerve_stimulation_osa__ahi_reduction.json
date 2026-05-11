@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "hypoglossal_nerve_stimulation_osa",
+      "name": "Hypoglossal nerve stimulation for obstructive sleep apnea",
+      "kind": "activity",
+      "aliases": [
+        "upper airway stimulation for OSA",
+        "hypoglossal nerve stimulation therapy"
+      ],
+      "description": "Implantable hypoglossal nerve stimulation devices used to reduce upper-airway collapse in obstructive sleep apnea."
+    },
+    {
+      "slug": "ahi_reduction",
+      "name": "Reduction in apnea-hypopnea index",
+      "kind": "process",
+      "aliases": [
+        "AHI improvement",
+        "lower sleep apnea event burden"
+      ],
+      "description": "A reduction in the apnea-hypopnea index, indicating fewer obstructive breathing events during sleep."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "hypoglossal_nerve_stimulation_osa",
+      "outcome_slug": "ahi_reduction",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Hypoglossal nerve stimulation consistently lowers AHI in selected adults with CPAP-intolerant OSA. A 2024 meta-analysis reported Inspire-device AHI reductions of -20.14 events/h short term and -15.91 events/h long term, and a 2024 time-course meta-analysis found durable Sher-response rates around 80% within the first year.",
+      "population": "adults with moderate to severe obstructive sleep apnea who meet selection criteria for implantable upper-airway stimulation, often after CPAP intolerance",
+      "mechanism": "Timed stimulation of the hypoglossal nerve protrudes and stiffens the tongue base, reducing pharyngeal collapse and improving upper-airway patency during sleep.",
+      "summary": "Among carefully selected surgical-device therapies, this is one of the strongest protective AHI edges. The effect is substantial, but it depends on patient selection and access to implantation.",
+      "caveats": "Evidence is strongest for selected patients with favorable anatomy and body habitus. Device type matters, and outcomes can be less impressive outside Inspire-dominant cohorts or with broader real-world selection.",
+      "evidence": [
+        {
+          "citation": "AlrubasyWA et al 2024 Respir Med",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Hypoglossal nerve stimulation for obstructive sleep apnea in adults: An updated systematic review and meta-analysis.",
+          "pmid": "39401661",
+          "n_participants": 822,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -20.14,
+            "comparator": "Short-term AHI change after Inspire hypoglossal nerve stimulation"
+          }
+        },
+        {
+          "citation": "KimDH et al 2024 Otolaryngol Head Neck Surg",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Hypoglossal Nerve Stimulation Effects on Obstructive Sleep Apnea Over Time: A Systematic Review and Meta-analysis.",
+          "pmid": "38123511",
+          "n_participants": 8670,
+          "effect_quant": {
+            "metric": "responder_rate",
+            "value": 80.0,
+            "comparator": "Sher-criteria success within 12 months after hypoglossal nerve stimulation"
+          }
+        },
+        {
+          "citation": "SchwartzAR et al 2023 JAMA Otolaryngol Head Neck Surg",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Targeted Hypoglossal Nerve Stimulation for Patients With Obstructive Sleep Apnea: A Randomized Clinical Trial.",
+          "pmid": "37022679",
+          "n_participants": 138,
+          "effect_quant": {
+            "metric": "responder_rate",
+            "value": 52.3,
+            "comparator": "Month-4 AHI responder rate with targeted hypoglossal nerve stimulation versus 19.6% in controls"
+          }
+        }
+      ]
+    }
+  ]
+}
