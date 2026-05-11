@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "ovarian_screening_general_pop",
+      "outcome_slug": "ovarian_cancer_mortality",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Average-risk ovarian screening has repeatedly failed to show a clear mortality benefit overall. PLCO showed no mortality reduction and substantial harm from false positives, whereas earlier UKCTOCS analyses suggested a delayed multimodal benefit signal that disappeared with longer follow-up despite some downstaging.",
+      "population": "asymptomatic average-risk postmenopausal women undergoing ovarian cancer screening with CA125 algorithms, ultrasound, or both",
+      "mechanism": "Screening aims to detect ovarian or tubal malignancy before advanced spread, but low disease prevalence, limited specificity, biologic aggressiveness, and unnecessary surgery after false positives all reduce the chance of net benefit.",
+      "summary": "This is one of the clearest contested screening stories in gynecologic oncology. Early stage-shift signals and exploratory delayed-benefit analyses created optimism, but the best long-term randomized evidence still does not show a convincing mortality reduction for routine population screening.",
+      "caveats": "These results apply to average-risk women and should not be generalized to BRCA carriers or other hereditary high-risk populations. The screening strategies studied here are program-level CA125 and ultrasound approaches rather than modern risk-stratified surveillance pathways.",
+      "evidence": [
+        {
+          "citation": "Buys SS et al 2011 JAMA",
+          "year": 2011,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effect of screening on ovarian cancer mortality: the Prostate, Lung, Colorectal and Ovarian (PLCO) Cancer Screening Randomized Controlled Trial.",
+          "pmid": "21642681",
+          "n_participants": 78216,
+          "effect_quant": {
+            "metric": "RR",
+            "value": 1.18,
+            "ci_low": 0.82,
+            "ci_high": 1.71,
+            "comparator": "ovarian cancer mortality with screening versus usual care in PLCO"
+          }
+        },
+        {
+          "citation": "Jacobs IJ et al 2016 Lancet",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Ovarian cancer screening and mortality in the UK Collaborative Trial of Ovarian Cancer Screening (UKCTOCS): a randomised controlled trial.",
+          "pmid": "26707054",
+          "n_participants": 202546,
+          "effect_quant": {
+            "metric": "mortality_reduction",
+            "value": 0.15,
+            "comparator": "multimodal screening versus no screening over years 0 to 14 in UKCTOCS primary analysis"
+          }
+        },
+        {
+          "citation": "Gentry-Maharaj A et al 2025 Health Technol Assess",
+          "year": 2025,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Mortality impact, risks, and benefits of general population screening for ovarian cancer: the UKCTOCS randomised controlled trial.",
+          "pmid": "37183782",
+          "n_participants": 202562,
+          "effect_quant": {
+            "metric": "unnecessary_surgery_per_10000_screens",
+            "value": 50,
+            "comparator": "women undergoing unnecessary surgery per 10,000 annual screens in long-term UKCTOCS follow-up"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "ovarian_screening_general_pop",
+      "name": "Ovarian screening in the general population",
+      "kind": "activity",
+      "aliases": [
+        "average-risk ovarian cancer screening",
+        "population ovarian screening"
+      ],
+      "description": "Routine ovarian cancer screening in asymptomatic average-risk women using CA125, ultrasound, or multimodal protocols."
+    },
+    {
+      "slug": "ovarian_cancer_mortality",
+      "name": "Ovarian cancer mortality",
+      "kind": "condition",
+      "aliases": [
+        "death from ovarian cancer",
+        "ovarian-cancer-specific mortality"
+      ],
+      "description": "Deaths attributable to ovarian, primary peritoneal, or fallopian tube cancer in screening or clinical follow-up studies."
+    }
+  ]
+}

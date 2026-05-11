@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "edges": [
+    {
+      "factor_slug": "multi_cancer_early_detection_blood",
+      "outcome_slug": "cancer_detection",
+      "direction": "mixed",
+      "tier": "C",
+      "effect_size": "moderate",
+      "effect_quant": "Prospective MCED blood-test studies show that adding a single blood draw can detect otherwise unscreened cancers and produce nontrivial true-positive yields, but detection rates remain low at the population level, false positives still occur, and no completed trial has yet shown a mortality benefit.",
+      "population": "asymptomatic adults aged 50 years and older undergoing blood-based multi-cancer early detection testing in screening-like settings",
+      "mechanism": "MCED platforms analyze circulating tumor-derived DNA methylation and related signals to identify a shared cancer signature across multiple tumor types before overt clinical presentation.",
+      "summary": "The near-term evidence is promising but incomplete. These blood tests can find additional cancers, including cancers without established screening programs, yet the field is still operating in a detection-and-workup phase rather than a proven mortality-benefit phase, so a mixed label is warranted.",
+      "caveats": "Most published studies are single-arm feasibility cohorts or interventional detection studies rather than randomized mortality trials. Positive predictive value depends heavily on background cancer prevalence, the diagnostic workup pathway, and the specific assay used.",
+      "evidence": [
+        {
+          "citation": "Lennon AM et al 2020 Science",
+          "year": 2020,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Feasibility of blood testing combined with PET-CT to screen for cancer and guide intervention.",
+          "pmid": "32345712",
+          "n_participants": 10006,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 0.0026,
+            "comparator": "participants with cancers detected by blood testing in DETECT-A"
+          }
+        },
+        {
+          "citation": "Schrag D et al 2023 Lancet",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Blood-based tests for multicancer early detection (PATHFINDER): a prospective cohort study.",
+          "pmid": "37805216",
+          "n_participants": 6621,
+          "effect_quant": {
+            "metric": "PPV",
+            "value": 0.38,
+            "comparator": "participants with a detected cancer signal who were confirmed to have cancer in PATHFINDER"
+          }
+        },
+        {
+          "citation": "Buchanan AH et al 2024 Cancer Prev Res (Phila)",
+          "year": 2024,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Multiyear Clinical Outcomes of Cancers Diagnosed Following Detection by a Blood-Based Multicancer Early Detection Test.",
+          "pmid": "38819783",
+          "n_participants": 26,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 0.5,
+            "comparator": "participants with MCED-detected cancers who were alive and cancer-free after median 4.4 years of follow-up"
+          }
+        }
+      ]
+    }
+  ],
+  "new_entities": [
+    {
+      "slug": "multi_cancer_early_detection_blood",
+      "name": "Multi-cancer early detection blood testing",
+      "kind": "activity",
+      "aliases": [
+        "MCED blood testing",
+        "blood-based multi-cancer screening"
+      ],
+      "description": "A blood-based screening strategy that uses circulating tumor-derived biomarkers to screen for multiple cancer types at once."
+    },
+    {
+      "slug": "cancer_detection",
+      "name": "Cancer detection",
+      "kind": "condition",
+      "aliases": [
+        "screen-detected cancer identification",
+        "cancer finding rate"
+      ],
+      "description": "Detection of previously unrecognized cancer through screening or diagnostic testing."
+    }
+  ]
+}
