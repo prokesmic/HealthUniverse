@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "levothyroxine_subclinical_hypothyroid_tsh_4_to_10",
+      "name": "Levothyroxine for mild subclinical hypothyroidism with TSH 4 to 10",
+      "kind": "drug",
+      "aliases": [
+        "levothyroxine for mild SCH",
+        "LT4 for subclinical hypothyroidism with TSH below 10"
+      ],
+      "description": "Levothyroxine treatment for adults with persistent mild subclinical hypothyroidism, especially those with thyroid-stimulating hormone levels between about 4 and 10 mIU/L."
+    },
+    {
+      "slug": "cv_outcomes",
+      "name": "Cardiovascular outcomes",
+      "kind": "process",
+      "aliases": [
+        "cardiovascular events",
+        "major cardiovascular outcomes"
+      ],
+      "description": "Composite or individual cardiovascular outcomes such as myocardial infarction, stroke, heart failure, atrial fibrillation, or cardiovascular death."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "levothyroxine_subclinical_hypothyroid_tsh_4_to_10",
+      "outcome_slug": "cv_outcomes",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "unknown",
+      "effect_quant": "In older adults with predominantly mild subclinical hypothyroidism, pooled randomized evidence has not shown a significant cardiovascular benefit from levothyroxine: the TRUST/IEMO80+ cardiovascular analysis found HR 0.74 for cardiovascular events with wide confidence intervals crossing no effect, while a broader mortality meta-analysis found no cardiovascular mortality reduction overall (RR 0.99) and no benefit in adults aged 65 to 70 years or older.",
+      "population": "adults with persistent mild subclinical hypothyroidism, especially older adults whose TSH is elevated but remains below 10 mIU/L",
+      "mechanism": "Levothyroxine could theoretically reduce cardiovascular risk by improving lipids, vascular tone, and myocardial thyroid signaling, but in mild subclinical disease the physiologic deficit may be too small for this to translate into fewer clinical events.",
+      "summary": "This edge is contested rather than clearly protective. Cardiovascular risk may be higher in untreated subclinical hypothyroidism at the population level, but treating the common mild TSH 4 to 10 range has not convincingly improved hard cardiovascular outcomes in older randomized cohorts.",
+      "caveats": "Any possible benefit may differ by age, baseline cardiovascular disease, symptom burden, and TSH severity. Signals suggesting mortality benefit in younger adults do not map cleanly onto the older, mostly mild subclinical hypothyroid populations studied in the best randomized trials.",
+      "evidence": [
+        {
+          "citation": "ZijlstraLE et al 2021 Front Endocrinol (Lausanne)",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Levothyroxine Treatment and Cardiovascular Outcomes in Older People With Subclinical Hypothyroidism: Pooled Individual Results of Two Randomised Controlled Trials.",
+          "pmid": "34093444",
+          "n_participants": 842,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.74,
+            "ci_low": 0.41,
+            "ci_high": 1.25,
+            "comparator": "cardiovascular events with levothyroxine versus placebo in pooled TRUST and IEMO80+ participants"
+          }
+        },
+        {
+          "citation": "PengCCH et al 2021 J Clin Endocrinol Metab",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Association of Thyroid Hormone Therapy with Mortality in Subclinical Hypothyroidism: A Systematic Review and Meta-Analysis.",
+          "pmid": "33107557",
+          "n_participants": 21055,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.99,
+            "ci_low": 0.82,
+            "ci_high": 1.20,
+            "comparator": "cardiovascular mortality with thyroid hormone therapy versus no therapy across adults with subclinical hypothyroidism"
+          }
+        },
+        {
+          "citation": "ZhaoC et al 2022 Front Endocrinol (Lausanne)",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Effect of Levothyroxine on Older Patients With Subclinical Hypothyroidism: A Systematic Review and Meta-Analysis.",
+          "pmid": "35909574",
+          "n_participants": 5000,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 1.13,
+            "ci_low": 0.96,
+            "ci_high": 1.34,
+            "comparator": "fatal or nonfatal cardiovascular events with levothyroxine versus control in older adults with subclinical hypothyroidism"
+          }
+        }
+      ]
+    }
+  ]
+}

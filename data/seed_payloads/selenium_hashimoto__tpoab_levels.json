@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "selenium_hashimoto",
+      "name": "Selenium supplementation in Hashimoto thyroiditis",
+      "kind": "supplement",
+      "aliases": [
+        "selenium for Hashimoto thyroiditis",
+        "selenium in autoimmune thyroiditis"
+      ],
+      "description": "Selenium supplementation, typically around 200 micrograms daily, used in adults with Hashimoto thyroiditis."
+    },
+    {
+      "slug": "tpoab_levels",
+      "name": "TPO antibody levels",
+      "kind": "process",
+      "aliases": [
+        "thyroid peroxidase antibody titers",
+        "TPOAb concentration"
+      ],
+      "description": "The concentration of thyroid peroxidase antibodies, a marker of thyroid autoimmunity in Hashimoto thyroiditis."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "selenium_hashimoto",
+      "outcome_slug": "tpoab_levels",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "A 2024 meta-analysis found selenium lowered TPOAb levels in Hashimoto thyroiditis with SMD -0.96 across 29 cohorts and 2,358 participants. Earlier trials and reviews also suggest antibody lowering, but the literature remains heterogeneous and the clinical importance of changing TPOAb titers is still debated.",
+      "population": "adults with Hashimoto thyroiditis, with or without thyroid hormone replacement therapy",
+      "mechanism": "Selenium may reduce oxidative stress within thyroid tissue and modulate immune activity, which can dampen autoimmune thyroid antibody production.",
+      "summary": "This is one of the cleaner laboratory-effect edges in the thyroid block. Selenium often lowers TPO antibody levels, but that biomarker improvement does not automatically translate into better symptoms or reduced need for thyroid hormone.",
+      "caveats": "Trial quality is mixed, formulations vary, and antibody lowering may not reflect meaningful clinical benefit. Selenium is also not risk-free at excessive doses, so enthusiasm should stay anchored to measured deficiency risk and realistic outcome goals.",
+      "evidence": [
+        {
+          "citation": "HuwilerVV et al 2024 Thyroid",
+          "year": 2024,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Selenium Supplementation in Patients with Hashimoto Thyroiditis: A Systematic Review and Meta-Analysis of Randomized Clinical Trials.",
+          "pmid": "38243784",
+          "n_participants": 2358,
+          "effect_quant": {
+            "metric": "standardized_mean_difference",
+            "value": -0.96,
+            "ci_low": -1.36,
+            "ci_high": -0.56,
+            "comparator": "TPOAb levels with selenium supplementation versus control across randomized cohorts"
+          }
+        },
+        {
+          "citation": "ZhangY et al 2021 Clin Endocrinol (Oxf)",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effect of selenium on thyroid autoimmunity and regulatory T cells in patients with Hashimoto's thyroiditis: A prospective randomized-controlled trial.",
+          "pmid": "33650299",
+          "n_participants": 90
+        },
+        {
+          "citation": "WintherKH et al 2013 Cochrane Database Syst Rev",
+          "year": 2013,
+          "study_type": "systematic_review",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Selenium supplementation for Hashimoto's thyroiditis.",
+          "pmid": "23744563",
+          "n_participants": 463
+        }
+      ]
+    }
+  ]
+}

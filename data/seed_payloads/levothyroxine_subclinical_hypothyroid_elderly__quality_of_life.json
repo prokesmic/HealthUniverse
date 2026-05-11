@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "levothyroxine_subclinical_hypothyroid_elderly",
+      "name": "Levothyroxine for subclinical hypothyroidism in older adults",
+      "kind": "drug",
+      "aliases": [
+        "levothyroxine for elderly SCH",
+        "LT4 for older adults with subclinical hypothyroidism"
+      ],
+      "description": "Levothyroxine treatment used in older adults with persistent subclinical hypothyroidism."
+    },
+    {
+      "slug": "quality_of_life",
+      "name": "Quality of life",
+      "kind": "process",
+      "aliases": [
+        "health-related quality of life",
+        "functional status"
+      ],
+      "description": "Health-related quality of life or sleep-related functional status measured with generic or disease-specific instruments."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "levothyroxine_subclinical_hypothyroid_elderly",
+      "outcome_slug": "quality_of_life",
+      "direction": "mixed",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "Across randomized evidence, levothyroxine has not meaningfully improved older adults' quality of life in subclinical hypothyroidism. The 21-study JAMA meta-analysis of 2,192 adults found no clinically relevant QoL or thyroid-symptom benefit, the 737-patient TRUST trial was negative on both ThyPRO primary outcomes, and the 80-plus pooled analysis in 251 participants again found no important quality-of-life gain.",
+      "population": "older adults with persistent subclinical hypothyroidism, especially community-dwelling adults aged 65 years and older",
+      "mechanism": "Correcting a mild biochemical thyroid deficit could theoretically improve fatigue, physical function, and health-related quality of life, but age-related symptom burden is often multifactorial and may not be driven primarily by thyroid hormone deficiency.",
+      "summary": "This is a fairly settled mixed-to-null edge. The best modern trials do not show clinically important quality-of-life improvement from routine levothyroxine treatment in older adults with subclinical hypothyroidism.",
+      "caveats": "These results do not exclude benefit in selected patients with more marked TSH elevation, clear hypothyroid symptoms, or specific comorbid contexts. The evidence mainly argues against routine symptom-directed treatment of the average older adult with mild SCH.",
+      "evidence": [
+        {
+          "citation": "StottDJ et al 2017 N Engl J Med",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Thyroid Hormone Therapy for Older Adults with Subclinical Hypothyroidism.",
+          "pmid": "28402245",
+          "n_participants": 737
+        },
+        {
+          "citation": "MooijaartSP et al 2019 JAMA",
+          "year": 2019,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Association Between Levothyroxine Treatment and Thyroid-Related Symptoms Among Adults Aged 80 Years and Older With Subclinical Hypothyroidism.",
+          "pmid": "31664429",
+          "n_participants": 251
+        },
+        {
+          "citation": "FellerM et al 2018 JAMA",
+          "year": 2018,
+          "study_type": "meta_analysis",
+          "direction": "mixed",
+          "quality": "high",
+          "notes": "Association of Thyroid Hormone Therapy With Quality of Life and Thyroid-Related Symptoms in Patients With Subclinical Hypothyroidism: A Systematic Review and Meta-analysis.",
+          "pmid": "30285179",
+          "n_participants": 2192
+        }
+      ]
+    }
+  ]
+}
