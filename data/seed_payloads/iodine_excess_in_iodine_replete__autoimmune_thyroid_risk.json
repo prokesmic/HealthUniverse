@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "iodine_excess_in_iodine_replete",
+      "name": "Iodine excess in an iodine-replete population",
+      "kind": "behavior",
+      "aliases": [
+        "excess iodine exposure after repletion",
+        "high iodine intake in iodine-sufficient adults"
+      ],
+      "description": "Iodine intake above physiologic needs in populations or patients who are already iodine replete or have transitioned from deficiency to repletion."
+    },
+    {
+      "slug": "autoimmune_thyroid_risk",
+      "name": "Autoimmune thyroid disease risk",
+      "kind": "condition",
+      "aliases": [
+        "thyroid autoimmunity risk",
+        "risk of thyroid autoantibody positivity"
+      ],
+      "description": "Risk of developing thyroid autoantibodies, autoimmune thyroiditis, or related autoimmune thyroid dysfunction."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "iodine_excess_in_iodine_replete",
+      "outcome_slug": "autoimmune_thyroid_risk",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Human evidence consistently suggests that pushing iodine intake above a stable physiologic range raises thyroid autoimmunity markers. In adults with iodine excess, one cross-sectional analysis found higher thyroid autoimmunity risk than in a more-than-adequate iodine group (OR 1.68), and iodine exposure in an iodine-replete goiter cohort induced new abnormal thyroid antibodies in 7 of 40 patients.",
+      "population": "adults or pregnant women exposed to iodine intake above physiologic needs after baseline iodine sufficiency or repletion",
+      "mechanism": "Excess iodine can increase iodination of thyroglobulin, alter thyroid antigenicity, and promote inflammatory thyroid autoantibody responses in susceptible individuals.",
+      "summary": "This is a cautious harmful edge. The literature is not saying every increase in iodine is dangerous, but once intake moves beyond an appropriate range, thyroid autoantibody positivity and autoimmune thyroiditis signals become more common.",
+      "caveats": "The epidemiology is partly U-shaped, so both deficiency and excess can be associated with thyroid autoimmunity. Some supporting studies evaluate transitions from low intake to repletion rather than chronic extreme excess, so the edge should be interpreted as risk from overexposure rather than from physiologic supplementation.",
+      "evidence": [
+        {
+          "citation": "Wang B et al 2019 Eur J Endocrinol",
+          "year": 2019,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Population-based analysis showing a U-shaped relationship between iodine status and thyroid autoimmunity risk in adults, with higher risk in the iodine-excess group.",
+          "pmid": "31252413",
+          "n_participants": 2808,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 1.68,
+            "ci_low": 1.11,
+            "ci_high": 2.53,
+            "comparator": "thyroid autoimmunity in adults with iodine excess versus more-than-adequate iodine status"
+          }
+        },
+        {
+          "citation": "Papanastasiou L et al 2000 Thyroid",
+          "year": 2000,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "The effect of iodine administration on the development of thyroid autoimmunity in patients with nontoxic goiter.",
+          "pmid": "10907993",
+          "n_participants": 40
+        },
+        {
+          "citation": "Pedersen IB et al 2011 Clin Endocrinol (Oxf)",
+          "year": 2011,
+          "study_type": "cross_sectional",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "A cautious iodization programme bringing iodine intake to a low recommended level is associated with an increase in the prevalence of thyroid autoantibodies in the population.",
+          "pmid": "21521277",
+          "n_participants": 8219,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 1.8,
+            "ci_low": 1.59,
+            "ci_high": 2.04,
+            "comparator": "TPO antibody positivity after versus before iodine fortification in the Danish population"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "graves_disease_thyroidectomy",
+      "name": "Total thyroidectomy for Graves disease",
+      "kind": "activity",
+      "aliases": [
+        "thyroidectomy for Graves hyperthyroidism",
+        "surgical definitive treatment for Graves disease"
+      ],
+      "description": "Use of total thyroidectomy as definitive treatment for Graves disease after failed, unsuitable, or undesired medical or radioiodine therapy."
+    },
+    {
+      "slug": "outcomes",
+      "name": "Clinical outcomes",
+      "kind": "process",
+      "aliases": [
+        "patient-centered outcomes",
+        "symptom and treatment outcomes"
+      ],
+      "description": "Clinical outcomes such as symptom control, relapse, quality of life, and treatment-related complications."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "graves_disease_thyroidectomy",
+      "outcome_slug": "outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Surgery provides the most definitive control of Graves hyperthyroidism and often improves symptom burden and quality of life. In the Thyroid Study Group randomized trial, relapse after surgery was much lower than after antithyroid drugs, and prospective surgical patient-reported outcomes improved substantially after total thyroidectomy, with long-term quality-of-life symptom burden RR 0.43 versus preoperative baseline.",
+      "population": "adults with Graves disease undergoing total thyroidectomy as definitive therapy",
+      "mechanism": "Removing the hyperfunctioning thyroid rapidly resolves thyrotoxicosis, prevents biochemical relapse from persistent gland activity, and may improve symptom burden more predictably than prolonged cycling through medical therapy.",
+      "summary": "This is a protective edge for overall patient-centered outcomes, especially definitive disease control and symptom improvement. The main tradeoff is perioperative morbidity, but in experienced centers permanent complications are uncommon and outcomes are usually favorable.",
+      "caveats": "The benefit depends on access to high-volume surgical care and does not mean surgery is the preferred first option for every patient. Short-term hypocalcemia is common, so the net outcome advantage is strongest when definitive control and symptom relief matter more than avoiding an operation.",
+      "evidence": [
+        {
+          "citation": "Torring O et al 1996 J Clin Endocrinol Metab",
+          "year": 1996,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Graves' hyperthyroidism: treatment with antithyroid drugs, surgery, or radioiodine--a prospective, randomized study.",
+          "pmid": "8768863",
+          "n_participants": 179,
+          "effect_quant": {
+            "metric": "group_difference",
+            "value": 26.0,
+            "unit": "percentage_points",
+            "comparator": "absolute relapse reduction with surgery versus antithyroid drugs in adults aged 35 to 55 years (8% vs 34%)"
+          }
+        },
+        {
+          "citation": "Gunn AH et al 2022 Thyroid",
+          "year": 2022,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Patient-Reported Outcomes Following Total Thyroidectomy for Graves' Disease.",
+          "pmid": "34663089",
+          "n_participants": 85,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.43,
+            "ci_low": 0.28,
+            "ci_high": 0.65,
+            "comparator": "long-term quality-of-life symptom burden after thyroidectomy versus preoperative baseline"
+          }
+        },
+        {
+          "citation": "Cipolla C et al 2019 J Clin Transl Endocrinol",
+          "year": 2019,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The value of total thyroidectomy as the definitive treatment for Graves' disease: A single centre experience of 594 cases.",
+          "pmid": "30815364",
+          "n_participants": 594
+        }
+      ]
+    }
+  ]
+}

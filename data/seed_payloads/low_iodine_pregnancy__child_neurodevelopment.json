@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "low_iodine_pregnancy",
+      "name": "Low iodine intake during pregnancy",
+      "kind": "behavior",
+      "aliases": [
+        "maternal iodine insufficiency in pregnancy",
+        "suboptimal iodine status during gestation"
+      ],
+      "description": "Maternal iodine intake or iodine status during pregnancy below levels considered sufficient for fetal neurodevelopment."
+    },
+    {
+      "slug": "child_neurodevelopment",
+      "name": "Child neurodevelopment",
+      "kind": "condition",
+      "aliases": [
+        "offspring neurodevelopment",
+        "infant and child cognitive development"
+      ],
+      "description": "Child cognitive, language, motor, or socioemotional developmental outcomes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "low_iodine_pregnancy",
+      "outcome_slug": "child_neurodevelopment",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "moderate",
+      "effect_quant": "Across prospective pregnancy cohorts, low maternal iodine status is linked to worse offspring cognitive and language outcomes. In ALSPAC, iodine-to-creatinine ratio below 150 ug/g was associated with higher odds of low verbal IQ (OR 1.58). In the Norwegian MoBa cohort, intake below the estimated average requirement was associated with language delay and behavior problems at age 3 years, and a Norwegian urinary-iodine cohort found lower receptive and expressive language skills when maternal UIC was below about 100 ug/L.",
+      "population": "children born to mothers with mild-to-moderate iodine insufficiency during pregnancy, especially early gestation",
+      "mechanism": "Inadequate iodine during pregnancy can limit maternal and fetal thyroid hormone availability during critical periods of fetal brain development, affecting later cognitive, language, and motor outcomes.",
+      "summary": "This is one of the clearer maternal nutrition-to-child development edges even outside regions of severe deficiency. The signal is most consistent for language and cognitive outcomes and appears at levels of insufficiency common in otherwise high-resource settings.",
+      "caveats": "Most evidence is observational, so residual socioeconomic and dietary confounding remain possible. Supplementation started during pregnancy has not consistently reversed risk, which suggests that preconception or very early gestational iodine adequacy may matter most.",
+      "evidence": [
+        {
+          "citation": "Bath SC et al 2013 Lancet",
+          "year": 2013,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effect of inadequate iodine status in UK pregnant women on cognitive outcomes in their children: results from the Avon Longitudinal Study of Parents and Children (ALSPAC).",
+          "pmid": "23706508",
+          "n_participants": 1040,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 1.58,
+            "ci_low": 1.09,
+            "ci_high": 2.3,
+            "comparator": "lowest quartile verbal IQ in children of mothers with iodine-to-creatinine ratio below 150 ug/g versus 150 ug/g or greater"
+          }
+        },
+        {
+          "citation": "Abel MH et al 2017 J Nutr",
+          "year": 2017,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Suboptimal Maternal Iodine Intake Is Associated with Impaired Child Neurodevelopment at 3 Years of Age in the Norwegian Mother and Child Cohort Study.",
+          "pmid": "28515161",
+          "n_participants": 48297
+        },
+        {
+          "citation": "Markhus MW et al 2018 Nutrients",
+          "year": 2018,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Maternal Iodine Status is Associated with Offspring Language Skills in Infancy and Toddlerhood.",
+          "pmid": "30205599",
+          "n_participants": 851
+        }
+      ]
+    }
+  ]
+}
