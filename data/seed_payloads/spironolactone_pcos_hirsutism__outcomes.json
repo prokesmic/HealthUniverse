@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "spironolactone_pcos_hirsutism",
+      "name": "Spironolactone for PCOS-related hirsutism",
+      "kind": "drug",
+      "aliases": [
+        "spironolactone treatment for hirsutism in PCOS",
+        "anti-androgen spironolactone in hyperandrogenic PCOS"
+      ],
+      "description": "Use of spironolactone, alone or in combination regimens, for women with polycystic ovary syndrome whose key treatment target is hirsutism and related hyperandrogenic symptoms."
+    },
+    {
+      "slug": "outcomes",
+      "name": "Clinical outcomes",
+      "kind": "process",
+      "aliases": [
+        "symptom and treatment outcomes",
+        "patient-centered outcomes"
+      ],
+      "description": "Clinical outcomes such as hirsutism severity, menstrual recovery, androgen measures, tolerability, and related treatment benefits or harms."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "spironolactone_pcos_hirsutism",
+      "outcome_slug": "outcomes",
+      "direction": "protective",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "The evidence base supports meaningful symptom improvement for PCOS-related hirsutism, although much of it is anti-androgen-class or combination-therapy evidence rather than spironolactone monotherapy alone. PCOS-specific meta-analysis found anti-androgens superior to metformin plus lifestyle for hirsutism (WMD -1.59), and randomized PCOS trials show larger hirsutism-score reductions and better menstrual recovery with spironolactone-containing regimens.",
+      "population": "women with polycystic ovary syndrome and clinically relevant hirsutism treated with spironolactone-containing therapy",
+      "mechanism": "Spironolactone blocks androgen receptors and may partly reduce androgen production, lowering terminal-hair growth and improving hyperandrogenic symptom burden over months of treatment.",
+      "summary": "This is a protective edge with reasonable clinical credibility. The main limitation is that evidence often uses combination regimens and symptom scales rather than broad hard endpoints, so the effect is supportive rather than definitive.",
+      "caveats": "Improvement is gradual, contraception is required because of teratogenic risk, and some trials compare combinations rather than isolated spironolactone. Broad metabolic or fertility benefits should not be over-inferred from hirsutism-focused studies.",
+      "evidence": [
+        {
+          "citation": "AlesiS et al 2023 EClinicalMedicine",
+          "year": 2023,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Efficacy and safety of anti-androgens in the management of polycystic ovary syndrome: a systematic review and meta-analysis of randomised controlled trials.",
+          "pmid": "37583655",
+          "n_participants": 961,
+          "effect_quant": {
+            "metric": "WMD",
+            "value": -1.59,
+            "ci_low": -3.06,
+            "ci_high": -0.12,
+            "comparator": "hirsutism score with anti-androgens plus lifestyle versus metformin plus lifestyle in women with PCOS"
+          }
+        },
+        {
+          "citation": "Luque-RamirezM et al 2017 J Clin Endocrinol Metab",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Combined oral contraceptives plus spironolactone compared with metformin in women with polycystic ovary syndrome: a one-year randomized clinical trial.",
+          "pmid": "28912358",
+          "n_participants": 46,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 4.6,
+            "ci_low": 2.6,
+            "ci_high": 6.7,
+            "comparator": "larger decrease in hirsutism score with combined oral contraceptive plus spironolactone versus metformin in women with PCOS"
+          }
+        },
+        {
+          "citation": "GanieMA et al 2016 Gynecol Endocrinol",
+          "year": 2016,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Comparison of spironolactone and spironolactone plus metformin in the treatment of polycystic ovary syndrome.",
+          "pmid": "26370923",
+          "n_participants": 37,
+          "effect_quant": {
+            "metric": "relative_change_percent",
+            "value": 25.2,
+            "comparator": "reduction in hirsutism score from baseline with spironolactone monotherapy over 12 months in women with PCOS"
+          }
+        }
+      ]
+    }
+  ]
+}

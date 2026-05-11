@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "carbimazole_pregnancy",
+      "name": "Carbimazole exposure during pregnancy",
+      "kind": "drug",
+      "aliases": [
+        "methimazole or carbimazole exposure in pregnancy",
+        "first-trimester carbimazole treatment"
+      ],
+      "description": "Maternal carbimazole or methimazole exposure during pregnancy, especially in the first trimester while organogenesis is underway."
+    },
+    {
+      "slug": "congenital_anomaly_risk",
+      "name": "Congenital anomaly risk",
+      "kind": "condition",
+      "aliases": [
+        "risk of congenital malformations",
+        "birth-defect risk"
+      ],
+      "description": "The risk of major congenital anomalies or characteristic embryopathy after fetal drug exposure."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "carbimazole_pregnancy",
+      "outcome_slug": "congenital_anomaly_risk",
+      "direction": "harmful",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Across cohort and meta-analytic evidence, methimazole/carbimazole exposure in early pregnancy is associated with higher congenital-anomaly risk than no antithyroid-drug exposure. A 2017 meta-analysis reported OR 1.88, a 2021 systematic review reported adjusted RR 1.28, and the Danish nationwide cohort found adjusted OR 1.66 with a particularly strong signal for the classic methimazole/carbimazole embryopathy pattern.",
+      "population": "pregnant women with hyperthyroidism or Graves disease exposed to carbimazole or methimazole during early pregnancy, and their offspring",
+      "mechanism": "Exposure during organogenesis appears to increase the risk of a characteristic pattern of malformations including aplasia cutis, choanal or esophageal atresia, and abdominal wall or omphalomesenteric anomalies.",
+      "summary": "This is a convincingly harmful edge. The exact absolute excess risk is not enormous, but the consistency across large observational datasets and pooled analyses makes the direction hard to dismiss.",
+      "caveats": "Some excess risk may reflect underlying maternal hyperthyroidism rather than drug effect alone, but comparative analyses still generally show greater malformation risk with methimazole or carbimazole than with propylthiouracil or no antithyroid-drug exposure.",
+      "evidence": [
+        {
+          "citation": "SongR et al 2017 Medicine (Baltimore)",
+          "year": 2017,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Effects of methimazole and propylthiouracil exposure during pregnancy on the risk of neonatal congenital malformations: A meta-analysis.",
+          "pmid": "28671971",
+          "n_participants": 5059,
+          "effect_quant": {
+            "metric": "OR",
+            "value": 1.88,
+            "ci_low": 1.33,
+            "ci_high": 2.65,
+            "comparator": "congenital malformations with methimazole or carbimazole exposure during pregnancy versus no antithyroid-drug exposure"
+          }
+        },
+        {
+          "citation": "MoralesDR et al 2021 Br J Clin Pharmacol",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Antithyroid drug use during pregnancy and the risk of birth defects in offspring: systematic review and meta-analysis of observational studies with methodological considerations.",
+          "pmid": "33783857",
+          "n_participants": 6212322,
+          "effect_quant": {
+            "metric": "aRR",
+            "value": 1.28,
+            "ci_low": 1.06,
+            "ci_high": 1.54,
+            "comparator": "birth defects with methimazole or carbimazole exposure during pregnancy versus an unexposed population comparison"
+          }
+        },
+        {
+          "citation": "AndersenSL et al 2013 J Clin Endocrinol Metab",
+          "year": 2013,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Birth defects after early pregnancy use of antithyroid drugs: a Danish nationwide study.",
+          "pmid": "24151287",
+          "n_participants": 817093,
+          "effect_quant": {
+            "metric": "adjusted_OR",
+            "value": 1.66,
+            "ci_low": 1.35,
+            "ci_high": 2.04,
+            "comparator": "birth defects after methimazole or carbimazole exposure in early pregnancy versus never-exposed offspring in the Danish nationwide cohort"
+          }
+        }
+      ]
+    }
+  ]
+}
