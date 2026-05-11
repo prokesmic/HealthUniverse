@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "pasireotide_cushings_disease",
+      "name": "Pasireotide for Cushing's disease",
+      "kind": "drug",
+      "aliases": [
+        "pasireotide in pituitary Cushing disease",
+        "somatostatin analog pasireotide for corticotroph adenoma"
+      ],
+      "description": "Pasireotide treatment used to lower cortisol excess in pituitary-dependent Cushing's disease."
+    },
+    {
+      "slug": "cortisol",
+      "name": "Cortisol control",
+      "kind": "process",
+      "aliases": [
+        "urinary free cortisol normalization",
+        "hypercortisolism control"
+      ],
+      "description": "Reduction or normalization of cortisol excess, usually measured with urinary free cortisol or related cortisol markers."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "pasireotide_cushings_disease",
+      "outcome_slug": "cortisol",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Pasireotide produces meaningful cortisol lowering in a minority-to-moderate proportion of patients with Cushing's disease. A 2021 meta-analysis estimated disease control in 44% of 522 treated participants, the phase 3 registration trial showed a roughly 50% median urinary free cortisol reduction by month 2, and short-term phase 2 data showed urinary free cortisol fell in 76% of patients with normalization in 17%.",
+      "population": "adults with pituitary-dependent Cushing's disease, including de novo, persistent, or recurrent disease after surgery",
+      "mechanism": "Pasireotide binds somatostatin receptor subtype 5 on corticotroph adenomas, suppressing ACTH secretion and thereby lowering downstream cortisol production.",
+      "summary": "This is a clearly protective edge. Pasireotide is not universally effective and hyperglycemia is a major trade-off, but the cortisol-control signal is robust enough to make it a bona fide medical option for Cushing's disease.",
+      "caveats": "Normalization rates are far from universal, and some of the best response data come from uncontrolled studies. Hyperglycemia is a recurring adverse-effect constraint and should temper any impression that pasireotide is a simple win.",
+      "evidence": [
+        {
+          "citation": "Simoes Correa Galendi J et al 2021 Front Endocrinol (Lausanne)",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Effectiveness of Medical Treatment of Cushing's Disease: A Systematic Review and Meta-Analysis.",
+          "pmid": "34603209",
+          "n_participants": 522,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 44.0,
+            "unit": "percent",
+            "comparator": "pooled proportion of Cushing disease control with pasireotide across included studies"
+          }
+        },
+        {
+          "citation": "Colao A et al 2012 N Engl J Med",
+          "year": 2012,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A 12-month phase 3 study of pasireotide in Cushing's disease.",
+          "pmid": "22397653",
+          "n_participants": 162,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 20.4,
+            "unit": "percent",
+            "comparator": "participants meeting the primary month-6 urinary free cortisol endpoint without dose escalation"
+          }
+        },
+        {
+          "citation": "Boscaro M et al 2009 J Clin Endocrinol Metab",
+          "year": 2009,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Treatment of pituitary-dependent Cushing's disease with the multireceptor ligand somatostatin analog pasireotide (SOM230): a multicenter, phase II trial.",
+          "pmid": "18957506",
+          "n_participants": 29,
+          "effect_quant": {
+            "metric": "proportion",
+            "value": 17.0,
+            "unit": "percent",
+            "comparator": "participants in the primary efficacy analysis with normalized urinary free cortisol after 15 days of pasireotide"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "dhea_addisons_women",
+      "name": "DHEA replacement in women with Addison's disease",
+      "kind": "drug",
+      "aliases": [
+        "dehydroepiandrosterone in women with adrenal insufficiency",
+        "DHEA for women with primary adrenal insufficiency"
+      ],
+      "description": "DHEA supplementation used in women with primary adrenal insufficiency who have adrenal androgen deficiency despite standard glucocorticoid and mineralocorticoid replacement."
+    },
+    {
+      "slug": "quality_of_life",
+      "name": "Quality of life",
+      "kind": "process",
+      "aliases": [
+        "health-related quality of life",
+        "functional status"
+      ],
+      "description": "Health-related quality of life measured with generic or disease-specific instruments."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "dhea_addisons_women",
+      "outcome_slug": "quality_of_life",
+      "direction": "mixed",
+      "tier": "A",
+      "effect_size": "small",
+      "effect_quant": "The best pooled evidence shows only a small quality-of-life signal. A meta-analysis of 10 randomized placebo-controlled trials found a small HRQoL benefit with DHEA in women with adrenal insufficiency (effect size 0.21, 95% CI 0.08 to 0.33), but individual long-term Addison trials ranged from one improved SF-36 subscale to no significant subjective-health benefit.",
+      "population": "women with primary adrenal insufficiency, especially Addison's disease, receiving standard steroid replacement but remaining DHEA deficient",
+      "mechanism": "DHEA may modestly improve well-being through restoration of adrenal androgen precursors and downstream effects on mood, energy, and body composition, but the signal appears weak and inconsistent.",
+      "summary": "This is a classic mixed edge. DHEA is not completely inert, but the average benefit is small enough that the literature does not support routine use for all women with Addison's disease.",
+      "caveats": "Side effects are common and benefits appear heterogeneous across studies and domains. A small pooled effect should not be confused with a broad, clinically meaningful restoration of well-being for most patients.",
+      "evidence": [
+        {
+          "citation": "Alkatib AA et al 2009 J Clin Endocrinol Metab",
+          "year": 2009,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "A systematic review and meta-analysis of randomized placebo-controlled trials of DHEA treatment effects on quality of life in women with adrenal insufficiency.",
+          "pmid": "19773400",
+          "n_participants": 10,
+          "effect_quant": {
+            "metric": "standardized_mean_difference",
+            "value": 0.21,
+            "ci_low": 0.08,
+            "ci_high": 0.33,
+            "comparator": "health-related quality of life with DHEA versus placebo in women with adrenal insufficiency"
+          }
+        },
+        {
+          "citation": "Gurnell EM et al 2008 J Clin Endocrinol Metab",
+          "year": 2008,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Long-term DHEA replacement in primary adrenal insufficiency: a randomized, controlled trial. One SF-36 subscale improved, but fatigue, cognition, and sexual function did not.",
+          "pmid": "18000094",
+          "n_participants": 106
+        },
+        {
+          "citation": "Lovas K et al 2003 J Clin Endocrinol Metab",
+          "year": 2003,
+          "study_type": "rct",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Replacement of dehydroepiandrosterone in adrenal failure: no benefit for subjective health status and sexuality in a 9-month, randomized, parallel group clinical trial.",
+          "pmid": "12629093",
+          "n_participants": 39
+        }
+      ]
+    }
+  ]
+}

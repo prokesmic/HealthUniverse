@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "fludrocortisone_chronic_addisons",
+      "name": "Fludrocortisone replacement in chronic Addison's disease",
+      "kind": "drug",
+      "aliases": [
+        "fludrocortisone for primary adrenal insufficiency",
+        "mineralocorticoid replacement in Addison disease"
+      ],
+      "description": "Chronic fludrocortisone replacement used to restore mineralocorticoid activity in primary adrenal insufficiency."
+    },
+    {
+      "slug": "bp_outcomes",
+      "name": "Blood pressure outcomes",
+      "kind": "process",
+      "aliases": [
+        "blood pressure reduction",
+        "blood pressure control"
+      ],
+      "description": "Measured blood-pressure outcomes such as clinic blood pressure, mean arterial pressure, or postural blood pressure stability."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "fludrocortisone_chronic_addisons",
+      "outcome_slug": "bp_outcomes",
+      "direction": "protective",
+      "tier": "C",
+      "effect_size": "small",
+      "effect_quant": "The best reading is that mineralocorticoid replacement supports blood-pressure stability in chronic Addison's disease, but direct dose-response evidence for fludrocortisone is weak. An early 10-patient Addison cohort suggested 0.05-0.1 mg/day was often insufficient and that intensification improved volume status, whereas newer treated-patient studies found no clear association between fludrocortisone dose and systolic or diastolic blood pressure once routine replacement was established.",
+      "population": "adults with chronic primary adrenal insufficiency receiving fludrocortisone as mineralocorticoid replacement",
+      "mechanism": "Fludrocortisone increases renal sodium retention and extracellular volume, helping counter hypotension and postural symptoms caused by aldosterone deficiency.",
+      "summary": "This edge is directionally protective but not cleanly quantified. Fludrocortisone is clinically important for maintaining volume and blood pressure in Addison's disease, yet modern observational data do not show a simple higher-dose-equals-better-BP relationship.",
+      "caveats": "Do not over-read this as evidence that more fludrocortisone is better. The signal is stronger for replacing mineralocorticoid deficiency at all than for aggressively titrating dose to push blood pressure upward, and overtreatment can cause hypertension or edema.",
+      "evidence": [
+        {
+          "citation": "Oelkers W et al 1984 Lancet",
+          "year": 1984,
+          "study_type": "cohort",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Evidence that patients with Addison's disease are undertreated with fludrocortisone.",
+          "pmid": "6140341",
+          "n_participants": 10
+        },
+        {
+          "citation": "Ekman B et al 2025 J Endocrinol Invest",
+          "year": 2025,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Mineralocorticoid effects of fludrocortisone and hydrocortisone in primary adrenal insufficiency: EU-AIR patient data.",
+          "pmid": "40913682",
+          "n_participants": 670
+        },
+        {
+          "citation": "Pofi R et al 2023 Endocr Connect",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "mixed",
+          "quality": "moderate",
+          "notes": "Assessing treatment adherence is crucial to determine adequacy of mineralocorticoid therapy.",
+          "pmid": "37410094",
+          "n_participants": 41
+        }
+      ]
+    }
+  ]
+}
