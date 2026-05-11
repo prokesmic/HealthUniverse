@@ -29,6 +29,7 @@ from web.auth import (                                # noqa: E402
     send_magic_link, exchange_token_for_session,
     supabase_service, require_pro,
 )
+from web import alwayson                              # noqa: E402
 from web.generated_art import (   # noqa: E402
     edge_svg, hero_svg, featured_card_svg, discovery_card_svg, strength_wave_svg,
 )
@@ -2099,6 +2100,18 @@ self.addEventListener('message', event => {
   }
 });
 
+self.addEventListener('push', event => {
+  let data = {};
+  try { data = event.data ? event.data.json() : {}; } catch (_) {}
+  const title = data.title || 'Health Universe';
+  const body  = data.body  || '';
+  const url   = data.url   || '/me/briefing';
+  event.waitUntil(self.registration.showNotification(title, {
+    body, icon: '/static/icon-192.png', badge: '/static/icon-192.png',
+    data: { url }, tag: data.tag || 'hu-push', renotify: true,
+  }));
+});
+
 self.addEventListener('notificationclick', event => {
   event.notification.close();
   const url = (event.notification.data && event.notification.data.url) || '/';
@@ -4015,6 +4028,229 @@ async def api_me_challenge(request: Request):
         })
     except Exception as exc:
         return JSONResponse({"error": str(exc)[:300]}, status_code=500)
+
+
+# ────────────────────────────────────────────────────────────────────
+# Always-on endpoints — encrypted sync, push subscribe, daily compute,
+# shift-alert queue, settings.
+# ────────────────────────────────────────────────────────────────────
+
+
+@app.get("/api/me/synced-blob")
+async def api_me_synced_blob(request: Request):
+    """Return the user's encrypted blob if one exists. Auth required."""
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    if not account:
+        return JSONResponse({"error": "auth_required"}, status_code=401)
+    sb = supabase_service()
+    if sb is None:
+        return JSONResponse({"error": "no_supabase"}, status_code=503)
+    try:
+        r = (sb.table("synced_data").select("*")
+             .eq("account_id", account.user_id).limit(1).execute())
+        rows = list(r.data or [])
+        return JSONResponse(rows[0] if rows else None)
+    except Exception as exc:
+        return JSONResponse({"error": str(exc)[:200]}, status_code=500)
+
+
+@app.post("/api/me/synced-blob")
+async def api_me_synced_blob_save(request: Request):
+    """Upsert the user's encrypted blob. Server stores ciphertext only."""
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    if not account:
+        return JSONResponse({"error": "auth_required"}, status_code=401)
+    body = await request.json()
+    if not body.get("ciphertext") or not body.get("iv") or not body.get("salt"):
+        return JSONResponse({"error": "missing_fields"}, status_code=400)
+    if len(body["ciphertext"]) > 1_500_000:  # ~1.5 MB cap
+        return JSONResponse({"error": "too_large"}, status_code=413)
+    sb = supabase_service()
+    if sb is None:
+        return JSONResponse({"error": "no_supabase"}, status_code=503)
+    try:
+        sb.table("synced_data").upsert({
+            "account_id": account.user_id,
+            "ciphertext": body["ciphertext"],
+            "iv": body["iv"],
+            "salt": body["salt"],
+            "iterations": int(body.get("iterations", 200000)),
+            "updated_at": datetime_now().isoformat(timespec="seconds"),
+        }, on_conflict="account_id").execute()
+        return JSONResponse({"ok": True})
+    except Exception as exc:
+        return JSONResponse({"error": str(exc)[:200]}, status_code=500)
+
+
+@app.post("/api/me/compute-summary")
+async def api_me_compute_summary(request: Request):
+    """Write the user's opt-in 'summary view' the server can read for
+    daily compute. Anonymous = no-op. PHI is intentionally NOT here —
+    only derived signals (z-scores, edge IDs, dates, flags)."""
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    if not account:
+        return JSONResponse({"error": "auth_required"}, status_code=401)
+    body = await request.json()
+    sb = supabase_service()
+    if sb is None:
+        return JSONResponse({"error": "no_supabase"}, status_code=503)
+    payload = {
+        "account_id": account.user_id,
+        "timezone": (body.get("timezone") or "UTC")[:80],
+        "watch_edges": [int(x) for x in (body.get("watch_edges") or [])][:500],
+        "anomaly_zscores": body.get("anomaly_zscores") or {},
+        "recent_trends": body.get("recent_trends") or {},
+        "open_recommendations": body.get("open_recommendations") or [],
+        "next_visit": body.get("next_visit"),
+        "flagged_labs": body.get("flagged_labs") or [],
+        "active_protocols": body.get("active_protocols") or [],
+        "agreed_to_daily_compute": bool(body.get("agreed_to_daily_compute", False)),
+        "updated_at": datetime_now().isoformat(timespec="seconds"),
+    }
+    if payload["agreed_to_daily_compute"]:
+        payload["agreed_at"] = payload["updated_at"]
+    try:
+        sb.table("compute_summaries").upsert(
+            payload, on_conflict="account_id"
+        ).execute()
+        return JSONResponse({"ok": True})
+    except Exception as exc:
+        return JSONResponse({"error": str(exc)[:200]}, status_code=500)
+
+
+@app.get("/api/me/compute-summary")
+async def api_me_compute_summary_get(request: Request):
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    if not account:
+        return JSONResponse({"error": "auth_required"}, status_code=401)
+    sb = supabase_service()
+    if sb is None:
+        return JSONResponse({"agreed_to_daily_compute": False})
+    try:
+        r = (sb.table("compute_summaries").select("*")
+             .eq("account_id", account.user_id).limit(1).execute())
+        rows = list(r.data or [])
+        return JSONResponse(rows[0] if rows else {"agreed_to_daily_compute": False})
+    except Exception:
+        return JSONResponse({"agreed_to_daily_compute": False})
+
+
+@app.post("/api/me/push-subscribe")
+async def api_me_push_subscribe(request: Request):
+    """Register a Web Push subscription for the current account."""
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    if not account:
+        return JSONResponse({"error": "auth_required"}, status_code=401)
+    body = await request.json()
+    sub = body.get("subscription") or {}
+    endpoint = sub.get("endpoint")
+    keys = sub.get("keys") or {}
+    p256dh = keys.get("p256dh")
+    auth_key = keys.get("auth")
+    if not (endpoint and p256dh and auth_key):
+        return JSONResponse({"error": "incomplete subscription"}, status_code=400)
+    sb = supabase_service()
+    if sb is None:
+        return JSONResponse({"error": "no_supabase"}, status_code=503)
+    try:
+        sb.table("push_subscriptions").upsert({
+            "account_id": account.user_id,
+            "endpoint": endpoint,
+            "p256dh": p256dh,
+            "auth": auth_key,
+            "user_agent": request.headers.get("user-agent", "")[:200],
+            "last_seen_at": datetime_now().isoformat(timespec="seconds"),
+        }, on_conflict="endpoint").execute()
+        return JSONResponse({"ok": True})
+    except Exception as exc:
+        return JSONResponse({"error": str(exc)[:200]}, status_code=500)
+
+
+@app.get("/api/vapid-key")
+def api_vapid_key():
+    import os
+    return JSONResponse({"public_key": os.environ.get("VAPID_PUBLIC_KEY", "")})
+
+
+@app.get("/api/cron/proactive-daily")
+def cron_proactive_daily(request: Request):
+    """Daily personal compute. Runs once per ~24h via vercel cron.
+    For each account with agreed_to_daily_compute=true, generates a
+    daily briefing, stores it in daily_briefings, delivers via push
+    (or email fallback). Idempotent: dedupes by (account, date)."""
+    import os
+    expected = os.environ.get("CRON_SECRET")
+    auth = request.headers.get("authorization", "")
+    if expected and auth != f"Bearer {expected}":
+        return JSONResponse({"error": "unauthorized"}, status_code=401)
+    sb = supabase_service()
+    if sb is None:
+        return JSONResponse({"error": "no_supabase"}, status_code=503)
+    # Pull all accounts with daily compute opted in.
+    try:
+        r = (sb.table("compute_summaries").select("*")
+             .eq("agreed_to_daily_compute", True).execute())
+        summaries = list(r.data or [])
+    except Exception as exc:
+        return JSONResponse({"error": str(exc)[:200]}, status_code=500)
+
+    # Look up accounts in one batched call.
+    ids = [s["account_id"] for s in summaries]
+    accounts_by_id: dict = {}
+    if ids:
+        try:
+            ar = (sb.table("accounts").select("id, email").in_("id", ids).execute())
+            for a in (ar.data or []):
+                accounts_by_id[a["id"]] = a
+        except Exception:
+            pass
+
+    composed = 0
+    delivered = 0
+    skipped = 0
+    for summary in summaries:
+        account = accounts_by_id.get(summary["account_id"])
+        if not account:
+            skipped += 1
+            continue
+        # Skip if we already generated today.
+        try:
+            existing = (sb.table("daily_briefings")
+                        .select("id")
+                        .eq("account_id", account["id"])
+                        .eq("generated_for_date",
+                            alwayson._user_local_date(summary.get("timezone") or "UTC").isoformat())
+                        .limit(1).execute())
+            if existing.data:
+                skipped += 1
+                continue
+        except Exception:
+            pass
+        briefing = alwayson.compute_daily_for_account(account, summary)
+        if not briefing:
+            skipped += 1
+            continue
+        composed += 1
+        sent = alwayson.deliver_briefing(account, briefing)
+        alwayson.save_briefing(account["id"], briefing, sent)
+        if sent:
+            delivered += 1
+
+    # Also drain queued shift alerts (Move 5).
+    shifts_sent = alwayson.drain_shift_alerts()
+
+    return JSONResponse({
+        "composed": composed,
+        "delivered": delivered,
+        "skipped": skipped,
+        "shift_alerts_delivered": shifts_sent,
+    })
+
+
+@app.post("/api/cron/proactive-daily")
+def cron_proactive_daily_post(request: Request):
+    """POST mirror for one-click test runs from the dashboard."""
+    return cron_proactive_daily(request)
 
 
 @app.post("/api/me/recommendation")

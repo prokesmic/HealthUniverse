@@ -466,6 +466,65 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
+     Always-on settings (Sync · Compute · Push)
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="data-section" id="ao-section"
+         style="background:linear-gradient(180deg,#f4faf6,#e7f5ec);border-color:#b7e0c4;margin-top:20px">
+  <header>
+    <h2><span class="icon">⚡</span> Always-on assistant</h2>
+    <span class="sec-count" id="ao-status">checking…</span>
+  </header>
+  <p class="sec-pitch">
+    Turn on the daily compute loop. Every morning at 7am your local time we'll
+    look at your data, the corpus, and your watchlist — and push you one
+    short note about what changed and one thing worth doing today.
+    Privacy is the headline: your data is encrypted in this browser before it
+    ever leaves your device.
+  </p>
+
+  <div id="ao-anon" style="display:none">
+    <div style="padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:13px">
+      <b>Sign in first.</b> Always-on needs an account to know where to send
+      the daily briefing. <button class="btn-secondary inline" onclick="document.getElementById('account-signin-btn')?.click()">Sign in →</button>
+    </div>
+  </div>
+
+  <div id="ao-signed" style="display:none">
+
+    <!-- (1) Encrypted backup -->
+    <details style="margin-bottom:14px" open>
+      <summary style="cursor:pointer;font-weight:600;font-size:15px">1. Back up your data (encrypted)</summary>
+      <p class="muted small" style="margin:8px 0">Encrypts your labs / wearables / genetics / records / protocols with a passphrase YOU set. The server stores only ciphertext. Restoring on another device just needs the same passphrase.</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:end">
+        <input id="ao-pass" type="password" placeholder="Passphrase (12+ chars)" style="flex:1;min-width:200px;padding:8px;border:1px solid var(--line);border-radius:6px">
+        <button id="ao-backup-btn" class="btn-primary" type="button">Encrypt &amp; back up</button>
+        <button id="ao-restore-btn" class="btn-secondary inline" type="button">Restore on this device</button>
+      </div>
+      <div id="ao-backup-msg" class="muted small" style="margin-top:6px"></div>
+    </details>
+
+    <!-- (2) Opt in to daily compute -->
+    <details style="margin-bottom:14px" open>
+      <summary style="cursor:pointer;font-weight:600;font-size:15px">2. Opt in to daily compute</summary>
+      <p class="muted small" style="margin:8px 0">When enabled, we sync a small <b>summary view</b> (anomaly z-scores, watchlist edge IDs, open recommendations, next visit date, recently-flagged lab names) so the server can run the daily check. <b>No raw wearable streams, no raw lab values</b> by default — just derived signals.</p>
+      <label style="display:flex;align-items:center;gap:8px;font-size:14px;margin-top:6px">
+        <input id="ao-agree" type="checkbox"> Yes, run the daily compute and send me a push every morning
+      </label>
+      <button id="ao-save-summary-btn" class="btn-primary" type="button" style="margin-top:10px">Save preferences</button>
+      <div id="ao-summary-msg" class="muted small" style="margin-top:6px"></div>
+    </details>
+
+    <!-- (3) Push permissions -->
+    <details style="margin-bottom:14px" open>
+      <summary style="cursor:pointer;font-weight:600;font-size:15px">3. Allow push notifications</summary>
+      <p class="muted small" style="margin:8px 0">Daily notifications land via the Web Push standard. Works on Chrome/Edge/Firefox desktop and on installed PWAs (Add to Home Screen) on iOS &amp; Android. If push isn't available we fall back to email.</p>
+      <button id="ao-subscribe-btn" class="btn-primary" type="button">Enable push on this device</button>
+      <div id="ao-push-msg" class="muted small" style="margin-top:6px"></div>
+    </details>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
      Data tools
      ═══════════════════════════════════════════════════════════════ -->
 <section class="data-section" style="background:#f7f7f7;margin-top:24px">
@@ -486,5 +545,94 @@
 </section>
 
 <script src="/static/personal.js"></script>
+<script src="/static/alwayson.js"></script>
 <script src="/static/me_data.js"></script>
+<script>
+// Hydrate the always-on section.
+(async function () {
+  const HU = window.HUPersonal, AO = window.HUAlwaysOn;
+  const status = document.getElementById("ao-status");
+  if (!HU || !AO) return;
+  let acct = null;
+  try {
+    const r = await fetch("/api/me/account");
+    acct = await r.json();
+  } catch (_) {}
+  if (!acct || !acct.signed_in) {
+    document.getElementById("ao-anon").style.display = "block";
+    status.textContent = "anonymous";
+    return;
+  }
+  document.getElementById("ao-signed").style.display = "block";
+  // Pull current summary preferences.
+  let summary = null;
+  try { summary = await AO.getComputeSummary(); } catch (_) {}
+  if (summary && summary.agreed_to_daily_compute) {
+    status.innerHTML = "<span style='color:#1b5e20'>● Daily compute on</span>";
+    document.getElementById("ao-agree").checked = true;
+  } else {
+    status.innerHTML = "<span style='color:#7a5c00'>○ Daily compute off</span>";
+  }
+
+  // (1) Backup
+  document.getElementById("ao-backup-btn").addEventListener("click", async () => {
+    const msg = document.getElementById("ao-backup-msg");
+    const pp = document.getElementById("ao-pass").value;
+    if (pp.length < 12) { msg.textContent = "Passphrase must be 12+ characters."; return; }
+    msg.textContent = "Encrypting…";
+    try {
+      const ok = await AO.syncToServer(pp);
+      msg.innerHTML = ok ? "<span style='color:#1b5e20'>✓ Backup uploaded</span>" : "Failed.";
+    } catch (e) { msg.textContent = "Error: " + e.message; }
+  });
+  document.getElementById("ao-restore-btn").addEventListener("click", async () => {
+    const msg = document.getElementById("ao-backup-msg");
+    const pp = document.getElementById("ao-pass").value;
+    if (!pp) { msg.textContent = "Enter your passphrase to decrypt."; return; }
+    msg.textContent = "Fetching + decrypting…";
+    try {
+      await AO.restoreFromServer(pp);
+      msg.innerHTML = "<span style='color:#1b5e20'>✓ Restored. Reload the page to see.</span>";
+    } catch (e) {
+      msg.textContent = "Failed: " + (e.message === "no_blob"
+        ? "no backup found for this account"
+        : "wrong passphrase or corrupted blob");
+    }
+  });
+
+  // (2) Compute summary
+  document.getElementById("ao-save-summary-btn").addEventListener("click", async () => {
+    const msg = document.getElementById("ao-summary-msg");
+    const agreed = document.getElementById("ao-agree").checked;
+    msg.textContent = "Saving…";
+    try {
+      const ok = await AO.syncComputeSummary(agreed);
+      if (!ok) { msg.textContent = "Save failed."; return; }
+      msg.innerHTML = agreed
+        ? "<span style='color:#1b5e20'>✓ Daily compute on. First briefing lands tomorrow morning.</span>"
+        : "<span style='color:#7a5c00'>○ Daily compute off. You'll still get the Sunday digest.</span>";
+      status.innerHTML = agreed
+        ? "<span style='color:#1b5e20'>● Daily compute on</span>"
+        : "<span style='color:#7a5c00'>○ Daily compute off</span>";
+    } catch (e) { msg.textContent = "Error: " + e.message; }
+  });
+
+  // (3) Push
+  document.getElementById("ao-subscribe-btn").addEventListener("click", async () => {
+    const msg = document.getElementById("ao-push-msg");
+    msg.textContent = "Requesting permission…";
+    try {
+      await AO.subscribePush();
+      msg.innerHTML = "<span style='color:#1b5e20'>✓ Push enabled on this device.</span>";
+    } catch (e) {
+      const m = e.message;
+      msg.textContent = m === "permission_denied"
+        ? "You denied notification permission. Allow it in browser settings to enable push."
+        : m === "no_push" ? "This browser doesn't support Web Push."
+        : m === "no_sw" ? "Service workers blocked (open over HTTPS)."
+        : "Error: " + m;
+    }
+  });
+})();
+</script>
 {% endblock %}
