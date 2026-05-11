@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "levothyroxine_evening_dosing",
+      "name": "Levothyroxine taken in the evening",
+      "kind": "activity",
+      "aliases": [
+        "bedtime levothyroxine",
+        "night-time LT4 dosing"
+      ],
+      "description": "Taking levothyroxine at bedtime or in the evening instead of before breakfast."
+    },
+    {
+      "slug": "tsh_optimization",
+      "name": "TSH optimization",
+      "kind": "process",
+      "aliases": [
+        "stable euthyroid TSH control",
+        "thyrotropin target attainment"
+      ],
+      "description": "Achievement and maintenance of target thyroid-stimulating hormone control during levothyroxine replacement."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "levothyroxine_evening_dosing",
+      "outcome_slug": "tsh_optimization",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Adult crossover trials reported lower TSH with bedtime dosing, including a direct treatment effect of -1.25 mIU/L in one 90-patient trial, but pediatric randomized data found no meaningful difference versus early morning administration.",
+      "population": "children and adults with primary hypothyroidism on stable oral levothyroxine replacement",
+      "mechanism": "Bedtime dosing may improve absorption because the stomach has been empty longer and there are fewer immediate food-drug interactions, but this advantage depends on actual spacing from dinner and bedtime habits.",
+      "summary": "Evening levothyroxine dosing can match or sometimes modestly improve TSH control compared with morning dosing, but the literature is not fully uniform across ages and study designs. It is a reasonable alternative rather than a universally superior regimen.",
+      "caveats": "Benefits are most apparent in adult crossover studies with careful timing away from food. Real-world evening routines vary, and pediatric data suggest equivalence rather than clear superiority, so the overall edge is mixed.",
+      "evidence": [
+        {
+          "citation": "Bolk N et al 2010 Arch Intern Med",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Effects of evening vs morning levothyroxine intake: a randomized double-blind crossover trial.",
+          "pmid": "21149757",
+          "n_participants": 90,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -1.25,
+            "unit": "mIU/L",
+            "comparator": "direct treatment effect on TSH with bedtime versus morning intake"
+          }
+        },
+        {
+          "citation": "Srivastava T et al 2018 J Assoc Physicians India",
+          "year": 2018,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "A Crossover Study Evaluating Effect of Timing of Levothyroxine on Thyroid Hormone Status in Patients of Hypothyroidism.",
+          "pmid": "31321928",
+          "n_participants": 60,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -0.38,
+            "unit": "mIU/L",
+            "comparator": "TSH reduction in the bedtime-first sequence from baseline 2.63 to 1.85 mIU/L at 6 weeks"
+          }
+        },
+        {
+          "citation": "Navid A et al 2021 Pediatr Endocrinol Diabetes Metab",
+          "year": 2021,
+          "study_type": "rct",
+          "direction": "neutral",
+          "quality": "moderate",
+          "notes": "Comparative efficacy of early morning versus bedtime administration of levothyroxine in children with hypothyroidism: a prospective, open label, randomized, case-control study.",
+          "pmid": "34008397",
+          "n_participants": 84
+        }
+      ]
+    }
+  ]
+}

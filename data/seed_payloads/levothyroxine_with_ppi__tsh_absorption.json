@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "levothyroxine_with_ppi",
+      "name": "Levothyroxine taken with proton pump inhibitors",
+      "kind": "activity",
+      "aliases": [
+        "LT4 with PPI therapy",
+        "levothyroxine during omeprazole or pantoprazole use"
+      ],
+      "description": "Concurrent use of tablet levothyroxine with proton pump inhibitor therapy that raises gastric pH and may blunt dissolution."
+    },
+    {
+      "slug": "tsh_absorption",
+      "name": "TSH-sensitive levothyroxine absorption",
+      "kind": "process",
+      "aliases": [
+        "thyrotropin control reflecting LT4 absorption",
+        "levothyroxine bioavailability reflected in TSH"
+      ],
+      "description": "Adequacy of levothyroxine absorption and bioavailability as reflected by TSH control and related thyroid hormone measurements."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "levothyroxine_with_ppi",
+      "outcome_slug": "tsh_absorption",
+      "direction": "harmful",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Population data showed a mean TSH rise of 0.12 mU/L after PPI initiation, and a prospective pantoprazole crossover study found TSH increased from roughly 2.2-2.7 at baseline to 3.3-4.5 mIU/mL during treatment.",
+      "population": "adults with hypothyroidism on stable tablet levothyroxine who initiate or continue proton pump inhibitor therapy",
+      "mechanism": "By increasing gastric pH, PPIs can impair dissolution of tablet levothyroxine before intestinal absorption, leading to higher TSH and, in some patients, a need for dose escalation or formulation change.",
+      "summary": "Concurrent PPI therapy tends to worsen levothyroxine absorption and raise TSH, although the average effect is usually modest. The signal is consistent enough that coadministration should prompt closer biochemical monitoring, especially when tablet formulations are used.",
+      "caveats": "Not every study finds a clinically large effect, and soft-gel or liquid formulations may mitigate the interaction. The edge therefore reflects a common but variably sized problem rather than a guaranteed failure of therapy in every patient.",
+      "evidence": [
+        {
+          "citation": "Irving SA et al 2015 Clin Endocrinol (Oxf)",
+          "year": 2015,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "high",
+          "notes": "Drugs that interact with levothyroxine: an observational study from the Thyroid Epidemiology, Audit and Research Study (TEARS).",
+          "pmid": "25040647",
+          "n_participants": 10999,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 0.12,
+            "unit": "mU/L",
+            "comparator": "mean TSH increase after proton pump inhibitor initiation in levothyroxine-treated patients"
+          }
+        },
+        {
+          "citation": "Awasthi A et al 2023 Thyroid Res",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Effect of morning versus night-time administration of proton pump inhibitor (pantoprazole) on thyroid function test in levothyroxine-treated primary hypothyroidism: a prospective cross-over study.",
+          "pmid": "37259094",
+          "n_participants": 30,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 1.08,
+            "unit": "mIU/mL",
+            "comparator": "group M TSH rise from baseline 2.70 to 3.78 after pantoprazole coadministration"
+          }
+        },
+        {
+          "citation": "Sachmechi I et al 2023 Thyroid",
+          "year": 2023,
+          "study_type": "cohort",
+          "direction": "harmful",
+          "quality": "moderate",
+          "notes": "Efficacy of Levothyroxine Sodium Soft Gelatin Capsules in Thyroidectomized Patients Taking Proton Pump Inhibitors: An Open-Label Study.",
+          "pmid": "37885233",
+          "n_participants": 47,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -0.68,
+            "unit": "mIU/L",
+            "comparator": "TSH change after switching from tablets to soft-gel levothyroxine while remaining on PPI therapy"
+          }
+        }
+      ]
+    }
+  ]
+}
