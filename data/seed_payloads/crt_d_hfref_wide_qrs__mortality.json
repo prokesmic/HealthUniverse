@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "crt_d_hfref_wide_qrs",
+      "name": "CRT-D for HFrEF with wide QRS",
+      "kind": "behavior",
+      "aliases": [
+        "cardiac resynchronization defibrillator in wide-QRS systolic heart failure",
+        "ICD plus biventricular pacing for HFrEF"
+      ],
+      "description": "Cardiac resynchronization therapy with defibrillator capability in HFrEF patients with ventricular conduction delay or wide QRS."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "crt_d_hfref_wide_qrs",
+      "outcome_slug": "mortality",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "Across randomized CRT-D trials, a meta-analysis found lower all-cause mortality (OR 0.55); in RAFT, adding CRT to an ICD reduced death with HR 0.75 in patients with symptomatic HFrEF and wide QRS.",
+      "population": "adults with HFrEF, wide QRS or electrical dyssynchrony, and an indication for defibrillator-based device therapy",
+      "mechanism": "Biventricular pacing improves ventricular synchrony, stroke efficiency, and reverse remodeling, while the defibrillator component protects against fatal ventricular arrhythmias.",
+      "summary": "CRT-D improves survival in properly selected wide-QRS HFrEF populations, not just symptoms. The benefit is strongest in electrically dyssynchronous patients rather than in unselected heart-failure device candidates.",
+      "caveats": "Device implantation increases short-term procedural adverse events, and the benefit depends on QRS morphology and duration. This edge is therefore intentionally specific to wide-QRS HFrEF rather than to heart failure devices in general.",
+      "evidence": [
+        {
+          "citation": "Huang XX et al 2010 Int J Cardiol",
+          "year": 2010,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "All cause mortality of cardiac resynchronization therapy with implantable cardioverter defibrillator: a meta-analysis of randomized controlled trials.",
+          "pmid": "20541819",
+          "n_participants": 4531,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 0.55,
+            "comparator": "all-cause mortality with CRT-D versus no-CRT-D in pooled randomized trials"
+          }
+        },
+        {
+          "citation": "Tang ASL et al 2010 N Engl J Med",
+          "year": 2010,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Cardiac-resynchronization therapy for mild-to-moderate heart failure.",
+          "pmid": "21073365",
+          "n_participants": 1798,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.75,
+            "comparator": "all-cause mortality in RAFT with ICD-CRT versus ICD alone"
+          }
+        },
+        {
+          "citation": "Fox M et al 2007 Health Technol Assess",
+          "year": 2007,
+          "study_type": "expert_opinion",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The clinical effectiveness and cost-effectiveness of cardiac resynchronisation (biventricular pacing) for heart failure: systematic review and economic model.",
+          "pmid": "17999842"
+        }
+      ]
+    }
+  ]
+}

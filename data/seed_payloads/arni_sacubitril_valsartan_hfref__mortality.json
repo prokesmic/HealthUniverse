@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "arni_sacubitril_valsartan_hfref",
+      "name": "Sacubitril-valsartan for HFrEF",
+      "kind": "drug",
+      "aliases": [
+        "ARNI therapy in reduced-EF heart failure",
+        "sacubitril/valsartan in chronic systolic heart failure"
+      ],
+      "description": "Use of the angiotensin receptor-neprilysin inhibitor sacubitril-valsartan in heart failure with reduced ejection fraction."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "arni_sacubitril_valsartan_hfref",
+      "outcome_slug": "mortality",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "PARADIGM-HF showed lower all-cause mortality with sacubitril-valsartan than with enalapril (HR 0.84), and a later clinical-trials meta-analysis reported fewer disease-related events overall (OR 0.82).",
+      "population": "adults with chronic symptomatic heart failure with reduced ejection fraction receiving guideline-directed medical therapy",
+      "mechanism": "Combined neprilysin inhibition and angiotensin receptor blockade improves neurohormonal control beyond ACE inhibition alone, reducing progressive pump failure and cardiovascular death.",
+      "summary": "Sacubitril-valsartan is one of the central mortality-improving therapies in modern HFrEF care. The strongest evidence comes from direct randomized comparison against enalapril rather than from weaker observational datasets.",
+      "caveats": "Benefits are clearest in ambulatory chronic HFrEF populations similar to PARADIGM-HF and come with more hypotension. The edge is about mortality benefit, not necessarily equal tolerability or applicability in every advanced or unstable patient.",
+      "evidence": [
+        {
+          "citation": "McMurray JJV et al 2014 N Engl J Med",
+          "year": 2014,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Angiotensin-neprilysin inhibition versus enalapril in heart failure.",
+          "pmid": "25176015",
+          "n_participants": 8442,
+          "effect_quant": {
+            "metric": "hazard_ratio",
+            "value": 0.84,
+            "comparator": "all-cause mortality in PARADIGM-HF with sacubitril-valsartan versus enalapril"
+          }
+        },
+        {
+          "citation": "Cordero A et al 2022 Am J Ther",
+          "year": 2022,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Mortality and Heart Failure Risk Reductions in Patients Treated With Sacubitril-Valsartan in Clinical Trials.",
+          "pmid": "36074989",
+          "n_participants": 15650,
+          "effect_quant": {
+            "metric": "odds_ratio",
+            "value": 0.82,
+            "comparator": "disease-related events across randomized sacubitril-valsartan clinical trials versus comparators"
+          }
+        },
+        {
+          "citation": "Hashim HT et al 2026 Curr Cardiol Rev",
+          "year": 2026,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "The Efficacy of Sacubitril/Valsartan (ARNI) in Decreasing Mortality Among Heart Failure Patients: A Systematic Review and Meta-Analysis.",
+          "pmid": "41820314",
+          "n_participants": 15650
+        }
+      ]
+    }
+  ]
+}
