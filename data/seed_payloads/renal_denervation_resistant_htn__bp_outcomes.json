@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "renal_denervation_resistant_htn",
+      "name": "Renal denervation for resistant hypertension",
+      "kind": "activity",
+      "aliases": [
+        "catheter-based renal denervation in resistant hypertension",
+        "renal sympathetic denervation for uncontrolled hypertension"
+      ],
+      "description": "Catheter-based renal denervation used to lower blood pressure in patients with resistant or uncontrolled hypertension."
+    },
+    {
+      "slug": "bp_outcomes",
+      "name": "Blood pressure outcomes",
+      "kind": "process",
+      "aliases": [
+        "blood pressure reduction",
+        "office or ambulatory blood pressure control"
+      ],
+      "description": "Measured blood-pressure outcomes such as office, home, or ambulatory systolic and diastolic blood pressure lowering."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "renal_denervation_resistant_htn",
+      "outcome_slug": "bp_outcomes",
+      "direction": "mixed",
+      "tier": "B",
+      "effect_size": "small",
+      "effect_quant": "Recent sham-controlled meta-analysis found modest but significant blood-pressure reductions with renal denervation, including office SBP MD -4.26 mm Hg and 24-hour ambulatory SBP MD -2.63 mm Hg. Earlier blinded meta-analysis found a similar ambulatory SBP effect of -3.61 mm Hg, and SPYRAL HTN-OFF MED showed a proof-of-concept 24-hour SBP drop of -5.5 mm Hg at 3 months. The overall picture is favorable but modest, which is why this edge is mixed rather than an unqualified breakthrough claim.",
+      "population": "adults with resistant or uncontrolled hypertension, including both medicated and temporarily unmedicated sham-controlled trial populations",
+      "mechanism": "Ablation of renal sympathetic nerves may reduce sympathetic tone and sodium-retentive neurohormonal drive, lowering blood pressure independently of additional drug escalation.",
+      "summary": "Renal denervation is no longer a zero-signal therapy, but it is also not a dramatic antihypertensive cure. The modern sham-controlled data support a real blood-pressure effect, yet the effect size is modest and the certainty is still limited by heterogeneity and evolving technique.",
+      "caveats": "The benefit depends on device platform, operator technique, and patient phenotype, and long-term outcome effects remain much less established than short-term blood-pressure changes. This edge is therefore about modest BP lowering, not proven prevention of stroke, MI, or death.",
+      "evidence": [
+        {
+          "citation": "AlabsiHS et al 2025 J Hum Hypertens",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Renal Denervation Effects on Blood Pressure in Resistant and Uncontrolled Hypertension: A Meta-Analysis of Sham-Controlled Randomized Clinical Trials.",
+          "pmid": "40022571",
+          "n_participants": 2819,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -4.26,
+            "ci_low": -5.68,
+            "ci_high": -2.84,
+            "comparator": "office systolic blood pressure with renal denervation versus sham control"
+          }
+        },
+        {
+          "citation": "Mahfoud F et al 2021 J Am Coll Cardiol",
+          "year": 2021,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Renal Denervation for Hypertension: A Systematic Review and Meta-Analysis of Randomized, Blinded, Placebo-Controlled Trials.",
+          "pmid": "34743900",
+          "n_participants": 1368,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": -3.61,
+            "ci_low": -4.89,
+            "ci_high": -2.33,
+            "comparator": "ambulatory systolic blood pressure with renal denervation versus sham control"
+          }
+        },
+        {
+          "citation": "Townsend RR et al 2017 Lancet",
+          "year": 2017,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Catheter-based renal denervation in patients with uncontrolled hypertension in the absence of antihypertensive medications (SPYRAL HTN-OFF MED).",
+          "pmid": "28859944",
+          "n_participants": 80,
+          "effect_quant": {
+            "metric": "mean_change",
+            "value": -5.5,
+            "comparator": "24-hour systolic blood pressure change at 3 months with renal denervation in SPYRAL HTN-OFF MED"
+          }
+        }
+      ]
+    }
+  ]
+}

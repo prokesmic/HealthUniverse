@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "new_entities": [
+    {
+      "slug": "semaglutide_hfpef_obesity",
+      "name": "Semaglutide for obesity-related HFpEF",
+      "kind": "drug",
+      "aliases": [
+        "semaglutide in HFpEF with obesity",
+        "GLP-1 receptor agonism for obesity-related HFpEF"
+      ],
+      "description": "Use of semaglutide in patients with heart failure with preserved ejection fraction and obesity, with or without type 2 diabetes."
+    },
+    {
+      "slug": "outcomes",
+      "name": "Clinical outcomes",
+      "kind": "process",
+      "aliases": [
+        "heart-failure outcomes",
+        "symptom and event outcomes"
+      ],
+      "description": "Clinical outcomes such as symptoms, functional capacity, heart-failure events, and other patient-centered trial outcomes."
+    }
+  ],
+  "edges": [
+    {
+      "factor_slug": "semaglutide_hfpef_obesity",
+      "outcome_slug": "outcomes",
+      "direction": "protective",
+      "tier": "A",
+      "effect_size": "moderate",
+      "effect_quant": "STEP-HFpEF improved KCCQ-CSS by 7.8 points versus placebo and increased 6-minute walk distance by 20.3 m. STEP-HFpEF DM showed similar symptom and functional gains in patients with diabetes, and HFpEF-focused GLP-1 meta-analysis found fewer heart-failure events overall (RR 0.40) with clear improvements in KCCQ-CSS and walking distance.",
+      "population": "adults with obesity-related heart failure with preserved ejection fraction, including both non-diabetic and type 2 diabetic subgroups",
+      "mechanism": "Semaglutide likely improves obesity-related HFpEF through weight loss, reduced inflammatory burden, improved exercise tolerance, and favorable hemodynamic unloading.",
+      "summary": "The semaglutide HFpEF-obesity story is strong for symptoms and functional capacity, and it now has supportive pooled evidence for fewer heart-failure events. This is one of the clearest examples of phenotype-targeted therapy in HFpEF.",
+      "caveats": "The most mature evidence is on symptoms, quality of life, and exercise capacity rather than hard mortality endpoints. Generalization beyond obesity-related HFpEF should be cautious.",
+      "evidence": [
+        {
+          "citation": "Kosiborod MN et al 2023 N Engl J Med",
+          "year": 2023,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Semaglutide in Patients with Heart Failure with Preserved Ejection Fraction and Obesity. STEP-HFpEF.",
+          "pmid": "37622681",
+          "n_participants": 529,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 7.8,
+            "ci_low": 4.8,
+            "ci_high": 10.9,
+            "comparator": "KCCQ-CSS change at 52 weeks with semaglutide versus placebo in STEP-HFpEF"
+          }
+        },
+        {
+          "citation": "Kosiborod MN et al 2024 N Engl J Med",
+          "year": 2024,
+          "study_type": "rct",
+          "direction": "protective",
+          "quality": "high",
+          "notes": "Semaglutide in Patients with Obesity-Related Heart Failure and Type 2 Diabetes. STEP-HFpEF DM.",
+          "pmid": "38587233",
+          "n_participants": 616,
+          "effect_quant": {
+            "metric": "mean_difference",
+            "value": 7.3,
+            "ci_low": 4.1,
+            "ci_high": 10.4,
+            "comparator": "KCCQ-CSS change at 52 weeks with semaglutide versus placebo in STEP-HFpEF DM"
+          }
+        },
+        {
+          "citation": "SerranoJM et al 2025 Diabetes Obes Metab",
+          "year": 2025,
+          "study_type": "meta_analysis",
+          "direction": "protective",
+          "quality": "moderate",
+          "notes": "Efficacy of GLP-1 receptor agonists in patients with obesity and heart failure with preserved ejection fraction: A systematic review and meta-analysis of randomised controlled trials.",
+          "pmid": "40937512",
+          "n_participants": 1876,
+          "effect_quant": {
+            "metric": "risk_ratio",
+            "value": 0.4,
+            "ci_low": 0.22,
+            "ci_high": 0.73,
+            "comparator": "heart-failure events with GLP-1 receptor agonists versus placebo in obesity-related HFpEF randomized trials"
+          }
+        }
+      ]
+    }
+  ]
+}
