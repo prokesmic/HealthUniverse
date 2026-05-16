@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "comment": "Synthetic patient personas for the QA harness. Each one drives a full test run: data is generated from these fields, then every product surface is exercised. Reviewers (technical, medical, evidence, privacy, UX) audit the resulting interactions.",
+  "personas": [
+    {
+      "id": "P1_biohacker",
+      "label": "Biohacker, healthy male, 32",
+      "age": 32, "sex": "M", "race": "white",
+      "summary": "Tech worker, evidence-curious, runs n-of-1s, follows Peter Attia content. No diagnoses; tracks ApoB voluntarily.",
+      "conditions": ["cvd_risk_reclassification", "longevity"],
+      "stack": ["creatine_monohydrate","magnesium_glycinate","omega3_high_dose","vitamin_d","l_theanine","caffeine"],
+      "genetics": [{"rsid":"rs429358","genotype":"TT"},{"rsid":"rs9939609","genotype":"TT"}],
+      "labs": [
+        {"name":"ApoB","value":85,"unit":"mg/dL","date_offset_days":-45},
+        {"name":"LDL cholesterol","value":105,"unit":"mg/dL","date_offset_days":-45},
+        {"name":"HDL cholesterol","value":58,"unit":"mg/dL","date_offset_days":-45},
+        {"name":"hs-CRP","value":0.7,"unit":"mg/L","date_offset_days":-45},
+        {"name":"HbA1c","value":5.2,"unit":"%","date_offset_days":-45},
+        {"name":"Testosterone","value":580,"unit":"ng/dL","date_offset_days":-45},
+        {"name":"Vitamin D","value":42,"unit":"ng/mL","date_offset_days":-45}
+      ],
+      "wearables_pattern": "athlete",
+      "expected_concerns": []
+    },
+    {
+      "id": "P2_metabolic_at_risk",
+      "label": "Middle-aged man with metabolic syndrome, 47",
+      "age": 47, "sex": "M", "race": "white",
+      "summary": "Slightly overweight, family hx of T2D, sedentary office job, drinks moderately. ApoB elevated; FPG borderline. Doctor mentioned 'pre-diabetes' but no statin yet.",
+      "conditions": ["cvd","t2d","obesity","hypertension"],
+      "stack": ["coffee","alcohol"],
+      "genetics": [{"rsid":"rs7903146","genotype":"CT"},{"rsid":"rs9939609","genotype":"AT"}],
+      "labs": [
+        {"name":"ApoB","value":118,"unit":"mg/dL","date_offset_days":-30},
+        {"name":"LDL cholesterol","value":155,"unit":"mg/dL","date_offset_days":-30},
+        {"name":"HDL cholesterol","value":38,"unit":"mg/dL","date_offset_days":-30},
+        {"name":"Triglycerides","value":195,"unit":"mg/dL","date_offset_days":-30},
+        {"name":"HbA1c","value":5.9,"unit":"%","date_offset_days":-30},
+        {"name":"Fasting glucose","value":108,"unit":"mg/dL","date_offset_days":-30},
+        {"name":"hs-CRP","value":3.4,"unit":"mg/L","date_offset_days":-30},
+        {"name":"ALT","value":48,"unit":"U/L","date_offset_days":-30}
+      ],
+      "wearables_pattern": "sedentary_high_rhr",
+      "expected_concerns": ["NAFLD risk from ALT","T2D progression risk","statin candidacy"]
+    },
+    {
+      "id": "P3_apoe4_carrier",
+      "label": "APOE-ε4 heterozygous woman, 55",
+      "age": 55, "sex": "F", "race": "white",
+      "summary": "Carrier ε3/ε4, mother had Alzheimer's at 78. Worried about dementia risk. Asking about every supplement and intervention.",
+      "conditions": ["dementia","cognitive_decline","cvd"],
+      "stack": ["mediterranean_diet","omega3_high_dose","vitamin_d","aerobic_exercise","resistance_training"],
+      "genetics": [{"rsid":"rs429358","genotype":"CT"},{"rsid":"rs1801133","genotype":"GA"}],
+      "labs": [
+        {"name":"ApoB","value":95,"unit":"mg/dL","date_offset_days":-90},
+        {"name":"Lp(a)","value":42,"unit":"nmol/L","date_offset_days":-90},
+        {"name":"Homocysteine","value":12,"unit":"µmol/L","date_offset_days":-90},
+        {"name":"TSH","value":2.1,"unit":"mIU/L","date_offset_days":-90},
+        {"name":"Vitamin B12","value":340,"unit":"pg/mL","date_offset_days":-90},
+        {"name":"hs-CRP","value":1.1,"unit":"mg/L","date_offset_days":-90}
+      ],
+      "wearables_pattern": "active",
+      "expected_concerns": ["dementia-prevention edge amplification","B12 borderline given MTHFR hetero"]
+    },
+    {
+      "id": "P4_postmenopausal_osteoporosis",
+      "label": "Postmenopausal woman with low bone density, 62",
+      "age": 62, "sex": "F", "race": "white",
+      "summary": "DEXA shows T-score -2.6 at hip. On levothyroxine for Hashimoto's. Considering bisphosphonate vs lifestyle-first. Stack already includes calcium + vitamin D.",
+      "conditions": ["osteoporosis","hypothyroid","falls"],
+      "stack": ["levothyroxine","calcium_supplementation_high_dose","vitamin_d","vitamin_k2","resistance_training","creatine_monohydrate"],
+      "genetics": [],
+      "labs": [
+        {"name":"TSH","value":2.4,"unit":"mIU/L","date_offset_days":-180},
+        {"name":"Vitamin D","value":31,"unit":"ng/mL","date_offset_days":-180},
+        {"name":"Calcium","value":9.5,"unit":"mg/dL","date_offset_days":-180},
+        {"name":"PTH","value":42,"unit":"pg/mL","date_offset_days":-180}
+      ],
+      "wearables_pattern": "moderate",
+      "expected_concerns": ["levothyroxine + calcium absorption flag","high-dose Ca + CV calcification","K2 pairing already present"]
+    },
+    {
+      "id": "P5_polypharmacy_elderly",
+      "label": "Elderly woman on 7 medications, 78",
+      "age": 78, "sex": "F", "race": "white",
+      "summary": "On levothyroxine, atorvastatin, lisinopril, metformin, omeprazole, sertraline, gabapentin. Family worried about falls. Wants to know if any of this can be stopped.",
+      "conditions": ["t2d","hypertension","depression","falls","cvd"],
+      "stack": ["levothyroxine","statins","metformin","ppis_long_term","ssris","gabapentinoids_long_term","ace_inhibitors"],
+      "genetics": [],
+      "labs": [
+        {"name":"HbA1c","value":7.1,"unit":"%","date_offset_days":-60},
+        {"name":"eGFR","value":58,"unit":"mL/min/1.73m²","date_offset_days":-60},
+        {"name":"Vitamin B12","value":270,"unit":"pg/mL","date_offset_days":-60},
+        {"name":"TSH","value":3.6,"unit":"mIU/L","date_offset_days":-60},
+        {"name":"Magnesium","value":1.6,"unit":"mg/dL","date_offset_days":-60}
+      ],
+      "wearables_pattern": "elderly_low_activity",
+      "expected_concerns": [
+        "PPI+metformin → B12 deficiency (B12 is borderline)",
+        "PPI long-term → Mg deficiency (low Mg confirmed)",
+        "polypharmacy fall risk",
+        "gabapentinoid cognitive harm in elderly",
+        "anticholinergic burden assessment"
+      ]
+    }
+  ]
+}
