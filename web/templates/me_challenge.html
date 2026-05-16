@@ -115,6 +115,15 @@
         result.innerHTML = html;
         return;
       }
+      // Always-on top-of-response disclaimer (P0 #3 fix).
+      if (c.disclaimer) {
+        html += `<div class="ch-card" style="background:#fffbe7;border-color:#f0d68a;border-width:2px">
+          <div style="display:flex;gap:8px;align-items:flex-start">
+            <span style="font-size:18px">⚠</span>
+            <p style="margin:0;font-size:13px;color:#7a5c00"><b>Not medical advice.</b> ${esc(c.disclaimer)}</p>
+          </div>
+        </div>`;
+      }
       if (c.summary) {
         html += `<div class="ch-card summary"><h3>The framing</h3><p style="margin:0">${esc(c.summary)}</p></div>`;
       }

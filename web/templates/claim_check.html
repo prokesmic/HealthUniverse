@@ -143,6 +143,7 @@
       const v = j.verdict || {};
       const p = j.parsed || {};
       let html = `<div class="cc-verdict">
+        ${v.disclaimer ? `<div style="padding:8px 12px;background:#fffbe7;border:1px solid #f0d68a;border-radius:6px;font-size:12px;color:#7a5c00;margin-bottom:10px"><b>Not medical advice.</b> ${esc(v.disclaimer)}</div>` : ""}
         <span class="plaus plaus-${v.plausibility || 'partial'}">${esc((v.plausibility || 'partial').replace(/_/g,' '))}</span>
         <div class="summary">${esc(v.verdict || '—')}</div>
         ${v.personal_relevance ? `<div class="relevance"><b>For you:</b> ${esc(v.personal_relevance)}</div>` : ""}

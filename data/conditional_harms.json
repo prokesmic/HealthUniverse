@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "comment": "Conditional contraindications: combinations that are harmful only when a specific condition / co-medication / lab finding is present. The synergies engine surfaces these alongside the interactions panel — same shape as interactions but with a `condition_required` field.",
+  "harms": [
+    {
+      "factor": "alcohol",
+      "condition_required": ["nafld", "fatty_liver", "elevated_alt", "metabolic_syndrome", "t2d"],
+      "severity": "high",
+      "label": "Alcohol + metabolic syndrome / NAFLD",
+      "mechanism": "Alcohol directly drives hepatic steatosis progression, raises triglycerides, worsens insulin resistance, and elevates ALT. In someone with metabolic syndrome or elevated ALT, even moderate alcohol intake accelerates NAFLD → NASH progression and CV risk.",
+      "context": "If ALT is elevated or the user has metabolic syndrome, the threshold for 'safe' alcohol is much lower than population guidelines suggest. Consider time-limited abstinence + recheck ALT in 3 months.",
+      "sources": ["PMID:33038493", "PMID:31978311"]
+    },
+    {
+      "factor": "calcium_supplementation",
+      "condition_required": ["levothyroxine", "on_thyroid_hormone", "hypothyroid"],
+      "severity": "moderate",
+      "label": "Calcium + levothyroxine absorption interference",
+      "mechanism": "Calcium and iron supplements bind levothyroxine in the gut and substantially reduce its absorption. The result: TSH creeps up even on a stable dose. Effect is dose-dependent — high-dose calcium (≥500 mg per dose) is the main offender.",
+      "context": "Take levothyroxine in the morning fasting; separate from calcium/iron by at least 4 hours.",
+      "sources": ["PMID:11055756", "PMID:18996960"]
+    },
+    {
+      "factor": "iron_supplementation",
+      "condition_required": ["levothyroxine", "on_thyroid_hormone"],
+      "severity": "moderate",
+      "label": "Iron + levothyroxine absorption interference",
+      "mechanism": "Iron forms an insoluble complex with levothyroxine, reducing T4 absorption by 30-40%. Effect is most pronounced when both are taken simultaneously.",
+      "context": "Separate iron and levothyroxine by ≥4 hours.",
+      "sources": ["PMID:2331054"]
+    },
+    {
+      "factor": "high_dose_omega_3",
+      "condition_required": ["warfarin", "anticoagulation", "atrial_fibrillation"],
+      "severity": "high",
+      "label": "High-dose omega-3 + anticoagulation",
+      "mechanism": "Omega-3s (≥3 g/day EPA+DHA) reduce platelet aggregation and bleeding time. Combined with warfarin, apixaban, rivaroxaban, etc., this raises bleeding risk meaningfully. Recent meta-analyses also flag higher AF risk at very high doses.",
+      "context": "Clinical practice is to use the lowest effective dose (often 1 g/day) when on anticoagulation, and monitor INR / bleeding signs.",
+      "sources": ["PMID:33591962", "PMID:34128172"]
+    },
+    {
+      "factor": "ginkgo_biloba",
+      "condition_required": ["warfarin", "anticoagulation", "aspirin", "clopidogrel"],
+      "severity": "high",
+      "label": "Ginkgo + anticoagulation / antiplatelet",
+      "mechanism": "Ginkgo's PAF antagonism is additive with anticoagulants and antiplatelets. Major bleeding events including intracranial haemorrhage have been reported in case-series.",
+      "context": "Avoid the combination unless specifically reviewed with the prescribing clinician.",
+      "sources": ["PMID:9690672"]
+    },
+    {
+      "factor": "berberine",
+      "condition_required": ["metformin", "diabetes_medication"],
+      "severity": "moderate",
+      "label": "Berberine + metformin",
+      "mechanism": "Berberine has insulin-sensitising effects similar to metformin. Combined use can cause additive hypoglycaemia, especially in lean or older patients with stable glycaemic control.",
+      "context": "Monitor fasting glucose if adding berberine to metformin; consider reducing metformin dose if A1C trends down.",
+      "sources": ["PMID:31200115"]
+    },
+    {
+      "factor": "grapefruit",
+      "condition_required": ["statins", "simvastatin", "atorvastatin", "amlodipine", "tacrolimus", "cyclosporine"],
+      "severity": "moderate",
+      "label": "Grapefruit + CYP3A4 substrates",
+      "mechanism": "Furanocoumarins in grapefruit inhibit intestinal CYP3A4, raising plasma levels of statins (especially simvastatin), some CCBs, and immunosuppressants. The effect persists 24-72h after a single grapefruit dose.",
+      "context": "Switch to a non-grapefruit-affected statin (rosuvastatin, pravastatin) if grapefruit is important to your diet.",
+      "sources": ["PMID:23163847"]
+    },
+    {
+      "factor": "vitamin_k",
+      "condition_required": ["warfarin", "anticoagulation"],
+      "severity": "high",
+      "label": "Vitamin K + warfarin",
+      "mechanism": "Vitamin K (K1 from leafy greens, K2 from supplements) directly antagonises warfarin. Sudden changes in K intake — starting a K2 supplement, going leafy-green-heavy or -light — destabilise INR.",
+      "context": "On warfarin, keep K intake stable rather than starting/stopping supplements. K2 (MK-7) at supplement dose can still meaningfully affect INR.",
+      "sources": ["PMID:14982087"]
+    },
+    {
+      "factor": "st_johns_wort",
+      "condition_required": ["ssri", "snri", "oral_contraceptive", "warfarin", "cyclosporine"],
+      "severity": "high",
+      "label": "St. John's Wort + multiple drug classes",
+      "mechanism": "Potent CYP3A4 and P-gp inducer. With SSRIs/SNRIs: serotonin syndrome risk. With oral contraceptives: failure risk (breakthrough pregnancies documented). With warfarin: INR destabilisation. With cyclosporine: organ rejection.",
+      "context": "Treat as essentially a co-prescription needing pharmacist review.",
+      "sources": ["PMID:11048851", "PMID:11448289"]
+    },
+    {
+      "factor": "high_dose_vitamin_c",
+      "condition_required": ["kidney_stones", "ckd", "haemochromatosis"],
+      "severity": "moderate",
+      "label": "High-dose vitamin C in stone-formers / iron-overload",
+      "mechanism": "Excess vitamin C is metabolised to oxalate. In stone-formers it raises calcium oxalate stone risk. In haemochromatosis it enhances iron absorption.",
+      "context": "Keep doses under 500 mg/day in these conditions.",
+      "sources": ["PMID:23381591"]
+    },
+    {
+      "factor": "ssri",
+      "condition_required": ["nsaids_chronic", "aspirin_daily", "anticoagulation"],
+      "severity": "high",
+      "label": "SSRI + NSAID / antiplatelet stack",
+      "mechanism": "SSRIs deplete platelet serotonin and impair platelet aggregation. Combined with chronic NSAIDs or antiplatelets, GI bleeding risk roughly doubles vs either alone.",
+      "context": "If chronic NSAID is required, prefer the SNRI duloxetine which carries less of this effect; consider PPI gastroprotection.",
+      "sources": ["PMID:24737246"]
+    },
+    {
+      "factor": "potassium_supplementation",
+      "condition_required": ["ace_inhibitors", "arbs", "spironolactone", "amiloride"],
+      "severity": "high",
+      "label": "K supplementation + RAAS / K-sparing diuretic",
+      "mechanism": "ACEi/ARB/MRA all raise serum potassium by blocking aldosterone-mediated K excretion. Adding K supplementation can drive serum K into the danger zone (>5.5 mmol/L), risk arrhythmias.",
+      "context": "Check K before adding any supplement when on these classes.",
+      "sources": ["PMID:21172867"]
+    },
+    {
+      "factor": "fish_oil_high_dose",
+      "condition_required": ["atrial_fibrillation"],
+      "severity": "moderate",
+      "label": "High-dose fish oil + atrial fibrillation",
+      "mechanism": "REDUCE-IT (icosapent ethyl) showed AF incidence increase at high doses. Recent MAs suggest the effect generalises to high-dose EPA/DHA.",
+      "context": "If on chronic AF, weigh CV benefit vs AF-recurrence risk with cardiologist.",
+      "sources": ["PMID:34128172"]
+    },
+    {
+      "factor": "ppis_long_term",
+      "condition_required": ["osteoporosis", "low_bone_density", "fragility"],
+      "severity": "moderate",
+      "label": "Long-term PPIs in patients with bone fragility",
+      "mechanism": "Chronic PPI use impairs calcium / magnesium absorption and is associated with fracture risk in observational data. The interaction matters most in patients already at fracture risk.",
+      "context": "Lowest effective dose + intermittent use where possible; check Mg + 25(OH)D periodically.",
+      "sources": ["PMID:29403577"]
+    },
+    {
+      "factor": "creatine_monohydrate",
+      "condition_required": ["ckd_stage_3_or_worse", "egfr_below_60"],
+      "severity": "moderate",
+      "label": "Creatine + CKD",
+      "mechanism": "Creatine itself appears safe in most studies of CKD patients, but it raises serum creatinine via non-renal means, confounding eGFR estimation. In advanced CKD where eGFR trends matter clinically, this creates monitoring noise rather than direct harm.",
+      "context": "If on creatine, mention it to your nephrologist; use cystatin C-based eGFR for monitoring.",
+      "sources": ["PMID:31226343"]
+    }
+  ]
+}

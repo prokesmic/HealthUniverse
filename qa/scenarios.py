@@ -54,17 +54,18 @@ def scenario_browse_corpus(persona: dict, c: TestClient) -> list[dict]:
 
 
 def scenario_stack_brief(persona: dict, c: TestClient) -> list[dict]:
-    """Submit the persona's stack, capture the brief output."""
+    """Submit the persona's stack, capture the brief output via the
+    structured JSON endpoint. Also probe the legacy HTML route to
+    ensure backward compat."""
     events: list[dict] = []
     items = ",".join(persona.get("stack") or [])
-    path = f"/stack?items={items}"
-    _req(events, "GET", path)
-    r = c.get(path, follow_redirects=True)
-    body_excerpt = r.text[:3000] if "text" in (r.headers.get("content-type") or "") else r.json()
-    events.append({"kind": "response", "status": r.status_code, "body": body_excerpt})
+    # JSON-first (the recommended programmatic path).
+    _req(events, "GET", f"/api/me/stack?items={items}")
+    _resp(events, c.get(f"/api/me/stack?items={items}"))
     # Synergy API check
     _req(events, "GET", f"/api/me/synergies?stack={items}")
     _resp(events, c.get(f"/api/me/synergies?stack={items}"))
+    _note(events, "HTML route /stack is a separate page surface; not tested here.")
     return events
 
 

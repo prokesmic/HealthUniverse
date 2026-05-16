@@ -1275,7 +1275,20 @@ async def api_claim_check(request: Request):
         '  "what_is_true": ["specific true element if any"], '
         '  "what_is_false_or_overstated": ["..."], '
         '  "confidence": "high|moderate|low" }\n'
-        "Return JSON only. Be honest, not diplomatic."
+        "Return JSON only. Be honest, not diplomatic.\n\n"
+        "FRAMING RULES:\n"
+        "- Use 'evidence suggests X' / 'literature shows Y', never 'you should'.\n"
+        "- Never make a recommendation directly to the user — frame as what "
+        "  the evidence states.\n"
+        "- If the claim touches medication: note that any change requires "
+        "  clinician supervision.\n\n"
+        "TIER ASSIGNMENT RULES:\n"
+        "- 'well_supported' requires ≥1 high-quality MA or multiple "
+        "  consistent RCTs in the corpus. Default downward if uncertain.\n"
+        "- A single trial (even if positive) = 'partial' at most.\n"
+        "- Mechanistic plausibility WITHOUT outcome trials = 'weak'.\n"
+        "- Population effect ≠ personal effect: flag this when the user "
+        "  asks 'will it work for me?'."
     )
     verdict_user = (
         f"PARSED CLAIM: {parsed}\n\n"
@@ -1292,6 +1305,13 @@ async def api_claim_check(request: Request):
     except Exception as exc:
         return JSONResponse({"error": "verdict failed: " + str(exc)[:200]}, status_code=500)
 
+    # Always include the same educational-not-medical disclaimer.
+    verdict["disclaimer"] = (
+        "This is educational synthesis, not medical advice. The "
+        "literature is reported as-is; how it applies to your specific "
+        "situation is a conversation with your clinician, not a "
+        "decision this tool makes."
+    )
     return JSONResponse({
         "ok": True,
         "claim": claim,
@@ -1513,6 +1533,60 @@ def _interactions_for_stack(stack: list[str]) -> list[dict]:
 
 _SYNERGIES_FILE = ROOT / "data" / "synergies.json"
 _SYNERGIES_CACHE: list[dict] | None = None
+_HARMS_FILE = ROOT / "data" / "conditional_harms.json"
+_HARMS_CACHE: list[dict] | None = None
+
+
+def _load_conditional_harms() -> list[dict]:
+    """Conditional harms — combinations harmful only when a condition
+    or co-medication is present."""
+    global _HARMS_CACHE
+    if _HARMS_CACHE is not None:
+        return _HARMS_CACHE
+    if not _HARMS_FILE.exists():
+        _HARMS_CACHE = []
+        return _HARMS_CACHE
+    try:
+        import json as _json
+        _HARMS_CACHE = (_json.loads(_HARMS_FILE.read_text()) or {}).get("harms", [])
+    except Exception:
+        _HARMS_CACHE = []
+    return _HARMS_CACHE
+
+
+def _conditional_harms_for_user(stack_slugs: list[str],
+                                conditions: list[str]) -> list[dict]:
+    """Return conditional-harm rules that fire for this user's
+    combination of stack items + conditions."""
+    if not stack_slugs:
+        return []
+    stack = {s.lower() for s in stack_slugs}
+    cond_set = {(c or "").lower() for c in (conditions or [])}
+    out: list[dict] = []
+    for rule in _load_conditional_harms():
+        factor = (rule.get("factor") or "").lower()
+        if factor not in stack:
+            # The factor might also be itself a condition (e.g. levothyroxine
+            # is a co-med listed both as stack-item AND condition trigger).
+            if factor not in cond_set:
+                continue
+        required = {r.lower() for r in (rule.get("condition_required") or [])}
+        if not required:
+            continue
+        # Trigger fires if ANY of the required conditions OR co-meds
+        # match the user's profile (conditions or stack).
+        match_set = cond_set | stack
+        triggers = required & match_set
+        if not triggers:
+            continue
+        out.append({
+            **rule,
+            "triggered_by": sorted(triggers),
+        })
+    # Order by severity (high first).
+    severity_order = {"high": 0, "moderate": 1, "low": 2}
+    out.sort(key=lambda r: severity_order.get(r.get("severity"), 3))
+    return out
 
 
 def _load_synergies() -> list[dict]:
@@ -3259,7 +3333,8 @@ def _summarize_brief(matches: list[dict]) -> dict:
     }
 
 
-def _build_brief_payload(conn, raw_items: list[str], skeptic: bool):
+def _build_brief_payload(conn, raw_items: list[str], skeptic: bool,
+                         user_conditions: list[str] | None = None):
     """Run the matcher + per-factor edge lookup. Returns the matches
     list plus the cross-stack interaction warnings.
 
@@ -3284,7 +3359,8 @@ def _build_brief_payload(conn, raw_items: list[str], skeptic: bool):
             m["edges"] = []
     warnings = _interactions_for_stack(list(interaction_slugs))
     synergies = _synergies_for_stack(list(interaction_slugs))
-    return matched, warnings, synergies
+    cond_harms = _conditional_harms_for_user(list(interaction_slugs), user_conditions or [])
+    return matched, warnings, synergies, cond_harms
 
 
 def _encode_brief_items(items: list[str], skeptic: bool) -> str:
@@ -3342,6 +3418,7 @@ def stack_form(request: Request, items: str = "", skeptic: int = 0):
             "matches": [],
             "warnings": [],
             "synergies": {"active": [], "near_misses": []},
+            "conditional_harms": [],
             "summary": None,
             "pro_locked": False,
             "share_url": None,
@@ -3352,7 +3429,7 @@ def stack_form(request: Request, items: str = "", skeptic: int = 0):
     pro_locked = len(raw_items) > FREE_LIMIT
     visible = raw_items[:FREE_LIMIT]
     with connect() as conn:
-        matches, warnings, synergies = _build_brief_payload(conn, visible, skeptic_flag)
+        matches, warnings, synergies, cond_harms = _build_brief_payload(conn, visible, skeptic_flag, user_conditions=(decode(request.cookies.get(COOKIE)).conditions if request.cookies.get(COOKIE) else []))
     summary = _summarize_brief(matches)
     token = _encode_brief_items(raw_items, skeptic_flag)
     base = str(request.base_url).rstrip("/")
@@ -3364,11 +3441,53 @@ def stack_form(request: Request, items: str = "", skeptic: int = 0):
         "matches": matches,
         "warnings": warnings,
         "synergies": synergies,
+        "conditional_harms": cond_harms,
         "summary": summary,
         "pro_locked": pro_locked,
         "share_url": share_url,
         "skeptic": skeptic_flag,
         "token": token,
+    })
+
+
+@app.get("/api/me/stack")
+async def api_me_stack(request: Request, items: str = "", skeptic: int = 0):
+    """Pure-JSON sibling of /stack. Same input, structured output —
+    no HTML template. Lets programmatic callers (the QA harness, future
+    mobile clients, the future API tier) consume the brief cleanly."""
+    raw_items: list[str] = []
+    if items:
+        for part in _re_stack.split(r"[,\n]+", items):
+            part = part.strip()
+            if not part: continue
+            raw_items.append(part[:60])
+    if not raw_items:
+        return JSONResponse({"items": [], "matches": [], "warnings": [],
+                             "synergies": {"active": [], "near_misses": []},
+                             "conditional_harms": [], "summary": None})
+    FREE_LIMIT = 3
+    pro_locked = len(raw_items) > FREE_LIMIT
+    visible = raw_items[:FREE_LIMIT]
+    skeptic_flag = bool(skeptic)
+    user_conditions = []
+    try:
+        p = decode(request.cookies.get(COOKIE))
+        if p and p.conditions:
+            user_conditions = list(p.conditions)
+    except Exception:
+        pass
+    with connect() as conn:
+        matches, warnings, synergies, cond_harms = _build_brief_payload(
+            conn, visible, skeptic_flag, user_conditions=user_conditions)
+    return JSONResponse({
+        "items": raw_items,
+        "matches": matches,
+        "warnings": warnings,
+        "synergies": synergies,
+        "conditional_harms": cond_harms,
+        "summary": _summarize_brief(matches),
+        "pro_locked": pro_locked,
+        "skeptic": skeptic_flag,
     })
 
 
@@ -3385,7 +3504,7 @@ def stack_brief_saved(request: Request, token: str, skeptic: int = 0):
     pro_locked = len(items) > FREE_LIMIT
     visible = items[:FREE_LIMIT]
     with connect() as conn:
-        matches, warnings, synergies = _build_brief_payload(conn, visible, skeptic_flag)
+        matches, warnings, synergies, cond_harms = _build_brief_payload(conn, visible, skeptic_flag, user_conditions=(decode(request.cookies.get(COOKIE)).conditions if request.cookies.get(COOKIE) else []))
     summary = _summarize_brief(matches)
     base = str(request.base_url).rstrip("/")
     share_url = f"{base}/stack/s/{token}"
@@ -3396,6 +3515,7 @@ def stack_brief_saved(request: Request, token: str, skeptic: int = 0):
         "matches": matches,
         "warnings": warnings,
         "synergies": synergies,
+        "conditional_harms": cond_harms,
         "summary": summary,
         "pro_locked": pro_locked,
         "share_url": share_url,
@@ -3417,7 +3537,7 @@ def stack_brief_print(request: Request, token: str, skeptic: int = 0):
     with connect() as conn:
         # Print view shows ALL items (a paid Pro user has unlocked it,
         # or it's the founder's marketing material).
-        matches, warnings, synergies = _build_brief_payload(conn, items, skeptic_flag)
+        matches, warnings, synergies, cond_harms = _build_brief_payload(conn, items, skeptic_flag, user_conditions=(decode(request.cookies.get(COOKIE)).conditions if request.cookies.get(COOKIE) else []))
     summary = _summarize_brief(matches)
     return render(request, "stack_print.html", {
         "title": "Stack Brief — print",
@@ -3425,6 +3545,7 @@ def stack_brief_print(request: Request, token: str, skeptic: int = 0):
         "matches": matches,
         "warnings": warnings,
         "synergies": synergies,
+        "conditional_harms": cond_harms,
         "summary": summary,
         "skeptic": skeptic_flag,
         "token": token,
@@ -3570,6 +3691,46 @@ def api_lab_evidence(name: str = "", value: float = 0.0, unit: str = ""):
     })
 
 
+# Per SNP-category, the outcome substrings that count as phenotype-
+# relevant. Used to filter the edges we surface for a given variant —
+# fixes the QA-flagged bug where TCF7L2 (T2D variant) returned an
+# aerobic-exercise-for-depression edge.
+_SNP_CATEGORY_OUTCOMES = {
+    "neuro": ["dement", "alzheimer", "cognitive", "depression", "anxiety",
+              "parkinson", "ptsd", "stroke", "memory", "brain"],
+    "metabolic": ["t2d", "diabet", "obesity", "insulin", "glycaemic",
+                  "glycemic", "metabolic", "hba1c", "weight", "fatty_liver",
+                  "lipid", "cholesterol", "ldl", "apob", "triglyceride"],
+    "cardio": ["cvd", "cardiovascular", "mace", "hypertension", "ldl",
+               "apob", "atherosclerosis", "myocardial", "stroke", "heart"],
+    "athletic": ["strength", "muscle", "vo2max", "endurance", "performance",
+                 "sprint", "power", "hypertrophy"],
+    "diet": ["lactose", "fodmap", "dairy", "gluten", "iron", "absorption"],
+    "drug-metabolism": ["bleeding", "clopidogrel", "warfarin", "drug",
+                        "tardive", "syndrome", "rhabdo"],
+    "social": ["social", "anxiety", "mood", "stress"],
+    "longevity": ["all_cause_mortality", "longevity", "frailty", "aging"],
+}
+
+
+def _filter_edges_by_snp_category(edges: list[dict], category: str | None,
+                                  rsid: str = "") -> list[dict]:
+    """Keep edges whose outcome slug/name matches the phenotype the SNP
+    actually affects. Falls back to all edges if no match."""
+    if not edges or not category:
+        return edges
+    keywords = _SNP_CATEGORY_OUTCOMES.get(category, [])
+    if not keywords:
+        return edges
+    relevant = []
+    for e in edges:
+        slug = (e.get("o_slug") or "").lower()
+        name = (e.get("o_name") or "").lower()
+        if any(k in slug or k in name for k in keywords):
+            relevant.append(e)
+    return relevant if relevant else edges  # fall back if filter would empty
+
+
 @app.get("/api/me/snp-evidence")
 def api_snp_evidence(rsid: str = "", genotype: str = ""):
     """Stateless: given an rsID + genotype, return interpretation +
@@ -3593,6 +3754,9 @@ def api_snp_evidence(rsid: str = "", genotype: str = ""):
             "message": "Genotype not in our panel for this SNP — read raw allele directly."})
     amplify = interp.get("amplify_edges", [])
     edges = _edges_for_entity_slugs(amplify) if amplify else []
+    # Filter to outcomes that match the SNP's phenotype category.
+    # Fixes wrong-outcome surfacing for non-neuro SNPs.
+    edges = _filter_edges_by_snp_category(edges, snp.get("category"), rsid)
     return JSONResponse({
         "matched":  True,
         "rsid":     rsid,
@@ -4131,14 +4295,34 @@ async def api_me_challenge(request: Request):
             system=system, user=user,
             operation="challenge", max_tokens=600, temperature=0.3,
         )
-        parsed = extract_json(text) or {}
-        # Always enforce the clinician-escalation CTA, even if the LLM
-        # forgets to include it.
+        # Robust JSON extraction: extract_json may return None or
+        # raise on unbalanced output. Fall through to a deterministic
+        # template rather than 500-ing on the user.
+        parsed: dict | None = None
+        try:
+            parsed = extract_json(text)
+            if not isinstance(parsed, dict):
+                parsed = None
+        except Exception as exc:
+            print(f"[challenge] extract_json failed: {exc}")
+        if not parsed:
+            # LLM output unparseable — use a structured fallback so the
+            # UI still renders something useful.
+            parsed = _deterministic_challenge_fallback(plan, candidate_edges)
+        # Always enforce the clinician-escalation CTA.
         if not parsed.get("mandatory_action"):
             parsed["mandatory_action"] = (
                 "Talk to your prescriber, pharmacist, or another "
                 "qualified clinician before acting on any of this."
             )
+        # Always lead with an explicit "educational, not medical advice"
+        # disclaimer (P0 #3 + P1 missing-disclaimer pattern).
+        parsed["disclaimer"] = (
+            "This is educational synthesis, not medical advice. "
+            "Discuss any change to medication, supplement, or "
+            "lifestyle with a qualified clinician who knows your full "
+            "history before acting."
+        )
         return JSONResponse({
             "ok": True,
             "plan": plan,
@@ -4148,7 +4332,57 @@ async def api_me_challenge(request: Request):
             "challenge": parsed,
         })
     except Exception as exc:
-        return JSONResponse({"error": str(exc)[:300]}, status_code=500)
+        # Even on a hard exception, give the UI something to render.
+        print(f"[challenge] hard error: {exc}")
+        return JSONResponse({
+            "ok": True,
+            "plan": plan,
+            "safety_block": False,
+            "matched_factors": factor_slugs,
+            "corpus_edges": candidate_edges[:6],
+            "challenge": _deterministic_challenge_fallback(plan, candidate_edges),
+            "degraded": True,
+        })
+
+
+def _deterministic_challenge_fallback(plan: str, edges: list[dict]) -> dict:
+    """When the LLM is unavailable or returns unparseable output, emit a
+    structured response built from corpus rows alone."""
+    summary = "We couldn't synthesize a full response right now. Here's what the corpus shows for the factors in your plan."
+    counterpoints = []
+    questions = []
+    signals = []
+    if edges:
+        harmful = [e for e in edges if e.get("direction") == "harmful"]
+        contested = [e for e in edges if e.get("direction") in ("u_shaped", "mixed")]
+        for e in harmful[:3]:
+            counterpoints.append(
+                f"{e.get('f_name','')} → {e.get('o_name','')} "
+                f"(tier {e.get('tier','?')}, harmful). {(e.get('summary') or '')[:180]}"
+            )
+        for e in contested[:2]:
+            counterpoints.append(
+                f"Contested: {e.get('f_name','')} → {e.get('o_name','')} "
+                f"(tier {e.get('tier','?')}). {(e.get('summary') or '')[:180]}"
+            )
+    if not counterpoints:
+        counterpoints.append("No directly-matching corpus rows; consider rephrasing the plan to a specific factor.")
+    questions = [
+        "Is this aligned with your current medications and conditions?",
+        "What's the smallest version of this plan you could test first?",
+        "What outcome would tell you it's working — and over what window?",
+        "What outcome would tell you to stop?",
+    ]
+    signals = [
+        "Track any change in symptoms in the first 2 weeks.",
+        "Re-test relevant labs at the cadence appropriate for the intervention.",
+    ]
+    return {
+        "summary": summary,
+        "counterpoints": counterpoints,
+        "questions_for_clinician": questions,
+        "signals_to_watch": signals,
+    }
 
 
 # ────────────────────────────────────────────────────────────────────
