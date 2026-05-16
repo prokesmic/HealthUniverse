@@ -4135,6 +4135,112 @@ async def api_me_compute_summary_get(request: Request):
         return JSONResponse({"agreed_to_daily_compute": False})
 
 
+# ─── Weekly self-report check-in ──────────────────────────────────
+
+
+@app.get("/api/me/checkin")
+def api_me_checkin_get(request: Request):
+    """Return the user's last 12 weekly check-ins."""
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    if not account:
+        return JSONResponse({"error": "auth_required"}, status_code=401)
+    rows = alwayson.fetch_recent_checkins(account.user_id, n=12)
+    return JSONResponse({"checkins": rows})
+
+
+@app.post("/api/me/checkin")
+async def api_me_checkin_post(request: Request):
+    """Submit a weekly self-report. Idempotent per (account, week)."""
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    if not account:
+        return JSONResponse({"error": "auth_required"}, status_code=401)
+    body = await request.json()
+    # Snap to Monday of the week (ISO week start).
+    week_start = body.get("for_week_start")
+    if not week_start:
+        d = datetime_now().date()
+        week_start = (d - timedelta(days=d.weekday())).isoformat()
+    def _i(field):
+        v = body.get(field)
+        try:
+            n = int(v)
+            return min(10, max(1, n))
+        except Exception:
+            return None
+    sb = supabase_service()
+    if sb is None:
+        return JSONResponse({"error": "no_supabase"}, status_code=503)
+    try:
+        sb.table("weekly_checkins").upsert({
+            "account_id": account.user_id,
+            "for_week_start": week_start,
+            "energy": _i("energy"),
+            "sleep_quality": _i("sleep_quality"),
+            "mood": _i("mood"),
+            "stress": _i("stress"),
+            "new_symptoms": (body.get("new_symptoms") or "").strip()[:500] or None,
+            "changed_in_stack": (body.get("changed_in_stack") or "").strip()[:500] or None,
+            "submitted_at": datetime_now().isoformat(timespec="seconds"),
+        }, on_conflict="account_id,for_week_start").execute()
+        return JSONResponse({"ok": True})
+    except Exception as exc:
+        return JSONResponse({"error": str(exc)[:200]}, status_code=500)
+
+
+# ─── Stack composition + lab-recheck analysis (read-only views) ─────
+
+
+@app.get("/api/me/stack-analysis")
+async def api_me_stack_analysis(request: Request):
+    """Return stack-cluster findings + flagged labs the user could be
+    pairing them with. Works for both anon (uses body) and signed-in
+    (uses compute summary). Anonymous callers should POST instead."""
+    account = current_account(request.cookies.get(SESSION_COOKIE))
+    if not account:
+        return JSONResponse({"error": "auth_required"}, status_code=401)
+    sb = supabase_service()
+    if sb is None:
+        return JSONResponse({"findings": [], "rechecks_due": []})
+    try:
+        r = (sb.table("compute_summaries").select("*")
+             .eq("account_id", account.user_id).limit(1).execute())
+        rows = list(r.data or [])
+        summary = rows[0] if rows else {}
+    except Exception:
+        summary = {}
+    stack_slugs = [p.get("factor") for p in (summary.get("active_protocols") or []) if p.get("factor")]
+    lab_names = [l.get("name") for l in (summary.get("flagged_labs") or []) if l.get("name")]
+    findings = alwayson.stack_composition_findings(stack_slugs, lab_names)
+    rechecks = alwayson.due_lab_rechecks(summary)
+    return JSONResponse({
+        "findings": findings,
+        "rechecks_due": rechecks,
+        "stack_size": len(stack_slugs),
+        "labs_count": len(lab_names),
+    })
+
+
+@app.post("/api/me/stack-analysis")
+async def api_me_stack_analysis_post(request: Request):
+    """Anonymous-friendly: pass {stack_slugs:[], lab_names:[]} directly."""
+    body = await request.json()
+    stack_slugs = [s for s in (body.get("stack_slugs") or []) if isinstance(s, str)]
+    lab_names = [s for s in (body.get("lab_names") or []) if isinstance(s, str)]
+    findings = alwayson.stack_composition_findings(stack_slugs, lab_names)
+    fake_summary = {
+        "flagged_labs": [{"name": n} for n in lab_names],
+        "active_protocols": [{"factor": s} for s in stack_slugs],
+        "open_recommendations": [],
+    }
+    rechecks = alwayson.due_lab_rechecks(fake_summary)
+    return JSONResponse({
+        "findings": findings,
+        "rechecks_due": rechecks,
+        "stack_size": len(stack_slugs),
+        "labs_count": len(lab_names),
+    })
+
+
 @app.post("/api/me/push-subscribe")
 async def api_me_push_subscribe(request: Request):
     """Register a Web Push subscription for the current account."""

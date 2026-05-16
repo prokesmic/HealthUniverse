@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "comment": "Standard recheck cadences for common labs. Each rule has `aliases` (matched case-insensitively against the user's lab.name), `weeks` (default interval), and optional `triggered_by_stack` (if the user added one of these factors, use the shorter `weeks_after_stack_change` instead). The cadence engine fires a push when the user's most-recent lab exceeds the recheck window — extended if the lab was already in-range, urgent if out-of-range.",
+  "rules": [
+    {
+      "key": "ldl_apob_after_statin",
+      "aliases": ["ldl", "ldl-c", "ldl cholesterol", "apob", "apolipoprotein b"],
+      "weeks": 26,
+      "weeks_after_stack_change": 8,
+      "triggered_by_stack": ["atorvastatin", "rosuvastatin", "simvastatin", "ezetimibe", "pcsk9_inhibitors", "bempedoic_acid", "inclisiran", "statins", "high_intensity_statins", "moderate_intensity_statins"],
+      "label": "Lipid recheck after starting/changing lipid-lowering therapy",
+      "urgency_if_out_of_range": "high"
+    },
+    {
+      "key": "tsh_after_lt4",
+      "aliases": ["tsh", "thyroid stimulating hormone", "thyrotropin"],
+      "weeks": 26,
+      "weeks_after_stack_change": 8,
+      "triggered_by_stack": ["levothyroxine", "levothyroxine_morning_fasting", "liothyronine", "desiccated_thyroid_extract"],
+      "label": "Thyroid recheck after dose change",
+      "urgency_if_out_of_range": "moderate"
+    },
+    {
+      "key": "hba1c_diabetic",
+      "aliases": ["hba1c", "a1c", "glycated hemoglobin"],
+      "weeks": 13,
+      "weeks_after_stack_change": 13,
+      "triggered_by_stack": ["metformin", "sglt2_inhibitors", "glp1_agonists", "semaglutide", "tirzepatide", "insulin"],
+      "label": "HbA1c recheck (every 3 months if on glycaemic therapy)",
+      "urgency_if_out_of_range": "moderate"
+    },
+    {
+      "key": "hba1c_prediabetic_general",
+      "aliases": ["hba1c", "a1c"],
+      "weeks": 26,
+      "label": "HbA1c recheck (every 6 months as a general adult)",
+      "urgency_if_out_of_range": "low"
+    },
+    {
+      "key": "vitamin_d_repletion",
+      "aliases": ["vitamin d", "vitamin d 25-oh", "25(oh)d", "vit d"],
+      "weeks": 52,
+      "weeks_after_stack_change": 12,
+      "triggered_by_stack": ["vitamin_d", "vitamin_d_supplementation", "vitamin_d_repletion", "vitamin_d_high_dose"],
+      "label": "Vitamin D recheck (12 weeks after starting repletion; otherwise annually)",
+      "urgency_if_out_of_range": "low"
+    },
+    {
+      "key": "ferritin_iron_repletion",
+      "aliases": ["ferritin", "iron", "transferrin saturation"],
+      "weeks": 26,
+      "weeks_after_stack_change": 12,
+      "triggered_by_stack": ["iron_supplementation", "iron", "intravenous_iron", "lactoferrin_supplementation"],
+      "label": "Iron studies recheck after starting iron",
+      "urgency_if_out_of_range": "moderate"
+    },
+    {
+      "key": "lp_a_once",
+      "aliases": ["lp(a)", "lpa", "lipoprotein(a)", "lipoprotein a"],
+      "weeks": 9999,
+      "label": "Lp(a) is largely genetic; one lifetime measurement is usually enough unless on Lp(a)-targeted therapy",
+      "urgency_if_out_of_range": "low"
+    },
+    {
+      "key": "hs_crp",
+      "aliases": ["crp", "hs-crp", "high sensitivity crp", "c-reactive protein"],
+      "weeks": 26,
+      "weeks_after_stack_change": 12,
+      "triggered_by_stack": ["statins", "high_intensity_statins", "omega3_high_dose", "curcumin", "mediterranean_diet"],
+      "label": "hs-CRP recheck after an anti-inflammatory intervention (lifestyle or pharm)",
+      "urgency_if_out_of_range": "moderate"
+    },
+    {
+      "key": "vitamin_b12_repletion",
+      "aliases": ["vitamin b12", "b12", "cobalamin"],
+      "weeks": 52,
+      "weeks_after_stack_change": 12,
+      "triggered_by_stack": ["vitamin_b12", "methylcobalamin", "cyanocobalamin"],
+      "label": "B12 recheck after starting repletion",
+      "urgency_if_out_of_range": "moderate"
+    },
+    {
+      "key": "homocysteine_after_folate",
+      "aliases": ["homocysteine"],
+      "weeks": 26,
+      "weeks_after_stack_change": 12,
+      "triggered_by_stack": ["folate", "methylfolate", "folic_acid", "vitamin_b12"],
+      "label": "Homocysteine recheck after starting B-vitamin repletion",
+      "urgency_if_out_of_range": "moderate"
+    },
+    {
+      "key": "testosterone_men_trt",
+      "aliases": ["testosterone", "total testosterone", "free testosterone"],
+      "weeks": 26,
+      "weeks_after_stack_change": 8,
+      "triggered_by_stack": ["testosterone_replacement_hypogonadal", "trt", "clomiphene_citrate_men", "enclomiphene_men"],
+      "label": "Testosterone recheck on TRT (every 6 months once stable; sooner after dose change)",
+      "urgency_if_out_of_range": "moderate"
+    },
+    {
+      "key": "liver_enzymes_on_statin",
+      "aliases": ["alt", "ast", "alkaline phosphatase", "ggt"],
+      "weeks": 52,
+      "weeks_after_stack_change": 12,
+      "triggered_by_stack": ["statins", "high_intensity_statins", "methotrexate", "amiodarone"],
+      "label": "Liver function recheck on chronic hepatotoxic medication",
+      "urgency_if_out_of_range": "moderate"
+    },
+    {
+      "key": "egfr_on_acei_arb",
+      "aliases": ["egfr", "estimated gfr", "creatinine"],
+      "weeks": 52,
+      "weeks_after_stack_change": 4,
+      "triggered_by_stack": ["ace_inhibitors", "arbs", "sacubitril_valsartan", "sglt2_inhibitors", "spironolactone"],
+      "label": "Kidney function recheck after starting ACEi/ARB/SGLT2/MRA",
+      "urgency_if_out_of_range": "moderate"
+    },
+    {
+      "key": "psa_screening_men",
+      "aliases": ["psa", "prostate specific antigen"],
+      "weeks": 104,
+      "label": "PSA recheck every 2 years if previously normal (controversial; discuss with clinician)",
+      "urgency_if_out_of_range": "moderate"
+    },
+    {
+      "key": "fasting_glucose_metabolic",
+      "aliases": ["fasting glucose", "fpg", "glucose fasting"],
+      "weeks": 52,
+      "weeks_after_stack_change": 12,
+      "triggered_by_stack": ["metformin", "sglt2_inhibitors", "semaglutide", "tirzepatide", "intermittent_fasting", "low_carbohydrate_diet"],
+      "label": "Fasting glucose recheck after metabolic intervention",
+      "urgency_if_out_of_range": "moderate"
+    }
+  ]
+}

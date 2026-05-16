@@ -466,6 +466,77 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════
+     Weekly check-in (the "manual wearable")
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="data-section" id="ci-section"
+         style="background:linear-gradient(180deg,#fffbe7,#fff5d6);border-color:#f0d68a;margin-top:20px">
+  <header>
+    <h2><span class="icon">📋</span> Weekly check-in</h2>
+    <span class="sec-count" id="ci-status">—</span>
+  </header>
+  <p class="sec-pitch">
+    A 30-second Sunday-morning self-report. Without a wearable, this is how we
+    build the weekly time-series we need to detect mood / energy / sleep trends.
+    Four 1-10 scores plus two free-text fields.
+  </p>
+
+  <div id="ci-anon" style="display:none">
+    <div style="padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:13px">
+      <b>Sign in first.</b> Weekly check-ins are tied to your account so they sync across devices and feed your daily briefing.
+      <button class="btn-secondary inline" onclick="document.getElementById('account-signin-btn')?.click()">Sign in →</button>
+    </div>
+  </div>
+
+  <div id="ci-signed" style="display:none">
+    <form id="ci-form" style="display:grid;gap:10px;max-width:520px">
+      <div style="display:grid;gap:6px;grid-template-columns:1fr 1fr">
+        <label style="font-size:13px">Energy (1-10)
+          <input id="ci-energy" type="number" min="1" max="10" required style="width:100%;padding:6px;border:1px solid var(--line);border-radius:4px">
+        </label>
+        <label style="font-size:13px">Sleep quality (1-10)
+          <input id="ci-sleep" type="number" min="1" max="10" required style="width:100%;padding:6px;border:1px solid var(--line);border-radius:4px">
+        </label>
+        <label style="font-size:13px">Mood (1-10)
+          <input id="ci-mood" type="number" min="1" max="10" required style="width:100%;padding:6px;border:1px solid var(--line);border-radius:4px">
+        </label>
+        <label style="font-size:13px">Stress (1-10, higher = worse)
+          <input id="ci-stress" type="number" min="1" max="10" required style="width:100%;padding:6px;border:1px solid var(--line);border-radius:4px">
+        </label>
+      </div>
+      <label style="font-size:13px">Any new symptoms this week?
+        <input id="ci-sym" type="text" placeholder="e.g. headache 3 days; bloating; or 'none'" style="width:100%;padding:6px;border:1px solid var(--line);border-radius:4px">
+      </label>
+      <label style="font-size:13px">Anything you started / stopped in your stack?
+        <input id="ci-stack" type="text" placeholder="e.g. started ashwagandha; stopped late coffee" style="width:100%;padding:6px;border:1px solid var(--line);border-radius:4px">
+      </label>
+      <button type="submit" class="btn-primary" style="justify-self:start">Submit this week's check-in</button>
+      <span id="ci-msg" class="muted small"></span>
+    </form>
+
+    <div id="ci-history" style="margin-top:16px"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     Stack analysis (composition + recheck cadence)
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="data-section" id="sa-section"
+         style="background:linear-gradient(180deg,#f7faff,#eaf3ff);border-color:#b8cdf2;margin-top:20px">
+  <header>
+    <h2><span class="icon">🔍</span> Stack &amp; recheck analysis</h2>
+    <span class="sec-count" id="sa-status">—</span>
+  </header>
+  <p class="sec-pitch">
+    Reads your stack composition and your last lab dates against a curated set
+    of clinical recheck cadences. Surfaces patterns ("you have an inflammation
+    cluster — track hs-CRP") and overdue lab rechecks ("LDL was 11 weeks ago
+    and you started a statin since then — schedule a recheck").
+  </p>
+  <div id="sa-empty" class="muted small">Looking up against your synced summary…</div>
+  <div id="sa-body" style="display:grid;gap:10px"></div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
      Always-on settings (Sync · Compute · Push)
      ═══════════════════════════════════════════════════════════════ -->
 <section class="data-section" id="ao-section"
@@ -616,6 +687,92 @@
         : "<span style='color:#7a5c00'>○ Daily compute off</span>";
     } catch (e) { msg.textContent = "Error: " + e.message; }
   });
+
+  // ─── Weekly check-in ─────────────────────────────────────
+  document.getElementById("ci-anon").style.display = acct.signed_in ? "none" : "block";
+  document.getElementById("ci-signed").style.display = acct.signed_in ? "block" : "none";
+  if (acct.signed_in) {
+    const r = await fetch("/api/me/checkin");
+    const j = r.ok ? await r.json() : { checkins: [] };
+    const rows = j.checkins || [];
+    document.getElementById("ci-status").textContent = rows.length ? `${rows.length} weeks logged` : "no entries yet";
+    const hist = document.getElementById("ci-history");
+    if (rows.length) {
+      const labels = { energy: "Energy", sleep_quality: "Sleep", mood: "Mood", stress: "Stress" };
+      let html = `<div class="muted small" style="margin-bottom:6px">Recent weeks (newest first):</div>`;
+      html += `<table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr style="background:#fff;border-bottom:1px solid #e3d6b0"><th style="padding:4px;text-align:left">Week</th><th style="padding:4px">E</th><th style="padding:4px">S</th><th style="padding:4px">M</th><th style="padding:4px">St</th></tr></thead><tbody>`;
+      rows.slice(0, 8).forEach(r => {
+        html += `<tr><td style="padding:3px 4px">${r.for_week_start}</td><td style="padding:3px;text-align:center">${r.energy ?? "—"}</td><td style="padding:3px;text-align:center">${r.sleep_quality ?? "—"}</td><td style="padding:3px;text-align:center">${r.mood ?? "—"}</td><td style="padding:3px;text-align:center">${r.stress ?? "—"}</td></tr>`;
+      });
+      html += `</tbody></table>`;
+      hist.innerHTML = html;
+    }
+    document.getElementById("ci-form").addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const msg = document.getElementById("ci-msg");
+      msg.textContent = "Submitting…";
+      try {
+        const body = {
+          energy: document.getElementById("ci-energy").value,
+          sleep_quality: document.getElementById("ci-sleep").value,
+          mood: document.getElementById("ci-mood").value,
+          stress: document.getElementById("ci-stress").value,
+          new_symptoms: document.getElementById("ci-sym").value,
+          changed_in_stack: document.getElementById("ci-stack").value,
+        };
+        const r = await fetch("/api/me/checkin", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+        const j = await r.json();
+        msg.innerHTML = j.ok ? "<span style='color:#1b5e20'>✓ Logged. Anomalies trigger pushes when patterns drift.</span>" : ("Error: " + (j.error || "unknown"));
+        if (j.ok) {
+          setTimeout(() => location.reload(), 1200);
+        }
+      } catch (e) { msg.textContent = "Network error: " + e; }
+    });
+  }
+
+  // ─── Stack analysis ──────────────────────────────────────
+  if (acct.signed_in) {
+    try {
+      const r = await fetch("/api/me/stack-analysis");
+      const j = await r.json();
+      const empty = document.getElementById("sa-empty");
+      const body = document.getElementById("sa-body");
+      const status = document.getElementById("sa-status");
+      status.textContent = `${j.stack_size} stack · ${j.labs_count} labs`;
+      empty.style.display = (j.findings.length || j.rechecks_due.length) ? "none" : "block";
+      if (!j.findings.length && !j.rechecks_due.length) {
+        empty.textContent = "No patterns or due rechecks detected. Add labs + protocols on this page to populate the analyses.";
+      }
+      let html = "";
+      if (j.rechecks_due.length) {
+        html += `<div style="padding:12px 14px;background:#fff8f7;border:1px solid #f3b3ad;border-radius:8px">
+          <b style="color:#9b1c1c">${j.rechecks_due.length} lab recheck${j.rechecks_due.length === 1 ? "" : "s"} due</b>`;
+        j.rechecks_due.slice(0,5).forEach(rc => {
+          html += `<div style="font-size:13px;margin-top:6px">
+            <b>${rc.lab_name}</b> — last on ${rc.last_date}, due ${rc.next_recheck_due} (<b>${rc.days_overdue}d overdue</b>, ${rc.urgency} urgency).<br>
+            <span class="muted small">${rc.label}${rc.triggered_by_stack_change ? " · accelerated by recent stack change" : ""}</span>
+          </div>`;
+        });
+        html += `</div>`;
+      }
+      if (j.findings.length) {
+        html += `<div style="padding:12px 14px;background:#fff;border:1px solid #b8cdf2;border-radius:8px">
+          <b style="color:#1f3a7e">Stack composition patterns</b>`;
+        j.findings.forEach(f => {
+          html += `<div style="font-size:13px;margin-top:8px">
+            <b>${f.key.replace(/_/g, ' ')}</b> — ${f.message}
+            <div class="muted small" style="margin-top:3px">Matched: ${f.hits.join(', ').replace(/_/g, ' ')}${f.suggest_lab ? " · suggested lab: <b>" + f.suggest_lab + "</b>" + (f.already_have_lab ? " (already tracking)" : "") : ""}</div>
+          </div>`;
+        });
+        html += `</div>`;
+      }
+      body.innerHTML = html;
+    } catch (e) {
+      document.getElementById("sa-empty").textContent = "Couldn't load.";
+    }
+  } else {
+    document.getElementById("sa-empty").innerHTML = "Sign in to see your personalised stack analysis.";
+  }
 
   // (3) Push
   document.getElementById("ao-subscribe-btn").addEventListener("click", async () => {

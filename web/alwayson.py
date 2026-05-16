@@ -165,12 +165,29 @@ def compute_daily_for_account(account_row: dict, summary: dict) -> Optional[dict
     shifts = _shifts_for_user(account_row["id"], watch_edges, yesterday_dt)
     memory = _fetch_recent_briefings(account_row["id"], n=7)
 
+    # ── Move A: lab-recheck cadence
+    rechecks_due = due_lab_rechecks(summary)
+    # ── Move B: personalised corpus feed (broader than strict watchlist)
+    corpus_feed = personal_corpus_feed(account_row["id"], summary)
+    # ── Move C: cadence-aware nudges
+    schedule_next_nudge_for_recs(account_row["id"])
+    nudges = due_nudges(account_row["id"])
+    # ── Move D: weekly-checkin anomalies
+    checkins = fetch_recent_checkins(account_row["id"], n=12)
+    self_anomalies = checkin_anomalies(checkins)
+    # ── Move E: stack composition findings
+    stack_slugs = [p.get("factor") for p in (active_protos or []) if p.get("factor")]
+    recent_lab_names = [l.get("name") for l in (flagged_labs or []) if l.get("name")]
+    stack_findings = stack_composition_findings(stack_slugs, recent_lab_names)
+
     # 2) If there's nothing to say, skip (avoid daily-spam fatigue).
     nothing_to_say = (
         not anomalies and not flagged_labs and not shifts
         and not _due_check_ins(open_recs)
         and not _imminent_visit(next_visit, today)
         and not _due_protocols(active_protos, today)
+        and not rechecks_due and not corpus_feed and not nudges
+        and not self_anomalies and not stack_findings
     )
     if nothing_to_say:
         return None
@@ -184,15 +201,34 @@ def compute_daily_for_account(account_row: dict, summary: dict) -> Optional[dict
             f"{stream}: z={z} ({info.get('dir','')}, "
             f"{info.get('recent_mean','?')} vs baseline {info.get('baseline_mean','?')})"
         )
+    for a in self_anomalies:
+        pieces.append(
+            f"weekly-checkin {a['stream']}: z={a['z']} "
+            f"({a['recent_mean']} vs baseline {a['baseline_mean']}); is_bad={a['is_bad']}"
+        )
     if flagged_labs:
         for l in flagged_labs[:5]:
             pieces.append(f"lab {l.get('name')} = {l.get('value')} {l.get('unit','')} ({l.get('direction')})")
+    for rc in rechecks_due[:3]:
+        pieces.append(
+            f"LAB RECHECK DUE: {rc['lab_name']} (last {rc['last_date']}, "
+            f"next due {rc['next_recheck_due']}, {rc['days_overdue']}d overdue, "
+            f"urgency {rc['urgency']})"
+        )
     if shifts:
         for s in shifts[:3]:
             pieces.append(
                 f"corpus shift: {s.get('f_name')} → {s.get('o_name')} "
                 f"{s.get('field')} {s.get('old_value')} → {s.get('new_value')}"
             )
+    for cf in corpus_feed[:3]:
+        pieces.append(
+            f"new corpus signal ({cf.get('source')}): "
+            f"{cf.get('f_name')} → {cf.get('o_name')} now {cf.get('tier')}"
+        )
+    for sf in stack_findings[:3]:
+        already = " (already tracking)" if sf.get("already_have_lab") else ""
+        pieces.append(f"stack pattern '{sf['key']}': {sf['message']}{already}")
     if next_visit:
         d = next_visit.get("date", "")
         if d:
@@ -205,6 +241,16 @@ def compute_daily_for_account(account_row: dict, summary: dict) -> Optional[dict
         days = r.get("days_open", 0)
         if days >= 7:
             pieces.append(f"open rec {days} days: {r.get('edge_label')}")
+    for n in nudges[:3]:
+        days_open = 0
+        try:
+            sug = datetime.fromisoformat((n.get("suggested_at") or "").replace("Z", "+00:00")).replace(tzinfo=None)
+            days_open = (datetime.utcnow() - sug).days
+        except Exception: pass
+        pieces.append(
+            f"due nudge: {n.get('edge_label')} (suggested {days_open}d ago, "
+            f"class {n.get('intervention_class')})"
+        )
     for p in active_protos[:2]:
         if p.get("ends_at") and p["ends_at"] <= today.isoformat():
             pieces.append(f"protocol due to close: {p.get('factor')}")
@@ -230,18 +276,530 @@ def compute_daily_for_account(account_row: dict, summary: dict) -> Optional[dict
             "doctor_question": None,
         }
 
+    # Advance any nudges we just included so they don't refire tomorrow.
+    for n in nudges[:3]:
+        try:
+            advance_nudge(n["id"])
+        except Exception:
+            pass
+
     return {
         "generated_for_date": today.isoformat(),
         "headline": parsed.get("headline") or "Daily check-in",
         "observations": parsed.get("observations") or [],
         "actions": parsed.get("actions") or [],
         "doctor_question": parsed.get("doctor_question"),
-        "trends_snapshot": {"signals_count": len(pieces), "shifts_count": len(shifts)},
+        "trends_snapshot": {
+            "signals_count": len(pieces),
+            "shifts_count": len(shifts),
+            "rechecks_due_count": len(rechecks_due),
+            "corpus_feed_count": len(corpus_feed),
+            "nudge_count": len(nudges),
+            "self_anomalies_count": len(self_anomalies),
+            "stack_findings_count": len(stack_findings),
+        },
     }
 
 
 def _due_check_ins(open_recs: list[dict]) -> bool:
     return any((r.get("days_open") or 0) >= 28 for r in (open_recs or []))
+
+
+# ─── Lab-recheck cadence (Move A) ──────────────────────────────────
+
+
+_RECHECK_FILE = None
+_RECHECK_CACHE: list[dict] | None = None
+
+
+def _load_recheck_rules() -> list[dict]:
+    """Lazy-load the recheck-interval rules."""
+    global _RECHECK_CACHE, _RECHECK_FILE
+    if _RECHECK_CACHE is not None:
+        return _RECHECK_CACHE
+    try:
+        from pathlib import Path
+        path = Path(__file__).parent.parent / "data" / "lab_recheck_intervals.json"
+        _RECHECK_CACHE = (_json.loads(path.read_text()) or {}).get("rules", [])
+    except Exception:
+        _RECHECK_CACHE = []
+    return _RECHECK_CACHE
+
+
+def _match_rule(lab_name: str, rules: list[dict]) -> Optional[dict]:
+    n = (lab_name or "").strip().lower()
+    if not n:
+        return None
+    # Most specific (longest alias) first.
+    for rule in sorted(rules, key=lambda r: -max(len(a) for a in r.get("aliases", []) or [""])):
+        for alias in rule.get("aliases", []):
+            if alias.lower() in n or n in alias.lower():
+                return rule
+    return None
+
+
+def due_lab_rechecks(summary: dict) -> list[dict]:
+    """Walk the user's flagged_labs against the recheck-interval rules.
+    Returns a list of due recheck items, newest-trigger first."""
+    rules = _load_recheck_rules()
+    if not rules:
+        return []
+    labs = summary.get("flagged_labs") or []
+    stack = summary.get("active_protocols") or []
+    stack_factors: set[str] = set()
+    for p in stack:
+        if p.get("factor"):
+            stack_factors.add(p["factor"])
+    # Also consider open-recommendation factors (proxy for "started this").
+    for r in summary.get("open_recommendations") or []:
+        # Heuristic: pull factor from edge_label if it's "X for Y"
+        lbl = (r.get("edge_label") or "").lower()
+        for tok in lbl.split(" for ")[0:1]:
+            stack_factors.add(tok.strip().replace(" ", "_"))
+    today = date.today()
+    out: list[dict] = []
+    seen_keys: set[str] = set()
+    # Newest-first per lab name; keep only the most recent.
+    by_name: dict[str, dict] = {}
+    for lab in labs:
+        name = (lab.get("name") or "").lower()
+        d = lab.get("date") or ""
+        if name not in by_name or d > (by_name[name].get("date") or ""):
+            by_name[name] = lab
+    for lab in by_name.values():
+        rule = _match_rule(lab.get("name", ""), rules)
+        if not rule:
+            continue
+        if rule["key"] in seen_keys:
+            continue
+        try:
+            lab_date = date.fromisoformat((lab.get("date") or today.isoformat())[:10])
+        except Exception:
+            continue
+        weeks_baseline = int(rule.get("weeks") or 26)
+        triggered = bool(set(rule.get("triggered_by_stack", []) or []) & stack_factors)
+        weeks = int(rule.get("weeks_after_stack_change", weeks_baseline)) if triggered else weeks_baseline
+        if weeks >= 9999:
+            continue  # once-in-a-lifetime
+        next_recheck = lab_date + timedelta(weeks=weeks)
+        if today < next_recheck:
+            continue
+        days_overdue = (today - next_recheck).days
+        urgency = rule.get("urgency_if_out_of_range", "low")
+        out.append({
+            "key": rule["key"],
+            "label": rule.get("label") or rule["key"].replace("_", " "),
+            "lab_name": lab.get("name"),
+            "last_value": lab.get("value"),
+            "last_unit": lab.get("unit"),
+            "last_date": lab_date.isoformat(),
+            "next_recheck_due": next_recheck.isoformat(),
+            "days_overdue": days_overdue,
+            "weeks_interval": weeks,
+            "triggered_by_stack_change": triggered,
+            "urgency": urgency,
+        })
+        seen_keys.add(rule["key"])
+    # Sort: most-overdue first.
+    out.sort(key=lambda r: -r["days_overdue"])
+    return out
+
+
+# ─── Personalised corpus-shift feed (Move B) ────────────────────────
+
+
+def personal_corpus_feed(account_id: str, summary: dict, days: int = 7) -> list[dict]:
+    """Beyond the strict watchlist: surface ANY recent corpus shift
+    that touches the user's tracked conditions, stack factors, or
+    genetic profile. Returns top-N ranked by relevance × recency."""
+    from db import connect
+    out: list[dict] = []
+    sb = supabase_service()
+    last_seen = None
+    if sb is not None:
+        try:
+            r = (sb.table("corpus_feed_state").select("last_seen_history_at")
+                 .eq("account_id", account_id).limit(1).execute())
+            rows = list(r.data or [])
+            if rows:
+                last_seen = rows[0].get("last_seen_history_at")
+        except Exception:
+            pass
+    since = last_seen or (datetime.utcnow() - timedelta(days=days)).isoformat()
+    # Collect signals: watchlist edge IDs, active protocol factor slugs,
+    # condition slugs from recent recommendations (proxy).
+    watch_edges = summary.get("watch_edges") or []
+    stack_slugs: list[str] = []
+    for p in summary.get("active_protocols") or []:
+        if p.get("factor"):
+            stack_slugs.append(p["factor"])
+    try:
+        with connect() as conn:
+            # Bucket 1: direct watchlist edge_history shifts.
+            shifts: list[dict] = []
+            if watch_edges:
+                ph = ",".join("?" * len(watch_edges))
+                rows = conn.execute(f"""
+                    SELECT h.edge_id, h.field, h.old_value, h.new_value, h.changed_at,
+                           e.tier, e.direction, f.name AS f_name, o.name AS o_name
+                    FROM edge_history h
+                    JOIN edge e ON e.id=h.edge_id
+                    JOIN entity f ON f.id=e.factor_id
+                    JOIN entity o ON o.id=e.outcome_id
+                    WHERE h.edge_id IN ({ph}) AND h.changed_at >= ?
+                      AND h.field IN ('tier','is_retracted','direction')
+                    ORDER BY h.changed_at DESC LIMIT 20""",
+                    [*watch_edges, since]).fetchall()
+                for r in rows:
+                    d = dict(r)
+                    d["source"] = "watchlist"
+                    d["score"] = 100
+                    shifts.append(d)
+            # Bucket 2: shifts on edges where a stack-factor matches.
+            if stack_slugs:
+                ph = ",".join("?" * len(stack_slugs))
+                rows = conn.execute(f"""
+                    SELECT h.edge_id, h.field, h.old_value, h.new_value, h.changed_at,
+                           e.tier, e.direction, f.name AS f_name, o.name AS o_name
+                    FROM edge_history h
+                    JOIN edge e ON e.id=h.edge_id
+                    JOIN entity f ON f.id=e.factor_id
+                    JOIN entity o ON o.id=e.outcome_id
+                    WHERE f.slug IN ({ph}) AND h.changed_at >= ?
+                      AND h.field IN ('tier','is_retracted')
+                    ORDER BY h.changed_at DESC LIMIT 20""",
+                    [*stack_slugs, since]).fetchall()
+                for r in rows:
+                    d = dict(r)
+                    d["source"] = "stack_factor"
+                    d["score"] = 60
+                    shifts.append(d)
+            # Bucket 3: brand-new tier-A/B edges (last `days` days) whose
+            # factor or outcome touches anything in the user's profile.
+            rows = conn.execute(f"""
+                SELECT e.id AS edge_id, e.tier, e.direction, e.summary,
+                       f.slug AS f_slug, f.name AS f_name,
+                       o.slug AS o_slug, o.name AS o_name,
+                       e.updated_at AS changed_at
+                FROM edge e
+                JOIN entity f ON f.id=e.factor_id
+                JOIN entity o ON o.id=e.outcome_id
+                WHERE e.tier IN ('A','B') AND e.updated_at >= ?
+                ORDER BY e.updated_at DESC LIMIT 50""",
+                [since]).fetchall()
+            personal_slugs = set(stack_slugs)
+            for r in rows:
+                d = dict(r)
+                hits = 0
+                if d["f_slug"] in personal_slugs: hits += 2
+                if d["o_slug"] in personal_slugs: hits += 1
+                if hits == 0:
+                    continue
+                d["source"] = "new_tierA_or_B"
+                d["score"] = 40 + hits * 10
+                d["field"] = "new_edge"
+                d["new_value"] = d["tier"]
+                d["old_value"] = ""
+                shifts.append(d)
+        # Dedupe by edge_id, keep highest-scoring entry.
+        best: dict[int, dict] = {}
+        for s in shifts:
+            eid = s["edge_id"]
+            if eid not in best or s["score"] > best[eid]["score"]:
+                best[eid] = s
+        out = sorted(best.values(), key=lambda s: (-s["score"], s["changed_at"]))[:8]
+    except Exception as exc:
+        print(f"[alwayson] corpus feed failed: {exc}")
+    # Update high-watermark so we don't re-send next time.
+    if sb is not None and out:
+        try:
+            sb.table("corpus_feed_state").upsert({
+                "account_id": account_id,
+                "last_seen_history_at": datetime.utcnow().isoformat(timespec="seconds"),
+            }, on_conflict="account_id").execute()
+        except Exception:
+            pass
+    return out
+
+
+# ─── Cadence-aware loop closure (Move C) ────────────────────────────
+
+
+# Per intervention class, the nudge cadence in days from `suggested_at`.
+_NUDGE_CADENCE = {
+    "sleep":          [7, 21, 56],
+    "mood":           [14, 35, 90],
+    "energy":         [14, 35, 90],
+    "strength":       [28, 56, 84],
+    "body_comp":      [28, 56, 84, 168],
+    "lipid":          [56, 168],
+    "glycaemic":      [90, 180],
+    "blood_pressure": [28, 84, 180],
+    "cognitive":      [56, 168],
+    "general":        [28, 56, 84],
+}
+
+
+def classify_intervention(edge_label: str) -> str:
+    """Heuristic classifier for intervention class — used to pick the
+    right follow-up cadence."""
+    s = (edge_label or "").lower()
+    if any(t in s for t in ("sleep", "insomnia", "rem")): return "sleep"
+    if any(t in s for t in ("depression", "anxiety", "mood", "stress")): return "mood"
+    if any(t in s for t in ("energy", "fatigue", "tiredness")): return "energy"
+    if any(t in s for t in ("strength", "muscle", "hypertrophy", "sarcopenia")): return "strength"
+    if any(t in s for t in ("weight", "obesity", "body composition", "fat")): return "body_comp"
+    if any(t in s for t in ("ldl", "apob", "lipid", "cholesterol", "triglyceride")): return "lipid"
+    if any(t in s for t in ("hba1c", "glucose", "insulin resistance", "diabet")): return "glycaemic"
+    if any(t in s for t in ("hypertension", "blood pressure", "bp")): return "blood_pressure"
+    if any(t in s for t in ("cognit", "memory", "dementia", "alzheimer")): return "cognitive"
+    return "general"
+
+
+def schedule_next_nudge_for_recs(account_id: str) -> int:
+    """Walks open recommendations for one account and sets next_nudge_at
+    on rows whose cadence-step hasn't been scheduled yet. Returns count
+    of rows updated."""
+    sb = supabase_service()
+    if sb is None: return 0
+    try:
+        r = (sb.table("recommendations_log").select("*")
+             .eq("account_id", account_id).is_("closed_at", "null").execute())
+        rows = list(r.data or [])
+    except Exception:
+        return 0
+    updates = 0
+    now = datetime.utcnow()
+    for rec in rows:
+        cls = rec.get("intervention_class") or classify_intervention(rec.get("edge_label", ""))
+        cadence = _NUDGE_CADENCE.get(cls, _NUDGE_CADENCE["general"])
+        nudge_count = int(rec.get("nudge_count") or 0)
+        if nudge_count >= len(cadence):
+            continue
+        try:
+            suggested = datetime.fromisoformat((rec.get("suggested_at") or "").replace("Z", "+00:00"))
+            suggested = suggested.replace(tzinfo=None)
+        except Exception:
+            continue
+        next_due = suggested + timedelta(days=cadence[nudge_count])
+        try:
+            sb.table("recommendations_log").update({
+                "next_nudge_at": next_due.isoformat(),
+                "intervention_class": cls,
+            }).eq("id", rec["id"]).execute()
+            updates += 1
+        except Exception:
+            pass
+    return updates
+
+
+def due_nudges(account_id: str) -> list[dict]:
+    """Return open recommendations whose next_nudge_at has elapsed."""
+    sb = supabase_service()
+    if sb is None: return []
+    now = datetime.utcnow().isoformat()
+    try:
+        r = (sb.table("recommendations_log").select("*")
+             .eq("account_id", account_id).is_("closed_at", "null")
+             .lte("next_nudge_at", now).execute())
+        return list(r.data or [])
+    except Exception:
+        return []
+
+
+def advance_nudge(rec_id: str) -> None:
+    """Mark a nudge as delivered: increment nudge_count and schedule
+    the next nudge if more cadence-steps remain."""
+    sb = supabase_service()
+    if sb is None: return
+    try:
+        r = (sb.table("recommendations_log").select("*").eq("id", rec_id).limit(1).execute())
+        rows = list(r.data or [])
+        if not rows: return
+        rec = rows[0]
+        cls = rec.get("intervention_class") or "general"
+        cadence = _NUDGE_CADENCE.get(cls, _NUDGE_CADENCE["general"])
+        new_count = int(rec.get("nudge_count") or 0) + 1
+        update = {"nudge_count": new_count}
+        if new_count < len(cadence):
+            try:
+                suggested = datetime.fromisoformat((rec.get("suggested_at") or "").replace("Z", "+00:00")).replace(tzinfo=None)
+                next_due = suggested + timedelta(days=cadence[new_count])
+                update["next_nudge_at"] = next_due.isoformat()
+            except Exception:
+                pass
+        else:
+            update["next_nudge_at"] = None
+        sb.table("recommendations_log").update(update).eq("id", rec_id).execute()
+    except Exception:
+        pass
+
+
+# ─── Weekly self-report (Move D) ────────────────────────────────────
+
+
+def fetch_recent_checkins(account_id: str, n: int = 12) -> list[dict]:
+    sb = supabase_service()
+    if sb is None: return []
+    try:
+        r = (sb.table("weekly_checkins").select("*").eq("account_id", account_id)
+             .order("for_week_start", desc=True).limit(n).execute())
+        return list(r.data or [])
+    except Exception:
+        return []
+
+
+def checkin_anomalies(rows: list[dict]) -> list[dict]:
+    """Detect downtrends or z-score anomalies in the user's weekly
+    self-report stream. Same shape as wearable anomalies so the
+    briefing renderer treats them uniformly."""
+    if len(rows) < 3:
+        return []
+    import statistics
+    out: list[dict] = []
+    for field in ("energy", "sleep_quality", "mood", "stress"):
+        values = [r[field] for r in rows if r.get(field) is not None]
+        if len(values) < 3:
+            continue
+        recent = values[:2]      # rows are newest-first
+        baseline = values[2:]
+        if not recent or len(baseline) < 2:
+            continue
+        baseline_mean = statistics.mean(baseline)
+        baseline_sd = statistics.pstdev(baseline) or 1.0
+        recent_mean = statistics.mean(recent)
+        z = (recent_mean - baseline_mean) / baseline_sd
+        # For "stress" higher is worse; flip the sign convention so
+        # "is_bad = z > 1.5" works uniformly.
+        is_bad = abs(z) >= 1.2 and (
+            (field == "stress" and z > 0) or
+            (field != "stress" and z < 0)
+        )
+        if abs(z) >= 1.2:
+            out.append({
+                "stream": "weekly_" + field,
+                "z": round(z, 2),
+                "direction": "up" if z > 0 else "down",
+                "recent_mean": round(recent_mean, 1),
+                "baseline_mean": round(baseline_mean, 1),
+                "is_bad": is_bad,
+                "n_recent": len(recent), "n_baseline": len(baseline),
+                "severity": "high" if abs(z) >= 2.0 else "moderate",
+            })
+    return out
+
+
+# ─── Stack composition analysis (Move E) ────────────────────────────
+
+
+# Curated cluster definitions: when the user's stack contains ≥N items
+# from a cluster, surface a follow-up.
+_STACK_CLUSTERS = [
+    {
+        "key": "inflammation",
+        "members": ["curcumin", "omega3_high_dose", "boswellia_serrata", "fish_oil",
+                    "epa_high_dose", "ginger", "tart_cherry_juice"],
+        "threshold": 3,
+        "message": "Inflammation cluster detected. Worth tracking hs-CRP if you haven't recently — it tells you whether the stack is actually moving the needle.",
+        "suggest_lab": "hs-CRP",
+    },
+    {
+        "key": "sleep",
+        "members": ["magnesium_glycinate", "l_theanine", "melatonin", "ashwagandha",
+                    "glycine", "valerian_extract", "chamomile", "lavender_aromatherapy"],
+        "threshold": 3,
+        "message": "Multi-supplement sleep stack. Are you tracking sleep quality (PSQI, Oura, Whoop, or weekly self-report)? Without measurement you can't attribute which is working.",
+        "suggest_lab": None
+    },
+    {
+        "key": "cardiometabolic_safety_net",
+        "members": ["omega3_high_dose", "vitamin_k2", "coq10", "magnesium",
+                    "vitamin_d", "berberine", "garlic_aged_extract"],
+        "threshold": 3,
+        "message": "Cardiometabolic safety-net stack. The highest-leverage check-in here is ApoB and Lp(a) — fastest, cheapest CV markers.",
+        "suggest_lab": "ApoB"
+    },
+    {
+        "key": "cognitive",
+        "members": ["bacopa_monnieri", "lion_s_mane_hericium", "alpha_gpc", "citicoline",
+                    "phosphatidylserine", "ginkgo_biloba_240mg", "rhodiola_rosea",
+                    "panax_ginseng"],
+        "threshold": 3,
+        "message": "Nootropic stack. Cognitive supplements have notoriously contested evidence — a 28-day n-of-1 protocol with a daily reaction-time or working-memory check is the only way to know whether YOU respond.",
+        "suggest_lab": None
+    },
+    {
+        "key": "longevity",
+        "members": ["nicotinamide_riboside", "nicotinamide_mononucleotide", "resveratrol",
+                    "spermidine", "urolithin_a", "metformin_in_non_diabetics",
+                    "low_dose_rapamycin", "fisetin"],
+        "threshold": 2,
+        "message": "Longevity stack — most of these have early-stage evidence at best. Worth tracking biomarkers of aging (epigenetic age, fasting glucose, hsCRP) if you're investing the cost.",
+        "suggest_lab": "biological age panel"
+    },
+    {
+        "key": "androgenic",
+        "members": ["tongkat_ali_eurycoma", "fadogia_agrestis", "boron_supplementation",
+                    "zinc", "vitamin_d", "dhea_supplementation_men",
+                    "testosterone_replacement_hypogonadal"],
+        "threshold": 3,
+        "message": "T-optimization stack. Without a recent total-and-free testosterone + SHBG panel, you can't tell which interventions are doing anything.",
+        "suggest_lab": "Testosterone (total + free), SHBG, estradiol"
+    },
+    {
+        "key": "athletic_performance",
+        "members": ["creatine_monohydrate", "beta_alanine", "citrulline_malate",
+                    "caffeine_pre_exercise", "nitrate_beetroot_juice", "sodium_bicarbonate"],
+        "threshold": 3,
+        "message": "Performance stack. The cleanest read is a single n-of-1 protocol per ergogenic — measure the actual performance dependent variable (1RM, time-to-exhaustion, sprint).",
+        "suggest_lab": None
+    }
+]
+
+
+def stack_composition_findings(stack_slugs: list[str], recent_lab_names: list[str]) -> list[dict]:
+    """Detect known stack-pattern clusters in the user's stack and
+    surface follow-ups."""
+    if not stack_slugs:
+        return []
+    stack = {s.lower() for s in stack_slugs}
+    out: list[dict] = []
+    for cluster in _STACK_CLUSTERS:
+        members = set(cluster["members"])
+        hits = stack & members
+        if len(hits) < cluster["threshold"]:
+            continue
+        suggest = cluster.get("suggest_lab")
+        already_have = bool(suggest) and any(suggest.lower().split("(")[0].strip() in (n or "").lower()
+                                              for n in recent_lab_names)
+        out.append({
+            "key": cluster["key"],
+            "message": cluster["message"],
+            "hits": sorted(hits),
+            "suggest_lab": suggest,
+            "already_have_lab": already_have,
+        })
+    # Also surface "you added ≥3 things in 60d" — a separate heuristic.
+    return out
+
+
+def stack_recent_additions(stack_with_dates: list[dict], window_days: int = 60) -> list[dict]:
+    """Pull items the user added recently — proxy for 'they're trying
+    things and we should help them isolate variables.'"""
+    if not stack_with_dates:
+        return []
+    cutoff = datetime.utcnow() - timedelta(days=window_days)
+    out = []
+    for item in stack_with_dates:
+        added = item.get("added_at")
+        if not added: continue
+        try:
+            ts = datetime.fromisoformat(added.replace("Z", "+00:00")).replace(tzinfo=None)
+        except Exception:
+            continue
+        if ts >= cutoff:
+            out.append(item)
+    return out
 
 
 def _imminent_visit(visit: Optional[dict], today: date) -> bool:
