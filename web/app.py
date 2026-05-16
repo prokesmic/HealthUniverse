@@ -3930,6 +3930,75 @@ def auth_exchange(request: Request, access_token: str = Form(...)):
     return resp
 
 
+# Categories of plans the challenge endpoint refuses to engage with
+# beyond an immediate safety-escalation message. Surfaced from a real
+# QA-harness P0 finding ("user asked to stop statin without telling
+# doctor; system gave detailed counterpoints"). These plans require
+# a clinician, not an LLM.
+_DANGER_PATTERNS = [
+    # Medication discontinuation without supervision.
+    (r"stop\s+(my|taking)?\s*(statin|warfarin|coumadin|anticoagulant|"
+     r"apixaban|rivaroxaban|dabigatran|edoxaban|lithium|insulin|"
+     r"levothyroxine|antidepressant|ssri|snri|antipsychotic|"
+     r"chemotherapy|immunosuppressant|methadone|buprenorphine|"
+     r"benzodiazepine|gabapentin|opioid|prednisone|corticosteroid)",
+     "discontinue_high_risk_medication"),
+    (r"(without\s+telling|behind\s+(my|the)\s+(doctor|gp)'?s?\s+back|"
+     r"don'?t\s+tell\s+(my\s+)?(doctor|gp))",
+     "withholding_from_clinician"),
+    (r"quit\s+(my)?\s*(insulin|warfarin|lithium|antidepressant|"
+     r"chemotherapy|methadone|antipsychotic)",
+     "discontinue_high_risk_medication"),
+    # Self-harm / suicidal ideation (escalation, not engagement).
+    (r"(kill\s+myself|end\s+my\s+life|suicide|overdose\s+on)",
+     "self_harm_signal"),
+    # Extreme fasting in vulnerable groups.
+    (r"(14[-\s]?day|21[-\s]?day|30[-\s]?day|month\s*long)\s+"
+     r"(water\s+)?fast",
+     "extreme_fasting"),
+]
+
+
+def _safety_classify(plan: str) -> tuple[str | None, str | None]:
+    """Detect plans that need a hard safety response instead of the
+    usual devil's-advocate treatment. Returns (category, message) or
+    (None, None) if the plan is fine to challenge normally."""
+    import re as _re
+    p = (plan or "").lower()
+    for pattern, category in _DANGER_PATTERNS:
+        if _re.search(pattern, p):
+            messages = {
+                "discontinue_high_risk_medication":
+                    "This plan involves stopping a medication that needs "
+                    "clinician supervision. Sudden withdrawal of statins "
+                    "(rebound MI risk), anticoagulants (clot risk), "
+                    "insulin or thyroid hormone (organ-level destabilisation), "
+                    "antidepressants (discontinuation syndrome) — all of these "
+                    "carry documented harm when stopped abruptly. We won't "
+                    "produce a counterpoints list for this category. Please "
+                    "talk to your prescriber first.",
+                "withholding_from_clinician":
+                    "We won't help you make medical changes your prescriber "
+                    "doesn't know about. The safest version of any change "
+                    "is one your clinician has been briefed on — even if "
+                    "their answer is 'yes, that's fine.'",
+                "self_harm_signal":
+                    "If you're thinking about hurting yourself, this isn't "
+                    "the right tool. In the US: 988 (Suicide & Crisis "
+                    "Lifeline). In the UK: 116 123 (Samaritans). In the EU: "
+                    "112. We'll be here when you're ready.",
+                "extreme_fasting":
+                    "Fasts of two weeks or longer carry meaningful refeeding-"
+                    "syndrome and electrolyte risks, especially for anyone on "
+                    "medication, with diabetes, or with a history of "
+                    "disordered eating. We won't produce a counterpoints "
+                    "list — this needs clinical supervision (it's done in "
+                    "monitored settings, not unsupervised).",
+            }
+            return category, messages.get(category)
+    return None, None
+
+
 @app.post("/api/me/challenge")
 async def api_me_challenge(request: Request):
     """Adaptive devil's-advocate. The user states what they're
@@ -3937,11 +4006,44 @@ async def api_me_challenge(request: Request):
     pull the strongest counter-evidence, then ask Claude to write a
     structured challenge. The LLM only ever sees PUBLIC corpus rows
     plus a small set of fields the user explicitly puts in their plan
-    statement — no PHI from /me/data."""
+    statement — no PHI from /me/data.
+
+    SAFETY GATE: plans that fall into well-known dangerous categories
+    (medication discontinuation without supervision, self-harm signals,
+    extreme fasting) bypass the LLM entirely and return a
+    safety_block response with a mandatory clinician-escalation CTA."""
     body = await request.json()
     plan = (body.get("plan") or "").strip()[:1000]
     if not plan:
         return JSONResponse({"error": "missing plan"}, status_code=400)
+
+    # SAFETY GATE — handle dangerous-category plans BEFORE the LLM.
+    safety_category, safety_message = _safety_classify(plan)
+    if safety_category:
+        return JSONResponse({
+            "ok": True,
+            "plan": plan,
+            "safety_block": True,
+            "safety_category": safety_category,
+            "challenge": {
+                "summary": safety_message,
+                "counterpoints": [],
+                "questions_for_clinician": [
+                    "Why was this medication originally prescribed?",
+                    "What would replace its protective effect if we stop it?",
+                    "If we do decide to stop, what's the safest taper?",
+                    "What symptoms should I watch for during/after?",
+                ],
+                "signals_to_watch": [],
+                "mandatory_action": (
+                    "Talk to your prescriber or pharmacist BEFORE making "
+                    "any change. If urgent: NHS 111 / 911 / your local "
+                    "after-hours line."
+                ),
+            },
+            "matched_factors": [],
+            "corpus_edges": [],
+        })
     # Find candidate factors mentioned in the plan: simple keyword
     # match against entity names. Anything we recognise becomes a
     # corpus lookup.
@@ -3997,11 +4099,22 @@ async def api_me_challenge(request: Request):
         "Never tell them not to do it. Never tell them to do it. Frame "
         "as: 'here's what the literature says you should weigh.' "
         "Cite the corpus block. Stay under 280 words.\n\n"
+        "HARD RULES:\n"
+        "- If the plan involves changing a prescription medication, the "
+        "  first counterpoint MUST start with 'Talk to your prescriber "
+        "  before changing the dose or stopping.'\n"
+        "- If the plan involves stopping a medication, you MUST flag the "
+        "  specific clinical risk class (rebound CV events for statins, "
+        "  clot risk for anticoagulants, discontinuation syndrome for "
+        "  SSRIs, etc.). Be specific, not generic.\n"
+        "- Output is read by patients with widely varying literacy. "
+        "  Plain language, not jargon.\n\n"
         "Respond in this strict JSON shape:\n"
         '{ "summary": "1-2 sentence framing", '
         '"counterpoints": ["...", "..."], '
         '"questions_for_clinician": ["...", "...", "..."], '
-        '"signals_to_watch": ["...", "..."] }'
+        '"signals_to_watch": ["...", "..."], '
+        '"mandatory_action": "1 sentence ALWAYS reminding them to talk to a clinician before acting" }'
     )
     user = (
         f"USER'S STATED PLAN:\n{plan}\n\n"
@@ -4019,9 +4132,17 @@ async def api_me_challenge(request: Request):
             operation="challenge", max_tokens=600, temperature=0.3,
         )
         parsed = extract_json(text) or {}
+        # Always enforce the clinician-escalation CTA, even if the LLM
+        # forgets to include it.
+        if not parsed.get("mandatory_action"):
+            parsed["mandatory_action"] = (
+                "Talk to your prescriber, pharmacist, or another "
+                "qualified clinician before acting on any of this."
+            )
         return JSONResponse({
             "ok": True,
             "plan": plan,
+            "safety_block": False,
             "matched_factors": factor_slugs,
             "corpus_edges": candidate_edges[:6],
             "challenge": parsed,

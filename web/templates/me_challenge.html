@@ -94,6 +94,27 @@
       const j = await r.json();
       const c = j.challenge || {};
       let html = "";
+      // HARD safety block — refuse to engage, escalate to clinician.
+      if (j.safety_block) {
+        html += `<div class="ch-card" style="background:#fdecea;border-color:#9b1c1c;border-width:2px">
+          <h3 style="color:#9b1c1c">⚠ Safety guardrail engaged</h3>
+          <p style="margin:6px 0">${esc(c.summary)}</p>
+          <div style="margin-top:14px;padding:10px 14px;background:#fff;border-radius:8px;font-weight:600">
+            ${esc(c.mandatory_action || "Talk to your prescriber before any change.")}
+          </div>
+          <div style="margin-top:14px">
+            <a href="tel:911" class="btn-secondary inline" style="background:#9b1c1c;color:#fff;text-decoration:none">📞 911 (US emergency)</a>
+            <a href="tel:111" class="btn-secondary inline" style="background:#1f3a2e;color:#fff;text-decoration:none">📞 NHS 111 (UK)</a>
+            <a href="https://988lifeline.org" target="_blank" rel="noopener" class="btn-secondary inline">988 Lifeline</a>
+          </div>
+        </div>`;
+        if ((c.questions_for_clinician || []).length) {
+          html += `<div class="ch-card questions"><h3>Questions to bring to your clinician right now</h3><ul>` +
+            c.questions_for_clinician.map((x) => `<li>${esc(x)}</li>`).join("") + `</ul></div>`;
+        }
+        result.innerHTML = html;
+        return;
+      }
       if (c.summary) {
         html += `<div class="ch-card summary"><h3>The framing</h3><p style="margin:0">${esc(c.summary)}</p></div>`;
       }
@@ -108,6 +129,12 @@
       if (Array.isArray(c.signals_to_watch) && c.signals_to_watch.length) {
         html += `<div class="ch-card signals"><h3>Signals to watch</h3><ul>` +
           c.signals_to_watch.map((x) => `<li>${esc(x)}</li>`).join("") + `</ul></div>`;
+      }
+      if (c.mandatory_action) {
+        html += `<div class="ch-card" style="background:#1f3a2e;color:#fffaf0;border-color:#1f3a2e">
+          <h3 style="color:#fffaf0;border-color:#fffaf0">Before you act</h3>
+          <p style="margin:0;font-size:15px">${esc(c.mandatory_action)}</p>
+        </div>`;
       }
       // Corpus underpinnings
       if (Array.isArray(j.corpus_edges) && j.corpus_edges.length) {
