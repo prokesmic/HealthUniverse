@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Breakthrough orphans — Health Universe{% endblock %}
+{% block content %}
+
+<header class="bx-hero">
+  <p class="hp-eyebrow">ADMIN · CORPUS SEEDING QUEUE</p>
+  <h1 class="bx-h1">Breakthrough orphans</h1>
+  <p class="bx-lede">
+    These items surfaced through the daily breakthroughs feed but don't have a
+    matching edge in our corpus yet. Each row is a candidate for Codex/Claude
+    to research into a graded edge.
+  </p>
+  <div class="bx-brief-actions">
+    <a class="btn-primary" href="/admin/breakthrough-orphans/brief">
+      Generate Codex brief ({{ brief_count }}) →
+    </a>
+    <a class="bx-side-link" href="/admin/breakthrough-orphans/brief?download=1" style="margin-left:14px">
+      Download as file ↓
+    </a>
+    <p class="bx-side-caption" style="margin-top:8px">
+      Excludes recalls, items below 60% strength, and orphans now matched in
+      the corpus. The brief groups candidates by category and includes seed
+      instructions, acceptance criteria, and the breakthrough-id back-reference
+      so Codex's edges can be linked to the news that triggered them.
+    </p>
+  </div>
+</header>
+
+<table class="bx-orphan-table">
+  <thead>
+    <tr>
+      <th>Date</th><th>Category</th><th>Stage</th><th>Headline</th>
+      <th>factor → outcome</th><th>Match?</th><th></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for o in orphans %}
+    <tr>
+      <td>{{ o.published_at }}</td>
+      <td>{{ BX_CATEGORY_LABEL.get(o.category, o.category) }}</td>
+      <td>{{ BX_STAGE_LABEL.get(o.stage, o.stage) }}</td>
+      <td><a href="/breakthroughs/{{ o.id }}">{{ o.headline }}</a></td>
+      <td><code>{{ o.factor_slug or '—' }}</code> → <code>{{ o.outcome_slug or '—' }}</code></td>
+      <td>
+        {% if o._match_attempt %}
+          <a href="/edge/{{ o._match_attempt }}">Now matched ↗</a>
+        {% else %}
+          <span style="color:#9b1c1c">Orphan</span>
+        {% endif %}
+      </td>
+      <td><a href="{{ o.source_url }}" target="_blank" rel="noopener">Source ↗</a></td>
+    </tr>
+  {% else %}
+    <tr><td colspan="7" class="empty">No orphans. Corpus is keeping up with the news cycle.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Breakthroughs — Health Universe{% endblock %}
+{% block content %}
+
+<header class="bx-hero">
+  <p class="hp-eyebrow">BREAKTHROUGHS & MOVING TARGETS</p>
+  <h1 class="bx-h1">What's actually new<span class="dot">.</span></h1>
+  <p class="bx-lede">
+    Clinical readouts, regulatory events, and guideline shifts from the last
+    90 days. Re-checked daily by an automated reading job, then claim-honest
+    rewrites by our editors. Where a finding lines up with our corpus we link
+    you to the audited evidence; where it doesn't, it's marked as a candidate
+    for review.
+  </p>
+  {% if feed_updated_at %}
+  <p class="bx-lede" style="margin-top:8px;font-size:13px">
+    <span class="hp-eyebrow" style="display:inline;color:var(--ink-soft)">FEED UPDATED</span>
+    {{ feed_updated_at }}
+  </p>
+  {% endif %}
+</header>
+
+<nav class="bx-tabs" aria-label="Filter by category">
+  <a class="bx-tab {% if active_category == 'all' %}is-active{% endif %}" href="/breakthroughs">
+    All <small>{{ category_counts.values()|sum }}</small>
+  </a>
+  {% for slug in BX_CATEGORY_ORDER %}
+    {% set n = category_counts.get(slug, 0) %}
+    {% if n %}
+    <a class="bx-tab {% if active_category == slug %}is-active{% endif %}"
+       href="/breakthroughs?category={{ slug }}">
+      {{ BX_CATEGORY_LABEL[slug] }} <small>{{ n }}</small>
+    </a>
+    {% endif %}
+  {% endfor %}
+</nav>
+
+<section class="bx-grid">
+  {% for r in rows %}
+    {% set tone = BX_STAGE_TONE.get(r.stage, ('#fff7e0','#7a5c00')) %}
+    <a class="bx-card" href="/breakthroughs/{{ r.id }}">
+      <div class="bx-card-graphic">{{ bx_graphic_svg(r, 420, 220) | safe }}</div>
+      <div class="bx-card-body">
+        <div class="bx-meta">
+          <span class="bx-stage" style="background:{{ tone[0] }};color:{{ tone[1] }}">{{ BX_STAGE_LABEL[r.stage] }}</span>
+          <span class="bx-cat">{{ BX_CATEGORY_LABEL[r.category] }}</span>
+          <span class="bx-date">{{ bx_days_ago(r.published_at) }}d ago</span>
+        </div>
+        <h3 class="bx-title">{{ r.headline }}</h3>
+        <p class="bx-summary">{{ r.summary }}</p>
+        {% if r.why_it_matters %}
+        <p class="bx-why"><b>Why it matters.</b> {{ r.why_it_matters }}</p>
+        {% endif %}
+        <div class="bx-foot">
+          <span class="bx-source">{{ r.source_name }}</span>
+          {% if r.is_orphan %}
+            <span class="bx-orphan">Not yet in corpus</span>
+          {% else %}
+            <span class="bx-incorpus">In corpus →</span>
+          {% endif %}
+        </div>
+      </div>
+    </a>
+  {% endfor %}
+  {% if not rows %}
+    <div class="empty">Nothing matches that filter. <a href="/breakthroughs">Reset →</a></div>
+  {% endif %}
+</section>
+
+{% endblock %}

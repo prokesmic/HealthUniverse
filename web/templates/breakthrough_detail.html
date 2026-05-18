@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}{{ item.headline }} — Health Universe{% endblock %}
+{% block content %}
+
+{% set tone = BX_STAGE_TONE.get(item.stage, ('#fff7e0','#7a5c00')) %}
+
+<a href="/breakthroughs" class="bx-back">← All breakthroughs</a>
+
+<header class="bx-detail-hero">
+  <div class="bx-meta" style="margin-bottom:14px">
+    <span class="bx-stage" style="background:{{ tone[0] }};color:{{ tone[1] }}">{{ BX_STAGE_LABEL[item.stage] }}</span>
+    <span class="bx-cat">{{ BX_CATEGORY_LABEL[item.category] }}</span>
+    <span class="bx-date">{{ item.published_at }} · {{ bx_days_ago(item.published_at) }} days ago</span>
+  </div>
+  <h1 class="bx-detail-h1">{{ item.headline }}</h1>
+</header>
+
+<section class="bx-detail-grid">
+  <div class="bx-detail-graphic">{{ bx_graphic_svg(item, 720, 360) | safe }}</div>
+
+  <aside class="bx-detail-side">
+    <div class="bx-side-card">
+      <p class="hp-eyebrow">SOURCE</p>
+      <p class="bx-side-source">{{ item.source_name }}</p>
+      <a class="bx-side-link" href="{{ item.source_url }}" target="_blank" rel="noopener">Open source →</a>
+    </div>
+
+    <div class="bx-side-card">
+      <p class="hp-eyebrow">CONFIDENCE</p>
+      <div class="bx-strength">
+        <div class="bx-strength-bar">
+          <div class="bx-strength-fill" style="width:{{ (item.strength * 100)|round }}%"></div>
+        </div>
+        <span class="bx-strength-num">{{ (item.strength * 100)|round|int }}%</span>
+      </div>
+      <p class="bx-side-caption">Our automated reviewer's confidence that this finding is real and meaningful, before downstream replication.</p>
+    </div>
+
+    <div class="bx-side-card">
+      <p class="hp-eyebrow">CORPUS</p>
+      {% if edge_id %}
+        <a class="bx-side-link" href="/edge/{{ edge_id }}">View audited edge →</a>
+        <p class="bx-side-caption">This finding lines up with a graded edge in our corpus.</p>
+      {% else %}
+        <p class="bx-side-caption" style="color:#9b1c1c">
+          <b>Not yet in our corpus.</b> Flagged for review — if confirmed, this becomes a new edge with a tier and full source list.
+        </p>
+      {% endif %}
+    </div>
+  </aside>
+</section>
+
+<section class="bx-detail-body">
+  <h2 class="hp-h2">What the study reports</h2>
+  <p class="bx-detail-summary">{{ item.summary }}</p>
+
+  {% if item.why_it_matters %}
+  <h2 class="hp-h2">Why it matters</h2>
+  <p class="bx-detail-summary">{{ item.why_it_matters }}</p>
+  {% endif %}
+
+  <div class="bx-disclaimer">
+    <b>Not medical advice.</b> Even strong trial readouts take 12–36 months to
+    enter clinical practice. Discuss any change with your clinician.
+  </div>
+</section>
+
+{% endblock %}

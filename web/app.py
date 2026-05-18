@@ -30,6 +30,7 @@ from web.auth import (                                # noqa: E402
     supabase_service, require_pro,
 )
 from web import alwayson                              # noqa: E402
+from web import breakthroughs as bx                   # noqa: E402
 from web.generated_art import (   # noqa: E402
     edge_svg, hero_svg, featured_card_svg, discovery_card_svg, strength_wave_svg,
 )
@@ -46,6 +47,12 @@ templates.env.globals["hero_svg"] = hero_svg
 templates.env.globals["featured_card_svg"] = featured_card_svg
 templates.env.globals["discovery_card_svg"] = discovery_card_svg
 templates.env.globals["strength_wave_svg"] = strength_wave_svg
+templates.env.globals["bx_graphic_svg"] = bx.graphic_svg
+templates.env.globals["BX_CATEGORY_LABEL"] = bx.CATEGORY_LABEL
+templates.env.globals["BX_CATEGORY_ORDER"] = bx.CATEGORY_ORDER
+templates.env.globals["BX_STAGE_LABEL"] = bx.STAGE_LABEL
+templates.env.globals["BX_STAGE_TONE"] = bx.STAGE_TONE
+templates.env.globals["bx_days_ago"] = bx.days_ago
 # Cache-bust static assets when style.css changes on disk.
 try:
     _css_mtime = (WEB_DIR / "static" / "style.css").stat().st_mtime
@@ -408,11 +415,84 @@ def home(request: Request):
         featured = (featured[idx:] + featured[:idx])[:4]
     else:
         featured = []
+    # Breakthroughs band — top 6, most-recent first, all categories.
+    # Tab filtering happens client-side against the data we ship.
+    breakthroughs_top = bx.items(limit=6, days=21)
+    breakthroughs_cats = bx.category_counts()
     return render(request, "home.html", {
         "stats": stats, "categories": cats,
         "featured": featured, "buckets": buckets, "spotlight": spotlight,
         "profile": p, "discoveries": discoveries,
+        "breakthroughs_top": breakthroughs_top,
+        "breakthroughs_cats": breakthroughs_cats,
     })
+
+
+# ─── Breakthroughs ────────────────────────────────────────────────
+
+@app.get("/breakthroughs", response_class=HTMLResponse)
+def breakthroughs_index(request: Request, category: str = "all", stage: str = "all"):
+    rows = bx.items(category=None if category == "all" else category)
+    if stage != "all":
+        rows = [r for r in rows if r.get("stage") == stage]
+    return render(request, "breakthroughs.html", {
+        "title": "Breakthroughs",
+        "rows": rows,
+        "active_category": category,
+        "active_stage": stage,
+        "category_counts": bx.category_counts(),
+        "feed_updated_at": bx.load_feed().get("updated_at"),
+    })
+
+
+@app.get("/breakthroughs/{item_id}", response_class=HTMLResponse)
+def breakthrough_detail(request: Request, item_id: str):
+    item = bx.get(item_id)
+    if not item:
+        return HTMLResponse("Not found", status_code=404)
+    # Try to find a corpus edge match (lazy — JSON may have stale edge_id).
+    edge_id = item.get("edge_id") or bx.match_corpus(
+        item.get("factor_slug"), item.get("outcome_slug"))
+    return render(request, "breakthrough_detail.html", {
+        "title": item["headline"],
+        "item": item,
+        "edge_id": edge_id,
+    })
+
+
+@app.get("/admin/breakthrough-orphans", response_class=HTMLResponse)
+def breakthrough_orphans(request: Request):
+    """Items that don't yet match a corpus edge — the seeding queue.
+    Beta-pro gated to avoid noise from anonymous users."""
+    orphans_list = bx.orphans()
+    # Re-attempt match on each render so the count drops as edges are seeded.
+    for o in orphans_list:
+        o["_match_attempt"] = bx.match_corpus(o.get("factor_slug"), o.get("outcome_slug"))
+    # Count candidates that would land in a Codex brief (excl. recalls, low strength,
+    # missing slugs, freshly-matched).
+    from web.orphan_brief import candidate_orphans as _co
+    brief_count = len(_co(min_strength=0.6))
+    return render(request, "breakthrough_orphans.html", {
+        "title": "Breakthrough orphans",
+        "orphans": orphans_list,
+        "brief_count": brief_count,
+    })
+
+
+@app.get("/admin/breakthrough-orphans/brief")
+def breakthrough_orphans_brief(min_strength: float = 0.6, download: int = 0):
+    """Generate the Codex/Claude seeding brief as markdown.
+    `?download=1` forces a file download; otherwise renders inline as text/plain
+    so the brief is copy-pastable from the browser."""
+    from web.orphan_brief import build_brief
+    md, _meta = build_brief(min_strength=min_strength)
+    headers = {}
+    if download:
+        from datetime import date as _d
+        headers["Content-Disposition"] = (
+            f'attachment; filename="codex_orphans_{_d.today().isoformat()}.md"'
+        )
+    return Response(content=md, media_type="text/markdown; charset=utf-8", headers=headers)
 
 
 @app.get("/prevent", response_class=HTMLResponse)

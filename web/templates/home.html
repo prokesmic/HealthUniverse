@@ -128,6 +128,68 @@
   {% endfor %}
 </section>
 
+{% if breakthroughs_top %}
+<section class="hp-breakthroughs" data-active="all">
+  <div class="hp-row-between">
+    <div>
+      <h2 class="hp-h2">Breakthroughs & moving targets</h2>
+      <p class="bx-subhead">What changed in the last few weeks. Re-checked daily.</p>
+    </div>
+    <a class="hp-link" href="/breakthroughs">See all →</a>
+  </div>
+
+  <nav class="bx-tabs bx-tabs-home" aria-label="Filter breakthroughs">
+    <button type="button" class="bx-tab is-active" data-cat="all">All <small>{{ breakthroughs_top|length }}</small></button>
+    {% for slug in BX_CATEGORY_ORDER %}
+      {% set n = breakthroughs_cats.get(slug, 0) %}
+      {% if n %}
+      <button type="button" class="bx-tab" data-cat="{{ slug }}">{{ BX_CATEGORY_LABEL[slug] }} <small>{{ n }}</small></button>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  <div class="hp-bx-grid">
+    {% for r in breakthroughs_top %}
+      {% set tone = BX_STAGE_TONE.get(r.stage, ('#fff7e0','#7a5c00')) %}
+      <a class="bx-card hp-bx-card" href="/breakthroughs/{{ r.id }}" data-cat="{{ r.category }}">
+        <div class="bx-card-graphic">{{ bx_graphic_svg(r, 420, 200) | safe }}</div>
+        <div class="bx-card-body">
+          <div class="bx-meta">
+            <span class="bx-stage" style="background:{{ tone[0] }};color:{{ tone[1] }}">{{ BX_STAGE_LABEL[r.stage] }}</span>
+            <span class="bx-cat">{{ BX_CATEGORY_LABEL[r.category] }}</span>
+            <span class="bx-date">{{ bx_days_ago(r.published_at) }}d ago</span>
+          </div>
+          <h3 class="bx-title">{{ r.headline }}</h3>
+          <p class="bx-summary">{{ r.summary }}</p>
+          <div class="bx-foot">
+            <span class="bx-source">{{ r.source_name }}</span>
+            {% if r.is_orphan %}<span class="bx-orphan">Not yet in corpus</span>
+            {% else %}<span class="bx-incorpus">In corpus →</span>{% endif %}
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+<script>
+(function () {
+  const root = document.querySelector('.hp-breakthroughs');
+  if (!root) return;
+  const tabs  = root.querySelectorAll('.bx-tab');
+  const cards = root.querySelectorAll('.hp-bx-card');
+  tabs.forEach((t) => {
+    t.addEventListener('click', () => {
+      tabs.forEach((x) => x.classList.toggle('is-active', x === t));
+      const cat = t.dataset.cat;
+      cards.forEach((c) => {
+        c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+})();
+</script>
+{% endif %}
+
 <section class="hp-featured">
   <div class="hp-row-between">
     <h2 class="hp-h2">Featured Evidence</h2>
