@@ -152,7 +152,7 @@
     {% for r in breakthroughs_top %}
       {% set tone = BX_STAGE_TONE.get(r.stage, ('#fff7e0','#7a5c00')) %}
       <a class="bx-card hp-bx-card" href="/breakthroughs/{{ r.id }}" data-cat="{{ r.category }}">
-        <div class="bx-card-graphic">{{ bx_graphic_svg(r, 420, 200) | safe }}</div>
+        <div class="bx-card-illo">{{ bx_illo_svg(r, 480, 140) | safe }}</div>
         <div class="bx-card-body">
           <div class="bx-meta">
             <span class="bx-stage" style="background:{{ tone[0] }};color:{{ tone[1] }}">{{ BX_STAGE_LABEL[r.stage] }}</span>

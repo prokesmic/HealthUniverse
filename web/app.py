@@ -31,6 +31,7 @@ from web.auth import (                                # noqa: E402
 )
 from web import alwayson                              # noqa: E402
 from web import breakthroughs as bx                   # noqa: E402
+from web import breakthrough_illos as bx_illos        # noqa: E402
 from web.generated_art import (   # noqa: E402
     edge_svg, hero_svg, featured_card_svg, discovery_card_svg, strength_wave_svg,
 )
@@ -48,6 +49,7 @@ templates.env.globals["featured_card_svg"] = featured_card_svg
 templates.env.globals["discovery_card_svg"] = discovery_card_svg
 templates.env.globals["strength_wave_svg"] = strength_wave_svg
 templates.env.globals["bx_graphic_svg"] = bx.graphic_svg
+templates.env.globals["bx_illo_svg"] = bx_illos.illo_svg
 templates.env.globals["BX_CATEGORY_LABEL"] = bx.CATEGORY_LABEL
 templates.env.globals["BX_CATEGORY_ORDER"] = bx.CATEGORY_ORDER
 templates.env.globals["BX_STAGE_LABEL"] = bx.STAGE_LABEL
