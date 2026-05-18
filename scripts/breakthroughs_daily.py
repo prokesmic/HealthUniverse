@@ -201,11 +201,12 @@ OUTPUT — a single JSON object with these keys only:
 {{
   "is_breakthrough": true|false,           // false rejects the item
   "strength": 0.0-1.0,                     // confidence the finding is real & meaningful
+  "audience": "general|technical",         // 'general' = a non-medical adult would care
   "category": "oncology|cardio|metabolic|neuro|longevity|other",
   "stage":    "preclinical|phase1|phase2|phase3|approved|guideline|recall",
-  "headline": "claim-honest rewrite, ≤90 chars, no hype words",
-  "summary":  "2 sentences, plain English, with specific numbers if available",
-  "why_it_matters": "1 sentence — practical implication, ≤140 chars",
+  "headline": "plain-English rewrite, ≤95 chars, NO drug code names",
+  "summary":  "2 short sentences, plain English, with specific numbers if available",
+  "why_it_matters": "1 sentence — what an ordinary reader should DO or KNOW, ≤140 chars",
   "factor_slug":  "snake_case identifier of the intervention (drug/factor)",
   "outcome_slug": "snake_case identifier of the disease/outcome",
   "graphic": {{ "kind": "bar_delta|forest_plot|line_trend|kaplan_meier|recall_pictogram", "...": "shape depends on kind" }}
@@ -215,6 +216,13 @@ RULES
 - Reject animal-only studies (set is_breakthrough=false).
 - Reject press releases without numbers unless they're a guideline/approval/recall.
 - "headline" must not use: breakthrough, miracle, cure, game-changer, revolutionary.
+- "headline" must not contain raw drug code names like "MRTX1133", "BMS-986365" or
+  acronyms a general reader wouldn't recognise. Use the class/mechanism or the
+  branded name if one exists (e.g. "a new pancreatic-cancer drug" instead of "MRTX1133").
+- "audience": set to "general" only if a non-medical reader would (a) understand
+  the headline without a glossary, AND (b) find it actionable or interesting.
+  Set to "technical" for niche oncology subtypes, esoteric trial designs, or
+  early-phase mechanistic readouts in rare diseases.
 - "graphic" shape:
     bar_delta:        {{ "kind":"bar_delta", "bars":[{{"label":"...", "treatment":N, "control":N}}], "unit":"%", "treatment_label":"...", "control_label":"..." }}
     forest_plot:      {{ "kind":"forest_plot", "studies":[{{"name":"...", "estimate":N, "ci_low":N, "ci_high":N}}], "x_label":"...", "reference":N, "log_scale":bool }}
@@ -242,11 +250,15 @@ def build_card(raw: dict, llm: dict) -> dict | None:
     edge_id = match_corpus(factor, outcome)
     item_id = "br_" + hashlib.sha1(raw["link"].encode()).hexdigest()[:16]
     pub = _normalize_date(raw.get("published")) or date.today().isoformat()
+    audience = llm.get("audience", "general")
+    if audience not in ("general", "technical"):
+        audience = "general"
     return {
         "id": item_id,
         "published_at": pub,
         "category": cat,
         "stage": llm.get("stage", "phase2"),
+        "audience": audience,
         "headline": llm.get("headline", raw["title"])[:160],
         "summary": llm.get("summary", raw.get("summary", ""))[:600],
         "why_it_matters": llm.get("why_it_matters", "")[:240],

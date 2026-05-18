@@ -82,9 +82,16 @@ def save_feed(feed: dict) -> None:
 
 
 def items(category: str | None = None, limit: int | None = None,
-          days: int | None = None) -> list[dict]:
+          days: int | None = None, audience: str | None = "general") -> list[dict]:
+    """Read the feed with optional filters.
+
+    `audience`: 'general' (default) keeps only entries written for non-specialists.
+                Pass `None` to disable the filter (admin, orphan queue).
+    """
     feed = load_feed()
     rows = feed.get("items", [])
+    if audience:
+        rows = [r for r in rows if r.get("audience", "general") == audience]
     if category and category != "all":
         rows = [r for r in rows if r.get("category") == category]
     if days:
@@ -113,8 +120,9 @@ def days_ago(published_at: str) -> int:
         return 0
 
 
-def category_counts() -> dict[str, int]:
-    rows = load_feed().get("items", [])
+def category_counts(audience: str | None = "general", days: int | None = None) -> dict[str, int]:
+    """Per-category counts, scoped to the same filters used by the lane."""
+    rows = items(audience=audience, days=days)
     out = {k: 0 for k in CATEGORY_ORDER}
     for r in rows:
         c = r.get("category", "other")

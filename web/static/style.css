@@ -5175,15 +5175,28 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   letter-spacing: -0.015em; color: var(--ink);
 }
 .bx-detail-grid {
-  display: grid; grid-template-columns: minmax(0, 1.6fr) 320px;
-  gap: 28px; margin-top: 24px;
+  display: grid; grid-template-columns: minmax(0, 1.4fr) 320px;
+  gap: 24px; margin-top: 20px; align-items: start;
 }
 @media (max-width: 900px) { .bx-detail-grid { grid-template-columns: 1fr; } }
 .bx-detail-graphic {
-  background: #faf4dd; border: 1px solid var(--line);
-  border-radius: 14px; padding: 8px; aspect-ratio: 2 / 1;
+  margin: 0;
+  background: linear-gradient(180deg, #faf4dd 0%, #f3ead0 100%);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 22px 12px;
+  max-width: 520px;
+  aspect-ratio: 2 / 1;
+  position: relative;
+  box-shadow: 0 1px 0 rgba(31,58,46,0.04);
 }
-.bx-detail-graphic svg { display: block; width: 100%; height: 100%; }
+.bx-detail-graphic svg { display: block; width: 100%; height: calc(100% - 24px); }
+.bx-detail-graphic figcaption {
+  margin-top: 4px;
+  font-size: 11px; color: var(--ink-soft);
+  font-style: italic; text-align: center;
+  letter-spacing: 0.02em;
+}
 .bx-detail-side { display: flex; flex-direction: column; gap: 14px; }
 .bx-side-card {
   background: var(--surface); border: 1px solid var(--line);

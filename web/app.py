@@ -417,10 +417,15 @@ def home(request: Request):
         featured = (featured[idx:] + featured[:idx])[:4]
     else:
         featured = []
-    # Breakthroughs band — top 6, most-recent first, all categories.
+    # Breakthroughs band — top 8, most-recent first, general audience only.
     # Tab filtering happens client-side against the data we ship.
-    breakthroughs_top = bx.items(limit=6, days=21)
-    breakthroughs_cats = bx.category_counts()
+    breakthroughs_top = bx.items(limit=8, days=45, audience="general")
+    # Tab counts mirror the same filter so the numbers add up to what's
+    # actually in the lane.
+    breakthroughs_cats: dict[str, int] = {}
+    for r in breakthroughs_top:
+        cat = r.get("category", "other")
+        breakthroughs_cats[cat] = breakthroughs_cats.get(cat, 0) + 1
     return render(request, "home.html", {
         "stats": stats, "categories": cats,
         "featured": featured, "buckets": buckets, "spotlight": spotlight,
@@ -433,8 +438,11 @@ def home(request: Request):
 # ─── Breakthroughs ────────────────────────────────────────────────
 
 @app.get("/breakthroughs", response_class=HTMLResponse)
-def breakthroughs_index(request: Request, category: str = "all", stage: str = "all"):
-    rows = bx.items(category=None if category == "all" else category)
+def breakthroughs_index(request: Request, category: str = "all", stage: str = "all",
+                        show: str = "general"):
+    """`?show=all` opens the firehose (technical items too) — useful for admin."""
+    audience = None if show == "all" else "general"
+    rows = bx.items(category=None if category == "all" else category, audience=audience)
     if stage != "all":
         rows = [r for r in rows if r.get("stage") == stage]
     return render(request, "breakthroughs.html", {
@@ -442,8 +450,9 @@ def breakthroughs_index(request: Request, category: str = "all", stage: str = "a
         "rows": rows,
         "active_category": category,
         "active_stage": stage,
-        "category_counts": bx.category_counts(),
+        "category_counts": bx.category_counts(audience=audience),
         "feed_updated_at": bx.load_feed().get("updated_at"),
+        "show": show,
     })
 
 

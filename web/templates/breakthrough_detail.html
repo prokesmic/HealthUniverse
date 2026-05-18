@@ -16,7 +16,10 @@
 </header>
 
 <section class="bx-detail-grid">
-  <div class="bx-detail-graphic">{{ bx_graphic_svg(item, 720, 360) | safe }}</div>
+  <figure class="bx-detail-graphic">
+    {{ bx_graphic_svg(item, 480, 240) | safe }}
+    <figcaption>What the trial reported, at a glance.</figcaption>
+  </figure>
 
   <aside class="bx-detail-side">
     <div class="bx-side-card">
