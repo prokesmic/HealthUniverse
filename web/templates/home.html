@@ -118,6 +118,49 @@
   </aside>
 </section>
 
+<section class="hp-today" id="hp-today" data-hidden="true">
+  <div class="hp-row-between">
+    <div>
+      <h2 class="hp-h2">Today, for you</h2>
+      <p class="bx-subhead">Three things our editors would want you to know — picked from your profile and the corpus.</p>
+    </div>
+    <a class="hp-link" href="/welcome">Tune what we surface →</a>
+  </div>
+  <div class="hp-today-grid" id="hp-today-grid"></div>
+</section>
+<script>
+(function () {
+  // Pull proactive cards from the API and render them inline. Hide the
+  // section if the engine has nothing high-confidence to surface.
+  const root = document.getElementById('hp-today');
+  const grid = document.getElementById('hp-today-grid');
+  if (!root || !grid) return;
+  const shown = (() => {
+    try { return JSON.parse(localStorage.getItem('hu_proactive_shown') || '[]'); }
+    catch { return []; }
+  })();
+  fetch('/api/me/proactive?limit=3&already=' + encodeURIComponent(shown.join(',')))
+    .then((r) => r.ok ? r.json() : { cards: [] })
+    .then(({ cards }) => {
+      if (!cards || !cards.length) return;
+      root.dataset.hidden = 'false';
+      const esc = (s) => String(s||'').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      grid.innerHTML = cards.map((c) => `
+        <a class="hp-today-card hp-today-${esc(c.tone)}" href="${esc(c.action_href || '#')}" data-id="${esc(c.id)}">
+          <span class="hp-today-kind">${esc(c.kind)}</span>
+          <h3>${esc(c.title)}</h3>
+          <p>${esc(c.why)}</p>
+          <span class="hp-today-action">${esc(c.action || 'Read')} →</span>
+        </a>
+      `).join('');
+      // Record what we showed, capped at 50.
+      const next = Array.from(new Set([...shown, ...cards.map(c => c.id)])).slice(-50);
+      try { localStorage.setItem('hu_proactive_shown', JSON.stringify(next)); } catch {}
+    })
+    .catch(() => {});
+})();
+</script>
+
 <section class="hp-categories">
   {% for c in categories %}
   <a class="hp-cat" href="/category/{{ c.slug }}">

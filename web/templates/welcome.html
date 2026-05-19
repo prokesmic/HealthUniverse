@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% block title %}Welcome — Health Universe{% endblock %}
+{% block content %}
+
+<style>
+  .wc-wrap { max-width: 680px; margin: 32px auto; padding: 0 16px; }
+  .wc-eye { color: var(--gold); font-size: 11px; letter-spacing: 0.14em; font-weight: 600; text-transform: uppercase; }
+  .wc-h1 {
+    font-family: 'Fraunces', serif; font-weight: 400;
+    font-size: 38px; line-height: 1.1; margin: 10px 0 12px;
+    letter-spacing: -0.02em;
+  }
+  .wc-lede { color: var(--ink-soft); font-size: 16px; line-height: 1.55; max-width: 620px; }
+  .wc-choices { display: grid; gap: 10px; margin-top: 22px; grid-template-columns: 1fr; }
+  @media (min-width: 600px) { .wc-choices { grid-template-columns: 1fr 1fr; } }
+  .wc-choice {
+    display: block; padding: 16px 18px;
+    background: #fff; border: 1px solid var(--line); border-radius: 12px;
+    text-decoration: none; color: var(--ink);
+    transition: transform 0.12s, border-color 0.12s;
+  }
+  .wc-choice:hover { transform: translateY(-1px); border-color: var(--gold); }
+  .wc-choice b { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500; display: block; margin-bottom: 4px; }
+  .wc-choice small { color: var(--ink-soft); font-size: 13px; }
+  .wc-back { color: var(--ink-soft); font-size: 13px; display: inline-block; margin-bottom: 8px; text-decoration: none; }
+  .wc-skip { color: var(--ink-soft); font-size: 13px; margin-top: 22px; display: inline-block; }
+  .wc-pill {
+    display: inline-block; padding: 2px 10px; border-radius: 999px;
+    background: #fff7e0; color: #7a5c00; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .wc-progress { font-size: 12px; color: var(--ink-soft); margin-top: 14px; }
+</style>
+
+<div class="wc-wrap">
+
+{% if not topic %}
+  {# ── Step 1: the only mandatory question ─────────────────────── #}
+  <p class="wc-eye">Step 1 of 2</p>
+  <h1 class="wc-h1">What brought you here today?</h1>
+  <p class="wc-lede">
+    No form. Just one question — we'll tailor everything else from your answer.
+    You can change this any time.
+  </p>
+
+  <div class="wc-choices">
+    <a class="wc-choice" href="/welcome?topic=sleep">
+      <b>Better sleep & energy</b>
+      <small>HRV, regularity, recovery, fatigue</small>
+    </a>
+    <a class="wc-choice" href="/welcome?topic=weight">
+      <b>Weight & metabolic health</b>
+      <small>Body comp, glucose, fatty liver, GLP-1 questions</small>
+    </a>
+    <a class="wc-choice" href="/welcome?topic=heart">
+      <b>Cardiovascular risk</b>
+      <small>Cholesterol, blood pressure, family history</small>
+    </a>
+    <a class="wc-choice" href="/welcome?topic=longevity">
+      <b>Longevity & prevention</b>
+      <small>Healthspan, exercise, supplements, "what's worth doing?"</small>
+    </a>
+    <a class="wc-choice" href="/welcome?topic=condition">
+      <b>I have a specific condition</b>
+      <small>Type 2 diabetes, hypothyroid, ApoE, depression, autoimmune…</small>
+    </a>
+    <a class="wc-choice" href="/welcome?topic=labs">
+      <b>I just got a lab result</b>
+      <small>Decoding numbers, what to do about them, what to recheck</small>
+    </a>
+  </div>
+
+  <a class="wc-skip" href="/">I'll skip for now</a>
+
+{% else %}
+  {# ── Step 2: ONE contextual follow-up ────────────────────────── #}
+  <a class="wc-back" href="/welcome">← Pick a different topic</a>
+
+  <p class="wc-eye">Step 2 of 2 — almost done</p>
+
+  {% if topic == "sleep" %}
+    <h1 class="wc-h1">How regular is your bedtime, within 30 minutes?</h1>
+    <p class="wc-lede">
+      Sleep <i>regularity</i> — not duration — is the single biggest behavioural
+      predictor of HRV and long-term health. We'll start there.
+    </p>
+    <form method="post" action="/welcome" class="wc-choices">
+      <input type="hidden" name="topic" value="sleep"/>
+      <button class="wc-choice" name="answer" value="rock_solid"><b>Within 30 minutes, most nights</b><small>You're already winning the biggest sleep lever.</small></button>
+      <button class="wc-choice" name="answer" value="mostly_regular"><b>Within an hour, most nights</b><small>Good. Tightening to 30 min has a measurable effect.</small></button>
+      <button class="wc-choice" name="answer" value="weekday_weekend"><b>Strict on weekdays, all-over on weekends</b><small>This is the most common pattern — and the highest-leverage to fix.</small></button>
+      <button class="wc-choice" name="answer" value="all_over"><b>It varies a lot, every night</b><small>The single best move you can make is anchoring a wake-up time.</small></button>
+    </form>
+
+  {% elif topic == "weight" %}
+    <h1 class="wc-h1">What's your typical eating window — first food to last food?</h1>
+    <p class="wc-lede">
+      <i>When</i> you eat is a stronger lever on metabolic health than <i>what</i>
+      for most people. A 10-hour window is the lowest-effort first move.
+    </p>
+    <form method="post" action="/welcome" class="wc-choices">
+      <input type="hidden" name="topic" value="eating"/>
+      <button class="wc-choice" name="answer" value="under_8h"><b>Under 8 hours (TRE)</b><small>You're already doing the strongest version.</small></button>
+      <button class="wc-choice" name="answer" value="8_10h"><b>8-10 hours</b><small>Sweet spot for most people.</small></button>
+      <button class="wc-choice" name="answer" value="10_12h"><b>10-12 hours</b><small>Tightening by 2h has shown metabolic benefit in most trials.</small></button>
+      <button class="wc-choice" name="answer" value="over_12h"><b>Over 12 hours — I graze</b><small>This is where the biggest gains live. We'll help.</small></button>
+    </form>
+
+  {% elif topic == "heart" %}
+    <h1 class="wc-h1">Do you know your most recent LDL ("bad") cholesterol number?</h1>
+    <p class="wc-lede">
+      It's the single number that drives most of the cardiovascular conversation.
+      If you don't know it, that's the first thing to fix.
+    </p>
+    <form method="post" action="/welcome" class="wc-choices">
+      <input type="hidden" name="topic" value="ldl"/>
+      <button class="wc-choice" name="answer" value="under_100"><b>Under 100 mg/dL</b><small>You're in the lower-risk band. We'll help keep it there.</small></button>
+      <button class="wc-choice" name="answer" value="100_130"><b>100-130 mg/dL</b><small>Borderline. Lots of room to move with diet + exercise.</small></button>
+      <button class="wc-choice" name="answer" value="over_130"><b>Over 130 mg/dL</b><small>Worth a focused conversation with your doctor.</small></button>
+      <button class="wc-choice" name="answer" value="unknown"><b>I don't know — never had it tested</b><small>Step one: get a basic lipid panel.</small></button>
+    </form>
+
+  {% elif topic == "longevity" %}
+    <h1 class="wc-h1">Roughly how many minutes per week do you move above a brisk pace?</h1>
+    <p class="wc-lede">
+      The first 150 minutes a week cut early-death risk by ~27%. Above 300 the
+      benefit plateaus. Below 60 is the riskiest place to be.
+    </p>
+    <form method="post" action="/welcome" class="wc-choices">
+      <input type="hidden" name="topic" value="movement"/>
+      <button class="wc-choice" name="answer" value="over_300"><b>300+ minutes</b><small>You're past the plateau — focus on quality and recovery.</small></button>
+      <button class="wc-choice" name="answer" value="150_300"><b>150-300 minutes</b><small>The sweet spot. We'll help you sustain it.</small></button>
+      <button class="wc-choice" name="answer" value="60_150"><b>60-150 minutes</b><small>The next 30-60 minutes a week is the highest-leverage move.</small></button>
+      <button class="wc-choice" name="answer" value="under_60"><b>Under 60 minutes</b><small>This is where the biggest gains live.</small></button>
+    </form>
+
+  {% elif topic == "condition" %}
+    <h1 class="wc-h1">Which one matters most to you right now?</h1>
+    <p class="wc-lede">
+      Pick the one you want to make progress on. You can add others later.
+    </p>
+    <form method="post" action="/welcome" class="wc-choices">
+      <input type="hidden" name="topic" value="condition"/>
+      <button class="wc-choice" name="answer" value="t2d"><b>Type 2 diabetes / prediabetes</b><small></small></button>
+      <button class="wc-choice" name="answer" value="hypertension"><b>High blood pressure</b><small></small></button>
+      <button class="wc-choice" name="answer" value="hypothyroid"><b>Hypothyroid</b><small></small></button>
+      <button class="wc-choice" name="answer" value="depression"><b>Depression / anxiety</b><small></small></button>
+      <button class="wc-choice" name="answer" value="apoe4"><b>APOE-ε4 carrier</b><small></small></button>
+      <button class="wc-choice" name="answer" value="autoimmune"><b>Autoimmune (Hashimoto's, IBD, RA, …)</b><small></small></button>
+    </form>
+
+  {% elif topic == "labs" %}
+    <h1 class="wc-h1">Want to drop a lab result in to get started?</h1>
+    <p class="wc-lede">
+      The fastest path is to add one number you remember. Or upload a wearable
+      export to skip data entry entirely.
+    </p>
+    <div class="wc-choices">
+      <a class="wc-choice" href="/me/data"><b>Add a lab manually</b><small>One field at a time — takes 30 seconds.</small></a>
+      <a class="wc-choice" href="/me/wearables"><b>Upload a wearable file</b><small>Apple Health, Oura, Garmin, Whoop or Polar export.</small></a>
+    </div>
+
+  {% else %}
+    <p class="wc-lede">We didn't recognise that topic. <a href="/welcome">Try again →</a></p>
+  {% endif %}
+
+  <p class="wc-progress">After this answer we'll start surfacing what experts would tell you next.</p>
+{% endif %}
+
+</div>
+
+{% endblock %}

@@ -32,6 +32,7 @@ from web.auth import (                                # noqa: E402
 from web import alwayson                              # noqa: E402
 from web import breakthroughs as bx                   # noqa: E402
 from web import breakthrough_illos as bx_illos        # noqa: E402
+from web import proactive as pro                      # noqa: E402
 from web.generated_art import (   # noqa: E402
     edge_svg, hero_svg, featured_card_svg, discovery_card_svg, strength_wave_svg,
 )
@@ -468,6 +469,81 @@ def breakthrough_detail(request: Request, item_id: str):
         "title": item["headline"],
         "item": item,
         "edge_id": edge_id,
+    })
+
+
+@app.get("/api/me/proactive")
+def me_proactive(request: Request, context: str = "", limit: int = 3,
+                 already: str = ""):
+    """Proactive disclosure engine — returns 2-3 surfacings the user didn't
+    ask for but an expert would volunteer. See web/proactive.py."""
+    from dataclasses import asdict
+    p = decode(request.cookies.get(COOKIE))
+    profile_dict = asdict(p)
+    # Optional client-passed already-shown ids to avoid repeats
+    shown = [s for s in already.split(",") if s.strip()]
+    # Cookie-level recent_labs isn't tracked; the client can POST richer
+    # context via /api/me/proactive-rich (future). For now, accept zero.
+    try:
+        cards = pro.surface(
+            profile_dict,
+            already_shown=shown,
+            limit=limit,
+            context=context or None,
+        )
+    except Exception as exc:
+        cards = []
+    # Always return at least a starter set so the home band never goes empty.
+    if not cards:
+        cards = pro.starter_cards()
+    return {"cards": cards[:limit]}
+
+
+# ─── Conversational onboarding (single question, branching) ──────
+
+@app.get("/welcome", response_class=HTMLResponse)
+def welcome(request: Request, topic: str = ""):
+    """1-question onboarding: 'What brought you here today?' branches to a
+    single contextual follow-up per topic. Accumulates the profile silently."""
+    p = decode(request.cookies.get(COOKIE))
+    return render(request, "welcome.html", {
+        "title": "Welcome",
+        "profile": p,
+        "topic": topic,
+    })
+
+
+@app.post("/welcome", response_class=HTMLResponse)
+def welcome_submit(request: Request,
+                   topic: str = Form(""),
+                   answer: str = Form(""),
+                   detail: str = Form("")):
+    """Save a single answer to the profile cookie. Re-renders the same page
+    showing the next contextual question, or redirects home when done."""
+    p = decode(request.cookies.get(COOKIE))
+    # Stash everything in profile.goals + a stash field; cookie is small.
+    known = set(getattr(p, "goals", []) or [])
+    if topic and answer:
+        known.add(f"{topic}:{answer}")
+    if detail:
+        known.add(f"{topic}_detail:{detail[:60]}")
+    p.goals = list(known)
+    # If we collected ≥ 4 levers, route home; otherwise show next step.
+    pareto = [g for g in p.goals if g.startswith(("sleep:", "movement:", "eating:", "alcohol:"))]
+    done = len(pareto) >= 1   # one is enough for v1 — single-question principle
+    resp = RedirectResponse("/" if done else f"/welcome?topic={topic}", status_code=303)
+    resp.set_cookie(COOKIE, encode(p), max_age=60 * 60 * 24 * 365, httponly=True, samesite="lax")
+    return resp
+
+
+# ─── Wearable file-import (multi-vendor) ─────────────────────────
+
+@app.get("/me/wearables", response_class=HTMLResponse)
+def me_wearables(request: Request):
+    p = decode(request.cookies.get(COOKIE))
+    return render(request, "wearables.html", {
+        "title": "Connect a wearable",
+        "profile": p,
     })
 
 

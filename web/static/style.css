@@ -5267,3 +5267,50 @@ main { padding: 24px 36px 64px; max-width: 1480px; margin: 0 auto; }
   text-decoration: none; display: inline-block;
 }
 .bx-brief-actions .btn-primary:hover { filter: brightness(1.08); }
+
+/* =============================================================
+   "Today, for you" — proactive surface budget on the home page
+   ============================================================= */
+.hp-today { margin: 28px 0 12px; }
+.hp-today[data-hidden="true"] { display: none; }
+.hp-today-grid {
+  display: grid; gap: 14px; margin-top: 12px;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 1000px) { .hp-today-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .hp-today-grid { grid-template-columns: 1fr; } }
+.hp-today-card {
+  display: flex; flex-direction: column; gap: 6px;
+  text-decoration: none; color: var(--ink);
+  background: #fff; border: 1px solid var(--line);
+  border-radius: 14px; padding: 16px 18px;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+  position: relative;
+}
+.hp-today-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(31,58,46,0.08);
+  border-color: var(--gold);
+}
+.hp-today-warning { border-left: 4px solid #9b1c1c; padding-left: 14px; }
+.hp-today-good    { border-left: 4px solid #1b5e20; padding-left: 14px; }
+.hp-today-neutral { border-left: 4px solid var(--gold); padding-left: 14px; }
+.hp-today-card h3 {
+  margin: 4px 0 0;
+  font-family: 'Fraunces', serif; font-weight: 500;
+  font-size: 17px; line-height: 1.3;
+}
+.hp-today-card p {
+  margin: 0; color: var(--ink-soft);
+  font-size: 13px; line-height: 1.5;
+}
+.hp-today-kind {
+  font: 700 10px Inter, system-ui, sans-serif;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+.hp-today-action {
+  margin-top: auto;
+  font: 600 13px Inter, system-ui, sans-serif;
+  color: #1f3a2e;
+}

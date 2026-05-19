@@ -1,0 +1,452 @@
+{% extends "base.html" %}
+{% block title %}Connect a wearable — Health Universe{% endblock %}
+{% block content %}
+
+<style>
+  .wv-wrap { max-width: 960px; margin: 28px auto; padding: 0 16px; }
+  .wv-hero h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 36px; line-height: 1.1; margin: 8px 0 12px; letter-spacing: -0.02em; }
+  .wv-lede { color: var(--ink-soft); max-width: 720px; font-size: 16px; line-height: 1.55; }
+
+  .wv-drop {
+    margin: 22px 0 32px; padding: 28px;
+    border: 2px dashed var(--gold); border-radius: 14px;
+    background: #faf4dd; text-align: center;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .wv-drop.is-over { background: #fff7e0; border-color: #1f3a2e; }
+  .wv-drop b { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 500; }
+  .wv-drop p { color: var(--ink-soft); font-size: 14px; margin: 6px 0 0; }
+  .wv-drop input[type=file] { display: none; }
+  .wv-drop label { display: inline-block; margin-top: 12px; padding: 10px 18px;
+    background: #1f3a2e; color: #fffaf0; border-radius: 999px; cursor: pointer;
+    font-weight: 600; font-size: 14px; }
+  .wv-drop label:hover { filter: brightness(1.08); }
+
+  .wv-grid { display: grid; gap: 16px; grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 720px) { .wv-grid { grid-template-columns: 1fr; } }
+
+  .wv-card {
+    background: #fff; border: 1px solid var(--line); border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .wv-card h3 { margin: 0 0 4px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 19px; display: flex; align-items: center; gap: 10px; }
+  .wv-card .wv-vendor-dot {
+    width: 10px; height: 10px; border-radius: 50%; display: inline-block;
+  }
+  .wv-card ol { margin: 10px 0 6px; padding-left: 18px; font-size: 14px; color: var(--ink); line-height: 1.55; }
+  .wv-card ol li { margin-bottom: 4px; }
+  .wv-card .wv-ext { color: var(--ink-soft); font-size: 12px; margin-top: 8px; display: inline-block; }
+  .wv-card a { color: #1f3a2e; font-weight: 600; }
+
+  .wv-result {
+    margin: 22px 0;
+    padding: 20px 22px;
+    background: #f4faf6; border: 1px solid #b7e0c4;
+    border-radius: 14px;
+  }
+  .wv-result h3 { margin: 0 0 8px; font-family: 'Fraunces', serif; font-size: 21px; font-weight: 500; }
+  .wv-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 10px; }
+  @media (max-width: 600px) { .wv-stats { grid-template-columns: repeat(2, 1fr); } }
+  .wv-stat b { display: block; font-family: 'Fraunces', serif; font-size: 24px; font-weight: 500; color: #1f3a2e; }
+  .wv-stat small { color: var(--ink-soft); font-size: 12px; }
+
+  .wv-error { background: #fff8f7; border: 1px solid #f3b3ad; color: #9b1c1c; padding: 12px 16px; border-radius: 10px; margin: 12px 0; }
+  .wv-note { font-size: 12px; color: var(--ink-soft); margin-top: 14px; }
+</style>
+
+<div class="wv-wrap">
+
+<header class="wv-hero">
+  <p class="hp-eyebrow">CONNECT A WEARABLE</p>
+  <h1>Drop in an export. We'll pull in your sleep, HRV, and resting heart rate.</h1>
+  <p class="wv-lede">
+    No OAuth, no third-party connect popups, nothing leaves your phone or laptop
+    without your say-so. Find your vendor below, follow the two-step export,
+    then drag the file onto the box. We parse it in your browser.
+  </p>
+</header>
+
+<div class="wv-drop" id="wv-drop">
+  <b>Drag &amp; drop your export here</b>
+  <p>Apple Health (export.xml or .zip) · Oura (trends.csv) · Garmin (CSV/zip)<br/>
+     Whoop (CSV) · Polar Flow (CSV) · Strava (activities.csv)</p>
+  <label for="wv-file">Or choose a file</label>
+  <input type="file" id="wv-file" accept=".csv,.xml,.zip,.tcx,.fit,.json,.txt"/>
+</div>
+
+<div id="wv-result"></div>
+
+<div class="wv-grid">
+
+  <div class="wv-card">
+    <h3><span class="wv-vendor-dot" style="background:#000"></span> Apple Health</h3>
+    <ol>
+      <li>On your iPhone, open the <b>Health</b> app.</li>
+      <li>Tap your <b>profile picture</b> (top right).</li>
+      <li>Scroll down → <b>Export All Health Data</b> → <b>Export</b>.</li>
+      <li>Share the zip to your laptop (AirDrop / iCloud Drive / email).</li>
+      <li>Drag the <b>export.zip</b> or extracted <b>export.xml</b> above.</li>
+    </ol>
+    <span class="wv-ext">~5-30 MB · gives daily HRV, RHR, sleep, steps</span>
+  </div>
+
+  <div class="wv-card">
+    <h3><span class="wv-vendor-dot" style="background:#0a0a0a"></span> Oura Ring</h3>
+    <ol>
+      <li>Open <a href="https://cloud.ouraring.com/account/account-info" target="_blank" rel="noopener">cloud.ouraring.com</a> in a browser.</li>
+      <li>Account &rarr; <b>Export Data</b> &rarr; pick a time range.</li>
+      <li>Save the <b>trends.csv</b> that downloads.</li>
+      <li>Drag it above.</li>
+    </ol>
+    <span class="wv-ext">CSV · gives sleep, HRV (rMSSD), readiness, body temp</span>
+  </div>
+
+  <div class="wv-card">
+    <h3><span class="wv-vendor-dot" style="background:#0078b6"></span> Garmin</h3>
+    <ol>
+      <li>Open <a href="https://www.garmin.com/account/datamanagement/" target="_blank" rel="noopener">Garmin Data Management</a>.</li>
+      <li>Click <b>Export Your Data</b> → wait for the email (typically &lt; 1 hr).</li>
+      <li>Download the .zip.</li>
+      <li>Drag the .zip above — we'll pick out the sleep + HRV files.</li>
+    </ol>
+    <span class="wv-ext">.zip · gives sleep, HRV (overnight avg), RHR, training load</span>
+  </div>
+
+  <div class="wv-card">
+    <h3><span class="wv-vendor-dot" style="background:#16ffbd"></span> Whoop</h3>
+    <ol>
+      <li>Open the Whoop app → <b>More</b> tab.</li>
+      <li>Membership &rarr; <b>Export My Data</b> &rarr; choose what + email it.</li>
+      <li>Download the CSV(s) the email links to.</li>
+      <li>Drag the <b>physiological_cycles.csv</b> above.</li>
+    </ol>
+    <span class="wv-ext">CSV · gives recovery %, HRV, RHR, strain</span>
+  </div>
+
+  <div class="wv-card">
+    <h3><span class="wv-vendor-dot" style="background:#e30613"></span> Polar Flow</h3>
+    <ol>
+      <li>Sign in at <a href="https://flow.polar.com/" target="_blank" rel="noopener">flow.polar.com</a>.</li>
+      <li>Profile icon → <b>Account</b> → <b>Export Data</b>.</li>
+      <li>Pick CSV format, time range, download.</li>
+      <li>Drag it above.</li>
+    </ol>
+    <span class="wv-ext">CSV · gives sleep, HRV, recovery, training</span>
+  </div>
+
+  <div class="wv-card">
+    <h3><span class="wv-vendor-dot" style="background:#fc4c02"></span> Strava</h3>
+    <ol>
+      <li>Sign in at <a href="https://www.strava.com/athlete/delete_your_account" target="_blank" rel="noopener">strava.com</a> &rarr; Account.</li>
+      <li>Scroll to <b>Download or Delete Your Account</b> &rarr; <b>Get Started</b> &rarr; <b>Request Your Archive</b>.</li>
+      <li>Wait for the email (can be hours), download the .zip.</li>
+      <li>Drag <b>activities.csv</b> above.</li>
+    </ol>
+    <span class="wv-ext">CSV inside zip · gives weekly active minutes, HR averages</span>
+  </div>
+
+</div>
+
+<p class="wv-note">
+  Files are parsed in your browser. The aggregated daily summaries (sleep
+  minutes, HRV, RHR) are stored in your local profile and — only if you've
+  signed in &amp; enabled encrypted sync — backed up to your account in
+  AES-encrypted form. Raw files are never uploaded.
+</p>
+
+</div>
+
+<script>
+(function () {
+  const drop   = document.getElementById('wv-drop');
+  const input  = document.getElementById('wv-file');
+  const result = document.getElementById('wv-result');
+  if (!drop || !input || !result) return;
+
+  // ─── Drag-and-drop handlers ──────────────────────────────────
+  ['dragenter','dragover'].forEach((e) => drop.addEventListener(e, (ev) => {
+    ev.preventDefault(); ev.stopPropagation(); drop.classList.add('is-over');
+  }));
+  ['dragleave','drop'].forEach((e) => drop.addEventListener(e, (ev) => {
+    ev.preventDefault(); ev.stopPropagation(); drop.classList.remove('is-over');
+  }));
+  drop.addEventListener('drop', (ev) => {
+    const f = ev.dataTransfer.files && ev.dataTransfer.files[0];
+    if (f) handle(f);
+  });
+  input.addEventListener('change', () => {
+    if (input.files && input.files[0]) handle(input.files[0]);
+  });
+
+  // ─── Common schema (daily aggregates) ────────────────────────
+  // Each parser fills as many of these as it can:
+  //   { date: 'YYYY-MM-DD', sleep_min: N, hrv_ms: N, rhr_bpm: N, steps: N,
+  //     active_min: N, vo2_max: N, source: 'oura'|'apple'|... }
+  function emptyDay(d, src) {
+    return { date: d, source: src };
+  }
+
+  // ─── Vendor detection ────────────────────────────────────────
+  function detect(name, sample) {
+    const n = name.toLowerCase();
+    if (n.endsWith('.xml') || (sample.startsWith('<?xml') && sample.includes('HKQuantityTypeIdentifier'))) return 'apple';
+    if (n.includes('oura') || /\bSleep Score\b|\bHRV Balance Score\b/i.test(sample)) return 'oura';
+    if (n.includes('physiological_cycles') || /\bRecovery score %\b/i.test(sample)) return 'whoop';
+    if (n.includes('garmin') || /\bUser Bodybattery\b|\bHRV Status\b/i.test(sample)) return 'garmin';
+    if (n.includes('polar') || /\bDuration \(hh:mm:ss\)\b.*\bAvg HR \(bpm\)\b/i.test(sample)) return 'polar';
+    if (n.includes('activities') || /\bActivity ID\b.*\bActivity Date\b/i.test(sample)) return 'strava';
+    // Fall through: try generic CSV with a 'Date' / 'HRV' column
+    return 'generic';
+  }
+
+  // ─── CSV mini-parser (handles quoted commas) ─────────────────
+  function parseCSV(text) {
+    const lines = text.split(/\r?\n/).filter((l) => l.trim().length);
+    if (!lines.length) return { headers: [], rows: [] };
+    const split = (line) => {
+      const out = []; let cur = ''; let q = false;
+      for (let i = 0; i < line.length; i++) {
+        const c = line[i];
+        if (c === '"' && line[i+1] === '"') { cur += '"'; i++; }
+        else if (c === '"') q = !q;
+        else if (c === ',' && !q) { out.push(cur); cur = ''; }
+        else cur += c;
+      }
+      out.push(cur);
+      return out;
+    };
+    const headers = split(lines[0]).map((h) => h.trim());
+    const rows = lines.slice(1).map(split).map((row) => {
+      const o = {};
+      headers.forEach((h, i) => { o[h] = (row[i] || '').trim(); });
+      return o;
+    });
+    return { headers, rows };
+  }
+
+  function normDate(s) {
+    if (!s) return null;
+    // Try a few common formats; ISO first.
+    const m = String(s).match(/(\d{4}[-/]\d{1,2}[-/]\d{1,2})/);
+    if (!m) return null;
+    return m[1].replace(/\//g, '-');
+  }
+
+  // ─── Per-vendor parsers — all return an array of daily records ─
+  function parseOura(text) {
+    const { rows } = parseCSV(text);
+    return rows.map((r) => {
+      const date = normDate(r['date'] || r['Date'] || r['day']);
+      if (!date) return null;
+      const out = emptyDay(date, 'oura');
+      const sleep = parseFloat(r['Total Sleep Duration'] || r['Total Sleep Time'] || r['sleep_total'] || '');
+      if (!isNaN(sleep)) out.sleep_min = Math.round(sleep / 60);   // Oura exports seconds usually
+      const hrv = parseFloat(r['Average HRV'] || r['hrv_average'] || r['HRV Balance Score'] || '');
+      if (!isNaN(hrv)) out.hrv_ms = Math.round(hrv);
+      const rhr = parseFloat(r['Lowest Resting Heart Rate'] || r['Average Resting Heart Rate'] || r['resting_heart_rate'] || '');
+      if (!isNaN(rhr)) out.rhr_bpm = Math.round(rhr);
+      return out;
+    }).filter(Boolean);
+  }
+  function parseWhoop(text) {
+    const { rows } = parseCSV(text);
+    return rows.map((r) => {
+      const date = normDate(r['Cycle start time'] || r['Date']);
+      if (!date) return null;
+      const out = emptyDay(date, 'whoop');
+      const hrv = parseFloat(r['Heart rate variability (ms)'] || r['HRV (ms)'] || '');
+      if (!isNaN(hrv)) out.hrv_ms = Math.round(hrv);
+      const rhr = parseFloat(r['Resting heart rate (bpm)'] || r['RHR (bpm)'] || '');
+      if (!isNaN(rhr)) out.rhr_bpm = Math.round(rhr);
+      const sleep = parseFloat(r['Asleep duration (min)'] || r['Total sleep (min)'] || '');
+      if (!isNaN(sleep)) out.sleep_min = Math.round(sleep);
+      return out;
+    }).filter(Boolean);
+  }
+  function parseGarmin(text) {
+    const { rows } = parseCSV(text);
+    return rows.map((r) => {
+      const date = normDate(r['Date'] || r['Day']);
+      if (!date) return null;
+      const out = emptyDay(date, 'garmin');
+      const sleep = parseFloat(r['Sleep Duration'] || r['Total Sleep'] || '');
+      if (!isNaN(sleep)) out.sleep_min = Math.round(sleep);   // Garmin csvs often already minutes
+      const hrv = parseFloat(r['Avg HRV'] || r['HRV'] || '');
+      if (!isNaN(hrv)) out.hrv_ms = Math.round(hrv);
+      const rhr = parseFloat(r['Resting Heart Rate'] || r['RHR'] || '');
+      if (!isNaN(rhr)) out.rhr_bpm = Math.round(rhr);
+      const steps = parseFloat(r['Steps'] || '');
+      if (!isNaN(steps)) out.steps = Math.round(steps);
+      return out;
+    }).filter(Boolean);
+  }
+  function parsePolar(text) {
+    const { rows } = parseCSV(text);
+    return rows.map((r) => {
+      const date = normDate(r['Date'] || r['Start time']);
+      if (!date) return null;
+      const out = emptyDay(date, 'polar');
+      const hrv = parseFloat(r['HRV (ms)'] || r['Average HRV'] || '');
+      if (!isNaN(hrv)) out.hrv_ms = Math.round(hrv);
+      const rhr = parseFloat(r['Resting heart rate'] || r['Avg HR (bpm)'] || '');
+      if (!isNaN(rhr)) out.rhr_bpm = Math.round(rhr);
+      return out;
+    }).filter(Boolean);
+  }
+  function parseStrava(text) {
+    const { rows } = parseCSV(text);
+    // Strava is per-activity; aggregate to weekly active minutes by date.
+    const buckets = {};
+    rows.forEach((r) => {
+      const date = normDate(r['Activity Date']);
+      if (!date) return;
+      const dur = parseFloat(r['Moving Time'] || r['Elapsed Time'] || '0');
+      if (isNaN(dur)) return;
+      buckets[date] = (buckets[date] || 0) + dur;
+    });
+    return Object.entries(buckets).map(([date, secs]) => ({
+      ...emptyDay(date, 'strava'),
+      active_min: Math.round(secs / 60),
+    }));
+  }
+  function parseAppleHealthXML(text) {
+    // Streaming-light: regex extraction over the (potentially huge) export.xml.
+    // We only pull a handful of identifiers we actually need.
+    const wants = {
+      'HKQuantityTypeIdentifierHeartRateVariabilitySDNN': 'hrv_ms',
+      'HKQuantityTypeIdentifierRestingHeartRate':         'rhr_bpm',
+      'HKQuantityTypeIdentifierStepCount':                'steps',
+      'HKCategoryTypeIdentifierSleepAnalysis':            'sleep_min',
+    };
+    const buckets = {};
+    const re = /<Record\s+([^>]+)\/?>/g;
+    let m;
+    let cap = 50000;   // safety: parse at most 50k records
+    while ((m = re.exec(text)) && cap-- > 0) {
+      const attrs = m[1];
+      const typeM  = attrs.match(/type="([^"]+)"/);
+      const startM = attrs.match(/startDate="(\d{4}-\d{2}-\d{2})/);
+      const endM   = attrs.match(/endDate="(\d{4}-\d{2}-\d{2}) (\d{2}:\d{2})/);
+      const valM   = attrs.match(/value="([^"]+)"/);
+      if (!typeM || !startM) continue;
+      const want = wants[typeM[1]];
+      if (!want) continue;
+      const date = startM[1];
+      if (!buckets[date]) buckets[date] = emptyDay(date, 'apple');
+      if (want === 'sleep_min') {
+        // Each record is a sleep stage segment; accumulate minutes
+        const startSec = Date.parse(startM[0].slice(11) + 'Z');
+        const endStr = attrs.match(/endDate="(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/);
+        const endSec = endStr ? Date.parse(endStr[1].replace(' ', 'T') + 'Z') : null;
+        if (endSec && startSec) {
+          buckets[date].sleep_min = (buckets[date].sleep_min || 0) + Math.max(0, Math.round((endSec - startSec) / 60000));
+        }
+      } else if (valM) {
+        const v = parseFloat(valM[1]);
+        if (!isNaN(v)) {
+          // Average HRV / RHR, sum steps
+          if (want === 'steps') buckets[date].steps = (buckets[date].steps || 0) + v;
+          else if (buckets[date][want]) buckets[date][want] = Math.round((buckets[date][want] + v) / 2);
+          else buckets[date][want] = Math.round(v);
+        }
+      }
+    }
+    return Object.values(buckets);
+  }
+  function parseGeneric(text) {
+    const { rows } = parseCSV(text);
+    return rows.map((r) => {
+      // Find date + any familiar columns
+      const date = normDate(r['Date'] || r['date'] || r['day'] || Object.values(r)[0]);
+      if (!date) return null;
+      const out = emptyDay(date, 'generic');
+      for (const [k, v] of Object.entries(r)) {
+        const kl = k.toLowerCase();
+        const n = parseFloat(v);
+        if (isNaN(n)) continue;
+        if (/hrv/.test(kl)) out.hrv_ms = Math.round(n);
+        else if (/(resting|rhr)/.test(kl)) out.rhr_bpm = Math.round(n);
+        else if (/(sleep)/.test(kl) && n < 1500) out.sleep_min = Math.round(n);
+        else if (/step/.test(kl)) out.steps = Math.round(n);
+      }
+      return out;
+    }).filter(Boolean);
+  }
+
+  // ─── Top-level handle ────────────────────────────────────────
+  async function handle(file) {
+    result.innerHTML = '<div class="wv-result"><h3>Reading ' + file.name + '…</h3></div>';
+    try {
+      let text;
+      let name = file.name.toLowerCase();
+      if (name.endsWith('.zip')) {
+        result.innerHTML = '<div class="wv-error">Zip parsing happens server-side in a future build. For now, extract the .zip and drag the CSV or XML inside.</div>';
+        return;
+      }
+      text = await file.text();
+      const sample = text.slice(0, 2000);
+      const vendor = detect(file.name, sample);
+      let records = [];
+      if (vendor === 'apple')      records = parseAppleHealthXML(text);
+      else if (vendor === 'oura')  records = parseOura(text);
+      else if (vendor === 'whoop') records = parseWhoop(text);
+      else if (vendor === 'garmin')records = parseGarmin(text);
+      else if (vendor === 'polar') records = parsePolar(text);
+      else if (vendor === 'strava')records = parseStrava(text);
+      else                          records = parseGeneric(text);
+
+      if (!records.length) {
+        result.innerHTML = '<div class="wv-error">We couldn\'t recognise any daily metrics in that file. Make sure you exported the right one — see the cards below for the exact filename per vendor.</div>';
+        return;
+      }
+
+      // Sort & store
+      records.sort((a, b) => a.date.localeCompare(b.date));
+      try {
+        const existing = JSON.parse(localStorage.getItem('hu_wearable_days') || '[]');
+        const byDate = {};
+        existing.forEach((d) => { byDate[d.date] = d; });
+        records.forEach((d) => {
+          byDate[d.date] = { ...(byDate[d.date] || {}), ...d };
+        });
+        const merged = Object.values(byDate).sort((a, b) => a.date.localeCompare(b.date));
+        localStorage.setItem('hu_wearable_days', JSON.stringify(merged.slice(-365)));
+      } catch (e) {}
+
+      // Tally
+      const totals = records.reduce((acc, r) => {
+        if (r.sleep_min) acc.sleep++;
+        if (r.hrv_ms)    acc.hrv++;
+        if (r.rhr_bpm)   acc.rhr++;
+        if (r.steps)     acc.steps++;
+        return acc;
+      }, { sleep: 0, hrv: 0, rhr: 0, steps: 0 });
+
+      const first = records[0].date;
+      const last  = records[records.length - 1].date;
+      result.innerHTML = `
+        <div class="wv-result">
+          <h3>Imported ${records.length} days from ${vendor.charAt(0).toUpperCase() + vendor.slice(1)} (${first} → ${last}).</h3>
+          <p>We'll start surfacing personalised insights on the home page within a few seconds.</p>
+          <div class="wv-stats">
+            <div class="wv-stat"><b>${totals.sleep}</b><small>days of sleep</small></div>
+            <div class="wv-stat"><b>${totals.hrv}</b><small>HRV readings</small></div>
+            <div class="wv-stat"><b>${totals.rhr}</b><small>resting HR</small></div>
+            <div class="wv-stat"><b>${totals.steps}</b><small>step days</small></div>
+          </div>
+          <p style="margin-top:14px"><a href="/" style="color:#1f3a2e;font-weight:600">See what changed on the home page →</a></p>
+        </div>`;
+
+      // Best-effort POST to encrypted-sync (silent fail — local is source of truth).
+      if (window.HUAlwaysOn && typeof window.HUAlwaysOn.syncToServer === 'function') {
+        window.HUAlwaysOn.syncToServer().catch(() => {});
+      }
+    } catch (e) {
+      console.error(e);
+      result.innerHTML = '<div class="wv-error">Could not parse that file: ' + (e.message || e) + '</div>';
+    }
+  }
+})();
+</script>
+
+{% endblock %}
