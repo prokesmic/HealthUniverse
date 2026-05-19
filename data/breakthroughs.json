@@ -1,25 +1,36 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-05-18",
+  "updated_at": "2026-05-19",
   "items": [
     {
-      "id": "br_zone2_meta_2026",
-      "published_at": "2026-04-26",
-      "category": "longevity",
-      "stage": "guideline",
-      "audience": "general",
-      "headline": "Just 150 minutes of brisk walking a week cuts early death by a quarter",
-      "summary": "A pooled study of 1.4 million people found that hitting the standard 150 minutes a week of moderate exercise (think brisk walking, easy cycling) reduced the chance of dying early by 27%. Going beyond about 300 minutes didn't help much more — the big jump happens between zero and the first 150.",
-      "why_it_matters": "If you're sedentary, the first short walks each week are the most valuable thing you can do for your lifespan.",
-      "graphic": {"kind": "forest_plot", "studies": [{"name": "<60 min/wk", "estimate": 1.00, "ci_low": 0.96, "ci_high": 1.04}, {"name": "60-149", "estimate": 0.83, "ci_low": 0.78, "ci_high": 0.88}, {"name": "150-299", "estimate": 0.73, "ci_low": 0.69, "ci_high": 0.77}, {"name": "300+", "estimate": 0.69, "ci_low": 0.64, "ci_high": 0.74}], "x_label": "Chance of early death (vs sedentary)", "reference": 1.0},
-      "strength": 0.86,
-      "source_name": "BMJ",
-      "source_url": "https://www.bmj.com/content/2026/zone2-meta",
-      "factor_slug": "aerobic_exercise",
-      "outcome_slug": "all_cause_mortality",
+      "id": "br_dato_dxd_tnbc_os",
+      "published_at": "2026-05-14",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "technical",
+      "headline": "Datopotamab-deruxtecan extends overall survival in metastatic TNBC",
+      "summary": "TROPION-Breast02 randomised 540 patients with previously-treated triple-negative breast cancer. Median OS 18.4 mo vs 14.0 mo with chemo (HR 0.71, 95% CI 0.55-0.92).",
+      "why_it_matters": "First TROP2-ADC to clear an OS benefit in TNBC. Likely registrational; expect filing inside 12 months.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Dato-DXd",
+        "control_label": "Chemo",
+        "median_t": 18.4,
+        "median_c": 14.0,
+        "hr": 0.71,
+        "ci_low": 0.55,
+        "ci_high": 0.92,
+        "x_label": "Months",
+        "y_label": "Overall survival"
+      },
+      "strength": 0.92,
+      "source_name": "ASCO 2026",
+      "source_url": "https://ascopubs.org/doi/10.1200/JCO.2026.40.tropion_breast02",
+      "factor_slug": "datopotamab_deruxtecan",
+      "outcome_slug": "triple_negative_breast_cancer",
       "edge_id": null,
-      "is_orphan": false
+      "is_orphan": true
     },
     {
       "id": "br_semaglutide_mash_phase3",
@@ -30,12 +41,92 @@
       "headline": "Ozempic-class drug improves fatty liver disease in nearly two-thirds of patients",
       "summary": "In an 800-person trial running 18 months, weekly semaglutide (the active ingredient in Ozempic and Wegovy) cleared fatty-liver inflammation in 63% of people vs 34% on placebo. Liver scarring also improved, and weight came down alongside.",
       "why_it_matters": "Fatty liver disease affects roughly one in four adults and had almost no medical treatment. Now there's one that also helps with weight.",
-      "graphic": {"kind": "bar_delta", "bars": [{"label": "Liver inflammation cleared", "treatment": 62.9, "control": 34.3}, {"label": "Less liver scarring", "treatment": 36.8, "control": 22.4}], "unit": "%", "treatment_label": "Semaglutide", "control_label": "Placebo"},
-      "strength": 0.90,
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Liver inflammation cleared",
+            "treatment": 62.9,
+            "control": 34.3
+          },
+          {
+            "label": "Less liver scarring",
+            "treatment": 36.8,
+            "control": 22.4
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Semaglutide",
+        "control_label": "Placebo"
+      },
+      "strength": 0.9,
       "source_name": "NEJM",
       "source_url": "https://www.nejm.org/doi/10.1056/NEJMoa2607",
       "factor_slug": "semaglutide",
       "outcome_slug": "mash",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_51855ea1b4a83add",
+      "published_at": "2026-05-12",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "Using an extra antibiotic in wound closure for leg fracture surgerysness",
+      "summary": "The study compared whether applying tobramycin and vancomycin powders topically to a surgical incision during closure of definitive fixation was more effective than applying vancomycin powder alone in reducing deep surgical site infection in periarticular tibial fractures.",
+      "why_it_matters": "",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": []
+      },
+      "strength": 0.9,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2847579",
+      "factor_slug": null,
+      "outcome_slug": null,
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_lecanemab_apoe4_safety",
+      "published_at": "2026-05-10",
+      "category": "neuro",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA tightens monitoring for new Alzheimer's drug in people with a high-risk gene",
+      "summary": "Real-world data on lecanemab (a new Alzheimer's-disease drug) showed brain swelling in about 1 in 3 patients who carry two copies of the APOE-\u03b54 gene, vs about 1 in 20 of those without it. The FDA now requires more frequent MRIs and gene-aware consent.",
+      "why_it_matters": "If you or a family member is considering lecanemab, a simple APOE genetic test now meaningfully changes the risk conversation with your doctor.",
+      "graphic": {
+        "kind": "forest_plot",
+        "studies": [
+          {
+            "name": "No risk gene",
+            "estimate": 5.4,
+            "ci_low": 3.8,
+            "ci_high": 7.3
+          },
+          {
+            "name": "One copy",
+            "estimate": 10.9,
+            "ci_low": 8.4,
+            "ci_high": 13.9
+          },
+          {
+            "name": "Two copies",
+            "estimate": 32.6,
+            "ci_low": 24.1,
+            "ci_high": 42.1
+          }
+        ],
+        "x_label": "Brain swelling (% of patients)",
+        "reference": 5.4
+      },
+      "strength": 0.85,
+      "source_name": "FDA",
+      "source_url": "https://www.fda.gov/drugs/drug-safety-and-availability/lecanemab-2026-update",
+      "factor_slug": "lecanemab",
+      "outcome_slug": "alzheimers",
       "edge_id": null,
       "is_orphan": true
     },
@@ -45,15 +136,223 @@
       "category": "cardio",
       "stage": "guideline",
       "audience": "general",
-      "headline": "Low-dose colchicine cuts repeat heart attacks by 31% — now in cardiology guidelines",
+      "headline": "Low-dose colchicine cuts repeat heart attacks by 31% \u2014 now in cardiology guidelines",
       "summary": "Combining two large trials, a cheap, century-old anti-inflammatory pill (0.5 mg of colchicine daily) reduced repeat heart attacks, strokes, and cardiovascular death by nearly a third in people who already have heart disease. Major cardiology groups have added it to standard care.",
       "why_it_matters": "If you've had a heart attack or have known coronary disease, this is a $10/month addition that's now backed by guidelines. Ask your cardiologist whether it fits your medications.",
-      "graphic": {"kind": "forest_plot", "studies": [{"name": "LoDoCo2", "estimate": 0.69, "ci_low": 0.57, "ci_high": 0.83}, {"name": "COLCOT", "estimate": 0.77, "ci_low": 0.61, "ci_high": 0.96}, {"name": "Pooled", "estimate": 0.71, "ci_low": 0.61, "ci_high": 0.83}], "x_label": "Heart-event risk (vs no colchicine)", "reference": 1.0, "log_scale": true},
+      "graphic": {
+        "kind": "forest_plot",
+        "studies": [
+          {
+            "name": "LoDoCo2",
+            "estimate": 0.69,
+            "ci_low": 0.57,
+            "ci_high": 0.83
+          },
+          {
+            "name": "COLCOT",
+            "estimate": 0.77,
+            "ci_low": 0.61,
+            "ci_high": 0.96
+          },
+          {
+            "name": "Pooled",
+            "estimate": 0.71,
+            "ci_low": 0.61,
+            "ci_high": 0.83
+          }
+        ],
+        "x_label": "Heart-event risk (vs no colchicine)",
+        "reference": 1.0,
+        "log_scale": true
+      },
       "strength": 0.88,
       "source_name": "JACC",
       "source_url": "https://www.jacc.org/doi/10.1016/j.jacc.2026.04.008",
       "factor_slug": "colchicine",
       "outcome_slug": "post_mi_mace",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_rapamycin_aging_phase2",
+      "published_at": "2026-05-06",
+      "category": "longevity",
+      "stage": "phase2",
+      "audience": "general",
+      "headline": "Low-dose rapamycin once a week improved immune response in healthy older adults",
+      "summary": "In 120 healthy adults aged 50-85, 5 mg of rapamycin once a week for 11 months raised flu-vaccine antibody response by 22% and reduced markers of immune aging. No serious side effects.",
+      "why_it_matters": "First well-run trial in healthy aging to show an immune benefit. Still early \u2014 the question now is whether the same protocol affects real-world infection or hospitalisation rates.",
+      "graphic": {
+        "kind": "line_trend",
+        "series": [
+          {
+            "label": "Rapamycin",
+            "points": [
+              [
+                0,
+                100
+              ],
+              [
+                12,
+                108
+              ],
+              [
+                24,
+                115
+              ],
+              [
+                36,
+                119
+              ],
+              [
+                48,
+                122
+              ]
+            ]
+          },
+          {
+            "label": "Placebo",
+            "points": [
+              [
+                0,
+                100
+              ],
+              [
+                12,
+                101
+              ],
+              [
+                24,
+                99
+              ],
+              [
+                36,
+                100
+              ],
+              [
+                48,
+                100
+              ]
+            ]
+          }
+        ],
+        "x_label": "Weeks",
+        "y_label": "Immune response (vs starting)"
+      },
+      "strength": 0.62,
+      "source_name": "Aging Cell",
+      "source_url": "https://onlinelibrary.wiley.com/doi/10.1111/acel.2026.pearl",
+      "factor_slug": "rapamycin",
+      "outcome_slug": "immunosenescence",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_kras_g12d_phase1",
+      "published_at": "2026-05-05",
+      "category": "oncology",
+      "stage": "phase1",
+      "audience": "technical",
+      "headline": "KRAS-G12D inhibitor MRTX1133: 41% ORR in pancreatic ductal adenocarcinoma",
+      "summary": "First-in-human Phase 1, n=78, heavily pre-treated PDAC. Objective response 41%, disease control 71%. Median PFS 7.4 months \u2014 unprecedented in this setting.",
+      "why_it_matters": "KRAS-G12D drives ~40% of pancreatic cancers. If Phase 3 confirms even half the effect, this is a generational shift in PDAC.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Objective response rate",
+            "treatment": 41,
+            "control": 8
+          },
+          {
+            "label": "Disease control rate",
+            "treatment": 71,
+            "control": 32
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "MRTX1133",
+        "control_label": "Historical chemo"
+      },
+      "strength": 0.71,
+      "source_name": "Nature Medicine",
+      "source_url": "https://www.nature.com/articles/s41591-026-mrtx1133",
+      "factor_slug": "mrtx1133",
+      "outcome_slug": "pancreatic_cancer",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_pcsk9_silencing_long",
+      "published_at": "2026-05-04",
+      "category": "cardio",
+      "stage": "phase2",
+      "audience": "general",
+      "headline": "One injection a year cut bad cholesterol roughly in half \u2014 for the whole year",
+      "summary": "A new gene-silencing therapy delivered as a single shot dropped LDL ('bad') cholesterol by 51% and held that drop steady for 12 months, in a 400-person Phase 2 trial. Two doses across two years matched what monthly cholesterol injections do today.",
+      "why_it_matters": "If approved, this turns cholesterol control from a daily pill or monthly injection into a once-yearly visit \u2014 far easier to stick with.",
+      "graphic": {
+        "kind": "line_trend",
+        "series": [
+          {
+            "label": "Single injection",
+            "points": [
+              [
+                0,
+                100
+              ],
+              [
+                4,
+                60
+              ],
+              [
+                12,
+                49
+              ],
+              [
+                26,
+                51
+              ],
+              [
+                52,
+                49
+              ]
+            ]
+          },
+          {
+            "label": "Placebo",
+            "points": [
+              [
+                0,
+                100
+              ],
+              [
+                4,
+                98
+              ],
+              [
+                12,
+                100
+              ],
+              [
+                26,
+                99
+              ],
+              [
+                52,
+                101
+              ]
+            ]
+          }
+        ],
+        "x_label": "Weeks after the shot",
+        "y_label": "LDL cholesterol (% of starting)"
+      },
+      "strength": 0.78,
+      "source_name": "The Lancet",
+      "source_url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736-26-orion12",
+      "factor_slug": "lerodalcibep",
+      "outcome_slug": "ldl_cholesterol",
       "edge_id": null,
       "is_orphan": true
     },
@@ -66,48 +365,29 @@
       "headline": "Single psilocybin session helps depression that didn't respond to standard drugs",
       "summary": "In a 300-person Phase 3 trial in treatment-resistant depression, one 25 mg dose of psilocybin (with psychological support) brought 31% of patients into remission at 6 weeks, vs 14% on placebo. The effect held through week 12 with no additional doses.",
       "why_it_matters": "For people whose depression hasn't responded to two or more standard antidepressants, this is the first Phase 3 win for a psychedelic. FDA decision expected 2027.",
-      "graphic": {"kind": "bar_delta", "bars": [{"label": "Depression score drop (week 6)", "treatment": -12.5, "control": -5.4}, {"label": "In remission", "treatment": 31, "control": 14}], "unit": "mixed", "treatment_label": "Psilocybin", "control_label": "Placebo"},
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Depression score drop (week 6)",
+            "treatment": -12.5,
+            "control": -5.4
+          },
+          {
+            "label": "In remission",
+            "treatment": 31,
+            "control": 14
+          }
+        ],
+        "unit": "mixed",
+        "treatment_label": "Psilocybin",
+        "control_label": "Placebo"
+      },
       "strength": 0.83,
       "source_name": "NEJM",
       "source_url": "https://www.nejm.org/doi/10.1056/NEJMoa2026comp005",
       "factor_slug": "psilocybin",
       "outcome_slug": "treatment_resistant_depression",
-      "edge_id": null,
-      "is_orphan": true
-    },
-    {
-      "id": "br_pcsk9_silencing_long",
-      "published_at": "2026-05-04",
-      "category": "cardio",
-      "stage": "phase2",
-      "audience": "general",
-      "headline": "One injection a year cut bad cholesterol roughly in half — for the whole year",
-      "summary": "A new gene-silencing therapy delivered as a single shot dropped LDL ('bad') cholesterol by 51% and held that drop steady for 12 months, in a 400-person Phase 2 trial. Two doses across two years matched what monthly cholesterol injections do today.",
-      "why_it_matters": "If approved, this turns cholesterol control from a daily pill or monthly injection into a once-yearly visit — far easier to stick with.",
-      "graphic": {"kind": "line_trend", "series": [{"label": "Single injection", "points": [[0, 100], [4, 60], [12, 49], [26, 51], [52, 49]]}, {"label": "Placebo", "points": [[0, 100], [4, 98], [12, 100], [26, 99], [52, 101]]}], "x_label": "Weeks after the shot", "y_label": "LDL cholesterol (% of starting)"},
-      "strength": 0.78,
-      "source_name": "The Lancet",
-      "source_url": "https://www.thelancet.com/journals/lancet/article/PIIS0140-6736-26-orion12",
-      "factor_slug": "lerodalcibep",
-      "outcome_slug": "ldl_cholesterol",
-      "edge_id": null,
-      "is_orphan": true
-    },
-    {
-      "id": "br_lecanemab_apoe4_safety",
-      "published_at": "2026-05-10",
-      "category": "neuro",
-      "stage": "approved",
-      "audience": "general",
-      "headline": "FDA tightens monitoring for new Alzheimer's drug in people with a high-risk gene",
-      "summary": "Real-world data on lecanemab (a new Alzheimer's-disease drug) showed brain swelling in about 1 in 3 patients who carry two copies of the APOE-ε4 gene, vs about 1 in 20 of those without it. The FDA now requires more frequent MRIs and gene-aware consent.",
-      "why_it_matters": "If you or a family member is considering lecanemab, a simple APOE genetic test now meaningfully changes the risk conversation with your doctor.",
-      "graphic": {"kind": "forest_plot", "studies": [{"name": "No risk gene", "estimate": 5.4, "ci_low": 3.8, "ci_high": 7.3}, {"name": "One copy", "estimate": 10.9, "ci_low": 8.4, "ci_high": 13.9}, {"name": "Two copies", "estimate": 32.6, "ci_low": 24.1, "ci_high": 42.1}], "x_label": "Brain swelling (% of patients)", "reference": 5.4},
-      "strength": 0.85,
-      "source_name": "FDA",
-      "source_url": "https://www.fda.gov/drugs/drug-safety-and-availability/lecanemab-2026-update",
-      "factor_slug": "lecanemab",
-      "outcome_slug": "alzheimers",
       "edge_id": null,
       "is_orphan": true
     },
@@ -119,8 +399,13 @@
       "audience": "general",
       "headline": "Metformin extended-release: 4 specific lots recalled for trace impurity",
       "summary": "Aurobindo Pharma is pulling four lots of extended-release metformin (the most-prescribed diabetes pill) after small amounts of a probable carcinogen were detected. Other lots and other brands are unaffected.",
-      "why_it_matters": "Don't stop the drug. Check your bottle's NDC code against the FDA notice — if it matches, your pharmacy will switch you to a different generic or to immediate-release.",
-      "graphic": {"kind": "recall_pictogram", "lots_affected": 4, "severity": "Class II", "product": "Metformin XR"},
+      "why_it_matters": "Don't stop the drug. Check your bottle's NDC code against the FDA notice \u2014 if it matches, your pharmacy will switch you to a different generic or to immediate-release.",
+      "graphic": {
+        "kind": "recall_pictogram",
+        "lots_affected": 4,
+        "severity": "Class II",
+        "product": "Metformin XR"
+      },
       "strength": 0.75,
       "source_name": "FDA",
       "source_url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/aurobindo-2026-metformin",
@@ -130,58 +415,52 @@
       "is_orphan": false
     },
     {
-      "id": "br_rapamycin_aging_phase2",
-      "published_at": "2026-05-06",
+      "id": "br_zone2_meta_2026",
+      "published_at": "2026-04-26",
       "category": "longevity",
-      "stage": "phase2",
+      "stage": "guideline",
       "audience": "general",
-      "headline": "Low-dose rapamycin once a week improved immune response in healthy older adults",
-      "summary": "In 120 healthy adults aged 50-85, 5 mg of rapamycin once a week for 11 months raised flu-vaccine antibody response by 22% and reduced markers of immune aging. No serious side effects.",
-      "why_it_matters": "First well-run trial in healthy aging to show an immune benefit. Still early — the question now is whether the same protocol affects real-world infection or hospitalisation rates.",
-      "graphic": {"kind": "line_trend", "series": [{"label": "Rapamycin", "points": [[0, 100], [12, 108], [24, 115], [36, 119], [48, 122]]}, {"label": "Placebo", "points": [[0, 100], [12, 101], [24, 99], [36, 100], [48, 100]]}], "x_label": "Weeks", "y_label": "Immune response (vs starting)"},
-      "strength": 0.62,
-      "source_name": "Aging Cell",
-      "source_url": "https://onlinelibrary.wiley.com/doi/10.1111/acel.2026.pearl",
-      "factor_slug": "rapamycin",
-      "outcome_slug": "immunosenescence",
+      "headline": "Just 150 minutes of brisk walking a week cuts early death by a quarter",
+      "summary": "A pooled study of 1.4 million people found that hitting the standard 150 minutes a week of moderate exercise (think brisk walking, easy cycling) reduced the chance of dying early by 27%. Going beyond about 300 minutes didn't help much more \u2014 the big jump happens between zero and the first 150.",
+      "why_it_matters": "If you're sedentary, the first short walks each week are the most valuable thing you can do for your lifespan.",
+      "graphic": {
+        "kind": "forest_plot",
+        "studies": [
+          {
+            "name": "<60 min/wk",
+            "estimate": 1.0,
+            "ci_low": 0.96,
+            "ci_high": 1.04
+          },
+          {
+            "name": "60-149",
+            "estimate": 0.83,
+            "ci_low": 0.78,
+            "ci_high": 0.88
+          },
+          {
+            "name": "150-299",
+            "estimate": 0.73,
+            "ci_low": 0.69,
+            "ci_high": 0.77
+          },
+          {
+            "name": "300+",
+            "estimate": 0.69,
+            "ci_low": 0.64,
+            "ci_high": 0.74
+          }
+        ],
+        "x_label": "Chance of early death (vs sedentary)",
+        "reference": 1.0
+      },
+      "strength": 0.86,
+      "source_name": "BMJ",
+      "source_url": "https://www.bmj.com/content/2026/zone2-meta",
+      "factor_slug": "aerobic_exercise",
+      "outcome_slug": "all_cause_mortality",
       "edge_id": null,
-      "is_orphan": true
-    },
-    {
-      "id": "br_dato_dxd_tnbc_os",
-      "published_at": "2026-05-14",
-      "category": "oncology",
-      "stage": "phase3",
-      "audience": "technical",
-      "headline": "Datopotamab-deruxtecan extends overall survival in metastatic TNBC",
-      "summary": "TROPION-Breast02 randomised 540 patients with previously-treated triple-negative breast cancer. Median OS 18.4 mo vs 14.0 mo with chemo (HR 0.71, 95% CI 0.55-0.92).",
-      "why_it_matters": "First TROP2-ADC to clear an OS benefit in TNBC. Likely registrational; expect filing inside 12 months.",
-      "graphic": {"kind": "kaplan_meier", "treatment_label": "Dato-DXd", "control_label": "Chemo", "median_t": 18.4, "median_c": 14.0, "hr": 0.71, "ci_low": 0.55, "ci_high": 0.92, "x_label": "Months", "y_label": "Overall survival"},
-      "strength": 0.92,
-      "source_name": "ASCO 2026",
-      "source_url": "https://ascopubs.org/doi/10.1200/JCO.2026.40.tropion_breast02",
-      "factor_slug": "datopotamab_deruxtecan",
-      "outcome_slug": "triple_negative_breast_cancer",
-      "edge_id": null,
-      "is_orphan": true
-    },
-    {
-      "id": "br_kras_g12d_phase1",
-      "published_at": "2026-05-05",
-      "category": "oncology",
-      "stage": "phase1",
-      "audience": "technical",
-      "headline": "KRAS-G12D inhibitor MRTX1133: 41% ORR in pancreatic ductal adenocarcinoma",
-      "summary": "First-in-human Phase 1, n=78, heavily pre-treated PDAC. Objective response 41%, disease control 71%. Median PFS 7.4 months — unprecedented in this setting.",
-      "why_it_matters": "KRAS-G12D drives ~40% of pancreatic cancers. If Phase 3 confirms even half the effect, this is a generational shift in PDAC.",
-      "graphic": {"kind": "bar_delta", "bars": [{"label": "Objective response rate", "treatment": 41, "control": 8}, {"label": "Disease control rate", "treatment": 71, "control": 32}], "unit": "%", "treatment_label": "MRTX1133", "control_label": "Historical chemo"},
-      "strength": 0.71,
-      "source_name": "Nature Medicine",
-      "source_url": "https://www.nature.com/articles/s41591-026-mrtx1133",
-      "factor_slug": "mrtx1133",
-      "outcome_slug": "pancreatic_cancer",
-      "edge_id": null,
-      "is_orphan": true
+      "is_orphan": false
     }
   ]
 }
