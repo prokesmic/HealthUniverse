@@ -5,13 +5,14 @@
       "src": "api/index.py",
       "use": "@vercel/python",
       "config": {
-        "includeFiles": "{web/**,data/**,schema.sql,db.py,digest_send.py,profile.py}"
+        "includeFiles": "{web/**,data/healthuniverse.db,data/breakthroughs.json,data/art_manifest.json,data/subscribers.json,data/posts/**,data/snp_panel.json,schema.sql,db.py,digest_send.py,profile.py}"
       }
     },
     { "src": "web/static/**", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/static/(.*)", "dest": "/web/static/$1" },
+    { "src": "/api/edges.*", "dest": "/api/index.py", "headers": { "Access-Control-Allow-Origin": "*", "Cache-Control": "s-maxage=3600, stale-while-revalidate=86400" } },
     { "src": "/(.*)", "dest": "/api/index.py" }
   ],
   "crons": [

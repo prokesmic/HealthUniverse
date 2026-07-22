@@ -499,6 +499,67 @@ def me_proactive(request: Request, context: str = "", limit: int = 3,
     return {"cards": cards[:limit]}
 
 
+# ─── Evidence API (consumed by VitalShield and other clients) ─────
+
+@app.get("/api/edges")
+def api_edges(q: str = "", tier: str = "A,B", direction: str = "",
+              limit: int = 10, response: Response = None):
+    """Public JSON API over the knowledge graph.
+
+    Query by factor/outcome name or alias (`q=sleep`), filter by tier
+    (`tier=A,B`) and direction (`direction=protective`). Returns edges with
+    their top evidence rows. CORS is open — the data is public content.
+    """
+    tiers = [t.strip().upper() for t in tier.split(",") if t.strip()]
+    tiers = [t for t in tiers if t in ("A", "B", "C", "D", "X")] or ["A", "B"]
+    limit = max(1, min(limit, 50))
+    like = f"%{q.strip().lower()}%"
+    sql = f"""
+        SELECT e.id, e.direction, e.tier, e.effect_size, e.effect_quant,
+               e.population, e.mechanism, e.summary, e.caveats, e.updated_at,
+               f.slug AS factor_slug, f.name AS factor_name, f.kind AS factor_kind,
+               o.slug AS outcome_slug, o.name AS outcome_name, o.kind AS outcome_kind
+        FROM edge e
+        JOIN entity f ON f.id = e.factor_id
+        JOIN entity o ON o.id = e.outcome_id
+        WHERE e.tier IN ({','.join('?' * len(tiers))})
+    """
+    params: list = list(tiers)
+    if q.strip():
+        sql += """ AND (lower(f.name) LIKE ? OR lower(f.slug) LIKE ?
+                   OR lower(coalesce(f.aliases,'')) LIKE ?
+                   OR lower(o.name) LIKE ? OR lower(o.slug) LIKE ?
+                   OR lower(coalesce(o.aliases,'')) LIKE ?)"""
+        params += [like] * 6
+    if direction.strip():
+        sql += " AND e.direction = ?"
+        params.append(direction.strip().lower())
+    sql += " ORDER BY e.tier ASC, e.updated_at DESC LIMIT ?"
+    params.append(limit)
+
+    with connect() as conn:
+        rows = [dict(r) for r in conn.execute(sql, params).fetchall()]
+        for row in rows:
+            cites = conn.execute(
+                """SELECT citation, url, doi, pmid, year, study_type,
+                          n_participants, quality
+                   FROM evidence WHERE edge_id = ? AND is_counter = 0
+                   ORDER BY CASE study_type
+                       WHEN 'meta_analysis' THEN 0
+                       WHEN 'systematic_review' THEN 1
+                       WHEN 'rct' THEN 2 ELSE 3 END, year DESC
+                   LIMIT 3""",
+                (row["id"],),
+            ).fetchall()
+            row["citations"] = [dict(c) for c in cites]
+            row["url"] = f"https://health-universe.vercel.app/edge/{row['id']}"
+
+    resp = JSONResponse({"edges": rows, "count": len(rows)})
+    resp.headers["Access-Control-Allow-Origin"] = "*"
+    resp.headers["Cache-Control"] = "s-maxage=3600, stale-while-revalidate=86400"
+    return resp
+
+
 # ─── Conversational onboarding (single question, branching) ──────
 
 @app.get("/welcome", response_class=HTMLResponse)
