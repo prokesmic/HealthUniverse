@@ -1,8 +1,38 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-08-05",
+  "updated_at": "2026-08-07",
   "items": [
+    {
+      "id": "br_cd80dcb8bd64e525",
+      "published_at": "2026-08-06",
+      "category": "neuro",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Blood thinner more effective than standard drug for migraines linked to heart hole",
+      "summary": "A blood thinner reduced migraine frequency more than standard treatment in people with a heart hole (PFO). 78% of patients on the blood thinner had fewer migraines versus 62% on standard drug, a 16% absolute improvement.",
+      "why_it_matters": "If you have migraines and a heart hole (PFO), ask your doctor if a blood thinner might be a better option than standard migraine medication.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Migraine prevention rate",
+            "treatment": 78,
+            "control": 62
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Blood thinner",
+        "control_label": "Standard drug"
+      },
+      "strength": 0.9,
+      "source_name": "BMJ",
+      "source_url": "https://www.bmj.com/content/394/bmj-2026-100103/rr-2",
+      "factor_slug": "blood_thinner",
+      "outcome_slug": "migraine_prevention",
+      "edge_id": null,
+      "is_orphan": true
+    },
     {
       "id": "br_bb11334112b54274",
       "published_at": "2026-08-04",
@@ -30,6 +60,36 @@
       "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2851693",
       "factor_slug": "oral_carbapenem",
       "outcome_slug": "complicated_utis",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_6385c93e7b351a52",
+      "published_at": "2026-08-04",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves first generic single-dose flu treatment, increasing affordability",
+      "summary": "The FDA approved the first generic version of a single-dose influenza treatment. This will expand access and reduce costs for patients.",
+      "why_it_matters": "Ask your doctor about this affordable flu treatment option for faster symptom relief during flu season.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Cost",
+            "treatment": 20,
+            "control": 100
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Generic treatment",
+        "control_label": "Brand-name treatment"
+      },
+      "strength": 0.8,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2851691",
+      "factor_slug": "generic_flu_treatment",
+      "outcome_slug": "influenza",
       "edge_id": null,
       "is_orphan": true
     },
