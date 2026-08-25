@@ -1,8 +1,68 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-08-19",
+  "updated_at": "2026-08-25",
   "items": [
+    {
+      "id": "br_26eed9a442dc0494",
+      "published_at": "2026-08-24",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Pre-op iron reduces blood needs and improves recovery after heart surgery",
+      "summary": "For heart surgery patients with anemia, a single 1000 mg iron dose cut blood transfusions from 68.2% to 61.1%. It also increased days alive and at home at 90 days.",
+      "why_it_matters": "If you're having heart surgery with anemia, ask your doctor about pre-surgery iron to reduce blood transfusions and speed recovery.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Blood transfusion rate",
+            "treatment": 61.1,
+            "control": 68.2
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Intravenous iron",
+        "control_label": "Standard care"
+      },
+      "strength": 0.85,
+      "source_name": "BMJ",
+      "source_url": "https://www.bmj.com/content/394/bmj-2026-100407/rr-5",
+      "factor_slug": "intravenous_iron",
+      "outcome_slug": "blood_transfusion",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_f8bbb8f9c34029d8",
+      "published_at": "2026-08-22",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "IV iron before heart surgery reduces need for blood transfusions by 7%",
+      "summary": "IV iron before heart surgery reduced blood transfusion rates from 68.2% to 61.1%. This represents a 7.1% absolute risk reduction.",
+      "why_it_matters": "If you're having heart surgery and have anemia, ask your doctor if IV iron could lower your risk of needing a blood transfusion.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Blood transfusion rate",
+            "treatment": 61.1,
+            "control": 68.2
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "IV iron",
+        "control_label": "Placebo"
+      },
+      "strength": 0.8,
+      "source_name": "BMJ",
+      "source_url": "https://www.bmj.com/content/394/bmj-2026-100407/rr-4",
+      "factor_slug": "iv_iron",
+      "outcome_slug": "transfusion_reduction",
+      "edge_id": null,
+      "is_orphan": true
+    },
     {
       "id": "br_ab673401325c68f1",
       "published_at": "2026-08-18",
@@ -1151,54 +1211,6 @@
       "source_url": "https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts/aurobindo-2026-metformin",
       "factor_slug": "metformin",
       "outcome_slug": null,
-      "edge_id": null,
-      "is_orphan": false
-    },
-    {
-      "id": "br_zone2_meta_2026",
-      "published_at": "2026-04-26",
-      "category": "longevity",
-      "stage": "guideline",
-      "audience": "general",
-      "headline": "Just 150 minutes of brisk walking a week cuts early death by a quarter",
-      "summary": "A pooled study of 1.4 million people found that hitting the standard 150 minutes a week of moderate exercise (think brisk walking, easy cycling) reduced the chance of dying early by 27%. Going beyond about 300 minutes didn't help much more \u2014 the big jump happens between zero and the first 150.",
-      "why_it_matters": "If you're sedentary, the first short walks each week are the most valuable thing you can do for your lifespan.",
-      "graphic": {
-        "kind": "forest_plot",
-        "studies": [
-          {
-            "name": "<60 min/wk",
-            "estimate": 1.0,
-            "ci_low": 0.96,
-            "ci_high": 1.04
-          },
-          {
-            "name": "60-149",
-            "estimate": 0.83,
-            "ci_low": 0.78,
-            "ci_high": 0.88
-          },
-          {
-            "name": "150-299",
-            "estimate": 0.73,
-            "ci_low": 0.69,
-            "ci_high": 0.77
-          },
-          {
-            "name": "300+",
-            "estimate": 0.69,
-            "ci_low": 0.64,
-            "ci_high": 0.74
-          }
-        ],
-        "x_label": "Chance of early death (vs sedentary)",
-        "reference": 1.0
-      },
-      "strength": 0.86,
-      "source_name": "BMJ",
-      "source_url": "https://www.bmj.com/content/2026/zone2-meta",
-      "factor_slug": "aerobic_exercise",
-      "outcome_slug": "all_cause_mortality",
       "edge_id": null,
       "is_orphan": false
     }
