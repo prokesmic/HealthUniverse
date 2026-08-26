@@ -1,8 +1,73 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-08-25",
+  "updated_at": "2026-08-26",
   "items": [
+    {
+      "id": "br_7e72d1fb17965942",
+      "published_at": "2026-08-25",
+      "category": "neuro",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves home start for Alzheimer's antibody treatment",
+      "summary": "The FDA approved a new subcutaneous starting dose for lecanemab, allowing patients to begin Alzheimer's treatment at home. This eliminates the need for an initial clinic visit.",
+      "why_it_matters": "Alzheimer's patients can now start treatment at home, reducing travel burden for early therapy initiation.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Old Regimen",
+            "treatment": 100,
+            "control": 0
+          },
+          {
+            "label": "New Regimen",
+            "treatment": 0,
+            "control": 100
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Clinic visits needed",
+        "control_label": "Home administration"
+      },
+      "strength": 0.9,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2852497",
+      "factor_slug": "lecanemab",
+      "outcome_slug": "alzheimers",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_39fdd03b34d86bf2",
+      "published_at": "2026-08-25",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New algorithm safely rules out blood clots in cancer patients, avoiding CT scans",
+      "summary": "A new diagnostic algorithm for blood clots in cancer patients was as safe and efficient as standard CT scans in a large trial. It reduced the need for CT scans, avoiding radiation and contrast exposure.",
+      "why_it_matters": "Cancer patients may now avoid unnecessary CT scans for blood clot diagnosis, reducing radiation exposure and contrast use.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "CT scans avoided",
+            "treatment": 30,
+            "control": 0
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "YEARS algorithm",
+        "control_label": "CT pulmonary angiography"
+      },
+      "strength": 0.8,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2851621",
+      "factor_slug": "years_algorithm",
+      "outcome_slug": "pulmonary_embolism",
+      "edge_id": null,
+      "is_orphan": true
+    },
     {
       "id": "br_26eed9a442dc0494",
       "published_at": "2026-08-24",
