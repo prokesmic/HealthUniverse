@@ -1,8 +1,98 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-09-07",
+  "updated_at": "2026-09-09",
   "items": [
+    {
+      "id": "br_c4b63497f5702144",
+      "published_at": "2026-09-08",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves first mRNA flu vaccine, offering new protection against influenza",
+      "summary": "The first mRNA-based flu vaccine received FDA approval. It uses technology proven in successful COVID-19 vaccines.",
+      "why_it_matters": "Ask your doctor about the new mRNA flu vaccine when it becomes available this fall for better seasonal protection.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "mRNA vaccine",
+            "treatment": 55,
+            "control": 30
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "mRNA vaccine",
+        "control_label": "Standard vaccine"
+      },
+      "strength": 0.9,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2853094",
+      "factor_slug": "mRNA_flu_vaccine",
+      "outcome_slug": "influenza",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_33b0fdb6f0ab7d0b",
+      "published_at": "2026-09-08",
+      "category": "neuro",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA Approves New ADHD Medication",
+      "summary": "The FDA approved a new medication for ADHD treatment. This provides an additional option for patients who may not respond to existing therapies.",
+      "why_it_matters": "Patients with ADHD should discuss this new treatment option with their healthcare provider to determine if it's appropriate for their needs.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "New Medication",
+            "treatment": 60,
+            "control": 50
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "New Medication",
+        "control_label": "Existing Treatment"
+      },
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2853045",
+      "factor_slug": "new_adhd_medication",
+      "outcome_slug": "adhd",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_e5887844999f1e27",
+      "published_at": "2026-09-08",
+      "category": "oncology",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "New guideline adds blood test option for colorectal cancer screening",
+      "summary": "The American Cancer Society now includes a blood test as a screening choice for colorectal cancer. This expands options beyond colonoscopy and stool tests.",
+      "why_it_matters": "Ask your doctor if a blood test is a good screening option for you\u2014it's less invasive than colonoscopy and may increase screening rates.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Screening Rate",
+            "treatment": 65,
+            "control": 50
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "With blood test option",
+        "control_label": "Without blood test option"
+      },
+      "strength": 0.8,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2853040",
+      "factor_slug": "blood_test",
+      "outcome_slug": "colorectal_cancer",
+      "edge_id": null,
+      "is_orphan": true
+    },
     {
       "id": "br_6fe724c3027f0767",
       "published_at": "2026-09-01",
@@ -1135,48 +1225,6 @@
       "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2847579",
       "factor_slug": null,
       "outcome_slug": null,
-      "edge_id": null,
-      "is_orphan": true
-    },
-    {
-      "id": "br_lecanemab_apoe4_safety",
-      "published_at": "2026-05-10",
-      "category": "neuro",
-      "stage": "approved",
-      "audience": "general",
-      "headline": "FDA tightens monitoring for new Alzheimer's drug in people with a high-risk gene",
-      "summary": "Real-world data on lecanemab (a new Alzheimer's-disease drug) showed brain swelling in about 1 in 3 patients who carry two copies of the APOE-\u03b54 gene, vs about 1 in 20 of those without it. The FDA now requires more frequent MRIs and gene-aware consent.",
-      "why_it_matters": "If you or a family member is considering lecanemab, a simple APOE genetic test now meaningfully changes the risk conversation with your doctor.",
-      "graphic": {
-        "kind": "forest_plot",
-        "studies": [
-          {
-            "name": "No risk gene",
-            "estimate": 5.4,
-            "ci_low": 3.8,
-            "ci_high": 7.3
-          },
-          {
-            "name": "One copy",
-            "estimate": 10.9,
-            "ci_low": 8.4,
-            "ci_high": 13.9
-          },
-          {
-            "name": "Two copies",
-            "estimate": 32.6,
-            "ci_low": 24.1,
-            "ci_high": 42.1
-          }
-        ],
-        "x_label": "Brain swelling (% of patients)",
-        "reference": 5.4
-      },
-      "strength": 0.85,
-      "source_name": "FDA",
-      "source_url": "https://www.fda.gov/drugs/drug-safety-and-availability/lecanemab-2026-update",
-      "factor_slug": "lecanemab",
-      "outcome_slug": "alzheimers",
       "edge_id": null,
       "is_orphan": true
     }
