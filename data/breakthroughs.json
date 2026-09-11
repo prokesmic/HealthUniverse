@@ -1,8 +1,43 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-09-09",
+  "updated_at": "2026-09-11",
   "items": [
+    {
+      "id": "br_7878d119f83dc7e0",
+      "published_at": "2026-09-10",
+      "category": "metabolic",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "Bone health: 600 METs-min/week of walking/jogging, plus falls risk assessment.",
+      "summary": "Aim for 600 METs-min/week of brisk walking or jogging to boost bone density. Assess falls risk alongside exercise to prevent fractures.",
+      "why_it_matters": "To protect your bones, do 600 METs-min/week of walking/jogging and talk to your doctor about fall prevention.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "600 METs-min/week",
+            "treatment": 5,
+            "control": 0
+          },
+          {
+            "label": "Over 600",
+            "treatment": -2,
+            "control": 0
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Bone density change",
+        "control_label": "Baseline"
+      },
+      "strength": 0.8,
+      "source_name": "BMJ",
+      "source_url": "https://www.bmj.com/content/394/bmj-2026-100561/rr",
+      "factor_slug": "walking_jogging",
+      "outcome_slug": "bone_density",
+      "edge_id": null,
+      "is_orphan": true
+    },
     {
       "id": "br_c4b63497f5702144",
       "published_at": "2026-09-08",
@@ -1169,62 +1204,6 @@
       "source_url": "https://ascopubs.org/doi/10.1200/JCO.2026.40.tropion_breast02",
       "factor_slug": "datopotamab_deruxtecan",
       "outcome_slug": "triple_negative_breast_cancer",
-      "edge_id": null,
-      "is_orphan": true
-    },
-    {
-      "id": "br_semaglutide_mash_phase3",
-      "published_at": "2026-05-12",
-      "category": "metabolic",
-      "stage": "phase3",
-      "audience": "general",
-      "headline": "Ozempic-class drug improves fatty liver disease in nearly two-thirds of patients",
-      "summary": "In an 800-person trial running 18 months, weekly semaglutide (the active ingredient in Ozempic and Wegovy) cleared fatty-liver inflammation in 63% of people vs 34% on placebo. Liver scarring also improved, and weight came down alongside.",
-      "why_it_matters": "Fatty liver disease affects roughly one in four adults and had almost no medical treatment. Now there's one that also helps with weight.",
-      "graphic": {
-        "kind": "bar_delta",
-        "bars": [
-          {
-            "label": "Liver inflammation cleared",
-            "treatment": 62.9,
-            "control": 34.3
-          },
-          {
-            "label": "Less liver scarring",
-            "treatment": 36.8,
-            "control": 22.4
-          }
-        ],
-        "unit": "%",
-        "treatment_label": "Semaglutide",
-        "control_label": "Placebo"
-      },
-      "strength": 0.9,
-      "source_name": "NEJM",
-      "source_url": "https://www.nejm.org/doi/10.1056/NEJMoa2607",
-      "factor_slug": "semaglutide",
-      "outcome_slug": "mash",
-      "edge_id": null,
-      "is_orphan": true
-    },
-    {
-      "id": "br_51855ea1b4a83add",
-      "published_at": "2026-05-12",
-      "category": "other",
-      "stage": "approved",
-      "audience": "general",
-      "headline": "Using an extra antibiotic in wound closure for leg fracture surgerysness",
-      "summary": "The study compared whether applying tobramycin and vancomycin powders topically to a surgical incision during closure of definitive fixation was more effective than applying vancomycin powder alone in reducing deep surgical site infection in periarticular tibial fractures.",
-      "why_it_matters": "",
-      "graphic": {
-        "kind": "bar_delta",
-        "bars": []
-      },
-      "strength": 0.9,
-      "source_name": "JAMA",
-      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2847579",
-      "factor_slug": null,
-      "outcome_slug": null,
       "edge_id": null,
       "is_orphan": true
     }
