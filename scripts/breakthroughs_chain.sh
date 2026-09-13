@@ -46,12 +46,20 @@ POST_COUNT=$($PY -c "import json,sys; sys.path.insert(0,'.'); \
 ADDED=$((POST_COUNT - PRE_COUNT))
 log "→ items: ${PRE_COUNT} → ${POST_COUNT} (added ${ADDED})"
 
-# ─── 2. Regenerate orphan brief ───────────────────────────────────
-log "→ regenerating orphan brief"
-BRIEF_OUT=$($PY scripts/orphans_to_brief.py 2>&1)
-log "$BRIEF_OUT"
-ORPHAN_COUNT=$(echo "$BRIEF_OUT" | sed -nE 's/.* ([0-9]+) candidates .*/\1/p' | head -1)
-ORPHAN_COUNT="${ORPHAN_COUNT:-0}"
+# ─── 2. Regenerate orphan brief — WEEKLY, on Sunday ───────────────
+# A brief nobody reads is a GPU burning. One a week, with the bar raised,
+# is a queue a person (or a Codex run) can actually clear. The breakthroughs
+# feed itself still updates daily above.
+ORPHAN_COUNT=0
+if [ "$(date +%u)" = "7" ]; then
+  log "→ regenerating orphan brief (weekly)"
+  BRIEF_OUT=$($PY scripts/orphans_to_brief.py --min-strength 0.7 2>&1)
+  log "$BRIEF_OUT"
+  ORPHAN_COUNT=$(echo "$BRIEF_OUT" | sed -nE 's/.* ([0-9]+) candidates .*/\1/p' | head -1)
+  ORPHAN_COUNT="${ORPHAN_COUNT:-0}"
+else
+  log "→ orphan brief skipped (weekly, Sunday)"
+fi
 
 # ─── 3. Git push so Vercel redeploys ──────────────────────────────
 if [ "$ADDED" -gt 0 ] || [ "$ORPHAN_COUNT" -gt 0 ]; then
@@ -82,8 +90,8 @@ if [ "$ADDED" -gt 0 ]; then
   ntfy "Health Universe: +${ADDED} breakthrough$([ "$ADDED" -eq 1 ] || echo s)" \
 "${ORPHAN_COUNT} orphan$([ "$ORPHAN_COUNT" -eq 1 ] || echo s) ready for Codex seeding.
 
-https://healthuniverse.vercel.app/breakthroughs
-https://healthuniverse.vercel.app/admin/breakthrough-orphans" "test_tube"
+https://health-universe.vercel.app/breakthroughs
+https://health-universe.vercel.app/admin/breakthrough-orphans" "test_tube"
   log "→ ntfy sent"
 elif [ "$ORPHAN_COUNT" -gt 5 ]; then
   ntfy "Health Universe: ${ORPHAN_COUNT} orphans backlog" \
