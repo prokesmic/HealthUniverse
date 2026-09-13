@@ -16,6 +16,7 @@ This is the work that makes the graph "living". Costs $0 (Gemma local).
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -24,6 +25,14 @@ sys.path.insert(0, str(ROOT))
 
 from db import connect          # noqa: E402
 from ollama_client import call_json, OllamaUnavailable  # noqa: E402
+
+# Claim extraction is a structured-JSON task, not a reasoning one. The thinking
+# model (qwen3:30b-thinking, the .env default) couldn't finish an abstract within
+# the 120s Ollama timeout and blew up the whole daily run on the first paper
+# (`STOP: Ollama call failed after retries: timed out`, every day 6/10–6/17).
+# The instruct model takes the fast format:json path (~3-8s/abstract) and is the
+# recommended local model for structured extraction. Override via HU_INGEST_MODEL.
+INGEST_MODEL = os.getenv("HU_INGEST_MODEL", "qwen3:30b-instruct")
 from ingest import pubmed, europepmc  # noqa: E402
 try:
     from dedupe import find_near_edge      # noqa: E402
@@ -142,10 +151,36 @@ def _papers_for_today(conn, days_back: int = 2, per_entity: int = 8) -> list[dic
     """Fetch fresh abstracts for top-priority entities, dedupe by PMID/DOI."""
     seen: set[str] = set()
     papers: list[dict] = []
-    rows = conn.execute(
-        "SELECT slug, name FROM entity WHERE kind IN "
-        "('food','nutrient','supplement','condition','process','behavior','activity') "
-        "ORDER BY id LIMIT 60").fetchall()
+    # Entities VitalShield can act on come first: it writes the list nightly
+    # (data/vitalshield_priority.json) from the exposures it measures and the
+    # outcomes it tracks. The rest of the 60-slot budget fills in id order as
+    # before, so nothing that was being read stops being read entirely.
+    priority: list[str] = []
+    try:
+        pf = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                          "data", "vitalshield_priority.json")
+        if os.path.exists(pf):
+            priority = list(json.load(open(pf)).get("slugs", []))
+    except Exception as e:
+        print(f"  [priority] unreadable, ignoring: {e}", file=sys.stderr)
+    rows = []
+    if priority:
+        marks = ",".join("?" * len(priority))
+        rows = conn.execute(
+            "SELECT slug, name FROM entity WHERE slug IN (" + marks + ") ORDER BY id",
+            priority).fetchall()
+    have = {r["slug"] for r in rows}
+    for r in conn.execute(
+            "SELECT slug, name FROM entity WHERE kind IN "
+            "('food','nutrient','supplement','condition','process','behavior','activity') "
+            "ORDER BY id LIMIT 60").fetchall():
+        if len(rows) >= 60:
+            break
+        if r["slug"] not in have:
+            rows.append(r)
+            have.add(r["slug"])
+    print(f"  [priority] {len(have & set(priority))} VitalShield entities first, {len(rows)} total",
+          file=sys.stderr)
     for r in rows:
         try:
             pmids = pubmed.search_for_entity(r["name"], days_back=days_back, retmax=per_entity)
@@ -364,6 +399,7 @@ def run(*, days_back: int = 2, per_entity: int = 6, dry_run: bool = False) -> di
     print(f"[ingest] {len(papers)} unique papers fetched")
     summary["papers"] = len(papers)
 
+    consecutive_unavail = 0
     for i, p in enumerate(papers):
         with connect() as conn:
             if _already_ingested(conn, p):
@@ -383,15 +419,27 @@ def run(*, days_back: int = 2, per_entity: int = 6, dry_run: bool = False) -> di
         for attempt in range(2):
             try:
                 extraction = call_json(
+                    model=INGEST_MODEL,
                     system=EXTRACT_SYSTEM if attempt == 0
                         else EXTRACT_SYSTEM + " /no_think Return ONLY the JSON object. Do not think out loud, do not explain, do not add any prose before or after.",
                     user=user_prompt,
                     temperature=0.0 if attempt == 1 else 0.1,
                     num_predict=3000 if attempt == 0 else 4500,
                 )
+                consecutive_unavail = 0
                 break
             except OllamaUnavailable as e:
-                print(f"[ingest] STOP: {e}"); return summary
+                # call() health-checks Ollama before each request, so reaching here
+                # means Ollama is up but this one generation blew the timeout (a long
+                # abstract / cold reload). Skip this paper rather than discarding the
+                # whole run — bail only if it keeps happening (a genuine outage).
+                consecutive_unavail += 1
+                last_err = e
+                if consecutive_unavail >= 3:
+                    print(f"[ingest] STOP: Ollama unavailable {consecutive_unavail}x in a row: {e}")
+                    return summary
+                print(f"[ingest] skip (Ollama timeout {consecutive_unavail}/3) '{title}': {e}")
+                break
             except Exception as e:
                 last_err = e
                 continue
