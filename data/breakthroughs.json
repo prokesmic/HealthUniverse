@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-09-11",
+  "updated_at": "2026-09-13",
   "items": [
     {
       "id": "br_7878d119f83dc7e0",
@@ -125,6 +125,35 @@
       "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2853040",
       "factor_slug": "blood_test",
       "outcome_slug": "colorectal_cancer",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_036069b76d4e1788",
+      "published_at": "2026-09-08",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Combination therapy extends survival in EGFR lung cancer by over 10 months",
+      "summary": "A phase 3 trial showed adding chemotherapy to targeted therapy increased median survival from 37.6 to 47.5 months. The combination reduced death risk by 23% compared to targeted therapy alone.",
+      "why_it_matters": "If you or a loved one has EGFR-mutated lung cancer, discuss combination therapy with your doctor as a first-line treatment option.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Combination therapy",
+        "control_label": "Targeted therapy alone",
+        "median_t": 47.5,
+        "median_c": 37.6,
+        "hr": 0.77,
+        "ci_low": 0.61,
+        "ci_high": 0.96,
+        "x_label": "Months",
+        "y_label": "Overall survival"
+      },
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2852633",
+      "factor_slug": "osimertinib_plus_platinum_pemetrexed",
+      "outcome_slug": "overall_survival",
       "edge_id": null,
       "is_orphan": true
     },
@@ -1175,35 +1204,6 @@
       "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2848066",
       "factor_slug": null,
       "outcome_slug": null,
-      "edge_id": null,
-      "is_orphan": true
-    },
-    {
-      "id": "br_dato_dxd_tnbc_os",
-      "published_at": "2026-05-14",
-      "category": "oncology",
-      "stage": "phase3",
-      "audience": "technical",
-      "headline": "Datopotamab-deruxtecan extends overall survival in metastatic TNBC",
-      "summary": "TROPION-Breast02 randomised 540 patients with previously-treated triple-negative breast cancer. Median OS 18.4 mo vs 14.0 mo with chemo (HR 0.71, 95% CI 0.55-0.92).",
-      "why_it_matters": "First TROP2-ADC to clear an OS benefit in TNBC. Likely registrational; expect filing inside 12 months.",
-      "graphic": {
-        "kind": "kaplan_meier",
-        "treatment_label": "Dato-DXd",
-        "control_label": "Chemo",
-        "median_t": 18.4,
-        "median_c": 14.0,
-        "hr": 0.71,
-        "ci_low": 0.55,
-        "ci_high": 0.92,
-        "x_label": "Months",
-        "y_label": "Overall survival"
-      },
-      "strength": 0.92,
-      "source_name": "ASCO 2026",
-      "source_url": "https://ascopubs.org/doi/10.1200/JCO.2026.40.tropion_breast02",
-      "factor_slug": "datopotamab_deruxtecan",
-      "outcome_slug": "triple_negative_breast_cancer",
       "edge_id": null,
       "is_orphan": true
     }
