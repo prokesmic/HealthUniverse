@@ -1,8 +1,73 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-09-13",
+  "updated_at": "2026-09-16",
   "items": [
+    {
+      "id": "br_6e04af7812b96e19",
+      "published_at": "2026-09-15",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves first freeze-dried plasma product for U.S. use",
+      "summary": "The FDA approved the first freeze-dried plasma product in the U.S. This product can be stored at room temperature and reconstituted quickly for emergency use.",
+      "why_it_matters": "This means plasma can now be transported without refrigeration, improving emergency care access in remote areas and during disasters.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Room temperature storage",
+            "treatment": 100,
+            "control": 0
+          },
+          {
+            "label": "Refrigerated storage",
+            "treatment": 0,
+            "control": 100
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Freeze-dried plasma",
+        "control_label": "Liquid plasma"
+      },
+      "strength": 0.9,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2853282",
+      "factor_slug": "freeze_dried_plasma",
+      "outcome_slug": "blood_transfusion",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_dbcab62e632791ef",
+      "published_at": "2026-09-15",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves first pill combining pain reliever and anti-inflammatory drug",
+      "summary": "The FDA approved the first fixed-dose combination of acetaminophen and naproxen sodium. This single pill aims to simplify pain management for conditions like arthritis.",
+      "why_it_matters": "Patients managing pain and inflammation may now have a single-pill option, potentially improving treatment consistency without needing multiple medications.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Pain relief at 2 hours",
+            "treatment": 75,
+            "control": 70
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Combination pill",
+        "control_label": "Placebo"
+      },
+      "strength": 0.6,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2853280",
+      "factor_slug": "acetaminophen_naproxen_combo",
+      "outcome_slug": "pain_inflammation",
+      "edge_id": null,
+      "is_orphan": true
+    },
     {
       "id": "br_7878d119f83dc7e0",
       "published_at": "2026-09-10",
