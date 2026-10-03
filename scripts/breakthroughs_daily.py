@@ -23,6 +23,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
 import sys
 import time
@@ -40,7 +41,11 @@ from web.breakthroughs import (   # noqa: E402
 )
 
 OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
-OLLAMA_MODEL = "gemma4:26b"           # falls back to llama3:8b if unavailable
+# 03.10.2026: instruct, like the rest of the box (ingest, bursts, Health). The
+# thinking variant took 80 min a morning and forced an 18 GB reload for every
+# other caller; the non-thinking branch below (format json, 700 tokens) is
+# the one the ingest pipeline has run on since 19.08. Override via OLLAMA_MODEL.
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen3:30b-instruct")
 KEEP_DAYS = 120
 MIN_STRENGTH = 0.55
 
@@ -53,10 +58,11 @@ FEEDS = [
     ("Lancet",            "https://www.thelancet.com/rssfeed/lancet_current.xml"),
     ("Nature Medicine",   "https://www.nature.com/nm.rss"),
     ("Cell",              "https://www.cell.com/cell/inpress.rss"),
-    ("BMJ",               "https://www.bmj.com/content/recent.rss"),
+    ("BMJ",               "https://www.bmj.com/rss.xml"),
     # Cardio
     ("JACC",              "https://www.jacc.org/action/showFeed?type=etoc&feed=rss&jc=jac"),
-    ("Circulation",       "https://www.ahajournals.org/action/showFeed?type=etoc&feed=rss&jc=circ"),
+    # ahajournals.org killed its RSS endpoints; PubMed journal feed instead
+    ("Circulation",       "https://pubmed.ncbi.nlm.nih.gov/rss/journals/0147763/?limit=50&name=Circulation"),
     # Oncology
     ("JCO",               "https://ascopubs.org/action/showFeed?type=etoc&feed=rss&jc=jco"),
     ("Lancet Oncology",   "https://www.thelancet.com/rssfeed/lanonc_current.xml"),
@@ -69,7 +75,10 @@ FEEDS = [
     ("STAT News",         "https://www.statnews.com/feed/"),
 ]
 
-USER_AGENT = "HealthUniverse-BreakthroughsBot/1.0 (+contact: prokesmic@gmail.com)"
+# Browser UA: several feeds (e.g. endpts.com behind Cloudflare) 403 a bot-style
+# UA. A standard browser string fetches the public RSS reliably. (2026-06-09)
+USER_AGENT = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+              "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 
 # ─── Fetching ─────────────────────────────────────────────────────
 
@@ -156,19 +165,26 @@ def gemma_classify(raw: dict) -> dict | None:
         title=raw["title"], summary=raw["summary"][:500], source=raw["source_name"],
         link=raw["link"], published=raw["published"],
     )
+    _thinking = "thinking" in OLLAMA_MODEL
     payload = {
         "model": OLLAMA_MODEL,
         "prompt": prompt,
         "stream": False,
-        "format": "json",
-        "options": {"temperature": 0.2, "num_predict": 700},
+        # thinking models: think=true + big num_predict, NOT format:json (would
+        # return empty content). The parser below already extracts JSON from text.
+        "options": {"temperature": 0.2, "num_predict": 4096 if _thinking else 700},
     }
+    if _thinking:
+        payload["think"] = True
+    else:
+        payload["format"] = "json"
     try:
         req = urllib.request.Request(
             OLLAMA_URL, data=json.dumps(payload).encode(),
             headers={"Content-Type": "application/json"},
         )
-        with urllib.request.urlopen(req, timeout=120) as r:
+        # 30B thinking model: cold load + long think phase routinely exceeds 120s
+        with urllib.request.urlopen(req, timeout=600) as r:
             body = json.loads(r.read())
     except Exception as e:
         print(f"  ✗ ollama failed: {e}", file=sys.stderr)
@@ -215,6 +231,12 @@ OUTPUT — a single JSON object with these keys only:
 RULES
 - Reject animal-only studies (set is_breakthrough=false).
 - Reject press releases without numbers unless they're a guideline/approval/recall.
+- Use ONLY facts and numbers that appear in the title or summary above. Never invent
+  effect sizes, percentages, follow-up times or "early results". If the summary
+  reports no result (only a design, a deal, a partnership, a letter or commentary),
+  set is_breakthrough=false unless it is a regulatory approval, guideline or recall.
+- News items, letters and commentaries about a study are not themselves findings;
+  keep them only if the summary states the study's concrete result.
 - "headline" must not use: breakthrough, miracle, cure, game-changer, revolutionary.
 - "headline" must not contain raw drug code names like "MRTX1133", "BMS-986365" or
   acronyms a general reader wouldn't recognise. Use the class/mechanism or the
