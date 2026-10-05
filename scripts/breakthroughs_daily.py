@@ -258,8 +258,49 @@ Return ONLY the JSON. No prose.
 
 # ─── Build a card from raw + Gemma output ─────────────────────────
 
+# ─── Grounding gate (05.10.2026) ──────────────────────────────────
+# The prompt asks for "only facts in the summary"; qwen3:30b-instruct still
+# wrote results into design-only JAMA blurbs ("1.5 more days alive and at
+# home", "improved weight") and those went live 04.10. So the rules that can
+# be checked mechanically are checked here, not left to the model.
+
+_LETTER = re.compile(r"^\s*(to the editor|in reply|re:)", re.I)
+_DESIGN_ONLY = re.compile(
+    r"^\s*(this|the objective of this|in this)\s+([\w-]+\s+){0,4}?"
+    r"(trial|study|analysis|review|survey|meta-analysis)\s+(was to\s+)?"
+    r"(assesses|assess|evaluates|evaluate|examines|examine|compares|compare|"
+    r"investigates|investigated|investigate|describes|estimates|characterizes|aims)\b",
+    re.I)
+_RESULT = re.compile(
+    r"\b(found|showed|demonstrated|reduced|lowered|decreased|increased|improved|"
+    r"was associated|were associated|resulted in|led to|declined|fell|rose)\b", re.I)
+
+
+def _nums(s: str) -> set[str]:
+    s = re.sub(r"(?<=\d),(?=\d{3})", "", s or "")
+    return set(re.findall(r"\d+(?:\.\d+)?", s))
+
+
+def ungrounded(raw: dict, llm: dict) -> str | None:
+    """Reason to reject an LLM card that the source text cannot support, else None."""
+    title, summary = raw.get("title", ""), raw.get("summary", "")
+    if _LETTER.match(title) or _LETTER.match(summary) or "/rr-" in raw.get("link", ""):
+        return "letter/reply, not a finding"
+    if _DESIGN_ONLY.match(summary) and not _RESULT.search(summary):
+        return "source states only the study design, no result"
+    gen = " ".join(str(llm.get(k, "")) for k in ("headline", "summary", "why_it_matters"))
+    extra = _nums(gen) - _nums(title + " " + summary)
+    if extra:
+        return f"numbers not in source: {', '.join(sorted(extra))}"
+    return None
+
+
 def build_card(raw: dict, llm: dict) -> dict | None:
     if not llm.get("is_breakthrough"):
+        return None
+    why = ungrounded(raw, llm)
+    if why:
+        print(f"      ✗ ungrounded: {why}")
         return None
     strength = float(llm.get("strength", 0))
     if strength < MIN_STRENGTH:
