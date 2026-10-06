@@ -157,6 +157,47 @@ def _jaccard(a: str, b: str) -> float:
     return len(sa & sb) / len(sa | sb)
 
 
+# ─── Memory of judged items + fair share per source (06.10.2026) ──
+# dedupe() only knows *kept* cards, so every rejected JAMA item came back the
+# next morning and the first 40 candidates were always the same JAMA list:
+# FDA/STAT/Endpoints were never reached, and a card removed by hand was simply
+# re-published. Judged links are remembered here; an Ollama failure is NOT
+# remembered (no verdict — it is retried tomorrow).
+
+SEEN_PATH = ROOT / "data" / "cache" / "breakthroughs_seen.json"
+
+
+def load_seen() -> dict:
+    try:
+        return json.loads(SEEN_PATH.read_text())
+    except FileNotFoundError:
+        return {}
+
+
+def save_seen(seen: dict) -> None:
+    cutoff = (date.today() - timedelta(days=KEEP_DAYS)).isoformat()
+    keep = {k: v for k, v in seen.items()
+            if v.get("verdict") == "removed" or v.get("at", "") >= cutoff}
+    SEEN_PATH.parent.mkdir(parents=True, exist_ok=True)
+    tmp = SEEN_PATH.with_suffix(f".{os.getpid()}.tmp")
+    tmp.write_text(json.dumps(keep, indent=1, sort_keys=True))
+    os.replace(tmp, SEEN_PATH)
+
+
+def interleave(candidates: list[dict]) -> list[dict]:
+    """Round-robin across sources, keeping each feed's own order."""
+    by_src: dict[str, list[dict]] = {}
+    for c in candidates:
+        by_src.setdefault(c.get("source_name", ""), []).append(c)
+    queues = list(by_src.values())
+    out: list[dict] = []
+    while queues:
+        for q in queues:
+            out.append(q.pop(0))
+        queues = [q for q in queues if q]
+    return out
+
+
 # ─── Ollama ───────────────────────────────────────────────────────
 
 def gemma_classify(raw: dict) -> dict | None:
@@ -375,9 +416,14 @@ def main(argv: list[str]) -> int:
         time.sleep(0.5)  # be polite
 
     print(f"→ {len(raw)} raw items; deduping…")
-    candidates = dedupe(raw, existing)
-    print(f"→ {len(candidates)} new candidates after dedupe")
-    candidates = candidates[: args.limit]
+    seen = load_seen()
+    candidates = [c for c in dedupe(raw, existing) if c["link"] not in seen]
+    print(f"→ {len(candidates)} new candidates after dedupe + already-judged")
+    candidates = interleave(candidates)[: args.limit]
+    share: dict[str, int] = {}
+    for c in candidates:
+        share[c["source_name"]] = share.get(c["source_name"], 0) + 1
+    print("→ this run: " + ", ".join(f"{k} {v}" for k, v in share.items()))
 
     new_cards: list[dict] = []
     for i, c in enumerate(candidates, 1):
@@ -386,6 +432,8 @@ def main(argv: list[str]) -> int:
         if not llm:
             continue
         card = build_card(c, llm)
+        seen[c["link"]] = {"verdict": "kept" if card else "rejected",
+                           "at": date.today().isoformat(), "source": c["source_name"]}
         if card:
             new_cards.append(card)
             tag = "ORPHAN" if card["is_orphan"] else f"→ {card['edge_id']}"
@@ -405,6 +453,7 @@ def main(argv: list[str]) -> int:
     else:
         save_feed(feed)
         print(f"→ wrote {len(merged)} items to data/breakthroughs.json")
+        save_seen(seen)
     return 0
 
 
