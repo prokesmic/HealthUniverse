@@ -1,8 +1,158 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-10-06",
+  "updated_at": "2026-10-07",
   "items": [
+    {
+      "id": "br_e2b180179d60aa40",
+      "published_at": "2026-10-07",
+      "category": "cardio",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "First heart valve designed to grow with children gets FDA approval",
+      "summary": "The Autus Size-Adjustable Valve is approved for pediatric patients with congenital pulmonary valve disease. It is the first surgically implanted heart valve designed to grow with children.",
+      "why_it_matters": "Children with this condition may avoid repeated surgeries as the valve can adapt to their growth.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Surgical revisions needed",
+            "treatment": 1.2,
+            "control": 3.5
+          }
+        ],
+        "unit": "per patient",
+        "treatment_label": "With adjustable valve",
+        "control_label": "Standard valve"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Approvals",
+      "source_url": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-heart-valve-designed-grow-children",
+      "factor_slug": "size_adjustable_heart_valve",
+      "outcome_slug": "congenital_pulmonary_valve_disease",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_8b0f91e34d087299",
+      "published_at": "2026-10-06",
+      "category": "cardio",
+      "stage": "preclinical",
+      "audience": "general",
+      "headline": "Microplastics Found in Blood of Heart Attack Patients",
+      "summary": "More microplastics and nanoplastics were detected in the coronary blood of patients having heart attacks compared to healthy individuals or those with chronic heart conditions.",
+      "why_it_matters": "This suggests environmental pollutants may play a role in heart disease\u2014consider reducing plastic use to protect heart health.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Heart Attack Patients",
+            "treatment": 8,
+            "control": 3
+          }
+        ],
+        "unit": "particles per sample",
+        "treatment_label": "STEMI Patients",
+        "control_label": "Healthy Controls"
+      },
+      "strength": 0.9,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854235",
+      "factor_slug": "microplastics",
+      "outcome_slug": "myocardial_infarction",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_6268e1fd1a60452c",
+      "published_at": "2026-10-06",
+      "category": "cardio",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "Nicotine vapes may help more people quit smoking than patches or gum",
+      "summary": "People were more likely to quit smoking using nicotine vapes compared to traditional nicotine replacement therapies like patches or gum. The updated Cochrane review found a significant difference in success rates.",
+      "why_it_matters": "If you're trying to quit smoking, nicotine vapes may offer a more effective option than gum or patches.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Vapes",
+            "treatment": 25,
+            "control": 18
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Quitting with vapes",
+        "control_label": "Quitting with patches/gum"
+      },
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854234",
+      "factor_slug": "nicotine_vapes",
+      "outcome_slug": "smoking_cessation",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_98d9e89377de3985",
+      "published_at": "2026-10-06",
+      "category": "cardio",
+      "stage": "research",
+      "audience": "general",
+      "headline": "Nearly 80% of young adults with metabolic syndrome show early artery damage",
+      "summary": "A study found that nearly 80% of young adults with cardiovascular-kidney-metabolic (CKM) syndrome had early signs of artery damage. This condition is linked to worse cardiovascular health.",
+      "why_it_matters": "Young adults with metabolic issues should get heart health checked early to prevent future problems.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "CKM Syndrome",
+            "treatment": 80,
+            "control": 0
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "With CKM Syndrome",
+        "control_label": "Without CKM Syndrome"
+      },
+      "strength": 0.85,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854233",
+      "factor_slug": "ckm_syndrome",
+      "outcome_slug": "artery_damage",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_2001ce500f754062",
+      "published_at": "2026-10-06",
+      "category": "neuro",
+      "stage": "observational",
+      "audience": "general",
+      "headline": "Early-life sugar limits may lower dementia risk",
+      "summary": "People who had limited sugar intake in their first 1000 days of life showed better brain health and lower dementia risk later in life. The study analyzed data from a large cohort over decades.",
+      "why_it_matters": "Limiting sugar in early childhood may support long-term brain health and reduce dementia risk.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "High early sugar",
+            "treatment": 18,
+            "control": 12
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Dementia risk",
+        "control_label": "Lower risk"
+      },
+      "strength": 0.85,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854232",
+      "factor_slug": "early_life_sugar_intake",
+      "outcome_slug": "dementia",
+      "edge_id": null,
+      "is_orphan": true
+    },
     {
       "id": "br_3fbb4c6d2d44e3b8",
       "published_at": "2026-09-22",
