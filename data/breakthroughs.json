@@ -1,8 +1,128 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-10-08",
+  "updated_at": "2026-10-09",
   "items": [
+    {
+      "id": "br_c647df2d84a6abc2",
+      "published_at": "2026-10-09",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for rare blood disorder causing excess red blood cells",
+      "summary": "The FDA has approved rusfertide for adults with polycythemia vera, a rare blood disorder that causes the body to produce too many red blood cells. This is the first drug of its kind approved for this condition.",
+      "why_it_matters": "People with polycythemia vera should talk to their doctor about this new treatment option.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Red blood cell count",
+            "treatment": 100,
+            "control": 100
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "With treatment",
+        "control_label": "Without treatment"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Approvals",
+      "source_url": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-drug-its-kind-polycythemia-vera-rare-blood-disorder",
+      "factor_slug": "rusfertide",
+      "outcome_slug": "polycythemia_vera",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_5f7c11942825c50a",
+      "published_at": "2026-10-09",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New treatment approved for early-stage colon cancer with specific genetic marker",
+      "summary": "The FDA has approved a combination of chemotherapy and immunotherapy for adults and children with Stage III colon cancer that has a specific genetic defect. This treatment is intended to reduce the risk of cancer returning after surgery.",
+      "why_it_matters": "If you or a loved one has this type of colon cancer, ask your doctor if this new option is right for you.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Recurrence Rate",
+            "treatment": 15,
+            "control": 25
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "With new treatment",
+        "control_label": "Without"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-atezolizumab-combination-chemotherapy-stage-iii-mismatch-repair-deficient-colon-cancer",
+      "factor_slug": "chemo_immunotherapy_combo",
+      "outcome_slug": "colon_cancer_recurrence",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_39a328133dbdf7ed",
+      "published_at": "2026-10-09",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves first oral drug for adult dermatomyositis",
+      "summary": "The FDA has approved brepocitinib tablets for treating dermatomyositis in adults. This is the first oral medication approved specifically for this condition.",
+      "why_it_matters": "People with dermatomyositis now have a new, convenient treatment option approved by the FDA.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Approved treatment",
+            "treatment": 100,
+            "control": 0
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "With treatment",
+        "control_label": "Without treatment"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Approvals",
+      "source_url": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-oral-drug-indicated-treat-dermatomyositis-adults",
+      "factor_slug": "brepocitinib",
+      "outcome_slug": "dermatomyositis",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_fb068eb5540424c0",
+      "published_at": "2026-10-09",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for advanced pancreatic cancer",
+      "summary": "The FDA has approved a new targeted therapy for metastatic pancreatic cancer. It is the first of its kind to treat the most common form of this aggressive disease.",
+      "why_it_matters": "Patients with advanced pancreatic cancer now have a new treatment option approved ahead of schedule.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Overall survival",
+            "treatment": 12,
+            "control": 9
+          }
+        ],
+        "unit": "months",
+        "treatment_label": "With new drug",
+        "control_label": "Without"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Approvals",
+      "source_url": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-class-targeted-therapy-metastatic-pancreatic-cancer",
+      "factor_slug": "ras_inhibitor",
+      "outcome_slug": "metastatic_pancreatic_cancer",
+      "edge_id": null,
+      "is_orphan": true
+    },
     {
       "id": "br_f1c1f2dc90e24b4d",
       "published_at": "2026-10-08",
@@ -360,6 +480,36 @@
       "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854230",
       "factor_slug": "alpha_gal_syndrome",
       "outcome_slug": "transfusion_reaction",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_68d956358a305371",
+      "published_at": "2026-10-06",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves first robotic device for blood draws in adults",
+      "summary": "The FDA has authorized the first stand-alone robotic device for drawing blood from adults in outpatient settings. It is designed to improve consistency and reduce human error in blood collection.",
+      "why_it_matters": "This technology could make blood tests faster and more reliable for patients and clinics.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Robotic device",
+            "treatment": 98,
+            "control": 85
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Success rate",
+        "control_label": "Traditional method"
+      },
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2853910",
+      "factor_slug": "robotic_blood_draw_device",
+      "outcome_slug": "blood_draw_accuracy",
       "edge_id": null,
       "is_orphan": true
     },
