@@ -1,8 +1,68 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-10-09",
+  "updated_at": "2026-10-10",
   "items": [
+    {
+      "id": "br_0e91983ca274d562",
+      "published_at": "2026-10-10",
+      "category": "metabolic",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New wearable tracks blood sugar and ketones continuously",
+      "summary": "The Libre Duo 10 Day system is approved for people aged 2 and older with diabetes. It provides continuous monitoring of both glucose and ketone levels.",
+      "why_it_matters": "People with diabetes can now track two key health markers in real time with a single wearable device.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Glucose & Ketone Monitoring",
+            "treatment": 10,
+            "control": 0
+          }
+        ],
+        "unit": "days",
+        "treatment_label": "Continuous monitoring",
+        "control_label": "Standard monitoring"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Approvals",
+      "source_url": "http://www.fda.gov/news-events/press-announcements/fda-authorizes-first-wearable-device-continuously-monitors-both-ketone-levels-and-blood-sugar",
+      "factor_slug": "libre_duo_10_day_monitor",
+      "outcome_slug": "diabetes_management",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_498b479f8003cd85",
+      "published_at": "2026-10-10",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for stubborn herpes sores in immune-compromised adults",
+      "summary": "The FDA has approved a new drug for adults with weakened immune systems who have not responded to other treatments for herpes simplex virus skin and mucosal lesions. It is intended for patients who continue to have sores despite prior therapy.",
+      "why_it_matters": "If you or someone you know has persistent herpes sores and a weakened immune system, this approval offers a new treatment option.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Treatment",
+            "treatment": 70,
+            "control": 30
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Improved lesions",
+        "control_label": "No improvement"
+      },
+      "strength": 0.9,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/news-events-human-drugs/fda-approves-drug-treat-lesions-caused-herpes-simplex-virus",
+      "factor_slug": "pritelivir",
+      "outcome_slug": "herpes_simplex_lesions",
+      "edge_id": null,
+      "is_orphan": true
+    },
     {
       "id": "br_c647df2d84a6abc2",
       "published_at": "2026-10-09",
@@ -120,6 +180,36 @@
       "source_url": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-class-targeted-therapy-metastatic-pancreatic-cancer",
       "factor_slug": "ras_inhibitor",
       "outcome_slug": "metastatic_pancreatic_cancer",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_b54c506d5e304338",
+      "published_at": "2026-10-09",
+      "category": "neuro",
+      "stage": "phase1",
+      "audience": "general",
+      "headline": "New injection therapy shows safety in early glaucoma trial",
+      "summary": "Three patients with glaucoma received a single injection of an experimental therapy. No serious side effects were reported.",
+      "why_it_matters": "This early trial suggests a potential new treatment path for glaucoma with a single injection and no major safety concerns.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Serious adverse events",
+            "treatment": 0,
+            "control": 0
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Treatment group",
+        "control_label": "Control group"
+      },
+      "strength": 0.75,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/2026/10/09/biotech-news-life-biosciences-share-glaucoma-cellular-reprogramming-drug-update/?utm_campaign=rss",
+      "factor_slug": "cellular_reprogramming",
+      "outcome_slug": "glaucoma",
       "edge_id": null,
       "is_orphan": true
     },
