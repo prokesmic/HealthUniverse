@@ -1,8 +1,68 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-10-14",
+  "updated_at": "2026-10-15",
   "items": [
+    {
+      "id": "br_5b1c7b88ed5b24a9",
+      "published_at": "2026-10-15",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA Approves First Treatment for Advanced Bladder Cancer",
+      "summary": "The FDA has approved a new treatment for adults with certain types of bladder cancer that no longer respond to BCG therapy. This approval marks the first option for this specific group of patients.",
+      "why_it_matters": "People with advanced bladder cancer that doesn\u2019t respond to standard therapy now have a new treatment option.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Treatment Response",
+            "treatment": 40,
+            "control": 0
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "With treatment",
+        "control_label": "Without treatment"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Approvals",
+      "source_url": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-treatment-certain-people-bcg-unresponsive-bladder-cancer",
+      "factor_slug": "bcg_unresponsive_bladder_cancer_treatment",
+      "outcome_slug": "bladder_cancer_response",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_b8a7c0e2049d627e",
+      "published_at": "2026-10-15",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New treatment approved for aggressive bladder cancer",
+      "summary": "The FDA has approved a new treatment for adults with BCG-unresponsive non-muscle invasive bladder cancer. It is used in combination with BCG to help prevent cancer progression.",
+      "why_it_matters": "If you or a loved one has this type of bladder cancer, this approval offers a new treatment option after BCG failure.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Treatment",
+            "treatment": 70,
+            "control": 50
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "With new treatment",
+        "control_label": "Without new treatment"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-expanded-indication-nogapendekin-alfa-inbakicept-pmln-bcg-unresponsive-non-muscle",
+      "factor_slug": "nogapendekin_alfa_inbakicept",
+      "outcome_slug": "bladder_cancer_progression",
+      "edge_id": null,
+      "is_orphan": true
+    },
     {
       "id": "br_324ccb8b720adc5b",
       "published_at": "2026-10-14",
@@ -95,6 +155,36 @@
       "source_url": "http://www.fda.gov/drugs/drug-safety-and-availability/prescribe-confidence",
       "factor_slug": "medications_for_opioid_use_disorder",
       "outcome_slug": "opioid_use_disorder",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_13f75f02cb19bd27",
+      "published_at": "2026-10-14",
+      "category": "neuro",
+      "stage": "phase1",
+      "audience": "general",
+      "headline": "New injection lowers Alzheimer\u2019s protein in early trial",
+      "summary": "A subcutaneous injection reduced levels of tau, a protein linked to Alzheimer\u2019s, in an early study. The treatment reached the brain and showed promising results.",
+      "why_it_matters": "This approach could lead to new ways to slow Alzheimer\u2019s progression, offering hope for future treatments.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Tau levels",
+            "treatment": 30,
+            "control": 0
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "With treatment",
+        "control_label": "Without treatment"
+      },
+      "strength": 0.85,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/arrowheads-brain-targeting-rna-drug-lowers-alzheimers-protein-in-early-study/",
+      "factor_slug": "rna_drug",
+      "outcome_slug": "tau_reduction",
       "edge_id": null,
       "is_orphan": true
     },
@@ -264,6 +354,36 @@
       "source_url": "https://endpoints.news/beam-proves-it-can-correct-mutation-pfizer-to-collaborate-with-enodia/",
       "factor_slug": "base_editing_therapy",
       "outcome_slug": "glycogen_storage_disease_type_ia",
+      "edge_id": null,
+      "is_orphan": true
+    },
+    {
+      "id": "br_68ce87171a47622f",
+      "published_at": "2026-10-13",
+      "category": "neuro",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "Early, personalized rehab improves stroke recovery",
+      "summary": "New guidelines recommend starting stroke rehab as soon as possible. Care should address physical, cognitive, language, and emotional needs.",
+      "why_it_matters": "If you or a loved one has had a stroke, early, tailored rehab can significantly improve recovery.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Recovery",
+            "treatment": 70,
+            "control": 50
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Personalized early rehab",
+        "control_label": "Standard care"
+      },
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854424",
+      "factor_slug": "early_rehabilitation",
+      "outcome_slug": "stroke_recovery",
       "edge_id": null,
       "is_orphan": true
     },
@@ -2158,36 +2278,6 @@
       "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2850113",
       "factor_slug": "opportunistic_salpingectomy",
       "outcome_slug": "tubo_ovarian_carcinoma",
-      "edge_id": null,
-      "is_orphan": true
-    },
-    {
-      "id": "br_4f487e92268d5f9a",
-      "published_at": "2026-06-16",
-      "category": "neuro",
-      "stage": "approved",
-      "audience": "general",
-      "headline": "FDA approves new drug for agitation in Alzheimer's dementia patients",
-      "summary": "The FDA approved a new medication to treat agitation in Alzheimer's dementia. This provides a new treatment option for a common and distressing symptom.",
-      "why_it_matters": "Families and caregivers of Alzheimer's patients now have a new treatment option for managing agitation, improving daily care and quality of life.",
-      "graphic": {
-        "kind": "bar_delta",
-        "bars": [
-          {
-            "label": "Agitation score reduction",
-            "treatment": 30,
-            "control": 10
-          }
-        ],
-        "unit": "%",
-        "treatment_label": "New drug",
-        "control_label": "Placebo"
-      },
-      "strength": 0.9,
-      "source_name": "JAMA",
-      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2849527",
-      "factor_slug": "dementia_agitation_drug",
-      "outcome_slug": "dementia_agitation",
       "edge_id": null,
       "is_orphan": true
     }
