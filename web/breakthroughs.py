@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -78,7 +79,9 @@ def load_feed() -> dict:
 
 def save_feed(feed: dict) -> None:
     feed["updated_at"] = date.today().isoformat()
-    FEED_PATH.write_text(json.dumps(feed, indent=2))
+    tmp = FEED_PATH.with_suffix(f".{os.getpid()}.tmp")
+    tmp.write_text(json.dumps(feed, indent=2))
+    os.replace(tmp, FEED_PATH)
 
 
 def items(category: str | None = None, limit: int | None = None,

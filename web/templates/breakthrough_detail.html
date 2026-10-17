@@ -3,6 +3,10 @@
 {% block content %}
 
 {% set tone = BX_STAGE_TONE.get(item.stage, ('#fff7e0','#7a5c00')) %}
+{% set d = item.detail or {} %}
+{% set st = d.study or {} %}
+{% set g = item.graphic or {} %}
+{% set has_chart = g and (g.bars or g.studies or g.series or g.median_t or g.product) %}
 
 <a href="/breakthroughs" class="bx-back">← All breakthroughs</a>
 
@@ -13,13 +17,28 @@
     <span class="bx-date">{{ item.published_at }} · {{ bx_days_ago(item.published_at) }} days ago</span>
   </div>
   <h1 class="bx-detail-h1">{{ item.headline }}</h1>
+  {% if d.intervention %}<p class="bx-detail-dek">{{ d.intervention }}{% if st.trial_name %} · {{ st.trial_name }} trial{% endif %}</p>{% endif %}
 </header>
 
 <section class="bx-detail-grid">
+  {% if has_chart %}
   <figure class="bx-detail-graphic">
     {{ bx_graphic_svg(item, 480, 240) | safe }}
     <figcaption>What the trial reported, at a glance.</figcaption>
   </figure>
+  {% else %}
+  <div class="bx-glance">
+    <p class="hp-eyebrow">AT A GLANCE</p>
+    <dl>
+      {% if d.intervention %}<dt>What</dt><dd>{{ d.intervention }}</dd>{% endif %}
+      <dt>Stage</dt><dd>{{ BX_STAGE_LABEL[item.stage] }}</dd>
+      {% if st.design %}<dt>Study</dt><dd>{{ st.design }}</dd>{% endif %}
+      {% if st.participants %}<dt>Who took part</dt><dd>{{ st.participants }}</dd>{% endif %}
+      {% if d.regulatory_status %}<dt>Status</dt><dd>{{ d.regulatory_status }}</dd>{% endif %}
+    </dl>
+    {% if not d %}<p class="bx-side-caption">The source reports no effect sizes, so there is no chart.</p>{% endif %}
+  </div>
+  {% endif %}
 
   <aside class="bx-detail-side">
     <div class="bx-side-card">
@@ -54,12 +73,64 @@
 </section>
 
 <section class="bx-detail-body">
+  {% if d.no_results %}
+  <div class="bx-disclaimer" style="margin:0 0 20px">
+    <b>No results yet.</b> This is a trial registration{% if d.registry_status %} (status: {{ d.registry_status|replace('_',' ')|lower }}){% endif %}.
+    It describes what will be tested, not what was found.
+  </div>
+  {% endif %}
   <h2 class="hp-h2">What the study reports</h2>
-  <p class="bx-detail-summary">{{ item.summary }}</p>
+  <p class="bx-detail-summary">{{ d.summary or item.summary }}</p>
 
-  {% if item.why_it_matters %}
+  {% if d.key_findings %}
+  <h2 class="hp-h2">Key findings</h2>
+  <ul class="bx-list">{% for f in d.key_findings %}<li>{{ f }}</li>{% endfor %}</ul>
+  {% endif %}
+
+  {% if st %}
+  <h2 class="hp-h2">The study</h2>
+  <dl class="bx-facts">
+    {% if st.trial_name %}<dt>Trial</dt><dd>{{ st.trial_name }}</dd>{% endif %}
+    {% if st.design %}<dt>Design</dt><dd>{{ st.design }}</dd>{% endif %}
+    {% if st.participants %}<dt>Participants</dt><dd>{{ st.participants }}</dd>{% endif %}
+    {% if st.comparator %}<dt>Compared with</dt><dd>{{ st.comparator }}</dd>{% endif %}
+    {% if st.primary_endpoint %}<dt>Main outcome</dt><dd>{{ st.primary_endpoint }}</dd>{% endif %}
+    {% if st.follow_up %}<dt>Follow-up</dt><dd>{{ st.follow_up }}</dd>{% endif %}
+  </dl>
+  {% endif %}
+
+  {% set why = item.why_it_matters if not d.no_results else '' %}
+  {% if why or d.who_it_applies_to %}
   <h2 class="hp-h2">Why it matters</h2>
-  <p class="bx-detail-summary">{{ item.why_it_matters }}</p>
+  {% if why %}<p class="bx-detail-summary">{{ item.why_it_matters }}</p>{% endif %}
+  {% if d.who_it_applies_to %}<p class="bx-detail-summary"><b>Who it applies to:</b> {{ d.who_it_applies_to }}</p>{% endif %}
+  {% endif %}
+
+  {% if d.regulatory_status or d.next_steps %}
+  <h2 class="hp-h2">Where it stands</h2>
+  {% if d.regulatory_status %}<p class="bx-detail-summary">{{ d.regulatory_status }}</p>{% endif %}
+  {% if d.next_steps %}<p class="bx-detail-summary"><b>Next:</b> {{ d.next_steps }}</p>{% endif %}
+  {% endif %}
+
+  {% if d.caveats %}
+  <h2 class="hp-h2">Caveats</h2>
+  <ul class="bx-list">{% for c in d.caveats %}<li>{{ c }}</li>{% endfor %}</ul>
+  {% endif %}
+
+  {% if d.evidence or d.fda_label or d.related %}
+  <h2 class="hp-h2">Sources</h2>
+  <ul class="bx-sources">
+    <li><a href="{{ item.source_url }}" target="_blank" rel="noopener">{{ item.source_name }}</a> — original report</li>
+    {% if d.fda_label %}<li><a href="{{ d.fda_label.url }}" target="_blank" rel="noopener">FDA label: {{ d.fda_label.brand }} ({{ d.fda_label.generic }})</a></li>{% endif %}
+    {% for e in d.evidence %}<li><a href="{{ e.url }}" target="_blank" rel="noopener">{{ e.title }}</a> — {{ e.journal }}{% if e.year %}, {{ e.year }}{% endif %} · PMID {{ e.pmid }}{% if e.is_source %} · <i>the article itself</i>{% endif %}</li>{% endfor %}
+  </ul>
+  {% if d.related %}
+  <p class="hp-eyebrow" style="margin-top:18px">RELATED RESEARCH — not the study in this card</p>
+  <ul class="bx-sources">
+    {% for e in d.related %}<li><a href="{{ e.url }}" target="_blank" rel="noopener">{{ e.title }}</a> — {{ e.journal }}{% if e.year %}, {{ e.year }}{% endif %}</li>{% endfor %}
+  </ul>
+  {% endif %}
+  <p class="bx-side-caption">Detail written by a local model from these sources; every number was checked against their text before publishing.</p>
   {% endif %}
 
   <div class="bx-disclaimer">

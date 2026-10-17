@@ -39,6 +39,8 @@ sys.path.insert(0, str(ROOT))
 from web.breakthroughs import (   # noqa: E402
     load_feed, save_feed, match_corpus, CATEGORY_ORDER,
 )
+sys.path.insert(0, str(ROOT / "scripts"))
+from breakthrough_enrich import enrich   # noqa: E402
 
 OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
 # 03.10.2026: instruct, like the rest of the box (ingest, bursts, Health). The
@@ -279,6 +281,7 @@ RULES
 - News items, letters and commentaries about a study are not themselves findings;
   keep them only if the summary states the study's concrete result.
 - "headline" must not use: breakthrough, miracle, cure, game-changer, revolutionary.
+- Name the drug or intervention in "headline" when the source names it (brand or generic).
 - "headline" must not contain raw drug code names like "MRTX1133", "BMS-986365" or
   acronyms a general reader wouldn't recognise. Use the class/mechanism or the
   branded name if one exists (e.g. "a new pancreatic-cancer drug" instead of "MRTX1133").
@@ -292,7 +295,8 @@ RULES
     line_trend:       {{ "kind":"line_trend", "series":[{{"label":"...", "points":[[x,y],...]}}], "x_label":"...", "y_label":"..." }}
     kaplan_meier:     {{ "kind":"kaplan_meier", "treatment_label":"...", "control_label":"...", "median_t":N, "median_c":N, "hr":N, "ci_low":N, "ci_high":N, "x_label":"Months", "y_label":"Overall survival" }}
     recall_pictogram: {{ "kind":"recall_pictogram", "lots_affected":N, "severity":"Class I|II|III", "product":"..." }}
-- If you can't extract concrete numbers for a graphic, choose bar_delta with sensible defaults from the abstract.
+- Use a graphic only when the title or summary reports the exact numbers it needs.
+  Otherwise set "graphic": null — the page shows no chart rather than an invented one.
 Return ONLY the JSON. No prose.
 """
 
@@ -336,6 +340,18 @@ def ungrounded(raw: dict, llm: dict) -> str | None:
     return None
 
 
+def grounded_graphic(raw: dict, llm: dict) -> dict | None:
+    """The chart, or None if any of its numbers is not in the source text.
+    (17.10.2026: 72 of 77 live charts were "sensible defaults".)"""
+    from breakthrough_enrich import _gnums, _valid_graphic
+    g = llm.get("graphic")
+    if not _valid_graphic(g):
+        return None
+    if _gnums(g) - _nums(raw.get("title", "") + " " + raw.get("summary", "")):
+        return None
+    return g
+
+
 def build_card(raw: dict, llm: dict) -> dict | None:
     if not llm.get("is_breakthrough"):
         return None
@@ -366,7 +382,7 @@ def build_card(raw: dict, llm: dict) -> dict | None:
         "headline": llm.get("headline", raw["title"])[:160],
         "summary": llm.get("summary", raw.get("summary", ""))[:600],
         "why_it_matters": llm.get("why_it_matters", "")[:240],
-        "graphic": llm.get("graphic") or {"kind": "bar_delta", "bars": []},
+        "graphic": grounded_graphic(raw, llm),
         "strength": round(strength, 2),
         "source_name": raw["source_name"],
         "source_url": raw["link"],
@@ -400,6 +416,7 @@ def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry", action="store_true", help="don't write the JSON")
     ap.add_argument("--limit", type=int, default=40, help="max candidates to send to Gemma")
+    ap.add_argument("--no-detail", action="store_true", help="skip detail-page enrichment")
     args = ap.parse_args(argv)
 
     feed = load_feed()
@@ -432,6 +449,16 @@ def main(argv: list[str]) -> int:
         if not llm:
             continue
         card = build_card(c, llm)
+        if card and not args.no_detail:
+            # Detail page: source page + FDA label + PubMed background, grounded.
+            # A failure here keeps the plain card; --missing backfills it later.
+            try:
+                card = enrich(card, teaser=c.get("summary", ""))
+            except Exception as e:
+                print(f"      · detail enrichment failed: {e}", file=sys.stderr)
+            if card and (card.get("detail") or {}).get("no_results"):
+                print("      ✗ trial registration without results — not a finding")
+                card = None
         seen[c["link"]] = {"verdict": "kept" if card else "rejected",
                            "at": date.today().isoformat(), "source": c["source_name"]}
         if card:
