@@ -236,6 +236,7 @@
                 {% endif %}
                 {% if ev.is_retracted %}<span class="pill tier-D" title="Marked retracted on PubMed">RETRACTED</span>{% endif %}
                 {% if ev.relevance_status == 'weak' %}<span class="badge ghost" title="PubMed title only weakly matches this edge. Read the source carefully.">~ weak match</span>{% endif %}
+                {% if ev.relevance_status == 'citation_mismatch' %}<span class="badge ghost" title="The stored PubMed ID pointed to a different paper and this one could not be found unambiguously, so the link was removed (audit 18.10.2026).">unverified citation</span>{% endif %}
               </div>
               {% if ev.notes %}<p class="evidence-notes">{{ ev.notes }}</p>{% endif %}
               {% if ev.is_retracted and ev.retraction_note %}

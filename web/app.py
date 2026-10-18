@@ -6232,6 +6232,14 @@ def edge_detail(request: Request, edge_id: int):
             JOIN entity o ON o.id = e.outcome_id
             WHERE e.id = ?""", (edge_id,)).fetchone()
         if not e:
+            # Merged duplicates (scripts/merge_duplicate_edges.py) keep their URL.
+            try:
+                to = conn.execute("SELECT new_id FROM edge_redirect WHERE old_id=?", (edge_id,)).fetchone()
+            except Exception:
+                to = None
+            if to:
+                from fastapi.responses import RedirectResponse
+                return RedirectResponse(f"/edge/{to[0]}", status_code=301)
             return HTMLResponse("Not found", status_code=404)
         # LEFT JOIN evidence_status so retracted PMIDs show a red pill.
         # Table may not exist on a fresh DB — guard with try/except.
