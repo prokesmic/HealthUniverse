@@ -42,6 +42,19 @@ from web.breakthroughs import (   # noqa: E402
 sys.path.insert(0, str(ROOT / "scripts"))
 from breakthrough_enrich import enrich   # noqa: E402
 
+
+_ENTS: list | None = None
+
+
+def link_corpus(card: dict) -> dict:
+    """Attach what our edge graph says (breakthrough_corpus.py). Entities and
+    their vectors are loaded once per run."""
+    global _ENTS
+    import breakthrough_corpus as bc
+    if _ENTS is None:
+        _ENTS = bc.entities()
+    return bc.apply(card, _ENTS)
+
 OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
 # 03.10.2026: instruct, like the rest of the box (ingest, bursts, Health). The
 # thinking variant took 80 min a morning and forced an 18 GB reload for every
@@ -459,6 +472,11 @@ def main(argv: list[str]) -> int:
             if card and (card.get("detail") or {}).get("no_results"):
                 print("      ✗ trial registration without results — not a finding")
                 card = None
+            if card:
+                try:
+                    card = link_corpus(card)
+                except Exception as e:
+                    print(f"      · graph linking failed: {e}", file=sys.stderr)
         seen[c["link"]] = {"verdict": "kept" if card else "rejected",
                            "at": date.today().isoformat(), "source": c["source_name"]}
         if card:

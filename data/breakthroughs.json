@@ -63,6 +63,15 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -113,6 +122,15 @@
           "finding: unsupported wording (0.50)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -181,6 +199,86 @@
         "source_chars": 1372,
         "enriched_at": "2026-10-17",
         "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "low_back_pain",
+          "name": "Chronic low back pain",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 177,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Yoga",
+            "outcome": "Chronic low back pain",
+            "summary": "Multiple high-quality meta-analyses consistently show that yoga produces clinically meaningful reductions in chronic low back pain intensity and disability compared with usual care or no treatment. Benefits are typically",
+            "effect": "Pain reduction SMD \u2248 \u22120.48 to \u22120.80 vs. control; disability SMD \u2248 \u22120.59 to \u22120.70 (various meta-analyses, 95% CIs generally exclude zero)",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 195,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Resistance training",
+            "outcome": "Chronic low back pain",
+            "summary": "Multiple high-quality meta-analyses consistently show that resistance (strength) training meaningfully reduces pain intensity and disability in adults with chronic low back pain compared with no exercise or usual care. E",
+            "effect": "Pain reduction SMD \u2248 \u22120.71 to \u22120.92 vs. control; disability reduction SMD \u2248 \u22120.55 to \u22120.77 (various meta-analyses, 95% CIs generally exclude zero)",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 194,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Daily walking (steps)",
+            "outcome": "Chronic low back pain",
+            "summary": "Walking regularly appears to reduce pain intensity and disability in people with chronic low back pain, with multiple trials and meta-analyses showing meaningful improvements compared to usual care or no exercise. Benefi",
+            "effect": "Walking interventions reduce pain intensity by ~1\u20132 points on a 0\u201310 NRS and disability scores by ~10\u201315% vs. control; pooled SMD for pain ~0.5\u20130.8 in meta-analyses",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 885,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Sedentary office work",
+            "outcome": "Chronic low back pain",
+            "summary": "The most defensible summary is that sedentary office work probably nudges low-back-pain risk upward, but the evidence is not uniform enough to call it a strong causal driver by itself. Cross-sectional and occupational sy",
+            "effect": "The office-sitting literature leans toward more low-back symptoms with prolonged sedentary work, but longitudinal evidence is weaker and less consistent than cross-sectional analyses.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 4629,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Moderate-dose exercise",
+            "outcome": "Chronic low back pain",
+            "summary": "Moderate-intensity remote exercise training reduced pain intensity in patients with chronic low back pain.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 4385,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Vitamin D in deficient adults",
+            "outcome": "Chronic low back pain",
+            "summary": "Vitamin D deficiency was significantly more common in patients with recurrent low back pain compared to controls.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 7,
+        "factor_total": 0
       }
     },
     {
@@ -255,6 +353,86 @@
           "caveat: unsupported wording (0.00)",
           "graphic: ci_high, ci_low"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "pancreatic_cancer",
+          "name": "Pancreatic cancer",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 606,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "High fasting insulin",
+            "outcome": "Pancreatic cancer",
+            "summary": "The anchor for this edge is the 2022 Grigor'eva meta analysis in Ter Arkh, which suggests that high fasting insulin tracks with higher risk or worse outcomes for pancreatic cancer. Later papers point in much the same dir",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 631,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Grilled red meat intake",
+            "outcome": "Pancreatic cancer",
+            "summary": "The anchor for this edge is the 2026 Segura Cueva meta analysis in J Clin Med, which suggests that grilled red meat intake tracks with higher risk or worse outcomes for pancreatic cancer. Later papers point in much the s",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 827,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Green tea",
+            "outcome": "Pancreatic cancer",
+            "summary": "The green-tea-specific meta-analysis found a lower pancreatic-cancer risk estimate among higher consumers, and broader tea meta-analyses did not clearly contradict that direction. This is still an emerging-to-moderate nu",
+            "effect": "Tea-based pancreatic-cancer syntheses lean modestly protective, with the signal clearest in green-tea-focused analyses and less certain in broader tea categories.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 894,
+            "tier": "C",
+            "direction": "neutral",
+            "factor": "Tea consumption",
+            "outcome": "Pancreatic cancer",
+            "summary": "The broad tea literature is mostly neutral here. Multiple pooled analyses found no significant overall relationship between tea consumption and pancreatic-cancer risk, even though some subgroup results hint at lower risk",
+            "effect": "Across pooled human studies, overall tea consumption does not show a reliable association with pancreatic-cancer risk in the general population.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 905,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Pancreatic cancer",
+            "summary": "The direct observational meta-analysis reported lower pancreatic-cancer risk with higher whole-grain intake. Broader whole-grain umbrella reviews did not contradict that direction, so the most careful reading is an encou",
+            "effect": "The pancreatic-cancer evidence is thinner than the colorectal signal, but available syntheses generally place higher whole-grain intake on the lower-risk side.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3053,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Red meat",
+            "outcome": "Pancreatic cancer",
+            "summary": "Higher red meat consumption is associated with increased pancreatic cancer risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 12,
+        "factor_total": 0
       }
     },
     {
@@ -328,6 +506,86 @@
           "caveat: unsupported wording (0.33)",
           "graphic: 0"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "bladder_cancer",
+          "name": "Bladder cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 828,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Hairdresser occupation",
+            "outcome": "Bladder cancer",
+            "summary": "The most direct pooled analysis found that bladder-cancer risk is elevated in hairdressers, and the broader occupation-level meta-analyses point in the same direction. This is not a giant effect, but it is one of the mor",
+            "effect": "Across occupation-focused meta-analyses, hairdressing work is associated with a modest excess in bladder-cancer risk, with the strongest signal seen in longer-duration exposure.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 569,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Chlorinated disinfection by-products",
+            "outcome": "Bladder cancer",
+            "summary": "The anchor for this edge is the 2026 Lim systematic review in BJUI Compass, which suggests that chlorinated disinfection by-products tracks with higher risk or worse outcomes for bladder cancer. Later papers point in muc",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 496,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Cruciferous vegetables",
+            "outcome": "Bladder cancer",
+            "summary": "Cruciferous vegetables appears tied to lower risk of bladder cancer in general adult mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather tha",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 590,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Bladder cancer",
+            "summary": "The strongest piece here is the 2001 Boffetta meta analysis in Epidemiology, which ties diesel exhaust exposure to bladder cancer in a direction that later studies largely support. That makes this edge more about calibra",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 634,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Personal hair dye use",
+            "outcome": "Bladder cancer",
+            "summary": "The strongest piece here is the 2014 Turati meta analysis in Ann Epidemiol, which ties personal hair dye use to bladder cancer in a direction that later studies largely support. That makes this edge more about calibratin",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 813,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Cruciferous vegetables",
+            "outcome": "Bladder cancer",
+            "summary": "This edge is a good example of why Health Universe should default to the boring claim. The early literature looked protective, but once larger prospective-only datasets were pooled, the apparent benefit narrowed and in s",
+            "effect": "Older pooled observational datasets suggested lower bladder-cancer risk with higher cruciferous-vegetable intake, but newer prospective-only analyses are much closer to null.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 13,
+        "factor_total": 0
       }
     },
     {
@@ -398,6 +656,86 @@
         "dropped": [
           "caveat: unsupported wording (0.14)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "bladder_cancer",
+          "name": "Bladder cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 828,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Hairdresser occupation",
+            "outcome": "Bladder cancer",
+            "summary": "The most direct pooled analysis found that bladder-cancer risk is elevated in hairdressers, and the broader occupation-level meta-analyses point in the same direction. This is not a giant effect, but it is one of the mor",
+            "effect": "Across occupation-focused meta-analyses, hairdressing work is associated with a modest excess in bladder-cancer risk, with the strongest signal seen in longer-duration exposure.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 569,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Chlorinated disinfection by-products",
+            "outcome": "Bladder cancer",
+            "summary": "The anchor for this edge is the 2026 Lim systematic review in BJUI Compass, which suggests that chlorinated disinfection by-products tracks with higher risk or worse outcomes for bladder cancer. Later papers point in muc",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 496,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Cruciferous vegetables",
+            "outcome": "Bladder cancer",
+            "summary": "Cruciferous vegetables appears tied to lower risk of bladder cancer in general adult mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather tha",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 590,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Bladder cancer",
+            "summary": "The strongest piece here is the 2001 Boffetta meta analysis in Epidemiology, which ties diesel exhaust exposure to bladder cancer in a direction that later studies largely support. That makes this edge more about calibra",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 634,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Personal hair dye use",
+            "outcome": "Bladder cancer",
+            "summary": "The strongest piece here is the 2014 Turati meta analysis in Ann Epidemiol, which ties personal hair dye use to bladder cancer in a direction that later studies largely support. That makes this edge more about calibratin",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 813,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Cruciferous vegetables",
+            "outcome": "Bladder cancer",
+            "summary": "This edge is a good example of why Health Universe should default to the boring claim. The early literature looked protective, but once larger prospective-only datasets were pooled, the apparent benefit narrowed and in s",
+            "effect": "Older pooled observational datasets suggested lower bladder-cancer risk with higher cruciferous-vegetable intake, but newer prospective-only analyses are much closer to null.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 13,
+        "factor_total": 0
       }
     },
     {
@@ -456,6 +794,15 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -512,6 +859,86 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.40)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "melanoma",
+          "name": "Melanoma",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 485,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "High cumulative sun exposure",
+            "outcome": "Melanoma",
+            "summary": "Pooled meta-analytic evidence link high cumulative sun exposure to higher risk of melanoma in fair-skinned adults. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 492,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Sunlight / UV exposure",
+            "outcome": "Melanoma",
+            "summary": "Pooled meta-analytic evidence link sunlight / uv exposure to higher risk of melanoma in light-skinned adults. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 806,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Coffee",
+            "outcome": "Melanoma",
+            "summary": "The most boring summary is mild protection rather than a major cancer-prevention effect. Across pooled observational studies, higher coffee intake tends to track with lower melanoma risk, especially for caffeinated coffe",
+            "effect": "Meta-analyses of observational studies suggest a modest inverse association between coffee intake, especially caffeinated coffee, and melanoma risk.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 334,
+            "tier": "D",
+            "direction": "neutral",
+            "factor": "Morning bright-light exposure",
+            "outcome": "Melanoma",
+            "summary": "Morning bright-light exposure appears tied to little consistent change in melanoma in general adult mainly through pooled meta-analytic evidence. Direct human evidence is thin here, so the best reading is cautious and la",
+            "effect": "Pooled meta-analytic evidence do not show a stable clinically large signal for this edge.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 4799,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Melanoma",
+            "summary": "Alcohol intake is linked to higher skin cancer risk, including melanoma, based on observational evidence.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4802,
+            "tier": "D",
+            "direction": "mixed",
+            "factor": "Coffee",
+            "outcome": "Melanoma",
+            "summary": "Coffee consumption has mixed associations with melanoma risk in observational and Mendelian randomization studies.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 6,
+        "factor_total": 0
       }
     },
     {
@@ -579,6 +1006,15 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.17)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -654,6 +1090,15 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -723,6 +1168,15 @@
           "caveat: unsupported wording (0.33)",
           "caveat: unsupported wording (0.33)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -787,6 +1241,86 @@
           "caveat: unsupported wording (0.17)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "pancreatic_cancer",
+          "name": "Pancreatic cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 606,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "High fasting insulin",
+            "outcome": "Pancreatic cancer",
+            "summary": "The anchor for this edge is the 2022 Grigor'eva meta analysis in Ter Arkh, which suggests that high fasting insulin tracks with higher risk or worse outcomes for pancreatic cancer. Later papers point in much the same dir",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 631,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Grilled red meat intake",
+            "outcome": "Pancreatic cancer",
+            "summary": "The anchor for this edge is the 2026 Segura Cueva meta analysis in J Clin Med, which suggests that grilled red meat intake tracks with higher risk or worse outcomes for pancreatic cancer. Later papers point in much the s",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 827,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Green tea",
+            "outcome": "Pancreatic cancer",
+            "summary": "The green-tea-specific meta-analysis found a lower pancreatic-cancer risk estimate among higher consumers, and broader tea meta-analyses did not clearly contradict that direction. This is still an emerging-to-moderate nu",
+            "effect": "Tea-based pancreatic-cancer syntheses lean modestly protective, with the signal clearest in green-tea-focused analyses and less certain in broader tea categories.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 894,
+            "tier": "C",
+            "direction": "neutral",
+            "factor": "Tea consumption",
+            "outcome": "Pancreatic cancer",
+            "summary": "The broad tea literature is mostly neutral here. Multiple pooled analyses found no significant overall relationship between tea consumption and pancreatic-cancer risk, even though some subgroup results hint at lower risk",
+            "effect": "Across pooled human studies, overall tea consumption does not show a reliable association with pancreatic-cancer risk in the general population.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 905,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Pancreatic cancer",
+            "summary": "The direct observational meta-analysis reported lower pancreatic-cancer risk with higher whole-grain intake. Broader whole-grain umbrella reviews did not contradict that direction, so the most careful reading is an encou",
+            "effect": "The pancreatic-cancer evidence is thinner than the colorectal signal, but available syntheses generally place higher whole-grain intake on the lower-risk side.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3053,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Red meat",
+            "outcome": "Pancreatic cancer",
+            "summary": "Higher red meat consumption is associated with increased pancreatic cancer risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 12,
+        "factor_total": 0
       }
     },
     {
@@ -857,6 +1391,15 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -927,6 +1470,86 @@
           "caveat: unsupported wording (0.20)",
           "caveat: unsupported wording (0.25)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "alzheimers",
+          "name": "Alzheimer's disease",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 220,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Oily fish (\u22652 servings/week)",
+            "outcome": "Alzheimer's disease",
+            "summary": "People who eat oily fish (salmon, mackerel, sardines, herring) at least twice a week tend to have a modestly lower risk of developing Alzheimer's disease compared with those who rarely eat fish. Multiple large cohort stu",
+            "effect": "~15\u201330% lower AD risk in highest vs. lowest fish intake groups (pooled RR ~0.70\u20130.85 in meta-analyses; 95% CIs vary by study)",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          },
+          {
+            "id": 33,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Alzheimer's disease",
+            "summary": "Regular aerobic exercise is consistently associated with a meaningfully lower risk of developing Alzheimer's disease and slower cognitive decline in older adults. Multiple large observational studies and meta-analyses sh",
+            "effect": "~30\u201345% lower AD incidence in highest vs. lowest physical activity groups (pooled RR ~0.65\u20130.72 in several meta-analyses); cognitive composite scores improved ~0.3\u20130.5 SD in exercise RCTs",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 36,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Short sleep duration (<6h)",
+            "outcome": "Alzheimer's disease",
+            "summary": "Sleeping fewer than 6 hours per night is consistently associated with a roughly 30\u201370% higher risk of developing Alzheimer's disease or dementia compared with 7\u20138 hours. The leading biological explanation is impaired gly",
+            "effect": "RR ~1.30\u20131.68 for dementia/AD with short sleep (<6h); one large cohort (Sabia et al. 2021, n\u22488,000) found HR 1.30 (95% CI 1.08\u20131.57) for dementia with persistent short sleep at age 50\u201360",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 237,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Periodontal disease",
+            "outcome": "Alzheimer's disease",
+            "summary": "People with periodontal disease appear to have a moderately elevated risk of developing Alzheimer's disease or dementia compared to those with healthy gums. Multiple large cohort studies and meta-analyses support this as",
+            "effect": "OR/RR ~1.4\u20132.0 for Alzheimer's or dementia in individuals with periodontal disease vs. without (varies by study); one large meta-analysis reported pooled OR ~1.69 (95% CI 1.21\u20132.36)",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 31,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Fatty fish",
+            "outcome": "Alzheimer's disease",
+            "summary": "People who regularly eat fatty fish (e.g., salmon, mackerel, sardines) tend to have a modestly lower risk of developing Alzheimer's disease compared with those who rarely eat it. The benefit is thought to come mainly fro",
+            "effect": "~10\u201330% lower risk of AD or dementia in highest vs. lowest fish/omega-3 consumers across cohort studies; pooled HRs ~0.70\u20130.90 in some meta-analyses",
+            "review": "weak_evidence",
+            "n_evidence": 9
+          },
+          {
+            "id": 2165,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Alzheimer's disease",
+            "summary": "Aerobic exercise reduces Alzheimer\u2019s disease progression via NRF2 activation and reduced oxidative stress.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 4
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 39,
+        "factor_total": 0
       }
     },
     {
@@ -985,6 +1608,15 @@
           "caveat: unsupported wording (0.20)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -1049,6 +1681,15 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -1135,6 +1776,15 @@
         "dropped": [
           "caveat: unsupported wording (0.33)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -1203,6 +1853,15 @@
           "caveat: unsupported wording (0.20)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -1263,6 +1922,15 @@
         "dropped": [
           "caveat: unsupported wording (0.33)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -1328,6 +1996,15 @@
           "caveat: unsupported wording (0.00)",
           "next_steps: unsupported wording (0.33)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -1386,6 +2063,15 @@
           "caveat: unsupported wording (0.33)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -1452,6 +2138,42 @@
           "caveat: unsupported wording (0.33)",
           "graphic: -1.1, -1.2, -2.7, -4.3"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "pulmonary_fibrosis",
+          "name": "Pulmonary fibrosis",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1166,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Long-term nitrofurantoin use in older adults",
+            "outcome": "Pulmonary fibrosis",
+            "summary": "This edge is anchored on the 2016 matched cohort from a large integrated health system, which showed that long-term nitrofurantoin use in older adults carries a higher risk of clinically recognized lung injury than short",
+            "effect": "The clearest quantitative signal comes from a large matched cohort of older adults in which chronic nitrofurantoin exposure was associated with a higher risk of lung injury than acute exposure, with an adjusted risk ratio of 1.53 (95% CI 1.04 to 2.24).",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1359,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Long-term nitrofurantoin use in older adults",
+            "outcome": "Pulmonary fibrosis",
+            "summary": "Even though this edge rests mostly on case literature rather than large cohorts, the signal is clinically important and plausibly causal. Long-term nitrofurantoin in older adults has repeatedly been linked to interstitia",
+            "effect": "The literature is mostly case-based, but the direction is consistent: chronic nitrofurantoin prophylaxis can produce interstitial lung disease and pulmonary fibrosis, especially in older adults after months to years of exposure. Reported cases include elderly patients developing respiratory failure or oxygen-dependent fibrosis after prolonged prophylaxis, sometimes with radiographic reversal after drug withdrawal and sometimes with incomplete recovery.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 2,
+        "factor_total": 0
       }
     },
     {
@@ -1469,8 +2191,8 @@
       "source_url": "http://www.fda.gov/news-events/press-announcements/fda-authorizes-first-wearable-device-continuously-monitors-both-ketone-levels-and-blood-sugar",
       "factor_slug": "libre_duo_10_day_monitor",
       "outcome_slug": "diabetes_management",
-      "edge_id": null,
-      "is_orphan": true,
+      "edge_id": 2370,
+      "is_orphan": false,
       "detail": {
         "intervention": "Libre Duo 10 Day Continuous Dual Glucose Ketone Monitoring System",
         "summary": "The Libre Duo 10 Day system is a wearable device approved by the FDA for continuous monitoring of both blood glucose and ketone levels in people aged 2 years and older with diabetes. It measures these levels every minute under the skin and sends data wirelessly to a smartphone. The device can alert users when ketone levels reach a concerning threshold, potentially helping prevent diabetic ketoacidosis. The FDA authorization was based on data from six clinical studies involving over 600 participants. The system was shown to accurately track clinically meaningful changes in ketone levels across its 10-day wear period.",
@@ -1499,6 +2221,169 @@
         "dropped": [
           "caveat: unsupported wording (0.33)"
         ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "cgm_t2d",
+          "name": "Continuous glucose monitoring in type 2 diabetes",
+          "relation": "same"
+        },
+        "outcome": {
+          "slug": "t2d",
+          "name": "Type 2 diabetes",
+          "relation": "same"
+        },
+        "pair": [
+          {
+            "id": 2370,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Continuous glucose monitoring in type 2 diabetes",
+            "outcome": "Type 2 diabetes",
+            "summary": "Of the three evidence items submitted, two concern colorectal cancer interventions (ctDNA methylation assay; pharmacokinetically guided 5-FU dosing) and are entirely irrelevant to continuous glucose monitoring (CGM) in t",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          }
+        ],
+        "outcome_edges": [
+          {
+            "id": 20,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Type 2 diabetes",
+            "summary": "Eating more whole grains (e.g., oats, whole wheat, brown rice, rye) is consistently associated with a meaningful reduction in the risk of developing type 2 diabetes. Large pooled analyses of prospective studies show roug",
+            "effect": "~20-30% lower T2D risk per ~3 servings/day; RR ~0.68\u20130.79 in highest vs lowest intake quintiles across major meta-analyses",
+            "review": "verified_evidence",
+            "n_evidence": 10
+          },
+          {
+            "id": 19,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Sugar-sweetened beverages",
+            "outcome": "Type 2 diabetes",
+            "summary": "Drinking sugar-sweetened beverages regularly is consistently linked to a meaningfully higher risk of developing type 2 diabetes. Large pooled analyses of prospective studies show roughly a 26% increase in risk for each a",
+            "effect": "~26% higher T2D risk per 1\u20132 servings/day (RR ~1.26, 95% CI 1.12\u20131.41) in pooled analyses",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          },
+          {
+            "id": 341,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Mediterranean diet pattern",
+            "outcome": "Type 2 diabetes",
+            "summary": "Pooled meta-analytic evidence link mediterranean diet pattern to lower risk of type 2 diabetes in general adult. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier th",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          },
+          {
+            "id": 18,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Ultra-processed food",
+            "outcome": "Type 2 diabetes",
+            "summary": "Multiple large meta-analyses consistently show that higher ultra-processed food consumption is associated with a 12\u201353% higher risk of developing type 2 diabetes, depending on the comparison group and study. The relation",
+            "effect": "RR ~1.15\u20131.17 per 10% increment in UPF intake; highest vs. lowest UPF quintile HR ~1.12\u20131.53 across meta-analyses",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 22,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Type 2 diabetes",
+            "summary": "Regular aerobic exercise substantially lowers the risk of developing type 2 diabetes and improves blood sugar control in people who already have it. Large clinical trials and meta-analyses consistently show a 30\u201350% redu",
+            "effect": "~30\u201350% reduction in T2D incidence in high-risk adults; HbA1c reduction ~0.5\u20130.7% in those with T2D (multiple meta-analyses)",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 23,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Resistance training",
+            "outcome": "Type 2 diabetes",
+            "summary": "Regular resistance training meaningfully reduces the risk of developing type 2 diabetes and improves blood sugar control in those who already have it. It works mainly by building muscle, which acts as a large 'glucose si",
+            "effect": "~30\u201335% lower T2D incidence in high vs. low resistance training groups (RR ~0.65\u20130.70); HbA1c reductions of ~0.3\u20130.6% in people with T2D; fasting glucose reductions of ~3\u20135 mg/dL in at-risk populations",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          }
+        ],
+        "factor_edges": [
+          {
+            "id": 2247,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Continuous glucose monitoring in type 2 diabetes",
+            "outcome": "HbA1c",
+            "summary": "Continuous glucose monitoring (CGM) in adults with type 2 diabetes is consistently associated with modest reductions in HbA1c, with the best-available synthesis quantifying an approximate 0.3% decrease. Two systematic re",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 14
+          },
+          {
+            "id": 566,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Continuous glucose monitoring in type 2 diabetes",
+            "outcome": "HbA1c",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Zhu meta analysis in BMC Endocr Disord already points to continuous glucose monitoring in type 2 diabetes tracks with",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 567,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Continuous glucose monitoring in type 2 diabetes",
+            "outcome": "Time in range",
+            "summary": "The anchor for this edge is the 2026 Okada rct in Res Social Adm Pharm, which suggests that continuous glucose monitoring in type 2 diabetes tracks with lower risk or better outcomes for time in range. Later papers point",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3567,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Continuous glucose monitoring in type 2 diabetes",
+            "outcome": "Glycemic control in type 2 diabetes",
+            "summary": "The intervention was associated with improved glycemic control over 12 months in a cohort of adults with T2DM.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 6
+          },
+          {
+            "id": 3755,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Continuous glucose monitoring in type 2 diabetes",
+            "outcome": "Time in range",
+            "summary": "Continuous glucose monitoring (CGM) in adults with type 2 diabetes is associated with improvements in time in range (TIR), particularly when paired with alert features. The largest high-quality RCT (n=533) showed thresho",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 4180,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Continuous glucose monitoring in type 2 diabetes",
+            "outcome": "High HbA1c",
+            "summary": "CGM detected modest differences in free-living glycaemic patterns not apparent from conventional clinical measures.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          }
+        ],
+        "outcome_total": 79,
+        "factor_total": 27
       }
     },
     {
@@ -1578,6 +2463,15 @@
           "caveat: unsupported wording (0.33)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -1669,6 +2563,19 @@
           "finding: unsupported wording (0.40)",
           "caveat: unsupported wording (0.40)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "polycythemia_vera",
+          "name": "Polycythemia vera",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -1730,6 +2637,15 @@
         "dropped": [
           "graphic: malformed"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -1819,6 +2735,15 @@
         "source_chars": 3577,
         "enriched_at": "2026-10-17",
         "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -1894,6 +2819,86 @@
           "next_steps: unsupported wording (0.22)",
           "graphic: ci_high, ci_low"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "pancreatic_cancer",
+          "name": "Pancreatic cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 606,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "High fasting insulin",
+            "outcome": "Pancreatic cancer",
+            "summary": "The anchor for this edge is the 2022 Grigor'eva meta analysis in Ter Arkh, which suggests that high fasting insulin tracks with higher risk or worse outcomes for pancreatic cancer. Later papers point in much the same dir",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 631,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Grilled red meat intake",
+            "outcome": "Pancreatic cancer",
+            "summary": "The anchor for this edge is the 2026 Segura Cueva meta analysis in J Clin Med, which suggests that grilled red meat intake tracks with higher risk or worse outcomes for pancreatic cancer. Later papers point in much the s",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 827,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Green tea",
+            "outcome": "Pancreatic cancer",
+            "summary": "The green-tea-specific meta-analysis found a lower pancreatic-cancer risk estimate among higher consumers, and broader tea meta-analyses did not clearly contradict that direction. This is still an emerging-to-moderate nu",
+            "effect": "Tea-based pancreatic-cancer syntheses lean modestly protective, with the signal clearest in green-tea-focused analyses and less certain in broader tea categories.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 894,
+            "tier": "C",
+            "direction": "neutral",
+            "factor": "Tea consumption",
+            "outcome": "Pancreatic cancer",
+            "summary": "The broad tea literature is mostly neutral here. Multiple pooled analyses found no significant overall relationship between tea consumption and pancreatic-cancer risk, even though some subgroup results hint at lower risk",
+            "effect": "Across pooled human studies, overall tea consumption does not show a reliable association with pancreatic-cancer risk in the general population.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 905,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Pancreatic cancer",
+            "summary": "The direct observational meta-analysis reported lower pancreatic-cancer risk with higher whole-grain intake. Broader whole-grain umbrella reviews did not contradict that direction, so the most careful reading is an encou",
+            "effect": "The pancreatic-cancer evidence is thinner than the colorectal signal, but available syntheses generally place higher whole-grain intake on the lower-risk side.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3053,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Red meat",
+            "outcome": "Pancreatic cancer",
+            "summary": "Higher red meat consumption is associated with increased pancreatic cancer risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 12,
+        "factor_total": 0
       }
     },
     {
@@ -1957,6 +2962,15 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -2023,6 +3037,15 @@
         "dropped": [
           "caveat: unsupported wording (0.33)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -2098,6 +3121,86 @@
         "dropped": [
           "study.design: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "breast_cancer",
+          "name": "Breast cancer",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 28,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Breast cancer",
+            "summary": "Drinking alcohol\u2014even at low to moderate levels\u2014is consistently associated with a small but real increase in breast cancer risk. The risk rises in a roughly dose-dependent fashion: each additional drink per day adds abou",
+            "effect": "~7\u201310% increased risk per 10 g/day alcohol (RR ~1.07\u20131.10 per drink/day); heavy drinkers (\u22653 drinks/day) ~40\u201350% higher risk vs. non-drinkers",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 146,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined estrogen+progesterone HRT",
+            "outcome": "Breast cancer",
+            "summary": "Taking combined estrogen-plus-progestogen hormone replacement therapy (HRT) is associated with a small but consistently demonstrated increase in breast cancer risk. Large randomised trials and multiple meta-analyses conf",
+            "effect": "RR ~1.24\u20131.26 (95% CI ~1.18\u20131.34) for current/recent users; absolute excess ~5\u20136 extra cases per 1,000 women over 5 years of use",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 271,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Heavy alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally upward even below a drink a day. Pooled meta-analytic evidence link heavy alcohol intake to higher risk of breast cancer in a",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 276,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Moderate alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "In adult women, pooled meta-analytic evidence suggest that moderate alcohol intake tracks with higher risk of breast cancer. The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 368,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined menopausal hormone therapy",
+            "outcome": "Breast cancer",
+            "summary": "Pooled meta-analytic evidence link combined menopausal hormone therapy to higher risk of breast cancer in postmenopausal women. The average effect is usually moderate rather than dramatic, so this edge is better read as ",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 145,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Estrogen-only HRT",
+            "outcome": "Breast cancer",
+            "summary": "In post-menopausal women who have had a hysterectomy, taking estrogen-only hormone replacement therapy is associated with a small but statistically significant reduction in breast cancer incidence compared with placebo, ",
+            "effect": "RR ~0.77\u20130.80 (95% CI ~0.65\u20130.95) vs. placebo in WHI RCT; HR ~0.78 in long-term WHI follow-up",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 44,
+        "factor_total": 0
       }
     },
     {
@@ -2161,6 +3264,86 @@
           "caveat: unsupported wording (0.43)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "breast_cancer",
+          "name": "Breast cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 28,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Breast cancer",
+            "summary": "Drinking alcohol\u2014even at low to moderate levels\u2014is consistently associated with a small but real increase in breast cancer risk. The risk rises in a roughly dose-dependent fashion: each additional drink per day adds abou",
+            "effect": "~7\u201310% increased risk per 10 g/day alcohol (RR ~1.07\u20131.10 per drink/day); heavy drinkers (\u22653 drinks/day) ~40\u201350% higher risk vs. non-drinkers",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 146,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined estrogen+progesterone HRT",
+            "outcome": "Breast cancer",
+            "summary": "Taking combined estrogen-plus-progestogen hormone replacement therapy (HRT) is associated with a small but consistently demonstrated increase in breast cancer risk. Large randomised trials and multiple meta-analyses conf",
+            "effect": "RR ~1.24\u20131.26 (95% CI ~1.18\u20131.34) for current/recent users; absolute excess ~5\u20136 extra cases per 1,000 women over 5 years of use",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 271,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Heavy alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally upward even below a drink a day. Pooled meta-analytic evidence link heavy alcohol intake to higher risk of breast cancer in a",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 276,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Moderate alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "In adult women, pooled meta-analytic evidence suggest that moderate alcohol intake tracks with higher risk of breast cancer. The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 368,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined menopausal hormone therapy",
+            "outcome": "Breast cancer",
+            "summary": "Pooled meta-analytic evidence link combined menopausal hormone therapy to higher risk of breast cancer in postmenopausal women. The average effect is usually moderate rather than dramatic, so this edge is better read as ",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 145,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Estrogen-only HRT",
+            "outcome": "Breast cancer",
+            "summary": "In post-menopausal women who have had a hysterectomy, taking estrogen-only hormone replacement therapy is associated with a small but statistically significant reduction in breast cancer incidence compared with placebo, ",
+            "effect": "RR ~0.77\u20130.80 (95% CI ~0.65\u20130.95) vs. placebo in WHI RCT; HR ~0.78 in long-term WHI follow-up",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 44,
+        "factor_total": 0
       }
     },
     {
@@ -2219,6 +3402,15 @@
         "source_chars": 4612,
         "enriched_at": "2026-10-17",
         "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -2277,6 +3469,15 @@
         "dropped": [
           "caveat: unsupported wording (0.25)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -2334,6 +3535,15 @@
           "caveat: 1",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -2391,6 +3601,86 @@
           "caveat: unsupported wording (0.43)",
           "who_it_applies_to: unsupported wording (0.38)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "myocardial_infarction",
+          "name": "Myocardial infarction",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 672,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "High lipoprotein(a)",
+            "outcome": "Myocardial infarction",
+            "summary": "The strongest piece here is the 2025 Cancelli meta analysis in Arch Cardiovasc Dis, which ties high lipoprotein(a) to myocardial infarction in a direction that later studies largely support. That makes this edge more abo",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 531,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "ApoB",
+            "outcome": "Myocardial infarction",
+            "summary": "The strongest piece here is the 2025 Nicholls meta analysis in J Am Coll Cardiol, which ties apob to myocardial infarction in a direction that later studies largely support. That makes this edge more about calibrating ma",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 576,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Coronary artery calcium scoring",
+            "outcome": "Myocardial infarction",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2020 Lo-Kioeng-Shioe meta analysis in Int J Cardiol already points to coronary artery calcium scoring tracks with higher r",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 579,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "High coronary artery calcium score",
+            "outcome": "Myocardial infarction",
+            "summary": "The anchor for this edge is the 2026 Park cohort in Prog Cardiovasc Dis, which suggests that high coronary artery calcium score tracks with higher risk or worse outcomes for myocardial infarction. Later papers point in m",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 833,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Job strain",
+            "outcome": "Myocardial infarction",
+            "summary": "The strongest evidence comes from the individual-participant meta-analysis showing that workers exposed to job strain had a higher incidence of coronary events than those without that pattern. Later pooled analyses did n",
+            "effect": "Large pooled occupational datasets suggest a modest but fairly consistent increase in coronary-event risk under sustained job strain.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 600,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Endothelial dysfunction by flow-mediated dilation",
+            "outcome": "Myocardial infarction",
+            "summary": "The anchor for this edge is the 2025 Hermawan meta analysis in J Clin Med, which suggests that endothelial dysfunction by flow-mediated dilation tracks with higher risk or worse outcomes for myocardial infarction. Later ",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 21,
+        "factor_total": 0
       }
     },
     {
@@ -2459,6 +3749,113 @@
           "caveat: unsupported wording (0.25)",
           "who_it_applies_to: unsupported wording (0.40)"
         ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "vaping",
+          "name": "Vaping (nicotine)",
+          "relation": "same"
+        },
+        "outcome": {
+          "slug": "quit_rate",
+          "name": "Smoking quit rate",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1752,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Financial incentives for smoking cessation",
+            "outcome": "Smoking quit rate",
+            "summary": "The strongest anchor is the Cochrane review, which shows a clear improvement in quit rates when cessation is reinforced with cash or voucher incentives. Individual trials are noisier, especially in smaller or lower-incom",
+            "effect": "The Cochrane review of 31 mixed-population trials (adjusted N = 20,097) found that incentives improved long-term smoking cessation compared with controls (RR 1.49, 95% CI 1.28-1.73), with benefits persisting even when studies paying incentives at long-term follow-up were excluded (RR 1.40, 95% CI 1.16-1.69).",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1832,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Social-network smoking intervention",
+            "outcome": "Smoking quit rate",
+            "summary": "The best overall read is that social-network-based cessation support helps, but usually modestly. Systematic evidence suggests that interventions built around online or peer-connected networks can improve smoking outcome",
+            "effect": "The broad social-network intervention review covered 37 studies and 53,891 participants and found significant effects for several health behaviors, including smoking cessation, while a pragmatic chat-based cessation trial increased validated 6-month abstinence from 5% to 8% (OR 1.68, 95% CI 1.03-2.74).",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [
+          {
+            "id": 70,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Vaping (nicotine)",
+            "outcome": "Lung cancer",
+            "summary": "There is currently no direct epidemiological evidence that nicotine vaping causes lung cancer in humans, primarily because e-cigarettes have only been widely used since roughly 2010 and lung cancer takes decades to devel",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 2020,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Vaping (nicotine)",
+            "outcome": "Cardiovascular disease",
+            "summary": "E-cigarette aerosols may contribute to cardiovascular disease through mechanisms like endothelial dysfunction and inflammation.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 2021,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Vaping (nicotine)",
+            "outcome": "Myocardial infarction",
+            "summary": "Observational studies have reported associations between e-cigarette use and myocardial infarction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 2022,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Vaping (nicotine)",
+            "outcome": "Stroke",
+            "summary": "Observational studies have reported associations between e-cigarette use and stroke.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 2023,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Vaping (nicotine)",
+            "outcome": "Cardiovascular events",
+            "summary": "Observational studies have reported associations between e-cigarette use and composite cardiovascular disease outcomes.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3556,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Vaping (nicotine)",
+            "outcome": "Burnout",
+            "summary": "Drug and/or alcohol use, including vaping, was associated with poorer mental health outcomes.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "outcome_total": 2,
+        "factor_total": 7
       }
     },
     {
@@ -2522,6 +3919,15 @@
           "caveat: unsupported wording (0.33)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -2539,8 +3945,8 @@
       "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854232",
       "factor_slug": "early_life_sugar_intake",
       "outcome_slug": "dementia",
-      "edge_id": null,
-      "is_orphan": true,
+      "edge_id": 2504,
+      "is_orphan": false,
       "detail": {
         "intervention": "limited sugar intake during first 1000 days of life",
         "summary": "The study examined whether early-life sugar consumption affects brain health and dementia risk later in life. It analyzed data from a large cohort followed over decades. People who had limited sugar intake in their first 1000 days of life showed better brain health and lower dementia risk in later life.",
@@ -2598,6 +4004,125 @@
           "caveat: unsupported wording (0.00)",
           "who_it_applies_to: unsupported wording (0.20)"
         ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "sugar_in_infancy",
+          "name": "Higher sugar exposure in infancy",
+          "relation": "same"
+        },
+        "outcome": {
+          "slug": "dementia_risk",
+          "name": "Dementia risk",
+          "relation": "same"
+        },
+        "pair": [
+          {
+            "id": 2504,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Higher sugar exposure in infancy",
+            "outcome": "Dementia (all-cause)",
+            "summary": "Early-life sugar restriction was associated with lower risk of all-cause dementia.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "outcome_edges": [
+          {
+            "id": 1554,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Chronic anticholinergic burden",
+            "outcome": "Dementia risk",
+            "summary": "This is a real risk signal, but it is stronger for the broad idea of worse cognitive aging than for one perfectly uniform dementia estimate across every burden scale. The most careful read is that chronic anticholinergic",
+            "effect": "The strongest pooled estimate comes from the Cochrane prognostic review, where adjusted odds ratios on the Anticholinergic Cognitive Burden scale suggested higher future dementia or cognitive decline risk (OR 2.63, 95% CI 1.09 to 6.29), with exploratory across-scale pooling at OR 2.16.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2639,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Statins",
+            "outcome": "Dementia risk",
+            "summary": "Rosuvastatin or atorvastatin combined with Ang-II promoting AHMs showed greater dementia risk reduction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3696,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Vitamin D in deficient adults",
+            "outcome": "Dementia risk",
+            "summary": "Vitamin D deficiency showed a dose-response association with increased dementia risk, particularly in hypertensive patients with CKD.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [
+          {
+            "id": 484,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Higher sugar exposure in infancy",
+            "outcome": "Childhood obesity",
+            "summary": "In children exposed to higher sugar intake in infancy, randomized trials suggest that higher sugar exposure in infancy tracks with higher risk of childhood obesity. Most disagreement in the literature is about size, subg",
+            "effect": "Randomized trials suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 4794,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Higher sugar exposure in infancy",
+            "outcome": "Dental caries",
+            "summary": "Early sugar exposure, influenced by parental perception, is associated with increased dental caries risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 2505,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Higher sugar exposure in infancy",
+            "outcome": "Alzheimer's disease",
+            "summary": "Early-life sugar restriction was associated with lower risk of Alzheimer's disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 2506,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Higher sugar exposure in infancy",
+            "outcome": "Depression",
+            "summary": "Early-life sugar restriction was associated with lower risk of depression.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 2507,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Higher sugar exposure in infancy",
+            "outcome": "Anxiety disorders",
+            "summary": "Early-life sugar restriction was associated with lower risk of anxiety.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "outcome_total": 3,
+        "factor_total": 6
       }
     },
     {
@@ -2668,6 +4193,15 @@
           "caveat: unsupported wording (0.00)",
           "who_it_applies_to: unsupported wording (0.38)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -2739,6 +4273,15 @@
           "caveat: unsupported wording (0.43)",
           "caveat: unsupported wording (0.33)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -2780,6 +4323,15 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -2832,6 +4384,86 @@
           "who_it_applies_to: 15, 24",
           "graphic: 0"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "suicidality",
+          "name": "Suicidality",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 143,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Social isolation / loneliness",
+            "outcome": "Suicidality",
+            "summary": "Robust evidence from multiple meta-analyses and large cohort studies consistently shows that social isolation and loneliness roughly double to triple the risk of suicidal ideation, attempts, and death by suicide. The rel",
+            "effect": "OR ~2.0\u20133.0 for suicidal ideation; loneliness OR ~1.57 (95% CI 1.35\u20131.82) for suicidal ideation in meta-analyses; social isolation associated with ~2-fold increased risk of suicide attempt/death",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          },
+          {
+            "id": 666,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Lithium",
+            "outcome": "Suicidality",
+            "summary": "The strongest piece here is the 2025 Wang meta analysis in J Affect Disord, which ties lithium to suicidality in a direction that later studies largely support. That makes this edge more about calibrating magnitude and c",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 659,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Ketamine or esketamine treatment",
+            "outcome": "Suicidality",
+            "summary": "For suicidality, the most useful starting point is the 2025 Fountoulakis meta analysis in Am J Psychiatry. It found that ketamine or esketamine treatment tracks with lower risk or better outcomes, and the follow-on evide",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 653,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Insomnia disorder",
+            "outcome": "Suicidality",
+            "summary": "For suicidality, the most useful starting point is the 2022 Chan rct in J Adolesc Health. It found that insomnia disorder tracks with higher risk or worse outcomes, and the follow-on evidence is broadly consistent even w",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2137,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Loneliness",
+            "outcome": "Suicidality",
+            "summary": "Male loneliness is associated with increased suicide risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5031,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Cognitive behavioral therapy for chronic insomnia",
+            "outcome": "Suicidality",
+            "summary": "Cognitive behavioral therapy for insomnia is associated with reduced suicidal thoughts and behaviors.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 15,
+        "factor_total": 0
       }
     },
     {
@@ -2898,6 +4530,86 @@
           "caveat: unsupported wording (0.40)",
           "next_steps: unsupported wording (0.17)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "cardiovascular_events",
+          "name": "Cardiovascular events",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1594,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Low grip strength",
+            "outcome": "Cardiovascular events",
+            "summary": "The cardiovascular signal is real but slightly less tidy than the all-cause mortality signal. Lower grip strength repeatedly marks people who go on to have more cardiovascular events or cardiovascular deaths, though the ",
+            "effect": "The largest dose-response review found lower grip strength associated with higher cardiovascular mortality across 3,135,473 participants, and a 5,300-person prospective cohort found the low-stable grip-strength trajectory doubled incident cardiovascular disease risk with a hazard ratio of 2.17.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1647,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Omega-3 index high above 8%",
+            "outcome": "Cardiovascular events",
+            "summary": "This is one of the cleaner biomarker-threshold stories in the manifest. The literature does not prove that 8% is a magical cliff, but cohort-based analyses repeatedly treat values above roughly 8% as the low-risk end of ",
+            "effect": "The 2017 Omega-3 Index analysis estimated about a 30% reduction in fatal coronary heart disease risk moving from around 4% to 8%, reinforcing the clinical convention that values above 8% sit in a lower-risk zone. In Framingham Offspring, higher omega-3 index improved 10-year cardiovascular-event prediction beyond traditional pooled-cohort risk modeling, and in MESA higher plasma EPA and DHA were independently associated with fewer long-term cardiovascular events, with the absolute benefit greatest when subclinical atherosclerosis was already present.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1302,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Erythritol",
+            "outcome": "Cardiovascular events",
+            "summary": "Circulating erythritol is consistently associated with adverse cardiovascular outcomes in observational cohorts, and mechanistic work suggests biologic plausibility through platelet activation. The key uncertainty is whe",
+            "effect": "Across discovery and validation cohorts totaling 4,139 patients undergoing cardiac risk assessment, the highest versus lowest erythritol quartile was associated with incident major adverse cardiovascular events with adjusted HRs of 1.80 (95% CI 1.18-2.77) and 2.21 (95% CI 1.20-4.07); in ARIC, among 4,006 older adults without baseline CVD, higher erythritol levels were associated with heart failure hospitalization, cardiovascular death, and total mortality over 8.4 years.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1637,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Chronic NSAID use",
+            "outcome": "Cardiovascular events",
+            "summary": "This edge is harmful overall, but it is driven more by dose and molecule than by a perfectly uniform class effect. The most credible evidence shows that repeated use of higher-risk NSAIDs, especially diclofenac and some ",
+            "effect": "In the large randomized-trial meta-analysis, major vascular events increased by about one-third with coxibs or diclofenac; in a prospective cohort of 70,971 women, frequent NSAID use carried a relative risk of 1.44 for major cardiovascular events.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 990,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Selenium",
+            "outcome": "Cardiovascular events",
+            "summary": "High selenium intake is associated with increased risk of cardiovascular events.",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 1
+          },
+          {
+            "id": 1213,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Mediterranean diet",
+            "outcome": "Cardiovascular events",
+            "summary": "Participants generally met or approached targets for intakes of fruits, greens/beans, and protein-food quality (including seafood), as well as for moderation components such as sodium, added sugar, and refined grains.",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 16,
+        "factor_total": 0
       }
     },
     {
@@ -2915,8 +4627,8 @@
       "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2853630",
       "factor_slug": "physical_fitness",
       "outcome_slug": "all_cause_mortality",
-      "edge_id": null,
-      "is_orphan": true,
+      "edge_id": 48,
+      "is_orphan": false,
       "detail": {
         "intervention": "higher physical fitness",
         "summary": "Researchers tracked health outcomes over time in a group of older adults with varying levels of physical fitness. Higher physical fitness was associated with a lower risk of death from any cause. The findings suggest that maintaining physical fitness may contribute to longer life in older adults.",
@@ -2956,6 +4668,158 @@
           "caveat: unsupported wording (0.17)",
           "caveat: unsupported wording (0.25)"
         ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "aerobic_exercise",
+          "name": "Aerobic exercise",
+          "relation": "same"
+        },
+        "outcome": {
+          "slug": "all_cause_mortality_elderly",
+          "name": "All-cause mortality in older adults",
+          "relation": "same"
+        },
+        "pair": [
+          {
+            "id": 48,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "All-cause mortality",
+            "summary": "Regular aerobic exercise is one of the most robustly supported lifestyle factors for reducing the risk of dying from any cause. Adults who meet or exceed recommended activity levels (\u2265150 min/week of moderate-intensity e",
+            "effect": "~30\u201335% lower all-cause mortality risk in most active vs. least active adults (RR ~0.65\u20130.70); dose\u2013response up to ~150\u2013300 min/week of moderate-intensity aerobic exercise",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 3581,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "All-cause mortality",
+            "summary": "Across four large cohort studies (total >180,000 participants) spanning general and older adult populations, higher aerobic exercise or cardiorespiratory fitness was consistently linked to lower all-cause mortality, with",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 7
+          }
+        ],
+        "outcome_edges": [
+          {
+            "id": 1593,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Low grip strength",
+            "outcome": "All-cause mortality in older adults",
+            "summary": "This is less a surprising causal discovery than a durable geriatric prognostic signal. Across very large cohorts, older adults with lower grip strength die at higher rates, and the relationship survives adjustment often ",
+            "effect": "In the largest meta-analysis of apparently healthy adults, higher versus lower muscular strength was associated with a hazard ratio of 0.69 for all-cause mortality; the dose-response review spanning 3,135,473 participants found an inverse near-linear mortality gradient across common handgrip strength ranges.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1722,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Earlier cataract surgery",
+            "outcome": "All-cause mortality in older adults",
+            "summary": "The direction of association is favorable, but this is still an observational edge. Earlier cataract surgery is associated with lower all-cause mortality in older adults, though some of that signal may reflect selection ",
+            "effect": "Observational studies suggest lower mortality among older adults who undergo cataract surgery, but the evidence is vulnerable to healthier-user bias. In the Women's Health Initiative cohort of 74,044 older women with cataract, surgery was associated with lower all-cause mortality (adjusted HR 0.40, 95% CI 0.39-0.42).",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2073,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Continuous glucose monitoring in type 2 diabetes",
+            "outcome": "All-cause mortality in older adults",
+            "summary": "Higher GA and lower GMI/GA ratio linked to increased all-cause mortality in T2D patients meeting CGM targets.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3139,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Vitamin D in deficient adults",
+            "outcome": "All-cause mortality in older adults",
+            "summary": "Adequate vitamin D levels were associated with improved long-term survival after femoral fracture in older adults.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [
+          {
+            "id": 912,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Cardiovascular risk reclassification",
+            "summary": "Aerobic exercise is broadly associated with reduced cardiovascular risk in general adults, with consistent protective signals across observational and interventional studies. However, direct evidence specifically for 'ca",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 47
+          },
+          {
+            "id": 132,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Obesity",
+            "summary": "Regular aerobic exercise consistently reduces body weight, body fat, and waist circumference in adults, with protective effects against obesity well-established across multiple high-quality meta-analyses. Dose-response r",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 14,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Cardiovascular disease",
+            "summary": "Regular aerobic exercise is one of the most robustly protective lifestyle factors against cardiovascular disease, supported by decades of large-scale research. Physically active adults have roughly 30\u201340% lower rates of ",
+            "effect": "~35% lower CVD mortality risk (RR ~0.65, 95% CI 0.60\u20130.70) in highly active vs. sedentary individuals; each 10 MET-h/week increment associated with ~6% lower CVD risk",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 22,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Type 2 diabetes",
+            "summary": "Regular aerobic exercise substantially lowers the risk of developing type 2 diabetes and improves blood sugar control in people who already have it. Large clinical trials and meta-analyses consistently show a 30\u201350% redu",
+            "effect": "~30\u201350% reduction in T2D incidence in high-risk adults; HbA1c reduction ~0.5\u20130.7% in those with T2D (multiple meta-analyses)",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 34,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Depression",
+            "summary": "Regular aerobic exercise consistently reduces depressive symptoms with a moderate-to-large effect size, comparable to antidepressants for mild-to-moderate depression. Multiple high-quality meta-analyses of randomised tri",
+            "effect": "SMD \u2248 \u22120.68 to \u22120.79 vs. control (multiple meta-analyses); roughly equivalent to antidepressant effect in mild-to-moderate depression",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 69,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Colorectal cancer",
+            "summary": "People who engage in regular aerobic exercise have roughly 20\u201325% lower risk of developing colon cancer compared with sedentary individuals, an association supported by dozens of large cohort studies and multiple meta-an",
+            "effect": "~20\u201325% lower risk of colon cancer in most active vs. least active individuals (RR ~0.75\u20130.80, 95% CI ~0.70\u20130.85); rectal cancer association weaker and less consistent",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          }
+        ],
+        "outcome_total": 4,
+        "factor_total": 134
       }
     },
     {
@@ -2990,8 +4854,8 @@
       "source_url": "https://www.bmj.com/content/394/bmj-2026-100574",
       "factor_slug": "glp1_sgl2_drugs",
       "outcome_slug": "kidney_decline",
-      "edge_id": null,
-      "is_orphan": true,
+      "edge_id": 728,
+      "is_orphan": false,
       "detail": {
         "intervention": "SGLT-2 inhibitors and GLP-1 receptor agonists",
         "summary": "This study compared the risk of kidney function deterioration in people with type 2 diabetes who started treatment with SGLT-2 inhibitors or GLP-1 receptor agonists versus DPP-4 inhibitors or sulfonylureas after metformin. Among those with albuminuria (albumin to creatinine ratio \u226530 mg/g), the five-year risk of kidney deterioration was 3.2% with newer drugs versus 5.4% with older drugs. Among those without albuminuria, the five-year risk was 2.4% with newer drugs versus 2.1% with older drugs. The benefit of newer drugs was significant only in people with albuminuria.",
@@ -3048,6 +4912,169 @@
           "caveat: unsupported wording (0.25)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "sglt2_inhibitors",
+          "name": "SGLT2 inhibitors",
+          "relation": "same"
+        },
+        "outcome": {
+          "slug": "renal_function_decline",
+          "name": "Renal function decline",
+          "relation": "same"
+        },
+        "pair": [
+          {
+            "id": 728,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Chronic kidney disease",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Javier meta analysis in Int J Cardiol Cardiovasc Risk Prev already points to sglt2 inhibitors tracks with lower risk ",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2332,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Kidney function",
+            "summary": "SGLT-2 inhibitors demonstrated minimal improvement in estimated GFR and glycemic control.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 2053,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Chronic kidney disease",
+            "summary": "SGLT2 inhibitors reduce the incidence of new-onset chronic kidney disease in people with type 2 diabetes and preserved kidney function.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "outcome_edges": [
+          {
+            "id": 1639,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Chronic NSAID use",
+            "outcome": "Renal function decline",
+            "summary": "The safest reading of this edge is not that every chronic NSAID user experiences meaningful kidney damage, but that cumulative exposure shifts risk in the wrong direction once dose gets high or baseline renal reserve is ",
+            "effect": "The clearest population-scale estimate comes from a cohort of 1,982,488 adults, where NSAID exposure tracked with incident eGFR below 60 and with 30% or greater eGFR decline; an older CKD cohort found a 26% higher odds of rapid progression in the highest cumulative exposure decile.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 4173,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Dapagliflozin in non-diabetic chronic kidney disease",
+            "outcome": "Renal function decline",
+            "summary": "Dapagliflozin showed renal protective benefits in CKD patients, though eGFR decline results were inconsistent across studies.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3187,
+            "tier": "D",
+            "direction": "neutral",
+            "factor": "Creatine monohydrate supplementation",
+            "outcome": "Renal function decline",
+            "summary": "No clinically meaningful biochemical safety signal observed in a 32-week cohort of female football players.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4888,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Chronic psychological stress",
+            "outcome": "Renal function decline",
+            "summary": "Chronic stress accelerates renal function decline, even after adjusting for traditional confounders, suggesting a direct role in kidney damage.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [
+          {
+            "id": 729,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Heart failure",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Bodea meta analysis in J Clin Med already points to sglt2 inhibitors tracks with lower risk or better outcomes, and l",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 726,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "All-cause mortality",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2023 Kongmalai meta analysis in Front Endocrinol (Lausanne) already points to sglt2 inhibitors tracks with lower risk or b",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 730,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Diabetic ketoacidosis",
+            "summary": "The strongest piece here is the 2025 Zheng meta analysis in Medicine (Baltimore), which ties sglt2 inhibitors to diabetic ketoacidosis in a direction that later studies largely support. That makes this edge more about ca",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 2398,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "HbA1c",
+            "summary": "SGLT2 inhibitors consistently reduce HbA1c across study types included in this evidence set, with a high-quality meta-analysis (n\u22482,000) and a Phase 2 RCT both showing significant glycaemic benefit, supported by a modera",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 5
+          },
+          {
+            "id": 2685,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "All-cause mortality",
+            "summary": "SGLT2 inhibitors are consistently associated with lower all-cause mortality compared to active comparators (DPP-4 inhibitors) and placebo across multiple large observational studies and a 2026 network meta-analysis. The ",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 5
+          },
+          {
+            "id": 2349,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Atrial fibrillation",
+            "summary": "SGLT-2 inhibitors were associated with a lower risk of atrial fibrillation compared to GLP-1 receptor agonists and DPP-4 inhibitors.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          }
+        ],
+        "outcome_total": 4,
+        "factor_total": 45
       }
     },
     {
@@ -3116,6 +5143,15 @@
           "summary: unsupported wording (0.33)",
           "caveat: unsupported wording (0.25)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -3161,6 +5197,86 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "chronic_pain",
+          "name": "Chronic pain",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 518,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Acceptance and commitment therapy",
+            "outcome": "Chronic pain",
+            "summary": "The anchor for this edge is the 2025 Wang meta analysis in World J Psychiatry, which suggests that acceptance and commitment therapy tracks with lower risk or better outcomes for chronic pain. Later papers point in much ",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 4644,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Cognitive behavioural therapy",
+            "outcome": "Chronic pain",
+            "summary": "The video and text programs were associated with reduced pain scores at 1 and 4 weeks post-intervention.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 3538,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Chronic pain",
+            "summary": "Aerobic exercise significantly reduced pain intensity in individuals with non-specific chronic low back pain.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4062,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Acupuncture for migraine prophylaxis",
+            "outcome": "Chronic pain",
+            "summary": "Acupuncture combined with three-step analgesic therapy effectively reduced cancer pain in bone metastasis.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4651,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Heavy cycling in men",
+            "outcome": "Chronic pain",
+            "summary": "Cycling-based aerobic exercise reduced pain sensitivity in knee osteoarthritis patients.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4652,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Resistance training",
+            "outcome": "Chronic pain",
+            "summary": "Resistance and neuromuscular training improved pain modulation in knee osteoarthritis.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 16,
+        "factor_total": 0
       }
     },
     {
@@ -3231,6 +5347,75 @@
           "caveat: unsupported wording (0.25)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "cognitive_decline_elderly",
+          "name": "Cognitive decline in older adults",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1559,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Long-term benzodiazepine use",
+            "outcome": "Cognitive decline in older adults",
+            "summary": "The evidence supports a harmful but not catastrophic cognitive edge. Long-term benzodiazepine use in older adults most consistently shows up as slower processing and weaker executive performance rather than a dramatic, u",
+            "effect": "The clearest pooled signal is lower Digit Symbol scores in older benzodiazepine users (SMD -0.61, 95% CI -0.91 to -0.31), while smaller cohort studies suggest subtle executive-function deficits and some partial reversibility after withdrawal.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1614,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Low-level lead exposure",
+            "outcome": "Cognitive decline in older adults",
+            "summary": "The clearest signal is cumulative rather than current lead. Older adults with more lifetime lead burden appear to age cognitively a bit faster, especially on memory, fluency, and executive-type tasks.",
+            "effect": "In 584 older women from the Nurses' Health Study, each standard-deviation increase in tibia lead was associated with an excess annual decline in overall cognitive score of about 0.024 standard units. In 1,001 adults aged 50 to 70 years from the Baltimore Memory Study, higher cumulative tibia lead was associated with worse performance in several late-life cognitive domains, especially under higher neighborhood psychosocial stress. A meta-analysis of 3,849 adults also found that every 10 micrograms per deciliter increase in blood lead translated into a cognitive decline of about Hedges g 0.09.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3343,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Daily walking (steps)",
+            "outcome": "Cognitive decline in older adults",
+            "summary": "Super movers, defined by high gait speed, had slower cognitive decline and lower risk of incident cognitive impairment.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3971,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Chronic noise exposure",
+            "outcome": "Cognitive decline in older adults",
+            "summary": "Higher nocturnal noise exposure was associated with greater longitudinal cognitive decline.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3972,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Nighttime light exposure",
+            "outcome": "Cognitive decline in older adults",
+            "summary": "Higher nighttime light exposure was associated with greater longitudinal cognitive decline.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 5,
+        "factor_total": 0
       }
     },
     {
@@ -3284,6 +5469,86 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.25)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "bone_density",
+          "name": "Bone mineral density",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 356,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Long-term glucocorticoid use",
+            "outcome": "Bone mineral density",
+            "summary": "Long-term glucocorticoid use appears tied to worse bone mineral density in adults on long-term systemic glucocorticoids mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge ",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 547,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Bisphosphonates",
+            "outcome": "Bone mineral density",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Zhao meta analysis in Front Pharmacol already points to bisphosphonates tracks with lower risk or better outcomes, an",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 482,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "SSRI use",
+            "outcome": "Bone mineral density",
+            "summary": "In older adults using SSRIs, pooled meta-analytic evidence suggest that ssri use tracks with worse bone mineral density. Most disagreement in the literature is about size, subgroup sensitivity, or dose threshold rather t",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 438,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Long-term proton pump inhibitor use",
+            "outcome": "Bone mineral density",
+            "summary": "Long-term proton pump inhibitor use appears tied to worse bone mineral density in older adults on chronic PPI therapy mainly through pooled meta-analytic evidence. This is one of the cleaner pharmacology edges in the set",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 914,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Vitamin D",
+            "outcome": "Bone mineral density",
+            "summary": "Higher vitamin D levels and supplementation are generally associated with better bone mineral density across the evidence set, with the majority of study notes pointing in a protective direction. However, a small subset ",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 28
+          },
+          {
+            "id": 587,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "DHEA supplementation",
+            "outcome": "Bone mineral density",
+            "summary": "The anchor for this edge is the 2022 Lin meta analysis in Int J Eat Disord, which suggests that dhea supplementation tracks with lower risk or better outcomes for bone mineral density. Later papers point in much the same",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 17,
+        "factor_total": 0
       }
     },
     {
@@ -3346,6 +5611,42 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.25)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "influenza",
+          "name": "Influenza infection",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 240,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Influenza infection",
+            "summary": "Regular moderate-intensity aerobic exercise (e.g., brisk walking, cycling) is associated with fewer and less severe respiratory infections, including influenza-like illness. Observational studies and small RCTs consisten",
+            "effect": "~30-50% reduction in URTI/influenza-like illness incidence in regular exercisers vs. sedentary controls (varies by study); no single large RCT specific to influenza",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 238,
+            "tier": "X",
+            "direction": "mixed",
+            "factor": "Vitamin D",
+            "outcome": "Influenza infection",
+            "summary": "The overall evidence that vitamin D supplements specifically prevent influenza is weak and inconsistent. Large meta-analyses show a modest protective effect against acute respiratory infections broadly, but influenza-spe",
+            "effect": "Martineau 2017 meta-analysis: OR ~0.88 for acute respiratory infection overall; influenza-specific subgroup not significant in most analyses",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 2,
+        "factor_total": 0
       }
     },
     {
@@ -3409,6 +5710,15 @@
           "caveat: unsupported wording (0.20)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -3475,6 +5785,86 @@
           "caveat: unsupported wording (0.40)",
           "next_steps: unsupported wording (0.43)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "colorectal_cancer",
+          "name": "Colorectal cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 25,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Processed meat",
+            "outcome": "Colorectal cancer",
+            "summary": "Eating processed meat (bacon, sausage, hot dogs, deli meats, etc.) is consistently linked to a higher risk of colorectal cancer. The World Health Organization's cancer agency (IARC) classified processed meat as a definit",
+            "effect": "~18% increased CRC risk per 50 g/day increment (RR ~1.18, 95% CI 1.10\u20131.28); IARC classifies processed meat as Group 1 carcinogen for CRC",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 26,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Red meat",
+            "outcome": "Colorectal cancer",
+            "summary": "Eating large amounts of red meat\u2014especially processed red meat (bacon, sausage, hot dogs)\u2014is consistently associated with a modestly increased risk of colorectal cancer. The World Health Organization classifies processed",
+            "effect": "~17\u201318% increased CRC risk per 100 g/day unprocessed red meat (RR ~1.17, 95% CI 1.05\u20131.31); processed meat ~16\u201318% per 50 g/day",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 27,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Colorectal cancer",
+            "summary": "Drinking alcohol increases the risk of colorectal cancer in a dose-dependent fashion. Even moderate drinking (1\u20132 drinks/day) is associated with a small but measurable increase in risk, and heavy drinking roughly doubles",
+            "effect": "RR ~1.07\u20131.10 per 10 g/day alcohol; heavy drinkers (\u226550 g/day) RR ~1.5 vs non-drinkers (95% CI ~1.4\u20131.7 in pooled analyses)",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 69,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Colorectal cancer",
+            "summary": "People who engage in regular aerobic exercise have roughly 20\u201325% lower risk of developing colon cancer compared with sedentary individuals, an association supported by dozens of large cohort studies and multiple meta-an",
+            "effect": "~20\u201325% lower risk of colon cancer in most active vs. least active individuals (RR ~0.75\u20130.80, 95% CI ~0.70\u20130.85); rectal cancer association weaker and less consistent",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 206,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Low-dose aspirin",
+            "outcome": "Colorectal cancer",
+            "summary": "Regular low-dose aspirin use is associated with a roughly 20\u201340% lower risk of developing colorectal cancer, one of the most consistent chemopreventive findings in oncology. The benefit appears to require at least 5\u201310 y",
+            "effect": "~20\u201340% relative risk reduction in CRC incidence; pooled RR \u2248 0.78\u20130.82 (95% CI 0.70\u20130.90) in meta-analyses of regular aspirin users",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 443,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Processed meat",
+            "outcome": "Colorectal cancer",
+            "summary": "Dose-response meta-analyses backed by prospective cohorts link processed meat to higher risk of colorectal cancer in general adult. The average effect is usually small rather than dramatic, so this edge is better read as",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 44,
+        "factor_total": 0
       }
     },
     {
@@ -3559,6 +5949,86 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with roughly a 9\u201333% higher lung c",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          },
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 32,
+        "factor_total": 0
       }
     },
     {
@@ -3642,6 +6112,15 @@
         "dropped": [
           "summary: unsupported wording (0.50)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -3720,6 +6199,86 @@
           "who_it_applies_to: 8",
           "graphic: 62, 68"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "stroke_outcomes",
+          "name": "Stroke outcomes",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1923,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Left atrial appendage occlusion for atrial fibrillation",
+            "outcome": "Stroke outcomes",
+            "summary": "The best evidence supports LAA occlusion as a viable stroke-prevention alternative rather than a clearly superior universal replacement for anticoagulation. Stroke efficacy is broadly comparable, with an advantage mainly",
+            "effect": "Updated randomized-trial meta-analysis found lower all-stroke risk with left atrial appendage closure than oral anticoagulation (OR 0.68) and substantially fewer hemorrhagic strokes (OR 0.20). A 4-trial long-term meta-analysis also showed less hemorrhagic stroke (RR 0.34) without more thromboembolic events, and the OPTION trial after AF ablation showed noninferior death, stroke, or systemic embolism with lower major or clinically relevant bleeding.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2026,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Frailty index",
+            "outcome": "Stroke outcomes",
+            "summary": "The study aims to evaluate the impact of suboptimal risk factor management on outcomes stratified by frailty status in a large Welsh e-cohort.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3213,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Zinc",
+            "outcome": "Stroke outcomes",
+            "summary": "Lower serum zinc levels were independently associated with greater functional stroke severity.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4712,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Short sleep duration (<6h)",
+            "outcome": "Stroke outcomes",
+            "summary": "Pre-stroke short sleep symptoms were associated with worse neurological outcomes after stroke.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4713,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Long sleep duration (>9h)",
+            "outcome": "Stroke outcomes",
+            "summary": "Pre-stroke long sleep symptoms were associated with worse neurological outcomes after stroke.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4714,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Low sleep regularity",
+            "outcome": "Stroke outcomes",
+            "summary": "Low sleep regularity was associated with worse neurological outcomes after stroke.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 6,
+        "factor_total": 0
       }
     },
     {
@@ -3737,8 +6296,8 @@
       "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2852448",
       "factor_slug": "endovascular_thrombectomy",
       "outcome_slug": "functional_outcome",
-      "edge_id": null,
-      "is_orphan": true,
+      "edge_id": 1894,
+      "is_orphan": false,
       "detail": {
         "intervention": "endovascular thrombectomy",
         "summary": "The study evaluated the effect of endovascular treatment versus medical management alone in adults with large vessel occlusion stroke. The benefit was significant for both functional recovery and survival at one year.",
@@ -3769,6 +6328,31 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "endovascular_therapy_acute_large_vessel_stroke",
+          "name": "Endovascular therapy for acute large-vessel ischemic stroke",
+          "relation": "same"
+        },
+        "outcome": null,
+        "pair": [
+          {
+            "id": 1894,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Endovascular therapy for acute large-vessel ischemic stroke",
+            "outcome": "Mortality and disability outcomes",
+            "summary": "This is one of the clearest interventional benefits in modern stroke care. The strongest evidence consistently supports EVT as reducing disability and improving independence across a broad range of acute LVO presentation",
+            "effect": "Modern randomized-trial meta-analyses consistently show that endovascular thrombectomy improves functional outcome in acute large-vessel ischemic stroke. An updated 2024 RCT meta-analysis found functional independence odds more than doubled (OR 2.19), a 2015 RCT meta-analysis found lower extreme disability or death (OR 0.77), and even among large-core strokes the 2023 living meta-analysis found an absolute 30.3% increase in functional independence.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 1
       }
     },
     {
@@ -3849,6 +6433,86 @@
           "caveat: unsupported wording (0.00)",
           "next_steps: unsupported wording (0.40)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "stroke",
+          "name": "Stroke",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 538,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Atrial fibrillation",
+            "outcome": "Stroke",
+            "summary": "The anchor for this edge is the 2026 Cai meta analysis in Front Cardiovasc Med, which suggests that atrial fibrillation tracks with higher risk or worse outcomes for stroke. Later papers point in much the same direction,",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 688,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Migraine",
+            "outcome": "Stroke",
+            "summary": "For stroke, the most useful starting point is the 2026 Mohamed meta analysis in J Headache Pain. It found that migraine tracks with higher risk or worse outcomes, and the follow-on evidence is broadly consistent even whe",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 552,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Black carbon exposure",
+            "outcome": "Stroke",
+            "summary": "The ELAPSE analyses matter here because they link long-term exposure to low-level black carbon and related traffic pollutants with higher vascular morbidity across large European cohorts. Stroke-specific estimates are no",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 673,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "High lipoprotein(a)",
+            "outcome": "Stroke",
+            "summary": "The strongest piece here is the 2025 Cancelli meta analysis in Arch Cardiovasc Dis, which ties high lipoprotein(a) to stroke in a direction that later studies largely support. That makes this edge more about calibrating ",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 734,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Sleep-disordered breathing",
+            "outcome": "Stroke",
+            "summary": "The anchor for this edge is the 2026 Suusgaard meta analysis in Eur Neurol, which suggests that sleep-disordered breathing tracks with higher risk or worse outcomes for stroke. Later papers point in much the same directi",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 836,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Working 55 or more hours per week",
+            "outcome": "Stroke",
+            "summary": "The best anchor is the WHO/ILO stroke review in Environmental International, which found a moderate increase in incident stroke among people working at least 55 hours a week. The earlier Lancet meta-analysis points in th",
+            "effect": "The signal is not dramatic, but pooled cohort evidence repeatedly shows higher stroke risk once weekly working time reaches 55 hours or more.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 26,
+        "factor_total": 0
       }
     },
     {
@@ -3936,6 +6600,86 @@
         "dropped": [
           "finding: 429, 443"
         ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "intravenous_iron",
+          "name": "Intravenous iron",
+          "relation": "same"
+        },
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [
+          {
+            "id": 1137,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Quality of life (chronic anemia)",
+            "summary": "Intravenous iron has a credible quality-of-life benefit in chronic iron-deficient anemia, especially in chronic kidney disease and heart failure populations where oral absorption or tolerance is often poor. The signal is",
+            "effect": "In FAIR-HF, 459 iron-deficient heart failure patients randomized to intravenous ferric carboxymaltose had better patient-reported global status, NYHA class, and quality-of-life scores than placebo, while a CKD RCT showed greater KDQoL improvement with IV than oral iron.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1331,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Quality of life (chronic anemia)",
+            "summary": "Intravenous iron often improves iron indices and sometimes quality-of-life measures in CKD-related chronic anemia, but the patient-reported benefit is mixed rather than universal. The overall direction leans favorable, e",
+            "effect": "In an RCT of 75 non-dialysis CKD patients with iron-deficiency anemia, intravenous iron produced greater Kidney Disease Quality of Life improvement than oral iron; an updated meta-analysis of 24 CKD trials found intravenous iron increased the chance of achieving a hemoglobin rise greater than 1 g/dL (RR 1.61, 95% CI 1.39-1.87 for CKD stages 3-5), a plausible pathway for better fatigue and function.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 3871,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "All-cause mortality",
+            "summary": "Intravenous iron is associated with reduced all-cause mortality in CKD patients.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 2273,
+            "tier": "C",
+            "direction": "neutral",
+            "factor": "Intravenous iron",
+            "outcome": "High HbA1c",
+            "summary": "IV ferric carboxymaltose significantly improved Hb concentrations compared to oral iron.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 2274,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Low ferritin",
+            "summary": "IV ferric carboxymaltose increased serum ferritin levels compared to oral iron.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3870,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Heart failure",
+            "summary": "Intravenous iron may reduce heart failure events in patients with chronic kidney disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "outcome_total": 0,
+        "factor_total": 8
       }
     },
     {
@@ -4021,6 +6765,86 @@
           "caveat: unsupported wording (0.20)",
           "next_steps: unsupported wording (0.30)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "alzheimers",
+          "name": "Alzheimer's disease",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 220,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Oily fish (\u22652 servings/week)",
+            "outcome": "Alzheimer's disease",
+            "summary": "People who eat oily fish (salmon, mackerel, sardines, herring) at least twice a week tend to have a modestly lower risk of developing Alzheimer's disease compared with those who rarely eat fish. Multiple large cohort stu",
+            "effect": "~15\u201330% lower AD risk in highest vs. lowest fish intake groups (pooled RR ~0.70\u20130.85 in meta-analyses; 95% CIs vary by study)",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          },
+          {
+            "id": 33,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Alzheimer's disease",
+            "summary": "Regular aerobic exercise is consistently associated with a meaningfully lower risk of developing Alzheimer's disease and slower cognitive decline in older adults. Multiple large observational studies and meta-analyses sh",
+            "effect": "~30\u201345% lower AD incidence in highest vs. lowest physical activity groups (pooled RR ~0.65\u20130.72 in several meta-analyses); cognitive composite scores improved ~0.3\u20130.5 SD in exercise RCTs",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 36,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Short sleep duration (<6h)",
+            "outcome": "Alzheimer's disease",
+            "summary": "Sleeping fewer than 6 hours per night is consistently associated with a roughly 30\u201370% higher risk of developing Alzheimer's disease or dementia compared with 7\u20138 hours. The leading biological explanation is impaired gly",
+            "effect": "RR ~1.30\u20131.68 for dementia/AD with short sleep (<6h); one large cohort (Sabia et al. 2021, n\u22488,000) found HR 1.30 (95% CI 1.08\u20131.57) for dementia with persistent short sleep at age 50\u201360",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 237,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Periodontal disease",
+            "outcome": "Alzheimer's disease",
+            "summary": "People with periodontal disease appear to have a moderately elevated risk of developing Alzheimer's disease or dementia compared to those with healthy gums. Multiple large cohort studies and meta-analyses support this as",
+            "effect": "OR/RR ~1.4\u20132.0 for Alzheimer's or dementia in individuals with periodontal disease vs. without (varies by study); one large meta-analysis reported pooled OR ~1.69 (95% CI 1.21\u20132.36)",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 31,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Fatty fish",
+            "outcome": "Alzheimer's disease",
+            "summary": "People who regularly eat fatty fish (e.g., salmon, mackerel, sardines) tend to have a modestly lower risk of developing Alzheimer's disease compared with those who rarely eat it. The benefit is thought to come mainly fro",
+            "effect": "~10\u201330% lower risk of AD or dementia in highest vs. lowest fish/omega-3 consumers across cohort studies; pooled HRs ~0.70\u20130.90 in some meta-analyses",
+            "review": "weak_evidence",
+            "n_evidence": 9
+          },
+          {
+            "id": 2165,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Alzheimer's disease",
+            "summary": "Aerobic exercise reduces Alzheimer\u2019s disease progression via NRF2 activation and reduced oxidative stress.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 4
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 39,
+        "factor_total": 0
       }
     },
     {
@@ -4096,6 +6920,15 @@
           "caveat: unsupported wording (0.11)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -4161,6 +6994,31 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "ldl_reduction",
+          "name": "LDL cholesterol reduction",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1914,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Long-term inclisiran therapy",
+            "outcome": "LDL cholesterol reduction",
+            "summary": "This is one of the cleaner long-term lipid-lowering edges in the dataset. The LDL effect is large, durable, and unusually convenient from an adherence standpoint because maintenance dosing is only twice yearly.",
+            "effect": "Across ORION-10 and ORION-11, inclisiran lowered LDL-C by about 50% at day 510, and ORION-8 showed the effect remained durable over a mean cumulative exposure of 3.7 years with a mean LDL-C change of -49.4%. Meta-analysis of randomized trials found a pooled LDL-C lowering effect of roughly 48% to 51%.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 1,
+        "factor_total": 0
       }
     },
     {
@@ -4225,6 +7083,15 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -4299,6 +7166,86 @@
           "next_steps: unsupported wording (0.00)",
           "who_it_applies_to: unsupported wording (0.43)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "heart_failure",
+          "name": "Heart failure",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 729,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Heart failure",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Bodea meta analysis in J Clin Med already points to sglt2 inhibitors tracks with lower risk or better outcomes, and l",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2141,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Heart failure",
+            "summary": "Benefit is observed in obesity-associated heart failure with preserved ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 3546,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Heart failure",
+            "summary": "Renin-angiotensin system inhibitors were linked to lower 1-year mortality.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 3216,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Iron supplementation",
+            "outcome": "Heart failure",
+            "summary": "Iron supplementation improves outcomes in heart failure with reduced ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3870,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Heart failure",
+            "summary": "Intravenous iron may reduce heart failure events in patients with chronic kidney disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4106,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Gastric bypass surgery",
+            "outcome": "Heart failure",
+            "summary": "Bariatric surgery significantly reduced heart failure risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 15,
+        "factor_total": 0
       }
     },
     {
@@ -4373,6 +7320,15 @@
           "next_steps: unsupported wording (0.00)",
           "who_it_applies_to: unsupported wording (0.43)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -4444,6 +7400,31 @@
           "caveat: unsupported wording (0.00)",
           "who_it_applies_to: 500"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "pancreatitis",
+          "name": "Pancreatitis",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 624,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Pancreatitis",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Wen meta analysis in Endocrinol Diabetes Metab already points to glp-1 receptor agonists tracks with higher risk or w",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 1,
+        "factor_total": 0
       }
     },
     {
@@ -4517,6 +7498,53 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.43)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "migraine",
+          "name": "Migraine",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 3177,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Magnesium",
+            "outcome": "Migraine",
+            "summary": "Magnesium supplements demonstrated a significant role in migraine management.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 5381,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Morning bright-light exposure",
+            "outcome": "Migraine",
+            "summary": "Green light exposure has shown antinociceptive effects in preclinical studies and preliminary clinical benefits in migraine.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 881,
+            "tier": "X",
+            "direction": "mixed",
+            "factor": "Probiotics (multi-strain)",
+            "outcome": "Migraine",
+            "summary": "This is exactly the kind of edge that needs restraint. One recent meta-analysis suggested fewer migraine attacks with probiotics, but the older randomized-trial synthesis was null and the review landscape remains too sma",
+            "effect": "The probiotic-migraine literature is small and inconsistent: some pooled analyses hint at fewer attacks, but the evidence base is thin and heterogeneous.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 3,
+        "factor_total": 0
       }
     },
     {
@@ -4564,6 +7592,15 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -4644,6 +7681,42 @@
         "dropped": [
           "summary: 26.5"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "influenza",
+          "name": "Influenza infection",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 240,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Influenza infection",
+            "summary": "Regular moderate-intensity aerobic exercise (e.g., brisk walking, cycling) is associated with fewer and less severe respiratory infections, including influenza-like illness. Observational studies and small RCTs consisten",
+            "effect": "~30-50% reduction in URTI/influenza-like illness incidence in regular exercisers vs. sedentary controls (varies by study); no single large RCT specific to influenza",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 238,
+            "tier": "X",
+            "direction": "mixed",
+            "factor": "Vitamin D",
+            "outcome": "Influenza infection",
+            "summary": "The overall evidence that vitamin D supplements specifically prevent influenza is weak and inconsistent. Large meta-analyses show a modest protective effect against acute respiratory infections broadly, but influenza-spe",
+            "effect": "Martineau 2017 meta-analysis: OR ~0.88 for acute respiratory infection overall; influenza-specific subgroup not significant in most analyses",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 2,
+        "factor_total": 0
       }
     },
     {
@@ -4721,6 +7794,42 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "major_depressive_disorder",
+          "name": "Major depressive disorder",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1165,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Multi-strain probiotic",
+            "outcome": "Major depressive disorder",
+            "summary": "Multi-strain probiotics look like a plausible adjunct for major depressive disorder, but the effect is modest rather than transformative. Across randomized trials, depressive symptom scores tend to improve more than plac",
+            "effect": "A 2025 systematic review of 13 randomized controlled trials involving 437 adults with major depressive disorder found the most consistent benefits with multi-strain Lactobacillus/Bifidobacterium formulations used adjunctively for 4-8 weeks in milder outpatient populations.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1358,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Multi-strain probiotic",
+            "outcome": "Major depressive disorder",
+            "summary": "Multistrain probiotic therapy shows a modest but plausible antidepressant signal, especially in smaller clinical trials and scale-specific meta-analytic results. The direction looks favorable overall, but the evidence is",
+            "effect": "A 2024 meta-analysis of 12 randomized trials involving 707 participants found a significant reduction in depressive symptoms on Beck Depression Inventory-based analyses (MD -2.69, 95% CI -4.22 to -1.16); in a placebo-controlled MDD trial, multistrain probiotics reduced Beck Depression Inventory scores by 5.7 points versus 1.5 points with placebo over 8 weeks.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 2,
+        "factor_total": 0
       }
     },
     {
@@ -4800,6 +7909,86 @@
           "caveat: unsupported wording (0.33)",
           "caveat: unsupported wording (0.40)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "autism_spectrum",
+          "name": "Autism spectrum disorder",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 5078,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Omega-3 (EPA/DHA)",
+            "outcome": "Autism spectrum disorder",
+            "summary": "Omega-3 supplementation showed statistically significant, though clinically modest, benefits on irritability and communication symptoms in autism spectrum disorder.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 2993,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Cruciferous vegetables",
+            "outcome": "Autism spectrum disorder",
+            "summary": "Sulforaphane from cruciferous vegetables shows potential neuroprotective effects in autism spectrum disorder.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5100,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Ketogenic diet",
+            "outcome": "Autism spectrum disorder",
+            "summary": "Modified ketogenic diet reduced ASD symptoms in children compared to control.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5203,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Bacopa monnieri extract",
+            "outcome": "Autism spectrum disorder",
+            "summary": "Bacopa monnieri extract reduced autism-like behaviors in a VPA-induced mouse model of ASD.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5355,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Probiotics (multi-strain)",
+            "outcome": "Autism spectrum disorder",
+            "summary": "Probiotics supplementation shows promise in alleviating core behavioral deficits in children with ASD.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5356,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Fecal microbiota transplantation",
+            "outcome": "Autism spectrum disorder",
+            "summary": "Fecal microbiota transplantation shows potential in improving gastrointestinal and behavioral symptoms in children with ASD.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 6,
+        "factor_total": 0
       }
     },
     {
@@ -4841,6 +8030,15 @@
           "caveat: unsupported wording (0.20)",
           "who_it_applies_to: unsupported wording (0.29)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -4882,6 +8080,75 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.40)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "t1d",
+          "name": "Type 1 diabetes",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 795,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Breastfeeding",
+            "outcome": "Type 1 diabetes",
+            "summary": "The boring claim is the right one here: breastfeeding may modestly lower later type 1 diabetes risk, particularly when exclusive breastfeeding lasts beyond the first weeks of life. The association survives pooled reanaly",
+            "effect": "Exclusive breastfeeding shows a weak but fairly consistent protective association with childhood-onset type 1 diabetes, although the signal is sensitive to bias and exposure measurement.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2856,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Breastfeeding",
+            "outcome": "Type 1 diabetes",
+            "summary": "Breastfeeding may offer metabolic benefits for women with type 1 diabetes.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3141,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Vitamin D supplementation in children",
+            "outcome": "Type 1 diabetes",
+            "summary": "Vitamin D supplementation may reduce the risk of type 1 diabetes in children.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4182,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Continuous glucose monitoring in type 2 diabetes",
+            "outcome": "Type 1 diabetes",
+            "summary": "FreeStyle Libre Pro iQ CGM identified high-risk individuals for progression to clinical type 1 diabetes with high sensitivity.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 595,
+            "tier": "X",
+            "direction": "mixed",
+            "factor": "Early cow's-milk introduction",
+            "outcome": "Type 1 diabetes",
+            "summary": "The strongest piece here is the 2020 Verduci cohort in Front Nutr, which ties early cow's-milk introduction to type 1 diabetes in a direction that later studies largely support. That makes this edge more about calibratin",
+            "effect": "Different designs and subgroups point in different directions, so a single pooled estimate is not the right way to read this edge.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 5,
+        "factor_total": 0
       }
     },
     {
@@ -4953,6 +8220,75 @@
         "source_chars": 3389,
         "enriched_at": "2026-10-17",
         "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "diabetic_retinopathy",
+          "name": "Diabetic retinopathy",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 818,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Intensive glycaemic control",
+            "outcome": "Diabetic retinopathy",
+            "summary": "This is a solid microvascular-protection edge. Multiple meta-analyses of randomized trials show that tighter glycaemic control reduces retinopathy progression and related ocular interventions, even though the magnitude i",
+            "effect": "Across randomized-trial meta-analyses in type 2 diabetes, intensive glycaemic control consistently lowers retinopathy progression risk, though the effect is modest rather than dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1037,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Magnesium",
+            "outcome": "Diabetic retinopathy",
+            "summary": "Lower magnesium levels associated with diabetic retinopathy",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 1
+          },
+          {
+            "id": 3670,
+            "tier": "C",
+            "direction": "neutral",
+            "factor": "CPAP for obstructive sleep apnea",
+            "outcome": "Diabetic retinopathy",
+            "summary": "No significant association found between obstructive sleep apnea and incident diabetic retinopathy in patients with type 2 diabetes.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 2449,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Curcumin",
+            "outcome": "Diabetic retinopathy",
+            "summary": "Curcumin improved retinal function and structure in diabetic mice by modulating the Hippo-YAP pathway.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 2591,
+            "tier": "D",
+            "direction": "neutral",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Diabetic retinopathy",
+            "summary": "No significant difference in risk of diabetic retinopathy incidence or progression between liraglutide and dulaglutide.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 5,
+        "factor_total": 0
       }
     },
     {
@@ -5012,6 +8348,15 @@
           "caveat: unsupported wording (0.25)",
           "who_it_applies_to: unsupported wording (0.33)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -5081,6 +8426,15 @@
           "caveat: unsupported wording (0.17)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -5148,6 +8502,15 @@
           "caveat: unsupported wording (0.40)",
           "who_it_applies_to: unsupported wording (0.33)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -5220,6 +8583,42 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "long_term_cognitive_decline",
+          "name": "Long-term cognitive decline",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1132,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "ICU delirium",
+            "outcome": "Long-term cognitive decline",
+            "summary": "ICU delirium is a strong harmful marker for later cognitive decline. Prospective cohort work from BRAIN-ICU and related studies shows that longer delirium during critical illness tracks with worse cognitive outcomes mont",
+            "effect": "In the landmark BRAIN-ICU cohort, longer delirium duration during critical illness independently predicted worse global cognition and executive function at both 3 and 12 months after discharge. Later phenotype analyses and additional ICU cohorts have reinforced that delirium is not just an acute bedside phenomenon but a marker of more persistent cognitive injury.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1326,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "ICU delirium",
+            "outcome": "Long-term cognitive decline",
+            "summary": "This is one of the clearer harmful neurocognitive signals in critical care. Multiple prospective cohorts, including BRAIN-ICU, show that longer ICU delirium is associated with worse cognitive outcomes months later, and t",
+            "effect": "Across prospective ICU cohorts, longer delirium duration consistently predicts worse cognition months later. In the original ventilated-medical-ICU cohort, 79% of survivors were cognitively impaired at 3 months and 71% at 12 months, with delirium duration independently predicting worse scores. In BRAIN-ICU and related analyses, three versus zero days of sedative-associated delirium predicted a 4.03-point lower RBANS global cognition score at 12 months, and longer hypoactive delirium was associated with 5.13-point lower global cognition at 3 months.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 2,
+        "factor_total": 0
       }
     },
     {
@@ -5283,6 +8682,86 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.20)"
         ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "ovarian_cancer",
+          "name": "Ovarian cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1281,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Combined oral contraceptives",
+            "outcome": "Ovarian cancer",
+            "summary": "The ovarian-cancer signal is strongly protective and unusually consistent. Large pooled epidemiology, conventional case-control data, and hereditary-risk cohorts all point in the same direction: longer combined oral-cont",
+            "effect": "This is one of the clearest long-term protective signals in reproductive epidemiology. In a collaborative individual-participant meta-analysis of 110,560 women, each 5 years of oral-contraceptive use was linked to about a 29% lower ovarian-cancer risk when use had ceased within the prior decade, and benefit persisted for decades after stopping. Additional case-control and BRCA-carrier cohort data support the same direction.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 783,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Ovarian cancer",
+            "summary": "The most recent meta-analysis again found higher ovarian-cancer risk among women exposed to asbestos at work, echoing the earlier Environmental Health Perspectives synthesis. The literature is not enormous, but it is mor",
+            "effect": "The better occupational syntheses show a repeated upward shift in ovarian-cancer risk with asbestos exposure, and the signal is stronger than a trivial observational blip.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 867,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Combined oral contraceptive use",
+            "outcome": "Ovarian cancer",
+            "summary": "Among the v4 reproductive-endocrinology topics, this is one of the clearest. Across large pooled datasets, women who have used oral contraceptives tend to have lower ovarian-cancer risk than never-users, and the reductio",
+            "effect": "This is one of the more consistent cancer-prevention signals in reproductive epidemiology: ever use of combined oral contraceptives is associated with lower ovarian-cancer risk, and longer use appears more protective.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1079,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Breastfeeding independent of parity",
+            "outcome": "Ovarian cancer",
+            "summary": "The strongest pooled evidence suggests breastfeeding is associated with lower ovarian-cancer risk even after taking parity into account, and longer cumulative breastfeeding appears to strengthen the protection. Prospecti",
+            "effect": "The most reproducible pooled evidence suggests breastfeeding remains associated with lower ovarian-cancer risk even after parity is accounted for, with the protective signal strengthening as duration increases.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1087,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Combined oral contraceptives",
+            "outcome": "Ovarian cancer",
+            "summary": "Combined oral contraceptives are associated with lower ovarian-cancer risk in large pooled analyses, and the most persuasive evidence suggests the benefit grows with duration of use. This is one of the clearest long-term",
+            "effect": "The ovarian-cancer signal is one of the most consistent long-term benefits of combined oral contraceptives. Across pooled datasets, ever use is associated with lower risk, and longer duration generally strengthens that protection.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1273,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Breastfeeding independent of parity",
+            "outcome": "Ovarian cancer",
+            "summary": "The evidence supports a protective association independent of simple parity count. Meta-analytic and large case-control data show lower ovarian cancer risk in women who breastfed, with stronger protection at longer durat",
+            "effect": "The best parity-aware syntheses still support a protective association. A 2014 meta-analysis of 40 epidemiologic studies including 17,139 women with ovarian cancer found that, among parous women only, breastfeeding was associated with lower ovarian cancer risk (pooled RR 0.76, 95% CI 0.69 to 0.83), and risk fell further with longer total duration.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 14,
+        "factor_total": 0
       }
     }
   ]

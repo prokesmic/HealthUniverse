@@ -6,6 +6,7 @@
 {% set d = item.detail or {} %}
 {% set st = d.study or {} %}
 {% set g = item.graphic or {} %}
+{% set c = item.corpus or {} %}
 {% set has_chart = g and (g.bars or g.studies or g.series or g.median_t or g.product) %}
 
 <a href="/breakthroughs" class="bx-back">← All breakthroughs</a>
@@ -59,13 +60,21 @@
     </div>
 
     <div class="bx-side-card">
-      <p class="hp-eyebrow">CORPUS</p>
-      {% if edge_id %}
+      <p class="hp-eyebrow">OUR GRAPH</p>
+      {% if c.pair %}
+        <a class="bx-side-link" href="/edge/{{ c.pair[0].id }}">{{ c.pair[0].factor }} → {{ c.pair[0].outcome }} →</a>
+        <p class="bx-side-caption"><span class="pill tier-{{ c.pair[0].tier }}">{{ TIER_LABEL.get(c.pair[0].tier, c.pair[0].tier) }}</span>
+          This finding lines up with a graded edge in our graph.</p>
+      {% elif c.outcome or c.factor %}
+        <p class="bx-side-caption" style="margin-top:0">
+          Not graded as a pair yet. Linked to
+          {% if c.outcome %}<b>{{ c.outcome.name }}</b> ({{ c.outcome_total }} graded links){% endif %}{% if c.outcome and c.factor %} and {% endif %}{% if c.factor %}<b>{{ c.factor.name }}</b> ({{ c.factor_total }}){% endif %}
+          — see below.</p>
+      {% elif edge_id %}
         <a class="bx-side-link" href="/edge/{{ edge_id }}">View audited edge →</a>
-        <p class="bx-side-caption">This finding lines up with a graded edge in our corpus.</p>
       {% else %}
         <p class="bx-side-caption" style="color:#9b1c1c">
-          <b>Not yet in our corpus.</b> Flagged for review — if confirmed, this becomes a new edge with a tier and full source list.
+          <b>Not yet in our graph.</b> Flagged for review — if confirmed, this becomes a new edge with a tier and full source list.
         </p>
       {% endif %}
     </div>
@@ -115,6 +124,29 @@
   {% if d.caveats %}
   <h2 class="hp-h2">Caveats</h2>
   <ul class="bx-list">{% for c in d.caveats %}<li>{{ c }}</li>{% endfor %}</ul>
+  {% endif %}
+
+  {% if c.pair or c.outcome_edges or c.factor_edges %}
+  <h2 class="hp-h2">What our graph says</h2>
+  {% macro edge_row(e) -%}
+    <li><span class="pill tier-{{ e.tier }}">{{ e.tier }}</span>
+      <a href="/edge/{{ e.id }}">{{ e.factor }} → {{ e.outcome }}</a>
+      <span class="bx-edge-meta">{{ DIRECTION_LABEL.get(e.direction, e.direction) }}{% if e.n_evidence %} · {{ e.n_evidence }} {{ 'study' if e.n_evidence == 1 else 'studies' }}{% endif %}{% if e.review == 'verified_evidence' %} · sources verified{% endif %}</span>
+      {% if e.summary %}<p class="bx-edge-sum">{{ e.summary }}{% if e.summary|length >= 220 %}…{% endif %}</p>{% endif %}</li>
+  {%- endmacro %}
+  {% if c.pair %}
+  <p class="bx-detail-summary">We already grade this connection:</p>
+  <ul class="bx-edges">{% for e in c.pair %}{{ edge_row(e) }}{% endfor %}</ul>
+  {% endif %}
+  {% if c.outcome_edges %}
+  <h3 class="bx-h3">Other evidence on {{ c.outcome.name|lower }} <span class="bx-edge-meta">· {{ c.outcome_total }} graded links</span></h3>
+  <p class="bx-side-caption" style="margin-top:0">Our graph grades what raises or lowers risk — mostly diet, lifestyle and exposures — so this is context for the news above, not a verdict on it.</p>
+  <ul class="bx-edges">{% for e in c.outcome_edges %}{{ edge_row(e) }}{% endfor %}</ul>
+  {% endif %}
+  {% if c.factor_edges %}
+  <h3 class="bx-h3">What else {{ c.factor.name }} is linked to <span class="bx-edge-meta">· {{ c.factor_total }} graded links</span></h3>
+  <ul class="bx-edges">{% for e in c.factor_edges %}{{ edge_row(e) }}{% endfor %}</ul>
+  {% endif %}
   {% endif %}
 
   {% if d.evidence or d.fda_label or d.related %}

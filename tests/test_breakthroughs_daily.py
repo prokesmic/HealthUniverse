@@ -54,6 +54,7 @@ def world(tmp_path, monkeypatch):
     monkeypatch.setattr(bd, "match_corpus", lambda f, o: None)
     monkeypatch.setattr(bd, "SEEN_PATH", tmp_path / "cache" / "seen.json")
     monkeypatch.setattr(bd, "enrich", lambda card, teaser="": {**card, "detail": {"summary": "stub"}})
+    monkeypatch.setattr(bd, "link_corpus", lambda card: card)
 
     def classify(raw):
         state["calls"].append(raw["link"])
@@ -158,3 +159,74 @@ def test_detail_page_renders_sections_and_hides_missing_chart(monkeypatch):
     for s in ("Rasonque (daraxonrasib)", "RASolute 302", "OS 13.2 vs 6.6 months", "Open-label", "PMID 1", "AT A GLANCE"):
         assert s in html
     assert "bx-detail-graphic" not in html
+
+
+# ─── graph linking (18.10.2026) ───────────────────────────────────
+
+import sqlite3  # noqa: E402
+import breakthrough_corpus as bc  # noqa: E402
+
+
+@pytest.fixture
+def graph(tmp_path, monkeypatch):
+    db = sqlite3.connect(tmp_path / "g.db")
+    db.row_factory = sqlite3.Row
+    db.executescript("""
+      CREATE TABLE entity (id INTEGER PRIMARY KEY, slug TEXT, name TEXT, kind TEXT, aliases TEXT);
+      CREATE TABLE edge (id INTEGER PRIMARY KEY, factor_id INT, outcome_id INT, direction TEXT, tier TEXT,
+                         summary TEXT, effect_quant TEXT, review_status TEXT);
+      CREATE TABLE evidence (id INTEGER PRIMARY KEY, edge_id INT, is_counter INT);
+      INSERT INTO entity VALUES (1,'sglt2_inhibitors','SGLT2 inhibitors','drug','[]'),
+        (2,'chronic_kidney_disease','Chronic kidney disease','condition','[]'),
+        (3,'heart_failure','Heart failure','condition','[]'),
+        (4,'ace_inhibitors','ACE inhibitors','drug','[]'),
+        (5,'bladder_cancer','Bladder cancer','condition','[]'),
+        (6,'smoking','Smoking','behavior','[]');
+      INSERT INTO edge VALUES (728,1,2,'protective','A','s','', 'verified_evidence'),
+        (729,1,3,'protective','A','s','', 'verified_evidence'),
+        (900,6,5,'harmful','A','smoking raises bladder cancer risk','', 'verified_evidence');
+      INSERT INTO evidence VALUES (1,728,0),(2,728,0),(3,900,0);
+    """)
+    class Conn:
+        def __enter__(self): return db
+        def __exit__(self, *a): return False
+    monkeypatch.setattr(bc, "_connect", lambda: Conn())
+    vec = {"SGLT2 inhibitors": [1, 0, 0, 0], "Chronic kidney disease": [0, 1, 0, 0],
+           "Heart failure": [0, 0, 1, 0], "ACE inhibitors": [0, 0, 0.85, 0.53], "Bladder cancer": [0, 0.62, 0.62, 0.48],
+           "Smoking": [0, 0, 0, 1]}
+    ents = [{"id": i, "slug": s, "name": n, "kind": k, "aliases": [], "vec": bc._norm(vec[n])}
+            for i, s, n, k in [(1, "sglt2_inhibitors", "SGLT2 inhibitors", "drug"),
+                               (2, "chronic_kidney_disease", "Chronic kidney disease", "condition"),
+                               (3, "heart_failure", "Heart failure", "condition"),
+                               (4, "ace_inhibitors", "ACE inhibitors", "drug"),
+                               (5, "bladder_cancer", "Bladder cancer", "condition"),
+                               (6, "smoking", "Smoking", "behavior")]]
+    q = {"rivaroxaban": [0.2, 0, 0, 0.98], "empagliflozin": [0.95, 0.1, 0, 0], "kidney decline": [0, 0.9, 0.1, 0],
+         "bladder cancer progression": [0, 0.62, 0.62, 0.48]}
+    monkeypatch.setattr(bc, "embed", lambda texts: [q.get(t, [0.01, 0.01, 0.01, 0.01]) for t in texts])
+    return ents
+
+
+def card(intervention, outcome_slug, headline):
+    return {"id": "x", "headline": headline, "summary": "", "factor_slug": "", "outcome_slug": outcome_slug,
+            "detail": {"intervention": intervention, "summary": "", "who_it_applies_to": ""}}
+
+
+def test_unrelated_pick_is_rejected_named_low_score_pick_is_kept(graph, monkeypatch):
+    # model picks ACE inhibitors for a rivaroxaban card: not named, far → rejected
+    monkeypatch.setattr(bc, "ollama_json", lambda p, num_predict=0: {"factor": "ace_inhibitors", "outcome": None})
+    c = bc.apply(card("rivaroxaban", "", "Blood thinner beats metoprolol"), graph)["corpus"]
+    assert c["factor"] is None
+    # "bladder cancer" scores low on vectors but the card names it → kept, with its edges
+    monkeypatch.setattr(bc, "ollama_json", lambda p, num_predict=0: {"factor": None, "outcome": "bladder_cancer"})
+    out = bc.apply(card("", "bladder cancer progression", "New bladder cancer treatment"), graph)
+    assert out["corpus"]["outcome"]["slug"] == "bladder_cancer"
+    assert [e["id"] for e in out["corpus"]["outcome_edges"]] == [900] and out["is_orphan"]
+
+
+def test_pair_edge_found_under_another_outcome_name(graph, monkeypatch):
+    monkeypatch.setattr(bc, "ollama_json", lambda p, num_predict=0: {"factor": "sglt2_inhibitors", "outcome": None})
+    out = bc.apply(card("empagliflozin", "kidney decline", "SGLT2 drugs protect kidneys"), graph)
+    # 729 (heart failure) is not near the card's outcome
+    assert [e["id"] for e in out["corpus"]["pair"]] == [728]
+    assert out["edge_id"] == 728 and not out["is_orphan"]

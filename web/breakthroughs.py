@@ -303,6 +303,11 @@ def forest_svg(g: dict, w: int = 400, h: int = 220) -> str:
     return "".join(parts)
 
 
+def _clip(s: str, n: int) -> str:
+    s = (s or "").replace("&", "&amp;").replace("<", "&lt;")
+    return s if len(s) <= n else s[: n - 1].rstrip() + "…"
+
+
 # ─── Bar delta (treatment vs control, multiple endpoints) ──────────
 
 def bar_delta_svg(g: dict, w: int = 400, h: int = 220) -> str:
@@ -318,10 +323,21 @@ def bar_delta_svg(g: dict, w: int = 400, h: int = 220) -> str:
     bar_w = min(group_w * 0.32, 28)
 
     parts = [_svg_open(w, h), _bg(w, h)]
-    parts.append(_text(pad_l, pad_t - 22, g.get("treatment_label", "Treatment"), 10, color=GREEN, weight=600))
-    parts.append(f'<rect x="{pad_l}" y="{pad_t - 14}" width="10" height="8" fill="{GREEN}"/>')
-    parts.append(_text(pad_l + 90, pad_t - 22, g.get("control_label", "Control"), 10, color=INK_SOFT, weight=600))
-    parts.append(f'<rect x="{pad_l + 90}" y="{pad_t - 14}" width="10" height="8" fill="{INK_SOFT}"/>')
+    # Legend: second label starts after the first (real arm names are long:
+    # "SGLT-2 inhibitors or GLP-1 receptor agonists" overprinted the control label).
+    t_lab = _clip(g.get("treatment_label", "Treatment"), 34)
+    c_lab = _clip(g.get("control_label", "Control"), 34)
+    cx0 = pad_l + max(90, int(len(t_lab) * 5.6) + 24)
+    if cx0 + len(c_lab) * 5.6 > w - pad_r:      # no room on one line → stack
+        parts.append(_text(pad_l + 14, pad_t - 26, t_lab, 10, color=GREEN, weight=600))
+        parts.append(f'<rect x="{pad_l}" y="{pad_t - 34}" width="10" height="8" fill="{GREEN}"/>')
+        parts.append(_text(pad_l + 14, pad_t - 12, c_lab, 10, color=INK_SOFT, weight=600))
+        parts.append(f'<rect x="{pad_l}" y="{pad_t - 20}" width="10" height="8" fill="{INK_SOFT}"/>')
+    else:
+        parts.append(_text(pad_l + 14, pad_t - 16, t_lab, 10, color=GREEN, weight=600))
+        parts.append(f'<rect x="{pad_l}" y="{pad_t - 24}" width="10" height="8" fill="{GREEN}"/>')
+        parts.append(_text(cx0 + 14, pad_t - 16, c_lab, 10, color=INK_SOFT, weight=600))
+        parts.append(f'<rect x="{cx0}" y="{pad_t - 24}" width="10" height="8" fill="{INK_SOFT}"/>')
 
     zero_y = pad_t + plot_h  # x-axis baseline
     # Baseline
