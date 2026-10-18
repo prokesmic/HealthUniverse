@@ -183,3 +183,23 @@ CREATE TABLE IF NOT EXISTS cost_ledger (
     usd           REAL NOT NULL,
     ref           TEXT             -- e.g. seed_topic id
 );
+
+-- Merged duplicates keep working by their old address (18.10.2026):
+-- /edge/<old_id> 301s to the edge it was folded into, and entity lookups by
+-- an old slug (db.resolve_slug) land on the canonical entity.
+CREATE TABLE IF NOT EXISTS edge_redirect (
+    old_id      INTEGER PRIMARY KEY,
+    new_id      INTEGER NOT NULL,
+    reason      TEXT,
+    created_at  TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+CREATE TABLE IF NOT EXISTS entity_redirect (
+    old_slug    TEXT PRIMARY KEY,
+    new_slug    TEXT NOT NULL,
+    old_id      INTEGER,
+    new_id      INTEGER,
+    old_name    TEXT,
+    reason      TEXT,
+    created_at  TEXT NOT NULL DEFAULT (datetime('now'))
+);

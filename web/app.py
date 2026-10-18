@@ -13,7 +13,7 @@ ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 from datetime import datetime, timedelta  # noqa: E402
 
-from db import connect  # noqa: E402
+from db import connect, resolve_slug  # noqa: E402
 
 
 def datetime_now():
@@ -661,8 +661,9 @@ def prevent_page(request: Request, q: str = "", condition: str = ""):
         outcomes = [dict(r) for r in outcomes]
         if query:
             ql = query.lower()
-            # Exact slug, exact name, contained-in name
-            matched = next((o for o in outcomes if o["slug"] == ql), None)
+            # Exact slug (a merged-away slug follows entity_redirect), exact name, contained-in name
+            ql_slug = resolve_slug(conn, ql)
+            matched = next((o for o in outcomes if o["slug"] == ql_slug), None)
             if not matched:
                 matched = next((o for o in outcomes if o["name"].lower() == ql), None)
             if not matched:
@@ -3246,7 +3247,7 @@ def diary(request: Request):
         all_outcomes = [dict(r) for r in conn.execute(
             "SELECT slug, name FROM entity WHERE kind='process' "
             "AND slug IN ('sleep_quality','inflammation','insulin_resistance',"
-            "'cognitive_decline','gut_microbiome') ORDER BY name").fetchall()]
+            "'cognitive_decline','gut_microbiome_diversity') ORDER BY name").fetchall()]
         # Tracker outcomes user might subjectively rate: alertness, mood,
         # energy, digestion, sleep — these aren't entities; UI provides them
     daily_outcomes = ["energy", "mood", "sleep_quality", "digestion",
@@ -3938,7 +3939,7 @@ _SNP_CATEGORY_OUTCOMES = {
                   "lipid", "cholesterol", "ldl", "apob", "triglyceride"],
     "cardio": ["cvd", "cardiovascular", "mace", "hypertension", "ldl",
                "apob", "atherosclerosis", "myocardial", "stroke", "heart"],
-    "athletic": ["strength", "muscle", "vo2max", "endurance", "performance",
+    "athletic": ["strength", "muscle", "vo2", "endurance", "performance",
                  "sprint", "power", "hypertrophy"],
     "diet": ["lactose", "fodmap", "dairy", "gluten", "iron", "absorption"],
     "drug-metabolism": ["bleeding", "clopidogrel", "warfarin", "drug",
@@ -6015,6 +6016,9 @@ def api_profile_brief(request: Request, days: int = 14):
 def api_entity(slug: str):
     with connect() as conn:
         e = conn.execute("SELECT * FROM entity WHERE slug=?", (slug,)).fetchone()
+        if not e and resolve_slug(conn, slug) != slug:
+            # Merged duplicate (scripts/merge_duplicate_entities.py) keeps its URL.
+            return RedirectResponse(f"/api/entities/{resolve_slug(conn, slug)}", status_code=301)
         if not e:
             return Response('{"error":"not found"}', status_code=404,
                             media_type="application/json")

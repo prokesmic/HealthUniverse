@@ -50,9 +50,12 @@ def candidates_from_feed(items: list[dict]) -> list[dict]:
 
 
 def seed(conn, item: dict, dry: bool = False) -> dict:
+    from db import resolve_slug  # type: ignore
     c = item["corpus"]
-    f = conn.execute("SELECT id, name FROM entity WHERE slug=?", (c["factor"]["slug"],)).fetchone()
-    o = conn.execute("SELECT id, name, kind FROM entity WHERE slug=?", (c["outcome"]["slug"],)).fetchone()
+    f = conn.execute("SELECT id, name FROM entity WHERE slug=?",
+                     (resolve_slug(conn, c["factor"]["slug"]),)).fetchone()
+    o = conn.execute("SELECT id, name, kind FROM entity WHERE slug=?",
+                     (resolve_slug(conn, c["outcome"]["slug"]),)).fetchone()
     res = {"card": item["id"], "pair": f"{f['name']} → {o['name']}", "edge": None, "rows": 0}
     if conn.execute("SELECT 1 FROM edge WHERE factor_id=? AND outcome_id=?", (f["id"], o["id"])).fetchone():
         res["why"] = "edge already exists"

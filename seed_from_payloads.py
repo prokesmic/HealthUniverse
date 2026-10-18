@@ -28,7 +28,7 @@ import httpx
 ROOT = Path(__file__).parent.resolve()
 sys.path.insert(0, str(ROOT))
 
-from db import connect, upsert_entity   # noqa: E402
+from db import connect, resolve_slug, upsert_entity   # noqa: E402
 
 PAYLOAD_DIR = ROOT / "data" / "seed_payloads"
 SOURCE_TAG  = "manual"   # uses existing seed_source enum; tag origin in summary
@@ -346,9 +346,9 @@ def _persist_edge(conn, e: dict, file_name: str, mode: str = "replace") -> tuple
                 mechanism, caveats, tier, direction
     """
     fid = conn.execute("SELECT id FROM entity WHERE slug=?",
-                       (e["factor_slug"],)).fetchone()
+                       (resolve_slug(conn, e["factor_slug"]),)).fetchone()
     oid = conn.execute("SELECT id FROM entity WHERE slug=?",
-                       (e["outcome_slug"],)).fetchone()
+                       (resolve_slug(conn, e["outcome_slug"]),)).fetchone()
     if not fid or not oid:
         raise ValueError(f"unknown slug in {file_name}: "
                          f"{e['factor_slug']} or {e['outcome_slug']}")

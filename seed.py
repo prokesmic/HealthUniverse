@@ -16,7 +16,7 @@ import textwrap
 from typing import Any
 
 from claude_client import CostCapExceeded, call, extract_json
-from db import connect
+from db import connect, resolve_slug
 
 
 SYSTEM_PROMPT = """You are a careful evidence-grading research assistant for a \
@@ -98,9 +98,9 @@ def _validate(payload: dict[str, Any]) -> None:
 def research_pair(factor_slug: str, outcome_slug: str, *, dry_run: bool = False) -> dict:
     with connect() as conn:
         factor = conn.execute("SELECT * FROM entity WHERE slug = ?",
-                              (factor_slug,)).fetchone()
+                              (resolve_slug(conn, factor_slug),)).fetchone()
         outcome = conn.execute("SELECT * FROM entity WHERE slug = ?",
-                               (outcome_slug,)).fetchone()
+                               (resolve_slug(conn, outcome_slug),)).fetchone()
     if not factor or not outcome:
         raise SystemExit(f"Unknown entity: {factor_slug if not factor else outcome_slug}. "
                          f"Run `python topics.py` first.")

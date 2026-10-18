@@ -44,8 +44,46 @@ def connect():
         conn.close()
 
 
+def resolve_slug(conn: sqlite3.Connection, slug: str | None) -> str | None:
+    """The live slug for `slug`: itself, or where entity_redirect sends it
+    (entities merged by scripts/merge_duplicate_entities.py). Unknown slugs
+    come back unchanged so callers keep their own "not found" handling."""
+    if not slug:
+        return slug
+    seen = {slug}
+    while True:
+        try:
+            r = conn.execute("SELECT new_slug FROM entity_redirect WHERE old_slug = ?",
+                             (slug,)).fetchone()
+        except sqlite3.OperationalError:  # DB from before the table existed
+            return slug
+        if not r or r[0] in seen:
+            return slug
+        slug = r[0]
+        seen.add(slug)
+
+
+_REDIRECTS: dict[str, str] | None = None
+
+
+def slug_redirects() -> dict[str, str]:
+    """{old_slug: new_slug}, read once per process (the deployed DB is
+    immutable). Empty if the DB or table is missing."""
+    global _REDIRECTS
+    if _REDIRECTS is None:
+        try:
+            with connect() as conn:
+                _REDIRECTS = {o: resolve_slug(conn, o) for (o,) in
+                              conn.execute("SELECT old_slug FROM entity_redirect")}
+        except Exception:
+            _REDIRECTS = {}
+    return _REDIRECTS
+
+
 def upsert_entity(conn: sqlite3.Connection, slug: str, name: str, kind: str,
                   aliases: list[str] | None = None, description: str = "") -> int:
+    # A merged-away slug must not come back as a fresh duplicate entity.
+    slug = resolve_slug(conn, slug)
     cur = conn.execute("SELECT id FROM entity WHERE slug = ?", (slug,))
     row = cur.fetchone()
     if row:

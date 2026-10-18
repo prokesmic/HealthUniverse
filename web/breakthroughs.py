@@ -482,13 +482,14 @@ def match_corpus(factor_slug: str | None, outcome_slug: str | None) -> str | Non
     except Exception:
         return None
     try:
+        from db import resolve_slug  # type: ignore
         with connect() as conn:
             row = conn.execute(
                 """SELECT e.id FROM edge e
                    JOIN entity f ON f.id=e.factor_id
                    JOIN entity o ON o.id=e.outcome_id
                    WHERE f.slug=? AND o.slug=? LIMIT 1""",
-                (factor_slug, outcome_slug),
+                (resolve_slug(conn, factor_slug), resolve_slug(conn, outcome_slug)),
             ).fetchone()
             return row[0] if row else None
     except Exception:

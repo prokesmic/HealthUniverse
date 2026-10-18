@@ -78,9 +78,26 @@ def decode(token: str | None) -> Profile:
     if not raw: return Profile()
     try:
         data = json.loads(raw)
-        return Profile(**{k: data.get(k) for k in _PROFILE_FIELDS if k in data})
+        return _canonical(Profile(**{k: data.get(k) for k in _PROFILE_FIELDS if k in data}))
     except Exception:
         return Profile()
+
+
+def _canonical(p: Profile) -> Profile:
+    """Slugs saved before an entity merge point at the canonical entity
+    (entity_redirect), so a stack with `ppi` still matches its edges."""
+    try:
+        from db import slug_redirects
+        m = slug_redirects()
+    except Exception:
+        return p
+    if not m:
+        return p
+    for f in ("conditions", "stack", "watch_factors", "watch_outcomes"):
+        v = getattr(p, f, None)
+        if isinstance(v, list):
+            setattr(p, f, list(dict.fromkeys(m.get(s, s) if isinstance(s, str) else s for s in v)))
+    return p
 
 
 # ----------------------------------------------------------------------------

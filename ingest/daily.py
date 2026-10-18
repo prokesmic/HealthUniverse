@@ -23,7 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 
-from db import connect          # noqa: E402
+from db import connect, resolve_slug  # noqa: E402
 from ollama_client import call_json, OllamaUnavailable  # noqa: E402
 
 # Claim extraction is a structured-JSON task, not a reasoning one. The thinking
@@ -161,6 +161,8 @@ def _papers_for_today(conn, days_back: int = 2, per_entity: int = 8) -> list[dic
                           "data", "vitalshield_priority.json")
         if os.path.exists(pf):
             priority = list(json.load(open(pf)).get("slugs", []))
+            # VitalShield may still name a merged-away slug; follow entity_redirect.
+            priority = list(dict.fromkeys(resolve_slug(conn, s) for s in priority))
     except Exception as e:
         print(f"  [priority] unreadable, ignoring: {e}", file=sys.stderr)
     rows = []

@@ -505,7 +505,7 @@
     ["hashimoto", "autoimmune_thyroiditis"],
     ["hypertension", "hypertension"],
     ["hba1c", "hba1c_high"], ["prediabetes", "prediabetes"],
-    ["ldl", "ldl_c"], ["lipoprotein(a)", "lpa_high"], ["apob", "apob"],
+    ["ldl", "ldl_cholesterol"], ["lipoprotein(a)", "lpa_high"], ["apob", "apob"],
     ["ferritin", "high_ferritin"],
     ["fibroid", "uterine_fibroid"],
     ["mci", "cognitive_decline"],

@@ -55,60 +55,79 @@ def ensure_schema(conn) -> None:
                       reason TEXT, created_at TEXT NOT NULL DEFAULT (datetime('now')))""")
 
 
+def merge_into(conn, p, d, reason: str | None = None,
+               redirect_reason: str = "duplicate pair merged 2026-10-18") -> tuple[int, int]:
+    """Fold edge d into edge p: evidence (minus PMIDs p already cites),
+    history, reports and audits move, one history row on p records it,
+    edge_redirect sends /edge/<d> to p, d is deleted. Returns (moved, dropped)
+    evidence rows. `p`/`d` need id, tier, population."""
+    moved = dropped = 0
+    have = {x[0] for x in conn.execute("SELECT pmid FROM evidence WHERE edge_id=? AND pmid IS NOT NULL",
+                                       (p["id"],))}
+    for ev in conn.execute("SELECT id, pmid FROM evidence WHERE edge_id=?", (d["id"],)).fetchall():
+        if ev["pmid"] and ev["pmid"] in have:
+            conn.execute("DELETE FROM evidence WHERE id=?", (ev["id"],))
+            dropped += 1
+        else:
+            conn.execute("UPDATE evidence SET edge_id=? WHERE id=?", (p["id"], ev["id"]))
+            have.add(ev["pmid"])
+            moved += 1
+    for t in ("edge_history", "card_reports", "verifier_audit", "seed_topic"):
+        try:
+            conn.execute(f"UPDATE {t} SET edge_id=? WHERE edge_id=?", (p["id"], d["id"]))
+        except Exception:
+            pass
+    conn.execute("""INSERT INTO edge_history (edge_id, field, old_value, new_value, reason, actor)
+                    VALUES (?, 'merged_edge', ?, ?, ?, 'merge_duplicates')""",
+                 (p["id"], str(d["id"]), str(p["id"]),
+                  reason or f"duplicate of this pair (tier {d['tier']}, population "
+                            f"'{(d['population'] or '')[:60]}') merged in; its evidence moved here"))
+    conn.execute("INSERT OR REPLACE INTO edge_redirect (old_id, new_id, reason) VALUES (?,?,?)",
+                 (d["id"], p["id"], redirect_reason))
+    # Redirects that pointed at the deleted edge follow it.
+    conn.execute("UPDATE edge_redirect SET new_id=? WHERE new_id=?", (p["id"], d["id"]))
+    conn.execute("DELETE FROM edge WHERE id=?", (d["id"],))
+    return moved, dropped
+
+
+def merge_all(conn, dry: bool = False) -> dict:
+    """Merge every mergeable duplicate pair on `conn` (no commit)."""
+    if not dry:
+        ensure_schema(conn)
+    rows = conn.execute("""SELECT e.id, e.factor_id, e.outcome_id, e.tier, e.population,
+                                  (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n
+                           FROM edge e WHERE e.tier != 'deprecated'""").fetchall()
+    groups = defaultdict(list)
+    for r in rows:
+        groups[(r["factor_id"], r["outcome_id"])].append(r)
+    groups = {k: v for k, v in groups.items() if len(v) > 1}
+    merged = skipped = moved = dropped = 0
+    for key, es in groups.items():
+        if not mergeable(es):
+            skipped += 1
+            continue
+        es = sorted(es, key=lambda e: (-RANK.get(e["tier"], 0), -e["n"], e["id"]))
+        p, rest = es[0], es[1:]
+        for d in rest:
+            merged += 1
+            if dry:
+                continue
+            m, dr = merge_into(conn, p, d)
+            moved += m
+            dropped += dr
+    return {"groups": len(groups), "merged_edges": merged, "groups_left_alone": skipped,
+            "evidence_moved": moved, "evidence_duplicates_dropped": dropped}
+
+
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry", action="store_true")
     a = ap.parse_args(argv)
     with _connect() as conn:
-        if not a.dry:
-            ensure_schema(conn)
-        rows = conn.execute("""SELECT e.id, e.factor_id, e.outcome_id, e.tier, e.population,
-                                      (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n
-                               FROM edge e WHERE e.tier != 'deprecated'""").fetchall()
-        groups = defaultdict(list)
-        for r in rows:
-            groups[(r["factor_id"], r["outcome_id"])].append(r)
-        groups = {k: v for k, v in groups.items() if len(v) > 1}
-        merged = skipped = moved = dropped = 0
-        for key, es in groups.items():
-            if not mergeable(es):
-                skipped += 1
-                continue
-            es = sorted(es, key=lambda e: (-RANK.get(e["tier"], 0), -e["n"], e["id"]))
-            p, rest = es[0], es[1:]
-            for d in rest:
-                merged += 1
-                if a.dry:
-                    continue
-                have = {x[0] for x in conn.execute("SELECT pmid FROM evidence WHERE edge_id=? AND pmid IS NOT NULL",
-                                                   (p["id"],))}
-                for ev in conn.execute("SELECT id, pmid FROM evidence WHERE edge_id=?", (d["id"],)).fetchall():
-                    if ev["pmid"] and ev["pmid"] in have:
-                        conn.execute("DELETE FROM evidence WHERE id=?", (ev["id"],))
-                        dropped += 1
-                    else:
-                        conn.execute("UPDATE evidence SET edge_id=? WHERE id=?", (p["id"], ev["id"]))
-                        have.add(ev["pmid"])
-                        moved += 1
-                for t in ("edge_history", "card_reports", "verifier_audit", "seed_topic"):
-                    try:
-                        conn.execute(f"UPDATE {t} SET edge_id=? WHERE edge_id=?", (p["id"], d["id"]))
-                    except Exception:
-                        pass
-                conn.execute("""INSERT INTO edge_history (edge_id, field, old_value, new_value, reason, actor)
-                                VALUES (?, 'merged_edge', ?, ?, ?, 'merge_duplicates')""",
-                             (p["id"], str(d["id"]), str(p["id"]),
-                              f"duplicate of this pair (tier {d['tier']}, population "
-                              f"'{(d['population'] or '')[:60]}') merged in; its evidence moved here"))
-                conn.execute("INSERT OR REPLACE INTO edge_redirect (old_id, new_id, reason) VALUES (?,?,?)",
-                             (d["id"], p["id"], "duplicate pair merged 2026-10-18"))
-                # Redirects that pointed at the deleted edge follow it.
-                conn.execute("UPDATE edge_redirect SET new_id=? WHERE new_id=?", (p["id"], d["id"]))
-                conn.execute("DELETE FROM edge WHERE id=?", (d["id"],))
+        out = merge_all(conn, a.dry)
         if not a.dry:
             conn.commit()
-    print({"groups": len(groups), "merged_edges": merged, "groups_left_alone": skipped,
-           "evidence_moved": moved, "evidence_duplicates_dropped": dropped})
+    print(out)
     return 0
 
 
