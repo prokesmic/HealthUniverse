@@ -172,7 +172,7 @@ def audit(sample: int = 0) -> dict:
 
     rows, stats = [], Counter()
     for e in edges:
-        text = " ".join(e[f] or "" for f in TEXT_FIELDS)
+        text = re.sub(r"\bPMID \d+", "", " ".join(e[f] or "" for f in TEXT_FIELDS))   # our own source labels
         n_text = nums(text)
         if not n_text:
             stats["no_numbers"] += 1
