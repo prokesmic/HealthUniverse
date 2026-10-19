@@ -56,10 +56,15 @@ python seed.py --next --limit 200
      `cost_ledger`. Never bypass it. Never call Claude in a hot path.
 
 2. **SQLite at `data/healthuniverse.db` is the source of truth.** It is
-   committed to the repo so Vercel can read it. Vercel runs read-only — do
-   not write to the DB from a request handler. Writes happen in offline
-   scripts (seed, ingest, digest) on the user's Mac, then `git push` triggers
-   redeploy.
+   local-only (gitignored since 19.10.2026; it holds ingested abstracts,
+   verifier audits and embeddings and would pass GitHub's 100 MB limit).
+   `scripts/build_web_db.py` publishes a slim copy, `data/healthuniverse.web.db`
+   (no ingested_paper/verifier_audit rows, no edge embeddings), which is
+   committed and which Vercel reads (`db.py` picks it when `VERCEL` is set).
+   Vercel runs read-only — do not write to the DB from a request handler.
+   Writes happen in offline scripts (seed, ingest, digest) on the user's Mac;
+   the nightly jobs rebuild the web copy, then `git push` triggers redeploy.
+   Web code must not depend on the stripped tables or `edge.embedding`.
 
 3. **No new frameworks without justification.** Stack is FastAPI + Jinja +
    SQLite + Anthropic SDK + httpx. No React, no SQLAlchemy, no Postgres,
@@ -89,7 +94,8 @@ web/templates/          Jinja templates
 web/static/style.css    design tokens + components
 api/index.py            Vercel serverless entrypoint (re-exports app)
 vercel.json             Vercel build config (includes templates, DB, etc.)
-data/healthuniverse.db  committed SQLite DB
+data/healthuniverse.db  working SQLite DB (local only)
+data/healthuniverse.web.db  slim web copy, committed (scripts/build_web_db.py)
 ```
 
 When phases 2/4/5 land they will add:

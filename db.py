@@ -13,7 +13,12 @@ load_dotenv(Path(__file__).parent / ".env", override=True)
 
 _PROJECT_ROOT = Path(__file__).parent.resolve()
 _default_db = _PROJECT_ROOT / "data" / "healthuniverse.db"
+# The working DB above stays local (papers, audits, embeddings; >100 MB soon).
+# Vercel serves the slim copy scripts/build_web_db.py publishes to git.
+WEB_DB_PATH = _PROJECT_ROOT / "data" / "healthuniverse.web.db"
 DB_PATH = Path(os.getenv("DB_PATH", str(_default_db))).resolve()
+if os.getenv("VERCEL"):
+    DB_PATH = WEB_DB_PATH
 SCHEMA_PATH = _PROJECT_ROOT / "schema.sql"
 
 

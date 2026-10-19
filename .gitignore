@@ -2,7 +2,10 @@
 *.db-journal
 *.db-wal
 *.db-shm
-# Note: data/healthuniverse.db IS committed so Vercel can read it.
+# The working DB is local-only (GitHub rejects >100 MB). Vercel reads the
+# slim data/healthuniverse.web.db, built and committed by scripts/build_web_db.py.
+data/healthuniverse.db
+data/healthuniverse.web.db.tmp
 __pycache__/
 *.pyc
 .venv/
