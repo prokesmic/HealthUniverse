@@ -1,8 +1,521 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-10-19",
+  "updated_at": "2026-10-20",
   "items": [
+    {
+      "id": "br_154f8e2b8fa04d0d",
+      "published_at": "2026-10-20",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New immunotherapy may let some rectal cancer patients skip chemo, radiation, and surgery",
+      "summary": "The FDA approved a new use of immunotherapy for certain patients with locally advanced rectal cancer. This treatment may allow some to avoid chemotherapy, radiation, and surgery.",
+      "why_it_matters": "If you or a loved one has rectal cancer, ask your doctor if you might be eligible for this treatment option.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Approvals",
+      "source_url": "http://www.fda.gov/news-events/press-announcements/fda-approves-immunotherapy-may-allow-certain-patients-rectal-cancer-avoid-chemotherapy-radiation-and",
+      "factor_slug": "dostarlimab",
+      "outcome_slug": "rectal_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Jemperli (dostarlimab-gxly)",
+        "summary": "The FDA approved Jemperli as a standalone treatment for adults with previously untreated stage II or III locally advanced rectal cancer that is mismatch repair deficient (dMMR) or microsatellite instability-high (MSI-H). The approval was based on interim results from a phase 2 trial (AZUR-1) involving 154 patients. In this study, nearly three-fourths of patients did not need surgery, chemotherapy, or radiation after receiving Jemperli. An earlier study at Memorial Sloan Kettering also showed high rates of cancer-free status after treatment.",
+        "key_findings": [
+          "In the earlier study (NCT04165772), 93% of patients remained cancer-free for at least 12 months.",
+          "Of 27 patients followed for at least 3 years in the earlier study, only one had cancer recurrence.",
+          "None of the 50 patients in the earlier study had detectable signs of cancer after treatment.",
+          "In the AZUR-1 trial, median follow-up was over 2 years."
+        ],
+        "study": {
+          "trial_name": "AZUR-1 (NCT05723562)",
+          "design": "phase 2",
+          "participants": "154 patients with previously untreated dMMR or MSI-H locally advanced rectal cancer",
+          "follow_up": "median follow-up of more than 2 years"
+        },
+        "regulatory_status": "FDA accelerated approval for Jemperli in dMMR or MSI-H locally advanced rectal cancer",
+        "caveats": [
+          "The approval is based on interim results; longer follow-up is needed to confirm lasting benefit.",
+          "Jemperli can cause severe or fatal immune-related side effects.",
+          "The treatment is only for patients with dMMR or MSI-H tumors, which are estimated to be about 3% of cases.",
+          "The study did not include a control group, so direct comparison to standard care is not available."
+        ],
+        "next_steps": "The sponsor must continue following patients to confirm that the treatment provides lasting clinical benefit.",
+        "who_it_applies_to": "Adults with previously untreated stage II or III locally advanced rectal cancer that is mismatch repair deficient (dMMR) or microsatellite instability-high (MSI-H)",
+        "evidence": [
+          {
+            "pmid": "36564825",
+            "title": "A novel trial methodology to test interventions with very large effect sizes: the case of dostarlimab in mismatch repair-deficient, locally advanced rectal cancer.",
+            "journal": "Trials",
+            "year": "2022",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/36564825/"
+          }
+        ],
+        "source_chars": 5124,
+        "enriched_at": "2026-10-20",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "finding: 73"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_2ae03698430d7f2f",
+      "published_at": "2026-10-20",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug gets FDA approval for advanced rectal cancer",
+      "summary": "The FDA has granted accelerated approval to a new drug for locally advanced rectal cancer. This approval is based on tumor response rates observed in clinical trials.",
+      "why_it_matters": "People with this type of rectal cancer now have a new treatment option approved by the FDA.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-accelerated-approval-dostarlimab-locally-advanced-rectal-cancer",
+      "factor_slug": "dostarlimab",
+      "outcome_slug": "rectal_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "dostarlimab",
+        "summary": "The FDA granted accelerated approval to dostarlimab for adults with Stage II/III locally advanced rectal cancer that is microsatellite instability high (MSI-H) or mismatch repair deficient (dMMR). The approval was based on results from the AZUR-1 trial, which included 154 patients treated with dostarlimab alone. In this trial, 47% of patients achieved a sustained clinical complete response at 12 months (cCR12) as assessed by independent central review. No patients with a cCR12, cCR, or near complete response experienced disease progression during a median follow-up of 26.3 months.",
+        "key_findings": [
+          "47% of 116 ICR-evaluable patients achieved cCR12 (95% CI: 27%, 56%)",
+          "ORR per ICR was 79% (95% CI: 71%, 85%)",
+          "68% of 144 investigator-evaluable patients achieved cCR12 (95% CI: 60%, 76%)",
+          "ORR per investigator was 82% (95% CI: 75%, 88%)",
+          "None of the patients with cCR12, cCR, or near CR experienced disease progression during median follow-up of 26.3 months"
+        ],
+        "study": {
+          "trial_name": "AZUR-1 (NCT05723562)",
+          "design": "multicenter, single-arm, open-label phase 2 trial",
+          "participants": "154 patients with previously untreated, histologically confirmed, MSI-H/dMMR, Stage II/III locally advanced rectal cancer",
+          "primary_endpoint": "sustained clinical complete response (cCR12) per independent central review measured from the first disease assessment after the last dose of dostarlimab where cCR was observed",
+          "follow_up": "median follow-up of 26.3 months"
+        },
+        "regulatory_status": "FDA granted accelerated approval on October 19, 2026",
+        "caveats": [
+          "Approval is based on surrogate endpoints (cCR12, ORR) rather than overall survival",
+          "Long-term outcomes beyond 26.3 months are still being evaluated",
+          "Immune-mediated adverse reactions are a known risk"
+        ],
+        "next_steps": "Continued approval may depend on verification of clinical benefit in confirmatory trials",
+        "who_it_applies_to": "Adults with Stage II/III locally advanced rectal cancer that is microsatellite instability high (MSI-H) or mismatch repair deficient (dMMR), as determined by an FDA-authorized test",
+        "evidence": [
+          {
+            "pmid": "40293177",
+            "title": "Nonoperative Management of Mismatch Repair-Deficient Tumors.",
+            "journal": "The New England journal of medicine",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40293177/"
+          },
+          {
+            "pmid": "35660797",
+            "title": "PD-1 Blockade in Mismatch Repair-Deficient, Locally Advanced Rectal Cancer.",
+            "journal": "The New England journal of medicine",
+            "year": "2022",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/35660797/"
+          },
+          {
+            "pmid": "40107952",
+            "title": "A Phase Two, Single-Arm, Open-Label Study With Dostarlimab Monotherapy in Participants With Untreated Stage II/III dMMR/MSI-H Locally Advanced Rectal Cancer (AZUR-1).",
+            "journal": "Clinical colorectal cancer",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40107952/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Jemperli",
+          "generic": "dostarlimab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=dostarlimab"
+        },
+        "source_chars": 5641,
+        "enriched_at": "2026-10-20",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_eb606ebeded5bd21",
+      "published_at": "2026-10-19",
+      "category": "other",
+      "stage": "phase2",
+      "audience": "general",
+      "headline": "New oral pill shows better colitis remission than existing treatment",
+      "summary": "A Phase 2 trial found the oral drug had higher remission rates in ulcerative colitis patients compared to a rival biologic. Results support advancing to late-stage trials.",
+      "why_it_matters": "This could mean a more convenient, effective treatment option for people with ulcerative colitis.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/gileads-pill-posts-stronger-colitis-remission-rates-than-entyvio/",
+      "factor_slug": "oral_alpha4beta7_inhibitor",
+      "outcome_slug": "ulcerative_colitis_remission",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "emvistegrast",
+        "summary": "A Phase 2 dose-finding trial evaluated the oral \u03b14\u03b27 inhibitor emvistegrast in patients with ulcerative colitis. The trial compared remission rates between emvistegrast and Entyvio, a rival biologic treatment. These results support advancing emvistegrast to late-stage (Phase 3) trials.",
+        "key_findings": [
+          "Emvistegrast achieved a 31% remission rate in the Phase 2 trial",
+          "This remission rate was higher than that of Entyvio in a cross-trial comparison",
+          "The trial was a dose-finding study in ulcerative colitis patients",
+          "Results support progression to Phase 3 trials"
+        ],
+        "study": {
+          "trial_name": "SWIFT"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Comparison with Entyvio is cross-trial, not direct",
+          "Industry-funded (Gilead Sciences)"
+        ],
+        "next_steps": "Phase 3 trials are set to begin in 2027",
+        "who_it_applies_to": "Patients with ulcerative colitis",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "34126262",
+            "title": "Anti-TL1A Antibody PF-06480605 Safety and Efficacy for Ulcerative Colitis: A Phase 2a Single-Arm Study.",
+            "journal": "Clinical gastroenterology and hepatology : the official clinical practice journal of the American Gastroenterological Association",
+            "year": "2021",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/34126262/"
+          },
+          {
+            "pmid": "28467869",
+            "title": "Tofacitinib as Induction and Maintenance Therapy for Ulcerative Colitis.",
+            "journal": "The New England journal of medicine",
+            "year": "2017",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/28467869/"
+          },
+          {
+            "pmid": "31470005",
+            "title": "Efficacy and Safety of Vedolizumab Subcutaneous Formulation in a Randomized Trial of Patients With Ulcerative Colitis.",
+            "journal": "Gastroenterology",
+            "year": "2020",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/31470005/"
+          }
+        ],
+        "source_chars": 289,
+        "enriched_at": "2026-10-20",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.50)",
+          "summary: unsupported wording (0.20)",
+          "study.design: unsupported wording (0.50)",
+          "study.comparator: unsupported wording (0.50)",
+          "finding: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "ulcerative_colitis_remission",
+          "name": "Ulcerative colitis remission",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1337,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Lactobacillus rhamnosus",
+            "outcome": "Ulcerative colitis remission",
+            "summary": "The clinical signal for Lactobacillus rhamnosus in ulcerative colitis is promising enough to stay on the table, but not clean enough to call established. Reviews of the broader probiotic literature remain uncertain, whil",
+            "effect": "A 2020 Cochrane review of 12 studies with 1,473 randomized participants found uncertainty about whether probiotics reduced ulcerative-colitis relapse versus placebo (RR 0.87, 95% CI 0.63-1.18) or improved remission maintenance versus placebo (RR 1.16, 95% CI 0.98-1.37); in a 2023 open-label LGG monotherapy study, 32 of 76 patients (42%) improved and 37% entered remission over one month.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1548,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "High-dose VSL#3 probiotic blend",
+            "outcome": "Ulcerative colitis remission",
+            "summary": "High-dose VSL#3 probably helps some ulcerative colitis patients achieve remission, particularly in mild-to-moderately active disease and in post-surgical pouchitis settings. The evidence is encouraging but still best int",
+            "effect": "A 147-patient placebo-controlled trial found week-12 remission in 42.9% of mild-to-moderately active ulcerative colitis patients receiving VSL#3 versus 15.7% with placebo, while an earlier 34-patient open-label study reported a 53% remission rate and chronic pouchitis maintenance data after colectomy for UC also favored VSL#3 over placebo.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1242,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Probiotics (multi-strain)",
+            "outcome": "Ulcerative colitis remission",
+            "summary": "Probiotics may help remit ulcerative colitis symptoms.",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 2
+          },
+          {
+            "id": 1417,
+            "tier": "D",
+            "direction": "mixed",
+            "factor": "Boswellia serrata",
+            "outcome": "Ulcerative colitis remission",
+            "summary": "Boswellia for ulcerative colitis remains a low-confidence edge. A small early trial suggested remission rates comparable to sulfasalazine, but the evidence base never matured into the kind of replicated placebo-controlle",
+            "effect": "The only direct Boswellia ulcerative colitis trial was tiny, with remission reported in 82% of Boswellia-treated patients versus 75% of sulfasalazine controls in a 30-patient comparison. Later reviews mainly conclude that the signal is intriguing but far too thin to treat as established remission therapy.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 4401,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Dietary polyphenols",
+            "outcome": "Ulcerative colitis remission",
+            "summary": "Model predicted regulatory potential of polyphenols on intestinal inflammation in UC mice.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5172,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Red meat",
+            "outcome": "Ulcerative colitis remission",
+            "summary": "High intake of red meat is associated with a greater risk for a UC relapse.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 7,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_d43ccfc1a2fe33bd",
+      "published_at": "2026-10-19",
+      "category": "other",
+      "stage": "phase2",
+      "audience": "general",
+      "headline": "New oral drug clears IBD symptoms in mid-stage trial",
+      "summary": "In a mid-stage study, an oral treatment eliminated symptoms in patients with a type of inflammatory bowel disease. Results were reported by Gilead Sciences.",
+      "why_it_matters": "People with IBD may benefit from a new treatment option that could reduce or eliminate symptoms.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/2026/10/19/gilead-ibs-drug-succeeds-phase-2-trial/?utm_campaign=rss",
+      "factor_slug": "gilead_ibd_drug",
+      "outcome_slug": "ibd_symptoms",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "an oral treatment from Gilead Sciences",
+        "summary": "In a mid-stage study, an oral drug developed by Gilead Sciences eliminated symptoms in patients with a type of inflammatory bowel disease. The findings were reported by Gilead Sciences and could support further development of the drug for inflammatory and autoimmune diseases.",
+        "key_findings": [
+          "Symptoms were eliminated in patients with inflammatory bowel disease",
+          "Results were reported from a mid-stage trial"
+        ],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with a type of inflammatory bowel disease",
+        "evidence": [],
+        "source_chars": 291,
+        "enriched_at": "2026-10-20",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.33)",
+          "study.design: 2",
+          "study.participants: unsupported wording (0.00)",
+          "caveat: 2",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "next_steps: unsupported wording (0.17)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "ibd_remission",
+          "name": "IBD remission",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1167,
+            "tier": "B",
+            "direction": "neutral",
+            "factor": "Omega-3 supplementation",
+            "outcome": "IBD remission",
+            "summary": "Omega-3 supplementation has not shown a dependable ability to maintain remission in IBD. Both older ulcerative colitis trials and the large EPIC Crohn disease studies failed to demonstrate a meaningful relapse-prevention",
+            "effect": "A Cochrane review of ulcerative colitis remission maintenance found no relapse benefit with fish oil (RR 1.02, 95% CI 0.51-2.03), and the large EPIC Crohn disease trials were likewise negative.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1360,
+            "tier": "B",
+            "direction": "mixed",
+            "factor": "Omega-3 supplementation",
+            "outcome": "IBD remission",
+            "summary": "Omega-3 supplementation has looked promising mechanistically and in some smaller older IBD trials, but the overall remission-maintenance literature is mixed. The most credible interpretation is that any clinical benefit ",
+            "effect": "A systematic review of 9 randomized trials including 1039 Crohn disease patients and 138 ulcerative colitis patients found an apparent Crohn disease benefit (RR 0.77, 95% CI 0.61-0.98) but no ulcerative colitis benefit (RR 1.02, 95% CI 0.51-2.03); however, the two large EPIC Crohn trials totaling 738 patients showed no relapse reduction, and a 64-patient UC trial found only a transient early delay in relapse with identical 2-year cumulative relapse rates.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2833,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Fecal microbiota transplantation",
+            "outcome": "IBD remission",
+            "summary": "FMT showed the most consistent efficacy for clinical and endoscopic remission in IBD.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 2834,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Probiotics (multi-strain)",
+            "outcome": "IBD remission",
+            "summary": "Probiotics significantly improved clinical remission in IBD.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 5337,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Mediterranean diet pattern",
+            "outcome": "IBD remission",
+            "summary": "The Mediterranean diet shows potential for maintaining remission in paediatric IBD.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5338,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Curcumin",
+            "outcome": "IBD remission",
+            "summary": "Curcumin may support maintenance of remission in selected paediatric IBD patients.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 6,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_fe54e5e763dcf1fc",
+      "published_at": "2026-10-19",
+      "category": "other",
+      "stage": "phase2",
+      "audience": "general",
+      "headline": "New combo therapy works better than Skyrizi alone for Crohn\u2019s",
+      "summary": "In a mid-stage trial, a combination of Skyrizi and another drug worked better than Skyrizi alone in treating Crohn\u2019s disease. The results showed improved outcomes, though specific numbers were not provided.",
+      "why_it_matters": "People with Crohn\u2019s disease may benefit from a more effective treatment option in the near future.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/abbvies-skyrizi-combo-beats-skyrizi-alone-in-mid-stage-crohns-trial/",
+      "factor_slug": "skyrizi_combo",
+      "outcome_slug": "crohns_disease",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "ABBV-466",
+        "summary": "In a mid-stage trial, AbbVie tested a combination therapy of Skyrizi and another drug (ABBV-466) against Skyrizi alone in patients with Crohn\u2019s disease. The primary endpoint was endoscopic remission at three months. The combination therapy showed better results than Skyrizi alone, though specific comparative numbers were not provided.",
+        "key_findings": [
+          "At three months, 30.2% of patients on ABBV-466 achieved endoscopic remission.",
+          "The combination therapy worked better than Skyrizi alone, according to AbbVie."
+        ],
+        "study": {
+          "comparator": "Skyrizi alone",
+          "primary_endpoint": "endoscopic remission"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Industry-funded (AbbVie)"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "29920726",
+            "title": "An expert consensus to standardise definitions, diagnosis and treatment targets for anti-fibrotic stricture therapies in Crohn's disease.",
+            "journal": "Alimentary pharmacology & therapeutics",
+            "year": "2018",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/29920726/"
+          },
+          {
+            "pmid": "33421515",
+            "title": "Selecting End Points for Disease-Modification Trials in Inflammatory Bowel Disease: the SPIRIT Consensus From the IOIBD.",
+            "journal": "Gastroenterology",
+            "year": "2021",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/33421515/"
+          },
+          {
+            "pmid": "18239401",
+            "title": "Fistulizing Crohn's disease.",
+            "journal": "Digestion",
+            "year": "2007",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/18239401/"
+          }
+        ],
+        "source_chars": 307,
+        "enriched_at": "2026-10-20",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.38)",
+          "study.design: 2",
+          "study.follow_up: unsupported wording (0.00)",
+          "caveat: 2",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.20)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_cc3ab2f08f1d152f",
       "published_at": "2026-10-18",
