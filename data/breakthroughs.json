@@ -1,8 +1,206 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-10-22",
+  "updated_at": "2026-10-23",
   "items": [
+    {
+      "id": "br_6bcb430c57ae9162",
+      "published_at": "2026-10-23",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New approval for cancer treatment in high-TMB tumors",
+      "summary": "The FDA has granted traditional approval for a treatment in patients with unresectable or metastatic solid tumors that have high tumor mutational burden. The approval includes a new indication based on updated clinical data.",
+      "why_it_matters": "Patients with certain advanced cancers may now have access to a new treatment option backed by FDA approval.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/resources-information-approved-drugs/fda-grants-traditional-approval-pembrolizumab-or-pembrolizumab-and-berahyaluronidase-alfa-pmph",
+      "factor_slug": "pembrolizumab",
+      "outcome_slug": "tmb_h_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "pembrolizumab or pembrolizumab and berahyaluronidase alfa-pmph",
+        "summary": "The FDA has granted traditional approval for pembrolizumab, with or without berahyaluronidase alfa-pmph, in adult and pediatric patients with unresectable or metastatic solid tumors that have a high tumor mutational burden (TMB-H) of at least 13 mutations per megabase. This approval is based on updated clinical data from KEYNOTE-158, which evaluated patients with TMB-H tumors who had progressed after prior treatment and had no other satisfactory options. Efficacy was assessed in 220 patients with TMB \u226513 mut/Mb, and the objective response rate was 36% with 58% of responders having a response lasting at least 12 months. The safety profile remained consistent with known risks of pembrolizumab, including immune-mediated adverse reactions and infusion-related events.",
+        "key_findings": [
+          "Objective response rate (ORR) was 36% (95% CI: 30, 43) in 220 patients with TMB \u226513 mut/Mb.",
+          "58% of patients had a duration of response (DOR) of at least 12 months.",
+          "The TMB-H threshold was updated from \u226510 to \u226513 mut/Mb for traditional approval.",
+          "Efficacy was not confirmed in patients with TMB of 10 to <13 mut/Mb.",
+          "The safety profile was consistent with the known safety profile of pembrolizumab monotherapy."
+        ],
+        "study": {
+          "trial_name": "KEYNOTE-158 (NCT02628067)",
+          "design": "phase 2, multicohort, prospective and retrospective analysis",
+          "participants": "220 patients with unresectable or metastatic solid tumors and TMB \u226513 mut/Mb",
+          "primary_endpoint": "objective response rate (ORR) and duration of response (DOR)"
+        },
+        "regulatory_status": "FDA granted traditional approval on October 16, 2026",
+        "caveats": [
+          "Approval is limited to patients with TMB-H defined as \u226513 mut/Mb, excluding those with TMB of 10 to <13 mut/Mb.",
+          "Efficacy was not confirmed in the lower TMB range, limiting applicability.",
+          "Immune-mediated adverse reactions are a known risk and require monitoring."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adult and pediatric patients with unresectable or metastatic solid tumors that have a tumor mutational burden of at least 13 mutations per megabase, who have progressed on prior treatment and have no other satisfactory treatment options.",
+        "evidence": [],
+        "fda_label": {
+          "brand": "Keytruda Qlex",
+          "generic": "pembrolizumab and berahyaluronidase alfa-pmph",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=pembrolizumab"
+        },
+        "source_chars": 3735,
+        "enriched_at": "2026-10-23",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.43)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_a97e596b2014a1c8",
+      "published_at": "2026-10-22",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New melanoma vaccine cuts recurrence risk by 42%",
+      "summary": "A personalized mRNA cancer vaccine reduced the risk of melanoma returning by 42% compared to standard treatment. The results came from a large clinical trial in patients with high-risk melanoma.",
+      "why_it_matters": "This vaccine may help prevent melanoma from coming back after surgery\u2014talk to your doctor about new treatment options.",
+      "graphic": {
+        "kind": "forest_plot",
+        "studies": [
+          {
+            "name": "Intismeran + Pembrolizumab vs Pembrolizumab",
+            "estimate": 0.51,
+            "ci_low": 0.294,
+            "ci_high": 0.887
+          }
+        ],
+        "x_label": "Hazard Ratio (HR)",
+        "reference": 1,
+        "log_scale": true
+      },
+      "strength": 0.95,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/2026/10/22/esmo-moderna-merck-cancer-vaccine-intismeran-data-released/?utm_campaign=rss",
+      "factor_slug": "mRNA_cancer_vaccine",
+      "outcome_slug": "melanoma_recurrence",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "intismeran autogene",
+        "summary": "A personalized mRNA cancer vaccine called intismeran autogene was tested in patients with high-risk melanoma who had undergone surgery to remove their tumors. The trial compared the vaccine plus pembrolizumab to pembrolizumab alone. After a 5-year follow-up, the combination reduced the risk of disease recurrence by 42% compared to pembrolizumab alone. The vaccine was associated with sustained improvements in recurrence-free survival and distant metastasis-free survival.",
+        "key_findings": [
+          "The hazard ratio for recurrence-free survival was 0.510 (95% CI, 0.294 to 0.887) with intismeran plus pembrolizumab versus pembrolizumab alone.",
+          "The hazard ratio for distant metastasis-free survival was 0.411 (95% CI, 0.200 to 0.843) in the combination group.",
+          "After 5 years, recurrence-free survival was prolonged with the combination therapy.",
+          "No new safety signals were observed with the combination.",
+          "Greater expansion of novel T-cell clones was seen in patients without recurrence in the combination arm."
+        ],
+        "study": {
+          "trial_name": "KEYNOTE-942",
+          "design": "randomized phase IIb",
+          "participants": "157 patients with resected stage IIIB to IV cutaneous melanoma",
+          "comparator": "pembrolizumab alone",
+          "primary_endpoint": "recurrence-free survival (RFS)",
+          "follow_up": "median follow-up of 60.3 months (range, 50.5\u201376.4)"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The trial did not report overall survival as statistically significant.",
+          "The vaccine is personalized, which may limit scalability and increase cost."
+        ],
+        "next_steps": "Further trials and regulatory review are expected, including potential phase 3 confirmation and evaluation for broader approval.",
+        "who_it_applies_to": "Patients with high-risk melanoma who have had their tumors surgically removed and are at risk of recurrence.",
+        "evidence": [
+          {
+            "pmid": "42223134",
+            "title": "Intismeran Autogene Plus Pembrolizumab Versus Pembrolizumab Alone in High-Risk Resected Melanoma: 5-Year Update of the Randomized Phase IIb KEYNOTE-942 Study.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42223134/"
+          },
+          {
+            "pmid": "42794593",
+            "title": "Personalized mRNA Neoantigen Vaccines in Cancer: Linking Precision Antigen Selection, Immune Remodeling, and Checkpoint Blockade.",
+            "journal": "International journal of molecular sciences",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42794593/"
+          },
+          {
+            "pmid": "42213481",
+            "title": "Cancer vaccines: comprehensive review.",
+            "journal": "BJS open",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42213481/"
+          }
+        ],
+        "source_chars": 297,
+        "enriched_at": "2026-10-23",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "recurrence_risk",
+          "name": "Recurrence risk",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1837,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Supervised exercise after chemotherapy for breast cancer",
+            "outcome": "Recurrence risk",
+            "summary": "The strongest evidence for recurrence reduction comes from post-diagnosis physical activity cohorts rather than randomized supervised programs, but the direction is fairly consistent. That makes the evidence supportive f",
+            "effect": "A meta-analysis of five cohorts found lower recurrence risk at >=7.5 MET-h/week versus 0-3 MET-h/week, with newer prospective data showing DRFI benefit above about 5 MET-h/week.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 5162,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Allium vegetables",
+            "outcome": "Recurrence risk",
+            "summary": "Higher postdiagnosis vegetable consumption was associated with lower risk of first recurrence in NMIBC patients.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5163,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Cruciferous vegetables",
+            "outcome": "Recurrence risk",
+            "summary": "Higher postdiagnosis cruciferous vegetable consumption was associated with lower risk of first recurrence in NMIBC patients.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 3,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_49eb6e0725235f51",
       "published_at": "2026-10-21",
