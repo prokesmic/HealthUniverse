@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-10-24",
+  "updated_at": "2026-10-25",
   "items": [
     {
       "id": "br_1c2a4463c14f3bb3",
@@ -136,6 +136,80 @@
         ],
         "factor_edges": [],
         "outcome_total": 72,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_b6b219dca86cf5bb",
+      "published_at": "2026-10-24",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New lung cancer treatment cuts death risk by more than half",
+      "summary": "In a phase 3 trial, adding a new drug to standard treatment reduced the risk of death by 58% in certain small cell lung cancer patients. The results were compared to standard treatment alone.",
+      "why_it_matters": "People with certain lung cancers may now have a significantly better chance of survival with this new combination therapy.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/esmo26-amgens-imdelltra-regimen-more-than-halves-risk-of-death-in-phase-3-lung-cancer-trial/",
+      "factor_slug": "imdeltra_plus_imfinzi",
+      "outcome_slug": "overall_survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Imdelltra (tarlatamab) plus Imfinzi (durvalumab)",
+        "summary": "In a phase 3 trial, adding Imdelltra to Imfinzi reduced the risk of death by 58% in patients with extensive-stage small cell lung cancer (ES-SCLC) who had not received prior treatment. The trial tested the combination as first-line maintenance therapy, comparing it to Imfinzi alone. The median overall survival was 21.1 months in the combination group, though the control group's median OS was not reported. The results were presented at ESMO and represent a significant improvement over standard treatment.",
+        "key_findings": [
+          "Risk of death reduced by 58% with Imdelltra plus Imfinzi vs. Imfinzi alone",
+          "Median overall survival of 21.1 months in the combination group",
+          "The hazard ratio for death was not provided in the source",
+          "The trial was conducted in the first-line maintenance setting for ES-SCLC",
+          "Imfinzi alone was the comparator in the trial"
+        ],
+        "study": {
+          "comparator": "Imfinzi alone",
+          "primary_endpoint": "overall survival"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The control group's median overall survival was not reported"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "patients with extensive-stage small cell lung cancer (ES-SCLC) who have not received prior treatment",
+        "evidence": [
+          {
+            "pmid": "39023700",
+            "title": "Tarlatamab: First Approval.",
+            "journal": "Drugs",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39023700/"
+          },
+          {
+            "pmid": "34731446",
+            "title": "Durvalumab: A Review in Extensive-Stage SCLC.",
+            "journal": "Targeted oncology",
+            "year": "2021",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/34731446/"
+          }
+        ],
+        "source_chars": 313,
+        "enriched_at": "2026-10-25",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.design: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.20)",
+          "graphic: 0"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
         "factor_total": 0
       }
     },
@@ -430,6 +504,81 @@
         ],
         "factor_edges": [],
         "outcome_total": 3,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_6390062ea2eac471",
+      "published_at": "2026-10-22",
+      "category": "other",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New drug shows strong results in severe skin condition",
+      "summary": "In a Phase 3 trial, the drug significantly improved symptoms in patients with a painful skin disease. Results support an upcoming FDA submission.",
+      "why_it_matters": "People with this severe skin condition may have a new treatment option soon.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/abbvie-notches-phase-3-win-in-painful-skin-condition-fda-filing-likely-next-year/",
+      "factor_slug": "il_1_inhibitor",
+      "outcome_slug": "painful_skin_condition",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "lutikizumab",
+        "summary": "In a Phase 3 trial, lutikizumab significantly improved symptoms in adults with moderate to severe hidradenitis suppurativa (HS), meeting its primary endpoint. The drug is a dual inhibitor of interleukin-1\u03b1 and interleukin-1\u03b2. Results showed a statistically significant improvement in patient response rates after 16 weeks of treatment compared to placebo. These findings support an upcoming FDA submission for approval.",
+        "key_findings": [
+          "Lutikizumab met the primary endpoint of HiSCR-50 at 16 weeks.",
+          "Response rates were significantly higher than placebo in the Phase 3 trial.",
+          "In the earlier phase 2 trial, 59.5% of patients on lutikizumab 300 mg every other week achieved HiSCR-50.",
+          "In the earlier phase 2 trial, 48.7% of patients on lutikizumab 300 mg weekly achieved HiSCR-50.",
+          "In the earlier phase 2 trial, 27.0% of patients on lutikizumab 100 mg every other week achieved HiSCR-50."
+        ],
+        "study": {
+          "design": "randomized phase 3, double-blind",
+          "comparator": "placebo",
+          "primary_endpoint": "Hidradenitis Suppurativa Clinical Response (HiSCR)-50 at 16 weeks",
+          "follow_up": "16 weeks"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Results are based on a single Phase 3 trial; long-term safety and efficacy not yet established.",
+          "The trial used HiSCR-50 as a primary endpoint, which is a surrogate measure of clinical improvement.",
+          "The study was funded by AbbVie, which may introduce bias.",
+          "Data on serious adverse events were not fully reported in the source article."
+        ],
+        "next_steps": "AbbVie plans to submit the drug for FDA approval next year.",
+        "who_it_applies_to": "Adults with moderate to severe hidradenitis suppurativa, including those who have failed anti-TNF therapy.",
+        "evidence": [
+          {
+            "pmid": "40601333",
+            "title": "Efficacy and Safety of Medical Interventions for Moderate to Severe Hidradenitis Suppurativa: A Living Systematic Review and Network Meta-Analysis.",
+            "journal": "JAMA dermatology",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40601333/"
+          },
+          {
+            "pmid": "41848710",
+            "title": "Lutikizumab in Adults With Moderate to Severe Hidradenitis Suppurativa After Anti-TNF Therapy Failure: A Phase 2 Randomized Clinical Trial.",
+            "journal": "JAMA dermatology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41848710/"
+          }
+        ],
+        "source_chars": 324,
+        "enriched_at": "2026-10-25",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "regulatory_status: unsupported wording (0.50)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
         "factor_total": 0
       }
     },
