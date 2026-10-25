@@ -112,6 +112,89 @@ def clean_name(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
 
+# Qualifiers that make an entity name precise for the graph but absent from
+# papers: "Chronic psychological stress", "High HbA1c", "Deliberate cold
+# exposure", "Endothelial dysfunction by flow-mediated dilation". On 19–25.10
+# 48 of the last 60 edges found nothing, mostly because of these.
+_LEAD = re.compile(r"^(high|higher|low|lower|elevated|reduced|chronic|acute|deliberate|regular|habitual|daily|"
+                   r"long-term|short-term|excess|excessive|poor|"
+                   r"increased|decreased|frequent)\s+", re.I)
+_TAIL = re.compile(r"\s+(in (humans|adults|older adults|women|men|children|athletes|healthy adults)|"
+                   r"decline|elevation|levels?|rate|score|control|reclassification|outcomes?|risk|incidence|"
+                   r"by [a-z -]+|per [a-z -]+)$", re.I)
+
+
+# Dose words stay ("moderate-dose exercise" is not "exercise"); a lone generic word is no search term.
+_GENERIC = {"exercise", "cardiovascular", "health", "function", "disease", "stress", "sleep", "diet", "activity",
+            "metabolic", "cognitive", "mental", "physical", "inflammation", "mortality risk"}
+
+
+def variants(name: str, aliases=None) -> list[str]:
+    """Search forms of an entity: the clean name, the name without qualifiers,
+    and its aliases. Longest first; at most five."""
+    out = []
+    for raw in [name] + [a for a in (aliases or []) if isinstance(a, str)]:
+        v = clean_name(raw).strip(" ,;")
+        for _ in range(3):
+            if not v:
+                break
+            if v.lower() not in (x.lower() for x in out):
+                out.append(v)
+            w = _TAIL.sub("", _LEAD.sub("", v)).strip(" ,;")
+            if w == v or len(w) < 3 or w.lower() in _GENERIC:
+                break
+            v = w
+    for v in list(out):   # "Nuts" → "Nut" ("Nut consumption and risk of hypertension")
+        sg = singular(v)
+        if sg and sg.lower() not in (x.lower() for x in out):
+            out.append(sg)
+    us = []
+    for v in out:   # papers are mostly American: "Dietary fibre → LDL" found nothing on 25.10
+        w = v
+        for uk, am in _SPELL:
+            w = re.sub(uk, am, w, flags=re.I)
+        if w.lower() not in (x.lower() for x in out + us):
+            us.append(w)
+    return (out + us)[:6]
+
+
+_SPELL = [(r"fibre", "fiber"), (r"oestrogen", "estrogen"), (r"haem", "hem"), (r"anaemi", "anemi"),
+          (r"oedema", "edema"), (r"paediatric", "pediatric"), (r"behaviour", "behavior"), (r"tumour", "tumor"),
+          (r"ageing", "aging"), (r"leukaemi", "leukemi"), (r"diarrhoea", "diarrhea"), (r"coeliac", "celiac")]
+
+
+# Words that turn a food into something else: betel/areca nut is a stimulant,
+# nutmeg a spice, red yeast rice a statin source, "fish oil" is not fish.
+_FALSE_FRIENDS = {"betel", "areca", "kola", "nutmeg", "doughnut", "butternut", "yeast"}
+
+
+def false_friend(title: str, factor_variants: list[str]) -> bool:
+    t = set(re.findall(r"[a-z]+", title.lower()))
+    mine = set(re.findall(r"[a-z]+", " ".join(factor_variants).lower()))
+    return bool((t & _FALSE_FRIENDS) - mine)
+
+
+_NOT_PLURAL = {"diabetes", "measles", "herpes", "rickets", "mumps", "species", "series", "news", "lens"}
+
+
+def singular(v: str) -> str | None:
+    """Singular of the last word, or None: berries → berry, nuts → nut; not diabetes, sepsis, virus."""
+    head, _, last = v.rpartition(" ")
+    lw = last.lower()
+    if len(lw) < 4 or lw in _NOT_PLURAL or lw.endswith(("ss", "is", "us")) or not lw.endswith("s"):
+        return None
+    sg = last[:-3] + "y" if lw.endswith("ies") else last[:-1]
+    return f"{head} {sg}".strip()
+
+
+def _aliases(conn, name: str) -> list[str]:
+    r = conn.execute("SELECT aliases FROM entity WHERE name=? LIMIT 1", (name,)).fetchone()
+    try:
+        return json.loads(r[0] or "[]") if r else []
+    except Exception:
+        return []
+
+
 _JUDGE = """{question}
 
 ABSTRACT (PMID {pmid}): {title}
@@ -126,27 +209,42 @@ Return JSON only:
   "effect": "the main effect estimate copied from the abstract, e.g. 'RR 0.82 (95% CI 0.74-0.91)', or ''"}}"""
 
 
-def candidates(f_name: str, o_name: str, have: set[str], k: int = 6, risk: bool = False) -> list[dict]:
-    f, o = clean_name(f_name), clean_name(o_name)
-    designs = '(meta-analysis[pt] OR systematic review[pt] OR randomized controlled trial[pt])'
-    if risk:   # risk of developing the disease: syntheses of cohorts, not therapy trials
-        designs = '(meta-analysis[pt] OR systematic review[pt]) AND (risk[tiab] OR incidence[tiab])'
-    ids = []
-    for term in (f'("{f}"[tiab]) AND ("{o}"[tiab]) AND {designs} AND humans[mh]',
-                 f'({f}) AND ({o}) AND {designs}'):
-        ids = [i for i in pubmed_search(term, retmax=12) if i not in have]
-        if ids:
+def candidates(f_name: str, o_name: str, have: set[str], k: int = 6, risk: bool = False,
+               f_alias=None, o_alias=None) -> list[dict]:
+    fv, ov = variants(f_name, f_alias), variants(o_name, o_alias)
+    if not fv or not ov:
+        return []
+    orq = lambda vs: "(" + " OR ".join(f'"{v}"[tiab]' for v in vs) + ")"
+    syn = '(meta-analysis[pt] OR systematic review[pt])'
+    designs = f'({syn[1:-1]} OR randomized controlled trial[pt])'
+    terms = []
+    if risk:   # risk of developing the disease: syntheses of cohorts first, then any synthesis
+        terms.append(f'{orq(fv)} AND {orq(ov)} AND {syn} AND (risk[tiab] OR incidence[tiab])')
+        terms.append(f'{orq(fv)} AND {orq(ov)} AND {syn}')
+    else:
+        terms.append(f'{orq(fv)} AND {orq(ov)} AND {designs}')
+    # PubMed's own term mapping (MeSH) on the shortest forms, as a last resort
+    terms.append(f'({fv[-1]}) AND ({ov[-1]}) AND {syn}')
+    ids: list[str] = []
+    for term in terms:
+        for i in pubmed_search(term, retmax=12):
+            if i not in have and i not in ids:
+                ids.append(i)
+        if len(ids) >= 8:
             break
     if not ids:
         return []
-    recs = ea.fetch(ids[:12])
-    fw, ow = ea_words(f), ea_words(o)
+    recs = ea.fetch(ids[:16])
+    fw = set().union(*(ea_words(v) for v in fv))
+    ow = set().union(*(ea_words(v) for v in ov))
     out = []
     for pmid in ids:
         r = recs.get(pmid)
         if not r or not r.get("abstract"):
             continue
         tw = ea_words(r["title"])
+        if false_friend(r["title"], fv):
+            continue                     # "betel nut chewing" is not nuts (25.10)
         if tw & fw and tw & ow:          # both ends named in the title, not just the abstract
             out.append({"pmid": pmid, **r})
         if len(out) >= k:
@@ -156,8 +254,12 @@ def candidates(f_name: str, o_name: str, have: set[str], k: int = 6, risk: bool 
 
 def ea_words(s: str) -> set[str]:
     stop = {"with", "from", "risk", "intake", "level", "levels", "high", "higher", "low", "lower",
-            "chronic", "daily", "adults", "adult", "disease", "health", "total", "week"}
-    return {w[:6] for w in re.findall(r"[a-z]{4,}", (s or "").lower()) if w not in stop}
+            "chronic", "daily", "adults", "adult", "disease", "health", "total", "week",
+            # 3-letter words count now ("nut", "fat", "tea"), so the glue words must not
+            "and", "the", "for", "per", "via", "its", "not", "are", "was", "but", "all", "use", "non",
+            "pre", "who", "how", "may", "can", "new", "two", "one", "has", "had", "our", "out", "off", "own"}
+    stem = lambda w: (w[:-1] if w.endswith("s") and not w.endswith("ss") else w)[:6]
+    return {stem(w) for w in re.findall(r"[a-z]{3,}", (s or "").lower()) if w not in stop and len(stem(w)) >= 3}
 
 
 RISK_KINDS = {"condition"}
@@ -233,7 +335,8 @@ def deepen(conn, edge_id: int, dry: bool = False) -> dict:
     added = []
     risk = risk_question(e["o_kind"], e["population"])
     seen_titles = {ea._norm(r["real_title"] or "") for r in ev if r["real_title"]}
-    for c in candidates(e["f_name"], e["o_name"], have, risk=risk):
+    for c in candidates(e["f_name"], e["o_name"], have, risk=risk,
+                        f_alias=_aliases(conn, e["f_name"]), o_alias=_aliases(conn, e["o_name"])):
         t = ea._norm(c["title"])
         if t in seen_titles:
             continue      # Cochrane updates and reprints carry one title under several PMIDs

@@ -230,3 +230,25 @@ def test_pair_edge_found_under_another_outcome_name(graph, monkeypatch):
     # 729 (heart failure) is not near the card's outcome
     assert [e["id"] for e in out["corpus"]["pair"]] == [728]
     assert out["edge_id"] == 728 and not out["is_orphan"]
+
+
+# ─── Circulation via E-utilities (25.10.2026) ─────────────────────
+
+def test_pubmed_feed_goes_through_eutils_not_rss(monkeypatch):
+    called = []
+    monkeypatch.setattr(bd, "fetch_pubmed", lambda term: called.append(term) or [])
+    monkeypatch.setattr(bd.urllib.request, "urlopen",
+                        lambda *a, **k: (_ for _ in ()).throw(AssertionError("RSS must not be fetched")))
+    assert bd.fetch_rss("pubmed:Circulation[ta]") == [] and called == ["Circulation[ta]"]
+    assert ("Circulation", "pubmed:Circulation[ta]") in bd.FEEDS
+
+
+def test_paper_judged_under_old_rss_link_is_not_judged_again(world, monkeypatch):
+    world["feed"]["items"] = [{"id": "x", "headline": "old", "published_at": "2026-10-20",
+                               "source_url": "https://pubmed.ncbi.nlm.nih.gov/42677492/?utm_source=Chrome&utm_medium=rss"}]
+    new = {"title": "Noninvasive Thrombus Imaging", "link": "https://pubmed.ncbi.nlm.nih.gov/42677492/",
+           "summary": "In 100 patients A reduced B by 20%.", "published": "2026-10-20"}
+    monkeypatch.setattr(bd, "FEEDS", [("Circulation", "pubmed:x")])
+    monkeypatch.setattr(bd, "fetch_rss", lambda url: [dict(new)])
+    bd.main(["--limit", "5"])
+    assert world["calls"] == []

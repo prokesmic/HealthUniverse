@@ -27,6 +27,7 @@ import os
 import re
 import sys
 import time
+import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import date, datetime, timedelta
@@ -77,7 +78,9 @@ FEEDS = [
     # Cardio
     ("JACC",              "https://www.jacc.org/action/showFeed?type=etoc&feed=rss&jc=jac"),
     # ahajournals.org killed its RSS endpoints; PubMed journal feed instead
-    ("Circulation",       "https://pubmed.ncbi.nlm.nih.gov/rss/journals/0147763/?limit=50&name=Circulation"),
+    # PubMed's RSS answers scripts with a reCAPTCHA page since 22.10.2026;
+    # E-utilities is the supported API for the same listing.
+    ("Circulation",       "pubmed:Circulation[ta]"),
     # Oncology
     ("JCO",               "https://ascopubs.org/action/showFeed?type=etoc&feed=rss&jc=jco"),
     ("Lancet Oncology",   "https://www.thelancet.com/rssfeed/lanonc_current.xml"),
@@ -97,8 +100,47 @@ USER_AGENT = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
 
 # ─── Fetching ─────────────────────────────────────────────────────
 
+def fetch_pubmed(term: str, days: int = 14, retmax: int = 50, timeout: int = 30) -> list[dict]:
+    """Recent PubMed records for a query (e.g. 'Circulation[ta]') in feed-item
+    shape. Same fields the RSS gave, but with the abstract as summary."""
+    base = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
+    q = urllib.parse.urlencode({"db": "pubmed", "term": term, "retmax": retmax, "retmode": "json",
+                                "sort": "pub_date", "datetype": "edat", "reldate": days})
+    try:
+        with urllib.request.urlopen(f"{base}/esearch.fcgi?{q}", timeout=timeout) as r:
+            ids = json.loads(r.read())["esearchresult"]["idlist"]
+        if not ids:
+            return []
+        time.sleep(0.4)
+        q = urllib.parse.urlencode({"db": "pubmed", "id": ",".join(ids), "rettype": "abstract", "retmode": "xml"})
+        with urllib.request.urlopen(f"{base}/efetch.fcgi?{q}", timeout=timeout) as r:
+            root = ET.fromstring(r.read())
+    except Exception as e:
+        print(f"  ✗ pubmed fetch failed {term}: {e}", file=sys.stderr)
+        return []
+    out = []
+    for art in root.findall(".//PubmedArticle"):
+        txt = lambda path: "".join(art.find(path).itertext()).strip() if art.find(path) is not None else ""
+        pmid = txt(".//PMID")
+        ab = " ".join("".join(x.itertext()) for x in art.findall(".//Abstract/AbstractText"))
+        y, m, d = txt(".//PubMedPubDate[@PubStatus='entrez']/Year"), txt(".//PubMedPubDate[@PubStatus='entrez']/Month"), \
+            txt(".//PubMedPubDate[@PubStatus='entrez']/Day")
+        out.append({"title": txt(".//ArticleTitle"), "link": f"https://pubmed.ncbi.nlm.nih.gov/{pmid}/",
+                    "published": f"{y}-{int(m):02d}-{int(d):02d}" if y and m.isdigit() and d.isdigit() else "",
+                    "summary": ab[:600]})
+    return out
+
+
+def _pmid(link: str) -> str | None:
+    m = re.search(r"pubmed\.ncbi\.nlm\.nih\.gov/(\d+)", link or "")
+    return m.group(1) if m else None
+
+
 def fetch_rss(url: str, timeout: int = 12) -> list[dict]:
-    """Parse a basic RSS/Atom feed → [{title, link, published, source}]."""
+    """Parse a basic RSS/Atom feed → [{title, link, published, source}].
+    A 'pubmed:<query>' url is served by E-utilities instead (fetch_pubmed)."""
+    if url.startswith("pubmed:"):
+        return fetch_pubmed(url[len("pubmed:"):])
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
@@ -447,7 +489,11 @@ def main(argv: list[str]) -> int:
 
     print(f"→ {len(raw)} raw items; deduping…")
     seen = load_seen()
-    candidates = [c for c in dedupe(raw, existing) if c["link"] not in seen]
+    # Old Circulation links carried RSS query strings; compare PubMed ids so the
+    # switch to E-utilities does not judge (or publish) the same paper twice.
+    known_pmids = {p for p in map(_pmid, list(seen) + [e.get("source_url", "") for e in existing]) if p}
+    candidates = [c for c in dedupe(raw, existing)
+                  if c["link"] not in seen and not (_pmid(c["link"]) and _pmid(c["link"]) in known_pmids)]
     print(f"→ {len(candidates)} new candidates after dedupe + already-judged")
     candidates = interleave(candidates)[: args.limit]
     share: dict[str, int] = {}

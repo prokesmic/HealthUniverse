@@ -114,3 +114,29 @@ def test_treating_the_factor_is_not_evidence_for_it(monkeypatch):
     c = {"pmid": "1", "title": "Cognitive Effects of Treating Obstructive Sleep Apnea: A Meta-Analysis", "abstract": "x"}
     assert de.judge("Obstructive sleep apnea", "Cognitive function", c, factor_is_condition=True) is None
     assert de.judge("Obstructive sleep apnea", "Cognitive function", c, factor_is_condition=False) is not None
+
+
+def test_search_variants_drop_qualifiers_but_keep_dose_and_meaning():
+    assert de.variants("Chronic psychological stress") == ["Chronic psychological stress", "psychological stress"]
+    assert de.variants("High HbA1c") == ["High HbA1c", "HbA1c"]
+    assert de.variants("Endothelial dysfunction by flow-mediated dilation")[-1] == "Endothelial dysfunction"
+    assert de.variants("Morning cortisol", ["AM cortisol"]) == ["Morning cortisol", "AM cortisol"]
+    assert de.variants("Moderate-dose exercise") == ["Moderate-dose exercise"]
+    assert "Cardiovascular" not in de.variants("Cardiovascular risk reclassification")
+
+
+def test_british_spellings_also_searched_in_american():
+    assert "Dietary fiber" in de.variants("Dietary fibre")
+
+
+def test_singular_forms_are_searched_and_matched():
+    assert "Nut" in de.variants("Nuts") and "Berry" in de.variants("Berries")
+    assert de.variants("Diabetes") == ["Diabetes"] and de.singular("Sepsis") is None
+    assert de.ea_words("Nut consumption and risk of hypertension") & de.ea_words("Nuts")
+    assert not (de.ea_words("Fruit and vegetables") & de.ea_words("The role of diet and sleep"))  # glue words
+
+
+def test_false_friend_titles_are_not_evidence_for_the_food():
+    assert de.false_friend("Betel nut chewing and the risk of chronic kidney disease", ["Nuts", "Nut"])
+    assert not de.false_friend("Nut consumption and risk of hypertension", ["Nuts", "Nut"])
+    assert not de.false_friend("Betel nut chewing and oral cancer", ["Betel nut chewing"])
