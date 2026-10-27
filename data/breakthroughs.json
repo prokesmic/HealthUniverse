@@ -1,8 +1,606 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-10-26",
+  "updated_at": "2026-10-27",
   "items": [
+    {
+      "id": "br_3f13862c1b79578e",
+      "published_at": "2026-10-27",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug combo approved for advanced prostate cancer with specific gene mutations",
+      "summary": "The FDA has approved a combination of talazoparib and enzalutamide for adults with metastatic prostate cancer linked to HRR gene mutations. This treatment is for patients who haven't received prior androgen pathway modulation therapy.",
+      "why_it_matters": "Men with certain advanced prostate cancers may now have a new treatment option approved by the FDA.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/resources-information-approved-drugs/fda-approves-talazoparib-enzalutamide-metastatic-androgen-pathway-modulation-naive-or-sensitive",
+      "factor_slug": "talazoparib_enzalutamide_combo",
+      "outcome_slug": "metastatic_prostate_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "talazoparib and enzalutamide",
+        "summary": "The FDA approved talazoparib in combination with enzalutamide for adults with metastatic prostate cancer and homologous recombination repair (HRR) gene mutations who have not received prior androgen pathway modulation therapy. The approval is based on the TALAPRO-3 trial, which evaluated the combination in 599 patients with HRR-mutated, metastatic androgen pathway modulation-na\u00efve or -sensitive prostate cancer. The primary outcome showed a statistically significant improvement in radiographic progression-free survival (rPFS) with the combination compared to placebo plus enzalutamide. Overall survival data were immature at the time of analysis.",
+        "key_findings": [
+          "Median rPFS was not reached in the talazoparib and enzalutamide arm (95% CI: NR, NR)",
+          "Median rPFS was 45.8 months in the placebo and enzalutamide arm (95% CI: 37.7, NR)",
+          "Hazard ratio for progression or death was 0.48 (95% CI: 0.36, 0.65)",
+          "The difference in rPFS was statistically significant (p<0.0001)",
+          "HRR gene mutations included ATM, ATR, BRCA1, BRCA2, CDK12, CHEK2, FANCA, MLH1, MRE11A, NBN, PALB2, or RAD51C"
+        ],
+        "study": {
+          "trial_name": "TALAPRO-3",
+          "design": "randomized, double-blind, placebo-controlled",
+          "participants": "599 patients with HRR gene-mutated mAPMN/S prostate cancer",
+          "comparator": "placebo plus enzalutamide",
+          "primary_endpoint": "radiographic progression-free survival (rPFS) according to RECIST 1.1 and PCWG3 criteria"
+        },
+        "regulatory_status": "FDA approved on October 26, 2026; also under review by Australian Therapeutic Goods Administration (TGA) and Health Canada via Project Orbis",
+        "caveats": [
+          "Overall survival data were immature at the time of analysis",
+          "The treatment carries warnings for myelodysplastic syndrome/acute myeloid leukemia, myelosuppression, and embryo-fetal toxicity",
+          "Requires concurrent androgen deprivation therapy and GnRH analog or orchiectomy",
+          "HRR gene testing must be done using an FDA-authorized test"
+        ],
+        "next_steps": "The combination is now available for eligible patients; ongoing reviews by international regulators; further use in clinical practice and monitoring for long-term outcomes",
+        "who_it_applies_to": "Adults with metastatic prostate cancer and HRR gene mutations who have not received prior androgen pathway modulation therapy",
+        "evidence": [
+          {
+            "pmid": "37882449",
+            "title": "TALAPRO-3 clinical trial protocol: phase III study of talazoparib plus enzalutamide in metastatic castration-sensitive prostate cancer.",
+            "journal": "Future oncology (London, England)",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37882449/"
+          },
+          {
+            "pmid": "42658786",
+            "title": "Advancing Homologous Recombination Repair Mutation Testing in Prostate Cancer in Australia: Shifting the Focus to Hormone Sensitive Prostate Cancer.",
+            "journal": "Asia-Pacific journal of clinical oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42658786/"
+          }
+        ],
+        "source_chars": 3822,
+        "enriched_at": "2026-10-27",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "graphic: malformed"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "prostate_cancer",
+          "name": "Prostate cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 95,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Milk",
+            "outcome": "Prostate cancer",
+            "summary": "Multiple large cohort studies and meta-analyses consistently find that men with the highest milk and dairy intake have a modestly elevated risk of prostate cancer compared with those with the lowest intake. The associati",
+            "effect": "RR ~1.09\u20131.32 per high vs. low dairy/milk intake in meta-analyses",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          },
+          {
+            "id": 461,
+            "tier": "B",
+            "direction": "neutral",
+            "factor": "Selenium",
+            "outcome": "Prostate cancer",
+            "summary": "Pooled meta-analytic evidence link selenium to little consistent change in prostate cancer in adult men. The average effect is usually trivial rather than dramatic, so this edge is better read as a risk modifier than a s",
+            "effect": "Pooled meta-analytic evidence do not show a stable clinically large signal for this edge.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 860,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Occupational pesticide exposure",
+            "outcome": "Prostate cancer",
+            "summary": "Meta-analytic evidence generally places occupational pesticide exposure on the harmful side for prostate-cancer risk, though not by a large margin. The strongest reading is cautious: this looks like a small occupational ",
+            "effect": "Pooled studies suggest a small upward shift in prostate-cancer risk with occupational pesticide exposure, but the signal is less settled than for some hematologic malignancies.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 359,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Green tea",
+            "outcome": "Prostate cancer",
+            "summary": "Green tea appears tied to mixed effects on prostate cancer in adult men mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headli",
+            "effect": "Pooled meta-analytic evidence point in more than one direction, so no single pooled effect estimate is reliable enough to summarize cleanly.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 809,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Coffee",
+            "outcome": "Prostate cancer",
+            "summary": "The boring answer is that coffee does not clearly move total prostate-cancer incidence very much. Where the signal gets more interesting is fatal disease, where dose-response meta-analysis hints at lower risk, but the ov",
+            "effect": "The overall incidence story is close to null, but some dose-response work suggests coffee may be more relevant for fatal or aggressive prostate cancer than for total prostate-cancer diagnosis.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 816,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Cruciferous vegetables",
+            "outcome": "Prostate cancer",
+            "summary": "The best summary is that higher cruciferous-vegetable intake may be linked to a modestly lower prostate-cancer risk. Reviews across case-control and cohort studies point in the same direction, but the effect is not large",
+            "effect": "The pooled observational signal leans mildly protective, with newer meta-analyses suggesting a dose-responsive association rather than a dramatic risk reduction.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 19,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_8ec1e58823b7e321",
+      "published_at": "2026-10-26",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug shows promise for lung cancer with KRAS mutation",
+      "summary": "A Roche drug improved outcomes in patients with a specific type of lung cancer. Results from a major study showed meaningful benefits in survival and disease control.",
+      "why_it_matters": "People with this common lung cancer subtype now have a new treatment option that may extend life and improve outcomes.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/2026/10/26/roche-kras-drug-divarasib-lung-cancer-treatment-win/?utm_campaign=rss",
+      "factor_slug": "divarasib",
+      "outcome_slug": "lung_cancer_kras",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "divarasib",
+        "summary": "A Roche drug called divarasib showed meaningful benefits in patients with advanced non-small cell lung cancer (NSCLC) driven by a KRAS G12C mutation. In a major study presented at ESMO, divarasib outperformed existing treatments from Amgen and Bristol Myers Squibb in this patient group. The drug was evaluated in patients who had previously received treatment (second-line therapy). Results showed improved survival and disease control compared to earlier options. The findings support divarasib as a promising new treatment for this specific lung cancer subtype.",
+        "key_findings": [
+          "In the earlier phase 1 study, 53.4% of NSCLC patients had a confirmed response to divarasib (95% CI, 39.9 to 66.7).",
+          "Median progression-free survival was 13.1 months (95% CI, 8.8 to could not be estimated) in NSCLC patients.",
+          "Treatment-related adverse events occurred in 93% of patients, with grade 3 events in 11% and grade 4 in 1%.",
+          "No dose-limiting toxic effects or treatment-related deaths were reported.",
+          "Declines in KRAS G12C variant allele frequency were observed in response to treatment."
+        ],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [
+          "Adverse events occurred in most patients, though mostly low-grade.",
+          "The results are based on a small number of patients (n=60) with NSCLC in the phase 1 trial."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with advanced non-small cell lung cancer (NSCLC) that has a KRAS G12C mutation, particularly those who have received prior treatment.",
+        "evidence": [
+          {
+            "pmid": "37611121",
+            "title": "Single-Agent Divarasib (GDC-6036) in Solid Tumors with a KRAS G12C Mutation.",
+            "journal": "The New England journal of medicine",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37611121/"
+          }
+        ],
+        "source_chars": 284,
+        "enriched_at": "2026-10-27",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 29,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_a5b9147e23ced53d",
+      "published_at": "2026-10-26",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "AI system outperforms doctors in diagnosing medical cases",
+      "summary": "Microsoft's AI system was twice as accurate as doctors in diagnosing cases from medical journals and emergency room visits.",
+      "why_it_matters": "AI may help improve diagnosis accuracy in real-world clinical settings.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "MAI-DxO",
+            "treatment": 83,
+            "control": 36
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "AI System",
+        "control_label": "Doctors"
+      },
+      "strength": 0.85,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/microsofts-ai-gives-more-accurate-diagnoses-than-doctors-study-finds/",
+      "factor_slug": "microsoft_ai_diagnostic_system",
+      "outcome_slug": "diagnostic_accuracy",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "MAI-DxO",
+        "summary": "Microsoft's AI system MAI-DxO was tested against doctors in diagnosing complex medical cases from medical journals and emergency room visits. In the study, the AI system correctly diagnosed 83% of cases, compared to 36% by doctors. The study involved real-world clinical scenarios and evaluated diagnostic accuracy by expert reviewers. A follow-up triage study at Beth Israel is planned within months.",
+        "key_findings": [
+          "MAI-DxO diagnosed 83% of complex journal cases correctly",
+          "Doctors diagnosed 36% of complex journal cases correctly",
+          "MAI-DxO outperformed doctors by a factor of about two in diagnostic accuracy",
+          "The AI system showed higher mean scenario scores than both ChatGPT-4 and nurses in a related study",
+          "In a related study, MAI-DxO achieved higher scores in structured justification and differential diagnosis"
+        ],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [
+          "The study used cases from medical journals and ER visits, not real patients",
+          "Results may not generalize to all clinical settings or patient populations",
+          "The study was not peer-reviewed or published in a clinical journal"
+        ],
+        "next_steps": "A Beth Israel triage study using MAI-DxO is planned within months",
+        "who_it_applies_to": "Doctors and medical professionals reviewing complex cases from medical journals or emergency room visits",
+        "evidence": [
+          {
+            "pmid": "41620749",
+            "title": "How do dialysis nurses and AI reason clinically? A scenario-based comparative study.",
+            "journal": "BMC nursing",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41620749/"
+          }
+        ],
+        "source_chars": 290,
+        "enriched_at": "2026-10-27",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.17)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "diagnosis_accuracy",
+          "name": "Diagnostic accuracy",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1909,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Home sleep apnea test",
+            "outcome": "Diagnostic accuracy",
+            "summary": "This is a useful diagnostic edge, especially for pragmatic OSA workups. The main limitation is not that HSAT is useless, but that it can miss milder, more fragmented, or more complex disease if interpreted too simplistic",
+            "effect": "HSAT is reasonably accurate in appropriate patients but can underestimate severity. A 2018 meta-analysis of level IV monitors found sensitivity ranging 67.5% to 100% and specificity 25% to 100% for AHI at least 5, while a 2026 rescoring study improved concordance with PSG to 89.7% and reduced false negatives to 5%.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 1,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_4eacac3f70c777ec",
+      "published_at": "2026-10-26",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "GSK's new cancer drug gets potential approval",
+      "summary": "GSK may soon receive approval for its sixth cancer drug. The company, once out of oncology, is now seeing its return pay off.",
+      "why_it_matters": "This could expand treatment options for cancer patients, especially those with hard-to-treat forms.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/2026/10/26/gsk-cancer-esmo-adcs-jemperli/?utm_campaign=rss",
+      "factor_slug": "gsk_cancer_drug",
+      "outcome_slug": "cancer_approval",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "GSK may soon receive approval for Jemperli, its sixth cancer drug. GSK had exited oncology in 2014 but has since re-entered the field and is building a growing cancer drug pipeline.",
+        "key_findings": [],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [
+          "The approval status is not confirmed, only potential."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "40633935",
+            "title": "Therapeutic potential of targeting LAG-3 in cancer.",
+            "journal": "Journal for immunotherapy of cancer",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40633935/"
+          },
+          {
+            "pmid": "37330650",
+            "title": "Donafenib and GSK-J4 Synergistically Induce Ferroptosis in Liver Cancer by Upregulating HMOX1 Expression.",
+            "journal": "Advanced science (Weinheim, Baden-Wurttemberg, Germany)",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37330650/"
+          },
+          {
+            "pmid": "37979593",
+            "title": "Complement in human disease: approved and up-and-coming therapeutics.",
+            "journal": "Lancet (London, England)",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37979593/"
+          }
+        ],
+        "source_chars": 236,
+        "enriched_at": "2026-10-27",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.22)",
+          "summary: unsupported wording (0.20)",
+          "intervention: unsupported wording (0.00)",
+          "regulatory_status: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.20)",
+          "caveat: unsupported wording (0.00)",
+          "next_steps: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_22fa798280f1e32d",
+      "published_at": "2026-10-26",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New drug cuts death risk by one-third in advanced endometrial cancer",
+      "summary": "A Phase 3 trial showed a targeted drug reduced the risk of death by one-third in patients with advanced endometrial cancer. The results were based on overall survival data from the study.",
+      "why_it_matters": "This treatment offers new hope for patients with advanced endometrial cancer, potentially improving survival rates.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "sac-TMT",
+            "treatment": 32,
+            "control": 0
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Risk reduction",
+        "control_label": "No treatment"
+      },
+      "strength": 0.95,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/2026/10/26/merck-kelun-sac-tmt-endometrial-cancer-study-esmo-2026/?utm_campaign=rss",
+      "factor_slug": "targeted_drug",
+      "outcome_slug": "overall_survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "sacituzumab tirumotecan (sac-TMT)",
+        "summary": "A Phase 3 trial tested sacituzumab tirumotecan (sac-TMT) against the treatment of physician's choice in patients with advanced or recurrent endometrial cancer who had previously received platinum-based chemotherapy and immunotherapy. The primary outcome was overall survival, and sac-TMT reduced the risk of death by 32% compared to the treatment of physician's choice.",
+        "key_findings": [
+          "The risk of death was reduced by 32% with sac-TMT compared to treatment of physician's choice.",
+          "The trial was a randomized, open-label, phase 3 study.",
+          "Participants had previously received up to three lines of therapy, including platinum-based chemotherapy and anti-PD-1/PD-L1 therapy.",
+          "The study included patients with advanced or recurrent endometrial carcinoma or carcinosarcoma.",
+          "The primary endpoint was overall survival."
+        ],
+        "study": {
+          "trial_name": "TroFuse-005",
+          "design": "randomized, open-label, phase 3",
+          "comparator": "treatment of physician's choice (intravenous doxorubicin or paclitaxel)",
+          "primary_endpoint": "overall survival"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The drug is developed by Merck and Kelun-Biotech; industry funding is likely."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adult women with advanced or recurrent endometrial cancer who have progressed after platinum-based chemotherapy and immunotherapy.",
+        "evidence": [
+          {
+            "pmid": "42933460",
+            "title": "Sacituzumab tirumotecan versus treatment of physician's choice in previously treated endometrial cancer (TroFuse-005/ENGOT-en23/GOG-3095): a randomised, open-label, phase 3 trial.",
+            "journal": "Lancet (London, England)",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42933460/"
+          }
+        ],
+        "source_chars": 294,
+        "enriched_at": "2026-10-27",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: 600",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.38)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "endometrial_cancer",
+          "name": "Endometrial cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 802,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Coffee",
+            "outcome": "Endometrial cancer",
+            "summary": "This is a steadier signal than many diet-cancer stories. Across successive meta-analyses, higher coffee intake is repeatedly linked to lower endometrial-cancer risk, and dose-response models show the association strength",
+            "effect": "Coffee is one of the more consistent food exposures associated with lower endometrial-cancer risk, with dose-response analyses suggesting that more intake generally means less risk.",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 364,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Higher adiposity",
+            "outcome": "Endometrial cancer",
+            "summary": "In adult women, dose-response meta-analyses backed by prospective cohorts suggest that higher adiposity tracks with higher risk of endometrial cancer. Most disagreement in the literature is about size, subgroup sensitivi",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 369,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Estrogen-only menopausal hormone therapy",
+            "outcome": "Endometrial cancer",
+            "summary": "Prospective cohort data link estrogen-only menopausal hormone therapy to higher risk of endometrial cancer in postmenopausal women with uterus. The average effect is usually moderate rather than dramatic, so this edge is",
+            "effect": "Prospective cohort data suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1280,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Combined oral contraceptives",
+            "outcome": "Endometrial cancer",
+            "summary": "The evidence for protection against endometrial cancer is strong and consistent overall. Very large pooled analyses and older case-control studies both indicate that combined oral contraceptive use lowers risk, with grea",
+            "effect": "Long-term protection against endometrial cancer is one of the most durable non-contraceptive benefits of combined oral contraceptives.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1384,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Extended tamoxifen therapy",
+            "outcome": "Endometrial cancer",
+            "summary": "The signal is consistently harmful. Tamoxifen lowers breast cancer recurrence and mortality, but extended use comes with a well-established increase in endometrial cancer risk, which becomes more relevant as treatment co",
+            "effect": "Longer tamoxifen exposure clearly increases endometrial cancer risk.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 866,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Combined oral contraceptive use",
+            "outcome": "Endometrial cancer",
+            "summary": "This is one of the clearer protective associations in reproductive epidemiology. Large pooled analyses and newer meta-analyses consistently show that oral-contraceptive use lowers endometrial-cancer risk, with the most d",
+            "effect": "The strongest evidence shows that oral-contraceptive use is associated with a meaningful reduction in endometrial-cancer risk, with longer use producing larger protection that persists for years after stopping.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 13,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_b785128912d46da3",
       "published_at": "2026-10-25",
