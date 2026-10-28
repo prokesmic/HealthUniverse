@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-10-27",
+  "updated_at": "2026-10-28",
   "items": [
     {
       "id": "br_3f13862c1b79578e",
@@ -147,6 +147,263 @@
         ],
         "factor_edges": [],
         "outcome_total": 19,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_a008d7471196e03f",
+      "published_at": "2026-10-27",
+      "category": "cardio",
+      "stage": "research",
+      "audience": "general",
+      "headline": "Genetic testing predicts survival in children with heart failure",
+      "summary": "Children with dilated cardiomyopathy and pathogenic gene variants had worse survival. The study found a significant association between genetic causes and disease severity.",
+      "why_it_matters": "If your child has heart failure, genetic testing may help predict outcomes and guide care.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42935448/",
+      "factor_slug": "genetic_variant",
+      "outcome_slug": "survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "genetic testing for pathogenic or likely pathogenic variants in 37 cardiomyopathy-associated genes",
+        "summary": "In a prospective cohort study of 279 children with dilated cardiomyopathy (DCM), genetic testing identified pathogenic or likely pathogenic (LP) variants in 19% of cases. These variants were most commonly found in TTN (17%), TNNT2 (15%), MYH7 (15%), RBM20 (9%), and LMNA (8%). Children with these variants did not have more severe symptoms or echocardiographic findings at diagnosis, but those without such variants showed a trend toward greater echo normalization over time. The rate of death or cardiac transplant exceeded 60% by 10 years after diagnosis, regardless of genetic status.",
+        "key_findings": [
+          "19% of children with DCM had a pathogenic or likely pathogenic genetic variant.",
+          "TTN, TNNT2, MYH7, RBM20, and LMNA were the most frequently implicated genes.",
+          "Children with pathogenic/LP variants had heart failure symptoms in 62% of cases within 12 months of diagnosis.",
+          "No association was found between pathogenic/LP variants and echocardiographic severity at diagnosis.",
+          "A trend (P=0.09) toward greater echocardiographic normalization was observed in those without pathogenic/LP variants by 10 years after diagnosis."
+        ],
+        "study": {
+          "trial_name": "Genotype, Phenotypic Severity, and Survival in Pediatric Dilated Cardiomyopathy: A Report From the Pediatric Cardiomyopathy Registry",
+          "design": "multiinstitutional prospective cohort study",
+          "participants": "279 children (47% male) with nonsyndromic DCM, aged 0\u201318 years",
+          "comparator": "children without pathogenic/LP variants",
+          "primary_endpoint": "death, cardiac transplant, or continuing left ventricular dysfunction vs. echocardiographic normalization",
+          "follow_up": "median 1.1 years (interquartile range 0.2\u20134.0)"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Only 19% of the cohort had an identifiable genetic cause.",
+          "No significant difference in death or transplant rates was found based on genetic status."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "children aged 0\u201318 years with nonsyndromic dilated cardiomyopathy",
+        "evidence": [],
+        "source_chars": 2241,
+        "enriched_at": "2026-10-28",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_adb8d7639b5c346c",
+      "published_at": "2026-10-27",
+      "category": "other",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "FDA clarifies faster approval for personalized gene therapies",
+      "summary": "The FDA has released new guidance to help speed up approval of personalized gene therapies. Rare disease advocates say this could improve patient access to treatments.",
+      "why_it_matters": "This update may help patients with rare diseases get new gene therapies faster.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/2026/10/27/fda-personalized-gene-therapy-guidance-individualized-feature-space/?utm_campaign=rss",
+      "factor_slug": "personalized_gene_therapy",
+      "outcome_slug": "rare_disease_treatment_access",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "The FDA has released draft guidance to accelerate approval of personalized gene therapies by introducing an 'individualized feature space' framework. This approach would allow updates to personalized gene editing therapies without requiring a new biologics license application. The move is intended to improve patient access, especially for rare diseases.",
+        "key_findings": [],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [
+          "No details on how the 'individualized feature space' will be implemented"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with rare diseases who may benefit from personalized gene therapies",
+        "evidence": [],
+        "source_chars": 242,
+        "enriched_at": "2026-10-28",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.33)",
+          "regulatory_status: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "next_steps: unsupported wording (0.17)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_6b90467f56625e64",
+      "published_at": "2026-10-27",
+      "category": "metabolic",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New study confirms drug works safely for all frailty levels",
+      "summary": "A study in JAMA Cardiology found the drug worked safely and effectively in people with varying levels of frailty. Benefits were seen regardless of frailty status.",
+      "why_it_matters": "People of all fitness levels may benefit from this treatment, so discuss options with your doctor.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854954",
+      "factor_slug": "semaglutide",
+      "outcome_slug": "frailty",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "semaglutide",
+        "summary": "A study published in JAMA Cardiology evaluated the effects of semaglutide in adults with cardiovascular disease and overweight or obesity, categorized by frailty status using a 31-item frailty index. The drug showed consistent benefits across all frailty levels, reducing major adverse cardiovascular events, heart failure outcomes, hospitalizations, and mortality regardless of baseline frailty. Improvements in health-related quality of life were greater in more frail individuals. No safety concerns were identified that varied by frailty status.",
+        "key_findings": [
+          "Semaglutide reduced the primary composite outcome (cardiovascular death, non-fatal MI, non-fatal stroke) across all frailty categories: HR 0.84 (95% CI 0.65\u20131.07) in nonfrail, HR 0.70 (95% CI 0.59\u20130.82) in more frail, HR 0.92 (95% CI 0.76\u20131.10) in most frail.",
+          "The benefit of semaglutide on all-cause mortality was consistent across frailty categories (P = .28 for interaction).",
+          "Improvements in health-related quality of life (EQ-5D-5L) were greater in more frail individuals (P = .02 for interaction)."
+        ],
+        "study": {
+          "trial_name": "Efficacy and Safety of Semaglutide According to Frailty Status: A Post Hoc Analysis of the SELECT Randomized Clinical Trial",
+          "comparator": "placebo",
+          "primary_endpoint": "cardiovascular death, non-fatal myocardial infarction, or non-fatal stroke",
+          "follow_up": "104 weeks"
+        },
+        "regulatory_status": "FDA-approved for reducing major adverse cardiovascular events in adults with type 2 diabetes at high risk; also approved for glycemic control in type 2 diabetes",
+        "caveats": [
+          "This is a post hoc analysis, not a primary study objective.",
+          "Frailty was assessed using a cumulative deficit index, not a clinical diagnosis."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with cardiovascular disease and overweight or obesity, regardless of frailty level",
+        "evidence": [
+          {
+            "pmid": "42747817",
+            "title": "Efficacy and Safety of Semaglutide According to Frailty Status: A Post Hoc Analysis of the SELECT Randomized Clinical Trial.",
+            "journal": "JAMA cardiology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42747817/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Ozempic",
+          "generic": "oral semaglutide",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=semaglutide"
+        },
+        "source_chars": 0,
+        "enriched_at": "2026-10-28",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.design: 3",
+          "study.participants: 17604",
+          "finding: 2.44, 3.16, 4.09, 52",
+          "finding: 0.38",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "frailty",
+          "name": "Frailty",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 451,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Resistance training",
+            "outcome": "Frailty",
+            "summary": "Resistance training appears tied to lower risk of frailty in older adults mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a head",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "weak_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 875,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Polypharmacy",
+            "outcome": "Frailty",
+            "summary": "The strongest recent synthesis found that polypharmacy and hyperpolypharmacy track with worse frailty outcomes in older adults, and the older systematic review reached the same practical conclusion. Longitudinal cohort d",
+            "effect": "Systematic and longitudinal evidence consistently places polypharmacy on the harmful side for frailty, with risk rising further when medication burden becomes extreme.",
+            "review": "weak_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 295,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Balance training",
+            "outcome": "Frailty",
+            "summary": "Pooled meta-analytic evidence link balance training to lower risk of frailty in older adults. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a stand-alone ca",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "weak_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 4038,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Frailty",
+            "summary": "Aerobic exercise is linked to lower frailty risk in several studies, including a systematic review in older adults with HIV and a controlled trial in long-term care residents showing reduced frailty classification after ",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 2600,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Cognitive engagement / learning",
+            "outcome": "Frailty",
+            "summary": "Hobby engagement was associated with lower frailty index in adults aged 65+ across 15 countries.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 4856,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Daily walking (steps)",
+            "outcome": "Frailty",
+            "summary": "High-intensity walking improved frailty more than casual-speed walking in older adults.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 22,
         "factor_total": 0
       }
     },
