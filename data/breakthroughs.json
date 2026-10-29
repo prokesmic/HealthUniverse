@@ -1,8 +1,366 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-10-28",
+  "updated_at": "2026-10-29",
   "items": [
+    {
+      "id": "br_5d93b72ae78b66c1",
+      "published_at": "2026-10-28",
+      "category": "cardio",
+      "stage": "preclinical",
+      "audience": "technical",
+      "headline": "New insight into heart failure in children with small left heart",
+      "summary": "Pressure-volume loop analysis in 13 children with borderline left heart showed diastolic dysfunction is due to impaired active relaxation, not stiffness. This clarifies the underlying mechanism in a high-risk group.",
+      "why_it_matters": "Understanding the cause helps guide future treatments for children with congenital heart defects affecting heart filling.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42948889/",
+      "factor_slug": "diastolic_dysfunction",
+      "outcome_slug": "left_ventricular_dysfunction",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "In 13 children with borderline left heart (bLV), pressure-volume loop analysis showed that diastolic dysfunction is primarily due to increased passive ventricular stiffness, not impaired active relaxation. Compared to 14 children with congenitally corrected transposition of the great arteries (ccTGA), bLV patients had significantly higher stiffness constants (i\u03b2: 0.10 vs 0.03 m\u00b2/mL, P=0.003; \u03b2w: 4.08 vs 1.21, P=0.002). Active relaxation measures (\u03c4 and dP/dtmin/peak systolic pressure) were similar between groups.",
+        "key_findings": [
+          "Active relaxation time constant (\u03c4) was 28 msec in bLV vs 24 msec in ccTGA (P=0.11)",
+          "Maximal rate of pressure decline (dP/dtmin) indexed to peak systolic pressure was -10.6 s\u207b\u00b9 in bLV vs -9.9 s\u207b\u00b9 in ccTGA (P=0.17)",
+          "Indexed stiffness constant (i\u03b2) was 0.10 m\u00b2/mL in bLV vs 0.03 m\u00b2/mL in ccTGA (P=0.003)",
+          "Dimensionless stiffness constant (\u03b2w) was 4.08 in bLV vs 1.21 in ccTGA (P=0.002)",
+          "The end-diastolic pressure-volume relationship was shifted upward and to the left in bLV patients"
+        ],
+        "study": {
+          "trial_name": "Diastolic Dysfunction in Congenital Heart Disease: A Pressure-Volume Loop Analysis of Borderline Left Heart",
+          "design": "observational, invasive pressure-volume loop analysis",
+          "participants": "13 children with borderline left heart (bLV), 14 with congenitally corrected transposition of the great arteries (ccTGA)",
+          "comparator": "children with ccTGA",
+          "primary_endpoint": "Mechanism of diastolic dysfunction: active relaxation vs passive stiffness"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Small sample size (n=13 in bLV group)",
+          "Findings based on invasive pressure-volume loop analysis, not generalizable to non-invasive settings",
+          "Results limited to children with borderline left heart; not generalizable to other congenital heart disease groups"
+        ],
+        "next_steps": "Further research needed to evaluate therapies targeting ventricular stiffness in children with borderline left heart.",
+        "who_it_applies_to": "Children with borderline left heart due to congenital heart disease",
+        "evidence": [],
+        "source_chars": 2234,
+        "enriched_at": "2026-10-29",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "heart_failure",
+          "name": "Heart failure",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 729,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Heart failure",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Bodea meta analysis in J Clin Med already points to sglt2 inhibitors tracks with lower risk or better outcomes, and l",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2141,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Heart failure",
+            "summary": "Benefit is observed in obesity-associated heart failure with preserved ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 3546,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Heart failure",
+            "summary": "Renin-angiotensin system inhibitors were linked to lower 1-year mortality.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 3216,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Iron supplementation",
+            "outcome": "Heart failure",
+            "summary": "Iron supplementation improves outcomes in heart failure with reduced ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3870,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Heart failure",
+            "summary": "Intravenous iron may reduce heart failure events in patients with chronic kidney disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4106,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Gastric bypass surgery",
+            "outcome": "Heart failure",
+            "summary": "Bariatric surgery significantly reduced heart failure risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 15,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_53ae29a12a9b5489",
+      "published_at": "2026-10-28",
+      "category": "other",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "FDA outlines path for personalized gene editing therapies",
+      "summary": "The FDA has released guidance for approving gene editing treatments tailored to individual patients' genetic mutations. This framework helps developers navigate regulatory approval for these highly personalized medicines.",
+      "why_it_matters": "This guidance could accelerate access to custom gene therapies for rare genetic diseases.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/fda-charts-path-for-approval-of-individualized-gene-editing-therapies/",
+      "factor_slug": "gene_editing",
+      "outcome_slug": "genetic_disorders",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "The FDA has released a framework to guide the development and regulatory approval of personalized gene editing therapies designed to correct a single patient\u2019s disease-causing genetic mutation. The framework outlines steps for manufacturing, testing, and submitting data for individualized gene editing treatments.",
+        "key_findings": [],
+        "study": {},
+        "regulatory_status": "FDA guidance issued; no approval yet for any personalized gene editing therapy",
+        "caveats": [
+          "Insurance coverage remains an unresolved challenge",
+          "Framework is not a trial result but a regulatory roadmap"
+        ],
+        "next_steps": "Drug developers to use the framework to design and submit applications for personalized gene editing therapies",
+        "who_it_applies_to": "",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "37182559",
+            "title": "CRISPR/Cas9-based gene-editing technology for sickle cell disease.",
+            "journal": "Gene",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37182559/"
+          }
+        ],
+        "source_chars": 356,
+        "enriched_at": "2026-10-29",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.57)",
+          "summary: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "who_it_applies_to: unsupported wording (0.43)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_fadcf9a3624b2ef4",
+      "published_at": "2026-10-28",
+      "category": "cardio",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New insights into how diabetes drugs protect the heart",
+      "summary": "SGLT2 inhibitors reduce heart failure hospitalizations and cardiovascular death. They may also lower certain arrhythmias beyond their blood sugar-lowering effects.",
+      "why_it_matters": "People with diabetes or heart disease may benefit from these drugs' heart-protective effects.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42948880/",
+      "factor_slug": "sglt2_inhibitors",
+      "outcome_slug": "heart_failure",
+      "edge_id": 729,
+      "is_orphan": false,
+      "detail": {
+        "intervention": "SGLT2 inhibitors",
+        "summary": "SGLT2 inhibitors reduce heart failure hospitalizations and cardiovascular death beyond their blood sugar-lowering effects. In patients with type 2 diabetes and acute myocardial infarction, empagliflozin improved cardiac autonomic function, as shown by significant changes in heart rate variability and heart rate turbulence. Meta-analyses and post hoc data from cardiovascular outcome trials suggest a modest but consistent reduction in atrial fibrillation/flutter and, in some cohorts, sudden cardiac death. Preclinical studies indicate anti-arrhythmic properties through sodium-hydrogen exchanger inhibition, late sodium current suppression, and metabolic shift toward ketone utilization. SGLT2 inhibitors modulate microRNAs linked to heart failure and arrhythmia risk, potentially underlying their protective effects.",
+        "key_findings": [
+          "Empagliflozin improved heart rate variability (SDANN) by +11.6 ms at 24 weeks vs. +9.1 ms in placebo (P = 0.02).",
+          "Empagliflozin reduced the LF/HF ratio by -0.57 vs. -0.17 in placebo (P = 0.01).",
+          "Significant improvement in heart rate turbulence was observed only in the empagliflozin group (P = 0.01).",
+          "Meta-analyses show a modest but consistent reduction in atrial fibrillation/flutter with SGLT2 inhibitors.",
+          "SGLT2 inhibitors modulate microRNAs (miR-21, miR-29, miR-30, miR-34a, miR-92) linked to arrhythmogenic substrates."
+        ],
+        "study": {
+          "trial_name": "EMBODY trial",
+          "design": "prospective, multicenter, randomized, double-blind, placebo-controlled",
+          "participants": "105 patients with acute myocardial infarction and type 2 diabetes mellitus",
+          "comparator": "placebo",
+          "primary_endpoint": "change in heart rate variability (SDANN and LF/HF ratio) from baseline to 24 weeks",
+          "follow_up": "24 weeks"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Findings are based on surrogate markers of autonomic function and arrhythmia risk.",
+          "Results may not generalize to non-diabetic patients or those with advanced kidney disease.",
+          "No long-term data on arrhythmia incidence or mortality are available from this trial."
+        ],
+        "next_steps": "Dedicated trials are warranted to clarify causality, dose-dependency, and the therapeutic potential of microRNA-SGLT2i interactions for arrhythmia prevention.",
+        "who_it_applies_to": "Patients with type 2 diabetes and cardiovascular risk, including those with acute myocardial infarction or cardiac autonomic neuropathy.",
+        "evidence": [
+          {
+            "pmid": "42335043",
+            "title": "Atrial Fibrillation and Stroke Prevention and Management in CKD.",
+            "journal": "Clinical journal of the American Society of Nephrology : CJASN",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42335043/"
+          },
+          {
+            "pmid": "32977831",
+            "title": "Effects of empagliflozin versus placebo on cardiac sympathetic activity in acute myocardial infarction patients with type 2 diabetes mellitus: the EMBODY trial.",
+            "journal": "Cardiovascular diabetology",
+            "year": "2020",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/32977831/"
+          },
+          {
+            "pmid": "40660363",
+            "title": "Effects of SGLT2 inhibitors on cardiac autonomic activity and ventricular remodeling in patients with acute myocardial infarction: study protocol for a clinical trial.",
+            "journal": "Trials",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40660363/"
+          }
+        ],
+        "source_chars": 2551,
+        "enriched_at": "2026-10-29",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "sglt2_inhibitors",
+          "name": "SGLT2 inhibitors",
+          "relation": "same"
+        },
+        "outcome": null,
+        "pair": [
+          {
+            "id": 729,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Heart failure",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Bodea meta analysis in J Clin Med already points to sglt2 inhibitors tracks with lower risk or better outcomes, and l",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "outcome_edges": [],
+        "factor_edges": [
+          {
+            "id": 728,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Chronic kidney disease",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Javier meta analysis in Int J Cardiol Cardiovasc Risk Prev already points to sglt2 inhibitors tracks with lower risk ",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 726,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "All-cause mortality",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2023 Kongmalai meta analysis in Front Endocrinol (Lausanne) already points to sglt2 inhibitors tracks with lower risk or b",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 730,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Diabetic ketoacidosis",
+            "summary": "The strongest piece here is the 2025 Zheng meta analysis in Medicine (Baltimore), which ties sglt2 inhibitors to diabetic ketoacidosis in a direction that later studies largely support. That makes this edge more about ca",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 2398,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "HbA1c",
+            "summary": "SGLT2 inhibitors consistently reduce HbA1c across study types included in this evidence set, with a high-quality meta-analysis (n\u22482,000) and a Phase 2 RCT both showing significant glycaemic benefit, supported by a modera",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 5
+          },
+          {
+            "id": 2349,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Atrial fibrillation",
+            "summary": "SGLT-2 inhibitors were associated with a lower risk of atrial fibrillation compared to GLP-1 receptor agonists and DPP-4 inhibitors.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 2854,
+            "tier": "B",
+            "direction": "neutral",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Urinary tract infection (recurrent)",
+            "summary": "Current evidence does not support an increased risk of urinary tract infections\u2014including serious or complicated UTIs\u2014with SGLT2 inhibitor use. A supporting cohort study in CKD patients even suggested a reduced UTI risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          }
+        ],
+        "outcome_total": 0,
+        "factor_total": 42
+      }
+    },
     {
       "id": "br_3f13862c1b79578e",
       "published_at": "2026-10-27",
@@ -405,6 +763,158 @@
         "factor_edges": [],
         "outcome_total": 22,
         "factor_total": 0
+      }
+    },
+    {
+      "id": "br_fa664b59238a5501",
+      "published_at": "2026-10-27",
+      "category": "metabolic",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Ketogenic diet may improve liver health in people with fatty liver",
+      "summary": "A clinical trial found that a very low-carbohydrate ketogenic diet improved liver health more than a Mediterranean or plant-forward diet. After 10% weight loss, liver fat decreased significantly with the ketogenic diet.",
+      "why_it_matters": "If you have fatty liver, a low-carb diet may help improve your liver health more than other diets.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854949",
+      "factor_slug": "ketogenic_diet",
+      "outcome_slug": "liver_health",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "very low-carbohydrate ketogenic diet",
+        "summary": "A randomized clinical trial tested the effects of a 10% weight loss achieved through three different diets: Mediterranean, very low-fat plant-forward, and very low-carbohydrate ketogenic. The study included adults with fatty liver disease. After achieving 10% weight loss, liver fat decreased significantly more with the ketogenic diet compared to the other two diets.",
+        "key_findings": [
+          "Liver fat decreased significantly with the ketogenic diet after 10% weight loss.",
+          "The ketogenic diet led to greater improvement in liver health than the Mediterranean or plant-forward diet."
+        ],
+        "study": {
+          "design": "randomized clinical trial",
+          "participants": "adults with fatty liver disease",
+          "comparator": "Mediterranean diet and very low-fat, plant-forward diet"
+        },
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "33042004",
+            "title": "Efficacy of a 2-Month Very Low-Calorie Ketogenic Diet (VLCKD) Compared to a Standard Low-Calorie Diet in Reducing Visceral and Liver Fat Accumulation in Patients With Obesity.",
+            "journal": "Frontiers in endocrinology",
+            "year": "2020",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/33042004/"
+          },
+          {
+            "pmid": "40805994",
+            "title": "Beyond Weight Loss: Comparative Effects of Tirzepatide Plus Low-Energy Ketogenic Versus Low-Calorie Diet on Hepatic Steatosis and Stiffness in MASLD.",
+            "journal": "Nutrients",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40805994/"
+          },
+          {
+            "pmid": "41655910",
+            "title": "Distinct effects of ketogenic and non-ketogenic weight-loss diets on hepatic steatosis and mitochondrial metabolism in MASLD.",
+            "journal": "Journal of hepatology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41655910/"
+          }
+        ],
+        "source_chars": 0,
+        "enriched_at": "2026-10-29",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "finding: unsupported wording (0.50)",
+          "finding: unsupported wording (0.57)",
+          "finding: unsupported wording (0.43)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.40)",
+          "who_it_applies_to: unsupported wording (0.43)"
+        ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "ketogenic_diet",
+          "name": "Ketogenic diet",
+          "relation": "same"
+        },
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [
+          {
+            "id": 214,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Ketogenic diet",
+            "outcome": "HbA1c",
+            "summary": "The effect is driven mainly by dramatically cutting carbohydrate intake, which reduces blood sugar spikes and overall glucose exposure. Evidence comes from multiple randomized trials and meta-analyses, though most studie",
+            "effect": "HbA1c reduction of approximately 0.5\u20131.5% vs. control diets",
+            "review": "weak_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 2680,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Ketogenic diet",
+            "outcome": "Chronic kidney disease",
+            "summary": "Ketogenic diet shows renoprotective effects in polycystic kidney disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3337,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Ketogenic diet",
+            "outcome": "Cognitive function",
+            "summary": "Acute ketone monoester supplementation improved attention and psychomotor speed in older men with overweight.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3338,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Ketogenic diet",
+            "outcome": "High resting heart rate",
+            "summary": "KME ingestion lowered resting whole-brain CBF and cerebral perfusion.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3932,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Ketogenic diet",
+            "outcome": "Chronic systemic inflammation",
+            "summary": "Ketogenic dietary interventions showed consistent effects on neuroinflammatory pathways in preclinical studies.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5291,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Ketogenic diet",
+            "outcome": "Depression",
+            "summary": "Ketogenic diets show potential benefits for depression in uncontrolled trials, though evidence is limited by confounders.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "outcome_total": 0,
+        "factor_total": 12
       }
     },
     {
