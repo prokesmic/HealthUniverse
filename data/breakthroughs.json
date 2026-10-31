@@ -1,8 +1,156 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-10-30",
+  "updated_at": "2026-10-31",
   "items": [
+    {
+      "id": "br_a6b5fd2dc7f769c6",
+      "published_at": "2026-10-31",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves first DNA-based therapy for recurring throat tumors",
+      "summary": "The FDA has approved a new plasmid DNA therapy for adults with recurrent respiratory papillomatosis. It is the first such treatment approved for this rare condition.",
+      "why_it_matters": "This approval offers a new treatment option for adults with recurring throat tumors caused by HPV.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Approvals",
+      "source_url": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-plasmid-dna-based-immunotherapy-adults-recurrent-respiratory-papillomatosis",
+      "factor_slug": "plasmid_dna_therapy",
+      "outcome_slug": "recurrent_respiratory_papillomatosis",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Voceryq (doruxapapogene ralaplasmid and lalikinogene sifuplasmid-gxfd)",
+        "summary": "The FDA has granted accelerated approval for Voceryq, a plasmid DNA-based immunotherapy, for adults with recurrent respiratory papillomatosis (RRP). The therapy was tested in a clinical trial of 32 adults with RRP who had undergone two or more surgeries to remove laryngotracheal papillomas in the prior 12 months. The approval was based on a reduction in the frequency of surgical procedures, an intermediate endpoint reasonably likely to predict clinical benefit. The therapy uses electroporation to deliver two plasmids into muscle cells to stimulate an immune response against HPV types 6 and 11.",
+        "key_findings": [
+          "The trial included 32 adults with recurrent respiratory papillomatosis.",
+          "Surgical frequency was the basis for accelerated approval.",
+          "Adverse reactions included injection site reactions, headache, fatigue, hypertension, nausea, and dizziness.",
+          "Electroporation-related side effects included brief muscle contractions, temporary bleeding, anxiety, vasovagal reactions, and pain at the injection site."
+        ],
+        "study": {
+          "design": "open-label multicenter clinical trial",
+          "participants": "32 adults with recurrent respiratory papillomatosis",
+          "primary_endpoint": "reduction in frequency of surgical procedures",
+          "follow_up": "first year after treatment"
+        },
+        "regulatory_status": "FDA accelerated approval",
+        "caveats": [
+          "Approval based on surrogate endpoint (reduced surgery frequency), not on overall survival or quality of life.",
+          "Adverse effects associated with electroporation technique, including muscle contractions and vasovagal reactions.",
+          "Post-approval trials required to confirm clinical benefit."
+        ],
+        "next_steps": "The manufacturer must conduct post-approval clinical trials to verify and describe Voceryq\u2019s clinical benefit.",
+        "who_it_applies_to": "Adults with recurrent respiratory papillomatosis caused by HPV types 6 and/or 11.",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "39855244",
+            "title": "PRGN-2012 gene therapy in adults with recurrent respiratory papillomatosis: a pivotal phase 1/2 clinical trial.",
+            "journal": "The Lancet. Respiratory medicine",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39855244/"
+          }
+        ],
+        "source_chars": 5154,
+        "enriched_at": "2026-10-31",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: 7",
+          "finding: 7",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_aeaabf7c2e67fdef",
+      "published_at": "2026-10-31",
+      "category": "other",
+      "stage": "approved",
+      "audience": "technical",
+      "headline": "FDA recognizes minocycline as effective against Stenotrophomonas",
+      "summary": "The FDA has recognized minocycline as a treatment option for infections caused by Stenotrophomonas maltophilia. This decision is based on clinical data showing its effectiveness against this resistant bacterium.",
+      "why_it_matters": "Patients with hard-to-treat Stenotrophomonas infections may now have a new treatment option approved by the FDA.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/development-resources/fda-rationale-breakpoints-recognition-decision-minocycline-stenotrophomonas-maltophilia",
+      "factor_slug": "minocycline",
+      "outcome_slug": "stenotrophomonas_maltophilia_infection",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "minocycline",
+        "summary": "The FDA has recognized minocycline intermediate and resistant breakpoints for Stenotrophomonas maltophilia based on clinical and pharmacokinetic-pharmacodynamic data. The FDA did not accept the susceptible breakpoint of 1 mcg/mL due to concerns about splitting the wild-type bacterial population and insufficient evidence of clinical benefit at that level. Instead, the FDA supports an intermediate breakpoint of 2 mcg/mL and a resistant breakpoint of \u22654 mcg/mL. These breakpoints are intended to guide antimicrobial susceptibility testing and treatment decisions for infections caused by this multidrug-resistant bacterium.",
+        "key_findings": [
+          "The FDA does not recognize the susceptible breakpoint of 1 mcg/mL for minocycline against S. maltophilia.",
+          "The FDA supports an intermediate breakpoint of 2 mcg/mL and a resistant breakpoint of \u22654 mcg/mL.",
+          "A susceptible breakpoint of 1 mcg/mL would bisect the wild-type population, reducing test reproducibility.",
+          "\u226590% probability of target attainment (PTA) was only achieved at MICs \u22640.5 mcg/mL using a 1-log10 bacterial burden reduction target.",
+          "No clinical data support a specific susceptible breakpoint, but higher MICs (e.g., 4 mcg/mL) are associated with worse outcomes."
+        ],
+        "study": {},
+        "regulatory_status": "FDA has recognized minocycline intermediate and resistant breakpoints for S. maltophilia; not recognized for susceptible category.",
+        "caveats": [
+          "No randomized controlled trials have been conducted in S. maltophilia infections.",
+          "The FDA did not accept the susceptible breakpoint due to concerns about test reproducibility and lack of clinical correlation.",
+          "Clinical outcomes for isolates with MICs of 4 mcg/mL are worse, but this does not define a specific susceptible breakpoint.",
+          "Minocycline is not currently labeled for S. maltophilia infections in the FDA-approved indication."
+        ],
+        "next_steps": "Use of minocycline for S. maltophilia infections will be guided by the newly recognized breakpoints; further clinical studies are needed to define optimal treatment strategies.",
+        "who_it_applies_to": "Patients with infections caused by Stenotrophomonas maltophilia, particularly those with severe respiratory or bloodstream infections.",
+        "evidence": [
+          {
+            "pmid": "41390250",
+            "title": "Current Management Strategies for Stenotrophomonas maltophilia.",
+            "journal": "Infectious disease clinics of North America",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41390250/"
+          },
+          {
+            "pmid": "42891078",
+            "title": "Efficacy of combination therapy with minocycline for treating Stenotrophomonas maltophilia infections.",
+            "journal": "JAC-antimicrobial resistance",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42891078/"
+          },
+          {
+            "pmid": "37846568",
+            "title": "Treatment approaches for severe Stenotrophomonas maltophilia infections.",
+            "journal": "Current opinion in infectious diseases",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37846568/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Minocycline Hydrochloride",
+          "generic": "minocycline hydrochloride",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=minocycline"
+        },
+        "source_chars": 2823,
+        "enriched_at": "2026-10-31",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_a91e655b58b42fca",
       "published_at": "2026-10-29",
@@ -1651,6 +1799,141 @@
         ],
         "factor_edges": [],
         "outcome_total": 13,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_f5e3c847c767b9e1",
+      "published_at": "2026-10-26",
+      "category": "cardio",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "Heart health starts in childhood for women",
+      "summary": "A new guideline emphasizes that cardiovascular health in women begins in childhood. Early lifestyle habits significantly influence lifelong heart disease risk.",
+      "why_it_matters": "Girls should adopt heart-healthy habits early to reduce heart disease risk later in life.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42929150/",
+      "factor_slug": "childhood_lifestyle",
+      "outcome_slug": "cardiovascular_disease",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "A new guideline emphasizes that cardiovascular health in women begins in childhood. Early lifestyle habits significantly influence lifelong heart disease risk.",
+        "key_findings": [
+          "Cardiovascular health in women begins in childhood.",
+          "Early lifestyle habits significantly influence lifelong heart disease risk."
+        ],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "",
+        "evidence": [],
+        "source_chars": 51,
+        "enriched_at": "2026-10-31",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.36)",
+          "summary: unsupported wording (0.27)",
+          "summary: unsupported wording (0.29)",
+          "finding: unsupported wording (0.33)",
+          "finding: unsupported wording (0.38)",
+          "finding: unsupported wording (0.50)",
+          "regulatory_status: unsupported wording (0.43)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.14)",
+          "caveat: unsupported wording (0.12)",
+          "caveat: unsupported wording (0.25)",
+          "next_steps: unsupported wording (0.31)",
+          "who_it_applies_to: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_29df9fe3456cd421",
+      "published_at": "2026-10-26",
+      "category": "cardio",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "New guidelines address heart health in women across life stages",
+      "summary": "A major new guideline from leading medical groups outlines sex-specific strategies for preventing and managing heart disease in girls and women. It emphasizes integrating hormonal, psychosocial, and cardiovascular health across the lifespan.",
+      "why_it_matters": "Women should discuss their heart health with providers using these updated guidelines to reduce long-term risk.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42929102/",
+      "factor_slug": "sex_specific_prevention",
+      "outcome_slug": "cardiovascular_disease",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "A new scientific statement from major medical organizations outlines sex-specific strategies for preventing and managing heart disease in girls and women across four life stages: perimenarche, ovarian cycling, perimenopause, and postmenopause. The guidance emphasizes integrating hormonal, psychosocial, and cardiovascular health throughout life and highlights pregnancy as a key event that can reveal or unmask cardiovascular risk. The statement synthesizes evidence across existing guidelines and calls for improved clinical workflows, clinician education, and research to close gaps in care. It does not report results from a clinical trial but provides consensus-based recommendations.",
+        "key_findings": [
+          "Heart failure with preserved ejection fraction (HFpEF) is more prevalent in women and risk increases more drastically with aging in women than men.",
+          "In a mouse model, ovariectomy (hormone depletion) combined with epinephrine injection worsened cardiac function, showing left ventricular diastolic dysfunction.",
+          "In a trial of women with ischemic heart disease, ranolazine reduced angina frequency from a median of 5.0 to 1.5 episodes per week over 4 weeks.",
+          "Ranolazine also reduced nitroglycerin use from a median of 2.0 to 0.0 per week in the same trial.",
+          "Women reported significant improvements in angina stability, physical limitation, treatment satisfaction, and disease perception after ranolazine treatment."
+        ],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [
+          "The guidance is a consensus statement, not a clinical trial result.",
+          "It does not report outcomes from randomized controlled trials.",
+          "It does not address cost, access, or equity in care delivery."
+        ],
+        "next_steps": "The authors call for improved clinical workflows, enhanced clinician education, and further research to address scientific and implementation gaps in women\u2019s cardiovascular health.",
+        "who_it_applies_to": "Girls and women across all life stages, including during pregnancy, with a focus on integrating hormonal, psychosocial, and cardiovascular health in prevention and management.",
+        "evidence": [
+          {
+            "pmid": "41034032",
+            "title": "Epinephrine and Depletion of Female Sex Hormone Exacerbate the Pathology of Obesity-Induced Cardiac Phenotype.",
+            "journal": "International heart journal",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41034032/"
+          },
+          {
+            "pmid": "30888919",
+            "title": "Ranolazine Reduces Angina in Women with Ischemic Heart Disease: Results of an Open-Label, Multicenter Trial.",
+            "journal": "Journal of women's health (2002)",
+            "year": "2019",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/30888919/"
+          },
+          {
+            "pmid": "41404186",
+            "title": "Evolving strategies in cardiovascular disease prevention: 2025 American society for preventive cardiology highlights.",
+            "journal": "American journal of preventive cardiology",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41404186/"
+          }
+        ],
+        "source_chars": 2178,
+        "enriched_at": "2026-10-31",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
         "factor_total": 0
       }
     },
