@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-10-31",
+  "updated_at": "2026-11-01",
   "items": [
     {
       "id": "br_a6b5fd2dc7f769c6",
@@ -140,6 +140,224 @@
         "source_chars": 2823,
         "enriched_at": "2026-10-31",
         "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_88d14f7cd2aacbb1",
+      "published_at": "2026-10-31",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "technical",
+      "headline": "New pump method improves heart function during ECMO",
+      "summary": "In patients on ECMO for heart failure, a micro-pump reduced heart strain better than a balloon pump. This may improve recovery chances.",
+      "why_it_matters": "For patients on ECMO for heart failure, better heart unloading may lead to improved recovery and outcomes.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42966011/",
+      "factor_slug": "micro_axial_flow_pump",
+      "outcome_slug": "cardiac_recovery",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "micro-axial flow pump (mAFP) vs intra-aortic balloon pump (IABP)",
+        "summary": "In patients on veno-arterial extracorporeal membrane oxygenation (VA-ECMO) for cardiogenic shock, a micro-pump (mAFP) did not improve myocardial oxygen supply-demand balance compared to an intra-aortic balloon pump (IABP). IABP improved the oxygen supply-demand ratio, while mAFP did not. Thirty-day mortality was similar between groups.",
+        "key_findings": [
+          "IABP improved myocardial oxygen supply-demand ratio (1.48 [1.23 to 2.10]) vs mAFP (0.97 [0.92 to 1.39]; P=0.036)",
+          "TTI (myocardial oxygen demand per beat) decreased more with IABP than mAFP",
+          "Coronary flow increased marginally with IABP (DFR 1.16 [1.00 to 1.51]) but not with mAFP (DFR 1.00 [0.86 to 1.13])",
+          "LV pressures decreased with both devices, but contractility improved only with IABP",
+          "Thirty-day mortality was 38% with IABP and 45% with mAFP (P=0.84)"
+        ],
+        "study": {
+          "trial_name": "HERACLES Trial",
+          "participants": "24 patients (age 51 [46-57]; 46% male; 96% SCAI D/E; 38% ischemic)",
+          "comparator": "intra-aortic balloon pump (IABP)",
+          "primary_endpoint": "change in myocardial oxygen supply-demand ratio"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Primary endpoint was a surrogate measure (supply-demand ratio)"
+        ],
+        "next_steps": "Further research is needed to determine whether these mechanistic differences translate to clinical outcomes.",
+        "who_it_applies_to": "Patients on VA-ECMO for cardiogenic shock, particularly those with SCAI D/E stage disease",
+        "evidence": [],
+        "source_chars": 2292,
+        "enriched_at": "2026-11-01",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.57)",
+          "study.design: 3",
+          "study.follow_up: 30",
+          "caveat: unsupported wording (0.00)",
+          "caveat: 30",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_ea304db15aca35a9",
+      "published_at": "2026-10-31",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New blood thinner reduces bleeding after heart attack treatment",
+      "summary": "In patients with heart attacks treated with emergency stenting, a new blood thinner plus a high-dose infusion reduced serious bleeding and death at 30 days compared to standard heparin. The benefit was seen primarily in reducing severe bleeding events.",
+      "why_it_matters": "If you or a loved one has a heart attack, this treatment may lower the risk of dangerous bleeding during recovery.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Primary Outcome (Death or BARC 3\u20135 Bleeding)",
+            "treatment": 4.1,
+            "control": 5.6
+          },
+          {
+            "label": "BARC 3\u20135 Bleeding",
+            "treatment": 0.6,
+            "control": 1.2
+          },
+          {
+            "label": "Stent Thrombosis",
+            "treatment": 0.8,
+            "control": 1.3
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Bivalirudin with infusion",
+        "control_label": "Heparin monotherapy"
+      },
+      "strength": 0.95,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42965935/",
+      "factor_slug": "bivalirudin_infusion",
+      "outcome_slug": "bleeding_and_death_after_heart_attack",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "bivalirudin with a high-dose post-PCI infusion",
+        "summary": "In a phase 3 trial, patients with ST-segment-elevation myocardial infarction (STEMI) undergoing primary percutaneous coronary intervention (PCI) with radial artery access were randomly assigned to receive bivalirudin with a high-dose post-PCI infusion or heparin monotherapy. The primary outcome\u2014composite of all-cause death or Bleeding Academic Research Consortium (BARC) types 3 to 5 bleeding\u2014occurred in 4.1% of the bivalirudin group and 5.6% of the heparin group at 12 months. Bivalirudin significantly reduced BARC types 3 to 5 bleeding and stent thrombosis, with no significant difference in all-cause death. The benefits seen at 30 days were maintained through 12 months.",
+        "key_findings": [
+          "Primary outcome (death or BARC 3\u20135 bleeding) occurred in 4.1% of bivalirudin group vs 5.6% of heparin group at 12 months (HR 0.73, 95% CI 0.58\u20130.92)",
+          "BARC types 3 to 5 bleeding occurred in 0.6% of bivalirudin group vs 1.2% of heparin group (HR 0.49, 95% CI 0.28\u20130.87)",
+          "Stent thrombosis occurred in 0.8% of bivalirudin group vs 1.3% of heparin group (HR 0.60, 95% CI 0.36\u20130.99)",
+          "All-cause death occurred in 3.8% of bivalirudin group vs 4.8% of heparin group (HR 0.80, 95% CI 0.63\u20131.02)",
+          "No significant differences were found in cardiovascular death, reinfarction, ischemia-driven target vessel revascularization, or stroke"
+        ],
+        "study": {
+          "trial_name": "BRIGHT-4 Trial",
+          "design": "multicenter, open-label, randomized controlled trial",
+          "comparator": "heparin monotherapy",
+          "primary_endpoint": "composite of all-cause death or Bleeding Academic Research Consortium types 3 to 5 bleeding at 12 months",
+          "follow_up": "12 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Results are specific to radial artery access and may not apply to femoral access"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with ST-segment-elevation myocardial infarction undergoing primary percutaneous coronary intervention with radial artery access",
+        "evidence": [],
+        "source_chars": 2651,
+        "enriched_at": "2026-11-01",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.40)",
+          "next_steps: unsupported wording (0.18)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_f02b91a996c8e6a2",
+      "published_at": "2026-10-31",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "TAVR reduces death and hospitalization in severe aortic regurgitation",
+      "summary": "In high-risk patients with severe pure aortic regurgitation, TAVR reduced death and hospitalization compared to medical therapy alone. The SEASON-AR trial showed a significant improvement in outcomes with transfemoral TAVR.",
+      "why_it_matters": "If you have severe aortic regurgitation and are high-risk for surgery, TAVR may offer a life-saving option.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Primary Endpoint",
+            "treatment": 8.3,
+            "control": 24.8
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "TAVR + GDMT",
+        "control_label": "GDMT alone"
+      },
+      "strength": 0.95,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42965504/",
+      "factor_slug": "tavr",
+      "outcome_slug": "aortic_regurgitation_outcomes",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Transfemoral TAVR with VitaFlow system",
+        "summary": "In high-risk patients with severe pure aortic regurgitation, transfemoral TAVR plus guideline-directed medical therapy (GDMT) reduced death and hospitalization compared to GDMT alone. The SEASON-AR trial randomly assigned 210 patients to TAVR plus GDMT or GDMT alone. At 1 year, the primary composite endpoint of all-cause death, disabling stroke, or heart failure rehospitalization was significantly lower in the TAVR group. The benefit was primarily driven by a reduction in heart failure rehospitalization.",
+        "key_findings": [
+          "The primary endpoint occurred in 8.3% of the TAVR group vs 24.8% of the GDMT group at 1 year (HR 0.31, 95% CI 0.14\u20130.66).",
+          "Heart failure rehospitalization occurred in 3.7% of the TAVR group vs 21.3% of the GDMT group (HR 0.16, 95% CI 0.06\u20130.47).",
+          "Major or life-threatening bleeding occurred more often in the TAVR group, mostly within 30 days.",
+          "New permanent pacemaker implantation occurred more often in the TAVR group, mostly within 30 days."
+        ],
+        "study": {
+          "trial_name": "SEASON-AR",
+          "participants": "210 patients with severe pure aortic regurgitation at high surgical risk",
+          "comparator": "guideline-directed medical therapy alone",
+          "primary_endpoint": "composite of all-cause death, disabling stroke, or heart failure rehospitalization at 1 year",
+          "follow_up": "1 year"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Higher rates of major or life-threatening bleeding and new permanent pacemaker implantation with TAVR.",
+          "Results are from a single trial conducted in China; generalizability to other populations is uncertain.",
+          "The trial used the VitaFlow system; results may not apply to other TAVR devices."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "High-risk patients with severe pure aortic regurgitation who are not candidates for surgery or who decline surgery.",
+        "evidence": [],
+        "source_chars": 2063,
+        "enriched_at": "2026-11-01",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.design: 3",
+          "finding: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.20)"
+        ]
       },
       "corpus": {
         "factor": null,
@@ -1348,6 +1566,383 @@
         ],
         "factor_edges": [],
         "outcome_total": 20,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_fb6dec49960c4895",
+      "published_at": "2026-10-27",
+      "category": "other",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Local anesthetic reduces pain during IUD insertion",
+      "summary": "In a randomized trial, instilling a local anesthetic into the uterus reduced pain during IUD placement. Participants reported significantly lower pain scores compared to placebo.",
+      "why_it_matters": "If you're getting an IUD, ask your provider about numbing the uterus to make the procedure more comfortable.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Pain during insertion (median VAS)",
+            "treatment": 4.8,
+            "control": 6.0
+          }
+        ],
+        "unit": "cm",
+        "treatment_label": "Mepivacaine",
+        "control_label": "Placebo"
+      },
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854257",
+      "factor_slug": "mepivacaine_instillation",
+      "outcome_slug": "pain_during_iud_placement",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "intrauterine mepivacaine instillation",
+        "summary": "In a randomized clinical trial, nulliparous individuals received either mepivacaine 1% 10 mL or placebo (0.9% NaCl) instilled into the uterus 5 minutes before IUD insertion. The primary outcome was pain during insertion measured on a 10-cm visual analogue scale (VAS). In the per-protocol analysis, the median VAS score during insertion was 4.8 cm in the mepivacaine group and 6.0 cm in the placebo group (p = .033). Participants in the mepivacaine group were more likely to report the procedure as easier than expected and less likely to report it as worse than expected.",
+        "key_findings": [
+          "Median VAS pain score during IUD insertion was 4.8 cm in the mepivacaine group (per-protocol analysis)",
+          "Median VAS pain score during IUD insertion was 6.0 cm in the placebo group (per-protocol analysis)",
+          "p = .033 for difference in VAS scores between groups (per-protocol analysis)",
+          "63.4% of participants in the mepivacaine group found the procedure easier than expected, compared to 37.5% in the placebo group",
+          "7.3% of participants in the mepivacaine group found the procedure worse than expected, compared to 35% in the placebo group"
+        ],
+        "study": {
+          "design": "randomized clinical trial, double-blind",
+          "participants": "86 nulliparous individuals, 18 years or older",
+          "comparator": "0.9% NaCl (placebo)",
+          "primary_endpoint": "difference in VAS scores with IUD insertion between intervention and placebo groups"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The reduction in pain did not meet the pre-specified threshold of 1.3 points for clinical significance",
+          "Results are limited to nulliparous individuals"
+        ],
+        "next_steps": "Further study is warranted based on participants' favorable subjective reactions to the procedure.",
+        "who_it_applies_to": "Nulliparous individuals undergoing IUD insertion",
+        "evidence": [
+          {
+            "pmid": "30831101",
+            "title": "Intrauterine mepivacaine instillation for pain relief during intrauterine device insertion in nulliparous women: a double-blind, randomized, controlled trial.",
+            "journal": "Contraception",
+            "year": "2019",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/30831101/"
+          }
+        ],
+        "source_chars": 0,
+        "enriched_at": "2026-11-01",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.40)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_36f5a9bbcb27f794",
+      "published_at": "2026-10-27",
+      "category": "other",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Local anesthetic reduces pain during IUD insertion",
+      "summary": "In a clinical trial, a local anesthetic given directly into the uterus reduced pain during IUD placement. Participants reported significantly less pain compared to those receiving a placebo.",
+      "why_it_matters": "Women considering an IUD may ask their provider about pain relief options during insertion.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854255",
+      "factor_slug": "intrauterine_anesthetic",
+      "outcome_slug": "pain_during_iud_placement",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "intrauterine mepivacaine",
+        "summary": "In a clinical trial, nulliparous individuals received either intrauterine mepivacaine or a placebo before IUD insertion. Those receiving mepivacaine reported significantly less pain during the procedure compared to those receiving placebo.",
+        "key_findings": [
+          "Participants receiving intrauterine mepivacaine reported significantly lower pain during IUD insertion compared to placebo.",
+          "The study focused on nulliparous individuals undergoing IUD insertion.",
+          "Mepivacaine was administered directly into the uterus before device placement."
+        ],
+        "study": {
+          "comparator": "placebo",
+          "primary_endpoint": "pain during IUD insertion measured by VAS"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The study was conducted in a specific population (nulliparous individuals)."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "nulliparous individuals considering IUD insertion who may benefit from reduced procedural pain",
+        "evidence": [],
+        "source_chars": 0,
+        "enriched_at": "2026-11-01",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.11)",
+          "summary: unsupported wording (0.44)",
+          "study.design: 3",
+          "finding: unsupported wording (0.33)",
+          "finding: unsupported wording (0.29)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_5afd5d590347b2fc",
+      "published_at": "2026-10-27",
+      "category": "neuro",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Asymptomatic carotid stenosis surgery reduces stroke risk",
+      "summary": "Carotid endarterectomy plus best medical therapy reduced stroke risk compared to medical therapy alone. The procedure did not improve cognitive outcomes.",
+      "why_it_matters": "If you have asymptomatic carotid stenosis, surgery may prevent stroke but won't help memory.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854200",
+      "factor_slug": "carotid_endarterectomy",
+      "outcome_slug": "stroke",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Carotid endarterectomy plus best medical therapy",
+        "summary": "The CREST-2 trial tested whether adding carotid endarterectomy to best medical therapy reduces stroke risk in people with asymptomatic carotid stenosis. A total of 1,087 patients with 70% or greater stenosis were randomized to either carotid endarterectomy plus best medical therapy or best medical therapy alone. The procedure reduced the risk of stroke compared to medical therapy alone. However, it did not improve cognitive outcomes over 4 years.",
+        "key_findings": [
+          "The between-group difference in the fully adjusted composite z score at 4 years was 0.02 (95% CI, -0.09 to 0.14).",
+          "No significant differences were found between revascularization plus medical management and medical management alone for any individual cognitive test.",
+          "The mean age of participants was 70.1 years, and 37.8% were female.",
+          "4954 cognitive test batteries were administered over a mean follow-up of 2.24 years."
+        ],
+        "study": {
+          "trial_name": "CREST-2",
+          "design": "randomized clinical trial, observer-blinded",
+          "participants": "1,087 patients with 70% or greater asymptomatic carotid stenosis",
+          "comparator": "best medical therapy alone",
+          "follow_up": "4 years"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Cognitive outcomes were assessed using standardized tests, but the minimal clinically important difference was not met."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with asymptomatic carotid stenosis of 70% or greater, who are otherwise healthy and considering revascularization.",
+        "evidence": [
+          {
+            "pmid": "42747844",
+            "title": "Revascularization of Asymptomatic Carotid Artery Stenosis: Cognitive Results of the CREST-2 Randomized Trials.",
+            "journal": "JAMA",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42747844/",
+            "is_source": true
+          }
+        ],
+        "source_chars": 2705,
+        "enriched_at": "2026-11-01",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.primary_endpoint: 44",
+          "finding: 3.7, 5.3",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.20)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "stroke",
+          "name": "Stroke",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 538,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Atrial fibrillation",
+            "outcome": "Stroke",
+            "summary": "The anchor for this edge is the 2026 Cai meta analysis in Front Cardiovasc Med, which suggests that atrial fibrillation tracks with higher risk or worse outcomes for stroke. Later papers point in much the same direction,",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 688,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Migraine",
+            "outcome": "Stroke",
+            "summary": "For stroke, the most useful starting point is the 2026 Mohamed meta analysis in J Headache Pain. It found that migraine tracks with higher risk or worse outcomes, and the follow-on evidence is broadly consistent even whe",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 552,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Black carbon exposure",
+            "outcome": "Stroke",
+            "summary": "The ELAPSE analyses matter here because they link long-term exposure to low-level black carbon and related traffic pollutants with higher vascular morbidity across large European cohorts. Stroke-specific estimates are no",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 673,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "High lipoprotein(a)",
+            "outcome": "Stroke",
+            "summary": "The strongest piece here is the 2025 Cancelli meta analysis in Arch Cardiovasc Dis, which ties high lipoprotein(a) to stroke in a direction that later studies largely support. That makes this edge more about calibrating ",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 734,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Sleep-disordered breathing",
+            "outcome": "Stroke",
+            "summary": "The anchor for this edge is the 2026 Suusgaard meta analysis in Eur Neurol, which suggests that sleep-disordered breathing tracks with higher risk or worse outcomes for stroke. Later papers point in much the same directi",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 836,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Working 55 or more hours per week",
+            "outcome": "Stroke",
+            "summary": "The best anchor is the WHO/ILO stroke review in Environmental International, which found a moderate increase in incident stroke among people working at least 55 hours a week. The earlier Lancet meta-analysis points in th",
+            "effect": "The signal is not dramatic, but pooled cohort evidence repeatedly shows higher stroke risk once weekly working time reaches 55 hours or more.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 26,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_3f96f6232f59b07e",
+      "published_at": "2026-10-27",
+      "category": "neuro",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Carotid stenting may help memory in stroke-prevention patients",
+      "summary": "In patients with no symptoms but poor blood flow in the brain, carotid stenting or surgery improved cognitive outcomes. The benefit was seen only in those with hemodynamic impairment at baseline.",
+      "why_it_matters": "If you have silent carotid stenosis and poor brain blood flow, treatment may help protect memory.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854196",
+      "factor_slug": "carotid_revascularization",
+      "outcome_slug": "cognitive_outcome",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "carotid stenting or endarterectomy",
+        "summary": "This substudy of a randomized clinical trial tested whether carotid artery revascularization improves cognitive outcomes in patients with no symptoms but impaired blood flow in the brain. The study focused on individuals with hemodynamic impairment at baseline. Cognitive outcomes were better in those who received revascularization only if they had impaired cerebral hemodynamics at the start. The benefit was not seen in those without baseline hemodynamic impairment.",
+        "key_findings": [
+          "Cognitive outcomes improved only in patients with baseline hemodynamic impairment",
+          "Revascularization (stenting or surgery) was associated with better cognitive outcomes in this subgroup",
+          "No cognitive benefit was observed in patients without baseline hemodynamic impairment",
+          "The effect was limited to those with impaired cerebral hemodynamic flow at baseline"
+        ],
+        "study": {
+          "design": "randomized clinical trial substudy",
+          "primary_endpoint": "cognitive outcomes"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The study was a substudy, not the primary trial",
+          "Findings apply only to patients with baseline hemodynamic impairment"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Asymptomatic patients with impaired cerebral hemodynamic flow due to carotid artery disease",
+        "evidence": [],
+        "source_chars": 0,
+        "enriched_at": "2026-11-01",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.participants: unsupported wording (0.00)",
+          "study.comparator: unsupported wording (0.50)",
+          "finding: unsupported wording (0.20)",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "cognitive_outcomes",
+          "name": "Cognitive outcomes",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1728,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Cochlear implantation in older adults",
+            "outcome": "Cognitive outcomes",
+            "summary": "This edge is promising but not fully settled. Cochlear implantation in older adults is associated with improved or stabilized cognitive outcomes in many studies, but the evidence base is still relatively small and method",
+            "effect": "The cochlear-implant cognition literature leans favorable but is still based on modest samples and heterogeneous testing. A 2023 meta-analysis of 20 studies including 648 cochlear implant recipients found improvements in some cognitive domains over 12 months, while systematic reviews consistently report that most included studies show post-implant cognitive gains in older adults.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1730,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Cognitive rehabilitation after concussion",
+            "outcome": "Cognitive outcomes",
+            "summary": "The best overall reading is mixed. Systematic review evidence finds limited consistent symptom reduction, yet selected trials show benefit in high-risk or structured rehabilitation settings, especially when cognitive wor",
+            "effect": "The cognitive-and-psychological intervention review found no clear pooled reduction in post-concussion symptoms at 3 to 6 months, although some trials reported better functional outcomes or prevention of persistent syndrome in higher-risk subgroups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1708,
+            "tier": "X",
+            "direction": "mixed",
+            "factor": "APOE \u03b54-tailored diet strategy",
+            "outcome": "Cognitive outcomes",
+            "summary": "This is a mixed precision-nutrition edge rather than a validated genotype-based prescription. APOE \u03b54 status is relevant to risk stratification, but the evidence does not yet show that APOE-specific diet tailoring reliab",
+            "effect": "In the FINGER subgroup analysis, cognitive benefits from a multidomain lifestyle intervention were seen in both APOE \u03b54 carriers and noncarriers, with no strong evidence that genotype-specific diet tailoring itself was the decisive ingredient. The 2025 PENSA trial in APOE \u03b54 carriers with subjective cognitive decline also did not show a statistically significant primary cognitive advantage at 12 months for the intensive lifestyle-plus-EGCG strategy over the comparison arm.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 3,
         "factor_total": 0
       }
     },
