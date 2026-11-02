@@ -2,8 +2,9 @@
 from pathlib import Path
 from jinja2 import Environment, ChoiceLoader, DictLoader, FileSystemLoader
 import pytest
+from web.audit_display import latest_recorded_change
 
-def render(status='verified_evidence', evidence=None, counter=None, population='', effect='', retracted=0):
+def render(status='verified_evidence', evidence=None, counter=None, population='', effect='', retracted=0, audit_events=None):
     env = Environment(loader=ChoiceLoader([
         DictLoader({'base.html': '{% block content %}{% endblock %}'}),
         FileSystemLoader(Path(__file__).resolve().parents[1] / 'web/templates')
@@ -15,6 +16,9 @@ def render(status='verified_evidence', evidence=None, counter=None, population='
     audit = dict(n_studies=0, days_stable=None, days_since_study=None, days_since_review=None)
     return env.get_template('edge.html').render(
         e=e, evidence=evidence or [], counter=counter or [], audit_summary=audit,
+        latest_change=latest_recorded_change(audit_events or []),
+        audit_headlines=[r for r in (audit_events or []) if r.get('is_meaningful')],
+        audit_maintenance=[r for r in (audit_events or []) if not r.get('is_meaningful')],
         retracted_evidence_count=retracted, profile=None,
         TIER_LABEL={'B':'Moderate'}, TIER_DOTS={'B':3}, DIRECTION_LABEL={'neutral':'Neutral'})
 

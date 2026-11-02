@@ -320,6 +320,7 @@
     <aside class="dossier-side">
       <div class="dossier-side-card audit-card">
         <h3>Audit trail</h3>
+        {% if latest_change is defined %}{% include '_latest_audit_change.html' %}{% endif %}
 
         {# ─── Layer 1: Status banner ─── #}
         <ul class="audit-status">
@@ -365,8 +366,8 @@
         <h4 class="audit-section-h">Notable changes</h4>
         <ol class="audit-events">
           {% for ev in audit_headlines %}
-          <li class="audit-event audit-event-{{ ev.category }}">
-            <span class="audit-event-date">{{ ev.changed_at[:10] }}</span>
+          <li class="audit-event audit-event-{{ ev.category }}"{% if ev.raw.id %} id="audit-event-{{ ev.raw.id }}"{% endif %}>
+            <span class="audit-event-date">{{ ev.changed_at[:10] if ev.changed_at else 'Date unknown' }}</span>
             <div class="audit-event-body">
               <b>{{ ev.headline }}</b>
               {% if ev.category == 'tier_promotion' or ev.category == 'tier_demotion' %}
@@ -387,7 +388,7 @@
         {% else %}
         <p class="audit-stable muted body-sm">
           {% if audit_summary.n_studies > 0 %}
-          ✓ No tier shifts or new studies in the last 90 days — this edge is stable.
+          No notable changes are recorded in the available history. Missing records do not establish stability.
           {% else %}
           No notable changes recorded yet.
           {% endif %}
@@ -400,8 +401,8 @@
           <summary>Show {{ audit_maintenance|length }} maintenance event{{ "s" if audit_maintenance|length != 1 else "" }}</summary>
           <ol class="audit-events audit-events-quiet">
             {% for ev in audit_maintenance %}
-            <li class="audit-event audit-event-{{ ev.category }}">
-              <span class="audit-event-date">{{ ev.changed_at[:10] }}</span>
+            <li class="audit-event audit-event-{{ ev.category }}"{% if ev.raw.id %} id="audit-event-{{ ev.raw.id }}"{% endif %}>
+              <span class="audit-event-date">{{ ev.changed_at[:10] if ev.changed_at else 'Date unknown' }}</span>
               <div class="audit-event-body">
                 <b>{{ ev.headline }}</b>
                 {% if ev.detail %}<small class="muted">{{ ev.detail[:160] }}{% if ev.detail|length > 160 %}…{% endif %}</small>{% endif %}
