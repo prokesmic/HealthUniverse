@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-01",
+  "updated_at": "2026-11-02",
   "items": [
     {
       "id": "br_a6b5fd2dc7f769c6",
@@ -1896,6 +1896,102 @@
           "finding: unsupported wording (0.20)",
           "caveat: unsupported wording (0.25)",
           "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "cognitive_outcomes",
+          "name": "Cognitive outcomes",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1728,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Cochlear implantation in older adults",
+            "outcome": "Cognitive outcomes",
+            "summary": "This edge is promising but not fully settled. Cochlear implantation in older adults is associated with improved or stabilized cognitive outcomes in many studies, but the evidence base is still relatively small and method",
+            "effect": "The cochlear-implant cognition literature leans favorable but is still based on modest samples and heterogeneous testing. A 2023 meta-analysis of 20 studies including 648 cochlear implant recipients found improvements in some cognitive domains over 12 months, while systematic reviews consistently report that most included studies show post-implant cognitive gains in older adults.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1730,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Cognitive rehabilitation after concussion",
+            "outcome": "Cognitive outcomes",
+            "summary": "The best overall reading is mixed. Systematic review evidence finds limited consistent symptom reduction, yet selected trials show benefit in high-risk or structured rehabilitation settings, especially when cognitive wor",
+            "effect": "The cognitive-and-psychological intervention review found no clear pooled reduction in post-concussion symptoms at 3 to 6 months, although some trials reported better functional outcomes or prevention of persistent syndrome in higher-risk subgroups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1708,
+            "tier": "X",
+            "direction": "mixed",
+            "factor": "APOE \u03b54-tailored diet strategy",
+            "outcome": "Cognitive outcomes",
+            "summary": "This is a mixed precision-nutrition edge rather than a validated genotype-based prescription. APOE \u03b54 status is relevant to risk stratification, but the evidence does not yet show that APOE-specific diet tailoring reliab",
+            "effect": "In the FINGER subgroup analysis, cognitive benefits from a multidomain lifestyle intervention were seen in both APOE \u03b54 carriers and noncarriers, with no strong evidence that genotype-specific diet tailoring itself was the decisive ingredient. The 2025 PENSA trial in APOE \u03b54 carriers with subjective cognitive decline also did not show a statistically significant primary cognitive advantage at 12 months for the intensive lifestyle-plus-EGCG strategy over the comparison arm.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 3,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_4b93278d34ea040a",
+      "published_at": "2026-10-27",
+      "category": "neuro",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Revascularization may improve thinking in stroke-prevention patients",
+      "summary": "In patients with no symptoms but severe carotid artery narrowing and poor brain blood flow, revascularization improved cognitive outcomes. The benefit was greater in those with worse hemodynamic impairment at baseline.",
+      "why_it_matters": "If you have silent carotid stenosis and memory issues, talk to your doctor about revascularization to protect brain function.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854192",
+      "factor_slug": "revascularization",
+      "outcome_slug": "cognitive_outcomes",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "revascularization",
+        "summary": "In patients with no symptoms but severe narrowing of the carotid arteries and poor brain blood flow, revascularization improved cognitive outcomes. The study tested whether the cognitive benefit varied based on the severity of baseline hemodynamic impairment. Patients with worse hemodynamic impairment at baseline showed greater cognitive improvement after revascularization. The benefit was not seen in those with less severe impairment.",
+        "key_findings": [
+          "Cognitive outcomes improved after revascularization in patients with severe carotid artery narrowing and poor brain blood flow.",
+          "The benefit was greater in patients with worse hemodynamic impairment at baseline.",
+          "No cognitive benefit was observed in patients with less severe hemodynamic impairment.",
+          "Revascularization was associated with better cognitive outcomes in asymptomatic patients with high-grade internal carotid artery stenosis."
+        ],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [
+          "The study focused only on asymptomatic patients with severe carotid stenosis and poor hemodynamic flow."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Asymptomatic adults with severe carotid artery narrowing and poor brain blood flow due to hemodynamic impairment.",
+        "evidence": [],
+        "source_chars": 0,
+        "enriched_at": "2026-11-02",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.design: 3",
+          "study.comparator: unsupported wording (0.00)",
+          "study.primary_endpoint: 3",
+          "study.follow_up: 4.6",
+          "finding: unsupported wording (0.38)",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.00)"
         ]
       },
       "corpus": {
