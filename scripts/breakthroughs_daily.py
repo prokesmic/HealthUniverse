@@ -82,7 +82,8 @@ FEEDS = [
     # E-utilities is the supported API for the same listing.
     ("Circulation",       "pubmed:Circulation[ta]"),
     # Oncology
-    ("JCO",               "https://ascopubs.org/action/showFeed?type=etoc&feed=rss&jc=jco"),
+    # ascopubs.org answers scripts with a Cloudflare challenge (403) since ~31.10.2026
+    ("JCO",               'pubmed:"J Clin Oncol"[ta]'),
     ("Lancet Oncology",   "https://www.thelancet.com/rssfeed/lanonc_current.xml"),
     # Trials + regulatory
     ("ClinicalTrials.gov","https://classic.clinicaltrials.gov/ct2/results/rss.xml?rcv_d=14&cond=&type=Intr"),
