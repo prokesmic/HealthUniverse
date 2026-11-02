@@ -171,6 +171,7 @@
       {% endif %}
 
       {# Supporting evidence #}
+      {% include '_evidence_comparison.html' %}
       <section class="dossier-section" id="evidence-section">
         <div class="dossier-section-head">
           <h2 class="dossier-h2"><span class="dossier-num">03</span> Supporting evidence</h2>
@@ -284,6 +285,8 @@
             <div class="evidence-row-main">
               <div class="evidence-citation">
                 <span>{{ ev.citation }}</span>
+                {% if ev.relevance_status == 'flagged' %}<strong class="study-comparison-warning">CITATION FLAGGED</strong>
+                {% elif ev.relevance_status == 'citation_mismatch' %}<span class="badge ghost">unverified citation</span>{% endif %}
                 {% if ev.is_retracted %}<span class="pill tier-D">RETRACTED</span>{% endif %}
               </div>
               {% if ev.notes %}<p class="evidence-notes">{{ ev.notes }}</p>{% endif %}
@@ -299,7 +302,8 @@
             <div class="evidence-row-side">
               <div class="evidence-year">{{ ev.year or "—" }}</div>
               {% if ev.n_participants %}<div class="evidence-n">n={{ "{:,}".format(ev.n_participants) }}</div>{% endif %}
-              {% if ev.pmid %}<a class="evidence-link" href="https://pubmed.ncbi.nlm.nih.gov/{{ ev.pmid }}/" target="_blank" rel="noopener">PubMed ↗</a>
+              {% if ev.relevance_status in ['flagged', 'citation_mismatch'] %}<span class="muted small">link suppressed</span>
+              {% elif ev.pmid %}<a class="evidence-link" href="https://pubmed.ncbi.nlm.nih.gov/{{ ev.pmid }}/" target="_blank" rel="noopener">PubMed ↗</a>
               {% elif ev.doi %}<a class="evidence-link" href="https://doi.org/{{ ev.doi }}" target="_blank" rel="noopener">DOI ↗</a>{% endif %}
             </div>
           </article>

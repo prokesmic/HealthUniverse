@@ -10,6 +10,7 @@ body = m.render(population='Adults in a synthetic example', effect='Not estimate
     evidence=[dict(citation='Synthetic primary study — shared cohort', n_participants=1234, study_type='rct', year=2025, quality='moderate'),
               dict(citation='Synthetic review — includes that cohort', n_participants=1234, study_type='meta_analysis', year=2026, quality='low', is_retracted=True)],
     counter=[dict(citation='Synthetic counter-evidence', study_type='rct', year=2026, notes='Fixture only; not a medical claim.')])
+body = body.replace('href="/static/', 'href="../web/static/')
 out = root / 'qa/evidence-clarity-preview.html'
 out.write_text('<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HealthUniverse — synthetic preview</title><link rel="stylesheet" href="../web/static/style.css"><body><main id="main-content"><p style="padding:16px">LOCAL SYNTHETIC PREVIEW — no real medical claims</p>' + body + '</main></body></html>')
 print(out)

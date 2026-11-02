@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="/static/evidence-comparison.css">
+<details class="study-comparison">
+  <summary>Compare study records ({{ evidence|length + counter|length }})</summary>
+  <p class="muted body-sm" id="comparison-help">Supporting and counter-evidence are the categories recorded for this claim, not a new assessment. Study designs, populations and outcomes may differ. Counts may overlap; no combined participant total is shown.</p>
+  {% if evidence or counter %}
+  <p class="muted small">On narrow screens, scroll the table horizontally. Full notes remain below.</p>
+  <div class="study-comparison-scroll" role="region" aria-label="Study records comparison" aria-describedby="comparison-help" tabindex="0">
+    <table class="study-comparison-table">
+      <caption>Recorded study details — missing information is not evidence of absence</caption>
+      <thead><tr><th scope="col">Record / citation</th><th scope="col">Group</th><th scope="col">Design</th><th scope="col">Year</th><th scope="col">Participants</th><th scope="col">Recorded quality</th><th scope="col">Citation checks</th></tr></thead>
+      <tbody>
+      {% for group, records in [('Supporting', evidence), ('Counter', counter)] %}
+        {% for ev in records %}
+        <tr>
+          <th scope="row">
+            {% if ev.relevance_status in ['flagged', 'citation_mismatch'] %}
+              {{ ev.citation or 'Citation not recorded' }} <span class="muted small">(link suppressed)</span>
+            {% elif ev.pmid %}
+              <a href="https://pubmed.ncbi.nlm.nih.gov/{{ ev.pmid }}/" target="_blank" rel="noopener">{{ ev.citation or 'Open PubMed record' }}</a>
+            {% elif ev.doi %}
+              <a href="https://doi.org/{{ ev.doi }}" target="_blank" rel="noopener">{{ ev.citation or 'Open DOI record' }}</a>
+            {% else %}{{ ev.citation or 'Citation not recorded' }}{% endif %}
+          </th>
+          <td>{{ group }}</td>
+          <td>{{ ev.study_type.replace('_', ' ') if ev.study_type else 'Not recorded' }}</td>
+          <td>{{ ev.year or 'Not recorded' }}</td>
+          <td>{{ '{:,}'.format(ev.n_participants) if ev.n_participants and ev.n_participants > 0 else 'Not recorded' }}</td>
+          <td>{{ ev.quality.replace('_', ' ') if ev.quality else 'Not recorded' }}</td>
+          <td>
+            {% if ev.is_retracted %}<strong class="study-comparison-warning">RETRACTED</strong>{% endif %}
+            {% if ev.relevance_status == 'flagged' %}<strong class="study-comparison-warning">CITATION FLAGGED</strong>
+            {% elif ev.relevance_status == 'citation_mismatch' %}<span>Unverified citation</span>
+            {% elif ev.relevance_status == 'weak' %}<span>Weak title match</span>
+            {% else %}<span>No citation-check detail shown; inspect the source.</span>{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}<p class="muted">No study records available to compare.</p>{% endif %}
+</details>
