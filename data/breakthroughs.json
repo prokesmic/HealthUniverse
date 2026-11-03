@@ -1,8 +1,457 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-02",
+  "updated_at": "2026-11-03",
   "items": [
+    {
+      "id": "br_c2061ee3520c82b4",
+      "published_at": "2026-11-02",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "SABR radiotherapy works as well as surgery for early lung cancer",
+      "summary": "This study found that stereotactic ablative radiotherapy (SABR) was as effective as surgery for early-stage lung cancer in patients eligible for either treatment. The results were based on an emulated target trial comparing real-world outcomes.",
+      "why_it_matters": "If you or a loved one has early-stage lung cancer, SABR may be a safe and effective alternative to surgery.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "All-cause mortality",
+            "treatment": 30.3,
+            "control": 21.6
+          },
+          {
+            "label": "Lung cancer-specific mortality",
+            "treatment": 20.6,
+            "control": 14.5
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "SABR",
+        "control_label": "Surgery"
+      },
+      "strength": 0.9,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42970669/",
+      "factor_slug": "sabrtreatment",
+      "outcome_slug": "lungcancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Stereotactic ablative radiotherapy (SABR)",
+        "summary": "This study compared stereotactic ablative radiotherapy (SABR) to surgical resection in patients with early-stage non-small cell lung cancer (NSCLC) who were eligible for either treatment. It used real-world data from England\u2019s National Cancer Registry to analyze outcomes in 12,546 patients diagnosed between 2015 and 2020. After adjustment, SABR was associated with higher 3-year all-cause mortality than surgery. The findings suggest surgery remains the preferred option, though SABR may be a viable alternative, especially for older patients.",
+        "key_findings": [
+          "3-year all-cause mortality was 30.3% with SABR versus 21.6% with surgery (absolute risk difference: 8.8 percentage points, 95% CI 1.4 to 16.2)",
+          "3-year lung cancer-specific mortality was 20.6% with SABR versus 14.5% with surgery (absolute risk difference: 6.1 percentage points, 95% CI -0.6 to 12.9)",
+          "Among patients aged 80+ years, the adjusted 3-year all-cause mortality difference was 4.3 percentage points (95% CI -3.7 to 12.3)",
+          "The study found a statistically significant higher all-cause mortality with SABR (P = .02)",
+          "The results were based on an emulated target trial using real-world data and instrumental variable analysis to reduce confounding"
+        ],
+        "study": {
+          "trial_name": "Stereotactic Ablative Radiotherapy Versus Surgical Resection for Early-Stage Non-Small Lung Cancer: An Emulated Target Trial",
+          "design": "emulated target trial using real-world data",
+          "comparator": "surgical resection",
+          "primary_endpoint": "3-year all-cause mortality",
+          "follow_up": "3 years"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The study is an emulated target trial using observational data, not a randomized controlled trial",
+          "Results may be affected by residual confounding despite instrumental variable analysis",
+          "Findings may not apply to patients with comorbidities not captured in the registry"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with early-stage non-small cell lung cancer (T1-2N0M0) eligible for either SABR or surgery, including those aged 18\u201379 with Zubrod performance status 0\u20132 or aged 80+ with performance status 0\u20131",
+        "evidence": [],
+        "source_chars": 2136,
+        "enriched_at": "2026-11-03",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer_mortality",
+          "name": "Lung cancer mortality",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 669,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Low-dose CT screening",
+            "outcome": "Lung cancer mortality",
+            "summary": "For lung cancer mortality, the most useful starting point is the 2026 Hsiao meta analysis in Cytopathology. It found that low-dose ct screening tracks with lower risk or better outcomes, and the follow-on evidence is bro",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 2263,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Low-dose CT lung screening in high-risk adults",
+            "outcome": "Lung cancer mortality",
+            "summary": "Low-dose CT (LDCT) screening in high-risk adults is consistently associated with earlier-stage lung cancer diagnoses, a well-validated proxy for reduced lung cancer mortality. Six 2026 studies\u2014spanning large administrati",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 13
+          },
+          {
+            "id": 993,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer mortality",
+            "summary": "Smoking was associated with increased lung cancer mortality.",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 2
+          },
+          {
+            "id": 1009,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer mortality",
+            "summary": "Asbestos exposure strongly linked to increased lung cancer mortality risk.",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 1
+          },
+          {
+            "id": 1008,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer mortality",
+            "summary": "Increased PM2.5 exposure associated with higher lung cancer mortality risk.",
+            "effect": "",
+            "review": "needs_recheck",
+            "n_evidence": 1
+          },
+          {
+            "id": 3298,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Coronary artery calcium scoring",
+            "outcome": "Lung cancer mortality",
+            "summary": "Modeling suggested that universal follow-up after coronary calcium screening could avert 339 lung cancer deaths per 100,000 screened.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 6,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_80d45c5a1e8dcfb0",
+      "published_at": "2026-11-02",
+      "category": "oncology",
+      "stage": "phase2",
+      "audience": "general",
+      "headline": "New combo therapy improves survival in advanced pancreatic cancer",
+      "summary": "In a phase II trial, adding a PD-1 inhibitor to modified FOLFIRINOX improved outcomes for patients with borderline resectable or locally advanced pancreatic cancer. Results showed a significant benefit in progression-free survival compared to chemotherapy alone.",
+      "why_it_matters": "People with advanced pancreatic cancer may now have a more effective treatment option to extend survival and delay disease progression.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Immunochemotherapy",
+        "control_label": "Chemotherapy",
+        "median_t": 11.1,
+        "median_c": 9.6,
+        "hr": 0.74,
+        "ci_low": 0.6,
+        "ci_high": 0.92,
+        "x_label": "Months",
+        "y_label": "Event-free survival"
+      },
+      "strength": 0.85,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42970668/",
+      "factor_slug": "pd1_inhibitor_plus_chemotherapy",
+      "outcome_slug": "progression_free_survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "modified FOLFIRINOX plus toripalimab",
+        "summary": "In a phase II trial, patients with borderline resectable or locally advanced pancreatic cancer were randomly assigned to receive modified FOLFIRINOX plus a PD-1 inhibitor (toripalimab) or modified FOLFIRINOX alone. The addition of the PD-1 inhibitor significantly improved event-free survival compared to chemotherapy alone.",
+        "key_findings": [
+          "Median event-free survival was 11.1 months in the immunochemotherapy group versus 9.6 months in the chemotherapy group (HR 0.74, 95% CI 0.60 to 0.92)",
+          "Median overall survival was 20.6 months in the immunochemotherapy group versus 17.1 months in the chemotherapy group (HR 0.81, 95% CI 0.63 to 1.03)",
+          "Objective response rate was 30.1% (59/196) in the immunochemotherapy group versus 18.9% (37/196) in the chemotherapy group",
+          "Tumor resection rate was 42.3% (83/196) in the immunochemotherapy group versus 43.9% (86/196) in the chemotherapy group",
+          "R0 resection rate was 84.1% (69/82) in the immunochemotherapy group versus 74.7% (62/83) in the chemotherapy group"
+        ],
+        "study": {
+          "trial_name": "Immunochemotherapy for Borderline Resectable or Locally Advanced Pancreatic Cancer: A Randomized Controlled Trial",
+          "design": "open-label, randomized phase II trial",
+          "participants": "392 patients with histologically confirmed borderline resectable or locally advanced pancreatic cancer",
+          "comparator": "modified FOLFIRINOX alone",
+          "primary_endpoint": "event-free survival (EFS) in the intention-to-treat population",
+          "follow_up": "median follow-up of 39.6 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The trial was phase II, so results need confirmation in larger phase III trials",
+          "Grade 3 or higher adverse events were similar between groups (47.9% vs 49.2%), but specific toxicities of the PD-1 inhibitor were not detailed"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with borderline resectable or locally advanced pancreatic cancer",
+        "evidence": [],
+        "source_chars": 2093,
+        "enriched_at": "2026-11-03",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.38)",
+          "summary: unsupported wording (0.56)",
+          "caveat: 081",
+          "caveat: unsupported wording (0.00)",
+          "next_steps: unsupported wording (0.40)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "pancreatic_cancer",
+          "name": "Pancreatic cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 606,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "High fasting insulin",
+            "outcome": "Pancreatic cancer",
+            "summary": "The anchor for this edge is the 2022 Grigor'eva meta analysis in Ter Arkh, which suggests that high fasting insulin tracks with higher risk or worse outcomes for pancreatic cancer. Later papers point in much the same dir",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 631,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Grilled red meat intake",
+            "outcome": "Pancreatic cancer",
+            "summary": "The anchor for this edge is the 2026 Segura Cueva meta analysis in J Clin Med, which suggests that grilled red meat intake tracks with higher risk or worse outcomes for pancreatic cancer. Later papers point in much the s",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 827,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Green tea",
+            "outcome": "Pancreatic cancer",
+            "summary": "The green-tea-specific meta-analysis found a lower pancreatic-cancer risk estimate among higher consumers, and broader tea meta-analyses did not clearly contradict that direction. This is still an emerging-to-moderate nu",
+            "effect": "Tea-based pancreatic-cancer syntheses lean modestly protective, with the signal clearest in green-tea-focused analyses and less certain in broader tea categories.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 894,
+            "tier": "C",
+            "direction": "neutral",
+            "factor": "Tea consumption",
+            "outcome": "Pancreatic cancer",
+            "summary": "The broad tea literature is mostly neutral here. Multiple pooled analyses found no significant overall relationship between tea consumption and pancreatic-cancer risk, even though some subgroup results hint at lower risk",
+            "effect": "Across pooled human studies, overall tea consumption does not show a reliable association with pancreatic-cancer risk in the general population.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 905,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Pancreatic cancer",
+            "summary": "The direct observational meta-analysis reported lower pancreatic-cancer risk with higher whole-grain intake. Broader whole-grain umbrella reviews did not contradict that direction, so the most careful reading is an encou",
+            "effect": "The pancreatic-cancer evidence is thinner than the colorectal signal, but available syntheses generally place higher whole-grain intake on the lower-risk side.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3053,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Red meat",
+            "outcome": "Pancreatic cancer",
+            "summary": "Higher red meat consumption is associated with increased pancreatic cancer risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 7
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 12,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_04ca03541b909cff",
+      "published_at": "2026-11-02",
+      "category": "neuro",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA to decide on gene therapy for Huntington\u2019s by May 1",
+      "summary": "The FDA has set a review date of May 1 for UniQure\u2019s gene therapy for Huntington\u2019s disease. The decision could lead to the first approved gene therapy for this condition.",
+      "why_it_matters": "People with Huntington\u2019s disease may soon have access to a new treatment option if the FDA approves the therapy.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/uniqure-gets-review-date-and-adcomm-inovias-stock-surges-after-approval/",
+      "factor_slug": "gene_therapy",
+      "outcome_slug": "huntingtons_disease",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "The decision could lead to the first approved gene therapy for this condition.",
+        "key_findings": [],
+        "study": {
+          "participants": "patients with early-stage Huntington\u2019s disease"
+        },
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with early-stage Huntington\u2019s disease",
+        "evidence": [],
+        "source_chars": 264,
+        "enriched_at": "2026-11-03",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: 130",
+          "summary: unsupported wording (0.20)",
+          "summary: unsupported wording (0.33)",
+          "summary: 36",
+          "study.trial_name: 130",
+          "study.design: unsupported wording (0.00)",
+          "study.follow_up: 36",
+          "intervention: 130",
+          "finding: 36",
+          "finding: unsupported wording (0.25)",
+          "finding: unsupported wording (0.00)",
+          "finding: unsupported wording (0.00)",
+          "finding: unsupported wording (0.17)",
+          "regulatory_status: unsupported wording (0.50)",
+          "caveat: 3",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "next_steps: 130"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_46221ec19699adf3",
+      "published_at": "2026-11-02",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "Generic HIV prevention shot now approved in U.S.",
+      "summary": "The FDA has approved a generic version of an HIV prevention injection. This could improve access in lower-income countries.",
+      "why_it_matters": "This approval may help make HIV prevention more affordable and available worldwide.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "HIV incidence (per 100 person-years)",
+            "treatment": 0.1,
+            "control": 0.93
+          }
+        ],
+        "unit": "per 100 person-years",
+        "treatment_label": "Lenacapavir",
+        "control_label": "F/TDF"
+      },
+      "strength": 0.95,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/pharmalot/2026/11/02/lenacapavir-generic-version-approved-fda-hiv-prevention-dr-reddys/?utm_campaign=rss",
+      "factor_slug": "generic_lenacapavir",
+      "outcome_slug": "hiv_infection",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "lenacapavir",
+        "summary": "The FDA has approved a generic version of lenacapavir, a long-acting injection for HIV prevention, developed by Dr. Reddy\u2019s Laboratories. This approval is expected to improve access to HIV prevention in lower-income countries. The drug is administered as a subcutaneous injection every 26 weeks. In clinical trials, it showed significantly lower HIV infection rates compared to daily oral PrEP regimens. No serious safety concerns were reported in the trials.",
+        "key_findings": [
+          "In men and gender-diverse people, HIV incidence was 0.10 per 100 person-years with lenacapavir vs. 0.93 per 100 person-years with F/TDF.",
+          "In cisgender women, no HIV infections occurred in the lenacapavir group (0 per 100 person-years) compared to 1.69 per 100 person-years in the F/TDF group.",
+          "HIV incidence with lenacapavir was significantly lower than background incidence in both trials (incidence rate ratio 0.04 and 0.00).",
+          "Injection-site reactions occurred in 1.2% of participants in the lenacapavir group (26 of 2183)."
+        ],
+        "study": {
+          "trial_name": "Twice-Yearly Lenacapavir for HIV Prevention in Men and Gender-Diverse Persons",
+          "design": "phase 3, double-blind, randomized, active-controlled trial",
+          "comparator": "daily oral emtricitabine-tenofovir disoproxil fumarate (F/TDF)",
+          "primary_endpoint": "incidence of HIV infection in the lenacapavir group compared to background HIV incidence"
+        },
+        "regulatory_status": "FDA approved for generic production by Dr. Reddy\u2019s Laboratories",
+        "caveats": [
+          "The approval is for a generic version of a drug used in treatment and prevention; the specific trial data used here are from earlier phase 3 studies.",
+          "Injection-site reactions were more common with lenacapavir than with placebo.",
+          "The trials were funded by Gilead Sciences, the original developer."
+        ],
+        "next_steps": "The generic version is expected to be rolled out in lower-income countries to improve access to HIV prevention.",
+        "who_it_applies_to": "Adults at risk of HIV infection, including men, gender-diverse persons, and cisgender women, who are not currently infected and have no known resistance to lenacapavir or bictegravir.",
+        "evidence": [
+          {
+            "pmid": "39602624",
+            "title": "Twice-Yearly Lenacapavir for HIV Prevention in Men and Gender-Diverse Persons.",
+            "journal": "The New England journal of medicine",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39602624/"
+          },
+          {
+            "pmid": "39046157",
+            "title": "Twice-Yearly Lenacapavir or Daily F/TAF for HIV Prevention in Cisgender Women.",
+            "journal": "The New England journal of medicine",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39046157/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Bixlenvo",
+          "generic": "bictegravir/lenacapavir",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lenacapavir"
+        },
+        "source_chars": 256,
+        "enriched_at": "2026-11-03",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "finding: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_a6b5fd2dc7f769c6",
       "published_at": "2026-10-31",
@@ -370,6 +819,295 @@
       }
     },
     {
+      "id": "br_cb2ac79f30eef936",
+      "published_at": "2026-10-30",
+      "category": "oncology",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "Genomic testing helps decide chemotherapy for early breast cancer",
+      "summary": "A new analysis shows that genomic testing can accurately identify which women with early-stage breast cancer can safely avoid chemotherapy. The results support updated guidelines recommending personalized treatment based on genetic risk scores.",
+      "why_it_matters": "Women with early breast cancer can now avoid unnecessary chemo if their tumor has a low genetic risk score.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42962160/",
+      "factor_slug": "genomic_testing",
+      "outcome_slug": "chemotherapy_avoidance",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "A new analysis evaluated genomic testing to guide chemotherapy decisions in women with early-stage, hormone receptor-positive, HER2-negative breast cancer. These findings support updated guidelines recommending personalized treatment based on genetic risk scores.",
+        "key_findings": [
+          "Genomic testing accurately identified patients who could safely avoid chemotherapy"
+        ],
+        "study": {
+          "trial_name": "TAILORx and OPTIMA",
+          "comparator": "chemotherapy vs. no chemotherapy based on genomic risk score"
+        },
+        "regulatory_status": "Guidelines updated to recommend genomic testing for treatment decisions",
+        "caveats": [
+          "Findings apply only to hormone receptor-positive, HER2-negative early breast cancer"
+        ],
+        "next_steps": "Implementation of genomic testing in clinical practice according to updated guidelines",
+        "who_it_applies_to": "Women with early-stage, hormone receptor-positive, HER2-negative breast cancer",
+        "evidence": [],
+        "source_chars": 172,
+        "enriched_at": "2026-11-03",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.50)",
+          "summary: 10, 94",
+          "study.design: 3",
+          "study.participants: 5000",
+          "study.primary_endpoint: 10",
+          "study.follow_up: 10",
+          "intervention: unsupported wording (0.40)",
+          "finding: 10, 94",
+          "finding: unsupported wording (0.25)",
+          "finding: 1.5",
+          "finding: unsupported wording (0.00)",
+          "caveat: 10",
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.00)",
+          "graphic: 94"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "breast_cancer",
+          "name": "Breast cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 146,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined estrogen+progesterone HRT",
+            "outcome": "Breast cancer",
+            "summary": "Taking combined estrogen-plus-progestogen hormone replacement therapy (HRT) is associated with a small but consistently demonstrated increase in breast cancer risk. Risk rises with longer duration of use and remains elev",
+            "effect": "RR ~1.24\u20131.26 for current/recent users",
+            "review": "verified_evidence",
+            "n_evidence": 10
+          },
+          {
+            "id": 28,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Breast cancer",
+            "summary": "Drinking alcohol\u2014even at low to moderate levels\u2014is consistently associated with a small but real increase in breast cancer risk. The risk rises in a roughly dose-dependent fashion: each additional drink per day adds abou",
+            "effect": "~7\u201310% increased risk per 10 g/day alcohol",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 271,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Heavy alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally upward even below a drink a day. Pooled meta-analytic evidence link heavy alcohol intake to higher risk of breast cancer in a",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 276,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Moderate alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "In adult women, pooled meta-analytic evidence suggest that moderate alcohol intake tracks with higher risk of breast cancer. The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 368,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined menopausal hormone therapy",
+            "outcome": "Breast cancer",
+            "summary": "Pooled meta-analytic evidence link combined menopausal hormone therapy to higher risk of breast cancer in postmenopausal women. The average effect is usually moderate rather than dramatic, so this edge is better read as ",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 145,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Estrogen-only HRT",
+            "outcome": "Breast cancer",
+            "summary": "In post-menopausal women who have had a hysterectomy, taking estrogen-only hormone replacement therapy is associated with a small but statistically significant reduction in breast cancer incidence compared with placebo, ",
+            "effect": "HR ~0.78 in long-term WHI follow-up",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 39,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_e4c39e0370354466",
+      "published_at": "2026-10-30",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Methylphenidate reduces fatigue in blood cancer patients",
+      "summary": "In a trial of 152 adults with blood cancer and severe fatigue, methylphenidate reduced fatigue symptoms compared to placebo over six weeks.",
+      "why_it_matters": "If you have blood cancer and feel constantly tired, this treatment may help improve your daily energy levels.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "FACIT-F improvement",
+            "treatment": 8.9,
+            "control": 3.9
+          }
+        ],
+        "unit": "points",
+        "treatment_label": "Methylphenidate",
+        "control_label": "Placebo"
+      },
+      "strength": 0.85,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42962158/",
+      "factor_slug": "methylphenidate",
+      "outcome_slug": "cancer_related_fatigue",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "methylphenidate",
+        "summary": "In a trial of 152 adults with blood cancer and severe fatigue, methylphenidate reduced fatigue symptoms compared to placebo over six weeks. Participants had a Visual Analog Scale fatigue score of at least 4 out of 10 and were not receiving chemotherapy or psychopharmacologic treatment. Methylphenidate led to a greater improvement in fatigue scores than placebo, with a between-group difference of 5.0 points on the FACIT-F scale.",
+        "key_findings": [
+          "FACIT-F score improved by 8.9 points (95% CI, 7.3 to 10.4) with methylphenidate",
+          "FACIT-F score improved by 3.9 points (95% CI, 2.3 to 5.4) with placebo",
+          "Between-group difference was 5.0 points (95% CI, 2.8 to 7.2) in favor of methylphenidate",
+          "57% of patients reported adverse events during methylphenidate period (N = 73)",
+          "40% of patients reported adverse events during placebo period (N = 52)"
+        ],
+        "study": {
+          "trial_name": "Methylphenidate for Hematologic Cancer-Related Fatigue: A Randomized Clinical Trial",
+          "participants": "152 adults with hematologic cancer and severe fatigue",
+          "comparator": "placebo",
+          "primary_endpoint": "between-group difference in FACIT-F score from baseline to end of each period",
+          "follow_up": "6 weeks per treatment period, with a treatment-free week before crossover"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "More adverse events were reported with methylphenidate (57%) than placebo (40%)",
+          "The study was conducted in patients not receiving chemotherapy or psychopharmacologic treatment"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with blood cancer and severe fatigue (VAS \u22654) who are not receiving chemotherapy or psychopharmacologic treatment",
+        "evidence": [
+          {
+            "pmid": "42962158",
+            "title": "Methylphenidate for Hematologic Cancer-Related Fatigue: A Randomized Clinical Trial.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42962158/"
+          }
+        ],
+        "source_chars": 1661,
+        "enriched_at": "2026-11-03",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.57)",
+          "study.design: 3",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.38)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "fatigue",
+          "name": "Fatigue",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1836,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Supervised exercise during chemotherapy",
+            "outcome": "Fatigue",
+            "summary": "The strongest evidence supports supervised exercise during chemotherapy as a practical fatigue-reduction tool. The benefit is not huge, but it is consistent across pooled analyses and reinforced by recent randomized tria",
+            "effect": "Meta-analyses found lower fatigue during adjuvant treatment overall and with supervised resistance-focused programs during chemotherapy.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 831,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Iron deficiency",
+            "outcome": "Fatigue",
+            "summary": "This edge is stronger than the common assumption that iron only matters once anaemia is obvious. Randomized and Cochrane-style evidence in non-anaemic iron deficiency shows that restoring iron can improve fatigue and rel",
+            "effect": "Across randomized evidence in non-anaemic iron deficiency, iron repletion improves fatigue scores, supporting iron deficiency itself as a real contributor to fatigue symptoms.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3252,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Fatigue",
+            "summary": "Aerobic exercise led to a significant reduction in fatigue immediately after exercise.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 4
+          },
+          {
+            "id": 4623,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Cognitive behavioural therapy",
+            "outcome": "Fatigue",
+            "summary": "Cognitive behavioural therapy (CBT) consistently reduces fatigue across several disease-specific populations, with the strongest support coming from a large meta-analysis in chronic fatigue syndrome and a systematic revi",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 4
+          },
+          {
+            "id": 945,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Yoga",
+            "outcome": "Fatigue",
+            "summary": "Yoga therapy improved fatigue in pediatric oncology patients.",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 2
+          },
+          {
+            "id": 3253,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Resistance training",
+            "outcome": "Fatigue",
+            "summary": "Combined exercise was associated with greater reductions in fatigue compared to aerobic exercise alone.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 30,
+        "factor_total": 0
+      }
+    },
+    {
       "id": "br_a91e655b58b42fca",
       "published_at": "2026-10-29",
       "category": "cardio",
@@ -510,6 +1248,132 @@
         ],
         "factor_edges": [],
         "outcome_total": 16,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_4fbb3cc990301303",
+      "published_at": "2026-10-29",
+      "category": "oncology",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "New guidance for advanced lung cancer with specific genetic changes",
+      "summary": "The latest ASCO living guideline updates treatment recommendations for stage IV non-small cell lung cancer patients with driver alterations. It provides evidence-based guidance on targeted therapies based on continuous review of emerging data.",
+      "why_it_matters": "Patients with certain lung cancer gene changes should discuss updated treatment options with their doctor.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42956324/",
+      "factor_slug": "targeted_therapy",
+      "outcome_slug": "non_small_cell_lung_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "targeted therapies based on driver alterations",
+        "summary": "The latest ASCO living guideline updates treatment recommendations for patients with stage IV non-small cell lung cancer (NSCLC) who have specific genetic driver alterations. It provides evidence-based guidance on the use of targeted therapies, based on continuous review of emerging data. The guideline is developed by a standing expert panel that systematically reviews the literature and updates recommendations regularly. It does not replace individual clinical judgment and does not account for patient-specific variations.",
+        "key_findings": [
+          "Targeted therapies are recommended for stage IV NSCLC patients with driver alterations.",
+          "The guideline is updated regularly based on continuous evidence review.",
+          "It provides recommendations for treatment based on specific genetic changes.",
+          "The guidance is intended to inform, not replace, clinical decision-making.",
+          "It does not account for individual patient variation."
+        ],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [
+          "The guideline does not account for individual patient variation.",
+          "It is not intended to substitute for independent professional judgment.",
+          "It is based on continuous review of evidence, not a single trial.",
+          "It does not specify which targeted therapies are recommended for which alterations."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with stage IV non-small cell lung cancer and specific genetic driver alterations",
+        "evidence": [],
+        "source_chars": 961,
+        "enriched_at": "2026-11-03",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.57)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 29,
         "factor_total": 0
       }
     },
