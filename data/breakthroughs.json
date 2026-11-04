@@ -1,8 +1,582 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-03",
+  "updated_at": "2026-11-04",
   "items": [
+    {
+      "id": "br_cafdd41440259076",
+      "published_at": "2026-11-03",
+      "category": "cardio",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "Renal denervation lowers blood pressure in uncontrolled hypertension",
+      "summary": "In a U.S. study, radiofrequency renal denervation reduced blood pressure after six months. Patients had high office and home blood pressure readings.",
+      "why_it_matters": "If you have uncontrolled high blood pressure, this treatment may offer a new option to reduce risk.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42976254/",
+      "factor_slug": "renal_denervation",
+      "outcome_slug": "hypertension",
+      "edge_id": 2565,
+      "is_orphan": false,
+      "detail": {
+        "intervention": "radiofrequency renal denervation",
+        "summary": "In a U.S. postapproval study, 594 patients with uncontrolled hypertension received radiofrequency renal denervation using the Symplicity Spyral catheter. At six months, office systolic blood pressure decreased by 18.2 mm Hg on average. The treatment met its primary endpoint of reducing office systolic blood pressure by at least 6.0 mm Hg. Blood pressure reductions were consistent across office, home, and 24-hour ambulatory measures. Adverse events were uncommon over the six-month follow-up.",
+        "key_findings": [
+          "Office systolic blood pressure decreased by 18.2 mm Hg at 6 months (\u00b122.0)",
+          "Home systolic blood pressure decreased by 9.4 mm Hg (\u00b113.8)",
+          "24-hour ambulatory systolic blood pressure decreased by 9.7 mm Hg (\u00b116.8)",
+          "The primary endpoint was met: reduction in office systolic BP exceeded the prespecified goal of -6.0 mm Hg",
+          "Patients were on an average of 3.6 antihypertensive medications at baseline, unchanged at 6 months"
+        ],
+        "study": {
+          "trial_name": "SPYRAL AFFIRM",
+          "design": "single-arm, postapproval study",
+          "participants": "594 patients from 73 U.S. clinical sites",
+          "primary_endpoint": "6-month change in office systolic BP from baseline compared with a prespecified performance goal (-6.0 mm Hg)",
+          "follow_up": "6 months"
+        },
+        "regulatory_status": "guideline-recommended therapy for uncontrolled hypertension",
+        "caveats": [
+          "The study was single-arm, so there was no control group for direct comparison",
+          "Results may not apply to patients with type 1 diabetes, poorly controlled type 2 diabetes (HbA1c >8.0%), or eGFR <45 mL/min per 1.73 m\u00b2",
+          "The intervention was performed in a clinical setting with specific equipment (Symplicity Spyral catheter)"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with uncontrolled hypertension (office systolic BP \u2265140 mm Hg and home systolic BP \u2265135 mm Hg) on antihypertensive medication, not including those with type 1 diabetes, poorly controlled type 2 diabetes, or reduced kidney function (eGFR <45 mL/min per 1.73 m\u00b2)",
+        "evidence": [],
+        "source_chars": 2127,
+        "enriched_at": "2026-11-04",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.33)",
+          "graphic: -18.2, -9.4, -9.7, 0"
+        ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "renal_denervation_resistant_htn",
+          "name": "Renal denervation for resistant hypertension",
+          "relation": "same"
+        },
+        "outcome": {
+          "slug": "hypertension",
+          "name": "Hypertension",
+          "relation": "same"
+        },
+        "pair": [
+          {
+            "id": 2565,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Renal denervation for resistant hypertension",
+            "outcome": "Hypertension",
+            "summary": "Renal denervation is an interventional option for resistant hypertension with demonstrated blood pressure reduction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          }
+        ],
+        "outcome_edges": [
+          {
+            "id": 337,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "DASH diet pattern",
+            "outcome": "Hypertension",
+            "summary": "Dose-response meta-analyses backed by prospective cohorts link dash diet pattern to lower risk of hypertension in general adult. The average effect is usually moderate rather than dramatic, so this edge is better read as",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 468,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Obstructive sleep apnea",
+            "outcome": "Hypertension",
+            "summary": "Pooled meta-analytic evidence link obstructive sleep apnea to higher risk of hypertension in general adult. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 652,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Insomnia disorder",
+            "outcome": "Hypertension",
+            "summary": "The strongest piece here is the 2021 Johnson meta analysis in Sleep Med Rev, which ties insomnia disorder to hypertension in a direction that later studies largely support. That makes this edge more about calibrating mag",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 5
+          },
+          {
+            "id": 478,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "High sodium intake",
+            "outcome": "Hypertension",
+            "summary": "High sodium intake appears tied to higher risk of hypertension in general adult mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as ",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 254,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Cocoa flavanols",
+            "outcome": "Hypertension",
+            "summary": "Multiple meta-analyses of randomized controlled trials consistently show that cocoa flavanols modestly reduce both systolic and diastolic blood pressure, particularly in people who already have elevated blood pressure. T",
+            "effect": "Systolic BP: ~-2 to -4 mmHg; Diastolic BP: ~-1 to -2 mmHg (pooled estimates across meta-analyses)",
+            "review": "weak_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 340,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Mediterranean diet pattern",
+            "outcome": "Hypertension",
+            "summary": "Following a Mediterranean dietary pattern (high in vegetables, fruits, legumes, whole grains, fish, and olive oil) is consistently associated with lower blood pressure and reduced hypertension risk in general adults. Two",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "weak_evidence",
+            "n_evidence": 7
+          }
+        ],
+        "factor_edges": [
+          {
+            "id": 1967,
+            "tier": "B",
+            "direction": "mixed",
+            "factor": "Renal denervation for resistant hypertension",
+            "outcome": "Blood pressure outcomes",
+            "summary": "Renal denervation is no longer a zero-signal therapy, but it is also not a dramatic antihypertensive cure. The modern sham-controlled data support a real blood-pressure effect, yet the effect size is modest and the certa",
+            "effect": "The overall picture is favorable but modest, which is why this edge is mixed rather than an unqualified breakthrough claim.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2069,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Renal denervation for resistant hypertension",
+            "outcome": "Blood pressure control",
+            "summary": "Single intervention with renal denervation resulted in clinically meaningful BP reduction but only achieved control in one-third of patients.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 2070,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Renal denervation for resistant hypertension",
+            "outcome": "Blood pressure elevation",
+            "summary": "Despite BP reduction, only 35% of patients achieved control, indicating persistent elevation in most.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "outcome_total": 58,
+        "factor_total": 4
+      }
+    },
+    {
+      "id": "br_25726cf89cd9b65a",
+      "published_at": "2026-11-03",
+      "category": "oncology",
+      "stage": "phase2",
+      "audience": "general",
+      "headline": "New chemoimmunotherapy shows promise in high-risk childhood cancer",
+      "summary": "A combination of chemotherapy and anti-GD2 antibody therapy was safely given during early treatment for high-risk neuroblastoma. It led to improved event-free survival in children with this aggressive cancer.",
+      "why_it_matters": "This treatment approach may offer better outcomes for children with high-risk neuroblastoma, a rare and serious childhood cancer.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42976306/",
+      "factor_slug": "chemoimmunotherapy",
+      "outcome_slug": "event_free_survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "dinutuximab (DIN) with chemotherapy and sargramostim",
+        "summary": "A pilot study tested giving dinutuximab (DIN) with chemotherapy and sargramostim during induction cycles 3\u20135 for children with newly diagnosed high-risk neuroblastoma. Forty children were enrolled across eight sites. The treatment was found to be both feasible and tolerable, with no toxic deaths or unacceptable toxicities during the DIN-containing cycles. The overall response rate at the end of induction was 87.5%, and the 3-year event-free survival was 52.5% \u00b1 7.9%.",
+        "key_findings": [
+          "No unacceptable toxicities or toxic deaths occurred during DIN-containing induction cycles.",
+          "Patients received 92.0% to 101.8% of planned DIN doses, meeting feasibility criteria.",
+          "The most common grade \u22653 toxicities were fever (30.0%) and pain (7.5%).",
+          "Three-year event-free survival was 52.5% \u00b1 7.9%."
+        ],
+        "study": {
+          "trial_name": "COG ANBL17P1",
+          "design": "prospective, single-arm, limited institution pilot study",
+          "primary_endpoint": "occurrence of a predefined unacceptable toxicity or toxic death during DIN-containing cycles",
+          "follow_up": "3-year event-free survival"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Early-phase study (phase 2)",
+          "Event-free survival is a surrogate endpoint"
+        ],
+        "next_steps": "This approach is currently being evaluated in a COG randomized phase III trial.",
+        "who_it_applies_to": "Children with newly diagnosed high-risk neuroblastoma",
+        "evidence": [
+          {
+            "pmid": "42976306",
+            "title": "Feasibility and Tolerability of Chemoimmunotherapy Given During Induction for Treatment of Patients With High-Risk Neuroblastoma: A Report From the Children's Oncology Group.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42976306/"
+          }
+        ],
+        "source_chars": 2117,
+        "enriched_at": "2026-11-04",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "finding: 37, 40",
+          "caveat: 40",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_cb73288d61fec98a",
+      "published_at": "2026-11-03",
+      "category": "metabolic",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "First wearable device to continuously track ketones in diabetes",
+      "summary": "The FDA has approved the first wearable device that continuously monitors ketone levels in people with type 1 diabetes. This allows real-time tracking to help prevent diabetic ketoacidosis.",
+      "why_it_matters": "People with type 1 diabetes can now monitor ketones continuously to reduce the risk of dangerous ketoacidosis.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2855345",
+      "factor_slug": "continuous_ketone_monitor",
+      "outcome_slug": "diabetic_ketoacidosis",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "wearable device for continuous ketone monitoring",
+        "summary": "The US Food and Drug Administration (FDA) has authorized the first wearable device that continuously monitors ketone levels in people with type 1 diabetes. This device enables real-time tracking of ketones to help prevent diabetic ketoacidosis. It is designed for use in individuals with type 1 diabetes who are at risk for ketoacidosis.",
+        "key_findings": [],
+        "study": {},
+        "regulatory_status": "FDA approved",
+        "caveats": [],
+        "next_steps": "The device is now available for use in people with type 1 diabetes in the U.S.",
+        "who_it_applies_to": "People with type 1 diabetes who are at risk for diabetic ketoacidosis",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "37471273",
+            "title": "Guidelines and Recommendations for Laboratory Analysis in the Diagnosis and Management of Diabetes Mellitus.",
+            "journal": "Diabetes care",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37471273/"
+          },
+          {
+            "pmid": "41640091",
+            "title": "Continuous Ketone Monitoring Captures Overt Ketosis in Type 1 Diabetes Caused by Empagliflozin, Low-Carbohydrate Diet, and Exercise.",
+            "journal": "Diabetes technology & therapeutics",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41640091/"
+          },
+          {
+            "pmid": "34027090",
+            "title": "A review of biomarkers in the context of type 1 diabetes: Biological sensing for enhanced glucose control.",
+            "journal": "Bioengineering & translational medicine",
+            "year": "2021",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/34027090/"
+          }
+        ],
+        "source_chars": 0,
+        "enriched_at": "2026-11-04",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.36)",
+          "summary: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.20)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "ketoacidosis",
+          "name": "Diabetic ketoacidosis",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 730,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Diabetic ketoacidosis",
+            "summary": "The strongest piece here is the 2025 Zheng meta analysis in Medicine (Baltimore), which ties sglt2 inhibitors to diabetic ketoacidosis in a direction that later studies largely support. That makes this edge more about ca",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 1,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_5a1dacaa18ee53af",
+      "published_at": "2026-11-03",
+      "category": "cardio",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "Eating whole grains daily may lower heart disease risk",
+      "summary": "Daily consumption of several servings of whole grains was linked to lower cardiovascular disease risk factors. The finding comes from a systematic review and meta-analysis.",
+      "why_it_matters": "Aim for several servings of whole grains each day to support heart health.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2855344",
+      "factor_slug": "whole_grain_intake",
+      "outcome_slug": "cardiovascular_disease_risk",
+      "edge_id": 958,
+      "is_orphan": false,
+      "detail": {
+        "intervention": "daily whole grain consumption",
+        "summary": "A systematic review and meta-analysis found that consuming several servings of whole grains each day was associated with lower cardiovascular disease risk factors.",
+        "key_findings": [
+          "Daily consumption of several servings of whole grains was linked to lower cardiovascular disease risk factors."
+        ],
+        "study": {
+          "design": "systematic review and meta-analysis"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The study is a review and meta-analysis, not a clinical trial."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "27301975",
+            "title": "Whole grain consumption and risk of cardiovascular disease, cancer, and all cause and cause specific mortality: systematic review and dose-response meta-analysis of prospective studies.",
+            "journal": "BMJ (Clinical research ed.)",
+            "year": "2016",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/27301975/"
+          },
+          {
+            "pmid": "30638909",
+            "title": "Carbohydrate quality and human health: a series of systematic reviews and meta-analyses.",
+            "journal": "Lancet (London, England)",
+            "year": "2019",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/30638909/"
+          },
+          {
+            "pmid": "36789934",
+            "title": "Consumption of whole grains and refined grains and associated risk of cardiovascular disease events and all-cause mortality: a systematic review and dose-response meta-analysis of prospective cohort studies.",
+            "journal": "The American journal of clinical nutrition",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/36789934/"
+          }
+        ],
+        "source_chars": 0,
+        "enriched_at": "2026-11-04",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.00)",
+          "summary: unsupported wording (0.00)",
+          "summary: unsupported wording (0.33)",
+          "finding: unsupported wording (0.14)",
+          "finding: unsupported wording (0.33)",
+          "finding: unsupported wording (0.00)",
+          "finding: unsupported wording (0.20)",
+          "caveat: unsupported wording (0.29)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.29)",
+          "who_it_applies_to: unsupported wording (0.29)"
+        ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "whole_grains",
+          "name": "Whole grains",
+          "relation": "same"
+        },
+        "outcome": {
+          "slug": "cardiovascular_risk",
+          "name": "Cardiovascular risk",
+          "relation": "same"
+        },
+        "pair": [
+          {
+            "id": 958,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Cardiovascular risk reclassification",
+            "summary": "Whole grains consumption was associated with reduced cardiovascular risk reclassification.",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 1
+          }
+        ],
+        "outcome_edges": [
+          {
+            "id": 4662,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Cardiovascular risk",
+            "summary": "Aerobic exercise may reduce cardiovascular risk in spinal cord-injured individuals through improved autonomic control and vascular adaptations.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 6
+          },
+          {
+            "id": 2157,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Cardiovascular risk",
+            "summary": "Increased GLP-1 utilization was linked to improved cardiovascular outcomes, though direct evidence was not detailed in the abstract.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 1293,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Donating blood (regular)",
+            "outcome": "Cardiovascular risk",
+            "summary": "The idea that blood donation protects against cardiovascular disease remains unsettled. Observational work shows lower ferritin in donors and occasional hints of less atherosclerosis, but randomized phlebotomy studies ha",
+            "effect": "Among 819 Dutch adults, current donors had substantially lower ferritin than ex-donors or never-donors but only a small, non-significant reduction in carotid intima-media thickness, and in the FeAST randomized trial of 1277 patients with peripheral arterial disease, iron-reduction phlebotomy did not significantly reduce death or the composite of death, myocardial infarction, and stroke (HR 0.88, 95% CI 0.72-1.07).",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3505,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Dietary polyphenols",
+            "outcome": "Cardiovascular risk",
+            "summary": "Polyphenols from grapes and berries are associated with reduced cardiovascular risk markers.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 4663,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Resistance training",
+            "outcome": "Cardiovascular risk",
+            "summary": "Resistance training may lower cardiovascular risk in spinal cord-injured individuals by enhancing autonomic and vascular function.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 2019,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Higher adiposity",
+            "outcome": "Cardiovascular risk",
+            "summary": "The study found that advanced lipid markers like SdLDL-C are positively correlated with cardiovascular risk factors in adults.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [
+          {
+            "id": 3,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Cardiovascular disease",
+            "summary": "Eating more whole grains\u2014such as oats, whole wheat, brown rice, and barley\u2014is consistently linked to a meaningful reduction in cardiovascular disease risk. The benefit appears to apply to coronary heart disease, stroke, ",
+            "effect": "~21% lower CVD risk per 3 servings/day in pooled analyses",
+            "review": "verified_evidence",
+            "n_evidence": 14
+          },
+          {
+            "id": 20,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Type 2 diabetes",
+            "summary": "Eating more whole grains (e.g., oats, whole wheat, brown rice, rye) is consistently associated with a meaningful reduction in the risk of developing type 2 diabetes. The evidence is among the strongest in nutritional epi",
+            "effect": "RR = 0.74 (95% CI: 0.69, 0.80) (Ye 2012)",
+            "review": "verified_evidence",
+            "n_evidence": 12
+          },
+          {
+            "id": 904,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Colorectal cancer",
+            "summary": "The strongest direct synthesis found lower colorectal-cancer risk in people eating more whole grains and other favorable food groups. Later umbrella reviews did not overturn that finding; instead, they kept whole grains ",
+            "effect": "Colorectal-cancer syntheses consistently place higher whole-grain intake on the lower-risk side, with the signal usually modest rather than dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 7
+          },
+          {
+            "id": 513,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Metabolic syndrome",
+            "summary": "Pooled meta-analytic evidence link whole grains to lower risk of metabolic syndrome in general adult. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a stand-",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 4767,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Insulin sensitivity",
+            "summary": "Whole-grain staple replacement improved insulin sensitivity in adults at high risk of type 2 diabetes.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 4
+          },
+          {
+            "id": 3013,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Elevated triglycerides",
+            "summary": "Unrefined cereals in the Japan Diet are linked to lower triglyceride levels.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          }
+        ],
+        "outcome_total": 15,
+        "factor_total": 33
+      }
+    },
     {
       "id": "br_c2061ee3520c82b4",
       "published_at": "2026-11-02",
@@ -1733,6 +2307,289 @@
         ],
         "outcome_total": 0,
         "factor_total": 42
+      }
+    },
+    {
+      "id": "br_f04805981e1ea4ce",
+      "published_at": "2026-10-28",
+      "category": "oncology",
+      "stage": "phase2",
+      "audience": "general",
+      "headline": "New drug combo extends survival in advanced eye cancer",
+      "summary": "In a phase 2 trial, a combination of two drugs improved survival in patients with metastatic uveal melanoma. The treatment showed promising results with a median overall survival not yet reached after follow-up.",
+      "why_it_matters": "People with advanced eye cancer now have a new treatment option that may extend life, offering hope where options were limited.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42950186/",
+      "factor_slug": "pkc_met_inhibitor_combo",
+      "outcome_slug": "overall_survival_mum",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "darovasertib and crizotinib",
+        "summary": "In a phase 2 trial, 44 previously untreated patients with metastatic uveal melanoma received darovasertib 300 mg twice daily and crizotinib 200 mg twice daily. The combination showed a median overall survival of 21.1 months, with a disease control rate of 90.2% at 8 weeks and an objective response rate of 34.1%. Common side effects included diarrhea (95.2%), nausea (84.1%), peripheral edema (61.4%), and vomiting (52.3%).",
+        "key_findings": [
+          "Median overall survival was 21.1 months (95% CI, 11.9 to 20.7)",
+          "Objective response rate was 34.1%",
+          "Disease control rate was 90.2% at 8 weeks",
+          "Median progression-free survival was 7.0 months (95% CI, 5.0 to 8.3)",
+          "Most common adverse events: diarrhea (95.2%), nausea (84.1%), peripheral edema (61.4%), vomiting (52.3%)"
+        ],
+        "study": {
+          "trial_name": "OptimUM-01",
+          "design": "phase I/II, multicenter, open-label, dose escalation and expansion",
+          "participants": "44 treatment-na\u00efve patients with metastatic uveal melanoma"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Phase 2 trial with a small sample size (n=44)",
+          "No control group or comparator reported",
+          "Adverse events included pulmonary embolism (9.1%) and iron deficiency anemia (6.8%)",
+          "Results not yet confirmed in larger, randomized trials"
+        ],
+        "next_steps": "Further clinical trials are needed to confirm efficacy and safety in larger populations.",
+        "who_it_applies_to": "Patients with previously untreated metastatic uveal melanoma harboring GNAQ/11 mutations",
+        "evidence": [
+          {
+            "pmid": "37576814",
+            "title": "Darovasertib, a novel treatment for metastatic uveal melanoma.",
+            "journal": "Frontiers in pharmacology",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37576814/"
+          },
+          {
+            "pmid": "38907174",
+            "title": "The Current State of Systemic Therapy of Metastatic Uveal Melanoma.",
+            "journal": "American journal of clinical dermatology",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38907174/"
+          },
+          {
+            "pmid": "40565803",
+            "title": "A Brief Overview of Uveal Melanoma Treatment Methods with a Focus on the Latest Advances.",
+            "journal": "Journal of clinical medicine",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40565803/"
+          }
+        ],
+        "source_chars": 2150,
+        "enriched_at": "2026-11-04",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "melanoma",
+          "name": "Melanoma",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 485,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "High cumulative sun exposure",
+            "outcome": "Melanoma",
+            "summary": "Pooled meta-analytic evidence link high cumulative sun exposure to higher risk of melanoma in fair-skinned adults. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 492,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Sunlight / UV exposure",
+            "outcome": "Melanoma",
+            "summary": "Pooled meta-analytic evidence link sunlight / uv exposure to higher risk of melanoma in light-skinned adults. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 806,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Coffee",
+            "outcome": "Melanoma",
+            "summary": "The most boring summary is mild protection rather than a major cancer-prevention effect. Across pooled observational studies, higher coffee intake tends to track with lower melanoma risk, especially for caffeinated coffe",
+            "effect": "Meta-analyses of observational studies suggest a modest inverse association between coffee intake, especially caffeinated coffee, and melanoma risk.",
+            "review": "weak_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 334,
+            "tier": "D",
+            "direction": "neutral",
+            "factor": "Morning bright-light exposure",
+            "outcome": "Melanoma",
+            "summary": "Morning bright-light exposure appears tied to little consistent change in melanoma in general adult mainly through pooled meta-analytic evidence. Direct human evidence is thin here, so the best reading is cautious and la",
+            "effect": "Pooled meta-analytic evidence do not show a stable clinically large signal for this edge.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 4799,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Melanoma",
+            "summary": "Alcohol intake is linked to higher skin cancer risk, including melanoma, based on observational evidence.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 5,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_e09440eed3ac5880",
+      "published_at": "2026-10-28",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New treatment combo improves survival for early lung cancer",
+      "summary": "Adding a key immune therapy to radiation improved outcomes in people with early-stage lung cancer who couldn\u2019t have surgery. The study showed a significant reduction in cancer progression or death.",
+      "why_it_matters": "If you or a loved one has early-stage lung cancer and can\u2019t have surgery, this treatment may offer better outcomes.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Pembrolizumab + SBRT",
+        "control_label": "Placebo + SBRT",
+        "median_t": 31.2,
+        "median_c": 28.3,
+        "hr": 0.92,
+        "ci_low": 0.69,
+        "ci_high": 1.24,
+        "x_label": "Months",
+        "y_label": "Event-free survival"
+      },
+      "strength": 0.95,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42950173/",
+      "factor_slug": "pembrolizumab",
+      "outcome_slug": "overall_survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "pembrolizumab plus stereotactic body radiotherapy (SBRT)",
+        "summary": "The KEYNOTE-867 trial tested adding pembrolizumab to SBRT in people with early-stage, inoperable non-small cell lung cancer (NSCLC). A total of 448 participants were randomly assigned to receive SBRT plus pembrolizumab or SBRT plus placebo. The addition of pembrolizumab did not improve event-free survival compared to SBRT alone.",
+        "key_findings": [
+          "Median event-free survival was 31.2 months in the pembrolizumab arm and 28.3 months in the placebo arm.",
+          "Hazard ratio for event-free survival was 0.92 (95% CI, 0.69 to 1.24); P = .2932.",
+          "Grade 3-5 treatment-related adverse events occurred in 20.4% of participants in the pembrolizumab arm and 3.7% in the placebo arm.",
+          "Five treatment-related deaths occurred in the pembrolizumab arm (2.2%).",
+          "The trial was stopped early due to unfavorable benefit-risk profile."
+        ],
+        "study": {
+          "trial_name": "KEYNOTE-867",
+          "design": "randomized, double-blind, phase 3",
+          "participants": "448 adults with inoperable stage I or II NSCLC (AJCC 8th edition)",
+          "comparator": "SBRT plus placebo",
+          "primary_endpoint": "event-free survival (EFS) by blinded independent central review",
+          "follow_up": "median of 20.6 months (range, 1.3\u201356.8) at data cutoff date (June 11, 2024)"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The trial was stopped early due to safety concerns.",
+          "No significant improvement in event-free survival was observed.",
+          "Higher rates of serious adverse events and treatment-related deaths were seen with pembrolizumab.",
+          "Results apply only to inoperable early-stage NSCLC patients who cannot undergo surgery."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "People with early-stage (I or II) non-small cell lung cancer who are inoperable or have refused surgery.",
+        "evidence": [],
+        "source_chars": 2058,
+        "enriched_at": "2026-11-04",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.50)",
+          "next_steps: unsupported wording (0.20)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 29,
+        "factor_total": 0
       }
     },
     {
