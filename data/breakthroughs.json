@@ -13316,11 +13316,83 @@
       },
       "corpus": {
         "factor": null,
-        "outcome": null,
+        "outcome": {
+          "slug": "cardiovascular_events",
+          "name": "Cardiovascular events",
+          "relation": "same",
+          "held": true
+        },
         "pair": [],
-        "outcome_edges": [],
+        "outcome_edges": [
+          {
+            "id": 1557,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "High arterial stiffness by pulse wave velocity",
+            "outcome": "Cardiovascular events",
+            "summary": "This edge is stronger than many biomarker-prognosis links because arterial stiffness repeatedly adds information beyond routine blood pressure and lipid measures. The literature is not just showing correlation with aging",
+            "effect": "In the individual-participant meta-analysis of 11 cohorts, each 1-SD increase in carotid-femoral pulse wave velocity carried a 1.21-fold higher ASCVD risk. In the Kailuan cohort, estimated PWV of at least 10 m/s increased cardiovascular event risk by 32%, and in the Korean prevention cohort brachial-ankle PWV independently improved major adverse cardiovascular event prediction beyond pooled-cohort-equation risk.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1594,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Low grip strength",
+            "outcome": "Cardiovascular events",
+            "summary": "The cardiovascular signal is real but slightly less tidy than the all-cause mortality signal. Lower grip strength repeatedly marks people who go on to have more cardiovascular events or cardiovascular deaths, though the ",
+            "effect": "The largest dose-response review found lower grip strength associated with higher cardiovascular mortality across 3,135,473 participants, and a 5,300-person prospective cohort found the low-stable grip-strength trajectory doubled incident cardiovascular disease risk with a hazard ratio of 2.17.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1647,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Omega-3 index high above 8%",
+            "outcome": "Cardiovascular events",
+            "summary": "This is one of the cleaner biomarker-threshold stories in the manifest. The literature does not prove that 8% is a magical cliff, but cohort-based analyses repeatedly treat values above roughly 8% as the low-risk end of ",
+            "effect": "The 2017 Omega-3 Index analysis estimated about a 30% reduction in fatal coronary heart disease risk moving from around 4% to 8%, reinforcing the clinical convention that values above 8% sit in a lower-risk zone. In Framingham Offspring, higher omega-3 index improved 10-year cardiovascular-event prediction beyond traditional pooled-cohort risk modeling, and in MESA higher plasma EPA and DHA were independently associated with fewer long-term cardiovascular events, with the absolute benefit greatest when subclinical atherosclerosis was already present.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1302,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Erythritol",
+            "outcome": "Cardiovascular events",
+            "summary": "Circulating erythritol is consistently associated with adverse cardiovascular outcomes in observational cohorts, and mechanistic work suggests biologic plausibility through platelet activation. The key uncertainty is whe",
+            "effect": "Across discovery and validation cohorts totaling 4,139 patients undergoing cardiac risk assessment, the highest versus lowest erythritol quartile was associated with incident major adverse cardiovascular events with adjusted HRs of 1.80 (95% CI 1.18-2.77) and 2.21 (95% CI 1.20-4.07)",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1600,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "hs-CRP high above 3 mg/L",
+            "outcome": "Cardiovascular events",
+            "summary": "The literature is consistent enough that hs-CRP above about 3 mg/L is best viewed as an unfavorable cardiovascular-risk zone. The signal is not perfectly specific, because CRP rises in many inflammatory states, but acros",
+            "effect": "In stable coronary disease, the 2022 meta-analysis of 22,602 patients found a pooled risk ratio of 1.77 for major adverse cardiovascular events comparing the highest versus lowest CRP groups. Large pooled prospective data also show that CRP meaningfully improves first-event prediction on top of conventional risk factors.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1637,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Chronic NSAID use",
+            "outcome": "Cardiovascular events",
+            "summary": "This edge is harmful overall, but it is driven more by dose and molecule than by a perfectly uniform class effect. The most credible evidence shows that repeated use of higher-risk NSAIDs, especially diclofenac and some ",
+            "effect": "In the large randomized-trial meta-analysis, major vascular events increased by about one-third with coxibs or diclofenac",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          }
+        ],
         "factor_edges": [],
-        "outcome_total": 0,
+        "outcome_total": 25,
         "factor_total": 0
       }
     },

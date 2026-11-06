@@ -279,3 +279,23 @@ def test_paper_judged_under_old_rss_link_is_not_judged_again(world, monkeypatch)
     monkeypatch.setattr(bd, "fetch_rss", lambda url: [dict(new)])
     bd.main(["--limit", "5"])
     assert world["calls"] == []
+
+
+def test_relink_keeps_an_earlier_link_the_model_misses_this_time(graph, monkeypatch):
+    # 06.11.2026: a re-run lost "Cardiovascular events" because qwen answered differently.
+    first = {**card("", "x", "New guideline for older adults"),
+             "corpus": {"factor": None, "outcome": {"slug": "heart_failure", "name": "Heart failure",
+                                                     "relation": "broader"}}}
+    monkeypatch.setattr(bc, "ollama_json", lambda p, num_predict=0: {})
+    again = bc.apply(first, graph)["corpus"]
+    assert again["outcome"]["slug"] == "heart_failure" and again["outcome"]["held"]
+    assert again["outcome"]["relation"] == "broader"
+    assert [e["id"] for e in again["outcome_edges"]] == [729]
+    # --fresh drops it; an entity gone from the graph drops out too
+    assert bc.apply(first, graph, fresh=True)["corpus"]["outcome"] is None
+    gone = [e for e in graph if e["slug"] != "heart_failure"]
+    assert bc.apply(first, gone)["corpus"]["outcome"] is None
+    # what the new run finds wins over the earlier link
+    monkeypatch.setattr(bc, "ollama_json", lambda p, num_predict=0: {"outcome": "bladder_cancer"})
+    later = bc.apply({**first, "outcome_slug": "bladder cancer progression"}, graph)["corpus"]
+    assert later["outcome"]["slug"] == "bladder_cancer" and "held" not in later["outcome"]

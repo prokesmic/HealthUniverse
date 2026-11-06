@@ -23,6 +23,7 @@ data/cache/entity_emb.json (gitignored), keyed by the embedded text.
 Usage:
   python scripts/breakthrough_corpus.py --all
   python scripts/breakthrough_corpus.py --id br_xxx --dry
+  python scripts/breakthrough_corpus.py --id br_xxx --fresh   # drop a wrong earlier link
 """
 from __future__ import annotations
 
@@ -211,7 +212,7 @@ def named_entity(pool: list[dict], text: set[str]) -> dict | None:
     return best
 
 
-def link(item: dict, ents: list[dict]) -> dict:
+def link(item: dict, ents: list[dict], fresh: bool = False) -> dict:
     d = item.get("detail") or {}
     words = lambda s: (s or "").replace("_", " ")
     fpool = [e for e in ents if e["kind"] not in OUTCOME_KINDS or e["kind"] == "biomarker"]
@@ -257,6 +258,24 @@ def link(item: dict, ents: list[dict]) -> dict:
              or named_entity(opool, text_tokens(d.get("who_it_applies_to", ""))))
     if not f and d.get("intervention"):
         f = named_entity(fpool, text_tokens(d.get("intervention", "")))
+    # 06.11.2026: a re-link must not lose what an earlier run found — qwen answers a
+    # little differently each time, and "Updated Heart Disease Guidelines for Older
+    # Adults" lost "Cardiovascular events" that way. A side this run left empty keeps
+    # the earlier entity while it still exists in the graph (merges rewrite the slug,
+    # a deleted entity drops out). A side the new run did find wins. --fresh ignores
+    # the earlier link, to drop a wrong one on purpose.
+    prev = {} if fresh else (item.get("corpus") or {})
+    held: dict = {}
+    for side, pool in (("factor", fpool), ("outcome", opool)):
+        p = prev.get(side) or {}
+        if p.get("slug") and not (f if side == "factor" else o):
+            e = next((e for e in pool if e["slug"] == p["slug"]), None)
+            if e:
+                held[side] = p.get("relation") or "same"
+                if side == "factor":
+                    f = e
+                else:
+                    o = e
     oq = [_norm(v) for v in embed([q for q in (words(item.get("outcome_slug")), o and o["name"]) if q])]
     ovec = {e["id"]: e["vec"] for e in opool}
 
@@ -268,12 +287,16 @@ def link(item: dict, ents: list[dict]) -> dict:
     with _connect() as conn:
         if f:
             out["factor"] = {"slug": f["slug"], "name": f["name"],
-                             "relation": pick.get("factor_relation") or "same"}
+                             "relation": held.get("factor") or pick.get("factor_relation") or "same"}
+            if "factor" in held:
+                out["factor"]["held"] = True
             out["factor_total"] = conn.execute(
                 "SELECT COUNT(*) FROM edge WHERE factor_id=? AND tier!='deprecated'", (f["id"],)).fetchone()[0]
         if o:
             out["outcome"] = {"slug": o["slug"], "name": o["name"],
-                              "relation": pick.get("outcome_relation") or "same"}
+                              "relation": held.get("outcome") or pick.get("outcome_relation") or "same"}
+            if "outcome" in held:
+                out["outcome"]["held"] = True
             out["outcome_total"] = conn.execute(
                 "SELECT COUNT(*) FROM edge WHERE outcome_id=? AND tier!='deprecated'", (o["id"],)).fetchone()[0]
         if f and o:
@@ -303,9 +326,9 @@ def link(item: dict, ents: list[dict]) -> dict:
     return out
 
 
-def apply(item: dict, ents: list[dict]) -> dict:
+def apply(item: dict, ents: list[dict], fresh: bool = False) -> dict:
     card = dict(item)
-    c = link(card, ents)
+    c = link(card, ents, fresh)
     card["corpus"] = c
     card["edge_id"] = c["pair"][0]["id"] if c["pair"] else None
     card["is_orphan"] = not c["pair"]
@@ -319,6 +342,8 @@ def main(argv: list[str]) -> int:
     g.add_argument("--missing", action="store_true")
     g.add_argument("--id", action="append")
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--fresh", action="store_true",
+                    help="ignore each card's earlier link (to drop a wrong one); default keeps it")
     args = ap.parse_args(argv)
     items = load_feed().get("items", [])
     if args.id:
@@ -329,7 +354,7 @@ def main(argv: list[str]) -> int:
     print(f"→ linking {len(items)} cards against {len(ents)} entities")
     linked = []
     for n, it in enumerate(items, 1):
-        card = apply(it, ents)
+        card = apply(it, ents, args.fresh)
         c = card["corpus"]
         print(f"[{n}/{len(items)}] {it['headline'][:60]}\n    factor={c['factor'] and c['factor']['name']} "
               f"outcome={c['outcome'] and c['outcome']['name']} pair={len(c['pair'])} "
