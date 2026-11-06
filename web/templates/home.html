@@ -264,8 +264,9 @@
             <p class="bx-summary">{{ r.summary }}</p>
             <div class="bx-foot">
               <span class="bx-source">{{ r.source_name }}</span>
-              {% if r.is_orphan %}<span class="bx-orphan">Not yet in corpus</span>
-              {% else %}<span class="bx-incorpus">In corpus →</span>{% endif %}
+              {% set c = r.corpus or {} %}{% if not r.is_orphan %}<span class="bx-incorpus">In corpus →</span>
+              {% elif c.outcome or c.factor %}<span class="bx-topic">In corpus: {{ (c.outcome or c.factor).name }}</span>
+              {% else %}<span class="bx-orphan">Not yet in corpus</span>{% endif %}
             </div>
           </div>
         </a>

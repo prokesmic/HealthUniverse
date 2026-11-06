@@ -164,6 +164,53 @@ def _edges(conn, where: str, args: tuple, limit: int) -> list[dict]:
             for r in rows[:limit]]
 
 
+GENERIC = {"all", "any", "cause", "mortality", "death", "deaths", "outcome", "outcomes", "overall", "clinical",
+           "risk", "survival", "event", "events", "disease", "diseases", "function", "decline", "severity",
+           "adults", "adult", "older", "children", "women", "men", "people", "patients", "healthy", "general",
+           "therapy", "treatment", "drug", "drugs", "use", "intake", "exposure", "level", "levels", "health",
+           "quality", "life", "symptoms", "recovery", "pain", "infection", "test", "testing", "new",
+           "hospitalization", "hospital", "early", "high", "low", "rate", "rates", "incidence", "prevention",
+           "cancer", "tumor", "tumour", "chronic", "acute", "severe", "advanced", "term", "long", "specific",
+           "recurrence", "recurrent", "recurring"}
+
+
+def _stem(w: str) -> str:
+    return w[:-1] if len(w) > 4 and w.endswith("s") and not w.endswith("ss") else w
+
+
+def text_tokens(t: str) -> set[str]:
+    import re as _re
+    t = (t or "").lower().replace("’", "'")
+    t = _re.sub(r"'s\b", "", t)
+    t = _re.sub(r"(?<=[a-z])-(?=\d)", "", t).replace("_", " ")
+    return {_stem(w) for w in _re.findall(r"[a-z0-9]{3,}", t)}
+
+
+# Trailing qualifiers the card need not write: "Alzheimer's disease" is named
+# by "Alzheimer's protein", "Stroke risk" by a stroke card.
+OPTIONAL = {"disease", "risk", "event", "severity", "incidence", "progression"}
+
+
+def named_entity(pool: list[dict], text: set[str]) -> dict | None:
+    """The most specific entity the card names: every name word except the
+    optional qualifiers appears in `text`, and one of them is not generic
+    ("Cancer incidence" never stands for lung cancer). None if there is none.
+    Specificity: more non-generic words, then all words present ("Stroke"
+    over "Stroke risk"), then the shorter name."""
+    gen = {_stem(g) for g in GENERIC}
+    best, key = None, None
+    for e in pool:
+        nt = text_tokens(e["name"])
+        need = nt - OPTIONAL
+        core = need - gen
+        if not core or not need <= text:
+            continue
+        k = (len(core), nt <= text, -len(e["name"]))
+        if key is None or k > key:
+            best, key = e, k
+    return best
+
+
 def link(item: dict, ents: list[dict]) -> dict:
     d = item.get("detail") or {}
     words = lambda s: (s or "").replace("_", " ")
@@ -197,6 +244,19 @@ def link(item: dict, ents: list[dict]) -> dict:
     f = fp if (d.get("intervention") and fp and fp["slug"] in fscore
                and (named(fp, ftext) or fscore[fp["slug"]] >= PICK_COS)) else None
     o = op if op and op["slug"] in oscore and (named(op, otext) or oscore[op["slug"]] >= OUTCOME_COS) else None
+    # 06.11.2026: 77 of 156 cards had no link although the card names a graph
+    # entity outright — the model picked a near neighbour ("Cardiovascular risk"
+    # for a card about cardiovascular disease) that the gate rightly dropped, or
+    # the vectors never shortlisted it ("small cell lung cancer" under an
+    # "overall survival" slug). Fallback: the most specific entity whose every
+    # name word the card itself writes (headline / population / outcome label;
+    # for the factor only the named intervention). Generic names (mortality,
+    # outcomes…) never count — "All-cause mortality" for a drug trial says nothing.
+    if not o:   # the card's own outcome label and headline first, its population text second
+        o = (named_entity(opool, text_tokens(words(item.get("outcome_slug")) + " " + item["headline"]))
+             or named_entity(opool, text_tokens(d.get("who_it_applies_to", ""))))
+    if not f and d.get("intervention"):
+        f = named_entity(fpool, text_tokens(d.get("intervention", "")))
     oq = [_norm(v) for v in embed([q for q in (words(item.get("outcome_slug")), o and o["name"]) if q])]
     ovec = {e["id"]: e["vec"] for e in opool}
 

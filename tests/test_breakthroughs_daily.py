@@ -232,6 +232,33 @@ def test_pair_edge_found_under_another_outcome_name(graph, monkeypatch):
     assert out["edge_id"] == 728 and not out["is_orphan"]
 
 
+def test_card_that_names_a_graph_entity_is_linked_even_when_the_model_misses(graph, monkeypatch):
+    # 06.11.2026: 77 of 156 cards had no link; the model picked a near neighbour
+    # or nothing although the headline names the condition outright.
+    monkeypatch.setattr(bc, "ollama_json", lambda p, num_predict=0: {"factor": None, "outcome": None})
+    out = bc.apply(card("", "overall_survival", "New drug helps people with heart failure live longer"), graph)
+    assert out["corpus"]["outcome"]["slug"] == "heart_failure"
+    assert [e["id"] for e in out["corpus"]["outcome_edges"]] == [729]
+    # the factor only from the named intervention, never from the headline
+    out = bc.apply(card("", "", "Smoking and bladder cancer"), graph)
+    assert out["corpus"]["factor"] is None and out["corpus"]["outcome"]["slug"] == "bladder_cancer"
+    out = bc.apply(card("an SGLT2 inhibitors class drug", "", "x"), graph)
+    assert out["corpus"]["factor"]["slug"] == "sglt2_inhibitors"
+
+
+def test_named_entity_needs_a_specific_word_and_prefers_the_specific_name():
+    pool = [{"name": n, "slug": n} for n in
+            ("Cancer incidence", "Lung cancer", "Lung cancer mortality", "All-cause mortality",
+             "Alzheimer's disease", "Stroke", "Stroke risk", "Chronic pain")]
+    t = bc.text_tokens
+    assert bc.named_entity(pool, t("advanced rectal cancer")) is None          # not "Cancer incidence"
+    assert bc.named_entity(pool, t("overall survival, all cause death")) is None
+    assert bc.named_entity(pool, t("small cell lung cancer survival"))["name"] == "Lung cancer"
+    assert bc.named_entity(pool, t("Alzheimer’s protein"))["name"] == "Alzheimer's disease"
+    assert bc.named_entity(pool, t("stroke patients"))["name"] == "Stroke"
+    assert bc.named_entity(pool, t("chronic hepatitis B"))  is None             # not "Chronic pain"
+
+
 # ─── Circulation via E-utilities (25.10.2026) ─────────────────────
 
 def test_pubmed_feed_goes_through_eutils_not_rss(monkeypatch):
