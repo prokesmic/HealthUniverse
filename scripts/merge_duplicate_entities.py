@@ -230,6 +230,9 @@ def rewrite_breakthroughs(m: dict[str, str], path: Path = BX, dry: bool = False,
             if isinstance(ent, dict) and ent.get("slug") in m:
                 ent["slug"] = m[ent["slug"]]
                 n += 1
+        if any(s in m for s in it.get("corpus_block") or []):   # a block follows the merge
+            it["corpus_block"] = sorted({m.get(s, s) for s in it["corpus_block"]})
+            n += 1
         for k in ("factor_slug", "outcome_slug"):
             if it.get(k) in m:
                 it[k] = m[it[k]]

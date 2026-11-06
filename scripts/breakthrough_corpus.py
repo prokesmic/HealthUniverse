@@ -24,6 +24,7 @@ Usage:
   python scripts/breakthrough_corpus.py --all
   python scripts/breakthrough_corpus.py --id br_xxx --dry
   python scripts/breakthrough_corpus.py --id br_xxx --fresh   # drop a wrong earlier link
+  python scripts/breakthrough_corpus.py --id br_xxx --block some_slug   # never this entity again
 """
 from __future__ import annotations
 
@@ -215,8 +216,13 @@ def named_entity(pool: list[dict], text: set[str]) -> dict | None:
 def link(item: dict, ents: list[dict], fresh: bool = False) -> dict:
     d = item.get("detail") or {}
     words = lambda s: (s or "").replace("_", " ")
-    fpool = [e for e in ents if e["kind"] not in OUTCOME_KINDS or e["kind"] == "biomarker"]
-    opool = [e for e in ents if e["kind"] in OUTCOME_KINDS]
+    # corpus_block: entities Michal ruled out for this card (06.11.2026: Stenotrophomonas
+    # → "Respiratory infections", ER troponin → "Coronary disease progression"). The
+    # card's text names them, so without a block every re-link would find them again.
+    blocked = set(item.get("corpus_block") or [])
+    fpool = [e for e in ents if (e["kind"] not in OUTCOME_KINDS or e["kind"] == "biomarker")
+             and e["slug"] not in blocked]
+    opool = [e for e in ents if e["kind"] in OUTCOME_KINDS and e["slug"] not in blocked]
     fc = candidates([d.get("intervention"), words(item.get("factor_slug"))], fpool)
     # No headline here: "IV iron before heart surgery…" matched "major adverse cardiac events".
     oc = candidates([words(item.get("outcome_slug")), d.get("who_it_applies_to", "")[:120]], opool)
@@ -342,12 +348,19 @@ def main(argv: list[str]) -> int:
     g.add_argument("--missing", action="store_true")
     g.add_argument("--id", action="append")
     ap.add_argument("--dry", action="store_true")
+    ap.add_argument("--block", action="append", metavar="SLUG",
+                    help="with --id: never link these cards to this entity again")
     ap.add_argument("--fresh", action="store_true",
                     help="ignore each card's earlier link (to drop a wrong one); default keeps it")
     args = ap.parse_args(argv)
     items = load_feed().get("items", [])
+    if args.block and not args.id:
+        ap.error("--block needs --id")
     if args.id:
         items = [i for i in items if i["id"] in args.id]
+        if args.block:
+            items = [{**i, "corpus_block": sorted(set(i.get("corpus_block") or []) | set(args.block))}
+                     for i in items]
     elif args.missing:
         items = [i for i in items if "corpus" not in i]
     ents = entities()
@@ -365,7 +378,8 @@ def main(argv: list[str]) -> int:
     if not args.dry and linked:
         feed = load_feed()   # re-read: a daily run may have appended meanwhile
         by_id = {c["id"]: c for c in linked}
-        feed["items"] = [{**i, **{k: by_id[i["id"]][k] for k in ("corpus", "edge_id", "is_orphan")}}
+        keys = ("corpus", "edge_id", "is_orphan", "corpus_block")
+        feed["items"] = [{**i, **{k: by_id[i["id"]][k] for k in keys if k in by_id[i["id"]]}}
                          if i["id"] in by_id else i for i in feed["items"]]
         save_feed(feed)
         print(f"→ saved {len(linked)} cards")

@@ -299,3 +299,11 @@ def test_relink_keeps_an_earlier_link_the_model_misses_this_time(graph, monkeypa
     monkeypatch.setattr(bc, "ollama_json", lambda p, num_predict=0: {"outcome": "bladder_cancer"})
     later = bc.apply({**first, "outcome_slug": "bladder cancer progression"}, graph)["corpus"]
     assert later["outcome"]["slug"] == "bladder_cancer" and "held" not in later["outcome"]
+
+
+def test_blocked_entity_is_never_linked_even_when_the_card_names_it(graph, monkeypatch):
+    monkeypatch.setattr(bc, "ollama_json", lambda p, num_predict=0: {"outcome": "heart_failure"})
+    c = {**card("", "x", "Faster testing for heart failure"), "corpus_block": ["heart_failure"],
+         "corpus": {"outcome": {"slug": "heart_failure", "name": "Heart failure"}}}
+    out = bc.apply(c, graph)
+    assert out["corpus"]["outcome"] is None and out["corpus_block"] == ["heart_failure"]
