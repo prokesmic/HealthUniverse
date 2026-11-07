@@ -1,8 +1,232 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-06",
+  "updated_at": "2026-11-07",
   "items": [
+    {
+      "id": "br_672dd645349c4065",
+      "published_at": "2026-11-07",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for advanced small cell lung cancer",
+      "summary": "Tarlatamab-dlle received full FDA approval for adults with extensive-stage small cell lung cancer that worsened after platinum chemotherapy. It is the first new treatment approved for this condition in over a decade.",
+      "why_it_matters": "Patients with advanced small cell lung cancer now have a new treatment option after chemotherapy failure.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Tarlatamab-dlle",
+        "control_label": "Standard of Care",
+        "median_t": 13.6,
+        "median_c": 8.3,
+        "hr": 0.6,
+        "ci_low": 0.47,
+        "ci_high": 0.77,
+        "x_label": "Months",
+        "y_label": "Overall Survival"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-grants-traditional-approval-tarlatamab-dlle-extensive-stage-small-cell-lung-cancer",
+      "factor_slug": "tarlatamab_dlle",
+      "outcome_slug": "extensive_stage_small_cell_lung_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "tarlatamab-dlle",
+        "summary": "Tarlatamab-dlle received full FDA approval on November 19, 2025, for adults with extensive-stage small cell lung cancer (ES-SCLC) that progressed after platinum-based chemotherapy. Efficacy was evaluated in the DeLLphi-304 trial, which randomized 509 patients to tarlatamab-dlle or standard-of-care chemotherapy. The drug showed a statistically significant improvement in overall survival and progression-free survival compared to standard care. It also demonstrated a significant improvement in dyspnea at week 18.",
+        "key_findings": [
+          "Median overall survival was 13.6 months in the tarlatamab-dlle arm versus 8.3 months in the standard-of-care arm (hazard ratio 0.60, p < 0.001)",
+          "Median progression-free survival was 4.2 months in the tarlatamab-dlle arm versus 3.2 months in the standard-of-care arm (hazard ratio 0.72, p < 0.001)",
+          "A statistically significant improvement in dyspnea was observed at week 18 with tarlatamab-dlle compared to standard-of-care chemotherapy",
+          "The trial included 509 patients with ES-SCLC who had disease progression after platinum-based chemotherapy with or without anti-PD-(L)1 therapy",
+          "The recommended dose is 1 mg on Cycle 1, Day 1, followed by 10 mg on Days 8, 15, and every two weeks thereafter"
+        ],
+        "study": {
+          "trial_name": "DeLLphi-304",
+          "design": "multicenter, randomized, open-label",
+          "participants": "509 patients with extensive-stage small cell lung cancer who had disease progression after platinum-based chemotherapy with or without anti-PD-(L)1 antibody",
+          "comparator": "investigator's choice of standard-of-care chemotherapy (topotecan, lurbinectedin, or amrubicin)",
+          "primary_endpoint": "overall survival (OS)"
+        },
+        "regulatory_status": "FDA granted traditional approval on November 19, 2025; also under review by TGA, HC, and MHRA; approved under Project Orbis and RTOR pilot program",
+        "caveats": [
+          "The drug carries a Boxed Warning for life-threatening or fatal cytokine release syndrome and neurologic toxicity, including ICANS",
+          "Post-marketing data from FAERS show a 16.7% fatality rate among adverse event reports",
+          "Disproportionality analysis identified unlabeled adverse events such as ageusia, mental status changes, and unresponsiveness to stimuli"
+        ],
+        "next_steps": "The application is under review by international regulatory agencies; healthcare professionals are encouraged to report serious adverse events via MedWatch",
+        "who_it_applies_to": "Adults with extensive-stage small cell lung cancer who have disease progression after platinum-based chemotherapy",
+        "evidence": [
+          {
+            "pmid": "39023700",
+            "title": "Tarlatamab: First Approval.",
+            "journal": "Drugs",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39023700/"
+          },
+          {
+            "pmid": "41679015",
+            "title": "Safety evaluation of tarlatamab: A pharmacovigilance study based on the FAERS database.",
+            "journal": "Lung cancer (Amsterdam, Netherlands)",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41679015/"
+          },
+          {
+            "pmid": "40419854",
+            "title": "The Path To Tarlatamab Approval: Leveraging Innovative Strategies and Global Regulatory Pathways.",
+            "journal": "Therapeutic innovation & regulatory science",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40419854/"
+          }
+        ],
+        "source_chars": 3986,
+        "enriched_at": "2026-11-07",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 29,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_1db7a8a8df93d256",
+      "published_at": "2026-11-07",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New safety warnings for common chemotherapy drugs",
+      "summary": "The FDA updated labels for two common chemotherapy drugs to warn about severe side effects in people with a rare genetic deficiency. This deficiency affects how the body processes the drugs, increasing the risk of life-threatening reactions.",
+      "why_it_matters": "If you're on this chemotherapy, ask your doctor if you should be tested for a genetic condition that raises your risk of serious side effects.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/safety-labeling-update-capecitabine-and-fluorouracil-5-fu-risks-associated-dihydropyrimidine",
+      "factor_slug": "capecitabine_fluorouracil",
+      "outcome_slug": "dpd_deficiency_toxicity",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "capecitabine (Xeloda) and fluorouracil (5-FU)",
+        "summary": "The FDA updated the labels for capecitabine and fluorouracil to warn about severe and life-threatening toxicities in patients with dihydropyrimidine dehydrogenase (DPD) deficiency. This deficiency, caused by certain genetic variants in the DPYD gene, leads to reduced or absent DPD enzyme activity, which is needed to break down over 80% of fluorouracil. Patients with complete or near-complete DPD deficiency are at increased risk for serious adverse reactions including mucositis, diarrhea, neutropenia, and neurotoxicity. The FDA recommends testing for DPYD genetic variants before treatment unless immediate therapy is required. The updated labels include a Boxed Warning and information in multiple sections of the prescribing information.",
+        "key_findings": [
+          "DPD deficiency increases the risk of acute early-onset toxicity with capecitabine and 5-FU.",
+          "Patients with complete or near-complete DPD deficiency are at risk for serious, including fatal, adverse reactions.",
+          "Patients with partial DPD deficiency may also have an increased risk of serious adverse reactions.",
+          "The FDA recommends testing for DPYD variants before treatment with capecitabine or 5-FU.",
+          "The updated labels include a Boxed Warning and information in Sections 2, 5, 12, and 17."
+        ],
+        "study": {},
+        "regulatory_status": "FDA updated product labeling for capecitabine and fluorouracil to include warnings about DPD deficiency; testing for DPYD variants is recommended prior to treatment.",
+        "caveats": [
+          "Genetic testing may not prevent all cases of severe toxicity, as it only identifies 20\u201330% of early-onset life-threatening events.",
+          "Testing is not required if immediate treatment is necessary.",
+          "The risk of toxicity is higher in patients with complete or near-complete DPD deficiency.",
+          "The full impact of DPD deficiency on treatment safety is still being monitored."
+        ],
+        "next_steps": "The FDA will continue to monitor the safety issue and may consider additional regulatory actions.",
+        "who_it_applies_to": "Patients with a rare genetic deficiency in the DPYD gene, particularly those with homozygous or compound heterozygous variants leading to complete or near-complete DPD deficiency, who are being treated with capecitabine or fluorouracil.",
+        "evidence": [
+          {
+            "pmid": "39468799",
+            "title": "Review of the fluoropyrimidine antidote uridine triacetate.",
+            "journal": "British journal of clinical pharmacology",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39468799/"
+          }
+        ],
+        "source_chars": 2236,
+        "enriched_at": "2026-11-07",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_867051790657271d",
       "published_at": "2026-11-06",
@@ -200,6 +424,618 @@
         "dropped": [
           "summary: unsupported wording (0.56)",
           "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_ee4683160cf6c01e",
+      "published_at": "2026-11-06",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Digital tool improves heart failure care after hospital discharge",
+      "summary": "A digital health intervention helped patients in Brazil follow heart failure treatment guidelines more consistently after hospital discharge. It led to better medication use and improved outcomes compared to standard care.",
+      "why_it_matters": "If you or a loved one has heart failure, using a digital tool after hospitalization may help manage treatment more effectively.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Hospitalization",
+            "treatment": 10.3,
+            "control": 22.4
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Digital Health Intervention",
+        "control_label": "Usual Care"
+      },
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42993694/",
+      "factor_slug": "digital_health_intervention",
+      "outcome_slug": "heart_failure_management",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "digital health intervention (DHI) with patient-facing app and provider dashboard",
+        "summary": "In a randomized clinical trial in Brazil, a digital health intervention improved heart failure care after hospital discharge. The intervention included a patient-facing app linked to a provider dashboard, nurse-led remote monitoring, cardiologist teleconsultations, and self-care education. Compared to usual care, the DHI led to significantly better guideline-directed medical therapy (GDMT) use, improved self-care, and fewer hospitalizations at 90 days. No significant difference was found in all-cause mortality.",
+        "key_findings": [
+          "Mean GDMT score increased by 3.3 points with DHI versus 0.3 points with usual care (adjusted difference: 3.01; 95% CI, 2.30-3.73; P<0.001)",
+          "Self-care improved significantly (\u03b2=14.79; 95% CI, 9.78-19.81; P<0.001)",
+          "Hospitalization rate was 10.3% in DHI group (9/87) versus 22.4% in usual care group (15/67); risk ratio, 0.46 (95% CI, 0.21-0.99; P=0.048)",
+          "No statistically significant difference in all-cause mortality between groups",
+          "Health status showed a borderline difference (P=0.052)"
+        ],
+        "study": {
+          "trial_name": "Digital Health Intervention to Optimize Heart Failure Management After Hospital Discharge in Brazil (OPT-HF)",
+          "design": "randomized clinical trial",
+          "participants": "154 adults admitted for heart failure with ejection fraction <50% and GDMT gaps across 5 Brazilian public hospitals",
+          "comparator": "usual care",
+          "primary_endpoint": "between-group difference in mean heart failure GDMT score (0-12) at 90 days",
+          "follow_up": "90 days"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "No significant difference in mortality was observed"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults in Brazil hospitalized for heart failure with reduced ejection fraction (EF <50%) who have gaps in guideline-directed medical therapy",
+        "evidence": [],
+        "source_chars": 2500,
+        "enriched_at": "2026-11-07",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.40)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "heart_failure",
+          "name": "Heart failure",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 729,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Heart failure",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Bodea meta analysis in J Clin Med already points to sglt2 inhibitors tracks with lower risk or better outcomes, and l",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2141,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Heart failure",
+            "summary": "Benefit is observed in obesity-associated heart failure with preserved ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 1247,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Heart failure",
+            "summary": "Exercise maintainers had a lower risk of heart failure compared to non-exercisers.",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3546,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Heart failure",
+            "summary": "Renin-angiotensin system inhibitors were linked to lower 1-year mortality.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 3216,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Iron supplementation",
+            "outcome": "Heart failure",
+            "summary": "Iron supplementation improves outcomes in heart failure with reduced ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3870,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Heart failure",
+            "summary": "Intravenous iron may reduce heart failure events in patients with chronic kidney disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 16,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_3fc9cd1edeec971b",
+      "published_at": "2026-11-06",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New imaging method improves colon cancer prognosis prediction",
+      "summary": "A new image-based method using routine pathology scans accurately classified colon cancer subtypes. It predicted survival better than current methods in stage II/III patients.",
+      "why_it_matters": "This could help doctors better predict outcomes and tailor treatment for colon cancer patients.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42993920/",
+      "factor_slug": "image_based_cms_subtyping",
+      "outcome_slug": "overall_survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "image-based consensus molecular subtyping (imCMS)",
+        "summary": "A new imaging method called imCMS was tested on 2,816 stage II/III colon cancer patients from the SCOT trial. The method used routine pathology scans to classify tumors into subtypes and was found to predict survival better than current methods. It was strongly prognostic even after adjusting for clinicopathologic factors, dMMR status, and immune cell infiltration. The imCMS subtypes showed distinct molecular and immune features, and combining imCMS with immune cell markers improved risk stratification. The method did not predict differences in benefit from chemotherapy duration or regimen.",
+        "key_findings": [
+          "24% of tumors were classified as imCMS1 (immune), 35% as imCMS2 (canonical), 15% as imCMS3 (metabolic), 23% as imCMS4 (mesenchymal), and 3% as mixed.",
+          "imCMS classification was strongly prognostic independent of clinicopathologic factors, dMMR, and CD8IE-FoxP3IS in multivariable analysis.",
+          "imCMS4 tumors had substantially lower intraepithelial CD8+ and intrastromal FoxP3+ T-cell infiltrate (CD8IE-FoxP3IS).",
+          "Combining imCMS with CD8IE-FoxP3IS groups defined CRC subgroups with substantially different recurrence risk.",
+          "Notable discordance in prognostic value was observed for imCMS3 and imCMS4 before and after relapse (OS vs SAR)."
+        ],
+        "study": {
+          "trial_name": "SCOT trial (ISRCTN59757862)",
+          "design": "retrospective analysis",
+          "participants": "2,816 stage II/III colorectal cancer patients",
+          "comparator": "none (retrospective analysis of existing trial data)",
+          "primary_endpoint": "recurrence-free interval, overall survival (OS), and survival after CRC recurrence (SAR)"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "imCMS did not predict differential benefit from chemotherapy duration or regimen.",
+          "The method requires validation in prospective trials.",
+          "The clinical utility and implementation in routine practice remain to be confirmed."
+        ],
+        "next_steps": "Further study is needed to determine whether imCMS can predict therapeutic benefit and to validate its use in clinical practice.",
+        "who_it_applies_to": "Patients with stage II/III colorectal cancer who have undergone curative-intent surgery.",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "42993920",
+            "title": "Image-Based Consensus Molecular Subtyping Refines Prognostication in Stage II/III Colorectal Cancer: A Retrospective Analysis of the SCOT Trial.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42993920/"
+          }
+        ],
+        "source_chars": 2249,
+        "enriched_at": "2026-11-07",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "colorectal_cancer",
+          "name": "Colorectal cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 25,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Processed meat",
+            "outcome": "Colorectal cancer",
+            "summary": "Eating processed meat (bacon, sausage, hot dogs, deli meats, etc.) is consistently linked to a higher risk of colorectal cancer. The World Health Organization's cancer agency (IARC) classified processed meat as a definit",
+            "effect": "~18% increased CRC risk per 50 g/day increment (RR ~1.18, 95% CI 1.10\u20131.28); IARC classifies processed meat as Group 1 carcinogen for CRC",
+            "review": "verified_evidence",
+            "n_evidence": 16
+          },
+          {
+            "id": 26,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Red meat",
+            "outcome": "Colorectal cancer",
+            "summary": "Eating large amounts of red meat\u2014especially processed red meat (bacon, sausage, hot dogs)\u2014is consistently associated with a modestly increased risk of colorectal cancer. The World Health Organization classifies processed",
+            "effect": "~17\u201318% increased CRC risk per 100 g/day unprocessed red meat (RR ~1.17, 95% CI 1.05\u20131.31)",
+            "review": "verified_evidence",
+            "n_evidence": 12
+          },
+          {
+            "id": 27,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Colorectal cancer",
+            "summary": "Drinking alcohol increases the risk of colorectal cancer in a dose-dependent fashion. Even moderate drinking (1\u20132 drinks/day) is associated with a small but measurable increase in risk, and heavy drinking roughly doubles",
+            "effect": "Hazard ratio, HR=1.08, 95%CI=1.04-1.12 (Moskal 2007)",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 69,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Colorectal cancer",
+            "summary": "People who engage in regular aerobic exercise have roughly 20\u201325% lower risk of developing colon cancer compared with sedentary individuals, an association supported by dozens of large cohort studies and multiple meta-an",
+            "effect": "~20\u201325% lower risk of colon cancer in most active vs. least active individuals; Rectal cancer association weaker and less consistent",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 206,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Low-dose aspirin",
+            "outcome": "Colorectal cancer",
+            "summary": "Regular low-dose aspirin use is associated with a roughly 20\u201340% lower risk of developing colorectal cancer, one of the most consistent chemopreventive findings in oncology. The benefit appears to require at least 5\u201310 y",
+            "effect": "~20\u201340% relative risk reduction in CRC incidence",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 904,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Colorectal cancer",
+            "summary": "The strongest direct synthesis found lower colorectal-cancer risk in people eating more whole grains and other favorable food groups. Later umbrella reviews did not overturn that finding; instead, they kept whole grains ",
+            "effect": "Colorectal-cancer syntheses consistently place higher whole-grain intake on the lower-risk side, with the signal usually modest rather than dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 7
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 48,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_00cf5a85686d1275",
+      "published_at": "2026-11-06",
+      "category": "oncology",
+      "stage": "phase2",
+      "audience": "general",
+      "headline": "New combination therapy shows promise in advanced eye cancer",
+      "summary": "In early testing, about 70% of certain uveal melanoma patients were alive after two years. The treatment uses two T cell-engaging drugs combined for the first time in a solid tumor.",
+      "why_it_matters": "People with advanced eye cancer may now have a new treatment option showing longer survival in early trials.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/sitc26-immunocore-reports-early-data-for-brenetafusp-plus-kimmtrak-in-uveal-melanoma/",
+      "factor_slug": "t_cell_engager_combination",
+      "outcome_slug": "overall_survival_in_uveal_melanoma",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "brenetafusp-Kimmtrak doublet",
+        "summary": "In an early-phase study, two T cell-engaging drugs\u2014brenetafusp and Kimmtrak\u2014were combined for the first time in a solid tumor, specifically in first-line treatment for uveal melanoma. The trial tested this combination in patients with advanced uveal melanoma. An estimated 70% of these patients were alive after two years.",
+        "key_findings": [
+          "First-time use of two bispecific T cell engagers combined in a solid tumor",
+          "Tested in first-line uveal melanoma"
+        ],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "Phase 2/3 DUET-UVEAL trial planned",
+        "who_it_applies_to": "patients with first-line advanced uveal melanoma",
+        "evidence": [],
+        "source_chars": 297,
+        "enriched_at": "2026-11-07",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.00)",
+          "study.design: unsupported wording (0.00)",
+          "study.participants: unsupported wording (0.00)",
+          "finding: unsupported wording (0.50)",
+          "finding: unsupported wording (0.00)",
+          "finding: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "melanoma",
+          "name": "Melanoma",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 485,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "High cumulative sun exposure",
+            "outcome": "Melanoma",
+            "summary": "Pooled meta-analytic evidence link high cumulative sun exposure to higher risk of melanoma in fair-skinned adults. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 492,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Sunlight / UV exposure",
+            "outcome": "Melanoma",
+            "summary": "Pooled meta-analytic evidence link sunlight / uv exposure to higher risk of melanoma in light-skinned adults. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 806,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Coffee",
+            "outcome": "Melanoma",
+            "summary": "The most boring summary is mild protection rather than a major cancer-prevention effect. Across pooled observational studies, higher coffee intake tends to track with lower melanoma risk, especially for caffeinated coffe",
+            "effect": "Meta-analyses of observational studies suggest a modest inverse association between coffee intake, especially caffeinated coffee, and melanoma risk.",
+            "review": "weak_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 334,
+            "tier": "D",
+            "direction": "neutral",
+            "factor": "Morning bright-light exposure",
+            "outcome": "Melanoma",
+            "summary": "Morning bright-light exposure appears tied to little consistent change in melanoma in general adult mainly through pooled meta-analytic evidence. Direct human evidence is thin here, so the best reading is cautious and la",
+            "effect": "Pooled meta-analytic evidence do not show a stable clinically large signal for this edge.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 4799,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Melanoma",
+            "summary": "Alcohol intake is linked to higher skin cancer risk, including melanoma, based on observational evidence.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 5,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_a447c54f16fc8e4e",
+      "published_at": "2026-11-06",
+      "category": "cardio",
+      "stage": "case_report",
+      "audience": "general",
+      "headline": "Heart failure linked to fluid buildup resolved by blood flow restoration",
+      "summary": "A patient with heart failure and dangerous fluid accumulation in the chest and abdomen saw both conditions resolve after treatment to improve blood flow to the heart. This rare case suggests that poor heart circulation may cause these fluid issues.",
+      "why_it_matters": "If you have heart failure and unexplained fluid buildup, talk to your doctor about blood flow issues.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42990081/",
+      "factor_slug": "revascularization",
+      "outcome_slug": "chylothorax_chylous_ascites",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "revascularization",
+        "summary": "A patient with heart failure due to ischemic cardiomyopathy developed severe fluid accumulation in the chest (chylothorax) and abdomen (chylous ascites), which are rare and dangerous conditions. Treatment to restore blood flow to the heart through revascularization led to complete resolution of both fluid buildups. The case suggests that poor coronary blood flow may directly cause these fluid accumulations in heart failure. This is the first reported case linking chylothorax and chylous ascites to ischemic cardiomyopathy and their resolution after revascularization.",
+        "key_findings": [
+          "Chylothorax and chylous ascites resolved after revascularization",
+          "Fluid accumulation was present before revascularization",
+          "Heart failure was due to ischemic cardiomyopathy"
+        ],
+        "study": {
+          "design": "case report"
+        },
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with heart failure due to ischemic cardiomyopathy who develop unexplained chylothorax or chylous ascites",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "42990081",
+            "title": "Heart Failure Presenting With Concurrent Chylothorax and Chylous Ascites Resolved by Revascularization in Ischemic Cardiomyopathy: A Case Report and Review.",
+            "journal": "Circulation. Heart failure",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42990081/"
+          }
+        ],
+        "source_chars": 157,
+        "enriched_at": "2026-11-07",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.participants: 1",
+          "finding: unsupported wording (0.50)",
+          "finding: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "heart_failure",
+          "name": "Heart failure",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 729,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Heart failure",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Bodea meta analysis in J Clin Med already points to sglt2 inhibitors tracks with lower risk or better outcomes, and l",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2141,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Heart failure",
+            "summary": "Benefit is observed in obesity-associated heart failure with preserved ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 1247,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Heart failure",
+            "summary": "Exercise maintainers had a lower risk of heart failure compared to non-exercisers.",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3546,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Heart failure",
+            "summary": "Renin-angiotensin system inhibitors were linked to lower 1-year mortality.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 3216,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Iron supplementation",
+            "outcome": "Heart failure",
+            "summary": "Iron supplementation improves outcomes in heart failure with reduced ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3870,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Heart failure",
+            "summary": "Intravenous iron may reduce heart failure events in patients with chronic kidney disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 16,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_6a213b70881e7391",
+      "published_at": "2026-11-06",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for recurrent head and neck cancer",
+      "summary": "The FDA has approved a new treatment for head and neck cancer that has returned after chemotherapy and immunotherapy. This is the first approval in over a decade for this type of cancer.",
+      "why_it_matters": "Patients with recurrent head and neck cancer now have a new treatment option after failing prior therapies.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/jjs-rybrevant-nets-fda-approval-in-head-and-neck-cancer/",
+      "factor_slug": "rybrevant",
+      "outcome_slug": "head_and_neck_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "amivantamab",
+        "summary": "The FDA has granted accelerated approval to amivantamab (Rybrevant) for recurrent or metastatic head and neck squamous cell carcinoma (HNSCC) that has progressed after prior chemotherapy and immunotherapy. In this trial, amivantamab as a single agent showed a confirmed objective response rate of 42% by blinded independent central review, with a median progression-free survival of 6.8 months.",
+        "key_findings": [
+          "Confirmed objective response rate (ORR) was 42% (95% CI, 32% to 52%)",
+          "Median progression-free survival was 6.8 months (95% CI, 5.2 to 8.3)",
+          "Median overall survival was 12.5 months (95% CI, 10.2 to 16.8)",
+          "56% of responses lasted at least 6 months",
+          "Complete response rate was 15%"
+        ],
+        "study": {
+          "trial_name": "OrigAMI-4",
+          "participants": "102 participants with non-human papillomavirus-related recurrent/metastatic head and neck squamous cell carcinoma",
+          "primary_endpoint": "RECIST v1.1 objective response rate (ORR)",
+          "follow_up": "median follow-up of 11.8 months (range, 1.1\u201321.9)"
+        },
+        "regulatory_status": "FDA accelerated approval",
+        "caveats": [
+          "The primary endpoint was response rate, a surrogate endpoint",
+          "Follow-up was relatively short (median 11.8 months)",
+          "The study excluded patients with p16-positive oropharyngeal cancer and prior anti-EGFR therapy"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with recurrent or metastatic head and neck squamous cell carcinoma that has progressed after prior chemotherapy and immunotherapy, specifically those with human papillomavirus-unrelated disease.",
+        "evidence": [
+          {
+            "pmid": "42218660",
+            "title": "Amivantamab in Recurrent/Metastatic Head and Neck Squamous Cell Cancer After Checkpoint Inhibitor and Chemotherapy: Pivotal Results From the Phase Ib/II OrigAMI-4 Study.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42218660/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Rybrevant",
+          "generic": "amivantamab-vmjw",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=rybrevant"
+        },
+        "source_chars": 351,
+        "enriched_at": "2026-11-07",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: 2",
+          "summary: unsupported wording (0.40)",
+          "study.design: 2",
+          "caveat: unsupported wording (0.00)",
+          "next_steps: unsupported wording (0.14)"
         ]
       },
       "corpus": {
@@ -4940,6 +5776,91 @@
         "factor_edges": [],
         "outcome_total": 14,
         "factor_total": 0
+      }
+    },
+    {
+      "id": "br_b332cc58f359e454",
+      "published_at": "2026-10-27",
+      "category": "oncology",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "New guidelines expand BRCA genetic testing to more families",
+      "summary": "A new guideline recommends cascade genetic testing for BRCA1/2 variants beyond academic settings. It aims to identify at-risk relatives in real-world clinical practice.",
+      "why_it_matters": "If you have a family history of breast or ovarian cancer, ask your doctor about genetic testing for you and your relatives.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42945506/",
+      "factor_slug": "cascade_genetic_testing",
+      "outcome_slug": "brca1_brca2_pathogenic_variants",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "cascade genetic testing for BRCA1/2 pathogenic variants",
+        "summary": "A new guideline recommends expanding cascade genetic testing for BRCA1/2 pathogenic variants beyond academic research settings into real-world clinical practice. The approach aims to identify at-risk relatives of individuals with known BRCA1/2 pathogenic variants.",
+        "key_findings": [
+          "Cascade testing identifies additional individuals with BRCA1/2 pathogenic variants in families."
+        ],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Families with known BRCA1/2 pathogenic variants, particularly those not enrolled in academic research programs",
+        "evidence": [],
+        "source_chars": 104,
+        "enriched_at": "2026-11-07",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.22)",
+          "summary: unsupported wording (0.43)",
+          "summary: unsupported wording (0.00)",
+          "finding: unsupported wording (0.57)",
+          "finding: unsupported wording (0.25)",
+          "finding: unsupported wording (0.20)",
+          "finding: unsupported wording (0.50)",
+          "regulatory_status: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.17)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.25)",
+          "next_steps: unsupported wording (0.38)"
+        ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "brca_mutation_carriers",
+          "name": "BRCA1 or BRCA2 pathogenic-variant carriers",
+          "relation": "same"
+        },
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [
+          {
+            "id": 1075,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "BRCA1 or BRCA2 pathogenic-variant carriers",
+            "outcome": "Risk-reducing mastectomy outcomes",
+            "summary": "For BRCA1 and BRCA2 carriers, prophylactic mastectomy is one of the clearest risk-reduction interventions in hereditary breast oncology. The best prospective and multi-centre cohort data show extremely low subsequent bre",
+            "effect": "Among BRCA1 or BRCA2 carriers, risk-reducing mastectomy is associated with very large reductions in subsequent breast-cancer events, and several cohorts report no incident breast cancers during follow-up after prophylactic surgery.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1269,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "BRCA1 or BRCA2 pathogenic-variant carriers",
+            "outcome": "Risk-reducing mastectomy outcomes",
+            "summary": "For BRCA carriers, prophylactic bilateral mastectomy appears strongly protective as a risk-reduction strategy. The evidence base is observational rather than randomized, but large systematic reviews and pooled analyses c",
+            "effect": "Among BRCA1 and BRCA2 carriers, risk-reducing bilateral mastectomy is associated with markedly lower breast cancer incidence and lower breast cancer mortality. A 2025 meta-analysis of 6,135 carriers found adjusted overall mortality HR 0.37 and breast cancer-specific mortality HR 0.14 for women who underwent risk-reducing bilateral mastectomy versus those who did not.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "outcome_total": 0,
+        "factor_total": 2
       }
     },
     {
