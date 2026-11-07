@@ -89,12 +89,15 @@ def test_heuristic_prompt_is_deterministic():
 
 def test_heuristic_prompt_carries_required_fields():
     p = build_heuristic_prompt(
-        edge_id=1, factor_slug="x", factor_name="X", factor_kind="behavior",
-        outcome_slug="y", outcome_name="Y", outcome_kind="condition",
+        edge_id=1, factor_slug="x", factor_name="Example factor", factor_kind="behavior",
+        outcome_slug="y", outcome_name="Example outcome", outcome_kind="condition",
         tier="C", direction="harmful")
     for k in ("scene", "palette", "tone", "composition", "prompt", "seed"):
         assert k in p
-    assert "Y" in p["prompt"]                # outcome name interpolated
+    # Subject phrases normalize names to lowercase; test complete names,
+    # rather than accidentally matching a single letter elsewhere.
+    assert "example factor" in p["prompt"].lower()
+    assert "example outcome" in p["prompt"].lower()
 
 
 def test_gemma_merge_overrides_only_supplied_fields(tmp_path):

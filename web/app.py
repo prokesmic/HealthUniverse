@@ -33,6 +33,7 @@ from web import alwayson                              # noqa: E402
 from web import breakthroughs as bx                   # noqa: E402
 from web import breakthrough_illos as bx_illos        # noqa: E402
 from web import proactive as pro                      # noqa: E402
+from web.audit_display import latest_recorded_change
 from web.generated_art import (   # noqa: E402
     edge_svg, hero_svg, featured_card_svg, discovery_card_svg, strength_wave_svg,
 )
@@ -6286,6 +6287,7 @@ def edge_detail(request: Request, edge_id: int):
         "counter": co_rows,
         "history": raw_history,
         "audit_events": classified,
+        "latest_change": latest_recorded_change(classified),
         "audit_headlines": [c for c in classified if c["is_meaningful"]],
         "audit_maintenance": [c for c in classified if not c["is_meaningful"]],
         "audit_summary": audit_summary,
