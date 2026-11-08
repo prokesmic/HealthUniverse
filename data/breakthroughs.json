@@ -1,8 +1,751 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-07",
+  "updated_at": "2026-11-08",
   "items": [
+    {
+      "id": "br_973459ce20b1c7b9",
+      "published_at": "2026-11-08",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves new treatment for aggressive bladder cancer",
+      "summary": "The FDA has approved gemcitabine delivered directly into the bladder for adults with high-risk non-muscle invasive bladder cancer that did not respond to BCG therapy. This treatment offers a new option for patients with limited alternatives.",
+      "why_it_matters": "If you or a loved one has BCG-unresponsive bladder cancer, this approval means a new treatment option is now available.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-gemcitabine-intravesical-system-non-muscle-invasive-bladder-cancer",
+      "factor_slug": "gemcitabine_intravesical_system",
+      "outcome_slug": "non_muscle_invasive_bladder_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "gemcitabine intravesical system (Inlexzo)",
+        "summary": "The FDA approved gemcitabine intravesical system (Inlexzo) for adults with BCG-unresponsive non-muscle invasive bladder cancer (NMIBC) with carcinoma in situ (CIS), with or without papillary tumors. The approval was based on a single-arm trial (SunRISe-1, Cohort 2) involving 83 patients who received the treatment every 3 weeks for 6 months, then every 12 weeks for up to 18 months. The treatment achieved a complete response rate of 82% (95% CI: 72, 90), with 51% of responders maintaining response for at least 12 months. The system delivers 225 mg of gemcitabine and is inserted via a catheter, remaining in the bladder for 3 weeks per dose. The approval was granted under priority review and breakthrough therapy designation.",
+        "key_findings": [
+          "Complete response rate was 82% (95% CI: 72, 90)",
+          "51% of patients with a complete response had a duration of response \u226512 months",
+          "Treatment was administered every 3 weeks for 6 months (8 doses), then every 12 weeks for up to 18 months (6 doses)",
+          "The system delivers 225 mg of gemcitabine per dose",
+          "No treatment-related deaths occurred in the trial"
+        ],
+        "study": {
+          "trial_name": "SunRISe-1 (Cohort 2)",
+          "design": "single-arm, multi-center trial",
+          "primary_endpoint": "complete response (CR) at any time",
+          "follow_up": "cystoscopy and urine cytology every 12 weeks for 2 years, then at least every 24 weeks; mandatory biopsies at 24 and 48 weeks"
+        },
+        "regulatory_status": "FDA approved on September 9, 2025",
+        "caveats": [
+          "No comparator arm in the trial",
+          "Long-term survival data are immature",
+          "Risk of metastatic bladder cancer with delayed cystectomy",
+          "Practical challenges with indwelling delivery, including infection risk and access in low-resource settings"
+        ],
+        "next_steps": "Further evaluation through real-world experience, longer-term follow-up, and randomized comparisons with other therapies",
+        "who_it_applies_to": "Adults with BCG-unresponsive non-muscle invasive bladder cancer with carcinoma in situ (CIS), with or without papillary tumors",
+        "evidence": [
+          {
+            "pmid": "40737582",
+            "title": "TAR-200 for Bacillus Calmette-Gu\u00e9rin-Unresponsive High-Risk Non-Muscle-Invasive Bladder Cancer: Results From the Phase IIb SunRISe-1 Study.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40737582/"
+          },
+          {
+            "pmid": "42652203",
+            "title": "Gemcitabine-Based Bladder Preservation in BCG-Unresponsive High-Risk NMIBC: Evidence, Limitations, and Clinical Positioning.",
+            "journal": "Biomedicines",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42652203/"
+          },
+          {
+            "pmid": "41037218",
+            "title": "Inlexzo (gemcitabine intravesical system): promising data but key questions remain.",
+            "journal": "World journal of urology",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41037218/"
+          }
+        ],
+        "source_chars": 3530,
+        "enriched_at": "2026-11-08",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "bladder_cancer",
+          "name": "Bladder cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 828,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Hairdresser occupation",
+            "outcome": "Bladder cancer",
+            "summary": "The most direct pooled analysis found that bladder-cancer risk is elevated in hairdressers, and the broader occupation-level meta-analyses point in the same direction. This is not a giant effect, but it is one of the mor",
+            "effect": "Across occupation-focused meta-analyses, hairdressing work is associated with a modest excess in bladder-cancer risk, with the strongest signal seen in longer-duration exposure.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 569,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Chlorinated disinfection by-products",
+            "outcome": "Bladder cancer",
+            "summary": "The anchor for this edge is the 2026 Lim systematic review in BJUI Compass, which suggests that chlorinated disinfection by-products tracks with higher risk or worse outcomes for bladder cancer. Later papers point in muc",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 813,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Cruciferous vegetables",
+            "outcome": "Bladder cancer",
+            "summary": "This edge is a good example of why Health Universe should default to the boring claim. The early literature looked protective, but once larger prospective-only datasets were pooled, the apparent benefit narrowed and in s",
+            "effect": "Older pooled observational datasets suggested lower bladder-cancer risk with higher cruciferous-vegetable intake, but newer prospective-only analyses are much closer to null.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 890,
+            "tier": "C",
+            "direction": "neutral",
+            "factor": "Tea consumption",
+            "outcome": "Bladder cancer",
+            "summary": "The most boring conclusion is the right one here: tea does not show a robust bladder-cancer signal. A dose-response bladder-specific meta-analysis was essentially neutral, while broader prospective syntheses hint at a sl",
+            "effect": "The broad bladder-cancer literature on tea is mostly close to null, though some newer prospective syntheses suggest a very small downward dose-response signal.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 590,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Bladder cancer",
+            "summary": "The strongest piece here is the 2001 Boffetta meta analysis in Epidemiology, which ties diesel exhaust exposure to bladder cancer in a direction that later studies largely support. That makes this edge more about calibra",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 634,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Personal hair dye use",
+            "outcome": "Bladder cancer",
+            "summary": "The strongest piece here is the 2014 Turati meta analysis in Ann Epidemiol, which ties personal hair dye use to bladder cancer in a direction that later studies largely support. That makes this edge more about calibratin",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 9,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_307f70fecf5e0204",
+      "published_at": "2026-11-08",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug combo approved for BRCA2-mutated prostate cancer",
+      "summary": "The FDA has approved a combination of niraparib and abiraterone acetate with prednisone for adults with BRCA2-mutated metastatic castration-sensitive prostate cancer. This approval is based on clinical trial results showing improved outcomes in this specific subgroup.",
+      "why_it_matters": "Men with BRCA2-mutated prostate cancer now have a new FDA-approved treatment option that may improve survival.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-niraparib-and-abiraterone-acetate-plus-prednisone-brca2-mutated-metastatic-castration",
+      "factor_slug": "niraparib_abiraterone_prednisone",
+      "outcome_slug": "brca2_mutation_prostate_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "niraparib and abiraterone acetate with prednisone",
+        "summary": "The FDA approved a combination of niraparib and abiraterone acetate with prednisone for adults with BRCA2-mutated metastatic castration-sensitive prostate cancer. This approval is based on the AMPLITUDE trial, which tested the combination in patients with homologous recombination repair (HRR) gene-mutated metastatic castration-sensitive prostate cancer. In patients with BRCA2 mutations, the combination significantly improved radiographic progression-free survival compared to placebo plus abiraterone acetate and prednisone. The trial showed a hazard ratio of 0.46 for radiographic progression-free survival in the BRCA2-mutated subgroup. Overall survival data were immature at the time of the first interim analysis.",
+        "key_findings": [
+          "In BRCA2-mutated patients, median radiographic progression-free survival was not estimable with niraparib and AAP versus 26 months with placebo and AAP.",
+          "Hazard ratio for radiographic progression-free survival in BRCA2-mutated patients was 0.46 (95% CI: 0.32, 0.66).",
+          "In the overall HRR-mutated population, hazard ratio for radiographic progression-free survival was 0.63 (95% CI: 0.49, 0.80).",
+          "At first interim analysis, 36 deaths occurred in the niraparib and AAP arm and 55 in the placebo and AAP arm among BRCA2-mutated patients.",
+          "Grade 3 or 4 adverse events occurred in 75% of patients receiving niraparib and AAP, including anemia (29%) and hypertension (27%)."
+        ],
+        "study": {
+          "trial_name": "AMPLITUDE",
+          "design": "randomized, double-blind",
+          "comparator": "placebo and abiraterone acetate plus prednisone",
+          "primary_endpoint": "investigator-assessed radiographic progression-free survival (rPFS)"
+        },
+        "regulatory_status": "FDA approved on December 12, 2025, for BRCA2-mutated metastatic castration-sensitive prostate cancer",
+        "caveats": [
+          "Overall survival data are immature, with only 91 deaths reported at first interim analysis.",
+          "The trial included an exploratory analysis for BRCA2-mutated patients; results may not generalize to all HRR-mutated subgroups.",
+          "The combination was associated with high rates of serious adverse events, including anemia and hypertension.",
+          "The approval is limited to patients with deleterious or suspected deleterious BRCA2 mutations, as confirmed by an FDA-approved test."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with deleterious or suspected deleterious BRCA2-mutated metastatic castration-sensitive prostate cancer",
+        "evidence": [
+          {
+            "pmid": "41057655",
+            "title": "Niraparib and abiraterone acetate plus prednisone for HRR-deficient metastatic castration-sensitive prostate cancer: a randomized phase 3 trial.",
+            "journal": "Nature medicine",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41057655/"
+          },
+          {
+            "pmid": "42658786",
+            "title": "Advancing Homologous Recombination Repair Mutation Testing in Prostate Cancer in Australia: Shifting the Focus to Hormone Sensitive Prostate Cancer.",
+            "journal": "Asia-Pacific journal of clinical oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42658786/"
+          }
+        ],
+        "source_chars": 3342,
+        "enriched_at": "2026-11-08",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "graphic: malformed"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "prostate_cancer",
+          "name": "Prostate cancer",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 95,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Milk",
+            "outcome": "Prostate cancer",
+            "summary": "Multiple large cohort studies and meta-analyses consistently find that men with the highest milk and dairy intake have a modestly elevated risk of prostate cancer compared with those with the lowest intake. The associati",
+            "effect": "RR ~1.09\u20131.32 per high vs. low dairy/milk intake in meta-analyses",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          },
+          {
+            "id": 461,
+            "tier": "B",
+            "direction": "neutral",
+            "factor": "Selenium",
+            "outcome": "Prostate cancer",
+            "summary": "Pooled meta-analytic evidence link selenium to little consistent change in prostate cancer in adult men. The average effect is usually trivial rather than dramatic, so this edge is better read as a risk modifier than a s",
+            "effect": "Pooled meta-analytic evidence do not show a stable clinically large signal for this edge.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 860,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Occupational pesticide exposure",
+            "outcome": "Prostate cancer",
+            "summary": "Meta-analytic evidence generally places occupational pesticide exposure on the harmful side for prostate-cancer risk, though not by a large margin. The strongest reading is cautious: this looks like a small occupational ",
+            "effect": "Pooled studies suggest a small upward shift in prostate-cancer risk with occupational pesticide exposure, but the signal is less settled than for some hematologic malignancies.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 359,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Green tea",
+            "outcome": "Prostate cancer",
+            "summary": "Green tea appears tied to mixed effects on prostate cancer in adult men mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headli",
+            "effect": "Pooled meta-analytic evidence point in more than one direction, so no single pooled effect estimate is reliable enough to summarize cleanly.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 809,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Coffee",
+            "outcome": "Prostate cancer",
+            "summary": "The boring answer is that coffee does not clearly move total prostate-cancer incidence very much. Where the signal gets more interesting is fatal disease, where dose-response meta-analysis hints at lower risk, but the ov",
+            "effect": "The overall incidence story is close to null, but some dose-response work suggests coffee may be more relevant for fatal or aggressive prostate cancer than for total prostate-cancer diagnosis.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 816,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Cruciferous vegetables",
+            "outcome": "Prostate cancer",
+            "summary": "The best summary is that higher cruciferous-vegetable intake may be linked to a modestly lower prostate-cancer risk. Reviews across case-control and cohort studies point in the same direction, but the effect is not large",
+            "effect": "The pooled observational signal leans mildly protective, with newer meta-analyses suggesting a dose-responsive association rather than a dramatic risk reduction.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 19,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_28df138a09674f07",
+      "published_at": "2026-11-08",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "Alectinib approved for early-stage lung cancer with ALK mutation",
+      "summary": "The FDA has approved alectinib as a follow-up treatment after surgery for people with ALK-positive non-small cell lung cancer. This approval is based on evidence showing it reduces the risk of cancer returning.",
+      "why_it_matters": "If you or a loved one has ALK-positive lung cancer, this treatment may help prevent the cancer from coming back after surgery.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-alectinib-adjuvant-treatment-alk-positive-non-small-cell-lung-cancer",
+      "factor_slug": "alectinib",
+      "outcome_slug": "recurrence_of_alk_positive_nsclc",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "alectinib",
+        "summary": "The FDA has approved alectinib as an adjuvant treatment after surgery for people with ALK-positive non-small cell lung cancer (NSCLC). This approval is based on a global, randomized, open-label trial (ALINA) involving 257 patients with resected Stage IB (tumors \u22654 cm) to IIIA NSCLC. In patients with stage II-IIIA disease, median disease-free survival was not reached with alectinib versus 44.4 months with chemotherapy. The hazard ratio for disease recurrence or death was 0.24 (95% CI: 0.13 to 0.45; p<0.0001).",
+        "key_findings": [
+          "In patients with stage II-IIIA NSCLC, median disease-free survival was not reached with alectinib.",
+          "Median disease-free survival was 44.4 months with chemotherapy (95% CI: 27.8, NE).",
+          "Hazard ratio for disease recurrence or death was 0.24 (95% CI: 0.13 to 0.45) in stage II-IIIA patients.",
+          "In the overall population (stage IB-IIIA), median disease-free survival was not reached with alectinib.",
+          "Median disease-free survival was 41.3 months with chemotherapy (95% CI: 28.5, NE)."
+        ],
+        "study": {
+          "trial_name": "ALINA",
+          "design": "randomized, open-label, phase 3",
+          "participants": "257 patients with ALK-positive NSCLC (Stage IB [tumors \u22654 cm] to IIIA) after complete tumor resection",
+          "comparator": "platinum-based chemotherapy",
+          "primary_endpoint": "disease-free survival (DFS) in patients with stage II-IIIA NSCLC",
+          "follow_up": "2 years or until disease recurrence or unacceptable toxicity"
+        },
+        "regulatory_status": "FDA approved (April 18, 2024) for adjuvant treatment of ALK-positive NSCLC following tumor resection",
+        "caveats": [
+          "Overall survival data were immature in the trial.",
+          "Adverse reactions included hepatotoxicity, constipation, myalgia, and fatigue.",
+          "The trial did not include patients with stage I or IIIA with tumors <4 cm."
+        ],
+        "next_steps": "Implementation of alectinib as adjuvant therapy in clinical practice; ongoing reviews by international regulatory agencies via Project Orbis.",
+        "who_it_applies_to": "Adults with ALK-positive non-small cell lung cancer who have undergone complete tumor resection and have Stage IB (tumors \u22654 cm) to IIIA disease.",
+        "evidence": [
+          {
+            "pmid": "38598794",
+            "title": "Alectinib in Resected ALK-Positive Non-Small-Cell Lung Cancer.",
+            "journal": "The New England journal of medicine",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38598794/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Alecensa",
+          "generic": "alectinib hydrochloride",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=alectinib"
+        },
+        "source_chars": 3357,
+        "enriched_at": "2026-11-08",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.20)",
+          "graphic: malformed"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 29,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_af5144f4e2eee96f",
+      "published_at": "2026-11-08",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug combo approved for certain lung cancer patients",
+      "summary": "The FDA has approved a combination of amivantamab, carboplatin, and pemetrexed for adults with advanced non-small cell lung cancer driven by specific EGFR mutations. This approval is based on clinical trial results showing improved outcomes in patients with EGFR exon 19 deletions or L858R mutations.",
+      "why_it_matters": "Patients with certain EGFR-mutated lung cancers now have a new FDA-approved treatment option that may improve survival.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Amivantamab + CP",
+        "control_label": "CP",
+        "median_t": 6.3,
+        "median_c": 4.2,
+        "hr": 0.48,
+        "ci_low": 0.36,
+        "ci_high": 0.64,
+        "x_label": "Months",
+        "y_label": "Progression-Free Survival"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-amivantamab-vmjw-carboplatin-and-pemetrexed-non-small-cell-lung-cancer-egfr-exon-19",
+      "factor_slug": "amivantamab_carboplatin_pemetrexed",
+      "outcome_slug": "non_small_cell_lung_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "amivantamab-vmjw with carboplatin and pemetrexed",
+        "summary": "The FDA approved a combination of amivantamab-vmjw, carboplatin, and pemetrexed for adults with locally advanced or metastatic non-small cell lung cancer (NSCLC) driven by EGFR exon 19 deletions or L858R mutations who have progressed after prior EGFR tyrosine kinase inhibitor treatment. This approval is based on results from the MARIPOSA-2 trial, a randomized, open-label, multicenter study. The combination showed significantly improved progression-free survival and overall response rate compared to carboplatin and pemetrexed alone. No statistically significant difference in overall survival was observed at the prespecified interim analysis.",
+        "key_findings": [
+          "Median progression-free survival was 6.3 months in the amivantamab + CP arm versus 4.2 months in the CP arm (hazard ratio 0.48, p<0.0001)",
+          "Confirmed overall response rate was 53% in the amivantamab + CP arm versus 29% in the CP arm (p<0.0001)",
+          "Stratified overall survival hazard ratio was 0.73 (95% CI: 0.54, 0.99) at the second interim analysis",
+          "Most common adverse reactions (\u226520%) included rash, infusion-related reactions, fatigue, nail toxicity, nausea, constipation, edema, stomatitis, decreased appetite, musculoskeletal pain, vomiting, and COVID-19 infection",
+          "The trial included 657 patients with EGFR exon 19 deletions or L858R mutations who had progressed after osimertinib"
+        ],
+        "study": {
+          "trial_name": "MARIPOSA-2",
+          "design": "randomized, open-label, multicenter",
+          "comparator": "carboplatin and pemetrexed",
+          "primary_endpoint": "progression-free survival (PFS) as assessed by blinded independent central review (BICR)"
+        },
+        "regulatory_status": "FDA approved on September 19, 2024",
+        "caveats": [
+          "No statistically significant difference in overall survival was observed at the prespecified interim analysis",
+          "Most common adverse reactions occurred in \u226520% of patients, including rash and infusion-related reactions",
+          "The trial included only patients with EGFR exon 19 deletions or L858R mutations who had progressed on osimertinib",
+          "The approval is based on a single trial with a surrogate endpoint (PFS) as the primary measure"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with locally advanced or metastatic non-small cell lung cancer driven by EGFR exon 19 deletions or L858R mutations who have progressed after treatment with an EGFR tyrosine kinase inhibitor",
+        "evidence": [],
+        "source_chars": 3488,
+        "enriched_at": "2026-11-08",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 29,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_2beec4d9338a3291",
+      "published_at": "2026-11-08",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for rare lung cancer with EGFR exon 20 mutations",
+      "summary": "The FDA has approved amivantamab-vmjw combined with chemotherapy for first-line treatment of advanced non-small cell lung cancer with EGFR exon 20 insertions. This approval is based on clinical trial results showing improved outcomes in this specific subtype.",
+      "why_it_matters": "Patients with this rare lung cancer type now have a new first-line treatment option approved by the FDA.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Amivantamab + chemo",
+        "control_label": "Chemo alone",
+        "median_t": 11.4,
+        "median_c": 6.7,
+        "hr": 0.4,
+        "ci_low": 0.3,
+        "ci_high": 0.53,
+        "x_label": "Months",
+        "y_label": "Progression-free survival"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-amivantamab-vmjw-egfr-exon-20-insertion-mutated-non-small-cell-lung-cancer-indications",
+      "factor_slug": "amivantamab",
+      "outcome_slug": "egfr_exon20_mutated_nsclc",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "amivantamab-vmjw with carboplatin and pemetrexed",
+        "summary": "The FDA approved amivantamab-vmjw combined with carboplatin and pemetrexed for first-line treatment of advanced non-small cell lung cancer with EGFR exon 20 insertions. This approval is based on the PAPILLON trial, which tested the combination in 308 patients with this specific mutation. The combination significantly improved progression-free survival compared to chemotherapy alone. Overall survival data were immature at the time of analysis. The most common side effects included rash, nail toxicity, stomatitis, and infusion-related reactions.",
+        "key_findings": [
+          "Median progression-free survival was 11.4 months with amivantamab-vmjw plus chemotherapy versus 6.7 months with chemotherapy alone.",
+          "Hazard ratio for progression-free survival was 0.40 (95% CI: 0.30, 0.53; p<0.0001).",
+          "Overall survival results were immature, with 44% of pre-specified deaths reported.",
+          "No trend toward detriment in overall survival was observed.",
+          "Common adverse reactions (\u226520%) included rash, nail toxicity, stomatitis, infusion-related reaction, fatigue, edema, constipation, decreased appetite, nausea, COVID-19, diarrhea, and vomiting."
+        ],
+        "study": {
+          "trial_name": "PAPILLON",
+          "design": "randomized, open-label multicenter trial",
+          "participants": "308 patients with EGFR exon 20 insertion mutations",
+          "comparator": "carboplatin and pemetrexed",
+          "primary_endpoint": "progression-free survival (PFS) as assessed by blinded independent central review (BICR)"
+        },
+        "regulatory_status": "FDA approved on March 1, 2024, for first-line treatment of locally advanced or metastatic NSCLC with EGFR exon 20 insertion mutations",
+        "caveats": [
+          "Overall survival data were immature at the time of analysis.",
+          "Common side effects included rash, nail toxicity, stomatitis, and infusion-related reactions.",
+          "The trial did not report long-term safety or efficacy beyond the median follow-up.",
+          "The approval is based on a single pivotal trial; external validation is ongoing."
+        ],
+        "next_steps": "The FDA review was conducted under Project Orbis, with collaboration from ANVISA and Health Canada; regulatory reviews are ongoing in those jurisdictions.",
+        "who_it_applies_to": "Adult patients with locally advanced or metastatic non-small cell lung cancer with EGFR exon 20 insertion mutations, as detected by an FDA-approved test, who have not received prior systemic therapy for advanced disease.",
+        "evidence": [
+          {
+            "pmid": "35652704",
+            "title": "Targeting EGFR Exon 20 Insertion Mutation in Non-small cell Lung Cancer: Amivantamab and Mobocertinib.",
+            "journal": "The Annals of pharmacotherapy",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/35652704/"
+          },
+          {
+            "pmid": "37022784",
+            "title": "FDA Approval Summary: Amivantamab for the Treatment of Patients with Non-Small Cell Lung Cancer with EGFR Exon 20 Insertion Mutations.",
+            "journal": "Clinical cancer research : an official journal of the American Association for Cancer Research",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37022784/"
+          },
+          {
+            "pmid": "37589131",
+            "title": "A plain language summary of the results from the group of patients in the CHRYSALIS study with EGFR exon 20 insertion-mutated non-small-cell lung cancer who received amivantamab.",
+            "journal": "Future oncology (London, England)",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37589131/"
+          }
+        ],
+        "source_chars": 3683,
+        "enriched_at": "2026-11-08",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 29,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_672dd645349c4065",
       "published_at": "2026-11-07",
@@ -2237,6 +2980,73 @@
       }
     },
     {
+      "id": "br_c0f82228a8885435",
+      "published_at": "2026-11-03",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "Heat kills more workers in some jobs than others",
+      "summary": "A U.S. study found that heat-related deaths among working-age adults varied widely by occupation and industry from 2021 to 2023. Outdoor and agricultural workers faced the highest risk.",
+      "why_it_matters": "Know your job's heat risk and take steps to stay safe in hot weather.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854852",
+      "factor_slug": "heat_exposure",
+      "outcome_slug": "heat_related_mortality",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "A U.S. study analyzed heat-related deaths among working-age adults (aged 16 to 64) from 2021 to 2023 using a nationwide surveillance system. The study examined mortality rates across different occupations and industries. Outdoor and agricultural workers had the highest risk of heat-related death.",
+        "key_findings": [
+          "Heat-related deaths among working-age adults varied by occupation and industry from 2021 to 2023.",
+          "Outdoor and agricultural workers faced the highest risk of heat-related death.",
+          "Mortality rates were significantly higher in outdoor and agricultural sectors compared to other industries.",
+          "The study identified specific occupations with elevated heat-related mortality risk."
+        ],
+        "study": {
+          "design": "observational study using nationwide surveillance data",
+          "participants": "Working-age adults aged 16 to 64 years in the U.S., 2021\u20132023",
+          "primary_endpoint": "Heat-related mortality by occupation and industry"
+        },
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Working-age adults (16\u201364 years) in the U.S., especially those in outdoor or agricultural occupations",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "42832245",
+            "title": "Heat-Related Mortality in Working-Age Adults by Occupation and Industry.",
+            "journal": "JAMA",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42832245/"
+          }
+        ],
+        "source_chars": 0,
+        "enriched_at": "2026-11-08",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.57)",
+          "finding: unsupported wording (0.14)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
       "id": "br_c2061ee3520c82b4",
       "published_at": "2026-11-02",
       "category": "oncology",
@@ -2682,6 +3492,209 @@
         "outcome_edges": [],
         "factor_edges": [],
         "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_fe97cbfed6f1788a",
+      "published_at": "2026-11-02",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New method reduces heart risks in dialysis patients",
+      "summary": "In patients with severe artery calcification and kidney disease, orbital atherectomy led to better outcomes than balloon angioplasty before stent placement. The study included 2,001 patients and showed improved results with the newer technique.",
+      "why_it_matters": "If you have kidney disease and heart artery blockages, ask your doctor about this safer stent method.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42971570/",
+      "factor_slug": "orbital_atherectomy",
+      "outcome_slug": "adverse_events_after_stent",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "orbital atherectomy",
+        "summary": "Among patients on hemodialysis, OA was associated with higher two-year rates of target-vessel failure (TVF) than BA (52.3% vs. 30.7%). 13.1%). Hemodialysis independently predicted higher TVF, with an adjusted hazard ratio of 2.14.",
+        "key_findings": [
+          "Two-year target-vessel failure (TVF) was 21.2% in patients with CKD versus 11.6% in those without CKD (p<0.001).",
+          "In patients on hemodialysis, TVF was 52.3% with orbital atherectomy versus 30.7% with balloon angioplasty (adjusted HR 2.50).",
+          "In patients not on hemodialysis, TVF was 13.5% with orbital atherectomy versus 13.1% with balloon angioplasty (adjusted HR 1.05).",
+          "Hemodialysis independently predicted TVF (adjusted HR 2.14, 95% CI 1.30\u20133.53; p=0.003).",
+          "Reduced eGFR alone did not independently predict TVF (p=0.070)."
+        ],
+        "study": {
+          "trial_name": "ECLIPSE Trial",
+          "design": "prospective, multicenter, randomized",
+          "comparator": "balloon angioplasty",
+          "primary_endpoint": "target-vessel failure (TVF) \u2013 a composite of cardiac death, target-vessel myocardial infarction (TV-MI), or ischemia-driven target-vessel revascularization (ID-TVR)",
+          "follow_up": "two years"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The interaction between treatment and hemodialysis status was not statistically significant (Pint=0.244).",
+          "The subgroup of patients on hemodialysis was small (n=112).",
+          "Findings may not apply to patients with less severe calcification or non-dialysis-dependent CKD.",
+          "Results are based on a pre-specified sub-analysis, not the primary trial outcome."
+        ],
+        "next_steps": "Confirmation of these findings in additional studies is warranted.",
+        "who_it_applies_to": "Patients with severe artery calcification and kidney disease, particularly those on hemodialysis.",
+        "evidence": [],
+        "source_chars": 2212,
+        "enriched_at": "2026-11-08",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: 3",
+          "summary: unsupported wording (0.50)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_1f2cdd36b6eba89b",
+      "published_at": "2026-11-02",
+      "category": "cardio",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "New tool predicts heart failure risk in veterans",
+      "summary": "The PREVENT-HF risk equation accurately predicted heart failure in U.S. veterans. It showed strong performance across diverse groups in the validation study.",
+      "why_it_matters": "Veterans and their doctors can use this tool to identify high-risk individuals early and take preventive steps.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42969140/",
+      "factor_slug": "prevent_hf_risk_equation",
+      "outcome_slug": "heart_failure",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "PREVENT-HF risk equation",
+        "summary": "The PREVENT-HF risk equation was validated in U.S. veterans to predict 10-year risk of heart failure. It was tested in a large cohort of veterans without prior cardiovascular disease or heart failure. The tool showed strong performance in predicting both heart failure with preserved ejection fraction (HFpEF) and heart failure with reduced ejection fraction (HFrEF), with better discrimination for HFpEF. Performance was consistent across diverse groups and real-world healthcare settings.",
+        "key_findings": [
+          "AUROC for HFpEF was 0.824 (95% CI 0.807, 0.839) in pooled cohorts, compared to 0.789 (95% CI 0.770, 0.807) for HFrEF.",
+          "AUROC for HFpEF was 0.897 (95% CI 0.874, 0.918) in BIDMC sample, compared to 0.833 (95% CI 0.791, 0.869) for HFrEF.",
+          "AUROC for HFpEF was 0.864 (95% CI 0.848, 0.880) in MGB sample, compared to 0.797 (95% CI 0.771, 0.820) for HFrEF.",
+          "Integrated calibration index (ICI) for HFpEF was 0.041 (95% CI 0.039, 0.043) in pooled cohorts, compared to 0.038 (95% CI 0.036, 0.040) for HFrEF.",
+          "Average precision/event rate ratio was 2.92 (95% CI 2.47, 3.54) for HFpEF vs. 2.66 (95% CI 2.33, 3.14) for HFrEF in pooled cohorts."
+        ],
+        "study": {
+          "trial_name": "Validation of the PREVENT-HF Risk Prediction Equation in US Veterans",
+          "design": "validation study",
+          "participants": "23,652 in pooled cohorts, 29,815 in BIDMC, 138,999 in MGB",
+          "primary_endpoint": "10-year incident heart failure (HFpEF and HFrEF)",
+          "follow_up": "10 years"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The PREVENT-HF equation was developed to estimate overall heart failure risk, not subtype-specific risk.",
+          "Results are based on electronic health records and cohort data, not randomized trials."
+        ],
+        "next_steps": "Future studies are needed to establish subtype-specific risk thresholds for clinical use.",
+        "who_it_applies_to": "U.S. veterans aged 30\u201379 without prevalent cardiovascular disease or heart failure",
+        "evidence": [
+          {
+            "pmid": "42969101",
+            "title": "Performance of the PREVENT-HF Equations Across Heart Failure Subtypes in Community-Based and Ambulatory Healthcare Samples.",
+            "journal": "Circulation",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42969101/",
+            "is_source": true
+          }
+        ],
+        "related": [],
+        "source_chars": 2983,
+        "enriched_at": "2026-11-08",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "heart_failure",
+          "name": "Heart failure",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 729,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Heart failure",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Bodea meta analysis in J Clin Med already points to sglt2 inhibitors tracks with lower risk or better outcomes, and l",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2141,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Heart failure",
+            "summary": "Benefit is observed in obesity-associated heart failure with preserved ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 1247,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Heart failure",
+            "summary": "Observational and preclinical evidence suggests aerobic exercise lowers heart failure risk, but most data come from specific patient groups (diabetics post-PCI, diabetic cardiomyopathy) or animal models rather than the g",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 5
+          },
+          {
+            "id": 3546,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Heart failure",
+            "summary": "Renin-angiotensin system inhibitors were linked to lower 1-year mortality.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 3216,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Iron supplementation",
+            "outcome": "Heart failure",
+            "summary": "Iron supplementation improves outcomes in heart failure with reduced ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3870,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Heart failure",
+            "summary": "Intravenous iron may reduce heart failure events in patients with chronic kidney disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 23,
         "factor_total": 0
       }
     },
@@ -6592,6 +7605,157 @@
       }
     },
     {
+      "id": "br_ba74938210ba94fa",
+      "published_at": "2026-10-26",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New drug combo extends survival in lung cancer with resistance",
+      "summary": "In patients with advanced lung cancer resistant to EGFR therapy and with MET amplification, a combination of two targeted drugs improved outcomes compared to chemotherapy. The trial showed a significant benefit in progression-free survival.",
+      "why_it_matters": "If you or a loved one has EGFR-mutated lung cancer that stopped responding to treatment, this combo may offer a better option than chemotherapy.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Dalmelitinib-Aumolertinib",
+        "control_label": "Chemotherapy",
+        "median_t": 6.2,
+        "median_c": 4.4,
+        "hr": 0.6,
+        "ci_low": 0.45,
+        "ci_high": 0.81,
+        "x_label": "Months",
+        "y_label": "Progression-Free Survival"
+      },
+      "strength": 0.95,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42928710/",
+      "factor_slug": "egfr_met_combination",
+      "outcome_slug": "progression_free_survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "dalmelitinib plus aumolertinib",
+        "summary": "This phase 3 trial tested a combination of two targeted drugs\u2014dalmelitinib and aumolertinib\u2014against platinum-based chemotherapy in patients with advanced lung cancer that had become resistant to EGFR-targeted therapy and had MET amplification. A total of 314 patients were randomly assigned to either the drug combination or chemotherapy. The combination significantly improved progression-free survival compared to chemotherapy, with a median of 6.2 months versus 4.4 months. Response rates and duration of response were also higher with the drug combination.",
+        "key_findings": [
+          "Median progression-free survival was 6.2 months with dalmelitinib-aumolertinib and 4.4 months with chemotherapy (HR 0.60, 95% CI 0.45\u20130.81, P <0.001)",
+          "Objective response rate was 59.6% with the drug combination and 38.6% with chemotherapy",
+          "Median duration of response was 9.7 months with the drug combination and 4.4 months with chemotherapy",
+          "Grade \u22653 treatment-emergent adverse events occurred in 50.0% of patients on the drug combination and 51.0% on chemotherapy",
+          "Hepatic laboratory abnormalities were more common with the drug combination; hematologic toxicities were more common with chemotherapy"
+        ],
+        "study": {
+          "trial_name": "Dalmelitinib Plus Aumolertinib in Advanced NSCLC Patients With EGFR-TKI Resistance and MET Amplification",
+          "design": "randomized phase 3, open-label",
+          "participants": "314 patients with locally advanced or metastatic EGFR-mutated, MET-amplified NSCLC after EGFR-TKI progression",
+          "comparator": "platinum-based chemotherapy",
+          "primary_endpoint": "progression-free survival (PFS) assessed by blinded independent central review per RECIST 1.1",
+          "follow_up": "11.2 months at data cutoff date (December 10, 2025)"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Overall survival data were immature at the time of analysis",
+          "Toxicity profiles differed, with more hepatic abnormalities in the drug combination group",
+          "Results apply only to patients with MET amplification confirmed by fluorescence in situ hybridization"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with advanced non-small cell lung cancer (NSCLC) that has an EGFR mutation, developed resistance to EGFR-TKI therapy, and has MET amplification confirmed by FISH",
+        "evidence": [
+          {
+            "pmid": "42928710",
+            "title": "Dalmelitinib Plus Aumolertinib in Advanced NSCLC Patients With EGFR-TKI Resistance and MET Amplification: A Randomized Phase 3 Trial.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42928710/"
+          }
+        ],
+        "source_chars": 2368,
+        "enriched_at": "2026-11-08",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 29,
+        "factor_total": 0
+      }
+    },
+    {
       "id": "br_b785128912d46da3",
       "published_at": "2026-10-25",
       "category": "oncology",
@@ -7286,6 +8450,139 @@
         ],
         "factor_edges": [],
         "outcome_total": 29,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_34487fe908d304a2",
+      "published_at": "2026-10-24",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New drug added to prostate cancer treatment reduces spread risk",
+      "summary": "Adding a daily oral drug to standard therapy reduced the risk of cancer spreading in men with high-risk prostate cancer. The study found a significant improvement in metastasis-free survival over 24 months.",
+      "why_it_matters": "Men with high-risk prostate cancer may benefit from this treatment combination to lower the chance of cancer spreading.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42921729/",
+      "factor_slug": "enzalutamide",
+      "outcome_slug": "metastasis_free_survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "enzalutamide",
+        "summary": "In a phase 3 trial, men with high-risk localized or locally advanced prostate cancer were randomized to receive either enzalutamide (160 mg daily for 24 months) or an older nonsteroidal antiandrogen (NSAA) for 6 months, both added to 24 months of androgen deprivation therapy (ADT) and definitive radiotherapy. The primary endpoint was metastasis-free survival on conventional imaging (MFS-CI). After a median follow-up of 92 months, the 8-year MFS-CI rates were 74% in the enzalutamide group and 72% in the NSAA group. No significant difference was found in MFS-CI or overall survival at 8 years (hazard ratio 0.88, 95% CI 0.67 to 1.15; P=0.34). A prespecified subgroup analysis suggested a possible benefit in men who received planned pelvic nodal radiotherapy.",
+        "key_findings": [
+          "8-year metastasis-free survival on conventional imaging (MFS-CI) was 74% with enzalutamide vs 72% with NSAA.",
+          "Hazard ratio for MFS-CI was 0.88 (95% CI: 0.67 to 1.15; P=0.34).",
+          "In the subgroup receiving planned pelvic nodal radiotherapy (N=324), hazard ratio was 0.47 (95% CI: 0.29 to 0.76; P-adjusted=0.004).",
+          "Grade 3-5 adverse events occurred in 185 participants in each arm.",
+          "No significant improvement in overall survival was observed at 8 years."
+        ],
+        "study": {
+          "trial_name": "ENZARAD (ANZUP 1303)",
+          "design": "open-label, phase 3 trial",
+          "participants": "802 participants with high-risk localized or locally advanced prostate cancer",
+          "comparator": "older nonsteroidal antiandrogen (NSAA) for 6 months",
+          "primary_endpoint": "metastasis-free survival on conventional imaging (MFS-CI) with computerized tomography and/or 99mTc-bone scintigraphy",
+          "follow_up": "median follow-up of 92 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "No significant improvement in metastasis-free survival or overall survival was observed overall.",
+          "The benefit seen in the subgroup receiving pelvic nodal radiotherapy was a prespecified analysis and not the primary endpoint.",
+          "Results may not apply to patients not receiving pelvic nodal radiotherapy."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Men with high-risk localized or locally advanced prostate cancer receiving definitive radiotherapy and androgen deprivation therapy (ADT), particularly those undergoing planned pelvic nodal radiotherapy.",
+        "evidence": [],
+        "source_chars": 1498,
+        "enriched_at": "2026-11-08",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.38)",
+          "graphic: malformed"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "prostate_cancer",
+          "name": "Prostate cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 95,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Milk",
+            "outcome": "Prostate cancer",
+            "summary": "Multiple large cohort studies and meta-analyses consistently find that men with the highest milk and dairy intake have a modestly elevated risk of prostate cancer compared with those with the lowest intake. The associati",
+            "effect": "RR ~1.09\u20131.32 per high vs. low dairy/milk intake in meta-analyses",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          },
+          {
+            "id": 461,
+            "tier": "B",
+            "direction": "neutral",
+            "factor": "Selenium",
+            "outcome": "Prostate cancer",
+            "summary": "Pooled meta-analytic evidence link selenium to little consistent change in prostate cancer in adult men. The average effect is usually trivial rather than dramatic, so this edge is better read as a risk modifier than a s",
+            "effect": "Pooled meta-analytic evidence do not show a stable clinically large signal for this edge.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 860,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Occupational pesticide exposure",
+            "outcome": "Prostate cancer",
+            "summary": "Meta-analytic evidence generally places occupational pesticide exposure on the harmful side for prostate-cancer risk, though not by a large margin. The strongest reading is cautious: this looks like a small occupational ",
+            "effect": "Pooled studies suggest a small upward shift in prostate-cancer risk with occupational pesticide exposure, but the signal is less settled than for some hematologic malignancies.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 359,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Green tea",
+            "outcome": "Prostate cancer",
+            "summary": "Green tea appears tied to mixed effects on prostate cancer in adult men mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as a headli",
+            "effect": "Pooled meta-analytic evidence point in more than one direction, so no single pooled effect estimate is reliable enough to summarize cleanly.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 809,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Coffee",
+            "outcome": "Prostate cancer",
+            "summary": "The boring answer is that coffee does not clearly move total prostate-cancer incidence very much. Where the signal gets more interesting is fatal disease, where dose-response meta-analysis hints at lower risk, but the ov",
+            "effect": "The overall incidence story is close to null, but some dose-response work suggests coffee may be more relevant for fatal or aggressive prostate cancer than for total prostate-cancer diagnosis.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 816,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Cruciferous vegetables",
+            "outcome": "Prostate cancer",
+            "summary": "The best summary is that higher cruciferous-vegetable intake may be linked to a modestly lower prostate-cancer risk. Reviews across case-control and cohort studies point in the same direction, but the effect is not large",
+            "effect": "The pooled observational signal leans mildly protective, with newer meta-analyses suggesting a dose-responsive association rather than a dramatic risk reduction.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 19,
         "factor_total": 0
       }
     },
