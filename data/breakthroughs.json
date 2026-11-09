@@ -1,8 +1,635 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-08",
+  "updated_at": "2026-11-09",
   "items": [
+    {
+      "id": "br_fb5163c6506b94ce",
+      "published_at": "2026-11-09",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New subcutaneous form of cancer immunotherapy approved",
+      "summary": "The FDA has approved a new subcutaneous version of a cancer immunotherapy drug for all adult uses previously available only as an intravenous infusion. This change allows for faster, easier administration in outpatient settings.",
+      "why_it_matters": "Patients may now receive this cancer treatment in less time with fewer clinic visits, improving access and convenience.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-atezolizumab-and-hyaluronidase-tqjs-subcutaneous-injection",
+      "factor_slug": "atezolizumab_hyaluronidase",
+      "outcome_slug": "cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "atezolizumab and hyaluronidase-tqjs (Tecentriq Hybreza)",
+        "summary": "On September 12, 2024, the FDA approved a subcutaneous form of atezolizumab and hyaluronidase-tqjs for all adult indications previously available only as an intravenous infusion. The approval was based on a randomized trial in 371 adults with locally advanced or metastatic non-small cell lung cancer (NSCLC) who had progressed after platinum-based chemotherapy. The subcutaneous formulation showed comparable drug exposure and similar efficacy outcomes to the intravenous form. Common side effects included fatigue, musculoskeletal pain, cough, dyspnea, and decreased appetite.",
+        "key_findings": [
+          "Geometric mean ratio (GMR) for Cycle 1 Ctrough was 1.05 (90% CI: 0.88, 1.24)",
+          "GMR for AUC 0-21days was 0.87 (90% CI: 0.83, 0.92)",
+          "Confirmed overall response rate (ORR) was 9% (95% CI: 5, 13) in the subcutaneous arm",
+          "Confirmed ORR was 8% (95% CI: 4, 14) in the intravenous arm",
+          "No notable differences in progression-free survival (PFS) or overall survival (OS) were observed between formulations"
+        ],
+        "study": {
+          "trial_name": "IMscin001",
+          "design": "open-label, multi-center, international, randomized",
+          "comparator": "intravenous atezolizumab",
+          "primary_endpoint": "atezolizumab exposure (Cycle 1 Ctrough and AUC 0-21days)"
+        },
+        "regulatory_status": "FDA approved on September 12, 2024",
+        "caveats": [
+          "The trial was limited to patients with NSCLC who had progressed after platinum-based chemotherapy",
+          "The study did not assess long-term outcomes beyond the primary pharmacokinetic endpoints",
+          "Adverse events were common, with fatigue and musculoskeletal pain reported in \u226510% of patients",
+          "The approval is based on a single trial and does not include all previously approved indications"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with non-small cell lung cancer (NSCLC), small cell lung cancer (SCLC), hepatocellular carcinoma (HCC), melanoma, and alveolar soft part sarcoma (ASPS) who are receiving atezolizumab",
+        "evidence": [
+          {
+            "pmid": "29863955",
+            "title": "Atezolizumab for First-Line Treatment of Metastatic Nonsquamous NSCLC.",
+            "journal": "The New England journal of medicine",
+            "year": "2018",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/29863955/"
+          },
+          {
+            "pmid": "32997907",
+            "title": "Atezolizumab for First-Line Treatment of PD-L1-Selected Patients with NSCLC.",
+            "journal": "The New England journal of medicine",
+            "year": "2020",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/32997907/"
+          },
+          {
+            "pmid": "34555333",
+            "title": "Adjuvant atezolizumab after adjuvant chemotherapy in resected stage IB-IIIA non-small-cell lung cancer (IMpower010): a randomised, multicentre, open-label, phase 3 trial.",
+            "journal": "Lancet (London, England)",
+            "year": "2021",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/34555333/"
+          }
+        ],
+        "source_chars": 3211,
+        "enriched_at": "2026-11-09",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 30,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_82c1a1a700c9651d",
+      "published_at": "2026-11-09",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for chronic graft-versus-host disease",
+      "summary": "The FDA has approved axatilimab-csfr for adults with chronic graft-versus-host disease who have not responded to at least two prior treatments. It is a colony stimulating factor-1 receptor-blocking antibody.",
+      "why_it_matters": "Patients with this rare immune condition now have a new treatment option after failing earlier therapies.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-axatilimab-csfr-chronic-graft-versus-host-disease",
+      "factor_slug": "axatilimab_csfr",
+      "outcome_slug": "chronic_graft_vs_host_disease",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "axatilimab-csfr",
+        "summary": "The FDA approved axatilimab-csfr for adults and pediatric patients (weighing at least 40 kg) with chronic graft-versus-host disease who have not responded to at least two prior systemic treatments. Efficacy was evaluated in the AGAVE-201 trial, a randomized, open-label, multicenter study. The overall response rate was 75% (95% CI: 64, 84) in 79 patients receiving the recommended dose. Median time to first response was 1.5 months, and median duration of response was 1.9 months. No death or new systemic therapy was needed in 60% of responders for at least 12 months after response.",
+        "key_findings": [
+          "Overall response rate was 75% (95% CI: 64, 84) in 79 patients treated with the recommended dose.",
+          "Median time to first response was 1.5 months (range: 0.9 to 5.1).",
+          "Median duration of response was 1.9 months (95% CI: 1.6, 3.5).",
+          "60% (95% CI: 43, 74) of patients who responded remained without death or new systemic therapy for at least 12 months.",
+          "The most common adverse reactions (\u226515%) included increased AST, infection, increased ALT, decreased phosphate, and decreased hemoglobin."
+        ],
+        "study": {
+          "trial_name": "AGAVE-201",
+          "design": "randomized, open-label, multicenter",
+          "participants": "79 patients with recurrent or refractory cGVHD who had received at least 2 prior lines of systemic therapy",
+          "primary_endpoint": "Overall response rate (ORR) through Cycle 7 Day 1, defined as complete or partial response per 2014 NIH criteria"
+        },
+        "regulatory_status": "FDA approved on August 14, 2024; granted Orphan Drug Designation and Fast Track Designation",
+        "caveats": [
+          "No control group in the trial design (open-label)",
+          "Response duration was short (median 1.9 months)",
+          "Adverse reactions were common, including infections and liver enzyme elevations",
+          "Trial included only patients who had failed at least two prior treatments"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults and pediatric patients (weighing at least 40 kg) with chronic graft-versus-host disease who have not responded to at least two prior systemic therapies",
+        "evidence": [
+          {
+            "pmid": "39551906",
+            "title": "Axatilimab: First Approval.",
+            "journal": "Drugs",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39551906/"
+          }
+        ],
+        "source_chars": 3244,
+        "enriched_at": "2026-11-09",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "next_steps: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_cebe393662e72642",
+      "published_at": "2026-11-09",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves new drug for advanced skin cancer",
+      "summary": "The FDA has approved cosibelimab-ipdl for adults with metastatic or locally advanced cutaneous squamous cell carcinoma. This is a PD-L1 blocking antibody designed to help the immune system attack cancer cells.",
+      "why_it_matters": "People with advanced skin cancer now have a new treatment option approved by the FDA.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-cosibelimab-ipdl-metastatic-or-locally-advanced-cutaneous-squamous-cell-carcinoma",
+      "factor_slug": "cosibelimab_ipdl",
+      "outcome_slug": "metastatic_cutaneous_squamous_cell_carcinoma",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "cosibelimab-ipdl",
+        "summary": "The FDA approved cosibelimab-ipdl on December 13, 2024, for adults with metastatic or locally advanced cutaneous squamous cell carcinoma who are not candidates for curative surgery or radiation. Efficacy was evaluated in a trial of 109 patients with mCSCC or laCSCC. The objective response rate was 47% in patients with mCSCC and 48% in those with laCSCC. Median duration of response was not reached in mCSCC and was 17.7 months in laCSCC. Common side effects included fatigue, rash, and diarrhea.",
+        "key_findings": [
+          "Objective response rate (ORR) was 47% (95% CI: 36, 59) in patients with mCSCC (n=78)",
+          "ORR was 48% (95% CI: 30, 67) in patients with laCSCC (n=31)",
+          "Median duration of response (DOR) was not reached in mCSCC (range: 1.4+, 34.1+)",
+          "Median DOR was 17.7 months in laCSCC (range: 3.7+, 17.7)",
+          "Most common adverse reactions (\u226510%) included fatigue, musculoskeletal pain, rash, diarrhea, hypothyroidism, constipation, nausea, headache, pruritis, edema, localized infection, and urinary tract infection"
+        ],
+        "study": {
+          "trial_name": "CK-301-101 (NCT03212404)",
+          "design": "multicenter, multicohort, open-label trial",
+          "participants": "109 patients with metastatic or locally advanced cutaneous squamous cell carcinoma who were not candidates for curative surgery or radiation",
+          "primary_endpoint": "objective response rate (ORR) as assessed by an independent central review committee (IRC) according to RECIST version 1.1"
+        },
+        "regulatory_status": "FDA approved on December 13, 2024",
+        "caveats": [
+          "Trial excluded patients with autoimmune disease, prior immune checkpoint inhibitor therapy, or significant cardiovascular disease",
+          "No data on long-term survival or overall survival",
+          "Common side effects include fatigue, rash, and diarrhea, with immune-related adverse events reported in 27.6% of patients in a later follow-up study"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with metastatic or locally advanced cutaneous squamous cell carcinoma who are not candidates for curative surgery or radiation",
+        "evidence": [
+          {
+            "pmid": "41055628",
+            "title": "Efficacy and safety of cosibelimab in advanced cutaneous squamous cell carcinoma: Results from a Pivotal Open-label Study with a median follow-up of \u22652 years.",
+            "journal": "Journal of the American Academy of Dermatology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41055628/"
+          },
+          {
+            "pmid": "40167969",
+            "title": "Cosibelimab: First Approval.",
+            "journal": "Drugs",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40167969/"
+          }
+        ],
+        "source_chars": 2808,
+        "enriched_at": "2026-11-09",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "cutaneous_squamous_cell_carcinoma",
+          "name": "Cutaneous squamous cell carcinoma",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1444,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Daily sunscreen SPF 30+",
+            "outcome": "Cutaneous squamous cell carcinoma",
+            "summary": "This is one of the stronger prevention edges in dermatology because randomized and extended follow-up data both point the same way: daily sunscreen lowers squamous-cell-carcinoma burden over time. The cleanest benefit sh",
+            "effect": "The original randomized trial found no clear effect on first SCC diagnosis but did find a significantly lower SCC tumour rate with daily sunscreen use, with a rate ratio of 0.61. Extended follow-up then showed about a 40% lower SCC tumour rate overall, with a rate ratio of 0.62.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 1,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_aa633f775393eaed",
+      "published_at": "2026-11-09",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves new drug for early-stage lung cancer",
+      "summary": "The FDA has approved durvalumab for adults with limited-stage small cell lung cancer who have not had disease progression after chemotherapy and radiation. This approval is based on clinical trial results showing improved outcomes in this patient group.",
+      "why_it_matters": "If you or a loved one has early-stage small cell lung cancer, this drug may be an option after standard treatment.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Durvalumab",
+        "control_label": "Placebo",
+        "median_t": 55.9,
+        "median_c": 33.4,
+        "hr": 0.73,
+        "ci_low": 0.57,
+        "ci_high": 0.93,
+        "x_label": "Months",
+        "y_label": "Overall Survival"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-durvalumab-limited-stage-small-cell-lung-cancer",
+      "factor_slug": "durvalumab",
+      "outcome_slug": "limited_stage_small_cell_lung_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "durvalumab",
+        "summary": "The FDA has approved durvalumab for adults with limited-stage small cell lung cancer (LS-SCLC) whose disease has not progressed after concurrent platinum-based chemotherapy and radiation therapy. This approval is based on the ADRIATIC trial, a randomized, double-blind, placebo-controlled study of 730 patients. Durvalumab significantly improved both overall survival and progression-free survival compared to placebo. The most common side effects were pneumonitis or radiation pneumonitis and fatigue.",
+        "key_findings": [
+          "Median overall survival was 55.9 months with durvalumab versus 33.4 months with placebo (HR 0.73, 95% CI: 0.57, 0.93; p=0.0104)",
+          "Median progression-free survival was 16.6 months with durvalumab versus 9.2 months with placebo (HR 0.76, 95% CI: 0.61, 0.95; p=0.0161)",
+          "Pneumonitis or radiation pneumonitis occurred in \u226520% of patients",
+          "The most common adverse reactions (\u226520%) were pneumonitis or radiation pneumonitis and fatigue"
+        ],
+        "study": {
+          "trial_name": "ADRIATIC",
+          "design": "randomized, double-blind, placebo-controlled",
+          "participants": "730 patients with limited-stage small cell lung cancer (LS-SCLC) whose disease had not progressed after concurrent platinum-based chemotherapy and radiation therapy",
+          "comparator": "placebo",
+          "primary_endpoint": "overall survival (OS) and progression-free survival (PFS) assessed by blinded independent central review"
+        },
+        "regulatory_status": "FDA approved on December 4, 2024",
+        "caveats": [
+          "Pneumonitis or radiation pneumonitis occurred in \u226520% of patients",
+          "Fatigue occurred in \u226520% of patients",
+          "The trial was conducted in a specific patient population (those without disease progression after chemo-radiation)"
+        ],
+        "next_steps": "The drug is now available for use in the indicated patient group; further trials may explore earlier use or combination therapies",
+        "who_it_applies_to": "Adults with limited-stage small cell lung cancer who have not had disease progression after concurrent platinum-based chemotherapy and radiation therapy",
+        "evidence": [
+          {
+            "pmid": "31948903",
+            "title": "Design and Rationale for a Phase III, Randomized, Placebo-controlled Trial of Durvalumab With or Without Tremelimumab After Concurrent Chemoradiotherapy for Patients With Limited-stage Small-cell Lung Cancer: The ADRIATIC Study.",
+            "journal": "Clinical lung cancer",
+            "year": "2020",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/31948903/"
+          },
+          {
+            "pmid": "40964483",
+            "title": "State of the art in treatment of small cell lung cancer.",
+            "journal": "Therapeutic advances in medical oncology",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40964483/"
+          },
+          {
+            "pmid": "40976711",
+            "title": "Durvalumab Post Concurrent Chemoradiotherapy in Japanese Patients With Limited-Stage Small-Cell Lung Cancer in the Phase 3 ADRIATIC Trial.",
+            "journal": "Cancer science",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40976711/"
+          }
+        ],
+        "source_chars": 3204,
+        "enriched_at": "2026-11-09",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "finding: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 30,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_8bbc808668236836",
+      "published_at": "2026-11-09",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for ALK-positive lung cancer patients",
+      "summary": "The FDA has approved ensartinib for adults with ALK-positive advanced or metastatic non-small cell lung cancer who haven't taken an ALK inhibitor before. It's the first treatment approved specifically for this group without prior ALK inhibitor use.",
+      "why_it_matters": "If you or a loved one has ALK-positive lung cancer and hasn't had prior ALK inhibitor treatment, this drug is now an approved option.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Ensartinib",
+        "control_label": "Crizotinib",
+        "median_t": 25.8,
+        "median_c": 12.7,
+        "hr": 0.56,
+        "ci_low": 0.4,
+        "ci_high": 0.79,
+        "x_label": "Months",
+        "y_label": "Progression-free survival"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-ensartinib-alk-positive-locally-advanced-or-metastatic-non-small-cell-lung-cancer",
+      "factor_slug": "ensartinib",
+      "outcome_slug": "alk_positive_nsclc",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "ensartinib",
+        "summary": "The FDA has approved ensartinib for adults with ALK-positive locally advanced or metastatic non-small cell lung cancer who have not previously received an ALK inhibitor. The approval was based on the eXALT3 trial, which compared ensartinib to crizotinib in 290 patients. Ensartinib significantly improved progression-free survival compared to crizotinib, with a median PFS of 25.8 months versus 12.7 months. There was no statistically significant difference in overall survival between the two groups. The most common side effects included rash, musculoskeletal pain, constipation, cough, pruritis, nausea, edema, pyrexia, and fatigue.",
+        "key_findings": [
+          "Median progression-free survival was 25.8 months with ensartinib and 12.7 months with crizotinib.",
+          "Hazard ratio for progression-free survival was 0.56 (95% CI: 0.40, 0.79; p = 0.0007).",
+          "No statistically significant difference in overall survival (hazard ratio 0.88; 95% CI: 0.63, 1.23; p = 0.4570).",
+          "Intracranial response rate was 63.6% (7 of 11) with ensartinib vs 21.1% (4 of 19) with crizotinib in patients with brain metastases at baseline.",
+          "Most common adverse reactions (\u226520%) were rash, musculoskeletal pain, constipation, cough, pruritis, nausea, edema, pyrexia, and fatigue."
+        ],
+        "study": {
+          "trial_name": "eXALT3",
+          "design": "open-label, randomized, active-controlled, multicenter",
+          "comparator": "crizotinib",
+          "primary_endpoint": "progression-free survival (PFS) as evaluated by blinded independent central review",
+          "follow_up": "median follow-up of 23.8 months for ensartinib and 20.2 months for crizotinib"
+        },
+        "regulatory_status": "FDA approved on December 18, 2024",
+        "caveats": [
+          "Overall survival benefit was not statistically significant.",
+          "Side effects were common, with rash and musculoskeletal pain occurring in \u226520% of patients.",
+          "The trial did not include patients who had previously received ALK inhibitors."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with ALK-positive locally advanced or metastatic non-small cell lung cancer who have not previously received an ALK inhibitor",
+        "evidence": [
+          {
+            "pmid": "34473194",
+            "title": "Ensartinib vs Crizotinib for Patients With Anaplastic Lymphoma Kinase-Positive Non-Small Cell Lung Cancer: A Randomized Clinical Trial.",
+            "journal": "JAMA oncology",
+            "year": "2021",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/34473194/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Ensacove",
+          "generic": "ensartinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=ensartinib"
+        },
+        "source_chars": 1873,
+        "enriched_at": "2026-11-09",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.40)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 30,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_973459ce20b1c7b9",
       "published_at": "2026-11-08",
@@ -743,6 +1370,390 @@
         ],
         "factor_edges": [],
         "outcome_total": 29,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_30eb32a4cc2d118c",
+      "published_at": "2026-11-08",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Digital tool helps heart failure patients get optimal meds after hospital",
+      "summary": "A digital health intervention improved guideline-directed medical therapy titration in heart failure patients after hospital discharge. The trial showed meaningful improvements in medication optimization compared to standard care.",
+      "why_it_matters": "If you or a loved one has heart failure, ask your doctor about digital tools to help manage medications after hospitalization.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Medication Optimization Score",
+            "treatment": 83.7,
+            "control": 74.0
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "ENGAGE-HF app",
+        "control_label": "Usual care"
+      },
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42999997/",
+      "factor_slug": "digital_health_intervention",
+      "outcome_slug": "medication_optimization",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "ENGAGE-HF app",
+        "summary": "A digital health intervention using a mobile app and clinician dashboard was tested in 134 heart failure patients recently hospitalized with reduced or mildly reduced ejection fraction (LVEF <50%) who were on suboptimal guideline-directed medical therapy (GDMT). Patients were randomized 1:1 to the ENGAGE-HF app or usual care for 90 days. The intervention significantly improved medication optimization compared to usual care, with a higher Medication Optimization Score at 90 days.",
+        "key_findings": [
+          "Adjusted Medication Optimization Score (MOS) at 90 days: 83.7% in intervention group vs. 74.0% in control group (p = 0.010)",
+          "Increase in prescribing prevalence for MRAs: +15.9 percentage points in intervention vs. +2.5 in control",
+          "Increase in prescribing prevalence for SGLT2 inhibitors: +10.9 percentage points in intervention vs. +2.5 in control",
+          "Increase in achieving target doses for ARNI: +18.8% in intervention vs. +6.3% in control",
+          "Increase in achieving target doses for beta-blockers: +8.5% in intervention vs. +0.6% in control"
+        ],
+        "study": {
+          "trial_name": "ENGAGE-HF",
+          "design": "multicenter, two-arm, open-label, randomized controlled trial",
+          "comparator": "usual care",
+          "primary_endpoint": "Medication Optimization Score (MOS, scale 0-100%) at 90 days",
+          "follow_up": "90 days"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The study was conducted at three academic centers, which may limit generalizability",
+          "The primary outcome was a composite score, not a clinical endpoint like mortality or hospitalization"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults recently hospitalized with heart failure with reduced or mildly reduced ejection fraction (LVEF <50%) who are on suboptimal guideline-directed medical therapy",
+        "evidence": [
+          {
+            "pmid": "42999997",
+            "title": "A Multicenter Randomized Controlled Trial of a Digital Health Intervention for Medication Optimization in Heart Failure: The ENGAGE-HF Trial Outcomes.",
+            "journal": "Circulation. Heart failure",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42999997/"
+          }
+        ],
+        "source_chars": 2323,
+        "enriched_at": "2026-11-09",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.20)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.12)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "heart_failure",
+          "name": "Heart failure",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 729,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Heart failure",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Bodea meta analysis in J Clin Med already points to sglt2 inhibitors tracks with lower risk or better outcomes, and l",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2141,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Heart failure",
+            "summary": "Benefit is observed in obesity-associated heart failure with preserved ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 1247,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Heart failure",
+            "summary": "Observational and preclinical evidence suggests aerobic exercise lowers heart failure risk, but most data come from specific patient groups (diabetics post-PCI, diabetic cardiomyopathy) or animal models rather than the g",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 5
+          },
+          {
+            "id": 3546,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Heart failure",
+            "summary": "Renin-angiotensin system inhibitors were linked to lower 1-year mortality.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 3216,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Iron supplementation",
+            "outcome": "Heart failure",
+            "summary": "Iron supplementation improves outcomes in heart failure with reduced ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3870,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Heart failure",
+            "summary": "Intravenous iron may reduce heart failure events in patients with chronic kidney disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 23,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_59707fa011cf4e6e",
+      "published_at": "2026-11-08",
+      "category": "other",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New monthly injection reduces hepatitis D in half of patients",
+      "summary": "In a late-stage study, 44% of patients treated with a monthly injection saw their hepatitis D virus levels drop significantly. The treatment was well-tolerated with no serious side effects reported.",
+      "why_it_matters": "If approved, this could offer a major new option for people with chronic hepatitis D, a serious liver disease with few treatment choices.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/virs-hepatitis-d-drug-succeeds-in-first-pivotal-study/",
+      "factor_slug": "monthly_injection_tobevibart",
+      "outcome_slug": "hepatitis_d_viral_load",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "tobevibart/elebsiran combo",
+        "summary": "In a late-stage study (ECLIPSE 1), 44% of patients treated with a monthly injection of tobevibart and elebsiran achieved undetectable hepatitis D virus (HDV RNA) levels at week 48. The treatment was well-tolerated, with no serious side effects reported. The study evaluated the combination therapy in patients with chronic hepatitis D virus infection.",
+        "key_findings": [
+          "44% of patients achieved undetectable HDV RNA at week 48",
+          "No serious side effects were reported",
+          "The combination therapy was compared to Gilead's Hepcludex and Mirum's brelovitug",
+          "The study met its primary endpoint"
+        ],
+        "study": {
+          "trial_name": "ECLIPSE 1",
+          "design": "randomized phase 3, double-blind",
+          "comparator": "Gilead's Hepcludex and Mirum's brelovitug",
+          "primary_endpoint": "undetectable HDV RNA at week 48",
+          "follow_up": "48 weeks"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Long-term safety and efficacy beyond 48 weeks are unknown",
+          "Industry-funded (Vir Biotechnology)"
+        ],
+        "next_steps": "Regulatory review and potential approval by FDA/EMA pending further data",
+        "who_it_applies_to": "Adults with chronic hepatitis D virus infection",
+        "evidence": [
+          {
+            "pmid": "40575639",
+            "title": "Advances in treatment of hepatitis delta virus infection: Update on novel investigational drugs.",
+            "journal": "World journal of virology",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40575639/"
+          },
+          {
+            "pmid": "41211943",
+            "title": "A Phase 2 Trial of Tobevibart plus Elebsiran in Hepatitis D.",
+            "journal": "The New England journal of medicine",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41211943/"
+          },
+          {
+            "pmid": "40606936",
+            "title": "Hope on the horizon: Emerging therapies for hepatitis D.",
+            "journal": "World journal of hepatology",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40606936/"
+          }
+        ],
+        "source_chars": 385,
+        "enriched_at": "2026-11-09",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.25)",
+          "study.participants: unsupported wording (0.00)",
+          "finding: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_42490699359b9960",
+      "published_at": "2026-11-08",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New drug improves heart and lung function in heart failure patients",
+      "summary": "In patients with heart failure and preserved ejection fraction, the drug improved heart and lung function. It reduced pulmonary artery pressure and improved exercise capacity.",
+      "why_it_matters": "If you have heart failure with preserved ejection fraction, this treatment may help reduce symptoms and improve daily function.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42999959/",
+      "factor_slug": "sotatercept",
+      "outcome_slug": "combined_post_and_precapillary_ph pulmonary_hypertension",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Sotatercept",
+        "summary": "In patients with heart failure with preserved ejection fraction and combined post- and precapillary pulmonary hypertension, sotatercept improved heart and lung function. The drug reduced pulmonary vascular resistance and mean pulmonary arterial pressure. It also improved exercise capacity, as measured by 6-minute walk distance, and New York Heart Association class.",
+        "key_findings": [
+          "Pulmonary vascular resistance decreased by 0.67 Wood units (0.3 mg/kg dose) and 0.33 Wood units (0.7 mg/kg dose) at week 24 compared to placebo.",
+          "Mean pulmonary arterial pressure decreased by 9.19 mm Hg (0.3 mg/kg) and 9.22 mm Hg (0.7 mg/kg).",
+          "Pulmonary arterial wedge pressure decreased by 3.04 mm Hg (0.3 mg/kg) and 2.53 mm Hg (0.7 mg/kg).",
+          "6-minute walk distance increased by 20.3 meters (0.3 mg/kg dose) and 5.8 meters (0.7 mg/kg dose)."
+        ],
+        "study": {
+          "trial_name": "CADENCE Study",
+          "design": "randomized, placebo-controlled, phase 2",
+          "participants": "164 patients with heart failure with preserved ejection fraction and combined post- and precapillary pulmonary hypertension",
+          "comparator": "placebo",
+          "primary_endpoint": "change in pulmonary vascular resistance at week 24",
+          "follow_up": "24 weeks"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Phase 2 trial \u2014 results need confirmation in larger phase 3 trials.",
+          "Primary endpoint was hemodynamic; clinical outcomes like mortality or hospitalization were not assessed.",
+          "The lower dose (0.3 mg/kg) appeared more effective than the higher dose (0.7 mg/kg).",
+          "Adverse events included increased hemoglobin and diarrhea."
+        ],
+        "next_steps": "A confirmatory phase 3 trial is warranted to determine whether hemodynamic benefits translate into durable clinical outcomes.",
+        "who_it_applies_to": "Patients with heart failure with preserved ejection fraction and combined post- and precapillary pulmonary hypertension.",
+        "evidence": [
+          {
+            "pmid": "41904795",
+            "title": "Sotatercept for Combined Post- and Precapillary Pulmonary Hypertension Associated With Heart Failure: Results From the Phase 2, Randomized, Placebo-Controlled CADENCE Study.",
+            "journal": "Circulation",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41904795/"
+          },
+          {
+            "pmid": "42365223",
+            "title": "Beyond vasodilation: sotatercept and the remodeling hypothesis in hfpef-associated pulmonary hypertension.",
+            "journal": "Heart failure reviews",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42365223/"
+          }
+        ],
+        "source_chars": 197,
+        "enriched_at": "2026-11-09",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.50)",
+          "finding: unsupported wording (0.57)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "heart_failure",
+          "name": "Heart failure",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 729,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Heart failure",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Bodea meta analysis in J Clin Med already points to sglt2 inhibitors tracks with lower risk or better outcomes, and l",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2141,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Heart failure",
+            "summary": "Benefit is observed in obesity-associated heart failure with preserved ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 1247,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Heart failure",
+            "summary": "Observational and preclinical evidence suggests aerobic exercise lowers heart failure risk, but most data come from specific patient groups (diabetics post-PCI, diabetic cardiomyopathy) or animal models rather than the g",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 5
+          },
+          {
+            "id": 3546,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Heart failure",
+            "summary": "Renin-angiotensin system inhibitors were linked to lower 1-year mortality.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 3216,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Iron supplementation",
+            "outcome": "Heart failure",
+            "summary": "Iron supplementation improves outcomes in heart failure with reduced ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3870,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Heart failure",
+            "summary": "Intravenous iron may reduce heart failure events in patients with chronic kidney disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 23,
         "factor_total": 0
       }
     },
@@ -2023,6 +3034,171 @@
         "factor_edges": [],
         "outcome_total": 0,
         "factor_total": 0
+      }
+    },
+    {
+      "id": "br_2db94da07b3bb76f",
+      "published_at": "2026-11-05",
+      "category": "metabolic",
+      "stage": "phase2",
+      "audience": "general",
+      "headline": "New drug shows promise in treating fatty liver disease",
+      "summary": "Merck's dual GLP-1/glucagon agonist met its primary endpoint in a mid-stage trial for MASH. Biopsy data showed significant improvement in liver health.",
+      "why_it_matters": "People with fatty liver disease may benefit from a new treatment option in the near future.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "MASH Resolution",
+            "treatment": 63,
+            "control": 13
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "7 mg efinopegdutide",
+        "control_label": "Placebo"
+      },
+      "strength": 0.85,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/aasld26-merck-unwraps-mash-biopsy-data-for-drug-it-got-from-south-koreas-hanmi/",
+      "factor_slug": "glp1_glucagon_agonist",
+      "outcome_slug": "mash",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "efinopegdutide",
+        "summary": "In a phase 2b trial, Merck's dual GLP-1/glucagon agonist efinopegdutide met its primary endpoint in patients with metabolic dysfunction-associated steatohepatitis (MASH). The study evaluated the drug's effect on liver health using biopsy data after 24 weeks of treatment. At the 7 mg dose, 63% of patients achieved resolution of MASH, compared to 13% in the placebo group. The drug also showed significant improvements in steatosis, hepatocellular ballooning, and lobular inflammation.",
+        "key_findings": [
+          "63% of patients on 7 mg efinopegdutide achieved resolution of MASH, compared to 13% on placebo.",
+          "The drug significantly improved steatosis, hepatocellular ballooning, and lobular inflammation on liver biopsy.",
+          "No drug-related liver adverse effects were observed.",
+          "Efinopegdutide ranked highly in reducing liver fat content (SUCRA: 67.02) in a network meta-analysis.",
+          "Improvements in liver histology were consistent with prior evidence on GLP-1RAs in MASH."
+        ],
+        "study": {
+          "comparator": "placebo",
+          "primary_endpoint": "resolution of MASH on liver biopsy",
+          "follow_up": "24 weeks"
+        },
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with metabolic dysfunction-associated steatohepatitis (MASH)",
+        "evidence": [
+          {
+            "pmid": "40489581",
+            "title": "Efficacy of GLP-1-based Therapies on Metabolic Dysfunction-associated Steatotic Liver Disease and Metabolic Dysfunction-associated Steatohepatitis: A Systematic Review and Meta-analysis.",
+            "journal": "The Journal of clinical endocrinology and metabolism",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40489581/"
+          },
+          {
+            "pmid": "39028914",
+            "title": "Comparative efficacy of pharmacologic therapies for MASH in reducing liver fat content: Systematic review and network meta-analysis.",
+            "journal": "Hepatology (Baltimore, Md.)",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39028914/"
+          },
+          {
+            "pmid": "42165732",
+            "title": "Evolution of incretin-based therapies: From GLP-1 monotherapy to dual and triple agonists: A new era in metabolic therapy.",
+            "journal": "The Indian journal of medical research",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42165732/"
+          }
+        ],
+        "source_chars": 302,
+        "enriched_at": "2026-11-09",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.design: unsupported wording (0.50)",
+          "study.participants: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.00)",
+          "next_steps: 3"
+        ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "glp1_agonists",
+          "name": "GLP-1 receptor agonists",
+          "relation": "class"
+        },
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [
+          {
+            "id": 210,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Cardiovascular disease",
+            "summary": "Multiple large cardiovascular outcome trials (CVOTs) have shown that GLP-1 receptor agonists reduce the risk of major adverse cardiovascular events (MACE\u2014heart attack, stroke, and CV death) by roughly 12\u201314% compared to ",
+            "effect": "~12\u201314% relative risk reduction in MACE in high-CV-risk T2D patients; Class-level meta-analyses confirm significant MACE reduction",
+            "review": "verified_evidence",
+            "n_evidence": 16
+          },
+          {
+            "id": 2144,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Weight loss",
+            "summary": "GLP-1 receptor agonists consistently and significantly reduce body weight across multiple populations, including adults with obesity, type 2 diabetes, and polycystic ovary syndrome. Three independent meta-analyses and on",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 21
+          },
+          {
+            "id": 2155,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Obesity",
+            "summary": "GLP-1 receptor agonists (GLP-1 RAs) consistently reduce body weight and BMI in adults with overweight or obesity. A high-quality meta-analysis of oral small-molecule GLP-1 RAs (n=10,000) confirms significant reductions i",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 21
+          },
+          {
+            "id": 2156,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Type 2 diabetes",
+            "summary": "GLP-1 receptor agonists (GLP-1 RAs) are associated with improved glycemic control and reduced type 2 diabetes (T2D) risk across multiple study designs. A 2026 meta-analysis of oral small-molecule GLP-1RAs (n \u2248 10,000) de",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 20
+          },
+          {
+            "id": 2139,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Major adverse cardiovascular events",
+            "summary": "GLP-1 receptor agonists consistently reduce major adverse cardiovascular events (MACE) across multiple high-quality study designs. A meta-analysis of ~10,000 patients and a high-quality RCT both demonstrate MACE reductio",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 11
+          },
+          {
+            "id": 2503,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "HbA1c",
+            "summary": "GLP-1 receptor agonists consistently lower HbA1c in adults with type 2 diabetes (and, to a lesser extent, type 1 diabetes). A 2026 meta-analysis of ~10,000 participants confirmed significant reductions with oral small-mo",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 10
+          }
+        ],
+        "outcome_total": 0,
+        "factor_total": 70
       }
     },
     {
