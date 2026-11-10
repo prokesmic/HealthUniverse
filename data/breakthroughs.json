@@ -1,8 +1,784 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-09",
+  "updated_at": "2026-11-10",
   "items": [
+    {
+      "id": "br_75235c37d759a797",
+      "published_at": "2026-11-10",
+      "category": "cardio",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New blood thinner may reduce stroke risk after mild stroke",
+      "summary": "Sunharbo (asundexian) is approved to help prevent stroke in adults who recently had a mild-to-moderate non-cardioembolic ischemic stroke or high-risk TIA. It is used with antiplatelet therapy.",
+      "why_it_matters": "If you've had a recent mild stroke or TIA, ask your doctor if this new option could help lower your future stroke risk.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Ischemic Stroke",
+            "treatment": 6.2,
+            "control": 8.4
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Sunharbo",
+        "control_label": "Placebo"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Approvals",
+      "source_url": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-factor-xla-inhibitor-help-prevent-stroke-certain-adults-high-risk",
+      "factor_slug": "factor_xia_inhibitor",
+      "outcome_slug": "stroke_prevention",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Sunharbo (asundexian)",
+        "summary": "Sunharbo (asundexian) 50 mg once daily was tested in adults who recently had a mild-to-moderate non-cardioembolic ischemic stroke or a high-risk transient ischemic attack (TIA). The drug was used in combination with antiplatelet therapy in a large phase 3 trial. It significantly reduced the risk of ischemic stroke compared to placebo over a median treatment period of 14.2 months. Major bleeding rates were similar between groups, though gastrointestinal bleeding was more common with Sunharbo.",
+        "key_findings": [
+          "Ischemic stroke risk was reduced by 26% with Sunharbo compared to placebo (hazard ratio 0.74, 95% CI 0.65 to 0.84)",
+          "Major bleeding incidence was 1.9% in the Sunharbo group and 1.7% in the placebo group",
+          "Gastrointestinal bleeding occurred more commonly with Sunharbo than with placebo",
+          "The most common adverse reaction (\u22653%) was diarrhea",
+          "The composite of death from cardiovascular causes, myocardial infarction, or stroke was lower in the Sunharbo group"
+        ],
+        "study": {
+          "trial_name": "OCEANIC-STROKE",
+          "design": "multicenter, randomized, double-blind, placebo-controlled phase 3 study",
+          "participants": "12,327 adults with recent non-cardioembolic ischemic stroke (NIH Stroke Scale \u226415) or high-risk TIA",
+          "comparator": "placebo",
+          "primary_endpoint": "ischemic stroke",
+          "follow_up": "median of 14.2 months"
+        },
+        "regulatory_status": "FDA approved for use in combination with antiplatelet therapy to reduce stroke risk in adults following a recent mild-to-moderate non-cardioembolic ischemic stroke or high-risk TIA",
+        "caveats": [
+          "Increased risk of gastrointestinal bleeding with Sunharbo",
+          "Higher major bleeding risk in patients older than 75 years",
+          "Increased bleeding risk during the first 90 days of treatment",
+          "Not recommended in patients with moderate or severe hepatic impairment"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults who recently had a mild-to-moderate non-cardioembolic ischemic stroke or a high-risk transient ischemic attack (TIA)",
+        "evidence": [
+          {
+            "pmid": "41985132",
+            "title": "Asundexian for Secondary Stroke Prevention.",
+            "journal": "The New England journal of medicine",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41985132/"
+          }
+        ],
+        "source_chars": 3242,
+        "enriched_at": "2026-11-10",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "stroke_risk",
+          "name": "Stroke risk",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1171,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Polycythemia vera",
+            "outcome": "Stroke risk",
+            "summary": "Polycythemia vera carries a clear excess thrombotic burden, and stroke belongs to that arterial-risk spectrum. Modern real-world cohorts and longstanding hematology reviews consistently show that cerebrovascular events r",
+            "effect": "A 2026 Swedish population study of 2,604 polycythemia vera patients found arterial event rates above 2 per 100 patient-years even on treatment, consistent with substantial residual cerebrovascular risk.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1364,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Polycythemia vera",
+            "outcome": "Stroke risk",
+            "summary": "Polycythemia vera is a well-established thrombotic disorder, and stroke is one of its classic arterial complications. Across long-term cohorts, cerebrovascular events appear both as presenting events and as recurrent com",
+            "effect": "In a multicenter recurrent-thrombosis cohort, 191 of 494 first thrombotic events were cerebrovascular and recurrent thrombosis occurred in 33.6% of patients overall.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1598,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Homocysteine high above 15 micromol/L",
+            "outcome": "Stroke risk",
+            "summary": "The strongest direct anchor for this edge is the Northern Manhattan cohort, where homocysteine at or above 15 micromol/L marked a materially higher ischemic stroke risk. Older meta-analytic and population-cohort data poi",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3752,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Statins",
+            "outcome": "Stroke risk",
+            "summary": "Patients achieving \u226550% LDL-C reduction had lower risk of recurrent stroke.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 4,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_66cf9049d05ee60a",
+      "published_at": "2026-11-10",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug gets FDA approval for aggressive lymphoma",
+      "summary": "Pirtobrutinib has received accelerated FDA approval for patients with relapsed or refractory mantle cell lymphoma. The approval is based on clinical trial results showing response in patients who no longer benefit from other treatments.",
+      "why_it_matters": "This approval offers a new treatment option for patients with a hard-to-treat form of lymphoma who have run out of other choices.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-grants-accelerated-approval-pirtobrutinib-relapsed-or-refractory-mantle-cell-lymphoma",
+      "factor_slug": "pirtobrutinib",
+      "outcome_slug": "mantle_cell_lymphoma",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "pirtobrutinib",
+        "summary": "Pirtobrutinib received accelerated FDA approval for patients with relapsed or refractory mantle cell lymphoma who have received at least two prior lines of systemic therapy, including a BTK inhibitor. The approval was based on a single-arm trial (BRUIN) in 120 patients with MCL previously treated with a BTK inhibitor. The overall response rate was 50% (95% CI: 41, 59), with a complete response rate of 13%. The estimated median duration of response was 8.3 months.",
+        "key_findings": [
+          "Overall response rate (ORR) was 50% (95% CI: 41, 59)",
+          "Complete response rate was 13%",
+          "Estimated median duration of response (DOR) was 8.3 months (95% CI: 5.7, NE)",
+          "Estimated DOR rate at 6 months was 65.3% (95% CI: 49.8, 77.1)",
+          "83% of patients had discontinued their last BTK inhibitor due to refractory or progressive disease"
+        ],
+        "study": {
+          "trial_name": "BRUIN (NCT03740529)",
+          "design": "open-label, multicenter, single-arm trial",
+          "participants": "120 patients with relapsed or refractory mantle cell lymphoma",
+          "primary_endpoint": "overall response rate (ORR)"
+        },
+        "regulatory_status": "FDA accelerated approval",
+        "caveats": [
+          "Response duration data are preliminary with median DOR not yet reached in some estimates",
+          "Common adverse reactions include fatigue, musculoskeletal pain, diarrhea, and edema",
+          "Grade 3 or 4 cytopenias occurred in \u226510% of patients"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with relapsed or refractory mantle cell lymphoma who have received at least two prior lines of systemic therapy, including a BTK inhibitor",
+        "evidence": [
+          {
+            "pmid": "37192437",
+            "title": "Pirtobrutinib in Covalent Bruton Tyrosine Kinase Inhibitor Pretreated Mantle-Cell Lymphoma.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37192437/"
+          }
+        ],
+        "source_chars": 2686,
+        "enriched_at": "2026-11-10",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.40)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_d82147e4dccfbc1a",
+      "published_at": "2026-11-10",
+      "category": "neuro",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved to lower stroke risk after mild stroke",
+      "summary": "The FDA has approved asundexian to reduce the risk of stroke in people who recently had a mild-to-moderate non-cardioembolic ischemic stroke or a high-risk transient ischemic attack.",
+      "why_it_matters": "If you've had a recent mild stroke or TIA, talk to your doctor about this new option to help prevent another stroke.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Ischemic Stroke",
+            "treatment": 6.2,
+            "control": 8.4
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "asundexian",
+        "control_label": "placebo"
+      },
+      "strength": 0.95,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/bayer-wins-fda-approval-for-stroke-prevention-drug-sunharbo/",
+      "factor_slug": "asundexian",
+      "outcome_slug": "stroke",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "asundexian",
+        "summary": "The FDA has approved asundexian to reduce the risk of stroke in people who recently had a mild-to-moderate non-cardioembolic ischemic stroke or a high-risk transient ischemic attack. In a phase 3 trial, asundexian was tested in addition to antiplatelet therapy in patients within 72 hours of stroke or TIA onset. The drug reduced the risk of ischemic stroke by 26% compared to placebo. Major bleeding rates were similar between the asundexian and placebo groups.",
+        "key_findings": [
+          "Ischemic stroke occurred in 6.2% of patients receiving asundexian versus 8.4% in the placebo group.",
+          "The cause-specific hazard ratio for ischemic stroke was 0.74 (95% CI, 0.65 to 0.84).",
+          "Major bleeding occurred in 1.9% of the asundexian group and 1.7% of the placebo group.",
+          "The composite of death from cardiovascular causes, myocardial infarction, or stroke was lower in the asundexian group.",
+          "Adverse event rates were 69.3% in the asundexian group and 70.1% in the placebo group."
+        ],
+        "study": {
+          "trial_name": "OCEANIC-STROKE",
+          "design": "randomized phase 3, double-blind",
+          "participants": "12,327 patients with non-cardioembolic ischemic stroke or high-risk TIA",
+          "comparator": "placebo",
+          "primary_endpoint": "ischemic stroke"
+        },
+        "regulatory_status": "FDA approved",
+        "caveats": [
+          "The trial excluded patients with cardioembolic stroke or conditions requiring anticoagulation.",
+          "The study was funded by Bayer, the manufacturer of asundexian.",
+          "The benefit was observed in a specific population with non-cardioembolic stroke or high-risk TIA."
+        ],
+        "next_steps": "The drug is expected to be launched in Germany and other markets, with further real-world use and monitoring anticipated.",
+        "who_it_applies_to": "Adults who recently had a mild-to-moderate non-cardioembolic ischemic stroke or a high-risk transient ischemic attack, within 72 hours of onset, and who are on antiplatelet therapy.",
+        "evidence": [
+          {
+            "pmid": "41985132",
+            "title": "Asundexian for Secondary Stroke Prevention.",
+            "journal": "The New England journal of medicine",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41985132/"
+          },
+          {
+            "pmid": "41614533",
+            "title": "Rationale, design and baseline characteristics of participants in the OCEANIC-STROKE trial of FXIa inhibition for secondary stroke prevention.",
+            "journal": "European stroke journal",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41614533/"
+          }
+        ],
+        "source_chars": 986,
+        "enriched_at": "2026-11-10",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.20)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "stroke_risk",
+          "name": "Stroke risk",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1171,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Polycythemia vera",
+            "outcome": "Stroke risk",
+            "summary": "Polycythemia vera carries a clear excess thrombotic burden, and stroke belongs to that arterial-risk spectrum. Modern real-world cohorts and longstanding hematology reviews consistently show that cerebrovascular events r",
+            "effect": "A 2026 Swedish population study of 2,604 polycythemia vera patients found arterial event rates above 2 per 100 patient-years even on treatment, consistent with substantial residual cerebrovascular risk.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1364,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Polycythemia vera",
+            "outcome": "Stroke risk",
+            "summary": "Polycythemia vera is a well-established thrombotic disorder, and stroke is one of its classic arterial complications. Across long-term cohorts, cerebrovascular events appear both as presenting events and as recurrent com",
+            "effect": "In a multicenter recurrent-thrombosis cohort, 191 of 494 first thrombotic events were cerebrovascular and recurrent thrombosis occurred in 33.6% of patients overall.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1598,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Homocysteine high above 15 micromol/L",
+            "outcome": "Stroke risk",
+            "summary": "The strongest direct anchor for this edge is the Northern Manhattan cohort, where homocysteine at or above 15 micromol/L marked a materially higher ischemic stroke risk. Older meta-analytic and population-cohort data poi",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3752,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Statins",
+            "outcome": "Stroke risk",
+            "summary": "Patients achieving \u226550% LDL-C reduction had lower risk of recurrent stroke.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 4,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_e8e5e5b53b7e1880",
+      "published_at": "2026-11-10",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for advanced leukemia after prior treatments",
+      "summary": "Pirtobrutinib is approved for adults with chronic lymphocytic leukemia or small lymphocytic lymphoma who have had at least two prior therapies, including a BTK inhibitor. It offers a new option for patients whose disease has progressed on earlier treatments.",
+      "why_it_matters": "If you or a loved one has advanced CLL/SLL and has tried two prior treatments, this drug may be an option to discuss with your doctor.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-grants-accelerated-approval-pirtobrutinib-chronic-lymphocytic-leukemia-and-small-lymphocytic",
+      "factor_slug": "pirtobrutinib",
+      "outcome_slug": "chronic_lymphocytic_leukemia",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "pirtobrutinib",
+        "summary": "Pirtobrutinib was granted accelerated approval by the FDA on December 1, 2023, for adults with chronic lymphocytic leukemia or small lymphocytic lymphoma (CLL/SLL) who have received at least two prior lines of therapy, including a BTK inhibitor and a BCL-2 inhibitor. Efficacy was evaluated in the BRUIN trial (NCT03740529), a single-arm study of 108 patients with advanced disease after multiple prior treatments. The overall response rate was 72% (95% CI: 63, 80), with all responses being partial. Median duration of response was 12.2 months (95% CI: 9.3, 14.7).",
+        "key_findings": [
+          "Overall response rate (ORR) was 72% (95% CI: 63, 80)",
+          "Median duration of response (DOR) was 12.2 months (95% CI: 9.3, 14.7)",
+          "Median number of prior lines of therapy was 5 (range: 2 to 11)",
+          "Serious infections occurred in 32% of patients, including fatal infections in 10%"
+        ],
+        "study": {
+          "trial_name": "BRUIN (NCT03740529)",
+          "design": "open-label, international, single-arm, multicohort trial",
+          "participants": "108 patients with CLL or SLL",
+          "primary_endpoint": "overall response rate (ORR) and duration of response (DOR)"
+        },
+        "regulatory_status": "FDA granted accelerated approval on December 1, 2023",
+        "caveats": [
+          "The trial was single-arm, not randomized",
+          "The primary endpoint was response rate and duration, not overall survival",
+          "Serious infections occurred in 32% of patients, including fatal cases",
+          "The study included patients who had progressed on prior BTK and BCL-2 inhibitors"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with chronic lymphocytic leukemia or small lymphocytic lymphoma who have had at least two prior therapies, including a BTK inhibitor and a BCL-2 inhibitor",
+        "evidence": [
+          {
+            "pmid": "40479620",
+            "title": "Phase III Trial of Pirtobrutinib Versus Idelalisib/Rituximab or Bendamustine/Rituximab in Covalent Bruton Tyrosine Kinase Inhibitor-Pretreated Chronic Lymphocytic Leukemia/Small Lymphocytic Lymphoma (BRUIN CLL-321).",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40479620/"
+          },
+          {
+            "pmid": "33676628",
+            "title": "Pirtobrutinib in relapsed or refractory B-cell malignancies (BRUIN): a phase 1/2 study.",
+            "journal": "Lancet (London, England)",
+            "year": "2021",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/33676628/"
+          }
+        ],
+        "source_chars": 2952,
+        "enriched_at": "2026-11-10",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "finding: 77"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "leukemia",
+          "name": "Leukemia",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 541,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Benzene exposure",
+            "outcome": "Leukemia",
+            "summary": "The strongest piece here is the 2022 Zhang meta analysis in J Environ Sci (China), which ties benzene exposure to leukemia in a direction that later studies largely support. That makes this edge more about calibrating ma",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 794,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Breastfeeding",
+            "outcome": "Leukemia",
+            "summary": "The strongest anchor here is the large dose-response childhood-cancer meta-analysis, which found lower leukemia risk among breastfed children. Newer umbrella work and a focused early-life leukemia review did not overturn",
+            "effect": "OR, 0.66, 95% CI 0.62-0.70 (Zheng PW 2021)",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 615,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Formaldehyde exposure",
+            "outcome": "Leukemia",
+            "summary": "The anchor for this edge is the 2025 Nie cohort in Ann Work Expo Health, which suggests that formaldehyde exposure produces mixed findings across studies for leukemia. Later papers point in much the same direction, so th",
+            "effect": "Different designs and subgroups point in different directions, so a single pooled estimate is not the right way to read this edge.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 744,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Mixed organic-solvent exposure",
+            "outcome": "Leukemia",
+            "summary": "The strongest piece here is the 2020 Zhou meta analysis in BMC Public Health, which ties mixed organic-solvent exposure to leukemia in a direction that later studies largely support. That makes this edge more about calib",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 4,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_a96ddb69cd7dbefc",
+      "published_at": "2026-11-10",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for certain ovarian cancers",
+      "summary": "The FDA has approved mirvetuximab soravtansine for patients with FR\u03b1-positive, platinum-resistant ovarian, fallopian tube, or peritoneal cancer. This approval is based on clinical trial results showing meaningful responses in a hard-to-treat group.",
+      "why_it_matters": "If you or a loved one has this type of cancer, ask your doctor if this drug is an option.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-grants-accelerated-approval-mirvetuximab-soravtansine-gynx-fra-positive-platinum-resistant",
+      "factor_slug": "mirvetuximab_soravtansine",
+      "outcome_slug": "fr\u03b1_positive_platinum_resistant_ovarian_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "mirvetuximab soravtansine-gynx",
+        "summary": "The FDA granted accelerated approval to mirvetuximab soravtansine-gynx for adults with FR\u03b1-positive, platinum-resistant epithelial ovarian, fallopian tube, or primary peritoneal cancer who have received one to three prior systemic treatments. Efficacy was evaluated in a single-arm trial of 106 patients, with 104 in the efficacy evaluable population. The confirmed overall response rate was 31.7%, and the median duration of response was 6.9 months. The drug is administered intravenously every three weeks until disease progression or unacceptable toxicity.",
+        "key_findings": [
+          "Confirmed overall response rate was 31.7% (95% CI: 22.9, 41.6) in 104 efficacy evaluable patients.",
+          "Median duration of response was 6.9 months (95% CI: 5.6, 9.7).",
+          "The most common adverse reactions (\u226520%) included vision impairment, fatigue, nausea, and keratopathy.",
+          "Grade 3 ocular adverse events occurred in 5% of patients, and one patient had a grade 4 event.",
+          "A companion diagnostic test (VENTANA FOLR1 RxDx Assay) was approved to select patients."
+        ],
+        "study": {
+          "trial_name": "Study 0417 (NCT04296890)",
+          "design": "single-arm",
+          "participants": "106 patients with FR\u03b1-positive, platinum-resistant epithelial ovarian, fallopian tube, or primary peritoneal cancer",
+          "primary_endpoint": "investigator-assessed overall response rate (ORR)",
+          "follow_up": "tumor response assessments every six weeks for the first 36 weeks and every 12 weeks thereafter"
+        },
+        "regulatory_status": "FDA accelerated approval granted on November 14, 2022",
+        "caveats": [
+          "The trial was single-arm, not randomized.",
+          "The primary endpoint was response rate, a surrogate for survival.",
+          "Ocular toxicity is a significant concern, with a boxed warning.",
+          "The drug is approved only for FR\u03b1-positive patients, requiring a companion diagnostic test."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with FR\u03b1-positive, platinum-resistant epithelial ovarian, fallopian tube, or primary peritoneal cancer who have received one to three prior systemic treatment regimens",
+        "evidence": [
+          {
+            "pmid": "37102083",
+            "title": "Strategies for prevention and management of ocular events occurring with mirvetuximab soravtansine.",
+            "journal": "Gynecologic oncology reports",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37102083/"
+          },
+          {
+            "pmid": "28029313",
+            "title": "Safety and Activity of Mirvetuximab Soravtansine (IMGN853), a Folate Receptor Alpha-Targeting Antibody-Drug Conjugate, in Platinum-Resistant Ovarian, Fallopian Tube, or Primary Peritoneal Cancer: A Phase I Expansion Study.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2017",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/28029313/"
+          }
+        ],
+        "source_chars": 3508,
+        "enriched_at": "2026-11-10",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "next_steps: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "ovarian_cancer",
+          "name": "Ovarian cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1281,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Combined oral contraceptives",
+            "outcome": "Ovarian cancer",
+            "summary": "The ovarian-cancer signal is strongly protective and unusually consistent. Large pooled epidemiology, conventional case-control data, and hereditary-risk cohorts all point in the same direction: longer combined oral-cont",
+            "effect": "This is one of the clearest long-term protective signals in reproductive epidemiology. Additional case-control and BRCA-carrier cohort data support the same direction.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 783,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Ovarian cancer",
+            "summary": "The most recent meta-analysis again found higher ovarian-cancer risk among women exposed to asbestos at work, echoing the earlier Environmental Health Perspectives synthesis. The literature is not enormous, but it is mor",
+            "effect": "The better occupational syntheses show a repeated upward shift in ovarian-cancer risk with asbestos exposure, and the signal is stronger than a trivial observational blip.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 867,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Combined oral contraceptive use",
+            "outcome": "Ovarian cancer",
+            "summary": "Among the v4 reproductive-endocrinology topics, this is one of the clearest. Across large pooled datasets, women who have used oral contraceptives tend to have lower ovarian-cancer risk than never-users, and the reductio",
+            "effect": "This is one of the more consistent cancer-prevention signals in reproductive epidemiology: ever use of combined oral contraceptives is associated with lower ovarian-cancer risk, and longer use appears more protective.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1079,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Breastfeeding independent of parity",
+            "outcome": "Ovarian cancer",
+            "summary": "The strongest pooled evidence suggests breastfeeding is associated with lower ovarian-cancer risk even after taking parity into account, and longer cumulative breastfeeding appears to strengthen the protection. Prospecti",
+            "effect": "The most reproducible pooled evidence suggests breastfeeding remains associated with lower ovarian-cancer risk even after parity is accounted for, with the protective signal strengthening as duration increases.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1087,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Combined oral contraceptives",
+            "outcome": "Ovarian cancer",
+            "summary": "Combined oral contraceptives are associated with lower ovarian-cancer risk in large pooled analyses, and the most persuasive evidence suggests the benefit grows with duration of use. This is one of the clearest long-term",
+            "effect": "The ovarian-cancer signal is one of the most consistent long-term benefits of combined oral contraceptives. Across pooled datasets, ever use is associated with lower risk, and longer duration generally strengthens that protection.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1273,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Breastfeeding independent of parity",
+            "outcome": "Ovarian cancer",
+            "summary": "The evidence supports a protective association independent of simple parity count. Meta-analytic and large case-control data show lower ovarian cancer risk in women who breastfed, with stronger protection at longer durat",
+            "effect": "The best parity-aware syntheses still support a protective association. A 2014 meta-analysis of 40 epidemiologic studies including 17,139 women with ovarian cancer found that, among parous women only, breastfeeding was associated with lower ovarian cancer risk, and risk fell further with longer total duration.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 14,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_821c34a6a6aee1eb",
+      "published_at": "2026-11-10",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New CAR-T therapy approved for advanced follicular lymphoma",
+      "summary": "The FDA has approved lisocabtagene maraleucel for adults with follicular lymphoma that has returned or worsened after at least two prior treatments.",
+      "why_it_matters": "This approval offers a new treatment option for patients with advanced lymphoma who have limited choices.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-grants-accelerated-approval-lisocabtagene-maraleucel-follicular-lymphoma",
+      "factor_slug": "lisocabtagene_maraleucel",
+      "outcome_slug": "follicular_lymphoma",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "lisocabtagene maraleucel",
+        "summary": "The FDA has granted accelerated approval to lisocabtagene maraleucel for adults with relapsed or refractory follicular lymphoma who have received at least two prior lines of systemic therapy. Efficacy was evaluated in a phase 2 trial (TRANSCEND-FL) involving 94 patients with PET-positive disease after prior treatment. The therapy showed an overall response rate of 95.7% with a median duration of response not reached after 16.8 months of follow-up. Common side effects included cytokine release syndrome, headache, and fatigue. The drug is approved with a boxed warning for life-threatening cytokine release syndrome and neurologic toxicities.",
+        "key_findings": [
+          "Overall response rate (ORR) was 95.7% (95% CI: 89.5, 98.8)",
+          "Median duration of response (DOR) was not reached (95% CI: 18.04, NR)",
+          "After 16.8 months of follow-up, 95.7% of patients responded",
+          "Cytokine release syndrome (CRS) occurred in \u226520% of patients",
+          "No grade \u22653 CRS, neurologic events, or infections were reported in the Japanese subgroup (n=10)"
+        ],
+        "study": {
+          "trial_name": "TRANSCEND-FL",
+          "design": "Phase 2, open-label, multicenter, single-arm",
+          "participants": "94 patients with relapsed or refractory follicular lymphoma after two or more prior lines of systemic therapy",
+          "primary_endpoint": "Overall response rate (ORR) and duration of response (DOR) as determined by an independent review committee",
+          "follow_up": "Median follow-up of 16.8 months (95% CI: 16.3, 17.0)"
+        },
+        "regulatory_status": "FDA accelerated approval granted on May 15, 2024",
+        "caveats": [
+          "The trial was single-arm, not randomized",
+          "Primary endpoint was overall response rate, a surrogate measure",
+          "Median duration of response was not reached, so long-term durability remains uncertain",
+          "Boxed warning for life-threatening cytokine release syndrome and neurologic toxicities"
+        ],
+        "next_steps": "The drug is now approved for use in the U.S. under accelerated approval; post-approval studies may be required to confirm clinical benefit.",
+        "who_it_applies_to": "Adults with relapsed or refractory follicular lymphoma who have received at least two prior lines of systemic therapy, including an anti-CD20 antibody and an alkylating agent",
+        "evidence": [
+          {
+            "pmid": "42875607",
+            "title": "Efficacy and safety of lisocabtagene maraleucel in adult Japanese patients with relapsed or refractory follicular lymphoma: 31-month follow-up of the phase 2 TRANSCEND FL study.",
+            "journal": "International journal of clinical oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42875607/"
+          },
+          {
+            "pmid": "38072433",
+            "title": "[CAR-T therapy for malignant lymphoma].",
+            "journal": "[Rinsho ketsueki] The Japanese journal of clinical hematology",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38072433/"
+          },
+          {
+            "pmid": "41378337",
+            "title": "Emerging role of lisocabtagene maraleucel chimeric antigen receptor-T cell in nodal and gastrointestinal follicular lymphoma.",
+            "journal": "World journal of gastroenterology",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41378337/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Breyanzi",
+          "generic": "lisocabtagene maraleucel",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=lisocabtagene"
+        },
+        "source_chars": 3114,
+        "enriched_at": "2026-11-10",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_2eccb20ed1f46876",
+      "published_at": "2026-11-10",
+      "category": "metabolic",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves new drug for sickle cell disease",
+      "summary": "The FDA has approved a new treatment for sickle cell disease. It reduces hemoglobin damage and may lower the need for blood transfusions.",
+      "why_it_matters": "People with sickle cell disease now have a new treatment option that may reduce symptoms and complications.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Hb response rate",
+            "treatment": 51.1,
+            "control": 6.5
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Voxelotor 1500 mg",
+        "control_label": "Placebo"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-voxelotor-sickle-cell-disease",
+      "factor_slug": "voxelotor",
+      "outcome_slug": "sickle_cell_disease",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "voxelotor",
+        "summary": "The FDA approved voxelotor (Oxbryta) in November 2019 for adults and pediatric patients 12 years and older with sickle cell disease. The approval was based on a phase 3 trial (HOPE) involving 274 patients. Voxelotor significantly increased hemoglobin levels compared to placebo, with 51.1% of patients on the 1500 mg dose showing a hemoglobin increase of more than 1 g/dL by week 24. It also reduced markers of hemolysis, including indirect bilirubin and reticulocyte count. The drug is approved under accelerated approval based on hemoglobin improvement, pending confirmation of clinical benefit in future trials.",
+        "key_findings": [
+          "51.1% of patients on 1500 mg voxelotor had a hemoglobin increase of >1 g/dL at week 24, compared to 6.5% on placebo.",
+          "Mean hemoglobin change in the 1500 mg group was +1.14 g/dL, versus -0.08 g/dL in placebo.",
+          "Mean indirect bilirubin decreased by 29.08% in the 1500 mg group, versus -3.16% in placebo.",
+          "Mean reticulocyte count decreased by 19.93% in the 1500 mg group, versus increased by 4.54% in placebo.",
+          "Adverse events occurred in 26% of patients on 1500 mg voxelotor, 23% on 900 mg, and 26% on placebo."
+        ],
+        "study": {
+          "trial_name": "HOPE",
+          "design": "randomized, double-blind, placebo-controlled, multicenter trial",
+          "comparator": "placebo",
+          "primary_endpoint": "Hb response rate defined as an Hb increase of >1 g/dL from baseline to week 24",
+          "follow_up": "24 weeks"
+        },
+        "regulatory_status": "FDA approved under accelerated approval for adults and pediatric patients 12 years and older; indication expanded to include patients 4 years and older in the label",
+        "caveats": [
+          "Approval is based on a surrogate endpoint (hemoglobin increase), not confirmed clinical benefit.",
+          "Continued approval may depend on results from confirmatory trials.",
+          "Common side effects include headache, diarrhea, abdominal pain, nausea, rash, fatigue, and pyrexia.",
+          "Voxelotor may interfere with laboratory measurement of hemoglobin subtypes by HPLC."
+        ],
+        "next_steps": "Confirmatory trials are needed to verify clinical benefit and support full approval.",
+        "who_it_applies_to": "Adults and pediatric patients 4 years of age and older with sickle cell disease",
+        "evidence": [
+          {
+            "pmid": "32020554",
+            "title": "Voxelotor: First Approval.",
+            "journal": "Drugs",
+            "year": "2020",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/32020554/"
+          },
+          {
+            "pmid": "31199090",
+            "title": "A Phase 3 Randomized Trial of Voxelotor in Sickle Cell Disease.",
+            "journal": "The New England journal of medicine",
+            "year": "2019",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/31199090/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Oxbryta",
+          "generic": "voxelotor",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=voxelotor"
+        },
+        "source_chars": 2689,
+        "enriched_at": "2026-11-10",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_fb5163c6506b94ce",
       "published_at": "2026-11-09",
@@ -627,6 +1403,242 @@
         ],
         "factor_edges": [],
         "outcome_total": 30,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_25297157e250790a",
+      "published_at": "2026-11-09",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New treatment extends progression-free survival in multiple myeloma",
+      "summary": "In newly diagnosed multiple myeloma, the combination therapy significantly improved progression-free survival compared to standard treatment. Median progression-free survival has not yet been reached in either transplant-eligible or ineligible patients.",
+      "why_it_matters": "Patients with newly diagnosed multiple myeloma may live longer without disease progression with this treatment option.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "DVRd",
+        "control_label": "VRd",
+        "median_t": 205,
+        "median_c": 87,
+        "hr": 0.42,
+        "ci_low": 0.3,
+        "ci_high": 0.59,
+        "x_label": "Months",
+        "y_label": "Progression-Free Survival"
+      },
+      "strength": 0.95,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43002730/",
+      "factor_slug": "daratumumab_bortezomib_lenalidomide_dexamethasone",
+      "outcome_slug": "progression_free_survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Daratumumab, bortezomib, lenalidomide, and dexamethasone (DVRd)",
+        "summary": "In newly diagnosed multiple myeloma, the combination of daratumumab, bortezomib, lenalidomide, and dexamethasone (DVRd) significantly improved progression-free survival compared to standard VRd therapy in both transplant-eligible and transplant-ineligible patients. Median progression-free survival has not yet been reached in either group. Long-term projections based on modeling suggest that DVRd extends progression-free survival by 118 months in transplant-eligible patients and 47 months in transplant-ineligible patients. These findings support DVRd as a new standard of care regardless of transplant eligibility.",
+        "key_findings": [
+          "At 48 months, progression-free survival was 84.3% with DVRd versus 67.7% with VRd in transplant-eligible patients (hazard ratio 0.42).",
+          "Projected median progression-free survival with DVRd was 205 months (17.1 years) versus 87 months (7.3 years) with VRd in transplant-eligible patients.",
+          "Projected median progression-free survival with DVRd was 100 months (8.3 years) versus 53 months (4.4 years) with VRd in transplant-ineligible patients.",
+          "The risk of disease progression or death was 43% lower with DVRd than with VRd in transplant-ineligible patients (hazard ratio 0.57).",
+          "Complete response or better was achieved in 87.9% of patients receiving DVRd versus 70.1% with VRd."
+        ],
+        "study": {
+          "trial_name": "PERSEUS and CEPHEUS",
+          "participants": "709 transplant-eligible patients (PERSEUS), 395 transplant-ineligible or transplant-deferred patients (CEPHEUS)",
+          "comparator": "VRd (bortezomib, lenalidomide, dexamethasone)",
+          "primary_endpoint": "Progression-free survival",
+          "follow_up": "47.5 months (PERSEUS), 58.7 months (CEPHEUS)"
+        },
+        "regulatory_status": "Approved as standard of care in newly diagnosed multiple myeloma regardless of transplant eligibility",
+        "caveats": [
+          "Findings are based on extrapolated modeling, not observed long-term data.",
+          "Adverse events were more common with DVRd, including neutropenia and thrombocytopenia.",
+          "Data on overall survival not reported in the source."
+        ],
+        "next_steps": "DVRd is now recommended as standard of care for newly diagnosed multiple myeloma in both transplant-eligible and ineligible patients.",
+        "who_it_applies_to": "Adults with newly diagnosed multiple myeloma, regardless of transplant eligibility",
+        "evidence": [
+          {
+            "pmid": "38084760",
+            "title": "Daratumumab, Bortezomib, Lenalidomide, and Dexamethasone for Multiple Myeloma.",
+            "journal": "The New England journal of medicine",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38084760/"
+          },
+          {
+            "pmid": "39910273",
+            "title": "Daratumumab plus bortezomib, lenalidomide and dexamethasone for transplant-ineligible or transplant-deferred newly diagnosed multiple myeloma: the randomized phase 3 CEPHEUS trial.",
+            "journal": "Nature medicine",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39910273/"
+          }
+        ],
+        "source_chars": 1581,
+        "enriched_at": "2026-11-10",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.design: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_e324b71361db0843",
+      "published_at": "2026-11-09",
+      "category": "cardio",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New Bayer drug reduces stroke recurrence without raising bleeding risk",
+      "summary": "Bayer's new drug is the first in a novel class designed to prevent blood clots without increasing bleeding risk. It has been approved by the FDA for reducing stroke recurrence.",
+      "why_it_matters": "If you've had a stroke, this drug may help prevent another one with less bleeding risk than older treatments.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/2026/11/09/cardiovascular-stroke-recurrence-bayer-drug-fda-approval/?utm_campaign=rss",
+      "factor_slug": "bayer_antithrombotic_drug",
+      "outcome_slug": "stroke_recurrence",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Sunharbo",
+        "summary": "Bayer's drug Sunharbo, a new medication in a novel class, was tested for its ability to reduce stroke recurrence without increasing bleeding risk. The drug is designed to prevent blood clots without raising the risk of bleeding, a common concern with existing anticoagulants.",
+        "key_findings": [
+          "Sunharbo reduces stroke recurrence",
+          "It does not increase bleeding risk",
+          "It has been approved by the FDA"
+        ],
+        "study": {},
+        "regulatory_status": "FDA approved",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Patients at risk of stroke recurrence who need anticoagulation without increased bleeding risk",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "32653056",
+            "title": "Stroke.",
+            "journal": "Lancet (London, England)",
+            "year": "2020",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/32653056/"
+          },
+          {
+            "pmid": "30874766",
+            "title": "Effect of Catheter Ablation vs Antiarrhythmic Drug Therapy on Mortality, Stroke, Bleeding, and Cardiac Arrest Among Patients With Atrial Fibrillation: The CABANA Randomized Clinical Trial.",
+            "journal": "JAMA",
+            "year": "2019",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/30874766/"
+          },
+          {
+            "pmid": "40886309",
+            "title": "Long-Term Anticoagulation Discontinuation After Catheter Ablation for Atrial Fibrillation: The ALONE-AF Randomized Clinical Trial.",
+            "journal": "JAMA",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40886309/"
+          }
+        ],
+        "source_chars": 249,
+        "enriched_at": "2026-11-10",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.50)",
+          "summary: unsupported wording (0.00)",
+          "finding: unsupported wording (0.33)",
+          "finding: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.20)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "stroke",
+          "name": "Stroke",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 538,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Atrial fibrillation",
+            "outcome": "Stroke",
+            "summary": "The anchor for this edge is the 2026 Cai meta analysis in Front Cardiovasc Med, which suggests that atrial fibrillation tracks with higher risk or worse outcomes for stroke. Later papers point in much the same direction,",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 688,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Migraine",
+            "outcome": "Stroke",
+            "summary": "For stroke, the most useful starting point is the 2026 Mohamed meta analysis in J Headache Pain. It found that migraine tracks with higher risk or worse outcomes, and the follow-on evidence is broadly consistent even whe",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 552,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Black carbon exposure",
+            "outcome": "Stroke",
+            "summary": "The ELAPSE analyses matter here because they link long-term exposure to low-level black carbon and related traffic pollutants with higher vascular morbidity across large European cohorts. Stroke-specific estimates are no",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 673,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "High lipoprotein(a)",
+            "outcome": "Stroke",
+            "summary": "The strongest piece here is the 2025 Cancelli meta analysis in Arch Cardiovasc Dis, which ties high lipoprotein(a) to stroke in a direction that later studies largely support. That makes this edge more about calibrating ",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 734,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Sleep-disordered breathing",
+            "outcome": "Stroke",
+            "summary": "The anchor for this edge is the 2026 Suusgaard meta analysis in Eur Neurol, which suggests that sleep-disordered breathing tracks with higher risk or worse outcomes for stroke. Later papers point in much the same directi",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 836,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Working 55 or more hours per week",
+            "outcome": "Stroke",
+            "summary": "The best anchor is the WHO/ILO stroke review in Environmental International, which found a moderate increase in incident stroke among people working at least 55 hours a week. The earlier Lancet meta-analysis points in th",
+            "effect": "The signal is not dramatic, but pooled cohort evidence repeatedly shows higher stroke risk once weekly working time reaches 55 hours or more.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 26,
         "factor_total": 0
       }
     },
@@ -4219,6 +5231,164 @@
         "outcome_edges": [],
         "factor_edges": [],
         "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_88f73904e11ee1ce",
+      "published_at": "2026-11-03",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Digital reminders boost statin refill rates in at-risk patients",
+      "summary": "Adaptive digital outreach improved short-term statin refills compared to usual communication. The study included adults with high risk for heart disease and recent nonadherence.",
+      "why_it_matters": "If you're on statins, ask your doctor about digital reminders to stay on track.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "14-day refill",
+            "treatment": 14.4,
+            "control": 12.0
+          },
+          {
+            "label": "28-day cumulative refill",
+            "treatment": 24.9,
+            "control": 21.2
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Digital outreach",
+        "control_label": "Usual communication"
+      },
+      "strength": 0.85,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2853391",
+      "factor_slug": "digital_outreach",
+      "outcome_slug": "statin_refill",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "adaptive digital outreach",
+        "summary": "This study tested whether adaptive digital outreach\u2014using secure portal messages, SMS/text, or nonsecure email\u2014could improve short-term statin refill rates compared to usual communication in adults with high risk for heart disease or established atherosclerotic cardiovascular disease (ASCVD) and recent statin nonadherence. Participants were randomized to one of four communication strategies, with nonresponders in the first stage receiving a second outreach. The intervention improved statin refill rates within 14 days and through 28 days. No additional benefit was seen when switching communication modalities compared to repeating the same one.",
+        "key_findings": [
+          "14-day statin refill rate was 14.4% with digital outreach vs 12.0% with usual communication (adjusted risk difference: 2.3 percentage points).",
+          "Among initial nonresponders, second-stage outreach increased refill to 13.0% vs 10.4% with usual communication (adjusted risk difference: 2.5 percentage points).",
+          "Switching communication modality provided no additional benefit compared to repeating the same modality (13.2% vs 12.5% refill).",
+          "Cumulative statin refill through 28 days was 24.9% with any digital outreach vs 21.2% with usual communication (adjusted hazard ratio: 1.21).",
+          "Results were consistent across prespecified subgroups."
+        ],
+        "study": {
+          "trial_name": "ADHERE-ASCVD Randomized Clinical Trial",
+          "design": "pragmatic, health system-embedded, prospective randomized open blinded end point (PROBE) clinical trial using a 2-stage sequential, multiple assignment, randomized trial (SMART) design",
+          "comparator": "usual communication",
+          "primary_endpoint": "14-day statin refill following each randomization",
+          "follow_up": "28-day follow-up"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The study focused on short-term refill rates, not long-term clinical outcomes like heart attacks or strokes.",
+          "The intervention was delivered within a single integrated health system (Kaiser Permanente Northern California), limiting generalizability.",
+          "No data on side effects or patient preferences for communication modalities were reported."
+        ],
+        "next_steps": "These findings support integrating adaptive digital outreach into population health programs to improve statin adherence, but further research is needed to assess long-term cardiovascular outcomes and broader implementation.",
+        "who_it_applies_to": "Adults with established atherosclerotic cardiovascular disease (ASCVD) or high ASCVD risk who have recently been nonadherent with statin therapy.",
+        "evidence": [
+          {
+            "pmid": "42667613",
+            "title": "Digital Outreach to Improve Statin Refills in Patients With Low Statin Adherence: The ADHERE-ASCVD Randomized Clinical Trial.",
+            "journal": "JAMA",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42667613/",
+            "is_source": true
+          }
+        ],
+        "source_chars": 3245,
+        "enriched_at": "2026-11-10",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.participants: 20604",
+          "caveat: unsupported wording (0.38)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "cvd",
+          "name": "Cardiovascular disease",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 339,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Mediterranean diet pattern",
+            "outcome": "Cardiovascular disease",
+            "summary": "Pooled meta-analytic evidence link mediterranean diet pattern to lower risk of cardiovascular disease in general adult. The average effect is usually moderate rather than dramatic, so this edge is better read as a risk m",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 25
+          },
+          {
+            "id": 10,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Sugar-sweetened beverages",
+            "outcome": "Cardiovascular disease",
+            "summary": "Regularly drinking sugar-sweetened beverages is consistently linked to a higher risk of cardiovascular disease, including coronary heart disease and stroke. Large meta-analyses show roughly a 17\u201335% increase in CVD risk ",
+            "effect": "~20\u201335% higher CVD risk per 1\u20132 servings/day; pooled RR ~1.17\u20131.35 in meta-analyses",
+            "review": "verified_evidence",
+            "n_evidence": 22
+          },
+          {
+            "id": 14,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Cardiovascular disease",
+            "summary": "Regular aerobic exercise is one of the most robustly protective lifestyle factors against cardiovascular disease, supported by decades of large-scale research. Even modest amounts of activity\u2014such as 150 minutes per week",
+            "effect": "~35% lower CVD mortality risk in highly active vs. sedentary individuals; Each 10 MET-h/week increment associated with ~6% lower CVD risk",
+            "review": "verified_evidence",
+            "n_evidence": 22
+          },
+          {
+            "id": 61,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Resistance training",
+            "outcome": "Cardiovascular disease",
+            "summary": "Regular resistance training is associated with a meaningful reduction in the risk of developing cardiovascular disease and dying from it. The benefit appears with as little as 1\u20132 sessions per week and is independent of ",
+            "effect": "~15\u201317% lower CVD incidence and ~19% lower CVD mortality per standard dose",
+            "review": "verified_evidence",
+            "n_evidence": 17
+          },
+          {
+            "id": 17,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Cardiovascular disease",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is consistently linked to higher rates of heart attack, stroke, heart failure, and cardiovascular death. The evidence is among the strongest in environmental e",
+            "effect": "Short-term exposure linked to ~0.5\u20131% increase in CVD hospitalizations per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 16
+          },
+          {
+            "id": 210,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Cardiovascular disease",
+            "summary": "Multiple large cardiovascular outcome trials (CVOTs) have shown that GLP-1 receptor agonists reduce the risk of major adverse cardiovascular events (MACE\u2014heart attack, stroke, and CV death) by roughly 12\u201314% compared to ",
+            "effect": "~12\u201314% relative risk reduction in MACE in high-CV-risk T2D patients; Class-level meta-analyses confirm significant MACE reduction",
+            "review": "verified_evidence",
+            "n_evidence": 16
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 162,
         "factor_total": 0
       }
     },
