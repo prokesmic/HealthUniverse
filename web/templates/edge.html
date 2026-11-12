@@ -35,7 +35,7 @@
       {% if e.population %}<span class="badge ghost">Population: {{ e.population }}</span>{% endif %}
       {% set rs = e.review_status or 'unreviewed' %}
       {% if rs == 'verified_evidence' %}
-        <span class="badge" style="background:#e7f5ec;color:#1b5e20;border:1px solid #b7e0c4" title="At least one cited PMID's title semantically matches this edge's factor and outcome.">✓ Evidence verified</span>
+        <span class="badge" style="background:#e7f5ec;color:#1b5e20;border:1px solid #b7e0c4" title="At least one cited PMID's title semantically matches this edge's factor and outcome.">Citation title matched</span>
       {% elif rs == 'weak_evidence' %}
         <span class="badge" style="background:#fff7e0;color:#7a5c00;border:1px solid #f0d68a" title="Cited PMID titles only weakly match this claim. Read carefully.">~ Weak evidence match</span>
       {% elif rs == 'needs_recheck' %}
@@ -135,13 +135,24 @@
         <p>{{ e.summary }}</p>
       </section>
 
-      {# Effect-size detail panel #}
-      {% if e.effect_quant %}
-      <section class="dossier-section dossier-effect">
-        <span class="dossier-effect-label" aria-hidden="true">📊 Effect</span>
-        <p>{{ e.effect_quant }}</p>
+      <section class="dossier-section" aria-labelledby="claim-context-title">
+        <h2 class="dossier-h2" id="claim-context-title">How to read this claim</h2>
+        <dl>
+          <dt>Population on record</dt>
+          <dd>{{ e.population or 'Not recorded — applicability is unknown.' }}</dd>
+          <dt>Reported effect</dt>
+          <dd>{{ e.effect_quant or 'No quantitative effect recorded.' }}</dd>
+        </dl>
+        {% if e.review_status == 'verified_evidence' %}
+        <p class="muted body-sm">A citation title matches this topic. This check does not establish that the study supports the conclusion or that the full text was reviewed.</p>
+        {% endif %}
+        <p class="muted body-sm">The confidence tier and the review status describe different checks. <a href="/methodology">Read the methodology</a> and inspect the studies below.</p>
+        {% if not counter %}
+        <p class="muted body-sm">No counter-evidence is recorded here. This does not establish that none exists.</p>
+        {% else %}
+        <p><a href="#counter-evidence">Read {{ counter|length }} counter-evidence record{{ 's' if counter|length != 1 else '' }}</a> alongside the supporting evidence.</p>
+        {% endif %}
       </section>
-      {% endif %}
 
       {# Mechanism #}
       {% if e.mechanism %}
@@ -160,6 +171,7 @@
       {% endif %}
 
       {# Supporting evidence #}
+      {% include '_evidence_comparison.html' %}
       <section class="dossier-section" id="evidence-section">
         <div class="dossier-section-head">
           <h2 class="dossier-h2"><span class="dossier-num">03</span> Supporting evidence</h2>
@@ -170,17 +182,11 @@
         <div class="evidence-rail">
           {# Compact study-mix summary #}
           {% set st_counts = {} %}
-          {% set total_n_ns = namespace(v=0) %}
           {% for ev in evidence %}
             {% set _ = st_counts.update({ev.study_type or 'other': st_counts.get(ev.study_type or 'other', 0) + 1}) %}
-            {% if ev.n_participants %}{% set total_n_ns.v = total_n_ns.v + ev.n_participants %}{% endif %}
           {% endfor %}
-          {% set total_n = total_n_ns.v %}
           <div class="evidence-rail-stat">
             <dt>Total studies</dt><dd>{{ evidence|length }}</dd>
-          </div>
-          <div class="evidence-rail-stat">
-            <dt>Participants</dt><dd>{{ total_n and "{:,}".format(total_n) or "—" }}</dd>
           </div>
           {% if st_counts.get('meta_analysis') or st_counts.get('systematic_review') %}
           <div class="evidence-rail-stat highlight">
@@ -198,6 +204,8 @@
           </div>
           {% endif %}
         </div>
+
+        <p class="muted body-sm">Participant counts are shown per study, not added together: studies and reviews may include overlapping participants.</p>
 
         <div class="evidence-controls" role="toolbar" aria-label="Filter evidence">
           <button class="ev-filter active" data-ev-filter="all">All</button>
@@ -266,7 +274,7 @@
 
       {# Counter-evidence #}
       {% if counter %}
-      <section class="dossier-section dossier-counter">
+      <section class="dossier-section dossier-counter" id="counter-evidence">
         <div class="dossier-section-head">
           <h2 class="dossier-h2"><span class="dossier-num">04</span> Counter-evidence <span class="muted small">({{ counter|length }})</span></h2>
         </div>
@@ -277,6 +285,8 @@
             <div class="evidence-row-main">
               <div class="evidence-citation">
                 <span>{{ ev.citation }}</span>
+                {% if ev.relevance_status == 'flagged' %}<strong class="study-comparison-warning">CITATION FLAGGED</strong>
+                {% elif ev.relevance_status == 'citation_mismatch' %}<span class="badge ghost">unverified citation</span>{% endif %}
                 {% if ev.is_retracted %}<span class="pill tier-D">RETRACTED</span>{% endif %}
               </div>
               {% if ev.notes %}<p class="evidence-notes">{{ ev.notes }}</p>{% endif %}
@@ -292,7 +302,8 @@
             <div class="evidence-row-side">
               <div class="evidence-year">{{ ev.year or "—" }}</div>
               {% if ev.n_participants %}<div class="evidence-n">n={{ "{:,}".format(ev.n_participants) }}</div>{% endif %}
-              {% if ev.pmid %}<a class="evidence-link" href="https://pubmed.ncbi.nlm.nih.gov/{{ ev.pmid }}/" target="_blank" rel="noopener">PubMed ↗</a>
+              {% if ev.relevance_status in ['flagged', 'citation_mismatch'] %}<span class="muted small">link suppressed</span>
+              {% elif ev.pmid %}<a class="evidence-link" href="https://pubmed.ncbi.nlm.nih.gov/{{ ev.pmid }}/" target="_blank" rel="noopener">PubMed ↗</a>
               {% elif ev.doi %}<a class="evidence-link" href="https://doi.org/{{ ev.doi }}" target="_blank" rel="noopener">DOI ↗</a>{% endif %}
             </div>
           </article>
@@ -309,6 +320,7 @@
     <aside class="dossier-side">
       <div class="dossier-side-card audit-card">
         <h3>Audit trail</h3>
+        {% if latest_change is defined %}{% include '_latest_audit_change.html' %}{% endif %}
 
         {# ─── Layer 1: Status banner ─── #}
         <ul class="audit-status">
@@ -354,8 +366,8 @@
         <h4 class="audit-section-h">Notable changes</h4>
         <ol class="audit-events">
           {% for ev in audit_headlines %}
-          <li class="audit-event audit-event-{{ ev.category }}">
-            <span class="audit-event-date">{{ ev.changed_at[:10] }}</span>
+          <li class="audit-event audit-event-{{ ev.category }}"{% if ev.raw.id %} id="audit-event-{{ ev.raw.id }}"{% endif %}>
+            <span class="audit-event-date">{{ ev.changed_at[:10] if ev.changed_at else 'Date unknown' }}</span>
             <div class="audit-event-body">
               <b>{{ ev.headline }}</b>
               {% if ev.category == 'tier_promotion' or ev.category == 'tier_demotion' %}
@@ -376,7 +388,7 @@
         {% else %}
         <p class="audit-stable muted body-sm">
           {% if audit_summary.n_studies > 0 %}
-          ✓ No tier shifts or new studies in the last 90 days — this edge is stable.
+          No notable changes are recorded in the available history. Missing records do not establish stability.
           {% else %}
           No notable changes recorded yet.
           {% endif %}
@@ -389,8 +401,8 @@
           <summary>Show {{ audit_maintenance|length }} maintenance event{{ "s" if audit_maintenance|length != 1 else "" }}</summary>
           <ol class="audit-events audit-events-quiet">
             {% for ev in audit_maintenance %}
-            <li class="audit-event audit-event-{{ ev.category }}">
-              <span class="audit-event-date">{{ ev.changed_at[:10] }}</span>
+            <li class="audit-event audit-event-{{ ev.category }}"{% if ev.raw.id %} id="audit-event-{{ ev.raw.id }}"{% endif %}>
+              <span class="audit-event-date">{{ ev.changed_at[:10] if ev.changed_at else 'Date unknown' }}</span>
               <div class="audit-event-body">
                 <b>{{ ev.headline }}</b>
                 {% if ev.detail %}<small class="muted">{{ ev.detail[:160] }}{% if ev.detail|length > 160 %}…{% endif %}</small>{% endif %}
