@@ -1,8 +1,774 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-11",
+  "updated_at": "2026-11-12",
   "items": [
+    {
+      "id": "br_d1013ba395f25f50",
+      "published_at": "2026-11-12",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for first-line treatment of chronic leukemia",
+      "summary": "The FDA has approved asciminib for adults with newly diagnosed chronic myeloid leukemia. It is the first new treatment approved for this condition in over a decade.",
+      "why_it_matters": "Patients with newly diagnosed chronic leukemia now have a new first-line treatment option with a different mechanism of action.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Asciminib",
+            "treatment": 68,
+            "control": 49
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Asciminib",
+        "control_label": "IS-TKIs"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-grants-accelerated-approval-asciminib-newly-diagnosed-chronic-myeloid-leukemia",
+      "factor_slug": "asciminib",
+      "outcome_slug": "chronic_myeloid_leukemia",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "asciminib",
+        "summary": "The FDA has granted accelerated approval to asciminib for adults with newly diagnosed chronic myeloid leukemia (Ph+ CML) in chronic phase. The approval was based on a randomized trial comparing asciminib to investigator-selected tyrosine kinase inhibitors (IS-TKIs). At 48 weeks, 68% of patients on asciminib achieved major molecular response (MMR), compared to 49% on IS-TKIs. This is the first new first-line treatment approved for this condition in over a decade.",
+        "key_findings": [
+          "68% of patients on asciminib achieved major molecular response (MMR) at 48 weeks (95% CI: 61, 74)",
+          "49% of patients on IS-TKIs achieved MMR at 48 weeks (95% CI: 42, 56)",
+          "Difference in MMR rate: 19 percentage points (95% CI: 10, 28), p < 0.001",
+          "In the imatinib stratum, asciminib achieved 69% MMR vs. 40% with IS-TKIs (difference 30 percentage points)",
+          "Adverse events of grade 3 or higher were less frequent with asciminib (38.0%) than with imatinib (44.4%)"
+        ],
+        "study": {
+          "trial_name": "ASC4FIRST (NCT04971226)",
+          "design": "multicenter, randomized, active-controlled, open-label",
+          "participants": "405 patients with newly diagnosed Ph+ CML in chronic phase",
+          "comparator": "investigator-selected tyrosine kinase inhibitors (imatinib, nilotinib, dasatinib, or bosutinib)",
+          "primary_endpoint": "major molecular response (MMR) rate at 48 weeks",
+          "follow_up": "48 weeks"
+        },
+        "regulatory_status": "FDA accelerated approval granted on October 29, 2024",
+        "caveats": [
+          "Approval is based on major molecular response, a surrogate endpoint, not overall survival",
+          "Continued approval may depend on confirmation of clinical benefit in a confirmatory trial",
+          "Common adverse reactions include musculoskeletal pain, rash, fatigue, and diarrhea",
+          "Long-term safety and efficacy beyond 48 weeks not yet established"
+        ],
+        "next_steps": "A confirmatory trial is needed to verify clinical benefit for continued approval",
+        "who_it_applies_to": "Adults with newly diagnosed Philadelphia chromosome-positive chronic myeloid leukemia in chronic phase",
+        "evidence": [
+          {
+            "pmid": "39093014",
+            "title": "Chronic myeloid leukemia: 2025 update on diagnosis, therapy, and monitoring.",
+            "journal": "American journal of hematology",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39093014/"
+          },
+          {
+            "pmid": "40094679",
+            "title": "Chronic Myeloid Leukemia: A Review.",
+            "journal": "JAMA",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40094679/"
+          },
+          {
+            "pmid": "38820078",
+            "title": "Asciminib in Newly Diagnosed Chronic Myeloid Leukemia.",
+            "journal": "The New England journal of medicine",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38820078/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Scemblix",
+          "generic": "asciminib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=asciminib"
+        },
+        "source_chars": 3227,
+        "enriched_at": "2026-11-12",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.40)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "leukemia",
+          "name": "Leukemia",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 541,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Benzene exposure",
+            "outcome": "Leukemia",
+            "summary": "The strongest piece here is the 2022 Zhang meta analysis in J Environ Sci (China), which ties benzene exposure to leukemia in a direction that later studies largely support. That makes this edge more about calibrating ma",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 794,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Breastfeeding",
+            "outcome": "Leukemia",
+            "summary": "The strongest anchor here is the large dose-response childhood-cancer meta-analysis, which found lower leukemia risk among breastfed children. Newer umbrella work and a focused early-life leukemia review did not overturn",
+            "effect": "OR, 0.66, 95% CI 0.62-0.70 (Zheng PW 2021)",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 615,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Formaldehyde exposure",
+            "outcome": "Leukemia",
+            "summary": "The anchor for this edge is the 2025 Nie cohort in Ann Work Expo Health, which suggests that formaldehyde exposure produces mixed findings across studies for leukemia. Later papers point in much the same direction, so th",
+            "effect": "Different designs and subgroups point in different directions, so a single pooled estimate is not the right way to read this edge.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 744,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Mixed organic-solvent exposure",
+            "outcome": "Leukemia",
+            "summary": "The strongest piece here is the 2020 Zhou meta analysis in BMC Public Health, which ties mixed organic-solvent exposure to leukemia in a direction that later studies largely support. That makes this edge more about calib",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 4,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_749fd6e8ffeb6fce",
+      "published_at": "2026-11-12",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New T-cell therapy approved for advanced synovial sarcoma",
+      "summary": "Afamitresgene autoleucel, a genetically modified T-cell therapy, has been approved by the FDA for adults with unresectable or metastatic synovial sarcoma. The approval was based on clinical trial results showing objective responses in patients with this rare cancer.",
+      "why_it_matters": "This approval offers a new treatment option for adults with advanced synovial sarcoma, a rare and aggressive cancer.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-grants-accelerated-approval-afamitresgene-autoleucel-unresectable-or-metastatic-synovial-sarcoma",
+      "factor_slug": "afamitresgene_autoleucel",
+      "outcome_slug": "synovial_sarcoma",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "afamitresgene autoleucel",
+        "summary": "Afamitresgene autoleucel, a genetically modified T-cell therapy targeting the MAGE-A4 antigen, was approved by the FDA on August 2, 2024, for adults with unresectable or metastatic synovial sarcoma who have received prior chemotherapy and are HLA-A*02:01, -A*02:02, -A*02:03, or -A*02:06 positive. The approval was based on a single-arm trial (SPEARHEAD-1, Cohort 1) involving 44 patients who received a single infusion after lymphodepleting chemotherapy. The therapy showed an overall response rate of 43.2% (95% CI: 28.4, 59.0), with a median duration of response of 6 months. Serious side effects, including cytokine release syndrome, were reported.",
+        "key_findings": [
+          "Overall response rate was 43.2% (95% CI: 28.4, 59.0)",
+          "Median duration of response was 6 months (95% CI: 4.6, not reached)",
+          "45.6% of responders had a duration of response \u22656 months",
+          "39.0% of responders had a duration of response \u226512 months"
+        ],
+        "study": {
+          "trial_name": "SPEARHEAD-1, Cohort 1",
+          "design": "multicenter, single-arm, open-label clinical trial",
+          "participants": "44 patients with unresectable or metastatic synovial sarcoma who had received prior chemotherapy and were HLA-A*02:01, -A*02:02, -A*02:03, or -A*02:06 positive",
+          "primary_endpoint": "overall response rate (ORR) according to RECIST v1.1 evaluated by independent review"
+        },
+        "regulatory_status": "FDA accelerated approval granted on August 2, 2024",
+        "caveats": [
+          "Approval based on accelerated pathway with surrogate endpoint (ORR); clinical benefit not yet confirmed",
+          "Serious or fatal cytokine release syndrome (CRS) is a known risk",
+          "Treatment requires HLA-A*02 allele and MAGE-A4 tumor expression, limiting applicability",
+          "Manufacturing process is complex and may cause delays"
+        ],
+        "next_steps": "An ongoing postmarketing study is required to verify clinical benefit as part of the accelerated approval agreement",
+        "who_it_applies_to": "Adults with unresectable or metastatic synovial sarcoma who have received prior chemotherapy, are HLA-A*02:01, -A*02:02, -A*02:03, or -A*02:06 positive, and whose tumor expresses the MAGE-A4 antigen",
+        "evidence": [
+          {
+            "pmid": "38554725",
+            "title": "Afamitresgene autoleucel for advanced synovial sarcoma and myxoid round cell liposarcoma (SPEARHEAD-1): an international, open-label, phase 2 trial.",
+            "journal": "Lancet (London, England)",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38554725/"
+          },
+          {
+            "pmid": "41472526",
+            "title": "An evaluation of afamitresgene autoleucel for the treatment of advanced synovial sarcoma and myxoid round cell liposarcoma.",
+            "journal": "Expert review of anticancer therapy",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41472526/"
+          },
+          {
+            "pmid": "40423031",
+            "title": "Cellular therapies in sarcoma and other solid tumors.",
+            "journal": "Current opinion in oncology",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40423031/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Tecelra",
+          "generic": "afamitresgene autoleucel",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=afamitresgene"
+        },
+        "source_chars": 4401,
+        "enriched_at": "2026-11-12",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "finding: 8.0"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_8e6e39392b837eea",
+      "published_at": "2026-11-12",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug combo gets FDA approval for certain colorectal cancer",
+      "summary": "The FDA has approved a combination of adagrasib and cetuximab for adults with advanced colorectal cancer driven by a specific gene mutation. Approval was based on clinical trial results showing tumor response in patients with KRAS G12C-mutated tumors.",
+      "why_it_matters": "People with this rare form of colorectal cancer should ask their doctor if this approved treatment is right for them.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-grants-accelerated-approval-adagrasib-cetuximab-kras-g12c-mutated-colorectal-cancer",
+      "factor_slug": "adagrasib_cetuximab_combo",
+      "outcome_slug": "kras_g12c_colorectal_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "adagrasib plus cetuximab",
+        "summary": "The FDA granted accelerated approval on June 21, 2024, to adagrasib plus cetuximab for adults with advanced colorectal cancer driven by a KRAS G12C mutation. The approval was based on a single-arm trial in patients previously treated with chemotherapy and, if eligible, a VEGF inhibitor. In the trial, 94 patients received the combination, and 34% had a confirmed tumor response, all partial responses, with a median duration of response of 5.8 months.",
+        "key_findings": [
+          "Confirmed overall response rate (ORR) was 34% (95% CI: 25%, 45%)",
+          "All responses were partial responses",
+          "Median duration of response (DOR) was 5.8 months (95% CI: 4.2, 7.6)",
+          "The most common adverse reactions (\u226520%) included rash, nausea, diarrhea, vomiting, fatigue, and hepatotoxicity"
+        ],
+        "study": {
+          "trial_name": "KRYSTAL-1",
+          "design": "multicenter, single-arm expansion cohort",
+          "participants": "94 patients with locally advanced or metastatic KRAS G12C-mutated colorectal cancer",
+          "primary_endpoint": "confirmed overall response rate (ORR) and duration of response (DOR) according to RECIST v1.1 assessed by blinded independent central review"
+        },
+        "regulatory_status": "FDA accelerated approval granted on June 21, 2024",
+        "caveats": [
+          "The trial was single-arm, not randomized",
+          "Response rate and duration are based on a small number of patients",
+          "Adverse reactions were common, including hepatotoxicity and skin-related events",
+          "Approval was based on surrogate endpoints (response rate and duration), not overall survival"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with advanced colorectal cancer driven by a KRAS G12C mutation who have previously received fluoropyrimidine-, oxaliplatin-, and irinotecan-based chemotherapy",
+        "evidence": [
+          {
+            "pmid": "37099736",
+            "title": "Adagrasib in Advanced Solid Tumors Harboring a KRASG12C Mutation.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37099736/"
+          },
+          {
+            "pmid": "40523897",
+            "title": "Garsorasib, a KRAS G12C inhibitor, with or without cetuximab, an EGFR antibody, in colorectal cancer cohorts of a phase II trial in advanced solid tumors with KRAS G12C mutation.",
+            "journal": "Signal transduction and targeted therapy",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40523897/"
+          },
+          {
+            "pmid": "35837349",
+            "title": "Targeting KRAS G12C-Mutated Advanced Colorectal Cancer: Research and Clinical Developments.",
+            "journal": "OncoTargets and therapy",
+            "year": "2022",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/35837349/"
+          }
+        ],
+        "source_chars": 2941,
+        "enriched_at": "2026-11-12",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "finding: 31",
+          "next_steps: unsupported wording (0.43)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "colorectal_cancer",
+          "name": "Colorectal cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 25,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Processed meat",
+            "outcome": "Colorectal cancer",
+            "summary": "Eating processed meat (bacon, sausage, hot dogs, deli meats, etc.) is consistently linked to a higher risk of colorectal cancer. The World Health Organization's cancer agency (IARC) classified processed meat as a definit",
+            "effect": "~18% increased CRC risk per 50 g/day increment (RR ~1.18, 95% CI 1.10\u20131.28); IARC classifies processed meat as Group 1 carcinogen for CRC",
+            "review": "verified_evidence",
+            "n_evidence": 16
+          },
+          {
+            "id": 26,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Red meat",
+            "outcome": "Colorectal cancer",
+            "summary": "Eating large amounts of red meat\u2014especially processed red meat (bacon, sausage, hot dogs)\u2014is consistently associated with a modestly increased risk of colorectal cancer. The World Health Organization classifies processed",
+            "effect": "~17\u201318% increased CRC risk per 100 g/day unprocessed red meat (RR ~1.17, 95% CI 1.05\u20131.31)",
+            "review": "verified_evidence",
+            "n_evidence": 12
+          },
+          {
+            "id": 27,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Colorectal cancer",
+            "summary": "Drinking alcohol increases the risk of colorectal cancer in a dose-dependent fashion. Even moderate drinking (1\u20132 drinks/day) is associated with a small but measurable increase in risk, and heavy drinking roughly doubles",
+            "effect": "Hazard ratio, HR=1.08, 95%CI=1.04-1.12 (Moskal 2007)",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 69,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Colorectal cancer",
+            "summary": "People who engage in regular aerobic exercise have roughly 20\u201325% lower risk of developing colon cancer compared with sedentary individuals, an association supported by dozens of large cohort studies and multiple meta-an",
+            "effect": "~20\u201325% lower risk of colon cancer in most active vs. least active individuals; Rectal cancer association weaker and less consistent",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 206,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Low-dose aspirin",
+            "outcome": "Colorectal cancer",
+            "summary": "Regular low-dose aspirin use is associated with a roughly 20\u201340% lower risk of developing colorectal cancer, one of the most consistent chemopreventive findings in oncology. The benefit appears to require at least 5\u201310 y",
+            "effect": "~20\u201340% relative risk reduction in CRC incidence",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 904,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Colorectal cancer",
+            "summary": "The strongest direct synthesis found lower colorectal-cancer risk in people eating more whole grains and other favorable food groups. Later umbrella reviews did not overturn that finding; instead, they kept whole grains ",
+            "effect": "Colorectal-cancer syntheses consistently place higher whole-grain intake on the lower-risk side, with the signal usually modest rather than dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 7
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 48,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_ffad2781ace49c33",
+      "published_at": "2026-11-12",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves new form of entrectinib for young cancer patients",
+      "summary": "Entrectinib is now approved for children over 1 month with certain solid tumors caused by NTRK gene fusions. The approval includes a new pellet formulation for easier dosing.",
+      "why_it_matters": "Children with rare NTRK-fusion cancers now have a new treatment option approved for use from just one month old.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-expands-pediatric-indication-entrectinib-and-approves-new-pellet-formulation",
+      "factor_slug": "entrectinib",
+      "outcome_slug": "ntrk_fusion_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "entrectinib",
+        "summary": "On October 20, 2023, the FDA granted accelerated approval to entrectinib for pediatric patients older than 1 month with solid tumors caused by NTRK gene fusions, without known resistance mutations, that are metastatic or surgically unresectable with severe morbidity risk, and who have progressed on prior therapy or lack standard treatment. The approval includes a new oral pellet formulation for easier dosing. Efficacy was evaluated in 33 pediatric patients across two multicenter, single-arm trials. The overall response rate was 70% (95% CI: 51, 84), with a median duration of response of 25.4 months (95% CI: 14.3, not evaluable).",
+        "key_findings": [
+          "Overall response rate (ORR) was 70% (95% CI: 51, 84) in 33 pediatric patients.",
+          "Median duration of response (DOR) was 25.4 months (95% CI: 14.3, not evaluable).",
+          "The most common cancers were primary central nervous system tumors and infantile fibrosarcoma.",
+          "The recommended dose for pediatric patients >1 month to \u22646 months is 250 mg/m\u00b2 once daily.",
+          "The recommended dose for pediatric patients >6 months is based on body surface area (up to a maximum of 600 mg once daily)."
+        ],
+        "study": {
+          "trial_name": "STARTRK-NG (NCT02650401) and TAPISTRY (NCT04589845)",
+          "design": "multicenter, single-arm clinical trial",
+          "primary_endpoint": "overall response rate (ORR) as assessed by Blinded Independent Central Review (BICR)"
+        },
+        "regulatory_status": "FDA accelerated approval for pediatric patients >1 month with NTRK fusion-positive solid tumors; includes new pellet formulation",
+        "caveats": [
+          "Continued approval may depend on confirmation of clinical benefit in confirmatory trials.",
+          "Common adverse reactions include pyrexia, constipation, increased weight, vomiting, diarrhea, nausea, and fatigue."
+        ],
+        "next_steps": "Confirmatory trials are needed to verify clinical benefit and support continued approval.",
+        "who_it_applies_to": "Children over 1 month of age with solid tumors caused by NTRK gene fusions, without known resistance mutations, that are metastatic or surgically unresectable with severe morbidity risk, and who have progressed on prior therapy or have no satisfactory standard therapy.",
+        "evidence": [
+          {
+            "pmid": "31838007",
+            "title": "Entrectinib in patients with advanced or metastatic NTRK fusion-positive solid tumours: integrated analysis of three phase 1-2 trials.",
+            "journal": "The Lancet. Oncology",
+            "year": "2020",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/31838007/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Rozlytrek",
+          "generic": "entrectinib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=entrectinib"
+        },
+        "source_chars": 3770,
+        "enriched_at": "2026-11-12",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_606d59d4a06d0853",
+      "published_at": "2026-11-12",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New treatment approved for advanced endometrial cancer",
+      "summary": "The FDA has approved a combination of a PD-1 inhibitor and chemotherapy for adults with advanced or recurrent endometrial cancer. The treatment includes initial chemotherapy followed by continued immunotherapy.",
+      "why_it_matters": "This approval offers a new standard option for patients with advanced endometrial cancer, potentially improving survival and treatment outcomes.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Dostarlimab-gxly + chemo",
+        "control_label": "Placebo + chemo",
+        "median_t": 11.8,
+        "median_c": 7.9,
+        "hr": 0.64,
+        "ci_low": 0.51,
+        "ci_high": 0.8,
+        "x_label": "Months",
+        "y_label": "Progression-free survival"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-expands-endometrial-cancer-indication-dostarlimab-gxly-chemotherapy",
+      "factor_slug": "dostarlimab_gxly",
+      "outcome_slug": "endometrial_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "dostarlimab-gxly with carboplatin and paclitaxel, followed by single-agent dostarlimab-gxly",
+        "summary": "The FDA approved a combination of dostarlimab-gxly (a PD-1 inhibitor) with carboplatin and paclitaxel chemotherapy, followed by single-agent dostarlimab-gxly, for adults with primary advanced or recurrent endometrial cancer. The approval is based on the RUBY trial, which included 494 patients. The treatment significantly improved progression-free survival and overall survival compared to placebo plus chemotherapy.",
+        "key_findings": [
+          "Median overall survival was 44.6 months (95% CI: 32.6, not reached) with dostarlimab-gxly vs. 28.2 months (95% CI: 22.1, 35.6) with placebo (HR=0.69; 1-sided p=0.002).",
+          "Median progression-free survival was 11.8 months (95% CI: 9.6, 17.1) with dostarlimab-gxly vs. 7.9 months (95% CI: 7.6, 9.5) with placebo (HR=0.64; 1-sided p<0.0001).",
+          "In the dMMR/MSI-H subgroup, 24-month progression-free survival was 61.4% with dostarlimab-gxly vs. 15.7% with placebo (HR=0.28).",
+          "The most common adverse reactions (\u226520%) included anemia, increased creatinine, peripheral neuropathy, decreased white blood cell count, fatigue, nausea, alopecia, and low platelets.",
+          "The recommended dose is 500 mg every 3 weeks for 6 cycles with chemotherapy, followed by 1,000 mg every 6 weeks as monotherapy."
+        ],
+        "study": {
+          "trial_name": "RUBY (NCT03981796)",
+          "design": "randomized, multicenter, double-blind, placebo-controlled",
+          "participants": "494 patients with primary advanced or recurrent endometrial cancer",
+          "comparator": "placebo with carboplatin and paclitaxel, followed by placebo",
+          "primary_endpoint": "progression-free survival (PFS) in dMMR/MSI-H and overall populations, and overall survival (OS) in the overall population"
+        },
+        "regulatory_status": "FDA approved on August 1, 2024",
+        "caveats": [
+          "Immune-mediated adverse reactions were reported, including serious events."
+        ],
+        "next_steps": "The treatment is now available for eligible patients; healthcare providers should monitor for adverse events and report them via MedWatch.",
+        "who_it_applies_to": "Adults with primary advanced or recurrent endometrial cancer, regardless of mismatch repair status",
+        "evidence": [
+          {
+            "pmid": "36972026",
+            "title": "Dostarlimab for Primary Advanced or Recurrent Endometrial Cancer.",
+            "journal": "The New England journal of medicine",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/36972026/"
+          }
+        ],
+        "source_chars": 3886,
+        "enriched_at": "2026-11-12",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.57)",
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.17)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "endometrial_cancer",
+          "name": "Endometrial cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 802,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Coffee",
+            "outcome": "Endometrial cancer",
+            "summary": "This is a steadier signal than many diet-cancer stories. Across successive meta-analyses, higher coffee intake is repeatedly linked to lower endometrial-cancer risk, and dose-response models show the association strength",
+            "effect": "Coffee is one of the more consistent food exposures associated with lower endometrial-cancer risk, with dose-response analyses suggesting that more intake generally means less risk.",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 364,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Higher adiposity",
+            "outcome": "Endometrial cancer",
+            "summary": "In adult women, dose-response meta-analyses backed by prospective cohorts suggest that higher adiposity tracks with higher risk of endometrial cancer. Most disagreement in the literature is about size, subgroup sensitivi",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 369,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Estrogen-only menopausal hormone therapy",
+            "outcome": "Endometrial cancer",
+            "summary": "Prospective cohort data link estrogen-only menopausal hormone therapy to higher risk of endometrial cancer in postmenopausal women with uterus. The average effect is usually moderate rather than dramatic, so this edge is",
+            "effect": "Prospective cohort data suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1280,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Combined oral contraceptives",
+            "outcome": "Endometrial cancer",
+            "summary": "The evidence for protection against endometrial cancer is strong and consistent overall. Very large pooled analyses and older case-control studies both indicate that combined oral contraceptive use lowers risk, with grea",
+            "effect": "Long-term protection against endometrial cancer is one of the most durable non-contraceptive benefits of combined oral contraceptives.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1384,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Extended tamoxifen therapy",
+            "outcome": "Endometrial cancer",
+            "summary": "The signal is consistently harmful. Tamoxifen lowers breast cancer recurrence and mortality, but extended use comes with a well-established increase in endometrial cancer risk, which becomes more relevant as treatment co",
+            "effect": "Longer tamoxifen exposure clearly increases endometrial cancer risk.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 866,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Combined oral contraceptive use",
+            "outcome": "Endometrial cancer",
+            "summary": "This is one of the clearer protective associations in reproductive epidemiology. Large pooled analyses and newer meta-analyses consistently show that oral-contraceptive use lowers endometrial-cancer risk, with the most d",
+            "effect": "The strongest evidence shows that oral-contraceptive use is associated with a meaningful reduction in endometrial-cancer risk, with longer use producing larger protection that persists for years after stopping.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 13,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_16a5022a947a3a92",
+      "published_at": "2026-11-12",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for early-stage breast cancer",
+      "summary": "Abemaciclib with hormone therapy is now approved for early-stage HR-positive, HER2-negative breast cancer. It reduces the risk of cancer returning in adults after surgery.",
+      "why_it_matters": "If you or a loved one has early-stage HR-positive breast cancer, ask your doctor if this treatment option is right for you.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Invasive disease-free survival at 48 months",
+            "treatment": 85.5,
+            "control": 78.6
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Abemaciclib + endocrine therapy",
+        "control_label": "Endocrine therapy alone"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-expands-early-breast-cancer-indication-abemaciclib-endocrine-therapy",
+      "factor_slug": "abemaciclib",
+      "outcome_slug": "breast_cancer_recurrence",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "abemaciclib with endocrine therapy",
+        "summary": "Abemaciclib combined with endocrine therapy (tamoxifen or an aromatase inhibitor) is now approved by the FDA for adults with hormone receptor-positive, HER2-negative, node-positive early breast cancer at high risk of recurrence. The approval is based on the monarchE trial, which showed that adding abemaciclib to standard endocrine therapy reduced the risk of cancer returning. The benefit was seen primarily in patients with \u22654 pathologic axillary lymph nodes or 1\u20133 such nodes with tumor grade 3 or tumor size \u226550 mm. The approval removes the prior requirement for a Ki-67 score \u226520%. The most common side effects were diarrhea, infections, neutropenia, fatigue, and nausea.",
+        "key_findings": [
+          "Invasive disease-free survival at 48 months was 85.5% with abemaciclib plus endocrine therapy versus 78.6% with endocrine therapy alone.",
+          "The hazard ratio for invasive disease-free survival was 0.653 (95% CI: 0.567, 0.753) in the intent-to-treat population.",
+          "The benefit was primarily observed in cohort 1 (patients with \u22654 pALN or 1\u20133 pALN with tumor grade 3 or size \u226550 mm).",
+          "The indication was restricted to cohort 1 due to more deaths observed in cohort 2 (10 vs. 5) with abemaciclib plus endocrine therapy.",
+          "The most common adverse reactions (\u226520%) included diarrhea, infections, neutropenia, fatigue, leukopenia, nausea, anemia, and headache."
+        ],
+        "study": {
+          "trial_name": "monarchE",
+          "design": "randomized (1:1), open-label, two-cohort multicenter trial",
+          "participants": "5,120 patients (91% in cohort 1)",
+          "comparator": "standard endocrine therapy alone",
+          "primary_endpoint": "invasive disease-free survival (IDFS)",
+          "follow_up": "48 months"
+        },
+        "regulatory_status": "FDA approved on March 3, 2023, for adjuvant treatment of high-risk HR-positive, HER2-negative, node-positive early breast cancer",
+        "caveats": [
+          "Overall survival data remain immature.",
+          "More deaths were observed in cohort 2 with abemaciclib plus endocrine therapy compared to endocrine therapy alone.",
+          "The approval is restricted to cohort 1 (high-risk patients with \u22654 pALN or 1\u20133 pALN with tumor grade 3 or size \u226550 mm).",
+          "Common side effects include diarrhea, infections, and neutropenia, which may affect tolerability."
+        ],
+        "next_steps": "Patients should receive abemaciclib 150 mg twice daily for 2 years or until disease recurrence or unacceptable toxicity.",
+        "who_it_applies_to": "Adults with hormone receptor-positive, HER2-negative, node-positive, early-stage breast cancer at high risk of recurrence, defined by \u22654 pathologic axillary lymph nodes or 1\u20133 such nodes with tumor grade 3 or tumor size \u226550 mm.",
+        "evidence": [
+          {
+            "pmid": "41110695",
+            "title": "TRADE: a phase II trial to assess the tolerability of abemaciclib dose escalation in early-stage HR-positive/HER2-negative breast cancer.",
+            "journal": "Annals of oncology : official journal of the European Society for Medical Oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41110695/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Verzenio",
+          "generic": "abemaciclib",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=abemaciclib"
+        },
+        "source_chars": 3571,
+        "enriched_at": "2026-11-12",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "breast_cancer",
+          "name": "Breast cancer",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 146,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined estrogen+progesterone HRT",
+            "outcome": "Breast cancer",
+            "summary": "Taking combined estrogen-plus-progestogen hormone replacement therapy (HRT) is associated with a small but consistently demonstrated increase in breast cancer risk. Risk rises with longer duration of use and remains elev",
+            "effect": "RR ~1.24\u20131.26 for current/recent users",
+            "review": "verified_evidence",
+            "n_evidence": 10
+          },
+          {
+            "id": 28,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Breast cancer",
+            "summary": "Drinking alcohol\u2014even at low to moderate levels\u2014is consistently associated with a small but real increase in breast cancer risk. The risk rises in a roughly dose-dependent fashion: each additional drink per day adds abou",
+            "effect": "~7\u201310% increased risk per 10 g/day alcohol",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 271,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Heavy alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally upward even below a drink a day. Pooled meta-analytic evidence link heavy alcohol intake to higher risk of breast cancer in a",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 276,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Moderate alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "In adult women, pooled meta-analytic evidence suggest that moderate alcohol intake tracks with higher risk of breast cancer. The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 368,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined menopausal hormone therapy",
+            "outcome": "Breast cancer",
+            "summary": "Pooled meta-analytic evidence link combined menopausal hormone therapy to higher risk of breast cancer in postmenopausal women. The average effect is usually moderate rather than dramatic, so this edge is better read as ",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 145,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Estrogen-only HRT",
+            "outcome": "Breast cancer",
+            "summary": "In post-menopausal women who have had a hysterectomy, taking estrogen-only hormone replacement therapy is associated with a small but statistically significant reduction in breast cancer incidence compared with placebo, ",
+            "effect": "HR ~0.78 in long-term WHI follow-up",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 45,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_d32c9491ca11df3e",
       "published_at": "2026-11-11",
@@ -338,6 +1104,552 @@
         "outcome_edges": [],
         "factor_edges": [],
         "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_dfbe741920f30419",
+      "published_at": "2026-11-11",
+      "category": "other",
+      "stage": "preclinical",
+      "audience": "general",
+      "headline": "Thousands of new gene variants linked to drug response found",
+      "summary": "A study of nearly 100,000 diverse Americans identified thousands of new genetic variants that affect how people respond to prescription drugs.",
+      "why_it_matters": "This could help doctors predict how patients will react to medications, improving safety and effectiveness.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/2026/11/11/all-of-us-study-finds-gene-variants-drug-responses/?utm_campaign=rss",
+      "factor_slug": "genetic_variants",
+      "outcome_slug": "drug_response",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "A study of nearly 100,000 diverse individuals in the United States analyzed genetic data to identify variants that influence how people respond to prescription drugs. Thousands of new gene variants were discovered that affect drug response, many of which were previously unknown.",
+        "key_findings": [
+          "Thousands of new genetic variants linked to drug response were identified.",
+          "The study analyzed nearly 100,000 diverse Americans.",
+          "Variants were found in genes that influence how people respond to prescription drugs."
+        ],
+        "study": {
+          "participants": "Nearly 100,000 diverse Americans",
+          "primary_endpoint": "Identification of genetic variants affecting drug response"
+        },
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "39115831",
+            "title": "Contemporary Management of Acute Myeloid Leukemia: A Review.",
+            "journal": "JAMA oncology",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39115831/"
+          },
+          {
+            "pmid": "29793534",
+            "title": "Integrating rare genetic variants into pharmacogenetic drug response predictions.",
+            "journal": "Human genomics",
+            "year": "2018",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/29793534/"
+          },
+          {
+            "pmid": "40261935",
+            "title": "Proteostasis landscapes of cystic fibrosis variants reveal drug response vulnerability.",
+            "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40261935/"
+          }
+        ],
+        "source_chars": 269,
+        "enriched_at": "2026-11-12",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.20)",
+          "summary: unsupported wording (0.38)",
+          "summary: unsupported wording (0.57)",
+          "study.trial_name: unsupported wording (0.25)",
+          "study.design: unsupported wording (0.50)",
+          "finding: unsupported wording (0.29)",
+          "finding: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.14)",
+          "caveat: unsupported wording (0.43)",
+          "next_steps: unsupported wording (0.22)",
+          "who_it_applies_to: unsupported wording (0.43)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "adverse_drug_events",
+          "name": "Adverse drug events",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1070,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Beers criteria adherence",
+            "outcome": "Adverse drug events",
+            "summary": "The strongest evidence for this edge comes from the large 2016 JAGS cohort evaluating Beers and STOPP criteria against real-world adverse drug events. It showed that Beers-defined inappropriate prescribing predicted ADEs",
+            "effect": "The direct Beers signal is protective but modest. The largest U.S. claims cohort found that Beers-defined inappropriate prescribing predicted adverse drug events, while prospective community cohorts suggest the Beers signal is weaker than some STOPP-based measures but still points in the same safety direction.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1264,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Beers criteria adherence",
+            "outcome": "Adverse drug events",
+            "summary": "The most balanced reading is that adherence to Beers-type inappropriate-prescribing criteria is directionally protective against adverse drug events, but the size of that protection is modest and context-dependent. Direc",
+            "effect": "In a prospective UK cohort of 1,280 older adults discharged from hospital, having multiple Beers-listed potentially inappropriate medications was independently associated with adverse drug reactions. In a Ugandan prospective cohort of 523 hospitalized older adults, exposure to a potentially inappropriate medication identified using Beers criteria was associated with hospital-acquired adverse drug reactions.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3738,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Continuous glucose monitoring in type 2 diabetes",
+            "outcome": "Adverse drug events",
+            "summary": "The overall incidence of adverse drug reactions was lower in the intervention group.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3943,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Long-term benzodiazepine use",
+            "outcome": "Adverse drug events",
+            "summary": "Long-term benzodiazepine use is associated with serious adverse drug events, especially in older adults.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 4,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_892b7a22437cb719",
+      "published_at": "2026-11-11",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New heart procedure reduces leakage and improves symptoms",
+      "summary": "A new catheter-based procedure reduced mitral regurgitation and improved heart failure symptoms in patients with functional mitral regurgitation. Five-year outcomes showed sustained benefits in ventricular shape and function.",
+      "why_it_matters": "If you have heart failure with leaking valves, this procedure may offer long-term symptom relief and better heart function.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43012111/",
+      "factor_slug": "transcatheter_mitral_cerclage",
+      "outcome_slug": "functional_mitral_regurgitation",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Transcatheter mitral cerclage ventriculoplasty",
+        "summary": "A new catheter-based procedure called transcatheter mitral cerclage ventriculoplasty was tested in 18 patients with functional mitral regurgitation and heart failure. The procedure aimed to reduce mitral regurgitation and improve heart function by reshaping the left ventricle. Over 5 years, participants showed reduced mitral regurgitation and improved left ventricular ejection fraction. The study was stopped early due to complete heart block in 6 participants, including 4 who needed new cardiac implants.",
+        "key_findings": [
+          "Kaplan-Meier estimated 5-year survival was 57%",
+          "One participant received a left ventricular assist device after 2 years",
+          "One participant underwent mitral transcatheter edge-to-edge repair after 3 years",
+          "No participants underwent heart transplantation",
+          "Among those with follow-up echocardiography, mitral regurgitation reduced and left ventricular ejection fraction improved through 5 years"
+        ],
+        "study": {
+          "trial_name": "National Heart, Lung, and Blood Institute Division of Intramural Research Transcatheter Mitral Cerclage Ventriculoplasty Early Feasibility Study",
+          "design": "prospective, multicenter",
+          "participants": "18 participants (63% heart failure with reduced ejection fraction, 37% heart failure with preserved ejection fraction)",
+          "follow_up": "up to 5 years"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Study was suspended due to complete heart block in 6 participants",
+          "Symptomatic benefit diminished after the first year",
+          "No long-term data beyond 5 years"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with functional mitral regurgitation and heart failure, particularly those with reduced or preserved ejection fraction",
+        "evidence": [],
+        "source_chars": 2182,
+        "enriched_at": "2026-11-12",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "heart_failure",
+          "name": "Heart failure",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 729,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Heart failure",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Bodea meta analysis in J Clin Med already points to sglt2 inhibitors tracks with lower risk or better outcomes, and l",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2141,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Heart failure",
+            "summary": "Benefit is observed in obesity-associated heart failure with preserved ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 1247,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Heart failure",
+            "summary": "Observational and preclinical evidence suggests aerobic exercise lowers heart failure risk, but most data come from specific patient groups (diabetics post-PCI, diabetic cardiomyopathy) or animal models rather than the g",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 5
+          },
+          {
+            "id": 3546,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Heart failure",
+            "summary": "Renin-angiotensin system inhibitors were linked to lower 1-year mortality.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 3216,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Iron supplementation",
+            "outcome": "Heart failure",
+            "summary": "Iron supplementation improves outcomes in heart failure with reduced ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3870,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Heart failure",
+            "summary": "Intravenous iron may reduce heart failure events in patients with chronic kidney disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 23,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_9f7f93afc49a54cd",
+      "published_at": "2026-11-11",
+      "category": "cardio",
+      "stage": "preclinical",
+      "audience": "technical",
+      "headline": "AI tool improves diastolic mechanics analysis in Takotsubo syndrome",
+      "summary": "A new AI model analyzed echocardiograms from 1,142 patients to better understand diastolic function in Takotsubo syndrome. It used data from both TTS and heart attack patients to improve diagnostic accuracy.",
+      "why_it_matters": "This AI tool may help doctors more accurately diagnose and monitor heart function in Takotsubo syndrome patients.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43012108/",
+      "factor_slug": "motion_informed_neural_network",
+      "outcome_slug": "diastolic_mechanics",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Motion-informed neural network (MiNN-Echo)",
+        "summary": "A new AI model called MiNN-Echo analyzed echocardiograms from 1,142 patients to study diastolic mechanics in Takotsubo syndrome (TTS). It was trained using data from both TTS patients and those with acute myocardial infarction. The model achieved an area under the curve of 0.77 in distinguishing TTS from heart attacks, outperforming human readers (0.69). Key findings included differences in diastolic timing and motion patterns between TTS and heart attack patients.",
+        "key_findings": [
+          "MiNN-Echo achieved an AUC of 0.77, compared to 0.69 for human readers in differentiating TTS from acute myocardial infarction.",
+          "Myocardial motion during diastole contributed \u224871% to the differential diagnosis, more than systolic motion.",
+          "TTS patients had longer isovolumic relaxation time: 112.5 ms (IQR 68.75\u2013165.94) vs. 87.5 ms (IQR 54.17\u2013140) in heart attack patients (P<0.001).",
+          "TTS patients spent 28% of diastolic time in isovolumic relaxation vs. 19% in heart attack patients (P<0.001).",
+          "TTS patients had lower mitral-annulus displacement during passive filling (0.45 vs. 0.50, P<0.001) and altered rotation angles (-70.19 vs. -60.34, P=0.020)."
+        ],
+        "study": {
+          "trial_name": "Motion-Informed Neural Network Towards Diastolic Mechanics in Takotsubo Syndrome",
+          "design": "observational, multi-institutional cohort",
+          "comparator": "patients with acute myocardial infarction",
+          "primary_endpoint": "differentiation of TTS from acute myocardial infarction using echocardiographic data"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Results are based on retrospective analysis of echocardiograms from a single study."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with suspected Takotsubo syndrome or acute myocardial infarction who undergo echocardiography",
+        "evidence": [
+          {
+            "pmid": "43012108",
+            "title": "Motion-Informed Neural Network Towards Diastolic Mechanics in Takotsubo Syndrome.",
+            "journal": "Circulation. Cardiovascular imaging",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/43012108/"
+          }
+        ],
+        "source_chars": 2460,
+        "enriched_at": "2026-11-12",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.38)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "myocardial_infarction",
+          "name": "Myocardial infarction",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 672,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "High lipoprotein(a)",
+            "outcome": "Myocardial infarction",
+            "summary": "The strongest piece here is the 2025 Cancelli meta analysis in Arch Cardiovasc Dis, which ties high lipoprotein(a) to myocardial infarction in a direction that later studies largely support. That makes this edge more abo",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 531,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "ApoB",
+            "outcome": "Myocardial infarction",
+            "summary": "The strongest piece here is the 2025 Nicholls meta analysis in J Am Coll Cardiol, which ties apob to myocardial infarction in a direction that later studies largely support. That makes this edge more about calibrating ma",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 576,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Coronary artery calcium scoring",
+            "outcome": "Myocardial infarction",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2020 Lo-Kioeng-Shioe meta analysis in Int J Cardiol already points to coronary artery calcium scoring tracks with higher r",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 579,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "High coronary artery calcium score",
+            "outcome": "Myocardial infarction",
+            "summary": "The anchor for this edge is the 2026 Park cohort in Prog Cardiovasc Dis, which suggests that high coronary artery calcium score tracks with higher risk or worse outcomes for myocardial infarction. Later papers point in m",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 833,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Job strain",
+            "outcome": "Myocardial infarction",
+            "summary": "The strongest evidence comes from the individual-participant meta-analysis showing that workers exposed to job strain had a higher incidence of coronary events than those without that pattern. Later pooled analyses did n",
+            "effect": "Large pooled occupational datasets suggest a modest but fairly consistent increase in coronary-event risk under sustained job strain.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 600,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Endothelial dysfunction by flow-mediated dilation",
+            "outcome": "Myocardial infarction",
+            "summary": "The anchor for this edge is the 2025 Hermawan meta analysis in J Clin Med, which suggests that endothelial dysfunction by flow-mediated dilation tracks with higher risk or worse outcomes for myocardial infarction. Later ",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 21,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_d8e51e148800a3b1",
+      "published_at": "2026-11-11",
+      "category": "metabolic",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "New obesity diagnosis method could reclassify millions",
+      "summary": "A proposed alternative to BMI could change obesity diagnoses for millions. The new approach aims to improve accuracy in identifying obesity.",
+      "why_it_matters": "This could lead to better, more personalized care for people currently misclassified by BMI.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/2026/11/11/obesity-diagnosis-bmi-lancet-commission-proposal-impact/?utm_campaign=rss",
+      "factor_slug": "bmi_alternative",
+      "outcome_slug": "obesity_diagnosis",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "A proposed alternative to BMI for diagnosing obesity is being evaluated for its potential to reclassify millions of people. Proponents argue it could lead to more accurate identification of obesity and better-targeted care.",
+        "key_findings": [
+          "The new method identifies metabolic risk more accurately than BMI alone."
+        ],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "38958869",
+            "title": "Strengths and Limitations of BMI in the Diagnosis of Obesity: What is the Path Forward?",
+            "journal": "Current obesity reports",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38958869/"
+          },
+          {
+            "pmid": "38015216",
+            "title": "Obesity Management in Adults: A Review.",
+            "journal": "JAMA",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38015216/"
+          },
+          {
+            "pmid": "30721956",
+            "title": "Humans against Obesity: Who Will Win?",
+            "journal": "Advances in nutrition (Bethesda, Md.)",
+            "year": "2019",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/30721956/"
+          }
+        ],
+        "source_chars": 276,
+        "enriched_at": "2026-11-12",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.22)",
+          "summary: unsupported wording (0.00)",
+          "summary: unsupported wording (0.43)",
+          "intervention: unsupported wording (0.50)",
+          "finding: 40",
+          "finding: unsupported wording (0.33)",
+          "finding: unsupported wording (0.14)",
+          "finding: unsupported wording (0.17)",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.00)",
+          "next_steps: unsupported wording (0.22)",
+          "who_it_applies_to: unsupported wording (0.22)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "adult_obesity",
+          "name": "Adult obesity",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 520,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Adverse childhood experiences",
+            "outcome": "Adult obesity",
+            "summary": "The strongest piece here is the 2020 Wiss meta analysis in Physiol Behav, which ties adverse childhood experiences to adult obesity in a direction that later studies largely support. That makes this edge more about calib",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 594,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Early adiposity rebound",
+            "outcome": "Adult obesity",
+            "summary": "The strongest piece here is the 2022 De Giuseppe cohort in Metabolites, which ties early adiposity rebound to adult obesity in a direction that later studies largely support. That makes this edge more about calibrating m",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 553,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Breastfeeding for at least 12 months",
+            "outcome": "Adult obesity",
+            "summary": "The strongest piece here is the 2025 Muscogiuri meta analysis in Nutrition, which ties breastfeeding for at least 12 months to adult obesity in a direction that later studies largely support. That makes this edge more ab",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 554,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Breastfeeding for at least 3 months",
+            "outcome": "Adult obesity",
+            "summary": "The strongest piece here is the 2025 Muscogiuri meta analysis in Nutrition, which ties breastfeeding for at least 3 months to adult obesity in a direction that later studies largely support. That makes this edge more abo",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 555,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Breastfeeding for at least 6 months",
+            "outcome": "Adult obesity",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Liu meta analysis in BMC Womens Health already points to breastfeeding for at least 6 months tracks with lower risk o",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 5,
         "factor_total": 0
       }
     },
@@ -1673,6 +2985,135 @@
         ],
         "factor_edges": [],
         "outcome_total": 6,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_2e4877e5ffdbec8e",
+      "published_at": "2026-11-10",
+      "category": "other",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "WHO expands recommended birth control options",
+      "summary": "The World Health Organization has updated its contraception guidelines to include a broader range of safe and effective methods. The new guidance aims to improve access and choice for people worldwide.",
+      "why_it_matters": "Know that more contraceptive options are now recommended, helping you make informed choices about your reproductive health.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2855639",
+      "factor_slug": "contraception",
+      "outcome_slug": "unintended_pregnancy",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "The World Health Organization (WHO) has updated its contraception guidelines to include a broader range of safe and effective methods. The new guidance aims to improve access and choice for people worldwide.",
+        "key_findings": [
+          "WHO now recommends an expanded range of contraceptive methods as safe and effective."
+        ],
+        "study": {},
+        "regulatory_status": "WHO guideline update",
+        "caveats": [
+          "No new clinical trial data were used in this update."
+        ],
+        "next_steps": "Health systems and providers are expected to adopt the updated guidelines to improve contraceptive access and choice.",
+        "who_it_applies_to": "People of reproductive age worldwide who are seeking contraception.",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "39106301",
+            "title": "U.S. Selected Practice Recommendations for Contraceptive Use, 2024.",
+            "journal": "MMWR. Recommendations and reports : Morbidity and mortality weekly report. Recommendations and reports",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39106301/"
+          },
+          {
+            "pmid": "37334892",
+            "title": "Postpartum contraception: A matter of guidelines.",
+            "journal": "International journal of gynaecology and obstetrics: the official organ of the International Federation of Gynaecology and Obstetrics",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37334892/"
+          },
+          {
+            "pmid": "30681544",
+            "title": "ACOG Practice Bulletin No. 206: Use of Hormonal Contraception in Women With Coexisting Medical Conditions.",
+            "journal": "Obstetrics and gynecology",
+            "year": "2019",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/30681544/"
+          }
+        ],
+        "source_chars": 0,
+        "enriched_at": "2026-11-12",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.43)",
+          "summary: unsupported wording (0.14)",
+          "summary: unsupported wording (0.25)",
+          "finding: unsupported wording (0.50)",
+          "finding: unsupported wording (0.33)",
+          "finding: unsupported wording (0.40)",
+          "finding: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.14)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "pregnancy",
+          "name": "Pregnancy",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 5964,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Levothyroxine",
+            "outcome": "Pregnancy",
+            "summary": "Levothyroxine may benefit women with specific endocrine abnormalities during pregnancy, though routine use lacks strong evidence.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5965,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Metformin",
+            "outcome": "Pregnancy",
+            "summary": "Metformin may offer benefits in pregnant women with specific endocrine conditions, but evidence for routine use is limited.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4600,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Short sleep duration (<6h)",
+            "outcome": "Pregnancy",
+            "summary": "Poorer sleep quality was independently associated with lower odds of clinical pregnancy in IVF/ICSI-D recipients.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5934,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Omega-3 supplementation",
+            "outcome": "Pregnancy",
+            "summary": "Omega-3 supplementation during pregnancy was reported by 75.6% of participants in this cross-sectional study.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 4,
         "factor_total": 0
       }
     },
@@ -22973,333 +24414,6 @@
         "outcome_edges": [],
         "factor_edges": [],
         "outcome_total": 0,
-        "factor_total": 0
-      }
-    },
-    {
-      "id": "br_da2120b27bcd3d2b",
-      "published_at": "2026-07-14",
-      "category": "other",
-      "stage": "guideline",
-      "audience": "general",
-      "headline": "ACOG releases 2026 maternal immunization schedule, differing from CDC recommendations",
-      "summary": "ACOG issued its first formal maternal vaccine schedule for 2026 that does not align with CDC guidelines. This marks a significant shift in obstetric care recommendations.",
-      "why_it_matters": "Pregnant individuals should discuss vaccination plans with their OB/GYN, as ACOG's new schedule may change which vaccines are recommended during pregnancy.",
-      "graphic": null,
-      "strength": 0.9,
-      "source_name": "JAMA",
-      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2850667",
-      "factor_slug": "maternal_vaccination",
-      "outcome_slug": "maternal_infection_prevention",
-      "edge_id": null,
-      "is_orphan": true,
-      "detail": {
-        "intervention": "",
-        "summary": "ACOG released its first formal maternal vaccine schedule for 2026, which differs from the CDC's recommendations.",
-        "key_findings": [],
-        "study": {},
-        "regulatory_status": "",
-        "caveats": [
-          "The differences between ACOG and CDC recommendations are not explained in detail.",
-          "The source does not specify which vaccines or timing differ from CDC guidelines."
-        ],
-        "next_steps": "",
-        "who_it_applies_to": "",
-        "evidence": [],
-        "related": [
-          {
-            "pmid": "42313556",
-            "title": "ACOG Releases Maternal Immunization Schedule, Breaking From CDC.",
-            "journal": "JAMA",
-            "year": "2026",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/42313556/"
-          },
-          {
-            "pmid": "42359877",
-            "title": "A disciplinary alliance between obstetrics and infectious diseases: Building integrated perinatal safety systems.",
-            "journal": "Wiadomosci lekarskie (Warsaw, Poland : 1960)",
-            "year": "2026",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/42359877/"
-          },
-          {
-            "pmid": "41195806",
-            "title": "Pre-Eclampsia Rates in Women With and Without HIV in Modern ART Era in Botswana.",
-            "journal": "Journal of acquired immune deficiency syndromes (1999)",
-            "year": "2026",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/41195806/"
-          }
-        ],
-        "source_chars": 0,
-        "enriched_at": "2026-10-17",
-        "model": "qwen3:30b-instruct",
-        "dropped": [
-          "summary: unsupported wording (0.46)",
-          "summary: unsupported wording (0.00)",
-          "summary: unsupported wording (0.20)",
-          "summary: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.40)",
-          "who_it_applies_to: unsupported wording (0.33)"
-        ]
-      },
-      "corpus": {
-        "factor": null,
-        "outcome": null,
-        "pair": [],
-        "outcome_edges": [],
-        "factor_edges": [],
-        "outcome_total": 0,
-        "factor_total": 0
-      }
-    },
-    {
-      "id": "br_06582a505e001bb7",
-      "published_at": "2026-07-14",
-      "category": "neuro",
-      "stage": "other",
-      "audience": "general",
-      "headline": "Post-surgery confusion linked to future memory problems in older adults",
-      "summary": "Older adults who experience delirium after surgery are twice as likely to develop long-term cognitive decline. This risk remains even after accounting for other health conditions.",
-      "why_it_matters": "If you or a loved one has surgery, ask your doctor about monitoring for postoperative confusion to address potential cognitive decline early.",
-      "graphic": null,
-      "strength": 0.8,
-      "source_name": "JAMA",
-      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2850666",
-      "factor_slug": "postoperative_delirium",
-      "outcome_slug": "long_term_cognitive_decline",
-      "edge_id": null,
-      "is_orphan": true,
-      "detail": {
-        "intervention": "",
-        "summary": "Older adults who experience delirium after surgery were found to be twice as likely to develop long-term cognitive decline compared to those who did not.",
-        "key_findings": [
-          "Older adults with post-surgery delirium were twice as likely to develop long-term cognitive decline.",
-          "This increased risk remained after adjusting for other health conditions.",
-          "Delirium after surgery was associated with future cognitive decline regardless of baseline cognitive status.",
-          "Cognitive decline was measured as a long-term outcome following surgery."
-        ],
-        "study": {},
-        "regulatory_status": "",
-        "caveats": [
-          "The study does not report on the severity or type of cognitive decline."
-        ],
-        "next_steps": "",
-        "who_it_applies_to": "Older adults undergoing surgery who may develop post-surgical delirium",
-        "evidence": [],
-        "related": [
-          {
-            "pmid": "38902462",
-            "title": "Postoperative cognitive dysfunction: a concept analysis.",
-            "journal": "Aging clinical and experimental research",
-            "year": "2024",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/38902462/"
-          },
-          {
-            "pmid": "29171992",
-            "title": "Delirium Severity Post-Surgery and its Relationship with Long-Term Cognitive Decline in a Cohort of Patients without Dementia.",
-            "journal": "Journal of Alzheimer's disease : JAD",
-            "year": "2018",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/29171992/"
-          },
-          {
-            "pmid": "39856767",
-            "title": "Surgery impairs glymphatic activity and cognitive function in aged mice.",
-            "journal": "Molecular brain",
-            "year": "2025",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/39856767/"
-          }
-        ],
-        "source_chars": 0,
-        "enriched_at": "2026-10-17",
-        "model": "qwen3:30b-instruct",
-        "dropped": [
-          "summary: unsupported wording (0.57)",
-          "summary: unsupported wording (0.44)",
-          "summary: unsupported wording (0.43)",
-          "summary: unsupported wording (0.00)",
-          "finding: unsupported wording (0.50)",
-          "caveat: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.00)"
-        ]
-      },
-      "corpus": {
-        "factor": null,
-        "outcome": {
-          "slug": "long_term_cognitive_decline",
-          "name": "Long-term cognitive decline",
-          "relation": "same"
-        },
-        "pair": [],
-        "outcome_edges": [
-          {
-            "id": 1132,
-            "tier": "B",
-            "direction": "harmful",
-            "factor": "ICU delirium",
-            "outcome": "Long-term cognitive decline",
-            "summary": "ICU delirium is a strong harmful marker for later cognitive decline. Prospective cohort work from BRAIN-ICU and related studies shows that longer delirium during critical illness tracks with worse cognitive outcomes mont",
-            "effect": "In the landmark BRAIN-ICU cohort, longer delirium duration during critical illness independently predicted worse global cognition and executive function at both 3 and 12 months after discharge. Later phenotype analyses and additional ICU cohorts have reinforced that delirium is not just an acute bedside phenomenon but a marker of more persistent cognitive injury.",
-            "review": "verified_evidence",
-            "n_evidence": 3
-          },
-          {
-            "id": 1326,
-            "tier": "B",
-            "direction": "harmful",
-            "factor": "ICU delirium",
-            "outcome": "Long-term cognitive decline",
-            "summary": "This is one of the clearer harmful neurocognitive signals in critical care. Multiple prospective cohorts, including BRAIN-ICU, show that longer ICU delirium is associated with worse cognitive outcomes months later, and t",
-            "effect": "Across prospective ICU cohorts, longer delirium duration consistently predicts worse cognition months later. In the original ventilated-medical-ICU cohort, 79% of survivors were cognitively impaired at 3 months and 71% at 12 months, with delirium duration independently predicting worse scores.",
-            "review": "verified_evidence",
-            "n_evidence": 3
-          }
-        ],
-        "factor_edges": [],
-        "outcome_total": 2,
-        "factor_total": 0
-      }
-    },
-    {
-      "id": "br_62e029ea6fac2440",
-      "published_at": "2026-07-14",
-      "category": "oncology",
-      "stage": "guideline",
-      "audience": "general",
-      "headline": "Removing fallopian tubes during routine surgery may lower ovarian cancer risk",
-      "summary": "The European Society of Gynaecological Oncology recommends removing fallopian tubes during other gynecological surgeries to prevent ovarian cancer. This safe approach is now widely supported.",
-      "why_it_matters": "Women having routine gynecological surgery should discuss removing fallopian tubes with their doctor to reduce ovarian cancer risk.",
-      "graphic": null,
-      "strength": 0.9,
-      "source_name": "JAMA",
-      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2850113",
-      "factor_slug": "opportunistic_salpingectomy",
-      "outcome_slug": "tubo_ovarian_carcinoma",
-      "edge_id": null,
-      "is_orphan": true,
-      "detail": {
-        "intervention": "removal of fallopian tubes during routine gynecological surgery",
-        "summary": "The European Society of Gynaecological Oncology recommends removing fallopian tubes during other gynecological surgeries to lower the risk of ovarian cancer. This approach is considered safe and is now widely supported. The recommendation is based on evidence that ovarian cancer may originate in the fallopian tubes.",
-        "key_findings": [],
-        "study": {},
-        "regulatory_status": "European Society of Gynaecological Oncology guideline recommendation",
-        "caveats": [],
-        "next_steps": "",
-        "who_it_applies_to": "women undergoing routine gynecological surgery, particularly those at average or elevated risk for ovarian cancer",
-        "evidence": [],
-        "related": [
-          {
-            "pmid": "40690248",
-            "title": "Ovarian Cancer: A Review.",
-            "journal": "JAMA",
-            "year": "2025",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/40690248/"
-          },
-          {
-            "pmid": "41786760",
-            "title": "Ovarian cancer.",
-            "journal": "Nature reviews. Disease primers",
-            "year": "2026",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/41786760/"
-          },
-          {
-            "pmid": "29909222",
-            "title": "Fallopian tube tumorigenesis and clinical implications for ovarian cancer risk-reduction.",
-            "journal": "Cancer treatment reviews",
-            "year": "2018",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/29909222/"
-          }
-        ],
-        "source_chars": 0,
-        "enriched_at": "2026-10-17",
-        "model": "qwen3:30b-instruct",
-        "dropped": [
-          "summary: unsupported wording (0.38)",
-          "summary: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.20)"
-        ]
-      },
-      "corpus": {
-        "factor": null,
-        "outcome": {
-          "slug": "ovarian_cancer",
-          "name": "Ovarian cancer",
-          "relation": "same"
-        },
-        "pair": [],
-        "outcome_edges": [
-          {
-            "id": 1281,
-            "tier": "A",
-            "direction": "protective",
-            "factor": "Combined oral contraceptives",
-            "outcome": "Ovarian cancer",
-            "summary": "The ovarian-cancer signal is strongly protective and unusually consistent. Large pooled epidemiology, conventional case-control data, and hereditary-risk cohorts all point in the same direction: longer combined oral-cont",
-            "effect": "This is one of the clearest long-term protective signals in reproductive epidemiology. Additional case-control and BRCA-carrier cohort data support the same direction.",
-            "review": "verified_evidence",
-            "n_evidence": 3
-          },
-          {
-            "id": 783,
-            "tier": "B",
-            "direction": "harmful",
-            "factor": "Asbestos exposure",
-            "outcome": "Ovarian cancer",
-            "summary": "The most recent meta-analysis again found higher ovarian-cancer risk among women exposed to asbestos at work, echoing the earlier Environmental Health Perspectives synthesis. The literature is not enormous, but it is mor",
-            "effect": "The better occupational syntheses show a repeated upward shift in ovarian-cancer risk with asbestos exposure, and the signal is stronger than a trivial observational blip.",
-            "review": "verified_evidence",
-            "n_evidence": 3
-          },
-          {
-            "id": 867,
-            "tier": "B",
-            "direction": "protective",
-            "factor": "Combined oral contraceptive use",
-            "outcome": "Ovarian cancer",
-            "summary": "Among the v4 reproductive-endocrinology topics, this is one of the clearest. Across large pooled datasets, women who have used oral contraceptives tend to have lower ovarian-cancer risk than never-users, and the reductio",
-            "effect": "This is one of the more consistent cancer-prevention signals in reproductive epidemiology: ever use of combined oral contraceptives is associated with lower ovarian-cancer risk, and longer use appears more protective.",
-            "review": "verified_evidence",
-            "n_evidence": 3
-          },
-          {
-            "id": 1079,
-            "tier": "B",
-            "direction": "protective",
-            "factor": "Breastfeeding independent of parity",
-            "outcome": "Ovarian cancer",
-            "summary": "The strongest pooled evidence suggests breastfeeding is associated with lower ovarian-cancer risk even after taking parity into account, and longer cumulative breastfeeding appears to strengthen the protection. Prospecti",
-            "effect": "The most reproducible pooled evidence suggests breastfeeding remains associated with lower ovarian-cancer risk even after parity is accounted for, with the protective signal strengthening as duration increases.",
-            "review": "verified_evidence",
-            "n_evidence": 3
-          },
-          {
-            "id": 1087,
-            "tier": "B",
-            "direction": "protective",
-            "factor": "Combined oral contraceptives",
-            "outcome": "Ovarian cancer",
-            "summary": "Combined oral contraceptives are associated with lower ovarian-cancer risk in large pooled analyses, and the most persuasive evidence suggests the benefit grows with duration of use. This is one of the clearest long-term",
-            "effect": "The ovarian-cancer signal is one of the most consistent long-term benefits of combined oral contraceptives. Across pooled datasets, ever use is associated with lower risk, and longer duration generally strengthens that protection.",
-            "review": "verified_evidence",
-            "n_evidence": 3
-          },
-          {
-            "id": 1273,
-            "tier": "B",
-            "direction": "protective",
-            "factor": "Breastfeeding independent of parity",
-            "outcome": "Ovarian cancer",
-            "summary": "The evidence supports a protective association independent of simple parity count. Meta-analytic and large case-control data show lower ovarian cancer risk in women who breastfed, with stronger protection at longer durat",
-            "effect": "The best parity-aware syntheses still support a protective association. A 2014 meta-analysis of 40 epidemiologic studies including 17,139 women with ovarian cancer found that, among parous women only, breastfeeding was associated with lower ovarian cancer risk, and risk fell further with longer total duration.",
-            "review": "verified_evidence",
-            "n_evidence": 3
-          }
-        ],
-        "factor_edges": [],
-        "outcome_total": 14,
         "factor_total": 0
       }
     }
