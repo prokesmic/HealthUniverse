@@ -1,8 +1,189 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-12",
+  "updated_at": "2026-11-13",
   "items": [
+    {
+      "id": "br_25e315b6dcaf756e",
+      "published_at": "2026-11-13",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for relapsed follicular lymphoma",
+      "summary": "Zanubrutinib, in combination with obinutuzumab, has been approved by the FDA for patients with follicular lymphoma that has returned or not responded to at least two prior treatments.",
+      "why_it_matters": "This approval offers a new treatment option for patients with a hard-to-treat form of lymphoma who have limited choices after earlier therapies.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Overall Response Rate",
+            "treatment": 69,
+            "control": 46
+          },
+          {
+            "label": "18-Month Duration of Response Rate",
+            "treatment": 69,
+            "control": 42
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Zanubrutinib + Obinutuzumab",
+        "control_label": "Obinutuzumab"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-grants-accelerated-approval-zanubrutinib-relapsed-or-refractory-follicular-lymphoma",
+      "factor_slug": "zanubrutinib_obinutuzumab_combination",
+      "outcome_slug": "relapsed_refractory_follicular_lymphoma",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "zanubrutinib plus obinutuzumab",
+        "summary": "Zanubrutinib in combination with obinutuzumab was approved by the FDA for patients with relapsed or refractory follicular lymphoma who have received at least two prior systemic treatments. The approval was based on the ROSEWOOD trial, which randomized 217 adults with relapsed or refractory follicular lymphoma to receive either the combination or obinutuzumab alone. The combination showed a higher overall response rate and longer duration of response compared to obinutuzumab monotherapy. Patient-reported outcomes also showed improved health-related quality of life with the combination. The regimen is recommended at 160 mg zanubrutinib twice daily or 320 mg once daily until disease progression or unacceptable toxicity.",
+        "key_findings": [
+          "Overall response rate was 69% (95% CI: 61, 76) in the zanubrutinib plus obinutuzumab arm",
+          "Overall response rate was 46% (95% CI: 34, 58) in the obinutuzumab monotherapy arm (p = 0.0012)",
+          "Median duration of response was not reached in the combination arm (95% CI: 25.3 months, NE)",
+          "Median duration of response was 14.0 months in the obinutuzumab arm (95% CI: 9.2, 25.1)",
+          "Estimated duration of response rate at 18 months was 69% (95% CI: 58, 78) in the combination arm"
+        ],
+        "study": {
+          "trial_name": "ROSEWOOD (BGB-3111-212, NCT03332017)",
+          "design": "open-label, multicenter, randomized",
+          "participants": "217 adult patients with relapsed or refractory follicular lymphoma after at least two prior systemic treatments",
+          "comparator": "obinutuzumab monotherapy",
+          "primary_endpoint": "overall response rate (ORR) by independent review committee",
+          "follow_up": "median follow-up of 19.0 months"
+        },
+        "regulatory_status": "FDA accelerated approval granted on March 7, 2024",
+        "caveats": [
+          "The approval is based on overall response rate and duration of response, which are surrogate endpoints",
+          "Serious adverse reactions occurred in 35% of patients receiving the combination",
+          "Common adverse reactions included decreased neutrophil counts (51%) and platelet counts (41%)"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adult patients with relapsed or refractory follicular lymphoma who have received at least two prior systemic treatments",
+        "evidence": [
+          {
+            "pmid": "37506346",
+            "title": "ROSEWOOD: A Phase II Randomized Study of Zanubrutinib Plus Obinutuzumab Versus Obinutuzumab Monotherapy in Patients With Relapsed or Refractory Follicular Lymphoma.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37506346/"
+          },
+          {
+            "pmid": "39376156",
+            "title": "Patient-reported outcomes in patients with relapsed or refractory follicular lymphoma treated with zanubrutinib plus obinutuzumab versus obinutuzumab monotherapy: results from the ROSEWOOD trial.",
+            "journal": "Current medical research and opinion",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39376156/"
+          }
+        ],
+        "source_chars": 2491,
+        "enriched_at": "2026-11-13",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.00)",
+          "next_steps: unsupported wording (0.20)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_4d83f191a83eada8",
+      "published_at": "2026-11-13",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for advanced HER2-positive bile duct cancer",
+      "summary": "The FDA has approved zanidatamab for patients with HER2-positive biliary tract cancer that has spread or cannot be removed. Approval was based on response rates observed in clinical trials.",
+      "why_it_matters": "Patients with this rare cancer now have a new treatment option after prior therapies failed.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-grants-accelerated-approval-zanidatamab-hrii-previously-treated-unresectable-or-metastatic-her2",
+      "factor_slug": "zanidatamab",
+      "outcome_slug": "her2_positive_biliary_tract_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "zanidatamab-hrii (Ziihera)",
+        "summary": "The FDA has granted accelerated approval to zanidatamab-hrii for adults with previously treated, unresectable or metastatic HER2-positive biliary tract cancer (IHC 3+). Efficacy was evaluated in a single-arm trial of 62 patients who had received at least one prior gemcitabine-containing regimen. The objective response rate was 52% (95% CI: 39, 65), with a median duration of response of 14.9 months. The drug is approved with a companion diagnostic test to identify eligible patients.",
+        "key_findings": [
+          "Objective response rate (ORR) was 52% (95% CI: 39, 65)",
+          "Median duration of response (DOR) was 14.9 months (95% CI: 7.4, not estimable)",
+          "Diarrhea, infusion-related reactions, abdominal pain, and fatigue occurred in at least 20% of patients",
+          "FDA approved a companion diagnostic: VENTANA PATHWAY anti-HER-2/neu (4B5) antibody",
+          "Recommended dose is 20 mg/kg IV every 2 weeks until progression or unacceptable toxicity"
+        ],
+        "study": {
+          "trial_name": "HERIZON-BTC-01 (NCT04466891)",
+          "design": "open-label multicenter, single-arm",
+          "participants": "62 patients with unresectable or metastatic HER2-positive (IHC 3+) biliary tract cancer",
+          "primary_endpoint": "objective response rate (ORR) and duration of response (DOR) as determined by independent central review using RECIST v1.1"
+        },
+        "regulatory_status": "FDA accelerated approval (November 20, 2024)",
+        "caveats": [
+          "The trial was single-arm with no control group",
+          "Diarrhea is a serious side effect, including life-threatening and fatal cases",
+          "Embryo-fetal toxicity is a boxed warning; effective contraception is required"
+        ],
+        "next_steps": "Continued approval may depend on verification of clinical benefit in a confirmatory trial",
+        "who_it_applies_to": "Adults with previously treated, unresectable or metastatic HER2-positive (IHC 3+) biliary tract cancer",
+        "evidence": [],
+        "fda_label": {
+          "brand": "Ziihera",
+          "generic": "zanidatamab-hrii",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=zanidatamab-hrii"
+        },
+        "related": [
+          {
+            "pmid": "37276871",
+            "title": "Zanidatamab for HER2-amplified, unresectable, locally advanced or metastatic biliary tract cancer (HERIZON-BTC-01): a multicentre, single-arm, phase 2b study.",
+            "journal": "The Lancet. Oncology",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37276871/"
+          },
+          {
+            "pmid": "41264278",
+            "title": "Zanidatamab in HER2-Positive Metastatic Biliary Tract Cancer: Final Results From HERIZON-BTC-01.",
+            "journal": "JAMA oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41264278/"
+          },
+          {
+            "pmid": "40892073",
+            "title": "An evaluation of zanidatamab, a novel, anti-HER2 biparatopic antibody, for the treatment of biliary tract cancer.",
+            "journal": "Expert opinion on biological therapy",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40892073/"
+          }
+        ],
+        "source_chars": 2750,
+        "enriched_at": "2026-11-13",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_d1013ba395f25f50",
       "published_at": "2026-11-12",
@@ -766,6 +947,90 @@
         ],
         "factor_edges": [],
         "outcome_total": 45,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_01a2c3b87f9756e2",
+      "published_at": "2026-11-12",
+      "category": "oncology",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "New data show lower second cancer risk in female HL survivors",
+      "summary": "Female Hodgkin lymphoma survivors treated in recent decades have lower risks of second cancers compared to those treated decades ago. The study analyzed over 60 years of treatment data across a large national cohort.",
+      "why_it_matters": "Women who survived Hodgkin lymphoma should discuss updated screening guidelines with their doctors based on treatment era.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43019503/",
+      "factor_slug": "treatment_era",
+      "outcome_slug": "subsequent_primary_malignancy",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "This study analyzed data from 7,428 female Hodgkin lymphoma survivors diagnosed before age 36 in England and Wales between 1954 and 2010, with follow-up through 2018. It found that solid cancer risks decreased by 25% between treatment periods 1954\u20131989 and 2000\u20132010. The reduction was largely due to changes in radiotherapy use, dose, and technique. Despite this decline, cumulative incidence of second primary malignancies reached 36% at 50 years, with persistently elevated risks for breast and lung cancer. No decline was observed for hematologic malignancies.",
+        "key_findings": [
+          "Standardized incidence ratio (SIR) for second cancers was 3.3 (95% CI, 3.1 to 3.5)",
+          "Solid tumor risks were highest following radiotherapy, with a strong dose-dependent response",
+          "Solid cancer risks decreased by 25% between 1954\u20131989 and 2000\u20132010",
+          "Cumulative incidence of second primary malignancies reached 36% at 50 years",
+          "No decline was observed for hematologic malignancies"
+        ],
+        "study": {
+          "trial_name": "Second Cancer Risk in Female Survivors of Hodgkin Lymphoma: A National Cohort Analysis Across Treatment Eras",
+          "design": "population-based cohort study",
+          "participants": "7,428 women diagnosed with Hodgkin lymphoma before age 36 in England and Wales",
+          "comparator": "treatment eras (1954\u20131989 vs. 2000\u20132010)",
+          "primary_endpoint": "second primary malignancies (SPMs)",
+          "follow_up": "median follow-up of 20.2 years"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "No data on specific chemotherapy agents beyond alkylator use"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "female Hodgkin lymphoma survivors diagnosed before age 36, particularly those treated in the past 60 years",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "22639888",
+            "title": "Risk of second breast cancer in female Hodgkin's lymphoma survivors: a meta-analysis.",
+            "journal": "BMC cancer",
+            "year": "2012",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/22639888/"
+          },
+          {
+            "pmid": "23053567",
+            "title": "Increased risk of second lung cancer in Hodgkin's lymphoma survivors: a meta-analysis.",
+            "journal": "Lung",
+            "year": "2013",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/23053567/"
+          },
+          {
+            "pmid": "28384078",
+            "title": "Risk of Second Cancer in Hodgkin Lymphoma Survivors and Influence of Family History.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2017",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/28384078/"
+          }
+        ],
+        "source_chars": 2102,
+        "enriched_at": "2026-11-13",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
         "factor_total": 0
       }
     },
@@ -5462,6 +5727,244 @@
         "factor_edges": [],
         "outcome_total": 0,
         "factor_total": 0
+      }
+    },
+    {
+      "id": "br_98ddff974b4f2dee",
+      "published_at": "2026-11-07",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Combining cholesterol drugs lowers heart risk more than statins alone",
+      "summary": "Patients with heart disease who started on a combination of cholesterol-lowering drugs had significantly lower LDL-C levels than those on statins alone. The combination was safe and effective within both intensive and standard cholesterol-targeting strategies.",
+      "why_it_matters": "If you have heart disease, starting with both drugs may offer better protection against future events.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/42998308/",
+      "factor_slug": "statin_ezetimibe_combination",
+      "outcome_slug": "low_ldl_cholesterol",
+      "edge_id": 160,
+      "is_orphan": false,
+      "detail": {
+        "intervention": "statin-ezetimibe combination therapy",
+        "summary": "In a randomized trial of 3,048 patients with atherosclerotic cardiovascular disease, those who started on a combination of statin and ezetimibe had significantly lower LDL-C levels than those on statin monotherapy, regardless of whether they were targeted to <55 mg/dL or <70 mg/dL. The combination therapy did not significantly reduce the risk of major cardiovascular events compared to statin monotherapy over 3 years. However, it helped patients achieve lower LDL-C levels more consistently. Safety outcomes were similar between the two treatment groups.",
+        "key_findings": [
+          "Median LDL-C was 53 mg/dL in the combination group vs. 62 mg/dL in the monotherapy group under intensive targeting (<55 mg/dL)",
+          "Median LDL-C was 63 mg/dL in the combination group vs. 70 mg/dL in the monotherapy group under conventional targeting (<70 mg/dL)",
+          "Primary endpoint occurred in 8.5% of combination therapy patients (128/1525) vs. 7.9% of monotherapy patients (119/1523); hazard ratio 1.07 (95% CI 0.83\u20131.37)",
+          "Ezetimibe was added to 34.3% of patients initially on statin monotherapy in the intensive-targeting group",
+          "Safety outcomes were similar between the combination and monotherapy groups"
+        ],
+        "study": {
+          "trial_name": "Ez-PAVE Trial",
+          "participants": "3048 patients with atherosclerotic cardiovascular disease",
+          "comparator": "statin monotherapy",
+          "primary_endpoint": "3-year composite of death from cardiovascular causes, nonfatal myocardial infarction, nonfatal stroke, any revascularization, or hospitalization for unstable angina",
+          "follow_up": "3 years"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The primary endpoint did not show a significant difference between groups",
+          "The study was conducted in South Korea; results may not generalize to other populations"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with atherosclerotic cardiovascular disease who are on cholesterol-lowering therapy",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "35863366",
+            "title": "Long-term efficacy and safety of moderate-intensity statin with ezetimibe combination therapy versus high-intensity statin monotherapy in patients with atherosclerotic cardiovascular disease (RACING): a randomised, open-label, non-inferiority trial.",
+            "journal": "Lancet (London, England)",
+            "year": "2022",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/35863366/"
+          },
+          {
+            "pmid": "41910315",
+            "title": "Intensive LDL Cholesterol Targeting in Atherosclerotic Cardiovascular Disease.",
+            "journal": "The New England journal of medicine",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41910315/"
+          },
+          {
+            "pmid": "40126455",
+            "title": "Impact of Lipid-Lowering Combination Therapy With Statins and Ezetimibe vs Statin Monotherapy on the Reduction of Cardiovascular Outcomes: A Meta-analysis.",
+            "journal": "Mayo Clinic proceedings",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40126455/"
+          }
+        ],
+        "source_chars": 3117,
+        "enriched_at": "2026-11-13",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.design: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "statins",
+          "name": "Statins",
+          "relation": "same"
+        },
+        "outcome": {
+          "slug": "ldl_cholesterol",
+          "name": "LDL cholesterol",
+          "relation": "class"
+        },
+        "pair": [
+          {
+            "id": 160,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Statins",
+            "outcome": "LDL cholesterol",
+            "summary": "Statins are among the most thoroughly studied drugs in medicine and consistently produce large reductions in LDL cholesterol. High-intensity regimens can cut LDL-C by half or more. The effect is seen across a wide range ",
+            "effect": "Statins reduce LDL-C by approximately 30\u201355% depending on agent and dose; high-intensity statins (e.g., atorvastatin 40\u201380 mg, rosuvastatin 20\u201340 mg) lower LDL-C by \u226550% on average",
+            "review": "weak_evidence",
+            "n_evidence": 13
+          }
+        ],
+        "outcome_edges": [
+          {
+            "id": 390,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Legumes",
+            "outcome": "LDL cholesterol",
+            "summary": "In general adult, pooled meta-analytic evidence suggest that legumes tracks with lower ldl cholesterol. Most disagreement in the literature is about size, subgroup sensitivity, or dose threshold rather than about whether",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 7
+          },
+          {
+            "id": 298,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Beta-glucan",
+            "outcome": "LDL cholesterol",
+            "summary": "In adults with elevated LDL cholesterol, pooled meta-analytic evidence suggest that beta-glucan tracks with lower ldl cholesterol. The strongest gut-related effects usually appear in intermediate outcomes such as ferment",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 456,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "High saturated fat intake",
+            "outcome": "LDL cholesterol",
+            "summary": "Dose-response meta-analyses backed by prospective cohorts link high saturated fat intake to higher ldl cholesterol in general adult. The average effect is usually moderate rather than dramatic, so this edge is better rea",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 215,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Plant-based dietary pattern",
+            "outcome": "LDL cholesterol",
+            "summary": "This effect is supported by multiple high-quality meta-analyses of randomized trials and is one of the most robust diet\u2013biomarker relationships in nutrition science. The benefit appears across a range of plant-based appr",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 8
+          },
+          {
+            "id": 436,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Higher polyunsaturated fat intake",
+            "outcome": "LDL cholesterol",
+            "summary": "Higher polyunsaturated fat intake appears tied to lower ldl cholesterol in general adult mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1516,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Psyllium husk",
+            "outcome": "LDL cholesterol",
+            "summary": "This is a sturdy, boring, useful lipid edge. Psyllium husk reliably lowers LDL cholesterol by a modest amount, and the finding has held up across older and newer randomized-trial syntheses as well as adjunct-to-statin st",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [
+          {
+            "id": 161,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Statins",
+            "outcome": "Cardiovascular disease",
+            "summary": "Statins are among the best-evidenced drugs in medicine for reducing heart attacks, strokes, and cardiovascular death. In people who have already had a cardiovascular event, they cut the risk of another major event by rou",
+            "effect": "~25% relative risk reduction in major cardiovascular events; ~10% reduction in all-cause mortality per 1 mmol/L LDL-C lowering",
+            "review": "weak_evidence",
+            "n_evidence": 14
+          },
+          {
+            "id": 244,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Statins",
+            "outcome": "Coenzyme Q10",
+            "summary": "Statins consistently lower circulating CoQ10 levels by roughly 16\u201354%, a well-replicated finding across multiple meta-analyses and RCTs. This occurs because statins block the same biochemical pathway that the body uses t",
+            "effect": "Statins reduce plasma CoQ10 by approximately 16\u201354% depending on statin type, dose, and duration; pooled estimates from meta-analyses suggest ~40% reduction in circulating CoQ10 levels",
+            "review": "weak_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 749,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Statins",
+            "outcome": "Type 2 diabetes",
+            "summary": "The strongest piece here is the 2025 Albawa'neh meta analysis in Ann Med, which ties statins to type 2 diabetes in a direction that later studies largely support. That makes this edge more about calibrating magnitude and",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 7
+          },
+          {
+            "id": 746,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Statins",
+            "outcome": "Statin-associated muscle symptoms",
+            "summary": "The strongest piece here is the 2025 Kovacic meta analysis in J Nutr Sci, which ties statins to statin-associated muscle symptoms in a direction that later studies largely support. That makes this edge more about calibra",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 747,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Statins",
+            "outcome": "Myopathy",
+            "summary": "The strongest piece here is the 2025 Kovacic meta analysis in J Nutr Sci, which ties statins to myopathy in a direction that later studies largely support. That makes this edge more about calibrating magnitude and contex",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 483,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Statins",
+            "outcome": "Coenzyme Q10 status",
+            "summary": "Statin therapy appears tied to adverse shifts in coenzyme q10 status in adults taking statins mainly through pooled meta-analytic evidence. This is one of the cleaner pharmacology edges in the set because the adverse pat",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "outcome_total": 51,
+        "factor_total": 25
       }
     },
     {
