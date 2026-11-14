@@ -1,8 +1,241 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-13",
+  "updated_at": "2026-11-14",
   "items": [
+    {
+      "id": "br_69f9e1520c9cdf9a",
+      "published_at": "2026-11-14",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved to treat protein in urine from kidney disease",
+      "summary": "The FDA approved a new drug to help reduce protein in the urine of adults with primary membranous nephropathy. This condition can lead to kidney failure if untreated.",
+      "why_it_matters": "If you have this type of kidney disease, talk to your doctor about this new treatment option.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Complete remission at week 104",
+            "treatment": 36,
+            "control": 6
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Gazyva",
+        "control_label": "Tacrolimus"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/news-events-human-drugs/fda-approves-first-drug-treat-adults-primary-membranous-nephropathy",
+      "factor_slug": "obinutuzumab",
+      "outcome_slug": "proteinuria",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Gazyva (obinutuzumab)",
+        "summary": "The FDA approved Gazyva (obinutuzumab) to treat adults with primary membranous nephropathy at risk of disease progression, aiming to reduce protein in the urine. The approval was based on a Phase 3 trial comparing Gazyva to tacrolimus in 142 adults with the condition. At week 104, 36% of patients receiving Gazyva achieved complete remission of proteinuria, compared to 6% in the tacrolimus group. The drug is the first specifically approved for this condition. It carries boxed warnings for hepatitis B virus reactivation and progressive multifocal leukoencephalopathy.",
+        "key_findings": [
+          "36% of patients in the Gazyva group achieved complete remission of proteinuria at week 104",
+          "6% of patients in the tacrolimus group achieved complete remission at week 104",
+          "The difference in complete remission rates was 31 percentage points (95% CI, 18 to 44)",
+          "Infusion-related reactions and upper respiratory tract infections were the most common side effects",
+          "Gazyva received Breakthrough Therapy, Orphan Drug, and Priority Review designations"
+        ],
+        "study": {
+          "trial_name": "MAJESTY (NCT04629248)",
+          "design": "Phase 3, randomized, controlled, open-label, multicenter",
+          "participants": "142 adults with primary membranous nephropathy",
+          "comparator": "tacrolimus",
+          "primary_endpoint": "Proportion of patients achieving complete remission of proteinuria (urine protein-creatinine ratio \u22640.3 g/g with stable estimated glomerular filtration rate) at week 104, without rescue therapy, treatment failure, or early discontinuation",
+          "follow_up": "104 weeks"
+        },
+        "regulatory_status": "FDA approved",
+        "caveats": [
+          "The primary endpoint used a surrogate measure (urine protein-creatinine ratio) rather than hard clinical outcomes like kidney failure",
+          "Gazyva carries a boxed warning for hepatitis B virus reactivation and progressive multifocal leukoencephalopathy",
+          "The trial did not show a significant difference in sustained eGFR reduction"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with primary membranous nephropathy at risk of disease progression",
+        "evidence": [
+          {
+            "pmid": "42246654",
+            "title": "Obinutuzumab or Tacrolimus in Primary Membranous Nephropathy.",
+            "journal": "The New England journal of medicine",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42246654/"
+          }
+        ],
+        "fda_label": {
+          "brand": "Gazyva",
+          "generic": "obinutuzumab",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=obinutuzumab"
+        },
+        "source_chars": 2639,
+        "enriched_at": "2026-11-14",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_eb9363c41d2457ff",
+      "published_at": "2026-11-14",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug combo approved for muscle-invasive bladder cancer",
+      "summary": "The FDA has approved a combination of durvalumab and enfortumab vedotin for muscle-invasive bladder cancer. This approval is based on clinical trial results showing improved outcomes.",
+      "why_it_matters": "This treatment offers a new option for patients with advanced bladder cancer, potentially improving survival and quality of life.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-durvalumab-enfortumab-vedotin-ejfv-muscle-invasive-bladder-cancer",
+      "factor_slug": "durvalumab_enfortumab_vedotin",
+      "outcome_slug": "muscle_invasive_bladder_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "durvalumab and enfortumab vedotin-ejfv",
+        "summary": "The FDA has approved a combination of durvalumab and enfortumab vedotin-ejfv as neoadjuvant treatment followed by single-agent durvalumab as adjuvant therapy for adults with muscle-invasive bladder cancer who are ineligible for or have refused cisplatin-based chemotherapy. The approval is based on the VOLGA trial, which randomized 695 patients to receive the combination or radical cystectomy alone. The combination significantly improved event-free survival and overall survival compared to surgery alone. Median event-free survival was not reached in the combination arm versus 12.1 months in the surgery-only arm.",
+        "key_findings": [
+          "Median event-free survival was not reached in the durvalumab/enfortumab vedotin-ejfv arm (95% CI: 33.2, NR) versus 12.1 months in the RC alone arm.",
+          "Hazard ratio for event-free survival was 0.51 (95% CI: 0.38, 0.67; p < 0.0001).",
+          "Median overall survival was not reached in either arm (hazard ratio 0.58; 95% CI: 0.40, 0.83; p = 0.0027).",
+          "The combination was associated with increased rates of adverse reactions including increased AST, increased ALT, decreased hemoglobin, rash, and fatigue.",
+          "Treatment was administered as 3 cycles of neoadjuvant combination followed by 9 cycles of adjuvant durvalumab after surgery."
+        ],
+        "study": {
+          "trial_name": "VOLGA",
+          "design": "randomized, open-label",
+          "comparator": "radical cystectomy alone",
+          "primary_endpoint": "event-free survival (EFS) by blinded independent central review"
+        },
+        "regulatory_status": "FDA approved on November 13, 2026",
+        "caveats": [
+          "The trial included only patients ineligible for or who refused cisplatin-based chemotherapy.",
+          "Median overall survival was not reached in either arm, limiting interpretation of long-term survival benefit.",
+          "The combination was associated with a high rate of adverse reactions, including immune-mediated events and infusion-related reactions.",
+          "The study was conducted under Project Orbis, but approval by other agencies is still pending."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adult patients with muscle-invasive bladder cancer who are ineligible for or have refused cisplatin-based chemotherapy and are candidates for radical cystectomy.",
+        "evidence": [
+          {
+            "pmid": "39282910",
+            "title": "Perioperative Durvalumab with Neoadjuvant Chemotherapy in Operable Bladder Cancer.",
+            "journal": "The New England journal of medicine",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39282910/"
+          },
+          {
+            "pmid": "41707170",
+            "title": "Perioperative Enfortumab Vedotin and Pembrolizumab in Bladder Cancer.",
+            "journal": "The New England journal of medicine",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41707170/"
+          }
+        ],
+        "source_chars": 4685,
+        "enriched_at": "2026-11-14",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "next_steps: unsupported wording (0.30)",
+          "graphic: malformed"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "bladder_cancer",
+          "name": "Bladder cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 828,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Hairdresser occupation",
+            "outcome": "Bladder cancer",
+            "summary": "The most direct pooled analysis found that bladder-cancer risk is elevated in hairdressers, and the broader occupation-level meta-analyses point in the same direction. This is not a giant effect, but it is one of the mor",
+            "effect": "Across occupation-focused meta-analyses, hairdressing work is associated with a modest excess in bladder-cancer risk, with the strongest signal seen in longer-duration exposure.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 569,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Chlorinated disinfection by-products",
+            "outcome": "Bladder cancer",
+            "summary": "The anchor for this edge is the 2026 Lim systematic review in BJUI Compass, which suggests that chlorinated disinfection by-products tracks with higher risk or worse outcomes for bladder cancer. Later papers point in muc",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 6003,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Processed meat",
+            "outcome": "Bladder cancer",
+            "summary": "Higher processed meat intake associated with increased bladder cancer risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 4
+          },
+          {
+            "id": 6004,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Red meat",
+            "outcome": "Bladder cancer",
+            "summary": "Higher unprocessed red meat intake associated with a small increase in bladder cancer risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 813,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Cruciferous vegetables",
+            "outcome": "Bladder cancer",
+            "summary": "This edge is a good example of why Health Universe should default to the boring claim. The early literature looked protective, but once larger prospective-only datasets were pooled, the apparent benefit narrowed and in s",
+            "effect": "Older pooled observational datasets suggested lower bladder-cancer risk with higher cruciferous-vegetable intake, but newer prospective-only analyses are much closer to null.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 890,
+            "tier": "C",
+            "direction": "neutral",
+            "factor": "Tea consumption",
+            "outcome": "Bladder cancer",
+            "summary": "The most boring conclusion is the right one here: tea does not show a robust bladder-cancer signal. A dose-response bladder-specific meta-analysis was essentially neutral, while broader prospective syntheses hint at a sl",
+            "effect": "The broad bladder-cancer literature on tea is mostly close to null, though some newer prospective syntheses suggest a very small downward dose-response signal.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 11,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_25e315b6dcaf756e",
       "published_at": "2026-11-13",
@@ -172,6 +405,285 @@
         "model": "qwen3:30b-instruct",
         "dropped": [
           "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_515fc43c35aa763c",
+      "published_at": "2026-11-13",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New dosing schedule reduces side effects of leukemia drug",
+      "summary": "A study found that taking a leukemia drug five days on, two days off improved tolerability without reducing effectiveness. At 24 months, major molecular remission rates were similar between the two dosing schedules.",
+      "why_it_matters": "Patients on this intermittent schedule may experience fewer side effects while still achieving the same treatment goals.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Major Molecular Remission (MMR) at 24 months",
+            "treatment": 78,
+            "control": 81
+          },
+          {
+            "label": "Pleural or Pericardial Effusion",
+            "treatment": 8,
+            "control": 16
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Intermittent dosing (5 days on, 2 days off)",
+        "control_label": "Standard daily dosing"
+      },
+      "strength": 0.9,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43024850/",
+      "factor_slug": "dasatinib_intermittent_dosing",
+      "outcome_slug": "major_molecular_remission",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "dasatinib",
+        "summary": "Patients received either standard daily dosing (100 mg once daily) or an intermittent schedule (5 days on, 2 days off, weekend holiday). At 24 months, major molecular remission (MMR) rates were similar between the two groups in first-line patients. The intermittent schedule reduced the incidence of pleural or pericardial effusion and improved health-related quality of life, especially in first-line patients.",
+        "key_findings": [
+          "In first-line patients, 81% (105 of 130) achieved MMR at 24 months with standard dosing versus 78% (101 of 130) with intermittent dosing.",
+          "The difference in MMR rates was within the prespecified noninferiority margin of 15% (P = .009).",
+          "Pleural or pericardial effusion occurred in 16% (21 of 130) of patients in the standard arm versus 8% (10 of 125) in the intermittent arm (P = .0464).",
+          "No significant difference in grade 2\u20134 toxicities overall between the two arms.",
+          "Health-related quality of life improved more in first-line patients receiving the intermittent schedule."
+        ],
+        "study": {
+          "trial_name": "DasaHIT: Dasatinib Dose Optimization With Weekend Drug Holiday for Improved Tolerability in Chronic Myeloid Leukemia",
+          "comparator": "standard-of-care dasatinib 100 mg once daily",
+          "primary_endpoint": "achievement of major molecular remission (MMR) at 24 months and cumulative toxicity score",
+          "follow_up": "24 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Noninferiority was only demonstrated in first-line patients; second- or later-line patients showed a 24% lower MMR rate in the experimental arm, failing noninferiority.",
+          "The benefit in quality of life and reduced effusion risk was observed in a post hoc analysis."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with chronic-phase chronic myeloid leukemia (CML-CP) who are receiving first-line dasatinib therapy",
+        "evidence": [],
+        "source_chars": 2097,
+        "enriched_at": "2026-11-14",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: 3",
+          "study.design: 3",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "leukemia",
+          "name": "Leukemia",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 541,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Benzene exposure",
+            "outcome": "Leukemia",
+            "summary": "The strongest piece here is the 2022 Zhang meta analysis in J Environ Sci (China), which ties benzene exposure to leukemia in a direction that later studies largely support. That makes this edge more about calibrating ma",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 794,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Breastfeeding",
+            "outcome": "Leukemia",
+            "summary": "The strongest anchor here is the large dose-response childhood-cancer meta-analysis, which found lower leukemia risk among breastfed children. Newer umbrella work and a focused early-life leukemia review did not overturn",
+            "effect": "OR, 0.66, 95% CI 0.62-0.70 (Zheng PW 2021)",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 615,
+            "tier": "C",
+            "direction": "mixed",
+            "factor": "Formaldehyde exposure",
+            "outcome": "Leukemia",
+            "summary": "The anchor for this edge is the 2025 Nie cohort in Ann Work Expo Health, which suggests that formaldehyde exposure produces mixed findings across studies for leukemia. Later papers point in much the same direction, so th",
+            "effect": "Different designs and subgroups point in different directions, so a single pooled estimate is not the right way to read this edge.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 744,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Mixed organic-solvent exposure",
+            "outcome": "Leukemia",
+            "summary": "The strongest piece here is the 2020 Zhou meta analysis in BMC Public Health, which ties mixed organic-solvent exposure to leukemia in a direction that later studies largely support. That makes this edge more about calib",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 4,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_50cbacb8d9ba8ad0",
+      "published_at": "2026-11-13",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New tool predicts response to blood cancer therapy",
+      "summary": "A new model accurately predicts how long patients with relapsed multiple myeloma will respond to a type of immunotherapy. It uses clinical and biological factors to estimate progression-free survival.",
+      "why_it_matters": "Patients and doctors can use this tool to better plan treatment and set realistic expectations.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Low-risk",
+        "control_label": "High-risk",
+        "median_t": 21.8,
+        "median_c": 1.6,
+        "hr": 4.8,
+        "ci_low": 3.5,
+        "ci_high": 6.7,
+        "x_label": "Months",
+        "y_label": "Progression-free survival"
+      },
+      "strength": 0.9,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43024836/",
+      "factor_slug": "bispecific_t_cell_engager",
+      "outcome_slug": "progression_free_survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "CHARGE prognostic index",
+        "summary": "A new model called the CHARGE index predicts how long patients with relapsed or refractory multiple myeloma will respond to bispecific T-cell engager (TCE) therapy. It uses six clinical and biological factors to classify patients into low, intermediate, or high risk for early treatment failure. In the development cohort, median progression-free survival was 21.8 months in the low-risk group, 7.1 months in the intermediate-risk group, and 1.6 months in the high-risk group. The model was externally validated in an independent cohort, showing similar results. The index helps guide prognosis and treatment decisions for patients receiving BCMA- or GPRC5D-directed TCEs.",
+        "key_findings": [
+          "Median progression-free survival was 21.8 months in the low-risk group (95% CI, 11.7 to not reached)",
+          "Median progression-free survival was 7.1 months in the intermediate-risk group (95% CI, 6.1 to 10.1)",
+          "Median progression-free survival was 1.6 months in the high-risk group (95% CI, 1.2 to 2.5)",
+          "Hazard ratio for intermediate-risk vs. low-risk was 2.0 (95% CI, 1.5 to 2.7)",
+          "Hazard ratio for high-risk vs. low-risk was 4.8 (95% CI, 3.5 to 6.7)"
+        ],
+        "study": {
+          "trial_name": "CHARGE Prognostic Index Development and Validation",
+          "design": "multivariate Cox model with external validation",
+          "primary_endpoint": "progression-free survival (PFS)",
+          "follow_up": "median of 8.4 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The model was developed and validated in US centers; generalizability to other populations is unknown",
+          "The index predicts PFS but not overall survival",
+          "The model is not yet integrated into clinical guidelines",
+          "It does not account for all possible treatment-related variables"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with relapsed or refractory multiple myeloma receiving BCMA- or GPRC5D-directed bispecific T-cell engagers",
+        "evidence": [],
+        "source_chars": 2251,
+        "enriched_at": "2026-11-14",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "next_steps: unsupported wording (0.43)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_b2ed2cb7d79e396e",
+      "published_at": "2026-11-13",
+      "category": "cardio",
+      "stage": "phase2",
+      "audience": "general",
+      "headline": "New treatment reduces heart rate in POTS patients by 11.4 beats per minute",
+      "summary": "In a mid-stage trial, a monoclonal antibody reduced heart rate by an average of 11.4 beats per minute in patients with POTS. The treatment was administered at a dose of 450 mg.",
+      "why_it_matters": "People with POTS may see meaningful symptom relief with this new treatment option.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/regeneron-posts-mid-stage-pots-data-kyverna-completes-car-t-filing/",
+      "factor_slug": "monoclonal_antibody",
+      "outcome_slug": "heart_rate_reduction",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "baloncibart",
+        "summary": "In a mid-stage trial, a monoclonal antibody called baloncibart was tested in patients with POTS. The treatment was administered at a dose of 450 mg. It reduced standing heart rate by an average of 11.4 beats per minute.",
+        "key_findings": [
+          "Average reduction in standing heart rate: 11.4 beats per minute",
+          "Treatment dose: 450 mg",
+          "Trial phase: Phase 2",
+          "Intervention: monoclonal antibody (baloncibart)"
+        ],
+        "study": {},
+        "regulatory_status": "",
+        "caveats": [
+          "Early phase trial (Phase 2)",
+          "Industry-funded (Regeneron)"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "38395969",
+            "title": "Adjuvant dendritic cell therapy in stage IIIB/C melanoma: the MIND-DC randomized phase III trial.",
+            "journal": "Nature communications",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38395969/"
+          },
+          {
+            "pmid": "32411717",
+            "title": "Intravenous Cyclophosphamide in Myalgic Encephalomyelitis/Chronic Fatigue Syndrome. An Open-Label Phase II Study.",
+            "journal": "Frontiers in medicine",
+            "year": "2020",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/32411717/"
+          },
+          {
+            "pmid": "41533304",
+            "title": "Hyperadrenergic postural tachycardia syndrome associated with augmented neurovascular transduction.",
+            "journal": "Clinical autonomic research : official journal of the Clinical Autonomic Research Society",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41533304/"
+          }
+        ],
+        "source_chars": 300,
+        "enriched_at": "2026-11-14",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.40)",
+          "study.design: unsupported wording (0.33)",
+          "finding: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "who_it_applies_to: unsupported wording (0.40)",
+          "graphic: 0"
         ]
       },
       "corpus": {
