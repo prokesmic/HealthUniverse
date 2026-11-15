@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-14",
+  "updated_at": "2026-11-15",
   "items": [
     {
       "id": "br_69f9e1520c9cdf9a",
@@ -694,6 +694,216 @@
         "factor_edges": [],
         "outcome_total": 0,
         "factor_total": 0
+      }
+    },
+    {
+      "id": "br_5544c4f9fb50f3c3",
+      "published_at": "2026-11-13",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Stopping blood pressure drugs before surgery cuts low blood pressure risk",
+      "summary": "Discontinuing ACE inhibitors or ARBs the morning of non-cardiac surgery reduced perioperative hypotension and need for vasopressors in older patients with hypertension. There was no increase in 30-day complications or death.",
+      "why_it_matters": "Older adults on blood pressure meds should ask their doctor if stopping them before surgery is safe.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Perioperative hypotension",
+            "treatment": 31.2,
+            "control": 45.5
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Discontinue drug",
+        "control_label": "Continue drug"
+      },
+      "strength": 0.95,
+      "source_name": "BMJ",
+      "source_url": "https://www.bmj.com/content/395/bmj-2026-101087/rr",
+      "factor_slug": "ace_inhibitors_ars",
+      "outcome_slug": "perioperative_hypotension",
+      "edge_id": 907,
+      "is_orphan": false,
+      "detail": {
+        "intervention": "Discontinuing ACE inhibitors or ARBs on the morning of surgery",
+        "summary": "Older patients (60-80 years) with hypertension who were taking ACE inhibitors or ARBs for at least two weeks were randomly assigned to continue their medication or receive a placebo on the morning of non-cardiac surgery. The study found that stopping these drugs reduced the risk of perioperative hypotension and the need for vasopressors. There was no increase in 30-day complications or death. The results provide high certainty evidence for this preoperative strategy.",
+        "key_findings": [
+          "Perioperative hypotension occurred in 31.2% of patients who stopped ACE inhibitors or ARBs (314/1008) versus 45.5% in those who continued (457/1004).",
+          "Adjusted odds ratio for hypotension: 0.52 (95% CI 0.43 to 0.63).",
+          "Duration of hypotension was reduced by 1.3 minutes on average (95% CI -1.8 to -0.8 minutes).",
+          "Vasopressor use was 28.5% in the discontinuation group versus 41.1% in the continuation group.",
+          "No significant differences in 30-day complications or mortality between groups."
+        ],
+        "study": {
+          "trial_name": "Effect of discontinuing antihypertensives on perioperative hypotension in older patients before non-cardiac surgery",
+          "design": "multicentre, randomised, double blind, placebo controlled trial",
+          "participants": "2012 older patients (mean age 68.8 years; 54.4% male)",
+          "comparator": "Placebo",
+          "primary_endpoint": "Incidence of perioperative hypotension (mean blood pressure <65 mm Hg or \u226530% decrease from baseline requiring treatment)",
+          "follow_up": "30 days"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Findings apply only to older patients (60-80 years) with hypertension on ACE inhibitors or ARBs."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Older adults (60-80 years) with hypertension taking ACE inhibitors or ARBs for at least two weeks and scheduled for non-cardiac surgery under general anesthesia.",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "41033844",
+            "title": "Hold ACE inhibitors and ARBs before noncardiac surgery? Emerging evidence suggests a patient-specific approach.",
+            "journal": "Cleveland Clinic journal of medicine",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41033844/"
+          },
+          {
+            "pmid": "38642964",
+            "title": "Should renin-angiotensin system inhibitors be held prior to major surgery?",
+            "journal": "British journal of anaesthesia",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38642964/"
+          }
+        ],
+        "source_chars": 2610,
+        "enriched_at": "2026-11-15",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "ace_inhibitors",
+          "name": "ACE inhibitors",
+          "relation": "same"
+        },
+        "outcome": {
+          "slug": "hypotension",
+          "name": "Hypotension",
+          "relation": "same"
+        },
+        "pair": [
+          {
+            "id": 907,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Hypertension",
+            "summary": "The combination of amlodipine and perindopril arginine was effective in managing hypertension.",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 1
+          }
+        ],
+        "outcome_edges": [
+          {
+            "id": 1902,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Grapefruit consumed with a calcium channel blocker",
+            "outcome": "Hypotension",
+            "summary": "Grapefruit can meaningfully boost exposure to some dihydropyridine calcium channel blockers and make hypotensive effects more likely, especially in older adults or when doses are first escalated. The interaction is pharm",
+            "effect": "In elderly volunteers taking felodipine, grapefruit juice increased felodipine AUC 2.9-fold and Cmax 4.0-fold, with lower systolic and diastolic blood pressures during the single-dose study.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3692,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Hypotension",
+            "summary": "Tirzepatide increased the risk of hypotension-related events, particularly at higher doses.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 628,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Grapefruit-calcium channel blocker interaction",
+            "outcome": "Hypotension",
+            "summary": "The anchor for this edge is the 2025 Methaneethorn meta analysis in Complement Ther Med, which suggests that grapefruit- calcium channel blocker interaction tracks with higher risk or worse outcomes for hypotension. Late",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [
+          {
+            "id": 516,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "ACE inhibitors",
+            "outcome": "Chronic dry cough",
+            "summary": "For chronic dry cough, the most useful starting point is the 2026 Joshi cohort in Cardiovasc Diabetol Endocrinol Rep. It found that ace inhibitors tracks with higher risk or worse outcomes, and the follow-on evidence is ",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 517,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Kidney function",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Yang meta analysis in Front Med (Lausanne) already points to ace inhibitors tracks with lower risk or better outcomes",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 515,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "All-cause mortality",
+            "summary": "For all-cause mortality, the most useful starting point is the 2026 Pu meta analysis in Int J Infect Dis. It found that ace inhibitors tracks with lower risk or better outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 5
+          },
+          {
+            "id": 3546,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Heart failure",
+            "summary": "Renin-angiotensin system inhibitors were linked to lower 1-year mortality.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 906,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Blood pressure control",
+            "summary": "Adding perindopril arginine to amlodipine significantly improved blood pressure control in Moroccan patients with hypertension.",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 1
+          },
+          {
+            "id": 2014,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "BMI z score",
+            "summary": "Lisinopril was associated with a significant decrease in BMI z-score in adolescents.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "outcome_total": 3,
+        "factor_total": 10
       }
     },
     {
