@@ -84,3 +84,58 @@ def test_cancer_means_every_cancer_but_counts_once(monkeypatch):
     assert '"breast_cancer"' not in prof._unsign(prof.encode(p)).decode()          # cookie keeps the choice
     assert prof.relevance_score({"o_slug": "breast_cancer", "tier": "D"}, p) > \
         prof.relevance_score({"o_slug": "lung_cancer", "tier": "D"}, p)
+
+
+def test_moves_for_specific_groups_are_labelled_and_kept_out_of_top3():
+    """17.11.2026: with Cancer picked, the Top 3 was BRCA oophorectomy and
+    hepatitis B vaccination at birth."""
+    from web.app import target_group as tg
+    assert tg("BRCA risk-reducing oophorectomy", "women carrying pathogenic BRCA1 or BRCA2 variants") == "For high-risk groups"
+    assert tg("Hepatitis B vaccination at birth", "birth cohorts") == "For children & young people"
+    assert tg("Statins", "Adults at elevated cardiovascular risk") == "For high-risk groups"
+    assert tg("GLP-1 receptor agonists", "Adults with type 2 diabetes") == "For people with a condition"
+    assert tg("Long-duration breastfeeding", "parous women") == "Around pregnancy & breastfeeding"
+    # general populations stay general, even when they mention a subgroup
+    assert tg("Coffee", "general adults, including people with chronic liver disease risk") is None
+    assert tg("Combined oral contraceptives", "women, including general-population users and high-risk BRCA carriers") is None
+    assert tg("Colonoscopy screening", "average-risk and elevated-risk adults") is None
+    assert tg("Aerobic exercise", "middle-aged and older adults") is None
+    # sex-specific moves only for the other sex
+    assert tg("Coffee", "adult women", "male") == "For women" and tg("Coffee", "adult women", "female") is None
+
+
+def test_top3_skips_targeted_moves(monkeypatch):
+    import re as _re
+    from fastapi.testclient import TestClient
+    from profile import Profile, encode
+    from web import app as webapp
+    rows = [
+        {"id": 1, "tier": "A", "direction": "protective", "summary": "", "updated_at": "", "created_at": "",
+         "effect_size": "large", "effect_quant": "", "review_status": "verified_evidence",
+         "population": "women carrying BRCA1 variants", "f_slug": "brca_oophorectomy",
+         "f_name": "BRCA risk-reducing oophorectomy", "f_kind": "drug", "o_slug": "ovarian_cancer",
+         "o_name": "Ovarian cancer", "n_studies": 3, "top_study": "meta_analysis", "promoted_at": None},
+        {"id": 2, "tier": "B", "direction": "protective", "summary": "", "updated_at": "", "created_at": "",
+         "effect_size": "small", "effect_quant": "", "review_status": "verified_evidence",
+         "population": "general adult", "f_slug": "aerobic_exercise", "f_name": "Aerobic exercise",
+         "f_kind": "activity", "o_slug": "colorectal_cancer", "o_name": "Colorectal cancer",
+         "n_studies": 3, "top_study": "meta_analysis", "promoted_at": None},
+    ]
+    class Cur:
+        def __init__(self, r): self.r = r
+        def fetchall(self): return self.r
+    class Conn:
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+        def execute(self, sql, params=()):
+            if "FROM entity WHERE slug IN" in sql:
+                return Cur([{"slug": "cancer_incidence", "name": "Cancer incidence"}])
+            return Cur([r for r in rows if r["direction"] == params[-1]] if params else [])
+    monkeypatch.setattr(webapp, "connect", lambda: Conn())
+    c = TestClient(webapp.app)
+    c.cookies.set("hu_profile", encode(Profile(conditions=["cancer_incidence"])))
+    html = c.get("/my-plan").text
+    i = html.find("Top 3 to start with")
+    top = html[i: html.find("</section>", i)]
+    assert "Aerobic exercise" in top and "oophorectomy" not in top
+    assert "For high-risk groups" in html          # still listed, with its label

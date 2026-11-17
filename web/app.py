@@ -1250,6 +1250,7 @@ def my_plan(request: Request):
                 SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
                        e.created_at, e.effect_size, e.effect_quant,
                        COALESCE(e.review_status,'unreviewed') AS review_status,
+                       e.population AS population,
                        f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
                        o.slug AS o_slug, o.name AS o_name,
                        (SELECT COUNT(*) FROM evidence ev WHERE ev.edge_id=e.id) AS n_studies,
@@ -1319,6 +1320,7 @@ def my_plan(request: Request):
                     rec["id"] = e["id"]
                     rec["summary"] = e["summary"]
                     rec["review_status"] = e["review_status"]
+                    rec["population"] = e.get("population")
                 # In-stack flag: set if any of the constituent slugs is
                 # in the user's saved stack.
                 if e["f_slug"] in stack_set or root in stack_set:
@@ -1358,7 +1360,14 @@ def my_plan(request: Request):
             if r.get("in_stack"):
                 base -= 5
             return base
-        starters = sorted(do_list, key=lambda r: -_starter_score(r))[:3]
+        # Moves meant for a specific group (BRCA carriers, newborns, heavy
+        # smokers, pregnancy…) stay in the lists with a label but never lead
+        # the Top 3: with "Cancer" picked they were BRCA oophorectomy and
+        # hepatitis B vaccination at birth (17.11.2026).
+        for rec in do_list + hard_list:
+            rec["target_group"] = target_group(rec.get("f_name"), rec.get("population"), p.sex)
+        starters = sorted((r for r in do_list if not r.get("target_group")),
+                          key=lambda r: -_starter_score(r))[:3]
     return render(request, "my_plan.html", {
         "title": "My plan",
         "profile": p,
@@ -2528,6 +2537,46 @@ def methodology(request: Request):
 
 # ---- condition quick-picks ----------------------------------------------------
 import re
+
+# ---- who a move is for ------------------------------------------------------
+_TG_RISK = re.compile(r"\bbrca\b|carrier|high[- ]risk|elevated[- ]risk|at (high|elevated|increased)\b[^,;]{0,25}risk|"
+                      r"heavy smok|current smok|former heavy|-positive\b|\bpositive adults|lynch|familial", re.I)
+_TG_COND = re.compile(r"\bwith (type 2|t2d|diabetes|prediabetes|established|existing|diagnosed|chronic|elevated|"
+                      r"high|cancer|ckd|cvd|heart|hypertension|obesity)|\bpatients\b|survivors|who have had|"
+                      r"hysterectomy|in remission", re.I)
+_TG_YOUNG = re.compile(r"at birth|newborn|neonat|infan|birth cohort|\bchild|\bgirls\b|\bboys\b|adolescen|"
+                       r"school[- ]age|teen", re.I)
+_TG_PREG = re.compile(r"pregnan|parous|breastfe|lactat|postpartum|prenatal|antenatal", re.I)
+_TG_WOMEN = re.compile(r"\b(women|woman|female|girls|postmenopausal|premenopausal)\b", re.I)
+_TG_MEN = re.compile(r"\b(men|man|male|boys)\b", re.I)
+
+
+def target_group(f_name: str | None, population: str | None, sex: str | None = None) -> str | None:
+    """A short 'who this is for' label when a move is meant for a specific
+    group rather than most adults, else None. Deterministic: factor name and
+    the edge's population field."""
+    # "General adults, including people with chronic liver disease" is still for
+    # most adults: a population that opens as general leaves only the name to decide.
+    pop = population or ""
+    if re.match(r"\s*(general|average[- ]risk|all adults|healthy adults)", pop, re.I) \
+            or re.search(r"general[- ](adult|population)", pop, re.I):
+        pop = ""
+    text = f"{f_name or ''} | {pop}"
+    if _TG_RISK.search(text):
+        return "For high-risk groups"
+    if _TG_COND.search(text):
+        return "For people with a condition"
+    if _TG_YOUNG.search(text):
+        return "For children & young people"
+    if _TG_PREG.search(text):
+        return "Around pregnancy & breastfeeding"
+    if sex == "male" and _TG_WOMEN.search(text) and not _TG_MEN.search(text):
+        return "For women"
+    if sex == "female" and _TG_MEN.search(text) and not _TG_WOMEN.search(text):
+        return "For men"
+    return None
+
+
 # Broad conditions first, in the order people think of them; the most-studied
 # specific ones after. Until 17.11.2026 the chips were simply "most A/B edges",
 # so "Cancer" never appeared (the general cancer entity is cancer_incidence,

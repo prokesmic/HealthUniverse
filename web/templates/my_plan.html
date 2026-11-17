@@ -85,6 +85,7 @@
   }
   .plan-card-effect:hover { -webkit-line-clamp: unset; }
   .plan-card-for { margin: 0; font-size: 12px; color: var(--ink-soft); }
+  .pm-target { background: #f3ead0; color: #6a520f; }
   .plan-card-for b { color: var(--ink); font-weight: 600; }
   .plan-card-doses { font-size: 11px; color: var(--ink-soft); font-style: italic; }
   .plan-pill-row { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -134,6 +135,7 @@
     <a class="plan-card-title" href="/edge/{{ e.id }}">{{ e.f_name }}</a>
     {% if e.in_stack %}<span class="pill-mini pm-instack" title="Already in your saved stack">✓ in your stack</span>{% endif %}
     {% if e.breakthrough %}<span class="pill-mini pm-info">★ Breakthrough</span>{% endif %}
+    {% if e.target_group %}<span class="pill-mini pm-target" title="{{ e.population or '' }}">{{ e.target_group }}</span>{% endif %}
   </div>
   <div class="plan-axes">
     <span class="ax-tier">{{ e.axes.tier_label }}</span>
@@ -182,7 +184,7 @@
   {% if starters %}
   <section class="starters" aria-label="Top 3 to start with">
     <h2>Top 3 to start with</h2>
-    <p class="lede">Highest-leverage moves you're not already doing — sorted by overlap × evidence × effect size.</p>
+    <p class="lede">Highest-leverage moves for most adults that you're not already doing — sorted by overlap × evidence × effect size. Moves meant for specific groups are labelled in the lists below.</p>
     <div class="starter-grid">
       {% for s in starters %}
       <a class="starter-card" href="/edge/{{ s.id }}">
