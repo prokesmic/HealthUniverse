@@ -2557,10 +2557,15 @@ _MEDICAL_PROC = re.compile(r"surger|surgical|bypass|transplant|electroconvulsive
                            r"nerve stimulation|mastectomy|oophorectomy|hysterectomy", re.I)
 
 
+_VACCINE = re.compile(r"vaccin|immuni[sz]ation|\bjab\b", re.I)
+
+
 def medical_note(f_kind: str | None, f_name: str | None) -> str | None:
     """Prescription medicines and medical procedures are a decision with a
     doctor, not a 'start this' move (17.11.2026: low-dose aspirin was #2 of the
     Top 3 for Cancer — benefit for colorectal cancer, but bleeding risk)."""
+    if _VACCINE.search(f_name or ""):
+        return "Vaccine — ask your doctor"
     if f_kind == "drug":
         return "Medication — discuss with your doctor"
     if _MEDICAL_PROC.search(f_name or ""):

@@ -156,3 +156,5 @@ def test_medications_and_procedures_are_for_a_doctor_not_the_top3():
     assert mn("activity", "Helicobacter pylori eradication").startswith("Medical procedure")
     assert mn("activity", "Colonoscopy screening") is None          # screening stays a general move
     assert mn("food", "Coffee") is None
+    assert mn("drug", "Catch-up HPV vaccination") == "Vaccine — ask your doctor"
+    assert mn("drug", "Hepatitis B vaccination at birth") == "Vaccine — ask your doctor"
