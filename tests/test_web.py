@@ -65,3 +65,22 @@ def test_condition_quickpicks_lead_with_general_conditions_including_cancer():
     picks = webapp.quickpick_conditions(conn)
     assert [p["name"] for p in picks] == ["Cancer (any type)", "Cardiovascular disease", "Falls", "Lung cancer"]
     assert [p["general"] for p in picks] == [True, True, False, False]
+
+
+def test_cancer_means_every_cancer_but_counts_once(monkeypatch):
+    """17.11.2026: picking "Cancer" covers colorectal, breast, lung … ; the
+    form, labels and cookie keep the one choice, and overlap counts it once."""
+    import profile as prof
+    assert prof.is_cancer("colorectal_cancer", "Colorectal cancer")
+    assert prof.is_cancer("non_hodgkin_lymphoma", "Non-Hodgkin lymphoma")
+    assert not prof.is_cancer("cancer_detection_rate", "Cancer detection rate")
+    assert not prof.is_cancer("cvd", "Cardiovascular disease")
+    monkeypatch.setitem(prof.CONDITION_GROUPS, "cancer_incidence", lambda: ("colorectal_cancer", "breast_cancer"))
+    p = prof.Profile(conditions=["cancer_incidence", "cvd"])
+    assert p.conditions == ["cancer_incidence", "cvd"]
+    assert p.condition_slugs == ["cancer_incidence", "colorectal_cancer", "breast_cancer", "cvd"]
+    assert prof.picked_condition_for("breast_cancer", p.conditions) == "cancer_incidence"
+    assert prof.picked_condition_for("cvd", p.conditions) == "cvd"
+    assert '"breast_cancer"' not in prof._unsign(prof.encode(p)).decode()          # cookie keeps the choice
+    assert prof.relevance_score({"o_slug": "breast_cancer", "tier": "D"}, p) > \
+        prof.relevance_score({"o_slug": "lung_cancer", "tier": "D"}, p)

@@ -11,6 +11,8 @@ import base64
 import hashlib
 import hmac
 import json
+import re
+from functools import lru_cache
 import os
 from dataclasses import asdict, dataclass, field
 
@@ -38,6 +40,11 @@ class Profile:
     # Each entry is the same shape minus alternates/email itself.
     name:           str | None = None         # display label for the active profile
     alternates:     list[dict] = field(default_factory=list)
+
+    @property
+    def condition_slugs(self) -> list[str]:
+        """Picked conditions with groups expanded ("Cancer" → every cancer)."""
+        return expand_conditions(self.conditions)
     # Email is OPTIONAL and only stored when user opts into magic-link sync
     # or the digest. Used as recovery anchor and unsubscribe key.
     email:          str | None = None
@@ -134,13 +141,62 @@ def verify_sync_token(token: str) -> Profile | None:
 
 
 # ----------------------------------------------------------------------------
+# Condition groups — picking "Cancer" means every cancer (17.11.2026).
+# The general entity cancer_incidence holds only the all-cancer studies; the
+# graph keeps colorectal, breast, lung … as their own entities. Expansion is
+# applied wherever conditions are matched against edges (Profile.condition_slugs);
+# `conditions` itself stays what the person picked, for forms, labels and the cookie.
+# ----------------------------------------------------------------------------
+
+_CANCER = re.compile(r"cancer|carcinoma|lymphoma|leuk(a)?emi|melanoma|neoplas|tumou?r|myeloma|sarcoma", re.I)
+_NOT_RISK = re.compile(r"detection|screening|survivor|reduction$", re.I)
+
+
+@lru_cache(maxsize=1)
+def _cancer_members() -> tuple[str, ...]:
+    try:
+        from db import connect
+        with connect() as conn:
+            rows = conn.execute("""SELECT slug, name FROM entity
+                                   WHERE kind IN ('condition','process','outcome')""").fetchall()
+    except Exception:
+        return ()
+    return tuple(r[0] for r in rows if is_cancer(r[0], r[1]))
+
+
+def is_cancer(slug: str, name: str | None) -> bool:
+    """A cancer outcome someone can prevent or manage — not 'Cancer detection rate'."""
+    return bool(_CANCER.search(slug) or _CANCER.search(name or "")) and not _NOT_RISK.search(name or "")
+
+
+CONDITION_GROUPS = {"cancer_incidence": _cancer_members}
+
+
+def expand_conditions(slugs) -> list[str]:
+    out: list[str] = []
+    for s in slugs or []:
+        for m in [s, *(CONDITION_GROUPS[s]() if s in CONDITION_GROUPS else ())]:
+            if m not in out:
+                out.append(m)
+    return out
+
+
+def picked_condition_for(outcome_slug: str, picked) -> str | None:
+    """Which of the person's picked conditions an edge outcome belongs to."""
+    for s in picked or []:
+        if outcome_slug == s or (s in CONDITION_GROUPS and outcome_slug in CONDITION_GROUPS[s]()):
+            return s
+    return None
+
+
+# ----------------------------------------------------------------------------
 # Personalized ranking helpers (used by the home + me pages)
 # ----------------------------------------------------------------------------
 
 def relevance_score(edge: dict, p: Profile) -> float:
     """Higher = more relevant to this user. Cheap, computed at request time."""
     s = 0.0
-    if p.conditions and edge.get("o_slug") in p.conditions:
+    if p.conditions and edge.get("o_slug") in p.condition_slugs:
         s += 5.0
     if p.goals and (edge.get("o_slug") in p.goals or edge.get("f_slug") in p.goals):
         s += 2.5

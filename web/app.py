@@ -18,7 +18,7 @@ from db import connect, resolve_slug  # noqa: E402
 
 def datetime_now():
     return datetime.now()
-from profile import (COOKIE, Profile, decode, encode, relevance_score,  # noqa
+from profile import (COOKIE, Profile, decode, encode, relevance_score, expand_conditions, picked_condition_for,  # noqa
                      make_sync_token, verify_sync_token, _PROFILE_FIELDS)
 # Cached-art adapter: looks up data/art_manifest.json and returns either
 # the cached <img> snippet or the procedural SVG fallback. Same call
@@ -480,6 +480,7 @@ def me_proactive(request: Request, context: str = "", limit: int = 3,
     from dataclasses import asdict
     p = decode(request.cookies.get(COOKIE))
     profile_dict = asdict(p)
+    profile_dict["conditions"] = p.condition_slugs   # proactive matches edges: groups expanded
     # Optional client-passed already-shown ids to avoid repeats
     shown = [s for s in already.split(",") if s.strip()]
     # Cookie-level recent_labs isn't tracked; the client can POST richer
@@ -1228,7 +1229,8 @@ def my_plan(request: Request):
     instead of one flat list. Collapse dose-response variants into a
     single card. Mark items already in the user's stack."""
     p = decode(request.cookies.get(COOKIE))
-    targets = list(p.conditions or [])
+    targets = p.condition_slugs          # "Cancer" → every cancer entity
+    picked = list(p.conditions or [])
     stack_set = set(p.stack or [])
     matched_outcomes: list[dict] = []
     do_buckets = {b[0]: [] for b in _DO_BUCKETS}
@@ -1238,10 +1240,12 @@ def my_plan(request: Request):
     if targets:
         with connect() as conn:
             placeholders = ",".join("?" * len(targets))
+            ph_p = ",".join("?" * len(picked))
             outs = conn.execute(
-                f"SELECT slug, name FROM entity WHERE slug IN ({placeholders})",
-                targets).fetchall()
-            matched_outcomes = [dict(r) for r in outs]
+                f"SELECT slug, name FROM entity WHERE slug IN ({ph_p})",
+                picked).fetchall()
+            matched_outcomes = [{**dict(r), "name": CONDITION_LABEL.get(r["slug"], r["name"])} for r in outs]
+            picked_name = {o["slug"]: o["name"] for o in matched_outcomes}
             base_sel = """
                 SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
                        e.created_at, e.effect_size, e.effect_quant,
@@ -1298,9 +1302,12 @@ def my_plan(request: Request):
                         rec["f_name"] = e["f_name"].split("(")[0].strip()
                     out[key] = rec
                 rec = out[key]
-                if e["o_slug"] not in rec["for_conditions"]:
-                    rec["for_conditions"].append(e["o_slug"])
-                    rec["for_condition_names"].append(e["o_name"])
+                # Count overlap per condition the person picked: colorectal and
+                # breast cancer edges both count once, for "Cancer".
+                cond = picked_condition_for(e["o_slug"], picked) or e["o_slug"]
+                if cond not in rec["for_conditions"]:
+                    rec["for_conditions"].append(cond)
+                    rec["for_condition_names"].append(picked_name.get(cond, e["o_name"]))
                 rec["n_overlap"] = len(rec["for_conditions"])
                 if root != e["f_slug"] and e["f_slug"] not in rec["dose_variants"]:
                     rec["dose_variants"].append(e["f_slug"])
@@ -2140,15 +2147,17 @@ def _compute_stack_score(profile: Profile, conn) -> dict:
     coverage = 0
     coverage_max = max(1, len(profile.conditions))
     for c in profile.conditions:
-        # Does any tier-A protective edge for this condition touch the user's stack?
+        # Does any tier-A protective edge for this condition (or, for a group
+        # like Cancer, any of its members) touch the user's stack?
+        members = expand_conditions([c])
         row = conn.execute("""
             SELECT COUNT(*) c FROM edge e
             JOIN entity f ON f.id=e.factor_id
             JOIN entity o ON o.id=e.outcome_id
-            WHERE o.slug=? AND e.tier='A' AND e.direction='protective'
-              AND f.slug IN ({})""".format(",".join(["?"]*max(1,len(profile.stack)))) if profile.stack else """
+            WHERE o.slug IN ({}) AND e.tier='A' AND e.direction='protective'
+              AND f.slug IN ({})""".format(",".join("?" * len(members)), ",".join(["?"]*max(1,len(profile.stack)))) if profile.stack else """
             SELECT 0 c""",
-            ([c] + list(profile.stack)) if profile.stack else []).fetchone()
+            (members + list(profile.stack)) if profile.stack else []).fetchone()
         if row and row["c"] > 0:
             coverage += 1
     stack_quality = 0
@@ -2638,7 +2647,7 @@ def handout(request: Request, condition: str = "", patient: str = "",
     today = datetime_now().strftime("%d %B %Y")
     if kind == "plan":
         # Reuse /my-plan logic
-        targets = list(p.conditions or [])
+        targets = p.condition_slugs
         do_rows: list[dict] = []
         hard_rows: list[dict] = []
         cau_rows: list[dict] = []
@@ -2733,7 +2742,7 @@ def today(request: Request):
     interactions: list[dict] = []
     if p.conditions:
         with connect() as conn:
-            cond_ph = ",".join("?" * len(p.conditions))
+            cond_ph = ",".join("?" * len(p.condition_slugs))
             rows = conn.execute(f"""
                 SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
                        e.effect_quant, f.name AS f_name,
@@ -2746,7 +2755,7 @@ def today(request: Request):
                   AND e.tier IN ('A','B') AND e.direction = 'protective'
                 ORDER BY CASE e.tier WHEN 'A' THEN 1 ELSE 2 END,
                          CASE e.effect_size WHEN 'large' THEN 1 WHEN 'moderate' THEN 2 ELSE 3 END,
-                         e.id""", p.conditions).fetchall()
+                         e.id""", p.condition_slugs).fetchall()
         rows = [dict(r) for r in rows]
         if rows:
             idx = datetime_now().timetuple().tm_yday % len(rows)
@@ -2776,7 +2785,7 @@ def coach_page(request: Request, q: str = ""):
             no_regret = _no_regret_movers(conn, p, limit=5)
             red_flags = _red_flags_in_stack(conn, p, limit=4)
             # Pull factor-level edges to suggest specific actions
-            cond_ph = ",".join("?" * len(p.conditions))
+            cond_ph = ",".join("?" * len(p.condition_slugs))
             actions = conn.execute(f"""
                 SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
                        e.effect_quant, f.name AS f_name, f.kind AS f_kind,
@@ -2792,7 +2801,7 @@ def coach_page(request: Request, q: str = ""):
                 ORDER BY CASE e.tier WHEN 'A' THEN 1 ELSE 2 END,
                          CASE e.effect_size WHEN 'large' THEN 1 WHEN 'moderate' THEN 2 ELSE 3 END,
                          e.updated_at DESC
-                LIMIT 12""", p.conditions).fetchall()
+                LIMIT 12""", p.condition_slugs).fetchall()
         # Group actions into a 30-day plan: pick top 3 weekly anchors
         anchors = []
         seen_factors: set[str] = set()
@@ -2883,7 +2892,7 @@ def digest_preview(request: Request, days: int = 7):
         all_disc = _new_discoveries(conn, days=days, limit=80)
         # Filter to user's tracked outcomes/factors if any tracked at all
         if has_profile:
-            tracked_o = set(p.conditions) | set(p.watch_outcomes)
+            tracked_o = set(p.condition_slugs) | set(p.watch_outcomes)
             tracked_f = set(p.watch_factors)
             relevant = [d for d in all_disc
                         if (tracked_o and d["o_slug"] in tracked_o)
@@ -3070,7 +3079,7 @@ def me(request: Request):
         relevant: list[dict] = []
         if p.stack or p.conditions:
             placeholders_f = ",".join("?" * max(len(p.stack), 1))
-            placeholders_c = ",".join("?" * max(len(p.conditions), 1))
+            placeholders_c = ",".join("?" * max(len(p.condition_slugs), 1))
             rows = conn.execute(f"""
                 SELECT e.id, e.tier, e.direction, e.summary, e.updated_at,
                        f.slug AS f_slug, f.name AS f_name,
@@ -3080,7 +3089,9 @@ def me(request: Request):
                 JOIN entity o ON o.id = e.outcome_id
                 WHERE (f.slug IN ({placeholders_f or "''"}))
                    OR (o.slug IN ({placeholders_c or "''"}))""",
-                (*p.stack, *p.conditions)).fetchall()
+                # max(..,1) placeholders above: pad with '' so an empty stack or
+                # empty condition list still binds (conditions-only profiles 500'd)
+                (*(p.stack or [""]), *(p.condition_slugs or [""]))).fetchall()
             relevant = sorted([dict(r) for r in rows],
                               key=lambda e: -relevance_score(e, p))[:30]
         red_flags = _red_flags_in_stack(conn, p, limit=8)
@@ -3231,7 +3242,7 @@ def risk_dial(request: Request):
                 movers.append(d)
         # Edges pointing at user's conditions
         if p.conditions:
-            placeholders = ",".join("?" * len(p.conditions))
+            placeholders = ",".join("?" * len(p.condition_slugs))
             rows = conn.execute(f"""
                 SELECT e.id, e.tier, e.direction, e.summary, e.effect_size,
                        f.slug AS f_slug, f.name AS f_name, f.kind AS f_kind,
@@ -3245,7 +3256,7 @@ def risk_dial(request: Request):
                 ORDER BY CASE e.tier WHEN 'A' THEN 1 ELSE 2 END,
                   CASE e.effect_size WHEN 'large' THEN 1 WHEN 'moderate' THEN 2
                                      WHEN 'small' THEN 3 ELSE 4 END
-                LIMIT 20""", (*p.conditions, *(p.stack or []))).fetchall()
+                LIMIT 20""", (*p.condition_slugs, *(p.stack or []))).fetchall()
             for r in rows:
                 d = dict(r); d["why"] = "for_your_condition"
                 movers.append(d)
@@ -3694,7 +3705,7 @@ def stack_form(request: Request, items: str = "", skeptic: int = 0):
     pro_locked = len(raw_items) > FREE_LIMIT
     visible = raw_items[:FREE_LIMIT]
     with connect() as conn:
-        matches, warnings, synergies, cond_harms = _build_brief_payload(conn, visible, skeptic_flag, user_conditions=(decode(request.cookies.get(COOKIE)).conditions if request.cookies.get(COOKIE) else []))
+        matches, warnings, synergies, cond_harms = _build_brief_payload(conn, visible, skeptic_flag, user_conditions=(decode(request.cookies.get(COOKIE)).condition_slugs if request.cookies.get(COOKIE) else []))
     summary = _summarize_brief(matches)
     token = _encode_brief_items(raw_items, skeptic_flag)
     base = str(request.base_url).rstrip("/")
@@ -3738,7 +3749,7 @@ async def api_me_stack(request: Request, items: str = "", skeptic: int = 0):
     try:
         p = decode(request.cookies.get(COOKIE))
         if p and p.conditions:
-            user_conditions = list(p.conditions)
+            user_conditions = p.condition_slugs
     except Exception:
         pass
     with connect() as conn:
@@ -3769,7 +3780,7 @@ def stack_brief_saved(request: Request, token: str, skeptic: int = 0):
     pro_locked = len(items) > FREE_LIMIT
     visible = items[:FREE_LIMIT]
     with connect() as conn:
-        matches, warnings, synergies, cond_harms = _build_brief_payload(conn, visible, skeptic_flag, user_conditions=(decode(request.cookies.get(COOKIE)).conditions if request.cookies.get(COOKIE) else []))
+        matches, warnings, synergies, cond_harms = _build_brief_payload(conn, visible, skeptic_flag, user_conditions=(decode(request.cookies.get(COOKIE)).condition_slugs if request.cookies.get(COOKIE) else []))
     summary = _summarize_brief(matches)
     base = str(request.base_url).rstrip("/")
     share_url = f"{base}/stack/s/{token}"
@@ -3802,7 +3813,7 @@ def stack_brief_print(request: Request, token: str, skeptic: int = 0):
     with connect() as conn:
         # Print view shows ALL items (a paid Pro user has unlocked it,
         # or it's the founder's marketing material).
-        matches, warnings, synergies, cond_harms = _build_brief_payload(conn, items, skeptic_flag, user_conditions=(decode(request.cookies.get(COOKIE)).conditions if request.cookies.get(COOKIE) else []))
+        matches, warnings, synergies, cond_harms = _build_brief_payload(conn, items, skeptic_flag, user_conditions=(decode(request.cookies.get(COOKIE)).condition_slugs if request.cookies.get(COOKIE) else []))
     summary = _summarize_brief(matches)
     return render(request, "stack_print.html", {
         "title": "Stack Brief — print",
@@ -5963,8 +5974,8 @@ def _profile_brief(conn, profile: Profile, days: int = 14) -> dict:
         rel_query_parts.append(f"f.slug IN ({','.join('?' * len(profile.stack))})")
         rel_params.extend(profile.stack)
     if profile.conditions:
-        rel_query_parts.append(f"o.slug IN ({','.join('?' * len(profile.conditions))})")
-        rel_params.extend(profile.conditions)
+        rel_query_parts.append(f"o.slug IN ({','.join('?' * len(profile.condition_slugs))})")
+        rel_params.extend(profile.condition_slugs)
     relevant = []
     if rel_query_parts:
         rel_sql = (
@@ -5994,8 +6005,8 @@ def _profile_brief(conn, profile: Profile, days: int = 14) -> dict:
             clauses.append(f"f.slug IN ({','.join('?' * len(profile.stack))})")
             params.extend(profile.stack)
         if profile.conditions:
-            clauses.append(f"o.slug IN ({','.join('?' * len(profile.conditions))})")
-            params.extend(profile.conditions)
+            clauses.append(f"o.slug IN ({','.join('?' * len(profile.condition_slugs))})")
+            params.extend(profile.condition_slugs)
         where = "AND (" + " OR ".join(clauses) + ")"
     changes_sql = (
         "SELECT h.changed_at, h.field, h.old_value, h.new_value, h.actor, "
@@ -6587,7 +6598,7 @@ def changes(request: Request, days: int = 14, personal: int = 0):
     params: list = [f"-{int(days)} days"]
     if personal and has_watch:
         watched_factors = list(set(p.watch_factors + p.stack))
-        watched_outcomes = list(set(p.watch_outcomes + p.conditions))
+        watched_outcomes = list(set(p.watch_outcomes + p.condition_slugs))
         clauses = []
         if watched_factors:
             clauses.append(f"f.slug IN ({','.join('?'*len(watched_factors))})")
