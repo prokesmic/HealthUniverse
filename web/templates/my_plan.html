@@ -86,6 +86,7 @@
   .plan-card-effect:hover { -webkit-line-clamp: unset; }
   .plan-card-for { margin: 0; font-size: 12px; color: var(--ink-soft); }
   .pm-target { background: #f3ead0; color: #6a520f; }
+  .pm-doctor { background: #e8eef7; color: #23406b; }
   .plan-more { margin: 4px 0 14px; }
   .plan-more summary { cursor: pointer; font-size: 13px; color: var(--ink-soft); padding: 4px 0; }
   .plan-card-for b { color: var(--ink); font-weight: 600; }
@@ -138,6 +139,7 @@
     {% if e.in_stack %}<span class="pill-mini pm-instack" title="Already in your saved stack">✓ in your stack</span>{% endif %}
     {% if e.breakthrough %}<span class="pill-mini pm-info">★ Breakthrough</span>{% endif %}
     {% if e.target_group %}<span class="pill-mini pm-target" title="{{ e.population or '' }}">{{ e.target_group }}</span>{% endif %}
+    {% if e.medical %}<span class="pill-mini pm-doctor">{{ e.medical }}</span>{% endif %}
   </div>
   <div class="plan-axes">
     <span class="ax-tier">{{ e.axes.tier_label }}</span>
@@ -186,7 +188,7 @@
   {% if starters %}
   <section class="starters" aria-label="Top 3 to start with">
     <h2>Top 3 to start with</h2>
-    <p class="lede">Highest-leverage moves for most adults that you're not already doing — sorted by overlap × evidence × effect size. Moves meant for specific groups are labelled in the lists below.</p>
+    <p class="lede">Highest-leverage moves for most adults that you're not already doing — sorted by overlap × evidence × effect size. Moves meant for specific groups, and medications or procedures to discuss with your doctor, are labelled in the lists below.</p>
     <div class="starter-grid">
       {% for s in starters %}
       <a class="starter-card" href="/edge/{{ s.id }}">

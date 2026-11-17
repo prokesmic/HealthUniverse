@@ -1366,7 +1366,9 @@ def my_plan(request: Request):
         # hepatitis B vaccination at birth (17.11.2026).
         for rec in do_list + hard_list:
             rec["target_group"] = target_group(rec.get("f_name"), rec.get("population"), p.sex)
-        starters = sorted((r for r in do_list if not r.get("target_group")),
+            rec["medical"] = medical_note(rec.get("f_kind"), rec.get("f_name"))
+        # Nor do medications and procedures: those are decided with a doctor.
+        starters = sorted((r for r in do_list if not r.get("target_group") and not r.get("medical")),
                           key=lambda r: -_starter_score(r))[:3]
     return render(request, "my_plan.html", {
         "title": "My plan",
@@ -2549,6 +2551,21 @@ _TG_YOUNG = re.compile(r"at birth|newborn|neonat|infan|birth cohort|\bchild|\bgi
 _TG_PREG = re.compile(r"pregnan|parous|breastfe|lactat|postpartum|prenatal|antenatal", re.I)
 _TG_WOMEN = re.compile(r"\b(women|woman|female|girls|postmenopausal|premenopausal)\b", re.I)
 _TG_MEN = re.compile(r"\b(men|man|male|boys)\b", re.I)
+
+
+_MEDICAL_PROC = re.compile(r"surger|surgical|bypass|transplant|electroconvulsive|eradication|"
+                           r"nerve stimulation|mastectomy|oophorectomy|hysterectomy", re.I)
+
+
+def medical_note(f_kind: str | None, f_name: str | None) -> str | None:
+    """Prescription medicines and medical procedures are a decision with a
+    doctor, not a 'start this' move (17.11.2026: low-dose aspirin was #2 of the
+    Top 3 for Cancer — benefit for colorectal cancer, but bleeding risk)."""
+    if f_kind == "drug":
+        return "Medication — discuss with your doctor"
+    if _MEDICAL_PROC.search(f_name or ""):
+        return "Medical procedure — discuss with your doctor"
+    return None
 
 
 def target_group(f_name: str | None, population: str | None, sex: str | None = None) -> str | None:

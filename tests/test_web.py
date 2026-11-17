@@ -115,6 +115,11 @@ def test_top3_skips_targeted_moves(monkeypatch):
          "population": "women carrying BRCA1 variants", "f_slug": "brca_oophorectomy",
          "f_name": "BRCA risk-reducing oophorectomy", "f_kind": "drug", "o_slug": "ovarian_cancer",
          "o_name": "Ovarian cancer", "n_studies": 3, "top_study": "meta_analysis", "promoted_at": None},
+        {"id": 3, "tier": "A", "direction": "protective", "summary": "", "updated_at": "", "created_at": "",
+         "effect_size": "moderate", "effect_quant": "", "review_status": "verified_evidence",
+         "population": "general adult", "f_slug": "aspirin_low", "f_name": "Low-dose aspirin", "f_kind": "drug",
+         "o_slug": "colorectal_cancer", "o_name": "Colorectal cancer", "n_studies": 5,
+         "top_study": "meta_analysis", "promoted_at": None},
         {"id": 2, "tier": "B", "direction": "protective", "summary": "", "updated_at": "", "created_at": "",
          "effect_size": "small", "effect_quant": "", "review_status": "verified_evidence",
          "population": "general adult", "f_slug": "aerobic_exercise", "f_name": "Aerobic exercise",
@@ -137,6 +142,17 @@ def test_top3_skips_targeted_moves(monkeypatch):
     html = c.get("/my-plan").text
     i = html.find("Top 3 to start with")
     top = html[i: html.find("</section>", i)]
-    assert "Aerobic exercise" in top and "oophorectomy" not in top
+    assert "Aerobic exercise" in top and "oophorectomy" not in top and "aspirin" not in top
+    assert "Medication — discuss with your doctor" in html
     assert "For high-risk groups" in html          # still listed, with its label
     assert "oophorectomy" in html
+
+
+
+def test_medications_and_procedures_are_for_a_doctor_not_the_top3():
+    from web.app import medical_note as mn
+    assert mn("drug", "Low-dose aspirin") == "Medication — discuss with your doctor"
+    assert mn("activity", "Gastric bypass surgery").startswith("Medical procedure")
+    assert mn("activity", "Helicobacter pylori eradication").startswith("Medical procedure")
+    assert mn("activity", "Colonoscopy screening") is None          # screening stays a general move
+    assert mn("food", "Coffee") is None
