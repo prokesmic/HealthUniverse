@@ -53,5 +53,9 @@ LOG=data/logs/daily-$(date +%Y%m%d).log
     echo "no DB changes to push"
   fi
 
+  # 17.11.2026 shadow week: the same prompts to Claude in batches, compared, never used
+  echo "--- claude shadow ---"
+  TO 1500 python claude_shadow.py run || echo "shadow exited $?"
+
   echo "=== $(date) end daily ==="
 } >> "$LOG" 2>&1

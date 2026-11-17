@@ -41,6 +41,7 @@ from web.breakthroughs import (   # noqa: E402
     load_feed, save_feed, match_corpus, CATEGORY_ORDER,
 )
 sys.path.insert(0, str(ROOT / "scripts"))
+import claude_shadow  # noqa: E402  (17.11.2026 shadow week)
 from breakthrough_enrich import enrich   # noqa: E402
 
 
@@ -300,6 +301,7 @@ def gemma_classify(raw: dict) -> dict | None:
             out = json.loads(m.group(0))
         except json.JSONDecodeError:
             return None
+    claude_shadow.record("bt_classify", prompt, out)
     return out
 
 

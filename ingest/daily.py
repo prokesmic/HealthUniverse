@@ -22,6 +22,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
+import claude_shadow  # noqa: E402  (17.11.2026 shadow week)
 
 from db import connect, resolve_slug  # noqa: E402
 from ollama_client import call_json, OllamaUnavailable  # noqa: E402
@@ -445,6 +446,8 @@ def run(*, days_back: int = 2, per_entity: int = 6, dry_run: bool = False) -> di
             except Exception as e:
                 last_err = e
                 continue
+        if extraction is not None:
+            claude_shadow.record("ingest_extract", user_prompt, extraction, system=EXTRACT_SYSTEM)
         if extraction is None:
             print(f"[ingest] extract fail '{title}': {last_err}")
             with connect() as conn:

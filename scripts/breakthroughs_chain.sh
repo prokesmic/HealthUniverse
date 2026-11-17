@@ -130,4 +130,7 @@ else
   log "→ no changes, no notification"
 fi
 
+# 17.11.2026 shadow week: the same prompts to Claude in batches (compared, never used)
+log "→ claude shadow"
+TO 1500 $PY claude_shadow.py run 2>&1 | tail -2
 log "→ done"

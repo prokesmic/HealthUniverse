@@ -42,6 +42,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+import claude_shadow  # noqa: E402  (17.11.2026 shadow week)
 
 from web.breakthroughs import load_feed, save_feed  # noqa: E402
 
@@ -400,6 +401,14 @@ def fda_label(intervention: str) -> dict | None:
 # ─── LLM ──────────────────────────────────────────────────────────
 
 def ollama_json(prompt: str, num_predict: int = 1400) -> dict | None:
+    """The local model's answer; the same prompt is queued for the Claude shadow week (17.11.2026).
+    deepen_edges.py shares this function; its judge prompt is told apart by its own field name."""
+    out = _ollama_json_local(prompt, num_predict)
+    claude_shadow.record("deepen" if "participants_had_outcome" in prompt else "enrich", prompt, out)
+    return out
+
+
+def _ollama_json_local(prompt: str, num_predict: int = 1400) -> dict | None:
     payload = {"model": OLLAMA_MODEL, "prompt": prompt, "stream": False,
                "format": "json", "options": {"temperature": 0.1, "num_predict": num_predict,
                                               "num_ctx": 12288}}
