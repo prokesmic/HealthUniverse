@@ -86,6 +86,8 @@
   .plan-card-effect:hover { -webkit-line-clamp: unset; }
   .plan-card-for { margin: 0; font-size: 12px; color: var(--ink-soft); }
   .pm-target { background: #f3ead0; color: #6a520f; }
+  .plan-more { margin: 4px 0 14px; }
+  .plan-more summary { cursor: pointer; font-size: 13px; color: var(--ink-soft); padding: 4px 0; }
   .plan-card-for b { color: var(--ink); font-weight: 600; }
   .plan-card-doses { font-size: 11px; color: var(--ink-soft); font-style: italic; }
   .plan-pill-row { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -211,6 +213,12 @@
             {% if rows %}
               <div class="plan-bucket-head">{{ label }} <span class="muted small">({{ rows|length }})</span></div>
               <ol class="plan-list">{% for e in rows[:8] %}{{ plan_card(e) }}{% endfor %}</ol>
+              {% if rows|length > 8 %}
+              <details class="plan-more">
+                <summary>Show all {{ rows|length }}</summary>
+                <ol class="plan-list" start="9">{% for e in rows[8:] %}{{ plan_card(e) }}{% endfor %}</ol>
+              </details>
+              {% endif %}
             {% endif %}
           {% endfor %}
         {% else %}
@@ -228,6 +236,12 @@
             {% if rows %}
               <div class="plan-bucket-head">{{ label }} <span class="muted small">({{ rows|length }})</span></div>
               <ol class="plan-list">{% for e in rows[:8] %}{{ plan_card(e) }}{% endfor %}</ol>
+              {% if rows|length > 8 %}
+              <details class="plan-more">
+                <summary>Show all {{ rows|length }}</summary>
+                <ol class="plan-list" start="9">{% for e in rows[8:] %}{{ plan_card(e) }}{% endfor %}</ol>
+              </details>
+              {% endif %}
             {% endif %}
           {% endfor %}
         {% else %}

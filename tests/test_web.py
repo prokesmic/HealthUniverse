@@ -139,3 +139,4 @@ def test_top3_skips_targeted_moves(monkeypatch):
     top = html[i: html.find("</section>", i)]
     assert "Aerobic exercise" in top and "oophorectomy" not in top
     assert "For high-risk groups" in html          # still listed, with its label
+    assert "oophorectomy" in html
