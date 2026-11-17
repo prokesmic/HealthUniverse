@@ -113,15 +113,19 @@
         </p>
 
         {% if top_conditions %}
-        <p class="stack-quickpick-label">Common starting points</p>
-        <div class="stack-chips stack-chips-quick" id="cond-quick">
-          {% for c in top_conditions %}
+        <div id="cond-quick">
+        {% for group, label in [(true, "Common starting points"), (false, "More specific")] %}
+        <p class="stack-quickpick-label">{{ label }}</p>
+        <div class="stack-chips stack-chips-quick">
+          {% for c in top_conditions if c.general == group %}
           <label class="stack-chip">
             <input type="checkbox" name="conditions" value="{{ c.slug }}"
               {% if c.slug in profile.conditions %}checked{% endif %}>
             <span>{{ c.name }}</span>
           </label>
           {% endfor %}
+        </div>
+        {% endfor %}
         </div>
         {% endif %}
 

@@ -2516,6 +2516,45 @@ def methodology(request: Request):
     })
 
 
+
+# ---- condition quick-picks ----------------------------------------------------
+import re
+# Broad conditions first, in the order people think of them; the most-studied
+# specific ones after. Until 17.11.2026 the chips were simply "most A/B edges",
+# so "Cancer" never appeared (the general cancer entity is cancer_incidence,
+# typed 'process') while Falls and Endometrial cancer did.
+GENERAL_CONDITIONS = [
+    ("cancer_incidence", "Cancer (any type)"),
+    ("cvd", None), ("t2d", None), ("dementia", None), ("all_cause_mortality", None),
+    ("depression", None), ("hypertension", None), ("stroke", None), ("obesity", None),
+    ("anxiety", None), ("ckd", None), ("nafld", None), ("osteoporosis", None),
+    ("metabolic_syndrome", None),
+]
+CONDITION_LABEL = {slug: label for slug, label in GENERAL_CONDITIONS if label}
+# Not something a person "wants to prevent": "Overall clinical outcomes", a bare "Mortality".
+_VAGUE = re.compile(r"^(overall|clinical|general)\b|^mortality$|\boutcomes?$", re.I)
+
+
+def quickpick_conditions(conn, limit: int = 22) -> list[dict]:
+    names = {r["slug"]: r["name"] for r in conn.execute(
+        "SELECT slug, name FROM entity WHERE slug IN (%s)" % ",".join("?" * len(GENERAL_CONDITIONS)),
+        [s for s, _ in GENERAL_CONDITIONS])}
+    out = [{"slug": s, "name": label or names[s], "general": True}
+           for s, label in GENERAL_CONDITIONS if s in names]
+    seen = {c["slug"] for c in out}
+    for r in conn.execute("""
+            SELECT o.slug, o.name, COUNT(e.id) AS n
+            FROM edge e JOIN entity o ON o.id=e.outcome_id
+            WHERE o.kind IN ('condition','outcome') AND e.tier IN ('A','B')
+            GROUP BY o.slug ORDER BY n DESC LIMIT 40"""):
+        if len(out) >= limit:
+            break
+        if r["slug"] not in seen and not _VAGUE.search(r["name"]):
+            out.append({"slug": r["slug"], "name": r["name"], "general": False})
+            seen.add(r["slug"])
+    return out
+
+
 @app.get("/start", response_class=HTMLResponse)
 def onboarding(request: Request, step: int = 1):
     """Three-step onboarding: pick conditions → pick stack → optional
@@ -2530,12 +2569,7 @@ def onboarding(request: Request, step: int = 1):
             "SELECT slug, name, kind FROM entity WHERE kind IN "
             "('food','supplement','nutrient','behavior','activity','medication') "
             "ORDER BY name").fetchall()]
-        # Top conditions chosen by people (simple proxy: edges with most studies)
-        top_conditions = [dict(r) for r in conn.execute("""
-            SELECT o.slug, o.name, COUNT(e.id) AS n
-            FROM edge e JOIN entity o ON o.id=e.outcome_id
-            WHERE o.kind IN ('condition','outcome') AND e.tier IN ('A','B')
-            GROUP BY o.slug ORDER BY n DESC LIMIT 16""").fetchall()]
+        top_conditions = quickpick_conditions(conn)
     return render(request, "onboarding.html", {
         "title": "Welcome to Health Universe",
         "step": max(1, min(3, step)),
@@ -3051,12 +3085,7 @@ def me(request: Request):
                               key=lambda e: -relevance_score(e, p))[:30]
         red_flags = _red_flags_in_stack(conn, p, limit=8)
         no_regret = _no_regret_movers(conn, p, limit=8)
-        # Top 16 most-studied conditions for quick-pick
-        top_conditions = [dict(r) for r in conn.execute("""
-            SELECT o.slug, o.name, COUNT(e.id) AS n
-            FROM edge e JOIN entity o ON o.id=e.outcome_id
-            WHERE o.kind IN ('condition','outcome') AND e.tier IN ('A','B')
-            GROUP BY o.slug ORDER BY n DESC LIMIT 16""").fetchall()]
+        top_conditions = quickpick_conditions(conn)
     return render(request, "me.html", {
         "title": "My stack",
         "profile": p,

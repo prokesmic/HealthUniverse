@@ -19,9 +19,10 @@
     <p class="muted">Pick as many as apply — even one is enough to get a plan. You can change these any time.</p>
 
     <div class="onb-quick">
-      <p class="muted small">Common starting points:</p>
+      {% for group, label in [(true, "Common starting points:"), (false, "More specific:")] %}
+      <p class="muted small">{{ label }}</p>
       <div class="onb-chip-row">
-        {% for c in top_conditions %}
+        {% for c in top_conditions if c.general == group %}
         <label class="onb-chip">
           <input type="checkbox" name="conditions" value="{{ c.slug }}"
                  {% if c.slug in profile.conditions %}checked{% endif %}>
@@ -29,6 +30,7 @@
         </label>
         {% endfor %}
       </div>
+      {% endfor %}
     </div>
 
     <div class="onb-other">

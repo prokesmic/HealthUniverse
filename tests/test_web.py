@@ -44,3 +44,24 @@ def test_api_entity_json(client, seeded):
 def test_api_entity_404(client):
     r = client.get("/api/entities/this_does_not_exist")
     assert r.status_code == 404
+
+
+def test_condition_quickpicks_lead_with_general_conditions_including_cancer():
+    """17.11.2026: the chips were 'most A/B edges', so Cancer never showed."""
+    import sqlite3
+    from web import app as webapp
+    conn = sqlite3.connect(":memory:")
+    conn.row_factory = sqlite3.Row
+    conn.executescript("""
+      CREATE TABLE entity (id INTEGER PRIMARY KEY, slug TEXT, name TEXT, kind TEXT);
+      CREATE TABLE edge (id INTEGER PRIMARY KEY, outcome_id INT, tier TEXT);
+      INSERT INTO entity VALUES (1,'cancer_incidence','Cancer incidence','process'),
+        (2,'cvd','Cardiovascular disease','condition'), (3,'falls','Falls','condition'),
+        (4,'overall_clinical_outcomes','Overall clinical outcomes','outcome'),
+        (5,'mortality','Mortality','condition'), (6,'lung_cancer','Lung cancer','condition');
+    """)
+    conn.executemany("INSERT INTO edge (outcome_id, tier) VALUES (?, 'A')",
+                     [(3,)] * 50 + [(4,)] * 40 + [(5,)] * 30 + [(6,)] * 5 + [(2,)] * 2)
+    picks = webapp.quickpick_conditions(conn)
+    assert [p["name"] for p in picks] == ["Cancer (any type)", "Cardiovascular disease", "Falls", "Lung cancer"]
+    assert [p["general"] for p in picks] == [True, True, False, False]
