@@ -1,8 +1,596 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-17",
+  "updated_at": "2026-11-20",
   "items": [
+    {
+      "id": "br_e8a5c33dbb40f9f5",
+      "published_at": "2026-11-20",
+      "category": "metabolic",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for neurological symptoms of rare disease",
+      "summary": "The FDA has approved venglustat for adults and children weighing at least 15 kg with Type 3 Gaucher disease. It is the first treatment approved specifically for the neurological symptoms of this condition.",
+      "why_it_matters": "People with Type 3 Gaucher disease now have their first approved treatment for brain-related symptoms.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "FDA Approvals",
+      "source_url": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-drug-treat-neurological-symptoms-type-3-gaucher-disease",
+      "factor_slug": "venglustat",
+      "outcome_slug": "neurological_symptoms_of_type_3_gaucher_disease",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "venglustat",
+        "summary": "The FDA has approved venglustat (Infilbray) for adults and children weighing at least 15 kg with Type 3 Gaucher disease to treat neurological symptoms. The approval was based on a randomized, double-blind, multicenter trial of 43 patients aged 12 years and older who had previously been stabilized on enzyme replacement therapy. At Week 52, patients on venglustat showed improvement on a combined measure of ataxia and cognitive function compared to those on enzyme replacement therapy. The drug works by inhibiting glucosylceramide synthase, reducing harmful substance buildup in the brain. Side effects included gastrointestinal symptoms, mood changes, and serious psychiatric risks including suicidal ideation.",
+        "key_findings": [
+          "At Week 52, venglustat showed improvement on a combined neurological assessment compared to enzyme replacement therapy.",
+          "The trial included 43 patients aged 12 years and older with Type 3 Gaucher disease.",
+          "Participants had previously been stabilized on enzyme replacement therapy.",
+          "Venglustat crosses the blood-brain barrier to reduce accumulation of harmful substances in the brain.",
+          "Serious psychiatric risks, including suicidal ideation and behavior, were reported."
+        ],
+        "study": {
+          "design": "randomized, double-blind, multicenter",
+          "participants": "43 patients aged 12 years and older",
+          "comparator": "intravenous enzyme replacement therapy every two weeks",
+          "primary_endpoint": "improvement on a measure combining assessments of ataxia and cognitive function",
+          "follow_up": "52 weeks"
+        },
+        "regulatory_status": "FDA approved",
+        "caveats": [
+          "The primary endpoint was a composite measure, not a single clinical outcome.",
+          "Serious psychiatric side effects, including suicidal ideation, were reported.",
+          "The drug's effect on long-term neurological progression is not yet known."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults and children weighing at least 15 kg with Type 3 Gaucher disease who have neurological symptoms.",
+        "evidence": [],
+        "source_chars": 3747,
+        "enriched_at": "2026-11-20",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_6a738b763f3f1fd6",
+      "published_at": "2026-11-20",
+      "category": "metabolic",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug shown to help children with rare brain disease live longer",
+      "summary": "Lembaz injection is the first treatment approved to extend life in infants with Niemann-Pick disease type C. It is the first drug shown to improve survival in this severe condition.",
+      "why_it_matters": "Families of children with this rare, fatal disease now have a treatment that can help them live longer.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Lembaz-treated",
+        "control_label": "External control",
+        "median_t": 8.5,
+        "median_c": 4.9,
+        "x_label": "Months",
+        "y_label": "Survival Probability"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Approvals",
+      "source_url": "http://www.fda.gov/news-events/press-announcements/fda-approves-first-drug-shown-help-patients-infantile-onset-niemann-pick-disease-type-c-live-longer",
+      "factor_slug": "lembaz",
+      "outcome_slug": "survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Lembaz (adrabetadex) injection",
+        "summary": "Lembaz injection was approved by the FDA as the first treatment shown to reduce the risk of death in patients with infantile-onset Niemann-Pick disease type C (NPC). The approval was based on data from three clinical studies and an expanded access program involving 36 patients with neurological symptoms beginning before age 6. Patients treated with Lembaz had a 55% reduction in the risk of death compared to a matched external control group. Median survival was 8.5 years in the treated group versus 4.9 years in the control group.",
+        "key_findings": [
+          "55% reduction in the risk of death with Lembaz compared to control",
+          "Median survival: 8.5 years in treated group",
+          "Median survival: 4.9 years in control group",
+          "Survival benefit observed regardless of miglustat use",
+          "Lembaz is approved for patients weighing at least 7 kg with neurological symptoms before age 6"
+        ],
+        "study": {
+          "participants": "36 patients",
+          "comparator": "matched external control group",
+          "primary_endpoint": "risk of death"
+        },
+        "regulatory_status": "FDA approved",
+        "caveats": [
+          "Boxed warning for hearing impairment, including permanent hearing loss",
+          "Common side effects include hearing problems, balance and coordination issues, fatigue, vomiting, back pain, headache, fever, diarrhea, nausea, and cough",
+          "Requires regular hearing evaluations and possible dose adjustments",
+          "Treatment involves intrathecal injections every two weeks, which is invasive"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adult and pediatric patients weighing at least 7 kg (about 15 pounds) with neurological symptoms of Niemann-Pick disease type C that began before age 6",
+        "evidence": [
+          {
+            "pmid": "34952292",
+            "title": "Consistently High Agreement Between Independent Raters of Niemann-Pick Type C1 Clinical Severity Scale in Phase 2/3 Trial.",
+            "journal": "Pediatric neurology",
+            "year": "2022",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/34952292/"
+          },
+          {
+            "pmid": "36470574",
+            "title": "Neurofilament light chain in cerebrospinal fluid as a novel biomarker in evaluating both clinical severity and therapeutic response in Niemann-Pick disease type C1.",
+            "journal": "Genetics in medicine : official journal of the American College of Medical Genetics",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/36470574/"
+          },
+          {
+            "pmid": "41260183",
+            "title": "Utility of 24(S)-hydroxycholesterol as a proximal biomarker to monitor long-term intrathecal adrabetadex therapy in individuals with Niemann-Pick disease, type C1.",
+            "journal": "Molecular genetics and metabolism",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41260183/"
+          }
+        ],
+        "source_chars": 3711,
+        "enriched_at": "2026-11-20",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "graphic: ci_high, ci_low, hr"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_a6bd5a33397900b5",
+      "published_at": "2026-11-19",
+      "category": "metabolic",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug approved for brain symptoms of rare genetic disease",
+      "summary": "Sanofi's Infilbray is the first drug approved in the U.S. to treat neurological symptoms of Gaucher disease. It crosses the blood-brain barrier to target the underlying cause.",
+      "why_it_matters": "People with this rare genetic disorder now have a treatment option for brain-related symptoms for the first time.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/sanofis-infilbray-wins-first-approval-for-neurological-symptoms-of-gaucher/",
+      "factor_slug": "infilbray",
+      "outcome_slug": "gaucher_neurological_symptoms",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Infilbray (venglustat)",
+        "summary": "Sanofi's Infilbray (venglustat) received FDA approval for treating neurological symptoms of Gaucher disease type 3, the first drug approved for this indication in the U.S. The approval is based on data from the Phase 2 LEAP trial, which evaluated venglustat in combination with imiglucerase in 11 adults with Gaucher disease type 3. The trial assessed safety, changes in biomarkers in cerebrospinal fluid, and neurological function. Venglustat was found to cross the blood-brain barrier and reduce levels of glucosylceramide and glucosylsphingosine in CSF.",
+        "key_findings": [
+          "Mean venglustat concentration in CSF at Week 52 was 6.14 ng/ml (SD 3.44)",
+          "Mean venglustat concentration in plasma at Week 52 was 114 ng/ml (SD 65.8)",
+          "Steady-state plasma concentrations were reached by Week 4",
+          "One participant had low-to-undetectable venglustat exposure in plasma and CSF at Weeks 26 and 52",
+          "Improvements in eye movement, memory, alertness, and independence were reported by patients, caregivers, and clinicians"
+        ],
+        "study": {
+          "trial_name": "LEAP",
+          "design": "Phase 2, open-label",
+          "participants": "11 adults with Gaucher disease type 3",
+          "primary_endpoint": "Change in concentration of glucosylceramide and glucosylsphingosine in CSF from baseline to Weeks 26 and 52",
+          "follow_up": "1 year"
+        },
+        "regulatory_status": "FDA approved for neurological symptoms of Gaucher disease type 3",
+        "caveats": [
+          "One participant had undetectable drug levels despite reported benefits"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with Gaucher disease type 3 experiencing neurological symptoms",
+        "evidence": [
+          {
+            "pmid": "36256599",
+            "title": "Venglustat combined with imiglucerase for neurological disease in adults with Gaucher disease type 3: the LEAP trial.",
+            "journal": "Brain : a journal of neurology",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/36256599/"
+          },
+          {
+            "pmid": "38802634",
+            "title": "Qualitative Study of the Patient Experience with Venglustat for Gaucher Disease Type\u00a03 in a Phase\u00a02 Open-Label, Multicenter, Multinational Study (LEAP).",
+            "journal": "Advances in therapy",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38802634/"
+          }
+        ],
+        "source_chars": 330,
+        "enriched_at": "2026-11-20",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.20)",
+          "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_0ed1d8be0a1d0ada",
+      "published_at": "2026-11-18",
+      "category": "cardio",
+      "stage": "preclinical",
+      "audience": "technical",
+      "headline": "New method detects heart rhythm changes in early LMNA cardiomyopathy",
+      "summary": "Researchers found that analyzing heart rate variability across multiple time scales can detect early electrical abnormalities in people with LMNA cardiomyopathy before symptoms appear. This approach may allow earlier diagnosis and intervention.",
+      "why_it_matters": "People with LMNA gene mutations should consider early cardiac monitoring to catch heart issues before they become serious.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43046972/",
+      "factor_slug": "multiscale_rr_analysis",
+      "outcome_slug": "lmna_cardiomyopathy",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "analyzing heart rate variability across multiple time scales",
+        "summary": "Researchers analyzed heart rate variability using multiscale RR interval dynamics in individuals with LMNA cardiomyopathy. The study included people with known LMNA mutations who had not yet developed symptoms. They found that this method detected early electrical abnormalities in the heart before clinical symptoms appeared.",
+        "key_findings": [
+          "Multiscale RR interval dynamics detected electrophysiological dysfunction in asymptomatic individuals with LMNA mutations.",
+          "Abnormalities were identified before symptoms or structural heart changes were evident.",
+          "The method revealed changes across multiple time scales of heart rate variability.",
+          "These changes were associated with early disease progression in LMNA cardiomyopathy."
+        ],
+        "study": {
+          "trial_name": "Multiscale RR Interval Dynamics Reveal Early Electrophysiological Dysfunction in LMNA Cardiomyopathy"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "No data on whether early detection improves outcomes."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "People with known LMNA mutations who are asymptomatic or at early stages of cardiomyopathy.",
+        "evidence": [
+          {
+            "pmid": "39395510",
+            "title": "SnRNA-seq reveals differential functional transcriptional pathway alterations in three mutant types of dilated cardiomyopathy.",
+            "journal": "International journal of biological macromolecules",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39395510/"
+          }
+        ],
+        "source_chars": 102,
+        "enriched_at": "2026-11-20",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.43)",
+          "study.design: unsupported wording (0.00)",
+          "study.participants: unsupported wording (0.40)",
+          "finding: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.33)",
+          "next_steps: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "hrv",
+          "name": "Heart rate variability",
+          "relation": "same"
+        },
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [
+          {
+            "id": 203,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Heart rate variability",
+            "outcome": "All-cause mortality",
+            "summary": "Higher heart rate variability (HRV) is consistently linked to lower risk of death from any cause, while low HRV is a robust predictor of premature mortality. This relationship holds across healthy adults, elderly populat",
+            "effect": "Pooled HRs typically 1.4\u20132.0 per SD decrease in HRV indices",
+            "review": "weak_evidence",
+            "n_evidence": 8
+          }
+        ],
+        "outcome_total": 0,
+        "factor_total": 1
+      }
+    },
+    {
+      "id": "br_c93df4e049b4f505",
+      "published_at": "2026-11-17",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Partial-breast radiation safe and effective for early breast cancer",
+      "summary": "After 5 years, partial-breast irradiation was as effective as whole-breast irradiation in preventing cancer recurrence. The study included women with low-risk early-stage breast cancer.",
+      "why_it_matters": "Women with early-stage breast cancer may have a shorter, less intensive radiation treatment option with no loss in effectiveness.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "APBI",
+            "treatment": 1.0,
+            "control": 0.8
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "APBI",
+        "control_label": "WBI"
+      },
+      "strength": 0.95,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43044095/",
+      "factor_slug": "accelerated_partial_breast_irradiation",
+      "outcome_slug": "local_control_in_breast_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "external-beam accelerated partial-breast irradiation (APBI)",
+        "summary": "This phase 3 trial tested whether accelerated partial-breast irradiation (APBI) is noninferior to whole-breast irradiation (WBI) for preventing cancer recurrence in women with low-risk early-stage breast cancer. A total of 3,309 patients were randomly assigned to APBI or WBI, with a median follow-up of 97.5 months. After 5 years, the cumulative incidence of ipsilateral breast tumor recurrence (IBTR) was 1.0% in the APBI group and 0.8% in the WBI group. Although formal noninferiority was not proven due to the upper confidence limit crossing the margin, the absolute difference was less than 0.2%.",
+        "key_findings": [
+          "5-year IBTR incidence was 1.0% (95% CI, 0.6 to 1.6) in the APBI group",
+          "5-year IBTR incidence was 0.8% (95% CI, 0.5 to 1.4) in the WBI group",
+          "Hazard ratio for APBI vs WBI was 1.18 (95% CI, 0.63 to 2.20)",
+          "The upper confidence limit crossed the prespecified noninferiority margin (HR 1.5)",
+          "Absolute difference in IBTR rates was less than 0.2%"
+        ],
+        "study": {
+          "trial_name": "IRMA Trial",
+          "design": "randomized phase 3",
+          "participants": "3,309 patients (1,652 APBI, 1,657 WBI)",
+          "comparator": "whole-breast irradiation (WBI)",
+          "primary_endpoint": "ipsilateral breast tumor recurrence (IBTR)",
+          "follow_up": "median 97.5 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Formal noninferiority was not demonstrated because the upper confidence limit crossed the prespecified margin",
+          "No blinding of patients or investigators",
+          "Results may not apply to higher-risk patients or different APBI delivery methods"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Women with low-risk early-stage breast cancer (age \u226549 years, tumor diameter \u22643 cm, resection margins \u22652 mm, pN0-1)",
+        "evidence": [
+          {
+            "pmid": "32840419",
+            "title": "Accelerated Partial-Breast Irradiation Compared With Whole-Breast Irradiation for Early Breast Cancer: Long-Term Results of the Randomized Phase III APBI-IMRT-Florence Trial.",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2020",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/32840419/"
+          }
+        ],
+        "source_chars": 1822,
+        "enriched_at": "2026-11-20",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "breast_cancer",
+          "name": "Breast cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 146,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined estrogen+progesterone HRT",
+            "outcome": "Breast cancer",
+            "summary": "Taking combined estrogen-plus-progestogen hormone replacement therapy (HRT) is associated with a small but consistently demonstrated increase in breast cancer risk. Risk rises with longer duration of use and remains elev",
+            "effect": "RR ~1.24\u20131.26 for current/recent users",
+            "review": "verified_evidence",
+            "n_evidence": 10
+          },
+          {
+            "id": 28,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Breast cancer",
+            "summary": "Drinking alcohol\u2014even at low to moderate levels\u2014is consistently associated with a small but real increase in breast cancer risk. The risk rises in a roughly dose-dependent fashion: each additional drink per day adds abou",
+            "effect": "~7\u201310% increased risk per 10 g/day alcohol",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 271,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Heavy alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally upward even below a drink a day. Pooled meta-analytic evidence link heavy alcohol intake to higher risk of breast cancer in a",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 276,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Moderate alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "In adult women, pooled meta-analytic evidence suggest that moderate alcohol intake tracks with higher risk of breast cancer. The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 368,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined menopausal hormone therapy",
+            "outcome": "Breast cancer",
+            "summary": "Pooled meta-analytic evidence link combined menopausal hormone therapy to higher risk of breast cancer in postmenopausal women. The average effect is usually moderate rather than dramatic, so this edge is better read as ",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 145,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Estrogen-only HRT",
+            "outcome": "Breast cancer",
+            "summary": "In post-menopausal women who have had a hysterectomy, taking estrogen-only hormone replacement therapy is associated with a small but statistically significant reduction in breast cancer incidence compared with placebo, ",
+            "effect": "HR ~0.78 in long-term WHI follow-up",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 45,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_eec1cf49dafb5e0f",
+      "published_at": "2026-11-17",
+      "category": "metabolic",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "New standard for diagnosing iron deficiency aims to reduce missed cases",
+      "summary": "The American Society of Hematology updated guidelines to standardize ferritin thresholds across patient groups, improving diagnosis accuracy. This change aims to reduce missed cases of iron deficiency.",
+      "why_it_matters": "If you have fatigue or anemia, ask your doctor if iron deficiency was ruled out using the new standard.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2855968",
+      "factor_slug": "ferritin_threshold_standardization",
+      "outcome_slug": "iron_deficiency_diagnosis",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "The American Society of Hematology (ASH) updated its guidelines for diagnosing iron deficiency by standardizing ferritin thresholds across different patient groups. This change aims to improve diagnostic accuracy and reduce missed cases of iron deficiency.",
+        "key_findings": [
+          "ASH updated guidelines to standardize ferritin thresholds across patient groups.",
+          "The change aims to reduce missed diagnoses of iron deficiency.",
+          "Standardized thresholds improve diagnostic accuracy."
+        ],
+        "study": {},
+        "regulatory_status": "Guideline issued by the American Society of Hematology (ASH)",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "",
+        "evidence": [],
+        "source_chars": 0,
+        "enriched_at": "2026-11-20",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.33)",
+          "summary: unsupported wording (0.55)",
+          "summary: unsupported wording (0.27)",
+          "finding: unsupported wording (0.33)",
+          "finding: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.20)",
+          "caveat: unsupported wording (0.00)",
+          "who_it_applies_to: unsupported wording (0.14)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "iron_deficiency",
+          "name": "Iron deficiency",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1117,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Gastric bypass surgery",
+            "outcome": "Iron deficiency",
+            "summary": "Iron deficiency is one of the most reproducible long-term complications of Roux-en-Y gastric bypass. Systematic review, large retrospective cohort data, and longitudinal micronutrient follow-up all show that iron depleti",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1311,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Gastric bypass surgery",
+            "outcome": "Iron deficiency",
+            "summary": "Iron deficiency is one of the most common nutritional complications after gastric bypass, and the risk often persists or worsens with longer follow-up. Oral replacement alone may be insufficient in a meaningful fraction ",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1119,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Heavy menstruation",
+            "outcome": "Iron deficiency",
+            "summary": "Heavy menstruation is one of the clearest real-world drivers of iron deficiency in girls and women. Review literature, adolescent clinic cohorts, and newer population data all point the same way: once bleeding is heavy e",
+            "effect": "In adolescent cross-sectional data, heavy menstrual bleeding was associated with greater odds of iron deficiency (OR 3.0, 95% CI 2.0 to 4.6).",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1313,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Heavy menstruation",
+            "outcome": "Iron deficiency",
+            "summary": "Heavy menstrual bleeding is strongly linked to iron deficiency in both adolescent and adult gynecology cohorts, with low ferritin and overt anemia common in referred populations. The signal is clinically important and co",
+            "effect": "Among 454 women referred for heavy menstrual bleeding, 42.8% had ferritin below 15 microg/L and 72.5% were below 30 microg/L; in a Swedish von Willebrand cohort with heavy menstrual bleeding, 45% had ferritin below 30 microg/L.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2441,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Gastric bypass surgery",
+            "outcome": "Iron deficiency",
+            "summary": "Gastric bypass surgery consistently increases the risk of iron deficiency in adult patients. Evidence from a moderate-quality cohort (n=480), a high-quality systematic review, and a supporting gastrectomy cohort all poin",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 3166,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Iron supplementation",
+            "outcome": "Iron deficiency",
+            "summary": "Iron supplementation is a standard, effective treatment for correcting iron deficiency and iron-deficiency anemia. The strongest evidence here comes from specific clinical contexts \u2014 pregnant/lactating women and post-sur",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 6
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 18,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_c87d90083fe0a498",
       "published_at": "2026-11-16",
@@ -25766,391 +26354,6 @@
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.20)",
           "who_it_applies_to: unsupported wording (0.29)"
-        ]
-      },
-      "corpus": {
-        "factor": null,
-        "outcome": null,
-        "pair": [],
-        "outcome_edges": [],
-        "factor_edges": [],
-        "outcome_total": 0,
-        "factor_total": 0
-      }
-    },
-    {
-      "id": "br_3a1173badb98dc91",
-      "published_at": "2026-07-21",
-      "category": "metabolic",
-      "stage": "approved",
-      "audience": "general",
-      "headline": "First OTC glucose monitor approved for children with diabetes",
-      "summary": "The FDA approved the first over-the-counter continuous glucose monitor for children. This device allows blood sugar monitoring without a prescription.",
-      "why_it_matters": "Parents can now buy a glucose monitor for their child without a prescription, making diabetes management easier at home.",
-      "graphic": null,
-      "strength": 0.9,
-      "source_name": "JAMA",
-      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2851034",
-      "factor_slug": "continuous_glucose_monitor",
-      "outcome_slug": "diabetes",
-      "edge_id": null,
-      "is_orphan": true,
-      "detail": {
-        "intervention": "",
-        "summary": "The FDA approved the first over-the-counter continuous glucose monitor for children with diabetes. This device enables blood sugar monitoring without a prescription.",
-        "key_findings": [],
-        "study": {},
-        "regulatory_status": "FDA approved for over-the-counter use in children with diabetes",
-        "caveats": [],
-        "next_steps": "",
-        "who_it_applies_to": "children with diabetes who can use a continuous glucose monitor without a prescription",
-        "evidence": [],
-        "source_chars": 0,
-        "enriched_at": "2026-10-17",
-        "model": "qwen3:30b-instruct",
-        "dropped": [
-          "summary: unsupported wording (0.20)",
-          "summary: unsupported wording (0.56)",
-          "summary: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.14)",
-          "caveat: unsupported wording (0.25)",
-          "caveat: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.40)"
-        ]
-      },
-      "corpus": {
-        "factor": null,
-        "outcome": {
-          "slug": "t1d",
-          "name": "Type 1 diabetes",
-          "relation": "same"
-        },
-        "pair": [],
-        "outcome_edges": [
-          {
-            "id": 795,
-            "tier": "C",
-            "direction": "protective",
-            "factor": "Breastfeeding",
-            "outcome": "Type 1 diabetes",
-            "summary": "The boring claim is the right one here: breastfeeding may modestly lower later type 1 diabetes risk, particularly when exclusive breastfeeding lasts beyond the first weeks of life. The association survives pooled reanaly",
-            "effect": "Exclusive breastfeeding shows a weak but fairly consistent protective association with childhood-onset type 1 diabetes, although the signal is sensitive to bias and exposure measurement.",
-            "review": "verified_evidence",
-            "n_evidence": 4
-          },
-          {
-            "id": 3141,
-            "tier": "C",
-            "direction": "protective",
-            "factor": "Vitamin D supplementation in children",
-            "outcome": "Type 1 diabetes",
-            "summary": "Vitamin D supplementation may reduce the risk of type 1 diabetes in children.",
-            "effect": "",
-            "review": "unreviewed",
-            "n_evidence": 1
-          },
-          {
-            "id": 4182,
-            "tier": "D",
-            "direction": "protective",
-            "factor": "Continuous glucose monitoring in type 2 diabetes",
-            "outcome": "Type 1 diabetes",
-            "summary": "FreeStyle Libre Pro iQ CGM identified high-risk individuals for progression to clinical type 1 diabetes with high sensitivity.",
-            "effect": "",
-            "review": "unreviewed",
-            "n_evidence": 1
-          },
-          {
-            "id": 595,
-            "tier": "X",
-            "direction": "mixed",
-            "factor": "Early cow's-milk introduction",
-            "outcome": "Type 1 diabetes",
-            "summary": "The strongest piece here is the 2020 Verduci cohort in Front Nutr, which ties early cow's-milk introduction to type 1 diabetes in a direction that later studies largely support. That makes this edge more about calibratin",
-            "effect": "Different designs and subgroups point in different directions, so a single pooled estimate is not the right way to read this edge.",
-            "review": "verified_evidence",
-            "n_evidence": 3
-          }
-        ],
-        "factor_edges": [],
-        "outcome_total": 4,
-        "factor_total": 0
-      }
-    },
-    {
-      "id": "br_0a2c6d6f6e7a8c8b",
-      "published_at": "2026-07-21",
-      "category": "metabolic",
-      "stage": "phase3",
-      "audience": "general",
-      "headline": "AI-Powered Eye Scan Improves Diabetes Vision Screening Accuracy",
-      "summary": "An AI-enhanced eye scan system improved detection of diabetic eye disease in a clinical trial. It showed better diagnostic accuracy and reduced unnecessary referrals compared to standard screening.",
-      "why_it_matters": "If you have diabetes, ask your doctor about AI-enhanced eye screenings for early detection of vision-threatening complications.",
-      "graphic": {
-        "kind": "bar_delta",
-        "bars": [
-          {
-            "label": "False-positive DME referral rate",
-            "treatment": 24.1,
-            "control": 69.1
-          }
-        ],
-        "unit": "%",
-        "treatment_label": "AI-OCT + fundus photography",
-        "control_label": "Fundus photography alone"
-      },
-      "strength": 0.9,
-      "source_name": "JAMA",
-      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2850451",
-      "factor_slug": "ai_oct",
-      "outcome_slug": "diabetic_macular_edema",
-      "edge_id": null,
-      "is_orphan": true,
-      "detail": {
-        "intervention": "AI-enhanced optical coherence tomography (AI-OCT) system",
-        "summary": "In a randomized clinical trial, an AI-OCT system was tested as a secondary screening tool for diabetic macular edema (DME) in people with diabetes. Participants were referred for specialist evaluation based on either standard fundus photography alone or a combination of fundus photography and AI-OCT results. The AI-OCT system significantly reduced false-positive DME referrals compared to standard screening, without missing any cases of DME.",
-        "key_findings": [
-          "False-positive DME referral rate was 24.1% in the AI-OCT group versus 69.1% in the control group.",
-          "The absolute difference in false-positive referral rates was -45% (95% CI, -58.2% to -31.9%).",
-          "Sensitivity for DME detection was 100.0% in both groups.",
-          "Specificity for DME referral was 86.5% in the AI-OCT group and 0.0% in the control group.",
-          "No cases of DME occurred among nonreferred participants in the AI-OCT group."
-        ],
-        "study": {
-          "trial_name": "An AI-Based OCT System to Detect Diabetic Macular Edema: A Prospective Validation and Noninferiority Randomized Clinical Trial",
-          "design": "multicenter noninferiority randomized clinical trial",
-          "participants": "276 patients with suspected DME referred from a territory-wide diabetic retinopathy screening program",
-          "comparator": "automatic referral based solely on fundus photograph-based screening reports",
-          "primary_endpoint": "false-positive DME referral rate",
-          "follow_up": "follow-up completed in May 2025"
-        },
-        "regulatory_status": "",
-        "caveats": [
-          "The study was conducted in a single region (Hong Kong), limiting generalizability.",
-          "All participants ultimately underwent specialist evaluation, so real-world referral burden may differ.",
-          "The AI system flagged uncertainty in 4.4% of scans, which may affect workflow.",
-          "Long-term outcomes beyond referral accuracy were not assessed."
-        ],
-        "next_steps": "",
-        "who_it_applies_to": "people with diabetes who are undergoing screening for diabetic retinopathy and are being evaluated for diabetic macular edema",
-        "evidence": [
-          {
-            "pmid": "42295755",
-            "title": "An AI-Based OCT System to Detect Diabetic Macular Edema: A Prospective Validation and Noninferiority Randomized Clinical Trial.",
-            "journal": "JAMA",
-            "year": "2026",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/42295755/",
-            "is_source": true
-          }
-        ],
-        "source_chars": 3389,
-        "enriched_at": "2026-10-17",
-        "model": "qwen3:30b-instruct"
-      },
-      "corpus": {
-        "factor": null,
-        "outcome": {
-          "slug": "diabetic_retinopathy",
-          "name": "Diabetic retinopathy",
-          "relation": "class"
-        },
-        "pair": [],
-        "outcome_edges": [
-          {
-            "id": 818,
-            "tier": "B",
-            "direction": "protective",
-            "factor": "Intensive glycaemic control",
-            "outcome": "Diabetic retinopathy",
-            "summary": "This is a solid microvascular-protection edge. Multiple meta-analyses of randomized trials show that tighter glycaemic control reduces retinopathy progression and related ocular interventions, even though the magnitude i",
-            "effect": "Across randomized-trial meta-analyses in type 2 diabetes, intensive glycaemic control consistently lowers retinopathy progression risk, though the effect is modest rather than dramatic.",
-            "review": "verified_evidence",
-            "n_evidence": 3
-          },
-          {
-            "id": 1037,
-            "tier": "C",
-            "direction": "harmful",
-            "factor": "Magnesium",
-            "outcome": "Diabetic retinopathy",
-            "summary": "Lower magnesium levels associated with diabetic retinopathy",
-            "effect": "",
-            "review": "weak_evidence",
-            "n_evidence": 1
-          },
-          {
-            "id": 3670,
-            "tier": "C",
-            "direction": "neutral",
-            "factor": "CPAP for obstructive sleep apnea",
-            "outcome": "Diabetic retinopathy",
-            "summary": "No significant association found between obstructive sleep apnea and incident diabetic retinopathy in patients with type 2 diabetes.",
-            "effect": "",
-            "review": "unreviewed",
-            "n_evidence": 1
-          },
-          {
-            "id": 2449,
-            "tier": "D",
-            "direction": "protective",
-            "factor": "Curcumin",
-            "outcome": "Diabetic retinopathy",
-            "summary": "Curcumin improved retinal function and structure in diabetic mice by modulating the Hippo-YAP pathway.",
-            "effect": "",
-            "review": "unreviewed",
-            "n_evidence": 1
-          },
-          {
-            "id": 2591,
-            "tier": "D",
-            "direction": "neutral",
-            "factor": "GLP-1 receptor agonists",
-            "outcome": "Diabetic retinopathy",
-            "summary": "No significant difference in risk of diabetic retinopathy incidence or progression between liraglutide and dulaglutide.",
-            "effect": "",
-            "review": "unreviewed",
-            "n_evidence": 1
-          }
-        ],
-        "factor_edges": [],
-        "outcome_total": 5,
-        "factor_total": 0
-      }
-    },
-    {
-      "id": "br_0c157ee7cbf678cc",
-      "published_at": "2026-07-21",
-      "category": "oncology",
-      "stage": "approved",
-      "audience": "general",
-      "headline": "FDA approves first new sunscreen ingredient in 30 years",
-      "summary": "The FDA approved bemotrizinol as the first new active sunscreen ingredient in over 30 years. This expands options for sun protection products available to consumers.",
-      "why_it_matters": "Check sunscreen labels for bemotrizinol to access the first new active ingredient approved in over 30 years for sun protection.",
-      "graphic": null,
-      "strength": 0.9,
-      "source_name": "JAMA",
-      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2851030",
-      "factor_slug": "bemotrizinol",
-      "outcome_slug": "skin_cancer_prevention",
-      "edge_id": null,
-      "is_orphan": true,
-      "detail": {
-        "intervention": "bemotrizinol",
-        "summary": "The FDA approved bemotrizinol as the first new active sunscreen ingredient in over 30 years. This approval expands the range of available sunscreen options in the U.S., where only about 10 UV filters were previously approved. A clinical pilot pharmacokinetic Maximum Usage Trial (MUsT) evaluated 6% bemotrizinol in a model sunscreen formulation. The trial found that BEMT concentrations in plasma rarely exceeded 0.5 ng/mL, with no evidence of accumulation or steady-state concentrations above the threshold. No serious adverse events were reported, supporting its safety for topical use.",
-        "key_findings": [
-          "Bemotrizinol is the first new sunscreen active ingredient approved by the FDA in over 30 years.",
-          "In the MUsT, BEMT plasma concentrations rarely exceeded 0.5 ng/mL.",
-          "No evidence of BEMT accumulation or steady-state concentrations above the FDA threshold was found.",
-          "Only one moderate and few mild treatment emergent adverse events were reported.",
-          "The IVPT supported the use of oil +10% ethanol as the model formulation for the MUsT."
-        ],
-        "study": {
-          "trial_name": "Preliminary clinical pharmacokinetic evaluation of bemotrizinol",
-          "design": "open-label trial",
-          "primary_endpoint": "plasma concentration of bemotrizinol"
-        },
-        "regulatory_status": "FDA approved as a new active sunscreen ingredient",
-        "caveats": [
-          "Findings are based on a model formulation, not real-world products.",
-          "Long-term safety and efficacy data are not yet available.",
-          "Results may not generalize to all formulations or populations."
-        ],
-        "next_steps": "Bemotrizinol is now available in over-the-counter sunscreen products in the U.S.",
-        "who_it_applies_to": "",
-        "evidence": [
-          {
-            "pmid": "36738872",
-            "title": "Preliminary clinical pharmacokinetic evaluation of bemotrizinol - A new sunscreen active ingredient being considered for inclusion under FDA's over-the-counter (OTC) sunscreen monograph.",
-            "journal": "Regulatory toxicology and pharmacology : RTP",
-            "year": "2023",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/36738872/"
-          }
-        ],
-        "source_chars": 0,
-        "enriched_at": "2026-10-17",
-        "model": "qwen3:30b-instruct",
-        "dropped": [
-          "study.participants: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.25)",
-          "who_it_applies_to: unsupported wording (0.33)"
-        ]
-      },
-      "corpus": {
-        "factor": null,
-        "outcome": null,
-        "pair": [],
-        "outcome_edges": [],
-        "factor_edges": [],
-        "outcome_total": 0,
-        "factor_total": 0
-      }
-    },
-    {
-      "id": "br_51281ffea9235180",
-      "published_at": "2026-07-21",
-      "category": "neuro",
-      "stage": "other",
-      "audience": "general",
-      "headline": "Ebola survivors may face long-term neurological issues, study finds",
-      "summary": "A study found Ebola survivors often develop persistent neurological problems. These include memory loss and movement disorders lasting years.",
-      "why_it_matters": "If you or someone you know survived Ebola, discuss long-term neurological monitoring with a healthcare provider.",
-      "graphic": null,
-      "strength": 0.8,
-      "source_name": "JAMA",
-      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2851032",
-      "factor_slug": "ebola_virus",
-      "outcome_slug": "neurological_complications",
-      "edge_id": null,
-      "is_orphan": true,
-      "detail": {
-        "intervention": "",
-        "summary": "A study examined neurological outcomes in Ebola survivors. It found that many survivors experienced persistent neurological issues years after infection. These problems included memory loss and movement disorders.",
-        "key_findings": [
-          "Memory loss was reported in a significant proportion of Ebola survivors.",
-          "Movement disorders persisted in survivors for years after infection.",
-          "The study identified long-term neurological sequelae in Ebola survivors.",
-          "Persistent neurological problems were common among survivors."
-        ],
-        "study": {},
-        "regulatory_status": "",
-        "caveats": [],
-        "next_steps": "",
-        "who_it_applies_to": "Ebola survivors who may experience long-term neurological issues",
-        "evidence": [],
-        "related": [
-          {
-            "pmid": "27412684",
-            "title": "Neurological Complications of Ebola Virus Infection.",
-            "journal": "Neurotherapeutics : the journal of the American Society for Experimental NeuroTherapeutics",
-            "year": "2016",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/27412684/"
-          },
-          {
-            "pmid": "42268636",
-            "title": "Neurological Manifestations in Adult Survivors of Ebola Virus Disease.",
-            "journal": "JAMA neurology",
-            "year": "2026",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/42268636/"
-          },
-          {
-            "pmid": "28391498",
-            "title": "Neurological Complications and Sequelae of Ebola Virus Disease.",
-            "journal": "Current infectious disease reports",
-            "year": "2017",
-            "url": "https://pubmed.ncbi.nlm.nih.gov/28391498/"
-          }
-        ],
-        "source_chars": 0,
-        "enriched_at": "2026-10-17",
-        "model": "qwen3:30b-instruct",
-        "dropped": [
-          "summary: unsupported wording (0.33)",
-          "summary: unsupported wording (0.20)",
-          "finding: unsupported wording (0.50)",
-          "caveat: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.17)",
-          "caveat: unsupported wording (0.00)"
         ]
       },
       "corpus": {
