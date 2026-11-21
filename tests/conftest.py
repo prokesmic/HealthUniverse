@@ -7,21 +7,31 @@ from __future__ import annotations
 
 import os
 import sys
+import tempfile
+import socket
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 # Critical: set test env BEFORE importing anything from the project.
-TEST_DB = "/tmp/hu-test.db"
-if Path(TEST_DB).exists():
-    Path(TEST_DB).unlink()
+_TEST_DIR = tempfile.TemporaryDirectory(prefix="hu-tests-")
+TEST_DB = str(Path(_TEST_DIR.name) / "fixture.db")
 os.environ["DB_PATH"]         = TEST_DB
 os.environ["HU_READ_ONLY"]    = ""
 os.environ["ANTHROPIC_API_KEY"] = "sk-test"
 os.environ["PROFILE_SECRET"]  = "test-secret"
 
 import pytest  # noqa: E402
+
+
+@pytest.fixture(autouse=True)
+def no_external_network(monkeypatch):
+    """Tests use ASGI and mocks; an accidental external call must fail."""
+    def blocked(*args, **kwargs):
+        raise AssertionError("External network is forbidden in tests")
+    monkeypatch.setattr(socket, "create_connection", blocked)
+    monkeypatch.setattr(socket.socket, "connect", blocked)
 
 import db                                             # noqa: E402
 db.DB_PATH = Path(TEST_DB)        # override the .env-loaded production path

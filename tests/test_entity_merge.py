@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
+import shutil
 import sys
 from pathlib import Path
 
@@ -12,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import merge_duplicate_entities as me  # noqa: E402
 
-LIVE_DB = ROOT / "data" / "healthuniverse.db"
+WEB_DB = ROOT / "data" / "healthuniverse.web.db"
 
 
 def _edge(conn, f, o, tier, pop="general adult", pmids=()):
@@ -126,9 +127,11 @@ def test_mapping_is_consistent():
     assert len(m) == sum(len(o) for _, o, _ in me.MERGES), "a slug is merged twice"
 
 
-def test_live_graph_has_only_deliberate_duplicate_names():
-    """Fails if the merge is reverted or a seeding run re-creates a duplicate."""
-    conn = sqlite3.connect(f"file:{LIVE_DB}?mode=ro", uri=True)
+def test_published_graph_has_only_deliberate_duplicate_names(tmp_path):
+    """Validate the shipped public graph, never the owner's private working DB."""
+    fixture_db = tmp_path / "published-graph.db"
+    shutil.copyfile(WEB_DB, fixture_db)
+    conn = sqlite3.connect(f"file:{fixture_db}?mode=ro", uri=True)
     left = [sorted(g) for g in me.name_groups(conn) if frozenset(g) not in me.KEEP_APART]
     assert left == []
     live = {r[0] for r in conn.execute("SELECT slug FROM entity")}

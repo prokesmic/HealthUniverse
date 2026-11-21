@@ -1,0 +1,21 @@
+<section aria-labelledby="latest-change-title">
+  <h4 id="latest-change-title">Latest recorded evidence or rating change</h4>
+  <p class="muted body-sm">This summarizes recorded updates, not an independent verification of the studies.</p>
+  {% set recent = latest_change.change %}
+  {% if recent %}
+  <p><time datetime="{{ recent.changed_at }}">{{ recent.changed_at[:10] }}</time><br><strong>{{ recent.headline }}</strong></p>
+  {% if recent.old_value and recent.new_value and recent.raw.field == 'tier' %}
+  <p>Recorded tier: {{ recent.old_value }} → {{ recent.new_value }}</p>
+  {% endif %}
+  {% if recent.raw.id %}<a href="#audit-event-{{ recent.raw.id }}">Read the recorded change and reason</a>{% endif %}
+  {% else %}
+  <p class="muted body-sm">No dated evidence or rating change is recorded in the available history. This does not establish that the evidence is unchanged.</p>
+  {% endif %}
+  {% if latest_change.prose %}
+  <p class="muted body-sm">Latest recorded text update: {{ latest_change.prose.changed_at[:10] }}. A text update alone does not establish a change in evidence.</p>
+  {% endif %}
+  {% if latest_change.undated %}
+  <p class="muted body-sm">{{ latest_change.undated }} relevant record(s) have a missing or invalid date and cannot be placed in this chronology.</p>
+  <ul>{% for event in latest_change.undated_events %}<li>{% if event.raw.id %}<a href="#audit-event-{{ event.raw.id }}">Undated record {{ event.raw.id }}</a>{% else %}Record without a date or ID{% endif %}</li>{% endfor %}</ul>
+  {% endif %}
+</section>
