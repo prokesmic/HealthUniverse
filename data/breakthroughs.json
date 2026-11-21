@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-20",
+  "updated_at": "2026-11-21",
   "items": [
     {
       "id": "br_e8a5c33dbb40f9f5",
@@ -149,6 +149,722 @@
         "outcome_edges": [],
         "factor_edges": [],
         "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_858150ab3e1daaa3",
+      "published_at": "2026-11-20",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New treatment timing improves outcomes in early-stage lung cancer",
+      "summary": "In patients with early-stage ALK-positive lung cancer, starting treatment before surgery led to better outcomes. The study showed a significant improvement in progression-free survival compared to post-surgery treatment.",
+      "why_it_matters": "If you or a loved one has early-stage ALK-positive lung cancer, ask your doctor about the timing of treatment to improve chances of long-term survival.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43063374/",
+      "factor_slug": "alectinib",
+      "outcome_slug": "progression_free_survival",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Alectinib",
+        "summary": "In patients with early-stage ALK-positive non-small cell lung cancer who had undergone surgery, starting alectinib before surgery led to better outcomes compared to starting it after surgery. The study evaluated the timing of alectinib treatment in resectable ALK-positive NSCLC. Results showed a significant improvement in progression-free survival when treatment was initiated before surgery.",
+        "key_findings": [
+          "Progression-free survival was significantly improved when alectinib was started before surgery compared to after surgery."
+        ],
+        "study": {
+          "trial_name": "ALNEO",
+          "comparator": "Post-surgery alectinib",
+          "primary_endpoint": "Progression-free survival"
+        },
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with early-stage ALK-positive non-small cell lung cancer who are candidates for surgical resection.",
+        "evidence": [],
+        "source_chars": 95,
+        "enriched_at": "2026-11-21",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: 3",
+          "study.design: 3",
+          "study.participants: unsupported wording (0.00)",
+          "finding: unsupported wording (0.14)",
+          "finding: unsupported wording (0.30)",
+          "finding: unsupported wording (0.00)",
+          "finding: unsupported wording (0.17)",
+          "caveat: unsupported wording (0.14)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 30,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_9984c362909c8ac5",
+      "published_at": "2026-11-20",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "California's fertility coverage law boosts access for young cancer patients",
+      "summary": "The law increased access to fertility preservation for young cancer patients in California. Disparities in eligibility remained linked to social determinants of health.",
+      "why_it_matters": "Young cancer patients in California are more likely to preserve fertility thanks to insurance coverage \u2014 but equity gaps still exist.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43063371/",
+      "factor_slug": "insurance_coverage",
+      "outcome_slug": "fertility_preservation",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "California's state-mandated insurance coverage for fertility preservation (FP) was evaluated in a retrospective cohort study of young cancer patients treated at a National Cancer Institute-designated Comprehensive Cancer Center between 2021 and 2024. Among 903 patients aged 0\u201349 years, 18% were eligible for FP coverage under the mandate. Ineligibility was primarily due to Medicaid insurance (49%), ineligible commercial plans (37%), or being uninsured (3%). Non-English-speaking patients were 64% less likely to be eligible than English-speaking patients. Insurers incorrectly reported no FP coverage 28% of the time, and benefit verification took a median of 45 minutes per patient.",
+        "key_findings": [
+          "18% of young cancer patients were eligible for state-mandated fertility preservation coverage.",
+          "49% of ineligibility was due to Medicaid insurance.",
+          "37% of ineligibility was due to ineligible commercial plans.",
+          "Non-English-speaking patients were 64% less likely to be eligible (adjusted relative risk, 0.36 [95% CI, 0.17 to 0.75]).",
+          "Insurers inaccurately reported no FP coverage 28% of the time."
+        ],
+        "study": {
+          "design": "retrospective cohort study",
+          "participants": "903 patients aged 0\u201342 years (females) and 0\u201349 years (males) newly diagnosed with cancer",
+          "primary_endpoint": "eligibility for FP coverage under California's mandate"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The study was conducted at a single comprehensive cancer center, limiting generalizability.",
+          "Benefit verification required a median of 45 minutes per patient, indicating implementation delays.",
+          "Non-English-speaking patients were significantly less likely to be eligible, suggesting language barriers."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Young female and male cancer patients in California who are insured and under age 42 (females) or 49 (males), particularly those with commercial or federal plans.",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "35506248",
+            "title": "Fertility Preservation and Financial Hardship among Adolescent and Young Adult Women with Cancer.",
+            "journal": "Cancer epidemiology, biomarkers & prevention : a publication of the American Association for Cancer Research, cosponsored by the American Society of Preventive Oncology",
+            "year": "2022",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/35506248/"
+          },
+          {
+            "pmid": "40938616",
+            "title": "Improving Implementation of Fertility Preservation Benefit Mandates.",
+            "journal": "JAMA health forum",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40938616/"
+          },
+          {
+            "pmid": "31070493",
+            "title": "Financial Assistance for Fertility Preservation Among Adolescent and Young Adult Cancer Patients: A Utilization Review of the Sharing Hope/LIVESTRONG Fertility Financial Assistance Program.",
+            "journal": "Journal of adolescent and young adult oncology",
+            "year": "2019",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/31070493/"
+          }
+        ],
+        "source_chars": 2277,
+        "enriched_at": "2026-11-21",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.40)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "fertility",
+          "name": "Fertility",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 636,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Hashimoto thyroiditis",
+            "outcome": "Fertility",
+            "summary": "For fertility, the most useful starting point is the 2020 Li rct in Medicine (Baltimore). It found that hashimoto thyroiditis tracks with higher risk or worse outcomes, and the follow-on evidence is broadly consistent ev",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 430,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Phthalate exposure",
+            "outcome": "Fertility",
+            "summary": "Dose-response meta-analyses backed by prospective cohorts link phthalate exposure to adverse shifts in fertility in reproductive-age adults. The average effect is usually small rather than dramatic, so this edge is bette",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3155,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Vitamin B12",
+            "outcome": "Fertility",
+            "summary": "Vitamin B12 levels associated with miRNAs linked to cell proliferation and fertility pathways.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3156,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Folate",
+            "outcome": "Fertility",
+            "summary": "Folic acid levels associated with miRNAs involved in cell proliferation and fertility-related processes.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4642,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Sugar-sweetened beverages",
+            "outcome": "Fertility",
+            "summary": "High sugar intake linked to impaired fertility.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5820,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Chronic psychological stress",
+            "outcome": "Fertility",
+            "summary": "Stress-induced dysregulation of the HPG axis and gut microbiota impairs fertility.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 7,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_fa57ebca46347cc3",
+      "published_at": "2026-11-20",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Multidisciplinary program reduces fatigue in lymphoma survivors",
+      "summary": "A 12-week multidisciplinary program improved fatigue in lymphoma survivors with persistent fatigue. The intervention included education, exercise, and cognitive-behavioral therapy.",
+      "why_it_matters": "Survivors with long-term fatigue may benefit from a structured program combining exercise and therapy.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43063370/",
+      "factor_slug": "multidisciplinary_intervention",
+      "outcome_slug": "fatigue",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "multidisciplinary intervention including patient education, physical exercise, cognitive-behavioral therapy-based program, and nutritional counseling",
+        "summary": "Participants were randomly assigned to either the intervention or usual care. The intervention significantly reduced fatigue at 3 months (T1) compared to usual care, with effects on physical and role functioning and global health status/QoL also observed at T1. These benefits were maintained at 6 months (T2) but not at 9 months (T3).",
+        "key_findings": [
+          "At T1 (3 months), the intervention group had a between-group difference in fatigue of -3.5 (95% CI, -5.4 to -1.6) compared to usual care.",
+          "At T2 (6 months), the between-group difference in fatigue was -2.4 (95% CI, -4.4 to -0.5).",
+          "At T3 (9 months), the between-group difference in fatigue was -0.9 (95% CI, -3.0 to 1.2), not statistically significant.",
+          "At T1, physical functioning improved by a between-group difference of 3.8 (95% CI, 0.2 to 7.3).",
+          "At T1, role functioning improved by a between-group difference of 9.2 (95% CI, 0.9 to 17.5), and global health status/QoL improved by 9.5 (95% CI, 3.5 to 15.4)."
+        ],
+        "study": {
+          "trial_name": "REFUEL trial",
+          "design": "randomized controlled trial, phase 3",
+          "comparator": "usual care",
+          "primary_endpoint": "total fatigue at 3 months after random assignment (T1), measured by Chalder Fatigue Questionnaire",
+          "follow_up": "3, 6, and 9 months after random assignment"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "No significant improvement in social, emotional, or cognitive functioning was observed.",
+          "The study was conducted in a specific population (lymphoma survivors with persistent fatigue \u22656 months)."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Lymphoma survivors with moderate to severe fatigue lasting at least 6 months.",
+        "evidence": [
+          {
+            "pmid": "43063370",
+            "title": "Effect of a Multidisciplinary Intervention on Fatigue in Lymphoma Survivors With Persistent Fatigue: A Randomized Controlled Trial (the REFUEL trial).",
+            "journal": "Journal of clinical oncology : official journal of the American Society of Clinical Oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/43063370/"
+          }
+        ],
+        "source_chars": 2162,
+        "enriched_at": "2026-11-21",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: 150",
+          "study.participants: 150",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.40)",
+          "graphic: -3.5"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "fatigue",
+          "name": "Fatigue",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 3252,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Fatigue",
+            "summary": "Aerobic exercise led to a significant reduction in fatigue immediately after exercise.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 7
+          },
+          {
+            "id": 945,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Yoga",
+            "outcome": "Fatigue",
+            "summary": "Yoga consistently reduces fatigue across multiple clinical populations, including breast cancer patients, fibromyalgia sufferers, and long COVID patients. Two high-quality systematic reviews with meta-analyses and one mo",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 1836,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Supervised exercise during chemotherapy",
+            "outcome": "Fatigue",
+            "summary": "The strongest evidence supports supervised exercise during chemotherapy as a practical fatigue-reduction tool. The benefit is not huge, but it is consistent across pooled analyses and reinforced by recent randomized tria",
+            "effect": "Meta-analyses found lower fatigue during adjuvant treatment overall and with supervised resistance-focused programs during chemotherapy.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 831,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Iron deficiency",
+            "outcome": "Fatigue",
+            "summary": "This edge is stronger than the common assumption that iron only matters once anaemia is obvious. Randomized and Cochrane-style evidence in non-anaemic iron deficiency shows that restoring iron can improve fatigue and rel",
+            "effect": "Across randomized evidence in non-anaemic iron deficiency, iron repletion improves fatigue scores, supporting iron deficiency itself as a real contributor to fatigue symptoms.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 4623,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Cognitive behavioural therapy",
+            "outcome": "Fatigue",
+            "summary": "Cognitive behavioural therapy (CBT) consistently reduces fatigue across several disease-specific populations, with the strongest support coming from a large meta-analysis in chronic fatigue syndrome and a systematic revi",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 4
+          },
+          {
+            "id": 2708,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Tai chi",
+            "outcome": "Fatigue",
+            "summary": "The study evaluates the feasibility and preliminary effects of Tai Chi on fatigue in breast cancer survivors.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 32,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_6ad162964e77477d",
+      "published_at": "2026-11-20",
+      "category": "oncology",
+      "stage": "phase2",
+      "audience": "general",
+      "headline": "Alectinib before surgery shrinks lung tumors in ALK-positive patients",
+      "summary": "In a phase II trial, alectinib given before surgery reduced tumor size in patients with stage III ALK-positive lung cancer. The treatment was well-tolerated with no major safety concerns.",
+      "why_it_matters": "Patients with this type of lung cancer may now have a better chance of surgery after taking this targeted drug first.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "JCO",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43063368/",
+      "factor_slug": "alectinib",
+      "outcome_slug": "resectable_lung_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "alectinib",
+        "summary": "In a phase II trial, 33 patients with stage III ALK-positive non-small cell lung cancer received alectinib before surgery. The treatment reduced tumor size, with 42% of patients showing a major pathologic response (\u226410% residual tumor cells). Surgery was performed in 85% of patients, and most achieved complete tumor removal (R0 resection). The treatment was well-tolerated, with no major safety concerns reported. After a median follow-up of 26.8 months, 18% of patients had disease recurrence.",
+        "key_findings": [
+          "42% of patients had a major pathologic response (MPR; \u226410% residual viable tumor cells)",
+          "12% of patients had a pathologic complete response (pCR)",
+          "Objective response rate (ORR) was 67%",
+          "67% of patients completed neoadjuvant treatment and underwent surgery",
+          "Grade \u22653 adverse events occurred in 9% during neoadjuvant phase and 27% during adjuvant phase"
+        ],
+        "study": {
+          "trial_name": "ALNEO Phase II Trial (GOIRC-01-2020-ML42316)",
+          "design": "open-label, single-arm, multicenter phase II",
+          "participants": "33 patients with potentially resectable stage III ALK-positive NSCLC",
+          "primary_endpoint": "major pathologic response (MPR; \u226410% residual viable tumor cells)",
+          "follow_up": "median follow-up of 26.8 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Single-arm design without a control group",
+          "Primary endpoint was pathologic response, a surrogate for survival",
+          "Long-term outcomes and survival data are immature"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with stage III ALK-positive non-small cell lung cancer who are potentially resectable",
+        "evidence": [
+          {
+            "pmid": "38598794",
+            "title": "Alectinib in Resected ALK-Positive Non-Small-Cell Lung Cancer.",
+            "journal": "The New England journal of medicine",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38598794/"
+          },
+          {
+            "pmid": "32418886",
+            "title": "Updated overall survival and final progression-free survival data for patients with treatment-naive advanced ALK-positive non-small-cell lung cancer in the ALEX study.",
+            "journal": "Annals of oncology : official journal of the European Society for Medical Oncology",
+            "year": "2020",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/32418886/"
+          },
+          {
+            "pmid": "41110693",
+            "title": "Alectinib versus crizotinib in previously untreated ALK-positive advanced non-small cell lung cancer: final overall survival analysis of the phase III ALEX study.",
+            "journal": "Annals of oncology : official journal of the European Society for Medical Oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41110693/"
+          }
+        ],
+        "source_chars": 2095,
+        "enriched_at": "2026-11-21",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "lung_cancer",
+          "name": "Lung cancer",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 30,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Smoking",
+            "outcome": "Lung cancer",
+            "summary": "Smoking is the single largest preventable cause of lung cancer worldwide, responsible for roughly 85% of cases. Smokers face 15\u201330 times the lung cancer risk of never-smokers, with risk scaling with the number of cigaret",
+            "effect": "RR ~15\u201330 for current smokers vs never-smokers for lung cancer incidence; heavy smokers (\u226520 pack-years) may have RR >20; smoking attributable fraction ~85% of lung cancer deaths in high-income countries",
+            "review": "verified_evidence",
+            "n_evidence": 15
+          },
+          {
+            "id": 71,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Fine particulate air pollution (PM2.5)",
+            "outcome": "Lung cancer",
+            "summary": "Long-term exposure to fine particulate air pollution (PM2.5) is an established cause of lung cancer, classified as a Group 1 carcinogen by IARC. Risk increases with cumulative exposure, with a 9% higher lung cancer risk ",
+            "effect": "HR/RR ~1.09\u20131.33 per 10 \u00b5g/m\u00b3 increase in PM2.5; IARC meta-analysis RR ~1.09 (95% CI 1.04\u20131.14) per 10 \u00b5g/m\u00b3",
+            "review": "verified_evidence",
+            "n_evidence": 11
+          },
+          {
+            "id": 534,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Asbestos exposure",
+            "outcome": "Lung cancer",
+            "summary": "The strongest piece here is the 2025 Koehoorn meta analysis in Occup Environ Med, which ties asbestos exposure to lung cancer in a direction that later studies largely support. That makes this edge more about calibrating",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          },
+          {
+            "id": 460,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Secondhand smoke exposure",
+            "outcome": "Lung cancer",
+            "summary": "Secondhand smoke exposure appears tied to higher risk of lung cancer in non-smoking adults mainly through dose-response meta-analyses backed by prospective cohorts. The likely magnitude is modest, which is why the edge i",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 591,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Diesel exhaust exposure",
+            "outcome": "Lung cancer",
+            "summary": "For lung cancer, the most useful starting point is the 2025 Collatuzzo meta analysis in Med Lav. It found that diesel exhaust exposure tracks with higher risk or worse outcomes, and the follow-on evidence is broadly cons",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 718,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Residential radon exposure",
+            "outcome": "Lung cancer",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2025 Lesbek meta analysis in Biomedicines already points to residential radon exposure tracks with higher risk or worse ou",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 30,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_ccc85ccb75215de9",
+      "published_at": "2026-11-20",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New antibody-drug conjugate shows promise in advanced gastric cancer",
+      "summary": "A new antibody-drug conjugate demonstrated positive results in a Phase 3 trial for advanced gastric cancer. The study met its primary endpoint, showing improved outcomes compared to standard treatment.",
+      "why_it_matters": "This treatment may offer a new option for patients with advanced gastric cancer, potentially improving survival and quality of life.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/merck-gets-another-phase-3-win-for-sac-tmt-this-time-in-gastric-cancer/",
+      "factor_slug": "antibody_drug_conjugate",
+      "outcome_slug": "gastric_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "sac-TMT",
+        "summary": "In a Phase 3 trial, sac-TMT, an antibody-drug conjugate targeting trophoblast cell surface antigen 2, met its primary endpoint in patients with advanced gastric cancer. The study compared sac-TMT to standard treatment and showed improved overall survival. The trial was conducted in patients who had previously received treatment for advanced gastric cancer.",
+        "key_findings": [
+          "Sac-TMT met the primary endpoint of overall survival in the Phase 3 trial.",
+          "The trial demonstrated improved outcomes compared to standard treatment.",
+          "The drug is an antibody-drug conjugate targeting trophoblast cell surface antigen 2.",
+          "The study supports the potential of sac-TMT as a treatment for advanced gastric cancer."
+        ],
+        "study": {
+          "comparator": "standard treatment",
+          "primary_endpoint": "overall survival"
+        },
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with advanced gastric cancer who have progressed on prior therapy.",
+        "evidence": [
+          {
+            "pmid": "41076974",
+            "title": "Clinical pharmacokinetics and immunogenicity evaluation of a trophoblast cell surface antigen 2-targeted antibody-drug conjugate, FDA018, in patients with epithelial malignant solid tumors.",
+            "journal": "Drug metabolism and disposition: the biological fate of chemicals",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41076974/"
+          }
+        ],
+        "source_chars": 330,
+        "enriched_at": "2026-11-21",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.33)",
+          "study.design: unsupported wording (0.50)",
+          "finding: unsupported wording (0.50)",
+          "caveat: unsupported wording (0.14)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.25)",
+          "next_steps: unsupported wording (0.38)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "gastric_cancer",
+          "name": "Gastric cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 593,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Drinking water nitrates",
+            "outcome": "Gastric cancer",
+            "summary": "The anchor for this edge is the 2022 Elwood meta analysis in Cancer Epidemiol, which suggests that drinking water nitrates tracks with higher risk or worse outcomes for gastric cancer. Later papers point in much the same",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3021,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Nuts",
+            "outcome": "Gastric cancer",
+            "summary": "High nut consumption was associated with reduced gastric cancer risk, especially in women.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 2099,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Whole grains",
+            "outcome": "Gastric cancer",
+            "summary": "Whole grain consumption was inversely associated with gastric cancer risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 2100,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Processed meat",
+            "outcome": "Gastric cancer",
+            "summary": "Refined grain consumption, especially in sweets and desserts, was directly associated with increased gastric cancer risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3764,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Ultra-processed food",
+            "outcome": "Gastric cancer",
+            "summary": "UPF consumption may be associated with increased risk of gastric cancer.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4301,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Extra-virgin olive oil",
+            "outcome": "Gastric cancer",
+            "summary": "Observational evidence indicates a potential protective role of EVOO against gastric cancer.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 9,
         "factor_total": 0
       }
     },
@@ -309,6 +1025,334 @@
         ],
         "outcome_total": 0,
         "factor_total": 1
+      }
+    },
+    {
+      "id": "br_e18756e7716191f8",
+      "published_at": "2026-11-18",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "His bundle pacing improves heart function and blood flow",
+      "summary": "Patients with His bundle pacing showed better heart function and blood flow compared to traditional pacing methods. The study included 104 patients over short and long terms.",
+      "why_it_matters": "If you have a pacemaker, ask your doctor about His bundle pacing for better heart health.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43046970/",
+      "factor_slug": "his_bundle_pacing",
+      "outcome_slug": "myocardial_perfusion",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "His bundle pacing",
+        "summary": "The study tested His bundle pacing (HISP) versus right ventricular apical pacing (RVAP) and right ventricular septal pacing (RVSP) in 104 patients undergoing pacemaker implantation. Patients were assessed for myocardial perfusion, metabolism, and heart function at short-term (3\u201312 months) and long-term (24 months after short-term) follow-up. HISP was associated with preserved myocardial perfusion and metabolism compared to RVAP and RVSP, which showed reduced tracer uptake in septal and inferior regions. No significant difference in left ventricular ejection fraction was found between HISP, RVSP, and control groups, though RVAP showed lower ejection fraction. Average tracer uptake was significantly associated with left ventricular ejection fraction.",
+        "key_findings": [
+          "HISP showed no apparent reduction in sestamibi and BMIPP %uptake in septal and inferior regions compared to control group.",
+          "RVSP and RVAP groups showed reduced sestamibi and BMIPP %uptake in septal and inferior regions compared to control group.",
+          "No significant difference in left ventricular ejection fraction was observed between HISP, RVSP, and control groups.",
+          "RVAP group showed lower left ventricular ejection fraction compared to control group.",
+          "Average sestamibi and BMIPP %uptakes in 17 segments were significantly associated with left ventricular ejection fraction."
+        ],
+        "study": {
+          "design": "prospective study",
+          "comparator": "right ventricular apical pacing (RVAP), right ventricular septal pacing (RVSP), and sinus rhythm or right atrial pacing (control)",
+          "follow_up": "short-term (3\u201312 months after implantation) and long-term (24 months after short-term assessment)"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Patients with coronary artery disease were excluded, limiting generalizability.",
+          "No data on long-term complications or device-related side effects."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients requiring pacemaker implantation, particularly those without coronary artery disease.",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "43046970",
+            "title": "Short- and Long-Term Effects of His Bundle Pacing on Myocardial Perfusion, Metabolism, and Function.",
+            "journal": "Circulation. Cardiovascular imaging",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/43046970/"
+          },
+          {
+            "pmid": "29073179",
+            "title": "Restitution characteristics of His bundle and working myocardium in isolated rabbit hearts.",
+            "journal": "PloS one",
+            "year": "2017",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/29073179/"
+          },
+          {
+            "pmid": "2162749",
+            "title": "Different stereoselective effects of (R)- and (S)-propafenone: clinical pharmacologic, electrophysiologic, and radioligand binding studies.",
+            "journal": "Clinical pharmacology and therapeutics",
+            "year": "1990",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/2162749/"
+          }
+        ],
+        "source_chars": 1994,
+        "enriched_at": "2026-11-21",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "coronary_disease_progression",
+          "name": "Coronary disease progression",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1697,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Higher cardiorespiratory fitness",
+            "outcome": "Coronary disease progression",
+            "summary": "The boring read is that better cardiorespiratory fitness usually points toward slower coronary plaque progression, but this is a thinner and less perfectly monotonic literature than the mortality evidence. The best seria",
+            "effect": "The cleanest longitudinal cohort found that higher VO2peak predicted significantly slower progression of coronary calcium over repeated scans in 4,843 adults, and the CARDIA cohort found an odds ratio of 0.59 for later coronary calcium in the high- versus low-fitness group.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 1,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_e3195f2213b68e84",
+      "published_at": "2026-11-18",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New MRI method predicts heart failure risk in cardiomyopathy",
+      "summary": "In a study of 675 patients with dilated cardiomyopathy, 4D flow CMR detected left ventricular kinetic energy levels that predicted future heart failure or death. Higher kinetic energy was linked to worse outcomes.",
+      "why_it_matters": "People with heart muscle disease may benefit from early risk assessment using advanced MRI scans.",
+      "graphic": {
+        "kind": "forest_plot",
+        "studies": [
+          {
+            "name": "Peak systolic KEiEDV",
+            "estimate": 0.39,
+            "ci_low": 0.28,
+            "ci_high": 0.53
+          },
+          {
+            "name": "Peak E-wave KEiEDV",
+            "estimate": 0.35,
+            "ci_low": 0.26,
+            "ci_high": 0.48
+          }
+        ],
+        "x_label": "Hazard Ratio",
+        "reference": 1,
+        "log_scale": true
+      },
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43046969/",
+      "factor_slug": "4d_flow_cmr",
+      "outcome_slug": "adverse_cardiac_outcomes",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "4D flow cardiac magnetic resonance (CMR) to measure left ventricular kinetic energy",
+        "summary": "In a prospective multicenter cohort study of 675 adults with dilated cardiomyopathy, researchers used 4D flow CMR to measure left ventricular kinetic energy. Higher levels of peak systolic kinetic energy normalized to end-diastolic volume (KEiEDV) and peak E-wave KEiEDV were linked to worse outcomes. During a median follow-up of 42 months, 58 patients (8.6%) experienced heart failure-related death, unplanned hospitalization, or cardiac transplantation. After adjusting for standard clinical and imaging markers, both KEiEDV measures remained independently associated with the primary endpoint.",
+        "key_findings": [
+          "58 patients (8.6%) experienced the primary end point during 42 months of follow-up.",
+          "Peak systolic KEiEDV had an adjusted hazard ratio of 0.39 (95% CI, 0.28\u20130.53).",
+          "Peak E-wave KEiEDV had an adjusted hazard ratio of 0.35 (95% CI, 0.26\u20130.48).",
+          "Both kinetic energy parameters provided incremental prognostic value beyond clinical and conventional imaging markers.",
+          "Patients with DCM had reduced peak systolic KEiEDV and peak E-wave KEiEDV compared to healthy controls."
+        ],
+        "study": {
+          "trial_name": "Prognostic Value of Left Ventricular Kinetic Energy Assessed by 4D Flow CMR in Dilated Cardiomyopathy",
+          "design": "prospective multicenter cohort study",
+          "comparator": "age- and sex-matched healthy controls (n=80)",
+          "primary_endpoint": "composite of heart failure-related death, unplanned heart failure hospitalization, or cardiac transplantation",
+          "follow_up": "median 42 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The findings are based on a single imaging parameter (kinetic energy) not yet validated in routine clinical practice."
+        ],
+        "next_steps": "Further research is needed to determine whether using 4D flow CMR to assess kinetic energy improves patient outcomes in clinical practice.",
+        "who_it_applies_to": "Adults with dilated cardiomyopathy",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "43046969",
+            "title": "Prognostic Value of Left Ventricular Kinetic Energy Assessed by 4D Flow CMR in Dilated Cardiomyopathy: A Prospective Multicenter Cohort Study.",
+            "journal": "Circulation. Cardiovascular imaging",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/43046969/"
+          }
+        ],
+        "source_chars": 2515,
+        "enriched_at": "2026-11-21",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.14)",
+          "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "heart_failure",
+          "name": "Heart failure",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 729,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Heart failure",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Bodea meta analysis in J Clin Med already points to sglt2 inhibitors tracks with lower risk or better outcomes, and l",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2141,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Heart failure",
+            "summary": "Benefit is observed in obesity-associated heart failure with preserved ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 1247,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Heart failure",
+            "summary": "Observational and preclinical evidence suggests aerobic exercise lowers heart failure risk, but most data come from specific patient groups (diabetics post-PCI, diabetic cardiomyopathy) or animal models rather than the g",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 5
+          },
+          {
+            "id": 3546,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Heart failure",
+            "summary": "Renin-angiotensin system inhibitors were linked to lower 1-year mortality.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 3216,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Iron supplementation",
+            "outcome": "Heart failure",
+            "summary": "Iron supplementation improves outcomes in heart failure with reduced ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3870,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Heart failure",
+            "summary": "Intravenous iron may reduce heart failure events in patients with chronic kidney disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 23,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_99de9432c299893f",
+      "published_at": "2026-11-18",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "technical",
+      "headline": "MRI vs echo for spotting heart scar in arrhythmia patients",
+      "summary": "Late gadolinium enhanced cardiac MRI detected nonischemic myocardial scar more accurately than intracardiac echocardiography in patients with ventricular arrhythmias. MRI showed higher sensitivity and specificity in identifying scar tissue.",
+      "why_it_matters": "This helps doctors better target ablation therapy in heart rhythm disorders, improving treatment success.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43046959/",
+      "factor_slug": "late_gadolinium_enhanced_mri",
+      "outcome_slug": "nonischemic_myocardial_scar",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Late gadolinium enhanced cardiac MRI",
+        "summary": "In patients with ventricular arrhythmias, late gadolinium enhanced cardiac MRI was compared to intracardiac echocardiography for detecting nonischemic myocardial scar. The study evaluated diagnostic accuracy in identifying scar tissue. MRI demonstrated higher sensitivity and specificity than echocardiography in detecting scar tissue.",
+        "key_findings": [
+          "MRI showed higher sensitivity than intracardiac echocardiography in identifying nonischemic myocardial scar.",
+          "MRI showed higher specificity than intracardiac echocardiography in identifying nonischemic myocardial scar."
+        ],
+        "study": {
+          "trial_name": "Late Gadolinium Enhanced Cardiac Magnetic Resonance Imaging Versus Intracardiac Echocardiography for Detecting Nonischemic Myocardial Scar in Ventricular Arrhythmia Ablation",
+          "participants": "patients with ventricular arrhythmias",
+          "comparator": "intracardiac echocardiography",
+          "primary_endpoint": "accuracy of scar detection"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Results are specific to patients with ventricular arrhythmias.",
+          "No data on long-term outcomes or clinical impact of the diagnostic method."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "patients with ventricular arrhythmias suspected of having nonischemic myocardial scar",
+        "evidence": [
+          {
+            "pmid": "39439667",
+            "title": "Cardiac sarcoidosis: diagnosis and management.",
+            "journal": "Frontiers in cardiovascular medicine",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39439667/"
+          },
+          {
+            "pmid": "39607243",
+            "title": "Cardiac Abnormalities in Hypereosinophilic Syndromes.",
+            "journal": "Arquivos brasileiros de cardiologia",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39607243/"
+          }
+        ],
+        "source_chars": 175,
+        "enriched_at": "2026-11-21",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.design: 3",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
       }
     },
     {
@@ -589,6 +1633,366 @@
         "factor_edges": [],
         "outcome_total": 18,
         "factor_total": 0
+      }
+    },
+    {
+      "id": "br_f83ab564bc8f87cc",
+      "published_at": "2026-11-17",
+      "category": "cardio",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "New guidelines for treating stubborn high blood pressure",
+      "summary": "The American College of Cardiology released updated guidance for managing resistant hypertension. The recommendations focus on lifestyle changes, medication adjustments, and identifying underlying causes.",
+      "why_it_matters": "If you have high blood pressure that doesn\u2019t respond to standard treatment, talk to your doctor about these new guidelines.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2855965",
+      "factor_slug": "resistant_hypertension_guideline",
+      "outcome_slug": "hypertension",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "The American College of Cardiology (ACC) released updated guidance for managing resistant hypertension. The recommendations emphasize lifestyle modifications, optimizing medication regimens, and identifying secondary causes of high blood pressure.",
+        "key_findings": [],
+        "study": {},
+        "regulatory_status": "Guideline issued by the American College of Cardiology",
+        "caveats": [
+          "The recommendations may not apply to all patients with high blood pressure, only those with resistant hypertension."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "41843050",
+            "title": "Updates in the 2025 AHA/ACC Hypertension Guideline.",
+            "journal": "Current hypertension reports",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/41843050/"
+          }
+        ],
+        "source_chars": 0,
+        "enriched_at": "2026-11-21",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.20)",
+          "summary: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.20)",
+          "caveat: unsupported wording (0.17)",
+          "caveat: unsupported wording (0.00)",
+          "who_it_applies_to: unsupported wording (0.38)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "hypertension",
+          "name": "Hypertension",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 337,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "DASH diet pattern",
+            "outcome": "Hypertension",
+            "summary": "Dose-response meta-analyses backed by prospective cohorts link dash diet pattern to lower risk of hypertension in general adult. The average effect is usually moderate rather than dramatic, so this edge is better read as",
+            "effect": "Dose-response meta-analyses backed by prospective cohorts suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          },
+          {
+            "id": 782,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Higher adiposity",
+            "outcome": "Hypertension",
+            "summary": "Higher adiposity is consistently associated with increased risk of hypertension across multiple study designs, including cohort studies and a high-quality systematic review covering developmental and adult populations. A",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 1039,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Magnesium",
+            "outcome": "Hypertension",
+            "summary": "Magnesium supplementation reduced the risk of hypertension.",
+            "effect": "",
+            "review": "verified_evidence",
+            "n_evidence": 7
+          },
+          {
+            "id": 468,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Obstructive sleep apnea",
+            "outcome": "Hypertension",
+            "summary": "Pooled meta-analytic evidence link obstructive sleep apnea to higher risk of hypertension in general adult. The average effect is usually small rather than dramatic, so this edge is better read as a risk modifier than a ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 652,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Insomnia disorder",
+            "outcome": "Hypertension",
+            "summary": "The strongest piece here is the 2021 Johnson meta analysis in Sleep Med Rev, which ties insomnia disorder to hypertension in a direction that later studies largely support. That makes this edge more about calibrating mag",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 5
+          },
+          {
+            "id": 478,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "High sodium intake",
+            "outcome": "Hypertension",
+            "summary": "High sodium intake appears tied to higher risk of hypertension in general adult mainly through pooled meta-analytic evidence. The likely magnitude is modest, which is why the edge is framed conservatively rather than as ",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 4
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 66,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_b27a74f510f3aa63",
+      "published_at": "2026-11-17",
+      "category": "metabolic",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "WHO Releases First Global Guidelines for Childhood Obesity",
+      "summary": "The World Health Organization has published its first comprehensive guidelines for managing obesity in children and adolescents. The guidelines provide evidence-based recommendations for healthcare providers worldwide.",
+      "why_it_matters": "Parents and caregivers should know these guidelines offer clear, science-backed steps to support healthy weight in kids.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2855963",
+      "factor_slug": "lifestyle_interventions",
+      "outcome_slug": "childhood_obesity",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "intensive health behavior and lifestyle treatment",
+        "summary": "The World Health Organization released its first guidelines for managing childhood obesity, recommending early screening using BMI starting at age 2. Treatment includes at least 26 contact hours of face-to-face group or family-based activities focused on nutrition, physical activity, and behavior change over 3 to 12 months. Pharmacotherapy options are limited: setmelanotide is approved for rare genetic forms of obesity in children under 12, while liraglutide showed a BMI reduction of 7.4% in a trial among children aged 6 to younger than 12. Metabolic surgery is rarely used in children under 12 due to limited evidence.",
+        "key_findings": [
+          "Intensive health behavior and lifestyle treatment reduced BMI by 0.7 compared to no treatment.",
+          "Liraglutide reduced BMI by 7.4% compared to placebo in children aged 6 to younger than 12.",
+          "Obesity affects 15% of children aged 2 to 5 years and 22% of children aged 6 to 11 years in the US.",
+          "Children with obesity are 5 times more likely to have obesity in adulthood.",
+          "Severe obesity is defined as BMI at 120% or greater of the 95th percentile."
+        ],
+        "study": {},
+        "regulatory_status": "Setmelanotide is FDA-approved for rare monogenic obesity and related conditions in children under 12; liraglutide is FDA-approved for youth aged 12 and older.",
+        "caveats": [
+          "Short- and long-term safety and efficacy data for pharmacotherapy in children are limited.",
+          "Metabolic and bariatric surgery is rarely used in children under 12 due to limited evidence.",
+          "The evidence base for pharmacotherapy in children under 12 is sparse.",
+          "The guidelines are based on existing evidence, not new trials."
+        ],
+        "next_steps": "Healthcare providers worldwide are to implement the guidelines for early screening and treatment of childhood obesity.",
+        "who_it_applies_to": "Children and adolescents aged 2 to 12 years with obesity or at risk of obesity.",
+        "evidence": [
+          {
+            "pmid": "42905688",
+            "title": "Obesity in Children Aged 2 to 12 Years: A Review.",
+            "journal": "JAMA",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42905688/",
+            "is_source": true
+          }
+        ],
+        "related": [
+          {
+            "pmid": "35927921",
+            "title": "Childhood Obesity: An Updated Review.",
+            "journal": "Current pediatric reviews",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/35927921/"
+          },
+          {
+            "pmid": "38087786",
+            "title": "Indian Academy of Pediatrics Revised Guidelines on Evaluation, Prevention and Management of Childhood Obesity.",
+            "journal": "Indian pediatrics",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38087786/"
+          },
+          {
+            "pmid": "38828931",
+            "title": "Vitamin D for the Prevention of Disease: An Endocrine Society Clinical Practice Guideline.",
+            "journal": "The Journal of clinical endocrinology and metabolism",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38828931/"
+          }
+        ],
+        "source_chars": 2855,
+        "enriched_at": "2026-11-21",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.50)"
+        ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "group_lifestyle_intervention_dpp",
+          "name": "Group lifestyle intervention modeled on diabetes prevention programs",
+          "relation": "same"
+        },
+        "outcome": {
+          "slug": "childhood_obesity",
+          "name": "Childhood obesity",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 2710,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Ultra-processed food",
+            "outcome": "Childhood obesity",
+            "summary": "High intake of ultra-processed foods (UPFs) is consistently associated with childhood obesity and excess weight across multiple study designs. Three systematic reviews and one moderate-quality cohort study from 2026 all ",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 10
+          },
+          {
+            "id": 2711,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Sugar-sweetened beverages",
+            "outcome": "Childhood obesity",
+            "summary": "Intake of sugar-sweetened beverages increased significantly from 6 to 24 months of age.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 4
+          },
+          {
+            "id": 796,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Caesarean birth",
+            "outcome": "Childhood obesity",
+            "summary": "The most recent meta-analysis found that children born by caesarean section had higher odds of early childhood overweight or obesity than those born vaginally. Earlier meta-analyses reported the same direction, which mak",
+            "effect": "Across pooled observational studies, caesarean birth is associated with a small increase in later overweight or obesity risk in offspring.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 304,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Breastfeeding",
+            "outcome": "Childhood obesity",
+            "summary": "In children who were breastfed, pooled meta-analytic evidence suggest that breastfeeding tracks with lower risk of childhood obesity. Most disagreement in the literature is about size, subgroup sensitivity, or dose thres",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 484,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Higher sugar exposure in infancy",
+            "outcome": "Childhood obesity",
+            "summary": "In children exposed to higher sugar intake in infancy, randomized trials suggest that higher sugar exposure in infancy tracks with higher risk of childhood obesity. Most disagreement in the literature is about size, subg",
+            "effect": "Randomized trials suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 4334,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Maternal diet high in ultra-processed food",
+            "outcome": "Childhood obesity",
+            "summary": "Higher maternal UPF intake associated with increased child obesity risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 4
+          }
+        ],
+        "factor_edges": [
+          {
+            "id": 1764,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Group lifestyle intervention modeled on diabetes prevention programs",
+            "outcome": "Incident type 2 diabetes",
+            "summary": "This is one of the strongest lifestyle-prevention edges in the graph. Multiple randomized prevention trials across different countries show that structured diet-and-activity programs meaningfully delay or prevent inciden",
+            "effect": "Across the landmark prevention trials, structured lifestyle programs consistently reduced progression to type 2 diabetes: the U.S. Diabetes Prevention Program cut incidence by 58% versus placebo, the long-term Finnish DPS follow-up reported an adjusted hazard ratio of 0.614, and the China Da Qing trial showed a 43% lower diabetes incidence over 20 years (HRR 0.57, 95% CI 0.41-0.81).",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 3599,
+            "tier": "C",
+            "direction": "neutral",
+            "factor": "Group lifestyle intervention modeled on diabetes prevention programs",
+            "outcome": "Weight loss",
+            "summary": "The hybrid lifestyle program did not significantly improve the likelihood of achieving 5% or greater weight loss in the intention-to-treat analysis.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 3817,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Group lifestyle intervention modeled on diabetes prevention programs",
+            "outcome": "HbA1c",
+            "summary": "Participants showed preliminary improvements in HbA1c, indicating better glycemic control.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 2457,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Group lifestyle intervention modeled on diabetes prevention programs",
+            "outcome": "Cognitive function",
+            "summary": "Multidomain lifestyle intervention improved cognitive function in older adults with mild cognitive impairment.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 4205,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Group lifestyle intervention modeled on diabetes prevention programs",
+            "outcome": "High HbA1c",
+            "summary": "The intervention led to greater reduction in high HbA1c levels.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3600,
+            "tier": "D",
+            "direction": "protective",
+            "factor": "Group lifestyle intervention modeled on diabetes prevention programs",
+            "outcome": "Elevated triglycerides",
+            "summary": "The intervention reduced triglyceride levels.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "outcome_total": 19,
+        "factor_total": 9
       }
     },
     {
