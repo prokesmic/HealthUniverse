@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-21",
+  "updated_at": "2026-11-22",
   "items": [
     {
       "id": "br_e8a5c33dbb40f9f5",
@@ -944,6 +944,83 @@
       }
     },
     {
+      "id": "br_7334072d7adfdc21",
+      "published_at": "2026-11-19",
+      "category": "neuro",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves new siRNA therapy for myasthenia gravis",
+      "summary": "The FDA has approved cemdisiran, now marketed as Livsayis, for treating myasthenia gravis. It is the second new drug approved for this condition within a week.",
+      "why_it_matters": "People with myasthenia gravis now have a new treatment option that targets the root cause of the disease.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/regeneron-enters-neurology-field-as-fda-approves-sirna-for-myasthenia-gravis/",
+      "factor_slug": "cemdisiran",
+      "outcome_slug": "myasthenia_gravis",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "cemdisiran",
+        "summary": "The FDA has approved cemdisiran, now marketed as Livsayis, for treating myasthenia gravis. This approval is based on the phase 3 NIMBLE trial, which evaluated cemdisiran as monotherapy in patients with generalized myasthenia gravis and positive anti-AChR or anti-LRP4 antibodies. The trial showed that cemdisiran significantly improved Myasthenia Gravis-Activities of Daily Living (MG-ADL) scores compared to placebo over 24 weeks. Cemdisiran is an siRNA therapy that targets complement component 5 (C5) synthesis in the liver.",
+        "key_findings": [
+          "The treatment was administered as a 600 mg subcutaneous injection every 12 weeks",
+          "The primary endpoint was change in MG-ADL score at week 24 in the modified intention-to-treat population",
+          "The effect was observed in patients with anti-AChR or anti-LRP4 antibody-positive generalized myasthenia gravis"
+        ],
+        "study": {
+          "trial_name": "NIMBLE",
+          "design": "randomized, double-blind, placebo-controlled, phase 3",
+          "participants": "284 patients with generalized myasthenia gravis, positive serology for anti-AChR or anti-LRP4 antibodies, and MG-ADL score \u22656",
+          "comparator": "placebo",
+          "primary_endpoint": "change from baseline in MG-ADL scores at week 24",
+          "follow_up": "24 weeks"
+        },
+        "regulatory_status": "FDA approved",
+        "caveats": [
+          "The trial did not include patients with anti-MuSK antibody-positive myasthenia gravis",
+          "The study was funded by Regeneron Pharmaceuticals, the developer of the drug"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with generalized myasthenia gravis who are positive for anti-AChR or anti-LRP4 antibodies",
+        "evidence": [
+          {
+            "pmid": "42030965",
+            "title": "Efficacy and safety of cemdisiran siRNA in myasthenia gravis (NIMBLE): a double-blind, randomised, placebo-controlled, phase 3 trial.",
+            "journal": "Lancet (London, England)",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42030965/"
+          },
+          {
+            "pmid": "42431187",
+            "title": "Another complement inhibitor therapy for myasthenia gravis: Is it NIMBLE enough?",
+            "journal": "Med (New York, N.Y.)",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42431187/"
+          }
+        ],
+        "source_chars": 290,
+        "enriched_at": "2026-11-22",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "finding: 2.5",
+          "finding: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.33)",
+          "next_steps: unsupported wording (0.43)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
       "id": "br_0ed1d8be0a1d0ada",
       "published_at": "2026-11-18",
       "category": "cardio",
@@ -1341,6 +1418,72 @@
         "model": "qwen3:30b-instruct",
         "dropped": [
           "study.design: 3",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_2e4ef3ecc57ca2b7",
+      "published_at": "2026-11-18",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "technical",
+      "headline": "RV shape and valve leaks affect heart function during exercise",
+      "summary": "In adults who had Fontan surgery, right ventricular dominance and atrioventricular valve regurgitation were linked to worse exercise hemodynamics. The study included 108 patients assessed with invasive and semi-invasive exercise testing.",
+      "why_it_matters": "If you had Fontan surgery as a child, talk to your doctor about how heart function during activity may affect long-term health.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43046954/",
+      "factor_slug": "ventricular_morphology",
+      "outcome_slug": "exercise_hemodynamics",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "In 108 adults who had Fontan surgery, researchers tested how right ventricular (RV) dominance and atrioventricular valve regurgitation (AVVR) affect heart function during exercise. They used invasive and semi-invasive methods to measure blood flow and pressure responses during exercise. RV dominance and moderate or severe AVVR were linked to worse exercise hemodynamics, including lower increases in systemic and pulmonary blood flow. Despite similar resting pressures, these patients had steeper pressure-flow relationships during exercise. The findings were consistent across both testing methods.",
+        "key_findings": [
+          "RV dominance was linked to lower systemic blood flow response during exercise: 67% [22-93] predicted vs. 86% [63-105] predicted (P=0.006)",
+          "RV dominance was linked to lower pulmonary blood flow response: 57% [33-75] predicted vs. 72% [61-89] predicted (P<0.001)",
+          "RV dominance was associated with steeper \u0394pulmonary artery pressure/\u0394pulmonary blood flow: 4.3 [2.6-10.6] mm\u2009Hg/L per minute vs. 3.0 [1.7-4.8] mm\u2009Hg/L per minute (P=0.004)",
+          "Moderate or severe AVVR was linked to lower pulmonary blood flow response: 57% [36-74] predicted vs. 70% [55-88] predicted (P=0.03)",
+          "In semi-invasive testing, RV dominance and AVVR were associated with lower peak systemic blood flow and higher \u0394peripheral venous pressure/\u0394 systemic blood flow, despite similar peak peripheral venous pressure"
+        ],
+        "study": {
+          "trial_name": "Ventricular Morphology and Atrioventricular Valve Regurgitation in Adults Post-Fontan: Associations With Exercise Hemodynamics",
+          "design": "cross-sectional cohort"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Study is cross-sectional, so no causal conclusions can be drawn"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults who had Fontan surgery and are being evaluated for exercise hemodynamics",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "43046954",
+            "title": "Ventricular Morphology and Atrioventricular Valve Regurgitation in Adults Post-Fontan: Associations With Exercise Hemodynamics.",
+            "journal": "Circulation. Cardiovascular interventions",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/43046954/"
+          }
+        ],
+        "source_chars": 2275,
+        "enriched_at": "2026-11-22",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.20)",
           "caveat: unsupported wording (0.00)",
           "caveat: unsupported wording (0.00)"
         ]
@@ -1996,6 +2139,82 @@
       }
     },
     {
+      "id": "br_7442e0e107536157",
+      "published_at": "2026-11-17",
+      "category": "cardio",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "Post-PCI FFR levels predict long-term heart outcomes",
+      "summary": "Higher fractional flow reserve after stent placement is linked to better long-term outcomes. The study found consistent prognostic value over 5 years across different heart vessels.",
+      "why_it_matters": "Doctors may use post-PCI FFR results to better predict a patient\u2019s long-term heart health and guide follow-up care.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43042474/",
+      "factor_slug": "post_pci_ffr",
+      "outcome_slug": "long_term_cardiac_outcomes",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Post-PCI fractional flow reserve (FFR) measurement",
+        "summary": "This study evaluated whether fractional flow reserve (FFR) measured after percutaneous coronary intervention (PCI) predicts long-term heart outcomes. It analyzed 2,128 patients who had successful drug-eluting stent implantation, with outcomes tracked over 5 years. Lower post-PCI FFR was independently linked to higher risk of target vessel failure, defined as cardiac death, target vessel myocardial infarction, or revascularization. The prognostic value of FFR was consistent across both left anterior descending (LAD) and non-LAD vessels, though risk thresholds differed between vessel types.",
+        "key_findings": [
+          "Target vessel failure occurred in 11.7% of patients with LAD lesions and 11.7% with non-LAD lesions over 5 years.",
+          "Lower post-PCI FFR was independently associated with higher risk of target vessel failure in both LAD and non-LAD vessels.",
+          "Exploratory cut points suggested 0.83 for LAD and 0.94 for non-LAD vessels as potential risk thresholds.",
+          "The excess hazard from suboptimal FFR was mainly concentrated in the first 3 years post-procedure.",
+          "Post-PCI FFR showed modest but stable discriminatory power throughout the 5-year follow-up."
+        ],
+        "study": {
+          "trial_name": "Post-PCI FFR Extended registry",
+          "participants": "2128 patients undergoing successful drug-eluting stent implantation",
+          "primary_endpoint": "5-year target vessel failure (composite of cardiac death, target vessel myocardial infarction, or target vessel revascularization)",
+          "follow_up": "5 years"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Exploratory vessel-specific cut points (0.83 for LAD, 0.94 for non-LAD) require external validation."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients who have undergone successful drug-eluting stent implantation for coronary artery disease, particularly those with LAD or non-LAD lesions.",
+        "evidence": [],
+        "source_chars": 2518,
+        "enriched_at": "2026-11-22",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.design: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.29)",
+          "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "coronary_disease_progression",
+          "name": "Coronary disease progression",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1697,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Higher cardiorespiratory fitness",
+            "outcome": "Coronary disease progression",
+            "summary": "The boring read is that better cardiorespiratory fitness usually points toward slower coronary plaque progression, but this is a thinner and less perfectly monotonic literature than the mortality evidence. The best seria",
+            "effect": "The cleanest longitudinal cohort found that higher VO2peak predicted significantly slower progression of coronary calcium over repeated scans in 4,843 adults, and the CARDIA cohort found an odds ratio of 0.59 for later coronary calcium in the high- versus low-fitness group.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 1,
+        "factor_total": 0
+      }
+    },
+    {
       "id": "br_c87d90083fe0a498",
       "published_at": "2026-11-16",
       "category": "cardio",
@@ -2513,6 +2732,95 @@
         "outcome_edges": [],
         "factor_edges": [],
         "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_b3c5506aecc81c08",
+      "published_at": "2026-11-16",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Biatrial ablation may reduce AF recurrence after valve surgery",
+      "summary": "In patients with persistent atrial fibrillation undergoing valve surgery, biatrial maze ablation led to lower AF recurrence compared to left atrial ablation alone. The trial showed a significant improvement in long-term rhythm control.",
+      "why_it_matters": "If you have persistent AF and need valve surgery, ask your doctor about biatrial ablation for better long-term results.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Freedom from AF",
+            "treatment": 78.7,
+            "control": 68.6
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Biatrial ablation",
+        "control_label": "Left atrial ablation"
+      },
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43038430/",
+      "factor_slug": "biatrial_maze_ablation",
+      "outcome_slug": "atrial_fibrillation_recurrence",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Biatrial maze ablation",
+        "summary": "In patients with persistent or long-standing persistent atrial fibrillation undergoing rheumatic mitral valve surgery, biatrial maze ablation was compared to left atrial maze ablation alone. The trial found that biatrial ablation led to significantly higher freedom from atrial tachyarrhythmias at 12 months. There was no significant difference in permanent pacemaker implantation rates between the two groups. The results support biatrial ablation as superior for long-term rhythm control in this population.",
+        "key_findings": [
+          "78.7% of patients in the biatrial group were free from atrial tachyarrhythmias at 12 months (129 of 164)",
+          "68.6% of patients in the left atrial group were free from atrial tachyarrhythmias at 12 months (109 of 159)",
+          "Adjusted difference in freedom from arrhythmias: 10.7% (1-sided lower 95% CI, 3%)",
+          "97.0% of the biatrial group and 98.1% of the left atrial group were free from permanent pacemaker implantation",
+          "The difference in pacemaker implantation met the noninferiority criterion with a margin of -5%"
+        ],
+        "study": {
+          "design": "multicenter, randomized, single-blind",
+          "participants": "323 patients (mean age 56.5 years; 72.1% women; mean LA diameter 51.9 mm)",
+          "comparator": "left atrial maze ablation",
+          "primary_endpoint": "freedom from atrial tachyarrhythmias lasting >30 seconds without antiarrhythmic drugs within 12 months",
+          "follow_up": "12 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The study included only patients with rheumatic mitral valve surgery",
+          "The trial was conducted in a specific population with persistent or long-standing persistent AF",
+          "No data on long-term outcomes beyond 12 months were reported"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with persistent or long-standing persistent atrial fibrillation undergoing rheumatic mitral valve surgery",
+        "evidence": [],
+        "source_chars": 2381,
+        "enriched_at": "2026-11-22",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.trial_name: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "recurrence",
+          "name": "Arrhythmia recurrence",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1864,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Catheter ablation for persistent atrial fibrillation",
+            "outcome": "Arrhythmia recurrence",
+            "summary": "Catheter ablation improves rhythm outcomes in persistent AF, but recurrence is still common and results depend heavily on substrate burden and technique. The main benefit is better freedom from recurrent atrial tachyarrh",
+            "effect": "Across randomized trials that included persistent AF, catheter ablation lowered AF recurrence versus antiarrhythmic drug therapy (RR 0.44). In recurrent arrhythmia after persistent-AF ablation, repeat catheter ablation outperformed antiarrhythmic drugs, and focal-source-guided persistent-AF ablation improved 1-year arrhythmia-free survival versus matched stepwise controls (HR 1.85).",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 1,
         "factor_total": 0
       }
     },
