@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-22",
+  "updated_at": "2026-11-23",
   "items": [
     {
       "id": "br_e8a5c33dbb40f9f5",
@@ -2821,6 +2821,172 @@
         ],
         "factor_edges": [],
         "outcome_total": 1,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_10cdaa76d3bf4398",
+      "published_at": "2026-11-16",
+      "category": "cardio",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New heart surgery method offers safer option for HCM patients",
+      "summary": "A new transapical beating-heart septal myectomy technique has been developed for obstructive hypertrophic cardiomyopathy. It may improve access to this life-saving surgery beyond specialized centers.",
+      "why_it_matters": "This advance could make a critical treatment more available to patients with severe heart muscle thickening.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43038427/",
+      "factor_slug": "transapical_beating_heart_septal_myectomy",
+      "outcome_slug": "obstructive_hypertrophic_cardiomyopathy",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Transapical Beating-Heart Septal Myectomy (TA-BSM)",
+        "summary": "A new minimally invasive heart surgery technique called transapical beating-heart septal myectomy (TA-BSM) was tested in patients with obstructive hypertrophic cardiomyopathy (HCM). The procedure was performed without sternotomy, cardiopulmonary bypass, or aortotomy, using real-time echocardiographic guidance. In a cohort of 418 patients, the technique successfully reduced left ventricular outflow tract gradients and improved mitral regurgitation in most patients. The procedure was associated with a low 30-day mortality and high midterm survival. It may allow broader access to surgical treatment beyond specialized centers.",
+        "key_findings": [
+          "Maximal left ventricular outflow tract gradient decreased from 85 mm Hg (IQR: 65\u2013114 mm Hg) to 19 mm Hg (IQR: 12\u201328 mm Hg) at 3\u20136 months.",
+          "98.8% of patients achieved mitral regurgitation \u2264grade 2+ at follow-up, compared to 47.7% preoperatively.",
+          "Procedural success was achieved in 91.1% of patients (defined as resting LVOT gradient <30 mm Hg and MR \u22642+).",
+          "30-day mortality was 0.2% (1 out of 418 patients).",
+          "Estimated 1-year survival was 98.7% (95% CI: 97.6%\u201399.9%) over a median follow-up of 310 days."
+        ],
+        "study": {
+          "trial_name": "Transapical Beating-Heart Septal Myectomy for Obstructive Hypertrophic Cardiomyopathy: Lessons Learned After the Learning Curve Period",
+          "participants": "418 patients with heterogeneous anatomic presentations of obstructive hypertrophic cardiomyopathy",
+          "primary_endpoint": "Procedural success defined by resting/provoked LVOT gradient <30/50 mm Hg and mitral regurgitation \u2264grade 2+ (of 4+) at 3- to 6-month follow-up",
+          "follow_up": "Median 310 days (IQR: 207\u2013408 days)"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Major adverse events included left ventricular apical tear (0.7%) and iatrogenic mitral valve injury (0.7%).",
+          "Permanent pacemaker implantation was required in 2.4% of patients."
+        ],
+        "next_steps": "Further multicenter evaluation of TA-BSM will help define its role among septal reduction strategies for patients with obstructive HCM.",
+        "who_it_applies_to": "Patients with obstructive hypertrophic cardiomyopathy, including those with long-segment obstruction, small aortic valve annulus, prior cardiac surgery, or anomalous papillary muscle insertion.",
+        "evidence": [
+          {
+            "pmid": "37558369",
+            "title": "First-in-Human Transapical Beating-Heart\u00a0Septal Myectomy in Patients With Hypertrophic Obstructive\u00a0Cardiomyopathy.",
+            "journal": "Journal of the American College of Cardiology",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/37558369/"
+          },
+          {
+            "pmid": "40833749",
+            "title": "Transapical Beating-Heart Septal Myectomy for Obstructive Hypertrophic Cardiomyopathy With Anomalous Papillary Muscle Insertion.",
+            "journal": "Interdisciplinary cardiovascular and thoracic surgery",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40833749/"
+          },
+          {
+            "pmid": "40315478",
+            "title": "Transapical Beating-Heart Septal Myectomy for Obstructive Hypertrophic Cardiomyopathy: Lessons Learned After the Learning Curve Period.",
+            "journal": "Circulation. Cardiovascular interventions",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40315478/"
+          }
+        ],
+        "source_chars": 1749,
+        "enriched_at": "2026-11-23",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.design: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_f3e17bb84cd9d26c",
+      "published_at": "2026-11-16",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "technical",
+      "headline": "New echo method detects heart fibrosis in boys with DMD",
+      "summary": "A new echocardiographic method called myocardial work can detect early heart fibrosis in boys with Duchenne muscular dystrophy, even when heart function appears normal. The study included 242 boys aged 6\u201318 with genetically confirmed DMD.",
+      "why_it_matters": "This test could help catch heart damage earlier in DMD, allowing for timely treatment to protect heart function.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43036894/",
+      "factor_slug": "myocardial_work_analysis",
+      "outcome_slug": "myocardial_fibrosis",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Myocardial work analysis",
+        "summary": "A new echocardiographic method called myocardial work was tested in 242 boys aged 6\u201318 with genetically confirmed Duchenne muscular dystrophy (DMD) and normal heart function (left ventricular ejection fraction \u226550%). The study found that myocardial work indices were significantly impaired in DMD patients compared to controls, even when standard measures like global longitudinal strain were normal. Global work efficiency showed moderate diagnostic accuracy for detecting early heart fibrosis (area under the curve, 0.618) and was associated with future fibrosis development (area under the curve, 0.798). These findings suggest myocardial work analysis may detect early heart damage before traditional tests show changes.",
+        "key_findings": [
+          "Global work index was 1371.4\u00b1225.84 mm\u2009Hg% in DMD patients vs. 1598.04\u00b1207.01 mm\u2009Hg% in controls (P<0.01)",
+          "Global work efficiency was median 94.67% [Q1-Q3, 93.00\u201396.00] in DMD vs. 95.33% [94.30\u201396.33] in controls (P<0.01)",
+          "Global constructive work was 1630.34\u00b1246.37 mm\u2009Hg% in DMD vs. 1900.22\u00b1195.84 mm\u2009Hg% in controls (P<0.01)",
+          "Global wasted work was median 67.67 [Q1\u2013Q3, 50.17\u201386.25] mm\u2009Hg% in DMD vs. 59.00 [48.00\u201373.00] mm\u2009Hg% in controls (P<0.01)",
+          "Global work efficiency had an area under the curve of 0.798 for predicting future fibrosis (cutoff 95.85%)"
+        ],
+        "study": {
+          "trial_name": "Myocardial Work Analysis: A Novel Echocardiographic Approach for Early Detection of Myocardial Fibrosis in Pediatric Duchenne Muscular Dystrophy With Preserved LVEF-A Prospective Cohort Study",
+          "design": "prospective cohort",
+          "participants": "242 boys with genetically confirmed DMD, aged 6\u201318 years",
+          "comparator": "54 age-matched controls",
+          "primary_endpoint": "Association of myocardial work indices with late gadolinium enhancement on cardiac magnetic resonance",
+          "follow_up": "1-year follow-up"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Limited number of progression events, so findings should be interpreted cautiously",
+          "Results are based on a single study with no randomization or control group comparison beyond baseline"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Boys aged 6\u201318 with genetically confirmed Duchenne muscular dystrophy and normal left ventricular ejection fraction",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "43036894",
+            "title": "Myocardial Work Analysis: A Novel Echocardiographic Approach for Early Detection of Myocardial Fibrosis in Pediatric Duchenne Muscular Dystrophy With Preserved LVEF-A Prospective Cohort Study.",
+            "journal": "Circulation. Cardiovascular imaging",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/43036894/"
+          },
+          {
+            "pmid": "42363603",
+            "title": "Treatment with the Nox1/4 inhibitor Setanaxib ameliorates cardiac function in mouse models of Duchenne muscular dystrophy.",
+            "journal": "Molecular therapy : the journal of the American Society of Gene Therapy",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42363603/"
+          },
+          {
+            "pmid": "30664850",
+            "title": "Acute AT1R blockade prevents isoproterenol-induced injury in mdx hearts.",
+            "journal": "Journal of molecular and cellular cardiology",
+            "year": "2019",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/30664850/"
+          }
+        ],
+        "source_chars": 2441,
+        "enriched_at": "2026-11-23",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.43)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
         "factor_total": 0
       }
     },
