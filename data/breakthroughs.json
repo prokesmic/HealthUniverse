@@ -1,8 +1,99 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-24",
+  "updated_at": "2026-11-25",
   "items": [
+    {
+      "id": "br_181ae7a65959e25b",
+      "published_at": "2026-11-25",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New drug combo approved for advanced stomach tumor patients",
+      "summary": "The FDA has approved a combination of bezuclastinib and sunitinib for adults with advanced gastrointestinal stromal tumors who have previously been treated with imatinib.",
+      "why_it_matters": "This approval offers a new treatment option for patients with advanced stomach tumors who have limited choices after imatinib.",
+      "graphic": {
+        "kind": "kaplan_meier",
+        "treatment_label": "Bezuclastinib + Sunitinib",
+        "control_label": "Sunitinib alone",
+        "median_t": 16.5,
+        "median_c": 9.2,
+        "hr": 0.5,
+        "ci_low": 0.39,
+        "ci_high": 0.65,
+        "x_label": "Months",
+        "y_label": "Progression-free survival"
+      },
+      "strength": 0.95,
+      "source_name": "FDA Drug Safety",
+      "source_url": "http://www.fda.gov/drugs/cancer-approvals/fda-approves-bezuclastinib-combination-sunitinib-advanced-gastrointestinal-stromal-tumors",
+      "factor_slug": "bezuclastinib_sunitinib_combo",
+      "outcome_slug": "advanced_gastrointestinal_stromal_tumors",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "bezuclastinib and sunitinib",
+        "summary": "The FDA has approved bezuclastinib in combination with sunitinib for adults with advanced gastrointestinal stromal tumors (GIST) who have previously been treated with imatinib. The approval is based on the PEAK study, a randomized trial of 413 patients with histologically confirmed, locally advanced, unresectable, or metastatic GIST that progressed on or was intolerant to imatinib. Patients receiving the combination had a median progression-free survival of 16.5 months compared to 9.2 months with sunitinib alone. The objective response rate was 46% in the combination arm versus 26% in the sunitinib-only arm.",
+        "key_findings": [
+          "Median progression-free survival was 16.5 months (95% CI: 13.8, 19.2) with bezuclastinib plus sunitinib.",
+          "Median progression-free survival was 9.2 months (95% CI: 7.2, 11.0) with sunitinib alone.",
+          "Hazard ratio for progression-free survival was 0.50 (95% CI: 0.39, 0.65).",
+          "Objective response rate was 46% (95% CI: 39, 53) in the combination arm.",
+          "Objective response rate was 26% (95% CI: 20, 32) in the sunitinib arm."
+        ],
+        "study": {
+          "trial_name": "PEAK study (NCT05208047)",
+          "design": "open-label, randomized, international, multicenter",
+          "participants": "413 patients with histologically confirmed, locally advanced, unresectable, or metastatic GIST",
+          "comparator": "sunitinib once daily alone",
+          "primary_endpoint": "progression-free survival (PFS) as determined by blinded independent central review (BICR) using mRECIST v1.1"
+        },
+        "regulatory_status": "FDA approved on November 24, 2026",
+        "caveats": [
+          "Overall survival data were not mature at the time of the PFS analysis.",
+          "The combination carries a boxed warning for hepatotoxicity.",
+          "Common adverse reactions include diarrhea, increased liver transaminases, hypertension, and fatigue.",
+          "Grade 3 or 4 laboratory abnormalities included increased alanine aminotransferase, decreased leukocytes, neutrophils, lymphocytes, and hemoglobin."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with advanced gastrointestinal stromal tumors who have previously been treated with imatinib",
+        "evidence": [
+          {
+            "pmid": "17137406",
+            "title": "Sunitinib.",
+            "journal": "Drugs",
+            "year": "2006",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/17137406/"
+          },
+          {
+            "pmid": "38182785",
+            "title": "Ripretinib versus sunitinib in gastrointestinal stromal tumor: ctDNA biomarker analysis of the phase 3 INTRIGUE trial.",
+            "journal": "Nature medicine",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38182785/"
+          },
+          {
+            "pmid": "20072832",
+            "title": "Sunitinib.",
+            "journal": "Recent results in cancer research. Fortschritte der Krebsforschung. Progres dans les recherches sur le cancer",
+            "year": "2010",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/20072832/"
+          }
+        ],
+        "source_chars": 3271,
+        "enriched_at": "2026-11-25",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
     {
       "id": "br_fb666164e8aca48f",
       "published_at": "2026-11-24",
@@ -295,6 +386,643 @@
         ],
         "factor_edges": [],
         "outcome_total": 45,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_52889c83cb962b05",
+      "published_at": "2026-11-24",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New treatment approved for advanced stomach tumor patients",
+      "summary": "The FDA has approved a new combination therapy for patients with gastrointestinal stromal tumors that have progressed after initial treatment. The treatment combines a kinase inhibitor with another drug to improve outcomes.",
+      "why_it_matters": "This approval offers a new option for patients with advanced gastrointestinal stromal tumors who have limited treatment choices.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Progression-Free Survival",
+            "treatment": 16.5,
+            "control": 9.2
+          }
+        ],
+        "unit": "months",
+        "treatment_label": "Ekitna + Sutent",
+        "control_label": "Sutent alone"
+      },
+      "strength": 0.95,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/cogent-prepares-for-first-commercial-launch-with-gi-tumor-treatment/",
+      "factor_slug": "bezuclastinib_sutent_combination",
+      "outcome_slug": "gastrointestinal_stromal_tumor",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Ekitna (bezuclastinib) with Sutent (sunitinib)",
+        "summary": "The FDA has approved a combination of bezuclastinib (Ekitna) and sunitinib (Sutent) for patients with advanced gastrointestinal stromal tumors (GIST) who have progressed after prior treatment.",
+        "key_findings": [],
+        "study": {},
+        "regulatory_status": "FDA approved for second-line treatment of advanced GIST",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with advanced gastrointestinal stromal tumors who have progressed after initial treatment with imatinib",
+        "evidence": [],
+        "source_chars": 233,
+        "enriched_at": "2026-11-25",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.50)",
+          "summary: unsupported wording (0.40)",
+          "summary: unsupported wording (0.14)",
+          "study.trial_name: unsupported wording (0.00)",
+          "study.design: 3",
+          "study.participants: unsupported wording (0.00)",
+          "study.comparator: unsupported wording (0.00)",
+          "study.primary_endpoint: unsupported wording (0.50)",
+          "finding: unsupported wording (0.50)",
+          "finding: unsupported wording (0.20)",
+          "finding: 25.8, 45.6",
+          "finding: 3",
+          "finding: unsupported wording (0.33)",
+          "caveat: 3",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "next_steps: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_560f3918cc100c43",
+      "published_at": "2026-11-24",
+      "category": "other",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New FDA-approved treatment for herpes lesions in immune-compromised adults",
+      "summary": "The FDA has approved a new treatment for adults with weakened immune systems who have mucocutaneous lesions caused by herpes simplex virus. The approval is based on clinical trial results showing improved lesion healing.",
+      "why_it_matters": "People with weakened immune systems should talk to their doctor about this new option for treating stubborn herpes sores.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2856280",
+      "factor_slug": "new_hsv_treatment",
+      "outcome_slug": "herpes_simplex_lesions",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "The FDA has approved a new treatment for adults with weakened immune systems who have mucocutaneous lesions caused by herpes simplex virus (HSV). The approval is based on clinical trial results showing improved lesion healing.",
+        "key_findings": [],
+        "study": {},
+        "regulatory_status": "FDA approved",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with weakened immune systems who have mucocutaneous lesions caused by herpes simplex virus (HSV)",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "25437040",
+            "title": "Animal models of varicella zoster virus infection.",
+            "journal": "Pathogens (Basel, Switzerland)",
+            "year": "2013",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/25437040/"
+          }
+        ],
+        "source_chars": 0,
+        "enriched_at": "2026-11-25",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.50)",
+          "summary: unsupported wording (0.12)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_f5352f21a04bb10c",
+      "published_at": "2026-11-24",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "LVAD heart pump weaning linked to long-term recovery in heart failure patients",
+      "summary": "Patients with advanced heart failure who had their left ventricular assist device (LVAD) removed showed sustained heart function improvement. Long-term follow-up confirmed lasting recovery in carefully selected individuals.",
+      "why_it_matters": "Some heart failure patients may recover enough to safely remove their heart pump\u2014talk to your doctor about eligibility.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43074161/",
+      "factor_slug": "lvad_weaning",
+      "outcome_slug": "myocardial_recovery",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "LVAD weaning",
+        "summary": "In a multicenter study of 603 patients with chronic advanced heart failure, those who underwent weaning from a left ventricular assist device (LVAD) after achieving myocardial recovery showed sustained improvement in heart function. The study assessed long-term outcomes after LVAD removal in carefully selected individuals. One-year survival after weaning was 91%, with only 2.3% requiring re-LVAD and 3.7% needing heart transplantation. Long-term survival was similar to that of patients who received LVAD as a bridge to transplantation.",
+        "key_findings": [
+          "Mean age of patients was 42\u00b115 years.",
+          "Median left ventricular ejection fraction at weaning was 50% (interquartile range 45%-57.5%).",
+          "Median left ventricular internal diastolic diameter at weaning was 48 mm (interquartile range 43-53 mm).",
+          "One-year survival after weaning was 91%.",
+          "2.3% required re-LVAD and 3.7% required heart transplantation within one year."
+        ],
+        "study": {
+          "trial_name": "VAD Wean Recovery Network: Long-Term Outcomes of LVAD Weaning for Myocardial Recovery",
+          "design": "multicenter, international analysis",
+          "comparator": "matched analysis against LVAD bridge-to-transplantation recipients from the International Society for Heart and Lung Transplantation registry",
+          "primary_endpoint": "event-free survival (free of heart transplantation or re-LVAD) in the weaned-for-recovery cohort",
+          "follow_up": "long-term follow-up confirmed sustained recovery"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Findings apply only to carefully selected patients with chronic advanced heart failure.",
+          "Results may not generalize to all LVAD recipients, especially those with ischemic cardiomyopathy."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with chronic advanced heart failure who have achieved myocardial recovery while on LVAD support and are candidates for device weaning.",
+        "evidence": [],
+        "source_chars": 2312,
+        "enriched_at": "2026-11-25",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.44)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "heart_failure",
+          "name": "Heart failure",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 729,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Heart failure",
+            "summary": "What makes this pair believable is not one flashy paper but the way the literature stacks up: the 2026 Bodea meta analysis in J Clin Med already points to sglt2 inhibitors tracks with lower risk or better outcomes, and l",
+            "effect": "The strongest quantitative studies point in a protective direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2141,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Heart failure",
+            "summary": "Benefit is observed in obesity-associated heart failure with preserved ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 1247,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Aerobic exercise",
+            "outcome": "Heart failure",
+            "summary": "Observational and preclinical evidence suggests aerobic exercise lowers heart failure risk, but most data come from specific patient groups (diabetics post-PCI, diabetic cardiomyopathy) or animal models rather than the g",
+            "effect": "",
+            "review": "weak_evidence",
+            "n_evidence": 5
+          },
+          {
+            "id": 3546,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "ACE inhibitors",
+            "outcome": "Heart failure",
+            "summary": "Renin-angiotensin system inhibitors were linked to lower 1-year mortality.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          },
+          {
+            "id": 3216,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Iron supplementation",
+            "outcome": "Heart failure",
+            "summary": "Iron supplementation improves outcomes in heart failure with reduced ejection fraction.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3870,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Intravenous iron",
+            "outcome": "Heart failure",
+            "summary": "Intravenous iron may reduce heart failure events in patients with chronic kidney disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 23,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_559d1062a7fcf747",
+      "published_at": "2026-11-24",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "Roche's breast cancer pill gets new FDA approval",
+      "summary": "The drug has received FDA approval for early-stage breast cancer patients after surgery. This is the second recent FDA nod for the treatment.",
+      "why_it_matters": "Patients with early-stage breast cancer may now have a new treatment option to reduce recurrence risk after surgery.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/2026/11/24/biotech-news-roche-potential-breast-cancer-blockbluster-drug-wins-second-fda-nod/?utm_campaign=rss",
+      "factor_slug": "roche_breast_cancer_drug",
+      "outcome_slug": "early_stage_breast_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Roche's breast cancer pill",
+        "summary": "The drug has received FDA approval for use in early-stage breast cancer patients after surgery. This is the second recent FDA approval for the treatment, following a prior clearance.",
+        "key_findings": [],
+        "study": {},
+        "regulatory_status": "FDA approved for early-stage breast cancer after surgery",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "early-stage breast cancer patients after surgery",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "40140172",
+            "title": "Impact of adding palbociclib on treatment adherence to ongoing adjuvant endocrine treatment in the global randomized PALLAS randomized trial in patients with early breast cancer.",
+            "journal": "Breast cancer research and treatment",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40140172/"
+          },
+          {
+            "pmid": "34308256",
+            "title": "THRIVE intervention development: using participatory action research principles to guide a mHealth app-based intervention to improve oncology care.",
+            "journal": "Journal of hospital management and health policy",
+            "year": "2021",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/34308256/"
+          }
+        ],
+        "source_chars": 248,
+        "enriched_at": "2026-11-25",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.33)",
+          "summary: unsupported wording (0.40)",
+          "summary: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.40)",
+          "caveat: 3"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "breast_cancer",
+          "name": "Breast cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 146,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined estrogen+progesterone HRT",
+            "outcome": "Breast cancer",
+            "summary": "Taking combined estrogen-plus-progestogen hormone replacement therapy (HRT) is associated with a small but consistently demonstrated increase in breast cancer risk. Risk rises with longer duration of use and remains elev",
+            "effect": "RR ~1.24\u20131.26 for current/recent users",
+            "review": "verified_evidence",
+            "n_evidence": 10
+          },
+          {
+            "id": 28,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Breast cancer",
+            "summary": "Drinking alcohol\u2014even at low to moderate levels\u2014is consistently associated with a small but real increase in breast cancer risk. The risk rises in a roughly dose-dependent fashion: each additional drink per day adds abou",
+            "effect": "~7\u201310% increased risk per 10 g/day alcohol",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 276,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Moderate alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "In adult women, pooled meta-analytic evidence suggest that moderate alcohol intake tracks with higher risk of breast cancer. The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 271,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Heavy alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally upward even below a drink a day. Pooled meta-analytic evidence link heavy alcohol intake to higher risk of breast cancer in a",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 368,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined menopausal hormone therapy",
+            "outcome": "Breast cancer",
+            "summary": "Pooled meta-analytic evidence link combined menopausal hormone therapy to higher risk of breast cancer in postmenopausal women. The average effect is usually moderate rather than dramatic, so this edge is better read as ",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 145,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Estrogen-only HRT",
+            "outcome": "Breast cancer",
+            "summary": "In post-menopausal women who have had a hysterectomy, taking estrogen-only hormone replacement therapy is associated with a small but statistically significant reduction in breast cancer incidence compared with placebo, ",
+            "effect": "HR ~0.78 in long-term WHI follow-up",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 45,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_73077e99369ca737",
+      "published_at": "2026-11-24",
+      "category": "metabolic",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "Many patients cut back on alcohol after starting this diabetes drug",
+      "summary": "Nearly half of people taking a common diabetes medication reported drinking less alcohol. The effect was seen in a study published in JAMA Psychiatry.",
+      "why_it_matters": "If you or someone you know uses alcohol and takes this medication, you may notice reduced drinking\u2014talk to your doctor about it.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2856279",
+      "factor_slug": "glp1_receptor_agonist",
+      "outcome_slug": "alcohol_use_reduction",
+      "edge_id": 2144,
+      "is_orphan": false,
+      "detail": {
+        "intervention": "glucagon-like peptide-1 (GLP-1) receptor agonist",
+        "summary": "In a study published in JAMA Psychiatry, nearly half of individuals taking a GLP-1 receptor agonist reported drinking less alcohol after starting the medication.",
+        "key_findings": [
+          "Nearly half of patients reported drinking less alcohol after starting the medication.",
+          "The effect was observed in a research letter published in JAMA Psychiatry."
+        ],
+        "study": {
+          "design": "research letter"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The study was a research letter, not a full trial."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients taking a GLP-1 receptor agonist for diabetes",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "39937469",
+            "title": "Once-Weekly Semaglutide in Adults With Alcohol Use Disorder: A Randomized Clinical Trial.",
+            "journal": "JAMA psychiatry",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39937469/"
+          },
+          {
+            "pmid": "39535805",
+            "title": "Repurposing Semaglutide and Liraglutide for Alcohol Use Disorder.",
+            "journal": "JAMA psychiatry",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39535805/"
+          },
+          {
+            "pmid": "38884652",
+            "title": "Effect of the glucagon-like peptide-1 (GLP-1) receptor agonist semaglutide on alcohol consumption in alcohol-preferring male vervet monkeys.",
+            "journal": "Psychopharmacology",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38884652/"
+          }
+        ],
+        "source_chars": 0,
+        "enriched_at": "2026-11-25",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.50)",
+          "summary: unsupported wording (0.25)",
+          "summary: unsupported wording (0.40)",
+          "finding: unsupported wording (0.33)",
+          "finding: unsupported wording (0.33)",
+          "finding: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.17)",
+          "caveat: unsupported wording (0.25)"
+        ]
+      },
+      "corpus": {
+        "factor": {
+          "slug": "glp1_agonists",
+          "name": "GLP-1 receptor agonists",
+          "relation": "same"
+        },
+        "outcome": null,
+        "pair": [
+          {
+            "id": 2144,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Weight loss",
+            "summary": "GLP-1 receptor agonists consistently and significantly reduce body weight across multiple populations, including adults with obesity, type 2 diabetes, and polycystic ovary syndrome. Three independent meta-analyses and on",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 21
+          }
+        ],
+        "outcome_edges": [],
+        "factor_edges": [
+          {
+            "id": 210,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Cardiovascular disease",
+            "summary": "Multiple large cardiovascular outcome trials (CVOTs) have shown that GLP-1 receptor agonists reduce the risk of major adverse cardiovascular events (MACE\u2014heart attack, stroke, and CV death) by roughly 12\u201314% compared to ",
+            "effect": "~12\u201314% relative risk reduction in MACE in high-CV-risk T2D patients; Class-level meta-analyses confirm significant MACE reduction",
+            "review": "verified_evidence",
+            "n_evidence": 16
+          },
+          {
+            "id": 2155,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Obesity",
+            "summary": "GLP-1 receptor agonists (GLP-1 RAs) consistently reduce body weight and BMI in adults with overweight or obesity. A high-quality meta-analysis of oral small-molecule GLP-1 RAs (n=10,000) confirms significant reductions i",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 21
+          },
+          {
+            "id": 2156,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Type 2 diabetes",
+            "summary": "GLP-1 receptor agonists (GLP-1 RAs) are associated with improved glycemic control and reduced type 2 diabetes (T2D) risk across multiple study designs. A 2026 meta-analysis of oral small-molecule GLP-1RAs (n \u2248 10,000) de",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 20
+          },
+          {
+            "id": 2139,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Major adverse cardiovascular events",
+            "summary": "GLP-1 receptor agonists consistently reduce major adverse cardiovascular events (MACE) across multiple high-quality study designs. A meta-analysis of ~10,000 patients and a high-quality RCT both demonstrate MACE reductio",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 11
+          },
+          {
+            "id": 2503,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "HbA1c",
+            "summary": "GLP-1 receptor agonists consistently lower HbA1c in adults with type 2 diabetes (and, to a lesser extent, type 1 diabetes). A 2026 meta-analysis of ~10,000 participants confirmed significant reductions with oral small-mo",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 10
+          },
+          {
+            "id": 2683,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "All-cause mortality",
+            "summary": "GLP-1 receptor agonists associated with reduced all-cause mortality.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 6
+          }
+        ],
+        "outcome_total": 0,
+        "factor_total": 71
+      }
+    },
+    {
+      "id": "br_e429b30182a87aef",
+      "published_at": "2026-11-24",
+      "category": "cardio",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New heart procedure improves symptoms in severe tricuspid regurgitation",
+      "summary": "After 1 year, patients with severe tricuspid regurgitation had better symptoms and health status with transcatheter edge-to-edge repair plus medication compared to medication alone. Long-term outcomes beyond 1 year remain under study.",
+      "why_it_matters": "If you have severe tricuspid regurgitation, this procedure may improve your quality of life over time.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Severe or greater tricuspid regurgitation",
+            "treatment": 6.77,
+            "control": 53.5
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "T-TEER + OMT",
+        "control_label": "OMT alone"
+      },
+      "strength": 0.9,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43074159/",
+      "factor_slug": "transcatheter_edge_to_edge_repair",
+      "outcome_slug": "tricuspid_regurgitation",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Transcatheter edge-to-edge repair (T-TEER)",
+        "summary": "In a randomized trial of 300 patients with severe symptomatic tricuspid regurgitation, those receiving T-TEER plus optimized medical therapy (OMT) had better symptoms and health status at 1 year compared to OMT alone. After extended follow-up of a median of 30.8 months, T-TEER plus OMT reduced the risk of first composite events (heart failure hospitalization, tricuspid surgery, or cardiovascular death) and recurrent heart failure hospitalizations. Severe or greater tricuspid regurgitation was present in only 6.77% of the T-TEER group versus 53.5% in the OMT-alone group. Long-term outcomes beyond 1 year remain under study.",
+        "key_findings": [
+          "At last core lab assessment, 6.77% of T-TEER patients had severe or greater tricuspid regurgitation vs. 53.5% in OMT-alone group (P<0.0001)."
+        ],
+        "study": {
+          "trial_name": "TRI-FR",
+          "design": "randomized, multicenter",
+          "comparator": "optimized medical therapy alone",
+          "primary_endpoint": "time to first heart failure hospitalization, tricuspid surgery, or cardiovascular death",
+          "follow_up": "median 30.8 months (75th percentile 41.0; maximum 56.4)"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Long-term outcomes beyond 1 year remain under study.",
+          "The trial did not show a significant difference in cardiovascular death or tricuspid surgery between groups."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with severe symptomatic tricuspid regurgitation who are not candidates for surgical repair or who are at high risk for surgery.",
+        "evidence": [],
+        "source_chars": 2476,
+        "enriched_at": "2026-11-25",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "finding: 44",
+          "finding: 48",
+          "finding: 60",
+          "finding: 56",
+          "caveat: unsupported wording (0.17)",
+          "caveat: unsupported wording (0.25)",
+          "next_steps: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
         "factor_total": 0
       }
     },
@@ -761,6 +1489,267 @@
         ],
         "factor_edges": [],
         "outcome_total": 66,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_17fd51fee9267a16",
+      "published_at": "2026-11-23",
+      "category": "cardio",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New ablation method shows better safety for afib patients",
+      "summary": "Pulsed field ablation was safer than thermal ablation in treating paroxysmal atrial fibrillation, with lower rates of complications. It also showed comparable effectiveness in preventing afib recurrence.",
+      "why_it_matters": "Patients with afib may have a safer, more effective treatment option available now.",
+      "graphic": {
+        "kind": "forest_plot",
+        "studies": [
+          {
+            "name": "PFA vs. pooled thermal ablation",
+            "estimate": 0.86,
+            "ci_low": 0.75,
+            "ci_high": 0.99
+          },
+          {
+            "name": "PFA vs. cryoballoon",
+            "estimate": 0.8,
+            "ci_low": 0.65,
+            "ci_high": 0.97
+          },
+          {
+            "name": "PFA vs. radiofrequency",
+            "estimate": 0.93,
+            "ci_low": 0.77,
+            "ci_high": 1.13
+          }
+        ],
+        "x_label": "Risk Ratio",
+        "reference": 1,
+        "log_scale": true
+      },
+      "strength": 0.95,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43070203/",
+      "factor_slug": "pulsed_field_ablation",
+      "outcome_slug": "atrial_fibrillation_recurrence",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "pulsed field ablation",
+        "summary": "Pulsed field ablation (PFA) was compared to thermal ablation methods\u2014cryoballoon and radiofrequency\u2014in 2,015 patients with paroxysmal atrial fibrillation. PFA showed shorter procedure times, lower rates of serious adverse events, and a lower risk of atrial arrhythmia recurrence than pooled thermal ablation. Persistent phrenic nerve palsy and pulmonary vein stenosis occurred only after thermal ablation. PFA was significantly better than cryoballoon ablation but comparable to contemporary radiofrequency ablation in preventing recurrence.",
+        "key_findings": [
+          "PFA showed no significant difference in recurrence compared to radiofrequency ablation (risk ratio 0.93, 95% CI 0.77\u20131.13)",
+          "Persistent phrenic nerve palsy and pulmonary vein stenosis occurred exclusively after thermal ablation"
+        ],
+        "study": {
+          "trial_name": "E3-PFA Collaboration",
+          "design": "aggregate-data meta-analysis of randomized controlled trials",
+          "comparator": "thermal ablation (cryoballoon and radiofrequency)",
+          "primary_endpoint": "atrial arrhythmia recurrence"
+        },
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with paroxysmal atrial fibrillation",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "38525525",
+            "title": "Meta-analysis of pulsed-field ablation versus cryoablation for atrial fibrillation.",
+            "journal": "Pacing and clinical electrophysiology : PACE",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38525525/"
+          },
+          {
+            "pmid": "38984363",
+            "title": "Pulsed-field ablation versus thermal ablation for atrial fibrillation: A meta-analysis.",
+            "journal": "Heart rhythm O2",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/38984363/"
+          },
+          {
+            "pmid": "39579376",
+            "title": "Multielectrode catheter-based pulsed electric field vs. cryoballoon for atrial fibrillation ablation: a systematic review and meta-analysis.",
+            "journal": "Europace : European pacing, arrhythmias, and cardiac electrophysiology : journal of the working groups on cardiac pacing, arrhythmias, and cardiac cellular electrophysiology of the European Society of Cardiology",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39579376/"
+          }
+        ],
+        "source_chars": 2357,
+        "enriched_at": "2026-11-25",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "finding: 42",
+          "finding: 14",
+          "finding: 20",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "recurrence",
+          "name": "Arrhythmia recurrence",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1864,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Catheter ablation for persistent atrial fibrillation",
+            "outcome": "Arrhythmia recurrence",
+            "summary": "Catheter ablation improves rhythm outcomes in persistent AF, but recurrence is still common and results depend heavily on substrate burden and technique. The main benefit is better freedom from recurrent atrial tachyarrh",
+            "effect": "Across randomized trials that included persistent AF, catheter ablation lowered AF recurrence versus antiarrhythmic drug therapy (RR 0.44). In recurrent arrhythmia after persistent-AF ablation, repeat catheter ablation outperformed antiarrhythmic drugs, and focal-source-guided persistent-AF ablation improved 1-year arrhythmia-free survival versus matched stepwise controls (HR 1.85).",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 1,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_d6f5660d77c06371",
+      "published_at": "2026-11-23",
+      "category": "cardio",
+      "stage": "phase1",
+      "audience": "technical",
+      "headline": "New system identifies heart rhythm triggers during normal rhythm",
+      "summary": "A new mapping system successfully identified ectopy-triggering ganglionated plexuses in the left atrium during sinus rhythm. This approach may help guide ablation for atrial fibrillation patients who don't respond to pulmonary vein isolation.",
+      "why_it_matters": "Patients with persistent AF may benefit from targeted ablation of non-pulmonary vein triggers identified during normal heart rhythm.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43070192/",
+      "factor_slug": "tau20_retromapping_system",
+      "outcome_slug": "atrial_fibrillation",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Tau20-RETROmapping system",
+        "summary": "The system used high-frequency stimulation to locate these sites, which were then ablated with radiofrequency energy. After 12 months of follow-up, 63% of patients with previously isolated pulmonary veins and 60% of those undergoing first ablation for persistent AF were free from arrhythmia without antiarrhythmic drugs.",
+        "key_findings": [
+          "On average, 85\u00b115 sites were tested in patients with durably isolated pulmonary veins, identifying 11.8\u00b13.8 ET-GPs.",
+          "In patients undergoing first procedure for persistent AF, 10 out of 15 completed a full left atrial ET-GP map with 102\u00b137 tested sites, identifying 14\u00b14.5 ET-GP sites.",
+          "After 12 months and cessation of antiarrhythmic agents, arrhythmia-free survival was 63% in patients with durably isolated pulmonary veins.",
+          "After 12 months and cessation of antiarrhythmic agents, arrhythmia-free survival was 60% in patients undergoing a first procedure for persistent AF.",
+          "Four of the eight patients with isolated pulmonary veins also had ablation of triggered atrial tachycardias."
+        ],
+        "study": {
+          "trial_name": "First-in-Man Use of the Tau20-RETROmapping System to Identify and Guide Ablation of Ectopy-Triggering Ganglionated Plexuses During Sinus Rhythm as Nonpulmonary Vein Drivers of Atrial Fibrillation",
+          "design": "prospective feasibility study",
+          "primary_endpoint": "atrial arrhythmia lasting \u226530 seconds after a 90-day blanking period",
+          "follow_up": "12 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "No control group",
+          "Primary endpoint is arrhythmia duration, not symptom relief or quality of life"
+        ],
+        "next_steps": "Larger randomized controlled studies are needed to confirm these findings.",
+        "who_it_applies_to": "Patients with atrial fibrillation who do not respond to pulmonary vein isolation or who have persistent atrial fibrillation and are undergoing ablation.",
+        "evidence": [
+          {
+            "pmid": "43070192",
+            "title": "First-in-Man Use of the Tau20-RETROmapping System to Identify and Guide Ablation of Ectopy-Triggering Ganglionated Plexuses During Sinus Rhythm as Nonpulmonary Vein Drivers of Atrial Fibrillation.",
+            "journal": "Circulation. Arrhythmia and electrophysiology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/43070192/"
+          }
+        ],
+        "source_chars": 2341,
+        "enriched_at": "2026-11-25",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: 23",
+          "caveat: 23",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "atrial_fibrillation",
+          "name": "Atrial fibrillation",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 4390,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Omega-3 (EPA/DHA)",
+            "outcome": "Atrial fibrillation",
+            "summary": "High-dose omega-3 supplementation is associated with a dose-dependent increase in atrial fibrillation risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 5
+          },
+          {
+            "id": 733,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Obstructive sleep apnea",
+            "outcome": "Atrial fibrillation",
+            "summary": "The anchor for this edge is the 2026 Makris meta analysis in Catheter Cardiovasc Interv, which suggests that obstructive sleep apnea tracks with higher risk or worse outcomes for atrial fibrillation. Later papers point i",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "verified_evidence",
+            "n_evidence": 6
+          },
+          {
+            "id": 664,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Levothyroxine over-replacement",
+            "outcome": "Atrial fibrillation",
+            "summary": "The strongest piece here is the 2026 Cai meta analysis in Front Cardiovasc Med, which ties levothyroxine over- replacement to atrial fibrillation in a direction that later studies largely support. That makes this edge mo",
+            "effect": "The strongest quantitative studies point in a harmful direction, but the pooled magnitude varies across populations and methods.",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2349,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Atrial fibrillation",
+            "summary": "SGLT-2 inhibitors were associated with a lower risk of atrial fibrillation compared to GLP-1 receptor agonists and DPP-4 inhibitors.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          },
+          {
+            "id": 4016,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Magnesium",
+            "outcome": "Atrial fibrillation",
+            "summary": "Magnesium toxicity caused reversible high-degree atrioventricular block in a pregnant patient with severe pre-eclampsia.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 5
+          },
+          {
+            "id": 3033,
+            "tier": "C",
+            "direction": "harmful",
+            "factor": "Short sleep duration (<6h)",
+            "outcome": "Atrial fibrillation",
+            "summary": "Inadequate sleep duration was associated with a higher risk of atrial flutter recurrence after ablation.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 22,
         "factor_total": 0
       }
     },
