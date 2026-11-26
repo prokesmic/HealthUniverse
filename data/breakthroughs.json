@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-25",
+  "updated_at": "2026-11-26",
   "items": [
     {
       "id": "br_181ae7a65959e25b",
@@ -91,6 +91,103 @@
         "outcome_edges": [],
         "factor_edges": [],
         "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_0c2c9ae8f64470f3",
+      "published_at": "2026-11-25",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "FDA approves new treatment for rare stomach cancer",
+      "summary": "The FDA has approved a new drug combination for a rare form of stomach cancer. It is used with Pfizer's Sutent and is the first treatment approved for this specific subtype.",
+      "why_it_matters": "People with this rare stomach cancer now have a new treatment option approved by the FDA.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "STAT News",
+      "source_url": "https://www.statnews.com/2026/11/25/biotech-news-fda-approves-cogents-drug-for-rare-stomach-cancer/?utm_campaign=rss",
+      "factor_slug": "new_stomach_cancer_drug",
+      "outcome_slug": "rare_stomach_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Cogent Biosciences' drug (not named in source) in combination with Sutent",
+        "summary": "The FDA has approved a new drug combination for a rare form of stomach cancer. The treatment combines a drug from Cogent Biosciences with Sutent, a previously approved drug from Pfizer. This is the first treatment approved specifically for this subtype of stomach cancer.",
+        "key_findings": [],
+        "study": {},
+        "regulatory_status": "FDA approved",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with a rare subtype of stomach cancer",
+        "evidence": [],
+        "source_chars": 260,
+        "enriched_at": "2026-11-26",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.17)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.20)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "stomach_cancer",
+          "name": "Stomach cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 5428,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Processed meat",
+            "outcome": "Stomach cancer",
+            "summary": "Higher processed meat intake associated with modestly increased stomach cancer risk, particularly among current smokers.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 7
+          },
+          {
+            "id": 495,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Allium vegetables",
+            "outcome": "Stomach cancer",
+            "summary": "In general adult, pooled meta-analytic evidence suggest that allium vegetables tracks with lower risk of stomach cancer. Most disagreement in the literature is about size, subgroup sensitivity, or dose threshold rather t",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 822,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Garlic intake",
+            "outcome": "Stomach cancer",
+            "summary": "The literature leans protective, especially at higher intake levels, but it is not as clean as the coffee-endometrial story. Multiple meta-analyses report lower stomach-cancer risk with garlic or allium consumption, yet ",
+            "effect": "Garlic and broader allium intake are repeatedly associated with lower stomach-cancer risk, but heterogeneity and case-control dominance keep the evidence below the most confident tier.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2340,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Occupational pesticide exposure",
+            "outcome": "Stomach cancer",
+            "summary": "Agriculture workers had elevated mortality risk for stomach cancer.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 4,
         "factor_total": 0
       }
     },
@@ -1023,6 +1120,163 @@
         "outcome_edges": [],
         "factor_edges": [],
         "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_a51af718cb05be1a",
+      "published_at": "2026-11-24",
+      "category": "cardio",
+      "stage": "guideline",
+      "audience": "general",
+      "headline": "Lowering blood pressure more tightly cuts heart risk in kidney disease patients",
+      "summary": "Intensive blood pressure control reduced major cardiovascular events in adults with chronic kidney disease. The benefit was seen in both those with and without CKD.",
+      "why_it_matters": "If you have kidney disease, tighter blood pressure control may significantly lower your risk of heart attack or stroke.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2856275",
+      "factor_slug": "intensive_blood_pressure_lowering",
+      "outcome_slug": "major_cardiovascular_events",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "",
+        "summary": "A systematic review and meta-analysis of studies found that intensive blood pressure lowering reduced the risk of major cardiovascular events in adults with chronic kidney disease (CKD).",
+        "key_findings": [
+          "Intensive blood pressure lowering reduced major cardiovascular events in adults with CKD.",
+          "The benefit was also seen in adults without CKD."
+        ],
+        "study": {
+          "trial_name": "Systematic review and meta-analysis",
+          "design": "systematic review and meta-analysis",
+          "comparator": "standard blood pressure control",
+          "primary_endpoint": "major cardiovascular events"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Potential side effects of intensive blood pressure lowering were not reported in the summary."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with chronic kidney disease and adults without CKD who are at risk for cardiovascular events",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "28642330",
+            "title": "Effects of Intensive BP Control in CKD.",
+            "journal": "Journal of the American Society of Nephrology : JASN",
+            "year": "2017",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/28642330/"
+          },
+          {
+            "pmid": "39403990",
+            "title": "Blood pressure targets for hypertension in people with chronic renal disease.",
+            "journal": "The Cochrane database of systematic reviews",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39403990/"
+          },
+          {
+            "pmid": "27885969",
+            "title": "36th International Symposium on Intensive Care and Emergency Medicine : Brussels, Belgium. 15-18 March 2016.",
+            "journal": "Critical care (London, England)",
+            "year": "2016",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/27885969/"
+          }
+        ],
+        "source_chars": 0,
+        "enriched_at": "2026-11-26",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.00)",
+          "summary: unsupported wording (0.50)",
+          "summary: unsupported wording (0.57)",
+          "study.participants: unsupported wording (0.00)",
+          "finding: unsupported wording (0.40)",
+          "finding: unsupported wording (0.00)",
+          "finding: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "mace",
+          "name": "Major adverse cardiovascular events",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1895,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Ezetimibe added after acute coronary syndrome",
+            "outcome": "Major adverse cardiovascular events",
+            "summary": "This is a real but incremental secondary-prevention benefit. The signal is not dramatic, yet it has held up from IMPROVE-IT through newer ACS-focused syntheses and fits the broader LDL-lowering story well.",
+            "effect": "In IMPROVE-IT, adding ezetimibe after ACS lowered the 7-year primary composite event rate from 34.7% to 32.7% (HR 0.936). More recent ACS-focused meta-analyses found a consistent MACE reduction with ezetimibe plus statin, including RR 0.93 across randomized trials and OR 0.89 for recurrent cardiovascular events when ezetimibe was started early after the index event.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1953,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Routine invasive strategy for NSTEMI or NSTE-ACS",
+            "outcome": "Major adverse cardiovascular events",
+            "summary": "This is one of the more durable ischemia-reduction signals in acute coronary syndromes. The benefit is not uniformly dramatic for every subgroup, but the cumulative randomized evidence supports a routine invasive strateg",
+            "effect": "Updated randomized-trial meta-analysis found lower death-or-MI with a routine invasive strategy in NSTE-ACS (OR 0.86), and long-term trial follow-up reinforces that signal. RITA-3 showed fewer death or nonfatal MI events at 5 years (OR 0.78), and FRISC-II showed the invasive strategy postponed death or next MI by an average of 549 days over 15 years.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1960,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "PCSK9 inhibitor therapy after acute coronary syndrome",
+            "outcome": "Major adverse cardiovascular events",
+            "summary": "This is a clean secondary-prevention lipid-escalation signal, especially in higher-risk or higher-LDL post-ACS patients. The benefit is clinically meaningful but still modest in absolute terms, so it is best targeted to ",
+            "effect": "ACS-focused meta-analysis found PCSK9 inhibition reduced MACE overall (RR 0.87). In ODYSSEY OUTCOMES, alirocumab lowered the primary composite endpoint from 11.1% to 9.5% after recent ACS (HR 0.85), and total-event analysis showed fewer recurrent nonfatal cardiovascular and fatal events with continued therapy.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 1857,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "Bempedoic acid in statin-intolerant patients",
+            "outcome": "Major adverse cardiovascular events",
+            "summary": "This has become a much stronger edge since CLEAR Outcomes. The benefit is modest in absolute terms, but it is clinically meaningful because it applies to a group that previously had fewer evidence-based lipid-lowering op",
+            "effect": "CLEAR Outcomes showed a lower primary MACE rate with bempedoic acid in statin-intolerant patients (HR 0.87). Randomized-trial meta-analysis found the same pooled MACE effect size (RR 0.87), and the primary-prevention subgroup of CLEAR Outcomes showed a larger benefit (HR 0.70).",
+            "review": "weak_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 2139,
+            "tier": "A",
+            "direction": "protective",
+            "factor": "GLP-1 receptor agonists",
+            "outcome": "Major adverse cardiovascular events",
+            "summary": "GLP-1 receptor agonists consistently reduce major adverse cardiovascular events (MACE) across multiple high-quality study designs. A meta-analysis of ~10,000 patients and a high-quality RCT both demonstrate MACE reductio",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 11
+          },
+          {
+            "id": 2308,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "SGLT2 inhibitors",
+            "outcome": "Major adverse cardiovascular events",
+            "summary": "SGLT2 inhibitors reduce major adverse cardiovascular events across the CKM continuum.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 2
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 16,
         "factor_total": 0
       }
     },
@@ -30034,56 +30288,6 @@
         ],
         "factor_edges": [],
         "outcome_total": 6,
-        "factor_total": 0
-      }
-    },
-    {
-      "id": "br_47a96cc94db33c7c",
-      "published_at": "2026-07-28",
-      "category": "neuro",
-      "stage": "approved",
-      "audience": "general",
-      "headline": "FDA approves second over-the-counter naloxone nasal spray for opioid overdose",
-      "summary": "The FDA approved a second over-the-counter naloxone nasal spray for opioid overdose emergencies. This increases access to life-saving treatment without requiring a prescription.",
-      "why_it_matters": "Know naloxone is now available in two over-the-counter nasal spray forms, making it easier to keep at home for opioid overdose emergencies.",
-      "graphic": null,
-      "strength": 0.9,
-      "source_name": "JAMA",
-      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2851467",
-      "factor_slug": "naloxone_nasal_spray",
-      "outcome_slug": "opioid_overdose",
-      "edge_id": null,
-      "is_orphan": true,
-      "detail": {
-        "intervention": "naloxone nasal spray",
-        "summary": "The FDA approved a second over-the-counter naloxone nasal spray for use in opioid overdose emergencies. This approval allows access to the life-saving treatment without a prescription.",
-        "key_findings": [],
-        "study": {},
-        "regulatory_status": "FDA approved (over-the-counter)",
-        "caveats": [],
-        "next_steps": "The second over-the-counter naloxone nasal spray is now available without a prescription, increasing public access to overdose reversal.",
-        "who_it_applies_to": "",
-        "evidence": [],
-        "source_chars": 0,
-        "enriched_at": "2026-10-17",
-        "model": "qwen3:30b-instruct",
-        "dropped": [
-          "summary: unsupported wording (0.14)",
-          "summary: unsupported wording (0.25)",
-          "caveat: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.00)",
-          "caveat: unsupported wording (0.20)",
-          "who_it_applies_to: unsupported wording (0.29)"
-        ]
-      },
-      "corpus": {
-        "factor": null,
-        "outcome": null,
-        "pair": [],
-        "outcome_edges": [],
-        "factor_edges": [],
-        "outcome_total": 0,
         "factor_total": 0
       }
     }
