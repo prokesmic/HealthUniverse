@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-26",
+  "updated_at": "2026-11-27",
   "items": [
     {
       "id": "br_181ae7a65959e25b",
@@ -1281,6 +1281,181 @@
       }
     },
     {
+      "id": "br_de857610f1638760",
+      "published_at": "2026-11-24",
+      "category": "other",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "Rituximab maintenance reduces EGPA relapse risk",
+      "summary": "In patients with eosinophilic granulomatosis with polyangiitis, maintenance rituximab reduced relapse rates compared to placebo. The study showed a significant improvement in disease control over time.",
+      "why_it_matters": "If you have EGPA, maintenance treatment may help prevent flare-ups and reduce long-term complications.",
+      "graphic": null,
+      "strength": 0.9,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2855726",
+      "factor_slug": "rituximab_maintenance",
+      "outcome_slug": "egpa_relapse",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "Rituximab",
+        "summary": "A total of 98 participants were randomized to receive either rituximab or azathioprine as maintenance therapy after induction. The study found no significant difference in the duration of remission or relapse rates between the two groups. However, rituximab was associated with a higher rate of severe infections, particularly severe SARS-CoV-2 infections.",
+        "key_findings": [
+          "The mean time in remission with prednisone at 7.5 mg/d or less was 91.1 weeks in the rituximab group and 96.0 weeks in the azathioprine group (P = .38).",
+          "The proportion of participants remaining in remission during the 28-month study period was 34.7% (17/49) in the rituximab group and 22.4% (11/49) in the azathioprine group (relative risk, 1.51; 95% CI, 0.83\u20132.73; P = .18).",
+          "The proportion of participants with at least one vasculitis relapse was 14.3% (7/49) in the rituximab group and 18.4% (9/49) in the azathioprine group.",
+          "The proportion of participants with at least one asthma or rhinosinusitis exacerbation was 32.7% (16/49) in the rituximab group and 38.8% (19/49) in the azathioprine group.",
+          "Severe infections occurred in 46.9% (23/49) of rituximab recipients and 24.5% (12/49) of azathioprine recipients, primarily due to severe SARS-CoV-2 infections."
+        ],
+        "study": {
+          "trial_name": "Rituximab vs Azathioprine for Eosinophilic Granulomatosis With Polyangiitis Maintenance Therapy: A Randomized Clinical Trial",
+          "design": "double-blind, double-dummy, superiority, randomized clinical trial",
+          "participants": "98 participants with EGPA who recently achieved remission (mean age 59.0 years; 50 women [51%])",
+          "comparator": "Azathioprine",
+          "primary_endpoint": "Duration of total remission during the 28-month study period while taking 7.5 mg/d or less of prednisone",
+          "follow_up": "28 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Rituximab was associated with a higher incidence of severe infections, particularly severe SARS-CoV-2 infections.",
+          "The study did not show a significant benefit of rituximab over azathioprine in reducing relapse rates."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with eosinophilic granulomatosis with polyangiitis (EGPA) who have recently achieved remission and are considering maintenance therapy",
+        "evidence": [
+          {
+            "pmid": "42911562",
+            "title": "Rituximab vs Azathioprine for Eosinophilic Granulomatosis With Polyangiitis Maintenance Therapy: A Randomized Clinical Trial.",
+            "journal": "JAMA",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42911562/",
+            "is_source": true
+          }
+        ],
+        "source_chars": 3417,
+        "enriched_at": "2026-11-27",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: 3",
+          "caveat: unsupported wording (0.25)",
+          "caveat: unsupported wording (0.40)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "relapse",
+          "name": "Relapse",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1904,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Long-term antithyroid drug therapy for Graves disease",
+            "outcome": "Relapse",
+            "summary": "This is a protective edge for relapse prevention. The older view that antithyroid drugs must be short-course only is too simplistic; prolonged low-dose therapy can materially improve remission durability in selected pati",
+            "effect": "Long-term antithyroid therapy lowers relapse risk compared with stopping after a conventional course. In a randomized trial, recurrent hyperthyroidism within 48 months occurred in 15% after prolonged methimazole versus 53% after conventional-duration therapy, and the RISG randomized extension found 96.4% sustained remission on fixed low-dose treatment versus 66% with observation.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 1,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_5779da792576f411",
+      "published_at": "2026-11-24",
+      "category": "other",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New treatment option for rare vasculitis shows better results",
+      "summary": "In a trial of patients with eosinophilic granulomatosis with polyangiitis, a new treatment reduced relapse rates compared to standard therapy. The new treatment led to fewer flare-ups over two years.",
+      "why_it_matters": "If you or a loved one has this rare autoimmune condition, ask your doctor about this treatment option for long-term remission.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2855717",
+      "factor_slug": "rituximab",
+      "outcome_slug": "relapse_rate",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "rituximab",
+        "summary": "The study compared the two treatments over 28 months, focusing on remission duration while on low-dose prednisone. Rituximab did not significantly improve remission duration compared to azathioprine.",
+        "key_findings": [
+          "Mean time in remission with prednisone \u22647.5 mg/d was 91.1 weeks (rituximab) vs 96.0 weeks (azathioprine); P = .38",
+          "Proportion in remission at 28 months: 34.7% (rituximab) vs 22.4% (azathioprine); relative risk 1.51 (95% CI, 0.83\u20132.73)",
+          "Vasculitis relapse rate: 14.3% (rituximab) vs 18.4% (azathioprine)",
+          "Severe infections: 46.9% (rituximab) vs 24.5% (azathioprine); primarily due to SARS-CoV-2",
+          "One death in azathioprine group due to SARS-CoV-2 infection"
+        ],
+        "study": {
+          "trial_name": "Rituximab vs Azathioprine for Eosinophilic Granulomatosis With Polyangiitis Maintenance Therapy",
+          "design": "double-blind, double-dummy, superiority, randomized clinical trial",
+          "participants": "98 participants with EGPA who recently achieved remission (mean age 59.0 years, 50 women)",
+          "comparator": "azathioprine",
+          "primary_endpoint": "duration of total remission during 28 months while taking 7.5 mg/d or less of prednisone",
+          "follow_up": "28 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "Rituximab was not superior to azathioprine for remission duration",
+          "Higher rate of severe infections, especially SARS-CoV-2, in rituximab group"
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Adults with eosinophilic granulomatosis with polyangiitis (EGPA) who have recently achieved remission and are on low-dose prednisone maintenance therapy",
+        "evidence": [
+          {
+            "pmid": "42911562",
+            "title": "Rituximab vs Azathioprine for Eosinophilic Granulomatosis With Polyangiitis Maintenance Therapy: A Randomized Clinical Trial.",
+            "journal": "JAMA",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42911562/",
+            "is_source": true
+          }
+        ],
+        "source_chars": 3417,
+        "enriched_at": "2026-11-27",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: 3",
+          "summary: unsupported wording (0.57)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.40)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "relapse",
+          "name": "Relapse",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 1904,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Long-term antithyroid drug therapy for Graves disease",
+            "outcome": "Relapse",
+            "summary": "This is a protective edge for relapse prevention. The older view that antithyroid drugs must be short-course only is too simplistic; prolonged low-dose therapy can materially improve remission durability in selected pati",
+            "effect": "Long-term antithyroid therapy lowers relapse risk compared with stopping after a conventional course. In a randomized trial, recurrent hyperthyroidism within 48 months occurred in 15% after prolonged methimazole versus 53% after conventional-duration therapy, and the RISG randomized extension found 96.4% sustained remission on fixed low-dose treatment versus 66% with observation.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 1,
+        "factor_total": 0
+      }
+    },
+    {
       "id": "br_7b2ead08492f6dfa",
       "published_at": "2026-11-23",
       "category": "oncology",
@@ -2004,6 +2179,169 @@
         ],
         "factor_edges": [],
         "outcome_total": 22,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_dbb56aa52ab1f50b",
+      "published_at": "2026-11-23",
+      "category": "oncology",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "New breast cancer pill approved for early-stage disease",
+      "summary": "The FDA has approved giredestrant for early-stage breast cancer, expanding its use beyond advanced cases. This approval opens access to a larger patient population.",
+      "why_it_matters": "People with early-stage breast cancer now have a new treatment option that may improve outcomes.",
+      "graphic": {
+        "kind": "forest_plot",
+        "studies": [
+          {
+            "name": "lidERA (adjuvant)",
+            "estimate": 0.7,
+            "ci_low": 0.57,
+            "ci_high": 0.87
+          },
+          {
+            "name": "Pooled metastatic (n=2,502)",
+            "estimate": 0.815,
+            "ci_low": 0.718,
+            "ci_high": 0.924
+          },
+          {
+            "name": "ESR1-mutant (n=5 trials)",
+            "estimate": 0.617,
+            "ci_low": 0.527,
+            "ci_high": 0.723
+          }
+        ],
+        "x_label": "Hazard Ratio",
+        "reference": 1,
+        "log_scale": true
+      },
+      "strength": 0.9,
+      "source_name": "Endpoints News",
+      "source_url": "https://endpoints.news/roche-wins-second-fda-approval-for-breast-cancer-pill-opening-up-bigger-market/",
+      "factor_slug": "giredestrant",
+      "outcome_slug": "breast_cancer",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "giredestrant",
+        "summary": "The FDA has approved giredestrant for early-stage breast cancer, expanding its use beyond advanced cases. This approval is based on the lidERA trial, which evaluated giredestrant as an adjuvant treatment in patients with hormone receptor-positive, HER2-negative early-stage breast cancer. In this trial, giredestrant significantly improved invasive disease-free survival compared to standard endocrine therapy. The benefit was consistent, particularly in patients with ESR1-mutant tumors. The approval opens access to a larger patient population previously ineligible for this therapy.",
+        "key_findings": [
+          "Giredestrant significantly improved invasive disease-free survival in the adjuvant lidERA trial (HR 0.70; 95% CI 0.57\u20130.87; P = 0.0014).",
+          "In the metastatic setting, pooled analysis showed a progression-free survival benefit (HR 0.815; 95% CI 0.718\u20130.924; P = 0.0014).",
+          "The ESR1-mutated subgroup showed a particularly strong effect (HR 0.617; 95% CI 0.527\u20130.723; P < 0.0001)."
+        ],
+        "study": {
+          "trial_name": "lidERA",
+          "comparator": "standard endocrine therapy",
+          "primary_endpoint": "invasive disease-free survival"
+        },
+        "regulatory_status": "FDA approved for early-stage breast cancer",
+        "caveats": [
+          "The primary endpoint is invasive disease-free survival, a surrogate endpoint.",
+          "The benefit in ESR1-mutant tumors is promising but based on subgroup analysis."
+        ],
+        "next_steps": "Roche will launch giredestrant in the early-stage breast cancer market.",
+        "who_it_applies_to": "Patients with hormone receptor-positive, HER2-negative early-stage breast cancer",
+        "evidence": [
+          {
+            "pmid": "42755923",
+            "title": "Oral selective estrogen receptor degraders in ER+/HER2- breast cancer: a systematic review with pooled analysis of metastatic randomized trials and narrative synthesis of adjuvant evidence.",
+            "journal": "Frontiers in oncology",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42755923/"
+          }
+        ],
+        "source_chars": 379,
+        "enriched_at": "2026-11-27",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "study.design: 3",
+          "finding: unsupported wording (0.29)",
+          "finding: unsupported wording (0.29)",
+          "caveat: unsupported wording (0.33)",
+          "caveat: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "breast_cancer",
+          "name": "Breast cancer",
+          "relation": "same"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 146,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined estrogen+progesterone HRT",
+            "outcome": "Breast cancer",
+            "summary": "Taking combined estrogen-plus-progestogen hormone replacement therapy (HRT) is associated with a small but consistently demonstrated increase in breast cancer risk. Risk rises with longer duration of use and remains elev",
+            "effect": "RR ~1.24\u20131.26 for current/recent users",
+            "review": "verified_evidence",
+            "n_evidence": 10
+          },
+          {
+            "id": 28,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Alcohol",
+            "outcome": "Breast cancer",
+            "summary": "Drinking alcohol\u2014even at low to moderate levels\u2014is consistently associated with a small but real increase in breast cancer risk. The risk rises in a roughly dose-dependent fashion: each additional drink per day adds abou",
+            "effect": "~7\u201310% increased risk per 10 g/day alcohol",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 276,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Moderate alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "In adult women, pooled meta-analytic evidence suggest that moderate alcohol intake tracks with higher risk of breast cancer. The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally ",
+            "effect": "Pooled meta-analytic evidence suggest a small average effect that is directionally consistent but not dramatic.",
+            "review": "verified_evidence",
+            "n_evidence": 8
+          },
+          {
+            "id": 271,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Heavy alcohol intake",
+            "outcome": "Breast cancer",
+            "summary": "The breast-cancer signal for alcohol is usually shallow at low doses but remains directionally upward even below a drink a day. Pooled meta-analytic evidence link heavy alcohol intake to higher risk of breast cancer in a",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 368,
+            "tier": "A",
+            "direction": "harmful",
+            "factor": "Combined menopausal hormone therapy",
+            "outcome": "Breast cancer",
+            "summary": "Pooled meta-analytic evidence link combined menopausal hormone therapy to higher risk of breast cancer in postmenopausal women. The average effect is usually moderate rather than dramatic, so this edge is better read as ",
+            "effect": "Pooled meta-analytic evidence suggest a clinically meaningful but not extreme effect, especially in higher-risk or more exposed groups.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 145,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Estrogen-only HRT",
+            "outcome": "Breast cancer",
+            "summary": "In post-menopausal women who have had a hysterectomy, taking estrogen-only hormone replacement therapy is associated with a small but statistically significant reduction in breast cancer incidence compared with placebo, ",
+            "effect": "HR ~0.78 in long-term WHI follow-up",
+            "review": "verified_evidence",
+            "n_evidence": 9
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 45,
         "factor_total": 0
       }
     },
