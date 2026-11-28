@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "comment": "Daily-refreshed feed of clinical breakthroughs, regulatory events, and guideline shifts. `audience` is 'general' (everyday-actionable, plain-English) or 'technical' (specialist-only). Public surfaces filter to general by default.",
-  "updated_at": "2026-11-27",
+  "updated_at": "2026-11-28",
   "items": [
     {
       "id": "br_181ae7a65959e25b",
@@ -1452,6 +1452,285 @@
         ],
         "factor_edges": [],
         "outcome_total": 1,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_d8a11fa96c637121",
+      "published_at": "2026-11-24",
+      "category": "oncology",
+      "stage": "phase3",
+      "audience": "general",
+      "headline": "New approach boosts smoking quit rates in underserved lung cancer screening patients",
+      "summary": "Among underserved adults referred for lung cancer screening, a tailored support program led to higher smoking cessation rates than standard care. The intervention significantly improved quit rates compared to usual methods.",
+      "why_it_matters": "If you're at risk for lung cancer, ask your doctor about personalized support to quit smoking.",
+      "graphic": {
+        "kind": "bar_delta",
+        "bars": [
+          {
+            "label": "Usual care",
+            "treatment": 4.3,
+            "control": 4.3
+          },
+          {
+            "label": "Usual care + pharmacotherapy",
+            "treatment": 5.1,
+            "control": 4.3
+          },
+          {
+            "label": "Usual care + financial incentives",
+            "treatment": 8.8,
+            "control": 4.3
+          },
+          {
+            "label": "Usual care + mobile health tool",
+            "treatment": 7.2,
+            "control": 4.3
+          }
+        ],
+        "unit": "%",
+        "treatment_label": "Intervention",
+        "control_label": "Usual care"
+      },
+      "strength": 0.85,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2854846",
+      "factor_slug": "tailored_support_program",
+      "outcome_slug": "smoking_cessation",
+      "edge_id": 1752,
+      "is_orphan": false,
+      "detail": {
+        "intervention": "financial incentives up to $600 contingent on biochemically confirmed smoking cessation",
+        "summary": "This trial tested four smoking cessation strategies in medically underserved adults referred for lung cancer screening. Participants were randomized to usual care (ask-advise-refer), usual care plus free pharmacotherapy, usual care plus free pharmacotherapy and financial incentives, or usual care plus free pharmacotherapy, financial incentives, and a mobile health tool. The addition of financial incentives significantly increased sustained tobacco abstinence rates compared to usual care alone and usual care plus pharmacotherapy.",
+        "key_findings": [
+          "Sustained tobacco abstinence at 6 months was 4.3% with usual care.",
+          "Abstinence rates increased to 8.8% with the addition of financial incentives.",
+          "The difference in abstinence rates between financial incentives and usual care was 4.6% (95% CI, 2.1%\u20137.0%).",
+          "The difference between financial incentives and usual care plus pharmacotherapy was 4.1% (95% CI, 1.7%\u20136.4%).",
+          "Adding free pharmacotherapy alone did not improve abstinence rates compared to usual care (difference, 0.5%; P = .66)."
+        ],
+        "study": {
+          "trial_name": "Smoking Cessation Among Underserved Patients Referred for Lung Cancer Screening: A Randomized Clinical Trial",
+          "design": "randomized clinical trial",
+          "participants": "3,220 adults (median age 61.1 years, 60.3% female) referred for lung cancer screening who identified as Black, Hispanic, rural residents, or of low socioeconomic status",
+          "comparator": "usual care (ask-advise-refer) and usual care plus free pharmacotherapy",
+          "primary_endpoint": "biochemically confirmed, sustained tobacco abstinence through 6 months",
+          "follow_up": "6 months"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "The study was conducted in a specific population (medically underserved adults referred for lung cancer screening).",
+          "The effect of financial incentives may not generalize to other populations or settings.",
+          "The mobile health tool did not improve outcomes compared to financial incentives alone.",
+          "The cost-effectiveness of $600 incentives is not reported."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Medically underserved adults (Black, Hispanic, rural, or low socioeconomic status) who currently smoke and are referred for lung cancer screening",
+        "evidence": [
+          {
+            "pmid": "42832220",
+            "title": "Smoking Cessation Among Underserved Patients Referred for Lung Cancer Screening: A Randomized Clinical Trial.",
+            "journal": "JAMA",
+            "year": "2026",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/42832220/",
+            "is_source": true
+          }
+        ],
+        "related": [
+          {
+            "pmid": "34384042",
+            "title": "Comparing Smoking Cessation Interventions among Underserved Patients Referred for Lung Cancer Screening: A Pragmatic Trial Protocol.",
+            "journal": "Annals of the American Thoracic Society",
+            "year": "2022",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/34384042/"
+          },
+          {
+            "pmid": "36835811",
+            "title": "Overcoming Barriers to Tobacco Cessation and Lung Cancer Screening among Racial and Ethnic Minority Groups and Underserved Patients in Academic Centers and Community Network Sites: The City of Hope Experience.",
+            "journal": "Journal of clinical medicine",
+            "year": "2023",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/36835811/"
+          }
+        ],
+        "source_chars": 3133,
+        "enriched_at": "2026-11-28",
+        "model": "qwen3:30b-instruct"
+      },
+      "corpus": {
+        "factor": {
+          "slug": "financial_incentives_smoking_cessation",
+          "name": "Financial incentives for smoking cessation",
+          "relation": "same"
+        },
+        "outcome": {
+          "slug": "quit_rate",
+          "name": "Smoking quit rate",
+          "relation": "same"
+        },
+        "pair": [
+          {
+            "id": 1752,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Financial incentives for smoking cessation",
+            "outcome": "Smoking quit rate",
+            "summary": "The strongest anchor is the Cochrane review, which shows a clear improvement in quit rates when cessation is reinforced with cash or voucher incentives. Individual trials are noisier, especially in smaller or lower-incom",
+            "effect": "The Cochrane review of 31 mixed-population trials (adjusted N = 20,097) found that incentives improved long-term smoking cessation compared with controls, with benefits persisting even when studies paying incentives at long-term follow-up were excluded.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          }
+        ],
+        "outcome_edges": [
+          {
+            "id": 1832,
+            "tier": "B",
+            "direction": "protective",
+            "factor": "Social-network smoking intervention",
+            "outcome": "Smoking quit rate",
+            "summary": "The best overall read is that social-network-based cessation support helps, but usually modestly. Systematic evidence suggests that interventions built around online or peer-connected networks can improve smoking outcome",
+            "effect": "The broad social-network intervention review covered 37 studies and 53,891 participants and found significant effects for several health behaviors, including smoking cessation, while a pragmatic chat-based cessation trial increased validated 6-month abstinence from 5% to 8%.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 5482,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Cognitive behavioral therapy for smoking cessation",
+            "outcome": "Smoking quit rate",
+            "summary": "Cognitive behavioral therapy for smoking cessation improves quit rates in adults with ADHD or ASD.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5483,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Motivational interviewing",
+            "outcome": "Smoking quit rate",
+            "summary": "Motivational interviewing enhances smoking cessation success in adults with ADHD or ASD.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5484,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "SSRI use",
+            "outcome": "Smoking quit rate",
+            "summary": "SSRI use is associated with improved smoking cessation outcomes in adults with ADHD or ASD.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5485,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Acute nicotine gum",
+            "outcome": "Smoking quit rate",
+            "summary": "Acute nicotine gum use supports smoking cessation in adults with ADHD or ASD.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5486,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Vaping (nicotine)",
+            "outcome": "Smoking quit rate",
+            "summary": "Vaping is associated with higher smoking cessation rates in adults with ADHD or ASD.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 7,
+        "factor_total": 1
+      }
+    },
+    {
+      "id": "br_3e83141cb3b2b022",
+      "published_at": "2026-11-24",
+      "category": "cardio",
+      "stage": "approved",
+      "audience": "general",
+      "headline": "AI analyzes ECG to flag heart amyloid risk",
+      "summary": "A new AI system uses routine ECGs to identify patients who may have transthyretin amyloid cardiomyopathy. It was validated and can be used locally to prioritize further testing.",
+      "why_it_matters": "If you have heart symptoms, this AI tool could help catch a rare cause earlier through a simple ECG.",
+      "graphic": null,
+      "strength": 0.95,
+      "source_name": "JAMA",
+      "source_url": "https://jamanetwork.com/journals/jama/fullarticle/2853388",
+      "factor_slug": "ai_ecg_analysis",
+      "outcome_slug": "transthyretin_amyloid_cardiomyopathy",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "AI-enabled system using routine electrocardiography images",
+        "summary": "A new artificial intelligence system was developed and validated to identify patients at risk for transthyretin amyloid cardiomyopathy using routine electrocardiography (ECG) images. It was validated as locally deployable, enabling clinicians to prioritize patients for further evaluation.",
+        "key_findings": [],
+        "study": {
+          "design": "diagnostic test study"
+        },
+        "regulatory_status": "",
+        "caveats": [],
+        "next_steps": "",
+        "who_it_applies_to": "Adult patients undergoing routine electrocardiography who may be at risk for transthyretin amyloid cardiomyopathy.",
+        "evidence": [],
+        "related": [
+          {
+            "pmid": "40679604",
+            "title": "Artificial intelligence-enabled electrocardiography and echocardiography to track preclinical progression of transthyretin amyloid cardiomyopathy.",
+            "journal": "European heart journal",
+            "year": "2025",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/40679604/"
+          },
+          {
+            "pmid": "34218880",
+            "title": "Artificial Intelligence-Enhanced Electrocardiogram for the Early Detection of Cardiac Amyloidosis.",
+            "journal": "Mayo Clinic proceedings",
+            "year": "2021",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/34218880/"
+          },
+          {
+            "pmid": "39306149",
+            "title": "Artificial intelligence-enhanced electrocardiogram for the diagnosis of cardiac amyloidosis: A systemic review and meta-analysis.",
+            "journal": "Current problems in cardiology",
+            "year": "2024",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/39306149/"
+          }
+        ],
+        "source_chars": 0,
+        "enriched_at": "2026-11-28",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "summary: unsupported wording (0.44)",
+          "summary: unsupported wording (0.20)",
+          "finding: 92",
+          "finding: 88",
+          "finding: 92",
+          "finding: unsupported wording (0.17)",
+          "finding: unsupported wording (0.40)",
+          "regulatory_status: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.40)",
+          "caveat: unsupported wording (0.20)",
+          "caveat: unsupported wording (0.00)",
+          "next_steps: unsupported wording (0.33)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": null,
+        "pair": [],
+        "outcome_edges": [],
+        "factor_edges": [],
+        "outcome_total": 0,
         "factor_total": 0
       }
     },
@@ -4646,6 +4925,123 @@
         "outcome_edges": [],
         "factor_edges": [],
         "outcome_total": 0,
+        "factor_total": 0
+      }
+    },
+    {
+      "id": "br_c3717fb1a286b189",
+      "published_at": "2026-11-17",
+      "category": "cardio",
+      "stage": "preclinical",
+      "audience": "general",
+      "headline": "New imaging method links heart plaque risk to tissue structure",
+      "summary": "A new imaging technique shows that high-risk coronary plaques seen on CT scans have specific tissue structures and lipid buildup. This helps explain why some plaques are more likely to cause heart attacks.",
+      "why_it_matters": "Understanding plaque structure may help identify patients at higher risk for heart attacks earlier.",
+      "graphic": null,
+      "strength": 0.85,
+      "source_name": "Circulation",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/43043987/",
+      "factor_slug": "polarimetric_imaging",
+      "outcome_slug": "coronary_events",
+      "edge_id": null,
+      "is_orphan": true,
+      "detail": {
+        "intervention": "polarization-sensitive optical frequency domain imaging (PS-OFDI)",
+        "summary": "Researchers tested a new imaging method called PS-OFDI in 43 patients who had coronary computed tomography angiography (CCTA) and later underwent intracoronary imaging. They analyzed 70 coronary segments to link visible plaque features on CT scans with microscopic tissue structure. High-risk plaque features on CCTA were associated with lower birefringence and higher lipid burden measured by PS-OFDI. The method showed improved ability to identify high-risk plaques when combined with standard imaging metrics.",
+        "key_findings": [
+          "40% of the 70 analyzed coronary segments (28 segments) showed CCTA-defined high-risk plaque (HRP).",
+          "HRP segments had significantly lower birefringence than non-HRP segments (P<0.001).",
+          "HRP segments had significantly higher depolarization-derived maximum 4-mm lipid core burden index (LCBI) than non-HRP segments (P<0.001).",
+          "Birefringence was inversely correlated with low-attenuation plaque volume (\u03c1 = -0.350).",
+          "Adding birefringence to conventional OFDI improved discrimination for HRP, increasing the area under the curve from 0.673 to 0.853."
+        ],
+        "study": {
+          "design": "retrospective analysis of prospective registry",
+          "participants": "43 patients, 70 coronary segments analyzed"
+        },
+        "regulatory_status": "",
+        "caveats": [
+          "PS-OFDI is an intracoronary imaging technique requiring invasive procedure.",
+          "Results are exploratory and not yet confirmed in larger trials."
+        ],
+        "next_steps": "",
+        "who_it_applies_to": "Patients with coronary artery disease being evaluated for plaque risk using CT scans, particularly those with features suggestive of high-risk plaques.",
+        "evidence": [],
+        "source_chars": 2602,
+        "enriched_at": "2026-11-28",
+        "model": "qwen3:30b-instruct",
+        "dropped": [
+          "caveat: unsupported wording (0.00)",
+          "caveat: unsupported wording (0.00)"
+        ]
+      },
+      "corpus": {
+        "factor": null,
+        "outcome": {
+          "slug": "coronary_heart_disease",
+          "name": "Coronary heart disease",
+          "relation": "class"
+        },
+        "pair": [],
+        "outcome_edges": [
+          {
+            "id": 819,
+            "tier": "B",
+            "direction": "harmful",
+            "factor": "Effort-reward imbalance",
+            "outcome": "Coronary heart disease",
+            "summary": "The clearest evidence comes from the multicohort analysis of more than ninety thousand workers, where effort-reward imbalance tracked with incident coronary heart disease. Broader work-stress syntheses generally point in",
+            "effect": "The better pooled studies point to a modest elevation in coronary-heart-disease risk when sustained work effort is not matched by pay, esteem, or security.",
+            "review": "verified_evidence",
+            "n_evidence": 3
+          },
+          {
+            "id": 4067,
+            "tier": "C",
+            "direction": "neutral",
+            "factor": "Combined estrogen+progesterone HRT",
+            "outcome": "Coronary heart disease",
+            "summary": "Combined hormone therapy likely has little to no effect on coronary events.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 5251,
+            "tier": "C",
+            "direction": "protective",
+            "factor": "Plant-based dietary pattern",
+            "outcome": "Coronary heart disease",
+            "summary": "Higher adherence to a plant-based diet was associated with lower risk of coronary heart disease.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3305,
+            "tier": "D",
+            "direction": "harmful",
+            "factor": "Coronary artery calcium scoring",
+            "outcome": "Coronary heart disease",
+            "summary": "Moderate and severe nongated CAC were associated with higher coronary heart disease risk.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          },
+          {
+            "id": 3852,
+            "tier": "D",
+            "direction": "neutral",
+            "factor": "Mediterranean diet pattern",
+            "outcome": "Coronary heart disease",
+            "summary": "Mediterranean diet pattern did not improve classification of coronary heart disease beyond clinical markers.",
+            "effect": "",
+            "review": "unreviewed",
+            "n_evidence": 1
+          }
+        ],
+        "factor_edges": [],
+        "outcome_total": 5,
         "factor_total": 0
       }
     },
