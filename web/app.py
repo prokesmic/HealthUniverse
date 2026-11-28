@@ -33,6 +33,7 @@ from web import alwayson                              # noqa: E402
 from web import breakthroughs as bx                   # noqa: E402
 from web import breakthrough_illos as bx_illos        # noqa: E402
 from web import proactive as pro                      # noqa: E402
+from web import core                                  # noqa: E402
 from web.generated_art import (   # noqa: E402
     edge_svg, hero_svg, featured_card_svg, discovery_card_svg, strength_wave_svg,
 )
@@ -41,6 +42,19 @@ app = FastAPI(title="Health Universe")
 WEB_DIR = Path(__file__).parent
 templates = Jinja2Templates(directory=str(WEB_DIR / "templates"))
 app.mount("/static", StaticFiles(directory=str(WEB_DIR / "static")), name="static")
+
+
+@app.middleware("http")
+async def _narrowed_site(request: Request, call_next):
+    """28.11.2026: pages switched off while HU_NARROW is on (web/core.py).
+    Pages go to the home page, API and form calls answer 404. Nothing is
+    deleted: HU_NARROW=0 brings every route back."""
+    path = request.url.path
+    if core.is_off(path):
+        if request.method == "GET" and not path.startswith("/api/"):
+            return RedirectResponse("/", status_code=302)
+        return JSONResponse({"error": "not available"}, status_code=404)
+    return await call_next(request)
 
 # Make `edge_svg(...)` callable from any Jinja template.
 # (Functions in env.globals are hashable, unlike dict-valued globals.)
@@ -121,6 +135,8 @@ def render(request: Request, template: str, ctx: dict) -> HTMLResponse:
         "nav_profile": nav_profile,
         "nav_initials": initials,
         "nav_edges_7d": edges_7d,
+        "narrow": core.narrow_on(),
+        "core_gate": core.gate_on(),
     })
 
 
@@ -167,6 +183,12 @@ def _stats(conn) -> dict:
         "SELECT COUNT(DISTINCT pmid) c FROM evidence WHERE pmid IS NOT NULL AND pmid != ''"
     ).fetchone()["c"]
     last    = conn.execute("SELECT MAX(updated_at) m FROM edge").fetchone()["m"]
+    try:
+        n_core = conn.execute(
+            f"SELECT COUNT(*) c FROM edge e WHERE {core.level_expr(conn)} = 'core'"
+        ).fetchone()["c"]
+    except Exception:
+        n_core = 0
 
     edges_7  = conn.execute(
         "SELECT COUNT(*) c FROM edge WHERE created_at >= ?", (cutoff_7,)
@@ -199,6 +221,7 @@ def _stats(conn) -> dict:
     if studies and studies_30 > studies  * 0.6: studies_30 = 0
     return {
         "edges": edges,
+        "core": n_core,
         "studies": studies,
         "pmids": pmids,
         "updated": last or "—",
@@ -229,7 +252,7 @@ def _featured(conn, limit: int = 3) -> list[dict]:
         FROM edge e
         JOIN entity f ON f.id = e.factor_id
         JOIN entity o ON o.id = e.outcome_id
-        WHERE e.tier IN ('A','B','C')
+        WHERE e.tier IN ('A','B','C')""" + core.core_clause(conn) + """
         ORDER BY CASE e.tier WHEN 'A' THEN 1 WHEN 'B' THEN 2 ELSE 3 END,
                  e.updated_at DESC
         LIMIT ?""", (limit,)).fetchall()
@@ -266,7 +289,7 @@ def _new_discoveries(conn, days: int = 14, limit: int = 20) -> list[dict]:
                     AND h.changed_at >= datetime('now', ?))
             -- OR newly created at C or better
             OR (e.tier IN ('A','B','C') AND e.created_at >= datetime('now', ?))
-        )
+        )""" + core.core_clause(conn) + """
         ORDER BY COALESCE(promoted_at, e.created_at) DESC
         LIMIT ?""", (f"-{days} days", f"-{days} days", limit)).fetchall()
     out = [dict(r) for r in rows]
@@ -2078,7 +2101,7 @@ def feed_rss():
             JOIN edge e ON e.id = h.edge_id
             JOIN entity f ON f.id = e.factor_id
             JOIN entity o ON o.id = e.outcome_id
-            WHERE h.changed_at >= ?
+            WHERE h.changed_at >= ?""" + core.core_clause(conn) + """
             ORDER BY h.changed_at DESC LIMIT 200""",
             ((today - _td(days=30)).strftime("%Y-%m-%d"),)).fetchall()]
     items: list[dict] = []
@@ -2353,7 +2376,7 @@ def cron_social(request: Request):
             JOIN edge e ON e.id = h.edge_id
             JOIN entity f ON f.id = e.factor_id
             JOIN entity o ON o.id = e.outcome_id
-            WHERE h.changed_at >= ?
+            WHERE h.changed_at >= ?""" + core.core_clause(conn) + """
             ORDER BY h.changed_at DESC LIMIT 50""",
             ((today - _td(days=2)).strftime("%Y-%m-%d"),)).fetchall()]
     pick = None
@@ -3461,8 +3484,14 @@ def trust_page(request: Request):
         except Exception:
             n_reports_open = n_reports_total = 0
 
+    with connect() as conn:
+        try:
+            public_counts = core.public_counts(conn)
+        except Exception:
+            public_counts = None
     return render(request, "trust.html", {
         "title": "Trust & audit",
+        "public_counts": public_counts,
         "ev_by_tier": ev_by_tier,
         "totals": totals,
         "edge_rows": [dict(r) for r in edge_rows],
@@ -3569,7 +3598,10 @@ def _stack_match_factors(conn, raw_items: list[str]) -> list[dict]:
                     s = SequenceMatcher(None, norm, nm).ratio()
                     if s > best_s:
                         best, best_s = e, s
-            if best and best_s >= 0.62:
+            # 28.11.2026: 0.62 matched "berberine" to "Berries". A wrong match
+            # reads as an answer about something the user never asked; no
+            # match says so honestly. Substring matches score >= 0.8 anyway.
+            if best and best_s >= 0.8:
                 match = best
                 score = best_s
         out.append({"input": item, "match": match, "match_score": round(score, 2)})
@@ -3599,7 +3631,7 @@ def _stack_brief_for_factor(conn, factor_id: int, *,
                o.name AS o_name, o.slug AS o_slug
         FROM edge e
         JOIN entity o ON o.id=e.outcome_id
-        WHERE e.factor_id=? AND e.tier IN ('A','B','C','X')
+        WHERE e.factor_id=? AND e.tier IN ('A','B','C','X'){core.core_clause(conn)}
         {order_sql}
         LIMIT ?""", (factor_id, max_outcomes)).fetchall()
     out = []
@@ -3680,6 +3712,12 @@ def _summarize_brief(matches: list[dict]) -> dict:
     }
 
 
+def _stack_free_limit() -> int:
+    """Items one brief covers. The Pro wall had no way to pay behind it
+    (waitlist only), so the narrowed site shows the whole stack."""
+    return 12 if core.narrow_on() else 3
+
+
 def _build_brief_payload(conn, raw_items: list[str], skeptic: bool,
                          user_conditions: list[str] | None = None):
     """Run the matcher + per-factor edge lookup. Returns the matches
@@ -3701,6 +3739,13 @@ def _build_brief_payload(conn, raw_items: list[str], skeptic: bool,
         if m["match"]:
             m["edges"] = _stack_brief_for_factor(
                 conn, m["match"]["id"], skeptic=skeptic)
+            # Outside the verified core: say how much there is, show none of it.
+            m["other_edges"] = 0
+            if core.gate_on():
+                m["other_edges"] = conn.execute(
+                    f"SELECT COUNT(*) FROM edge e WHERE e.factor_id=?"
+                    f"{core.visible_clause(conn)} AND {core.level_expr(conn)} != 'core'",
+                    (m["match"]["id"],)).fetchone()[0]
             interaction_slugs.add(m["match"]["slug"])
         else:
             m["edges"] = []
@@ -3772,7 +3817,7 @@ def stack_form(request: Request, items: str = "", skeptic: int = 0):
             "skeptic": False,
             "token": None,
         })
-    FREE_LIMIT = 3
+    FREE_LIMIT = _stack_free_limit()
     pro_locked = len(raw_items) > FREE_LIMIT
     visible = raw_items[:FREE_LIMIT]
     with connect() as conn:
@@ -3812,7 +3857,7 @@ async def api_me_stack(request: Request, items: str = "", skeptic: int = 0):
         return JSONResponse({"items": [], "matches": [], "warnings": [],
                              "synergies": {"active": [], "near_misses": []},
                              "conditional_harms": [], "summary": None})
-    FREE_LIMIT = 3
+    FREE_LIMIT = _stack_free_limit()
     pro_locked = len(raw_items) > FREE_LIMIT
     visible = raw_items[:FREE_LIMIT]
     skeptic_flag = bool(skeptic)
@@ -3847,7 +3892,7 @@ def stack_brief_saved(request: Request, token: str, skeptic: int = 0):
     if not items:
         return RedirectResponse("/stack", status_code=303)
     skeptic_flag = bool(skeptic) or sk_from_token
-    FREE_LIMIT = 3
+    FREE_LIMIT = _stack_free_limit()
     pro_locked = len(items) > FREE_LIMIT
     visible = items[:FREE_LIMIT]
     with connect() as conn:
@@ -5341,7 +5386,9 @@ def robots():
 def sitemap():
     base = "https://health-universe.vercel.app"
     urls = [f"{base}/", f"{base}/discoveries", f"{base}/myths", f"{base}/changes",
-            f"{base}/me", f"{base}/search"]
+            f"{base}/search"]
+    urls += ([f"{base}/stack", f"{base}/breakthroughs", f"{base}/trust", f"{base}/methodology"]
+             if core.narrow_on() else [f"{base}/me"])
     urls += [f"{base}/tier/{t}" for t in ("A", "B", "C", "D", "X")]
     with connect() as conn:
         urls += [f"{base}/category/{c['slug']}" for c in CATEGORIES]
@@ -6391,7 +6438,14 @@ def edge_detail(request: Request, edge_id: int):
     raw_history = [dict(r) for r in history]
     classified = [_classify_event(r) for r in raw_history]
     audit_summary = _audit_summary(raw_history, ev_rows, dict(e).get("last_reviewed"))
+    with connect() as _lc:
+        _lv = _lc.execute(
+            f"SELECT {core.level_expr(_lc)} AS lv FROM edge e WHERE e.id = ?", (edge_id,)).fetchone()
+    public_level = _lv["lv"] if _lv else None
+    if core.gate_on() and (public_level == "hidden" or edge_id in core.hidden_ids()):
+        return HTMLResponse("This relationship is under review and not shown yet.", status_code=404)
     return render(request, "edge.html", {
+        "public_level": public_level,
         "e": dict(e),
         "evidence": ev_rows,
         "counter": co_rows,
@@ -6434,11 +6488,12 @@ def _library_view(conn, where_sql: str, params: tuple, *,
                 WHERE h.edge_id=e.id AND h.field='tier'
                   AND h.new_value IN ('A','B')
                   AND (h.old_value IS NULL OR h.old_value NOT IN ('A','B'))
-               ) AS promoted_at
+               ) AS promoted_at,
+               {core.level_expr(conn)} AS public_level
         FROM edge e
         JOIN entity f ON f.id=e.factor_id
         JOIN entity o ON o.id=e.outcome_id
-        WHERE {where_sql}
+        WHERE ({where_sql}){core.visible_clause(conn)}
     """
     rows = [dict(r) for r in conn.execute(sql, params).fetchall()]
     for e in rows:
@@ -6478,7 +6533,9 @@ def _library_view(conn, where_sql: str, params: tuple, *,
     elif sort == "az":
         filtered.sort(key=lambda e: (e["f_name"] or "").lower())
     else:                                              # importance (default)
-        filtered.sort(key=lambda e: (-(1 if e["breakthrough"] else 0), -e["score"]))
+        # Verified core first, so a list never opens on an unverified card.
+        lead = (lambda e: 0 if e.get("public_level") == "core" else 1) if core.gate_on() else (lambda e: 0)
+        filtered.sort(key=lambda e: (lead(e), -(1 if e["breakthrough"] else 0), -e["score"]))
     total = len(filtered)
     # Group by outcome (skip pagination when grouped)
     groups = None

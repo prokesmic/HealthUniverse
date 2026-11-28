@@ -36,6 +36,12 @@ LOG=data/logs/daily-$(date +%Y%m%d).log
   echo "--- digest ---"
   TO 60 python digest.py --push || echo "digest exited $?"
 
+  # 28.11.2026: new evidence rows get their citation check before anything
+  # is published. Unchecked edges are left out of the web DB (web/core.py),
+  # so a failure here delays new edges, it does not publish unchecked ones.
+  echo "--- verify evidence (new rows) ---"
+  TO 900 python verify_evidence.py audit --only-unverified || echo "verify exited $?"
+
   # The working DB stays local; Vercel gets the slim web copy. The build
   # also guards size (ntfy warning from 60 MB, no push from 90 MB).
   echo "--- web DB ---"

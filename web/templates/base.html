@@ -26,6 +26,7 @@
 </head>
 <body>
 {# ─── A/B test: half of new visitors hitting / are sent to /start ─── #}
+{% if not narrow %}
 <script>
 (function(){
   if (location.pathname !== '/') return;
@@ -42,6 +43,7 @@
   }
 })();
 </script>
+{% endif %}
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="topnav" role="banner">
   <a class="brand" href="/">
@@ -60,6 +62,15 @@
   </a>
   <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
   <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu" role="button" tabindex="0"></label>
+  {% if narrow %}
+  <nav class="topnav-links" aria-label="Primary">
+    <a href="/stack">Stack Brief</a>
+    <a href="/breakthroughs">Breakthroughs</a>
+    <a href="/explore">Graph</a>
+    <a href="/tier/A">Library</a>
+    <a href="/trust">Trust</a>
+  </nav>
+  {% else %}
   <nav class="topnav-links" aria-label="Primary">
     <a href="/me/data">Your data</a>
     <a href="/me/wearables">Connect</a>
@@ -75,12 +86,14 @@
       <a href="/start" class="topnav-cta">Get started →</a>
     {% endif %}
   </nav>
+  {% endif %}
   <form class="topnav-search" method="get" action="/search">
     <label class="sr-only" for="site-search-query">Site search</label>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
     <input id="site-search-query" name="q" placeholder="Search evidence, topics, conditions…" aria-label="Site search" />
     <kbd>⏎</kbd>
   </form>
+  {% if not narrow %}
   <details class="topnav-account" id="account-menu">
     <summary aria-label="Open account menu">
       <span class="avatar avatar-{% if nav_initials %}filled{% else %}empty{% endif %}">
@@ -162,6 +175,7 @@
       </nav>
     </div>
   </details>
+  {% endif %}
 </header>
 
 <script>
@@ -172,6 +186,7 @@ document.addEventListener('click', function(ev){
 });
 </script>
 
+{% if not narrow %}
 {# ─── Sign-in modal — shown when user clicks 'Sign in with email →' ── #}
 <div id="hu-signin-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center;padding:20px">
   <div style="background:#fff;border-radius:14px;padding:24px;max-width:420px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,0.2)">
@@ -258,11 +273,22 @@ document.addEventListener('click', function(ev){
   }
 })();
 </script>
+{% endif %}
 
 <main id="main-content" tabindex="-1">{% block content %}{% endblock %}</main>
 
 <footer class="footer">
   <span>Health Universe — not medical advice. Consult a clinician.</span>
+  {% if narrow %}
+  <nav class="footer-links" aria-label="About" style="margin-top:8px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font-size:13px">
+    <a href="/methodology">Methodology</a>
+    <a href="/stats">Corpus numbers</a>
+    <a href="/discoveries">Discoveries</a>
+    <a href="/feed.rss">RSS</a>
+    <a href="/about">About</a>
+    <a href="/privacy">Privacy</a>
+  </nav>
+  {% endif %}
 </footer>
 </body>
 </html>

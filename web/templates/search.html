@@ -14,7 +14,7 @@
         placeholder="Search foods, conditions, mechanisms, or ask a real question…">
       <button class="btn-primary" type="submit">Search</button>
     </form>
-    {% if prevent_suggestion %}
+    {% if prevent_suggestion and not narrow %}
     <a class="search-prevent-cta" href="/prevent?q={{ prevent_suggestion.slug }}">
       <span class="search-prevent-icon" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
@@ -66,11 +66,11 @@
         <h3>More energy</h3>
         <p class="muted body-sm">Sleep, exercise, micronutrients, and stress — what genuinely moves the needle.</p>
       </a>
-      <a class="search-onboard-card" href="/me">
+      {% if not narrow %}<a class="search-onboard-card" href="/me">
         <span class="search-onboard-icon" aria-hidden="true">⚙</span>
         <h3>Optimise my stack</h3>
         <p class="muted body-sm">Save your conditions and current habits to get personalised re-ranking.</p>
-      </a>
+      </a>{% endif %}
       <a class="search-onboard-card" href="/compare">
         <span class="search-onboard-icon" aria-hidden="true">⇄</span>
         <h3>Compare options</h3>

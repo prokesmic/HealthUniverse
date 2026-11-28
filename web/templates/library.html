@@ -134,6 +134,8 @@
           <span class="prv-effect prv-effect-{{ e.effect_size }}">{{ e.effect_size|upper }}</span>
         {% endif %}
         {% if e.top_study %}<span class="hp-badge hp-badge-ghost">{{ e.top_study.replace("_","-") }}</span>{% endif %}
+        {% if core_gate and e.public_level == 'core' %}<span class="hp-badge" style="background:#e7f5ec;color:#1b5e20;border:1px solid #b7e0c4">✓ verified core</span>
+        {% elif core_gate and e.public_level %}<span class="hp-badge hp-badge-ghost" title="Not in the verified core: weaker evidence, a citation check that did not fully pass, or a tier set by the automated pipeline alone. See /trust.">not in verified core</span>{% endif %}
         <span class="lib2-card-meta">★ {{ "%.1f"|format(e.score) }} · {{ e.n_studies }} studies · {{ e.updated_at[:10] }}</span>
       </div>
       <h3 class="lib2-card-title">{{ e.f_name }} <span class="hp-arrow" aria-hidden="true">→</span> {{ e.o_name }}</h3>
@@ -149,7 +151,7 @@
       <header class="lib2-group-head">
         <h2 class="lib2-group-title">{{ g.name }}</h2>
         <span class="lib2-group-count">{{ g.edges|length }} edge{{ g.edges|length != 1 and "s" or "" }}</span>
-        <a class="lib2-group-cta" href="/prevent?q={{ g.slug }}">Prevention plan →</a>
+        {% if not narrow %}<a class="lib2-group-cta" href="/prevent?q={{ g.slug }}">Prevention plan →</a>{% endif %}
       </header>
       <div class="lib2-group-list">
         {% for e in g.edges %}{{ lib2_card(e) }}{% endfor %}

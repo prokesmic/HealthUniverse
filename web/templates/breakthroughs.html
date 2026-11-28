@@ -52,7 +52,7 @@
         <p class="bx-why"><b>Why it matters.</b> {{ r.why_it_matters }}</p>
         {% endif %}
         <div class="bx-foot">
-          <span class="bx-source">{{ r.source_name }}</span>
+          <span class="bx-source">{{ r.source_name }}{% if r.also_sources %} +{{ r.also_sources|length }} more source{{ "s" if r.also_sources|length != 1 else "" }}{% endif %}</span>
           {% set c = r.corpus or {} %}
           {% if not r.is_orphan %}
             <span class="bx-incorpus">In corpus →</span>

@@ -113,7 +113,8 @@
     </div>
     <button type="submit" class="btn-primary">Show evidence</button>
     <span class="muted small" style="margin-left:10px">
-      Free preview shows the first 3 items. Full briefs require Pro.
+      {% if narrow %}Up to 12 items. Only relationships in the <a href="/trust">verified core</a> are shown.
+      {% else %}Free preview shows the first 3 items. Full briefs require Pro.{% endif %}
     </span>
   </form>
 </section>
@@ -143,7 +144,7 @@
            onclick="setTimeout(()=>window.open(this.href,'_blank'),0);return false">
           ⤓ Save as PDF
         </a>
-        <span class="muted small">Pro feature · free preview</span>
+        {% if not narrow %}<span class="muted small">Pro feature · free preview</span>{% endif %}
       </div>
       {% endif %}
     </div>
@@ -301,7 +302,14 @@
         {% endfor %}
       </div>
       {% else %}
+        {% if core_gate %}
+        <p class="muted">Nothing in the verified core for this item yet.
+          {% if m.other_edges %}We track {{ m.other_edges }} lower-confidence
+          relationship{{ "s" if m.other_edges != 1 else "" }} for it —
+          <a href="/search?q={{ m.match.name|urlencode }}">see them, with their labels</a>.{% endif %}</p>
+        {% else %}
         <p class="muted">No tier-A/B/C edges yet for this item.</p>
+        {% endif %}
       {% endif %}
     {% else %}
       <div class="no-match">
@@ -314,7 +322,9 @@
   </div>
   {% endfor %}
 
-  {% if pro_locked %}
+  {% if pro_locked and narrow %}
+  <p class="muted">This brief covers the first 12 items of your list.</p>
+  {% elif pro_locked %}
   <div class="pro-lock">
     <h3>Unlock the rest of your stack with Pro</h3>
     <p style="margin:6px 0 12px">

@@ -57,8 +57,9 @@ def seeded(tmpdb):
                                 name="Sleep quality", kind="process")
         cur = conn.execute(
             "INSERT INTO edge (factor_id, outcome_id, direction, tier, "
-            "summary, mechanism, population, seed_source) "
-            "VALUES (?, ?, 'protective', 'B', ?, ?, 'general adult', 'claude_seed')",
+            "summary, mechanism, population, seed_source, review_status) "
+            "VALUES (?, ?, 'protective', 'B', ?, ?, 'general adult', 'claude_seed', "
+            "'verified_evidence')",
             (f, o, "Modest improvement in sleep quality.",
              "NMDA modulation."),
         )
@@ -66,7 +67,7 @@ def seeded(tmpdb):
         for n in (332, 46, 12):
             conn.execute(
                 "INSERT INTO evidence (edge_id, citation, year, study_type, "
-                "n_participants, direction, quality, notes) "
-                "VALUES (?, ?, 2021, 'rct', ?, 'protective', 'moderate', 'note')",
+                "n_participants, direction, quality, notes, relevance_status) "
+                "VALUES (?, ?, 2021, 'rct', ?, 'protective', 'moderate', 'note', 'verified')",
                 (eid, f"Test{n} et al 2021 J Sleep", n))
     return {"factor_id": f, "outcome_id": o, "edge_id": eid}

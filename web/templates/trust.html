@@ -30,6 +30,35 @@
   </p>
 </header>
 
+{% if core_gate and public_counts %}
+<section id="verified-core">
+  <h2>The verified core</h2>
+  <p style="max-width:780px">
+    Only relationships in the <b>verified core</b> appear on the home page,
+    in Discoveries, in the Stack Brief and in the RSS feed. A relationship
+    is in the core when all of this holds: strong or moderate evidence
+    (tier A or B); at least two of its citations passed the check
+    described below; and its tier was not set by the automated local model
+    alone. Everything else stays reachable on its own page, labelled
+    <i>not in verified core</i>. Relationships that have not been checked
+    at all are held back and not published.
+  </p>
+  <div class="trust-grid">
+    <div class="trust-card"><div class="big">{{ "{:,}".format(public_counts.core) }}</div><div class="lbl">in the verified core</div></div>
+    <div class="trust-card"><div class="big">{{ "{:,}".format(public_counts.labelled) }}</div><div class="lbl">published with a label</div></div>
+    <div class="trust-card"><div class="big">{{ "{:,}".format(public_counts.held_back) }}</div><div class="lbl">held back until checked</div></div>
+  </div>
+  <p class="muted" style="max-width:780px">
+    The check compares each cited paper's real PubMed title with the
+    relationship it is cited for. It catches wrong papers. It does not yet
+    read the abstract, so it cannot catch a study cited for the wrong
+    direction or the wrong population; a small hand-kept list removes the
+    cases we find.
+  </p>
+</section>
+{% endif %}
+
+
 <section>
   <h2>Headline numbers</h2>
   <div class="trust-grid">

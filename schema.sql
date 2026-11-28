@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS edge (
     created_at      TEXT NOT NULL DEFAULT (datetime('now')),
     updated_at      TEXT NOT NULL DEFAULT (datetime('now')),
     last_reviewed   TEXT NOT NULL DEFAULT (datetime('now')),
+    review_status   TEXT DEFAULT 'unreviewed',  -- verify_evidence.py roll-up
     UNIQUE(factor_id, outcome_id, population)
 );
 
@@ -70,7 +71,10 @@ CREATE TABLE IF NOT EXISTS evidence (
     notes         TEXT,
     source_id     INTEGER REFERENCES source(id),
     is_counter    INTEGER NOT NULL DEFAULT 0,
-    created_at    TEXT NOT NULL DEFAULT (datetime('now'))
+    created_at    TEXT NOT NULL DEFAULT (datetime('now')),
+    relevance_score  REAL,        -- verify_evidence.py
+    relevance_status TEXT,        -- verified | weak | flagged | missing
+    real_title       TEXT
 );
 
 CREATE INDEX IF NOT EXISTS idx_evidence_edge ON evidence(edge_id);

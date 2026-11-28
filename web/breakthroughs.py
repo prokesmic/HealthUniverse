@@ -101,9 +101,77 @@ def items(category: str | None = None, limit: int | None = None,
         cutoff = (date.today() - timedelta(days=days)).isoformat()
         rows = [r for r in rows if r.get("published_at", "") >= cutoff]
     rows = sorted(rows, key=lambda r: r.get("published_at", ""), reverse=True)
+    rows = collapse_same_event(rows)
     if limit:
         rows = rows[:limit]
     return rows
+
+
+# One approval reported by the FDA, STAT and Endpoints is one event. The
+# nightly dedupe compares URLs and titles, which differ; the named
+# intervention does not.
+_GENERIC = {"treatment", "therapy", "therapies", "receptor", "agonist", "agonists",
+            "inhibitor", "inhibitors", "combination", "maintenance", "peptide",
+            "glucagon", "vaccine", "vaccination", "surgery", "procedure", "exercise",
+            "intervention", "supplement", "supplementation", "screening", "patients",
+            "program", "programme", "training", "antibody", "monoclonal", "injection",
+            "placebo", "standard", "intensive", "lowering", "pressure", "disease",
+            "transcatheter", "chemotherapy", "immunotherapy", "radiotherapy"}
+_SOURCE_RANK = ("fda", "ema", "nejm", "lancet", "jama", "bmj", "circulation", "nature")
+
+
+def _event_tokens(r: dict) -> set[str]:
+    det = r.get("detail") if isinstance(r.get("detail"), dict) else {}
+    text = str(det.get("intervention") or "").lower()
+    words = "".join(c if c.isalnum() else " " for c in text).split()
+    return {w for w in words if len(w) >= 7 and w not in _GENERIC and not w.isdigit()}
+
+
+def _source_rank(r: dict) -> int:
+    name = str(r.get("source_name") or "").lower()
+    return next((i for i, s in enumerate(_SOURCE_RANK) if s in name), len(_SOURCE_RANK))
+
+
+def _days_apart(a: str, b: str) -> int:
+    try:
+        return abs((datetime.fromisoformat(a[:10]) - datetime.fromisoformat(b[:10])).days)
+    except (ValueError, TypeError):
+        return 999
+
+
+def collapse_same_event(rows: list[dict]) -> list[dict]:
+    """Fold cards about the same event (same category and stage, within
+    3 days, same named intervention) into one. The card from the most
+    primary source stays and lists the others in `also_sources`. Input
+    order is kept; the stored feed is not changed."""
+    groups: list[list[dict]] = []
+    for r in rows:
+        tok = _event_tokens(r)
+        home = None
+        if tok:
+            for g in groups:
+                h = g[0]
+                if (h.get("category") == r.get("category") and h.get("stage") == r.get("stage")
+                        and _days_apart(h.get("published_at", ""), r.get("published_at", "")) <= 3
+                        and any(tok & _event_tokens(m) for m in g)):
+                    home = g
+                    break
+        if home is None:
+            groups.append([r])
+        else:
+            home.append(r)
+    out: list[dict] = []
+    for g in groups:
+        if len(g) == 1:
+            out.append(g[0])
+            continue
+        best = min(g, key=_source_rank)
+        merged = dict(best)
+        merged["also_sources"] = [
+            {"name": m.get("source_name"), "url": m.get("source_url"), "id": m.get("id")}
+            for m in g if m is not best]
+        out.append(merged)
+    return out
 
 
 def get(item_id: str) -> dict | None:

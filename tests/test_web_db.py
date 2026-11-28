@@ -30,8 +30,12 @@ def _working_db(path: Path) -> Path:
                  "(1,'coffee','Coffee','food',?), (2,'sleep','Sleep','process',NULL)",
                  (b"\x00" * 3072,))
     conn.execute("INSERT INTO edge (id, factor_id, outcome_id, direction, tier, seed_source, "
-                 "summary, embedding) VALUES (1,1,2,'harmful','B','manual','Coffee late hurts sleep',?)",
+                 "summary, embedding, review_status) VALUES (1,1,2,'harmful','B','manual',"
+                 "'Coffee late hurts sleep',?,'verified_evidence')",
                  (b"\x01" * 3072,))
+    for n in (1, 2):   # two verified citations: a core edge (web/core.py)
+        conn.execute("INSERT INTO evidence (edge_id, citation, pmid, relevance_status) "
+                     "VALUES (1, ?, ?, 'verified')", (f"Study {n}", str(1000 + n)))
     conn.execute("INSERT INTO edge_history (edge_id, field, old_value, new_value, reason) "
                  "VALUES (1,'tier','C','B','test')")
     conn.execute("INSERT INTO edge_redirect (old_id, new_id) VALUES (99, 1)")
@@ -42,6 +46,13 @@ def _working_db(path: Path) -> Path:
     conn.commit()
     conn.close()
     return path
+
+
+@pytest.fixture(autouse=True)
+def small_core_floor(monkeypatch):
+    """The one-edge fixture is a whole graph here; the real floor is 300."""
+    monkeypatch.setattr(bwd.core, "CORE_FLOOR", 1)
+    monkeypatch.setattr(bwd.core, "HIDDEN_FILE", Path("/nonexistent/hidden_edges.json"))
 
 
 @pytest.fixture

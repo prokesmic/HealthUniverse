@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
 
-{% if profile and profile.conditions %}
+{% if narrow %}
+{% elif profile and profile.conditions %}
 <a class="hp-personal-banner" href="/my-plan">
   <span class="hp-personal-eye">YOUR PERSONAL PLAN</span>
   <b>Open your unified plan for {{ profile.conditions|length }} tracked
@@ -71,6 +72,18 @@
   </div>
 
   <aside class="hp-hero-rail">
+    {% if narrow %}
+    <div class="hp-confidence">
+      <div class="hp-row-between">
+        <span class="hp-confidence-label">VERIFIED CORE</span>
+      </div>
+      <div class="hp-row-between" style="margin-top:6px">
+        <b class="hp-confidence-text">{{ "{:,}".format(stats.core) }} of {{ "{:,}".format(stats.edges) }} relationships</b>
+        <a class="hp-link" href="/trust">What this means →</a>
+      </div>
+      <p class="muted small" style="margin:6px 0 0">Strong or moderate evidence whose citations passed our check. Only these are featured here; the rest carry a label.</p>
+    </div>
+    {% else %}
     <div class="hp-confidence">
       <div class="hp-row-between">
         <span class="hp-confidence-label">OVERALL EVIDENCE CONFIDENCE</span>
@@ -85,6 +98,8 @@
         <a class="hp-link" href="/about">What this means →</a>
       </div>
     </div>
+
+    {% endif %}
 
     {% if spotlight %}
     <div class="hp-spotlight">
@@ -118,6 +133,7 @@
   </aside>
 </section>
 
+{% if not narrow %}
 <section class="hp-today" id="hp-today" data-hidden="true">
   <div class="hp-row-between">
     <div>
@@ -160,6 +176,7 @@
     .catch(() => {});
 })();
 </script>
+{% endif %}
 
 <section class="hp-categories">
   {% for c in categories %}
@@ -263,7 +280,7 @@
             <h3 class="bx-title">{{ r.headline }}</h3>
             <p class="bx-summary">{{ r.summary }}</p>
             <div class="bx-foot">
-              <span class="bx-source">{{ r.source_name }}</span>
+              <span class="bx-source">{{ r.source_name }}{% if r.also_sources %} +{{ r.also_sources|length }} more source{{ "s" if r.also_sources|length != 1 else "" }}{% endif %}</span>
               {% set c = r.corpus or {} %}{% if not r.is_orphan %}<span class="bx-incorpus">In corpus →</span>
               {% elif c.outcome or c.factor %}<span class="bx-topic">In corpus: {{ (c.outcome or c.factor).name }}</span>
               {% else %}<span class="bx-orphan">Not yet in corpus</span>{% endif %}

@@ -120,7 +120,7 @@ def _decide(score: float | None) -> str:
 
 
 def cmd_audit(args: argparse.Namespace) -> None:
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=120)
     conn.row_factory = sqlite3.Row
     where = "1=1"
     params: list = []
@@ -129,7 +129,9 @@ def cmd_audit(args: argparse.Namespace) -> None:
         where += " AND e.tier IN ({})".format(",".join(["?"] * len(tiers)))
         params.extend(tiers)
     if args.only_unverified:
-        where += " AND (ev.relevance_status IS NULL OR ev.relevance_status = '')"
+        # 'missing' = the title fetch or the embedding failed; try again.
+        where += (" AND (ev.relevance_status IS NULL OR ev.relevance_status = ''"
+                  " OR ev.relevance_status = 'missing')")
 
     sql = f"""
         SELECT ev.id AS evidence_id, ev.pmid, ev.citation, ev.year,
@@ -242,6 +244,9 @@ def cmd_audit(args: argparse.Namespace) -> None:
         ver = by.get("verified", 0)
         weak = by.get("weak", 0)
         flagged = by.get("flagged", 0)
+        if ver == 0 and weak == 0 and flagged == 0:
+            # Nothing could be checked (PubMed or Ollama down): not a verdict.
+            continue
         if ver == 0 and weak == 0:
             conn.execute("UPDATE edge SET review_status='needs_recheck' WHERE id=?", (eid,))
             bad_edges += 1

@@ -86,7 +86,7 @@
     <ol class="stats-leader">
       {% for o in top_outcomes %}
       <li>
-        <a href="/prevent?q={{ o.slug }}"><b>{{ o.name }}</b></a>
+        {% if narrow %}<a href="/search?q={{ o.name|urlencode }}"><b>{{ o.name }}</b></a>{% else %}<a href="/prevent?q={{ o.slug }}"><b>{{ o.name }}</b></a>{% endif %}
         <span class="muted small">{{ o.n_edges }} edges</span>
       </li>
       {% endfor %}

@@ -87,6 +87,9 @@ def test_pmid_watcher_only_records_new_retraction_once(tmpdb, monkeypatch):
 def test_edge_page_shows_retraction_banner(client, tmpdb):
     seeded = _insert_edge_with_pmid(tmpdb, citation="Withdrawn Study et al. 2001")
     with tmpdb.connect() as conn:
+        # An edge that has been through the citation check (unchecked ones are not public).
+        conn.execute("UPDATE edge SET review_status='weak_evidence' WHERE id=?",
+                     (seeded["edge_id"],))
         conn.execute(
             "INSERT INTO evidence_status (pmid, is_retracted, retraction_note) VALUES (?, 1, ?)",
             (seeded["pmid"], "pubtype contains a retraction marker"),

@@ -137,6 +137,7 @@ def test_top3_skips_targeted_moves(monkeypatch):
                 return Cur([{"slug": "cancer_incidence", "name": "Cancer incidence"}])
             return Cur([r for r in rows if r["direction"] == params[-1]] if params else [])
     monkeypatch.setattr(webapp, "connect", lambda: Conn())
+    monkeypatch.setenv("HU_NARROW", "0")     # /my-plan is switched off on the narrowed site
     c = TestClient(webapp.app)
     c.cookies.set("hu_profile", encode(Profile(conditions=["cancer_incidence"])))
     html = c.get("/my-plan").text

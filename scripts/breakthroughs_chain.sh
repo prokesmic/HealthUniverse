@@ -60,6 +60,11 @@ TO 900 $PY scripts/seed_from_breakthroughs.py 2>&1 | tail -3 || log "  seed exit
 # The working DB stays local; Vercel gets the slim web copy. The build also
 # guards size (ntfy warning from 60 MB; from 90 MB it keeps the old copy
 # and exits 3 so we skip a push GitHub would reject).
+# 28.11.2026: citation check for rows the deepening just added (web/core.py
+# leaves unchecked edges out of the published DB).
+log "→ verify evidence (new rows)"
+TO 900 $PY verify_evidence.py audit --only-unverified 2>&1 | tail -2 | sed 's/^/    /' || log "  verify exited $?"
+
 log "→ build_web_db"
 TO 300 $PY scripts/build_web_db.py 2>&1 | sed 's/^/    /'
 WEB_RC=${PIPESTATUS[0]}

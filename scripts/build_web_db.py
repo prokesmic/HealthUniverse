@@ -35,6 +35,14 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+try:  # HU_CORE_GATE / HU_CORE_STRICT_PROMOTION may live in .env (rollback switch)
+    from dotenv import load_dotenv
+    load_dotenv(ROOT / ".env", override=False)
+except ImportError:
+    pass
+from web import core  # noqa: E402  (one definition of the public levels)
+
 SRC = ROOT / "data" / "healthuniverse.db"
 DST = ROOT / "data" / "healthuniverse.web.db"
 STAMP = ROOT / "data" / "cache" / "web_db_size_warned"
@@ -85,8 +93,17 @@ def _counts(conn: sqlite3.Connection, tables) -> dict[str, int]:
             for t in tables if t in have}
 
 
-def build(src: Path, out: Path) -> dict:
-    """Write the slim copy of `src` to `out` (overwritten). Returns stats."""
+def build(src: Path, out: Path, gate: bool | None = None,
+          core_floor: int | None = None) -> dict:
+    """Write the slim copy of `src` to `out` (overwritten). Returns stats.
+
+    With the gate on (default, HU_CORE_GATE=0 turns it off) every edge gets
+    its public level (web/core.py) and hidden edges are left out of the
+    copy, so nothing on the site can show them. A copy with fewer than
+    `core_floor` core edges is refused: that means the verifier state was
+    lost, and the live site keeps the previous DB."""
+    gate = core.gate_on() if gate is None else gate
+    core_floor = core.CORE_FLOOR if core_floor is None else core_floor
     if not src.exists():
         raise BuildError(f"working DB missing: {src}")
     out.unlink(missing_ok=True)
@@ -109,16 +126,31 @@ def build(src: Path, out: Path) -> dict:
             if "embedding" in cols:
                 d.execute(f"UPDATE {t} SET embedding = NULL WHERE embedding IS NOT NULL")
         d.commit()
-        d.execute("VACUUM")
         after = _counts(d, KEEP_TABLES)
         if after != before:
             raise BuildError(f"web tables changed in the strip: {before} -> {after}")
+        levels: dict[str, int] = {}
+        hidden = 0
+        if gate:
+            try:
+                levels = core.apply_levels(d)
+            except sqlite3.Error as e:
+                raise BuildError(f"public levels could not be computed: {e}") from e
+            if levels.get("core", 0) < core_floor:
+                raise BuildError(
+                    f"only {levels.get('core', 0)} core edges (floor {core_floor}); "
+                    f"levels {levels}. Verifier state lost?")
+            hidden = core.prune_hidden(d)
+            core.write_meta(d, levels, hidden)
+            after = _counts(d, KEEP_TABLES)
+        d.execute("VACUUM")
         ok = d.execute("PRAGMA integrity_check").fetchone()[0]
         if ok != "ok":
             raise BuildError(f"integrity_check: {ok}")
     finally:
         d.close()
-    return {"counts": after, "bytes": out.stat().st_size}
+    return {"counts": after, "bytes": out.stat().st_size,
+            "levels": levels, "hidden_removed": hidden}
 
 
 def _warn_once(title: str, body: str, today: str, force: bool = False) -> None:
@@ -162,6 +194,9 @@ def main(argv=None) -> int:
     src_mb = a.src.stat().st_size / 1e6
     print(f"web DB {mb:.1f} MB (working DB {src_mb:.1f} MB); "
           + ", ".join(f"{k}={v}" for k, v in stats["counts"].items()))
+    if stats.get("levels"):
+        print("public levels: " + ", ".join(f"{k}={v}" for k, v in sorted(stats["levels"].items()))
+              + f"; hidden edges left out: {stats['hidden_removed']}")
     today = dt.date.today().isoformat()
 
     if mb >= a.max_mb:

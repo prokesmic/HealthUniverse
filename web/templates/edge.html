@@ -33,6 +33,11 @@
       <span class="pill tier-{{ e.tier }}">{{ TIER_LABEL[e.tier] | upper }}</span>
       <span class="badge dir-{{ e.direction }}">{{ DIRECTION_LABEL[e.direction] }}</span>
       {% if e.population %}<span class="badge ghost">Population: {{ e.population }}</span>{% endif %}
+      {% if core_gate and public_level == 'core' %}
+        <span class="badge" style="background:#1f3a2e;color:#fffaf0" title="Strong or moderate evidence, at least two citations passed the check, tier not set by the automated pipeline alone. See /trust.">✓ Verified core</span>
+      {% elif core_gate and public_level %}
+        <span class="badge ghost" title="Weaker evidence, a citation check that did not fully pass, or a tier set by the automated pipeline alone. Not used in recommendations. See /trust.">Not in verified core</span>
+      {% endif %}
       {% set rs = e.review_status or 'unreviewed' %}
       {% if rs == 'verified_evidence' %}
         <span class="badge" style="background:#e7f5ec;color:#1b5e20;border:1px solid #b7e0c4" title="At least one cited PMID's title semantically matches this edge's factor and outcome.">✓ Evidence verified</span>
